@@ -1,0 +1,60 @@
+{
+  "name": "react-ui",
+  "license": "unlicensed",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server",
+    "test": "stylelint \"src/**/*.scss\" \"public/css/*.css\" --config stylelint.config.js && eslint --ext js,jsx src && jest -w4"
+  },
+  "jest": {
+    "verbose": true,
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|svg)$": "<rootDir>/tests/mocks/emptyMock.js",
+      "\\.(scss)$": "identity-obj-proxy"
+    }
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.2.4",
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.17.0",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "enzyme": "^3.3.0",
+    "enzyme-to-json": "^3.3.0",
+    "eslint": "^4.4.0",
+    "eslint-config-visionapps": "^0.1.0",
+    "eslint-loader": "^1.5.0",
+    "eslint-plugin-import": "^2.1.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.0.1",
+    "file-loader": "^0.10.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^20.0.4",
+    "json-loader": "^0.5.7",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.5",
+    "sass-loader": "^6.0.5",
+    "sinon": "^3.1.0",
+    "style-loader": "^0.18.1",
+    "stylelint": "^8.0.0",
+    "stylelint-config-visionapps": "^0.4.0",
+    "stylelint-config-visionapps-order": "^0.2.0",
+    "stylelint-order": "^0.7.0",
+    "stylelint-webpack-plugin": "^0.9.0",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.10.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.20.0",
+    "prop-types": "^15.5.10",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
+}
