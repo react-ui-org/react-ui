@@ -1,0 +1,4 @@
+node:
+    build: docker/Node
+    volumes:
+        -   .:/workspace
