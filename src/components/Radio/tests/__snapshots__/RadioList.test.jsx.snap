@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly mandatory props only 1`] = `
+<div>
+  <RadioList
+    disabled={false}
+    id="test"
+    options={
+      Array [
+        "choice 1",
+        "choice2",
+      ]
+    }
+    required={false}
+  />
+</div>
+`;
+
+exports[`rendering renders correctly only one option 1`] = `
+<div>
+  <RadioList
+    disabled={false}
+    id="test"
+    options={
+      Array [
+        "choice 1",
+      ]
+    }
+    required={false}
+  />
+</div>
+`;
+
+exports[`rendering renders correctly with all props 1`] = `
+<div>
+  <label
+    htmlFor="test"
+  >
+    label
+  </label>
+  <RadioList
+    disabled={true}
+    id="test"
+    options={
+      Array [
+        "choice 1",
+        "choice2",
+      ]
+    }
+    required={true}
+    value="value"
+  />
+  <div>
+    some help
+  </div>
+  <div
+    key="some error"
+  >
+    some error
+  </div>
+  <div
+    key="another error"
+  >
+    another error
+  </div>
+</div>
+`;
