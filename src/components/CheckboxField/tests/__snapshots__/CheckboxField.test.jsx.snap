@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly mandatory props only 1`] = `
+<div>
+  <CheckboxField
+    disabled={false}
+    id="test"
+    required={false}
+  />
+</div>
+`;
+
+exports[`rendering renders correctly with all props 1`] = `
+<div>
+  <CheckboxField
+    disabled={true}
+    id="test"
+    required={true}
+    value="value"
+  />
+  <label
+    htmlFor="test"
+  >
+    label
+  </label>
+  <div>
+    some help
+  </div>
+  <div
+    key="some error"
+  >
+    some error
+  </div>
+  <div
+    key="another error"
+  >
+    another error
+  </div>
+</div>
+`;
