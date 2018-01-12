@@ -5,6 +5,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
   <TextField
     disabled={false}
     id="test"
+    onChange={null}
     placeholder={null}
     required={false}
     type="text"
@@ -22,6 +23,7 @@ exports[`rendering renders correctly with all props 1`] = `
   <TextField
     disabled={true}
     id="test"
+    onChange={null}
     placeholder="placeholder"
     required={true}
     type="email"

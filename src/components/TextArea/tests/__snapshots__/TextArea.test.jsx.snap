@@ -5,6 +5,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
   <TextArea
     disabled={false}
     id="test"
+    onChange={null}
     placeholder={null}
     required={false}
     rows={3}
@@ -22,6 +23,7 @@ exports[`rendering renders correctly with all props 1`] = `
   <TextArea
     disabled={true}
     id="test"
+    onChange={null}
     placeholder="placeholder"
     required={true}
     rows={5}

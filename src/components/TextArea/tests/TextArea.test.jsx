@@ -1,6 +1,7 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
+import sinon from 'sinon';
 import TextArea from '../index';
 
 describe('rendering', () => {
@@ -24,5 +25,23 @@ describe('rendering', () => {
     />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
+  });
+});
+
+describe('functionality', () => {
+  it('calls onChange()', () => {
+    const spy = sinon.spy();
+    const component = mount(<TextArea
+      fieldId="test"
+      onChange={spy}
+    />);
+
+    component
+      .find('textarea')
+      .simulate('change', {
+        preventDefault: () => {},
+        target: { value: 'test' },
+      });
+    expect(spy.calledOnce).toEqual(true);
   });
 });

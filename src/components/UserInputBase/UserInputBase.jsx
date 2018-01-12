@@ -8,6 +8,7 @@ const UserInputBase = (
 ) => {
   const Wrapper = (props) => {
     const {
+      changeHandler,
       disabled,
       errors,
       fieldId,
@@ -21,6 +22,7 @@ const UserInputBase = (
       <WrappedComponent
         disabled={disabled}
         id={fieldId}
+        onChange={changeHandler}
         required={required}
         value={value}
         {...passThruProps}
@@ -47,6 +49,7 @@ const UserInputBase = (
   };
 
   Wrapper.defaultProps = {
+    changeHandler: null,
     disabled: false,
     errors: [],
     helpText: null,
@@ -56,6 +59,7 @@ const UserInputBase = (
   };
 
   Wrapper.propTypes = {
+    changeHandler: PropTypes.func,
     disabled: PropTypes.bool,
     errors: PropTypes.arrayOf(PropTypes.string),
     fieldId: PropTypes.string.isRequired,

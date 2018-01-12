@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly mandatory props only 1`] = `
+<div>
+  <SelectField
+    disabled={false}
+    id="test"
+    onChange={null}
+    options={
+      Array [
+        Object {
+          "label": "choice 1",
+          "value": "ch1",
+        },
+        Object {
+          "label": "choice 2",
+          "value": "ch2",
+        },
+      ]
+    }
+    required={false}
+  />
+</div>
+`;
+
+exports[`rendering renders correctly only one option 1`] = `
+<div>
+  <SelectField
+    disabled={false}
+    id="test"
+    onChange={null}
+    options={
+      Array [
+        Object {
+          "label": "choice 1",
+          "value": "ch1",
+        },
+      ]
+    }
+    required={false}
+  />
+</div>
+`;
+
+exports[`rendering renders correctly with all props 1`] = `
+<div>
+  <label
+    htmlFor="test"
+  >
+    label
+  </label>
+  <SelectField
+    disabled={true}
+    id="test"
+    onChange={null}
+    options={
+      Array [
+        Object {
+          "label": "choice 1",
+          "value": "ch1",
+        },
+        Object {
+          "label": "choice 2",
+          "value": "ch2",
+        },
+      ]
+    }
+    required={true}
+    value="ch1"
+  />
+  <div>
+    some help
+  </div>
+  <div
+    key="some error"
+  >
+    some error
+  </div>
+  <div
+    key="another error"
+  >
+    another error
+  </div>
+</div>
+`;

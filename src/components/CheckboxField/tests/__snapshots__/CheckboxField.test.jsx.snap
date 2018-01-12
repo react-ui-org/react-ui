@@ -5,6 +5,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
   <CheckboxField
     disabled={false}
     id="test"
+    onChange={null}
     required={false}
   />
 </div>
@@ -15,6 +16,7 @@ exports[`rendering renders correctly with all props 1`] = `
   <CheckboxField
     disabled={true}
     id="test"
+    onChange={null}
     required={true}
     value="value"
   />

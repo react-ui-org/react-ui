@@ -2,13 +2,20 @@
 
 exports[`rendering renders correctly mandatory props only 1`] = `
 <div>
-  <RadioList
+  <Radio
     disabled={false}
     id="test"
+    onChange={null}
     options={
       Array [
-        "choice 1",
-        "choice2",
+        Object {
+          "label": "choice 1",
+          "value": "ch1",
+        },
+        Object {
+          "label": "choice 2",
+          "value": "ch2",
+        },
       ]
     }
     required={false}
@@ -18,12 +25,16 @@ exports[`rendering renders correctly mandatory props only 1`] = `
 
 exports[`rendering renders correctly only one option 1`] = `
 <div>
-  <RadioList
+  <Radio
     disabled={false}
     id="test"
+    onChange={null}
     options={
       Array [
-        "choice 1",
+        Object {
+          "label": "choice 1",
+          "value": "ch1",
+        },
       ]
     }
     required={false}
@@ -38,13 +49,20 @@ exports[`rendering renders correctly with all props 1`] = `
   >
     label
   </label>
-  <RadioList
+  <Radio
     disabled={true}
     id="test"
+    onChange={null}
     options={
       Array [
-        "choice 1",
-        "choice2",
+        Object {
+          "label": "choice 1",
+          "value": "ch1",
+        },
+        Object {
+          "label": "choice 2",
+          "value": "ch2",
+        },
       ]
     }
     required={true}

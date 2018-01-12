@@ -1,6 +1,7 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
+import sinon from 'sinon';
 import CheckboxField from '../index';
 
 describe('rendering', () => {
@@ -22,5 +23,23 @@ describe('rendering', () => {
     />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
+  });
+});
+
+describe('functionality', () => {
+  it('calls onChange() when checked', () => {
+    const spy = sinon.spy();
+    const component = mount(<CheckboxField
+      fieldId="test"
+      onChange={spy}
+    />);
+
+    component
+      .find('input')
+      .simulate('change', {
+        preventDefault: () => {},
+        target: { value: 'on' },
+      });
+    expect(spy.calledOnce).toEqual(true);
   });
 });
