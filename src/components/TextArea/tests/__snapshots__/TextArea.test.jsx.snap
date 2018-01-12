@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly mandatory props only 1`] = `
+<div>
+  <TextArea
+    disabled={false}
+    id="test"
+    placeholder={null}
+    required={false}
+    rows={3}
+  />
+</div>
+`;
+
+exports[`rendering renders correctly with all props 1`] = `
+<div>
+  <label
+    htmlFor="test"
+  >
+    label
+  </label>
+  <TextArea
+    disabled={true}
+    id="test"
+    placeholder="placeholder"
+    required={true}
+    rows={5}
+    value="value"
+  />
+  <div>
+    some help
+  </div>
+  <div
+    key="some error"
+  >
+    some error
+  </div>
+  <div
+    key="another error"
+  >
+    another error
+  </div>
+</div>
+`;

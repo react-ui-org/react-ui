@@ -15,18 +15,21 @@
     "moduleNameMapper": {
       "\\.(jpg|svg)$": "<rootDir>/tests/mocks/emptyMock.js",
       "\\.(scss)$": "identity-obj-proxy"
-    }
+    },
+    "setupTestFrameworkScriptFile": "<rootDir>/test/setup.js"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.4",
     "babel-cli": "^6.23.0",
     "babel-core": "^6.17.0",
     "babel-loader": "^7.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.24.1",
     "css-loader": "^0.28.4",
     "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.0",
     "eslint": "^4.4.0",
     "eslint-config-visionapps": "^0.1.0",

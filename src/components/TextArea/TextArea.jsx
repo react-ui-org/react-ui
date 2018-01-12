@@ -2,30 +2,30 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import UserInputBase from '../UserInputBase';
 
-const TextField = (props) => {
+const TextArea = (props) => {
   const {
     placeholder,
-    type,
+    rows,
     ...higherOrderProps
   } = props;
 
   return (
-    <input
+    <textarea
       {...higherOrderProps}
       placeholder={placeholder}
-      type={type}
+      rows={rows}
     />
   );
 };
 
-TextField.defaultProps = {
+TextArea.defaultProps = {
   placeholder: null,
-  type: 'text',
+  rows: 3,
 };
 
-TextField.propTypes = {
+TextArea.propTypes = {
   placeholder: PropTypes.string,
-  type: PropTypes.oneOf(['email', 'number', 'password', 'tel', 'text']),
+  rows: PropTypes.number,
 };
 
-export default UserInputBase(TextField);
+export default UserInputBase(TextArea);
