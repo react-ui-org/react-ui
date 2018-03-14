@@ -1,0 +1,59 @@
+@import '../Theme/variables';
+@import '../Theme/mixins';
+
+.root {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  padding: 0 0.25rem 1.75rem;
+}
+
+.label {
+  display: inline-block;
+  margin-bottom: 0.25rem;
+}
+
+.isLabelRequired {
+  composes: label;
+
+  &::after {
+    content: ' *';
+  }
+}
+
+.input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.25rem;
+  color: $rui-textarea-text-color;
+  border: $rui-border-width solid $rui-textarea-border-color;
+  border-radius: $rui-border-radius;
+  background: $rui-textarea-bg-color;
+  resize: vertical;
+
+  &:focus {
+    @include rui-include-outline-style-form-fields();
+  }
+
+  &:disabled {
+    @include rui-disabled-form-fields();
+  }
+}
+
+.isInputInvalid {
+  composes: input;
+  border-color: $rui-textarea-invalid-border-color;
+}
+
+.description,
+.error {
+  font-size: 0.8rem;
+}
+
+.error {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.25rem;
+  color: $rui-input-invalid-color;
+}

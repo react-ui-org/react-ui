@@ -6,7 +6,17 @@ import TextArea from '../index';
 
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
-    const tree = shallow(<TextArea fieldId="test" />);
+    const tree = shallow(<TextArea label="label" fieldId="test" />);
+
+    expect(shallowToJson(tree)).toMatchSnapshot();
+  });
+
+  it('renders correctly with hidden label', () => {
+    const tree = shallow(<TextArea
+      fieldId="test"
+      label="label"
+      isLabelVisible={false}
+    />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
@@ -14,11 +24,10 @@ describe('rendering', () => {
   it('renders correctly with all props', () => {
     const tree = shallow(<TextArea
       label="label"
-      disabled
       fieldId="test"
       value="value"
-      helpText="some help"
-      errors={['some error', 'another error']}
+      description="some help"
+      error="error"
       placeholder="placeholder"
       rows={5}
       required
@@ -29,11 +38,12 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls onChange()', () => {
+  it('calls changeHandler()', () => {
     const spy = sinon.spy();
     const component = mount(<TextArea
       fieldId="test"
-      onChange={spy}
+      label="label"
+      changeHandler={spy}
     />);
 
     component

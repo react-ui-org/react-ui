@@ -33,9 +33,9 @@
 }
 
 .input {
-  @include custom-inputs(1rem);
+  @include rui-custom-inputs(1rem);
   @include rui-form-fields-appearance(2.5rem, $rui-form-field-border-color);
-  @include input-border-bottom-animation($rui-input-border-color);
+  @include rui-input-border-bottom-animation($rui-input-border-color);
 
   display: block;
 }
@@ -45,13 +45,13 @@
 }
 
 .input:disabled {
-  @include disabled-form-fields();
+  @include rui-disabled-form-fields();
 }
 
 .isInputInvalid {
   composes: input;
-  border-bottom: $rui-default-borderwidth solid $rui-forms-input-invalid-color;
-  background: linear-gradient(to bottom, transparent 95%, $rui-forms-input-invalid-color 95%);
+  border-bottom: $rui-border-width solid $rui-input-invalid-color;
+  background: linear-gradient(to bottom, transparent 95%, $rui-input-invalid-color 95%);
 }
 
 .description,
@@ -63,6 +63,6 @@
   position: absolute;
   bottom: 0.5rem;
   left: 0.25rem;
-  color: $rui-forms-input-invalid-color;
+  color: $rui-input-invalid-color;
 }
 

@@ -40,9 +40,28 @@ export default () => (
     />
     <TextArea
       fieldId="areaField"
+      label="TextArea"
       placeholder="Lorem Ipsum"
       changeHandler={logger}
     />
+    <TextArea
+      fieldId="areaFieldHelpRows"
+      label="TextArea with help and 5 rows"
+      placeholder="Lorem Ipsum"
+      changeHandler={logger}
+      description="Describe yourself"
+      rows={5}
+    />
+    <TextArea
+      fieldId="areaFieldHelpError"
+      label="TextArea with help and error"
+      placeholder="Lorem Ipsum"
+      changeHandler={logger}
+      description="Describe yourself"
+      error="Use more then five words"
+    >
+      I am who I am.
+    </TextArea>
     <CheckboxField fieldId="checkboxField" changeHandler={logger} />
     <Radio
       changeHandler={logger}

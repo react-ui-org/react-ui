@@ -1,5 +1,17 @@
-$rui-input-text-color: #000 !default;
-$rui-default-borderwidth: 1px !default;
-$rui-input-border-color: #0094d2 !default;
+$rui-border-width: 1px !default;
+$rui-border-radius: 0.125rem !default;
+
+$rui-outline-color: #6bc1e3 !default;
+$rui-outline-blur: 2px !default;
+$rui-outline-spread: 2px !default;
+
 $rui-form-field-border-color: #9a9a9a !default;
-$rui-forms-input-invalid-color: #a32100 !default;
+$rui-input-invalid-color: #a32100 !default;
+
+$rui-input-text-color: #000 !default;
+$rui-input-border-color: #0094d2 !default;
+
+$rui-textarea-border-color: #cfcfcf !default;
+$rui-textarea-bg-color: #fff !default;
+$rui-textarea-text-color: $rui-input-text-color !default;
+$rui-textarea-invalid-border-color: $rui-input-invalid-color !default;
