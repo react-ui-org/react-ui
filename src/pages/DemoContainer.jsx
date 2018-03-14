@@ -9,7 +9,35 @@ const logger = event => console.log(event.target.value); // eslint-disable-line 
 
 export default () => (
   <div>
-    <TextField fieldId="textField" changeHandler={logger} />
+    <TextField
+      fieldId="textField"
+      changeHandler={logger}
+      label="TextField"
+    />
+    <TextField
+      fieldId="textFieldDisabled"
+      changeHandler={logger}
+      label="TextField with hidden label"
+      isLabelVisible={false}
+      placeholder="This field is disabled"
+      disabled
+    />
+    <TextField
+      fieldId="textFieldHelp"
+      changeHandler={logger}
+      label="TextField with help text"
+      description="Fill in your real name"
+      placeholder="This field is required"
+      required
+    />
+    <TextField
+      fieldId="textFieldError"
+      changeHandler={logger}
+      label="TextField with error"
+      description="Fill in your real name"
+      error="This is not your real name"
+      value="I. C. Wiener"
+    />
     <TextArea
       fieldId="areaField"
       placeholder="Lorem Ipsum"
@@ -54,7 +82,7 @@ export default () => (
       Lorem ipsum dolor sit amet, consectetur adipisicing elit.
     </p>
     <p>
-      <a href="#">link</a>
+      <a href="http://example.com">link</a>
     </p>
     <small>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit.

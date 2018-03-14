@@ -6,7 +6,13 @@ import TextField from '../index';
 
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
-    const tree = shallow(<TextField fieldId="test" />);
+    const tree = shallow(<TextField fieldId="test" label="label" />);
+
+    expect(shallowToJson(tree)).toMatchSnapshot();
+  });
+
+  it('renders correctly with hidden label', () => {
+    const tree = shallow(<TextField fieldId="test" label="label" isLabelVisible={false} />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
@@ -17,8 +23,8 @@ describe('rendering', () => {
       disabled
       fieldId="test"
       value="value"
-      helpText="some help"
-      errors={['some error', 'another error']}
+      description="some help"
+      error="error"
       placeholder="placeholder"
       type="email"
       required
@@ -29,11 +35,12 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls onChange()', () => {
+  it('calls changeHandler()', () => {
     const spy = sinon.spy();
     const component = mount(<TextField
       fieldId="test"
-      onChange={spy}
+      label="label"
+      changeHandler={spy}
     />);
 
     component

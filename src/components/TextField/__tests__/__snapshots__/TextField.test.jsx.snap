@@ -1,46 +1,90 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering renders correctly mandatory props only 1`] = `
-<div>
-  <TextField
-    disabled={false}
-    id="test"
-    onChange={null}
-    placeholder={null}
-    required={false}
-    type="text"
-  />
+<div
+  className="root"
+>
+  <label
+    htmlFor="test"
+  >
+    <div
+      className="label"
+    >
+      label
+    </div>
+    <input
+      className="input"
+      disabled={false}
+      id="test"
+      label="label"
+      onChange={null}
+      placeholder={null}
+      required={false}
+      type="text"
+    />
+  </label>
 </div>
 `;
 
 exports[`rendering renders correctly with all props 1`] = `
-<div>
+<div
+  className="root"
+>
   <label
     htmlFor="test"
   >
-    label
+    <div
+      className="isLabelRequired"
+    >
+      label
+    </div>
+    <input
+      className="isInputInvalid"
+      disabled={true}
+      id="test"
+      label="label"
+      onChange={null}
+      placeholder="placeholder"
+      required={true}
+      type="email"
+      value="value"
+    />
   </label>
-  <TextField
-    disabled={true}
-    id="test"
-    onChange={null}
-    placeholder="placeholder"
-    required={true}
-    type="email"
-    value="value"
-  />
-  <div>
+  <div
+    className="description"
+  >
     some help
   </div>
   <div
-    key="some error"
+    className="error"
   >
-    some error
+    error
   </div>
-  <div
-    key="another error"
+</div>
+`;
+
+exports[`rendering renders correctly with hidden label 1`] = `
+<div
+  className="root"
+>
+  <label
+    htmlFor="test"
   >
-    another error
-  </div>
+    <div
+      className="isLabelHidden"
+    >
+      label
+    </div>
+    <input
+      className="input"
+      disabled={false}
+      id="test"
+      label="label"
+      onChange={null}
+      placeholder={null}
+      required={false}
+      type="text"
+    />
+  </label>
 </div>
 `;
