@@ -1,0 +1,106 @@
+@import '../Theme/mixins';
+@import '../Theme/variables';
+
+.root {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  padding: 0 0.25rem 1.75rem;
+}
+
+.label {
+  display: inline-block;
+  margin-bottom: 0.25rem;
+}
+
+.isLabelRequired {
+  composes: label;
+
+  &::after {
+    content: ' *';
+  }
+}
+
+.isLabelHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.inputWrap {
+  position: relative;
+}
+
+.input {
+  @include rui-checkbox-radio-input-styles($rui-checkbox-radio-size, $rui-checkbox-radio-top, 0);
+}
+
+.radioLabel {
+  @include rui-checkbox-radio-label-styles($rui-checkbox-radio-label-height, $rui-checkbox-radio-padding-left);
+}
+
+.radioLabel:empty {
+  padding-left: 0;
+}
+
+.input + .radioLabel::before {
+  @include rui-checkbox-radio-shared-inactive(
+    $rui-checkbox-radio-size,
+    $rui-checkbox-radio-top,
+    0,
+    $rui-form-field-border-color
+  );
+
+  border-radius: 50%;
+}
+
+.input:disabled + .radioLabel {
+  @include rui-disabled-form-fields();
+
+  color: $rui-radio-disabled-font-color;
+}
+
+/* stylelint-disable selector-max-specificity */
+.input:checked + .radioLabel::before {
+  border: 0;
+  box-shadow: $rui-radio-checked-box-shadow;
+}
+
+.input:focus + .radioLabel::before {
+  outline: 0;
+  box-shadow: $rui-radio-focused-box-shadow;
+}
+
+.input:focus:checked + .radioLabel::before {
+  outline: 0;
+  box-shadow: $rui-radio-checked-box-shadow, $rui-radio-focused-box-shadow;
+}
+
+.input:disabled:checked + .radioLabel::before {
+  background-color: $rui-radio-disabled-background-color;
+  box-shadow: $rui-radio-disabled-checked-box-shadow;
+}
+/* stylelint-enable */
+
+.description,
+.error {
+  font-size: 0.8rem;
+}
+
+.error {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.25rem;
+  color: $rui-input-invalid-color;
+}

@@ -1,85 +1,210 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering renders correctly mandatory props only 1`] = `
-<div>
-  <Radio
-    disabled={false}
-    id="test"
-    onChange={null}
-    options={
-      Array [
-        Object {
-          "label": "choice 1",
-          "value": "ch1",
-        },
-        Object {
-          "label": "choice 2",
-          "value": "ch2",
-        },
-      ]
-    }
-    required={false}
-  />
+<div
+  className="root"
+>
+  <div
+    className="label"
+  >
+    label
+  </div>
+  <ul
+    className="list"
+  >
+    <li
+      key="ch1"
+    >
+      <label
+        className="inputWrap"
+        htmlFor="test-0"
+      >
+        <input
+          className="input"
+          id="test-0"
+          name="test"
+          onChange={null}
+          type="radio"
+          value="ch1"
+        />
+        <span
+          className="radioLabel"
+        >
+          choice 1
+        </span>
+      </label>
+    </li>
+    <li
+      key="ch2"
+    >
+      <label
+        className="inputWrap"
+        htmlFor="test-1"
+      >
+        <input
+          className="input"
+          id="test-1"
+          name="test"
+          onChange={null}
+          type="radio"
+          value="ch2"
+        />
+        <span
+          className="radioLabel"
+        >
+          choice 2
+        </span>
+      </label>
+    </li>
+  </ul>
 </div>
 `;
 
 exports[`rendering renders correctly only one option 1`] = `
-<div>
-  <Radio
-    disabled={false}
-    id="test"
-    onChange={null}
-    options={
-      Array [
-        Object {
-          "label": "choice 1",
-          "value": "ch1",
-        },
-      ]
-    }
-    required={false}
-  />
+<div
+  className="root"
+>
+  <div
+    className="label"
+  >
+    label
+  </div>
+  <ul
+    className="list"
+  >
+    <li
+      key="ch1"
+    >
+      <label
+        className="inputWrap"
+        htmlFor="test-0"
+      >
+        <input
+          className="input"
+          id="test-0"
+          name="test"
+          onChange={null}
+          type="radio"
+          value="ch1"
+        />
+        <span
+          className="radioLabel"
+        >
+          choice 1
+        </span>
+      </label>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`rendering renders correctly only one option and hidden label 1`] = `
+<div
+  className="root"
+>
+  <div
+    className="isLabelHidden"
+  >
+    label
+  </div>
+  <ul
+    className="list"
+  >
+    <li
+      key="ch1"
+    >
+      <label
+        className="inputWrap"
+        htmlFor="test-0"
+      >
+        <input
+          className="input"
+          id="test-0"
+          name="test"
+          onChange={null}
+          type="radio"
+          value="ch1"
+        />
+        <span
+          className="radioLabel"
+        >
+          choice 1
+        </span>
+      </label>
+    </li>
+  </ul>
 </div>
 `;
 
 exports[`rendering renders correctly with all props 1`] = `
-<div>
-  <label
-    htmlFor="test"
+<div
+  className="root"
+>
+  <div
+    className="isLabelRequired"
   >
     label
-  </label>
-  <Radio
-    disabled={true}
-    id="test"
-    onChange={null}
-    options={
-      Array [
-        Object {
-          "label": "choice 1",
-          "value": "ch1",
-        },
-        Object {
-          "label": "choice 2",
-          "value": "ch2",
-        },
-      ]
-    }
-    required={true}
-    value="value"
-  />
-  <div>
+  </div>
+  <ul
+    className="list"
+  >
+    <li
+      key="ch1"
+    >
+      <label
+        className="inputWrap"
+        htmlFor="test-0"
+      >
+        <input
+          checked={true}
+          className="input"
+          disabled={true}
+          id="test-0"
+          name="test"
+          onChange={null}
+          type="radio"
+          value="ch1"
+        />
+        <span
+          className="radioLabel"
+        >
+          choice 1
+        </span>
+      </label>
+    </li>
+    <li
+      key="ch2"
+    >
+      <label
+        className="inputWrap"
+        htmlFor="test-1"
+      >
+        <input
+          className="input"
+          disabled={true}
+          id="test-1"
+          name="test"
+          onChange={null}
+          type="radio"
+          value="ch2"
+        />
+        <span
+          className="radioLabel"
+        >
+          choice 2
+        </span>
+      </label>
+    </li>
+  </ul>
+  <div
+    className="description"
+  >
     some help
   </div>
   <div
-    key="some error"
+    className="error"
   >
     some error
-  </div>
-  <div
-    key="another error"
-  >
-    another error
   </div>
 </div>
 `;

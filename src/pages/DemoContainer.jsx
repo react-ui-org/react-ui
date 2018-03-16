@@ -65,6 +65,7 @@ export default () => (
     <Radio
       changeHandler={logger}
       fieldId="Radio"
+      label="Choices"
       options={[
         {
           label: 'choice 1',
@@ -75,7 +76,45 @@ export default () => (
           value: 'ch2',
         },
       ]}
-      label="Choices"
+    />
+    <Radio
+      changeHandler={logger}
+      fieldId="RadioDescriptionRequiredDisabledItem"
+      label="Choices with description, required and disabled item"
+      description="Choose one"
+      required
+      options={[
+        {
+          label: 'choice 1',
+          value: 'ch1',
+        },
+        {
+          disabled: true,
+          label: 'choice 2',
+          value: 'ch2',
+        },
+      ]}
+    />
+    <Radio
+      changeHandler={logger}
+      fieldId="RadioDisabled"
+      label="Choices disabled with hidden label and error and chosen"
+      isLabelVisible={false}
+      value="ch1"
+      description="Choose one"
+      error="This is disabled"
+      required
+      disabled
+      options={[
+        {
+          label: 'choice 1',
+          value: 'ch1',
+        },
+        {
+          label: 'choice 2',
+          value: 'ch2',
+        },
+      ]}
     />
     <SelectField
       changeHandler={logger}

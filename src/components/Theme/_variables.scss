@@ -4,6 +4,7 @@ $rui-border-width: 1px !default;
 $rui-border-radius: 0.125rem !default;
 
 $rui-outline-color: #6bc1e3 !default;
+$rui-outline-color-inverse: rgba(255, 255, 255, 0.09);
 $rui-outline-blur: 2px !default;
 $rui-outline-spread: 2px !default;
 
@@ -24,3 +25,19 @@ $rui-select-after-hover-color: #565656 !default;
 $rui-select-option-font-color: $rui-input-text-color !default;
 
 $rui-dropdown-caret-icon-dimension: 0.416667rem !default;
+
+$rui-form-field-background-color: #0094d2;
+$rui-form-disabled-background-color: #ccc;
+
+$rui-icon-size-sm: 0.666667rem;
+
+$rui-checkbox-radio-label-height: 1rem;
+$rui-checkbox-radio-size: $rui-icon-size-sm;
+$rui-checkbox-radio-padding-left: $rui-checkbox-radio-size + 0.5rem;
+$rui-checkbox-disabled-background-color: #ccc;
+$rui-checkbox-radio-top: ($rui-checkbox-radio-label-height - $rui-checkbox-radio-size) / 2;
+$rui-radio-checked-box-shadow: inset 0 0 0 0.25rem $rui-form-field-background-color;
+$rui-radio-focused-box-shadow: 0 0 $rui-outline-blur $rui-outline-spread $rui-outline-color;
+$rui-radio-disabled-font-color: #565656;
+$rui-radio-disabled-background-color: $rui-form-disabled-background-color;
+$rui-radio-disabled-checked-box-shadow: $rui-radio-checked-box-shadow;

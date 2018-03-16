@@ -43,3 +43,32 @@
   outline: 0;
   box-shadow: 0 0 $outline-blur $outline-spread $outline-color;
 }
+
+@mixin rui-checkbox-radio-shared-inactive($size, $top, $left, $border-color) {
+  content: '';
+  position: absolute;
+  top: $top;
+  left: $left;
+  display: inline-block;
+  width: $size;
+  height: $size;
+  border: $rui-border-width solid $border-color;
+}
+
+@mixin rui-checkbox-radio-input-styles($size, $top, $left) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  opacity: 0;
+  width: $size;
+  height: $size;
+}
+
+@mixin rui-checkbox-radio-label-styles($min-height, $padding-left, $line-height: 1rem) {
+  position: relative;
+  display: inline-block;
+  min-height: $min-height;
+  padding-left: $padding-left;
+  line-height: $line-height;
+  cursor: pointer;
+}

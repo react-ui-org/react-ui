@@ -8,6 +8,7 @@ describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
     const tree = shallow(<Radio
       fieldId="test"
+      label="label"
       options={[
         {
           label: 'choice 1',
@@ -26,6 +27,23 @@ describe('rendering', () => {
   it('renders correctly only one option', () => {
     const tree = shallow(<Radio
       fieldId="test"
+      label="label"
+      options={[
+        {
+          label: 'choice 1',
+          value: 'ch1',
+        },
+      ]}
+    />);
+
+    expect(shallowToJson(tree)).toMatchSnapshot();
+  });
+
+  it('renders correctly only one option and hidden label', () => {
+    const tree = shallow(<Radio
+      fieldId="test"
+      label="label"
+      isLabelVisible={false}
       options={[
         {
           label: 'choice 1',
@@ -42,12 +60,13 @@ describe('rendering', () => {
       label="label"
       disabled
       fieldId="test"
-      value="value"
-      helpText="some help"
-      errors={['some error', 'another error']}
+      value="ch1"
+      description="some help"
+      error="some error"
       required
       options={[
         {
+          disabled: true,
           label: 'choice 1',
           value: 'ch1',
         },
@@ -63,10 +82,11 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls onChange() on changing selected option', () => {
+  it('calls changeHandler() on changing selected option', () => {
     const spy = sinon.spy();
     const component = mount(<Radio
       fieldId="id"
+      label="label"
       options={[
         {
           label: 'choice 1',
@@ -77,12 +97,13 @@ describe('functionality', () => {
           value: 'ch2',
         },
       ]}
-      onChange={spy}
+      changeHandler={spy}
       value="ch2"
     />);
 
     component
-      .find('ul')
+      .find('input')
+      .first()
       .simulate('change', {
         preventDefault: () => {},
         target: { value: 'ch1' },
