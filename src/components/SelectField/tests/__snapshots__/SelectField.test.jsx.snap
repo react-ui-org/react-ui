@@ -1,85 +1,117 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering renders correctly mandatory props only 1`] = `
-<div>
-  <SelectField
-    disabled={false}
-    id="test"
-    onChange={null}
-    options={
-      Array [
-        Object {
-          "label": "choice 1",
-          "value": "ch1",
-        },
-        Object {
-          "label": "choice 2",
-          "value": "ch2",
-        },
-      ]
-    }
-    required={false}
-  />
+<div
+  className="root"
+>
+  <label
+    htmlFor="test"
+  >
+    <div
+      className="label"
+    >
+      label
+    </div>
+    <select
+      className="select"
+      disabled={false}
+      id="test"
+      label="label"
+      onChange={null}
+      required={false}
+    >
+      <option
+        key="ch1"
+        value="ch1"
+      >
+        choice 1
+      </option>
+      <option
+        key="ch2"
+        value="ch2"
+      >
+        choice 2
+      </option>
+    </select>
+  </label>
 </div>
 `;
 
 exports[`rendering renders correctly only one option 1`] = `
-<div>
-  <SelectField
-    disabled={false}
-    id="test"
-    onChange={null}
-    options={
-      Array [
-        Object {
-          "label": "choice 1",
-          "value": "ch1",
-        },
-      ]
-    }
-    required={false}
-  />
+<div
+  className="root"
+>
+  <label
+    htmlFor="test"
+  >
+    <div
+      className="label"
+    >
+      label
+    </div>
+    <select
+      className="select"
+      disabled={false}
+      id="test"
+      label="label"
+      onChange={null}
+      required={false}
+    >
+      <option
+        key="ch1"
+        value="ch1"
+      >
+        choice 1
+      </option>
+    </select>
+  </label>
 </div>
 `;
 
 exports[`rendering renders correctly with all props 1`] = `
-<div>
+<div
+  className="isRootCondensed"
+>
   <label
     htmlFor="test"
   >
-    label
+    <div
+      className="isLabelHidden"
+    >
+      label
+    </div>
+    <select
+      className="isSelectInvalid"
+      disabled={true}
+      id="test"
+      label="label"
+      onChange={null}
+      required={true}
+      value="ch1"
+    >
+      <option
+        key="ch1"
+        value="ch1"
+      >
+        choice 1
+      </option>
+      <option
+        key="ch2"
+        value="ch2"
+      >
+        choice 2
+      </option>
+    </select>
   </label>
-  <SelectField
-    disabled={true}
-    id="test"
-    onChange={null}
-    options={
-      Array [
-        Object {
-          "label": "choice 1",
-          "value": "ch1",
-        },
-        Object {
-          "label": "choice 2",
-          "value": "ch2",
-        },
-      ]
-    }
-    required={true}
-    value="ch1"
-  />
-  <div>
+  <div
+    className="description"
+  >
     some help
   </div>
   <div
-    key="some error"
+    className="error"
   >
     some error
-  </div>
-  <div
-    key="another error"
-  >
-    another error
   </div>
 </div>
 `;

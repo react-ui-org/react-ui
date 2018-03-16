@@ -23,9 +23,9 @@ export default () => (
       disabled
     />
     <TextField
-      fieldId="textFieldHelp"
+      fieldId="textFieldDescription"
       changeHandler={logger}
-      label="TextField with help text"
+      label="TextField with description text"
       description="Fill in your real name"
       placeholder="This field is required"
       required
@@ -45,23 +45,22 @@ export default () => (
       changeHandler={logger}
     />
     <TextArea
-      fieldId="areaFieldHelpRows"
-      label="TextArea with help and 5 rows"
+      fieldId="areaFieldDescriptionRows"
+      label="TextArea with description and 5 rows"
       placeholder="Lorem Ipsum"
       changeHandler={logger}
       description="Describe yourself"
       rows={5}
     />
     <TextArea
-      fieldId="areaFieldHelpError"
-      label="TextArea with help and error"
+      fieldId="areaFieldDescriptionError"
+      label="TextArea with description and error"
       placeholder="Lorem Ipsum"
       changeHandler={logger}
       description="Describe yourself"
       error="Use more then five words"
-    >
-      I am who I am.
-    </TextArea>
+      value="I am who I am."
+    />
     <CheckboxField fieldId="checkboxField" changeHandler={logger} />
     <Radio
       changeHandler={logger}
@@ -81,6 +80,58 @@ export default () => (
     <SelectField
       changeHandler={logger}
       fieldId="selectField"
+      label="SelectField"
+      options={[
+        {
+          label: 'choice 1',
+          value: 'ch1',
+        },
+        {
+          label: 'choice 2',
+          value: 'ch2',
+        },
+      ]}
+    />
+    <SelectField
+      changeHandler={logger}
+      fieldId="selectFieldDescriptionRequired"
+      label="SelectField with description and required"
+      description="Choose which choice you prefer"
+      required
+      options={[
+        {
+          label: 'choice 1',
+          value: 'ch1',
+        },
+        {
+          label: 'choice 2',
+          value: 'ch2',
+        },
+      ]}
+    />
+    <SelectField
+      changeHandler={logger}
+      fieldId="selectFieldError"
+      label="SelectField with error"
+      description="Choose which choice you prefer"
+      error="You have to choose"
+      options={[
+        {
+          label: 'choice 1',
+          value: 'ch1',
+        },
+        {
+          label: 'choice 2',
+          value: 'ch2',
+        },
+      ]}
+    />
+    <SelectField
+      changeHandler={logger}
+      fieldId="selectFieldErrorHiddenLabel"
+      label="SelectField with error and hidden label"
+      isLabelVisible={false}
+      disabled
       options={[
         {
           label: 'choice 1',

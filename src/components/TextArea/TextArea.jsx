@@ -56,6 +56,7 @@ TextArea.defaultProps = {
   placeholder: null,
   required: false,
   rows: 3,
+  value: undefined,
 };
 
 TextArea.propTypes = {
@@ -68,6 +69,10 @@ TextArea.propTypes = {
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   rows: PropTypes.number,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
 };
 
 export default TextArea;

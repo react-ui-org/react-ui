@@ -1,3 +1,5 @@
+$rui-input-height: 1.25rem !default;
+
 $rui-border-width: 1px !default;
 $rui-border-radius: 0.125rem !default;
 
@@ -15,3 +17,10 @@ $rui-textarea-border-color: #cfcfcf !default;
 $rui-textarea-bg-color: #fff !default;
 $rui-textarea-text-color: $rui-input-text-color !default;
 $rui-textarea-invalid-border-color: $rui-input-invalid-color !default;
+
+$rui-select-hover-background: rgba(221, 221, 221, 0.5) !default;
+$rui-select-after-color: #9a9a9a !default;
+$rui-select-after-hover-color: #565656 !default;
+$rui-select-option-font-color: $rui-input-text-color !default;
+
+$rui-dropdown-caret-icon-dimension: 0.416667rem !default;

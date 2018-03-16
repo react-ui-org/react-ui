@@ -8,6 +8,7 @@ describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
     const tree = shallow(<SelectField
       fieldId="test"
+      label="label"
       options={[
         {
           label: 'choice 1',
@@ -26,6 +27,7 @@ describe('rendering', () => {
   it('renders correctly only one option', () => {
     const tree = shallow(<SelectField
       fieldId="test"
+      label="label"
       options={[
         {
           label: 'choice 1',
@@ -40,11 +42,12 @@ describe('rendering', () => {
   it('renders correctly with all props', () => {
     const tree = shallow(<SelectField
       label="label"
+      isLabelVisible={false}
       disabled
       fieldId="test"
       value="ch1"
-      helpText="some help"
-      errors={['some error', 'another error']}
+      description="some help"
+      error="some error"
       required
       options={[
         {
@@ -63,9 +66,10 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls onChange() on changing selected option', () => {
+  it('calls changeHandler() on changing selected option', () => {
     const spy = sinon.spy();
     const component = mount(<SelectField
+      label="label"
       fieldId="id"
       options={[
         {
@@ -77,7 +81,7 @@ describe('functionality', () => {
           value: 'ch2',
         },
       ]}
-      onChange={spy}
+      changeHandler={spy}
       value="ch1"
     />);
 
