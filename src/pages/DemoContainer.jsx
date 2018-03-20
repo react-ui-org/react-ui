@@ -4,6 +4,7 @@ import TextArea from '../components/TextArea';
 import CheckboxField from '../components/CheckboxField';
 import Radio from '../components/Radio';
 import SelectField from '../components/SelectField';
+import Icon from '../components/Icon';
 
 const logger = event => console.log(event.target.value); // eslint-disable-line no-console
 
@@ -203,5 +204,10 @@ export default () => (
       <li>sit</li>
       <li>amet</li>
     </ul>
+    <Icon icon="book" />
+    <div style={{ color: '#bada55' }}>
+      <Icon icon="book" size="large" />
+    </div>
+    <Icon icon="album" size="small" />
   </div>
 );

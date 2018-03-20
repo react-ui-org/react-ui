@@ -41,6 +41,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^20.0.4",
     "json-loader": "^0.5.7",
+    "material-design-icons": "^3.0.1",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.5",
     "sass-loader": "^6.0.5",
@@ -51,6 +52,7 @@
     "stylelint-config-visionapps-order": "^0.2.0",
     "stylelint-order": "^0.7.0",
     "stylelint-webpack-plugin": "^0.9.0",
+    "svg-sprite-loader": "^3.7.3",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.10.0"
   },

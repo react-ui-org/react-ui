@@ -13,31 +13,33 @@ module.exports = [{
   entry: {
     bundle: ['babel-polyfill', path.join(__dirname, 'src/main.jsx')],
   },
-  resolve: {
-    extensions: ['.js', '.jsx', '.scss'],
-    modules: ['src', 'node_modules'],
-  },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
         include: path.join(__dirname, 'src'),
+        test: /\.(js|jsx)$/,
         use: [{ loader: 'babel-loader' }],
       },
       {
-        test: /\.scss$/,
         loaders: [
           'style-loader',
           'css-loader?importLoaders=2&modules&localIdentName=[name]__[local]___[hash:base64:5]',
           'postcss-loader',
           'sass-loader',
         ],
+        test: /\.scss$/,
       },
       {
-        test: /\.(svg|jpg)$/,
+        loaders: [
+          'svg-sprite-loader',
+        ],
+        test: /\.svg$/,
+      },
+      {
         loaders: [
           'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
         ],
+        test: /\.(svg|jpg)$/,
       },
       {
         include: /\.json$/,
@@ -47,15 +49,19 @@ module.exports = [{
       },
     ],
   },
+  output: {
+    filename: '[name].js',
+    path: path.join(__dirname, 'public/generated'),
+    publicPath: '/generated/',
+  },
   plugins: [
     new StyleLintPlugin({
       configFile: 'stylelint.config.js',
       syntax: 'scss',
     }),
   ],
-  output: {
-    publicPath: '/generated/',
-    path: path.join(__dirname, 'public/generated'),
-    filename: '[name].js',
+  resolve: {
+    extensions: ['.js', '.jsx', '.scss'],
+    modules: ['src', 'node_modules'],
   },
 }];
