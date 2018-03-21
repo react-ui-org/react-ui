@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly mandatory props only 1`] = `
+<svg
+  className="root"
+  style={
+    Object {
+      "fill": "currentColor",
+    }
+  }
+>
+  <use
+    xlinkHref="#ic_book_48px"
+  />
+</svg>
+`;
+
+exports[`rendering renders correctly with size 1`] = `
+<svg
+  className="isRootLarger"
+  style={
+    Object {
+      "fill": "currentColor",
+    }
+  }
+>
+  <use
+    xlinkHref="#ic_book_48px"
+  />
+</svg>
+`;

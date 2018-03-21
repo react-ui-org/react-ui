@@ -4,13 +4,13 @@
   height: 1rem;
 }
 
-.isRootSmall {
+.isRootLarge {
   composes: root;
-  width: 0.5rem;
-  height: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
-.isRootLarge {
+.isRootLarger {
   composes: root;
   width: 2rem;
   height: 2rem;

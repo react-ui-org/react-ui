@@ -205,9 +205,9 @@ export default () => (
       <li>amet</li>
     </ul>
     <Icon icon="book" />
-    <div style={{ color: '#bada55' }}>
-      <Icon icon="book" size="large" />
-    </div>
-    <Icon icon="album" size="small" />
+    <span style={{ color: '#bada55' }}>
+      <Icon icon="book" size="larger" />
+    </span>
+    <Icon icon="album" size="large" />
   </div>
 );

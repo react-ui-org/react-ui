@@ -1,22 +1,17 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './Icon.scss';
+import loadMaterialDesignIcons from './load-material-design-icons';
 
-const cache = {};
-
-function importAll(r) {
-  r.keys().forEach((key) => { cache[key] = r(key); });
-}
-
-importAll(require.context('!svg-sprite-loader!material-design-icons/', true, /[\\/]svg[\\/]production[\\/]ic_.*_48px\.svg$/));
+loadMaterialDesignIcons();
 
 const Icon = (props) => {
   let iconClass = styles.root;
 
   if (props.size === 'large') {
     iconClass = styles.isRootLarge;
-  } else if (props.size === 'small') {
-    iconClass = styles.isRootSmall;
+  } else if (props.size === 'larger') {
+    iconClass = styles.isRootLarger;
   }
 
   return (
@@ -30,12 +25,12 @@ const Icon = (props) => {
 };
 
 Icon.defaultProps = {
-  size: 'medium',
+  size: 'default',
 };
 
 Icon.propTypes = {
   icon: PropTypes.string.isRequired,
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  size: PropTypes.oneOf(['default', 'large', 'larger']),
 };
 
 export default Icon;
