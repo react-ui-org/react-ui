@@ -8,7 +8,9 @@ loadMaterialDesignIcons();
 const Icon = (props) => {
   let iconClass = styles.root;
 
-  if (props.size === 'large') {
+  if (props.size === 'small') {
+    iconClass = styles.isRootSmall;
+  } else if (props.size === 'large') {
     iconClass = styles.isRootLarge;
   } else if (props.size === 'larger') {
     iconClass = styles.isRootLarger;
@@ -25,12 +27,12 @@ const Icon = (props) => {
 };
 
 Icon.defaultProps = {
-  size: 'default',
+  size: 'medium',
 };
 
 Icon.propTypes = {
   icon: PropTypes.string.isRequired,
-  size: PropTypes.oneOf(['default', 'large', 'larger']),
+  size: PropTypes.oneOf(['small', 'medium', 'large', 'larger']),
 };
 
 export default Icon;

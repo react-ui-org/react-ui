@@ -1,0 +1,123 @@
+@import '../Theme/mixins';
+@import '../Theme/variables';
+@import './mixins';
+@import './variables';
+
+.root {
+  @include rui-generate-button();
+}
+
+.priorityDefault {
+  @include rui-generate-button-priority-variant(default);
+}
+
+.priorityPrimary {
+  @include rui-generate-button-priority-variant(primary);
+}
+
+.priorityFlat {
+  @include rui-generate-button-priority-variant(flat);
+}
+
+.priorityDefault.variantSuccess {
+  @include rui-generate-button-priority-variant(success);
+}
+
+.priorityPrimary.variantSuccess {
+  @include rui-generate-button-priority-variant(success-primary);
+}
+
+.priorityFlat.variantSuccess {
+  @include rui-generate-button-priority-variant(success-flat);
+}
+
+.priorityDefault.variantWarning {
+  @include rui-generate-button-priority-variant(warning);
+}
+
+.priorityPrimary.variantWarning {
+  @include rui-generate-button-priority-variant(warning-primary);
+}
+
+.priorityFlat.variantWarning {
+  @include rui-generate-button-priority-variant(warning-flat);
+}
+
+.priorityDefault.variantDanger {
+  @include rui-generate-button-priority-variant(danger);
+}
+
+.priorityPrimary.variantDanger {
+  @include rui-generate-button-priority-variant(danger-primary);
+}
+
+.priorityFlat.variantDanger {
+  @include rui-generate-button-priority-variant(danger-flat);
+}
+
+.sizeMedium {
+  @include rui-generate-button-sizes(medium);
+}
+
+.sizeSmall {
+  @include rui-generate-button-sizes(small);
+}
+
+.sizeLarge {
+  @include rui-generate-button-sizes(large);
+}
+
+.block {
+  display: flex;
+  width: 100%;
+}
+
+.icon {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  transform: translateY(-5%);
+}
+
+.iconBefore {
+  composes: icon;
+  margin-right: $rui-button-margin-horizontal;
+}
+
+.iconAfter {
+  composes: icon;
+  margin-left: $rui-button-margin-horizontal;
+}
+
+.iconPositionBefore {
+  flex-direction: row;
+}
+
+.iconPositionAfter {
+  flex-direction: row-reverse;
+}
+
+.iconLoading {
+  animation: rotateIcon 2s linear infinite;
+}
+
+.hiddenLabel {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@keyframes rotateIcon {
+  from {
+    transform: translateY(-8%) rotate(0);
+  }
+
+  to {
+    transform: translateY(-8%) rotate(-360deg);
+  }
+}

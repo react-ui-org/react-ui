@@ -4,6 +4,12 @@
   height: 1rem;
 }
 
+.isRootSmall {
+  composes: root;
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
 .isRootLarge {
   composes: root;
   width: 1.5rem;

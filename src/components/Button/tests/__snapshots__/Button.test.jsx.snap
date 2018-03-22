@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly flat 1`] = `
+<button
+  className="root
+        priorityFlat
+        sizeMedium"
+  disabled={false}
+  onClick={null}
+  type="button"
+>
+  <span>
+    button
+  </span>
+</button>
+`;
+
+exports[`rendering renders correctly mandatory props only 1`] = `
+<button
+  className="root
+        priorityDefault
+        sizeMedium"
+  disabled={false}
+  onClick={null}
+  type="button"
+>
+  <span>
+    button
+  </span>
+</button>
+`;
+
+exports[`rendering renders correctly primary 1`] = `
+<button
+  className="root
+        priorityPrimary
+        sizeMedium"
+  disabled={false}
+  onClick={null}
+  type="button"
+>
+  <span>
+    button
+  </span>
+</button>
+`;
+
+exports[`rendering renders correctly size 1`] = `
+<button
+  className="root
+        priorityDefault
+        sizeLarge"
+  disabled={false}
+  onClick={null}
+  type="button"
+>
+  <span>
+    button
+  </span>
+</button>
+`;
+
+exports[`rendering renders correctly variant 1`] = `
+<button
+  className="root
+        priorityDefault
+        sizeMedium
+        variantSuccess"
+  disabled={false}
+  onClick={null}
+  type="button"
+>
+  <span>
+    button
+  </span>
+</button>
+`;
+
+exports[`rendering renders correctly with all props 1`] = `
+<button
+  className="root
+        priorityFlat
+        sizeLarge
+        variantSuccess
+        iconPositionAfter
+        block"
+  disabled={true}
+  onClick={null}
+  type="button"
+>
+  <span
+    className="icon iconLoading"
+  >
+    <Icon
+      icon="sync"
+      size="large"
+    />
+  </span>
+  <span
+    className="hiddenLabel"
+  >
+    button
+  </span>
+</button>
+`;
+
+exports[`rendering renders correctly with icon 1`] = `
+<button
+  className="root
+        priorityDefault
+        sizeMedium
+        
+        iconPositionBefore"
+  disabled={false}
+  onClick={null}
+  type="button"
+>
+  <span
+    className="iconBefore"
+  >
+    <Icon
+      icon="album"
+      size="medium"
+    />
+  </span>
+  <span>
+    button
+  </span>
+</button>
+`;

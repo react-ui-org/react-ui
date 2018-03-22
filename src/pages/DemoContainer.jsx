@@ -5,8 +5,10 @@ import CheckboxField from '../components/CheckboxField';
 import Radio from '../components/Radio';
 import SelectField from '../components/SelectField';
 import Icon from '../components/Icon';
+import Button from '../components/Button';
 
 const logger = event => console.log(event.target.value); // eslint-disable-line no-console
+const loggerClick = () => console.log('click'); // eslint-disable-line no-console
 
 export default () => (
   <div>
@@ -209,5 +211,47 @@ export default () => (
       <Icon icon="book" size="larger" />
     </span>
     <Icon icon="album" size="large" />
+    <div>
+      <Button clickHandler={loggerClick} label="default" />
+      <Button clickHandler={loggerClick} label="default" variant="success" />
+      <Button clickHandler={loggerClick} label="default" variant="warning" />
+      <Button clickHandler={loggerClick} label="default" variant="danger" />
+    </div>
+    <div>
+      <Button clickHandler={loggerClick} label="primary" priority="primary" />
+      <Button clickHandler={loggerClick} label="primary" priority="primary" variant="success" />
+      <Button clickHandler={loggerClick} label="primary" priority="primary" variant="warning" />
+      <Button clickHandler={loggerClick} label="primary" priority="primary" variant="danger" />
+    </div>
+    <div>
+      <Button clickHandler={loggerClick} label="flat" priority="flat" />
+      <Button clickHandler={loggerClick} label="flat" priority="flat" variant="success" />
+      <Button clickHandler={loggerClick} label="flat" priority="flat" variant="warning" />
+      <Button clickHandler={loggerClick} label="flat" priority="flat" variant="danger" />
+    </div>
+    <div>
+      <Button clickHandler={loggerClick} label="small" size="small" />
+      <Button clickHandler={loggerClick} label="medium" />
+      <Button clickHandler={loggerClick} label="large" size="large" />
+    </div>
+    <div>
+      <Button clickHandler={loggerClick} label="disabled default" disabled />
+      <Button clickHandler={loggerClick} label="disabled primary" priority="primary" disabled />
+      <Button clickHandler={loggerClick} label="disabled flat" priority="flat" disabled />
+    </div>
+    <div>
+      <Button clickHandler={loggerClick} label="icon" icon="album" />
+      <Button clickHandler={loggerClick} label="icon after" icon="book" iconPosition="after" />
+      <Button clickHandler={loggerClick} label="icon alone" icon="radio" isLabelVisible={false} />
+      <Button clickHandler={loggerClick} label="small icon" icon="radio" size="small" />
+      <Button clickHandler={loggerClick} label="large icon" icon="album" size="large" />
+    </div>
+    <div>
+      <Button clickHandler={loggerClick} label="block" block />
+      <Button clickHandler={loggerClick} label="block with icon" block icon="check" />
+    </div>
+    <div>
+      <Button clickHandler={loggerClick} label="load btn" loading />
+    </div>
   </div>
 );

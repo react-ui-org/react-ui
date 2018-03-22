@@ -1,0 +1,70 @@
+@import './maps';
+@import './variables';
+
+@mixin rui-generate-button-sizes($button-size: medium, $button-size-map: $rui-button-size-map) {
+  $button-size-map: map-get($rui-button-size-map, $button-size);
+
+  height: map-get($button-size-map, height);
+  padding: map-get($button-size-map, padding);
+  font-weight: map-get($button-size-map, font-weight);
+  font-size: map-get($button-size-map, font-size);
+  line-height: map-get($button-size-map, line-height);
+  letter-spacing: map-get($button-size-map, letter-spacing);
+}
+
+@mixin rui-generate-button() {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3rem;
+  max-width: 15rem;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: $rui-border-width solid;
+  border-radius: $rui-border-radius;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+@mixin rui-generate-button-priority-variant(
+  $button-type: default, $button-global-map: $rui-global-button-properties-map) {
+  $button-property-map: map-get($button-global-map, $button-type);
+
+  color: map-get($button-property-map, color);
+  border-color: map-get($button-property-map, border-color);
+  background-color: map-get($button-property-map, background-color);
+
+  &:visited {
+    color: map-get($button-property-map, color);
+  }
+
+  &:hover,
+  &:focus {
+    color: map-get($button-property-map, hover-color);
+    background-color: map-get($button-property-map, hover-background-color);
+  }
+
+  &:active {
+    box-shadow:
+      0 map-get($button-property-map, active-box-shadow-width-top)
+      0 0 map-get($button-property-map, active-box-shadow-color) inset;
+  }
+
+  &.disabled,
+  &:disabled {
+    opacity: 0.4;
+    color: map-get($button-property-map, disabled-color);
+    border-color: map-get($button-property-map, disabled-border-color);
+    background-color: map-get($button-property-map, disabled-background-color);
+    cursor: not-allowed;
+  }
+}

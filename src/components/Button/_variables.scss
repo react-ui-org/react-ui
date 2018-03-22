@@ -1,0 +1,101 @@
+$rui-button-margin-vertical: 0.25rem !default;
+$rui-button-margin-horizontal: 0.5rem !default;
+$rui-button-padding-horizontal: 0.5rem !default;
+$rui-button-padding-horizontal-large: 0.75rem !default;
+$rui-button-height: 2rem !default;
+$rui-button-height-small: 1.5rem !default;
+$rui-button-height-large: 2.5rem !default;
+$rui-button-padding: 0 $rui-button-padding-horizontal !default;
+$rui-button-padding-large: 0 $rui-button-padding-horizontal-large !default;
+$rui-button-font-size: 0.75rem !default;
+$rui-button-font-size-small: 0.458333rem !default;
+$rui-button-font-size-large: 1rem !default;
+
+$rui-btn-default-color: $action-blue !default;
+$rui-btn-default-background-color: transparent !default;
+$rui-btn-default-hover-background-color: $blue-lightest !default;
+$rui-btn-default-hover-color: $blue-dark !default;
+$rui-btn-default-box-shadow-color: $blue-light-midtone !default;
+$rui-btn-default-disabled-color: $gray-darker !default;
+$rui-btn-default-disabled-border-color: $gray !default;
+$rui-btn-default-border-color: $blue-accessible !default;
+
+$rui-btn-primary-color: $white;
+$rui-btn-primary-background-color: $blue-dark-midtone;
+$rui-btn-primary-border-color: $blue-dark-midtone;
+$rui-btn-primary-hover-background-color: $blue-dark;
+$rui-btn-primary-hover-color: $blue-lightest;
+$rui-btn-primary-box-shadow-color: $blue-light-midtone;
+$rui-btn-primary-disabled-color: $gray-darker;
+$rui-btn-primary-disabled-background-color: $gray-light-midtone;
+$rui-btn-primary-disabled-border-color: $gray-light-midtone;
+
+$rui-btn-flat-color: $blue-accessible;
+$rui-btn-flat-hover-color: $blue-dark;
+$rui-btn-flat-disabled-color: $gray-darker;
+
+$rui-btn-success-color: $green-accessible;
+$rui-btn-success-border-color: $green-accessible;
+$rui-btn-success-hover-background-color: $green-lightest;
+$rui-btn-success-hover-color: $green-darker;
+$rui-btn-success-box-shadow-color: $green;
+$rui-btn-success-disabled-color: $gray-darker;
+$rui-btn-success-disabled-background-color: transparent;
+$rui-btn-success-disabled-border-color: $gray;
+
+$rui-btn-success-primary-color: $white;
+$rui-btn-success-primary-background-color: $green-dark-midtone;
+$rui-btn-success-primary-hover-background-color: $green-dark;
+$rui-btn-success-primary-hover-color: $rui-btn-success-primary-color;
+$rui-btn-success-primary-box-shadow-color: $green-darker;
+$rui-btn-success-primary-disabled-color: $gray-darker;
+$rui-btn-success-primary-disabled-background-color: $gray-light-midtone;
+$rui-btn-success-primary-disabled-border-color: $gray-light-midtone;
+
+$rui-btn-success-flat-color: $green-accessible;
+$rui-btn-success-flat-hover-color: $green-darker;
+$rui-btn-success-flat-disabled-color: $gray-darker;
+
+$rui-btn-warning-color: $yellow-light-midtone;
+$rui-btn-warning-border-color: $yellow-light-midtone;
+$rui-btn-warning-hover-background-color: $yellow-lightest;
+$rui-btn-warning-hover-color: $rui-btn-warning-color;
+$rui-btn-warning-box-shadow-color: $yellow;
+$rui-btn-warning-disabled-color: $gray-darker;
+$rui-btn-warning-disabled-background-color: transparent;
+$rui-btn-warning-disabled-border-color: $gray;
+
+$rui-btn-warning-primary-color: $white;
+$rui-btn-warning-primary-background-color: $yellow-light-midtone;
+$rui-btn-warning-primary-hover-background-color: $yellow-dark-midtone;
+$rui-btn-warning-primary-hover-color: $rui-btn-warning-primary-color;
+$rui-btn-warning-primary-box-shadow-color: $yellow-dark;
+$rui-btn-warning-primary-disabled-color: $gray-darker;
+$rui-btn-warning-primary-disabled-background-color: $gray-light-midtone;
+$rui-btn-warning-primary-disabled-border-color: $rui-btn-warning-primary-disabled-color;
+
+$rui-btn-warning-flat-color: $yellow-light-midtone;
+$rui-btn-warning-flat-hover-color: $yellow-dark;
+$rui-btn-warning-flat-disabled-color: $gray-darker;
+
+$clr-btn-danger-border-color: $red-dark-midtone;
+$clr-btn-danger-color: $red-light-midtone;
+$clr-btn-danger-hover-background-color: $red-lighter;
+$clr-btn-danger-hover-color: $red-dark;
+$clr-btn-danger-box-shadow-color: $red-light;
+$clr-btn-danger-disabled-color: $gray-darker;
+$clr-btn-danger-checked-background-color: $red-dark-midtone;
+$clr-btn-danger-checked-color: $white;
+
+$rui-btn-danger-primary-color: $white;
+$rui-btn-danger-primary-background-color: $red-light-midtone;
+$rui-btn-danger-primary-hover-background-color: $red-dark-midtone;
+$rui-btn-danger-primary-hover-color: $rui-btn-danger-primary-color;
+$rui-btn-danger-primary-box-shadow-color: $red-dark;
+$rui-btn-danger-primary-disabled-color: $gray-darker;
+$rui-btn-danger-primary-disabled-background-color: $gray-light-midtone;
+$rui-btn-danger-primary-disabled-border-color: $rui-btn-danger-primary-disabled-color;
+
+$rui-btn-danger-flat-color: $red-light-midtone;
+$rui-btn-danger-flat-hover-color: $red-dark;
+$rui-btn-danger-flat-disabled-color: $gray-darker;
