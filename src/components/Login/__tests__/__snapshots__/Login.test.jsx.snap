@@ -1,0 +1,179 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly 1`] = `
+<div
+  className="root"
+>
+  <div
+    className="box"
+  >
+    <form
+      onSubmit={null}
+    >
+      <TextField
+        changeHandler={[Function]}
+        description={null}
+        disabled={false}
+        error={null}
+        fieldId="email"
+        isLabelVisible={true}
+        label="E-mail"
+        placeholder={null}
+        required={true}
+        type="email"
+      />
+      <TextField
+        changeHandler={[Function]}
+        description={null}
+        disabled={false}
+        error={null}
+        fieldId="password"
+        isLabelVisible={true}
+        label="Password"
+        placeholder={null}
+        required={true}
+        type="password"
+      />
+      <Button
+        block={true}
+        clickHandler={null}
+        disabled={false}
+        icon={null}
+        iconPosition="before"
+        isLabelVisible={true}
+        label="Sign in"
+        loading={false}
+        priority="primary"
+        size="medium"
+        type="submit"
+        variant="default"
+      />
+    </form>
+  </div>
+</div>
+`;
+
+exports[`rendering renders correctly with all props 1`] = `
+<div
+  className="root"
+>
+  <div
+    className="title"
+  >
+    Company
+  </div>
+  <div
+    className="box"
+  >
+    <form
+      onSubmit={null}
+    >
+      <div
+        className="error"
+      >
+        Invalid username or password
+      </div>
+      <TextField
+        changeHandler={[Function]}
+        description={null}
+        disabled={false}
+        error={null}
+        fieldId="email"
+        isLabelVisible={true}
+        label="E-mail"
+        placeholder={null}
+        required={true}
+        type="email"
+      />
+      <TextField
+        changeHandler={[Function]}
+        description={null}
+        disabled={false}
+        error={null}
+        fieldId="password"
+        isLabelVisible={true}
+        label="Password"
+        placeholder={null}
+        required={true}
+        type="password"
+      />
+      <Button
+        block={true}
+        clickHandler={null}
+        disabled={false}
+        icon={null}
+        iconPosition="before"
+        isLabelVisible={true}
+        label="Sign in"
+        loading={false}
+        priority="primary"
+        size="medium"
+        type="submit"
+        variant="default"
+      />
+    </form>
+    <div
+      className="footer"
+    >
+      <a
+        href="http://example.com"
+      >
+        link
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`rendering renders correctly with username 1`] = `
+<div
+  className="root"
+>
+  <div
+    className="box"
+  >
+    <form
+      onSubmit={null}
+    >
+      <TextField
+        changeHandler={[Function]}
+        description={null}
+        disabled={false}
+        error={null}
+        fieldId="Username"
+        isLabelVisible={true}
+        label="Username"
+        placeholder={null}
+        required={true}
+        type="text"
+      />
+      <TextField
+        changeHandler={[Function]}
+        description={null}
+        disabled={false}
+        error={null}
+        fieldId="password"
+        isLabelVisible={true}
+        label="Password"
+        placeholder={null}
+        required={true}
+        type="password"
+      />
+      <Button
+        block={true}
+        clickHandler={null}
+        disabled={false}
+        icon={null}
+        iconPosition="before"
+        isLabelVisible={true}
+        label="Sign in"
+        loading={false}
+        priority="primary"
+        size="medium"
+        type="submit"
+        variant="default"
+      />
+    </form>
+  </div>
+</div>
+`;

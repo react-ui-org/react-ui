@@ -34,7 +34,7 @@
 
 .input {
   @include rui-custom-inputs($rui-input-height);
-  @include rui-form-fields-appearance(2.5rem, $rui-form-field-border-color);
+  @include rui-form-fields-appearance(100%, $rui-form-field-border-color);
   @include rui-input-border-bottom-animation($rui-input-border-color);
 
   display: block;

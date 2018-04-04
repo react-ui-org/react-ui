@@ -2,9 +2,9 @@
 
 exports[`rendering renders correctly mandatory props only 1`] = `
 <div>
-  <h2>
+  <h3>
     Element
-  </h2>
+  </h3>
   <div>
     <div>
       Element

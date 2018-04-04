@@ -1,5 +1,8 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import {
+  shallow,
+  mount,
+} from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
 import Radio from '../index';
