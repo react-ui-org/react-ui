@@ -1,0 +1,49 @@
+@import '../Theme/variables';
+
+@mixin rui-login-root() {
+  display: block;
+  box-sizing: border-box;
+  padding: 1rem;
+  margin: 3rem 0;
+}
+
+@mixin rui-login-logo-wrap() {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+@mixin rui-login-logo() {
+  max-width: 100%;
+  max-height: 5rem;
+}
+
+@mixin rui-login-title() {
+  margin-bottom: 1rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+@mixin rui-login-box() {
+  box-sizing: border-box;
+  min-width: 14rem;
+  padding: 1rem;
+  background-color: $white;
+  box-shadow: 0 1px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+@mixin rui-login-error() {
+  display: block;
+  box-sizing: border-box;
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  color: $white;
+  background-color: $red-dark;
+}
+
+@mixin rui-login-footer() {
+  box-sizing: border-box;
+  margin-top: 1rem;
+  text-align: center;
+}
