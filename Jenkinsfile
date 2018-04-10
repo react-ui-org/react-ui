@@ -52,7 +52,7 @@ node {
                 echo "DEPLOY SUCCESSFUL"
                 slackSend(
                     color: 'good',
-                    message: "REST-widget: Větev `${env.BRANCH_NAME} byla nasazena: ${deployEnvs[env.BRANCH_NAME].url} :sunny:"
+                    message: "React UI: Větev `${env.BRANCH_NAME} byla nasazena: ${deployEnvs[env.BRANCH_NAME].url} :sunny:"
                 )
             }
         }
@@ -71,7 +71,7 @@ node {
             attachLog: true,
         )
         if (deployEnvs.containsKey(env.BRANCH_NAME)) {
-            slackSend(color: 'danger', message: 'REST-widget: Build větve `${env.BRANCH_NAME}` selhal :thunder_cloud_and_rain:')
+            slackSend(color: 'danger', message: 'React UI: Build větve `${env.BRANCH_NAME}` selhal :thunder_cloud_and_rain:')
         }
     } finally {
         stage('Cleanup') {
@@ -83,7 +83,7 @@ node {
 
 def build(commit) {
     sh 'rm -rf node_modules'
-    sh 'rm -rf public/generated/bundle.js'
+    sh 'rm -rf demo/generated/*.js'
     sh 'docker-compose run node bash -c "sh /root/init-container.sh /workspace && su docker-container-user ./build.sh"'
 }
 
@@ -100,7 +100,7 @@ def deploy(deployEnv, deployTar, deployFolder) {
             mv ${deployEnv.folder}/${deployFolder} ${deployEnv.folder}.deploy
         """
 
-        sh "scp -P ${deployEnv.port} public/${deployTar} ${deployEnv.host}:${deployEnv.folder}.deploy"
+        sh "scp -P ${deployEnv.port} demo/${deployTar} ${deployEnv.host}:${deployEnv.folder}.deploy"
 
         sh """ssh ${deployEnv.host} -p ${deployEnv.port} /bin/bash << EOF
             echo 'Finalizing deploy'

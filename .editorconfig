@@ -5,8 +5,6 @@
 root = true
 
 [*]
-
-# We recommend you to keep these unchanged.
 charset = utf-8
 end_of_line = lf
 indent_size = 2

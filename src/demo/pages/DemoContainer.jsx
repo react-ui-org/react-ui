@@ -1,18 +1,18 @@
 import React from 'react';
-import Button from '../components/Button';
-import CheckboxField from '../components/CheckboxField';
-import Documentation from '../components/Documentation';
-import Icon from '../components/Icon';
-import LayoutCenter from '../components/LayoutCenter';
 import {
+  Button,
+  CheckboxField,
+  Documentation,
   ForgotPassword,
+  Icon,
+  LayoutCenter,
   Login,
   NewPassword,
-} from '../components/Login';
-import Radio from '../components/Radio';
-import SelectField from '../components/SelectField';
-import TextArea from '../components/TextArea';
-import TextField from '../components/TextField';
+  Radio,
+  SelectField,
+  TextField,
+  TextArea,
+} from '../../lib';
 
 const logger = event => console.log(event.target.value); // eslint-disable-line no-console
 const loggerClick = () => console.log('click'); // eslint-disable-line no-console

@@ -1,17 +1,18 @@
-
 const path = require('path');
-
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = [{
   devServer: {
-    contentBase: './public',
+    contentBase: './demo',
     disableHostCheck: true,
     historyApiFallback: true,
     inline: true,
   },
   entry: {
-    bundle: ['babel-polyfill', path.join(__dirname, 'src/main.jsx')],
+    demo: [
+      'babel-polyfill',
+      path.join(__dirname, 'src/demo/index.jsx'),
+    ],
   },
   module: {
     rules: [
@@ -51,7 +52,7 @@ module.exports = [{
   },
   output: {
     filename: '[name].js',
-    path: path.join(__dirname, 'public/generated'),
+    path: path.join(__dirname, 'demo/generated'),
     publicPath: '/generated/',
   },
   plugins: [

@@ -1,0 +1,16 @@
+/demo
+/docker
+/node_modules
+/src
+/test
+.babelrc
+.editorconfig
+.eslintrc
+build.sh
+docker-compose.yml
+Jenkinsfile
+package-lock.json
+postcss.config.js
+stylelint.config.js
+webpack.config.demo.js
+webpack.config.lib.js
