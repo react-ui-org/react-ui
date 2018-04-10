@@ -1,0 +1,47 @@
+@import '../Theme/mixins';
+@import '../Theme/variables';
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.root {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+  width: 480px;
+  max-width: calc(100% - 100px);
+  max-height: calc(100% - 100px);
+  border: 1px $blue-dark-midtone solid;
+  background-color: $white;
+  transform: translate(-50%, -50%);
+}
+
+.head {
+  padding: 0.25em 0.5em;
+  background-color: $blue-dark;
+}
+
+.body {
+  padding: 0.5em;
+}
+
+.headTitle {
+  margin: 0;
+  color: $white;
+}
+
+.footer {
+  padding: 0.25em 0.5em;
+  text-align: right;
+  border: 1px $blue-dark-midtone solid;
+  background-color: $blue-lightest;
+}
+

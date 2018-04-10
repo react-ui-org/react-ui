@@ -6,6 +6,7 @@ module.exports = [{
     contentBase: './demo',
     disableHostCheck: true,
     historyApiFallback: true,
+    host: '0.0.0.0',
     inline: true,
   },
   entry: {
