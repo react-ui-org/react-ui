@@ -54,6 +54,7 @@ class Modal extends React.Component {
                 key={action.label}
                 label={action.label}
                 loading={action.loading}
+                priority="primary"
                 variant={action.variant}
               />
             ))}
