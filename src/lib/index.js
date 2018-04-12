@@ -11,4 +11,3 @@ export { default as Radio } from './Radio';
 export { default as SelectField } from './SelectField';
 export { default as TextArea } from './TextArea';
 export { default as TextField } from './TextField';
-export { default as UserInputBase } from './UserInputBase';

@@ -3,17 +3,8 @@ import React from 'react';
 import styles from './TextField.scss';
 
 const TextField = (props) => {
-  const {
-    changeHandler,
-    description,
-    error,
-    fieldId,
-    isLabelVisible,
-    ...otherProps
-  } = props;
-
   let labelClass = styles.label;
-  if (isLabelVisible) {
+  if (props.isLabelVisible) {
     if (props.required) {
       labelClass = styles.isLabelRequired;
     }
@@ -23,25 +14,29 @@ const TextField = (props) => {
 
   return (
     <div className={styles.root}>
-      <label htmlFor={fieldId}>
+      <label htmlFor={props.fieldId}>
         <div className={labelClass}>
           {props.label}
         </div>
         <input
-          {...otherProps}
-          id={fieldId}
-          onChange={changeHandler}
-          className={error ? styles.isInputInvalid : styles.input}
+          id={props.fieldId}
+          disabled={props.disabled}
+          placeholder={props.placeholder}
+          required={props.required}
+          type={props.type}
+          value={props.value}
+          onChange={props.changeHandler}
+          className={props.error ? styles.isInputInvalid : styles.input}
         />
       </label>
-      {description && (
+      {props.description && (
         <div className={styles.description}>
-          {description}
+          {props.description}
         </div>
       )}
-      {error && (
+      {props.error && (
         <div className={styles.error}>
-          {error}
+          {props.error}
         </div>
       )}
     </div>

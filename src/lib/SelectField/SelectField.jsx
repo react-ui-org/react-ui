@@ -3,18 +3,8 @@ import React from 'react';
 import styles from './SelectField.scss';
 
 const SelectField = (props) => {
-  const {
-    changeHandler,
-    description,
-    error,
-    fieldId,
-    isLabelVisible,
-    options,
-    ...otherProps
-  } = props;
-
   let labelClass = styles.label;
-  if (isLabelVisible) {
+  if (props.isLabelVisible) {
     if (props.required) {
       labelClass = styles.isLabelRequired;
     }
@@ -23,7 +13,7 @@ const SelectField = (props) => {
   }
 
   let rootClass = styles.root;
-  if (isLabelVisible) {
+  if (props.isLabelVisible) {
     if (props.disabled) {
       rootClass = styles.isRootDisabled;
     }
@@ -33,18 +23,20 @@ const SelectField = (props) => {
 
   return (
     <div className={rootClass}>
-      <label htmlFor={fieldId}>
+      <label htmlFor={props.fieldId}>
         <div className={labelClass}>
           {props.label}
         </div>
         <select
-          id={fieldId}
-          {...otherProps}
+          id={props.fieldId}
+          disabled={props.disabled}
+          required={props.required}
+          value={props.value}
           className={props.error ? styles.isSelectInvalid : styles.select}
-          onChange={changeHandler}
+          onChange={props.changeHandler}
         >
           {
-            options.map(option => (
+            props.options.map(option => (
               <option
                 key={option.value}
                 value={option.value}
@@ -55,14 +47,14 @@ const SelectField = (props) => {
           }
         </select>
       </label>
-      {description && (
+      {props.description && (
         <div className={styles.description}>
-          {description}
+          {props.description}
         </div>
       )}
-      {error && (
+      {props.error && (
         <div className={styles.error}>
-          {error}
+          {props.error}
         </div>
       )}
     </div>

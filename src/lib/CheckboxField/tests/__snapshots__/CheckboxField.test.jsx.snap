@@ -1,42 +1,74 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering renders correctly mandatory props only 1`] = `
-<div>
-  <CheckboxField
-    disabled={false}
-    id="test"
-    onChange={null}
-    required={false}
-  />
+<div
+  className="root"
+>
+  <label
+    className="inputWrap"
+    htmlFor="test"
+  >
+    <input
+      checked={false}
+      className="input"
+      disabled={false}
+      id="test"
+      name="test"
+      onChange={null}
+      required={false}
+      type="checkbox"
+    />
+    <span
+      className="label"
+    >
+      <span
+        className="labelInner"
+      >
+        label
+      </span>
+    </span>
+  </label>
 </div>
 `;
 
 exports[`rendering renders correctly with all props 1`] = `
-<div>
-  <CheckboxField
-    disabled={true}
-    id="test"
-    onChange={null}
-    required={true}
-    value="value"
-  />
+<div
+  className="root"
+>
   <label
+    className="inputWrap"
     htmlFor="test"
   >
-    label
+    <input
+      checked={true}
+      className="input"
+      disabled={true}
+      id="test"
+      name="test"
+      onChange={null}
+      required={true}
+      type="checkbox"
+      value="value"
+    />
+    <span
+      className="label"
+    >
+      <span
+        className="labelInner"
+      >
+        label
+      </span>
+    </span>
   </label>
-  <div>
+  <div
+    className="description"
+  >
     some help
   </div>
   <div
-    key="some error"
+    className="error"
   >
     some error
-  </div>
-  <div
-    key="another error"
-  >
-    another error
   </div>
 </div>
 `;

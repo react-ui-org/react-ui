@@ -16,7 +16,6 @@ exports[`rendering renders correctly mandatory props only 1`] = `
       className="select"
       disabled={false}
       id="test"
-      label="label"
       onChange={null}
       required={false}
     >
@@ -53,7 +52,6 @@ exports[`rendering renders correctly only one option 1`] = `
       className="select"
       disabled={false}
       id="test"
-      label="label"
       onChange={null}
       required={false}
     >
@@ -84,7 +82,6 @@ exports[`rendering renders correctly with all props 1`] = `
       className="isSelectInvalid"
       disabled={true}
       id="test"
-      label="label"
       onChange={null}
       required={true}
       value="ch1"

@@ -15,7 +15,6 @@ exports[`rendering renders correctly mandatory props only 1`] = `
     <textarea
       className="input"
       id="test"
-      label="label"
       onChange={null}
       placeholder={null}
       required={false}
@@ -40,7 +39,6 @@ exports[`rendering renders correctly with all props 1`] = `
     <textarea
       className="isInputInvalid"
       id="test"
-      label="label"
       onChange={null}
       placeholder="placeholder"
       required={true}
@@ -76,7 +74,6 @@ exports[`rendering renders correctly with hidden label 1`] = `
     <textarea
       className="input"
       id="test"
-      label="label"
       onChange={null}
       placeholder={null}
       required={false}

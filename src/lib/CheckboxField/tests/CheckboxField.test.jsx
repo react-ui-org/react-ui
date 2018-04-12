@@ -9,7 +9,7 @@ import CheckboxField from '../index';
 
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
-    const tree = shallow(<CheckboxField fieldId="test" />);
+    const tree = shallow(<CheckboxField fieldId="test" label="label" />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
@@ -20,9 +20,10 @@ describe('rendering', () => {
       disabled
       fieldId="test"
       value="value"
-      helpText="some help"
-      errors={['some error', 'another error']}
+      description="some help"
+      error="some error"
       required
+      checked
     />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
@@ -34,7 +35,8 @@ describe('functionality', () => {
     const spy = sinon.spy();
     const component = mount(<CheckboxField
       fieldId="test"
-      onChange={spy}
+      label="label"
+      changeHandler={spy}
     />);
 
     component

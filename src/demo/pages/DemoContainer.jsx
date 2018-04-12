@@ -150,7 +150,38 @@ class DemoContainer extends React.Component {
         <Documentation
           name="Checkbox"
           component={(
-            <CheckboxField fieldId="checkboxField" changeHandler={logger} />
+            <CheckboxField
+              fieldId="checkboxField"
+              label="checkbox"
+              changeHandler={logger}
+              required
+              description="Help text"
+            />
+          )}
+        />
+        <Documentation
+          name="Checkbox checked"
+          component={(
+            <CheckboxField
+              fieldId="checkboxFieldChecked"
+              label="checkbox checked"
+              checked
+              value="1"
+              changeHandler={logger}
+              error="This should not be checked"
+            />
+          )}
+        />
+        <Documentation
+          name="Checkbox disabled"
+          component={(
+            <CheckboxField
+              fieldId="checkboxFieldDisabled"
+              label="checkbox checked and disabled"
+              checked
+              disabled
+              changeHandler={logger}
+            />
           )}
         />
         <Documentation
