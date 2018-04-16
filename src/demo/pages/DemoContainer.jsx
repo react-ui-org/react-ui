@@ -11,6 +11,7 @@ import {
   NewPassword,
   Radio,
   SelectField,
+  Table,
   TextField,
   TextArea,
 } from '../../lib';
@@ -24,6 +25,8 @@ class DemoContainer extends React.Component {
     super(props);
     this.state = {
       showModal: false,
+      tableSortColumn: 'id',
+      tableSortDirection: 'asc',
     };
   }
 
@@ -58,6 +61,58 @@ class DemoContainer extends React.Component {
                 </Modal>
               )}
             </React.Fragment>
+          )}
+        />
+        <Documentation
+          name="Table"
+          component={(
+            <Table
+              columns={[
+                {
+                  isSortable: true,
+                  label: 'Id',
+                  name: 'id',
+                },
+                {
+                  isSortable: true,
+                  label: 'Name',
+                  name: 'name',
+                },
+                {
+                  format: row => row.dateOfBirth.toLocaleDateString('cz-CZ'),
+                  isSortable: false,
+                  label: 'Date of birth',
+                  name: 'dateOfBirth',
+                },
+              ]}
+              rows={[
+                {
+                  dateOfBirth: new Date(2018, 1, 1),
+                  id: 1,
+                  name: 'Jan Novak',
+                },
+                {
+                  dateOfBirth: new Date(2000, 12, 31),
+                  id: 2,
+                  name: 'Josef Novak',
+                },
+                {
+                  dateOfBirth: new Date(1970, 12, 24),
+                  id: 3,
+                  name: 'Jiří Novak',
+                },
+              ]}
+              sort={{
+                changeHandler: (column, direction) => {
+                  this.setState({
+                    tableSortColumn: column,
+                    tableSortDirection: direction === 'asc' ? 'desc' : 'asc',
+                  });
+                },
+                column: this.state.tableSortColumn,
+                direction: this.state.tableSortDirection,
+              }}
+            />
           )}
         />
         <Documentation

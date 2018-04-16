@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly mandatory props only 1`] = `
+<table>
+  <thead>
+    <tr>
+      <th
+        key="id"
+        style={null}
+      >
+        Id
+      </th>
+      <th
+        key="name"
+        style={null}
+      >
+        Name
+      </th>
+      <th
+        key="dateOfBirth"
+        style={null}
+      >
+        Date of birth
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      key="1"
+    >
+      <td
+        key="1-id"
+        style={null}
+      >
+        1
+      </td>
+      <td
+        key="1-name"
+        style={null}
+      >
+        Jan Novak
+      </td>
+      <td
+        key="1-dateOfBirth"
+        style={null}
+      >
+        Thu Feb 01 2018
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`rendering renders correctly with all props 1`] = `
+<table>
+  <thead>
+    <tr>
+      <th
+        key="id"
+        style={
+          Object {
+            "backgroundColor": "lightgray",
+          }
+        }
+      >
+        <Button
+          block={false}
+          clickHandler={[Function]}
+          disabled={false}
+          icon="keyboard_arrow_up"
+          iconPosition="before"
+          isLabelVisible={false}
+          label="asc"
+          loading={false}
+          priority="primary"
+          size="medium"
+          type="button"
+          variant="default"
+        />
+        Id
+      </th>
+      <th
+        key="name"
+        style={null}
+      >
+        <Button
+          block={false}
+          clickHandler={[Function]}
+          disabled={false}
+          icon="keyboard_arrow_up"
+          iconPosition="before"
+          isLabelVisible={false}
+          label="asc"
+          loading={false}
+          priority="default"
+          size="medium"
+          type="button"
+          variant="default"
+        />
+        Name
+      </th>
+      <th
+        key="dateOfBirth"
+        style={null}
+      >
+        Date of birth
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      key="1"
+    >
+      <td
+        key="1-id"
+        style={
+          Object {
+            "backgroundColor": "lightgray",
+          }
+        }
+      >
+        1
+      </td>
+      <td
+        key="1-name"
+        style={null}
+      >
+        Jan Novak
+      </td>
+      <td
+        key="1-dateOfBirth"
+        style={null}
+      >
+        Thu Feb 01 2018
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

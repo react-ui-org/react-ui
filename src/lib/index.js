@@ -9,5 +9,6 @@ export { default as Modal } from './Modal';
 export { default as NewPassword } from './Login/NewPassword';
 export { default as Radio } from './Radio';
 export { default as SelectField } from './SelectField';
+export { default as Table } from './Table';
 export { default as TextArea } from './TextArea';
 export { default as TextField } from './TextField';
