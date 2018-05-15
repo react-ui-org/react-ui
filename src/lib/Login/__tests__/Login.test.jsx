@@ -46,4 +46,15 @@ describe('functionality', () => {
       .simulate('submit');
     expect(spy.calledOnce).toEqual(true);
   });
+
+  it('calls onChangeHandler() on field change', () => {
+    const spy = sinon.spy();
+    const component = mount(<Login onChangeHandler={spy} />);
+
+    component
+      .find('input').first()
+      .simulate('change');
+    expect(spy.calledOnce).toEqual(true);
+  });
 });
+

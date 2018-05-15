@@ -31,14 +31,24 @@ const Login = props => (
         )}
         <TextField
           fieldId={props.usernameType === 'email' ? 'email' : props.usernameType}
-          changeHandler={logger}
+          changeHandler={
+            (event) => {
+              logger(event);
+              props.onChangeHandler('username', event.target.value);
+            }
+          }
           label={props.usernameType === 'email' ? 'E-mail' : props.usernameType}
           type={props.usernameType === 'email' ? 'email' : 'text'}
           required
         />
         <TextField
           fieldId="password"
-          changeHandler={logger}
+          changeHandler={
+            (event) => {
+              logger(event);
+              props.onChangeHandler('password', event.target.value);
+            }
+          }
           label="Password"
           type="password"
           required
@@ -58,6 +68,7 @@ Login.defaultProps = {
   footer: null,
   hasError: false,
   logoUrl: null,
+  onChangeHandler: null,
   submitHandler: null,
   title: null,
   usernameType: 'email',
@@ -67,6 +78,7 @@ Login.propTypes = {
   footer: PropTypes.element,
   hasError: PropTypes.bool,
   logoUrl: PropTypes.string,
+  onChangeHandler: PropTypes.func,
   submitHandler: PropTypes.func,
   title: PropTypes.string,
   usernameType: PropTypes.oneOf(['email', PropTypes.string]),
