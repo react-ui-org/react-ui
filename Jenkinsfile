@@ -42,7 +42,7 @@ node {
 
         if (deployEnvs.containsKey(env.BRANCH_NAME)) {
             stage("Build ${env.BRANCH_NAME}") {
-                sh "sed -i \"s@__ASSET_VERSION__@${commit}@g\" public/index.html"
+                sh "sed -i \"s@__ASSET_VERSION__@${commit}@g\" demo/index.html"
                 build(commit)
             }
 
