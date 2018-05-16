@@ -4,8 +4,6 @@ import Button from '../Button';
 import TextField from '../TextField';
 import styles from './Login.scss';
 
-const logger = event => console.log(event.target.value); // eslint-disable-line no-console
-
 const Login = props => (
   <div className={styles.root}>
     {props.logoUrl && (
@@ -31,24 +29,14 @@ const Login = props => (
         )}
         <TextField
           fieldId={props.usernameType === 'email' ? 'email' : props.usernameType}
-          changeHandler={
-            (event) => {
-              logger(event);
-              props.onChangeHandler('username', event.target.value);
-            }
-          }
+          changeHandler={event => props.onChangeHandler('username', event.target.value)}
           label={props.usernameType === 'email' ? 'E-mail' : props.usernameType}
           type={props.usernameType === 'email' ? 'email' : 'text'}
           required
         />
         <TextField
           fieldId="password"
-          changeHandler={
-            (event) => {
-              logger(event);
-              props.onChangeHandler('password', event.target.value);
-            }
-          }
+          changeHandler={event => props.onChangeHandler('password', event.target.value)}
           label="Password"
           type="password"
           required

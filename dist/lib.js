@@ -26443,10 +26443,6 @@ var _Login2 = _interopRequireDefault(_Login);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var logger = function logger(event) {
-  return console.log(event.target.value);
-}; // eslint-disable-line no-console
-
 var Login = function Login(props) {
   return _react2.default.createElement(
     'div',
@@ -26479,8 +26475,7 @@ var Login = function Login(props) {
         _react2.default.createElement(_TextField2.default, {
           fieldId: props.usernameType === 'email' ? 'email' : props.usernameType,
           changeHandler: function changeHandler(event) {
-            logger(event);
-            props.onChangeHandler('username', event.target.value);
+            return props.onChangeHandler('username', event.target.value);
           },
           label: props.usernameType === 'email' ? 'E-mail' : props.usernameType,
           type: props.usernameType === 'email' ? 'email' : 'text',
@@ -26489,8 +26484,7 @@ var Login = function Login(props) {
         _react2.default.createElement(_TextField2.default, {
           fieldId: 'password',
           changeHandler: function changeHandler(event) {
-            logger(event);
-            props.onChangeHandler('password', event.target.value);
+            return props.onChangeHandler('password', event.target.value);
           },
           label: 'Password',
           type: 'password',
