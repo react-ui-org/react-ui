@@ -114,7 +114,7 @@ def deploy(deployEnv, deployTar, deployFolder) {
 }
 
 def createTar(deployTar) {
-    dir('public') {
+    dir('demo') {
         sh "rm -f ${deployTar}"
         sh "tar -zcf ${deployTar} *"
     }
