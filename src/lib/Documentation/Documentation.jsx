@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import styles from './Documentation.scss';
 
 const Documentation = props => (
-  <div>
-    <h3>{props.name}</h3>
-    <div>
+  <div className={styles.root}>
+    <h2 className={styles.title}>{props.name}</h2>
+    <div className={styles.sandbox}>
       {props.component}
     </div>
   </div>

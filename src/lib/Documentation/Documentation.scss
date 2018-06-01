@@ -1,0 +1,20 @@
+@import '../Theme/variables';
+
+.root {
+  padding: 1.5rem;
+  background-color: $light-gray;
+}
+
+.root:not(:last-of-type) {
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 1.25rem;
+}
+
+.sandbox {
+  padding: 1.5rem;
+  border: 2px dashed $gray-light-midtone;
+  background-color: $white;
+}

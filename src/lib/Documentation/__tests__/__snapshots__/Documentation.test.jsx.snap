@@ -1,11 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering renders correctly mandatory props only 1`] = `
-<div>
-  <h3>
+<div
+  className="root"
+>
+  <h2
+    className="title"
+  >
     Element
-  </h3>
-  <div>
+  </h2>
+  <div
+    className="sandbox"
+  >
     <div>
       Element
     </div>
