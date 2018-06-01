@@ -1,139 +1,157 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering renders correctly mandatory props only 1`] = `
-<table>
-  <thead>
-    <tr>
-      <th
-        key="id"
-        style={null}
+<div
+  className="tableWrapper"
+>
+  <table
+    className="table"
+  >
+    <thead>
+      <tr
+        className="tableHeadRow"
       >
-        Id
-      </th>
-      <th
-        key="name"
-        style={null}
+        <th
+          className="tableHeadCell"
+          key="id"
+        >
+          Id
+        </th>
+        <th
+          className="tableHeadCell"
+          key="name"
+        >
+          Name
+        </th>
+        <th
+          className="tableHeadCell"
+          key="dateOfBirth"
+        >
+          Date of birth
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        className="tableRow"
+        key="1"
       >
-        Name
-      </th>
-      <th
-        key="dateOfBirth"
-        style={null}
-      >
-        Date of birth
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      key="1"
-    >
-      <td
-        key="1-id"
-        style={null}
-      >
-        1
-      </td>
-      <td
-        key="1-name"
-        style={null}
-      >
-        Jan Novak
-      </td>
-      <td
-        key="1-dateOfBirth"
-        style={null}
-      >
-        Thu Feb 01 2018
-      </td>
-    </tr>
-  </tbody>
-</table>
+        <td
+          className="tableCell"
+          key="1-id"
+        >
+          1
+        </td>
+        <td
+          className="tableCell"
+          key="1-name"
+        >
+          Jan Novak
+        </td>
+        <td
+          className="tableCell"
+          key="1-dateOfBirth"
+        >
+          Thu Feb 01 2018
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 `;
 
 exports[`rendering renders correctly with all props 1`] = `
-<table>
-  <thead>
-    <tr>
-      <th
-        key="id"
-        style={
-          Object {
-            "backgroundColor": "lightgray",
-          }
-        }
+<div
+  className="tableWrapper"
+>
+  <table
+    className="table"
+  >
+    <thead>
+      <tr
+        className="tableHeadRow"
       >
-        <Button
-          block={false}
-          clickHandler={[Function]}
-          disabled={false}
-          icon="keyboard_arrow_up"
-          iconPosition="before"
-          isLabelVisible={false}
-          label="asc"
-          loading={false}
-          priority="primary"
-          size="medium"
-          type="button"
-          variant="default"
-        />
-        Id
-      </th>
-      <th
-        key="name"
-        style={null}
+        <th
+          className="isTableHeadCellSortingActive"
+          key="id"
+        >
+          <div
+            className="sortButton"
+          >
+            <Button
+              block={false}
+              clickHandler={[Function]}
+              disabled={false}
+              icon="keyboard_arrow_up"
+              iconPosition="before"
+              isLabelVisible={false}
+              label="asc"
+              loading={false}
+              priority="flat"
+              size="medium"
+              type="button"
+              variant="default"
+            />
+          </div>
+          Id
+        </th>
+        <th
+          className="tableHeadCell"
+          key="name"
+        >
+          <div
+            className="sortButton"
+          >
+            <Button
+              block={false}
+              clickHandler={[Function]}
+              disabled={false}
+              icon="keyboard_arrow_up"
+              iconPosition="before"
+              isLabelVisible={false}
+              label="asc"
+              loading={false}
+              priority="flat"
+              size="medium"
+              type="button"
+              variant="default"
+            />
+          </div>
+          Name
+        </th>
+        <th
+          className="tableHeadCell"
+          key="dateOfBirth"
+        >
+          Date of birth
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        className="tableRow"
+        key="1"
       >
-        <Button
-          block={false}
-          clickHandler={[Function]}
-          disabled={false}
-          icon="keyboard_arrow_up"
-          iconPosition="before"
-          isLabelVisible={false}
-          label="asc"
-          loading={false}
-          priority="default"
-          size="medium"
-          type="button"
-          variant="default"
-        />
-        Name
-      </th>
-      <th
-        key="dateOfBirth"
-        style={null}
-      >
-        Date of birth
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      key="1"
-    >
-      <td
-        key="1-id"
-        style={
-          Object {
-            "backgroundColor": "lightgray",
-          }
-        }
-      >
-        1
-      </td>
-      <td
-        key="1-name"
-        style={null}
-      >
-        Jan Novak
-      </td>
-      <td
-        key="1-dateOfBirth"
-        style={null}
-      >
-        Thu Feb 01 2018
-      </td>
-    </tr>
-  </tbody>
-</table>
+        <td
+          className="isTableCellSortingActive"
+          key="1-id"
+        >
+          1
+        </td>
+        <td
+          className="tableCell"
+          key="1-name"
+        >
+          Jan Novak
+        </td>
+        <td
+          className="tableCell"
+          key="1-dateOfBirth"
+        >
+          Thu Feb 01 2018
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 `;
