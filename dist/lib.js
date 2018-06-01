@@ -2175,7 +2175,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _TextField = __webpack_require__(976);
+var _TextField = __webpack_require__(978);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -2556,7 +2556,7 @@ Object.defineProperty(exports, 'Documentation', {
   }
 });
 
-var _ForgotPassword = __webpack_require__(975);
+var _ForgotPassword = __webpack_require__(977);
 
 Object.defineProperty(exports, 'ForgotPassword', {
   enumerable: true,
@@ -2574,7 +2574,7 @@ Object.defineProperty(exports, 'Icon', {
   }
 });
 
-var _LayoutCenter = __webpack_require__(981);
+var _LayoutCenter = __webpack_require__(983);
 
 Object.defineProperty(exports, 'LayoutCenter', {
   enumerable: true,
@@ -2583,7 +2583,7 @@ Object.defineProperty(exports, 'LayoutCenter', {
   }
 });
 
-var _Login = __webpack_require__(985);
+var _Login = __webpack_require__(987);
 
 Object.defineProperty(exports, 'Login', {
   enumerable: true,
@@ -2592,7 +2592,7 @@ Object.defineProperty(exports, 'Login', {
   }
 });
 
-var _Modal = __webpack_require__(988);
+var _Modal = __webpack_require__(990);
 
 Object.defineProperty(exports, 'Modal', {
   enumerable: true,
@@ -2601,7 +2601,7 @@ Object.defineProperty(exports, 'Modal', {
   }
 });
 
-var _NewPassword = __webpack_require__(992);
+var _NewPassword = __webpack_require__(994);
 
 Object.defineProperty(exports, 'NewPassword', {
   enumerable: true,
@@ -2610,7 +2610,7 @@ Object.defineProperty(exports, 'NewPassword', {
   }
 });
 
-var _Radio = __webpack_require__(995);
+var _Radio = __webpack_require__(997);
 
 Object.defineProperty(exports, 'Radio', {
   enumerable: true,
@@ -2619,7 +2619,7 @@ Object.defineProperty(exports, 'Radio', {
   }
 });
 
-var _SelectField = __webpack_require__(999);
+var _SelectField = __webpack_require__(1001);
 
 Object.defineProperty(exports, 'SelectField', {
   enumerable: true,
@@ -2628,7 +2628,7 @@ Object.defineProperty(exports, 'SelectField', {
   }
 });
 
-var _Table = __webpack_require__(1003);
+var _Table = __webpack_require__(1005);
 
 Object.defineProperty(exports, 'Table', {
   enumerable: true,
@@ -2637,7 +2637,7 @@ Object.defineProperty(exports, 'Table', {
   }
 });
 
-var _TextArea = __webpack_require__(1005);
+var _TextArea = __webpack_require__(1009);
 
 Object.defineProperty(exports, 'TextArea', {
   enumerable: true,
@@ -25961,20 +25961,24 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _Documentation = __webpack_require__(975);
+
+var _Documentation2 = _interopRequireDefault(_Documentation);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Documentation = function Documentation(props) {
   return _react2.default.createElement(
     'div',
-    null,
+    { className: _Documentation2.default.root },
     _react2.default.createElement(
-      'h3',
-      null,
+      'h2',
+      { className: _Documentation2.default.title },
       props.name
     ),
     _react2.default.createElement(
       'div',
-      null,
+      { className: _Documentation2.default.sandbox },
       props.component
     )
   );
@@ -25989,6 +25993,55 @@ exports.default = Documentation;
 
 /***/ }),
 /* 975 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(976);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(5)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../node_modules/css-loader/index.js?importLoaders=2&modules&localIdentName=[name]__[local]___[hash:base64:5]!../../../node_modules/postcss-loader/lib/index.js!../../../node_modules/sass-loader/lib/loader.js!./Documentation.scss", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js?importLoaders=2&modules&localIdentName=[name]__[local]___[hash:base64:5]!../../../node_modules/postcss-loader/lib/index.js!../../../node_modules/sass-loader/lib/loader.js!./Documentation.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 976 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, ".Documentation__root___3M7FN {\n  padding: 1.5rem;\n  background-color: #eee; }\n\n.Documentation__root___3M7FN:not(:last-of-type) {\n  margin-bottom: 1.5rem; }\n\n.Documentation__title___219jK {\n  font-size: 1.25rem; }\n\n.Documentation__sandbox___3RqKL {\n  padding: 1.5rem;\n  border: 2px dashed #ccc;\n  background-color: #fff; }\n", ""]);
+
+// exports
+exports.locals = {
+	"root": "Documentation__root___3M7FN",
+	"title": "Documentation__title___219jK",
+	"sandbox": "Documentation__sandbox___3RqKL"
+};
+
+/***/ }),
+/* 977 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26014,7 +26067,7 @@ var _TextField = __webpack_require__(10);
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
-var _ForgotPassword = __webpack_require__(979);
+var _ForgotPassword = __webpack_require__(981);
 
 var _ForgotPassword2 = _interopRequireDefault(_ForgotPassword);
 
@@ -26090,7 +26143,7 @@ ForgotPassword.propTypes = {
 exports.default = ForgotPassword;
 
 /***/ }),
-/* 976 */
+/* 978 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26108,7 +26161,7 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _TextField = __webpack_require__(977);
+var _TextField = __webpack_require__(979);
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
@@ -26188,13 +26241,13 @@ TextField.propTypes = {
 exports.default = TextField;
 
 /***/ }),
-/* 977 */
+/* 979 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(978);
+var content = __webpack_require__(980);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -26219,7 +26272,7 @@ if(false) {
 }
 
 /***/ }),
-/* 978 */
+/* 980 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -26242,13 +26295,13 @@ exports.locals = {
 };
 
 /***/ }),
-/* 979 */
+/* 981 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(980);
+var content = __webpack_require__(982);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -26273,7 +26326,7 @@ if(false) {
 }
 
 /***/ }),
-/* 980 */
+/* 982 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -26295,7 +26348,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 981 */
+/* 983 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26305,7 +26358,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _LayoutCenter = __webpack_require__(982);
+var _LayoutCenter = __webpack_require__(984);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -26317,7 +26370,7 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 982 */
+/* 984 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26335,7 +26388,7 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _LayoutCenter = __webpack_require__(983);
+var _LayoutCenter = __webpack_require__(985);
 
 var _LayoutCenter2 = _interopRequireDefault(_LayoutCenter);
 
@@ -26364,13 +26417,13 @@ LayoutCenter.propTypes = {
 exports.default = LayoutCenter;
 
 /***/ }),
-/* 983 */
+/* 985 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(984);
+var content = __webpack_require__(986);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -26395,7 +26448,7 @@ if(false) {
 }
 
 /***/ }),
-/* 984 */
+/* 986 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -26411,7 +26464,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 985 */
+/* 987 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26437,7 +26490,7 @@ var _TextField = __webpack_require__(10);
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
-var _Login = __webpack_require__(986);
+var _Login = __webpack_require__(988);
 
 var _Login2 = _interopRequireDefault(_Login);
 
@@ -26524,13 +26577,13 @@ Login.propTypes = {
 exports.default = Login;
 
 /***/ }),
-/* 986 */
+/* 988 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(987);
+var content = __webpack_require__(989);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -26555,7 +26608,7 @@ if(false) {
 }
 
 /***/ }),
-/* 987 */
+/* 989 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -26577,7 +26630,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 988 */
+/* 990 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26587,7 +26640,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Modal = __webpack_require__(989);
+var _Modal = __webpack_require__(991);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -26599,7 +26652,7 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 989 */
+/* 991 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26623,7 +26676,7 @@ var _Button = __webpack_require__(7);
 
 var _Button2 = _interopRequireDefault(_Button);
 
-var _Modal = __webpack_require__(990);
+var _Modal = __webpack_require__(992);
 
 var _Modal2 = _interopRequireDefault(_Modal);
 
@@ -26744,13 +26797,13 @@ Modal.propTypes = {
 exports.default = Modal;
 
 /***/ }),
-/* 990 */
+/* 992 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(991);
+var content = __webpack_require__(993);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -26775,7 +26828,7 @@ if(false) {
 }
 
 /***/ }),
-/* 991 */
+/* 993 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -26796,7 +26849,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 992 */
+/* 994 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26822,7 +26875,7 @@ var _TextField = __webpack_require__(10);
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
-var _NewPassword = __webpack_require__(993);
+var _NewPassword = __webpack_require__(995);
 
 var _NewPassword2 = _interopRequireDefault(_NewPassword);
 
@@ -26905,13 +26958,13 @@ NewPassword.propTypes = {
 exports.default = NewPassword;
 
 /***/ }),
-/* 993 */
+/* 995 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(994);
+var content = __webpack_require__(996);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -26936,7 +26989,7 @@ if(false) {
 }
 
 /***/ }),
-/* 994 */
+/* 996 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -26958,7 +27011,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 995 */
+/* 997 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26968,7 +27021,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Radio = __webpack_require__(996);
+var _Radio = __webpack_require__(998);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -26980,7 +27033,7 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 996 */
+/* 998 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26998,7 +27051,7 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Radio = __webpack_require__(997);
+var _Radio = __webpack_require__(999);
 
 var _Radio2 = _interopRequireDefault(_Radio);
 
@@ -27094,13 +27147,13 @@ Radio.propTypes = {
 exports.default = Radio;
 
 /***/ }),
-/* 997 */
+/* 999 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(998);
+var content = __webpack_require__(1000);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -27125,7 +27178,7 @@ if(false) {
 }
 
 /***/ }),
-/* 998 */
+/* 1000 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -27150,7 +27203,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 999 */
+/* 1001 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27160,7 +27213,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _SelectField = __webpack_require__(1000);
+var _SelectField = __webpack_require__(1002);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -27172,7 +27225,7 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 1000 */
+/* 1002 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27190,7 +27243,7 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _SelectField = __webpack_require__(1001);
+var _SelectField = __webpack_require__(1003);
 
 var _SelectField2 = _interopRequireDefault(_SelectField);
 
@@ -27290,13 +27343,13 @@ SelectField.propTypes = {
 exports.default = SelectField;
 
 /***/ }),
-/* 1001 */
+/* 1003 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(1002);
+var content = __webpack_require__(1004);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -27321,7 +27374,7 @@ if(false) {
 }
 
 /***/ }),
-/* 1002 */
+/* 1004 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -27346,7 +27399,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 1003 */
+/* 1005 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27356,7 +27409,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Table = __webpack_require__(1004);
+var _Table = __webpack_require__(1006);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -27368,7 +27421,7 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 1004 */
+/* 1006 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27391,6 +27444,10 @@ var _react2 = _interopRequireDefault(_react);
 var _Button = __webpack_require__(7);
 
 var _Button2 = _interopRequireDefault(_Button);
+
+var _Table = __webpack_require__(1007);
+
+var _Table2 = _interopRequireDefault(_Table);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27422,20 +27479,27 @@ var Table = function (_React$Component) {
       var sort = this.props.sort;
 
       var sortDirection = sort && column.name === sort.column ? sort.direction : 'asc';
-      var sortCellStyle = sort && column.name === sort.column ? this.sortCellStyle : null;
+      var isSortingActive = sort && column.name === sort.column;
 
       return _react2.default.createElement(
         'th',
-        { key: column.name, style: sortCellStyle },
-        sort && column.isSortable && _react2.default.createElement(_Button2.default, {
-          clickHandler: function clickHandler() {
-            return sort.changeHandler(column.name, sortDirection);
-          },
-          icon: sortDirection === 'asc' ? 'keyboard_arrow_up' : 'keyboard_arrow_down',
-          isLabelVisible: false,
-          label: sortDirection,
-          priority: column.name === sort.column ? 'primary' : 'default'
-        }),
+        {
+          key: column.name,
+          className: isSortingActive ? _Table2.default.isTableHeadCellSortingActive : _Table2.default.tableHeadCell
+        },
+        sort && column.isSortable && _react2.default.createElement(
+          'div',
+          { className: _Table2.default.sortButton },
+          _react2.default.createElement(_Button2.default, {
+            clickHandler: function clickHandler() {
+              return sort.changeHandler(column.name, sortDirection);
+            },
+            icon: sortDirection === 'asc' ? 'keyboard_arrow_up' : 'keyboard_arrow_down',
+            isLabelVisible: false,
+            label: sortDirection,
+            priority: 'flat'
+          })
+        ),
         column.label
       );
     }
@@ -27444,19 +27508,25 @@ var Table = function (_React$Component) {
     value: function renderBodyCell(column, row) {
       var sort = this.props.sort;
 
-      var sortCellStyle = sort && column.name === sort.column ? this.sortCellStyle : null;
+      var isSortingActive = sort && column.name === sort.column;
 
       if (column.format) {
         return _react2.default.createElement(
           'td',
-          { key: row.id + '-' + column.name, style: sortCellStyle },
+          {
+            key: row.id + '-' + column.name,
+            className: isSortingActive ? _Table2.default.isTableCellSortingActive : _Table2.default.tableCell
+          },
           column.format(row)
         );
       }
 
       return _react2.default.createElement(
         'td',
-        { key: row.id + '-' + column.name, style: sortCellStyle },
+        {
+          key: row.id + '-' + column.name,
+          className: isSortingActive ? _Table2.default.isTableCellSortingActive : _Table2.default.tableCell
+        },
         row[column.name]
       );
     }
@@ -27471,29 +27541,33 @@ var Table = function (_React$Component) {
 
 
       return _react2.default.createElement(
-        'table',
-        null,
+        'div',
+        { className: _Table2.default.tableWrapper },
         _react2.default.createElement(
-          'thead',
-          null,
+          'table',
+          { className: _Table2.default.table },
           _react2.default.createElement(
-            'tr',
+            'thead',
             null,
-            columns.map(this.renderHeaderCell)
-          )
-        ),
-        _react2.default.createElement(
-          'tbody',
-          null,
-          rows.map(function (row) {
-            return _react2.default.createElement(
+            _react2.default.createElement(
               'tr',
-              { key: row.id },
-              columns.map(function (column) {
-                return _this2.renderBodyCell(column, row);
-              })
-            );
-          })
+              { className: _Table2.default.tableHeadRow },
+              columns.map(this.renderHeaderCell)
+            )
+          ),
+          _react2.default.createElement(
+            'tbody',
+            null,
+            rows.map(function (row) {
+              return _react2.default.createElement(
+                'tr',
+                { key: row.id, className: _Table2.default.tableRow },
+                columns.map(function (column) {
+                  return _this2.renderBodyCell(column, row);
+                })
+              );
+            })
+          )
         )
       );
     }
@@ -27526,7 +27600,62 @@ Table.propTypes = {
 exports.default = Table;
 
 /***/ }),
-/* 1005 */
+/* 1007 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(1008);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(5)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../node_modules/css-loader/index.js?importLoaders=2&modules&localIdentName=[name]__[local]___[hash:base64:5]!../../../node_modules/postcss-loader/lib/index.js!../../../node_modules/sass-loader/lib/loader.js!./Table.scss", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js?importLoaders=2&modules&localIdentName=[name]__[local]___[hash:base64:5]!../../../node_modules/postcss-loader/lib/index.js!../../../node_modules/sass-loader/lib/loader.js!./Table.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 1008 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, ".Table__tableWrapper___1BSqa {\n  display: block;\n  width: 100%;\n  overflow-x: auto;\n  -webkit-overflow-scrolling: touch;\n  -ms-overflow-style: -ms-autohiding-scrollbar; }\n\n.Table__table___GUD5l {\n  width: 100%;\n  max-width: 100%;\n  border-collapse: collapse; }\n\n.Table__tableRow___1Q02- {\n  background-color: #fff; }\n  .Table__tableRow___1Q02-:hover {\n    background-color: #eee; }\n\n.Table__tableHeadRow___3AwtW {\n  background-color: #fff; }\n  .Table__tableHeadRow___3AwtW:hover {\n    background-color: #fff; }\n\n.Table__tableCell___1l7s9 {\n  padding: 0.25rem 0.5rem;\n  text-align: left;\n  border-bottom: 1px solid #ccc; }\n\n.Table__tableHeadCell___3owBo {\n  font-weight: bold;\n  border-bottom-width: 2px; }\n\n.Table__isTableCellSortingActive___1I-uN,\n.Table__isTableHeadCellSortingActive___3XoCf {\n  background-color: #eee; }\n\n.Table__isTableCellSortingActive___1I-uN { }\n\n.Table__isTableHeadCellSortingActive___3XoCf { }\n\n.Table__sortButton___340yV {\n  display: inline-block;\n  margin-right: 0.5rem; }\n", ""]);
+
+// exports
+exports.locals = {
+	"tableWrapper": "Table__tableWrapper___1BSqa",
+	"table": "Table__table___GUD5l",
+	"tableRow": "Table__tableRow___1Q02-",
+	"tableHeadRow": "Table__tableHeadRow___3AwtW Table__tableRow___1Q02-",
+	"tableCell": "Table__tableCell___1l7s9",
+	"tableHeadCell": "Table__tableHeadCell___3owBo Table__tableCell___1l7s9",
+	"isTableCellSortingActive": "Table__isTableCellSortingActive___1I-uN Table__tableCell___1l7s9",
+	"isTableHeadCellSortingActive": "Table__isTableHeadCellSortingActive___3XoCf Table__tableHeadCell___3owBo Table__tableCell___1l7s9",
+	"sortButton": "Table__sortButton___340yV"
+};
+
+/***/ }),
+/* 1009 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27536,7 +27665,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _TextArea = __webpack_require__(1006);
+var _TextArea = __webpack_require__(1010);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -27548,7 +27677,7 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 1006 */
+/* 1010 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27566,7 +27695,7 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _TextArea = __webpack_require__(1007);
+var _TextArea = __webpack_require__(1011);
 
 var _TextArea2 = _interopRequireDefault(_TextArea);
 
@@ -27643,13 +27772,13 @@ TextArea.propTypes = {
 exports.default = TextArea;
 
 /***/ }),
-/* 1007 */
+/* 1011 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(1008);
+var content = __webpack_require__(1012);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -27674,7 +27803,7 @@ if(false) {
 }
 
 /***/ }),
-/* 1008 */
+/* 1012 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
