@@ -1,5 +1,6 @@
 @import '../Theme/mixins';
 @import '../Theme/variables';
+@import '../Theme/root';
 
 .root {
   position: relative;
@@ -26,6 +27,7 @@
   box-sizing: border-box;
   width: 100%;
   padding: 0.25rem;
+  font-family: var(--font-family);
   color: $rui-textarea-text-color;
   border: $rui-border-width solid $rui-textarea-border-color;
   border-radius: $rui-border-radius;

@@ -1,5 +1,6 @@
 @import '../Theme/mixins';
 @import '../Theme/variables';
+@import '../Theme/root';
 
 .root {
   position: relative;
@@ -38,6 +39,7 @@
   @include rui-input-border-bottom-animation($rui-input-border-color);
 
   display: block;
+  font-family: var(--font-family);
 }
 
 .input[readonly] {

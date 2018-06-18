@@ -1,3 +1,4 @@
+@import '../Theme/root';
 @import './maps';
 @import './variables';
 
@@ -19,6 +20,7 @@
   min-width: 3rem;
   max-width: 15rem;
   overflow: hidden;
+  font-family: var(--font-family);
   text-align: center;
   text-overflow: ellipsis;
   text-decoration: none;

@@ -1,6 +1,7 @@
 @import '../Theme/icons';
 @import '../Theme/mixins';
 @import '../Theme/variables';
+@import '../Theme/root';
 
 .root {
   position: relative;
@@ -77,6 +78,7 @@
   box-sizing: border-box;
   width: 100%;
   padding: 0 ($rui-dropdown-caret-icon-dimension + 0.5rem) 0 0.25rem;
+  font-family: var(--font-family);
   cursor: pointer;
 
   &:hover,
