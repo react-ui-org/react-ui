@@ -4,8 +4,6 @@ import Button from '../Button';
 import TextField from '../TextField';
 import styles from './NewPassword.scss';
 
-const logger = event => console.log(event.target.value); // eslint-disable-line no-console
-
 const NewPassword = props => (
   <div className={styles.root}>
     {props.logoUrl && (
@@ -30,15 +28,15 @@ const NewPassword = props => (
           </div>
         )}
         <TextField
-          fieldId="newpassword"
-          changeHandler={logger}
+          fieldId="newPassword"
+          changeHandler={event => props.onChangeHandler('newPassword', event.target.value)}
           label="New password"
           type="password"
           required
         />
         <TextField
-          fieldId="newpasswordrepeat"
-          changeHandler={logger}
+          fieldId="newPasswordRepeat"
+          changeHandler={event => props.onChangeHandler('newPasswordRepeat', event.target.value)}
           label="Repeat new password"
           type="password"
           required
@@ -58,6 +56,7 @@ NewPassword.defaultProps = {
   footer: null,
   hasError: false,
   logoUrl: null,
+  onChangeHandler: null,
   submitHandler: null,
   title: null,
 };
@@ -66,6 +65,7 @@ NewPassword.propTypes = {
   footer: PropTypes.element,
   hasError: PropTypes.bool,
   logoUrl: PropTypes.string,
+  onChangeHandler: PropTypes.func,
   submitHandler: PropTypes.func,
   title: PropTypes.string,
 };

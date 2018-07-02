@@ -4,8 +4,6 @@ import Button from '../Button';
 import TextField from '../TextField';
 import styles from './ForgotPassword.scss';
 
-const logger = event => console.log(event.target.value); // eslint-disable-line no-console
-
 const ForgotPassword = props => (
   <div className={styles.root}>
     {props.logoUrl && (
@@ -30,8 +28,8 @@ const ForgotPassword = props => (
           </div>
         )}
         <TextField
-          fieldId="resetemail"
-          changeHandler={logger}
+          fieldId="resetEmail"
+          changeHandler={event => props.onChangeHandler('email', event.target.value)}
           label="E-mail"
           type="email"
           required
@@ -51,6 +49,7 @@ ForgotPassword.defaultProps = {
   footer: null,
   hasError: false,
   logoUrl: null,
+  onChangeHandler: null,
   submitHandler: null,
   title: null,
 };
@@ -59,6 +58,7 @@ ForgotPassword.propTypes = {
   footer: PropTypes.element,
   hasError: PropTypes.bool,
   logoUrl: PropTypes.string,
+  onChangeHandler: PropTypes.func,
   submitHandler: PropTypes.func,
   title: PropTypes.string,
 };
