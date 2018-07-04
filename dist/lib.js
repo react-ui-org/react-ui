@@ -26097,10 +26097,10 @@ var ForgotPassword = function ForgotPassword(props) {
       _react2.default.createElement(
         'form',
         { onSubmit: props.submitHandler },
-        props.hasError && _react2.default.createElement(
+        props.error && _react2.default.createElement(
           'div',
           { className: _ForgotPassword2.default.error },
-          'Invalid e-mail'
+          props.error
         ),
         _react2.default.createElement(_TextField2.default, {
           fieldId: 'resetEmail',
@@ -26123,8 +26123,8 @@ var ForgotPassword = function ForgotPassword(props) {
 };
 
 ForgotPassword.defaultProps = {
+  error: null,
   footer: null,
-  hasError: false,
   logoUrl: null,
   onChangeHandler: null,
   submitHandler: null,
@@ -26132,8 +26132,8 @@ ForgotPassword.defaultProps = {
 };
 
 ForgotPassword.propTypes = {
+  error: _propTypes2.default.string,
   footer: _propTypes2.default.element,
-  hasError: _propTypes2.default.bool,
   logoUrl: _propTypes2.default.string,
   onChangeHandler: _propTypes2.default.func,
   submitHandler: _propTypes2.default.func,
@@ -26905,10 +26905,10 @@ var NewPassword = function NewPassword(props) {
       _react2.default.createElement(
         'form',
         { onSubmit: props.submitHandler },
-        props.hasError && _react2.default.createElement(
+        props.error && _react2.default.createElement(
           'div',
           { className: _NewPassword2.default.error },
-          'Passwords are not same'
+          props.error
         ),
         _react2.default.createElement(_TextField2.default, {
           fieldId: 'newPassword',
@@ -26940,8 +26940,8 @@ var NewPassword = function NewPassword(props) {
 };
 
 NewPassword.defaultProps = {
+  error: null,
   footer: null,
-  hasError: false,
   logoUrl: null,
   onChangeHandler: null,
   submitHandler: null,
@@ -26949,8 +26949,8 @@ NewPassword.defaultProps = {
 };
 
 NewPassword.propTypes = {
+  error: _propTypes2.default.string,
   footer: _propTypes2.default.element,
-  hasError: _propTypes2.default.bool,
   logoUrl: _propTypes2.default.string,
   onChangeHandler: _propTypes2.default.func,
   submitHandler: _propTypes2.default.func,
