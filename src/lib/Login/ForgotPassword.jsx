@@ -22,9 +22,9 @@ const ForgotPassword = props => (
     )}
     <div className={styles.box}>
       <form onSubmit={props.submitHandler}>
-        {props.hasError && (
+        {props.error && (
           <div className={styles.error}>
-            Invalid e-mail
+            {props.error}
           </div>
         )}
         <TextField
@@ -46,8 +46,8 @@ const ForgotPassword = props => (
 );
 
 ForgotPassword.defaultProps = {
+  error: null,
   footer: null,
-  hasError: false,
   logoUrl: null,
   onChangeHandler: null,
   submitHandler: null,
@@ -55,8 +55,8 @@ ForgotPassword.defaultProps = {
 };
 
 ForgotPassword.propTypes = {
+  error: PropTypes.string,
   footer: PropTypes.element,
-  hasError: PropTypes.bool,
   logoUrl: PropTypes.string,
   onChangeHandler: PropTypes.func,
   submitHandler: PropTypes.func,

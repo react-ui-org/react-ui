@@ -20,7 +20,7 @@ describe('rendering', () => {
     const tree = shallow(<ForgotPassword
       logo="http://satyr.io/100x100/33?text=logo"
       title="Company"
-      hasError
+      error="Error message"
       footer={(
         <a href="http://example.com">link</a>
       )}

@@ -22,9 +22,9 @@ const NewPassword = props => (
     )}
     <div className={styles.box}>
       <form onSubmit={props.submitHandler}>
-        {props.hasError && (
+        {props.error && (
           <div className={styles.error}>
-            Passwords are not same
+            {props.error}
           </div>
         )}
         <TextField
@@ -53,8 +53,8 @@ const NewPassword = props => (
 );
 
 NewPassword.defaultProps = {
+  error: null,
   footer: null,
-  hasError: false,
   logoUrl: null,
   onChangeHandler: null,
   submitHandler: null,
@@ -62,8 +62,8 @@ NewPassword.defaultProps = {
 };
 
 NewPassword.propTypes = {
+  error: PropTypes.string,
   footer: PropTypes.element,
-  hasError: PropTypes.bool,
   logoUrl: PropTypes.string,
   onChangeHandler: PropTypes.func,
   submitHandler: PropTypes.func,
