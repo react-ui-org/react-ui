@@ -2738,6 +2738,7 @@ var Button = function Button(props) {
     {
       className: ('\n        ' + _Button2.default.root + '\n        ' + priorityClass + '\n        ' + sizeClass + '\n        ' + variantClass + '\n        ' + iconPositionClass + '\n        ' + blockClass + '\n      ').trim(),
       onClick: props.clickHandler,
+      title: props.isLabelVisible ? null : props.label,
       type: props.type,
       disabled: props.disabled || props.loading
     },

@@ -61,6 +61,7 @@ const Button = (props) => {
         ${blockClass}
       `).trim()}
       onClick={props.clickHandler}
+      title={props.isLabelVisible ? null : props.label}
       type={props.type}
       disabled={props.disabled || props.loading}
     >

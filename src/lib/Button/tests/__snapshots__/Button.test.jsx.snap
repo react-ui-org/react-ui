@@ -7,6 +7,7 @@ exports[`rendering renders correctly flat 1`] = `
         sizeMedium"
   disabled={false}
   onClick={null}
+  title={null}
   type="button"
 >
   <span>
@@ -22,6 +23,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
         sizeMedium"
   disabled={false}
   onClick={null}
+  title={null}
   type="button"
 >
   <span>
@@ -37,6 +39,7 @@ exports[`rendering renders correctly primary 1`] = `
         sizeMedium"
   disabled={false}
   onClick={null}
+  title={null}
   type="button"
 >
   <span>
@@ -52,6 +55,7 @@ exports[`rendering renders correctly size 1`] = `
         sizeLarge"
   disabled={false}
   onClick={null}
+  title={null}
   type="button"
 >
   <span>
@@ -68,6 +72,7 @@ exports[`rendering renders correctly variant 1`] = `
         variantSuccess"
   disabled={false}
   onClick={null}
+  title={null}
   type="button"
 >
   <span>
@@ -86,6 +91,7 @@ exports[`rendering renders correctly with all props 1`] = `
         block"
   disabled={true}
   onClick={null}
+  title="button"
   type="button"
 >
   <span
@@ -113,6 +119,7 @@ exports[`rendering renders correctly with icon 1`] = `
         iconPositionBefore"
   disabled={false}
   onClick={null}
+  title={null}
   type="button"
 >
   <span
