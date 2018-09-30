@@ -16,6 +16,8 @@
   top: 50%;
   left: 50%;
   z-index: 100;
+  display: flex;
+  flex-direction: column;
   width: 480px;
   max-width: calc(100% - 100px);
   max-height: calc(100% - 100px);
@@ -25,12 +27,14 @@
 }
 
 .head {
+  flex: none;
   padding: 0.25em 0.5em;
   background-color: $blue-dark;
 }
 
 .body {
   padding: 0.5em;
+  overflow-y: auto;
 }
 
 .headTitle {
@@ -39,9 +43,9 @@
 }
 
 .footer {
+  flex: none;
   padding: 0.25em 0.5em;
   text-align: right;
   border: 1px $blue-dark-midtone solid;
   background-color: $blue-lightest;
 }
-
