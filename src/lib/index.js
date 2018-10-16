@@ -6,6 +6,7 @@ export { default as Icon } from './Icon';
 export { default as LayoutCenter } from './LayoutCenter';
 export { default as Login } from './Login/Login';
 export { default as Modal } from './Modal';
+export { default as MultipleSelectField } from './MultipleSelectField';
 export { default as NewPassword } from './Login/NewPassword';
 export { default as Radio } from './Radio';
 export { default as SelectField } from './SelectField';

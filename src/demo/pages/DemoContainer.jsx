@@ -8,6 +8,7 @@ import {
   LayoutCenter,
   Login,
   Modal,
+  MultipleSelectField,
   NewPassword,
   Radio,
   SelectField,
@@ -391,6 +392,117 @@ class DemoContainer extends React.Component {
                   value: 'ch2',
                 },
               ]}
+            />
+          )}
+        />
+        <Documentation
+          name="MultipleSelectField"
+          component={(
+            <MultipleSelectField
+              changeHandler={logger}
+              fieldId="multipleSelectField"
+              label="MultipleSelectField"
+              options={[
+                {
+                  label: 'choice 1',
+                  value: 'ch1',
+                },
+                {
+                  label: 'choice 2',
+                  value: 'ch2',
+                },
+              ]}
+            />
+          )}
+        />
+        <Documentation
+          name="MultipleSelectField with description and required"
+          component={(
+            <MultipleSelectField
+              changeHandler={logger}
+              fieldId="multipleSelectFieldDescriptionRequired"
+              label="MultipleSelectField with description and required"
+              description="Choose which choice you prefer"
+              required
+              options={[
+                {
+                  label: 'choice 1',
+                  value: 'ch1',
+                },
+                {
+                  label: 'choice 2',
+                  value: 'ch2',
+                },
+              ]}
+            />
+          )}
+        />
+        <Documentation
+          name="MultipleSelectField with error"
+          component={(
+            <MultipleSelectField
+              changeHandler={logger}
+              fieldId="multipleSelectFieldError"
+              label="MultipleSelectField with error"
+              description="Choose which choice you prefer"
+              error="You have to choose"
+              options={[
+                {
+                  label: 'choice 1',
+                  value: 'ch1',
+                },
+                {
+                  label: 'choice 2',
+                  value: 'ch2',
+                },
+              ]}
+            />
+          )}
+        />
+        <Documentation
+          name="MultipleSelectField with error and hidden label"
+          component={(
+            <MultipleSelectField
+              changeHandler={logger}
+              fieldId="multipleSelectFieldErrorHiddenLabel"
+              label="MultipleSelectField with error and hidden label"
+              isLabelVisible={false}
+              disabled
+              options={[
+                {
+                  label: 'choice 1',
+                  value: 'ch1',
+                },
+                {
+                  label: 'choice 2',
+                  value: 'ch2',
+                },
+              ]}
+            />
+          )}
+        />
+        <Documentation
+          name="MultipleSelectField with multiple selected options"
+          component={(
+            <MultipleSelectField
+              changeHandler={logger}
+              fieldId="multipleSelectFieldWithMultipleSelectedOptions"
+              label="MultipleSelectField with multiple selected options"
+              options={[
+                {
+                  label: 'choice 1',
+                  value: 'ch1',
+                },
+                {
+                  label: 'choice 2',
+                  value: 'ch2',
+                },
+                {
+                  label: 'choice 3',
+                  value: 'ch3',
+                },
+              ]}
+              value={['ch1', 'ch3']}
             />
           )}
         />

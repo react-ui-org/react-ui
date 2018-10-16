@@ -1,0 +1,204 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly mandatory props only 1`] = `
+<div
+  className="root"
+>
+  <label
+    htmlFor="test"
+  >
+    <div
+      className="label"
+    >
+      label
+    </div>
+    <select
+      className="select"
+      disabled={false}
+      id="test"
+      multiple={true}
+      onChange={null}
+      required={false}
+      value={Array []}
+    >
+      <option
+        key="ch1"
+        value="ch1"
+      >
+        choice 1
+      </option>
+      <option
+        key="ch2"
+        value="ch2"
+      >
+        choice 2
+      </option>
+    </select>
+  </label>
+</div>
+`;
+
+exports[`rendering renders correctly only one option 1`] = `
+<div
+  className="root"
+>
+  <label
+    htmlFor="test"
+  >
+    <div
+      className="label"
+    >
+      label
+    </div>
+    <select
+      className="select"
+      disabled={false}
+      id="test"
+      multiple={true}
+      onChange={null}
+      required={false}
+      value={Array []}
+    >
+      <option
+        key="ch1"
+        value="ch1"
+      >
+        choice 1
+      </option>
+    </select>
+  </label>
+</div>
+`;
+
+exports[`rendering renders correctly with all props 1`] = `
+<div
+  className="isRootCondensed"
+>
+  <label
+    htmlFor="test"
+  >
+    <div
+      className="isLabelHidden"
+    >
+      label
+    </div>
+    <select
+      className="isSelectInvalid"
+      disabled={true}
+      id="test"
+      multiple={true}
+      onChange={null}
+      required={true}
+      value="ch1"
+    >
+      <option
+        key="ch1"
+        value="ch1"
+      >
+        choice 1
+      </option>
+      <option
+        key="ch2"
+        value="ch2"
+      >
+        choice 2
+      </option>
+    </select>
+  </label>
+  <div
+    className="description"
+  >
+    some help
+  </div>
+  <div
+    className="error"
+  >
+    some error
+  </div>
+</div>
+`;
+
+exports[`rendering renders correctly with one selected option 1`] = `
+<div
+  className="root"
+>
+  <label
+    htmlFor="test"
+  >
+    <div
+      className="label"
+    >
+      label
+    </div>
+    <select
+      className="select"
+      disabled={false}
+      id="test"
+      multiple={true}
+      onChange={null}
+      required={false}
+      value={
+        Array [
+          "ch1",
+        ]
+      }
+    >
+      <option
+        key="ch1"
+        value="ch1"
+      >
+        choice 1
+      </option>
+      <option
+        key="ch2"
+        value="ch2"
+      >
+        choice 2
+      </option>
+    </select>
+  </label>
+</div>
+`;
+
+exports[`rendering renders correctly with two selected options 1`] = `
+<div
+  className="root"
+>
+  <label
+    htmlFor="test"
+  >
+    <div
+      className="label"
+    >
+      label
+    </div>
+    <select
+      className="select"
+      disabled={false}
+      id="test"
+      multiple={true}
+      onChange={null}
+      required={false}
+      value={
+        Array [
+          "ch1",
+          "ch2",
+        ]
+      }
+    >
+      <option
+        key="ch1"
+        value="ch1"
+      >
+        choice 1
+      </option>
+      <option
+        key="ch2"
+        value="ch2"
+      >
+        choice 2
+      </option>
+    </select>
+  </label>
+</div>
+`;

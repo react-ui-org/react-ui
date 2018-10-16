@@ -2601,7 +2601,16 @@ Object.defineProperty(exports, 'Modal', {
   }
 });
 
-var _NewPassword = __webpack_require__(994);
+var _MultipleSelectField = __webpack_require__(994);
+
+Object.defineProperty(exports, 'MultipleSelectField', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_MultipleSelectField).default;
+  }
+});
+
+var _NewPassword = __webpack_require__(998);
 
 Object.defineProperty(exports, 'NewPassword', {
   enumerable: true,
@@ -2610,7 +2619,7 @@ Object.defineProperty(exports, 'NewPassword', {
   }
 });
 
-var _Radio = __webpack_require__(997);
+var _Radio = __webpack_require__(1001);
 
 Object.defineProperty(exports, 'Radio', {
   enumerable: true,
@@ -2619,7 +2628,7 @@ Object.defineProperty(exports, 'Radio', {
   }
 });
 
-var _SelectField = __webpack_require__(1001);
+var _SelectField = __webpack_require__(1005);
 
 Object.defineProperty(exports, 'SelectField', {
   enumerable: true,
@@ -2628,7 +2637,7 @@ Object.defineProperty(exports, 'SelectField', {
   }
 });
 
-var _Table = __webpack_require__(1005);
+var _Table = __webpack_require__(1009);
 
 Object.defineProperty(exports, 'Table', {
   enumerable: true,
@@ -2637,7 +2646,7 @@ Object.defineProperty(exports, 'Table', {
   }
 });
 
-var _TextArea = __webpack_require__(1009);
+var _TextArea = __webpack_require__(1013);
 
 Object.defineProperty(exports, 'TextArea', {
   enumerable: true,
@@ -26860,6 +26869,203 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _MultipleSelectField = __webpack_require__(995);
+
+Object.defineProperty(exports, 'default', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_MultipleSelectField).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 995 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _propTypes = __webpack_require__(2);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _MultipleSelectField = __webpack_require__(996);
+
+var _MultipleSelectField2 = _interopRequireDefault(_MultipleSelectField);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var MultipleSelectField = function MultipleSelectField(props) {
+  var labelClass = _MultipleSelectField2.default.label;
+  if (props.isLabelVisible) {
+    if (props.required) {
+      labelClass = _MultipleSelectField2.default.isLabelRequired;
+    }
+  } else {
+    labelClass = _MultipleSelectField2.default.isLabelHidden;
+  }
+
+  var rootClass = _MultipleSelectField2.default.root;
+  if (props.isLabelVisible) {
+    if (props.disabled) {
+      rootClass = _MultipleSelectField2.default.isRootDisabled;
+    }
+  } else {
+    rootClass = _MultipleSelectField2.default.isRootCondensed;
+  }
+
+  return _react2.default.createElement(
+    'div',
+    { className: rootClass },
+    _react2.default.createElement(
+      'label',
+      { htmlFor: props.fieldId },
+      _react2.default.createElement(
+        'div',
+        { className: labelClass },
+        props.label
+      ),
+      _react2.default.createElement(
+        'select',
+        {
+          id: props.fieldId,
+          disabled: props.disabled,
+          multiple: true,
+          required: props.required,
+          value: props.value,
+          className: props.error ? _MultipleSelectField2.default.isSelectInvalid : _MultipleSelectField2.default.select,
+          onChange: props.changeHandler
+        },
+        props.options.map(function (option) {
+          return _react2.default.createElement(
+            'option',
+            {
+              key: option.value,
+              value: option.value
+            },
+            option.label
+          );
+        })
+      )
+    ),
+    props.description && _react2.default.createElement(
+      'div',
+      { className: _MultipleSelectField2.default.description },
+      props.description
+    ),
+    props.error && _react2.default.createElement(
+      'div',
+      { className: _MultipleSelectField2.default.error },
+      props.error
+    )
+  );
+};
+
+MultipleSelectField.defaultProps = {
+  changeHandler: null,
+  description: null,
+  disabled: false,
+  error: null,
+  isLabelVisible: true,
+  required: false,
+  value: []
+};
+
+MultipleSelectField.propTypes = {
+  changeHandler: _propTypes2.default.func,
+  description: _propTypes2.default.string,
+  disabled: _propTypes2.default.bool,
+  error: _propTypes2.default.string,
+  fieldId: _propTypes2.default.string.isRequired,
+  isLabelVisible: _propTypes2.default.bool,
+  label: _propTypes2.default.string.isRequired,
+  options: _propTypes2.default.arrayOf(_propTypes2.default.shape({
+    label: _propTypes2.default.string.isRequired,
+    value: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number])
+  })).isRequired,
+  required: _propTypes2.default.bool,
+  value: _propTypes2.default.arrayOf(_propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]))
+};
+
+exports.default = MultipleSelectField;
+
+/***/ }),
+/* 996 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(997);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(5)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../node_modules/css-loader/index.js?importLoaders=2&modules&localIdentName=[name]__[local]___[hash:base64:5]!../../../node_modules/postcss-loader/lib/index.js!../../../node_modules/sass-loader/lib/loader.js!./MultipleSelectField.scss", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js?importLoaders=2&modules&localIdentName=[name]__[local]___[hash:base64:5]!../../../node_modules/postcss-loader/lib/index.js!../../../node_modules/sass-loader/lib/loader.js!./MultipleSelectField.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 997 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, "/* stylelint-disable max-line-length */\n/* stylelint-enable */\n:root {\n  --font-family: 'Titillium Web', helvetica, roboto, arial, sans-serif; }\n\n.MultipleSelectField__root___xBOI6 {\n  position: relative;\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 0 0.25rem 1.75rem; }\n  .MultipleSelectField__root___xBOI6::after {\n    content: '';\n    position: absolute;\n    top: 2.52083rem;\n    right: 0.5rem;\n    width: 0.41667rem;\n    height: 0.41667rem;\n    margin: 0;\n    vertical-align: middle;\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2012%2012%22%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3Cstyle%3E.cls-1%7Bfill%3A%239a9a9a%3B%7D%3C%2Fstyle%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Ctitle%3ECaret%3C%2Ftitle%3E%0A%20%20%20%20%3Cpath%20class%3D%22cls-1%22%20d%3D%22M6%2C9L1.2%2C4.2a0.68%2C0.68%2C0%2C0%2C1%2C1-1L6%2C7.08%2C9.84%2C3.24a0.68%2C0.68%2C0%2C1%2C1%2C1%2C1Z%22%2F%3E%0A%3C%2Fsvg%3E%0A\");\n    background-size: contain;\n    background-repeat: no-repeat; }\n\n.MultipleSelectField__isRootDisabled___-LbvC {\n  opacity: 0.5;\n  cursor: not-allowed; }\n  .MultipleSelectField__isRootDisabled___-LbvC:hover::after {\n    color: #9a9a9a; }\n\n.MultipleSelectField__isRootCondensed___sgpAK { }\n  .MultipleSelectField__isRootCondensed___sgpAK::after {\n    top: 0.77083rem; }\n\n.MultipleSelectField__label___1A9x7 {\n  display: inline-block;\n  margin-bottom: 0.25rem; }\n\n.MultipleSelectField__isLabelRequired___20x-z { }\n  .MultipleSelectField__isLabelRequired___20x-z::after {\n    content: ' *'; }\n\n.MultipleSelectField__isLabelHidden___3tNPq {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border: 0; }\n\n.MultipleSelectField__select___29uDH {\n  height: auto;\n  padding: 0;\n  margin: 0;\n  border: 0;\n  border-radius: 0;\n  background: none;\n  -webkit-box-shadow: none;\n          box-shadow: none;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  display: inline-block;\n  min-width: 2.5rem;\n  color: #000;\n  border-bottom: 1px solid #9a9a9a;\n  position: relative;\n  z-index: 2;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: 100%;\n  padding: 0;\n  font-family: var(--font-family);\n  border: 1px solid #9a9a9a;\n  cursor: pointer; }\n  .MultipleSelectField__select___29uDH:focus {\n    outline: 0; }\n  .MultipleSelectField__select___29uDH:disabled {\n    opacity: 0.5;\n    cursor: not-allowed; }\n    .MultipleSelectField__select___29uDH:disabled:hover {\n      border-color: #9a9a9a;\n      background: none; }\n\n.MultipleSelectField__select___29uDH::-ms-expand {\n  display: none; }\n\n.MultipleSelectField__select___29uDH > option {\n  color: #000; }\n\n.MultipleSelectField__isSelectInvalid___1pap7 {\n  border: 1px solid #a32100;\n  background: -webkit-gradient(linear, left top, left bottom, color-stop(95%, transparent), color-stop(95%, #a32100));\n  background: linear-gradient(to bottom, transparent 95%, #a32100 95%); }\n\n.MultipleSelectField__description___3TWCS,\n.MultipleSelectField__error___1Cmyu {\n  font-size: 0.8rem; }\n\n.MultipleSelectField__error___1Cmyu {\n  position: absolute;\n  bottom: 0.5rem;\n  left: 0.25rem;\n  color: #a32100; }\n", ""]);
+
+// exports
+exports.locals = {
+	"root": "MultipleSelectField__root___xBOI6",
+	"isRootDisabled": "MultipleSelectField__isRootDisabled___-LbvC",
+	"isRootCondensed": "MultipleSelectField__isRootCondensed___sgpAK MultipleSelectField__root___xBOI6",
+	"label": "MultipleSelectField__label___1A9x7",
+	"isLabelRequired": "MultipleSelectField__isLabelRequired___20x-z MultipleSelectField__label___1A9x7",
+	"isLabelHidden": "MultipleSelectField__isLabelHidden___3tNPq",
+	"select": "MultipleSelectField__select___29uDH",
+	"isSelectInvalid": "MultipleSelectField__isSelectInvalid___1pap7 MultipleSelectField__select___29uDH",
+	"description": "MultipleSelectField__description___3TWCS",
+	"error": "MultipleSelectField__error___1Cmyu"
+};
+
+/***/ }),
+/* 998 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -26876,7 +27082,7 @@ var _TextField = __webpack_require__(10);
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
-var _NewPassword = __webpack_require__(995);
+var _NewPassword = __webpack_require__(999);
 
 var _NewPassword2 = _interopRequireDefault(_NewPassword);
 
@@ -26961,13 +27167,13 @@ NewPassword.propTypes = {
 exports.default = NewPassword;
 
 /***/ }),
-/* 995 */
+/* 999 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(996);
+var content = __webpack_require__(1000);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -26992,7 +27198,7 @@ if(false) {
 }
 
 /***/ }),
-/* 996 */
+/* 1000 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -27014,7 +27220,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 997 */
+/* 1001 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27024,7 +27230,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Radio = __webpack_require__(998);
+var _Radio = __webpack_require__(1002);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -27036,7 +27242,7 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 998 */
+/* 1002 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27054,7 +27260,7 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Radio = __webpack_require__(999);
+var _Radio = __webpack_require__(1003);
 
 var _Radio2 = _interopRequireDefault(_Radio);
 
@@ -27150,13 +27356,13 @@ Radio.propTypes = {
 exports.default = Radio;
 
 /***/ }),
-/* 999 */
+/* 1003 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(1000);
+var content = __webpack_require__(1004);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -27181,7 +27387,7 @@ if(false) {
 }
 
 /***/ }),
-/* 1000 */
+/* 1004 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -27206,7 +27412,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 1001 */
+/* 1005 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27216,7 +27422,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _SelectField = __webpack_require__(1002);
+var _SelectField = __webpack_require__(1006);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -27228,7 +27434,7 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 1002 */
+/* 1006 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27246,7 +27452,7 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _SelectField = __webpack_require__(1003);
+var _SelectField = __webpack_require__(1007);
 
 var _SelectField2 = _interopRequireDefault(_SelectField);
 
@@ -27346,13 +27552,13 @@ SelectField.propTypes = {
 exports.default = SelectField;
 
 /***/ }),
-/* 1003 */
+/* 1007 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(1004);
+var content = __webpack_require__(1008);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -27377,7 +27583,7 @@ if(false) {
 }
 
 /***/ }),
-/* 1004 */
+/* 1008 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -27402,7 +27608,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 1005 */
+/* 1009 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27412,7 +27618,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Table = __webpack_require__(1006);
+var _Table = __webpack_require__(1010);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -27424,7 +27630,7 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 1006 */
+/* 1010 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27448,7 +27654,7 @@ var _Button = __webpack_require__(7);
 
 var _Button2 = _interopRequireDefault(_Button);
 
-var _Table = __webpack_require__(1007);
+var _Table = __webpack_require__(1011);
 
 var _Table2 = _interopRequireDefault(_Table);
 
@@ -27603,13 +27809,13 @@ Table.propTypes = {
 exports.default = Table;
 
 /***/ }),
-/* 1007 */
+/* 1011 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(1008);
+var content = __webpack_require__(1012);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -27634,7 +27840,7 @@ if(false) {
 }
 
 /***/ }),
-/* 1008 */
+/* 1012 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -27658,7 +27864,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 1009 */
+/* 1013 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27668,7 +27874,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _TextArea = __webpack_require__(1010);
+var _TextArea = __webpack_require__(1014);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -27680,7 +27886,7 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 1010 */
+/* 1014 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27698,7 +27904,7 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _TextArea = __webpack_require__(1011);
+var _TextArea = __webpack_require__(1015);
 
 var _TextArea2 = _interopRequireDefault(_TextArea);
 
@@ -27775,13 +27981,13 @@ TextArea.propTypes = {
 exports.default = TextArea;
 
 /***/ }),
-/* 1011 */
+/* 1015 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(1012);
+var content = __webpack_require__(1016);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -27806,7 +28012,7 @@ if(false) {
 }
 
 /***/ }),
-/* 1012 */
+/* 1016 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
