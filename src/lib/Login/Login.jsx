@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Button from '../Button';
 import TextField from '../TextField';
+import { withTranslationContext } from '../Translation/index';
 import styles from './Login.scss';
 
 const Login = props => (
@@ -24,24 +25,24 @@ const Login = props => (
       <form onSubmit={props.submitHandler}>
         {props.hasError && (
           <div className={styles.error}>
-            Invalid username or password
+            {props.translations.invalidUsernameOrPassword}
           </div>
         )}
         <TextField
           fieldId={props.usernameType === 'email' ? 'email' : props.usernameType}
           changeHandler={event => props.onChangeHandler('username', event.target.value)}
-          label={props.usernameType === 'email' ? 'E-mail' : props.usernameType}
+          label={props.usernameType === 'email' ? props.translations.email : props.usernameType}
           type={props.usernameType === 'email' ? 'email' : 'text'}
           required
         />
         <TextField
           fieldId="password"
           changeHandler={event => props.onChangeHandler('password', event.target.value)}
-          label="Password"
+          label={props.translations.password}
           type="password"
           required
         />
-        <Button label="Sign in" block priority="primary" type="submit" />
+        <Button label={props.translations.signIn} block priority="primary" type="submit" />
       </form>
       {props.footer && (
         <div className={styles.footer}>
@@ -69,7 +70,13 @@ Login.propTypes = {
   onChangeHandler: PropTypes.func,
   submitHandler: PropTypes.func,
   title: PropTypes.string,
+  translations: PropTypes.shape({
+    email: PropTypes.string.isRequired,
+    invalidUsernameOrPassword: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    signIn: PropTypes.string.isRequired,
+  }).isRequired,
   usernameType: PropTypes.oneOf(['email', PropTypes.string]),
 };
 
-export default Login;
+export default withTranslationContext(Login);

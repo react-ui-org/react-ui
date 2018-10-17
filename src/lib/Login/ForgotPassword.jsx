@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Button from '../Button';
 import TextField from '../TextField';
+import { withTranslationContext } from '../Translation/index';
 import styles from './ForgotPassword.scss';
 
 const ForgotPassword = props => (
@@ -30,11 +31,11 @@ const ForgotPassword = props => (
         <TextField
           fieldId="resetEmail"
           changeHandler={event => props.onChangeHandler('email', event.target.value)}
-          label="E-mail"
+          label={props.translations.email}
           type="email"
           required
         />
-        <Button label="Reset password" block priority="primary" type="submit" />
+        <Button label={props.translations.resetPassword} block priority="primary" type="submit" />
       </form>
       {props.footer && (
         <div className={styles.footer}>
@@ -61,6 +62,10 @@ ForgotPassword.propTypes = {
   onChangeHandler: PropTypes.func,
   submitHandler: PropTypes.func,
   title: PropTypes.string,
+  translations: PropTypes.shape({
+    email: PropTypes.string.isRequired,
+    resetPassword: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
-export default ForgotPassword;
+export default withTranslationContext(ForgotPassword);

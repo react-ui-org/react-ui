@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  mount,
-  shallow,
-} from 'enzyme';
+import { mount } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
 import Modal from '../index';
@@ -11,7 +8,7 @@ jest.mock('../../Icon/load-material-design-icons');
 
 describe('rendering', () => {
   it('renders correctly with mandatory props only', () => {
-    const tree = shallow((
+    const tree = mount((
       <Modal
         closeHandler={() => {}}
         title="Modal title"
@@ -23,8 +20,8 @@ describe('rendering', () => {
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
 
-  it('renders correctly with all props', () => {
-    const tree = shallow((
+  it('renders correctly with all props except translations', () => {
+    const tree = mount((
       <Modal
         actions={[
           {
@@ -34,6 +31,20 @@ describe('rendering', () => {
         ]}
         closeHandler={() => {}}
         title="Modal title"
+      >
+        Modal content
+      </Modal>
+    ));
+
+    expect(shallowToJson(tree)).toMatchSnapshot();
+  });
+
+  it('renders correctly with translations', () => {
+    const tree = mount((
+      <Modal
+        closeHandler={() => {}}
+        title="Modal title"
+        translations={{ close: 'Zavřít' }}
       >
         Modal content
       </Modal>

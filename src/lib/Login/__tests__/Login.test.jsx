@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  shallow,
-  mount,
-} from 'enzyme';
+import { mount } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
 import { Login } from '../index';
@@ -11,13 +8,13 @@ jest.mock('../../Icon/load-material-design-icons');
 
 describe('rendering', () => {
   it('renders correctly', () => {
-    const tree = shallow(<Login />);
+    const tree = mount(<Login />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
 
-  it('renders correctly with all props', () => {
-    const tree = shallow(<Login
+  it('renders correctly with all props except translations', () => {
+    const tree = mount(<Login
       logo="http://satyr.io/100x100/33?text=logo"
       title="Company"
       hasError
@@ -30,7 +27,20 @@ describe('rendering', () => {
   });
 
   it('renders correctly with username', () => {
-    const tree = shallow(<Login usernameType="Username" />);
+    const tree = mount(<Login usernameType="Username" />);
+
+    expect(shallowToJson(tree)).toMatchSnapshot();
+  });
+
+  it('renders correctly with translations', () => {
+    const tree = mount(<Login
+      translations={{
+        email: 'E-mail',
+        invalidUsernameOrPassword: 'Nesprávný e-mail nebo heslo',
+        password: 'Heslo',
+        signIn: 'Přihlásit se',
+      }}
+    />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });

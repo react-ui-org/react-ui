@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Button from '../Button';
+import { withTranslationContext } from '../Translation/index';
 import styles from './Modal.scss';
 
 class Modal extends React.Component {
@@ -60,7 +61,7 @@ class Modal extends React.Component {
             ))}
             <Button
               clickHandler={this.props.closeHandler}
-              label="Close"
+              label={this.props.translations.close}
             />
           </div>
         </div>
@@ -87,6 +88,9 @@ Modal.propTypes = {
   ]).isRequired,
   closeHandler: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
+  translations: PropTypes.shape({
+    close: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
-export default Modal;
+export default withTranslationContext(Modal);

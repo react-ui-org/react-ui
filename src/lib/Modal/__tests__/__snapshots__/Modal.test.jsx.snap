@@ -1,110 +1,283 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering renders correctly with all props 1`] = `
-<div
-  className="overlay"
-  onClick={[Function]}
-  role="presentation"
+exports[`rendering renders correctly with all props except translations 1`] = `
+<WithTranslationContextComponent
+  actions={
+    Array [
+      Object {
+        "clickHandler": [Function],
+        "label": "Action",
+      },
+    ]
+  }
+  closeHandler={[Function]}
+  title="Modal title"
+  translations={null}
 >
-  <div
-    className="root"
-    onClick={[Function]}
-    role="presentation"
+  <Modal
+    actions={
+      Array [
+        Object {
+          "clickHandler": [Function],
+          "label": "Action",
+        },
+      ]
+    }
+    closeHandler={[Function]}
+    title="Modal title"
+    translations={
+      Object {
+        "close": "Close",
+      }
+    }
   >
     <div
-      className="head"
+      className="overlay"
+      onClick={[Function]}
+      role="presentation"
     >
-      <h3
-        className="headTitle"
+      <div
+        className="root"
+        onClick={[Function]}
+        role="presentation"
       >
-        Modal title
-      </h3>
+        <div
+          className="head"
+        >
+          <h3
+            className="headTitle"
+          >
+            Modal title
+          </h3>
+        </div>
+        <div
+          className="body"
+        >
+          Modal content
+        </div>
+        <div
+          className="footer"
+        >
+          <Button
+            block={false}
+            clickHandler={[Function]}
+            disabled={false}
+            icon={null}
+            iconPosition="before"
+            isLabelVisible={true}
+            key="Action"
+            label="Action"
+            loading={false}
+            priority="primary"
+            size="medium"
+            type="button"
+            variant="default"
+          >
+            <button
+              className="root
+                    priorityPrimary
+                    sizeMedium"
+              disabled={false}
+              onClick={[Function]}
+              title={null}
+              type="button"
+            >
+              <span>
+                Action
+              </span>
+            </button>
+          </Button>
+          <Button
+            block={false}
+            clickHandler={[Function]}
+            disabled={false}
+            icon={null}
+            iconPosition="before"
+            isLabelVisible={true}
+            label="Close"
+            loading={false}
+            priority="default"
+            size="medium"
+            type="button"
+            variant="default"
+          >
+            <button
+              className="root
+                    priorityDefault
+                    sizeMedium"
+              disabled={false}
+              onClick={[Function]}
+              title={null}
+              type="button"
+            >
+              <span>
+                Close
+              </span>
+            </button>
+          </Button>
+        </div>
+      </div>
     </div>
-    <div
-      className="body"
-    >
-      Modal content
-    </div>
-    <div
-      className="footer"
-    >
-      <Button
-        block={false}
-        clickHandler={[Function]}
-        disabled={false}
-        icon={null}
-        iconPosition="before"
-        isLabelVisible={true}
-        key="Action"
-        label="Action"
-        loading={false}
-        priority="primary"
-        size="medium"
-        type="button"
-        variant="default"
-      />
-      <Button
-        block={false}
-        clickHandler={[Function]}
-        disabled={false}
-        icon={null}
-        iconPosition="before"
-        isLabelVisible={true}
-        label="Close"
-        loading={false}
-        priority="default"
-        size="medium"
-        type="button"
-        variant="default"
-      />
-    </div>
-  </div>
-</div>
+  </Modal>
+</WithTranslationContextComponent>
 `;
 
 exports[`rendering renders correctly with mandatory props only 1`] = `
-<div
-  className="overlay"
-  onClick={[Function]}
-  role="presentation"
+<WithTranslationContextComponent
+  closeHandler={[Function]}
+  title="Modal title"
+  translations={null}
 >
-  <div
-    className="root"
-    onClick={[Function]}
-    role="presentation"
+  <Modal
+    actions={Array []}
+    closeHandler={[Function]}
+    title="Modal title"
+    translations={
+      Object {
+        "close": "Close",
+      }
+    }
   >
     <div
-      className="head"
+      className="overlay"
+      onClick={[Function]}
+      role="presentation"
     >
-      <h3
-        className="headTitle"
+      <div
+        className="root"
+        onClick={[Function]}
+        role="presentation"
       >
-        Modal title
-      </h3>
+        <div
+          className="head"
+        >
+          <h3
+            className="headTitle"
+          >
+            Modal title
+          </h3>
+        </div>
+        <div
+          className="body"
+        >
+          Modal content
+        </div>
+        <div
+          className="footer"
+        >
+          <Button
+            block={false}
+            clickHandler={[Function]}
+            disabled={false}
+            icon={null}
+            iconPosition="before"
+            isLabelVisible={true}
+            label="Close"
+            loading={false}
+            priority="default"
+            size="medium"
+            type="button"
+            variant="default"
+          >
+            <button
+              className="root
+                    priorityDefault
+                    sizeMedium"
+              disabled={false}
+              onClick={[Function]}
+              title={null}
+              type="button"
+            >
+              <span>
+                Close
+              </span>
+            </button>
+          </Button>
+        </div>
+      </div>
     </div>
+  </Modal>
+</WithTranslationContextComponent>
+`;
+
+exports[`rendering renders correctly with translations 1`] = `
+<WithTranslationContextComponent
+  closeHandler={[Function]}
+  title="Modal title"
+  translations={
+    Object {
+      "close": "Zavřít",
+    }
+  }
+>
+  <Modal
+    actions={Array []}
+    closeHandler={[Function]}
+    title="Modal title"
+    translations={
+      Object {
+        "close": "Zavřít",
+      }
+    }
+  >
     <div
-      className="body"
+      className="overlay"
+      onClick={[Function]}
+      role="presentation"
     >
-      Modal content
+      <div
+        className="root"
+        onClick={[Function]}
+        role="presentation"
+      >
+        <div
+          className="head"
+        >
+          <h3
+            className="headTitle"
+          >
+            Modal title
+          </h3>
+        </div>
+        <div
+          className="body"
+        >
+          Modal content
+        </div>
+        <div
+          className="footer"
+        >
+          <Button
+            block={false}
+            clickHandler={[Function]}
+            disabled={false}
+            icon={null}
+            iconPosition="before"
+            isLabelVisible={true}
+            label="Zavřít"
+            loading={false}
+            priority="default"
+            size="medium"
+            type="button"
+            variant="default"
+          >
+            <button
+              className="root
+                    priorityDefault
+                    sizeMedium"
+              disabled={false}
+              onClick={[Function]}
+              title={null}
+              type="button"
+            >
+              <span>
+                Zavřít
+              </span>
+            </button>
+          </Button>
+        </div>
+      </div>
     </div>
-    <div
-      className="footer"
-    >
-      <Button
-        block={false}
-        clickHandler={[Function]}
-        disabled={false}
-        icon={null}
-        iconPosition="before"
-        isLabelVisible={true}
-        label="Close"
-        loading={false}
-        priority="default"
-        size="medium"
-        type="button"
-        variant="default"
-      />
-    </div>
-  </div>
-</div>
+  </Modal>
+</WithTranslationContextComponent>
 `;

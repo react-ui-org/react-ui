@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Button from '../Button';
 import TextField from '../TextField';
+import { withTranslationContext } from '../Translation/index';
 import styles from './NewPassword.scss';
 
 const NewPassword = props => (
@@ -30,18 +31,18 @@ const NewPassword = props => (
         <TextField
           fieldId="newPassword"
           changeHandler={event => props.onChangeHandler('newPassword', event.target.value)}
-          label="New password"
+          label={props.translations.newPassword}
           type="password"
           required
         />
         <TextField
           fieldId="newPasswordRepeat"
           changeHandler={event => props.onChangeHandler('newPasswordRepeat', event.target.value)}
-          label="Repeat new password"
+          label={props.translations.repeatNewPassword}
           type="password"
           required
         />
-        <Button label="Change password" block priority="primary" type="submit" />
+        <Button label={props.translations.changePassword} block priority="primary" type="submit" />
       </form>
       {props.footer && (
         <div className={styles.footer}>
@@ -68,6 +69,11 @@ NewPassword.propTypes = {
   onChangeHandler: PropTypes.func,
   submitHandler: PropTypes.func,
   title: PropTypes.string,
+  translations: PropTypes.shape({
+    changePassword: PropTypes.string.isRequired,
+    newPassword: PropTypes.string.isRequired,
+    repeatNewPassword: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
-export default NewPassword;
+export default withTranslationContext(NewPassword);

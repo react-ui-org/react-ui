@@ -1,179 +1,597 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering renders correctly 1`] = `
-<div
-  className="root"
+<WithTranslationContextComponent
+  translations={null}
 >
-  <div
-    className="box"
+  <Login
+    footer={null}
+    hasError={false}
+    logoUrl={null}
+    onChangeHandler={null}
+    submitHandler={null}
+    title={null}
+    translations={
+      Object {
+        "email": "E-mail",
+        "invalidUsernameOrPassword": "Invalid username or password",
+        "password": "Password",
+        "signIn": "Sign in",
+      }
+    }
+    usernameType="email"
   >
-    <form
-      onSubmit={null}
-    >
-      <TextField
-        changeHandler={[Function]}
-        description={null}
-        disabled={false}
-        error={null}
-        fieldId="email"
-        isLabelVisible={true}
-        label="E-mail"
-        placeholder={null}
-        required={true}
-        type="email"
-      />
-      <TextField
-        changeHandler={[Function]}
-        description={null}
-        disabled={false}
-        error={null}
-        fieldId="password"
-        isLabelVisible={true}
-        label="Password"
-        placeholder={null}
-        required={true}
-        type="password"
-      />
-      <Button
-        block={true}
-        clickHandler={null}
-        disabled={false}
-        icon={null}
-        iconPosition="before"
-        isLabelVisible={true}
-        label="Sign in"
-        loading={false}
-        priority="primary"
-        size="medium"
-        type="submit"
-        variant="default"
-      />
-    </form>
-  </div>
-</div>
-`;
-
-exports[`rendering renders correctly with all props 1`] = `
-<div
-  className="root"
->
-  <div
-    className="title"
-  >
-    Company
-  </div>
-  <div
-    className="box"
-  >
-    <form
-      onSubmit={null}
+    <div
+      className="root"
     >
       <div
-        className="error"
+        className="box"
       >
-        Invalid username or password
+        <form
+          onSubmit={null}
+        >
+          <TextField
+            changeHandler={[Function]}
+            description={null}
+            disabled={false}
+            error={null}
+            fieldId="email"
+            isLabelVisible={true}
+            label="E-mail"
+            placeholder={null}
+            required={true}
+            type="email"
+          >
+            <div
+              className="root"
+            >
+              <label
+                htmlFor="email"
+              >
+                <div
+                  className="isLabelRequired"
+                >
+                  E-mail
+                </div>
+                <input
+                  className="input"
+                  disabled={false}
+                  id="email"
+                  onChange={[Function]}
+                  placeholder={null}
+                  required={true}
+                  type="email"
+                />
+              </label>
+            </div>
+          </TextField>
+          <TextField
+            changeHandler={[Function]}
+            description={null}
+            disabled={false}
+            error={null}
+            fieldId="password"
+            isLabelVisible={true}
+            label="Password"
+            placeholder={null}
+            required={true}
+            type="password"
+          >
+            <div
+              className="root"
+            >
+              <label
+                htmlFor="password"
+              >
+                <div
+                  className="isLabelRequired"
+                >
+                  Password
+                </div>
+                <input
+                  className="input"
+                  disabled={false}
+                  id="password"
+                  onChange={[Function]}
+                  placeholder={null}
+                  required={true}
+                  type="password"
+                />
+              </label>
+            </div>
+          </TextField>
+          <Button
+            block={true}
+            clickHandler={null}
+            disabled={false}
+            icon={null}
+            iconPosition="before"
+            isLabelVisible={true}
+            label="Sign in"
+            loading={false}
+            priority="primary"
+            size="medium"
+            type="submit"
+            variant="default"
+          >
+            <button
+              className="root
+                    priorityPrimary
+                    sizeMedium
+                    
+                    
+                    block"
+              disabled={false}
+              onClick={null}
+              title={null}
+              type="submit"
+            >
+              <span>
+                Sign in
+              </span>
+            </button>
+          </Button>
+        </form>
       </div>
-      <TextField
-        changeHandler={[Function]}
-        description={null}
-        disabled={false}
-        error={null}
-        fieldId="email"
-        isLabelVisible={true}
-        label="E-mail"
-        placeholder={null}
-        required={true}
-        type="email"
-      />
-      <TextField
-        changeHandler={[Function]}
-        description={null}
-        disabled={false}
-        error={null}
-        fieldId="password"
-        isLabelVisible={true}
-        label="Password"
-        placeholder={null}
-        required={true}
-        type="password"
-      />
-      <Button
-        block={true}
-        clickHandler={null}
-        disabled={false}
-        icon={null}
-        iconPosition="before"
-        isLabelVisible={true}
-        label="Sign in"
-        loading={false}
-        priority="primary"
-        size="medium"
-        type="submit"
-        variant="default"
-      />
-    </form>
-    <div
-      className="footer"
+    </div>
+  </Login>
+</WithTranslationContextComponent>
+`;
+
+exports[`rendering renders correctly with all props except translations 1`] = `
+<WithTranslationContextComponent
+  footer={
+    <a
+      href="http://example.com"
     >
+      link
+    </a>
+  }
+  hasError={true}
+  logo="http://satyr.io/100x100/33?text=logo"
+  title="Company"
+  translations={null}
+>
+  <Login
+    footer={
       <a
         href="http://example.com"
       >
         link
       </a>
+    }
+    hasError={true}
+    logo="http://satyr.io/100x100/33?text=logo"
+    logoUrl={null}
+    onChangeHandler={null}
+    submitHandler={null}
+    title="Company"
+    translations={
+      Object {
+        "email": "E-mail",
+        "invalidUsernameOrPassword": "Invalid username or password",
+        "password": "Password",
+        "signIn": "Sign in",
+      }
+    }
+    usernameType="email"
+  >
+    <div
+      className="root"
+    >
+      <div
+        className="title"
+      >
+        Company
+      </div>
+      <div
+        className="box"
+      >
+        <form
+          onSubmit={null}
+        >
+          <div
+            className="error"
+          >
+            Invalid username or password
+          </div>
+          <TextField
+            changeHandler={[Function]}
+            description={null}
+            disabled={false}
+            error={null}
+            fieldId="email"
+            isLabelVisible={true}
+            label="E-mail"
+            placeholder={null}
+            required={true}
+            type="email"
+          >
+            <div
+              className="root"
+            >
+              <label
+                htmlFor="email"
+              >
+                <div
+                  className="isLabelRequired"
+                >
+                  E-mail
+                </div>
+                <input
+                  className="input"
+                  disabled={false}
+                  id="email"
+                  onChange={[Function]}
+                  placeholder={null}
+                  required={true}
+                  type="email"
+                />
+              </label>
+            </div>
+          </TextField>
+          <TextField
+            changeHandler={[Function]}
+            description={null}
+            disabled={false}
+            error={null}
+            fieldId="password"
+            isLabelVisible={true}
+            label="Password"
+            placeholder={null}
+            required={true}
+            type="password"
+          >
+            <div
+              className="root"
+            >
+              <label
+                htmlFor="password"
+              >
+                <div
+                  className="isLabelRequired"
+                >
+                  Password
+                </div>
+                <input
+                  className="input"
+                  disabled={false}
+                  id="password"
+                  onChange={[Function]}
+                  placeholder={null}
+                  required={true}
+                  type="password"
+                />
+              </label>
+            </div>
+          </TextField>
+          <Button
+            block={true}
+            clickHandler={null}
+            disabled={false}
+            icon={null}
+            iconPosition="before"
+            isLabelVisible={true}
+            label="Sign in"
+            loading={false}
+            priority="primary"
+            size="medium"
+            type="submit"
+            variant="default"
+          >
+            <button
+              className="root
+                    priorityPrimary
+                    sizeMedium
+                    
+                    
+                    block"
+              disabled={false}
+              onClick={null}
+              title={null}
+              type="submit"
+            >
+              <span>
+                Sign in
+              </span>
+            </button>
+          </Button>
+        </form>
+        <div
+          className="footer"
+        >
+          <a
+            href="http://example.com"
+          >
+            link
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  </Login>
+</WithTranslationContextComponent>
+`;
+
+exports[`rendering renders correctly with translations 1`] = `
+<WithTranslationContextComponent
+  translations={
+    Object {
+      "email": "E-mail",
+      "invalidUsernameOrPassword": "Nesprávný e-mail nebo heslo",
+      "password": "Heslo",
+      "signIn": "Přihlásit se",
+    }
+  }
+>
+  <Login
+    footer={null}
+    hasError={false}
+    logoUrl={null}
+    onChangeHandler={null}
+    submitHandler={null}
+    title={null}
+    translations={
+      Object {
+        "email": "E-mail",
+        "invalidUsernameOrPassword": "Nesprávný e-mail nebo heslo",
+        "password": "Heslo",
+        "signIn": "Přihlásit se",
+      }
+    }
+    usernameType="email"
+  >
+    <div
+      className="root"
+    >
+      <div
+        className="box"
+      >
+        <form
+          onSubmit={null}
+        >
+          <TextField
+            changeHandler={[Function]}
+            description={null}
+            disabled={false}
+            error={null}
+            fieldId="email"
+            isLabelVisible={true}
+            label="E-mail"
+            placeholder={null}
+            required={true}
+            type="email"
+          >
+            <div
+              className="root"
+            >
+              <label
+                htmlFor="email"
+              >
+                <div
+                  className="isLabelRequired"
+                >
+                  E-mail
+                </div>
+                <input
+                  className="input"
+                  disabled={false}
+                  id="email"
+                  onChange={[Function]}
+                  placeholder={null}
+                  required={true}
+                  type="email"
+                />
+              </label>
+            </div>
+          </TextField>
+          <TextField
+            changeHandler={[Function]}
+            description={null}
+            disabled={false}
+            error={null}
+            fieldId="password"
+            isLabelVisible={true}
+            label="Heslo"
+            placeholder={null}
+            required={true}
+            type="password"
+          >
+            <div
+              className="root"
+            >
+              <label
+                htmlFor="password"
+              >
+                <div
+                  className="isLabelRequired"
+                >
+                  Heslo
+                </div>
+                <input
+                  className="input"
+                  disabled={false}
+                  id="password"
+                  onChange={[Function]}
+                  placeholder={null}
+                  required={true}
+                  type="password"
+                />
+              </label>
+            </div>
+          </TextField>
+          <Button
+            block={true}
+            clickHandler={null}
+            disabled={false}
+            icon={null}
+            iconPosition="before"
+            isLabelVisible={true}
+            label="Přihlásit se"
+            loading={false}
+            priority="primary"
+            size="medium"
+            type="submit"
+            variant="default"
+          >
+            <button
+              className="root
+                    priorityPrimary
+                    sizeMedium
+                    
+                    
+                    block"
+              disabled={false}
+              onClick={null}
+              title={null}
+              type="submit"
+            >
+              <span>
+                Přihlásit se
+              </span>
+            </button>
+          </Button>
+        </form>
+      </div>
+    </div>
+  </Login>
+</WithTranslationContextComponent>
 `;
 
 exports[`rendering renders correctly with username 1`] = `
-<div
-  className="root"
+<WithTranslationContextComponent
+  translations={null}
+  usernameType="Username"
 >
-  <div
-    className="box"
+  <Login
+    footer={null}
+    hasError={false}
+    logoUrl={null}
+    onChangeHandler={null}
+    submitHandler={null}
+    title={null}
+    translations={
+      Object {
+        "email": "E-mail",
+        "invalidUsernameOrPassword": "Invalid username or password",
+        "password": "Password",
+        "signIn": "Sign in",
+      }
+    }
+    usernameType="Username"
   >
-    <form
-      onSubmit={null}
+    <div
+      className="root"
     >
-      <TextField
-        changeHandler={[Function]}
-        description={null}
-        disabled={false}
-        error={null}
-        fieldId="Username"
-        isLabelVisible={true}
-        label="Username"
-        placeholder={null}
-        required={true}
-        type="text"
-      />
-      <TextField
-        changeHandler={[Function]}
-        description={null}
-        disabled={false}
-        error={null}
-        fieldId="password"
-        isLabelVisible={true}
-        label="Password"
-        placeholder={null}
-        required={true}
-        type="password"
-      />
-      <Button
-        block={true}
-        clickHandler={null}
-        disabled={false}
-        icon={null}
-        iconPosition="before"
-        isLabelVisible={true}
-        label="Sign in"
-        loading={false}
-        priority="primary"
-        size="medium"
-        type="submit"
-        variant="default"
-      />
-    </form>
-  </div>
-</div>
+      <div
+        className="box"
+      >
+        <form
+          onSubmit={null}
+        >
+          <TextField
+            changeHandler={[Function]}
+            description={null}
+            disabled={false}
+            error={null}
+            fieldId="Username"
+            isLabelVisible={true}
+            label="Username"
+            placeholder={null}
+            required={true}
+            type="text"
+          >
+            <div
+              className="root"
+            >
+              <label
+                htmlFor="Username"
+              >
+                <div
+                  className="isLabelRequired"
+                >
+                  Username
+                </div>
+                <input
+                  className="input"
+                  disabled={false}
+                  id="Username"
+                  onChange={[Function]}
+                  placeholder={null}
+                  required={true}
+                  type="text"
+                />
+              </label>
+            </div>
+          </TextField>
+          <TextField
+            changeHandler={[Function]}
+            description={null}
+            disabled={false}
+            error={null}
+            fieldId="password"
+            isLabelVisible={true}
+            label="Password"
+            placeholder={null}
+            required={true}
+            type="password"
+          >
+            <div
+              className="root"
+            >
+              <label
+                htmlFor="password"
+              >
+                <div
+                  className="isLabelRequired"
+                >
+                  Password
+                </div>
+                <input
+                  className="input"
+                  disabled={false}
+                  id="password"
+                  onChange={[Function]}
+                  placeholder={null}
+                  required={true}
+                  type="password"
+                />
+              </label>
+            </div>
+          </TextField>
+          <Button
+            block={true}
+            clickHandler={null}
+            disabled={false}
+            icon={null}
+            iconPosition="before"
+            isLabelVisible={true}
+            label="Sign in"
+            loading={false}
+            priority="primary"
+            size="medium"
+            type="submit"
+            variant="default"
+          >
+            <button
+              className="root
+                    priorityPrimary
+                    sizeMedium
+                    
+                    
+                    block"
+              disabled={false}
+              onClick={null}
+              title={null}
+              type="submit"
+            >
+              <span>
+                Sign in
+              </span>
+            </button>
+          </Button>
+        </form>
+      </div>
+    </div>
+  </Login>
+</WithTranslationContextComponent>
 `;
