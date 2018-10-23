@@ -49,11 +49,8 @@ node {
             stage('Deploy') {
                 createTar(deployTar)
                 deploy(deployEnvs[env.BRANCH_NAME], deployTar, deployFolder)
-                echo "DEPLOY SUCCESSFUL"
-                slackSend(
-                    color: 'good',
-                    message: "React UI: Větev `${env.BRANCH_NAME} byla nasazena: ${deployEnvs[env.BRANCH_NAME].url} :sunny:"
-                )
+                checkStatus(deployBranches[env.BRANCH_NAME].url, 200)
+                notifyOfDeploy(deployBranches, env.BRANCH_NAME)
             }
         }
         else {
@@ -118,4 +115,26 @@ def createTar(deployTar) {
         sh "rm -f ${deployTar}"
         sh "tar -zcf ${deployTar} *"
     }
+}
+
+def notifyOfDeploy(deployBranches, currentBranch) {
+    echo 'DEPLOY SUCCESSFUL'
+    slackSend(
+        color: 'good',
+        message: "React UI: Větev `${currentBranch}` byla nasazena na: ${deployBranches[currentBranch].url} :sunny:"
+    )
+}
+
+def checkStatus(url, code) {
+    echo 'Checking website status'
+    sh """
+        httpCode=\$(curl -sL --connect-timeout 50 -w "%{http_code}\\n" $url -o /dev/null)
+        if [ \$httpCode -eq $code ]; then
+            echo 'Website status check passed.'
+            exit 0
+        else
+            echo 'Website status check failed.'
+            exit 1
+        fi
+    """
 }
