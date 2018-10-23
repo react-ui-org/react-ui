@@ -49,8 +49,8 @@ node {
             stage('Deploy') {
                 createTar(deployTar)
                 deploy(deployEnvs[env.BRANCH_NAME], deployTar, deployFolder)
-                checkStatus(deployBranches[env.BRANCH_NAME].url, 200)
-                notifyOfDeploy(deployBranches, env.BRANCH_NAME)
+                checkStatus(deployEnvs[env.BRANCH_NAME].url, 200)
+                notifyOfDeploy(deployEnvs, env.BRANCH_NAME)
             }
         }
         else {
