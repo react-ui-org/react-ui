@@ -17,11 +17,9 @@ exports[`rendering renders correctly mandatory props only 1`] = `
     >
       <label
         className="inputWrap"
-        htmlFor="test-0"
       >
         <input
           className="input"
-          id="test-0"
           name="test"
           onChange={null}
           type="radio"
@@ -39,11 +37,9 @@ exports[`rendering renders correctly mandatory props only 1`] = `
     >
       <label
         className="inputWrap"
-        htmlFor="test-1"
       >
         <input
           className="input"
-          id="test-1"
           name="test"
           onChange={null}
           type="radio"
@@ -77,11 +73,9 @@ exports[`rendering renders correctly only one option 1`] = `
     >
       <label
         className="inputWrap"
-        htmlFor="test-0"
       >
         <input
           className="input"
-          id="test-0"
           name="test"
           onChange={null}
           type="radio"
@@ -115,11 +109,9 @@ exports[`rendering renders correctly only one option and hidden label 1`] = `
     >
       <label
         className="inputWrap"
-        htmlFor="test-0"
       >
         <input
           className="input"
-          id="test-0"
           name="test"
           onChange={null}
           type="radio"
@@ -153,13 +145,11 @@ exports[`rendering renders correctly with all props 1`] = `
     >
       <label
         className="inputWrap"
-        htmlFor="test-0"
       >
         <input
           checked={true}
           className="input"
           disabled={true}
-          id="test-0"
           name="test"
           onChange={null}
           type="radio"
@@ -177,12 +167,10 @@ exports[`rendering renders correctly with all props 1`] = `
     >
       <label
         className="inputWrap"
-        htmlFor="test-1"
       >
         <input
           className="input"
           disabled={true}
-          id="test-1"
           name="test"
           onChange={null}
           type="radio"

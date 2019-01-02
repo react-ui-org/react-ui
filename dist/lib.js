@@ -27492,15 +27492,14 @@ var Radio = function Radio(props) {
     _react2.default.createElement(
       'ul',
       { className: _Radio2.default.list },
-      props.options.map(function (option, index) {
+      props.options.map(function (option) {
         return _react2.default.createElement(
           'li',
           { key: option.value },
           _react2.default.createElement(
             'label',
-            { htmlFor: props.fieldId + '-' + index, className: _Radio2.default.inputWrap },
+            { className: _Radio2.default.inputWrap },
             _react2.default.createElement('input', {
-              id: props.fieldId + '-' + index,
               name: props.fieldId,
               type: 'radio',
               value: option.value,

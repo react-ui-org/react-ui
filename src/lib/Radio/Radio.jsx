@@ -19,11 +19,12 @@ const Radio = (props) => {
       </div>
       <ul className={styles.list}>
         {
-          props.options.map((option, index) => (
+          props.options.map(option => (
             <li key={option.value}>
-              <label htmlFor={`${props.fieldId}-${index}`} className={styles.inputWrap}>
+              { /* Rule is deprecated: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/label-has-for.md */ }
+              { /* eslint-disable-next-line jsx-a11y/label-has-for */ }
+              <label className={styles.inputWrap}>
                 <input
-                  id={`${props.fieldId}-${index}`}
                   name={props.fieldId}
                   type="radio"
                   value={option.value}
