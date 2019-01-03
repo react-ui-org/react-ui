@@ -81,7 +81,7 @@ node {
 def build(commit) {
     sh 'rm -rf node_modules'
     sh 'rm -rf demo/generated/*.js'
-    sh 'docker-compose run node bash -c "sh /root/init-container.sh /workspace && su docker-container-user ./build.sh"'
+    sh 'docker-compose run node bash -c "sh /root/init-container.sh /workspace && su node ./build.sh"'
 }
 
 def deploy(deployEnv, deployTar, deployFolder) {

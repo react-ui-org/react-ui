@@ -1,10 +1,19 @@
-FROM            fedora:latest
+FROM        node:8
 
-RUN             (curl --silent --location https://rpm.nodesource.com/setup_8.x | bash -) \
-                && dnf update -y \
-                && dnf install -y autoconf automake bzip2 git libpng-devel libtool make nasm nodejs tar \
-                && mkdir /workspace \
-                && useradd -d /home/docker-container-user -s /bin/bash docker-container-user
+#######################
+# Configure workspace #
+#######################
 
-COPY            ./init-container.sh /root/init-container.sh
-WORKDIR         /workspace
+RUN          mkdir /workspace
+
+##############
+# Copy files #
+##############
+
+COPY        ./init-container.sh /root/init-container.sh
+
+###############################
+# Configure working directory #
+###############################
+
+WORKDIR     /workspace
