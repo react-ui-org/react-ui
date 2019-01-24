@@ -28,7 +28,7 @@ exports[`rendering renders correctly 1`] = `
         className="box"
       >
         <form
-          onSubmit={null}
+          onSubmit={[Function]}
         >
           <TextField
             changeHandler={[Function]}
@@ -188,7 +188,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
         className="box"
       >
         <form
-          onSubmit={null}
+          onSubmit={[Function]}
         >
           <div
             className="error"
@@ -347,7 +347,7 @@ exports[`rendering renders correctly with translations 1`] = `
         className="box"
       >
         <form
-          onSubmit={null}
+          onSubmit={[Function]}
         >
           <TextField
             changeHandler={[Function]}
@@ -486,7 +486,7 @@ exports[`rendering renders correctly with username 1`] = `
         className="box"
       >
         <form
-          onSubmit={null}
+          onSubmit={[Function]}
         >
           <TextField
             changeHandler={[Function]}

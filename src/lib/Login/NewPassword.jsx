@@ -22,7 +22,15 @@ const NewPassword = props => (
       </div>
     )}
     <div className={styles.box}>
-      <form onSubmit={props.submitHandler}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+
+          if (props.submitHandler) {
+            props.submitHandler(e);
+          }
+        }}
+      >
         {props.error && (
           <div className={styles.error}>
             {props.error}

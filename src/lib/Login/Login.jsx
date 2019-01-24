@@ -22,7 +22,15 @@ const Login = props => (
       </div>
     )}
     <div className={styles.box}>
-      <form onSubmit={props.submitHandler}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+
+          if (props.submitHandler) {
+            props.submitHandler(e);
+          }
+        }}
+      >
         {props.hasError && (
           <div className={styles.error}>
             {props.translations.invalidUsernameOrPassword}

@@ -26190,7 +26190,15 @@ var ForgotPassword = function ForgotPassword(props) {
       { className: _ForgotPassword2.default.box },
       _react2.default.createElement(
         'form',
-        { onSubmit: props.submitHandler },
+        {
+          onSubmit: function onSubmit(e) {
+            e.preventDefault();
+
+            if (props.submitHandler) {
+              props.submitHandler(e);
+            }
+          }
+        },
         props.error && _react2.default.createElement(
           'div',
           { className: _ForgotPassword2.default.error },
@@ -26716,7 +26724,15 @@ var Login = function Login(props) {
       { className: _Login2.default.box },
       _react2.default.createElement(
         'form',
-        { onSubmit: props.submitHandler },
+        {
+          onSubmit: function onSubmit(e) {
+            e.preventDefault();
+
+            if (props.submitHandler) {
+              props.submitHandler(e);
+            }
+          }
+        },
         props.hasError && _react2.default.createElement(
           'div',
           { className: _Login2.default.error },
@@ -27311,7 +27327,15 @@ var NewPassword = function NewPassword(props) {
       { className: _NewPassword2.default.box },
       _react2.default.createElement(
         'form',
-        { onSubmit: props.submitHandler },
+        {
+          onSubmit: function onSubmit(e) {
+            e.preventDefault();
+
+            if (props.submitHandler) {
+              props.submitHandler(e);
+            }
+          }
+        },
         props.error && _react2.default.createElement(
           'div',
           { className: _NewPassword2.default.error },
