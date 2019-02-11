@@ -58,63 +58,71 @@ exports[`rendering renders correctly with all props except translations 1`] = `
         <div
           className="footer"
         >
-          <Button
-            block={false}
-            clickHandler={[Function]}
-            disabled={false}
-            icon={null}
-            iconPosition="before"
-            isLabelVisible={true}
-            key="Action"
-            label="Action"
-            loading={false}
-            priority="primary"
-            size="medium"
-            type="button"
-            variant="default"
+          <span
+            className="button"
           >
-            <button
-              className="root
-                    priorityPrimary
-                    sizeMedium"
+            <Button
+              block={false}
+              clickHandler={[Function]}
               disabled={false}
-              onClick={[Function]}
-              title={null}
+              icon={null}
+              iconPosition="before"
+              isLabelVisible={true}
+              key="Action"
+              label="Action"
+              loading={false}
+              priority="primary"
+              size="medium"
               type="button"
+              variant="default"
             >
-              <span>
-                Action
-              </span>
-            </button>
-          </Button>
-          <Button
-            block={false}
-            clickHandler={[Function]}
-            disabled={false}
-            icon={null}
-            iconPosition="before"
-            isLabelVisible={true}
-            label="Close"
-            loading={false}
-            priority="default"
-            size="medium"
-            type="button"
-            variant="default"
+              <button
+                className="root
+                      priorityPrimary
+                      sizeMedium"
+                disabled={false}
+                onClick={[Function]}
+                title={null}
+                type="button"
+              >
+                <span>
+                  Action
+                </span>
+              </button>
+            </Button>
+          </span>
+          <span
+            className="button"
           >
-            <button
-              className="root
-                    priorityDefault
-                    sizeMedium"
+            <Button
+              block={false}
+              clickHandler={[Function]}
               disabled={false}
-              onClick={[Function]}
-              title={null}
+              icon={null}
+              iconPosition="before"
+              isLabelVisible={true}
+              label="Close"
+              loading={false}
+              priority="default"
+              size="medium"
               type="button"
+              variant="default"
             >
-              <span>
-                Close
-              </span>
-            </button>
-          </Button>
+              <button
+                className="root
+                      priorityDefault
+                      sizeMedium"
+                disabled={false}
+                onClick={[Function]}
+                title={null}
+                type="button"
+              >
+                <span>
+                  Close
+                </span>
+              </button>
+            </Button>
+          </span>
         </div>
       </div>
     </div>
@@ -165,34 +173,41 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
         <div
           className="footer"
         >
-          <Button
-            block={false}
-            clickHandler={[Function]}
-            disabled={false}
-            icon={null}
-            iconPosition="before"
-            isLabelVisible={true}
-            label="Close"
-            loading={false}
-            priority="default"
-            size="medium"
-            type="button"
-            variant="default"
+          <span
+            className="button"
+          />
+          <span
+            className="button"
           >
-            <button
-              className="root
-                    priorityDefault
-                    sizeMedium"
+            <Button
+              block={false}
+              clickHandler={[Function]}
               disabled={false}
-              onClick={[Function]}
-              title={null}
+              icon={null}
+              iconPosition="before"
+              isLabelVisible={true}
+              label="Close"
+              loading={false}
+              priority="default"
+              size="medium"
               type="button"
+              variant="default"
             >
-              <span>
-                Close
-              </span>
-            </button>
-          </Button>
+              <button
+                className="root
+                      priorityDefault
+                      sizeMedium"
+                disabled={false}
+                onClick={[Function]}
+                title={null}
+                type="button"
+              >
+                <span>
+                  Close
+                </span>
+              </button>
+            </Button>
+          </span>
         </div>
       </div>
     </div>
@@ -247,34 +262,41 @@ exports[`rendering renders correctly with translations 1`] = `
         <div
           className="footer"
         >
-          <Button
-            block={false}
-            clickHandler={[Function]}
-            disabled={false}
-            icon={null}
-            iconPosition="before"
-            isLabelVisible={true}
-            label="Zavřít"
-            loading={false}
-            priority="default"
-            size="medium"
-            type="button"
-            variant="default"
+          <span
+            className="button"
+          />
+          <span
+            className="button"
           >
-            <button
-              className="root
-                    priorityDefault
-                    sizeMedium"
+            <Button
+              block={false}
+              clickHandler={[Function]}
               disabled={false}
-              onClick={[Function]}
-              title={null}
+              icon={null}
+              iconPosition="before"
+              isLabelVisible={true}
+              label="Zavřít"
+              loading={false}
+              priority="default"
+              size="medium"
               type="button"
+              variant="default"
             >
-              <span>
-                Zavřít
-              </span>
-            </button>
-          </Button>
+              <button
+                className="root
+                      priorityDefault
+                      sizeMedium"
+                disabled={false}
+                onClick={[Function]}
+                title={null}
+                type="button"
+              >
+                <span>
+                  Zavřít
+                </span>
+              </button>
+            </Button>
+          </span>
         </div>
       </div>
     </div>
