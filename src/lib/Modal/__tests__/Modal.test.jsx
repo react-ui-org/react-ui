@@ -66,8 +66,9 @@ describe('functionality', () => {
       </Modal>
     ));
 
-    component.find('Button').simulate('click');
-    expect(spy.calledOnce).toEqual(true);
+    component.find('Button').at(0).simulate('click');
+    component.find('Button').at(1).simulate('click');
+    expect(spy.calledTwice).toEqual(true);
   });
 });
 

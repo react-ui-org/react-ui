@@ -8,15 +8,26 @@ class Modal extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      isContentOverflowing: false,
+    };
+
+    this.setGradient = this.setGradient.bind(this);
     this.pressEscapeHandler = this.pressEscapeHandler.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     window.document.addEventListener('keydown', this.pressEscapeHandler, false);
   }
 
   componentWillUnmount() {
     window.document.removeEventListener('keydown', this.pressEscapeHandler, false);
+  }
+
+  setGradient() {
+    if (!this.state.isContentOverflowing) {
+      this.setState({ isContentOverflowing: true });
+    }
   }
 
   pressEscapeHandler(e) {
@@ -30,10 +41,14 @@ class Modal extends React.Component {
       <div
         className={styles.overlay}
         onClick={this.props.closeHandler}
+        onScroll={this.setGradient}
         role="presentation"
       >
         <div
-          className={styles.root}
+          className={`
+            ${styles.root}
+            ${this.state.isContentOverflowing ? styles.isContentOverflowing : ''}
+          `.trim()}
           onClick={(e) => {
             e.stopPropagation();
           }}
@@ -43,6 +58,14 @@ class Modal extends React.Component {
             <h3 className={styles.headTitle}>
               {this.props.title}
             </h3>
+            <Button
+              clickHandler={this.props.closeHandler}
+              icon="close"
+              isLabelVisible={false}
+              label={this.props.translations.close}
+              priority="flat"
+              size="large"
+            />
           </div>
           <div className={styles.body}>
             {this.props.children}

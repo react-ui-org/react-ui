@@ -53996,19 +53996,31 @@ var Modal = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Modal.__proto__ || Object.getPrototypeOf(Modal)).call(this, props));
 
+    _this.state = {
+      isContentOverflowing: false
+    };
+
+    _this.setGradient = _this.setGradient.bind(_this);
     _this.pressEscapeHandler = _this.pressEscapeHandler.bind(_this);
     return _this;
   }
 
   _createClass(Modal, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
       window.document.addEventListener('keydown', this.pressEscapeHandler, false);
     }
   }, {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {
       window.document.removeEventListener('keydown', this.pressEscapeHandler, false);
+    }
+  }, {
+    key: 'setGradient',
+    value: function setGradient() {
+      if (!this.state.isContentOverflowing) {
+        this.setState({ isContentOverflowing: true });
+      }
     }
   }, {
     key: 'pressEscapeHandler',
@@ -54025,12 +54037,13 @@ var Modal = function (_React$Component) {
         {
           className: _Modal2.default.overlay,
           onClick: this.props.closeHandler,
+          onScroll: this.setGradient,
           role: 'presentation'
         },
         _react2.default.createElement(
           'div',
           {
-            className: _Modal2.default.root,
+            className: ('\n            ' + _Modal2.default.root + '\n            ' + (this.state.isContentOverflowing ? _Modal2.default.isContentOverflowing : '') + '\n          ').trim(),
             onClick: function onClick(e) {
               e.stopPropagation();
             },
@@ -54043,7 +54056,15 @@ var Modal = function (_React$Component) {
               'h3',
               { className: _Modal2.default.headTitle },
               this.props.title
-            )
+            ),
+            _react2.default.createElement(_Button2.default, {
+              clickHandler: this.props.closeHandler,
+              icon: 'close',
+              isLabelVisible: false,
+              label: this.props.translations.close,
+              priority: 'flat',
+              size: 'large'
+            })
           ),
           _react2.default.createElement(
             'div',
@@ -54147,7 +54168,7 @@ exports = module.exports = __webpack_require__(15)(false);
 
 
 // module
-exports.push([module.i, ".Modal__overlay___2LRch {\n  position: fixed;\n  top: 0;\n  left: 0;\n  z-index: 99;\n  width: 100vw;\n  height: 100vh;\n  background-color: rgba(0, 0, 0, 0.5); }\n\n.Modal__root___386pN {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  z-index: 100;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  width: 480px;\n  max-width: calc(100% - 100px);\n  max-height: calc(100% - 100px);\n  border: 1px #007cbb solid;\n  background-color: #fff;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n.Modal__head___1Z5Bn {\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  padding: 0.25em 0.5em;\n  background-color: #004a70; }\n\n.Modal__body___3KyQK {\n  padding: 0.5em;\n  overflow-y: auto; }\n\n.Modal__headTitle___29_OR {\n  margin: 0;\n  color: #fff; }\n\n.Modal__footer___2iTPs {\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  padding: 0.25em 0.5em;\n  text-align: right;\n  border: 1px #007cbb solid;\n  background-color: #e1f1f6; }\n\n.Modal__button___2E3BA {\n  margin-left: 0.25rem; }\n", ""]);
+exports.push([module.i, ".Modal__overlay___2LRch {\n  position: fixed;\n  top: 0;\n  left: 0;\n  z-index: 99;\n  width: 100vw;\n  height: 100vh;\n  background-color: rgba(0, 0, 0, 0.5); }\n\n.Modal__root___386pN {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  z-index: 100;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  width: 46.875rem;\n  max-width: calc(100% - (2 * 1.25rem));\n  max-height: calc(100% - (2 * 1.25rem));\n  overflow-y: auto;\n  border-radius: 0.1875rem;\n  background-color: #fff;\n  -webkit-box-shadow: 0 0 0.312rem 0 rgba(0, 0, 0, 0.5);\n          box-shadow: 0 0 0.312rem 0 rgba(0, 0, 0, 0.5);\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n.Modal__head___1Z5Bn {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 0.5rem 0 0.5rem 1.25rem; }\n\n.Modal__body___3KyQK {\n  padding: 0.5rem 1.25rem;\n  overflow-y: auto; }\n\n.Modal__headTitle___29_OR {\n  margin: 0; }\n\n.Modal__footer___2iTPs {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 0;\n      -ms-flex: none;\n          flex: none;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 0.5rem 1.25rem;\n  border-bottom-right-radius: 0.1875rem;\n  border-bottom-left-radius: 0.1875rem;\n  background-color: #ccc; }\n\n.Modal__button___2E3BA {\n  margin: 0.25rem 0.75rem; }\n\n.Modal__isContentOverflowing___15KKe .Modal__head___1Z5Bn {\n  -webkit-box-shadow: 0 0.4rem 1.7rem rgba(0, 0, 0, 0.2);\n          box-shadow: 0 0.4rem 1.7rem rgba(0, 0, 0, 0.2); }\n\n.Modal__isContentOverflowing___15KKe .Modal__footer___2iTPs {\n  -webkit-box-shadow: 0 -0.4rem 2.7rem rgba(0, 0, 0, 0.2);\n          box-shadow: 0 -0.4rem 2.7rem rgba(0, 0, 0, 0.2); }\n", ""]);
 
 // exports
 exports.locals = {
@@ -54157,7 +54178,8 @@ exports.locals = {
 	"body": "Modal__body___3KyQK",
 	"headTitle": "Modal__headTitle___29_OR",
 	"footer": "Modal__footer___2iTPs",
-	"button": "Modal__button___2E3BA"
+	"button": "Modal__button___2E3BA",
+	"isContentOverflowing": "Modal__isContentOverflowing___15KKe"
 };
 
 /***/ }),

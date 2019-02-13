@@ -34,6 +34,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
     <div
       className="overlay"
       onClick={[Function]}
+      onScroll={[Function]}
       role="presentation"
     >
       <div
@@ -49,6 +50,59 @@ exports[`rendering renders correctly with all props except translations 1`] = `
           >
             Modal title
           </h3>
+          <Button
+            block={false}
+            clickHandler={[Function]}
+            disabled={false}
+            icon="close"
+            iconPosition="before"
+            isLabelVisible={false}
+            label="Close"
+            loading={false}
+            priority="flat"
+            size="large"
+            type="button"
+            variant="default"
+          >
+            <button
+              className="root
+                    priorityFlat
+                    sizeLarge
+                    
+                    iconPositionBefore"
+              disabled={false}
+              onClick={[Function]}
+              title="Close"
+              type="button"
+            >
+              <span
+                className="icon"
+              >
+                <Icon
+                  icon="close"
+                  size="large"
+                >
+                  <svg
+                    className="isRootLarge"
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                      }
+                    }
+                  >
+                    <use
+                      xlinkHref="#ic_close_48px"
+                    />
+                  </svg>
+                </Icon>
+              </span>
+              <span
+                className="hiddenLabel"
+              >
+                Close
+              </span>
+            </button>
+          </Button>
         </div>
         <div
           className="body"
@@ -149,6 +203,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
     <div
       className="overlay"
       onClick={[Function]}
+      onScroll={[Function]}
       role="presentation"
     >
       <div
@@ -164,6 +219,59 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           >
             Modal title
           </h3>
+          <Button
+            block={false}
+            clickHandler={[Function]}
+            disabled={false}
+            icon="close"
+            iconPosition="before"
+            isLabelVisible={false}
+            label="Close"
+            loading={false}
+            priority="flat"
+            size="large"
+            type="button"
+            variant="default"
+          >
+            <button
+              className="root
+                    priorityFlat
+                    sizeLarge
+                    
+                    iconPositionBefore"
+              disabled={false}
+              onClick={[Function]}
+              title="Close"
+              type="button"
+            >
+              <span
+                className="icon"
+              >
+                <Icon
+                  icon="close"
+                  size="large"
+                >
+                  <svg
+                    className="isRootLarge"
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                      }
+                    }
+                  >
+                    <use
+                      xlinkHref="#ic_close_48px"
+                    />
+                  </svg>
+                </Icon>
+              </span>
+              <span
+                className="hiddenLabel"
+              >
+                Close
+              </span>
+            </button>
+          </Button>
         </div>
         <div
           className="body"
@@ -238,6 +346,7 @@ exports[`rendering renders correctly with translations 1`] = `
     <div
       className="overlay"
       onClick={[Function]}
+      onScroll={[Function]}
       role="presentation"
     >
       <div
@@ -253,6 +362,59 @@ exports[`rendering renders correctly with translations 1`] = `
           >
             Modal title
           </h3>
+          <Button
+            block={false}
+            clickHandler={[Function]}
+            disabled={false}
+            icon="close"
+            iconPosition="before"
+            isLabelVisible={false}
+            label="Zavřít"
+            loading={false}
+            priority="flat"
+            size="large"
+            type="button"
+            variant="default"
+          >
+            <button
+              className="root
+                    priorityFlat
+                    sizeLarge
+                    
+                    iconPositionBefore"
+              disabled={false}
+              onClick={[Function]}
+              title="Zavřít"
+              type="button"
+            >
+              <span
+                className="icon"
+              >
+                <Icon
+                  icon="close"
+                  size="large"
+                >
+                  <svg
+                    className="isRootLarge"
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                      }
+                    }
+                  >
+                    <use
+                      xlinkHref="#ic_close_48px"
+                    />
+                  </svg>
+                </Icon>
+              </span>
+              <span
+                className="hiddenLabel"
+              >
+                Zavřít
+              </span>
+            </button>
+          </Button>
         </div>
         <div
           className="body"

@@ -18,38 +18,55 @@
   z-index: 100;
   display: flex;
   flex-direction: column;
-  width: 480px;
-  max-width: calc(100% - 100px);
-  max-height: calc(100% - 100px);
-  border: 1px $blue-dark-midtone solid;
+  width: 46.875rem;
+  max-width: calc(100% - (2 * #{$rui-modal-offset-x}));
+  max-height: calc(100% - (2 * #{$rui-modal-offset-x}));
+  overflow-y: auto;
+  border-radius: $rui-modal-border-radius;
   background-color: $white;
+  box-shadow: 0 0 0.312rem 0 transparentize($black, 0.5);
   transform: translate(-50%, -50%);
 }
 
 .head {
+  display: flex;
   flex: none;
-  padding: 0.25em 0.5em;
-  background-color: $blue-dark;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: $rui-modal-offset-y 0 $rui-modal-offset-y $rui-modal-offset-x;
 }
 
 .body {
-  padding: 0.5em;
+  padding: $rui-modal-offset-y $rui-modal-offset-x;
   overflow-y: auto;
 }
 
 .headTitle {
   margin: 0;
-  color: $white;
 }
 
 .footer {
+  display: flex;
   flex: none;
-  padding: 0.25em 0.5em;
-  text-align: right;
-  border: 1px $blue-dark-midtone solid;
-  background-color: $blue-lightest;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: $rui-modal-offset-y $rui-modal-offset-x;
+  border-bottom-right-radius: $rui-modal-border-radius;
+  border-bottom-left-radius: $rui-modal-border-radius;
+  background-color: $gray-light-midtone;
 }
 
 .button {
-  margin-left: 0.25rem;
+  margin: 0.25rem 0.75rem;
+}
+
+.isContentOverflowing .head {
+  box-shadow: 0 0.4rem 1.7rem transparentize($black, 0.8);
+}
+
+.isContentOverflowing .footer {
+  box-shadow: 0 -0.4rem 2.7rem transparentize($black, 0.8);
 }
