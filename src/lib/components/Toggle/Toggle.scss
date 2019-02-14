@@ -1,0 +1,144 @@
+@import '../../Theme/icons';
+@import '../../Theme/mixins';
+@import '../../Theme/variables';
+
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0 0.25rem 0 0;
+  margin-bottom: 1rem;
+}
+
+.inputWrap {
+  position: relative;
+}
+
+.input {
+  @include rui-toggle-input-styles(
+    $rui-checkbox-toggle-height,
+    $rui-checkbox-toggle-width,
+    $rui-checkbox-radio-top,
+    0
+  );
+}
+
+.toggle {
+  position: absolute;
+  top: ($rui-checkbox-radio-label-height - $rui-checkbox-radio-size) / 2;
+  left: 0;
+  display: inline-block;
+  width: $rui-checkbox-toggle-width / 2;
+  height: $rui-checkbox-toggle-height;
+  border: $rui-border-width solid $rui-checkbox-toggle-icon-color-border;
+  border-radius: $rui-border-radius;
+  background-color: $rui-checkbox-toggle-icon-color;
+  cursor: pointer;
+}
+
+.label {
+  @include rui-checkbox-radio-label-styles(
+    $rui-checkbox-toggle-label-height,
+    $rui-checkbox-toggle-padding-left,
+    $line-height: 2rem
+  );
+}
+
+.input + .label::before {
+  @include rui-toggle-inactive(
+    $rui-checkbox-toggle-height,
+    $rui-checkbox-toggle-width,
+    $rui-checkbox-radio-top,
+    0,
+    $rui-form-field-border-color
+  );
+
+  border-radius: $rui-border-radius;
+}
+
+.input + .label::after {
+  content: '';
+  position: absolute;
+  top: $rui-checkbox-toggle-height / 2;
+  left: ($rui-checkbox-toggle-width / 4) + 1.05rem;
+  width: $rui-checkbox-toggle-icon-size;
+  height: $rui-checkbox-toggle-icon-size;
+  background: generatecloseicon() no-repeat;
+}
+
+.input:disabled + .label {
+  @include rui-disabled-form-fields();
+
+  color: $rui-checkbox-disabled-font-color;
+}
+
+.input:disabled ~ .toggle {
+  @include rui-disabled-form-fields();
+}
+
+.input:checked ~ .toggle {
+  left: $rui-checkbox-toggle-width / 2;
+}
+
+/* stylelint-disable selector-max-specificity */
+.input:checked + .label::before {
+  background: $rui-checkbox-toggle-color-checked;
+}
+
+.input:checked + .label::after {
+  left: ($rui-checkbox-toggle-width / 2) - 0.95rem;
+  background-image: generatecheckmarkicon();
+}
+
+.input:focus + .label::before {
+  outline: 0;
+  box-shadow: $rui-radio-focused-box-shadow;
+}
+
+.input:indeterminate + .label::before {
+  border: $rui-border-width solid $rui-checkbox-border-color-indeterminate;
+}
+
+.input:indeterminate + .label::after {
+  display: inline-block;
+  border-bottom-color: $rui-checkbox-border-color-indeterminate;
+  border-left: 0;
+  transform: translate(0, ($rui-checkbox-checkmark-size / 2));
+}
+
+.input:focus:checked + .label::before {
+  outline: 0;
+}
+
+.input:disabled:checked + .label::before {
+  background-color: $rui-radio-disabled-background-color;
+}
+
+.input:required + .label .labelInner::after {
+  content: ' *';
+}
+
+.input:checked:disabled ~ .toggle {
+  @include rui-disabled-form-fields();
+}
+
+.input:checked:disabled + .label::before {
+  background-color: $rui-checkbox-disabled-background-color;
+}
+
+.input:checked:disabled + .label::after {
+  $disabled-border-style: ($rui-checkbox-radio-size / 8) solid $rui-checkbox-disabled-checkmark-color;
+}
+
+/* stylelint-enable */
+
+.description,
+.error {
+  font-size: 0.8rem;
+}
+
+.error {
+  min-height: 1rem;
+  color: $rui-input-invalid-color;
+}

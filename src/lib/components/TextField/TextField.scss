@@ -1,0 +1,69 @@
+@import '../../Theme/mixins';
+@import '../../Theme/variables';
+@import '../../Theme/root';
+
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0 0.25rem 0 0;
+  margin-bottom: 1rem;
+}
+
+.label {
+  display: inline-block;
+  margin-bottom: 0.25rem;
+}
+
+.isLabelRequired {
+  composes: label;
+
+  &::after {
+    content: ' *';
+  }
+}
+
+.isLabelHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.input {
+  @include rui-custom-inputs($rui-input-height);
+  @include rui-form-fields-appearance(100%, $rui-form-field-border-color);
+  @include rui-input-border-bottom-animation($rui-input-border-color);
+
+  display: block;
+  font-family: var(--font-family);
+}
+
+.input[readonly] {
+  border: 0;
+}
+
+.input:disabled {
+  @include rui-disabled-form-fields();
+}
+
+.isInputInvalid {
+  composes: input;
+  border-bottom: $rui-border-width solid $rui-input-invalid-color;
+  background: linear-gradient(to bottom, transparent 95%, $rui-input-invalid-color 95%);
+}
+
+.description,
+.error {
+  font-size: 0.8rem;
+}
+
+.error {
+  min-height: 1rem;
+  color: $rui-input-invalid-color;
+}
