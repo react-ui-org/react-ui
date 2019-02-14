@@ -1,36 +1,31 @@
 module.exports = {
   extends: [
-    'stylelint-config-visionapps',
-    'stylelint-config-visionapps-order',
+    '@visionappscz/stylelint-config-visionapps',
+    '@visionappscz/stylelint-config-visionapps-order',
+    'stylelint-config-css-modules',
   ],
   rules: {
     indentation: 2,
-    'property-no-unknown': [
-      true, {
-        ignoreProperties: ['composes'],
-      },
-    ],
     'at-rule-no-unknown': [
       true, {
         ignoreAtRules: [
-          'extend',
           'at-root',
-          'debug',
-          'warn',
-          'error',
-          'if',
-          'else',
-          'for',
-          'each',
-          'while',
-          'mixin',
-          'include',
           'content',
+          'debug',
+          'each',
+          'else',
+          'error',
+          'extend',
+          'for',
+          'function',
+          'if',
+          'include',
+          'mixin',
           'return',
-          'function'
+          'warn',
+          'while',
         ]
       }
     ],
-    'order/properties-alphabetical-order': null
-  }
+  },
 };

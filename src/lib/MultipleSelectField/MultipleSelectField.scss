@@ -76,21 +76,21 @@
   width: 100%;
   padding: 0;
   font-family: var(--font-family);
-  border: $rui-border-width solid  $rui-form-field-border-color;
+  border: $rui-border-width solid $rui-form-field-border-color;
   cursor: pointer;
-
-  &:disabled {
-    @include rui-disabled-form-fields();
-
-    &:hover {
-      border-color: $rui-form-field-border-color;
-      background: none;
-    }
-  }
 }
 
 .select::-ms-expand {
   display: none;
+}
+
+.select:disabled {
+  @include rui-disabled-form-fields();
+
+  &:hover {
+    border-color: $rui-form-field-border-color;
+    background: none;
+  }
 }
 
 .select > option {

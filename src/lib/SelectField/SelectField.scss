@@ -83,6 +83,10 @@
   font-family: var(--font-family);
   cursor: pointer;
 
+  &::-ms-expand {
+    display: none;
+  }
+
   &:hover,
   &:active {
     border-color: $rui-select-hover-background;
@@ -97,10 +101,6 @@
       background: none;
     }
   }
-}
-
-.select::-ms-expand {
-  display: none;
 }
 
 .select > option {
