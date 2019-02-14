@@ -57,7 +57,7 @@ $rui-outline-color-inverse: rgba(255, 255, 255, 0.09);
 $rui-outline-blur: 2px !default;
 $rui-outline-spread: 2px !default;
 
-$rui-form-field-border-color: $gray-dark-midtone !default;
+$rui-form-field-border-color: $gray !default;
 $rui-input-invalid-color: $red-dark !default;
 
 $rui-input-text-color: $black !default;
@@ -85,9 +85,18 @@ $rui-checkbox-radio-size: $rui-icon-size-sm;
 $rui-checkbox-radio-padding-left: $rui-checkbox-radio-size + 0.5rem;
 $rui-checkbox-disabled-background-color: $gray-light-midtone;
 $rui-checkbox-radio-top: ($rui-checkbox-radio-label-height - $rui-checkbox-radio-size) / 2;
+$rui-checkbox-toggle-width: 2.625rem;
+$rui-checkbox-toggle-height: 1.375rem;
+$rui-checkbox-toggle-label-height: $rui-checkbox-toggle-height;
+$rui-checkbox-toggle-icon-color-border: $gray;
+$rui-checkbox-toggle-icon-color: $white;
+$rui-checkbox-toggle-icon-size: 0.625rem;
+$rui-checkbox-toggle-color: $gray-light-midtone;
+$rui-checkbox-toggle-color-checked: $green;
+$rui-checkbox-toggle-padding-left: $rui-checkbox-toggle-width + 0.5rem;
 $rui-checkbox-checkmark-size: $rui-checkbox-radio-size / 2;
 $rui-checkbox-checkmark-color: $white;
-$rui-checkbox-checkmark-border-style: ($rui-checkbox-radio-size / 8) solid $white;
+$rui-checkbox-checkmark-border-style: $rui-border-width solid $gray;
 $rui-checkbox-border-color-indeterminate: $blue-light-midtone;
 $rui-checkbox-disabled-font-color: $gray-darker;
 $rui-form-field-disabled-color: $black;

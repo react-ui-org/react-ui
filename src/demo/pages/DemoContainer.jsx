@@ -16,6 +16,7 @@ import {
   TranslationProvider,
   TextField,
   TextArea,
+  Toggle,
 } from '../../lib';
 
 const logger = event => console.log(event.target.value); // eslint-disable-line no-console
@@ -201,6 +202,43 @@ class DemoContainer extends React.Component {
               description="Describe yourself"
               error="Use more then five words"
               value="I am who I am."
+            />
+          )}
+        />
+        <Documentation
+          name="Toggle"
+          component={(
+            <Toggle
+              fieldId="toggleField"
+              label="toggle"
+              changeHandler={logger}
+              required
+              description="Help text"
+            />
+          )}
+        />
+        <Documentation
+          name="Toggle checked"
+          component={(
+            <Toggle
+              fieldId="toggleChecked"
+              label="toggle checked"
+              checked
+              value="1"
+              changeHandler={logger}
+              error="This should not be checked"
+            />
+          )}
+        />
+        <Documentation
+          name="Toggle disabled"
+          component={(
+            <Toggle
+              fieldId="toggledDisabled"
+              label="toggle checked and disabled"
+              checked
+              disabled
+              changeHandler={logger}
             />
           )}
         />

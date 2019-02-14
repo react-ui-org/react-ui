@@ -8,4 +8,20 @@ $svg_data: 'data:image/svg+xml;charset=utf8';
 
   @return url('#{$svg_data},#{$caret-icon}');
 }
+
+@function generatecheckmarkicon($fillColor: #ffffff) {
+  $checkmark-icon: '%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2012.17%2010.11%22%3E%0A%20%20%3Cpath%0A%20%20%20%20d%3D%22M.07%2C6.19a.26.26%2C0%2C0%2C1%2C0-.35L1.84%2C4.07a.26.26%2C0%2C0%2C1%2C.35%2C0L3.91%2C5.79a.26.26%2C0%2C0%2C0%2C.35%2C0L10%2C.07a.27.27%2C0%2C0%2C1%2C.36%2C0L12.1%2C1.84a.26.26%2C0%2C0%2C1%2C0%2C.35L4.27%2C10a.25.25%2C0%2C0%2C1-.36%2C0Z%22%0A%20%20%20%20style%3D%22fill%3A%23'
+    + str-slice($fillColor + '', 2)
+    + '%22%0A%20%20%2F%3E%0A%3C%2Fsvg%3E%0A';
+
+  @return url('#{$svg_data},#{$checkmark-icon}');
+}
+
+@function generatecloseicon($fillColor: #ffffff) {
+  $close-icon: '%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%209.8%209.8%22%3E%0A%20%20%3Cpath%0A%20%20%20%20d%3D%22M9.72%2C7.93%2C7.94%2C9.72a.25.25%2C0%2C0%2C1-.36%2C0L4.9%2C7%2C2.22%2C9.72a.25.25%2C0%2C0%2C1-.36%2C0L.07%2C7.93a.26.26%2C0%2C0%2C1%2C0-.35L2.75%2C4.9.07%2C2.22a.27.27%2C0%2C0%2C1%2C0-.36L1.86.07a.27.27%2C0%2C0%2C1%2C.36%2C0L4.9%2C2.75%2C7.58.07a.26.26%2C0%2C0%2C1%2C.35%2C0L9.72%2C1.86a.25.25%2C0%2C0%2C1%2C0%2C.36L7%2C4.9%2C9.72%2C7.58A.24.24%2C0%2C0%2C1%2C9.72%2C7.93Z%22%0A%20%20%20%20style%3D%22fill%3A%23'
+    + str-slice($fillColor + '', 2)
+    + '%22%0A%20%20%2F%3E%0A%3C%2Fsvg%3E%0A';
+
+  @return url('#{$svg_data},#{$close-icon}');
+}
 /* stylelint-enable */

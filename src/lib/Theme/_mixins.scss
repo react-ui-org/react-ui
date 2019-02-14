@@ -55,6 +55,18 @@
   border: $rui-border-width solid $border-color;
 }
 
+@mixin rui-toggle-inactive($height, $width, $top, $left, $border-color) {
+  content: '';
+  position: absolute;
+  top: $top;
+  left: $left;
+  display: inline-block;
+  width: $width;
+  height: $height;
+  border: $rui-border-width solid $border-color;
+  background-color: $gray-light-midtone;
+}
+
 @mixin rui-checkbox-radio-input-styles($size, $top, $left) {
   position: absolute;
   top: $top;
@@ -62,6 +74,15 @@
   opacity: 0;
   width: $size;
   height: $size;
+}
+
+@mixin rui-toggle-input-styles($height, $width, $top, $left) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  opacity: 0;
+  width: $width;
+  height: $height;
 }
 
 @mixin rui-checkbox-radio-label-styles($min-height, $padding-left, $line-height: 1rem) {

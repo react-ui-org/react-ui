@@ -13,4 +13,5 @@ export { default as SelectField } from './SelectField';
 export { default as Table } from './Table';
 export { default as TextArea } from './TextArea';
 export { default as TextField } from './TextField';
+export { default as Toggle } from './Toggle';
 export { TranslationProvider } from './Translation/index';
