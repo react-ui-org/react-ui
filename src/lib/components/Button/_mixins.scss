@@ -1,8 +1,10 @@
+@import '../../shared/settings/borders';
+@import '../../shared/settings/typography';
 @import 'maps';
 @import 'variables';
 
-@mixin rui-generate-button-sizes($button-size: medium, $button-size-map: $rui-button-size-map) {
-  $button-size-map: map-get($rui-button-size-map, $button-size);
+@mixin generate-button-sizes($button-size: medium, $button-size-map: $button-size-map) {
+  $button-size-map: map-get($button-size-map, $button-size);
 
   height: map-get($button-size-map, height);
   padding: map-get($button-size-map, padding);
@@ -12,22 +14,22 @@
   letter-spacing: map-get($button-size-map, letter-spacing);
 }
 
-@mixin rui-generate-button() {
+@mixin generate-button() {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-width: 3rem;
   max-width: 15rem;
   overflow: hidden;
-  font-family: var(--font-family);
+  font-family: $typography-font-family-base;
   text-align: center;
   text-overflow: ellipsis;
   text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
   vertical-align: middle;
-  border: $rui-border-width solid;
-  border-radius: $rui-border-radius;
+  border: $border-width solid;
+  border-radius: $border-radius;
   cursor: pointer;
 
   &:hover,
@@ -36,8 +38,8 @@
   }
 }
 
-@mixin rui-generate-button-priority-variant(
-  $button-type: default, $button-global-map: $rui-global-button-properties-map) {
+@mixin generate-button-priority-variant(
+  $button-type: default, $button-global-map: $global-button-properties-map) {
   $button-property-map: map-get($button-global-map, $button-type);
 
   color: map-get($button-property-map, color);

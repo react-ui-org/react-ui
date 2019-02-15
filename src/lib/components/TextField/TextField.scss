@@ -1,5 +1,7 @@
-@import '../../Theme/mixins';
-@import '../../Theme/variables';
+@import '../../shared/settings/borders';
+@import '../../shared/settings/forms.deprecated';
+@import '../../shared/settings/typography';
+@import '../../shared/tools/forms';
 
 .root {
   position: relative;
@@ -35,12 +37,12 @@
 }
 
 .input {
-  @include rui-custom-inputs($rui-input-height);
-  @include rui-form-fields-appearance(100%, $rui-form-field-border-color);
-  @include rui-input-border-bottom-animation($rui-input-border-color);
+  @include form-custom-inputs($form-field-height);
+  @include form-field-base(100%, $form-field-border-color);
+  @include form-border-bottom-animation($form-field-border-color);
 
   display: block;
-  font-family: var(--font-family);
+  font-family: $typography-font-family-base;
 }
 
 .input[readonly] {
@@ -48,13 +50,13 @@
 }
 
 .input:disabled {
-  @include rui-disabled-form-fields();
+  @include form-disabled-state();
 }
 
 .isInputInvalid {
   composes: input;
-  border-bottom: $rui-border-width solid $rui-input-invalid-color;
-  background: linear-gradient(to bottom, transparent 95%, $rui-input-invalid-color 95%);
+  border-bottom: $border-width solid $form-invalid-color;
+  background: linear-gradient(to bottom, transparent 95%, $form-invalid-color 95%);
 }
 
 .description,
@@ -64,5 +66,5 @@
 
 .error {
   min-height: 1rem;
-  color: $rui-input-invalid-color;
+  color: $form-invalid-color;
 }

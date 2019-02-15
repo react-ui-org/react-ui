@@ -1,29 +1,29 @@
 @import 'mixins';
 
 .root {
-  @include rui-login-root();
+  @include login-root();
 }
 
 .logoWrap {
-  @include rui-login-logo-wrap();
+  @include login-logo-wrap();
 }
 
 .logo {
-  @include rui-login-logo();
+  @include login-logo();
 }
 
 .title {
-  @include rui-login-title();
+  @include login-title();
 }
 
 .box {
-  @include rui-login-box();
+  @include login-box();
 }
 
 .error {
-  @include rui-login-error();
+  @include login-error();
 }
 
 .footer {
-  @include rui-login-footer();
+  @include login-footer();
 }

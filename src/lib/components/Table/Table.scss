@@ -1,4 +1,4 @@
-@import '../../Theme/variables';
+@import 'variables';
 
 .tableWrapper {
   display: block;
@@ -15,26 +15,26 @@
 }
 
 .tableRow {
-  background-color: $rui-table-background-color;
+  background-color: $table-background-color;
 
   &:hover {
-    background-color: $rui-table-hover-background-color;
+    background-color: $table-hover-background-color;
   }
 }
 
 .tableHeadRow {
   composes: tableRow;
-  background-color: $rui-table-head-background-color;
+  background-color: $table-head-background-color;
 
   &:hover {
-    background-color: $rui-table-head-background-color;
+    background-color: $table-head-background-color;
   }
 }
 
 .tableCell {
-  padding: $rui-table-cell-padding-y $rui-table-cell-padding-x;
+  padding: $table-cell-padding-y $table-cell-padding-x;
   text-align: left;
-  border-bottom: 1px solid $rui-table-border-color;
+  border-bottom: 1px solid $table-border-color;
 }
 
 .tableHeadCell {
@@ -45,7 +45,7 @@
 
 .isTableCellSortingActive,
 .isTableHeadCellSortingActive {
-  background-color: $rui-table-sorted-background-color;
+  background-color: $table-sorted-background-color;
 }
 
 .isTableCellSortingActive {
@@ -58,5 +58,5 @@
 
 .sortButton {
   display: inline-block;
-  margin-right: $rui-table-cell-padding-x;
+  margin-right: $table-cell-padding-x;
 }

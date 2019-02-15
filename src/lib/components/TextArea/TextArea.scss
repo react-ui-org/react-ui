@@ -1,5 +1,7 @@
-@import '../../Theme/mixins';
-@import '../../Theme/variables';
+@import '../../shared/settings/borders';
+@import '../../shared/settings/forms.deprecated';
+@import '../../shared/settings/typography';
+@import '../../shared/tools/forms';
 
 .root {
   position: relative;
@@ -28,25 +30,25 @@
   box-sizing: border-box;
   width: 100%;
   padding: 0.25rem;
-  font-family: var(--font-family);
-  color: $rui-textarea-text-color;
-  border: $rui-border-width solid $rui-textarea-border-color;
-  border-radius: $rui-border-radius;
-  background: $rui-textarea-bg-color;
+  font-family: $typography-font-family-base;
+  color: $textarea-text-color;
+  border: $border-width solid $textarea-border-color;
+  border-radius: $border-radius;
+  background: $textarea-background-color;
   resize: vertical;
 
   &:focus {
-    @include rui-include-outline-style-form-fields();
+    @include form-outline();
   }
 
   &:disabled {
-    @include rui-disabled-form-fields();
+    @include form-disabled-state();
   }
 }
 
 .isInputInvalid {
   composes: input;
-  border-color: $rui-textarea-invalid-border-color;
+  border-color: $textarea-invalid-border-color;
 }
 
 .description,
@@ -56,5 +58,5 @@
 
 .error {
   min-height: 1rem;
-  color: $rui-input-invalid-color;
+  color: $form-invalid-color;
 }

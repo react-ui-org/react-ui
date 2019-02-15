@@ -1,6 +1,8 @@
-@import '../../Theme/icons';
-@import '../../Theme/mixins';
-@import '../../Theme/variables';
+@import '../../shared/settings/borders';
+@import '../../shared/settings/forms.deprecated';
+@import '../../shared/settings/typography';
+@import '../../shared/tools/forms';
+@import '../../shared/tools/icons';
 
 .root {
   position: relative;
@@ -13,23 +15,23 @@
   &::after {
     content: '';
     position: absolute;
-    top: 2rem + ($rui-input-height - ($rui-dropdown-caret-icon-dimension / 2)) / 2;
+    top: 2rem + ($form-field-height - ($select-dropdown-caret-icon-size / 2)) / 2;
     right: 0.5rem;
-    width: $rui-dropdown-caret-icon-dimension;
-    height: $rui-dropdown-caret-icon-dimension;
+    width: $select-dropdown-caret-icon-size;
+    height: $select-dropdown-caret-icon-size;
     margin: 0;
     vertical-align: middle;
-    background-image: generatecareticon($rui-select-after-color);
+    background-image: icon-generate-caret($select-after-color);
     background-size: contain;
     background-repeat: no-repeat;
   }
 }
 
 .isRootDisabled {
-  @include rui-disabled-form-fields();
+  @include form-disabled-state();
 
   &:hover::after {
-    color: $rui-select-after-color;
+    color: $select-after-color;
   }
 }
 
@@ -37,7 +39,7 @@
   composes: root;
 
   &::after {
-    top: 0.25rem + ($rui-input-height - ($rui-dropdown-caret-icon-dimension / 2)) / 2;
+    top: 0.25rem + ($form-field-height - ($select-dropdown-caret-icon-size / 2)) / 2;
   }
 }
 
@@ -66,16 +68,16 @@
 }
 
 .select {
-  @include rui-custom-inputs(auto);
-  @include rui-form-fields-appearance(2.5rem, $rui-form-field-border-color);
+  @include form-custom-inputs(auto);
+  @include form-field-base(2.5rem, $form-field-border-color);
 
   position: relative;
   z-index: 2;
   box-sizing: border-box;
   width: 100%;
   padding: 0;
-  font-family: var(--font-family);
-  border: $rui-border-width solid $rui-form-field-border-color;
+  font-family: $typography-font-family-base;
+  border: $border-width solid $form-field-border-color;
   cursor: pointer;
 }
 
@@ -84,22 +86,22 @@
 }
 
 .select:disabled {
-  @include rui-disabled-form-fields();
+  @include form-disabled-state();
 
   &:hover {
-    border-color: $rui-form-field-border-color;
+    border-color: $form-field-border-color;
     background: none;
   }
 }
 
 .select > option {
-  color: $rui-select-option-font-color;
+  color: $select-option-text-color;
 }
 
 .isSelectInvalid {
   composes: select;
-  border: $rui-border-width solid $rui-input-invalid-color;
-  background: linear-gradient(to bottom, transparent 95%, $rui-input-invalid-color 95%);
+  border: $border-width solid $form-invalid-color;
+  background: linear-gradient(to bottom, transparent 95%, $form-invalid-color 95%);
 }
 
 .description,
@@ -109,5 +111,5 @@
 
 .error {
   min-height: 1rem;
-  color: $rui-input-invalid-color;
+  color: $form-invalid-color;
 }

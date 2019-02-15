@@ -1,5 +1,5 @@
-@import '../../core/settings/colors';
-@import '../../core/tools/spacing';
+@import '../../shared/settings/colors';
+@import '../../shared/tools/spacing';
 
 .root {
   padding: spacing(1);
@@ -12,7 +12,7 @@
 }
 
 .sandbox {
-  padding: 1.5rem;
+  padding: spacing(1);
   border: 2px dashed map-get($colors-grays, gray-400);
   background-color: $color-white;
 }

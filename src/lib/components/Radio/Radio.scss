@@ -1,5 +1,5 @@
-@import '../../Theme/mixins';
-@import '../../Theme/variables';
+@import '../../shared/settings/forms.deprecated';
+@import '../../shared/tools/forms';
 
 .root {
   position: relative;
@@ -43,11 +43,11 @@
 }
 
 .input {
-  @include rui-checkbox-radio-input-styles($rui-checkbox-radio-size, $rui-checkbox-radio-top, 0);
+  @include form-checkbox-radio-input-styles($checkbox-radio-size, $checkbox-radio-top, 0);
 }
 
 .radioLabel {
-  @include rui-checkbox-radio-label-styles($rui-checkbox-radio-label-height, $rui-checkbox-radio-padding-left);
+  @include form-checkbox-radio-label-styles($checkbox-radio-label-height, $checkbox-radio-padding-left);
 }
 
 .radioLabel:empty {
@@ -55,41 +55,41 @@
 }
 
 .input + .radioLabel::before {
-  @include rui-checkbox-radio-shared-inactive(
-    $rui-checkbox-radio-size,
-    $rui-checkbox-radio-top,
+  @include form-checkbox-radio-shared-inactive(
+    $checkbox-radio-size,
+    $checkbox-radio-top,
     0,
-    $rui-form-field-border-color
+    $form-field-border-color
   );
 
   border-radius: 50%;
 }
 
 .input:disabled + .radioLabel {
-  @include rui-disabled-form-fields();
+  @include form-disabled-state();
 
-  color: $rui-radio-disabled-font-color;
+  color: $radio-disabled-font-color;
 }
 
 /* stylelint-disable selector-max-specificity */
 .input:checked + .radioLabel::before {
   border: 0;
-  box-shadow: $rui-radio-checked-box-shadow;
+  box-shadow: $radio-checked-box-shadow;
 }
 
 .input:focus + .radioLabel::before {
   outline: 0;
-  box-shadow: $rui-radio-focused-box-shadow;
+  box-shadow: $radio-focused-box-shadow;
 }
 
 .input:focus:checked + .radioLabel::before {
   outline: 0;
-  box-shadow: $rui-radio-checked-box-shadow, $rui-radio-focused-box-shadow;
+  box-shadow: $radio-checked-box-shadow, $radio-focused-box-shadow;
 }
 
 .input:disabled:checked + .radioLabel::before {
-  background-color: $rui-radio-disabled-background-color;
-  box-shadow: $rui-radio-disabled-checked-box-shadow;
+  background-color: $radio-disabled-background-color;
+  box-shadow: $radio-disabled-checked-box-shadow;
 }
 /* stylelint-enable */
 
@@ -102,5 +102,5 @@
   position: absolute;
   bottom: 0.5rem;
   left: 0.25rem;
-  color: $rui-input-invalid-color;
+  color: $form-invalid-color;
 }

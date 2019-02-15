@@ -1,19 +1,21 @@
+// Basic themeable CSS layer to prepare ground for components.
+// Structured according to ITCSS methodology, ie. in ascending specificity.
+
 // 1. SCSS settings
 // Global variables, config switches. Not producing any CSS.
 // Assignments of CSS custom properties can only happen here.
-@import "settings/breakpoints";
-@import "settings/colors";
-@import "settings/page";
+@import "../shared/settings/breakpoints";
+@import "../shared/settings/colors";
+@import "../shared/settings/page";
 
 // 2. SCSS tools
 // Default mixins and functions. Still not producing any CSS.
-@import "tools/breakpoints";
-@import "tools/spacing";
+@import "../shared/tools/spacing";
 
 // 3. Theme
 // Default styling exposed via CSS custom properties.
 // Definition of CSS custom properties can only happen here.
-@import "theme/default";
+@import "themes/default";
 
 // 4. Generic
 // Ground-zero styles.

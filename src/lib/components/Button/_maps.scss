@@ -1,138 +1,138 @@
 @import 'variables';
 
-$rui-button-size-map: (
+$button-size-map: (
   small: (
     line-height: 1,
     letter-spacing: 0.073em,
-    font-size: $rui-button-font-size-small,
+    font-size: $button-font-size-small,
     font-weight: 500,
-    height: $rui-button-height-small,
-    padding: $rui-button-padding
+    height: $button-height-small,
+    padding: $button-padding
   ),
   medium: (
     line-height: 1,
     letter-spacing: 0.073em,
-    font-size: $rui-button-font-size,
+    font-size: $button-font-size,
     font-weight: 500,
-    height: $rui-button-height,
-    padding: $rui-button-padding
+    height: $button-height,
+    padding: $button-padding
   ),
   large: (
     line-height: 1,
     letter-spacing: 0.073em,
-    font-size: $rui-button-font-size-large,
+    font-size: $button-font-size-large,
     font-weight: 500,
-    height: $rui-button-height-large,
-    padding: $rui-button-padding-large
+    height: $button-height-large,
+    padding: $button-padding-large
   )
 );
 
-$rui-global-button-properties-map: (
+$global-button-properties-map: (
   default: (
-    color: $rui-btn-default-color,
-    border-color: $rui-btn-default-border-color,
-    background-color: $rui-btn-default-background-color,
-    hover-background-color: $rui-btn-default-hover-background-color,
-    hover-color: $rui-btn-default-hover-color,
-    active-box-shadow-color: $rui-btn-default-box-shadow-color,
+    color: $btn-default-color,
+    border-color: $btn-default-border-color,
+    background-color: $btn-default-background-color,
+    hover-background-color: $btn-default-hover-background-color,
+    hover-color: $btn-default-hover-color,
+    active-box-shadow-color: $btn-default-box-shadow-color,
     active-box-shadow-width-top: 2px,
-    disabled-color: $rui-btn-default-disabled-color,
-    disabled-background-color: $rui-btn-default-background-color,
-    disabled-border-color: $rui-btn-default-disabled-border-color
+    disabled-color: $btn-default-disabled-color,
+    disabled-background-color: $btn-default-background-color,
+    disabled-border-color: $btn-default-disabled-border-color
   ),
   primary: (
-    background-color: $rui-btn-primary-background-color,
-    border-color: $rui-btn-primary-border-color,
-    color: $rui-btn-primary-color,
-    hover-background-color: $rui-btn-primary-hover-background-color,
-    hover-color: $rui-btn-primary-hover-color,
-    active-box-shadow-color: $rui-btn-primary-box-shadow-color,
+    background-color: $btn-primary-background-color,
+    border-color: $btn-primary-border-color,
+    color: $btn-primary-color,
+    hover-background-color: $btn-primary-hover-background-color,
+    hover-color: $btn-primary-hover-color,
+    active-box-shadow-color: $btn-primary-box-shadow-color,
     active-box-shadow-width-top: 1px,
-    disabled-color: $rui-btn-primary-disabled-color,
-    disabled-background-color: $rui-btn-primary-disabled-background-color,
-    disabled-border-color: $rui-btn-primary-disabled-border-color
+    disabled-color: $btn-primary-disabled-color,
+    disabled-background-color: $btn-primary-disabled-background-color,
+    disabled-border-color: $btn-primary-disabled-border-color
   ),
   flat: (
     background-color: transparent,
     border-color: transparent,
-    color: $rui-btn-flat-color,
+    color: $btn-flat-color,
     hover-background-color: transparent,
-    hover-color: $rui-btn-flat-hover-color,
+    hover-color: $btn-flat-hover-color,
     active-box-shadow-color: transparent,
     active-box-shadow-width-top: 0,
-    disabled-color: $rui-btn-flat-disabled-color,
+    disabled-color: $btn-flat-disabled-color,
     disabled-background-color: transparent,
     disabled-border-color: transparent
   ),
   success: (
     background-color: transparent,
-    border-color: $rui-btn-success-border-color,
-    color: $rui-btn-success-color,
-    hover-background-color: $rui-btn-success-hover-background-color,
-    hover-color: $rui-btn-success-hover-color,
-    active-box-shadow-color: $rui-btn-success-box-shadow-color,
+    border-color: $btn-success-border-color,
+    color: $btn-success-color,
+    hover-background-color: $btn-success-hover-background-color,
+    hover-color: $btn-success-hover-color,
+    active-box-shadow-color: $btn-success-box-shadow-color,
     active-box-shadow-width-top: 1px,
-    disabled-color: $rui-btn-success-disabled-color,
-    disabled-background-color: $rui-btn-success-disabled-background-color,
-    disabled-border-color: $rui-btn-success-disabled-border-color
+    disabled-color: $btn-success-disabled-color,
+    disabled-background-color: $btn-success-disabled-background-color,
+    disabled-border-color: $btn-success-disabled-border-color
   ),
   success-primary: (
-    background-color: $rui-btn-success-primary-background-color,
-    border-color: $rui-btn-success-primary-background-color,
-    color: $rui-btn-success-primary-color,
-    hover-background-color: $rui-btn-success-primary-hover-background-color,
-    hover-color: $rui-btn-success-primary-hover-color,
-    active-box-shadow-color: $rui-btn-success-primary-box-shadow-color,
+    background-color: $btn-success-primary-background-color,
+    border-color: $btn-success-primary-background-color,
+    color: $btn-success-primary-color,
+    hover-background-color: $btn-success-primary-hover-background-color,
+    hover-color: $btn-success-primary-hover-color,
+    active-box-shadow-color: $btn-success-primary-box-shadow-color,
     active-box-shadow-width-top: 2px,
-    disabled-color: $rui-btn-success-primary-disabled-color,
-    disabled-background-color: $rui-btn-success-primary-disabled-background-color,
-    disabled-border-color: $rui-btn-success-primary-disabled-border-color
+    disabled-color: $btn-success-primary-disabled-color,
+    disabled-background-color: $btn-success-primary-disabled-background-color,
+    disabled-border-color: $btn-success-primary-disabled-border-color
   ),
   success-flat: (
     background-color: transparent,
     border-color: transparent,
-    color: $rui-btn-success-flat-color,
+    color: $btn-success-flat-color,
     hover-background-color: transparent,
-    hover-color: $rui-btn-success-flat-hover-color,
+    hover-color: $btn-success-flat-hover-color,
     active-box-shadow-color: transparent,
     active-box-shadow-width-top: 0,
-    disabled-color: $rui-btn-success-flat-disabled-color,
+    disabled-color: $btn-success-flat-disabled-color,
     disabled-background-color: transparent,
     disabled-border-color: transparent
   ),
   warning: (
     background-color: transparent,
-    border-color: $rui-btn-warning-border-color,
-    color: $rui-btn-warning-color,
-    hover-background-color: $rui-btn-warning-hover-background-color,
-    hover-color: $rui-btn-warning-hover-color,
-    active-box-shadow-color: $rui-btn-warning-box-shadow-color,
+    border-color: $btn-warning-border-color,
+    color: $btn-warning-color,
+    hover-background-color: $btn-warning-hover-background-color,
+    hover-color: $btn-warning-hover-color,
+    active-box-shadow-color: $btn-warning-box-shadow-color,
     active-box-shadow-width-top: 1px,
-    disabled-color: $rui-btn-warning-disabled-color,
-    disabled-background-color: $rui-btn-warning-disabled-background-color,
-    disabled-border-color: $rui-btn-warning-disabled-border-color
+    disabled-color: $btn-warning-disabled-color,
+    disabled-background-color: $btn-warning-disabled-background-color,
+    disabled-border-color: $btn-warning-disabled-border-color
   ),
   warning-primary: (
-    background-color: $rui-btn-warning-primary-background-color,
-    border-color: $rui-btn-warning-primary-background-color,
-    color: $rui-btn-warning-primary-color,
-    hover-background-color: $rui-btn-warning-primary-hover-background-color,
-    hover-color: $rui-btn-warning-primary-hover-color,
-    active-box-shadow-color: $rui-btn-warning-primary-box-shadow-color,
+    background-color: $btn-warning-primary-background-color,
+    border-color: $btn-warning-primary-background-color,
+    color: $btn-warning-primary-color,
+    hover-background-color: $btn-warning-primary-hover-background-color,
+    hover-color: $btn-warning-primary-hover-color,
+    active-box-shadow-color: $btn-warning-primary-box-shadow-color,
     active-box-shadow-width-top: 2px,
-    disabled-color: $rui-btn-warning-primary-disabled-color,
-    disabled-background-color: $rui-btn-warning-primary-disabled-background-color,
-    disabled-border-color: $rui-btn-warning-primary-disabled-background-color
+    disabled-color: $btn-warning-primary-disabled-color,
+    disabled-background-color: $btn-warning-primary-disabled-background-color,
+    disabled-border-color: $btn-warning-primary-disabled-background-color
   ),
   warning-flat: (
     background-color: transparent,
     border-color: transparent,
-    color: $rui-btn-warning-flat-color,
+    color: $btn-warning-flat-color,
     hover-background-color: transparent,
-    hover-color: $rui-btn-warning-flat-hover-color,
+    hover-color: $btn-warning-flat-hover-color,
     active-box-shadow-color: transparent,
     active-box-shadow-width-top: 0,
-    disabled-color: $rui-btn-warning-flat-disabled-color,
+    disabled-color: $btn-warning-flat-disabled-color,
     disabled-background-color: transparent,
     disabled-border-color: transparent
   ),
@@ -149,26 +149,26 @@ $rui-global-button-properties-map: (
     disabled-border-color: $clr-btn-danger-disabled-color
   ),
   danger-primary: (
-    background-color: $rui-btn-danger-primary-background-color,
-    border-color: $rui-btn-danger-primary-background-color,
-    color: $rui-btn-danger-primary-color,
-    hover-background-color: $rui-btn-danger-primary-hover-background-color,
-    hover-color: $rui-btn-danger-primary-hover-color,
-    active-box-shadow-color: $rui-btn-danger-primary-box-shadow-color,
+    background-color: $btn-danger-primary-background-color,
+    border-color: $btn-danger-primary-background-color,
+    color: $btn-danger-primary-color,
+    hover-background-color: $btn-danger-primary-hover-background-color,
+    hover-color: $btn-danger-primary-hover-color,
+    active-box-shadow-color: $btn-danger-primary-box-shadow-color,
     active-box-shadow-width-top: 2px,
-    disabled-color: $rui-btn-danger-primary-disabled-color,
-    disabled-background-color: $rui-btn-danger-primary-disabled-background-color,
-    disabled-border-color: $rui-btn-danger-primary-disabled-background-color
+    disabled-color: $btn-danger-primary-disabled-color,
+    disabled-background-color: $btn-danger-primary-disabled-background-color,
+    disabled-border-color: $btn-danger-primary-disabled-background-color
   ),
   danger-flat: (
     background-color: transparent,
     border-color: transparent,
-    color: $rui-btn-danger-flat-color,
+    color: $btn-danger-flat-color,
     hover-background-color: transparent,
-    hover-color: $rui-btn-danger-flat-hover-color,
+    hover-color: $btn-danger-flat-hover-color,
     active-box-shadow-color: transparent,
     active-box-shadow-width-top: 0,
-    disabled-color: $rui-btn-danger-flat-disabled-color,
+    disabled-color: $btn-danger-flat-disabled-color,
     disabled-background-color: transparent,
     disabled-border-color: transparent
   ),

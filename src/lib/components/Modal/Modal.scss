@@ -1,5 +1,5 @@
-@import '../../Theme/mixins';
-@import '../../Theme/variables';
+@import '../../shared/settings/colors.deprecated';
+@import './variables';
 
 .overlay {
   position: fixed;
@@ -19,10 +19,10 @@
   display: flex;
   flex-direction: column;
   width: 46.875rem;
-  max-width: calc(100% - (2 * #{$rui-modal-offset-x}));
-  max-height: calc(100% - (2 * #{$rui-modal-offset-x}));
+  max-width: calc(100% - (2 * #{$modal-offset-x}));
+  max-height: calc(100% - (2 * #{$modal-offset-x}));
   overflow-y: auto;
-  border-radius: $rui-modal-border-radius;
+  border-radius: $modal-border-radius;
   background-color: $white;
   box-shadow: 0 0 0.312rem 0 transparentize($black, 0.5);
   transform: translate(-50%, -50%);
@@ -34,11 +34,11 @@
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: $rui-modal-offset-y 0 $rui-modal-offset-y $rui-modal-offset-x;
+  padding: $modal-offset-y 0 $modal-offset-y $modal-offset-x;
 }
 
 .body {
-  padding: $rui-modal-offset-y $rui-modal-offset-x;
+  padding: $modal-offset-y $modal-offset-x;
   overflow-y: auto;
 }
 
@@ -53,9 +53,9 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  padding: $rui-modal-offset-y $rui-modal-offset-x;
-  border-bottom-right-radius: $rui-modal-border-radius;
-  border-bottom-left-radius: $rui-modal-border-radius;
+  padding: $modal-offset-y $modal-offset-x;
+  border-bottom-right-radius: $modal-border-radius;
+  border-bottom-left-radius: $modal-border-radius;
   background-color: $gray-light-midtone;
 }
 

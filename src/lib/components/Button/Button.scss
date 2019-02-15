@@ -1,70 +1,68 @@
-@import '../../Theme/mixins';
-@import '../../Theme/variables';
 @import 'mixins';
 @import 'variables';
 
 .root {
-  @include rui-generate-button();
+  @include generate-button();
 }
 
 .priorityDefault {
-  @include rui-generate-button-priority-variant(default);
+  @include generate-button-priority-variant(default);
 }
 
 .priorityPrimary {
-  @include rui-generate-button-priority-variant(primary);
+  @include generate-button-priority-variant(primary);
 }
 
 .priorityFlat {
-  @include rui-generate-button-priority-variant(flat);
+  @include generate-button-priority-variant(flat);
 }
 
 .priorityDefault.variantSuccess {
-  @include rui-generate-button-priority-variant(success);
+  @include generate-button-priority-variant(success);
 }
 
 .priorityPrimary.variantSuccess {
-  @include rui-generate-button-priority-variant(success-primary);
+  @include generate-button-priority-variant(success-primary);
 }
 
 .priorityFlat.variantSuccess {
-  @include rui-generate-button-priority-variant(success-flat);
+  @include generate-button-priority-variant(success-flat);
 }
 
 .priorityDefault.variantWarning {
-  @include rui-generate-button-priority-variant(warning);
+  @include generate-button-priority-variant(warning);
 }
 
 .priorityPrimary.variantWarning {
-  @include rui-generate-button-priority-variant(warning-primary);
+  @include generate-button-priority-variant(warning-primary);
 }
 
 .priorityFlat.variantWarning {
-  @include rui-generate-button-priority-variant(warning-flat);
+  @include generate-button-priority-variant(warning-flat);
 }
 
 .priorityDefault.variantDanger {
-  @include rui-generate-button-priority-variant(danger);
+  @include generate-button-priority-variant(danger);
 }
 
 .priorityPrimary.variantDanger {
-  @include rui-generate-button-priority-variant(danger-primary);
+  @include generate-button-priority-variant(danger-primary);
 }
 
 .priorityFlat.variantDanger {
-  @include rui-generate-button-priority-variant(danger-flat);
+  @include generate-button-priority-variant(danger-flat);
 }
 
 .sizeMedium {
-  @include rui-generate-button-sizes(medium);
+  @include generate-button-sizes(medium);
 }
 
 .sizeSmall {
-  @include rui-generate-button-sizes(small);
+  @include generate-button-sizes(small);
 }
 
 .sizeLarge {
-  @include rui-generate-button-sizes(large);
+  @include generate-button-sizes(large);
 }
 
 .block {
@@ -81,12 +79,12 @@
 
 .iconBefore {
   composes: icon;
-  margin-right: $rui-button-margin-horizontal;
+  margin-right: $button-margin-horizontal;
 }
 
 .iconAfter {
   composes: icon;
-  margin-left: $rui-button-margin-horizontal;
+  margin-left: $button-margin-horizontal;
 }
 
 .iconPositionBefore {
