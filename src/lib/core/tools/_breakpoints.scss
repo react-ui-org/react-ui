@@ -1,0 +1,13 @@
+@import "../settings/breakpoints";
+
+@mixin breakpoint-up($breakpoint) {
+  @if (not map-has-key($breakpoint-values, $breakpoint)) or $breakpoint == 'xs' {
+    @content;
+  }
+
+  @else {
+    @media (min-width: map-get($breakpoint-values, $breakpoint)) {
+      @content;
+    }
+  }
+}

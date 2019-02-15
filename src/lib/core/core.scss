@@ -1,0 +1,20 @@
+// 1. Settings
+// Global variables, config switches. Not producing any CSS.
+@import "settings/breakpoints";
+@import "settings/colors";
+
+// 2. Tools
+// Default mixins and functions. Still not producing any CSS.
+@import "tools/breakpoints";
+@import "tools/spacing";
+
+// 3. Generic
+// Ground-zero styles.
+@import "generic/box-sizing";
+@import "../../../node_modules/normalize.css/normalize.css";
+@import "generic/reset";
+@import "generic/shared";
+
+// 4. Elements
+// Unclassed HTML elements (type selectors).
+@import "elements/page";
