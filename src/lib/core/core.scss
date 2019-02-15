@@ -1,20 +1,27 @@
-// 1. Settings
+// 1. SCSS settings
 // Global variables, config switches. Not producing any CSS.
+// Assignments of CSS custom properties can only happen here.
 @import "settings/breakpoints";
 @import "settings/colors";
+@import "settings/page";
 
-// 2. Tools
+// 2. SCSS tools
 // Default mixins and functions. Still not producing any CSS.
 @import "tools/breakpoints";
 @import "tools/spacing";
 
-// 3. Generic
+// 3. Theme
+// Default styling exposed via CSS custom properties.
+// Definition of CSS custom properties can only happen here.
+@import "theme/default";
+
+// 4. Generic
 // Ground-zero styles.
 @import "generic/box-sizing";
 @import "../../../node_modules/normalize.css/normalize.css";
 @import "generic/reset";
 @import "generic/shared";
 
-// 4. Elements
+// 5. Elements
 // Unclassed HTML elements (type selectors).
 @import "elements/page";

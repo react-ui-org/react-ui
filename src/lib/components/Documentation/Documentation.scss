@@ -1,12 +1,10 @@
-@import '../../Theme/variables';
+@import '../../core/settings/colors';
+@import '../../core/tools/spacing';
 
 .root {
-  padding: 1.5rem;
-  background-color: $light-gray;
-}
-
-.root:not(:last-of-type) {
-  margin-bottom: 1.5rem;
+  padding: spacing(1);
+  margin: spacing(1);
+  background-color: map-get($colors-grays, gray-100);
 }
 
 .title {
@@ -15,6 +13,6 @@
 
 .sandbox {
   padding: 1.5rem;
-  border: 2px dashed $gray-light-midtone;
-  background-color: $white;
+  border: 2px dashed map-get($colors-grays, gray-400);
+  background-color: $color-white;
 }

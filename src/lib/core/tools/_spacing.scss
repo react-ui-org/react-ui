@@ -6,6 +6,6 @@
   }
 
   @else {
-    @return $value * $typography-line-height-base;
+    @return calc(#{$value} * #{$typography-line-height-base});
   }
 }

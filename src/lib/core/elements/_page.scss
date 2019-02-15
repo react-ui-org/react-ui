@@ -12,6 +12,6 @@ body {
   width: 100%;
   min-height: 100%;
   font-size: 1em;
-  color: map-get($colors-grays, black);
-  background-color: map-get($colors-grays, gray-light);
+  color: $page-color;
+  background-color: $page-background;
 }

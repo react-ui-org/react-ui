@@ -1,6 +1,6 @@
 import React from 'react';
 
-// Basic CSS layer preparing the ground for components.
+// Basic CSS layer to prepare ground for components.
 // eslint-disable-next-line no-unused-vars
 import coreStyles from '../../lib/core/core.scss';
 
