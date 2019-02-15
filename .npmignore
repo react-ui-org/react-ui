@@ -1,7 +1,8 @@
 /demo
 /docker
 /node_modules
-/src
+/src/components
+/src/index.js
 /test
 .babelrc
 .editorconfig

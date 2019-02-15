@@ -1,8 +1,7 @@
 import React from 'react';
 
-// Basic CSS layer to prepare ground for components.
-// eslint-disable-next-line no-unused-vars
-import coreStyles from '../../lib/core/core.scss';
+// React UI core CSS
+import '../../lib/core/core.scss';
 
 import {
   Button,
