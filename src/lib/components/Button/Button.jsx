@@ -33,13 +33,13 @@ const Button = (props) => {
     if (props.iconPosition === 'after' || props.loading) {
       iconPositionClass = styles.iconPositionAfter;
 
-      if (props.isLabelVisible) {
+      if (props.labelVisibility === 'all' || props.labelVisibility === 'desktop') {
         iconClass = styles.iconAfter;
       }
     } else {
       iconPositionClass = styles.iconPositionBefore;
 
-      if (props.isLabelVisible) {
+      if (props.labelVisibility === 'all' || props.labelVisibility === 'desktop') {
         iconClass = styles.iconBefore;
       }
     }
@@ -48,6 +48,16 @@ const Button = (props) => {
   let blockClass = '';
   if (props.block) {
     blockClass = styles.block;
+  }
+
+  let labelVisibilityClass = '';
+  let resetMarginClass = '';
+  if (props.labelVisibility === 'desktop') {
+    labelVisibilityClass = styles.visibleLabelUpDesktop;
+    resetMarginClass = styles.resetMarginDesktop;
+  } else if (props.labelVisibility === 'none') {
+    labelVisibilityClass = styles.hiddenLabel;
+    resetMarginClass = styles.resetMargin;
   }
 
   return (
@@ -61,16 +71,22 @@ const Button = (props) => {
         ${blockClass}
       `).trim()}
       onClick={props.clickHandler}
-      title={props.isLabelVisible ? null : props.label}
+      title={labelVisibilityClass ? null : props.label}
       type={props.type}
       disabled={props.disabled || props.loading}
     >
       {(props.icon || props.loading) && (
-        <span className={(`${iconClass} ${props.loading ? styles.iconLoading : ''}`).trim()}>
+        <span
+          className={`
+            ${iconClass}
+            ${resetMarginClass}
+            ${props.loading ? styles.iconLoading : ''}
+          `.trim()}
+        >
           <Icon icon={props.loading ? 'sync' : props.icon} size={props.size} />
         </span>
       )}
-      <span className={props.isLabelVisible ? undefined : styles.hiddenLabel}>
+      <span className={labelVisibilityClass !== '' ? labelVisibilityClass : undefined}>
         {props.label}
       </span>
     </button>
@@ -83,7 +99,7 @@ Button.defaultProps = {
   disabled: false,
   icon: null,
   iconPosition: 'before',
-  isLabelVisible: true,
+  labelVisibility: 'all',
   loading: false,
   priority: 'default',
   size: 'medium',
@@ -97,8 +113,8 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   icon: PropTypes.string,
   iconPosition: PropTypes.oneOf(['before', 'after']),
-  isLabelVisible: PropTypes.bool,
   label: PropTypes.string.isRequired,
+  labelVisibility: PropTypes.oneOf(['all', 'desktop', 'none']),
   loading: PropTypes.bool,
   priority: PropTypes.oneOf(['default', 'primary', 'flat']),
   size: PropTypes.oneOf(['small', 'medium', 'large']),

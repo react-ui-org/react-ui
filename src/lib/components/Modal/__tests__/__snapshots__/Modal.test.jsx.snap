@@ -56,8 +56,8 @@ exports[`rendering renders correctly with all props except translations 1`] = `
             disabled={false}
             icon="close"
             iconPosition="before"
-            isLabelVisible={false}
             label="Close"
+            labelVisibility="none"
             loading={false}
             priority="flat"
             size="large"
@@ -72,11 +72,12 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                     iconPositionBefore"
               disabled={false}
               onClick={[Function]}
-              title="Close"
+              title={null}
               type="button"
             >
               <span
-                className="icon"
+                className="icon
+                          resetMargin"
               >
                 <Icon
                   icon="close"
@@ -121,9 +122,9 @@ exports[`rendering renders correctly with all props except translations 1`] = `
               disabled={false}
               icon={null}
               iconPosition="before"
-              isLabelVisible={true}
               key="Action"
               label="Action"
+              labelVisibility="all"
               loading={false}
               priority="primary"
               size="medium"
@@ -136,7 +137,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                       sizeMedium"
                 disabled={false}
                 onClick={[Function]}
-                title={null}
+                title="Action"
                 type="button"
               >
                 <span>
@@ -154,8 +155,8 @@ exports[`rendering renders correctly with all props except translations 1`] = `
               disabled={false}
               icon={null}
               iconPosition="before"
-              isLabelVisible={true}
               label="Close"
+              labelVisibility="all"
               loading={false}
               priority="default"
               size="medium"
@@ -168,7 +169,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                       sizeMedium"
                 disabled={false}
                 onClick={[Function]}
-                title={null}
+                title="Close"
                 type="button"
               >
                 <span>
@@ -225,8 +226,8 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             disabled={false}
             icon="close"
             iconPosition="before"
-            isLabelVisible={false}
             label="Close"
+            labelVisibility="none"
             loading={false}
             priority="flat"
             size="large"
@@ -241,11 +242,12 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                     iconPositionBefore"
               disabled={false}
               onClick={[Function]}
-              title="Close"
+              title={null}
               type="button"
             >
               <span
-                className="icon"
+                className="icon
+                          resetMargin"
               >
                 <Icon
                   icon="close"
@@ -293,8 +295,8 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               disabled={false}
               icon={null}
               iconPosition="before"
-              isLabelVisible={true}
               label="Close"
+              labelVisibility="all"
               loading={false}
               priority="default"
               size="medium"
@@ -307,7 +309,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                       sizeMedium"
                 disabled={false}
                 onClick={[Function]}
-                title={null}
+                title="Close"
                 type="button"
               >
                 <span>
@@ -368,8 +370,8 @@ exports[`rendering renders correctly with translations 1`] = `
             disabled={false}
             icon="close"
             iconPosition="before"
-            isLabelVisible={false}
             label="Zavřít"
+            labelVisibility="none"
             loading={false}
             priority="flat"
             size="large"
@@ -384,11 +386,12 @@ exports[`rendering renders correctly with translations 1`] = `
                     iconPositionBefore"
               disabled={false}
               onClick={[Function]}
-              title="Zavřít"
+              title={null}
               type="button"
             >
               <span
-                className="icon"
+                className="icon
+                          resetMargin"
               >
                 <Icon
                   icon="close"
@@ -436,8 +439,8 @@ exports[`rendering renders correctly with translations 1`] = `
               disabled={false}
               icon={null}
               iconPosition="before"
-              isLabelVisible={true}
               label="Zavřít"
+              labelVisibility="all"
               loading={false}
               priority="default"
               size="medium"
@@ -450,7 +453,7 @@ exports[`rendering renders correctly with translations 1`] = `
                       sizeMedium"
                 disabled={false}
                 onClick={[Function]}
-                title={null}
+                title="Zavřít"
                 type="button"
               >
                 <span>

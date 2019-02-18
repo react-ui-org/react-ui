@@ -7,10 +7,28 @@ exports[`rendering renders correctly flat 1`] = `
         sizeMedium"
   disabled={false}
   onClick={null}
-  title={null}
+  title="button"
   type="button"
 >
   <span>
+    button
+  </span>
+</button>
+`;
+
+exports[`rendering renders correctly label visibility 1`] = `
+<button
+  className="root
+        priorityDefault
+        sizeMedium"
+  disabled={false}
+  onClick={null}
+  title={null}
+  type="button"
+>
+  <span
+    className="hiddenLabel"
+  >
     button
   </span>
 </button>
@@ -23,7 +41,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
         sizeMedium"
   disabled={false}
   onClick={null}
-  title={null}
+  title="button"
   type="button"
 >
   <span>
@@ -39,7 +57,7 @@ exports[`rendering renders correctly primary 1`] = `
         sizeMedium"
   disabled={false}
   onClick={null}
-  title={null}
+  title="button"
   type="button"
 >
   <span>
@@ -55,7 +73,7 @@ exports[`rendering renders correctly size 1`] = `
         sizeLarge"
   disabled={false}
   onClick={null}
-  title={null}
+  title="button"
   type="button"
 >
   <span>
@@ -72,7 +90,7 @@ exports[`rendering renders correctly variant 1`] = `
         variantSuccess"
   disabled={false}
   onClick={null}
-  title={null}
+  title="button"
   type="button"
 >
   <span>
@@ -91,11 +109,13 @@ exports[`rendering renders correctly with all props 1`] = `
         block"
   disabled={true}
   onClick={null}
-  title="button"
+  title={null}
   type="button"
 >
   <span
-    className="icon iconLoading"
+    className="iconAfter
+              resetMarginDesktop
+              iconLoading"
   >
     <Icon
       icon="sync"
@@ -103,7 +123,7 @@ exports[`rendering renders correctly with all props 1`] = `
     />
   </span>
   <span
-    className="hiddenLabel"
+    className="visibleLabelUpDesktop"
   >
     button
   </span>
@@ -119,7 +139,7 @@ exports[`rendering renders correctly with icon 1`] = `
         iconPositionBefore"
   disabled={false}
   onClick={null}
-  title={null}
+  title="button"
   type="button"
 >
   <span

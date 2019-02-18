@@ -11,6 +11,7 @@
 
 .priorityPrimary {
   @include generate-button-priority-variant(primary);
+  @include ripex-box-shadow(inset, 0.05rem, 0.05rem, 1rem);
 }
 
 .priorityFlat {
@@ -108,6 +109,43 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+.visibleLabelUpDesktop {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+
+  @media (min-width: 66em) {
+    position: relative;
+    width: auto;
+    height: auto;
+  }
+}
+
+.resetMargin {
+  margin: 0;
+}
+
+.resetMarginDesktop.iconBefore {
+  margin-right: 0;
+
+  @media (min-width: 66em) {
+    margin-right: $button-margin-horizontal;
+  }
+}
+
+.resetMarginDesktop.iconAfter {
+  margin-left: 0;
+
+  @media (min-width: 66em) {
+    margin-left: $button-margin-horizontal;
+  }
 }
 
 @keyframes rotateIcon {

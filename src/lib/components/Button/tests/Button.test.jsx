@@ -63,6 +63,15 @@ describe('rendering', () => {
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
 
+  it('renders correctly label visibility', () => {
+    const tree = shallow(<Button
+      label="button"
+      labelVisibility="none"
+    />);
+
+    expect(shallowToJson(tree)).toMatchSnapshot();
+  });
+
   it('renders correctly with all props', () => {
     const tree = shallow(<Button
       label="button"
@@ -71,7 +80,7 @@ describe('rendering', () => {
       size="large"
       icon="album"
       iconPosition="after"
-      isLabelVisible={false}
+      labelVisibility="desktop"
       disabled
       loading
       block

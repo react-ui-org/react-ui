@@ -61,7 +61,7 @@ class Modal extends React.Component {
             <Button
               clickHandler={this.props.closeHandler}
               icon="close"
-              isLabelVisible={false}
+              labelVisibility="none"
               label={this.props.translations.close}
               priority="flat"
               size="large"

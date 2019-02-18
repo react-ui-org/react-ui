@@ -680,15 +680,16 @@ class DemoContainer extends React.Component {
           name="Buttons with icons"
           component={(
             <div>
+              <Button clickHandler={loggerClick} label="icon without label" icon="radio" size="small" />
               <Button clickHandler={loggerClick} label="icon" icon="album" />
               <Button clickHandler={loggerClick} label="icon after" icon="book" iconPosition="after" />
               <Button
                 clickHandler={loggerClick}
                 label="icon alone"
                 icon="radio"
-                isLabelVisible={false}
+                labelVisibility="none"
               />
-              <Button clickHandler={loggerClick} label="small icon" icon="radio" size="small" />
+              <Button clickHandler={loggerClick} labelVisibility="desktop" label="label on large screen" icon="radio" />
               <Button clickHandler={loggerClick} label="large icon" icon="album" size="large" />
             </div>
           )}

@@ -3,6 +3,16 @@
 @import 'maps';
 @import 'variables';
 
+@mixin ripex-box-shadow($inset: '', $offset-x: 0, $offset-y: 0.4rem, $blur: 1.7rem) {
+  @if ($inset != '') {
+    box-shadow: $inset $offset-x $offset-y $blur transparentize($black, 0.8);
+  }
+
+  @else {
+    box-shadow: $offset-x $offset-y $blur transparentize($black, 0.8);
+  }
+}
+
 @mixin generate-button-sizes($button-size: medium, $button-size-map: $button-size-map) {
   $button-size-map: map-get($button-size-map, $button-size);
 
@@ -39,6 +49,7 @@
 }
 
 @mixin generate-button-priority-variant(
+
   $button-type: default, $button-global-map: $global-button-properties-map) {
   $button-property-map: map-get($button-global-map, $button-type);
 

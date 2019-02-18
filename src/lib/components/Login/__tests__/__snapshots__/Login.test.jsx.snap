@@ -106,8 +106,8 @@ exports[`rendering renders correctly 1`] = `
             disabled={false}
             icon={null}
             iconPosition="before"
-            isLabelVisible={true}
             label="Sign in"
+            labelVisibility="all"
             loading={false}
             priority="primary"
             size="medium"
@@ -123,7 +123,7 @@ exports[`rendering renders correctly 1`] = `
                     block"
               disabled={false}
               onClick={null}
-              title={null}
+              title="Sign in"
               type="submit"
             >
               <span>
@@ -271,8 +271,8 @@ exports[`rendering renders correctly with all props except translations 1`] = `
             disabled={false}
             icon={null}
             iconPosition="before"
-            isLabelVisible={true}
             label="Sign in"
+            labelVisibility="all"
             loading={false}
             priority="primary"
             size="medium"
@@ -288,7 +288,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                     block"
               disabled={false}
               onClick={null}
-              title={null}
+              title="Sign in"
               type="submit"
             >
               <span>
@@ -425,8 +425,8 @@ exports[`rendering renders correctly with translations 1`] = `
             disabled={false}
             icon={null}
             iconPosition="before"
-            isLabelVisible={true}
             label="Přihlásit se"
+            labelVisibility="all"
             loading={false}
             priority="primary"
             size="medium"
@@ -442,7 +442,7 @@ exports[`rendering renders correctly with translations 1`] = `
                     block"
               disabled={false}
               onClick={null}
-              title={null}
+              title="Přihlásit se"
               type="submit"
             >
               <span>
@@ -564,8 +564,8 @@ exports[`rendering renders correctly with username 1`] = `
             disabled={false}
             icon={null}
             iconPosition="before"
-            isLabelVisible={true}
             label="Sign in"
+            labelVisibility="all"
             loading={false}
             priority="primary"
             size="medium"
@@ -581,7 +581,7 @@ exports[`rendering renders correctly with username 1`] = `
                     block"
               disabled={false}
               onClick={null}
-              title={null}
+              title="Sign in"
               type="submit"
             >
               <span>
