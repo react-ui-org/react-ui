@@ -14,7 +14,7 @@ To use React UI in your project:
 2. Import core styles to the topmost level of your React app, for example:
     ```js
     // React UI core CSS
-    import 'react-ui/dist/core/core.scss';
+    import 'react-ui/src/lib/core/core.scss';
     ```
     ⚠️ As of now, you will need SASS pipeline for this to work. This is to be fixed in the future.
 3. Use React UI components just like you are used to:
@@ -23,7 +23,7 @@ To use React UI in your project:
     ```
 4. Optionally, use CSS custom properties to theme your UI.
    Remember to import your theme **after the core styles** so it overwrites the default one.
-   See [`dist/core/themes/_default.scss`](./dist/core/themes/_default.scss) for the full list of available options.  
+   See [`src/lib/core/themes/_default.scss`](./src/lib/core/themes/_default.scss) for the full list of available options.  
 
 ## Translations
 
@@ -39,7 +39,6 @@ To build the project:
 
 1. Install local npm packages: `$ npm install`
 2. Run the build: `$ npm build`
-3. Run pre-publish: `npm run lib:build` to generate built library and styles
 
 To run the dev server:
 
