@@ -73,7 +73,7 @@ node {
     } finally {
         stage('Cleanup') {
             sh 'docker-compose stop'
-            sh 'docker-compose rm --all --force'
+            sh 'docker-compose rm --force'
         }
     }
 }
