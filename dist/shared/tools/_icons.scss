@@ -1,0 +1,26 @@
+// stylelint-disable max-line-length
+$svg_data: 'data:image/svg+xml;charset=utf8';
+
+@function icon-generate-caret($fillColor: #9a9a9a) {
+  $caret-icon: '%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2012%2012%22%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3Cstyle%3E.cls-1%7Bfill%3A%23'
+    + str-slice($fillColor + '', 2)
+    + '%3B%7D%3C%2Fstyle%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Ctitle%3ECaret%3C%2Ftitle%3E%0A%20%20%20%20%3Cpath%20class%3D%22cls-1%22%20d%3D%22M6%2C9L1.2%2C4.2a0.68%2C0.68%2C0%2C0%2C1%2C1-1L6%2C7.08%2C9.84%2C3.24a0.68%2C0.68%2C0%2C1%2C1%2C1%2C1Z%22%2F%3E%0A%3C%2Fsvg%3E%0A';
+
+  @return url('#{$svg_data},#{$caret-icon}');
+}
+
+@function icon-generate-checkmark($fillColor: #ffffff) {
+  $checkmark-icon: '%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2012.17%2010.11%22%3E%0A%20%20%3Cpath%0A%20%20%20%20d%3D%22M.07%2C6.19a.26.26%2C0%2C0%2C1%2C0-.35L1.84%2C4.07a.26.26%2C0%2C0%2C1%2C.35%2C0L3.91%2C5.79a.26.26%2C0%2C0%2C0%2C.35%2C0L10%2C.07a.27.27%2C0%2C0%2C1%2C.36%2C0L12.1%2C1.84a.26.26%2C0%2C0%2C1%2C0%2C.35L4.27%2C10a.25.25%2C0%2C0%2C1-.36%2C0Z%22%0A%20%20%20%20style%3D%22fill%3A%23'
+    + str-slice($fillColor + '', 2)
+    + '%22%0A%20%20%2F%3E%0A%3C%2Fsvg%3E%0A';
+
+  @return url('#{$svg_data},#{$checkmark-icon}');
+}
+
+@function icon-generate-close($fillColor: #ffffff) {
+  $close-icon: '%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%209.8%209.8%22%3E%0A%20%20%3Cpath%0A%20%20%20%20d%3D%22M9.72%2C7.93%2C7.94%2C9.72a.25.25%2C0%2C0%2C1-.36%2C0L4.9%2C7%2C2.22%2C9.72a.25.25%2C0%2C0%2C1-.36%2C0L.07%2C7.93a.26.26%2C0%2C0%2C1%2C0-.35L2.75%2C4.9.07%2C2.22a.27.27%2C0%2C0%2C1%2C0-.36L1.86.07a.27.27%2C0%2C0%2C1%2C.36%2C0L4.9%2C2.75%2C7.58.07a.26.26%2C0%2C0%2C1%2C.35%2C0L9.72%2C1.86a.25.25%2C0%2C0%2C1%2C0%2C.36L7%2C4.9%2C9.72%2C7.58A.24.24%2C0%2C0%2C1%2C9.72%2C7.93Z%22%0A%20%20%20%20style%3D%22fill%3A%23'
+    + str-slice($fillColor + '', 2)
+    + '%22%0A%20%20%2F%3E%0A%3C%2Fsvg%3E%0A';
+
+  @return url('#{$svg_data},#{$close-icon}');
+}

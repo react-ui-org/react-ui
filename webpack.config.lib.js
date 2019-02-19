@@ -1,4 +1,5 @@
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = [{
@@ -54,6 +55,16 @@ module.exports = [{
       configFile: 'stylelint.config.js',
       syntax: 'scss',
     }),
+    new CopyWebpackPlugin([
+      {
+        from: 'src/lib/core/',
+        to: 'core/',
+      },
+      {
+        from: 'src/lib/shared/',
+        to: 'shared/',
+      },
+    ]),
   ],
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
