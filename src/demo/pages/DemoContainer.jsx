@@ -597,24 +597,24 @@ class DemoContainer extends React.Component {
           )}
         />
         <Documentation
-          name="Smal icon"
-          component={<Icon icon="book" size="small" />}
-        />
-        <Documentation
-          name="Normal icon"
+          name="Icon – default"
           component={<Icon icon="book" />}
         />
         <Documentation
-          name="Larger colored icon"
+          name="Icon — small"
+          component={<Icon icon="book" size="small" />}
+        />
+        <Documentation
+          name="Icon – large"
+          component={<Icon icon="album" size="large" />}
+        />
+        <Documentation
+          name="Icon – larger, colored"
           component={(
             <span style={{ color: '#bada55' }}>
               <Icon icon="book" size="larger" />
             </span>
           )}
-        />
-        <Documentation
-          name="Large icon"
-          component={<Icon icon="album" size="large" />}
         />
         <Documentation
           name="Buttons"
