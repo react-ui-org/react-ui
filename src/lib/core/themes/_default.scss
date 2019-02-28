@@ -32,6 +32,9 @@
   --rui-border-radius: 0.125rem;
 
   // Breakpoints
+  // Read-only for projects, custom properties cannot be used within media queries as media query is
+  // not a selector.
+  // https://www.w3.org/TR/css-variables-1/#using-variables
   --rui-breakpoint-xs: 0;
   --rui-breakpoint-sm: 36em;
   --rui-breakpoint-md: 48em;
@@ -40,8 +43,14 @@
   --rui-breakpoint-xxl: 90em;
 
   // Page
-  --rui-page-color: #{$color-black};
-  --rui-page-background: #{map-get($colors-grays, gray-50)};
+  --rui-page-color: var(--rui-color-black);
+  --rui-page-background: var(--rui-color-gray-50);
+
+  // Links
+  --rui-link-color: #007bff;
+  --rui-link-decoration: none;
+  --rui-link-hover-color: #0056b3;
+  --rui-link-hover-decoration: underline;
 
   // Typography
   --rui-typography-font-family-base: 'Titillium Web', helvetica, roboto, arial, sans-serif;
