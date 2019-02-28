@@ -7,6 +7,7 @@
 @import "../shared/settings/breakpoints";
 @import "../shared/settings/colors";
 @import "../shared/settings/links";
+@import "../shared/settings/lists";
 @import "../shared/settings/page";
 
 // 2. SCSS tools
@@ -28,4 +29,5 @@
 // 5. Elements
 // Unclassed HTML elements (type selectors).
 @import "elements/links";
+@import "elements/lists";
 @import "elements/page";
