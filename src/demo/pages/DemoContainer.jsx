@@ -550,24 +550,17 @@ class DemoContainer extends React.Component {
           )}
         />
         <Documentation
-          name="Heading 1"
-          component={<h1>h1</h1>}
-        />
-        <Documentation
-          name="Heading 2"
-          component={<h2>h2</h2>}
-        />
-        <Documentation
-          name="Heading 3"
-          component={<h3>h3</h3>}
-        />
-        <Documentation
-          name="Heading 4"
-          component={<h4>h4</h4>}
-        />
-        <Documentation
-          name="Heading 5"
-          component={<h5>h5</h5>}
+          name="Headings"
+          component={
+            <div>
+              <h1>h1</h1>
+              <h2>h2</h2>
+              <h3>h3</h3>
+              <h4>h4</h4>
+              <h5>h5</h5>
+              <h6>h6</h6>
+            </div>
+          }
         />
         <Documentation
           name="Paragraph"

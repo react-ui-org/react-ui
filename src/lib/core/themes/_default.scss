@@ -56,7 +56,15 @@
   --rui-list-unordered-style: square;
 
   // Typography
+  // Modular scale ratio: 1.125 / 8:9 / major second
   --rui-typography-font-family-base: 'Titillium Web', helvetica, roboto, arial, sans-serif;
   --rui-typography-font-size-base: 100%;
   --rui-typography-line-height-base: 1.5rem;
+  --rui-typography-size-small: 0.889rem;
+  --rui-typography-size-0: 1rem;
+  --rui-typography-size-1: 1.125rem;
+  --rui-typography-size-2: 1.266rem;
+  --rui-typography-size-3: 1.424rem;
+  --rui-typography-size-4: 1.602rem;
+  --rui-typography-size-5: 1.802rem;
 }
