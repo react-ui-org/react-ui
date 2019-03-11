@@ -31,7 +31,7 @@ const Radio = (props) => {
                   onChange={props.changeHandler}
                   className={styles.input}
                   disabled={props.disabled || option.disabled}
-                  checked={(props.value === option.value) || undefined}
+                  checked={(props.value === option.value) || false}
                 />
                 <span className={styles.radioLabel}>
                   { option.label }
