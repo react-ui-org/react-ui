@@ -43,7 +43,7 @@ const ForgotPassword = props => (
           type="email"
           required
         />
-        <Button label={props.translations.resetPassword} block priority="primary" type="submit" />
+        <Button label={props.translations.resetPassword} block type="submit" />
       </form>
       {props.footer && (
         <div className={styles.footer}>

@@ -1,103 +1,25 @@
-@import "../../shared/settings/colors.deprecated";
+@import '../../shared/settings/offsets';
+@import '../../shared/settings/typography';
 
-$button-margin-vertical: 0.25rem;
-$button-margin-horizontal: 0.5rem;
-$button-padding-horizontal: 0.5rem;
-$button-padding-horizontal-large: 0.75rem;
-$button-height: 2rem;
-$button-height-small: 1.5rem;
-$button-height-large: 2.5rem;
-$button-padding: 0 $button-padding-horizontal;
-$button-padding-large: 0 $button-padding-horizontal-large;
-$button-font-size: 0.75rem;
-$button-font-size-small: 0.458333rem;
-$button-font-size-large: 1rem;
+$button-font-family: $typography-font-family-base;
+$button-line-height: $typography-line-height-base;
+$button-icon-offset: map-get($offset-values, 2);
+$button-breakpoint: lg;
 
-$btn-default-color: $action-blue;
-$btn-default-background-color: transparent;
-$btn-default-hover-background-color: $blue-lightest;
-$btn-default-hover-color: $blue-dark;
-$btn-default-box-shadow-color: $blue-light-midtone;
-$btn-default-disabled-color: $gray-darker;
-$btn-default-disabled-border-color: $gray;
-$btn-default-border-color: $blue-accessible;
-
-$btn-primary-color: $white;
-$btn-primary-background-color: $blue-dark-midtone;
-$btn-primary-border-color: $blue-dark-midtone;
-$btn-primary-hover-background-color: $blue-dark;
-$btn-primary-hover-color: $blue-lightest;
-$btn-primary-box-shadow-color: $blue-light-midtone;
-$btn-primary-disabled-color: $gray-darker;
-$btn-primary-disabled-background-color: $gray-light-midtone;
-$btn-primary-disabled-border-color: $gray-light-midtone;
-
-$btn-flat-color: $blue-accessible;
-$btn-flat-hover-color: $blue-dark;
-$btn-flat-disabled-color: $gray-darker;
-
-$btn-success-color: $green-accessible;
-$btn-success-border-color: $green-accessible;
-$btn-success-hover-background-color: $green-lightest;
-$btn-success-hover-color: $green-darker;
-$btn-success-box-shadow-color: $green;
-$btn-success-disabled-color: $gray-darker;
-$btn-success-disabled-background-color: transparent;
-$btn-success-disabled-border-color: $gray;
-
-$btn-success-primary-color: $white;
-$btn-success-primary-background-color: $green-dark-midtone;
-$btn-success-primary-hover-background-color: $green-dark;
-$btn-success-primary-hover-color: $btn-success-primary-color;
-$btn-success-primary-box-shadow-color: $green-darker;
-$btn-success-primary-disabled-color: $gray-darker;
-$btn-success-primary-disabled-background-color: $gray-light-midtone;
-$btn-success-primary-disabled-border-color: $gray-light-midtone;
-
-$btn-success-flat-color: $green-accessible;
-$btn-success-flat-hover-color: $green-darker;
-$btn-success-flat-disabled-color: $gray-darker;
-
-$btn-warning-color: $yellow-light-midtone;
-$btn-warning-border-color: $yellow-light-midtone;
-$btn-warning-hover-background-color: $yellow-lightest;
-$btn-warning-hover-color: $btn-warning-color;
-$btn-warning-box-shadow-color: $yellow;
-$btn-warning-disabled-color: $gray-darker;
-$btn-warning-disabled-background-color: transparent;
-$btn-warning-disabled-border-color: $gray;
-
-$btn-warning-primary-color: $white;
-$btn-warning-primary-background-color: $yellow-light-midtone;
-$btn-warning-primary-hover-background-color: $yellow-dark-midtone;
-$btn-warning-primary-hover-color: $btn-warning-primary-color;
-$btn-warning-primary-box-shadow-color: $yellow-dark;
-$btn-warning-primary-disabled-color: $gray-darker;
-$btn-warning-primary-disabled-background-color: $gray-light-midtone;
-$btn-warning-primary-disabled-border-color: $btn-warning-primary-disabled-color;
-
-$btn-warning-flat-color: $yellow-light-midtone;
-$btn-warning-flat-hover-color: $yellow-dark;
-$btn-warning-flat-disabled-color: $gray-darker;
-
-$clr-btn-danger-border-color: $red-dark-midtone;
-$clr-btn-danger-color: $red-light-midtone;
-$clr-btn-danger-hover-background-color: $red-lighter;
-$clr-btn-danger-hover-color: $red-dark;
-$clr-btn-danger-box-shadow-color: $red-light;
-$clr-btn-danger-disabled-color: $gray-darker;
-$clr-btn-danger-checked-background-color: $red-dark-midtone;
-$clr-btn-danger-checked-color: $white;
-
-$btn-danger-primary-color: $white;
-$btn-danger-primary-background-color: $red-light-midtone;
-$btn-danger-primary-hover-background-color: $red-dark-midtone;
-$btn-danger-primary-hover-color: $btn-danger-primary-color;
-$btn-danger-primary-box-shadow-color: $red-dark;
-$btn-danger-primary-disabled-color: $gray-darker;
-$btn-danger-primary-disabled-background-color: $gray-light-midtone;
-$btn-danger-primary-disabled-border-color: $btn-danger-primary-disabled-color;
-
-$btn-danger-flat-color: $red-light-midtone;
-$btn-danger-flat-hover-color: $red-dark;
-$btn-danger-flat-disabled-color: $gray-darker;
+$button-sizes: (
+  small: (
+    height: 2rem,
+    padding-x: map-get($offset-values, 3),
+    font-size: $typography-size-small,
+  ),
+  medium: (
+    height: 2.25rem,
+    padding-x: map-get($offset-values, 4),
+    font-size: $typography-size-0,
+  ),
+  large: (
+    height: 2.5rem,
+    padding-x: map-get($offset-values, 5),
+    font-size: $typography-size-1,
+  ),
+);

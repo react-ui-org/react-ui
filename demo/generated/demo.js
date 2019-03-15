@@ -30842,43 +30842,40 @@ var DemoContainer = function (_React$Component) {
           })
         }),
         _react2.default.createElement(_lib.Documentation, {
-          name: 'Heading 1',
+          name: 'Headings',
           component: _react2.default.createElement(
-            'h1',
+            'div',
             null,
-            'h1'
-          )
-        }),
-        _react2.default.createElement(_lib.Documentation, {
-          name: 'Heading 2',
-          component: _react2.default.createElement(
-            'h2',
-            null,
-            'h2'
-          )
-        }),
-        _react2.default.createElement(_lib.Documentation, {
-          name: 'Heading 3',
-          component: _react2.default.createElement(
-            'h3',
-            null,
-            'h3'
-          )
-        }),
-        _react2.default.createElement(_lib.Documentation, {
-          name: 'Heading 4',
-          component: _react2.default.createElement(
-            'h4',
-            null,
-            'h4'
-          )
-        }),
-        _react2.default.createElement(_lib.Documentation, {
-          name: 'Heading 5',
-          component: _react2.default.createElement(
-            'h5',
-            null,
-            'h5'
+            _react2.default.createElement(
+              'h1',
+              null,
+              'h1'
+            ),
+            _react2.default.createElement(
+              'h2',
+              null,
+              'h2'
+            ),
+            _react2.default.createElement(
+              'h3',
+              null,
+              'h3'
+            ),
+            _react2.default.createElement(
+              'h4',
+              null,
+              'h4'
+            ),
+            _react2.default.createElement(
+              'h5',
+              null,
+              'h5'
+            ),
+            _react2.default.createElement(
+              'h6',
+              null,
+              'h6'
+            )
           )
         }),
         _react2.default.createElement(_lib.Documentation, {
@@ -30938,15 +30935,19 @@ var DemoContainer = function (_React$Component) {
           )
         }),
         _react2.default.createElement(_lib.Documentation, {
-          name: 'Smal icon',
-          component: _react2.default.createElement(_lib.Icon, { icon: 'book', size: 'small' })
-        }),
-        _react2.default.createElement(_lib.Documentation, {
-          name: 'Normal icon',
+          name: 'Icon \u2013 default',
           component: _react2.default.createElement(_lib.Icon, { icon: 'book' })
         }),
         _react2.default.createElement(_lib.Documentation, {
-          name: 'Larger colored icon',
+          name: 'Icon \u2014 small',
+          component: _react2.default.createElement(_lib.Icon, { icon: 'book', size: 'small' })
+        }),
+        _react2.default.createElement(_lib.Documentation, {
+          name: 'Icon \u2013 large',
+          component: _react2.default.createElement(_lib.Icon, { icon: 'album', size: 'large' })
+        }),
+        _react2.default.createElement(_lib.Documentation, {
+          name: 'Icon \u2013 larger, colored',
           component: _react2.default.createElement(
             'span',
             { style: { color: '#bada55' } },
@@ -30954,29 +30955,27 @@ var DemoContainer = function (_React$Component) {
           )
         }),
         _react2.default.createElement(_lib.Documentation, {
-          name: 'Large icon',
-          component: _react2.default.createElement(_lib.Icon, { icon: 'album', size: 'large' })
-        }),
-        _react2.default.createElement(_lib.Documentation, {
           name: 'Buttons',
           component: _react2.default.createElement(
             'div',
             null,
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'default' }),
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'default', variant: 'success' }),
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'default', variant: 'warning' }),
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'default', variant: 'danger' })
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Primary' }),
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Secondary', variant: 'secondary' }),
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Success', variant: 'success' }),
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Warning', variant: 'warning' }),
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Danger', variant: 'danger' })
           )
         }),
         _react2.default.createElement(_lib.Documentation, {
-          name: 'Primary buttons',
+          name: 'Outline buttons',
           component: _react2.default.createElement(
             'div',
             null,
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'primary', priority: 'primary' }),
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'primary', priority: 'primary', variant: 'success' }),
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'primary', priority: 'primary', variant: 'warning' }),
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'primary', priority: 'primary', variant: 'danger' })
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Primary ', priority: 'outline' }),
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Secondary', priority: 'outline', variant: 'secondary' }),
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Success', priority: 'outline', variant: 'success' }),
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Warning', priority: 'outline', variant: 'warning' }),
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Danger', priority: 'outline', variant: 'danger' })
           )
         }),
         _react2.default.createElement(_lib.Documentation, {
@@ -30984,20 +30983,21 @@ var DemoContainer = function (_React$Component) {
           component: _react2.default.createElement(
             'div',
             null,
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'flat', priority: 'flat' }),
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'flat', priority: 'flat', variant: 'success' }),
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'flat', priority: 'flat', variant: 'warning' }),
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'flat', priority: 'flat', variant: 'danger' })
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Primary', priority: 'flat' }),
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Secondary', priority: 'flat', variant: 'secondary' }),
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Success', priority: 'flat', variant: 'success' }),
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Warning', priority: 'flat', variant: 'warning' }),
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Danger', priority: 'flat', variant: 'danger' })
           )
         }),
         _react2.default.createElement(_lib.Documentation, {
-          name: 'Buttons with different sizes',
+          name: 'Buttons sizes',
           component: _react2.default.createElement(
             'div',
             null,
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'small', size: 'small' }),
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'medium' }),
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'large', size: 'large' })
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Small', size: 'small' }),
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Medium' }),
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Large', size: 'large' })
           )
         }),
         _react2.default.createElement(_lib.Documentation, {
@@ -31005,9 +31005,9 @@ var DemoContainer = function (_React$Component) {
           component: _react2.default.createElement(
             'div',
             null,
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'disabled default', disabled: true }),
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'disabled primary', priority: 'primary', disabled: true }),
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'disabled flat', priority: 'flat', disabled: true })
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Disabled default', disabled: true }),
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Disabled outline', priority: 'outline', disabled: true }),
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Disabled flat', priority: 'flat', disabled: true })
           )
         }),
         _react2.default.createElement(_lib.Documentation, {
@@ -31015,17 +31015,22 @@ var DemoContainer = function (_React$Component) {
           component: _react2.default.createElement(
             'div',
             null,
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'icon without label', icon: 'radio', size: 'small' }),
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'icon', icon: 'album' }),
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'icon after', icon: 'book', iconPosition: 'after' }),
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Icon before label, small', icon: 'album', size: 'small' }),
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Icon before label', icon: 'radio' }),
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Icon after label', icon: 'book', iconPosition: 'after' }),
             _react2.default.createElement(_lib.Button, {
               clickHandler: loggerClick,
-              label: 'icon alone',
-              icon: 'radio',
-              labelVisibility: 'none'
+              label: 'Icon only',
+              labelVisibility: 'none',
+              icon: 'radio'
             }),
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, labelVisibility: 'desktop', label: 'label on large screen', icon: 'radio' }),
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'large icon', icon: 'album', size: 'large' })
+            _react2.default.createElement(_lib.Button, {
+              clickHandler: loggerClick,
+              label: 'Icon and label on desktop',
+              labelVisibility: 'desktop',
+              icon: 'radio'
+            }),
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Icon and label, large', icon: 'album', size: 'large' })
           )
         }),
         _react2.default.createElement(_lib.Documentation, {
@@ -31033,8 +31038,8 @@ var DemoContainer = function (_React$Component) {
           component: _react2.default.createElement(
             'div',
             null,
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'block', block: true }),
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'block with icon', block: true, icon: 'check' })
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Block', block: true }),
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Block with icon', block: true, icon: 'check' })
           )
         }),
         _react2.default.createElement(_lib.Documentation, {
@@ -31042,7 +31047,7 @@ var DemoContainer = function (_React$Component) {
           component: _react2.default.createElement(
             'div',
             null,
-            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'load btn', loading: true })
+            _react2.default.createElement(_lib.Button, { clickHandler: loggerClick, label: 'Loading button', loading: true })
           )
         }),
         _react2.default.createElement(_lib.Documentation, {
@@ -31259,7 +31264,7 @@ exports = module.exports = __webpack_require__(13)(false);
 exports.i(__webpack_require__(366), "");
 
 // module
-exports.push([module.i, ":root {\n  --rui-color-white: #fff;\n  --rui-color-black: #000;\n  --rui-color-gray-50: #f2f2f2;\n  --rui-color-gray-100: #e6e6e6;\n  --rui-color-gray-200: #cccccc;\n  --rui-color-gray-300: #b3b3b3;\n  --rui-color-gray-400: #999999;\n  --rui-color-gray-500: gray;\n  --rui-color-gray-600: #666666;\n  --rui-color-gray-700: #4d4d4d;\n  --rui-color-gray-800: #333333;\n  --rui-color-gray-900: #1a1a1a;\n  --rui-color-primary: #00778b;\n  --rui-color-secondary: #fa4616;\n  --rui-color-on-primary: #fff;\n  --rui-color-on-secondary: #fff;\n  --rui-color-error: #dc3545;\n  --rui-color-help: #6610f2;\n  --rui-color-info: #17a2b8;\n  --rui-color-note: #007bff;\n  --rui-color-success: #28a745;\n  --rui-color-warning: #ffc107;\n  --rui-border-width: 1px;\n  --rui-border-radius: 0.125rem;\n  --rui-breakpoint-xs: 0;\n  --rui-breakpoint-sm: 36em;\n  --rui-breakpoint-md: 48em;\n  --rui-breakpoint-lg: 66em;\n  --rui-breakpoint-xl: 84em;\n  --rui-breakpoint-xxl: 90em;\n  --rui-page-color: var(--rui-color-black);\n  --rui-page-background: var(--rui-color-gray-50);\n  --rui-typography-font-family-base: 'Titillium Web', helvetica, roboto, arial, sans-serif;\n  --rui-typography-font-size-base: 112.5%;\n  --rui-typography-line-height-base: 1.5rem; }\n\nhtml {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\n*,\n*::before,\n*::after {\n  -webkit-box-sizing: inherit;\n          box-sizing: inherit; }\n\nbody,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\nblockquote,\np,\npre,\ndl,\ndd,\nol,\nul,\nfigure,\nhr,\nfieldset,\nlegend {\n  padding: 0;\n  margin: 0; }\n\nli > ol,\nli > ul {\n  margin-bottom: 0; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\nfieldset {\n  min-width: 0;\n  border: 0; }\n\naddress,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\nblockquote,\np,\npre,\ndl,\nol,\nul,\nfigure,\nhr,\ntable,\nfieldset {\n  margin-bottom: calc(1 * var(--rui-typography-line-height-base)); }\n\nhtml {\n  width: 100%;\n  height: 100%;\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  font-size: var(--rui-typography-font-size-base);\n  line-height: var(--rui-typography-line-height-base);\n  font-family: var(--rui-typography-font-family-base); }\n\nbody {\n  width: 100%;\n  min-height: 100%;\n  font-size: 1em;\n  color: var(--rui-page-color);\n  background-color: var(--rui-page-background); }\n", ""]);
+exports.push([module.i, ":root {\n  --rui-color-white: #fff;\n  --rui-color-black: #000;\n  --rui-color-gray-50: #f2f2f2;\n  --rui-color-gray-100: #e6e6e6;\n  --rui-color-gray-200: #cccccc;\n  --rui-color-gray-300: #b3b3b3;\n  --rui-color-gray-400: #999999;\n  --rui-color-gray-500: gray;\n  --rui-color-gray-600: #666666;\n  --rui-color-gray-700: #4d4d4d;\n  --rui-color-gray-800: #333333;\n  --rui-color-gray-900: #1a1a1a;\n  --rui-color-primary: #00778b;\n  --rui-color-primary-light: #f1fdff;\n  --rui-color-primary-dark: #006677;\n  --rui-color-primary-darker: #005462;\n  --rui-color-on-primary: #fff;\n  --rui-color-secondary: #fa4616;\n  --rui-color-secondary-light: #fff8f7;\n  --rui-color-secondary-dark: #f63805;\n  --rui-color-secondary-darker: #e23305;\n  --rui-color-on-secondary: #fff;\n  --rui-color-success: #28a745;\n  --rui-color-success-light: #edfbf0;\n  --rui-color-success-dark: #24973e;\n  --rui-color-success-darker: #208637;\n  --rui-color-on-success: #fff;\n  --rui-color-warning: #ffc107;\n  --rui-color-warning-light: #fffaed;\n  --rui-color-warning-dark: #f2b500;\n  --rui-color-warning-darker: #dda600;\n  --rui-color-on-warning: #000;\n  --rui-color-error: #dc3545;\n  --rui-color-error-light: #fef9f9;\n  --rui-color-error-dark: #d72536;\n  --rui-color-error-darker: #c62232;\n  --rui-color-on-error: #fff;\n  --rui-color-help: #6610f2;\n  --rui-color-help-light: #f1eafe;\n  --rui-color-help-dark: #5d0ce1;\n  --rui-color-help-darker: #550bce;\n  --rui-color-on-help: #fff;\n  --rui-color-info: #17a2b8;\n  --rui-color-info-light: #beeff7;\n  --rui-color-info-dark: #1592a6;\n  --rui-color-info-darker: #128294;\n  --rui-color-on-info: #fff;\n  --rui-color-note: #007bff;\n  --rui-color-note-light: #e6f2ff;\n  --rui-color-note-dark: #0071eb;\n  --rui-color-note-darker: #0067d6;\n  --rui-color-on-note: #fff;\n  --rui-breakpoint-xs: 0;\n  --rui-breakpoint-sm: 36em;\n  --rui-breakpoint-md: 48em;\n  --rui-breakpoint-lg: 66em;\n  --rui-breakpoint-xl: 84em;\n  --rui-breakpoint-xxl: 90em;\n  --rui-offset-0: 0;\n  --rui-offset-1: 0.25rem;\n  --rui-offset-2: 0.5rem;\n  --rui-offset-3: 0.75rem;\n  --rui-offset-4: 1rem;\n  --rui-offset-5: 1.5rem;\n  --rui-border-width: 1px;\n  --rui-border-radius: 0.25rem;\n  --rui-page-color: var(--rui-color-black);\n  --rui-page-background: var(--rui-color-gray-50);\n  --rui-link-color: #007bff;\n  --rui-link-decoration: none;\n  --rui-link-hover-color: #0056b3;\n  --rui-link-hover-decoration: underline;\n  --rui-list-unordered-style: square;\n  --rui-typography-font-family-base: 'Titillium Web', helvetica, roboto, arial, sans-serif;\n  --rui-typography-font-size-base: 100%;\n  --rui-typography-line-height-base: 1.5rem;\n  --rui-typography-size-small: 0.889rem;\n  --rui-typography-size-0: 1rem;\n  --rui-typography-size-1: 1.125rem;\n  --rui-typography-size-2: 1.266rem;\n  --rui-typography-size-3: 1.424rem;\n  --rui-typography-size-4: 1.602rem;\n  --rui-typography-size-5: 1.802rem;\n  --rui-icon-size-small: 0.75rem;\n  --rui-icon-size-default: 1rem;\n  --rui-icon-size-large: 1.5rem;\n  --rui-icon-size-larger: 2rem;\n  --rui-button-font-weight: normal;\n  --rui-button-text-transform: none;\n  --rui-button-letter-spacing: 0;\n  --rui-button-border-width: var(--rui-border-width);\n  --rui-button-border-radius: var(--rui-border-radius);\n  --rui-button-default-primary-default-color: var(--rui-color-on-primary);\n  --rui-button-default-primary-default-border-color: var(--rui-color-primary);\n  --rui-button-default-primary-default-background: var(--rui-color-primary);\n  --rui-button-default-primary-default-box-shadow: none;\n  --rui-button-default-primary-hover-color: var(--rui-color-on-primary);\n  --rui-button-default-primary-hover-border-color: var(--rui-color-primary-dark);\n  --rui-button-default-primary-hover-background: var(--rui-color-primary-dark);\n  --rui-button-default-primary-hover-box-shadow: none;\n  --rui-button-default-primary-active-color: var(--rui-color-on-primary);\n  --rui-button-default-primary-active-border-color: var(--rui-color-primary-darker);\n  --rui-button-default-primary-active-background: var(--rui-color-primary-darker);\n  --rui-button-default-primary-active-box-shadow: none;\n  --rui-button-default-secondary-default-color: var(--rui-color-on-secondary);\n  --rui-button-default-secondary-default-border-color: var(--rui-color-secondary);\n  --rui-button-default-secondary-default-background: var(--rui-color-secondary);\n  --rui-button-default-secondary-default-box-shadow: none;\n  --rui-button-default-secondary-hover-color: var(--rui-color-on-secondary);\n  --rui-button-default-secondary-hover-border-color: var(--rui-color-secondary-dark);\n  --rui-button-default-secondary-hover-background: var(--rui-color-secondary-dark);\n  --rui-button-default-secondary-hover-box-shadow: none;\n  --rui-button-default-secondary-active-color: var(--rui-color-on-secondary);\n  --rui-button-default-secondary-active-border-color: var(--rui-color-secondary-darker);\n  --rui-button-default-secondary-active-background: var(--rui-color-secondary-darker);\n  --rui-button-default-secondary-active-box-shadow: none;\n  --rui-button-default-success-default-color: var(--rui-color-on-success);\n  --rui-button-default-success-default-border-color: var(--rui-color-success);\n  --rui-button-default-success-default-background: var(--rui-color-success);\n  --rui-button-default-success-default-box-shadow: none;\n  --rui-button-default-success-hover-color: var(--rui-color-on-success);\n  --rui-button-default-success-hover-border-color: var(--rui-color-success-dark);\n  --rui-button-default-success-hover-background: var(--rui-color-success-dark);\n  --rui-button-default-success-hover-box-shadow: none;\n  --rui-button-default-success-active-color: var(--rui-color-on-success);\n  --rui-button-default-success-active-border-color: var(--rui-color-success-darker);\n  --rui-button-default-success-active-background: var(--rui-color-success-darker);\n  --rui-button-default-success-active-box-shadow: none;\n  --rui-button-default-warning-default-color: var(--rui-color-on-warning);\n  --rui-button-default-warning-default-border-color: var(--rui-color-warning);\n  --rui-button-default-warning-default-background: var(--rui-color-warning);\n  --rui-button-default-warning-default-box-shadow: none;\n  --rui-button-default-warning-hover-color: var(--rui-color-on-warning);\n  --rui-button-default-warning-hover-border-color: var(--rui-color-warning-dark);\n  --rui-button-default-warning-hover-background: var(--rui-color-warning-dark);\n  --rui-button-default-warning-hover-box-shadow: none;\n  --rui-button-default-warning-active-color: var(--rui-color-on-warning);\n  --rui-button-default-warning-active-border-color: var(--rui-color-warning-darker);\n  --rui-button-default-warning-active-background: var(--rui-color-warning-darker);\n  --rui-button-default-warning-active-box-shadow: none;\n  --rui-button-default-danger-default-color: var(--rui-color-on-error);\n  --rui-button-default-danger-default-border-color: var(--rui-color-error);\n  --rui-button-default-danger-default-background: var(--rui-color-error);\n  --rui-button-default-danger-default-box-shadow: none;\n  --rui-button-default-danger-hover-color: var(--rui-color-on-error);\n  --rui-button-default-danger-hover-border-color: var(--rui-color-error-dark);\n  --rui-button-default-danger-hover-background: var(--rui-color-error-dark);\n  --rui-button-default-danger-hover-box-shadow: none;\n  --rui-button-default-danger-active-color: var(--rui-color-on-error);\n  --rui-button-default-danger-active-border-color: var(--rui-color-error-darker);\n  --rui-button-default-danger-active-background: var(--rui-color-error-darker);\n  --rui-button-default-danger-active-box-shadow: none;\n  --rui-button-outline-primary-default-color: var(--rui-color-primary);\n  --rui-button-outline-primary-default-border-color: var(--rui-color-primary);\n  --rui-button-outline-primary-default-background: transparent;\n  --rui-button-outline-primary-hover-color: var(--rui-color-on-primary);\n  --rui-button-outline-primary-hover-border-color: var(--rui-color-primary-dark);\n  --rui-button-outline-primary-hover-background: var(--rui-color-primary-dark);\n  --rui-button-outline-primary-active-color: var(--rui-color-on-primary);\n  --rui-button-outline-primary-active-border-color: var(--rui-color-primary-darker);\n  --rui-button-outline-primary-active-background: var(--rui-color-primary-darker);\n  --rui-button-outline-secondary-default-color: var(--rui-color-secondary);\n  --rui-button-outline-secondary-default-border-color: var(--rui-color-secondary);\n  --rui-button-outline-secondary-default-background: transparent;\n  --rui-button-outline-secondary-hover-color: var(--rui-color-on-secondary);\n  --rui-button-outline-secondary-hover-border-color: var(--rui-color-secondary-dark);\n  --rui-button-outline-secondary-hover-background: var(--rui-color-secondary-dark);\n  --rui-button-outline-secondary-active-color: var(--rui-color-on-secondary);\n  --rui-button-outline-secondary-active-border-color: var(--rui-color-secondary-darker);\n  --rui-button-outline-secondary-active-background: var(--rui-color-secondary-darker);\n  --rui-button-outline-success-default-color: var(--rui-color-success);\n  --rui-button-outline-success-default-border-color: var(--rui-color-success);\n  --rui-button-outline-success-default-background: transparent;\n  --rui-button-outline-success-hover-color: var(--rui-color-on-success);\n  --rui-button-outline-success-hover-border-color: var(--rui-color-success-dark);\n  --rui-button-outline-success-hover-background: var(--rui-color-success-dark);\n  --rui-button-outline-success-active-color: var(--rui-color-on-success);\n  --rui-button-outline-success-active-border-color: var(--rui-color-success-darker);\n  --rui-button-outline-success-active-background: var(--rui-color-success-darker);\n  --rui-button-outline-warning-default-color: var(--rui-color-warning);\n  --rui-button-outline-warning-default-border-color: var(--rui-color-warning);\n  --rui-button-outline-warning-default-background: transparent;\n  --rui-button-outline-warning-hover-color: var(--rui-color-on-warning);\n  --rui-button-outline-warning-hover-border-color: var(--rui-color-warning-dark);\n  --rui-button-outline-warning-hover-background: var(--rui-color-warning-dark);\n  --rui-button-outline-warning-active-color: var(--rui-color-on-warning);\n  --rui-button-outline-warning-active-border-color: var(--rui-color-warning-darker);\n  --rui-button-outline-warning-active-background: var(--rui-color-warning-darker);\n  --rui-button-outline-danger-default-color: var(--rui-color-error);\n  --rui-button-outline-danger-default-border-color: var(--rui-color-error);\n  --rui-button-outline-danger-default-background: transparent;\n  --rui-button-outline-danger-hover-color: var(--rui-color-on-error);\n  --rui-button-outline-danger-hover-border-color: var(--rui-color-error-dark);\n  --rui-button-outline-danger-hover-background: var(--rui-color-error-dark);\n  --rui-button-outline-danger-active-color: var(--rui-color-on-error);\n  --rui-button-outline-danger-active-border-color: var(--rui-color-error-darker);\n  --rui-button-outline-danger-active-background: var(--rui-color-error-darker);\n  --rui-button-flat-primary-default-color: var(--rui-color-primary);\n  --rui-button-flat-primary-default-background: transparent;\n  --rui-button-flat-primary-hover-color: var(--rui-color-primary-dark);\n  --rui-button-flat-primary-hover-background: var(--rui-color-primary-light);\n  --rui-button-flat-primary-active-color: var(--rui-color-primary-darker);\n  --rui-button-flat-primary-active-background: var(--rui-color-primary-light);\n  --rui-button-flat-secondary-default-color: var(--rui-color-secondary);\n  --rui-button-flat-secondary-default-background: transparent;\n  --rui-button-flat-secondary-hover-color: var(--rui-color-secondary-dark);\n  --rui-button-flat-secondary-hover-background: var(--rui-color-secondary-light);\n  --rui-button-flat-secondary-active-color: var(--rui-color-secondary-darker);\n  --rui-button-flat-secondary-active-background: var(--rui-color-secondary-light);\n  --rui-button-flat-success-default-color: var(--rui-color-success);\n  --rui-button-flat-success-default-background: transparent;\n  --rui-button-flat-success-hover-color: var(--rui-color-success-dark);\n  --rui-button-flat-success-hover-background: var(--rui-color-success-light);\n  --rui-button-flat-success-active-color: var(--rui-color-success-darker);\n  --rui-button-flat-success-active-background: var(--rui-color-success-light);\n  --rui-button-flat-warning-default-color: var(--rui-color-warning);\n  --rui-button-flat-warning-default-background: transparent;\n  --rui-button-flat-warning-hover-color: var(--rui-color-warning-darker);\n  --rui-button-flat-warning-hover-background: var(--rui-color-warning-light);\n  --rui-button-flat-warning-active-color: var(--rui-color-warning-darker);\n  --rui-button-flat-warning-active-background: var(--rui-color-warning-light);\n  --rui-button-flat-danger-default-color: var(--rui-color-error);\n  --rui-button-flat-danger-default-background: transparent;\n  --rui-button-flat-danger-hover-color: var(--rui-color-error-dark);\n  --rui-button-flat-danger-hover-background: var(--rui-color-error-light);\n  --rui-button-flat-danger-active-color: var(--rui-color-error-darker);\n  --rui-button-flat-danger-active-background: var(--rui-color-error-light); }\n\nhtml {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; }\n\n*,\n*::before,\n*::after {\n  -webkit-box-sizing: inherit;\n          box-sizing: inherit; }\n\nbody,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\nblockquote,\np,\npre,\ndl,\ndd,\nol,\nul,\nfigure,\nhr,\nfieldset,\nlegend {\n  padding: 0;\n  margin: 0; }\n\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: 1rem; }\n\nli > ol,\nli > ul {\n  margin-bottom: 0; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\nfieldset {\n  min-width: 0;\n  border: 0; }\n\naddress,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\nblockquote,\np,\npre,\ndl,\nol,\nul,\nfigure,\nhr,\ntable,\nfieldset {\n  margin-bottom: calc(1 * var(--rui-typography-line-height-base)); }\n\na {\n  -webkit-text-decoration: var(--rui-link-decoration);\n          text-decoration: var(--rui-link-decoration);\n  color: var(--rui-link-color); }\n  a:hover, a:focus {\n    -webkit-text-decoration: var(--rui-link-hover-decoration);\n            text-decoration: var(--rui-link-hover-decoration);\n    color: var(--rui-link-hover-color); }\n\nul {\n  list-style-type: var(--rui-list-unordered-style); }\n\nhtml {\n  width: 100%;\n  height: 100%;\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  font-size: var(--rui-typography-font-size-base);\n  line-height: var(--rui-typography-line-height-base);\n  font-family: var(--rui-typography-font-family-base); }\n\nbody {\n  width: 100%;\n  min-height: 100%;\n  font-size: 1em;\n  color: var(--rui-page-color);\n  background-color: var(--rui-page-background); }\n\nsmall {\n  font-size: var(--rui-typography-size-small); }\n", ""]);
 
 // exports
 
@@ -31570,10 +31575,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Button = function Button(props) {
   var priorityClass = _Button2.default.priorityDefault;
-  if (props.priority === 'flat') {
+  if (props.priority === 'outline') {
+    priorityClass = _Button2.default.priorityOutline;
+  } else if (props.priority === 'flat') {
     priorityClass = _Button2.default.priorityFlat;
-  } else if (props.priority === 'primary') {
-    priorityClass = _Button2.default.priorityPrimary;
   }
 
   var sizeClass = _Button2.default.sizeMedium;
@@ -31583,8 +31588,10 @@ var Button = function Button(props) {
     sizeClass = _Button2.default.sizeLarge;
   }
 
-  var variantClass = '';
-  if (props.variant === 'success') {
+  var variantClass = _Button2.default.variantSecondary;
+  if (props.variant === 'primary') {
+    variantClass = _Button2.default.variantPrimary;
+  } else if (props.variant === 'success') {
     variantClass = _Button2.default.variantSuccess;
   } else if (props.variant === 'warning') {
     variantClass = _Button2.default.variantWarning;
@@ -31592,58 +31599,46 @@ var Button = function Button(props) {
     variantClass = _Button2.default.variantDanger;
   }
 
-  var iconPositionClass = '';
-  var iconClass = _Button2.default.icon;
-  if (props.icon || props.loading) {
-    if (props.iconPosition === 'after' || props.loading) {
-      iconPositionClass = _Button2.default.iconPositionAfter;
-
-      if (props.labelVisibility === 'all' || props.labelVisibility === 'desktop') {
-        iconClass = _Button2.default.iconAfter;
-      }
-    } else {
-      iconPositionClass = _Button2.default.iconPositionBefore;
-
-      if (props.labelVisibility === 'all' || props.labelVisibility === 'desktop') {
-        iconClass = _Button2.default.iconBefore;
-      }
-    }
-  }
-
   var blockClass = '';
   if (props.block) {
     blockClass = _Button2.default.block;
   }
 
+  var iconPositionClass = '';
+  if (props.icon || props.loading) {
+    if (props.iconPosition === 'after' || props.loading) {
+      iconPositionClass = _Button2.default.withIconAfter;
+    } else {
+      iconPositionClass = _Button2.default.withIconBefore;
+    }
+  }
+
   var labelVisibilityClass = '';
-  var resetMarginClass = '';
   if (props.labelVisibility === 'desktop') {
-    labelVisibilityClass = _Button2.default.visibleLabelUpDesktop;
-    resetMarginClass = _Button2.default.resetMarginDesktop;
+    labelVisibilityClass = _Button2.default.withLabelHiddenMobile;
   } else if (props.labelVisibility === 'none') {
-    labelVisibilityClass = _Button2.default.hiddenLabel;
-    resetMarginClass = _Button2.default.resetMargin;
+    labelVisibilityClass = _Button2.default.withLabelHidden;
   }
 
   return _react2.default.createElement(
     'button',
     {
-      className: ('\n        ' + _Button2.default.root + '\n        ' + priorityClass + '\n        ' + sizeClass + '\n        ' + variantClass + '\n        ' + iconPositionClass + '\n        ' + blockClass + '\n      ').trim(),
+      className: ('\n        ' + _Button2.default.root + '\n        ' + priorityClass + '\n        ' + sizeClass + '\n        ' + variantClass + '\n        ' + blockClass + '\n        ' + iconPositionClass + '\n        ' + labelVisibilityClass + '\n      ').trim(),
       onClick: props.clickHandler,
-      title: labelVisibilityClass ? null : props.label,
+      title: props.labelVisibility === 'all' ? null : props.label,
       type: props.type,
       disabled: props.disabled || props.loading
     },
     (props.icon || props.loading) && _react2.default.createElement(
       'span',
       {
-        className: ('\n            ' + iconClass + '\n            ' + resetMarginClass + '\n            ' + (props.loading ? _Button2.default.iconLoading : '') + '\n          ').trim()
+        className: ('\n            ' + _Button2.default.icon + '\n            ' + (props.loading ? _Button2.default.iconLoading : '') + '\n          ').trim()
       },
       _react2.default.createElement(_Icon2.default, { icon: props.loading ? 'sync' : props.icon, size: props.size })
     ),
     _react2.default.createElement(
       'span',
-      { className: labelVisibilityClass !== '' ? labelVisibilityClass : undefined },
+      { className: _Button2.default.label },
       props.label
     )
   );
@@ -31660,7 +31655,7 @@ Button.defaultProps = {
   priority: 'default',
   size: 'medium',
   type: 'button',
-  variant: 'default'
+  variant: 'primary'
 };
 
 Button.propTypes = {
@@ -31672,10 +31667,10 @@ Button.propTypes = {
   label: _propTypes2.default.string.isRequired,
   labelVisibility: _propTypes2.default.oneOf(['all', 'desktop', 'none']),
   loading: _propTypes2.default.bool,
-  priority: _propTypes2.default.oneOf(['default', 'primary', 'flat']),
+  priority: _propTypes2.default.oneOf(['default', 'outline', 'flat']),
   size: _propTypes2.default.oneOf(['small', 'medium', 'large']),
   type: _propTypes2.default.oneOf(['button', 'submit']),
-  variant: _propTypes2.default.oneOf(['default', 'success', 'warning', 'danger'])
+  variant: _propTypes2.default.oneOf(['primary', 'secondary', 'success', 'warning', 'danger'])
 };
 
 exports.default = Button;
@@ -32417,7 +32412,7 @@ exports = module.exports = __webpack_require__(13)(false);
 
 
 // module
-exports.push([module.i, ".Icon__root___3fU2F {\n  display: inline-block;\n  width: 1rem;\n  height: 1rem; }\n\n.Icon__isRootSmall___3cUMP {\n  width: 0.75rem;\n  height: 0.75rem; }\n\n.Icon__isRootLarge___1tPUq {\n  width: 1.5rem;\n  height: 1.5rem; }\n\n.Icon__isRootLarger___1yj-- {\n  width: 2rem;\n  height: 2rem; }\n", ""]);
+exports.push([module.i, ".Icon__root___3fU2F {\n  display: inline-block;\n  width: var(--rui-icon-size-default);\n  height: var(--rui-icon-size-default); }\n\n.Icon__isRootSmall___3cUMP {\n  width: var(--rui-icon-size-small);\n  height: var(--rui-icon-size-small); }\n\n.Icon__isRootLarge___1tPUq {\n  width: var(--rui-icon-size-large);\n  height: var(--rui-icon-size-large); }\n\n.Icon__isRootLarger___1yj-- {\n  width: var(--rui-icon-size-larger);\n  height: var(--rui-icon-size-larger); }\n", ""]);
 
 // exports
 exports.locals = {
@@ -53121,33 +53116,31 @@ exports = module.exports = __webpack_require__(13)(false);
 
 
 // module
-exports.push([module.i, ".Button__root___1siS8 {\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  min-width: 3rem;\n  max-width: 15rem;\n  overflow: hidden;\n  font-family: var(--rui-typography-font-family-base);\n  text-align: center;\n  text-overflow: ellipsis;\n  text-decoration: none;\n  text-transform: uppercase;\n  white-space: nowrap;\n  vertical-align: middle;\n  border: var(--rui-border-width) solid;\n  border-radius: var(--rui-border-radius);\n  cursor: pointer; }\n  .Button__root___1siS8:hover, .Button__root___1siS8:focus {\n    text-decoration: none; }\n\n.Button__priorityDefault___mVWp6 {\n  color: #007cbb;\n  border-color: #0077b7;\n  background-color: transparent; }\n  .Button__priorityDefault___mVWp6:visited {\n    color: #007cbb; }\n  .Button__priorityDefault___mVWp6:hover, .Button__priorityDefault___mVWp6:focus {\n    color: #004a70;\n    background-color: #e1f1f6; }\n  .Button__priorityDefault___mVWp6:active {\n    -webkit-box-shadow: 0 2px 0 0 #0094d2 inset;\n            box-shadow: 0 2px 0 0 #0094d2 inset; }\n  .Button__priorityDefault___mVWp6.Button__disabled___2pteZ, .Button__priorityDefault___mVWp6:disabled {\n    opacity: 0.4;\n    color: #565656;\n    border-color: #737373;\n    background-color: transparent;\n    cursor: not-allowed; }\n\n.Button__priorityPrimary___2lQD8 {\n  color: #fff;\n  border-color: #007cbb;\n  background-color: #007cbb;\n  -webkit-box-shadow: inset 0.05rem 0.05rem 1rem rgba(0, 0, 0, 0.2);\n          box-shadow: inset 0.05rem 0.05rem 1rem rgba(0, 0, 0, 0.2); }\n  .Button__priorityPrimary___2lQD8:visited {\n    color: #fff; }\n  .Button__priorityPrimary___2lQD8:hover, .Button__priorityPrimary___2lQD8:focus {\n    color: #e1f1f6;\n    background-color: #004a70; }\n  .Button__priorityPrimary___2lQD8:active {\n    -webkit-box-shadow: 0 1px 0 0 #0094d2 inset;\n            box-shadow: 0 1px 0 0 #0094d2 inset; }\n  .Button__priorityPrimary___2lQD8.Button__disabled___2pteZ, .Button__priorityPrimary___2lQD8:disabled {\n    opacity: 0.4;\n    color: #565656;\n    border-color: #ccc;\n    background-color: #ccc;\n    cursor: not-allowed; }\n\n.Button__priorityFlat___21jzk {\n  color: #0077b7;\n  border-color: transparent;\n  background-color: transparent; }\n  .Button__priorityFlat___21jzk:visited {\n    color: #0077b7; }\n  .Button__priorityFlat___21jzk:hover, .Button__priorityFlat___21jzk:focus {\n    color: #004a70;\n    background-color: transparent; }\n  .Button__priorityFlat___21jzk:active {\n    -webkit-box-shadow: 0 0 0 0 transparent inset;\n            box-shadow: 0 0 0 0 transparent inset; }\n  .Button__priorityFlat___21jzk.Button__disabled___2pteZ, .Button__priorityFlat___21jzk:disabled {\n    opacity: 0.4;\n    color: #565656;\n    border-color: transparent;\n    background-color: transparent;\n    cursor: not-allowed; }\n\n.Button__priorityDefault___mVWp6.Button__variantSuccess___Wp54n {\n  color: #308300;\n  border-color: #308300;\n  background-color: transparent; }\n  .Button__priorityDefault___mVWp6.Button__variantSuccess___Wp54n:visited {\n    color: #308300; }\n  .Button__priorityDefault___mVWp6.Button__variantSuccess___Wp54n:hover, .Button__priorityDefault___mVWp6.Button__variantSuccess___Wp54n:focus {\n    color: #1d5100;\n    background-color: #dff0d0; }\n  .Button__priorityDefault___mVWp6.Button__variantSuccess___Wp54n:active {\n    -webkit-box-shadow: 0 1px 0 0 #60b515 inset;\n            box-shadow: 0 1px 0 0 #60b515 inset; }\n  .Button__priorityDefault___mVWp6.Button__variantSuccess___Wp54n.Button__disabled___2pteZ, .Button__priorityDefault___mVWp6.Button__variantSuccess___Wp54n:disabled {\n    opacity: 0.4;\n    color: #565656;\n    border-color: #737373;\n    background-color: transparent;\n    cursor: not-allowed; }\n\n.Button__priorityPrimary___2lQD8.Button__variantSuccess___Wp54n {\n  color: #fff;\n  border-color: #318700;\n  background-color: #318700; }\n  .Button__priorityPrimary___2lQD8.Button__variantSuccess___Wp54n:visited {\n    color: #fff; }\n  .Button__priorityPrimary___2lQD8.Button__variantSuccess___Wp54n:hover, .Button__priorityPrimary___2lQD8.Button__variantSuccess___Wp54n:focus {\n    color: #fff;\n    background-color: #266900; }\n  .Button__priorityPrimary___2lQD8.Button__variantSuccess___Wp54n:active {\n    -webkit-box-shadow: 0 2px 0 0 #1d5100 inset;\n            box-shadow: 0 2px 0 0 #1d5100 inset; }\n  .Button__priorityPrimary___2lQD8.Button__variantSuccess___Wp54n.Button__disabled___2pteZ, .Button__priorityPrimary___2lQD8.Button__variantSuccess___Wp54n:disabled {\n    opacity: 0.4;\n    color: #565656;\n    border-color: #ccc;\n    background-color: #ccc;\n    cursor: not-allowed; }\n\n.Button__priorityFlat___21jzk.Button__variantSuccess___Wp54n {\n  color: #308300;\n  border-color: transparent;\n  background-color: transparent; }\n  .Button__priorityFlat___21jzk.Button__variantSuccess___Wp54n:visited {\n    color: #308300; }\n  .Button__priorityFlat___21jzk.Button__variantSuccess___Wp54n:hover, .Button__priorityFlat___21jzk.Button__variantSuccess___Wp54n:focus {\n    color: #1d5100;\n    background-color: transparent; }\n  .Button__priorityFlat___21jzk.Button__variantSuccess___Wp54n:active {\n    -webkit-box-shadow: 0 0 0 0 transparent inset;\n            box-shadow: 0 0 0 0 transparent inset; }\n  .Button__priorityFlat___21jzk.Button__variantSuccess___Wp54n.Button__disabled___2pteZ, .Button__priorityFlat___21jzk.Button__variantSuccess___Wp54n:disabled {\n    opacity: 0.4;\n    color: #565656;\n    border-color: transparent;\n    background-color: transparent;\n    cursor: not-allowed; }\n\n.Button__priorityDefault___mVWp6.Button__variantWarning___2Mgsb {\n  color: #eb8d00;\n  border-color: #eb8d00;\n  background-color: transparent; }\n  .Button__priorityDefault___mVWp6.Button__variantWarning___2Mgsb:visited {\n    color: #eb8d00; }\n  .Button__priorityDefault___mVWp6.Button__variantWarning___2Mgsb:hover, .Button__priorityDefault___mVWp6.Button__variantWarning___2Mgsb:focus {\n    color: #eb8d00;\n    background-color: #fffadc; }\n  .Button__priorityDefault___mVWp6.Button__variantWarning___2Mgsb:active {\n    -webkit-box-shadow: 0 1px 0 0 #ffdc0b inset;\n            box-shadow: 0 1px 0 0 #ffdc0b inset; }\n  .Button__priorityDefault___mVWp6.Button__variantWarning___2Mgsb.Button__disabled___2pteZ, .Button__priorityDefault___mVWp6.Button__variantWarning___2Mgsb:disabled {\n    opacity: 0.4;\n    color: #565656;\n    border-color: #737373;\n    background-color: transparent;\n    cursor: not-allowed; }\n\n.Button__priorityPrimary___2lQD8.Button__variantWarning___2Mgsb {\n  color: #fff;\n  border-color: #eb8d00;\n  background-color: #eb8d00; }\n  .Button__priorityPrimary___2lQD8.Button__variantWarning___2Mgsb:visited {\n    color: #fff; }\n  .Button__priorityPrimary___2lQD8.Button__variantWarning___2Mgsb:hover, .Button__priorityPrimary___2lQD8.Button__variantWarning___2Mgsb:focus {\n    color: #fff;\n    background-color: #ce5c00; }\n  .Button__priorityPrimary___2lQD8.Button__variantWarning___2Mgsb:active {\n    -webkit-box-shadow: 0 2px 0 0 #c25400 inset;\n            box-shadow: 0 2px 0 0 #c25400 inset; }\n  .Button__priorityPrimary___2lQD8.Button__variantWarning___2Mgsb.Button__disabled___2pteZ, .Button__priorityPrimary___2lQD8.Button__variantWarning___2Mgsb:disabled {\n    opacity: 0.4;\n    color: #565656;\n    border-color: #ccc;\n    background-color: #ccc;\n    cursor: not-allowed; }\n\n.Button__priorityFlat___21jzk.Button__variantWarning___2Mgsb {\n  color: #eb8d00;\n  border-color: transparent;\n  background-color: transparent; }\n  .Button__priorityFlat___21jzk.Button__variantWarning___2Mgsb:visited {\n    color: #eb8d00; }\n  .Button__priorityFlat___21jzk.Button__variantWarning___2Mgsb:hover, .Button__priorityFlat___21jzk.Button__variantWarning___2Mgsb:focus {\n    color: #c25400;\n    background-color: transparent; }\n  .Button__priorityFlat___21jzk.Button__variantWarning___2Mgsb:active {\n    -webkit-box-shadow: 0 0 0 0 transparent inset;\n            box-shadow: 0 0 0 0 transparent inset; }\n  .Button__priorityFlat___21jzk.Button__variantWarning___2Mgsb.Button__disabled___2pteZ, .Button__priorityFlat___21jzk.Button__variantWarning___2Mgsb:disabled {\n    opacity: 0.4;\n    color: #565656;\n    border-color: transparent;\n    background-color: transparent;\n    cursor: not-allowed; }\n\n.Button__priorityDefault___mVWp6.Button__variantDanger___27m0O {\n  color: #e62700;\n  border-color: #c92100;\n  background-color: transparent; }\n  .Button__priorityDefault___mVWp6.Button__variantDanger___27m0O:visited {\n    color: #e62700; }\n  .Button__priorityDefault___mVWp6.Button__variantDanger___27m0O:hover, .Button__priorityDefault___mVWp6.Button__variantDanger___27m0O:focus {\n    color: #a32100;\n    background-color: #f5dbd9; }\n  .Button__priorityDefault___mVWp6.Button__variantDanger___27m0O:active {\n    -webkit-box-shadow: 0 1px 0 0 #ebafa6 inset;\n            box-shadow: 0 1px 0 0 #ebafa6 inset; }\n  .Button__priorityDefault___mVWp6.Button__variantDanger___27m0O.Button__disabled___2pteZ, .Button__priorityDefault___mVWp6.Button__variantDanger___27m0O:disabled {\n    opacity: 0.4;\n    color: #565656;\n    border-color: #565656;\n    background-color: transparent;\n    cursor: not-allowed; }\n\n.Button__priorityPrimary___2lQD8.Button__variantDanger___27m0O {\n  color: #fff;\n  border-color: #e62700;\n  background-color: #e62700; }\n  .Button__priorityPrimary___2lQD8.Button__variantDanger___27m0O:visited {\n    color: #fff; }\n  .Button__priorityPrimary___2lQD8.Button__variantDanger___27m0O:hover, .Button__priorityPrimary___2lQD8.Button__variantDanger___27m0O:focus {\n    color: #fff;\n    background-color: #c92100; }\n  .Button__priorityPrimary___2lQD8.Button__variantDanger___27m0O:active {\n    -webkit-box-shadow: 0 2px 0 0 #a32100 inset;\n            box-shadow: 0 2px 0 0 #a32100 inset; }\n  .Button__priorityPrimary___2lQD8.Button__variantDanger___27m0O.Button__disabled___2pteZ, .Button__priorityPrimary___2lQD8.Button__variantDanger___27m0O:disabled {\n    opacity: 0.4;\n    color: #565656;\n    border-color: #ccc;\n    background-color: #ccc;\n    cursor: not-allowed; }\n\n.Button__priorityFlat___21jzk.Button__variantDanger___27m0O {\n  color: #e62700;\n  border-color: transparent;\n  background-color: transparent; }\n  .Button__priorityFlat___21jzk.Button__variantDanger___27m0O:visited {\n    color: #e62700; }\n  .Button__priorityFlat___21jzk.Button__variantDanger___27m0O:hover, .Button__priorityFlat___21jzk.Button__variantDanger___27m0O:focus {\n    color: #a32100;\n    background-color: transparent; }\n  .Button__priorityFlat___21jzk.Button__variantDanger___27m0O:active {\n    -webkit-box-shadow: 0 0 0 0 transparent inset;\n            box-shadow: 0 0 0 0 transparent inset; }\n  .Button__priorityFlat___21jzk.Button__variantDanger___27m0O.Button__disabled___2pteZ, .Button__priorityFlat___21jzk.Button__variantDanger___27m0O:disabled {\n    opacity: 0.4;\n    color: #565656;\n    border-color: transparent;\n    background-color: transparent;\n    cursor: not-allowed; }\n\n.Button__sizeMedium___Ljlz9 {\n  height: 2rem;\n  padding: 0 0.5rem;\n  font-weight: 500;\n  font-size: 0.75rem;\n  line-height: 1;\n  letter-spacing: 0.073em; }\n\n.Button__sizeSmall___2Op9_ {\n  height: 1.5rem;\n  padding: 0 0.5rem;\n  font-weight: 500;\n  font-size: 0.45833rem;\n  line-height: 1;\n  letter-spacing: 0.073em; }\n\n.Button__sizeLarge___2ZbaS {\n  height: 2.5rem;\n  padding: 0 0.75rem;\n  font-weight: 500;\n  font-size: 1rem;\n  line-height: 1;\n  letter-spacing: 0.073em; }\n\n.Button__block___3XuHQ {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  width: 100%; }\n\n.Button__icon___2PzW6 {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: baseline;\n      -ms-flex-align: baseline;\n          align-items: baseline;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-transform: translateY(-5%);\n          transform: translateY(-5%); }\n\n.Button__iconBefore___2vCuu {\n  margin-right: 0.5rem; }\n\n.Button__iconAfter___2Zy9r {\n  margin-left: 0.5rem; }\n\n.Button__iconPositionBefore___1ljSO {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row; }\n\n.Button__iconPositionAfter___3Ex1U {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: reverse;\n      -ms-flex-direction: row-reverse;\n          flex-direction: row-reverse; }\n\n.Button__iconLoading___3rCty {\n  -webkit-animation: Button__rotateIcon___dhwPd 2s linear infinite;\n          animation: Button__rotateIcon___dhwPd 2s linear infinite; }\n\n.Button__hiddenLabel___22zCB {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border: 0; }\n\n.Button__visibleLabelUpDesktop___Ncy7Z {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border: 0; }\n  @media (min-width: 66em) {\n    .Button__visibleLabelUpDesktop___Ncy7Z {\n      position: relative;\n      width: auto;\n      height: auto; } }\n\n.Button__resetMargin___3FmbU {\n  margin: 0; }\n\n.Button__resetMarginDesktop___2Ca1o.Button__iconBefore___2vCuu {\n  margin-right: 0; }\n  @media (min-width: 66em) {\n    .Button__resetMarginDesktop___2Ca1o.Button__iconBefore___2vCuu {\n      margin-right: 0.5rem; } }\n\n.Button__resetMarginDesktop___2Ca1o.Button__iconAfter___2Zy9r {\n  margin-left: 0; }\n  @media (min-width: 66em) {\n    .Button__resetMarginDesktop___2Ca1o.Button__iconAfter___2Zy9r {\n      margin-left: 0.5rem; } }\n\n@-webkit-keyframes Button__rotateIcon___dhwPd {\n  from {\n    -webkit-transform: translateY(-8%) rotate(0);\n            transform: translateY(-8%) rotate(0); }\n  to {\n    -webkit-transform: translateY(-8%) rotate(-360deg);\n            transform: translateY(-8%) rotate(-360deg); } }\n\n@keyframes Button__rotateIcon___dhwPd {\n  from {\n    -webkit-transform: translateY(-8%) rotate(0);\n            transform: translateY(-8%) rotate(0); }\n  to {\n    -webkit-transform: translateY(-8%) rotate(-360deg);\n            transform: translateY(-8%) rotate(-360deg); } }\n", ""]);
+exports.push([module.i, "@-webkit-keyframes Button__rotateIcon___dhwPd {\n  from {\n    -webkit-transform: rotate(0);\n            transform: rotate(0); }\n  to {\n    -webkit-transform: rotate(-360deg);\n            transform: rotate(-360deg); } }\n\n@keyframes Button__rotateIcon___dhwPd {\n  from {\n    -webkit-transform: rotate(0);\n            transform: rotate(0); }\n  to {\n    -webkit-transform: rotate(-360deg);\n            transform: rotate(-360deg); } }\n\n.Button__root___1siS8 {\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  overflow: hidden;\n  font-weight: var(--rui-button-font-weight);\n  line-height: var(--rui-typography-line-height-base);\n  font-family: var(--rui-typography-font-family-base);\n  text-align: center;\n  text-overflow: ellipsis;\n  text-decoration: none;\n  text-transform: var(--rui-button-text-transform);\n  white-space: nowrap;\n  vertical-align: middle;\n  border: var(--rui-button-border-width) solid transparent;\n  border-radius: var(--rui-button-border-radius);\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  cursor: pointer; }\n  .Button__root___1siS8:hover, .Button__root___1siS8:focus {\n    text-decoration: none; }\n  .Button__root___1siS8:disabled {\n    opacity: 0.5;\n    -webkit-box-shadow: none;\n            box-shadow: none;\n    cursor: not-allowed; }\n\n.Button__withIconAfter___35qIU {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: reverse;\n      -ms-flex-direction: row-reverse;\n          flex-direction: row-reverse; }\n\n.Button__sizeSmall___2Op9_ {\n  height: 2rem;\n  padding: 0 var(--rui-offset-3);\n  font-size: var(--rui-typography-size-small); }\n\n.Button__sizeMedium___Ljlz9 {\n  height: 2.25rem;\n  padding: 0 var(--rui-offset-4);\n  font-size: var(--rui-typography-size-0); }\n\n.Button__sizeLarge___2ZbaS {\n  height: 2.5rem;\n  padding: 0 var(--rui-offset-5);\n  font-size: var(--rui-typography-size-1); }\n\n.Button__priorityDefault___mVWp6.Button__variantPrimary___3tEpB {\n  color: var(--rui-button-default-primary-default-color);\n  border-color: var(--rui-button-default-primary-default-border-color);\n  background-color: var(--rui-button-default-primary-default-background);\n  -webkit-box-shadow: var(--rui-button-default-primary-default-box-shadow);\n          box-shadow: var(--rui-button-default-primary-default-box-shadow); }\n  .Button__priorityDefault___mVWp6.Button__variantPrimary___3tEpB:hover, .Button__priorityDefault___mVWp6.Button__variantPrimary___3tEpB:focus {\n    color: var(--rui-button-default-primary-hover-color);\n    border-color: var(--rui-button-default-primary-hover-border-color);\n    background-color: var(--rui-button-default-primary-hover-background);\n    -webkit-box-shadow: var(--rui-button-default-primary-hover-box-shadow);\n            box-shadow: var(--rui-button-default-primary-hover-box-shadow); }\n  .Button__priorityDefault___mVWp6.Button__variantPrimary___3tEpB:active {\n    color: var(--rui-button-default-primary-active-color);\n    border-color: var(--rui-button-default-primary-active-border-color);\n    background-color: var(--rui-button-default-primary-active-background);\n    -webkit-box-shadow: var(--rui-button-default-primary-active-box-shadow);\n            box-shadow: var(--rui-button-default-primary-active-box-shadow); }\n  .Button__priorityDefault___mVWp6.Button__variantPrimary___3tEpB:disabled {\n    color: var(--rui-button-default-primary-default-color);\n    border-color: var(--rui-button-default-primary-default-border-color);\n    background-color: var(--rui-button-default-primary-default-background);\n    -webkit-box-shadow: var(--rui-button-default-primary-default-box-shadow);\n            box-shadow: var(--rui-button-default-primary-default-box-shadow); }\n\n.Button__priorityDefault___mVWp6.Button__variantSecondary___1ttRc {\n  color: var(--rui-button-default-secondary-default-color);\n  border-color: var(--rui-button-default-secondary-default-border-color);\n  background-color: var(--rui-button-default-secondary-default-background);\n  -webkit-box-shadow: var(--rui-button-default-secondary-default-box-shadow);\n          box-shadow: var(--rui-button-default-secondary-default-box-shadow); }\n  .Button__priorityDefault___mVWp6.Button__variantSecondary___1ttRc:hover, .Button__priorityDefault___mVWp6.Button__variantSecondary___1ttRc:focus {\n    color: var(--rui-button-default-secondary-hover-color);\n    border-color: var(--rui-button-default-secondary-hover-border-color);\n    background-color: var(--rui-button-default-secondary-hover-background);\n    -webkit-box-shadow: var(--rui-button-default-secondary-hover-box-shadow);\n            box-shadow: var(--rui-button-default-secondary-hover-box-shadow); }\n  .Button__priorityDefault___mVWp6.Button__variantSecondary___1ttRc:active {\n    color: var(--rui-button-default-secondary-active-color);\n    border-color: var(--rui-button-default-secondary-active-border-color);\n    background-color: var(--rui-button-default-secondary-active-background);\n    -webkit-box-shadow: var(--rui-button-default-secondary-active-box-shadow);\n            box-shadow: var(--rui-button-default-secondary-active-box-shadow); }\n  .Button__priorityDefault___mVWp6.Button__variantSecondary___1ttRc:disabled {\n    color: var(--rui-button-default-secondary-default-color);\n    border-color: var(--rui-button-default-secondary-default-border-color);\n    background-color: var(--rui-button-default-secondary-default-background);\n    -webkit-box-shadow: var(--rui-button-default-secondary-default-box-shadow);\n            box-shadow: var(--rui-button-default-secondary-default-box-shadow); }\n\n.Button__priorityDefault___mVWp6.Button__variantSuccess___Wp54n {\n  color: var(--rui-button-default-success-default-color);\n  border-color: var(--rui-button-default-success-default-border-color);\n  background-color: var(--rui-button-default-success-default-background);\n  -webkit-box-shadow: var(--rui-button-default-success-default-box-shadow);\n          box-shadow: var(--rui-button-default-success-default-box-shadow); }\n  .Button__priorityDefault___mVWp6.Button__variantSuccess___Wp54n:hover, .Button__priorityDefault___mVWp6.Button__variantSuccess___Wp54n:focus {\n    color: var(--rui-button-default-success-hover-color);\n    border-color: var(--rui-button-default-success-hover-border-color);\n    background-color: var(--rui-button-default-success-hover-background);\n    -webkit-box-shadow: var(--rui-button-default-success-hover-box-shadow);\n            box-shadow: var(--rui-button-default-success-hover-box-shadow); }\n  .Button__priorityDefault___mVWp6.Button__variantSuccess___Wp54n:active {\n    color: var(--rui-button-default-success-active-color);\n    border-color: var(--rui-button-default-success-active-border-color);\n    background-color: var(--rui-button-default-success-active-background);\n    -webkit-box-shadow: var(--rui-button-default-success-active-box-shadow);\n            box-shadow: var(--rui-button-default-success-active-box-shadow); }\n  .Button__priorityDefault___mVWp6.Button__variantSuccess___Wp54n:disabled {\n    color: var(--rui-button-default-success-default-color);\n    border-color: var(--rui-button-default-success-default-border-color);\n    background-color: var(--rui-button-default-success-default-background);\n    -webkit-box-shadow: var(--rui-button-default-success-default-box-shadow);\n            box-shadow: var(--rui-button-default-success-default-box-shadow); }\n\n.Button__priorityDefault___mVWp6.Button__variantWarning___2Mgsb {\n  color: var(--rui-button-default-warning-default-color);\n  border-color: var(--rui-button-default-warning-default-border-color);\n  background-color: var(--rui-button-default-warning-default-background);\n  -webkit-box-shadow: var(--rui-button-default-warning-default-box-shadow);\n          box-shadow: var(--rui-button-default-warning-default-box-shadow); }\n  .Button__priorityDefault___mVWp6.Button__variantWarning___2Mgsb:hover, .Button__priorityDefault___mVWp6.Button__variantWarning___2Mgsb:focus {\n    color: var(--rui-button-default-warning-hover-color);\n    border-color: var(--rui-button-default-warning-hover-border-color);\n    background-color: var(--rui-button-default-warning-hover-background);\n    -webkit-box-shadow: var(--rui-button-default-warning-hover-box-shadow);\n            box-shadow: var(--rui-button-default-warning-hover-box-shadow); }\n  .Button__priorityDefault___mVWp6.Button__variantWarning___2Mgsb:active {\n    color: var(--rui-button-default-warning-active-color);\n    border-color: var(--rui-button-default-warning-active-border-color);\n    background-color: var(--rui-button-default-warning-active-background);\n    -webkit-box-shadow: var(--rui-button-default-warning-active-box-shadow);\n            box-shadow: var(--rui-button-default-warning-active-box-shadow); }\n  .Button__priorityDefault___mVWp6.Button__variantWarning___2Mgsb:disabled {\n    color: var(--rui-button-default-warning-default-color);\n    border-color: var(--rui-button-default-warning-default-border-color);\n    background-color: var(--rui-button-default-warning-default-background);\n    -webkit-box-shadow: var(--rui-button-default-warning-default-box-shadow);\n            box-shadow: var(--rui-button-default-warning-default-box-shadow); }\n\n.Button__priorityDefault___mVWp6.Button__variantDanger___27m0O {\n  color: var(--rui-button-default-danger-default-color);\n  border-color: var(--rui-button-default-danger-default-border-color);\n  background-color: var(--rui-button-default-danger-default-background);\n  -webkit-box-shadow: var(--rui-button-default-danger-default-box-shadow);\n          box-shadow: var(--rui-button-default-danger-default-box-shadow); }\n  .Button__priorityDefault___mVWp6.Button__variantDanger___27m0O:hover, .Button__priorityDefault___mVWp6.Button__variantDanger___27m0O:focus {\n    color: var(--rui-button-default-danger-hover-color);\n    border-color: var(--rui-button-default-danger-hover-border-color);\n    background-color: var(--rui-button-default-danger-hover-background);\n    -webkit-box-shadow: var(--rui-button-default-danger-hover-box-shadow);\n            box-shadow: var(--rui-button-default-danger-hover-box-shadow); }\n  .Button__priorityDefault___mVWp6.Button__variantDanger___27m0O:active {\n    color: var(--rui-button-default-danger-active-color);\n    border-color: var(--rui-button-default-danger-active-border-color);\n    background-color: var(--rui-button-default-danger-active-background);\n    -webkit-box-shadow: var(--rui-button-default-danger-active-box-shadow);\n            box-shadow: var(--rui-button-default-danger-active-box-shadow); }\n  .Button__priorityDefault___mVWp6.Button__variantDanger___27m0O:disabled {\n    color: var(--rui-button-default-danger-default-color);\n    border-color: var(--rui-button-default-danger-default-border-color);\n    background-color: var(--rui-button-default-danger-default-background);\n    -webkit-box-shadow: var(--rui-button-default-danger-default-box-shadow);\n            box-shadow: var(--rui-button-default-danger-default-box-shadow); }\n\n.Button__priorityOutline___1BLDV.Button__variantPrimary___3tEpB {\n  color: var(--rui-button-outline-primary-default-color);\n  border-color: var(--rui-button-outline-primary-default-border-color);\n  background-color: var(--rui-button-outline-primary-default-background); }\n  .Button__priorityOutline___1BLDV.Button__variantPrimary___3tEpB:hover, .Button__priorityOutline___1BLDV.Button__variantPrimary___3tEpB:focus {\n    color: var(--rui-button-outline-primary-hover-color);\n    border-color: var(--rui-button-outline-primary-hover-border-color);\n    background-color: var(--rui-button-outline-primary-hover-background); }\n  .Button__priorityOutline___1BLDV.Button__variantPrimary___3tEpB:active {\n    color: var(--rui-button-outline-primary-active-color);\n    border-color: var(--rui-button-outline-primary-active-border-color);\n    background-color: var(--rui-button-outline-primary-active-background); }\n  .Button__priorityOutline___1BLDV.Button__variantPrimary___3tEpB:disabled {\n    color: var(--rui-button-outline-primary-default-color);\n    border-color: var(--rui-button-outline-primary-default-border-color);\n    background-color: var(--rui-button-outline-primary-default-background); }\n\n.Button__priorityOutline___1BLDV.Button__variantSecondary___1ttRc {\n  color: var(--rui-button-outline-secondary-default-color);\n  border-color: var(--rui-button-outline-secondary-default-border-color);\n  background-color: var(--rui-button-outline-secondary-default-background); }\n  .Button__priorityOutline___1BLDV.Button__variantSecondary___1ttRc:hover, .Button__priorityOutline___1BLDV.Button__variantSecondary___1ttRc:focus {\n    color: var(--rui-button-outline-secondary-hover-color);\n    border-color: var(--rui-button-outline-secondary-hover-border-color);\n    background-color: var(--rui-button-outline-secondary-hover-background); }\n  .Button__priorityOutline___1BLDV.Button__variantSecondary___1ttRc:active {\n    color: var(--rui-button-outline-secondary-active-color);\n    border-color: var(--rui-button-outline-secondary-active-border-color);\n    background-color: var(--rui-button-outline-secondary-active-background); }\n  .Button__priorityOutline___1BLDV.Button__variantSecondary___1ttRc:disabled {\n    color: var(--rui-button-outline-secondary-default-color);\n    border-color: var(--rui-button-outline-secondary-default-border-color);\n    background-color: var(--rui-button-outline-secondary-default-background); }\n\n.Button__priorityOutline___1BLDV.Button__variantSuccess___Wp54n {\n  color: var(--rui-button-outline-success-default-color);\n  border-color: var(--rui-button-outline-success-default-border-color);\n  background-color: var(--rui-button-outline-success-default-background); }\n  .Button__priorityOutline___1BLDV.Button__variantSuccess___Wp54n:hover, .Button__priorityOutline___1BLDV.Button__variantSuccess___Wp54n:focus {\n    color: var(--rui-button-outline-success-hover-color);\n    border-color: var(--rui-button-outline-success-hover-border-color);\n    background-color: var(--rui-button-outline-success-hover-background); }\n  .Button__priorityOutline___1BLDV.Button__variantSuccess___Wp54n:active {\n    color: var(--rui-button-outline-success-active-color);\n    border-color: var(--rui-button-outline-success-active-border-color);\n    background-color: var(--rui-button-outline-success-active-background); }\n  .Button__priorityOutline___1BLDV.Button__variantSuccess___Wp54n:disabled {\n    color: var(--rui-button-outline-success-default-color);\n    border-color: var(--rui-button-outline-success-default-border-color);\n    background-color: var(--rui-button-outline-success-default-background); }\n\n.Button__priorityOutline___1BLDV.Button__variantWarning___2Mgsb {\n  color: var(--rui-button-outline-warning-default-color);\n  border-color: var(--rui-button-outline-warning-default-border-color);\n  background-color: var(--rui-button-outline-warning-default-background); }\n  .Button__priorityOutline___1BLDV.Button__variantWarning___2Mgsb:hover, .Button__priorityOutline___1BLDV.Button__variantWarning___2Mgsb:focus {\n    color: var(--rui-button-outline-warning-hover-color);\n    border-color: var(--rui-button-outline-warning-hover-border-color);\n    background-color: var(--rui-button-outline-warning-hover-background); }\n  .Button__priorityOutline___1BLDV.Button__variantWarning___2Mgsb:active {\n    color: var(--rui-button-outline-warning-active-color);\n    border-color: var(--rui-button-outline-warning-active-border-color);\n    background-color: var(--rui-button-outline-warning-active-background); }\n  .Button__priorityOutline___1BLDV.Button__variantWarning___2Mgsb:disabled {\n    color: var(--rui-button-outline-warning-default-color);\n    border-color: var(--rui-button-outline-warning-default-border-color);\n    background-color: var(--rui-button-outline-warning-default-background); }\n\n.Button__priorityOutline___1BLDV.Button__variantDanger___27m0O {\n  color: var(--rui-button-outline-danger-default-color);\n  border-color: var(--rui-button-outline-danger-default-border-color);\n  background-color: var(--rui-button-outline-danger-default-background); }\n  .Button__priorityOutline___1BLDV.Button__variantDanger___27m0O:hover, .Button__priorityOutline___1BLDV.Button__variantDanger___27m0O:focus {\n    color: var(--rui-button-outline-danger-hover-color);\n    border-color: var(--rui-button-outline-danger-hover-border-color);\n    background-color: var(--rui-button-outline-danger-hover-background); }\n  .Button__priorityOutline___1BLDV.Button__variantDanger___27m0O:active {\n    color: var(--rui-button-outline-danger-active-color);\n    border-color: var(--rui-button-outline-danger-active-border-color);\n    background-color: var(--rui-button-outline-danger-active-background); }\n  .Button__priorityOutline___1BLDV.Button__variantDanger___27m0O:disabled {\n    color: var(--rui-button-outline-danger-default-color);\n    border-color: var(--rui-button-outline-danger-default-border-color);\n    background-color: var(--rui-button-outline-danger-default-background); }\n\n.Button__priorityFlat___21jzk.Button__variantPrimary___3tEpB {\n  color: var(--rui-button-flat-primary-default-color);\n  background-color: var(--rui-button-flat-primary-default-background); }\n  .Button__priorityFlat___21jzk.Button__variantPrimary___3tEpB:hover, .Button__priorityFlat___21jzk.Button__variantPrimary___3tEpB:focus {\n    color: var(--rui-button-flat-primary-hover-color);\n    background-color: var(--rui-button-flat-primary-hover-background); }\n  .Button__priorityFlat___21jzk.Button__variantPrimary___3tEpB:active {\n    color: var(--rui-button-flat-primary-active-color);\n    background-color: var(--rui-button-flat-primary-active-background); }\n  .Button__priorityFlat___21jzk.Button__variantPrimary___3tEpB:disabled {\n    color: var(--rui-button-flat-primary-default-color);\n    background-color: var(--rui-button-flat-primary-default-background); }\n\n.Button__priorityFlat___21jzk.Button__variantSecondary___1ttRc {\n  color: var(--rui-button-flat-secondary-default-color);\n  background-color: var(--rui-button-flat-secondary-default-background); }\n  .Button__priorityFlat___21jzk.Button__variantSecondary___1ttRc:hover, .Button__priorityFlat___21jzk.Button__variantSecondary___1ttRc:focus {\n    color: var(--rui-button-flat-secondary-hover-color);\n    background-color: var(--rui-button-flat-secondary-hover-background); }\n  .Button__priorityFlat___21jzk.Button__variantSecondary___1ttRc:active {\n    color: var(--rui-button-flat-secondary-active-color);\n    background-color: var(--rui-button-flat-secondary-active-background); }\n  .Button__priorityFlat___21jzk.Button__variantSecondary___1ttRc:disabled {\n    color: var(--rui-button-flat-secondary-default-color);\n    background-color: var(--rui-button-flat-secondary-default-background); }\n\n.Button__priorityFlat___21jzk.Button__variantSuccess___Wp54n {\n  color: var(--rui-button-flat-success-default-color);\n  background-color: var(--rui-button-flat-success-default-background); }\n  .Button__priorityFlat___21jzk.Button__variantSuccess___Wp54n:hover, .Button__priorityFlat___21jzk.Button__variantSuccess___Wp54n:focus {\n    color: var(--rui-button-flat-success-hover-color);\n    background-color: var(--rui-button-flat-success-hover-background); }\n  .Button__priorityFlat___21jzk.Button__variantSuccess___Wp54n:active {\n    color: var(--rui-button-flat-success-active-color);\n    background-color: var(--rui-button-flat-success-active-background); }\n  .Button__priorityFlat___21jzk.Button__variantSuccess___Wp54n:disabled {\n    color: var(--rui-button-flat-success-default-color);\n    background-color: var(--rui-button-flat-success-default-background); }\n\n.Button__priorityFlat___21jzk.Button__variantWarning___2Mgsb {\n  color: var(--rui-button-flat-warning-default-color);\n  background-color: var(--rui-button-flat-warning-default-background); }\n  .Button__priorityFlat___21jzk.Button__variantWarning___2Mgsb:hover, .Button__priorityFlat___21jzk.Button__variantWarning___2Mgsb:focus {\n    color: var(--rui-button-flat-warning-hover-color);\n    background-color: var(--rui-button-flat-warning-hover-background); }\n  .Button__priorityFlat___21jzk.Button__variantWarning___2Mgsb:active {\n    color: var(--rui-button-flat-warning-active-color);\n    background-color: var(--rui-button-flat-warning-active-background); }\n  .Button__priorityFlat___21jzk.Button__variantWarning___2Mgsb:disabled {\n    color: var(--rui-button-flat-warning-default-color);\n    background-color: var(--rui-button-flat-warning-default-background); }\n\n.Button__priorityFlat___21jzk.Button__variantDanger___27m0O {\n  color: var(--rui-button-flat-danger-default-color);\n  background-color: var(--rui-button-flat-danger-default-background); }\n  .Button__priorityFlat___21jzk.Button__variantDanger___27m0O:hover, .Button__priorityFlat___21jzk.Button__variantDanger___27m0O:focus {\n    color: var(--rui-button-flat-danger-hover-color);\n    background-color: var(--rui-button-flat-danger-hover-background); }\n  .Button__priorityFlat___21jzk.Button__variantDanger___27m0O:active {\n    color: var(--rui-button-flat-danger-active-color);\n    background-color: var(--rui-button-flat-danger-active-background); }\n  .Button__priorityFlat___21jzk.Button__variantDanger___27m0O:disabled {\n    color: var(--rui-button-flat-danger-default-color);\n    background-color: var(--rui-button-flat-danger-default-background); }\n\n.Button__block___3XuHQ {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  width: 100%; }\n\n.Button__label___3Y6Ip {\n  display: block; }\n\n.Button__withLabelHidden___3cg8M .Button__label___3Y6Ip,\n.Button__withLabelHiddenMobile___uY0K9 .Button__label___3Y6Ip {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border: 0; }\n\n@media (min-width: 66em) {\n  .Button__withLabelHiddenMobile___uY0K9 .Button__label___3Y6Ip {\n    position: relative;\n    width: auto;\n    height: auto; } }\n\n.Button__icon___2PzW6 {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: baseline;\n      -ms-flex-align: baseline;\n          align-items: baseline;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center; }\n\n.Button__iconLoading___3rCty {\n  -webkit-animation: Button__rotateIcon___dhwPd 2s linear infinite;\n          animation: Button__rotateIcon___dhwPd 2s linear infinite; }\n\n.Button__withIconBefore___1PhTI .Button__icon___2PzW6 {\n  margin-right: var(--rui-offset-2); }\n\n.Button__withIconAfter___35qIU .Button__icon___2PzW6 {\n  margin-left: var(--rui-offset-2); }\n\n.Button__withLabelHidden___3cg8M .Button__icon___2PzW6,\n.Button__withLabelHiddenMobile___uY0K9 .Button__icon___2PzW6 {\n  margin-right: 0;\n  margin-left: 0; }\n\n@media (min-width: 66em) {\n  .Button__withLabelHiddenMobile___uY0K9.Button__withIconBefore___1PhTI .Button__icon___2PzW6 {\n    margin-right: var(--rui-offset-2); } }\n\n@media (min-width: 66em) {\n  .Button__withLabelHiddenMobile___uY0K9.Button__withIconAfter___35qIU .Button__icon___2PzW6 {\n    margin-left: var(--rui-offset-2); } }\n", ""]);
 
 // exports
 exports.locals = {
 	"root": "Button__root___1siS8",
+	"withIconAfter": "Button__withIconAfter___35qIU",
+	"sizeSmall": "Button__sizeSmall___2Op9_",
+	"sizeMedium": "Button__sizeMedium___Ljlz9",
+	"sizeLarge": "Button__sizeLarge___2ZbaS",
 	"priorityDefault": "Button__priorityDefault___mVWp6",
-	"disabled": "Button__disabled___2pteZ",
-	"priorityPrimary": "Button__priorityPrimary___2lQD8",
-	"priorityFlat": "Button__priorityFlat___21jzk",
+	"variantPrimary": "Button__variantPrimary___3tEpB",
+	"variantSecondary": "Button__variantSecondary___1ttRc",
 	"variantSuccess": "Button__variantSuccess___Wp54n",
 	"variantWarning": "Button__variantWarning___2Mgsb",
 	"variantDanger": "Button__variantDanger___27m0O",
-	"sizeMedium": "Button__sizeMedium___Ljlz9",
-	"sizeSmall": "Button__sizeSmall___2Op9_",
-	"sizeLarge": "Button__sizeLarge___2ZbaS",
+	"priorityOutline": "Button__priorityOutline___1BLDV",
+	"priorityFlat": "Button__priorityFlat___21jzk",
 	"block": "Button__block___3XuHQ",
+	"label": "Button__label___3Y6Ip",
+	"withLabelHidden": "Button__withLabelHidden___3cg8M",
+	"withLabelHiddenMobile": "Button__withLabelHiddenMobile___uY0K9",
 	"icon": "Button__icon___2PzW6",
-	"iconBefore": "Button__iconBefore___2vCuu Button__icon___2PzW6",
-	"iconAfter": "Button__iconAfter___2Zy9r Button__icon___2PzW6",
-	"iconPositionBefore": "Button__iconPositionBefore___1ljSO",
-	"iconPositionAfter": "Button__iconPositionAfter___3Ex1U",
 	"iconLoading": "Button__iconLoading___3rCty",
 	"rotateIcon": "Button__rotateIcon___dhwPd",
-	"hiddenLabel": "Button__hiddenLabel___22zCB",
-	"visibleLabelUpDesktop": "Button__visibleLabelUpDesktop___Ncy7Z",
-	"resetMargin": "Button__resetMargin___3FmbU",
-	"resetMarginDesktop": "Button__resetMarginDesktop___2Ca1o"
+	"withIconBefore": "Button__withIconBefore___1PhTI"
 };
 
 /***/ }),
@@ -53554,7 +53547,7 @@ var ForgotPassword = function ForgotPassword(props) {
           type: 'email',
           required: true
         }),
-        _react2.default.createElement(_Button2.default, { label: props.translations.resetPassword, block: true, priority: 'primary', type: 'submit' })
+        _react2.default.createElement(_Button2.default, { label: props.translations.resetPassword, block: true, type: 'submit' })
       ),
       props.footer && _react2.default.createElement(
         'div',
@@ -54154,7 +54147,7 @@ var Login = function Login(props) {
           type: 'password',
           required: true
         }),
-        _react2.default.createElement(_Button2.default, { label: props.translations.signIn, block: true, priority: 'primary', type: 'submit' })
+        _react2.default.createElement(_Button2.default, { label: props.translations.signIn, block: true, type: 'submit' })
       ),
       props.footer && _react2.default.createElement(
         'div',
@@ -54422,7 +54415,6 @@ var Modal = function (_React$Component) {
                   key: action.label,
                   label: action.label,
                   loading: action.loading,
-                  priority: 'primary',
                   variant: action.variant
                 });
               })
@@ -54432,7 +54424,8 @@ var Modal = function (_React$Component) {
               { className: _Modal2.default.button },
               _react2.default.createElement(_Button2.default, {
                 clickHandler: this.props.closeHandler,
-                label: this.props.translations.close
+                label: this.props.translations.close,
+                priority: 'flat'
               })
             )
           )
@@ -54845,7 +54838,7 @@ var NewPassword = function NewPassword(props) {
           type: 'password',
           required: true
         }),
-        _react2.default.createElement(_Button2.default, { label: props.translations.changePassword, block: true, priority: 'primary', type: 'submit' })
+        _react2.default.createElement(_Button2.default, { label: props.translations.changePassword, block: true, type: 'submit' })
       ),
       props.footer && _react2.default.createElement(
         'div',

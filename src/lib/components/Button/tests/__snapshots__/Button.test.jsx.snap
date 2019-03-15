@@ -4,13 +4,16 @@ exports[`rendering renders correctly flat 1`] = `
 <button
   className="root
         priorityFlat
-        sizeMedium"
+        sizeMedium
+        variantPrimary"
   disabled={false}
   onClick={null}
-  title="button"
+  title={null}
   type="button"
 >
-  <span>
+  <span
+    className="label"
+  >
     button
   </span>
 </button>
@@ -20,14 +23,18 @@ exports[`rendering renders correctly label visibility 1`] = `
 <button
   className="root
         priorityDefault
-        sizeMedium"
+        sizeMedium
+        variantPrimary
+        
+        
+        withLabelHidden"
   disabled={false}
   onClick={null}
-  title={null}
+  title="button"
   type="button"
 >
   <span
-    className="hiddenLabel"
+    className="label"
   >
     button
   </span>
@@ -38,29 +45,35 @@ exports[`rendering renders correctly mandatory props only 1`] = `
 <button
   className="root
         priorityDefault
-        sizeMedium"
+        sizeMedium
+        variantPrimary"
   disabled={false}
   onClick={null}
-  title="button"
+  title={null}
   type="button"
 >
-  <span>
+  <span
+    className="label"
+  >
     button
   </span>
 </button>
 `;
 
-exports[`rendering renders correctly primary 1`] = `
+exports[`rendering renders correctly priority 1`] = `
 <button
   className="root
-        priorityPrimary
-        sizeMedium"
+        priorityOutline
+        sizeMedium
+        variantPrimary"
   disabled={false}
   onClick={null}
-  title="button"
+  title={null}
   type="button"
 >
-  <span>
+  <span
+    className="label"
+  >
     button
   </span>
 </button>
@@ -70,13 +83,16 @@ exports[`rendering renders correctly size 1`] = `
 <button
   className="root
         priorityDefault
-        sizeLarge"
+        sizeLarge
+        variantPrimary"
   disabled={false}
   onClick={null}
-  title="button"
+  title={null}
   type="button"
 >
-  <span>
+  <span
+    className="label"
+  >
     button
   </span>
 </button>
@@ -90,10 +106,12 @@ exports[`rendering renders correctly variant 1`] = `
         variantSuccess"
   disabled={false}
   onClick={null}
-  title="button"
+  title={null}
   type="button"
 >
-  <span>
+  <span
+    className="label"
+  >
     button
   </span>
 </button>
@@ -105,16 +123,16 @@ exports[`rendering renders correctly with all props 1`] = `
         priorityFlat
         sizeLarge
         variantSuccess
-        iconPositionAfter
-        block"
+        block
+        withIconAfter
+        withLabelHiddenMobile"
   disabled={true}
   onClick={null}
-  title={null}
+  title="button"
   type="button"
 >
   <span
-    className="iconAfter
-              resetMarginDesktop
+    className="icon
               iconLoading"
   >
     <Icon
@@ -123,7 +141,7 @@ exports[`rendering renders correctly with all props 1`] = `
     />
   </span>
   <span
-    className="visibleLabelUpDesktop"
+    className="label"
   >
     button
   </span>
@@ -135,22 +153,25 @@ exports[`rendering renders correctly with icon 1`] = `
   className="root
         priorityDefault
         sizeMedium
+        variantPrimary
         
-        iconPositionBefore"
+        withIconBefore"
   disabled={false}
   onClick={null}
-  title="button"
+  title={null}
   type="button"
 >
   <span
-    className="iconBefore"
+    className="icon"
   >
     <Icon
       icon="album"
       size="medium"
     />
   </span>
-  <span>
+  <span
+    className="label"
+  >
     button
   </span>
 </button>

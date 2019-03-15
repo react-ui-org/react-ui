@@ -79,7 +79,6 @@ class Modal extends React.Component {
                   key={action.label}
                   label={action.label}
                   loading={action.loading}
-                  priority="primary"
                   variant={action.variant}
                 />
               ))}
@@ -88,6 +87,7 @@ class Modal extends React.Component {
               <Button
                 clickHandler={this.props.closeHandler}
                 label={this.props.translations.close}
+                priority="flat"
               />
             </span>
           </div>

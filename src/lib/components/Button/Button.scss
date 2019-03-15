@@ -1,159 +1,160 @@
+@import '../../shared/tools/accessibility';
+@import '../../shared/tools/breakpoints';
 @import 'mixins';
 @import 'variables';
+@import 'theme';
+
+@keyframes rotateIcon {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
+}
 
 .root {
-  @include generate-button();
+  @include button();
 }
 
-.priorityDefault {
-  @include generate-button-priority-variant(default);
+.withIconAfter {
+  flex-direction: row-reverse;
 }
 
-.priorityPrimary {
-  @include generate-button-priority-variant(primary);
-  @include ripex-box-shadow(inset, 0.05rem, 0.05rem, 1rem);
-}
-
-.priorityFlat {
-  @include generate-button-priority-variant(flat);
-}
-
-.priorityDefault.variantSuccess {
-  @include generate-button-priority-variant(success);
-}
-
-.priorityPrimary.variantSuccess {
-  @include generate-button-priority-variant(success-primary);
-}
-
-.priorityFlat.variantSuccess {
-  @include generate-button-priority-variant(success-flat);
-}
-
-.priorityDefault.variantWarning {
-  @include generate-button-priority-variant(warning);
-}
-
-.priorityPrimary.variantWarning {
-  @include generate-button-priority-variant(warning-primary);
-}
-
-.priorityFlat.variantWarning {
-  @include generate-button-priority-variant(warning-flat);
-}
-
-.priorityDefault.variantDanger {
-  @include generate-button-priority-variant(danger);
-}
-
-.priorityPrimary.variantDanger {
-  @include generate-button-priority-variant(danger-primary);
-}
-
-.priorityFlat.variantDanger {
-  @include generate-button-priority-variant(danger-flat);
+// Sizes
+.sizeSmall {
+  @include button-size(small);
 }
 
 .sizeMedium {
-  @include generate-button-sizes(medium);
-}
-
-.sizeSmall {
-  @include generate-button-sizes(small);
+  @include button-size(medium);
 }
 
 .sizeLarge {
-  @include generate-button-sizes(large);
+  @include button-size(large);
 }
 
+// Default priority variants
+.priorityDefault.variantPrimary {
+  @include button-variant(default, primary);
+}
+
+.priorityDefault.variantSecondary {
+  @include button-variant(default, secondary);
+}
+
+.priorityDefault.variantSuccess {
+  @include button-variant(default, success);
+}
+
+.priorityDefault.variantWarning {
+  @include button-variant(default, warning);
+}
+
+.priorityDefault.variantDanger {
+  @include button-variant(default, danger);
+}
+
+// Outline priority variants
+.priorityOutline.variantPrimary {
+  @include button-variant(outline, primary);
+}
+
+.priorityOutline.variantSecondary {
+  @include button-variant(outline, secondary);
+}
+
+.priorityOutline.variantSuccess {
+  @include button-variant(outline, success);
+}
+
+.priorityOutline.variantWarning {
+  @include button-variant(outline, warning);
+}
+
+.priorityOutline.variantDanger {
+  @include button-variant(outline, danger);
+}
+
+// Flat priority variants
+.priorityFlat.variantPrimary {
+  @include button-variant(flat, primary);
+}
+
+.priorityFlat.variantSecondary {
+  @include button-variant(flat, secondary);
+}
+
+.priorityFlat.variantSuccess {
+  @include button-variant(flat, success);
+}
+
+.priorityFlat.variantWarning {
+  @include button-variant(flat, warning);
+}
+
+.priorityFlat.variantDanger {
+  @include button-variant(flat, danger);
+}
+
+// Block button
 .block {
   display: flex;
   width: 100%;
 }
 
-.icon {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  transform: translateY(-5%);
+// Label
+.label {
+  display: block;
 }
 
-.iconBefore {
-  composes: icon;
-  margin-right: $button-margin-horizontal;
+.withLabelHidden .label,
+.withLabelHiddenMobile .label {
+  @include accessibility-hide-text();
 }
 
-.iconAfter {
-  composes: icon;
-  margin-left: $button-margin-horizontal;
-}
-
-.iconPositionBefore {
-  flex-direction: row;
-}
-
-.iconPositionAfter {
-  flex-direction: row-reverse;
-}
-
-.iconLoading {
-  animation: rotateIcon 2s linear infinite;
-}
-
-.hiddenLabel {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-.visibleLabelUpDesktop {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-
-  @media (min-width: 66em) {
+.withLabelHiddenMobile .label {
+  @include breakpoint-up($button-breakpoint) {
     position: relative;
     width: auto;
     height: auto;
   }
 }
 
-.resetMargin {
-  margin: 0;
+// Icon
+.icon {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
 }
 
-.resetMarginDesktop.iconBefore {
+.iconLoading {
+  animation: rotateIcon 2s linear infinite;
+}
+
+.withIconBefore .icon {
+  margin-right: $button-icon-offset;
+}
+
+.withIconAfter .icon {
+  margin-left: $button-icon-offset;
+}
+
+.withLabelHidden .icon,
+.withLabelHiddenMobile .icon {
   margin-right: 0;
-
-  @media (min-width: 66em) {
-    margin-right: $button-margin-horizontal;
-  }
-}
-
-.resetMarginDesktop.iconAfter {
   margin-left: 0;
+}
 
-  @media (min-width: 66em) {
-    margin-left: $button-margin-horizontal;
+.withLabelHiddenMobile.withIconBefore .icon {
+  @include breakpoint-up($button-breakpoint) {
+    margin-right: $button-icon-offset;
   }
 }
 
-@keyframes rotateIcon {
-  from {
-    transform: translateY(-8%) rotate(0);
-  }
-
-  to {
-    transform: translateY(-8%) rotate(-360deg);
+.withLabelHiddenMobile.withIconAfter .icon {
+  @include breakpoint-up($button-breakpoint) {
+    margin-left: $button-icon-offset;
   }
 }

@@ -62,22 +62,23 @@ exports[`rendering renders correctly with all props except translations 1`] = `
             priority="flat"
             size="large"
             type="button"
-            variant="default"
+            variant="primary"
           >
             <button
               className="root
                     priorityFlat
                     sizeLarge
+                    variantPrimary
                     
-                    iconPositionBefore"
+                    withIconBefore
+                    withLabelHidden"
               disabled={false}
               onClick={[Function]}
-              title={null}
+              title="Close"
               type="button"
             >
               <span
-                className="icon
-                          resetMargin"
+                className="icon"
               >
                 <Icon
                   icon="close"
@@ -98,7 +99,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                 </Icon>
               </span>
               <span
-                className="hiddenLabel"
+                className="label"
               >
                 Close
               </span>
@@ -126,21 +127,24 @@ exports[`rendering renders correctly with all props except translations 1`] = `
               label="Action"
               labelVisibility="all"
               loading={false}
-              priority="primary"
+              priority="default"
               size="medium"
               type="button"
-              variant="default"
+              variant="primary"
             >
               <button
                 className="root
-                      priorityPrimary
-                      sizeMedium"
+                      priorityDefault
+                      sizeMedium
+                      variantPrimary"
                 disabled={false}
                 onClick={[Function]}
-                title="Action"
+                title={null}
                 type="button"
               >
-                <span>
+                <span
+                  className="label"
+                >
                   Action
                 </span>
               </button>
@@ -158,21 +162,24 @@ exports[`rendering renders correctly with all props except translations 1`] = `
               label="Close"
               labelVisibility="all"
               loading={false}
-              priority="default"
+              priority="flat"
               size="medium"
               type="button"
-              variant="default"
+              variant="primary"
             >
               <button
                 className="root
-                      priorityDefault
-                      sizeMedium"
+                      priorityFlat
+                      sizeMedium
+                      variantPrimary"
                 disabled={false}
                 onClick={[Function]}
-                title="Close"
+                title={null}
                 type="button"
               >
-                <span>
+                <span
+                  className="label"
+                >
                   Close
                 </span>
               </button>
@@ -232,22 +239,23 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             priority="flat"
             size="large"
             type="button"
-            variant="default"
+            variant="primary"
           >
             <button
               className="root
                     priorityFlat
                     sizeLarge
+                    variantPrimary
                     
-                    iconPositionBefore"
+                    withIconBefore
+                    withLabelHidden"
               disabled={false}
               onClick={[Function]}
-              title={null}
+              title="Close"
               type="button"
             >
               <span
-                className="icon
-                          resetMargin"
+                className="icon"
               >
                 <Icon
                   icon="close"
@@ -268,7 +276,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 </Icon>
               </span>
               <span
-                className="hiddenLabel"
+                className="label"
               >
                 Close
               </span>
@@ -298,21 +306,24 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               label="Close"
               labelVisibility="all"
               loading={false}
-              priority="default"
+              priority="flat"
               size="medium"
               type="button"
-              variant="default"
+              variant="primary"
             >
               <button
                 className="root
-                      priorityDefault
-                      sizeMedium"
+                      priorityFlat
+                      sizeMedium
+                      variantPrimary"
                 disabled={false}
                 onClick={[Function]}
-                title="Close"
+                title={null}
                 type="button"
               >
-                <span>
+                <span
+                  className="label"
+                >
                   Close
                 </span>
               </button>
@@ -376,22 +387,23 @@ exports[`rendering renders correctly with translations 1`] = `
             priority="flat"
             size="large"
             type="button"
-            variant="default"
+            variant="primary"
           >
             <button
               className="root
                     priorityFlat
                     sizeLarge
+                    variantPrimary
                     
-                    iconPositionBefore"
+                    withIconBefore
+                    withLabelHidden"
               disabled={false}
               onClick={[Function]}
-              title={null}
+              title="Zavřít"
               type="button"
             >
               <span
-                className="icon
-                          resetMargin"
+                className="icon"
               >
                 <Icon
                   icon="close"
@@ -412,7 +424,7 @@ exports[`rendering renders correctly with translations 1`] = `
                 </Icon>
               </span>
               <span
-                className="hiddenLabel"
+                className="label"
               >
                 Zavřít
               </span>
@@ -442,21 +454,24 @@ exports[`rendering renders correctly with translations 1`] = `
               label="Zavřít"
               labelVisibility="all"
               loading={false}
-              priority="default"
+              priority="flat"
               size="medium"
               type="button"
-              variant="default"
+              variant="primary"
             >
               <button
                 className="root
-                      priorityDefault
-                      sizeMedium"
+                      priorityFlat
+                      sizeMedium
+                      variantPrimary"
                 disabled={false}
                 onClick={[Function]}
-                title="Zavřít"
+                title={null}
                 type="button"
               >
-                <span>
+                <span
+                  className="label"
+                >
                   Zavřít
                 </span>
               </button>

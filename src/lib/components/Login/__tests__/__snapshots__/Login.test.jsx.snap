@@ -109,24 +109,25 @@ exports[`rendering renders correctly 1`] = `
             label="Sign in"
             labelVisibility="all"
             loading={false}
-            priority="primary"
+            priority="default"
             size="medium"
             type="submit"
-            variant="default"
+            variant="primary"
           >
             <button
               className="root
-                    priorityPrimary
+                    priorityDefault
                     sizeMedium
-                    
-                    
+                    variantPrimary
                     block"
               disabled={false}
               onClick={null}
-              title="Sign in"
+              title={null}
               type="submit"
             >
-              <span>
+              <span
+                className="label"
+              >
                 Sign in
               </span>
             </button>
@@ -274,24 +275,25 @@ exports[`rendering renders correctly with all props except translations 1`] = `
             label="Sign in"
             labelVisibility="all"
             loading={false}
-            priority="primary"
+            priority="default"
             size="medium"
             type="submit"
-            variant="default"
+            variant="primary"
           >
             <button
               className="root
-                    priorityPrimary
+                    priorityDefault
                     sizeMedium
-                    
-                    
+                    variantPrimary
                     block"
               disabled={false}
               onClick={null}
-              title="Sign in"
+              title={null}
               type="submit"
             >
-              <span>
+              <span
+                className="label"
+              >
                 Sign in
               </span>
             </button>
@@ -428,24 +430,25 @@ exports[`rendering renders correctly with translations 1`] = `
             label="Přihlásit se"
             labelVisibility="all"
             loading={false}
-            priority="primary"
+            priority="default"
             size="medium"
             type="submit"
-            variant="default"
+            variant="primary"
           >
             <button
               className="root
-                    priorityPrimary
+                    priorityDefault
                     sizeMedium
-                    
-                    
+                    variantPrimary
                     block"
               disabled={false}
               onClick={null}
-              title="Přihlásit se"
+              title={null}
               type="submit"
             >
-              <span>
+              <span
+                className="label"
+              >
                 Přihlásit se
               </span>
             </button>
@@ -567,24 +570,25 @@ exports[`rendering renders correctly with username 1`] = `
             label="Sign in"
             labelVisibility="all"
             loading={false}
-            priority="primary"
+            priority="default"
             size="medium"
             type="submit"
-            variant="default"
+            variant="primary"
           >
             <button
               className="root
-                    priorityPrimary
+                    priorityDefault
                     sizeMedium
-                    
-                    
+                    variantPrimary
                     block"
               disabled={false}
               onClick={null}
-              title="Sign in"
+              title={null}
               type="submit"
             >
-              <span>
+              <span
+                className="label"
+              >
                 Sign in
               </span>
             </button>

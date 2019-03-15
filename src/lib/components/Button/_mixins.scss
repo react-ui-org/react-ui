@@ -1,84 +1,67 @@
-@import '../../shared/settings/borders';
-@import '../../shared/settings/typography';
-@import 'maps';
 @import 'variables';
+@import 'theme';
 
-@mixin ripex-box-shadow($inset: '', $offset-x: 0, $offset-y: 0.4rem, $blur: 1.7rem) {
-  @if ($inset != '') {
-    box-shadow: $inset $offset-x $offset-y $blur transparentize($black, 0.8);
-  }
-
-  @else {
-    box-shadow: $offset-x $offset-y $blur transparentize($black, 0.8);
+@mixin _button-properties($properties) {
+  @each $key, $value in $properties {
+    #{$key}: $value;
   }
 }
 
-@mixin generate-button-sizes($button-size: medium, $button-size-map: $button-size-map) {
-  $button-size-map: map-get($button-size-map, $button-size);
-
-  height: map-get($button-size-map, height);
-  padding: map-get($button-size-map, padding);
-  font-weight: map-get($button-size-map, font-weight);
-  font-size: map-get($button-size-map, font-size);
-  line-height: map-get($button-size-map, line-height);
-  letter-spacing: map-get($button-size-map, letter-spacing);
-}
-
-@mixin generate-button() {
+@mixin button() {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 3rem;
-  max-width: 15rem;
   overflow: hidden;
-  font-family: $typography-font-family-base;
+  font-weight: $button-font-weight;
+  line-height: $button-line-height;
+  font-family: $button-font-family;
   text-align: center;
   text-overflow: ellipsis;
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: $button-text-transform;
   white-space: nowrap;
   vertical-align: middle;
-  border: $border-width solid;
-  border-radius: $border-radius;
+  border: $button-border-width solid transparent;
+  border-radius: $button-border-radius;
+  user-select: none;
   cursor: pointer;
 
   &:hover,
   &:focus {
     text-decoration: none;
   }
+
+  &:disabled {
+    opacity: 0.5;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
 }
 
-@mixin generate-button-priority-variant(
+@mixin button-size($size) {
+  $properties: map-get($button-sizes, $size);
 
-  $button-type: default, $button-global-map: $global-button-properties-map) {
-  $button-property-map: map-get($button-global-map, $button-type);
+  height: map-get($properties, height);
+  padding: 0 map-get($properties, padding-x);
+  font-size: map-get($properties, font-size);
+}
 
-  color: map-get($button-property-map, color);
-  border-color: map-get($button-property-map, border-color);
-  background-color: map-get($button-property-map, background-color);
+@mixin button-variant($priority, $variant) {
+  $priority-variants: map-get($button-variants, $priority);
+  $variant-states: map-get($priority-variants, $variant);
 
-  &:visited {
-    color: map-get($button-property-map, color);
-  }
+  @include _button-properties(map-get($variant-states, default));
 
   &:hover,
   &:focus {
-    color: map-get($button-property-map, hover-color);
-    background-color: map-get($button-property-map, hover-background-color);
+    @include _button-properties(map-get($variant-states, hover));
   }
 
   &:active {
-    box-shadow:
-      0 map-get($button-property-map, active-box-shadow-width-top)
-      0 0 map-get($button-property-map, active-box-shadow-color) inset;
+    @include _button-properties(map-get($variant-states, active));
   }
 
-  &.disabled,
   &:disabled {
-    opacity: 0.4;
-    color: map-get($button-property-map, disabled-color);
-    border-color: map-get($button-property-map, disabled-border-color);
-    background-color: map-get($button-property-map, disabled-background-color);
-    cursor: not-allowed;
+    @include _button-properties(map-get($variant-states, default));
   }
 }

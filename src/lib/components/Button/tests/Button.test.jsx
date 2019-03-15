@@ -18,10 +18,10 @@ describe('rendering', () => {
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
 
-  it('renders correctly primary', () => {
+  it('renders correctly priority', () => {
     const tree = shallow(<Button
       label="button"
-      priority="primary"
+      priority="outline"
     />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();

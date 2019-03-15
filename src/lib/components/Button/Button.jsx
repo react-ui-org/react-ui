@@ -5,10 +5,10 @@ import styles from './Button.scss';
 
 const Button = (props) => {
   let priorityClass = styles.priorityDefault;
-  if (props.priority === 'flat') {
+  if (props.priority === 'outline') {
+    priorityClass = styles.priorityOutline;
+  } else if (props.priority === 'flat') {
     priorityClass = styles.priorityFlat;
-  } else if (props.priority === 'primary') {
-    priorityClass = styles.priorityPrimary;
   }
 
   let sizeClass = styles.sizeMedium;
@@ -18,8 +18,10 @@ const Button = (props) => {
     sizeClass = styles.sizeLarge;
   }
 
-  let variantClass = '';
-  if (props.variant === 'success') {
+  let variantClass = styles.variantSecondary;
+  if (props.variant === 'primary') {
+    variantClass = styles.variantPrimary;
+  } else if (props.variant === 'success') {
     variantClass = styles.variantSuccess;
   } else if (props.variant === 'warning') {
     variantClass = styles.variantWarning;
@@ -27,37 +29,25 @@ const Button = (props) => {
     variantClass = styles.variantDanger;
   }
 
-  let iconPositionClass = '';
-  let iconClass = styles.icon;
-  if (props.icon || props.loading) {
-    if (props.iconPosition === 'after' || props.loading) {
-      iconPositionClass = styles.iconPositionAfter;
-
-      if (props.labelVisibility === 'all' || props.labelVisibility === 'desktop') {
-        iconClass = styles.iconAfter;
-      }
-    } else {
-      iconPositionClass = styles.iconPositionBefore;
-
-      if (props.labelVisibility === 'all' || props.labelVisibility === 'desktop') {
-        iconClass = styles.iconBefore;
-      }
-    }
-  }
-
   let blockClass = '';
   if (props.block) {
     blockClass = styles.block;
   }
 
+  let iconPositionClass = '';
+  if (props.icon || props.loading) {
+    if (props.iconPosition === 'after' || props.loading) {
+      iconPositionClass = styles.withIconAfter;
+    } else {
+      iconPositionClass = styles.withIconBefore;
+    }
+  }
+
   let labelVisibilityClass = '';
-  let resetMarginClass = '';
   if (props.labelVisibility === 'desktop') {
-    labelVisibilityClass = styles.visibleLabelUpDesktop;
-    resetMarginClass = styles.resetMarginDesktop;
+    labelVisibilityClass = styles.withLabelHiddenMobile;
   } else if (props.labelVisibility === 'none') {
-    labelVisibilityClass = styles.hiddenLabel;
-    resetMarginClass = styles.resetMargin;
+    labelVisibilityClass = styles.withLabelHidden;
   }
 
   return (
@@ -67,26 +57,26 @@ const Button = (props) => {
         ${priorityClass}
         ${sizeClass}
         ${variantClass}
-        ${iconPositionClass}
         ${blockClass}
+        ${iconPositionClass}
+        ${labelVisibilityClass}
       `).trim()}
       onClick={props.clickHandler}
-      title={labelVisibilityClass ? null : props.label}
+      title={props.labelVisibility === 'all' ? null : props.label}
       type={props.type}
       disabled={props.disabled || props.loading}
     >
       {(props.icon || props.loading) && (
         <span
           className={`
-            ${iconClass}
-            ${resetMarginClass}
+            ${styles.icon}
             ${props.loading ? styles.iconLoading : ''}
           `.trim()}
         >
           <Icon icon={props.loading ? 'sync' : props.icon} size={props.size} />
         </span>
       )}
-      <span className={labelVisibilityClass !== '' ? labelVisibilityClass : undefined}>
+      <span className={styles.label}>
         {props.label}
       </span>
     </button>
@@ -104,7 +94,7 @@ Button.defaultProps = {
   priority: 'default',
   size: 'medium',
   type: 'button',
-  variant: 'default',
+  variant: 'primary',
 };
 
 Button.propTypes = {
@@ -116,10 +106,10 @@ Button.propTypes = {
   label: PropTypes.string.isRequired,
   labelVisibility: PropTypes.oneOf(['all', 'desktop', 'none']),
   loading: PropTypes.bool,
-  priority: PropTypes.oneOf(['default', 'primary', 'flat']),
+  priority: PropTypes.oneOf(['default', 'outline', 'flat']),
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   type: PropTypes.oneOf(['button', 'submit']),
-  variant: PropTypes.oneOf(['default', 'success', 'warning', 'danger']),
+  variant: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'danger']),
 };
 
 export default Button;

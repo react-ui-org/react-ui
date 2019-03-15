@@ -50,7 +50,7 @@ const NewPassword = props => (
           type="password"
           required
         />
-        <Button label={props.translations.changePassword} block priority="primary" type="submit" />
+        <Button label={props.translations.changePassword} block type="submit" />
       </form>
       {props.footer && (
         <div className={styles.footer}>

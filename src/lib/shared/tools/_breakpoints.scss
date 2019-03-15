@@ -1,7 +1,11 @@
-@import "../settings/breakpoints";
+@import '../settings/breakpoints';
 
 @mixin breakpoint-up($breakpoint) {
-  @if (not map-has-key($breakpoint-values, $breakpoint)) or $breakpoint == 'xs' {
+  @if not map-has-key($breakpoint-values, $breakpoint) {
+    @error "Invalid breakpoint specified! #{$breakpoint} doesn't exist. Choose one of #{map-keys($breakpoint-values)}";
+  }
+
+  @else if $breakpoint == 'xs' {
     @content;
   }
 

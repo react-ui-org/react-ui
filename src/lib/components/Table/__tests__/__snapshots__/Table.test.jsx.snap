@@ -91,7 +91,7 @@ exports[`rendering renders correctly with all props 1`] = `
               priority="flat"
               size="medium"
               type="button"
-              variant="default"
+              variant="primary"
             />
           </div>
           Id
@@ -116,7 +116,7 @@ exports[`rendering renders correctly with all props 1`] = `
               priority="flat"
               size="medium"
               type="button"
-              variant="default"
+              variant="primary"
             />
           </div>
           Name

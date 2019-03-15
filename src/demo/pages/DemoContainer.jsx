@@ -620,21 +620,23 @@ class DemoContainer extends React.Component {
           name="Buttons"
           component={(
             <div>
-              <Button clickHandler={loggerClick} label="default" />
-              <Button clickHandler={loggerClick} label="default" variant="success" />
-              <Button clickHandler={loggerClick} label="default" variant="warning" />
-              <Button clickHandler={loggerClick} label="default" variant="danger" />
+              <Button clickHandler={loggerClick} label="Primary" />
+              <Button clickHandler={loggerClick} label="Secondary" variant="secondary" />
+              <Button clickHandler={loggerClick} label="Success" variant="success" />
+              <Button clickHandler={loggerClick} label="Warning" variant="warning" />
+              <Button clickHandler={loggerClick} label="Danger" variant="danger" />
             </div>
           )}
         />
         <Documentation
-          name="Primary buttons"
+          name="Outline buttons"
           component={(
             <div>
-              <Button clickHandler={loggerClick} label="primary" priority="primary" />
-              <Button clickHandler={loggerClick} label="primary" priority="primary" variant="success" />
-              <Button clickHandler={loggerClick} label="primary" priority="primary" variant="warning" />
-              <Button clickHandler={loggerClick} label="primary" priority="primary" variant="danger" />
+              <Button clickHandler={loggerClick} label="Primary " priority="outline" />
+              <Button clickHandler={loggerClick} label="Secondary" priority="outline" variant="secondary" />
+              <Button clickHandler={loggerClick} label="Success" priority="outline" variant="success" />
+              <Button clickHandler={loggerClick} label="Warning" priority="outline" variant="warning" />
+              <Button clickHandler={loggerClick} label="Danger" priority="outline" variant="danger" />
             </div>
           )}
         />
@@ -642,20 +644,21 @@ class DemoContainer extends React.Component {
           name="Flat buttons"
           component={(
             <div>
-              <Button clickHandler={loggerClick} label="flat" priority="flat" />
-              <Button clickHandler={loggerClick} label="flat" priority="flat" variant="success" />
-              <Button clickHandler={loggerClick} label="flat" priority="flat" variant="warning" />
-              <Button clickHandler={loggerClick} label="flat" priority="flat" variant="danger" />
+              <Button clickHandler={loggerClick} label="Primary" priority="flat" />
+              <Button clickHandler={loggerClick} label="Secondary" priority="flat" variant="secondary" />
+              <Button clickHandler={loggerClick} label="Success" priority="flat" variant="success" />
+              <Button clickHandler={loggerClick} label="Warning" priority="flat" variant="warning" />
+              <Button clickHandler={loggerClick} label="Danger" priority="flat" variant="danger" />
             </div>
           )}
         />
         <Documentation
-          name="Buttons with different sizes"
+          name="Buttons sizes"
           component={(
             <div>
-              <Button clickHandler={loggerClick} label="small" size="small" />
-              <Button clickHandler={loggerClick} label="medium" />
-              <Button clickHandler={loggerClick} label="large" size="large" />
+              <Button clickHandler={loggerClick} label="Small" size="small" />
+              <Button clickHandler={loggerClick} label="Medium" />
+              <Button clickHandler={loggerClick} label="Large" size="large" />
             </div>
           )}
         />
@@ -663,9 +666,9 @@ class DemoContainer extends React.Component {
           name="Disabled buttons"
           component={(
             <div>
-              <Button clickHandler={loggerClick} label="disabled default" disabled />
-              <Button clickHandler={loggerClick} label="disabled primary" priority="primary" disabled />
-              <Button clickHandler={loggerClick} label="disabled flat" priority="flat" disabled />
+              <Button clickHandler={loggerClick} label="Disabled default" disabled />
+              <Button clickHandler={loggerClick} label="Disabled outline" priority="outline" disabled />
+              <Button clickHandler={loggerClick} label="Disabled flat" priority="flat" disabled />
             </div>
           )}
         />
@@ -673,17 +676,22 @@ class DemoContainer extends React.Component {
           name="Buttons with icons"
           component={(
             <div>
-              <Button clickHandler={loggerClick} label="icon without label" icon="radio" size="small" />
-              <Button clickHandler={loggerClick} label="icon" icon="album" />
-              <Button clickHandler={loggerClick} label="icon after" icon="book" iconPosition="after" />
+              <Button clickHandler={loggerClick} label="Icon before label, small" icon="album" size="small" />
+              <Button clickHandler={loggerClick} label="Icon before label" icon="radio" />
+              <Button clickHandler={loggerClick} label="Icon after label" icon="book" iconPosition="after" />
               <Button
                 clickHandler={loggerClick}
-                label="icon alone"
-                icon="radio"
+                label="Icon only"
                 labelVisibility="none"
+                icon="radio"
               />
-              <Button clickHandler={loggerClick} labelVisibility="desktop" label="label on large screen" icon="radio" />
-              <Button clickHandler={loggerClick} label="large icon" icon="album" size="large" />
+              <Button
+                clickHandler={loggerClick}
+                label="Icon and label on desktop"
+                labelVisibility="desktop"
+                icon="radio"
+              />
+              <Button clickHandler={loggerClick} label="Icon and label, large" icon="album" size="large" />
             </div>
           )}
         />
@@ -691,8 +699,8 @@ class DemoContainer extends React.Component {
           name="Block buttons"
           component={(
             <div>
-              <Button clickHandler={loggerClick} label="block" block />
-              <Button clickHandler={loggerClick} label="block with icon" block icon="check" />
+              <Button clickHandler={loggerClick} label="Block" block />
+              <Button clickHandler={loggerClick} label="Block with icon" block icon="check" />
             </div>
           )}
         />
@@ -700,7 +708,7 @@ class DemoContainer extends React.Component {
           name="Loading button"
           component={(
             <div>
-              <Button clickHandler={loggerClick} label="load btn" loading />
+              <Button clickHandler={loggerClick} label="Loading button" loading />
             </div>
           )}
         />

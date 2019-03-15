@@ -50,7 +50,7 @@ const Login = props => (
           type="password"
           required
         />
-        <Button label={props.translations.signIn} block priority="primary" type="submit" />
+        <Button label={props.translations.signIn} block type="submit" />
       </form>
       {props.footer && (
         <div className={styles.footer}>
