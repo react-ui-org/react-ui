@@ -50,19 +50,19 @@ describe('rendering', () => {
   ];
 
   it('renders correctly with single item', () => {
-    const tree = shallow(<DocumentationNavigation tree={navigationTreeSingleItem} />);
+    const tree = shallow(<DocumentationNavigation items={navigationTreeSingleItem} />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
 
   it('renders correctly with multiple items', () => {
-    const tree = shallow(<DocumentationNavigation tree={navigationTreeMultipleItems} />);
+    const tree = shallow(<DocumentationNavigation items={navigationTreeMultipleItems} />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
 
   it('renders correctly with nested items', () => {
-    const tree = shallow(<DocumentationNavigation tree={navigationTreeNestedItems} />);
+    const tree = shallow(<DocumentationNavigation items={navigationTreeNestedItems} />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });

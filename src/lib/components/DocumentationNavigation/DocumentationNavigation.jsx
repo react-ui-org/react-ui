@@ -4,7 +4,7 @@ import styles from './DocumentationNavigation.scss';
 
 const DocumentationNavigation = props => (
   <ul className={styles.root}>
-    {props.tree.map(item => (
+    {props.items.map(item => (
       <li key={item.link}>
         <a href={item.link} className={styles.navigationLink}>{item.title}</a>
         {item.items && (
@@ -24,7 +24,7 @@ const DocumentationNavigation = props => (
 );
 
 DocumentationNavigation.propTypes = {
-  tree: PropTypes.arrayOf(PropTypes.shape({
+  items: PropTypes.arrayOf(PropTypes.shape({
     items: PropTypes.arrayOf(PropTypes.shape({
       link: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,

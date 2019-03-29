@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly 1`] = `
+<aside
+  className="sidebar"
+/>
+`;
+
+exports[`rendering renders correctly with children 1`] = `
+<aside
+  className="sidebar"
+>
+  <div>
+    test
+  </div>
+</aside>
+`;

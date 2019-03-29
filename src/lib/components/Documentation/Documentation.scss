@@ -1,18 +1,13 @@
 @import '../../shared/settings/colors';
+@import '../../shared/settings/typography';
 @import '../../shared/tools/spacing';
 
 .root {
-  padding: spacing(1);
-  margin: spacing(1);
-  background-color: map-get($colors-grays, gray-100);
-}
-
-.title {
-  font-size: 1.25rem;
+  margin-bottom: spacing(2);
 }
 
 .sandbox {
   padding: spacing(1);
-  border: 2px dashed map-get($colors-grays, gray-400);
+  border: 2px dashed map-get($colors-grays, gray-200);
   background-color: $color-white;
 }

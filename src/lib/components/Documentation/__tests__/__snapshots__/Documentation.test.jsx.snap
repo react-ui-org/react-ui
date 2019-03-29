@@ -5,7 +5,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
   className="root"
 >
   <h2
-    className="title"
+    className="typography-size-1"
   >
     Element
   </h2>
