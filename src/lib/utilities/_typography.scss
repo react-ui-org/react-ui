@@ -1,0 +1,25 @@
+@import "../shared/settings/typography";
+
+:global(.typography-size-0) {
+  font-size: $typography-size-0;
+}
+
+:global(.typography-size-1) {
+  font-size: $typography-size-1;
+}
+
+:global(.typography-size-2) {
+  font-size: $typography-size-2;
+}
+
+:global(.typography-size-3) {
+  font-size: $typography-size-3;
+}
+
+:global(.typography-size-4) {
+  font-size: $typography-size-4;
+}
+
+:global(.typography-size-5) {
+  font-size: $typography-size-5;
+}
