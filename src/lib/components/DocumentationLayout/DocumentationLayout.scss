@@ -1,0 +1,42 @@
+@import '../../shared/settings/colors';
+@import '../../shared/tools/breakpoints';
+@import '../../shared/tools/spacing';
+
+.sidebar,
+.content {
+  padding: spacing(1);
+}
+
+.content {
+  background-color: map-get($colors-grays, gray-50);
+}
+
+@include breakpoint-up(md) {
+  .root {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 100%;
+    grid-template-areas: "sidebar content";
+    overflow: hidden;
+  }
+
+  .sidebar,
+  .content {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sidebar {
+    grid-area: sidebar;
+  }
+
+  .content {
+    grid-area: content;
+    padding: spacing(2);
+  }
+}

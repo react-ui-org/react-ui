@@ -1,6 +1,7 @@
 export { default as Button } from './components/Button';
 export { default as CheckboxField } from './components/CheckboxField';
 export { default as Documentation } from './components/Documentation';
+export { default as DocumentationNavigation } from './components/DocumentationNavigation';
 export { default as ForgotPassword } from './components/Login/ForgotPassword';
 export { default as Icon } from './components/Icon';
 export { default as LayoutCenter } from './components/LayoutCenter';

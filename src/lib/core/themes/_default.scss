@@ -67,7 +67,7 @@
   // ======
 
   // Breakpoints
-  // Read-only, custom properties cannot be used within media queries as media query is not a selector.
+  // Read-only, custom properties cannot be used within media queries as media query is not a property.
   // https://www.w3.org/TR/css-variables-1/#using-variables
   --rui-breakpoint-xs: #{map-get($breakpoint-values, xs)};
   --rui-breakpoint-sm: #{map-get($breakpoint-values, sm)};

@@ -1,0 +1,34 @@
+@import '../../shared/settings/colors';
+@import '../../shared/settings/offsets';
+@import '../../shared/tools/spacing';
+
+.root {
+  padding-left: 0;
+  list-style: none;
+}
+
+.navigationLink {
+  font-weight: bold;
+}
+
+.subnavigation {
+  padding-left: map-get($offset-values, 5);
+}
+
+.subnavigationLink {
+  font-size: $typography-size-small;
+}
+
+.navigationLink,
+.subnavigationLink {
+  display: block;
+  padding-top: map-get($offset-values, 1);
+  padding-bottom: map-get($offset-values, 1);
+  text-decoration: none;
+  color: map-get($colors-grays, gray-700);
+
+  &:hover,
+  &:focus {
+    color: inherit;
+  }
+}

@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
-npm install \
-&& npm run build \
-&& npm test
+set -e
 
+npm install
+npm run build
+npm test
