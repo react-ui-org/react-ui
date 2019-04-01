@@ -31,7 +31,7 @@ class Modal extends React.Component {
   }
 
   pressEscapeHandler(e) {
-    if (e.keyCode === 27) {
+    if (e.keyCode === 27 && this.props.closeHandler) {
       this.props.closeHandler();
     }
   }
@@ -40,7 +40,11 @@ class Modal extends React.Component {
     return (
       <div
         className={styles.overlay}
-        onClick={this.props.closeHandler}
+        onClick={(e) => {
+          if (this.props.closeHandler) {
+            this.props.closeHandler(e);
+          }
+        }}
         onScroll={this.setGradient}
         role="presentation"
       >
@@ -58,14 +62,16 @@ class Modal extends React.Component {
             <h3 className={styles.headTitle}>
               {this.props.title}
             </h3>
-            <Button
-              clickHandler={this.props.closeHandler}
-              icon="close"
-              labelVisibility="none"
-              label={this.props.translations.close}
-              priority="flat"
-              size="large"
-            />
+            {this.props.closeHandler && (
+              <Button
+                clickHandler={this.props.closeHandler}
+                icon="close"
+                labelVisibility="none"
+                label={this.props.translations.close}
+                priority="flat"
+                size="large"
+              />
+            )}
           </div>
           <div className={styles.body}>
             {this.props.children}
@@ -83,13 +89,15 @@ class Modal extends React.Component {
                 />
               ))}
             </span>
-            <span className={styles.button}>
-              <Button
-                clickHandler={this.props.closeHandler}
-                label={this.props.translations.close}
-                priority="flat"
-              />
-            </span>
+            {this.props.closeHandler && (
+              <span className={styles.button}>
+                <Button
+                  clickHandler={this.props.closeHandler}
+                  label={this.props.translations.close}
+                  priority="flat"
+                />
+              </span>
+            )}
           </div>
         </div>
       </div>
@@ -99,6 +107,7 @@ class Modal extends React.Component {
 
 Modal.defaultProps = {
   actions: [],
+  closeHandler: null,
 };
 
 Modal.propTypes = {
@@ -113,7 +122,7 @@ Modal.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
-  closeHandler: PropTypes.func.isRequired,
+  closeHandler: PropTypes.func,
   title: PropTypes.string.isRequired,
   translations: PropTypes.shape({
     close: PropTypes.string.isRequired,

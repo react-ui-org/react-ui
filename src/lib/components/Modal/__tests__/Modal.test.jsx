@@ -10,7 +10,6 @@ describe('rendering', () => {
   it('renders correctly with mandatory props only', () => {
     const tree = mount((
       <Modal
-        closeHandler={() => {}}
         title="Modal title"
       >
         Modal content

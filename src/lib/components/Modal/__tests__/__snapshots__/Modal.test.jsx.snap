@@ -194,13 +194,12 @@ exports[`rendering renders correctly with all props except translations 1`] = `
 
 exports[`rendering renders correctly with mandatory props only 1`] = `
 <WithTranslationContextComponent
-  closeHandler={[Function]}
   title="Modal title"
   translations={null}
 >
   <Modal
     actions={Array []}
-    closeHandler={[Function]}
+    closeHandler={null}
     title="Modal title"
     translations={
       Object {
@@ -227,61 +226,6 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           >
             Modal title
           </h3>
-          <Button
-            block={false}
-            clickHandler={[Function]}
-            disabled={false}
-            icon="close"
-            iconPosition="before"
-            label="Close"
-            labelVisibility="none"
-            loading={false}
-            priority="flat"
-            size="large"
-            type="button"
-            variant="primary"
-          >
-            <button
-              className="root
-                    priorityFlat
-                    sizeLarge
-                    variantPrimary
-                    
-                    withIconBefore
-                    withLabelHidden"
-              disabled={false}
-              onClick={[Function]}
-              title="Close"
-              type="button"
-            >
-              <span
-                className="icon"
-              >
-                <Icon
-                  icon="close"
-                  size="large"
-                >
-                  <svg
-                    className="isRootLarge"
-                    style={
-                      Object {
-                        "fill": "currentColor",
-                      }
-                    }
-                  >
-                    <use
-                      xlinkHref="#ic_close_48px"
-                    />
-                  </svg>
-                </Icon>
-              </span>
-              <span
-                className="label"
-              >
-                Close
-              </span>
-            </button>
-          </Button>
         </div>
         <div
           className="body"
@@ -294,41 +238,6 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           <span
             className="button"
           />
-          <span
-            className="button"
-          >
-            <Button
-              block={false}
-              clickHandler={[Function]}
-              disabled={false}
-              icon={null}
-              iconPosition="before"
-              label="Close"
-              labelVisibility="all"
-              loading={false}
-              priority="flat"
-              size="medium"
-              type="button"
-              variant="primary"
-            >
-              <button
-                className="root
-                      priorityFlat
-                      sizeMedium
-                      variantPrimary"
-                disabled={false}
-                onClick={[Function]}
-                title={null}
-                type="button"
-              >
-                <span
-                  className="label"
-                >
-                  Close
-                </span>
-              </button>
-            </Button>
-          </span>
         </div>
       </div>
     </div>

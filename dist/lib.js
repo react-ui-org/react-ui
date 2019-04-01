@@ -26397,7 +26397,7 @@ var DocumentationNavigation = function DocumentationNavigation(props) {
   return _react2.default.createElement(
     'ul',
     { className: _DocumentationNavigation2.default.root },
-    props.tree.map(function (item) {
+    props.items.map(function (item) {
       return _react2.default.createElement(
         'li',
         { key: item.link },
@@ -26427,7 +26427,7 @@ var DocumentationNavigation = function DocumentationNavigation(props) {
 };
 
 DocumentationNavigation.propTypes = {
-  tree: _propTypes2.default.arrayOf(_propTypes2.default.shape({
+  items: _propTypes2.default.arrayOf(_propTypes2.default.shape({
     items: _propTypes2.default.arrayOf(_propTypes2.default.shape({
       link: _propTypes2.default.string.isRequired,
       title: _propTypes2.default.string.isRequired
@@ -26498,7 +26498,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, ".DocumentationNavigation__root___M1Qaa {\n  padding-left: 0;\n  list-style: none; }\n\n.DocumentationNavigation__navigationLink___1d3PH {\n  font-weight: bold; }\n\n.DocumentationNavigation__subnavigation___1K0Lw {\n  padding-left: var(--rui-offset-5); }\n\n.DocumentationNavigation__subnavigationLink___3LKYr {\n  font-size: var(--rui-typography-size-small); }\n\n.DocumentationNavigation__navigationLink___1d3PH,\n.DocumentationNavigation__subnavigationLink___3LKYr {\n  display: block;\n  padding-top: var(--rui-offset-1);\n  padding-bottom: var(--rui-offset-1);\n  text-decoration: none;\n  color: var(--rui-color-gray-700); }\n  .DocumentationNavigation__navigationLink___1d3PH:hover, .DocumentationNavigation__navigationLink___1d3PH:focus,\n  .DocumentationNavigation__subnavigationLink___3LKYr:hover,\n  .DocumentationNavigation__subnavigationLink___3LKYr:focus {\n    color: inherit; }\n", ""]);
+exports.push([module.i, ".DocumentationNavigation__root___M1Qaa {\n  padding-left: 0;\n  list-style: none; }\n\n.DocumentationNavigation__navigationLink___1d3PH {\n  font-weight: bold; }\n\n.DocumentationNavigation__subnavigation___1K0Lw {\n  padding-left: var(--rui-offset-5); }\n\n.DocumentationNavigation__subnavigationLink___3LKYr {\n  font-size: var(--rui-typography-size-small); }\n\n.DocumentationNavigation__navigationLink___1d3PH,\n.DocumentationNavigation__subnavigationLink___3LKYr {\n  display: block;\n  padding-top: var(--rui-offset-1);\n  padding-bottom: var(--rui-offset-1);\n  text-decoration: none;\n  color: var(--rui-color-gray-700); }\n  .DocumentationNavigation__navigationLink___1d3PH:hover, .DocumentationNavigation__navigationLink___1d3PH:focus,\n  .DocumentationNavigation__subnavigationLink___3LKYr:hover,\n  .DocumentationNavigation__subnavigationLink___3LKYr:focus {\n    text-decoration: none;\n    color: inherit; }\n", ""]);
 
 // exports
 exports.locals = {
@@ -26600,7 +26600,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, ".DocumentationLayout__sidebar___Jx-EC,\n.DocumentationLayout__content___20AgB {\n  padding: calc(1 * var(--rui-typography-line-height-base)); }\n\n.DocumentationLayout__sidebar___Jx-EC {\n  background-color: var(--rui-color-white); }\n\n@media (min-width: 48em) {\n  .DocumentationLayout__root___2DmF7 {\n    position: absolute;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    display: grid;\n    grid-template-columns: 300px 1fr;\n    grid-template-rows: 100%;\n    grid-template-areas: \"sidebar content\";\n    overflow: hidden; }\n  .DocumentationLayout__sidebar___Jx-EC,\n  .DocumentationLayout__content___20AgB {\n    overflow-y: auto;\n    -webkit-overflow-scrolling: touch; }\n  .DocumentationLayout__sidebar___Jx-EC {\n    grid-area: sidebar; }\n  .DocumentationLayout__content___20AgB {\n    grid-area: content;\n    padding: calc(2 * var(--rui-typography-line-height-base)); } }\n", ""]);
+exports.push([module.i, ".DocumentationLayout__sidebar___Jx-EC,\n.DocumentationLayout__content___20AgB {\n  padding: calc(1 * var(--rui-typography-line-height-base)); }\n\n.DocumentationLayout__sidebar___Jx-EC {\n  background-color: var(--rui-color-white); }\n\n@media (min-width: 48em) {\n  .DocumentationLayout__root___2DmF7 {\n    position: absolute;\n    display: grid;\n    grid-template-columns: 300px 1fr;\n    grid-template-rows: 100%;\n    grid-template-areas: \"sidebar content\";\n    width: 100vw;\n    height: 100vh;\n    overflow: hidden; }\n  .DocumentationLayout__sidebar___Jx-EC,\n  .DocumentationLayout__content___20AgB {\n    overflow-y: auto;\n    -webkit-overflow-scrolling: touch; }\n  .DocumentationLayout__sidebar___Jx-EC {\n    grid-area: sidebar; }\n  .DocumentationLayout__content___20AgB {\n    grid-area: content;\n    padding: calc(2 * var(--rui-typography-line-height-base)); } }\n", ""]);
 
 // exports
 exports.locals = {
@@ -27585,18 +27585,24 @@ var Modal = function (_React$Component) {
   }, {
     key: 'pressEscapeHandler',
     value: function pressEscapeHandler(e) {
-      if (e.keyCode === 27) {
+      if (e.keyCode === 27 && this.props.closeHandler) {
         this.props.closeHandler();
       }
     }
   }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       return _react2.default.createElement(
         'div',
         {
           className: _Modal2.default.overlay,
-          onClick: this.props.closeHandler,
+          onClick: function onClick(e) {
+            if (_this2.props.closeHandler) {
+              _this2.props.closeHandler(e);
+            }
+          },
           onScroll: this.setGradient,
           role: 'presentation'
         },
@@ -27617,7 +27623,7 @@ var Modal = function (_React$Component) {
               { className: _Modal2.default.headTitle },
               this.props.title
             ),
-            _react2.default.createElement(_Button2.default, {
+            this.props.closeHandler && _react2.default.createElement(_Button2.default, {
               clickHandler: this.props.closeHandler,
               icon: 'close',
               labelVisibility: 'none',
@@ -27648,7 +27654,7 @@ var Modal = function (_React$Component) {
                 });
               })
             ),
-            _react2.default.createElement(
+            this.props.closeHandler && _react2.default.createElement(
               'span',
               { className: _Modal2.default.button },
               _react2.default.createElement(_Button2.default, {
@@ -27667,7 +27673,8 @@ var Modal = function (_React$Component) {
 }(_react2.default.Component);
 
 Modal.defaultProps = {
-  actions: []
+  actions: [],
+  closeHandler: null
 };
 
 Modal.propTypes = {
@@ -27679,7 +27686,7 @@ Modal.propTypes = {
     variant: _propTypes2.default.string
   })),
   children: _propTypes2.default.oneOfType([_propTypes2.default.arrayOf(_propTypes2.default.node), _propTypes2.default.node]).isRequired,
-  closeHandler: _propTypes2.default.func.isRequired,
+  closeHandler: _propTypes2.default.func,
   title: _propTypes2.default.string.isRequired,
   translations: _propTypes2.default.shape({
     close: _propTypes2.default.string.isRequired
