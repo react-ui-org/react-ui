@@ -15,21 +15,31 @@ describe('rendering', () => {
   });
 
   it('renders correctly with hidden label', () => {
-    const tree = shallow(<TextField fieldId="test" label="label" isLabelVisible={false} />);
+    const tree = shallow(<TextField
+      fieldId="test"
+      label="label"
+      isLabelVisible={false}
+    />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
 
   it('renders correctly with all props', () => {
     const tree = shallow(<TextField
-      label="label"
-      disabled
-      fieldId="test"
-      value="value"
       description="some help"
-      error="error"
+      feedback="feedback"
+      fieldId="test"
+      isLabelVisible={false}
+      label="label"
+      layout="horizontal"
       placeholder="placeholder"
+      size={3}
+      state="invalid"
       type="email"
+      value="value"
+      variant="filled"
+      fullWidth
+      disabled
       required
     />);
 

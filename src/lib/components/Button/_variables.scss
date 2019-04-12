@@ -1,3 +1,4 @@
+@import '../../shared/settings/forms';
 @import '../../shared/settings/offsets';
 @import '../../shared/settings/typography';
 
@@ -13,7 +14,7 @@ $button-sizes: (
     font-size: $typography-size-small,
   ),
   medium: (
-    height: 2.25rem,
+    height: $form-field-height,
     padding-x: map-get($offset-values, 4),
     font-size: $typography-size-0,
   ),

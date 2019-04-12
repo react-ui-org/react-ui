@@ -36,13 +36,16 @@ const ForgotPassword = props => (
             {props.error}
           </div>
         )}
-        <TextField
-          fieldId="resetEmail"
-          changeHandler={event => props.onChangeHandler('email', event.target.value)}
-          label={props.translations.email}
-          type="email"
-          required
-        />
+        <div className="offset-3">
+          <TextField
+            fieldId="resetEmail"
+            changeHandler={event => props.onChangeHandler('email', event.target.value)}
+            label={props.translations.email}
+            type="email"
+            fullWidth
+            required
+          />
+        </div>
         <Button label={props.translations.resetPassword} block type="submit" />
       </form>
       {props.footer && (

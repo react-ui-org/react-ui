@@ -1,0 +1,13 @@
+// Remove focus outline as we implement custom appearance of focus state.
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 0;
+}
+
+// Reset Chrome and Firefox behaviour which sets a `min-width: min-content;` on fieldsets.
+fieldset {
+  min-width: 0;
+  border: 0;
+}

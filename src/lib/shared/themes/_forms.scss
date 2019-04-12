@@ -1,0 +1,57 @@
+$form-field-label-font-size: var(--rui-form-field-label-font-size);
+$form-field-input-font-size: var(--rui-form-field-input-font-size);
+$form-field-placeholder-color: var(--rui-form-field-placeholder-color);
+$form-field-description-feedback-font-size: var(--rui-form-field-description-feedback-font-size);
+$form-field-description-feedback-color: var(--rui-form-field-description-feedback-color);
+$form-field-required-sign: var(--rui-form-field-required-sign);
+$form-field-required-sign-color: var(--rui-form-field-required-sign-color);
+$form-field-border-width: var(--rui-form-field-border-width);
+$form-field-border-color: var(--rui-form-field-border-color);
+$form-field-border-radius: var(--rui-form-field-border-radius);
+$form-field-hover-border-color: var(--rui-form-field-hover-border-color);
+$form-field-focus-border-color: var(--rui-form-field-focus-border-color);
+$form-field-horizontal-label-min-width: var(--rui-form-field-horizontal-label-min-width);
+$form-field-horizontal-label-alignment: var(--rui-form-field-horizontal-label-alignment);
+
+$form-field-variants: (
+  filled: (
+    default: (
+      color: var(--rui-form-field-filled-default-color),
+      background-color: var(--rui-form-field-filled-default-background),
+    ),
+    focus: (
+      color: var(--rui-form-field-filled-focus-color),
+      background-color: var(--rui-form-field-filled-focus-background),
+    ),
+  ),
+  outline: (
+    default: (
+      color: var(--rui-form-field-outline-default-color),
+      background-color: var(--rui-form-field-outline-default-background),
+      box-shadow: var(--rui-form-field-outline-default-box-shadow),
+    ),
+    focus: (
+      color: var(--rui-form-field-outline-focus-color),
+      background-color: var(--rui-form-field-outline-focus-background),
+      box-shadow: var(--rui-form-field-outline-focus-box-shadow),
+    ),
+  ),
+);
+
+$form-field-states: (
+  invalid: (
+    color: var(--rui-form-field-invalid-color),
+    border-color: var(--rui-form-field-invalid-border-color),
+    background-color: var(--rui-form-field-invalid-background),
+  ),
+  valid: (
+    color: var(--rui-form-field-valid-color),
+    border-color: var(--rui-form-field-valid-border-color),
+    background-color: var(--rui-form-field-valid-background),
+  ),
+  warning: (
+    color: var(--rui-form-field-warning-color),
+    border-color: var(--rui-form-field-warning-border-color),
+    background-color: var(--rui-form-field-warning-background),
+  ),
+);

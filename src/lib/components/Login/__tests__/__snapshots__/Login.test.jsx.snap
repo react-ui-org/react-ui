@@ -30,76 +30,112 @@ exports[`rendering renders correctly 1`] = `
         <form
           onSubmit={[Function]}
         >
-          <TextField
-            changeHandler={[Function]}
-            description={null}
-            disabled={false}
-            error={null}
-            fieldId="email"
-            isLabelVisible={true}
-            label="E-mail"
-            placeholder={null}
-            required={true}
-            type="email"
+          <div
+            className="offset-3"
           >
-            <div
-              className="root"
+            <TextField
+              changeHandler={[Function]}
+              description={null}
+              disabled={false}
+              feedback={null}
+              fieldId="email"
+              fullWidth={true}
+              isLabelVisible={true}
+              label="E-mail"
+              layout="vertical"
+              placeholder={null}
+              required={true}
+              size={null}
+              state={null}
+              type="email"
+              variant="outline"
             >
-              <label
-                htmlFor="email"
+              <div
+                className="root
+                      isRootFullWidth
+                      rootLayoutVertical
+                      isRootRequired
+                      
+                      rootVariantOutline"
               >
-                <div
-                  className="isLabelRequired"
+                <label
+                  className="container"
+                  htmlFor="email"
                 >
-                  E-mail
-                </div>
-                <input
-                  className="input"
-                  disabled={false}
-                  id="email"
-                  onChange={[Function]}
-                  placeholder={null}
-                  required={true}
-                  type="email"
-                />
-              </label>
-            </div>
-          </TextField>
-          <TextField
-            changeHandler={[Function]}
-            description={null}
-            disabled={false}
-            error={null}
-            fieldId="password"
-            isLabelVisible={true}
-            label="Password"
-            placeholder={null}
-            required={true}
-            type="password"
-          >
-            <div
-              className="root"
+                  <div
+                    className="label"
+                  >
+                    E-mail
+                  </div>
+                  <div
+                    className="inputContainer"
+                  >
+                    <input
+                      className="input"
+                      disabled={false}
+                      id="email"
+                      onChange={[Function]}
+                      placeholder={null}
+                      required={true}
+                      size={null}
+                      type="email"
+                    />
+                  </div>
+                </label>
+              </div>
+            </TextField>
+            <TextField
+              changeHandler={[Function]}
+              description={null}
+              disabled={false}
+              feedback={null}
+              fieldId="password"
+              fullWidth={true}
+              isLabelVisible={true}
+              label="Password"
+              layout="vertical"
+              placeholder={null}
+              required={true}
+              size={null}
+              state={null}
+              type="password"
+              variant="outline"
             >
-              <label
-                htmlFor="password"
+              <div
+                className="root
+                      isRootFullWidth
+                      rootLayoutVertical
+                      isRootRequired
+                      
+                      rootVariantOutline"
               >
-                <div
-                  className="isLabelRequired"
+                <label
+                  className="container"
+                  htmlFor="password"
                 >
-                  Password
-                </div>
-                <input
-                  className="input"
-                  disabled={false}
-                  id="password"
-                  onChange={[Function]}
-                  placeholder={null}
-                  required={true}
-                  type="password"
-                />
-              </label>
-            </div>
-          </TextField>
+                  <div
+                    className="label"
+                  >
+                    Password
+                  </div>
+                  <div
+                    className="inputContainer"
+                  >
+                    <input
+                      className="input"
+                      disabled={false}
+                      id="password"
+                      onChange={[Function]}
+                      placeholder={null}
+                      required={true}
+                      size={null}
+                      type="password"
+                    />
+                  </div>
+                </label>
+              </div>
+            </TextField>
+          </div>
           <Button
             block={true}
             clickHandler={null}
@@ -119,7 +155,7 @@ exports[`rendering renders correctly 1`] = `
                     priorityDefault
                     sizeMedium
                     variantPrimary
-                    block"
+                    isRootBlock"
               disabled={false}
               onClick={null}
               title={null}
@@ -196,76 +232,112 @@ exports[`rendering renders correctly with all props except translations 1`] = `
           >
             Invalid username or password
           </div>
-          <TextField
-            changeHandler={[Function]}
-            description={null}
-            disabled={false}
-            error={null}
-            fieldId="email"
-            isLabelVisible={true}
-            label="E-mail"
-            placeholder={null}
-            required={true}
-            type="email"
+          <div
+            className="offset-3"
           >
-            <div
-              className="root"
+            <TextField
+              changeHandler={[Function]}
+              description={null}
+              disabled={false}
+              feedback={null}
+              fieldId="email"
+              fullWidth={true}
+              isLabelVisible={true}
+              label="E-mail"
+              layout="vertical"
+              placeholder={null}
+              required={true}
+              size={null}
+              state={null}
+              type="email"
+              variant="outline"
             >
-              <label
-                htmlFor="email"
+              <div
+                className="root
+                      isRootFullWidth
+                      rootLayoutVertical
+                      isRootRequired
+                      
+                      rootVariantOutline"
               >
-                <div
-                  className="isLabelRequired"
+                <label
+                  className="container"
+                  htmlFor="email"
                 >
-                  E-mail
-                </div>
-                <input
-                  className="input"
-                  disabled={false}
-                  id="email"
-                  onChange={[Function]}
-                  placeholder={null}
-                  required={true}
-                  type="email"
-                />
-              </label>
-            </div>
-          </TextField>
-          <TextField
-            changeHandler={[Function]}
-            description={null}
-            disabled={false}
-            error={null}
-            fieldId="password"
-            isLabelVisible={true}
-            label="Password"
-            placeholder={null}
-            required={true}
-            type="password"
-          >
-            <div
-              className="root"
+                  <div
+                    className="label"
+                  >
+                    E-mail
+                  </div>
+                  <div
+                    className="inputContainer"
+                  >
+                    <input
+                      className="input"
+                      disabled={false}
+                      id="email"
+                      onChange={[Function]}
+                      placeholder={null}
+                      required={true}
+                      size={null}
+                      type="email"
+                    />
+                  </div>
+                </label>
+              </div>
+            </TextField>
+            <TextField
+              changeHandler={[Function]}
+              description={null}
+              disabled={false}
+              feedback={null}
+              fieldId="password"
+              fullWidth={true}
+              isLabelVisible={true}
+              label="Password"
+              layout="vertical"
+              placeholder={null}
+              required={true}
+              size={null}
+              state={null}
+              type="password"
+              variant="outline"
             >
-              <label
-                htmlFor="password"
+              <div
+                className="root
+                      isRootFullWidth
+                      rootLayoutVertical
+                      isRootRequired
+                      
+                      rootVariantOutline"
               >
-                <div
-                  className="isLabelRequired"
+                <label
+                  className="container"
+                  htmlFor="password"
                 >
-                  Password
-                </div>
-                <input
-                  className="input"
-                  disabled={false}
-                  id="password"
-                  onChange={[Function]}
-                  placeholder={null}
-                  required={true}
-                  type="password"
-                />
-              </label>
-            </div>
-          </TextField>
+                  <div
+                    className="label"
+                  >
+                    Password
+                  </div>
+                  <div
+                    className="inputContainer"
+                  >
+                    <input
+                      className="input"
+                      disabled={false}
+                      id="password"
+                      onChange={[Function]}
+                      placeholder={null}
+                      required={true}
+                      size={null}
+                      type="password"
+                    />
+                  </div>
+                </label>
+              </div>
+            </TextField>
+          </div>
           <Button
             block={true}
             clickHandler={null}
@@ -285,7 +357,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                     priorityDefault
                     sizeMedium
                     variantPrimary
-                    block"
+                    isRootBlock"
               disabled={false}
               onClick={null}
               title={null}
@@ -351,76 +423,112 @@ exports[`rendering renders correctly with translations 1`] = `
         <form
           onSubmit={[Function]}
         >
-          <TextField
-            changeHandler={[Function]}
-            description={null}
-            disabled={false}
-            error={null}
-            fieldId="email"
-            isLabelVisible={true}
-            label="E-mail"
-            placeholder={null}
-            required={true}
-            type="email"
+          <div
+            className="offset-3"
           >
-            <div
-              className="root"
+            <TextField
+              changeHandler={[Function]}
+              description={null}
+              disabled={false}
+              feedback={null}
+              fieldId="email"
+              fullWidth={true}
+              isLabelVisible={true}
+              label="E-mail"
+              layout="vertical"
+              placeholder={null}
+              required={true}
+              size={null}
+              state={null}
+              type="email"
+              variant="outline"
             >
-              <label
-                htmlFor="email"
+              <div
+                className="root
+                      isRootFullWidth
+                      rootLayoutVertical
+                      isRootRequired
+                      
+                      rootVariantOutline"
               >
-                <div
-                  className="isLabelRequired"
+                <label
+                  className="container"
+                  htmlFor="email"
                 >
-                  E-mail
-                </div>
-                <input
-                  className="input"
-                  disabled={false}
-                  id="email"
-                  onChange={[Function]}
-                  placeholder={null}
-                  required={true}
-                  type="email"
-                />
-              </label>
-            </div>
-          </TextField>
-          <TextField
-            changeHandler={[Function]}
-            description={null}
-            disabled={false}
-            error={null}
-            fieldId="password"
-            isLabelVisible={true}
-            label="Heslo"
-            placeholder={null}
-            required={true}
-            type="password"
-          >
-            <div
-              className="root"
+                  <div
+                    className="label"
+                  >
+                    E-mail
+                  </div>
+                  <div
+                    className="inputContainer"
+                  >
+                    <input
+                      className="input"
+                      disabled={false}
+                      id="email"
+                      onChange={[Function]}
+                      placeholder={null}
+                      required={true}
+                      size={null}
+                      type="email"
+                    />
+                  </div>
+                </label>
+              </div>
+            </TextField>
+            <TextField
+              changeHandler={[Function]}
+              description={null}
+              disabled={false}
+              feedback={null}
+              fieldId="password"
+              fullWidth={true}
+              isLabelVisible={true}
+              label="Heslo"
+              layout="vertical"
+              placeholder={null}
+              required={true}
+              size={null}
+              state={null}
+              type="password"
+              variant="outline"
             >
-              <label
-                htmlFor="password"
+              <div
+                className="root
+                      isRootFullWidth
+                      rootLayoutVertical
+                      isRootRequired
+                      
+                      rootVariantOutline"
               >
-                <div
-                  className="isLabelRequired"
+                <label
+                  className="container"
+                  htmlFor="password"
                 >
-                  Heslo
-                </div>
-                <input
-                  className="input"
-                  disabled={false}
-                  id="password"
-                  onChange={[Function]}
-                  placeholder={null}
-                  required={true}
-                  type="password"
-                />
-              </label>
-            </div>
-          </TextField>
+                  <div
+                    className="label"
+                  >
+                    Heslo
+                  </div>
+                  <div
+                    className="inputContainer"
+                  >
+                    <input
+                      className="input"
+                      disabled={false}
+                      id="password"
+                      onChange={[Function]}
+                      placeholder={null}
+                      required={true}
+                      size={null}
+                      type="password"
+                    />
+                  </div>
+                </label>
+              </div>
+            </TextField>
+          </div>
           <Button
             block={true}
             clickHandler={null}
@@ -440,7 +548,7 @@ exports[`rendering renders correctly with translations 1`] = `
                     priorityDefault
                     sizeMedium
                     variantPrimary
-                    block"
+                    isRootBlock"
               disabled={false}
               onClick={null}
               title={null}
@@ -491,76 +599,112 @@ exports[`rendering renders correctly with username 1`] = `
         <form
           onSubmit={[Function]}
         >
-          <TextField
-            changeHandler={[Function]}
-            description={null}
-            disabled={false}
-            error={null}
-            fieldId="Username"
-            isLabelVisible={true}
-            label="Username"
-            placeholder={null}
-            required={true}
-            type="text"
+          <div
+            className="offset-3"
           >
-            <div
-              className="root"
+            <TextField
+              changeHandler={[Function]}
+              description={null}
+              disabled={false}
+              feedback={null}
+              fieldId="Username"
+              fullWidth={true}
+              isLabelVisible={true}
+              label="Username"
+              layout="vertical"
+              placeholder={null}
+              required={true}
+              size={null}
+              state={null}
+              type="text"
+              variant="outline"
             >
-              <label
-                htmlFor="Username"
+              <div
+                className="root
+                      isRootFullWidth
+                      rootLayoutVertical
+                      isRootRequired
+                      
+                      rootVariantOutline"
               >
-                <div
-                  className="isLabelRequired"
+                <label
+                  className="container"
+                  htmlFor="Username"
                 >
-                  Username
-                </div>
-                <input
-                  className="input"
-                  disabled={false}
-                  id="Username"
-                  onChange={[Function]}
-                  placeholder={null}
-                  required={true}
-                  type="text"
-                />
-              </label>
-            </div>
-          </TextField>
-          <TextField
-            changeHandler={[Function]}
-            description={null}
-            disabled={false}
-            error={null}
-            fieldId="password"
-            isLabelVisible={true}
-            label="Password"
-            placeholder={null}
-            required={true}
-            type="password"
-          >
-            <div
-              className="root"
+                  <div
+                    className="label"
+                  >
+                    Username
+                  </div>
+                  <div
+                    className="inputContainer"
+                  >
+                    <input
+                      className="input"
+                      disabled={false}
+                      id="Username"
+                      onChange={[Function]}
+                      placeholder={null}
+                      required={true}
+                      size={null}
+                      type="text"
+                    />
+                  </div>
+                </label>
+              </div>
+            </TextField>
+            <TextField
+              changeHandler={[Function]}
+              description={null}
+              disabled={false}
+              feedback={null}
+              fieldId="password"
+              fullWidth={true}
+              isLabelVisible={true}
+              label="Password"
+              layout="vertical"
+              placeholder={null}
+              required={true}
+              size={null}
+              state={null}
+              type="password"
+              variant="outline"
             >
-              <label
-                htmlFor="password"
+              <div
+                className="root
+                      isRootFullWidth
+                      rootLayoutVertical
+                      isRootRequired
+                      
+                      rootVariantOutline"
               >
-                <div
-                  className="isLabelRequired"
+                <label
+                  className="container"
+                  htmlFor="password"
                 >
-                  Password
-                </div>
-                <input
-                  className="input"
-                  disabled={false}
-                  id="password"
-                  onChange={[Function]}
-                  placeholder={null}
-                  required={true}
-                  type="password"
-                />
-              </label>
-            </div>
-          </TextField>
+                  <div
+                    className="label"
+                  >
+                    Password
+                  </div>
+                  <div
+                    className="inputContainer"
+                  >
+                    <input
+                      className="input"
+                      disabled={false}
+                      id="password"
+                      onChange={[Function]}
+                      placeholder={null}
+                      required={true}
+                      size={null}
+                      type="password"
+                    />
+                  </div>
+                </label>
+              </div>
+            </TextField>
+          </div>
           <Button
             block={true}
             clickHandler={null}
@@ -580,7 +724,7 @@ exports[`rendering renders correctly with username 1`] = `
                     priorityDefault
                     sizeMedium
                     variantPrimary
-                    block"
+                    isRootBlock"
               disabled={false}
               onClick={null}
               title={null}

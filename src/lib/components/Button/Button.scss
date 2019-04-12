@@ -1,5 +1,6 @@
 @import '../../shared/tools/accessibility';
 @import '../../shared/tools/breakpoints';
+@import '../../shared/tools/forms';
 @import 'mixins';
 @import 'variables';
 @import 'theme';
@@ -14,12 +15,20 @@
   }
 }
 
+// Foundation
 .root {
   @include button();
+  @include form-field-horizontal-neighbor();
 }
 
-.withIconAfter {
-  flex-direction: row-reverse;
+.label {
+  display: block;
+}
+
+.icon {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
 }
 
 // Sizes
@@ -33,6 +42,12 @@
 
 .sizeLarge {
   @include button-size(large);
+}
+
+// Block button
+.isRootBlock {
+  @include form-field-full-width();
+  @include form-field-vertical-neighbor();
 }
 
 // Default priority variants
@@ -98,17 +113,7 @@
   @include button-variant(flat, danger);
 }
 
-// Block button
-.block {
-  display: flex;
-  width: 100%;
-}
-
-// Label
-.label {
-  display: block;
-}
-
+// Label visibility
 .withLabelHidden .label,
 .withLabelHiddenMobile .label {
   @include accessibility-hide-text();
@@ -122,11 +127,9 @@
   }
 }
 
-// Icon
-.icon {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
+// Icon options
+.withIconAfter {
+  flex-direction: row-reverse;
 }
 
 .iconLoading {

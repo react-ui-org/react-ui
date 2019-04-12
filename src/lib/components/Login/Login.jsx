@@ -36,20 +36,24 @@ const Login = props => (
             {props.translations.invalidUsernameOrPassword}
           </div>
         )}
-        <TextField
-          fieldId={props.usernameType === 'email' ? 'email' : props.usernameType}
-          changeHandler={event => props.onChangeHandler('username', event.target.value)}
-          label={props.usernameType === 'email' ? props.translations.email : props.usernameType}
-          type={props.usernameType === 'email' ? 'email' : 'text'}
-          required
-        />
-        <TextField
-          fieldId="password"
-          changeHandler={event => props.onChangeHandler('password', event.target.value)}
-          label={props.translations.password}
-          type="password"
-          required
-        />
+        <div className="offset-3">
+          <TextField
+            fieldId={props.usernameType === 'email' ? 'email' : props.usernameType}
+            changeHandler={event => props.onChangeHandler('username', event.target.value)}
+            label={props.usernameType === 'email' ? props.translations.email : props.usernameType}
+            type={props.usernameType === 'email' ? 'email' : 'text'}
+            fullWidth
+            required
+          />
+          <TextField
+            fieldId="password"
+            changeHandler={event => props.onChangeHandler('password', event.target.value)}
+            label={props.translations.password}
+            type="password"
+            fullWidth
+            required
+          />
+        </div>
         <Button label={props.translations.signIn} block type="submit" />
       </form>
       {props.footer && (

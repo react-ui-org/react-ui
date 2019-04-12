@@ -2,9 +2,15 @@
 
 exports[`rendering renders correctly mandatory props only 1`] = `
 <div
-  className="root"
+  className="root
+        
+        rootLayoutVertical
+        
+        
+        rootVariantOutline"
 >
   <label
+    className="container"
     htmlFor="test"
   >
     <div
@@ -12,76 +18,108 @@ exports[`rendering renders correctly mandatory props only 1`] = `
     >
       label
     </div>
-    <input
-      className="input"
-      disabled={false}
-      id="test"
-      onChange={null}
-      placeholder={null}
-      required={false}
-      type="text"
-    />
+    <div
+      className="inputContainer"
+    >
+      <input
+        className="input"
+        disabled={false}
+        id="test"
+        onChange={null}
+        placeholder={null}
+        required={false}
+        size={null}
+        type="text"
+      />
+    </div>
   </label>
 </div>
 `;
 
 exports[`rendering renders correctly with all props 1`] = `
 <div
-  className="root"
+  className="root
+        isRootFullWidth
+        rootLayoutHorizontal
+        isRootRequired
+        isRootStateInvalid
+        rootVariantFilled"
 >
   <label
+    className="container"
     htmlFor="test"
   >
     <div
-      className="isLabelRequired"
+      className="label
+                isLabelHidden"
     >
       label
     </div>
-    <input
-      className="isInputInvalid"
-      disabled={true}
-      id="test"
-      onChange={null}
-      placeholder="placeholder"
-      required={true}
-      type="email"
-      value="value"
-    />
+    <div
+      className="inputContainer"
+    >
+      <input
+        className="input"
+        disabled={true}
+        id="test"
+        onChange={null}
+        placeholder="placeholder"
+        required={true}
+        size={3}
+        type="email"
+        value="value"
+      />
+      <div
+        className="bottomLine"
+      />
+    </div>
   </label>
+  <div
+    className="feedback"
+  >
+    feedback
+  </div>
   <div
     className="description"
   >
     some help
-  </div>
-  <div
-    className="error"
-  >
-    error
   </div>
 </div>
 `;
 
 exports[`rendering renders correctly with hidden label 1`] = `
 <div
-  className="root"
+  className="root
+        
+        rootLayoutVertical
+        
+        
+        rootVariantOutline"
 >
   <label
+    className="container"
     htmlFor="test"
   >
     <div
-      className="isLabelHidden"
+      className="label
+                isLabelHidden"
     >
       label
     </div>
-    <input
-      className="input"
-      disabled={false}
-      id="test"
-      onChange={null}
-      placeholder={null}
-      required={false}
-      type="text"
-    />
+    <div
+      className="inputContainer"
+    >
+      <input
+        className="input"
+        disabled={false}
+        id="test"
+        onChange={null}
+        placeholder={null}
+        required={false}
+        size={null}
+        type="text"
+      />
+    </div>
   </label>
 </div>
 `;

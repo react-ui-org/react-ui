@@ -162,22 +162,26 @@ class DemoContainer extends React.Component {
               name="Buttons with icons"
               component={(
                 <div>
-                  <Button clickHandler={loggerClick} label="Icon before label, small" icon="album" size="small" />
-                  <Button clickHandler={loggerClick} label="Icon before label" icon="radio" />
-                  <Button clickHandler={loggerClick} label="Icon after label" icon="book" iconPosition="after" />
-                  <Button
-                    clickHandler={loggerClick}
-                    label="Icon only"
-                    labelVisibility="none"
-                    icon="radio"
-                  />
-                  <Button
-                    clickHandler={loggerClick}
-                    label="Icon and label on desktop"
-                    labelVisibility="desktop"
-                    icon="radio"
-                  />
-                  <Button clickHandler={loggerClick} label="Icon and label, large" icon="album" size="large" />
+                  <div className="offset-3">
+                    <Button clickHandler={loggerClick} label="Icon before label, small" icon="album" size="small" />
+                    <Button clickHandler={loggerClick} label="Icon before label" icon="radio" />
+                    <Button clickHandler={loggerClick} label="Icon after label" icon="book" iconPosition="after" />
+                  </div>
+                  <div>
+                    <Button
+                      clickHandler={loggerClick}
+                      label="Icon only"
+                      labelVisibility="none"
+                      icon="radio"
+                    />
+                    <Button
+                      clickHandler={loggerClick}
+                      label="Icon and label on desktop"
+                      labelVisibility="desktop"
+                      icon="radio"
+                    />
+                    <Button clickHandler={loggerClick} label="Icon and label, large" icon="album" size="large" />
+                  </div>
                 </div>
               )}
             />
@@ -651,52 +655,295 @@ class DemoContainer extends React.Component {
             />
             <h3 id="components-textfield" className="typography-size-2">Text field</h3>
             <Documentation
-              name="Text field"
+              name="Text field variants"
               component={(
-                <TextField
-                  fieldId="textField"
-                  changeHandler={logger}
-                  label="TextField"
-                />
+                <div>
+                  <TextField
+                    fieldId="textFieldVariantOutline"
+                    changeHandler={logger}
+                    label="Outline"
+                  />
+                  <TextField
+                    fieldId="textFieldVariantFilled"
+                    changeHandler={logger}
+                    label="Filled"
+                    variant="filled"
+                  />
+                </div>
               )}
             />
             <Documentation
-              name="TextField with hidden label"
+              name="Text field with description"
               component={(
-                <TextField
-                  fieldId="textFieldDisabled"
-                  changeHandler={logger}
-                  label="TextField with hidden label"
-                  isLabelVisible={false}
-                  placeholder="This field is disabled"
-                  disabled
-                />
+                <div>
+                  <TextField
+                    fieldId="textFieldWithDescriptionOutline"
+                    changeHandler={logger}
+                    label="Name"
+                    description="Fill in your real name"
+                  />
+                  <TextField
+                    fieldId="textFieldWithDescriptionFilled"
+                    changeHandler={logger}
+                    label="Name"
+                    description="Fill in your real name"
+                    variant="filled"
+                  />
+                </div>
               )}
             />
             <Documentation
-              name="TextField with description text"
+              name="Required text field"
               component={(
-                <TextField
-                  fieldId="textFieldDescription"
-                  changeHandler={logger}
-                  label="TextField with description text"
-                  description="Fill in your real name"
-                  placeholder="This field is required"
-                  required
-                />
+                <div>
+                  <TextField
+                    fieldId="textFieldRequiredOutline"
+                    changeHandler={logger}
+                    label="This field is required"
+                    required
+                  />
+                  <TextField
+                    fieldId="textFieldRequiredFilled"
+                    changeHandler={logger}
+                    label="This field is required"
+                    variant="filled"
+                    required
+                  />
+                </div>
               )}
             />
             <Documentation
-              name="TextField with error"
+              name="Disabled text field"
               component={(
-                <TextField
-                  fieldId="textFieldError"
-                  changeHandler={logger}
-                  label="TextField with error"
-                  description="Fill in your real name"
-                  error="This is not your real name"
-                  value="I. C. Wiener"
-                />
+                <div>
+                  <TextField
+                    fieldId="textFieldDisabledOutline"
+                    changeHandler={logger}
+                    label="Disabled text field"
+                    placeholder="This field is disabled"
+                    disabled
+                  />
+                  <TextField
+                    fieldId="textFieldDisabledFilled"
+                    changeHandler={logger}
+                    label="Disabled text field"
+                    placeholder="This field is disabled"
+                    variant="filled"
+                    disabled
+                  />
+                </div>
+              )}
+            />
+            <Documentation
+              name="Text field with invisible label"
+              component={(
+                <div>
+                  <TextField
+                    fieldId="textFieldWithInvisibleLabelOutline"
+                    changeHandler={logger}
+                    label="Text field with invisible label"
+                    description="Showing placeholder instead"
+                    placeholder="Text field with invisible label"
+                    isLabelVisible={false}
+                  />
+                  <TextField
+                    fieldId="textFieldWithInvisibleLabelFilled"
+                    changeHandler={logger}
+                    label="Text field with invisible label"
+                    description="Showing placeholder instead"
+                    placeholder="Text field with invisible label"
+                    variant="filled"
+                    isLabelVisible={false}
+                  />
+                </div>
+              )}
+            />
+            <Documentation
+              name="Validation states"
+              component={(
+                <div>
+                  <div>
+                    <TextField
+                      fieldId="textFieldValidationValidOutline"
+                      changeHandler={logger}
+                      label="User name"
+                      feedback="Looks good!"
+                      state="valid"
+                      value="terminator"
+                    />
+                    <TextField
+                      fieldId="textFieldValidationWarningOutline"
+                      changeHandler={logger}
+                      label="Email"
+                      feedback="Account with this address already exists, please pick a different address."
+                      state="warning"
+                      value="me@example.com"
+                    />
+                    <TextField
+                      fieldId="textFieldValidationInvalidOutline"
+                      changeHandler={logger}
+                      label="Name"
+                      description="Fill in your real name"
+                      feedback="Common, this is not your real name."
+                      state="invalid"
+                      value="xx"
+                    />
+                  </div>
+                  <div>
+                    <TextField
+                      fieldId="textFieldValidationValidFilled"
+                      changeHandler={logger}
+                      label="User name"
+                      feedback="Looks good!"
+                      state="valid"
+                      value="terminator"
+                      variant="filled"
+                    />
+                    <TextField
+                      fieldId="textFieldValidationWarningFilled"
+                      changeHandler={logger}
+                      label="Email"
+                      feedback="Account with this address already exists, please pick a different address."
+                      state="warning"
+                      value="me@example.com"
+                      variant="filled"
+                    />
+                    <TextField
+                      fieldId="textFieldValidationInvalidFilled"
+                      changeHandler={logger}
+                      label="Name"
+                      description="Fill in your real name"
+                      feedback="Common, this is not your real name."
+                      state="invalid"
+                      value="xx"
+                      variant="filled"
+                    />
+                  </div>
+                </div>
+              )}
+            />
+            <Documentation
+              name="Custom input size"
+              component={(
+                <div>
+                  <TextField
+                    fieldId="textFieldCustomSizeOutline"
+                    changeHandler={logger}
+                    label="Age"
+                    size={3}
+                  />
+                  <TextField
+                    fieldId="textFieldCustomSizeFilled"
+                    changeHandler={logger}
+                    label="Age"
+                    variant="filled"
+                    size={3}
+                  />
+                </div>
+              )}
+            />
+            <Documentation
+              name="Full width text field"
+              component={(
+                <div>
+                  <TextField
+                    fieldId="textFieldFullWidthOutline"
+                    changeHandler={logger}
+                    label="What is your story?"
+                    placeholder="I was born and raised in…"
+                    fullWidth
+                  />
+                  <TextField
+                    fieldId="textFieldFullWidthFilled"
+                    changeHandler={logger}
+                    label="What is your story?"
+                    placeholder="I was born and raised in…"
+                    variant="filled"
+                    fullWidth
+                  />
+                </div>
+              )}
+            />
+            <Documentation
+              name="Horizontal layout"
+              component={(
+                <div>
+                  <div className="offset-3">
+                    <TextField
+                      fieldId="textFieldHorizontalOutline"
+                      changeHandler={logger}
+                      label="Address"
+                      description="Where you live"
+                      layout="horizontal"
+                    />
+                    <TextField
+                      fieldId="textFieldHorizontalFilled"
+                      changeHandler={logger}
+                      label="Address"
+                      value="Neverland"
+                      feedback="The address does not exist."
+                      state="invalid"
+                      layout="horizontal"
+                      variant="filled"
+                    />
+                  </div>
+                  <div className="offset-3">
+                    <TextField
+                      fieldId="textFieldHorizontalCustomSizeOutline"
+                      changeHandler={logger}
+                      label="Age"
+                      layout="horizontal"
+                      size={3}
+                    />
+                    <TextField
+                      fieldId="textFieldHorizontalCustomSizeFilled"
+                      changeHandler={logger}
+                      label="Age"
+                      description="How old do you see yourself?"
+                      layout="horizontal"
+                      variant="filled"
+                      size={3}
+                    />
+                  </div>
+                  <div className="offset-3">
+                    <TextField
+                      fieldId="textFieldHorizontalFullWidthOutline"
+                      changeHandler={logger}
+                      label="Long story short"
+                      layout="horizontal"
+                      fullWidth
+                    />
+                    <TextField
+                      fieldId="textFieldHorizontalFullWidthFilled"
+                      changeHandler={logger}
+                      label="Long story short"
+                      layout="horizontal"
+                      variant="filled"
+                      fullWidth
+                    />
+                  </div>
+                  <div>
+                    <TextField
+                      fieldId="textFieldHorizontalFullWidthLabelInvisibleOutline"
+                      changeHandler={logger}
+                      label="Long story short"
+                      placeholder="Full width text field with horizontal layout works better with placeholder"
+                      layout="horizontal"
+                      isLabelVisible={false}
+                      fullWidth
+                    />
+                    <TextField
+                      fieldId="textFieldHorizontalFullWidthInvisibleFilled"
+                      changeHandler={logger}
+                      label="Long story short"
+                      placeholder="Full width text field with horizontal layout works better with placeholder"
+                      layout="horizontal"
+                      variant="filled"
+                      isLabelVisible={false}
+                      fullWidth
+                    />
+                  </div>
+                </div>
               )}
             />
             <h3 id="components-toggle" className="typography-size-2">Toggle</h3>

@@ -36,20 +36,24 @@ const NewPassword = props => (
             {props.error}
           </div>
         )}
-        <TextField
-          fieldId="newPassword"
-          changeHandler={event => props.onChangeHandler('newPassword', event.target.value)}
-          label={props.translations.newPassword}
-          type="password"
-          required
-        />
-        <TextField
-          fieldId="newPasswordRepeat"
-          changeHandler={event => props.onChangeHandler('newPasswordRepeat', event.target.value)}
-          label={props.translations.repeatNewPassword}
-          type="password"
-          required
-        />
+        <div className="offset-3">
+          <TextField
+            fieldId="newPassword"
+            changeHandler={event => props.onChangeHandler('newPassword', event.target.value)}
+            label={props.translations.newPassword}
+            type="password"
+            fullWidth
+            required
+          />
+          <TextField
+            fieldId="newPasswordRepeat"
+            changeHandler={event => props.onChangeHandler('newPasswordRepeat', event.target.value)}
+            label={props.translations.repeatNewPassword}
+            type="password"
+            fullWidth
+            required
+          />
+        </div>
         <Button label={props.translations.changePassword} block type="submit" />
       </form>
       {props.footer && (

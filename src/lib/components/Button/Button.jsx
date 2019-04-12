@@ -31,7 +31,7 @@ const Button = (props) => {
 
   let blockClass = '';
   if (props.block) {
-    blockClass = styles.block;
+    blockClass = styles.isRootBlock;
   }
 
   let iconPositionClass = '';

@@ -1,11 +1,7 @@
+@import '../../shared/tools/explode';
+@import '../../shared/tools/forms';
 @import 'variables';
 @import 'theme';
-
-@mixin _button-properties($properties) {
-  @each $key, $value in $properties {
-    #{$key}: $value;
-  }
-}
 
 @mixin button() {
   display: inline-flex;
@@ -32,9 +28,7 @@
   }
 
   &:disabled {
-    opacity: 0.5;
-    box-shadow: none;
-    cursor: not-allowed;
+    @include form-field-disabled();
   }
 }
 
@@ -50,18 +44,18 @@
   $priority-variants: map-get($button-variants, $priority);
   $variant-states: map-get($priority-variants, $variant);
 
-  @include _button-properties(map-get($variant-states, default));
+  @include explode(map-get($variant-states, default));
 
   &:hover,
   &:focus {
-    @include _button-properties(map-get($variant-states, hover));
+    @include explode(map-get($variant-states, hover));
   }
 
   &:active {
-    @include _button-properties(map-get($variant-states, active));
+    @include explode(map-get($variant-states, active));
   }
 
   &:disabled {
-    @include _button-properties(map-get($variant-states, default));
+    @include explode(map-get($variant-states, default));
   }
 }
