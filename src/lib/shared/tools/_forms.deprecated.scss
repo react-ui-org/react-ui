@@ -1,5 +1,7 @@
-@import "../settings/borders";
-@import "../settings/forms.deprecated";
+// ⚠️ Deprecated for new components.
+
+@import '../settings/borders';
+@import '../settings/forms.deprecated';
 
 @mixin form-disabled-state() {
   opacity: 0.5;
