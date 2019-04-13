@@ -45,6 +45,21 @@ class DemoContainer extends React.Component {
       tableSortColumn: 'id',
       tableSortDirection: 'asc',
     };
+
+    this.exampleOptions = [
+      {
+        label: 'Apples',
+        value: 'apples',
+      },
+      {
+        label: 'Bananas',
+        value: 'bananas',
+      },
+      {
+        label: 'Grapefruits',
+        value: 'grapefruits',
+      },
+    ];
   }
 
   render() {
@@ -299,16 +314,7 @@ class DemoContainer extends React.Component {
                   changeHandler={logger}
                   fieldId="multipleSelectField"
                   label="MultipleSelectField"
-                  options={[
-                    {
-                      label: 'choice 1',
-                      value: 'ch1',
-                    },
-                    {
-                      label: 'choice 2',
-                      value: 'ch2',
-                    },
-                  ]}
+                  options={this.exampleOptions}
                 />
               )}
             />
@@ -320,17 +326,8 @@ class DemoContainer extends React.Component {
                   fieldId="multipleSelectFieldDescriptionRequired"
                   label="MultipleSelectField with description and required"
                   description="Choose which choice you prefer"
+                  options={this.exampleOptions}
                   required
-                  options={[
-                    {
-                      label: 'choice 1',
-                      value: 'ch1',
-                    },
-                    {
-                      label: 'choice 2',
-                      value: 'ch2',
-                    },
-                  ]}
                 />
               )}
             />
@@ -343,16 +340,7 @@ class DemoContainer extends React.Component {
                   label="MultipleSelectField with error"
                   description="Choose which choice you prefer"
                   error="You have to choose"
-                  options={[
-                    {
-                      label: 'choice 1',
-                      value: 'ch1',
-                    },
-                    {
-                      label: 'choice 2',
-                      value: 'ch2',
-                    },
-                  ]}
+                  options={this.exampleOptions}
                 />
               )}
             />
@@ -364,17 +352,8 @@ class DemoContainer extends React.Component {
                   fieldId="multipleSelectFieldErrorHiddenLabel"
                   label="MultipleSelectField with error and hidden label"
                   isLabelVisible={false}
+                  options={this.exampleOptions}
                   disabled
-                  options={[
-                    {
-                      label: 'choice 1',
-                      value: 'ch1',
-                    },
-                    {
-                      label: 'choice 2',
-                      value: 'ch2',
-                    },
-                  ]}
                 />
               )}
             />
@@ -385,21 +364,8 @@ class DemoContainer extends React.Component {
                   changeHandler={logger}
                   fieldId="multipleSelectFieldWithMultipleSelectedOptions"
                   label="MultipleSelectField with multiple selected options"
-                  options={[
-                    {
-                      label: 'choice 1',
-                      value: 'ch1',
-                    },
-                    {
-                      label: 'choice 2',
-                      value: 'ch2',
-                    },
-                    {
-                      label: 'choice 3',
-                      value: 'ch3',
-                    },
-                  ]}
-                  value={['ch1', 'ch3']}
+                  options={this.exampleOptions}
+                  value={['apple', 'grapefruits']}
                 />
               )}
             />
@@ -411,16 +377,8 @@ class DemoContainer extends React.Component {
                   changeHandler={logger}
                   fieldId="Radio"
                   label="Choices"
-                  options={[
-                    {
-                      label: 'choice 1',
-                      value: 'ch1',
-                    },
-                    {
-                      label: 'choice 2',
-                      value: 'ch2',
-                    },
-                  ]}
+                  options={this.exampleOptions}
+                  value="apples"
                 />
               )}
             />
@@ -432,18 +390,9 @@ class DemoContainer extends React.Component {
                   fieldId="RadioDescriptionRequiredDisabledItem"
                   label="Choices with description, required and disabled item"
                   description="Choose one"
+                  options={this.exampleOptions}
+                  value="apples"
                   required
-                  options={[
-                    {
-                      label: 'choice 1',
-                      value: 'ch1',
-                    },
-                    {
-                      disabled: true,
-                      label: 'choice 2',
-                      value: 'ch2',
-                    },
-                  ]}
                 />
               )}
             />
@@ -455,109 +404,282 @@ class DemoContainer extends React.Component {
                   fieldId="RadioDisabled"
                   label="Choices disabled with hidden label and error and chosen"
                   isLabelVisible={false}
-                  value="ch1"
                   description="Choose one"
                   error="This is disabled"
+                  options={this.exampleOptions}
+                  value="apples"
                   required
                   disabled
-                  options={[
-                    {
-                      label: 'choice 1',
-                      value: 'ch1',
-                    },
-                    {
-                      label: 'choice 2',
-                      value: 'ch2',
-                    },
-                  ]}
                 />
               )}
             />
-            <h3 id="components-selectfield" className="typography-size-4 offset-6">Select field</h3>
+            <h3 id="components-selectfield" className="typography-size-4 offset-6">Select Field</h3>
             <Documentation
-              name="SelectField"
+              name="Select field variants"
               component={(
-                <SelectField
-                  changeHandler={logger}
-                  fieldId="selectField"
-                  label="SelectField"
-                  options={[
-                    {
-                      label: 'choice 1',
-                      value: 'ch1',
-                    },
-                    {
-                      label: 'choice 2',
-                      value: 'ch2',
-                    },
-                  ]}
-                />
+                <div>
+                  <SelectField
+                    fieldId="selectFieldVariantOutline"
+                    changeHandler={logger}
+                    label="Outline"
+                    options={this.exampleOptions}
+                  />
+                  <SelectField
+                    fieldId="selectFieldVariantFilled"
+                    changeHandler={logger}
+                    label="Filled"
+                    variant="filled"
+                    options={this.exampleOptions}
+                  />
+                </div>
               )}
             />
             <Documentation
-              name="SelectField with description and required"
+              name="Select field with helper text"
               component={(
-                <SelectField
-                  changeHandler={logger}
-                  fieldId="selectFieldDescriptionRequired"
-                  label="SelectField with description and required"
-                  description="Choose which choice you prefer"
-                  required
-                  options={[
-                    {
-                      label: 'choice 1',
-                      value: 'ch1',
-                    },
-                    {
-                      label: 'choice 2',
-                      value: 'ch2',
-                    },
-                  ]}
-                />
+                <div>
+                  <SelectField
+                    fieldId="selectFieldWithDescriptionOutline"
+                    changeHandler={logger}
+                    label="Favorite fruit"
+                    helperText="What is your favorite fruit?"
+                    options={this.exampleOptions}
+                  />
+                  <SelectField
+                    fieldId="selectFieldWithDescriptionFilled"
+                    changeHandler={logger}
+                    label="Favorite fruit"
+                    helperText="What is your favorite fruit?"
+                    variant="filled"
+                    options={this.exampleOptions}
+                  />
+                </div>
               )}
             />
             <Documentation
-              name="SelectField with error"
+              name="Required select field"
               component={(
-                <SelectField
-                  changeHandler={logger}
-                  fieldId="selectFieldError"
-                  label="SelectField with error"
-                  description="Choose which choice you prefer"
-                  error="You have to choose"
-                  options={[
-                    {
-                      label: 'choice 1',
-                      value: 'ch1',
-                    },
-                    {
-                      label: 'choice 2',
-                      value: 'ch2',
-                    },
-                  ]}
-                />
+                <div>
+                  <SelectField
+                    fieldId="selectFieldRequiredOutline"
+                    changeHandler={logger}
+                    label="This field is required"
+                    options={this.exampleOptions}
+                    required
+                  />
+                  <SelectField
+                    fieldId="selectFieldRequiredFilled"
+                    changeHandler={logger}
+                    label="This field is required"
+                    variant="filled"
+                    options={this.exampleOptions}
+                    required
+                  />
+                </div>
               )}
             />
             <Documentation
-              name="SelectField with error and hidden label"
+              name="Disabled select field"
               component={(
-                <SelectField
-                  changeHandler={logger}
-                  fieldId="selectFieldErrorHiddenLabel"
-                  label="SelectField with error and hidden label"
-                  isLabelVisible={false}
-                  disabled
-                  options={[
-                    {
-                      label: 'choice 1',
-                      value: 'ch1',
-                    },
-                    {
-                      label: 'choice 2',
-                      value: 'ch2',
-                    },
-                  ]}
-                />
+                <div>
+                  <SelectField
+                    fieldId="selectFieldDisabledOutline"
+                    changeHandler={logger}
+                    label="Disabled select field"
+                    options={this.exampleOptions}
+                    disabled
+                  />
+                  <SelectField
+                    fieldId="selectFieldDisabledFilled"
+                    changeHandler={logger}
+                    label="Disabled select field"
+                    variant="filled"
+                    options={this.exampleOptions}
+                    disabled
+                  />
+                </div>
+              )}
+            />
+            <Documentation
+              name="Select field with invisible label"
+              component={(
+                <div>
+                  <SelectField
+                    fieldId="selectFieldWithInvisibleLabelOutline"
+                    changeHandler={logger}
+                    label="Select field with invisible label"
+                    helperText="Showing helper text instead"
+                    options={this.exampleOptions}
+                    isLabelVisible={false}
+                  />
+                  <SelectField
+                    fieldId="selectFieldWithInvisibleLabelFilled"
+                    changeHandler={logger}
+                    label="Select field with invisible label"
+                    helperText="Showing helper text instead"
+                    variant="filled"
+                    options={this.exampleOptions}
+                    isLabelVisible={false}
+                  />
+                </div>
+              )}
+            />
+            <Documentation
+              name="Validation states"
+              component={(
+                <div>
+                  <div>
+                    <SelectField
+                      fieldId="selectFieldValidationValidOutline"
+                      changeHandler={logger}
+                      label="Favorite fruit"
+                      helperText="Looks good!"
+                      validationState="valid"
+                      options={this.exampleOptions}
+                      value="apples"
+                    />
+                    <SelectField
+                      fieldId="selectFieldValidationWarningOutline"
+                      changeHandler={logger}
+                      label="Favorite fruit"
+                      helperText="Really…?"
+                      validationState="warning"
+                      options={this.exampleOptions}
+                      value="bananas"
+                    />
+                    <SelectField
+                      fieldId="selectFieldValidationInvalidOutline"
+                      changeHandler={logger}
+                      label="Favorite fruit"
+                      helperText="Uh…"
+                      validationState="invalid"
+                      options={this.exampleOptions}
+                      value="grapefruits"
+                    />
+                  </div>
+                  <div>
+                    <SelectField
+                      fieldId="selectFieldValidationValidFilled"
+                      changeHandler={logger}
+                      label="Favorite fruit"
+                      helperText="Looks good!"
+                      validationState="valid"
+                      variant="filled"
+                      options={this.exampleOptions}
+                      value="apples"
+                    />
+                    <SelectField
+                      fieldId="selectFieldValidationWarningOutline"
+                      changeHandler={logger}
+                      label="Favorite fruit"
+                      helperText="Really…?"
+                      validationState="warning"
+                      variant="filled"
+                      options={this.exampleOptions}
+                      value="bananas"
+                    />
+                    <SelectField
+                      fieldId="selectFieldValidationInvalidOutline"
+                      changeHandler={logger}
+                      label="Favorite fruit"
+                      helperText="Uh…"
+                      validationState="invalid"
+                      variant="filled"
+                      options={this.exampleOptions}
+                      value="grapefruits"
+                    />
+                  </div>
+                </div>
+              )}
+            />
+            <Documentation
+              name="Full width select field"
+              component={(
+                <div>
+                  <SelectField
+                    fieldId="selectFieldFullWidthOutline"
+                    changeHandler={logger}
+                    label="Favorite fruit"
+                    options={this.exampleOptions}
+                    fullWidth
+                  />
+                  <SelectField
+                    fieldId="selectFieldFullWidthFilled"
+                    changeHandler={logger}
+                    label="Favorite fruit"
+                    variant="filled"
+                    options={this.exampleOptions}
+                    fullWidth
+                  />
+                </div>
+              )}
+            />
+            <Documentation
+              name="Horizontal layout"
+              component={(
+                <div>
+                  <div className="offset-3">
+                    <SelectField
+                      fieldId="selectFieldHorizontalOutline"
+                      changeHandler={logger}
+                      label="Favorite fruit"
+                      helperText="What do you like?"
+                      layout="horizontal"
+                      options={this.exampleOptions}
+                    />
+                    <SelectField
+                      fieldId="selectFieldHorizontalFilled"
+                      changeHandler={logger}
+                      label="Favorite fruit"
+                      helperText="This kind of fruit does not exist."
+                      layout="horizontal"
+                      validationState="invalid"
+                      variant="filled"
+                      options={this.exampleOptions}
+                      value="grapefruits"
+                    />
+                  </div>
+                  <div className="offset-3">
+                    <SelectField
+                      fieldId="selectFieldHorizontalFullWidthOutline"
+                      changeHandler={logger}
+                      label="Favorite fruit"
+                      layout="horizontal"
+                      options={this.exampleOptions}
+                      fullWidth
+                    />
+                    <SelectField
+                      fieldId="selectFieldHorizontalFullWidthFilled"
+                      changeHandler={logger}
+                      label="Favorite fruit"
+                      layout="horizontal"
+                      variant="filled"
+                      options={this.exampleOptions}
+                      fullWidth
+                    />
+                  </div>
+                  <div>
+                    <SelectField
+                      fieldId="selectFieldHorizontalFullWidthLabelInvisibleOutline"
+                      changeHandler={logger}
+                      label="Favorite fruit"
+                      layout="horizontal"
+                      isLabelVisible={false}
+                      options={this.exampleOptions}
+                      fullWidth
+                    />
+                    <SelectField
+                      fieldId="selectFieldHorizontalFullWidthInvisibleFilled"
+                      changeHandler={logger}
+                      label="Favorite fruit"
+                      layout="horizontal"
+                      variant="filled"
+                      isLabelVisible={false}
+                      options={this.exampleOptions}
+                      fullWidth
+                    />
+                  </div>
+                </div>
               )}
             />
             <h3 id="components-table" className="typography-size-4 offset-6">Table</h3>

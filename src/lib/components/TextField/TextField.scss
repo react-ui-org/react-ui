@@ -9,6 +9,7 @@
 
 .input {
   @include form-field-input();
+  @include form-field-input-text();
 }
 
 .bottomLine {

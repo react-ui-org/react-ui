@@ -1,125 +1,74 @@
-@import '../../shared/settings/borders';
-@import '../../shared/settings/forms.deprecated';
-@import '../../shared/settings/typography';
-@import '../../shared/tools/forms.deprecated';
-@import '../../shared/tools/icons';
+@import '../../shared/tools/accessibility';
+@import '../../shared/tools/forms';
 
+// Foundation
 .root {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  padding: 0 0.25rem 0 0;
-  margin-bottom: 1rem;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 2rem + ($form-field-height - ($select-dropdown-caret-icon-size / 2)) / 2;
-    right: 0.5rem;
-    width: $select-dropdown-caret-icon-size;
-    height: $select-dropdown-caret-icon-size;
-    margin: 0;
-    vertical-align: middle;
-    background-image: icon-generate-caret($select-after-color);
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-
-  &:hover::after {
-    color: $select-after-hover-color;
-  }
+  @include form-field();
+  @include form-field-horizontal-neighbor();
 }
 
-.isRootDisabled {
-  @include form-disabled-state();
-
-  &:hover::after {
-    color: $select-after-color;
-  }
+.inputContainer {
+  position: relative; // get ready for caret
 }
 
-.isRootCondensed {
-  composes: root;
-
-  &::after {
-    top: 0.25rem + ($form-field-height - ($select-dropdown-caret-icon-size / 2)) / 2;
-  }
+.input {
+  @include form-field-input();
+  @include form-field-input-select();
 }
 
-.label {
-  display: inline-block;
-  margin-bottom: 0.25rem;
+.caret {
+  @include form-field-caret();
 }
 
-.isLabelRequired {
-  composes: label;
-
-  &::after {
-    content: ' *';
-  }
+.bottomLine {
+  @include form-field-bottom-line();
 }
 
+.helperText {
+  @include form-field-helper-text();
+}
+
+// Variants
+.rootVariantFilled .input {
+  @include form-field-input-variant(filled);
+}
+
+.rootVariantOutline .input {
+  @include form-field-input-variant(outline);
+}
+
+// States
+.isRootRequired .label {
+  @include form-field-required-label();
+}
+
+.isRootStateInvalid {
+  @include form-field-state(invalid);
+}
+
+.isRootStateValid {
+  @include form-field-state(valid);
+}
+
+.isRootStateWarning {
+  @include form-field-state(warning);
+}
+
+// Invisible label
 .isLabelHidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+  @include accessibility-hide-text();
 }
 
-.select {
-  @include form-custom-inputs($form-field-height);
-  @include form-field-base(2.5rem, $form-field-border-color);
-  @include form-border-bottom-animation($form-field-border-color);
-
-  position: relative;
-  z-index: 2;
-  box-sizing: border-box;
-  width: 100%;
-  padding: 0 ($select-dropdown-caret-icon-size + 0.5rem) 0 0.25rem;
-  font-family: $typography-font-family-base;
-  cursor: pointer;
-
-  &::-ms-expand {
-    display: none;
-  }
-
-  &:hover,
-  &:active {
-    border-color: $select-hover-background;
-    background: $select-hover-background;
-  }
-
-  &:disabled {
-    @include form-disabled-state();
-
-    &:hover {
-      border-color: $form-field-border-color;
-      background: none;
-    }
-  }
+// Layouts
+.isRootFullWidth {
+  @include form-field-full-width();
+  @include form-field-vertical-neighbor();
 }
 
-.select > option {
-  color: $select-option-text-color;
+.rootLayoutHorizontal {
+  @include form-field-layout-horizontal();
 }
 
-.isSelectInvalid {
-  composes: select;
-  border-bottom: $border-width solid $form-invalid-color;
-  background: linear-gradient(to bottom, transparent 95%, $form-invalid-color 95%);
-}
-
-.description,
-.error {
-  font-size: 0.8rem;
-}
-
-.error {
-  min-height: 1rem;
-  color: $form-invalid-color;
+.rootLayoutVertical {
+  @include form-field-layout-vertical();
 }

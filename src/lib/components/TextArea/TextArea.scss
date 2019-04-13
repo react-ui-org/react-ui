@@ -8,7 +8,8 @@
 }
 
 .input {
-  @include form-field-input($multiline: true);
+  @include form-field-input();
+  @include form-field-input-textarea();
 }
 
 .bottomLine {

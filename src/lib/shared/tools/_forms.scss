@@ -1,5 +1,6 @@
 @import '../settings/forms';
 @import '../themes/forms';
+@import '../tools/icons';
 @import 'explode';
 @import 'transitions';
 
@@ -9,7 +10,7 @@
   display: inline-flex;
 }
 
-@mixin form-field-input($multiline: false) {
+@mixin form-field-input() {
   @include transition((opacity, color, border, background, box-shadow));
 
   width: 100%;
@@ -23,17 +24,6 @@
   border: $form-field-border-width solid $form-field-border-color;
   border-radius: $form-field-border-radius;
   box-shadow: none;
-
-  @if $multiline {
-    height: auto;
-    min-height: $form-field-height;
-    resize: vertical;
-  }
-
-  &[cols],
-  &[size] {
-    min-width: auto;
-  }
 
   &::placeholder {
     opacity: 1;
@@ -53,6 +43,48 @@
 
     // Override hover styles
     border-color: $form-field-border-color;
+  }
+}
+
+@mixin form-field-input-text() {
+  &[size] {
+    min-width: auto;
+  }
+}
+
+@mixin form-field-input-textarea() {
+  height: auto;
+  min-height: $form-field-height;
+  resize: vertical;
+
+  &[cols] {
+    min-width: auto;
+  }
+}
+
+@mixin form-field-input-select() {
+  padding-right: calc(#{$form-field-caret-size} + 2 * #{map-get($offset-values, 3)});
+  appearance: none;
+
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+@mixin form-field-caret() {
+  position: absolute;
+  top: 50%;
+  right: map-get($offset-values, 3);
+  width: $form-field-caret-size;
+  height: $form-field-caret-size;
+  background-image: icon-generate-caret($form-field-caret-color);
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: translateY(-50%);
+  pointer-events: none;
+
+  .input:disabled ~ & {
+    @include form-field-disabled();
   }
 }
 

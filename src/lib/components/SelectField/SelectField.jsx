@@ -3,58 +3,94 @@ import React from 'react';
 import styles from './SelectField.scss';
 
 const SelectField = (props) => {
-  let labelClass = styles.label;
-  if (props.isLabelVisible) {
-    if (props.required) {
-      labelClass = styles.isLabelRequired;
-    }
-  } else {
-    labelClass = styles.isLabelHidden;
+  let labelVisibilityClass = '';
+  let rootFullWidthClass = '';
+  let rootLayoutClass = '';
+  let rootRequiredClass = '';
+  let rootValidationStateClass = '';
+  let rootVariantClass = '';
+
+  if (!props.isLabelVisible) {
+    labelVisibilityClass = styles.isLabelHidden;
   }
 
-  let rootClass = styles.root;
-  if (props.isLabelVisible) {
-    if (props.disabled) {
-      rootClass = styles.isRootDisabled;
-    }
-  } else {
-    rootClass = styles.isRootCondensed;
+  if (props.fullWidth) {
+    rootFullWidthClass = styles.isRootFullWidth;
+  }
+
+  if (props.layout === 'horizontal') {
+    rootLayoutClass = styles.rootLayoutHorizontal;
+  } else if (props.layout === 'vertical') {
+    rootLayoutClass = styles.rootLayoutVertical;
+  }
+
+  if (props.required) {
+    rootRequiredClass = styles.isRootRequired;
+  }
+
+  if (props.validationState === 'invalid') {
+    rootValidationStateClass = styles.isRootStateInvalid;
+  } else if (props.validationState === 'valid') {
+    rootValidationStateClass = styles.isRootStateValid;
+  } else if (props.validationState === 'warning') {
+    rootValidationStateClass = styles.isRootStateWarning;
+  }
+
+  if (props.variant === 'filled') {
+    rootVariantClass = styles.rootVariantFilled;
+  } else if (props.variant === 'outline') {
+    rootVariantClass = styles.rootVariantOutline;
   }
 
   return (
-    <div className={rootClass}>
-      <label htmlFor={props.fieldId}>
-        <div className={labelClass}>
+    <div
+      className={(`
+        ${styles.root}
+        ${rootFullWidthClass}
+        ${rootLayoutClass}
+        ${rootRequiredClass}
+        ${rootValidationStateClass}
+        ${rootVariantClass}
+      `).trim()}
+    >
+      <label className={styles.container} htmlFor={props.fieldId}>
+        <div
+          className={(`
+            ${styles.label}
+            ${labelVisibilityClass}
+          `).trim()}
+        >
           {props.label}
         </div>
-        <select
-          id={props.fieldId}
-          disabled={props.disabled}
-          required={props.required}
-          value={props.value}
-          className={props.error ? styles.isSelectInvalid : styles.select}
-          onChange={props.changeHandler}
-        >
-          {
-            props.options.map(option => (
-              <option
-                key={option.value}
-                value={option.value}
-              >
-                {option.label}
-              </option>
-            ))
-          }
-        </select>
-      </label>
-      {props.description && (
-        <div className={styles.description}>
-          {props.description}
+        <div className={styles.inputContainer}>
+          <select
+            className={styles.input}
+            disabled={props.disabled}
+            id={props.fieldId}
+            onChange={props.changeHandler}
+            required={props.required}
+            value={props.value}
+          >
+            {
+              props.options.map(option => (
+                <option
+                  key={option.value}
+                  value={option.value}
+                >
+                  {option.label}
+                </option>
+              ))
+            }
+          </select>
+          <div className={styles.caret} />
+          {props.variant === 'filled' && (
+            <div className={styles.bottomLine} />
+          )}
         </div>
-      )}
-      {props.error && (
-        <div className={styles.error}>
-          {props.error}
+      </label>
+      {props.helperText && (
+        <div className={styles.helperText}>
+          {props.helperText}
         </div>
       )}
     </div>
@@ -63,22 +99,26 @@ const SelectField = (props) => {
 
 SelectField.defaultProps = {
   changeHandler: null,
-  description: null,
   disabled: false,
-  error: null,
+  fullWidth: false,
+  helperText: null,
   isLabelVisible: true,
+  layout: 'vertical',
   required: false,
+  validationState: null,
   value: undefined,
+  variant: 'outline',
 };
 
 SelectField.propTypes = {
   changeHandler: PropTypes.func,
-  description: PropTypes.string,
   disabled: PropTypes.bool,
-  error: PropTypes.string,
   fieldId: PropTypes.string.isRequired,
+  fullWidth: PropTypes.bool,
+  helperText: PropTypes.string,
   isLabelVisible: PropTypes.bool,
   label: PropTypes.string.isRequired,
+  layout: PropTypes.oneOf(['horizontal', 'vertical']),
   options: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string.isRequired,
     value: PropTypes.oneOfType([
@@ -87,10 +127,12 @@ SelectField.propTypes = {
     ]),
   })).isRequired,
   required: PropTypes.bool,
+  validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
   ]),
+  variant: PropTypes.oneOf(['filled', 'outline']),
 };
 
 export default SelectField;
