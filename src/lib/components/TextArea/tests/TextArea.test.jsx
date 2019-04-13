@@ -26,13 +26,19 @@ describe('rendering', () => {
 
   it('renders correctly with all props', () => {
     const tree = shallow(<TextArea
-      label="label"
+      cols={10}
       fieldId="test"
-      value="value"
-      description="some help"
-      error="error"
+      helperText="some help"
+      isLabelVisible={false}
+      label="label"
+      layout="horizontal"
       placeholder="placeholder"
       rows={5}
+      validationState="invalid"
+      value="value"
+      variant="filled"
+      fullWidth
+      disabled
       required
     />);
 

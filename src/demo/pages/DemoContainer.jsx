@@ -616,44 +616,299 @@ class DemoContainer extends React.Component {
             />
             <h3 id="components-textarea" className="typography-size-2">Text area</h3>
             <Documentation
-              name="TextArea"
+              name="Text area variants"
               component={(
-                <TextArea
-                  fieldId="areaField"
-                  label="TextArea"
-                  placeholder="Lorem Ipsum"
-                  changeHandler={logger}
-                />
+                <div>
+                  <TextArea
+                    fieldId="textAreaVariantOutline"
+                    changeHandler={logger}
+                    label="Outline"
+                  />
+                  <TextArea
+                    fieldId="textAreaVariantFilled"
+                    changeHandler={logger}
+                    label="Filled"
+                    variant="filled"
+                  />
+                </div>
               )}
             />
             <Documentation
-              name="TextArea with description and 5 rows"
+              name="Text area with helper text"
               component={(
-                <TextArea
-                  fieldId="areaFieldDescriptionRows"
-                  label="TextArea with description and 5 rows"
-                  placeholder="Lorem Ipsum"
-                  changeHandler={logger}
-                  description="Describe yourself"
-                  rows={5}
-                />
+                <div>
+                  <TextArea
+                    fieldId="textAreaWithDescriptionOutline"
+                    changeHandler={logger}
+                    label="Address"
+                    helperText="Fill in your address"
+                  />
+                  <TextArea
+                    fieldId="textAreaWithDescriptionFilled"
+                    changeHandler={logger}
+                    label="Address"
+                    helperText="Fill in your address"
+                    variant="filled"
+                  />
+                </div>
               )}
             />
             <Documentation
-              name="TextArea with description and error"
+              name="Required text area"
               component={(
-                <TextArea
-                  fieldId="areaFieldDescriptionError"
-                  label="TextArea with description and error"
-                  placeholder="Lorem Ipsum"
-                  changeHandler={logger}
-                  description="Describe yourself"
-                  error="Use more then five words"
-                  value="I am who I am."
-                />
+                <div>
+                  <TextArea
+                    fieldId="textAreaRequiredOutline"
+                    changeHandler={logger}
+                    label="This field is required"
+                    required
+                  />
+                  <TextArea
+                    fieldId="textAreaRequiredFilled"
+                    changeHandler={logger}
+                    label="This field is required"
+                    variant="filled"
+                    required
+                  />
+                </div>
               )}
             />
-            <h3 id="components-textfield" className="typography-size-2">Text field</h3>
+            <Documentation
+              name="Disabled text area"
+              component={(
+                <div>
+                  <TextArea
+                    fieldId="textAreaDisabledOutline"
+                    changeHandler={logger}
+                    label="Disabled text area"
+                    placeholder="This field is disabled"
+                    disabled
+                  />
+                  <TextArea
+                    fieldId="textAreaDisabledFilled"
+                    changeHandler={logger}
+                    label="Disabled text area"
+                    placeholder="This field is disabled"
+                    variant="filled"
+                    disabled
+                  />
+                </div>
+              )}
+            />
+            <Documentation
+              name="Text area with invisible label"
+              component={(
+                <div>
+                  <TextArea
+                    fieldId="textAreaWithInvisibleLabelOutline"
+                    changeHandler={logger}
+                    label="Text area with invisible label"
+                    helperText="Showing placeholder instead"
+                    placeholder="Text area with invisible label"
+                    isLabelVisible={false}
+                  />
+                  <TextArea
+                    fieldId="textAreaWithInvisibleLabelFilled"
+                    changeHandler={logger}
+                    label="Text area with invisible label"
+                    helperText="Showing placeholder instead"
+                    placeholder="Text area with invisible label"
+                    variant="filled"
+                    isLabelVisible={false}
+                  />
+                </div>
+              )}
+            />
+            <Documentation
+              name="Validation states"
+              component={(
+                <div>
+                  <div>
+                    <TextArea
+                      fieldId="textAreaValidationValidOutline"
+                      changeHandler={logger}
+                      label="What do you wish for Christmas?"
+                      helperText="Ho ho ho, looks good!"
+                      validationState="valid"
+                      value="BMW M4"
+                    />
+                    <TextArea
+                      fieldId="textAreaValidationWarningOutline"
+                      changeHandler={logger}
+                      label="What do you wish for Christmas?"
+                      helperText="Isn't it a little too big for you?"
+                      validationState="warning"
+                      value="BMW X5"
+                    />
+                    <TextArea
+                      fieldId="textAreaValidationInvalidOutline"
+                      changeHandler={logger}
+                      label="What do you wish for Christmas?"
+                      helperText="Common, it's so ugly…"
+                      validationState="invalid"
+                      value="BMW X6"
+                    />
+                  </div>
+                  <div>
+                    <TextArea
+                      fieldId="textAreaValidationValidOutline"
+                      changeHandler={logger}
+                      label="What do you wish for Christmas?"
+                      helperText="Ho ho ho, looks good!"
+                      validationState="valid"
+                      value="BMW M4"
+                      variant="filled"
+                    />
+                    <TextArea
+                      fieldId="textAreaValidationWarningOutline"
+                      changeHandler={logger}
+                      label="What do you wish for Christmas?"
+                      helperText="Isn't it a little too big for you?"
+                      validationState="warning"
+                      value="BMW X5"
+                      variant="filled"
+                    />
+                    <TextArea
+                      fieldId="textAreaValidationInvalidOutline"
+                      changeHandler={logger}
+                      label="What do you wish for Christmas?"
+                      helperText="Common, it's so ugly…"
+                      validationState="invalid"
+                      value="BMW X6"
+                      variant="filled"
+                    />
+                  </div>
+                </div>
+              )}
+            />
+            <Documentation
+              name="Custom input size"
+              component={(
+                <div>
+                  <TextArea
+                    fieldId="textAreaCustomSizeOutline"
+                    changeHandler={logger}
+                    label="Rows and cols"
+                    cols={10}
+                    rows={5}
+                  />
+                  <TextArea
+                    fieldId="textAreaCustomSizeFilled"
+                    changeHandler={logger}
+                    label="Rows and cols"
+                    variant="filled"
+                    cols={10}
+                    rows={5}
+                  />
+                </div>
+              )}
+            />
+            <Documentation
+              name="Full width text area"
+              component={(
+                <div>
+                  <TextArea
+                    fieldId="textAreaFullWidthOutline"
+                    changeHandler={logger}
+                    label="What is your story?"
+                    placeholder="I was born and raised in…"
+                    fullWidth
+                  />
+                  <TextArea
+                    fieldId="textAreaFullWidthFilled"
+                    changeHandler={logger}
+                    label="What is your story?"
+                    placeholder="I was born and raised in…"
+                    variant="filled"
+                    fullWidth
+                  />
+                </div>
+              )}
+            />
+            <Documentation
+              name="Horizontal layout"
+              component={(
+                <div>
+                  <div className="offset-3">
+                    <TextArea
+                      fieldId="textAreaHorizontalOutline"
+                      changeHandler={logger}
+                      label="Address"
+                      helperText="Where you live"
+                      layout="horizontal"
+                    />
+                    <TextArea
+                      fieldId="textAreaHorizontalFilled"
+                      changeHandler={logger}
+                      label="Address"
+                      value="Neverland"
+                      helperText="The address does not exist."
+                      validationState="invalid"
+                      layout="horizontal"
+                      variant="filled"
+                    />
+                  </div>
+                  <div className="offset-3">
+                    <TextArea
+                      fieldId="textAreaCustomSizeOutline"
+                      changeHandler={logger}
+                      label="Rows and cols"
+                      layout="horizontal"
+                      cols={10}
+                      rows={5}
+                    />
+                    <TextArea
+                      fieldId="textAreaCustomSizeFilled"
+                      changeHandler={logger}
+                      label="Rows and cols"
+                      layout="horizontal"
+                      variant="filled"
+                      cols={10}
+                      rows={5}
+                    />
+                  </div>
+                  <div className="offset-3">
+                    <TextArea
+                      fieldId="textAreaHorizontalFullWidthOutline"
+                      changeHandler={logger}
+                      label="Long story short"
+                      layout="horizontal"
+                      fullWidth
+                    />
+                    <TextArea
+                      fieldId="textAreaHorizontalFullWidthFilled"
+                      changeHandler={logger}
+                      label="Long story short"
+                      layout="horizontal"
+                      variant="filled"
+                      fullWidth
+                    />
+                  </div>
+                  <div>
+                    <TextArea
+                      fieldId="textAreaHorizontalFullWidthLabelInvisibleOutline"
+                      changeHandler={logger}
+                      label="Long story short"
+                      placeholder="Full width text area with horizontal layout works better with placeholder"
+                      layout="horizontal"
+                      isLabelVisible={false}
+                      fullWidth
+                    />
+                    <TextArea
+                      fieldId="textAreaHorizontalFullWidthInvisibleFilled"
+                      changeHandler={logger}
+                      label="Long story short"
+                      placeholder="Full width text area with horizontal layout works better with placeholder"
+                      layout="horizontal"
+                      variant="filled"
+                      isLabelVisible={false}
+                      fullWidth
+                    />
+                  </div>
+                </div>
+              )}
+            />
+            <h3 id="components-textfield" className="typography-size-2">Text Field</h3>
             <Documentation
               name="Text field variants"
               component={(
@@ -673,20 +928,20 @@ class DemoContainer extends React.Component {
               )}
             />
             <Documentation
-              name="Text field with description"
+              name="Text field with helper text"
               component={(
                 <div>
                   <TextField
                     fieldId="textFieldWithDescriptionOutline"
                     changeHandler={logger}
                     label="Name"
-                    description="Fill in your real name"
+                    helperText="Fill in your real name"
                   />
                   <TextField
                     fieldId="textFieldWithDescriptionFilled"
                     changeHandler={logger}
                     label="Name"
-                    description="Fill in your real name"
+                    helperText="Fill in your real name"
                     variant="filled"
                   />
                 </div>
@@ -742,7 +997,7 @@ class DemoContainer extends React.Component {
                     fieldId="textFieldWithInvisibleLabelOutline"
                     changeHandler={logger}
                     label="Text field with invisible label"
-                    description="Showing placeholder instead"
+                    helperText="Showing placeholder instead"
                     placeholder="Text field with invisible label"
                     isLabelVisible={false}
                   />
@@ -750,7 +1005,7 @@ class DemoContainer extends React.Component {
                     fieldId="textFieldWithInvisibleLabelFilled"
                     changeHandler={logger}
                     label="Text field with invisible label"
-                    description="Showing placeholder instead"
+                    helperText="Showing placeholder instead"
                     placeholder="Text field with invisible label"
                     variant="filled"
                     isLabelVisible={false}
@@ -767,25 +1022,24 @@ class DemoContainer extends React.Component {
                       fieldId="textFieldValidationValidOutline"
                       changeHandler={logger}
                       label="User name"
-                      feedback="Looks good!"
-                      state="valid"
+                      helperText="Looks good!"
+                      validationState="valid"
                       value="terminator"
                     />
                     <TextField
                       fieldId="textFieldValidationWarningOutline"
                       changeHandler={logger}
                       label="Email"
-                      feedback="Account with this address already exists, please pick a different address."
-                      state="warning"
+                      helperText="Account with this address already exists, please pick a different address."
+                      validationState="warning"
                       value="me@example.com"
                     />
                     <TextField
                       fieldId="textFieldValidationInvalidOutline"
                       changeHandler={logger}
                       label="Name"
-                      description="Fill in your real name"
-                      feedback="Common, this is not your real name."
-                      state="invalid"
+                      helperText="Common, this is not your real name."
+                      validationState="invalid"
                       value="xx"
                     />
                   </div>
@@ -794,8 +1048,8 @@ class DemoContainer extends React.Component {
                       fieldId="textFieldValidationValidFilled"
                       changeHandler={logger}
                       label="User name"
-                      feedback="Looks good!"
-                      state="valid"
+                      helperText="Looks good!"
+                      validationState="valid"
                       value="terminator"
                       variant="filled"
                     />
@@ -803,8 +1057,8 @@ class DemoContainer extends React.Component {
                       fieldId="textFieldValidationWarningFilled"
                       changeHandler={logger}
                       label="Email"
-                      feedback="Account with this address already exists, please pick a different address."
-                      state="warning"
+                      helperText="Account with this address already exists, please pick a different address."
+                      validationState="warning"
                       value="me@example.com"
                       variant="filled"
                     />
@@ -812,9 +1066,8 @@ class DemoContainer extends React.Component {
                       fieldId="textFieldValidationInvalidFilled"
                       changeHandler={logger}
                       label="Name"
-                      description="Fill in your real name"
-                      feedback="Common, this is not your real name."
-                      state="invalid"
+                      helperText="Common, this is not your real name."
+                      validationState="invalid"
                       value="xx"
                       variant="filled"
                     />
@@ -873,7 +1126,7 @@ class DemoContainer extends React.Component {
                       fieldId="textFieldHorizontalOutline"
                       changeHandler={logger}
                       label="Address"
-                      description="Where you live"
+                      helperText="Where you live"
                       layout="horizontal"
                     />
                     <TextField
@@ -881,8 +1134,8 @@ class DemoContainer extends React.Component {
                       changeHandler={logger}
                       label="Address"
                       value="Neverland"
-                      feedback="The address does not exist."
-                      state="invalid"
+                      helperText="The address does not exist."
+                      validationState="invalid"
                       layout="horizontal"
                       variant="filled"
                     />
@@ -899,7 +1152,7 @@ class DemoContainer extends React.Component {
                       fieldId="textFieldHorizontalCustomSizeFilled"
                       changeHandler={logger}
                       label="Age"
-                      description="How old do you see yourself?"
+                      helperText="How old do you see yourself?"
                       layout="horizontal"
                       variant="filled"
                       size={3}

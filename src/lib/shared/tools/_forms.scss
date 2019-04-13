@@ -8,7 +8,7 @@
   display: inline-flex;
 }
 
-@mixin form-field-input() {
+@mixin form-field-input($multiline: false) {
   width: 100%;
   min-width: $form-field-default-width;
   height: $form-field-height;
@@ -21,6 +21,13 @@
   border-radius: $form-field-border-radius;
   box-shadow: none;
 
+  @if $multiline {
+    height: auto;
+    min-height: $form-field-height;
+    resize: vertical;
+  }
+
+  &[cols],
   &[size] {
     min-width: auto;
   }
@@ -61,9 +68,9 @@
   }
 }
 
-@mixin form-field-description-feedback() {
-  font-size: $form-field-description-feedback-font-size;
-  color: $form-field-description-feedback-color;
+@mixin form-field-helper-text() {
+  font-size: $form-field-helper-text-font-size;
+  color: $form-field-helper-text-color;
 }
 
 @mixin form-field-required-label() {
@@ -115,7 +122,7 @@
     }
   }
 
-  .feedback {
+  .helperText {
     color: map-get($state-properties, color);
   }
 
@@ -157,10 +164,9 @@
     text-align: $form-field-horizontal-label-alignment;
   }
 
-  .description,
-  .feedback {
+  .helperText {
     padding-left: $form-field-horizontal-inner-gap;
-    margin-top: calc(#{$form-field-input-font-size} - #{$form-field-description-feedback-font-size}); // 1.
+    margin-top: calc(#{$form-field-input-font-size} - #{$form-field-helper-text-font-size}); // 1.
   }
 }
 
@@ -171,8 +177,7 @@
     padding-bottom: $form-field-vertical-inner-gap;
   }
 
-  .description,
-  .feedback {
+  .helperText {
     padding-top: $form-field-vertical-inner-gap;
   }
 }

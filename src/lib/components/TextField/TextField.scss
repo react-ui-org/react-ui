@@ -15,9 +15,8 @@
   @include form-field-bottom-line();
 }
 
-.description,
-.feedback {
-  @include form-field-description-feedback();
+.helperText {
+  @include form-field-helper-text();
 }
 
 // Variants

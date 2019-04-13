@@ -75,12 +75,7 @@ exports[`rendering renders correctly with all props 1`] = `
     </div>
   </label>
   <div
-    className="feedback"
-  >
-    feedback
-  </div>
-  <div
-    className="description"
+    className="helperText"
   >
     some help
   </div>

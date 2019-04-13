@@ -30488,11 +30488,6 @@ var DemoContainer = function (_React$Component) {
         _react2.default.createElement(
           _lib.DocumentationLayoutSidebar,
           null,
-          _react2.default.createElement(
-            'h1',
-            { className: 'typography-size-1' },
-            'React UI'
-          ),
           _react2.default.createElement(_lib.DocumentationNavigation, { items: _navigation2.default })
         ),
         _react2.default.createElement(
@@ -31111,44 +31106,319 @@ var DemoContainer = function (_React$Component) {
             _react2.default.createElement(
               'h3',
               { id: 'components-textarea', className: 'typography-size-2' },
-              'Text area'
+              'Text Area'
             ),
             _react2.default.createElement(_lib.Documentation, {
-              name: 'TextArea',
-              component: _react2.default.createElement(_lib.TextArea, {
-                fieldId: 'areaField',
-                label: 'TextArea',
-                placeholder: 'Lorem Ipsum',
-                changeHandler: logger
-              })
+              name: 'Text area variants',
+              component: _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_lib.TextArea, {
+                  fieldId: 'textAreaVariantOutline',
+                  changeHandler: logger,
+                  label: 'Outline'
+                }),
+                _react2.default.createElement(_lib.TextArea, {
+                  fieldId: 'textAreaVariantFilled',
+                  changeHandler: logger,
+                  label: 'Filled',
+                  variant: 'filled'
+                })
+              )
             }),
             _react2.default.createElement(_lib.Documentation, {
-              name: 'TextArea with description and 5 rows',
-              component: _react2.default.createElement(_lib.TextArea, {
-                fieldId: 'areaFieldDescriptionRows',
-                label: 'TextArea with description and 5 rows',
-                placeholder: 'Lorem Ipsum',
-                changeHandler: logger,
-                description: 'Describe yourself',
-                rows: 5
-              })
+              name: 'Text area with description',
+              component: _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_lib.TextArea, {
+                  fieldId: 'textAreaWithDescriptionOutline',
+                  changeHandler: logger,
+                  label: 'Address',
+                  description: 'Fill in your address'
+                }),
+                _react2.default.createElement(_lib.TextArea, {
+                  fieldId: 'textAreaWithDescriptionFilled',
+                  changeHandler: logger,
+                  label: 'Address',
+                  description: 'Fill in your address',
+                  variant: 'filled'
+                })
+              )
             }),
             _react2.default.createElement(_lib.Documentation, {
-              name: 'TextArea with description and error',
-              component: _react2.default.createElement(_lib.TextArea, {
-                fieldId: 'areaFieldDescriptionError',
-                label: 'TextArea with description and error',
-                placeholder: 'Lorem Ipsum',
-                changeHandler: logger,
-                description: 'Describe yourself',
-                error: 'Use more then five words',
-                value: 'I am who I am.'
-              })
+              name: 'Required text area',
+              component: _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_lib.TextArea, {
+                  fieldId: 'textAreaRequiredOutline',
+                  changeHandler: logger,
+                  label: 'This field is required',
+                  required: true
+                }),
+                _react2.default.createElement(_lib.TextArea, {
+                  fieldId: 'textAreaRequiredFilled',
+                  changeHandler: logger,
+                  label: 'This field is required',
+                  variant: 'filled',
+                  required: true
+                })
+              )
+            }),
+            _react2.default.createElement(_lib.Documentation, {
+              name: 'Disabled text area',
+              component: _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_lib.TextArea, {
+                  fieldId: 'textAreaDisabledOutline',
+                  changeHandler: logger,
+                  label: 'Disabled text area',
+                  placeholder: 'This field is disabled',
+                  disabled: true
+                }),
+                _react2.default.createElement(_lib.TextArea, {
+                  fieldId: 'textAreaDisabledFilled',
+                  changeHandler: logger,
+                  label: 'Disabled text area',
+                  placeholder: 'This field is disabled',
+                  variant: 'filled',
+                  disabled: true
+                })
+              )
+            }),
+            _react2.default.createElement(_lib.Documentation, {
+              name: 'Text area with invisible label',
+              component: _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_lib.TextArea, {
+                  fieldId: 'textAreaWithInvisibleLabelOutline',
+                  changeHandler: logger,
+                  label: 'Text area with invisible label',
+                  description: 'Showing placeholder instead',
+                  placeholder: 'Text area with invisible label',
+                  isLabelVisible: false
+                }),
+                _react2.default.createElement(_lib.TextArea, {
+                  fieldId: 'textAreaWithInvisibleLabelFilled',
+                  changeHandler: logger,
+                  label: 'Text area with invisible label',
+                  description: 'Showing placeholder instead',
+                  placeholder: 'Text area with invisible label',
+                  variant: 'filled',
+                  isLabelVisible: false
+                })
+              )
+            }),
+            _react2.default.createElement(_lib.Documentation, {
+              name: 'Validation states',
+              component: _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(_lib.TextArea, {
+                    fieldId: 'textAreaValidationValidOutline',
+                    changeHandler: logger,
+                    label: 'What do you wish for Christmas?',
+                    feedback: 'Ho ho ho, looks good!',
+                    state: 'valid',
+                    value: 'BMW M4'
+                  }),
+                  _react2.default.createElement(_lib.TextArea, {
+                    fieldId: 'textAreaValidationWarningOutline',
+                    changeHandler: logger,
+                    label: 'What do you wish for Christmas?',
+                    feedback: 'Isn\'t it a little too big for you?',
+                    state: 'warning',
+                    value: 'BMW X5'
+                  }),
+                  _react2.default.createElement(_lib.TextArea, {
+                    fieldId: 'textAreaValidationInvalidOutline',
+                    changeHandler: logger,
+                    label: 'What do you wish for Christmas?',
+                    description: 'Fill in your wishes',
+                    feedback: 'Common, it\'s so ugly\u2026',
+                    state: 'invalid',
+                    value: 'BMW X6'
+                  })
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(_lib.TextArea, {
+                    fieldId: 'textAreaValidationValidOutline',
+                    changeHandler: logger,
+                    label: 'What do you wish for Christmas?',
+                    feedback: 'Ho ho ho, looks good!',
+                    state: 'valid',
+                    value: 'BMW M4',
+                    variant: 'filled'
+                  }),
+                  _react2.default.createElement(_lib.TextArea, {
+                    fieldId: 'textAreaValidationWarningOutline',
+                    changeHandler: logger,
+                    label: 'What do you wish for Christmas?',
+                    feedback: 'Isn\'t it a little too big for you?',
+                    state: 'warning',
+                    value: 'BMW X5',
+                    variant: 'filled'
+                  }),
+                  _react2.default.createElement(_lib.TextArea, {
+                    fieldId: 'textAreaValidationInvalidOutline',
+                    changeHandler: logger,
+                    label: 'What do you wish for Christmas?',
+                    description: 'Fill in your wishes',
+                    feedback: 'Common, it\'s so ugly\u2026',
+                    state: 'invalid',
+                    value: 'BMW X6',
+                    variant: 'filled'
+                  })
+                )
+              )
+            }),
+            _react2.default.createElement(_lib.Documentation, {
+              name: 'Custom input size',
+              component: _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_lib.TextArea, {
+                  fieldId: 'textAreaCustomSizeOutline',
+                  changeHandler: logger,
+                  label: 'Rows and cols',
+                  cols: 10,
+                  rows: 5
+                }),
+                _react2.default.createElement(_lib.TextArea, {
+                  fieldId: 'textAreaCustomSizeFilled',
+                  changeHandler: logger,
+                  label: 'Rows and cols',
+                  variant: 'filled',
+                  cols: 10,
+                  rows: 5
+                })
+              )
+            }),
+            _react2.default.createElement(_lib.Documentation, {
+              name: 'Full width text area',
+              component: _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_lib.TextArea, {
+                  fieldId: 'textAreaFullWidthOutline',
+                  changeHandler: logger,
+                  label: 'What is your story?',
+                  placeholder: 'I was born and raised in\u2026',
+                  fullWidth: true
+                }),
+                _react2.default.createElement(_lib.TextArea, {
+                  fieldId: 'textAreaFullWidthFilled',
+                  changeHandler: logger,
+                  label: 'What is your story?',
+                  placeholder: 'I was born and raised in\u2026',
+                  variant: 'filled',
+                  fullWidth: true
+                })
+              )
+            }),
+            _react2.default.createElement(_lib.Documentation, {
+              name: 'Horizontal layout',
+              component: _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                  'div',
+                  { className: 'offset-3' },
+                  _react2.default.createElement(_lib.TextArea, {
+                    fieldId: 'textAreaHorizontalOutline',
+                    changeHandler: logger,
+                    label: 'Address',
+                    description: 'Where you live',
+                    layout: 'horizontal'
+                  }),
+                  _react2.default.createElement(_lib.TextArea, {
+                    fieldId: 'textAreaHorizontalFilled',
+                    changeHandler: logger,
+                    label: 'Address',
+                    value: 'Neverland',
+                    feedback: 'The address does not exist.',
+                    state: 'invalid',
+                    layout: 'horizontal',
+                    variant: 'filled'
+                  })
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'offset-3' },
+                  _react2.default.createElement(_lib.TextArea, {
+                    fieldId: 'textAreaCustomSizeOutline',
+                    changeHandler: logger,
+                    label: 'Rows and cols',
+                    layout: 'horizontal',
+                    cols: 10,
+                    rows: 5
+                  }),
+                  _react2.default.createElement(_lib.TextArea, {
+                    fieldId: 'textAreaCustomSizeFilled',
+                    changeHandler: logger,
+                    label: 'Rows and cols',
+                    layout: 'horizontal',
+                    variant: 'filled',
+                    cols: 10,
+                    rows: 5
+                  })
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'offset-3' },
+                  _react2.default.createElement(_lib.TextArea, {
+                    fieldId: 'textAreaHorizontalFullWidthOutline',
+                    changeHandler: logger,
+                    label: 'Long story short',
+                    layout: 'horizontal',
+                    fullWidth: true
+                  }),
+                  _react2.default.createElement(_lib.TextArea, {
+                    fieldId: 'textAreaHorizontalFullWidthFilled',
+                    changeHandler: logger,
+                    label: 'Long story short',
+                    layout: 'horizontal',
+                    variant: 'filled',
+                    fullWidth: true
+                  })
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(_lib.TextArea, {
+                    fieldId: 'textAreaHorizontalFullWidthLabelInvisibleOutline',
+                    changeHandler: logger,
+                    label: 'Long story short',
+                    placeholder: 'Full width text area with horizontal layout works better with placeholder',
+                    layout: 'horizontal',
+                    isLabelVisible: false,
+                    fullWidth: true
+                  }),
+                  _react2.default.createElement(_lib.TextArea, {
+                    fieldId: 'textAreaHorizontalFullWidthInvisibleFilled',
+                    changeHandler: logger,
+                    label: 'Long story short',
+                    placeholder: 'Full width text area with horizontal layout works better with placeholder',
+                    layout: 'horizontal',
+                    variant: 'filled',
+                    isLabelVisible: false,
+                    fullWidth: true
+                  })
+                )
+              )
             }),
             _react2.default.createElement(
               'h3',
               { id: 'components-textfield', className: 'typography-size-2' },
-              'Text field'
+              'Text Field'
             ),
             _react2.default.createElement(_lib.Documentation, {
               name: 'Text field variants',
@@ -31507,8 +31777,9 @@ var DemoContainer = function (_React$Component) {
                 _react2.default.createElement(_lib.Login, {
                   logoUrl: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzJfMV8iIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgODQxLjkgNTk1LjMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDg0MS45IDU5NS4zIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGZpbGw9IiM2MURBRkIiIGQ9Ik02NjYuMywyOTYuNWMwLTMyLjUtNDAuNy02My4zLTEwMy4xLTgyLjRjMTQuNC02My42LDgtMTE0LjItMjAuMi0xMzAuNGMtNi41LTMuOC0xNC4xLTUuNi0yMi40LTUuNnYyMi4zDQoJCWM0LjYsMCw4LjMsMC45LDExLjQsMi42YzEzLjYsNy44LDE5LjUsMzcuNSwxNC45LDc1LjdjLTEuMSw5LjQtMi45LDE5LjMtNS4xLDI5LjRjLTE5LjYtNC44LTQxLTguNS02My41LTEwLjkNCgkJYy0xMy41LTE4LjUtMjcuNS0zNS4zLTQxLjYtNTBjMzIuNi0zMC4zLDYzLjItNDYuOSw4NC00Ni45bDAtMjIuM2MwLDAsMCwwLDAsMGMtMjcuNSwwLTYzLjUsMTkuNi05OS45LDUzLjYNCgkJYy0zNi40LTMzLjgtNzIuNC01My4yLTk5LjktNTMuMnYyMi4zYzIwLjcsMCw1MS40LDE2LjUsODQsNDYuNmMtMTQsMTQuNy0yOCwzMS40LTQxLjMsNDkuOWMtMjIuNiwyLjQtNDQsNi4xLTYzLjYsMTENCgkJYy0yLjMtMTAtNC0xOS43LTUuMi0yOWMtNC43LTM4LjIsMS4xLTY3LjksMTQuNi03NS44YzMtMS44LDYuOS0yLjYsMTEuNS0yLjZsMC0yMi4zYzAsMCwwLDAsMCwwYy04LjQsMC0xNiwxLjgtMjIuNiw1LjYNCgkJYy0yOC4xLDE2LjItMzQuNCw2Ni43LTE5LjksMTMwLjFjLTYyLjIsMTkuMi0xMDIuNyw0OS45LTEwMi43LDgyLjNjMCwzMi41LDQwLjcsNjMuMywxMDMuMSw4Mi40Yy0xNC40LDYzLjYtOCwxMTQuMiwyMC4yLDEzMC40DQoJCWM2LjUsMy44LDE0LjEsNS42LDIyLjUsNS42YzI3LjUsMCw2My41LTE5LjYsOTkuOS01My42YzM2LjQsMzMuOCw3Mi40LDUzLjIsOTkuOSw1My4yYzguNCwwLDE2LTEuOCwyMi42LTUuNg0KCQljMjguMS0xNi4yLDM0LjQtNjYuNywxOS45LTEzMC4xQzYyNS44LDM1OS43LDY2Ni4zLDMyOC45LDY2Ni4zLDI5Ni41eiBNNTM2LjEsMjI5LjhjLTMuNywxMi45LTguMywyNi4yLTEzLjUsMzkuNQ0KCQljLTQuMS04LTguNC0xNi0xMy4xLTI0Yy00LjYtOC05LjUtMTUuOC0xNC40LTIzLjRDNTA5LjMsMjI0LDUyMywyMjYuNiw1MzYuMSwyMjkuOHogTTQ5MC4zLDMzNi4zYy03LjgsMTMuNS0xNS44LDI2LjMtMjQuMSwzOC4yDQoJCWMtMTQuOSwxLjMtMzAsMi00NS4yLDJjLTE1LjEsMC0zMC4yLTAuNy00NS0xLjljLTguMy0xMS45LTE2LjQtMjQuNi0yNC4yLTM4Yy03LjYtMTMuMS0xNC41LTI2LjQtMjAuOC0zOS44DQoJCWM2LjItMTMuNCwxMy4yLTI2LjgsMjAuNy0zOS45YzcuOC0xMy41LDE1LjgtMjYuMywyNC4xLTM4LjJjMTQuOS0xLjMsMzAtMiw0NS4yLTJjMTUuMSwwLDMwLjIsMC43LDQ1LDEuOQ0KCQljOC4zLDExLjksMTYuNCwyNC42LDI0LjIsMzhjNy42LDEzLjEsMTQuNSwyNi40LDIwLjgsMzkuOEM1MDQuNywzMDkuOCw0OTcuOCwzMjMuMiw0OTAuMywzMzYuM3ogTTUyMi42LDMyMy4zDQoJCWM1LjQsMTMuNCwxMCwyNi44LDEzLjgsMzkuOGMtMTMuMSwzLjItMjYuOSw1LjktNDEuMiw4YzQuOS03LjcsOS44LTE1LjYsMTQuNC0yMy43QzUxNC4yLDMzOS40LDUxOC41LDMzMS4zLDUyMi42LDMyMy4zeg0KCQkgTTQyMS4yLDQzMGMtOS4zLTkuNi0xOC42LTIwLjMtMjcuOC0zMmM5LDAuNCwxOC4yLDAuNywyNy41LDAuN2M5LjQsMCwxOC43LTAuMiwyNy44LTAuN0M0MzkuNyw0MDkuNyw0MzAuNCw0MjAuNCw0MjEuMiw0MzB6DQoJCSBNMzQ2LjgsMzcxLjFjLTE0LjItMi4xLTI3LjktNC43LTQxLTcuOWMzLjctMTIuOSw4LjMtMjYuMiwxMy41LTM5LjVjNC4xLDgsOC40LDE2LDEzLjEsMjRDMzM3LjEsMzU1LjcsMzQxLjksMzYzLjUsMzQ2LjgsMzcxLjF6DQoJCSBNNDIwLjcsMTYzYzkuMyw5LjYsMTguNiwyMC4zLDI3LjgsMzJjLTktMC40LTE4LjItMC43LTI3LjUtMC43Yy05LjQsMC0xOC43LDAuMi0yNy44LDAuN0M0MDIuMiwxODMuMyw0MTEuNSwxNzIuNiw0MjAuNywxNjN6DQoJCSBNMzQ2LjcsMjIxLjljLTQuOSw3LjctOS44LDE1LjYtMTQuNCwyMy43Yy00LjYsOC04LjksMTYtMTMsMjRjLTUuNC0xMy40LTEwLTI2LjgtMTMuOC0zOS44QzMxOC42LDIyNi43LDMzMi40LDIyNCwzNDYuNywyMjEuOXoNCgkJIE0yNTYuMiwzNDcuMWMtMzUuNC0xNS4xLTU4LjMtMzQuOS01OC4zLTUwLjZjMC0xNS43LDIyLjktMzUuNiw1OC4zLTUwLjZjOC42LTMuNywxOC03LDI3LjctMTAuMWM1LjcsMTkuNiwxMy4yLDQwLDIyLjUsNjAuOQ0KCQljLTkuMiwyMC44LTE2LjYsNDEuMS0yMi4yLDYwLjZDMjc0LjMsMzU0LjIsMjY0LjksMzUwLjgsMjU2LjIsMzQ3LjF6IE0zMTAsNDkwYy0xMy42LTcuOC0xOS41LTM3LjUtMTQuOS03NS43DQoJCWMxLjEtOS40LDIuOS0xOS4zLDUuMS0yOS40YzE5LjYsNC44LDQxLDguNSw2My41LDEwLjljMTMuNSwxOC41LDI3LjUsMzUuMyw0MS42LDUwYy0zMi42LDMwLjMtNjMuMiw0Ni45LTg0LDQ2LjkNCgkJQzMxNi44LDQ5Mi42LDMxMyw0OTEuNywzMTAsNDkweiBNNTQ3LjIsNDEzLjhjNC43LDM4LjItMS4xLDY3LjktMTQuNiw3NS44Yy0zLDEuOC02LjksMi42LTExLjUsMi42Yy0yMC43LDAtNTEuNC0xNi41LTg0LTQ2LjYNCgkJYzE0LTE0LjcsMjgtMzEuNCw0MS4zLTQ5LjljMjIuNi0yLjQsNDQtNi4xLDYzLjYtMTFDNTQ0LjMsMzk0LjgsNTQ2LjEsNDA0LjUsNTQ3LjIsNDEzLjh6IE01ODUuNywzNDcuMWMtOC42LDMuNy0xOCw3LTI3LjcsMTAuMQ0KCQljLTUuNy0xOS42LTEzLjItNDAtMjIuNS02MC45YzkuMi0yMC44LDE2LjYtNDEuMSwyMi4yLTYwLjZjOS45LDMuMSwxOS4zLDYuNSwyOC4xLDEwLjJjMzUuNCwxNS4xLDU4LjMsMzQuOSw1OC4zLDUwLjYNCgkJQzY0NCwzMTIuMiw2MjEuMSwzMzIuMSw1ODUuNywzNDcuMXoiLz4NCgk8cG9seWdvbiBmaWxsPSIjNjFEQUZCIiBwb2ludHM9IjMyMC44LDc4LjQgMzIwLjgsNzguNCAzMjAuOCw3OC40IAkiLz4NCgk8Y2lyY2xlIGZpbGw9IiM2MURBRkIiIGN4PSI0MjAuOSIgY3k9IjI5Ni41IiByPSI0NS43Ii8+DQoJPHBvbHlnb24gZmlsbD0iIzYxREFGQiIgcG9pbnRzPSI1MjAuNSw3OC4xIDUyMC41LDc4LjEgNTIwLjUsNzguMSAJIi8+DQo8L2c+DQo8L3N2Zz4NCg==',
                   title: 'Company',
-                  hasError: true,
-                  submitHandler: submitter,
+                  hasError: true
+                  // onChangeHandler={logger}
+                  , submitHandler: submitter,
                   footer: _react2.default.createElement(
                     'a',
                     { href: 'http://example.com' },
@@ -31525,8 +31796,9 @@ var DemoContainer = function (_React$Component) {
                 _react2.default.createElement(_lib.ForgotPassword, {
                   logoUrl: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzJfMV8iIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgODQxLjkgNTk1LjMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDg0MS45IDU5NS4zIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGZpbGw9IiM2MURBRkIiIGQ9Ik02NjYuMywyOTYuNWMwLTMyLjUtNDAuNy02My4zLTEwMy4xLTgyLjRjMTQuNC02My42LDgtMTE0LjItMjAuMi0xMzAuNGMtNi41LTMuOC0xNC4xLTUuNi0yMi40LTUuNnYyMi4zDQoJCWM0LjYsMCw4LjMsMC45LDExLjQsMi42YzEzLjYsNy44LDE5LjUsMzcuNSwxNC45LDc1LjdjLTEuMSw5LjQtMi45LDE5LjMtNS4xLDI5LjRjLTE5LjYtNC44LTQxLTguNS02My41LTEwLjkNCgkJYy0xMy41LTE4LjUtMjcuNS0zNS4zLTQxLjYtNTBjMzIuNi0zMC4zLDYzLjItNDYuOSw4NC00Ni45bDAtMjIuM2MwLDAsMCwwLDAsMGMtMjcuNSwwLTYzLjUsMTkuNi05OS45LDUzLjYNCgkJYy0zNi40LTMzLjgtNzIuNC01My4yLTk5LjktNTMuMnYyMi4zYzIwLjcsMCw1MS40LDE2LjUsODQsNDYuNmMtMTQsMTQuNy0yOCwzMS40LTQxLjMsNDkuOWMtMjIuNiwyLjQtNDQsNi4xLTYzLjYsMTENCgkJYy0yLjMtMTAtNC0xOS43LTUuMi0yOWMtNC43LTM4LjIsMS4xLTY3LjksMTQuNi03NS44YzMtMS44LDYuOS0yLjYsMTEuNS0yLjZsMC0yMi4zYzAsMCwwLDAsMCwwYy04LjQsMC0xNiwxLjgtMjIuNiw1LjYNCgkJYy0yOC4xLDE2LjItMzQuNCw2Ni43LTE5LjksMTMwLjFjLTYyLjIsMTkuMi0xMDIuNyw0OS45LTEwMi43LDgyLjNjMCwzMi41LDQwLjcsNjMuMywxMDMuMSw4Mi40Yy0xNC40LDYzLjYtOCwxMTQuMiwyMC4yLDEzMC40DQoJCWM2LjUsMy44LDE0LjEsNS42LDIyLjUsNS42YzI3LjUsMCw2My41LTE5LjYsOTkuOS01My42YzM2LjQsMzMuOCw3Mi40LDUzLjIsOTkuOSw1My4yYzguNCwwLDE2LTEuOCwyMi42LTUuNg0KCQljMjguMS0xNi4yLDM0LjQtNjYuNywxOS45LTEzMC4xQzYyNS44LDM1OS43LDY2Ni4zLDMyOC45LDY2Ni4zLDI5Ni41eiBNNTM2LjEsMjI5LjhjLTMuNywxMi45LTguMywyNi4yLTEzLjUsMzkuNQ0KCQljLTQuMS04LTguNC0xNi0xMy4xLTI0Yy00LjYtOC05LjUtMTUuOC0xNC40LTIzLjRDNTA5LjMsMjI0LDUyMywyMjYuNiw1MzYuMSwyMjkuOHogTTQ5MC4zLDMzNi4zYy03LjgsMTMuNS0xNS44LDI2LjMtMjQuMSwzOC4yDQoJCWMtMTQuOSwxLjMtMzAsMi00NS4yLDJjLTE1LjEsMC0zMC4yLTAuNy00NS0xLjljLTguMy0xMS45LTE2LjQtMjQuNi0yNC4yLTM4Yy03LjYtMTMuMS0xNC41LTI2LjQtMjAuOC0zOS44DQoJCWM2LjItMTMuNCwxMy4yLTI2LjgsMjAuNy0zOS45YzcuOC0xMy41LDE1LjgtMjYuMywyNC4xLTM4LjJjMTQuOS0xLjMsMzAtMiw0NS4yLTJjMTUuMSwwLDMwLjIsMC43LDQ1LDEuOQ0KCQljOC4zLDExLjksMTYuNCwyNC42LDI0LjIsMzhjNy42LDEzLjEsMTQuNSwyNi40LDIwLjgsMzkuOEM1MDQuNywzMDkuOCw0OTcuOCwzMjMuMiw0OTAuMywzMzYuM3ogTTUyMi42LDMyMy4zDQoJCWM1LjQsMTMuNCwxMCwyNi44LDEzLjgsMzkuOGMtMTMuMSwzLjItMjYuOSw1LjktNDEuMiw4YzQuOS03LjcsOS44LTE1LjYsMTQuNC0yMy43QzUxNC4yLDMzOS40LDUxOC41LDMzMS4zLDUyMi42LDMyMy4zeg0KCQkgTTQyMS4yLDQzMGMtOS4zLTkuNi0xOC42LTIwLjMtMjcuOC0zMmM5LDAuNCwxOC4yLDAuNywyNy41LDAuN2M5LjQsMCwxOC43LTAuMiwyNy44LTAuN0M0MzkuNyw0MDkuNyw0MzAuNCw0MjAuNCw0MjEuMiw0MzB6DQoJCSBNMzQ2LjgsMzcxLjFjLTE0LjItMi4xLTI3LjktNC43LTQxLTcuOWMzLjctMTIuOSw4LjMtMjYuMiwxMy41LTM5LjVjNC4xLDgsOC40LDE2LDEzLjEsMjRDMzM3LjEsMzU1LjcsMzQxLjksMzYzLjUsMzQ2LjgsMzcxLjF6DQoJCSBNNDIwLjcsMTYzYzkuMyw5LjYsMTguNiwyMC4zLDI3LjgsMzJjLTktMC40LTE4LjItMC43LTI3LjUtMC43Yy05LjQsMC0xOC43LDAuMi0yNy44LDAuN0M0MDIuMiwxODMuMyw0MTEuNSwxNzIuNiw0MjAuNywxNjN6DQoJCSBNMzQ2LjcsMjIxLjljLTQuOSw3LjctOS44LDE1LjYtMTQuNCwyMy43Yy00LjYsOC04LjksMTYtMTMsMjRjLTUuNC0xMy40LTEwLTI2LjgtMTMuOC0zOS44QzMxOC42LDIyNi43LDMzMi40LDIyNCwzNDYuNywyMjEuOXoNCgkJIE0yNTYuMiwzNDcuMWMtMzUuNC0xNS4xLTU4LjMtMzQuOS01OC4zLTUwLjZjMC0xNS43LDIyLjktMzUuNiw1OC4zLTUwLjZjOC42LTMuNywxOC03LDI3LjctMTAuMWM1LjcsMTkuNiwxMy4yLDQwLDIyLjUsNjAuOQ0KCQljLTkuMiwyMC44LTE2LjYsNDEuMS0yMi4yLDYwLjZDMjc0LjMsMzU0LjIsMjY0LjksMzUwLjgsMjU2LjIsMzQ3LjF6IE0zMTAsNDkwYy0xMy42LTcuOC0xOS41LTM3LjUtMTQuOS03NS43DQoJCWMxLjEtOS40LDIuOS0xOS4zLDUuMS0yOS40YzE5LjYsNC44LDQxLDguNSw2My41LDEwLjljMTMuNSwxOC41LDI3LjUsMzUuMyw0MS42LDUwYy0zMi42LDMwLjMtNjMuMiw0Ni45LTg0LDQ2LjkNCgkJQzMxNi44LDQ5Mi42LDMxMyw0OTEuNywzMTAsNDkweiBNNTQ3LjIsNDEzLjhjNC43LDM4LjItMS4xLDY3LjktMTQuNiw3NS44Yy0zLDEuOC02LjksMi42LTExLjUsMi42Yy0yMC43LDAtNTEuNC0xNi41LTg0LTQ2LjYNCgkJYzE0LTE0LjcsMjgtMzEuNCw0MS4zLTQ5LjljMjIuNi0yLjQsNDQtNi4xLDYzLjYtMTFDNTQ0LjMsMzk0LjgsNTQ2LjEsNDA0LjUsNTQ3LjIsNDEzLjh6IE01ODUuNywzNDcuMWMtOC42LDMuNy0xOCw3LTI3LjcsMTAuMQ0KCQljLTUuNy0xOS42LTEzLjItNDAtMjIuNS02MC45YzkuMi0yMC44LDE2LjYtNDEuMSwyMi4yLTYwLjZjOS45LDMuMSwxOS4zLDYuNSwyOC4xLDEwLjJjMzUuNCwxNS4xLDU4LjMsMzQuOSw1OC4zLDUwLjYNCgkJQzY0NCwzMTIuMiw2MjEuMSwzMzIuMSw1ODUuNywzNDcuMXoiLz4NCgk8cG9seWdvbiBmaWxsPSIjNjFEQUZCIiBwb2ludHM9IjMyMC44LDc4LjQgMzIwLjgsNzguNCAzMjAuOCw3OC40IAkiLz4NCgk8Y2lyY2xlIGZpbGw9IiM2MURBRkIiIGN4PSI0MjAuOSIgY3k9IjI5Ni41IiByPSI0NS43Ii8+DQoJPHBvbHlnb24gZmlsbD0iIzYxREFGQiIgcG9pbnRzPSI1MjAuNSw3OC4xIDUyMC41LDc4LjEgNTIwLjUsNzguMSAJIi8+DQo8L2c+DQo8L3N2Zz4NCg==',
                   title: 'Company',
-                  hasError: true,
-                  submitHandler: submitter,
+                  hasError: true
+                  // onChangeHandler={logger}
+                  , submitHandler: submitter,
                   footer: _react2.default.createElement(
                     'a',
                     { href: 'http://example.com' },
@@ -31543,8 +31815,9 @@ var DemoContainer = function (_React$Component) {
                 _react2.default.createElement(_lib.NewPassword, {
                   logoUrl: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzJfMV8iIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgODQxLjkgNTk1LjMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDg0MS45IDU5NS4zIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGZpbGw9IiM2MURBRkIiIGQ9Ik02NjYuMywyOTYuNWMwLTMyLjUtNDAuNy02My4zLTEwMy4xLTgyLjRjMTQuNC02My42LDgtMTE0LjItMjAuMi0xMzAuNGMtNi41LTMuOC0xNC4xLTUuNi0yMi40LTUuNnYyMi4zDQoJCWM0LjYsMCw4LjMsMC45LDExLjQsMi42YzEzLjYsNy44LDE5LjUsMzcuNSwxNC45LDc1LjdjLTEuMSw5LjQtMi45LDE5LjMtNS4xLDI5LjRjLTE5LjYtNC44LTQxLTguNS02My41LTEwLjkNCgkJYy0xMy41LTE4LjUtMjcuNS0zNS4zLTQxLjYtNTBjMzIuNi0zMC4zLDYzLjItNDYuOSw4NC00Ni45bDAtMjIuM2MwLDAsMCwwLDAsMGMtMjcuNSwwLTYzLjUsMTkuNi05OS45LDUzLjYNCgkJYy0zNi40LTMzLjgtNzIuNC01My4yLTk5LjktNTMuMnYyMi4zYzIwLjcsMCw1MS40LDE2LjUsODQsNDYuNmMtMTQsMTQuNy0yOCwzMS40LTQxLjMsNDkuOWMtMjIuNiwyLjQtNDQsNi4xLTYzLjYsMTENCgkJYy0yLjMtMTAtNC0xOS43LTUuMi0yOWMtNC43LTM4LjIsMS4xLTY3LjksMTQuNi03NS44YzMtMS44LDYuOS0yLjYsMTEuNS0yLjZsMC0yMi4zYzAsMCwwLDAsMCwwYy04LjQsMC0xNiwxLjgtMjIuNiw1LjYNCgkJYy0yOC4xLDE2LjItMzQuNCw2Ni43LTE5LjksMTMwLjFjLTYyLjIsMTkuMi0xMDIuNyw0OS45LTEwMi43LDgyLjNjMCwzMi41LDQwLjcsNjMuMywxMDMuMSw4Mi40Yy0xNC40LDYzLjYtOCwxMTQuMiwyMC4yLDEzMC40DQoJCWM2LjUsMy44LDE0LjEsNS42LDIyLjUsNS42YzI3LjUsMCw2My41LTE5LjYsOTkuOS01My42YzM2LjQsMzMuOCw3Mi40LDUzLjIsOTkuOSw1My4yYzguNCwwLDE2LTEuOCwyMi42LTUuNg0KCQljMjguMS0xNi4yLDM0LjQtNjYuNywxOS45LTEzMC4xQzYyNS44LDM1OS43LDY2Ni4zLDMyOC45LDY2Ni4zLDI5Ni41eiBNNTM2LjEsMjI5LjhjLTMuNywxMi45LTguMywyNi4yLTEzLjUsMzkuNQ0KCQljLTQuMS04LTguNC0xNi0xMy4xLTI0Yy00LjYtOC05LjUtMTUuOC0xNC40LTIzLjRDNTA5LjMsMjI0LDUyMywyMjYuNiw1MzYuMSwyMjkuOHogTTQ5MC4zLDMzNi4zYy03LjgsMTMuNS0xNS44LDI2LjMtMjQuMSwzOC4yDQoJCWMtMTQuOSwxLjMtMzAsMi00NS4yLDJjLTE1LjEsMC0zMC4yLTAuNy00NS0xLjljLTguMy0xMS45LTE2LjQtMjQuNi0yNC4yLTM4Yy03LjYtMTMuMS0xNC41LTI2LjQtMjAuOC0zOS44DQoJCWM2LjItMTMuNCwxMy4yLTI2LjgsMjAuNy0zOS45YzcuOC0xMy41LDE1LjgtMjYuMywyNC4xLTM4LjJjMTQuOS0xLjMsMzAtMiw0NS4yLTJjMTUuMSwwLDMwLjIsMC43LDQ1LDEuOQ0KCQljOC4zLDExLjksMTYuNCwyNC42LDI0LjIsMzhjNy42LDEzLjEsMTQuNSwyNi40LDIwLjgsMzkuOEM1MDQuNywzMDkuOCw0OTcuOCwzMjMuMiw0OTAuMywzMzYuM3ogTTUyMi42LDMyMy4zDQoJCWM1LjQsMTMuNCwxMCwyNi44LDEzLjgsMzkuOGMtMTMuMSwzLjItMjYuOSw1LjktNDEuMiw4YzQuOS03LjcsOS44LTE1LjYsMTQuNC0yMy43QzUxNC4yLDMzOS40LDUxOC41LDMzMS4zLDUyMi42LDMyMy4zeg0KCQkgTTQyMS4yLDQzMGMtOS4zLTkuNi0xOC42LTIwLjMtMjcuOC0zMmM5LDAuNCwxOC4yLDAuNywyNy41LDAuN2M5LjQsMCwxOC43LTAuMiwyNy44LTAuN0M0MzkuNyw0MDkuNyw0MzAuNCw0MjAuNCw0MjEuMiw0MzB6DQoJCSBNMzQ2LjgsMzcxLjFjLTE0LjItMi4xLTI3LjktNC43LTQxLTcuOWMzLjctMTIuOSw4LjMtMjYuMiwxMy41LTM5LjVjNC4xLDgsOC40LDE2LDEzLjEsMjRDMzM3LjEsMzU1LjcsMzQxLjksMzYzLjUsMzQ2LjgsMzcxLjF6DQoJCSBNNDIwLjcsMTYzYzkuMyw5LjYsMTguNiwyMC4zLDI3LjgsMzJjLTktMC40LTE4LjItMC43LTI3LjUtMC43Yy05LjQsMC0xOC43LDAuMi0yNy44LDAuN0M0MDIuMiwxODMuMyw0MTEuNSwxNzIuNiw0MjAuNywxNjN6DQoJCSBNMzQ2LjcsMjIxLjljLTQuOSw3LjctOS44LDE1LjYtMTQuNCwyMy43Yy00LjYsOC04LjksMTYtMTMsMjRjLTUuNC0xMy40LTEwLTI2LjgtMTMuOC0zOS44QzMxOC42LDIyNi43LDMzMi40LDIyNCwzNDYuNywyMjEuOXoNCgkJIE0yNTYuMiwzNDcuMWMtMzUuNC0xNS4xLTU4LjMtMzQuOS01OC4zLTUwLjZjMC0xNS43LDIyLjktMzUuNiw1OC4zLTUwLjZjOC42LTMuNywxOC03LDI3LjctMTAuMWM1LjcsMTkuNiwxMy4yLDQwLDIyLjUsNjAuOQ0KCQljLTkuMiwyMC44LTE2LjYsNDEuMS0yMi4yLDYwLjZDMjc0LjMsMzU0LjIsMjY0LjksMzUwLjgsMjU2LjIsMzQ3LjF6IE0zMTAsNDkwYy0xMy42LTcuOC0xOS41LTM3LjUtMTQuOS03NS43DQoJCWMxLjEtOS40LDIuOS0xOS4zLDUuMS0yOS40YzE5LjYsNC44LDQxLDguNSw2My41LDEwLjljMTMuNSwxOC41LDI3LjUsMzUuMyw0MS42LDUwYy0zMi42LDMwLjMtNjMuMiw0Ni45LTg0LDQ2LjkNCgkJQzMxNi44LDQ5Mi42LDMxMyw0OTEuNywzMTAsNDkweiBNNTQ3LjIsNDEzLjhjNC43LDM4LjItMS4xLDY3LjktMTQuNiw3NS44Yy0zLDEuOC02LjksMi42LTExLjUsMi42Yy0yMC43LDAtNTEuNC0xNi41LTg0LTQ2LjYNCgkJYzE0LTE0LjcsMjgtMzEuNCw0MS4zLTQ5LjljMjIuNi0yLjQsNDQtNi4xLDYzLjYtMTFDNTQ0LjMsMzk0LjgsNTQ2LjEsNDA0LjUsNTQ3LjIsNDEzLjh6IE01ODUuNywzNDcuMWMtOC42LDMuNy0xOCw3LTI3LjcsMTAuMQ0KCQljLTUuNy0xOS42LTEzLjItNDAtMjIuNS02MC45YzkuMi0yMC44LDE2LjYtNDEuMSwyMi4yLTYwLjZjOS45LDMuMSwxOS4zLDYuNSwyOC4xLDEwLjJjMzUuNCwxNS4xLDU4LjMsMzQuOSw1OC4zLDUwLjYNCgkJQzY0NCwzMTIuMiw2MjEuMSwzMzIuMSw1ODUuNywzNDcuMXoiLz4NCgk8cG9seWdvbiBmaWxsPSIjNjFEQUZCIiBwb2ludHM9IjMyMC44LDc4LjQgMzIwLjgsNzguNCAzMjAuOCw3OC40IAkiLz4NCgk8Y2lyY2xlIGZpbGw9IiM2MURBRkIiIGN4PSI0MjAuOSIgY3k9IjI5Ni41IiByPSI0NS43Ii8+DQoJPHBvbHlnb24gZmlsbD0iIzYxREFGQiIgcG9pbnRzPSI1MjAuNSw3OC4xIDUyMC41LDc4LjEgNTIwLjUsNzguMSAJIi8+DQo8L2c+DQo8L3N2Zz4NCg==',
                   title: 'Company',
-                  hasError: true,
-                  submitHandler: submitter,
+                  hasError: true
+                  // onChangeHandler={logger}
+                  , submitHandler: submitter,
                   footer: _react2.default.createElement(
                     'a',
                     { href: 'http://example.com' },
@@ -31573,8 +31846,9 @@ var DemoContainer = function (_React$Component) {
                   _react2.default.createElement(_lib.Login, {
                     logoUrl: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzJfMV8iIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgODQxLjkgNTk1LjMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDg0MS45IDU5NS4zIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGZpbGw9IiM2MURBRkIiIGQ9Ik02NjYuMywyOTYuNWMwLTMyLjUtNDAuNy02My4zLTEwMy4xLTgyLjRjMTQuNC02My42LDgtMTE0LjItMjAuMi0xMzAuNGMtNi41LTMuOC0xNC4xLTUuNi0yMi40LTUuNnYyMi4zDQoJCWM0LjYsMCw4LjMsMC45LDExLjQsMi42YzEzLjYsNy44LDE5LjUsMzcuNSwxNC45LDc1LjdjLTEuMSw5LjQtMi45LDE5LjMtNS4xLDI5LjRjLTE5LjYtNC44LTQxLTguNS02My41LTEwLjkNCgkJYy0xMy41LTE4LjUtMjcuNS0zNS4zLTQxLjYtNTBjMzIuNi0zMC4zLDYzLjItNDYuOSw4NC00Ni45bDAtMjIuM2MwLDAsMCwwLDAsMGMtMjcuNSwwLTYzLjUsMTkuNi05OS45LDUzLjYNCgkJYy0zNi40LTMzLjgtNzIuNC01My4yLTk5LjktNTMuMnYyMi4zYzIwLjcsMCw1MS40LDE2LjUsODQsNDYuNmMtMTQsMTQuNy0yOCwzMS40LTQxLjMsNDkuOWMtMjIuNiwyLjQtNDQsNi4xLTYzLjYsMTENCgkJYy0yLjMtMTAtNC0xOS43LTUuMi0yOWMtNC43LTM4LjIsMS4xLTY3LjksMTQuNi03NS44YzMtMS44LDYuOS0yLjYsMTEuNS0yLjZsMC0yMi4zYzAsMCwwLDAsMCwwYy04LjQsMC0xNiwxLjgtMjIuNiw1LjYNCgkJYy0yOC4xLDE2LjItMzQuNCw2Ni43LTE5LjksMTMwLjFjLTYyLjIsMTkuMi0xMDIuNyw0OS45LTEwMi43LDgyLjNjMCwzMi41LDQwLjcsNjMuMywxMDMuMSw4Mi40Yy0xNC40LDYzLjYtOCwxMTQuMiwyMC4yLDEzMC40DQoJCWM2LjUsMy44LDE0LjEsNS42LDIyLjUsNS42YzI3LjUsMCw2My41LTE5LjYsOTkuOS01My42YzM2LjQsMzMuOCw3Mi40LDUzLjIsOTkuOSw1My4yYzguNCwwLDE2LTEuOCwyMi42LTUuNg0KCQljMjguMS0xNi4yLDM0LjQtNjYuNywxOS45LTEzMC4xQzYyNS44LDM1OS43LDY2Ni4zLDMyOC45LDY2Ni4zLDI5Ni41eiBNNTM2LjEsMjI5LjhjLTMuNywxMi45LTguMywyNi4yLTEzLjUsMzkuNQ0KCQljLTQuMS04LTguNC0xNi0xMy4xLTI0Yy00LjYtOC05LjUtMTUuOC0xNC40LTIzLjRDNTA5LjMsMjI0LDUyMywyMjYuNiw1MzYuMSwyMjkuOHogTTQ5MC4zLDMzNi4zYy03LjgsMTMuNS0xNS44LDI2LjMtMjQuMSwzOC4yDQoJCWMtMTQuOSwxLjMtMzAsMi00NS4yLDJjLTE1LjEsMC0zMC4yLTAuNy00NS0xLjljLTguMy0xMS45LTE2LjQtMjQuNi0yNC4yLTM4Yy03LjYtMTMuMS0xNC41LTI2LjQtMjAuOC0zOS44DQoJCWM2LjItMTMuNCwxMy4yLTI2LjgsMjAuNy0zOS45YzcuOC0xMy41LDE1LjgtMjYuMywyNC4xLTM4LjJjMTQuOS0xLjMsMzAtMiw0NS4yLTJjMTUuMSwwLDMwLjIsMC43LDQ1LDEuOQ0KCQljOC4zLDExLjksMTYuNCwyNC42LDI0LjIsMzhjNy42LDEzLjEsMTQuNSwyNi40LDIwLjgsMzkuOEM1MDQuNywzMDkuOCw0OTcuOCwzMjMuMiw0OTAuMywzMzYuM3ogTTUyMi42LDMyMy4zDQoJCWM1LjQsMTMuNCwxMCwyNi44LDEzLjgsMzkuOGMtMTMuMSwzLjItMjYuOSw1LjktNDEuMiw4YzQuOS03LjcsOS44LTE1LjYsMTQuNC0yMy43QzUxNC4yLDMzOS40LDUxOC41LDMzMS4zLDUyMi42LDMyMy4zeg0KCQkgTTQyMS4yLDQzMGMtOS4zLTkuNi0xOC42LTIwLjMtMjcuOC0zMmM5LDAuNCwxOC4yLDAuNywyNy41LDAuN2M5LjQsMCwxOC43LTAuMiwyNy44LTAuN0M0MzkuNyw0MDkuNyw0MzAuNCw0MjAuNCw0MjEuMiw0MzB6DQoJCSBNMzQ2LjgsMzcxLjFjLTE0LjItMi4xLTI3LjktNC43LTQxLTcuOWMzLjctMTIuOSw4LjMtMjYuMiwxMy41LTM5LjVjNC4xLDgsOC40LDE2LDEzLjEsMjRDMzM3LjEsMzU1LjcsMzQxLjksMzYzLjUsMzQ2LjgsMzcxLjF6DQoJCSBNNDIwLjcsMTYzYzkuMyw5LjYsMTguNiwyMC4zLDI3LjgsMzJjLTktMC40LTE4LjItMC43LTI3LjUtMC43Yy05LjQsMC0xOC43LDAuMi0yNy44LDAuN0M0MDIuMiwxODMuMyw0MTEuNSwxNzIuNiw0MjAuNywxNjN6DQoJCSBNMzQ2LjcsMjIxLjljLTQuOSw3LjctOS44LDE1LjYtMTQuNCwyMy43Yy00LjYsOC04LjksMTYtMTMsMjRjLTUuNC0xMy40LTEwLTI2LjgtMTMuOC0zOS44QzMxOC42LDIyNi43LDMzMi40LDIyNCwzNDYuNywyMjEuOXoNCgkJIE0yNTYuMiwzNDcuMWMtMzUuNC0xNS4xLTU4LjMtMzQuOS01OC4zLTUwLjZjMC0xNS43LDIyLjktMzUuNiw1OC4zLTUwLjZjOC42LTMuNywxOC03LDI3LjctMTAuMWM1LjcsMTkuNiwxMy4yLDQwLDIyLjUsNjAuOQ0KCQljLTkuMiwyMC44LTE2LjYsNDEuMS0yMi4yLDYwLjZDMjc0LjMsMzU0LjIsMjY0LjksMzUwLjgsMjU2LjIsMzQ3LjF6IE0zMTAsNDkwYy0xMy42LTcuOC0xOS41LTM3LjUtMTQuOS03NS43DQoJCWMxLjEtOS40LDIuOS0xOS4zLDUuMS0yOS40YzE5LjYsNC44LDQxLDguNSw2My41LDEwLjljMTMuNSwxOC41LDI3LjUsMzUuMyw0MS42LDUwYy0zMi42LDMwLjMtNjMuMiw0Ni45LTg0LDQ2LjkNCgkJQzMxNi44LDQ5Mi42LDMxMyw0OTEuNywzMTAsNDkweiBNNTQ3LjIsNDEzLjhjNC43LDM4LjItMS4xLDY3LjktMTQuNiw3NS44Yy0zLDEuOC02LjksMi42LTExLjUsMi42Yy0yMC43LDAtNTEuNC0xNi41LTg0LTQ2LjYNCgkJYzE0LTE0LjcsMjgtMzEuNCw0MS4zLTQ5LjljMjIuNi0yLjQsNDQtNi4xLDYzLjYtMTFDNTQ0LjMsMzk0LjgsNTQ2LjEsNDA0LjUsNTQ3LjIsNDEzLjh6IE01ODUuNywzNDcuMWMtOC42LDMuNy0xOCw3LTI3LjcsMTAuMQ0KCQljLTUuNy0xOS42LTEzLjItNDAtMjIuNS02MC45YzkuMi0yMC44LDE2LjYtNDEuMSwyMi4yLTYwLjZjOS45LDMuMSwxOS4zLDYuNSwyOC4xLDEwLjJjMzUuNCwxNS4xLDU4LjMsMzQuOSw1OC4zLDUwLjYNCgkJQzY0NCwzMTIuMiw2MjEuMSwzMzIuMSw1ODUuNywzNDcuMXoiLz4NCgk8cG9seWdvbiBmaWxsPSIjNjFEQUZCIiBwb2ludHM9IjMyMC44LDc4LjQgMzIwLjgsNzguNCAzMjAuOCw3OC40IAkiLz4NCgk8Y2lyY2xlIGZpbGw9IiM2MURBRkIiIGN4PSI0MjAuOSIgY3k9IjI5Ni41IiByPSI0NS43Ii8+DQoJPHBvbHlnb24gZmlsbD0iIzYxREFGQiIgcG9pbnRzPSI1MjAuNSw3OC4xIDUyMC41LDc4LjEgNTIwLjUsNzguMSAJIi8+DQo8L2c+DQo8L3N2Zz4NCg==',
                     title: 'Company',
-                    hasError: true,
-                    submitHandler: submitter,
+                    hasError: true
+                    // onChangeHandler={logger}
+                    , submitHandler: submitter,
                     footer: _react2.default.createElement(
                       'a',
                       { href: 'http://example.com' },
@@ -31592,8 +31866,9 @@ var DemoContainer = function (_React$Component) {
                 _react2.default.createElement(_lib.Login, {
                   logoUrl: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzJfMV8iIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgODQxLjkgNTk1LjMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDg0MS45IDU5NS4zIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGZpbGw9IiM2MURBRkIiIGQ9Ik02NjYuMywyOTYuNWMwLTMyLjUtNDAuNy02My4zLTEwMy4xLTgyLjRjMTQuNC02My42LDgtMTE0LjItMjAuMi0xMzAuNGMtNi41LTMuOC0xNC4xLTUuNi0yMi40LTUuNnYyMi4zDQoJCWM0LjYsMCw4LjMsMC45LDExLjQsMi42YzEzLjYsNy44LDE5LjUsMzcuNSwxNC45LDc1LjdjLTEuMSw5LjQtMi45LDE5LjMtNS4xLDI5LjRjLTE5LjYtNC44LTQxLTguNS02My41LTEwLjkNCgkJYy0xMy41LTE4LjUtMjcuNS0zNS4zLTQxLjYtNTBjMzIuNi0zMC4zLDYzLjItNDYuOSw4NC00Ni45bDAtMjIuM2MwLDAsMCwwLDAsMGMtMjcuNSwwLTYzLjUsMTkuNi05OS45LDUzLjYNCgkJYy0zNi40LTMzLjgtNzIuNC01My4yLTk5LjktNTMuMnYyMi4zYzIwLjcsMCw1MS40LDE2LjUsODQsNDYuNmMtMTQsMTQuNy0yOCwzMS40LTQxLjMsNDkuOWMtMjIuNiwyLjQtNDQsNi4xLTYzLjYsMTENCgkJYy0yLjMtMTAtNC0xOS43LTUuMi0yOWMtNC43LTM4LjIsMS4xLTY3LjksMTQuNi03NS44YzMtMS44LDYuOS0yLjYsMTEuNS0yLjZsMC0yMi4zYzAsMCwwLDAsMCwwYy04LjQsMC0xNiwxLjgtMjIuNiw1LjYNCgkJYy0yOC4xLDE2LjItMzQuNCw2Ni43LTE5LjksMTMwLjFjLTYyLjIsMTkuMi0xMDIuNyw0OS45LTEwMi43LDgyLjNjMCwzMi41LDQwLjcsNjMuMywxMDMuMSw4Mi40Yy0xNC40LDYzLjYtOCwxMTQuMiwyMC4yLDEzMC40DQoJCWM2LjUsMy44LDE0LjEsNS42LDIyLjUsNS42YzI3LjUsMCw2My41LTE5LjYsOTkuOS01My42YzM2LjQsMzMuOCw3Mi40LDUzLjIsOTkuOSw1My4yYzguNCwwLDE2LTEuOCwyMi42LTUuNg0KCQljMjguMS0xNi4yLDM0LjQtNjYuNywxOS45LTEzMC4xQzYyNS44LDM1OS43LDY2Ni4zLDMyOC45LDY2Ni4zLDI5Ni41eiBNNTM2LjEsMjI5LjhjLTMuNywxMi45LTguMywyNi4yLTEzLjUsMzkuNQ0KCQljLTQuMS04LTguNC0xNi0xMy4xLTI0Yy00LjYtOC05LjUtMTUuOC0xNC40LTIzLjRDNTA5LjMsMjI0LDUyMywyMjYuNiw1MzYuMSwyMjkuOHogTTQ5MC4zLDMzNi4zYy03LjgsMTMuNS0xNS44LDI2LjMtMjQuMSwzOC4yDQoJCWMtMTQuOSwxLjMtMzAsMi00NS4yLDJjLTE1LjEsMC0zMC4yLTAuNy00NS0xLjljLTguMy0xMS45LTE2LjQtMjQuNi0yNC4yLTM4Yy03LjYtMTMuMS0xNC41LTI2LjQtMjAuOC0zOS44DQoJCWM2LjItMTMuNCwxMy4yLTI2LjgsMjAuNy0zOS45YzcuOC0xMy41LDE1LjgtMjYuMywyNC4xLTM4LjJjMTQuOS0xLjMsMzAtMiw0NS4yLTJjMTUuMSwwLDMwLjIsMC43LDQ1LDEuOQ0KCQljOC4zLDExLjksMTYuNCwyNC42LDI0LjIsMzhjNy42LDEzLjEsMTQuNSwyNi40LDIwLjgsMzkuOEM1MDQuNywzMDkuOCw0OTcuOCwzMjMuMiw0OTAuMywzMzYuM3ogTTUyMi42LDMyMy4zDQoJCWM1LjQsMTMuNCwxMCwyNi44LDEzLjgsMzkuOGMtMTMuMSwzLjItMjYuOSw1LjktNDEuMiw4YzQuOS03LjcsOS44LTE1LjYsMTQuNC0yMy43QzUxNC4yLDMzOS40LDUxOC41LDMzMS4zLDUyMi42LDMyMy4zeg0KCQkgTTQyMS4yLDQzMGMtOS4zLTkuNi0xOC42LTIwLjMtMjcuOC0zMmM5LDAuNCwxOC4yLDAuNywyNy41LDAuN2M5LjQsMCwxOC43LTAuMiwyNy44LTAuN0M0MzkuNyw0MDkuNyw0MzAuNCw0MjAuNCw0MjEuMiw0MzB6DQoJCSBNMzQ2LjgsMzcxLjFjLTE0LjItMi4xLTI3LjktNC43LTQxLTcuOWMzLjctMTIuOSw4LjMtMjYuMiwxMy41LTM5LjVjNC4xLDgsOC40LDE2LDEzLjEsMjRDMzM3LjEsMzU1LjcsMzQxLjksMzYzLjUsMzQ2LjgsMzcxLjF6DQoJCSBNNDIwLjcsMTYzYzkuMyw5LjYsMTguNiwyMC4zLDI3LjgsMzJjLTktMC40LTE4LjItMC43LTI3LjUtMC43Yy05LjQsMC0xOC43LDAuMi0yNy44LDAuN0M0MDIuMiwxODMuMyw0MTEuNSwxNzIuNiw0MjAuNywxNjN6DQoJCSBNMzQ2LjcsMjIxLjljLTQuOSw3LjctOS44LDE1LjYtMTQuNCwyMy43Yy00LjYsOC04LjksMTYtMTMsMjRjLTUuNC0xMy40LTEwLTI2LjgtMTMuOC0zOS44QzMxOC42LDIyNi43LDMzMi40LDIyNCwzNDYuNywyMjEuOXoNCgkJIE0yNTYuMiwzNDcuMWMtMzUuNC0xNS4xLTU4LjMtMzQuOS01OC4zLTUwLjZjMC0xNS43LDIyLjktMzUuNiw1OC4zLTUwLjZjOC42LTMuNywxOC03LDI3LjctMTAuMWM1LjcsMTkuNiwxMy4yLDQwLDIyLjUsNjAuOQ0KCQljLTkuMiwyMC44LTE2LjYsNDEuMS0yMi4yLDYwLjZDMjc0LjMsMzU0LjIsMjY0LjksMzUwLjgsMjU2LjIsMzQ3LjF6IE0zMTAsNDkwYy0xMy42LTcuOC0xOS41LTM3LjUtMTQuOS03NS43DQoJCWMxLjEtOS40LDIuOS0xOS4zLDUuMS0yOS40YzE5LjYsNC44LDQxLDguNSw2My41LDEwLjljMTMuNSwxOC41LDI3LjUsMzUuMyw0MS42LDUwYy0zMi42LDMwLjMtNjMuMiw0Ni45LTg0LDQ2LjkNCgkJQzMxNi44LDQ5Mi42LDMxMyw0OTEuNywzMTAsNDkweiBNNTQ3LjIsNDEzLjhjNC43LDM4LjItMS4xLDY3LjktMTQuNiw3NS44Yy0zLDEuOC02LjksMi42LTExLjUsMi42Yy0yMC43LDAtNTEuNC0xNi41LTg0LTQ2LjYNCgkJYzE0LTE0LjcsMjgtMzEuNCw0MS4zLTQ5LjljMjIuNi0yLjQsNDQtNi4xLDYzLjYtMTFDNTQ0LjMsMzk0LjgsNTQ2LjEsNDA0LjUsNTQ3LjIsNDEzLjh6IE01ODUuNywzNDcuMWMtOC42LDMuNy0xOCw3LTI3LjcsMTAuMQ0KCQljLTUuNy0xOS42LTEzLjItNDAtMjIuNS02MC45YzkuMi0yMC44LDE2LjYtNDEuMSwyMi4yLTYwLjZjOS45LDMuMSwxOS4zLDYuNSwyOC4xLDEwLjJjMzUuNCwxNS4xLDU4LjMsMzQuOSw1OC4zLDUwLjYNCgkJQzY0NCwzMTIuMiw2MjEuMSwzMzIuMSw1ODUuNywzNDcuMXoiLz4NCgk8cG9seWdvbiBmaWxsPSIjNjFEQUZCIiBwb2ludHM9IjMyMC44LDc4LjQgMzIwLjgsNzguNCAzMjAuOCw3OC40IAkiLz4NCgk8Y2lyY2xlIGZpbGw9IiM2MURBRkIiIGN4PSI0MjAuOSIgY3k9IjI5Ni41IiByPSI0NS43Ii8+DQoJPHBvbHlnb24gZmlsbD0iIzYxREFGQiIgcG9pbnRzPSI1MjAuNSw3OC4xIDUyMC41LDc4LjEgNTIwLjUsNzguMSAJIi8+DQo8L2c+DQo8L3N2Zz4NCg==',
                   title: 'Company',
-                  hasError: true,
-                  submitHandler: submitter,
+                  hasError: true
+                  // onChangeHandler={logger}
+                  , submitHandler: submitter,
                   footer: _react2.default.createElement(
                     'a',
                     { href: 'http://example.com' },
@@ -31628,8 +31903,9 @@ var DemoContainer = function (_React$Component) {
                   _react2.default.createElement(_lib.Login, {
                     logoUrl: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzJfMV8iIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgODQxLjkgNTk1LjMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDg0MS45IDU5NS4zIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGZpbGw9IiM2MURBRkIiIGQ9Ik02NjYuMywyOTYuNWMwLTMyLjUtNDAuNy02My4zLTEwMy4xLTgyLjRjMTQuNC02My42LDgtMTE0LjItMjAuMi0xMzAuNGMtNi41LTMuOC0xNC4xLTUuNi0yMi40LTUuNnYyMi4zDQoJCWM0LjYsMCw4LjMsMC45LDExLjQsMi42YzEzLjYsNy44LDE5LjUsMzcuNSwxNC45LDc1LjdjLTEuMSw5LjQtMi45LDE5LjMtNS4xLDI5LjRjLTE5LjYtNC44LTQxLTguNS02My41LTEwLjkNCgkJYy0xMy41LTE4LjUtMjcuNS0zNS4zLTQxLjYtNTBjMzIuNi0zMC4zLDYzLjItNDYuOSw4NC00Ni45bDAtMjIuM2MwLDAsMCwwLDAsMGMtMjcuNSwwLTYzLjUsMTkuNi05OS45LDUzLjYNCgkJYy0zNi40LTMzLjgtNzIuNC01My4yLTk5LjktNTMuMnYyMi4zYzIwLjcsMCw1MS40LDE2LjUsODQsNDYuNmMtMTQsMTQuNy0yOCwzMS40LTQxLjMsNDkuOWMtMjIuNiwyLjQtNDQsNi4xLTYzLjYsMTENCgkJYy0yLjMtMTAtNC0xOS43LTUuMi0yOWMtNC43LTM4LjIsMS4xLTY3LjksMTQuNi03NS44YzMtMS44LDYuOS0yLjYsMTEuNS0yLjZsMC0yMi4zYzAsMCwwLDAsMCwwYy04LjQsMC0xNiwxLjgtMjIuNiw1LjYNCgkJYy0yOC4xLDE2LjItMzQuNCw2Ni43LTE5LjksMTMwLjFjLTYyLjIsMTkuMi0xMDIuNyw0OS45LTEwMi43LDgyLjNjMCwzMi41LDQwLjcsNjMuMywxMDMuMSw4Mi40Yy0xNC40LDYzLjYtOCwxMTQuMiwyMC4yLDEzMC40DQoJCWM2LjUsMy44LDE0LjEsNS42LDIyLjUsNS42YzI3LjUsMCw2My41LTE5LjYsOTkuOS01My42YzM2LjQsMzMuOCw3Mi40LDUzLjIsOTkuOSw1My4yYzguNCwwLDE2LTEuOCwyMi42LTUuNg0KCQljMjguMS0xNi4yLDM0LjQtNjYuNywxOS45LTEzMC4xQzYyNS44LDM1OS43LDY2Ni4zLDMyOC45LDY2Ni4zLDI5Ni41eiBNNTM2LjEsMjI5LjhjLTMuNywxMi45LTguMywyNi4yLTEzLjUsMzkuNQ0KCQljLTQuMS04LTguNC0xNi0xMy4xLTI0Yy00LjYtOC05LjUtMTUuOC0xNC40LTIzLjRDNTA5LjMsMjI0LDUyMywyMjYuNiw1MzYuMSwyMjkuOHogTTQ5MC4zLDMzNi4zYy03LjgsMTMuNS0xNS44LDI2LjMtMjQuMSwzOC4yDQoJCWMtMTQuOSwxLjMtMzAsMi00NS4yLDJjLTE1LjEsMC0zMC4yLTAuNy00NS0xLjljLTguMy0xMS45LTE2LjQtMjQuNi0yNC4yLTM4Yy03LjYtMTMuMS0xNC41LTI2LjQtMjAuOC0zOS44DQoJCWM2LjItMTMuNCwxMy4yLTI2LjgsMjAuNy0zOS45YzcuOC0xMy41LDE1LjgtMjYuMywyNC4xLTM4LjJjMTQuOS0xLjMsMzAtMiw0NS4yLTJjMTUuMSwwLDMwLjIsMC43LDQ1LDEuOQ0KCQljOC4zLDExLjksMTYuNCwyNC42LDI0LjIsMzhjNy42LDEzLjEsMTQuNSwyNi40LDIwLjgsMzkuOEM1MDQuNywzMDkuOCw0OTcuOCwzMjMuMiw0OTAuMywzMzYuM3ogTTUyMi42LDMyMy4zDQoJCWM1LjQsMTMuNCwxMCwyNi44LDEzLjgsMzkuOGMtMTMuMSwzLjItMjYuOSw1LjktNDEuMiw4YzQuOS03LjcsOS44LTE1LjYsMTQuNC0yMy43QzUxNC4yLDMzOS40LDUxOC41LDMzMS4zLDUyMi42LDMyMy4zeg0KCQkgTTQyMS4yLDQzMGMtOS4zLTkuNi0xOC42LTIwLjMtMjcuOC0zMmM5LDAuNCwxOC4yLDAuNywyNy41LDAuN2M5LjQsMCwxOC43LTAuMiwyNy44LTAuN0M0MzkuNyw0MDkuNyw0MzAuNCw0MjAuNCw0MjEuMiw0MzB6DQoJCSBNMzQ2LjgsMzcxLjFjLTE0LjItMi4xLTI3LjktNC43LTQxLTcuOWMzLjctMTIuOSw4LjMtMjYuMiwxMy41LTM5LjVjNC4xLDgsOC40LDE2LDEzLjEsMjRDMzM3LjEsMzU1LjcsMzQxLjksMzYzLjUsMzQ2LjgsMzcxLjF6DQoJCSBNNDIwLjcsMTYzYzkuMyw5LjYsMTguNiwyMC4zLDI3LjgsMzJjLTktMC40LTE4LjItMC43LTI3LjUtMC43Yy05LjQsMC0xOC43LDAuMi0yNy44LDAuN0M0MDIuMiwxODMuMyw0MTEuNSwxNzIuNiw0MjAuNywxNjN6DQoJCSBNMzQ2LjcsMjIxLjljLTQuOSw3LjctOS44LDE1LjYtMTQuNCwyMy43Yy00LjYsOC04LjksMTYtMTMsMjRjLTUuNC0xMy40LTEwLTI2LjgtMTMuOC0zOS44QzMxOC42LDIyNi43LDMzMi40LDIyNCwzNDYuNywyMjEuOXoNCgkJIE0yNTYuMiwzNDcuMWMtMzUuNC0xNS4xLTU4LjMtMzQuOS01OC4zLTUwLjZjMC0xNS43LDIyLjktMzUuNiw1OC4zLTUwLjZjOC42LTMuNywxOC03LDI3LjctMTAuMWM1LjcsMTkuNiwxMy4yLDQwLDIyLjUsNjAuOQ0KCQljLTkuMiwyMC44LTE2LjYsNDEuMS0yMi4yLDYwLjZDMjc0LjMsMzU0LjIsMjY0LjksMzUwLjgsMjU2LjIsMzQ3LjF6IE0zMTAsNDkwYy0xMy42LTcuOC0xOS41LTM3LjUtMTQuOS03NS43DQoJCWMxLjEtOS40LDIuOS0xOS4zLDUuMS0yOS40YzE5LjYsNC44LDQxLDguNSw2My41LDEwLjljMTMuNSwxOC41LDI3LjUsMzUuMyw0MS42LDUwYy0zMi42LDMwLjMtNjMuMiw0Ni45LTg0LDQ2LjkNCgkJQzMxNi44LDQ5Mi42LDMxMyw0OTEuNywzMTAsNDkweiBNNTQ3LjIsNDEzLjhjNC43LDM4LjItMS4xLDY3LjktMTQuNiw3NS44Yy0zLDEuOC02LjksMi42LTExLjUsMi42Yy0yMC43LDAtNTEuNC0xNi41LTg0LTQ2LjYNCgkJYzE0LTE0LjcsMjgtMzEuNCw0MS4zLTQ5LjljMjIuNi0yLjQsNDQtNi4xLDYzLjYtMTFDNTQ0LjMsMzk0LjgsNTQ2LjEsNDA0LjUsNTQ3LjIsNDEzLjh6IE01ODUuNywzNDcuMWMtOC42LDMuNy0xOCw3LTI3LjcsMTAuMQ0KCQljLTUuNy0xOS42LTEzLjItNDAtMjIuNS02MC45YzkuMi0yMC44LDE2LjYtNDEuMSwyMi4yLTYwLjZjOS45LDMuMSwxOS4zLDYuNSwyOC4xLDEwLjJjMzUuNCwxNS4xLDU4LjMsMzQuOSw1OC4zLDUwLjYNCgkJQzY0NCwzMTIuMiw2MjEuMSwzMzIuMSw1ODUuNywzNDcuMXoiLz4NCgk8cG9seWdvbiBmaWxsPSIjNjFEQUZCIiBwb2ludHM9IjMyMC44LDc4LjQgMzIwLjgsNzguNCAzMjAuOCw3OC40IAkiLz4NCgk8Y2lyY2xlIGZpbGw9IiM2MURBRkIiIGN4PSI0MjAuOSIgY3k9IjI5Ni41IiByPSI0NS43Ii8+DQoJPHBvbHlnb24gZmlsbD0iIzYxREFGQiIgcG9pbnRzPSI1MjAuNSw3OC4xIDUyMC41LDc4LjEgNTIwLjUsNzguMSAJIi8+DQo8L2c+DQo8L3N2Zz4NCg==',
                     title: 'Company',
-                    hasError: true,
-                    submitHandler: submitter,
+                    hasError: true
+                    // onChangeHandler={logger}
+                    , submitHandler: submitter,
                     footer: _react2.default.createElement(
                       'a',
                       { href: 'http://example.com' },
@@ -53997,34 +54273,43 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var DocumentationNavigation = function DocumentationNavigation(props) {
   return _react2.default.createElement(
-    'ul',
-    { className: _DocumentationNavigation2.default.root },
-    props.items.map(function (item) {
-      return _react2.default.createElement(
-        'li',
-        { key: item.link },
-        _react2.default.createElement(
-          'a',
-          { href: item.link, className: _DocumentationNavigation2.default.navigationLink },
-          item.title
-        ),
-        item.items && _react2.default.createElement(
-          'ul',
-          { className: _DocumentationNavigation2.default.subnavigation },
-          item.items.map(function (nestedItem) {
-            return _react2.default.createElement(
-              'li',
-              { key: nestedItem.link },
-              _react2.default.createElement(
-                'a',
-                { href: nestedItem.link, className: _DocumentationNavigation2.default.subnavigationLink },
-                nestedItem.title
-              )
-            );
-          })
-        )
-      );
-    })
+    'div',
+    null,
+    _react2.default.createElement(
+      'h1',
+      { className: _DocumentationNavigation2.default.headline },
+      'React UI'
+    ),
+    _react2.default.createElement(
+      'ul',
+      { className: _DocumentationNavigation2.default.root },
+      props.items.map(function (item) {
+        return _react2.default.createElement(
+          'li',
+          { key: item.link },
+          _react2.default.createElement(
+            'a',
+            { href: item.link, className: _DocumentationNavigation2.default.navigationLink },
+            item.title
+          ),
+          item.items && _react2.default.createElement(
+            'ul',
+            { className: _DocumentationNavigation2.default.subnavigation },
+            item.items.map(function (nestedItem) {
+              return _react2.default.createElement(
+                'li',
+                { key: nestedItem.link },
+                _react2.default.createElement(
+                  'a',
+                  { href: nestedItem.link, className: _DocumentationNavigation2.default.subnavigationLink },
+                  nestedItem.title
+                )
+              );
+            })
+          )
+        );
+      })
+    )
   );
 };
 
@@ -54100,13 +54385,14 @@ exports = module.exports = __webpack_require__(13)(false);
 
 
 // module
-exports.push([module.i, ".DocumentationNavigation__root___M1Qaa {\n  padding-left: 0;\n  list-style: none; }\n\n.DocumentationNavigation__navigationLink___1d3PH {\n  font-weight: bold; }\n\n.DocumentationNavigation__subnavigation___1K0Lw {\n  padding-left: var(--rui-offset-5); }\n\n.DocumentationNavigation__subnavigationLink___3LKYr {\n  font-size: var(--rui-typography-size-small); }\n\n.DocumentationNavigation__navigationLink___1d3PH,\n.DocumentationNavigation__subnavigationLink___3LKYr {\n  display: block;\n  padding-top: var(--rui-offset-1);\n  padding-bottom: var(--rui-offset-1);\n  text-decoration: none;\n  color: var(--rui-color-gray-700); }\n  .DocumentationNavigation__navigationLink___1d3PH:hover, .DocumentationNavigation__navigationLink___1d3PH:focus,\n  .DocumentationNavigation__subnavigationLink___3LKYr:hover,\n  .DocumentationNavigation__subnavigationLink___3LKYr:focus {\n    text-decoration: none;\n    color: inherit; }\n", ""]);
+exports.push([module.i, ".DocumentationNavigation__headline___JBTzO {\n  padding: var(--rui-offset-6) var(--rui-offset-5) var(--rui-offset-2);\n  font-weight: 400;\n  font-size: var(--rui-typography-size-3); }\n\n.DocumentationNavigation__root___M1Qaa,\n.DocumentationNavigation__subnavigation___1K0Lw {\n  padding-left: 0;\n  list-style: none; }\n\n.DocumentationNavigation__navigationLink___1d3PH,\n.DocumentationNavigation__subnavigationLink___3LKYr {\n  display: block;\n  padding: var(--rui-offset-3) var(--rui-offset-5);\n  text-decoration: none;\n  color: inherit; }\n\n.DocumentationNavigation__navigationLink___1d3PH {\n  font-weight: bold; }\n\n.DocumentationNavigation__subnavigationLink___3LKYr {\n  padding-left: var(--rui-offset-7); }\n\n.DocumentationNavigation__navigationLink___1d3PH:hover,\n.DocumentationNavigation__navigationLink___1d3PH:focus,\n.DocumentationNavigation__subnavigationLink___3LKYr:hover,\n.DocumentationNavigation__subnavigationLink___3LKYr:focus {\n  text-decoration: none;\n  color: inherit;\n  background-color: var(--rui-color-gray-50); }\n", ""]);
 
 // exports
 exports.locals = {
+	"headline": "DocumentationNavigation__headline___JBTzO",
 	"root": "DocumentationNavigation__root___M1Qaa",
-	"navigationLink": "DocumentationNavigation__navigationLink___1d3PH",
 	"subnavigation": "DocumentationNavigation__subnavigation___1K0Lw",
+	"navigationLink": "DocumentationNavigation__navigationLink___1d3PH",
 	"subnavigationLink": "DocumentationNavigation__subnavigationLink___3LKYr"
 };
 
@@ -54202,12 +54488,12 @@ exports = module.exports = __webpack_require__(13)(false);
 
 
 // module
-exports.push([module.i, ".DocumentationLayout__sidebar___Jx-EC,\n.DocumentationLayout__content___20AgB {\n  padding: calc(1 * var(--rui-typography-line-height-base)); }\n\n.DocumentationLayout__sidebar___Jx-EC {\n  background-color: var(--rui-color-white); }\n\n@media (min-width: 48em) {\n  .DocumentationLayout__root___2DmF7 {\n    position: absolute;\n    display: grid;\n    grid-template-columns: 300px 1fr;\n    grid-template-rows: 100%;\n    grid-template-areas: \"sidebar content\";\n    width: 100vw;\n    height: 100vh;\n    overflow: hidden; }\n  .DocumentationLayout__sidebar___Jx-EC,\n  .DocumentationLayout__content___20AgB {\n    overflow-y: auto;\n    -webkit-overflow-scrolling: touch; }\n  .DocumentationLayout__sidebar___Jx-EC {\n    grid-area: sidebar; }\n  .DocumentationLayout__content___20AgB {\n    grid-area: content;\n    padding: calc(2 * var(--rui-typography-line-height-base)); } }\n", ""]);
+exports.push([module.i, ".DocumentationLayout__content___20AgB {\n  padding: calc(1 * var(--rui-typography-line-height-base)); }\n\n.DocumentationLayout__sidebar___Jx-EC {\n  background-color: var(--rui-color-white); }\n\n@media (min-width: 48em) {\n  .DocumentationLayout__root___2DmF7 {\n    position: absolute;\n    display: grid;\n    grid-template-columns: 300px 1fr;\n    grid-template-rows: 100%;\n    grid-template-areas: \"sidebar content\";\n    width: 100vw;\n    height: 100vh;\n    overflow: hidden; }\n  .DocumentationLayout__sidebar___Jx-EC,\n  .DocumentationLayout__content___20AgB {\n    overflow-y: auto;\n    -webkit-overflow-scrolling: touch; }\n  .DocumentationLayout__sidebar___Jx-EC {\n    grid-area: sidebar; }\n  .DocumentationLayout__content___20AgB {\n    grid-area: content;\n    padding: calc(2 * var(--rui-typography-line-height-base)); } }\n", ""]);
 
 // exports
 exports.locals = {
-	"sidebar": "DocumentationLayout__sidebar___Jx-EC",
 	"content": "DocumentationLayout__content___20AgB",
+	"sidebar": "DocumentationLayout__sidebar___Jx-EC",
 	"root": "DocumentationLayout__root___2DmF7"
 };
 
@@ -54625,7 +54911,7 @@ exports = module.exports = __webpack_require__(13)(false);
 
 
 // module
-exports.push([module.i, ".TextField__root___klT1b {\n  position: relative;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex; }\n  .TextField__root___klT1b:not(:last-of-type) {\n    margin-right: var(--rui-offset-2); }\n  .TextField__root___klT1b.TextField__rootLayoutHorizontal___IYqSm:not(:last-of-type) {\n    margin-right: calc(2 * var(--rui-offset-2)); }\n\n.TextField__input___1q3SS {\n  width: 100%;\n  min-width: 240px;\n  height: 2.25rem;\n  padding: var(--rui-offset-1) var(--rui-offset-3);\n  font-weight: 400;\n  line-height: 1.5rem;\n  font-family: var(--rui-typography-font-family-base);\n  vertical-align: middle;\n  border: var(--rui-form-field-border-width) solid var(--rui-form-field-border-color);\n  border-radius: var(--rui-form-field-border-radius);\n  -webkit-box-shadow: none;\n          box-shadow: none; }\n  .TextField__input___1q3SS[size] {\n    min-width: auto; }\n  .TextField__input___1q3SS::-webkit-input-placeholder {\n    opacity: 1;\n    color: var(--rui-form-field-placeholder-color); }\n  .TextField__input___1q3SS:-ms-input-placeholder {\n    opacity: 1;\n    color: var(--rui-form-field-placeholder-color); }\n  .TextField__input___1q3SS::-ms-input-placeholder {\n    opacity: 1;\n    color: var(--rui-form-field-placeholder-color); }\n  .TextField__input___1q3SS::placeholder {\n    opacity: 1;\n    color: var(--rui-form-field-placeholder-color); }\n  .TextField__input___1q3SS:hover {\n    border-color: var(--rui-form-field-hover-border-color); }\n  .TextField__input___1q3SS:focus {\n    border-color: var(--rui-form-field-focus-border-color); }\n  .TextField__input___1q3SS:disabled {\n    opacity: 0.5;\n    -webkit-box-shadow: none;\n            box-shadow: none;\n    cursor: not-allowed;\n    border-color: var(--rui-form-field-border-color); }\n\n.TextField__bottomLine___3nFUo {\n  opacity: 0;\n  width: 100%;\n  height: 2px;\n  margin-top: -2px;\n  -webkit-transform: scaleX(0);\n          transform: scaleX(0);\n  -webkit-transform-origin: center center;\n          transform-origin: center center; }\n  .TextField__input___1q3SS:focus ~ .TextField__bottomLine___3nFUo {\n    opacity: 1;\n    background-color: var(--rui-form-field-focus-border-color);\n    -webkit-transform: scaleX(1);\n            transform: scaleX(1); }\n\n.TextField__description___3R-Ie,\n.TextField__feedback___3XZeg {\n  font-size: var(--rui-form-field-description-feedback-font-size);\n  color: var(--rui-form-field-description-feedback-color); }\n\n.TextField__rootVariantFilled___3gGnZ .TextField__input___1q3SS {\n  color: var(--rui-form-field-filled-default-color);\n  background-color: var(--rui-form-field-filled-default-background);\n  border-top-color: transparent;\n  border-right-color: transparent;\n  border-left-color: transparent;\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0; }\n  .TextField__rootVariantFilled___3gGnZ .TextField__input___1q3SS:focus {\n    color: var(--rui-form-field-filled-focus-color);\n    background-color: var(--rui-form-field-filled-focus-background); }\n\n.TextField__rootVariantOutline___1Osrk .TextField__input___1q3SS {\n  color: var(--rui-form-field-outline-default-color);\n  background-color: var(--rui-form-field-outline-default-background);\n  -webkit-box-shadow: var(--rui-form-field-outline-default-box-shadow);\n          box-shadow: var(--rui-form-field-outline-default-box-shadow); }\n  .TextField__rootVariantOutline___1Osrk .TextField__input___1q3SS:focus {\n    color: var(--rui-form-field-outline-focus-color);\n    background-color: var(--rui-form-field-outline-focus-background);\n    -webkit-box-shadow: var(--rui-form-field-outline-focus-box-shadow);\n            box-shadow: var(--rui-form-field-outline-focus-box-shadow); }\n\n.TextField__isRootRequired___3BXCF .TextField__label___3ot1c::after {\n  content: var(--rui-form-field-required-sign);\n  color: var(--rui-form-field-required-sign-color); }\n\n.TextField__isRootStateInvalid___dTCok .TextField__input___1q3SS {\n  border-color: var(--rui-form-field-invalid-border-color);\n  background-color: var(--rui-form-field-invalid-background); }\n  .TextField__isRootStateInvalid___dTCok .TextField__input___1q3SS:hover {\n    border-color: var(--rui-form-field-hover-border-color); }\n  .TextField__isRootStateInvalid___dTCok .TextField__input___1q3SS:focus {\n    border-color: var(--rui-form-field-focus-border-color); }\n\n.TextField__isRootStateInvalid___dTCok .TextField__feedback___3XZeg {\n  color: var(--rui-form-field-invalid-color); }\n\n.TextField__isRootStateInvalid___dTCok.TextField__rootVariantFilled___3gGnZ .TextField__input___1q3SS {\n  border-top-color: transparent;\n  border-right-color: transparent;\n  border-left-color: transparent; }\n\n.TextField__isRootStateValid___2gdvN .TextField__input___1q3SS {\n  border-color: var(--rui-form-field-valid-border-color);\n  background-color: var(--rui-form-field-valid-background); }\n  .TextField__isRootStateValid___2gdvN .TextField__input___1q3SS:hover {\n    border-color: var(--rui-form-field-hover-border-color); }\n  .TextField__isRootStateValid___2gdvN .TextField__input___1q3SS:focus {\n    border-color: var(--rui-form-field-focus-border-color); }\n\n.TextField__isRootStateValid___2gdvN .TextField__feedback___3XZeg {\n  color: var(--rui-form-field-valid-color); }\n\n.TextField__isRootStateValid___2gdvN.TextField__rootVariantFilled___3gGnZ .TextField__input___1q3SS {\n  border-top-color: transparent;\n  border-right-color: transparent;\n  border-left-color: transparent; }\n\n.TextField__isRootStateWarning___1cl65 .TextField__input___1q3SS {\n  border-color: var(--rui-form-field-warning-border-color);\n  background-color: var(--rui-form-field-warning-background); }\n  .TextField__isRootStateWarning___1cl65 .TextField__input___1q3SS:hover {\n    border-color: var(--rui-form-field-hover-border-color); }\n  .TextField__isRootStateWarning___1cl65 .TextField__input___1q3SS:focus {\n    border-color: var(--rui-form-field-focus-border-color); }\n\n.TextField__isRootStateWarning___1cl65 .TextField__feedback___3XZeg {\n  color: var(--rui-form-field-warning-color); }\n\n.TextField__isRootStateWarning___1cl65.TextField__rootVariantFilled___3gGnZ .TextField__input___1q3SS {\n  border-top-color: transparent;\n  border-right-color: transparent;\n  border-left-color: transparent; }\n\n.TextField__isLabelHidden___V036S {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border: 0; }\n\n.TextField__isRootFullWidth___BbOif {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  width: 100%; }\n  .TextField__isRootFullWidth___BbOif .TextField__inputContainer___1d-mF {\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1; }\n  .TextField__isRootFullWidth___BbOif:not(:last-of-type) {\n    margin-bottom: var(--rui-offset-2); }\n  .TextField__isRootFullWidth___BbOif:not(:last-of-type), .TextField__isRootFullWidth___BbOif.TextField__rootLayoutHorizontal___IYqSm:not(:last-of-type) {\n    margin-right: 0; }\n\n.TextField__rootLayoutHorizontal___IYqSm,\n.TextField__rootLayoutHorizontal___IYqSm .TextField__container___9vIIC {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n\n.TextField__rootLayoutHorizontal___IYqSm .TextField__container___9vIIC {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1; }\n\n.TextField__rootLayoutHorizontal___IYqSm .TextField__label___3ot1c {\n  min-width: var(--rui-form-field-horizontal-label-min-width);\n  padding-right: var(--rui-offset-2);\n  margin-top: calc(var(--rui-form-field-input-font-size) - var(--rui-form-field-label-font-size));\n  text-align: var(--rui-form-field-horizontal-label-alignment); }\n\n.TextField__rootLayoutHorizontal___IYqSm .TextField__description___3R-Ie,\n.TextField__rootLayoutHorizontal___IYqSm .TextField__feedback___3XZeg {\n  padding-left: var(--rui-offset-2);\n  margin-top: calc(var(--rui-form-field-input-font-size) - var(--rui-form-field-description-feedback-font-size)); }\n\n.TextField__rootLayoutVertical___7UU8h {\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n  .TextField__rootLayoutVertical___7UU8h .TextField__label___3ot1c {\n    padding-bottom: var(--rui-offset-1); }\n  .TextField__rootLayoutVertical___7UU8h .TextField__description___3R-Ie,\n  .TextField__rootLayoutVertical___7UU8h .TextField__feedback___3XZeg {\n    padding-top: var(--rui-offset-1); }\n", ""]);
+exports.push([module.i, ".TextField__root___klT1b {\n  position: relative;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex; }\n  .TextField__root___klT1b:not(:last-of-type) {\n    margin-right: var(--rui-offset-2); }\n  .TextField__root___klT1b.TextField__rootLayoutHorizontal___IYqSm:not(:last-of-type) {\n    margin-right: calc(2 * var(--rui-offset-2)); }\n\n.TextField__input___1q3SS {\n  width: 100%;\n  min-width: 240px;\n  height: 2.25rem;\n  padding: var(--rui-offset-1) var(--rui-offset-3);\n  font-weight: 400;\n  line-height: 1.5rem;\n  font-family: var(--rui-typography-font-family-base);\n  vertical-align: middle;\n  border: var(--rui-form-field-border-width) solid var(--rui-form-field-border-color);\n  border-radius: var(--rui-form-field-border-radius);\n  -webkit-box-shadow: none;\n          box-shadow: none; }\n  .TextField__input___1q3SS[cols], .TextField__input___1q3SS[size] {\n    min-width: auto; }\n  .TextField__input___1q3SS::-webkit-input-placeholder {\n    opacity: 1;\n    color: var(--rui-form-field-placeholder-color); }\n  .TextField__input___1q3SS:-ms-input-placeholder {\n    opacity: 1;\n    color: var(--rui-form-field-placeholder-color); }\n  .TextField__input___1q3SS::-ms-input-placeholder {\n    opacity: 1;\n    color: var(--rui-form-field-placeholder-color); }\n  .TextField__input___1q3SS::placeholder {\n    opacity: 1;\n    color: var(--rui-form-field-placeholder-color); }\n  .TextField__input___1q3SS:hover {\n    border-color: var(--rui-form-field-hover-border-color); }\n  .TextField__input___1q3SS:focus {\n    border-color: var(--rui-form-field-focus-border-color); }\n  .TextField__input___1q3SS:disabled {\n    opacity: 0.5;\n    -webkit-box-shadow: none;\n            box-shadow: none;\n    cursor: not-allowed;\n    border-color: var(--rui-form-field-border-color); }\n\n.TextField__bottomLine___3nFUo {\n  opacity: 0;\n  width: 100%;\n  height: 2px;\n  margin-top: -2px;\n  -webkit-transform: scaleX(0);\n          transform: scaleX(0);\n  -webkit-transform-origin: center center;\n          transform-origin: center center; }\n  .TextField__input___1q3SS:focus ~ .TextField__bottomLine___3nFUo {\n    opacity: 1;\n    background-color: var(--rui-form-field-focus-border-color);\n    -webkit-transform: scaleX(1);\n            transform: scaleX(1); }\n\n.TextField__description___3R-Ie,\n.TextField__feedback___3XZeg {\n  font-size: var(--rui-form-field-description-feedback-font-size);\n  color: var(--rui-form-field-description-feedback-color); }\n\n.TextField__rootVariantFilled___3gGnZ .TextField__input___1q3SS {\n  color: var(--rui-form-field-filled-default-color);\n  background-color: var(--rui-form-field-filled-default-background);\n  border-top-color: transparent;\n  border-right-color: transparent;\n  border-left-color: transparent;\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0; }\n  .TextField__rootVariantFilled___3gGnZ .TextField__input___1q3SS:focus {\n    color: var(--rui-form-field-filled-focus-color);\n    background-color: var(--rui-form-field-filled-focus-background); }\n\n.TextField__rootVariantOutline___1Osrk .TextField__input___1q3SS {\n  color: var(--rui-form-field-outline-default-color);\n  background-color: var(--rui-form-field-outline-default-background);\n  -webkit-box-shadow: var(--rui-form-field-outline-default-box-shadow);\n          box-shadow: var(--rui-form-field-outline-default-box-shadow); }\n  .TextField__rootVariantOutline___1Osrk .TextField__input___1q3SS:focus {\n    color: var(--rui-form-field-outline-focus-color);\n    background-color: var(--rui-form-field-outline-focus-background);\n    -webkit-box-shadow: var(--rui-form-field-outline-focus-box-shadow);\n            box-shadow: var(--rui-form-field-outline-focus-box-shadow); }\n\n.TextField__isRootRequired___3BXCF .TextField__label___3ot1c::after {\n  content: var(--rui-form-field-required-sign);\n  color: var(--rui-form-field-required-sign-color); }\n\n.TextField__isRootStateInvalid___dTCok .TextField__input___1q3SS {\n  border-color: var(--rui-form-field-invalid-border-color);\n  background-color: var(--rui-form-field-invalid-background); }\n  .TextField__isRootStateInvalid___dTCok .TextField__input___1q3SS:hover {\n    border-color: var(--rui-form-field-hover-border-color); }\n  .TextField__isRootStateInvalid___dTCok .TextField__input___1q3SS:focus {\n    border-color: var(--rui-form-field-focus-border-color); }\n\n.TextField__isRootStateInvalid___dTCok .TextField__feedback___3XZeg {\n  color: var(--rui-form-field-invalid-color); }\n\n.TextField__isRootStateInvalid___dTCok.TextField__rootVariantFilled___3gGnZ .TextField__input___1q3SS {\n  border-top-color: transparent;\n  border-right-color: transparent;\n  border-left-color: transparent; }\n\n.TextField__isRootStateValid___2gdvN .TextField__input___1q3SS {\n  border-color: var(--rui-form-field-valid-border-color);\n  background-color: var(--rui-form-field-valid-background); }\n  .TextField__isRootStateValid___2gdvN .TextField__input___1q3SS:hover {\n    border-color: var(--rui-form-field-hover-border-color); }\n  .TextField__isRootStateValid___2gdvN .TextField__input___1q3SS:focus {\n    border-color: var(--rui-form-field-focus-border-color); }\n\n.TextField__isRootStateValid___2gdvN .TextField__feedback___3XZeg {\n  color: var(--rui-form-field-valid-color); }\n\n.TextField__isRootStateValid___2gdvN.TextField__rootVariantFilled___3gGnZ .TextField__input___1q3SS {\n  border-top-color: transparent;\n  border-right-color: transparent;\n  border-left-color: transparent; }\n\n.TextField__isRootStateWarning___1cl65 .TextField__input___1q3SS {\n  border-color: var(--rui-form-field-warning-border-color);\n  background-color: var(--rui-form-field-warning-background); }\n  .TextField__isRootStateWarning___1cl65 .TextField__input___1q3SS:hover {\n    border-color: var(--rui-form-field-hover-border-color); }\n  .TextField__isRootStateWarning___1cl65 .TextField__input___1q3SS:focus {\n    border-color: var(--rui-form-field-focus-border-color); }\n\n.TextField__isRootStateWarning___1cl65 .TextField__feedback___3XZeg {\n  color: var(--rui-form-field-warning-color); }\n\n.TextField__isRootStateWarning___1cl65.TextField__rootVariantFilled___3gGnZ .TextField__input___1q3SS {\n  border-top-color: transparent;\n  border-right-color: transparent;\n  border-left-color: transparent; }\n\n.TextField__isLabelHidden___V036S {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border: 0; }\n\n.TextField__isRootFullWidth___BbOif {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  width: 100%; }\n  .TextField__isRootFullWidth___BbOif .TextField__inputContainer___1d-mF {\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1; }\n  .TextField__isRootFullWidth___BbOif:not(:last-of-type) {\n    margin-bottom: var(--rui-offset-2); }\n  .TextField__isRootFullWidth___BbOif:not(:last-of-type), .TextField__isRootFullWidth___BbOif.TextField__rootLayoutHorizontal___IYqSm:not(:last-of-type) {\n    margin-right: 0; }\n\n.TextField__rootLayoutHorizontal___IYqSm,\n.TextField__rootLayoutHorizontal___IYqSm .TextField__container___9vIIC {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n\n.TextField__rootLayoutHorizontal___IYqSm .TextField__container___9vIIC {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1; }\n\n.TextField__rootLayoutHorizontal___IYqSm .TextField__label___3ot1c {\n  min-width: var(--rui-form-field-horizontal-label-min-width);\n  padding-right: var(--rui-offset-2);\n  margin-top: calc(var(--rui-form-field-input-font-size) - var(--rui-form-field-label-font-size));\n  text-align: var(--rui-form-field-horizontal-label-alignment); }\n\n.TextField__rootLayoutHorizontal___IYqSm .TextField__description___3R-Ie,\n.TextField__rootLayoutHorizontal___IYqSm .TextField__feedback___3XZeg {\n  padding-left: var(--rui-offset-2);\n  margin-top: calc(var(--rui-form-field-input-font-size) - var(--rui-form-field-description-feedback-font-size)); }\n\n.TextField__rootLayoutVertical___7UU8h {\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n  .TextField__rootLayoutVertical___7UU8h .TextField__label___3ot1c {\n    padding-bottom: var(--rui-offset-1); }\n  .TextField__rootLayoutVertical___7UU8h .TextField__description___3R-Ie,\n  .TextField__rootLayoutVertical___7UU8h .TextField__feedback___3XZeg {\n    padding-top: var(--rui-offset-1); }\n", ""]);
 
 // exports
 exports.locals = {
@@ -56609,71 +56895,124 @@ var _TextArea2 = _interopRequireDefault(_TextArea);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var TextArea = function TextArea(props) {
-  var labelClass = _TextArea2.default.label;
-  if (props.isLabelVisible) {
-    if (props.required) {
-      labelClass = _TextArea2.default.isLabelRequired;
-    }
-  } else {
-    labelClass = _TextArea2.default.isLabelHidden;
+  var labelVisibilityClass = '';
+  var rootFullWidthClass = '';
+  var rootLayoutClass = '';
+  var rootRequiredClass = '';
+  var rootStateClass = '';
+  var rootVariantClass = '';
+
+  if (!props.isLabelVisible) {
+    labelVisibilityClass = _TextArea2.default.isLabelHidden;
+  }
+
+  if (props.fullWidth) {
+    rootFullWidthClass = _TextArea2.default.isRootFullWidth;
+  }
+
+  if (props.layout === 'horizontal') {
+    rootLayoutClass = _TextArea2.default.rootLayoutHorizontal;
+  } else if (props.layout === 'vertical') {
+    rootLayoutClass = _TextArea2.default.rootLayoutVertical;
+  }
+
+  if (props.required) {
+    rootRequiredClass = _TextArea2.default.isRootRequired;
+  }
+
+  if (props.state === 'invalid') {
+    rootStateClass = _TextArea2.default.isRootStateInvalid;
+  } else if (props.state === 'valid') {
+    rootStateClass = _TextArea2.default.isRootStateValid;
+  } else if (props.state === 'warning') {
+    rootStateClass = _TextArea2.default.isRootStateWarning;
+  }
+
+  if (props.variant === 'filled') {
+    rootVariantClass = _TextArea2.default.rootVariantFilled;
+  } else if (props.variant === 'outline') {
+    rootVariantClass = _TextArea2.default.rootVariantOutline;
   }
 
   return _react2.default.createElement(
     'div',
-    { className: _TextArea2.default.root },
+    {
+      className: ('\n        ' + _TextArea2.default.root + '\n        ' + rootFullWidthClass + '\n        ' + rootLayoutClass + '\n        ' + rootRequiredClass + '\n        ' + rootStateClass + '\n        ' + rootVariantClass + '\n      ').trim()
+    },
     _react2.default.createElement(
       'label',
-      { htmlFor: props.fieldId },
+      { className: _TextArea2.default.container, htmlFor: props.fieldId },
       _react2.default.createElement(
         'div',
-        { className: labelClass },
+        {
+          className: ('\n            ' + _TextArea2.default.label + '\n            ' + labelVisibilityClass + '\n          ').trim()
+        },
         props.label
       ),
-      _react2.default.createElement('textarea', {
-        id: props.fieldId,
-        placeholder: props.placeholder,
-        required: props.required,
-        rows: props.rows,
-        value: props.value,
-        onChange: props.changeHandler,
-        className: props.error ? _TextArea2.default.isInputInvalid : _TextArea2.default.input
-      })
+      _react2.default.createElement(
+        'div',
+        { className: _TextArea2.default.inputContainer },
+        _react2.default.createElement('textarea', {
+          className: _TextArea2.default.input,
+          cols: props.cols,
+          disabled: props.disabled,
+          id: props.fieldId,
+          onChange: props.changeHandler,
+          placeholder: props.placeholder,
+          required: props.required,
+          rows: props.rows,
+          value: props.value
+        }),
+        props.variant === 'filled' && _react2.default.createElement('div', { className: _TextArea2.default.bottomLine })
+      )
+    ),
+    props.feedback && _react2.default.createElement(
+      'div',
+      { className: _TextArea2.default.feedback },
+      props.feedback
     ),
     props.description && _react2.default.createElement(
       'div',
       { className: _TextArea2.default.description },
       props.description
-    ),
-    props.error && _react2.default.createElement(
-      'div',
-      { className: _TextArea2.default.error },
-      props.error
     )
   );
 };
 
 TextArea.defaultProps = {
   changeHandler: null,
+  cols: null,
   description: null,
-  error: null,
+  disabled: false,
+  feedback: null,
+  fullWidth: false,
   isLabelVisible: true,
+  layout: 'vertical',
   placeholder: null,
   required: false,
   rows: 3,
-  value: undefined
+  state: null,
+  value: undefined,
+  variant: 'outline'
 };
 
 TextArea.propTypes = {
   changeHandler: _propTypes2.default.func,
+  cols: _propTypes2.default.number,
   description: _propTypes2.default.string,
-  error: _propTypes2.default.string,
+  disabled: _propTypes2.default.bool,
+  feedback: _propTypes2.default.string,
   fieldId: _propTypes2.default.string.isRequired,
+  fullWidth: _propTypes2.default.bool,
   isLabelVisible: _propTypes2.default.bool,
   label: _propTypes2.default.string.isRequired,
+  layout: _propTypes2.default.oneOf(['horizontal', 'vertical']),
   placeholder: _propTypes2.default.string,
   required: _propTypes2.default.bool,
   rows: _propTypes2.default.number,
-  value: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number])
+  state: _propTypes2.default.oneOf(['invalid', 'valid', 'warning']),
+  value: _propTypes2.default.string,
+  variant: _propTypes2.default.oneOf(['filled', 'outline'])
 };
 
 exports.default = TextArea;
@@ -56737,17 +57076,28 @@ exports = module.exports = __webpack_require__(13)(false);
 
 
 // module
-exports.push([module.i, ".TextArea__root___1Xj08 {\n  position: relative;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 0 0.25rem 0 0;\n  margin-bottom: 1rem; }\n\n.TextArea__label___Hcoxj {\n  display: inline-block;\n  margin-bottom: 0.25rem; }\n\n.TextArea__isLabelRequired___3n0Pk { }\n  .TextArea__isLabelRequired___3n0Pk::after {\n    content: ' *'; }\n\n.TextArea__input___OIOYG {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: 100%;\n  padding: 0.25rem;\n  font-family: var(--rui-typography-font-family-base);\n  color: #000;\n  border: var(--rui-border-width) solid #ddd;\n  border-radius: var(--rui-border-radius);\n  background: #fff;\n  resize: vertical; }\n  .TextArea__input___OIOYG:focus {\n    outline: 0;\n    -webkit-box-shadow: 0 0 2px 2px #89cbdf;\n            box-shadow: 0 0 2px 2px #89cbdf; }\n  .TextArea__input___OIOYG:disabled {\n    opacity: 0.5;\n    cursor: not-allowed; }\n\n.TextArea__isInputInvalid___3_thP {\n  border-color: #a32100; }\n\n.TextArea__description___1yrlw,\n.TextArea__error___uRJdf {\n  font-size: 0.8rem; }\n\n.TextArea__error___uRJdf {\n  min-height: 1rem;\n  color: #a32100; }\n", ""]);
+exports.push([module.i, ".TextArea__root___1Xj08 {\n  position: relative;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex; }\n  .TextArea__root___1Xj08:not(:last-of-type) {\n    margin-right: var(--rui-offset-2); }\n  .TextArea__root___1Xj08.TextArea__rootLayoutHorizontal___3kqEK:not(:last-of-type) {\n    margin-right: calc(2 * var(--rui-offset-2)); }\n\n.TextArea__input___OIOYG {\n  width: 100%;\n  min-width: 240px;\n  height: 2.25rem;\n  padding: var(--rui-offset-1) var(--rui-offset-3);\n  font-weight: 400;\n  line-height: 1.5rem;\n  font-family: var(--rui-typography-font-family-base);\n  vertical-align: middle;\n  border: var(--rui-form-field-border-width) solid var(--rui-form-field-border-color);\n  border-radius: var(--rui-form-field-border-radius);\n  -webkit-box-shadow: none;\n          box-shadow: none;\n  height: auto;\n  min-height: 2.25rem;\n  resize: vertical; }\n  .TextArea__input___OIOYG[cols], .TextArea__input___OIOYG[size] {\n    min-width: auto; }\n  .TextArea__input___OIOYG::-webkit-input-placeholder {\n    opacity: 1;\n    color: var(--rui-form-field-placeholder-color); }\n  .TextArea__input___OIOYG:-ms-input-placeholder {\n    opacity: 1;\n    color: var(--rui-form-field-placeholder-color); }\n  .TextArea__input___OIOYG::-ms-input-placeholder {\n    opacity: 1;\n    color: var(--rui-form-field-placeholder-color); }\n  .TextArea__input___OIOYG::placeholder {\n    opacity: 1;\n    color: var(--rui-form-field-placeholder-color); }\n  .TextArea__input___OIOYG:hover {\n    border-color: var(--rui-form-field-hover-border-color); }\n  .TextArea__input___OIOYG:focus {\n    border-color: var(--rui-form-field-focus-border-color); }\n  .TextArea__input___OIOYG:disabled {\n    opacity: 0.5;\n    -webkit-box-shadow: none;\n            box-shadow: none;\n    cursor: not-allowed;\n    border-color: var(--rui-form-field-border-color); }\n\n.TextArea__bottomLine___1wcaP {\n  opacity: 0;\n  width: 100%;\n  height: 2px;\n  margin-top: -2px;\n  -webkit-transform: scaleX(0);\n          transform: scaleX(0);\n  -webkit-transform-origin: center center;\n          transform-origin: center center; }\n  .TextArea__input___OIOYG:focus ~ .TextArea__bottomLine___1wcaP {\n    opacity: 1;\n    background-color: var(--rui-form-field-focus-border-color);\n    -webkit-transform: scaleX(1);\n            transform: scaleX(1); }\n\n.TextArea__description___1yrlw,\n.TextArea__feedback___2s0i6 {\n  font-size: var(--rui-form-field-description-feedback-font-size);\n  color: var(--rui-form-field-description-feedback-color); }\n\n.TextArea__rootVariantFilled___bjnFw .TextArea__input___OIOYG {\n  color: var(--rui-form-field-filled-default-color);\n  background-color: var(--rui-form-field-filled-default-background);\n  border-top-color: transparent;\n  border-right-color: transparent;\n  border-left-color: transparent;\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0; }\n  .TextArea__rootVariantFilled___bjnFw .TextArea__input___OIOYG:focus {\n    color: var(--rui-form-field-filled-focus-color);\n    background-color: var(--rui-form-field-filled-focus-background); }\n\n.TextArea__rootVariantOutline___dLKHT .TextArea__input___OIOYG {\n  color: var(--rui-form-field-outline-default-color);\n  background-color: var(--rui-form-field-outline-default-background);\n  -webkit-box-shadow: var(--rui-form-field-outline-default-box-shadow);\n          box-shadow: var(--rui-form-field-outline-default-box-shadow); }\n  .TextArea__rootVariantOutline___dLKHT .TextArea__input___OIOYG:focus {\n    color: var(--rui-form-field-outline-focus-color);\n    background-color: var(--rui-form-field-outline-focus-background);\n    -webkit-box-shadow: var(--rui-form-field-outline-focus-box-shadow);\n            box-shadow: var(--rui-form-field-outline-focus-box-shadow); }\n\n.TextArea__isRootRequired___1Nu7j .TextArea__label___Hcoxj::after {\n  content: var(--rui-form-field-required-sign);\n  color: var(--rui-form-field-required-sign-color); }\n\n.TextArea__isRootStateInvalid___2l9Ln .TextArea__input___OIOYG {\n  border-color: var(--rui-form-field-invalid-border-color);\n  background-color: var(--rui-form-field-invalid-background); }\n  .TextArea__isRootStateInvalid___2l9Ln .TextArea__input___OIOYG:hover {\n    border-color: var(--rui-form-field-hover-border-color); }\n  .TextArea__isRootStateInvalid___2l9Ln .TextArea__input___OIOYG:focus {\n    border-color: var(--rui-form-field-focus-border-color); }\n\n.TextArea__isRootStateInvalid___2l9Ln .TextArea__feedback___2s0i6 {\n  color: var(--rui-form-field-invalid-color); }\n\n.TextArea__isRootStateInvalid___2l9Ln.TextArea__rootVariantFilled___bjnFw .TextArea__input___OIOYG {\n  border-top-color: transparent;\n  border-right-color: transparent;\n  border-left-color: transparent; }\n\n.TextArea__isRootStateValid___2c_fy .TextArea__input___OIOYG {\n  border-color: var(--rui-form-field-valid-border-color);\n  background-color: var(--rui-form-field-valid-background); }\n  .TextArea__isRootStateValid___2c_fy .TextArea__input___OIOYG:hover {\n    border-color: var(--rui-form-field-hover-border-color); }\n  .TextArea__isRootStateValid___2c_fy .TextArea__input___OIOYG:focus {\n    border-color: var(--rui-form-field-focus-border-color); }\n\n.TextArea__isRootStateValid___2c_fy .TextArea__feedback___2s0i6 {\n  color: var(--rui-form-field-valid-color); }\n\n.TextArea__isRootStateValid___2c_fy.TextArea__rootVariantFilled___bjnFw .TextArea__input___OIOYG {\n  border-top-color: transparent;\n  border-right-color: transparent;\n  border-left-color: transparent; }\n\n.TextArea__isRootStateWarning___1I3S3 .TextArea__input___OIOYG {\n  border-color: var(--rui-form-field-warning-border-color);\n  background-color: var(--rui-form-field-warning-background); }\n  .TextArea__isRootStateWarning___1I3S3 .TextArea__input___OIOYG:hover {\n    border-color: var(--rui-form-field-hover-border-color); }\n  .TextArea__isRootStateWarning___1I3S3 .TextArea__input___OIOYG:focus {\n    border-color: var(--rui-form-field-focus-border-color); }\n\n.TextArea__isRootStateWarning___1I3S3 .TextArea__feedback___2s0i6 {\n  color: var(--rui-form-field-warning-color); }\n\n.TextArea__isRootStateWarning___1I3S3.TextArea__rootVariantFilled___bjnFw .TextArea__input___OIOYG {\n  border-top-color: transparent;\n  border-right-color: transparent;\n  border-left-color: transparent; }\n\n.TextArea__isLabelHidden___2fBRz {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border: 0; }\n\n.TextArea__isRootFullWidth___JMs6P {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  width: 100%; }\n  .TextArea__isRootFullWidth___JMs6P .TextArea__inputContainer___1ZFVf {\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1; }\n  .TextArea__isRootFullWidth___JMs6P:not(:last-of-type) {\n    margin-bottom: var(--rui-offset-2); }\n  .TextArea__isRootFullWidth___JMs6P:not(:last-of-type), .TextArea__isRootFullWidth___JMs6P.TextArea__rootLayoutHorizontal___3kqEK:not(:last-of-type) {\n    margin-right: 0; }\n\n.TextArea__rootLayoutHorizontal___3kqEK,\n.TextArea__rootLayoutHorizontal___3kqEK .TextArea__container___b7TsE {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n\n.TextArea__rootLayoutHorizontal___3kqEK .TextArea__container___b7TsE {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1; }\n\n.TextArea__rootLayoutHorizontal___3kqEK .TextArea__label___Hcoxj {\n  min-width: var(--rui-form-field-horizontal-label-min-width);\n  padding-right: var(--rui-offset-2);\n  margin-top: calc(var(--rui-form-field-input-font-size) - var(--rui-form-field-label-font-size));\n  text-align: var(--rui-form-field-horizontal-label-alignment); }\n\n.TextArea__rootLayoutHorizontal___3kqEK .TextArea__description___1yrlw,\n.TextArea__rootLayoutHorizontal___3kqEK .TextArea__feedback___2s0i6 {\n  padding-left: var(--rui-offset-2);\n  margin-top: calc(var(--rui-form-field-input-font-size) - var(--rui-form-field-description-feedback-font-size)); }\n\n.TextArea__rootLayoutVertical___1lmtM {\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n  .TextArea__rootLayoutVertical___1lmtM .TextArea__label___Hcoxj {\n    padding-bottom: var(--rui-offset-1); }\n  .TextArea__rootLayoutVertical___1lmtM .TextArea__description___1yrlw,\n  .TextArea__rootLayoutVertical___1lmtM .TextArea__feedback___2s0i6 {\n    padding-top: var(--rui-offset-1); }\n", ""]);
 
 // exports
 exports.locals = {
 	"root": "TextArea__root___1Xj08",
-	"label": "TextArea__label___Hcoxj",
-	"isLabelRequired": "TextArea__isLabelRequired___3n0Pk TextArea__label___Hcoxj",
+	"rootLayoutHorizontal": "TextArea__rootLayoutHorizontal___3kqEK",
 	"input": "TextArea__input___OIOYG",
-	"isInputInvalid": "TextArea__isInputInvalid___3_thP TextArea__input___OIOYG",
+	"bottomLine": "TextArea__bottomLine___1wcaP",
 	"description": "TextArea__description___1yrlw",
-	"error": "TextArea__error___uRJdf"
+	"feedback": "TextArea__feedback___2s0i6",
+	"rootVariantFilled": "TextArea__rootVariantFilled___bjnFw",
+	"rootVariantOutline": "TextArea__rootVariantOutline___dLKHT",
+	"isRootRequired": "TextArea__isRootRequired___1Nu7j",
+	"label": "TextArea__label___Hcoxj",
+	"isRootStateInvalid": "TextArea__isRootStateInvalid___2l9Ln",
+	"isRootStateValid": "TextArea__isRootStateValid___2c_fy",
+	"isRootStateWarning": "TextArea__isRootStateWarning___1I3S3",
+	"isLabelHidden": "TextArea__isLabelHidden___2fBRz",
+	"isRootFullWidth": "TextArea__isRootFullWidth___JMs6P",
+	"inputContainer": "TextArea__inputContainer___1ZFVf",
+	"container": "TextArea__container___b7TsE",
+	"rootLayoutVertical": "TextArea__rootLayoutVertical___1lmtM"
 };
 
 /***/ }),
@@ -57028,22 +57378,22 @@ exports.default = [{
     title: 'Modal'
   }, {
     link: '#components-multiple-selectfield',
-    title: 'Multiple select field'
+    title: 'Multiple Select Field'
   }, {
     link: '#components-radio',
     title: 'Radio'
   }, {
     link: '#components-selectfield',
-    title: 'Select field'
+    title: 'Select Field'
   }, {
     link: '#components-table',
     title: 'Table'
   }, {
     link: '#components-textarea',
-    title: 'Text area'
+    title: 'Text Area'
   }, {
     link: '#components-textfield',
-    title: 'Text field'
+    title: 'Text Field'
   }, {
     link: '#components-toggle',
     title: 'Toggle'

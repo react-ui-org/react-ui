@@ -26,15 +26,14 @@ describe('rendering', () => {
 
   it('renders correctly with all props', () => {
     const tree = shallow(<TextField
-      description="some help"
-      feedback="feedback"
       fieldId="test"
+      helperText="some help"
       isLabelVisible={false}
       label="label"
       layout="horizontal"
       placeholder="placeholder"
       size={3}
-      state="invalid"
+      validationState="invalid"
       type="email"
       value="value"
       variant="filled"

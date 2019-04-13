@@ -35,19 +35,18 @@ exports[`rendering renders correctly 1`] = `
           >
             <TextField
               changeHandler={[Function]}
-              description={null}
               disabled={false}
-              feedback={null}
               fieldId="email"
               fullWidth={true}
+              helperText={null}
               isLabelVisible={true}
               label="E-mail"
               layout="vertical"
               placeholder={null}
               required={true}
               size={null}
-              state={null}
               type="email"
+              validationState={null}
               variant="outline"
             >
               <div
@@ -86,19 +85,18 @@ exports[`rendering renders correctly 1`] = `
             </TextField>
             <TextField
               changeHandler={[Function]}
-              description={null}
               disabled={false}
-              feedback={null}
               fieldId="password"
               fullWidth={true}
+              helperText={null}
               isLabelVisible={true}
               label="Password"
               layout="vertical"
               placeholder={null}
               required={true}
               size={null}
-              state={null}
               type="password"
+              validationState={null}
               variant="outline"
             >
               <div
@@ -237,19 +235,18 @@ exports[`rendering renders correctly with all props except translations 1`] = `
           >
             <TextField
               changeHandler={[Function]}
-              description={null}
               disabled={false}
-              feedback={null}
               fieldId="email"
               fullWidth={true}
+              helperText={null}
               isLabelVisible={true}
               label="E-mail"
               layout="vertical"
               placeholder={null}
               required={true}
               size={null}
-              state={null}
               type="email"
+              validationState={null}
               variant="outline"
             >
               <div
@@ -288,19 +285,18 @@ exports[`rendering renders correctly with all props except translations 1`] = `
             </TextField>
             <TextField
               changeHandler={[Function]}
-              description={null}
               disabled={false}
-              feedback={null}
               fieldId="password"
               fullWidth={true}
+              helperText={null}
               isLabelVisible={true}
               label="Password"
               layout="vertical"
               placeholder={null}
               required={true}
               size={null}
-              state={null}
               type="password"
+              validationState={null}
               variant="outline"
             >
               <div
@@ -428,19 +424,18 @@ exports[`rendering renders correctly with translations 1`] = `
           >
             <TextField
               changeHandler={[Function]}
-              description={null}
               disabled={false}
-              feedback={null}
               fieldId="email"
               fullWidth={true}
+              helperText={null}
               isLabelVisible={true}
               label="E-mail"
               layout="vertical"
               placeholder={null}
               required={true}
               size={null}
-              state={null}
               type="email"
+              validationState={null}
               variant="outline"
             >
               <div
@@ -479,19 +474,18 @@ exports[`rendering renders correctly with translations 1`] = `
             </TextField>
             <TextField
               changeHandler={[Function]}
-              description={null}
               disabled={false}
-              feedback={null}
               fieldId="password"
               fullWidth={true}
+              helperText={null}
               isLabelVisible={true}
               label="Heslo"
               layout="vertical"
               placeholder={null}
               required={true}
               size={null}
-              state={null}
               type="password"
+              validationState={null}
               variant="outline"
             >
               <div
@@ -604,19 +598,18 @@ exports[`rendering renders correctly with username 1`] = `
           >
             <TextField
               changeHandler={[Function]}
-              description={null}
               disabled={false}
-              feedback={null}
               fieldId="Username"
               fullWidth={true}
+              helperText={null}
               isLabelVisible={true}
               label="Username"
               layout="vertical"
               placeholder={null}
               required={true}
               size={null}
-              state={null}
               type="text"
+              validationState={null}
               variant="outline"
             >
               <div
@@ -655,19 +648,18 @@ exports[`rendering renders correctly with username 1`] = `
             </TextField>
             <TextField
               changeHandler={[Function]}
-              description={null}
               disabled={false}
-              feedback={null}
               fieldId="password"
               fullWidth={true}
+              helperText={null}
               isLabelVisible={true}
               label="Password"
               layout="vertical"
               placeholder={null}
               required={true}
               size={null}
-              state={null}
               type="password"
+              validationState={null}
               variant="outline"
             >
               <div

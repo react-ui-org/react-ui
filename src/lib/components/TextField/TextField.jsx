@@ -7,7 +7,7 @@ const TextField = (props) => {
   let rootFullWidthClass = '';
   let rootLayoutClass = '';
   let rootRequiredClass = '';
-  let rootStateClass = '';
+  let rootValidationStateClass = '';
   let rootVariantClass = '';
 
   if (!props.isLabelVisible) {
@@ -28,12 +28,12 @@ const TextField = (props) => {
     rootRequiredClass = styles.isRootRequired;
   }
 
-  if (props.state === 'invalid') {
-    rootStateClass = styles.isRootStateInvalid;
-  } else if (props.state === 'valid') {
-    rootStateClass = styles.isRootStateValid;
-  } else if (props.state === 'warning') {
-    rootStateClass = styles.isRootStateWarning;
+  if (props.validationState === 'invalid') {
+    rootValidationStateClass = styles.isRootStateInvalid;
+  } else if (props.validationState === 'valid') {
+    rootValidationStateClass = styles.isRootStateValid;
+  } else if (props.validationState === 'warning') {
+    rootValidationStateClass = styles.isRootStateWarning;
   }
 
   if (props.variant === 'filled') {
@@ -49,7 +49,7 @@ const TextField = (props) => {
         ${rootFullWidthClass}
         ${rootLayoutClass}
         ${rootRequiredClass}
-        ${rootStateClass}
+        ${rootValidationStateClass}
         ${rootVariantClass}
       `).trim()}
     >
@@ -79,14 +79,9 @@ const TextField = (props) => {
           )}
         </div>
       </label>
-      {props.feedback && (
-        <div className={styles.feedback}>
-          {props.feedback}
-        </div>
-      )}
-      {props.description && (
-        <div className={styles.description}>
-          {props.description}
+      {props.helperText && (
+        <div className={styles.helperText}>
+          {props.helperText}
         </div>
       )}
     </div>
@@ -95,36 +90,34 @@ const TextField = (props) => {
 
 TextField.defaultProps = {
   changeHandler: null,
-  description: null,
   disabled: false,
-  feedback: null,
   fullWidth: false,
+  helperText: null,
   isLabelVisible: true,
   layout: 'vertical',
   placeholder: null,
   required: false,
   size: null,
-  state: null,
   type: 'text',
+  validationState: null,
   value: undefined,
   variant: 'outline',
 };
 
 TextField.propTypes = {
   changeHandler: PropTypes.func,
-  description: PropTypes.string,
   disabled: PropTypes.bool,
-  feedback: PropTypes.string,
   fieldId: PropTypes.string.isRequired,
   fullWidth: PropTypes.bool,
+  helperText: PropTypes.string,
   isLabelVisible: PropTypes.bool,
   label: PropTypes.string.isRequired,
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   size: PropTypes.number,
-  state: PropTypes.oneOf(['invalid', 'valid', 'warning']),
   type: PropTypes.oneOf(['email', 'number', 'password', 'tel', 'text']),
+  validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,

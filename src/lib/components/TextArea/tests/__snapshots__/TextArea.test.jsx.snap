@@ -2,9 +2,15 @@
 
 exports[`rendering renders correctly mandatory props only 1`] = `
 <div
-  className="root"
+  className="root
+        
+        rootLayoutVertical
+        
+        
+        rootVariantOutline"
 >
   <label
+    className="container"
     htmlFor="test"
   >
     <div
@@ -12,73 +18,103 @@ exports[`rendering renders correctly mandatory props only 1`] = `
     >
       label
     </div>
-    <textarea
-      className="input"
-      id="test"
-      onChange={null}
-      placeholder={null}
-      required={false}
-      rows={3}
-    />
+    <div
+      className="inputContainer"
+    >
+      <textarea
+        className="input"
+        cols={null}
+        disabled={false}
+        id="test"
+        onChange={null}
+        placeholder={null}
+        required={false}
+        rows={3}
+      />
+    </div>
   </label>
 </div>
 `;
 
 exports[`rendering renders correctly with all props 1`] = `
 <div
-  className="root"
+  className="root
+        isRootFullWidth
+        rootLayoutHorizontal
+        isRootRequired
+        isRootStateInvalid
+        rootVariantFilled"
 >
   <label
+    className="container"
     htmlFor="test"
   >
     <div
-      className="isLabelRequired"
+      className="label
+                isLabelHidden"
     >
       label
     </div>
-    <textarea
-      className="isInputInvalid"
-      id="test"
-      onChange={null}
-      placeholder="placeholder"
-      required={true}
-      rows={5}
-      value="value"
-    />
+    <div
+      className="inputContainer"
+    >
+      <textarea
+        className="input"
+        cols={10}
+        disabled={true}
+        id="test"
+        onChange={null}
+        placeholder="placeholder"
+        required={true}
+        rows={5}
+        value="value"
+      />
+      <div
+        className="bottomLine"
+      />
+    </div>
   </label>
   <div
-    className="description"
+    className="helperText"
   >
     some help
-  </div>
-  <div
-    className="error"
-  >
-    error
   </div>
 </div>
 `;
 
 exports[`rendering renders correctly with hidden label 1`] = `
 <div
-  className="root"
+  className="root
+        
+        rootLayoutVertical
+        
+        
+        rootVariantOutline"
 >
   <label
+    className="container"
     htmlFor="test"
   >
     <div
-      className="isLabelHidden"
+      className="label
+                isLabelHidden"
     >
       label
     </div>
-    <textarea
-      className="input"
-      id="test"
-      onChange={null}
-      placeholder={null}
-      required={false}
-      rows={3}
-    />
+    <div
+      className="inputContainer"
+    >
+      <textarea
+        className="input"
+        cols={null}
+        disabled={false}
+        id="test"
+        onChange={null}
+        placeholder={null}
+        required={false}
+        rows={3}
+      />
+    </div>
   </label>
 </div>
 `;

@@ -1,62 +1,65 @@
-@import '../../shared/settings/borders';
-@import '../../shared/settings/forms.deprecated';
-@import '../../shared/settings/typography';
-@import '../../shared/tools/forms.deprecated';
+@import '../../shared/tools/accessibility';
+@import '../../shared/tools/forms';
 
+// Foundation
 .root {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  padding: 0 0.25rem 0 0;
-  margin-bottom: 1rem;
-}
-
-.label {
-  display: inline-block;
-  margin-bottom: 0.25rem;
-}
-
-.isLabelRequired {
-  composes: label;
-
-  &::after {
-    content: ' *';
-  }
+  @include form-field();
+  @include form-field-horizontal-neighbor();
 }
 
 .input {
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
-  padding: 0.25rem;
-  font-family: $typography-font-family-base;
-  color: $textarea-text-color;
-  border: $border-width solid $textarea-border-color;
-  border-radius: $border-radius;
-  background: $textarea-background-color;
-  resize: vertical;
-
-  &:focus {
-    @include form-outline();
-  }
-
-  &:disabled {
-    @include form-disabled-state();
-  }
+  @include form-field-input($multiline: true);
 }
 
-.isInputInvalid {
-  composes: input;
-  border-color: $textarea-invalid-border-color;
+.bottomLine {
+  @include form-field-bottom-line();
 }
 
-.description,
-.error {
-  font-size: 0.8rem;
+.helperText {
+  @include form-field-helper-text();
 }
 
-.error {
-  min-height: 1rem;
-  color: $form-invalid-color;
+// Variants
+.rootVariantFilled .input {
+  @include form-field-input-variant(filled);
+}
+
+.rootVariantOutline .input {
+  @include form-field-input-variant(outline);
+}
+
+// States
+.isRootRequired .label {
+  @include form-field-required-label();
+}
+
+.isRootStateInvalid {
+  @include form-field-state(invalid);
+}
+
+.isRootStateValid {
+  @include form-field-state(valid);
+}
+
+.isRootStateWarning {
+  @include form-field-state(warning);
+}
+
+// Invisible label
+.isLabelHidden {
+  @include accessibility-hide-text();
+}
+
+// Layouts
+.isRootFullWidth {
+  @include form-field-full-width();
+  @include form-field-vertical-neighbor();
+}
+
+.rootLayoutHorizontal {
+  @include form-field-layout-horizontal();
+}
+
+.rootLayoutVertical {
+  @include form-field-layout-vertical();
 }
