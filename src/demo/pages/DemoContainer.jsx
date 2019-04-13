@@ -51,12 +51,11 @@ class DemoContainer extends React.Component {
     return (
       <DocumentationLayout>
         <DocumentationLayoutSidebar>
-          <h1 className="typography-size-1">React UI</h1>
           <DocumentationNavigation items={navigationTree} />
         </DocumentationLayoutSidebar>
         <DocumentationLayoutContent>
           <section id="typography" className="offset-7">
-            <h2 className="typography-size-3">Typography</h2>
+            <h2 className="typography-size-5 offset-6">Typography</h2>
             <p>
               Curabitur sagittis hendrerit ante. Integer pellentesque quam vel velit. Sed vel
               lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Pellentesque
@@ -100,8 +99,8 @@ class DemoContainer extends React.Component {
             <h4 className="typography-size-5">.typography-size-5</h4>
           </section>
           <section id="components" className="offset-7">
-            <h2 className="typography-size-3">Components</h2>
-            <h3 id="components-button" className="typography-size-2">Button</h3>
+            <h2 className="typography-size-5 offset-6">Components</h2>
+            <h3 id="components-button" className="typography-size-4 offset-6">Button</h3>
             <Documentation
               name="Default buttons"
               component={(
@@ -202,7 +201,7 @@ class DemoContainer extends React.Component {
                 </div>
               )}
             />
-            <h3 id="components-checkbox" className="typography-size-2">Checkbox</h3>
+            <h3 id="components-checkbox" className="typography-size-4 offset-6">Checkbox</h3>
             <Documentation
               name="Checkbox"
               component={(
@@ -240,7 +239,7 @@ class DemoContainer extends React.Component {
                 />
               )}
             />
-            <h3 id="components-icon" className="typography-size-2">Icon</h3>
+            <h3 id="components-icon" className="typography-size-4 offset-6">Icon</h3>
             <Documentation
               name="Icon – default"
               component={<Icon icon="book" />}
@@ -261,7 +260,7 @@ class DemoContainer extends React.Component {
                 </span>
               )}
             />
-            <h3 id="components-modal" className="typography-size-2">Modal</h3>
+            <h3 id="components-modal" className="typography-size-4 offset-6">Modal</h3>
             <Documentation
               name="Modal label"
               component={(
@@ -292,7 +291,7 @@ class DemoContainer extends React.Component {
                 </React.Fragment>
               )}
             />
-            <h3 id="components-multiple-selectfield" className="typography-size-2">Multiple select field</h3>
+            <h3 id="components-multiple-selectfield" className="typography-size-4 offset-6">Multiple select field</h3>
             <Documentation
               name="MultipleSelectField"
               component={(
@@ -404,7 +403,7 @@ class DemoContainer extends React.Component {
                 />
               )}
             />
-            <h3 id="components-radio" className="typography-size-2">Radio</h3>
+            <h3 id="components-radio" className="typography-size-4 offset-6">Radio</h3>
             <Documentation
               name="Radio"
               component={(
@@ -474,7 +473,7 @@ class DemoContainer extends React.Component {
                 />
               )}
             />
-            <h3 id="components-selectfield" className="typography-size-2">Select field</h3>
+            <h3 id="components-selectfield" className="typography-size-4 offset-6">Select field</h3>
             <Documentation
               name="SelectField"
               component={(
@@ -561,7 +560,7 @@ class DemoContainer extends React.Component {
                 />
               )}
             />
-            <h3 id="components-table" className="typography-size-2">Table</h3>
+            <h3 id="components-table" className="typography-size-4 offset-6">Table</h3>
             <Documentation
               name="Table"
               component={(
@@ -614,7 +613,7 @@ class DemoContainer extends React.Component {
                 />
               )}
             />
-            <h3 id="components-textarea" className="typography-size-2">Text area</h3>
+            <h3 id="components-textarea" className="typography-size-4 offset-6">Text Area</h3>
             <Documentation
               name="Text area variants"
               component={(
@@ -908,7 +907,7 @@ class DemoContainer extends React.Component {
                 </div>
               )}
             />
-            <h3 id="components-textfield" className="typography-size-2">Text Field</h3>
+            <h3 id="components-textfield" className="typography-size-4 offset-6">Text Field</h3>
             <Documentation
               name="Text field variants"
               component={(
@@ -1199,7 +1198,7 @@ class DemoContainer extends React.Component {
                 </div>
               )}
             />
-            <h3 id="components-toggle" className="typography-size-2">Toggle</h3>
+            <h3 id="components-toggle" className="typography-size-4 offset-6">Toggle</h3>
             <Documentation
               name="Toggle"
               component={(
@@ -1239,7 +1238,7 @@ class DemoContainer extends React.Component {
             />
           </section>
           <section id="screens" className="offset-7">
-            <h2 className="typography-size-3">Screens</h2>
+            <h2 className="typography-size-5 offset-6">Screens</h2>
             <Documentation
               name="Login screen"
               component={(

@@ -1,35 +1,42 @@
 @import '../../shared/settings/colors';
 @import '../../shared/settings/offsets';
+@import '../../shared/settings/typography';
 @import '../../shared/tools/spacing';
 
-.root {
+.headline {
+  padding: map-get($offset-values, 6) map-get($offset-values, 5) map-get($offset-values, 2);
+  font-weight: 400;
+  font-size: $typography-size-3;
+}
+
+.root,
+.subnavigation {
   padding-left: 0;
   list-style: none;
+}
+
+.navigationLink,
+.subnavigationLink {
+  display: block;
+  padding: map-get($offset-values, 3) map-get($offset-values, 5);
+  text-decoration: none;
+  color: inherit;
 }
 
 .navigationLink {
   font-weight: bold;
 }
 
-.subnavigation {
-  padding-left: map-get($offset-values, 5);
+.subnavigationLink {
+  padding-left: map-get($offset-values, 7);
+  color: map-get($colors-grays, gray-600);
 }
 
-.subnavigationLink {
-  font-size: $typography-size-small;
-}
-
-.navigationLink,
-.subnavigationLink {
-  display: block;
-  padding-top: map-get($offset-values, 1);
-  padding-bottom: map-get($offset-values, 1);
+.navigationLink:hover,
+.navigationLink:focus,
+.subnavigationLink:hover,
+.subnavigationLink:focus {
   text-decoration: none;
-  color: map-get($colors-grays, gray-700);
-
-  &:hover,
-  &:focus {
-    text-decoration: none;
-    color: inherit;
-  }
+  color: inherit;
+  background-color: map-get($colors-grays, gray-50);
 }

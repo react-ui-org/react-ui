@@ -3,24 +3,27 @@ import React from 'react';
 import styles from './DocumentationNavigation.scss';
 
 const DocumentationNavigation = props => (
-  <ul className={styles.root}>
-    {props.items.map(item => (
-      <li key={item.link}>
-        <a href={item.link} className={styles.navigationLink}>{item.title}</a>
-        {item.items && (
-          <ul className={styles.subnavigation}>
-            {item.items.map(nestedItem => (
-              <li key={nestedItem.link}>
-                <a href={nestedItem.link} className={styles.subnavigationLink}>
-                  {nestedItem.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        )}
-      </li>
-    ))}
-  </ul>
+  <div>
+    <h1 className={styles.headline}>React UI</h1>
+    <ul className={styles.root}>
+      {props.items.map(item => (
+        <li key={item.link}>
+          <a href={item.link} className={styles.navigationLink}>{item.title}</a>
+          {item.items && (
+            <ul className={styles.subnavigation}>
+              {item.items.map(nestedItem => (
+                <li key={nestedItem.link}>
+                  <a href={nestedItem.link} className={styles.subnavigationLink}>
+                    {nestedItem.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
 );
 
 DocumentationNavigation.propTypes = {

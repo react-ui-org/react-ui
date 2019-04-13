@@ -23,7 +23,7 @@ export default [
       },
       {
         link: '#components-multiple-selectfield',
-        title: 'Multiple select field',
+        title: 'Multiple Select Field',
       },
       {
         link: '#components-radio',
@@ -31,7 +31,7 @@ export default [
       },
       {
         link: '#components-selectfield',
-        title: 'Select field',
+        title: 'Select Field',
       },
       {
         link: '#components-table',
@@ -39,11 +39,11 @@ export default [
       },
       {
         link: '#components-textarea',
-        title: 'Text area',
+        title: 'Text Area',
       },
       {
         link: '#components-textfield',
-        title: 'Text field',
+        title: 'Text Field',
       },
       {
         link: '#components-toggle',

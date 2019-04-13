@@ -1,116 +1,137 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering renders correctly with multiple items 1`] = `
-<ul
-  className="root"
->
-  <li
-    key="#anchor1"
+<div>
+  <h1
+    className="headline"
   >
-    <a
-      className="navigationLink"
-      href="#anchor1"
-    >
-      Multiple items 1
-    </a>
-  </li>
-  <li
-    key="#anchor2"
+    React UI
+  </h1>
+  <ul
+    className="root"
   >
-    <a
-      className="navigationLink"
-      href="#anchor2"
+    <li
+      key="#anchor1"
     >
-      Multiple items 2
-    </a>
-  </li>
-  <li
-    key="#anchor3"
-  >
-    <a
-      className="navigationLink"
-      href="#anchor3"
+      <a
+        className="navigationLink"
+        href="#anchor1"
+      >
+        Multiple items 1
+      </a>
+    </li>
+    <li
+      key="#anchor2"
     >
-      Multiple items 3
-    </a>
-  </li>
-</ul>
+      <a
+        className="navigationLink"
+        href="#anchor2"
+      >
+        Multiple items 2
+      </a>
+    </li>
+    <li
+      key="#anchor3"
+    >
+      <a
+        className="navigationLink"
+        href="#anchor3"
+      >
+        Multiple items 3
+      </a>
+    </li>
+  </ul>
+</div>
 `;
 
 exports[`rendering renders correctly with nested items 1`] = `
-<ul
-  className="root"
->
-  <li
-    key="#anchor1"
+<div>
+  <h1
+    className="headline"
   >
-    <a
-      className="navigationLink"
-      href="#anchor1"
+    React UI
+  </h1>
+  <ul
+    className="root"
+  >
+    <li
+      key="#anchor1"
     >
-      Nested items 1
-    </a>
-    <ul
-      className="subnavigation"
-    >
-      <li
-        key="#anchor1a"
+      <a
+        className="navigationLink"
+        href="#anchor1"
       >
-        <a
-          className="subnavigationLink"
-          href="#anchor1a"
-        >
-          Nested items 1 a
-        </a>
-      </li>
-      <li
-        key="#anchor1b"
+        Nested items 1
+      </a>
+      <ul
+        className="subnavigation"
       >
-        <a
-          className="subnavigationLink"
-          href="#anchor1b"
+        <li
+          key="#anchor1a"
         >
-          Nested items 1 b
-        </a>
-      </li>
-    </ul>
-  </li>
-  <li
-    key="#anchor2"
-  >
-    <a
-      className="navigationLink"
-      href="#anchor2"
+          <a
+            className="subnavigationLink"
+            href="#anchor1a"
+          >
+            Nested items 1 a
+          </a>
+        </li>
+        <li
+          key="#anchor1b"
+        >
+          <a
+            className="subnavigationLink"
+            href="#anchor1b"
+          >
+            Nested items 1 b
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li
+      key="#anchor2"
     >
-      Nested items 2
-    </a>
-  </li>
-  <li
-    key="#anchor3"
-  >
-    <a
-      className="navigationLink"
-      href="#anchor3"
+      <a
+        className="navigationLink"
+        href="#anchor2"
+      >
+        Nested items 2
+      </a>
+    </li>
+    <li
+      key="#anchor3"
     >
-      Nested items 3
-    </a>
-  </li>
-</ul>
+      <a
+        className="navigationLink"
+        href="#anchor3"
+      >
+        Nested items 3
+      </a>
+    </li>
+  </ul>
+</div>
 `;
 
 exports[`rendering renders correctly with single item 1`] = `
-<ul
-  className="root"
->
-  <li
-    key="#anchor"
+<div>
+  <h1
+    className="headline"
   >
-    <a
-      className="navigationLink"
-      href="#anchor"
+    React UI
+  </h1>
+  <ul
+    className="root"
+  >
+    <li
+      key="#anchor"
     >
-      Single item
-    </a>
-  </li>
-</ul>
+      <a
+        className="navigationLink"
+        href="#anchor"
+      >
+        Single item
+      </a>
+    </li>
+  </ul>
+</div>
 `;
