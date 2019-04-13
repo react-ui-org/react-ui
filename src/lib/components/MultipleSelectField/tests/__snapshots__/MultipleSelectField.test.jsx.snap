@@ -2,9 +2,15 @@
 
 exports[`rendering renders correctly mandatory props only 1`] = `
 <div
-  className="root"
+  className="root
+        
+        rootLayoutVertical
+        
+        
+        rootVariantOutline"
 >
   <label
+    className="container"
     htmlFor="test"
   >
     <div
@@ -12,37 +18,47 @@ exports[`rendering renders correctly mandatory props only 1`] = `
     >
       label
     </div>
-    <select
-      className="select"
-      disabled={false}
-      id="test"
-      multiple={true}
-      onChange={null}
-      required={false}
-      value={Array []}
+    <div
+      className="inputContainer"
     >
-      <option
-        key="ch1"
-        value="ch1"
+      <select
+        className="input"
+        disabled={false}
+        id="test"
+        multiple={true}
+        onChange={null}
+        required={false}
+        value={Array []}
       >
-        choice 1
-      </option>
-      <option
-        key="ch2"
-        value="ch2"
-      >
-        choice 2
-      </option>
-    </select>
+        <option
+          key="ch1"
+          value="ch1"
+        >
+          choice 1
+        </option>
+        <option
+          key="ch2"
+          value="ch2"
+        >
+          choice 2
+        </option>
+      </select>
+    </div>
   </label>
 </div>
 `;
 
 exports[`rendering renders correctly only one option 1`] = `
 <div
-  className="root"
+  className="root
+        
+        rootLayoutVertical
+        
+        
+        rootVariantOutline"
 >
   <label
+    className="container"
     htmlFor="test"
   >
     <div
@@ -50,79 +66,98 @@ exports[`rendering renders correctly only one option 1`] = `
     >
       label
     </div>
-    <select
-      className="select"
-      disabled={false}
-      id="test"
-      multiple={true}
-      onChange={null}
-      required={false}
-      value={Array []}
+    <div
+      className="inputContainer"
     >
-      <option
-        key="ch1"
-        value="ch1"
+      <select
+        className="input"
+        disabled={false}
+        id="test"
+        multiple={true}
+        onChange={null}
+        required={false}
+        value={Array []}
       >
-        choice 1
-      </option>
-    </select>
+        <option
+          key="ch1"
+          value="ch1"
+        >
+          choice 1
+        </option>
+      </select>
+    </div>
   </label>
 </div>
 `;
 
 exports[`rendering renders correctly with all props 1`] = `
 <div
-  className="isRootCondensed"
+  className="root
+        isRootFullWidth
+        rootLayoutHorizontal
+        isRootRequired
+        isRootStateInvalid
+        rootVariantFilled"
 >
   <label
+    className="container"
     htmlFor="test"
   >
     <div
-      className="isLabelHidden"
+      className="label
+                isLabelHidden"
     >
       label
     </div>
-    <select
-      className="isSelectInvalid"
-      disabled={true}
-      id="test"
-      multiple={true}
-      onChange={null}
-      required={true}
-      value="ch1"
+    <div
+      className="inputContainer"
     >
-      <option
-        key="ch1"
+      <select
+        className="input"
+        disabled={true}
+        id="test"
+        multiple={true}
+        onChange={null}
+        required={true}
         value="ch1"
       >
-        choice 1
-      </option>
-      <option
-        key="ch2"
-        value="ch2"
-      >
-        choice 2
-      </option>
-    </select>
+        <option
+          key="ch1"
+          value="ch1"
+        >
+          choice 1
+        </option>
+        <option
+          key="ch2"
+          value="ch2"
+        >
+          choice 2
+        </option>
+      </select>
+      <div
+        className="bottomLine"
+      />
+    </div>
   </label>
   <div
-    className="description"
+    className="helperText"
   >
     some help
-  </div>
-  <div
-    className="error"
-  >
-    some error
   </div>
 </div>
 `;
 
 exports[`rendering renders correctly with one selected option 1`] = `
 <div
-  className="root"
+  className="root
+        
+        rootLayoutVertical
+        
+        
+        rootVariantOutline"
 >
   <label
+    className="container"
     htmlFor="test"
   >
     <div
@@ -130,41 +165,51 @@ exports[`rendering renders correctly with one selected option 1`] = `
     >
       label
     </div>
-    <select
-      className="select"
-      disabled={false}
-      id="test"
-      multiple={true}
-      onChange={null}
-      required={false}
-      value={
-        Array [
-          "ch1",
-        ]
-      }
+    <div
+      className="inputContainer"
     >
-      <option
-        key="ch1"
-        value="ch1"
+      <select
+        className="input"
+        disabled={false}
+        id="test"
+        multiple={true}
+        onChange={null}
+        required={false}
+        value={
+          Array [
+            "ch1",
+          ]
+        }
       >
-        choice 1
-      </option>
-      <option
-        key="ch2"
-        value="ch2"
-      >
-        choice 2
-      </option>
-    </select>
+        <option
+          key="ch1"
+          value="ch1"
+        >
+          choice 1
+        </option>
+        <option
+          key="ch2"
+          value="ch2"
+        >
+          choice 2
+        </option>
+      </select>
+    </div>
   </label>
 </div>
 `;
 
 exports[`rendering renders correctly with two selected options 1`] = `
 <div
-  className="root"
+  className="root
+        
+        rootLayoutVertical
+        
+        
+        rootVariantOutline"
 >
   <label
+    className="container"
     htmlFor="test"
   >
     <div
@@ -172,33 +217,37 @@ exports[`rendering renders correctly with two selected options 1`] = `
     >
       label
     </div>
-    <select
-      className="select"
-      disabled={false}
-      id="test"
-      multiple={true}
-      onChange={null}
-      required={false}
-      value={
-        Array [
-          "ch1",
-          "ch2",
-        ]
-      }
+    <div
+      className="inputContainer"
     >
-      <option
-        key="ch1"
-        value="ch1"
+      <select
+        className="input"
+        disabled={false}
+        id="test"
+        multiple={true}
+        onChange={null}
+        required={false}
+        value={
+          Array [
+            "ch1",
+            "ch2",
+          ]
+        }
       >
-        choice 1
-      </option>
-      <option
-        key="ch2"
-        value="ch2"
-      >
-        choice 2
-      </option>
-    </select>
+        <option
+          key="ch1"
+          value="ch1"
+        >
+          choice 1
+        </option>
+        <option
+          key="ch2"
+          value="ch2"
+        >
+          choice 2
+        </option>
+      </select>
+    </div>
   </label>
 </div>
 `;

@@ -44,14 +44,14 @@ describe('rendering', () => {
 
   it('renders correctly with all props', () => {
     const tree = shallow(<MultipleSelectField
-      label="label"
-      isLabelVisible={false}
-      disabled
       fieldId="test"
+      isLabelVisible={false}
+      label="label"
+      layout="horizontal"
+      validationState="invalid"
       value="ch1"
-      description="some help"
-      error="some error"
-      required
+      helperText="some help"
+      variant="filled"
       options={[
         {
           label: 'choice 1',
@@ -62,6 +62,9 @@ describe('rendering', () => {
           value: 'ch2',
         },
       ]}
+      fullWidth
+      disabled
+      required
     />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();

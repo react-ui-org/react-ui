@@ -71,6 +71,11 @@
   }
 }
 
+@mixin form-field-input-multiple-select() {
+  height: auto;
+  min-height: $form-field-height;
+}
+
 @mixin form-field-caret() {
   position: absolute;
   top: 50%;

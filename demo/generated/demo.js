@@ -30848,59 +30848,167 @@ var DemoContainer = function (_React$Component) {
             _react2.default.createElement(
               'h3',
               { id: 'components-multiple-selectfield', className: 'typography-size-4 offset-6' },
-              'Multiple select field'
+              'Multiple Select Field'
             ),
             _react2.default.createElement(_lib.Documentation, {
-              name: 'MultipleSelectField',
-              component: _react2.default.createElement(_lib.MultipleSelectField, {
-                changeHandler: logger,
-                fieldId: 'multipleSelectField',
-                label: 'MultipleSelectField',
-                options: this.exampleOptions
-              })
+              name: 'Multiple select field variants',
+              component: _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_lib.MultipleSelectField, {
+                  changeHandler: logger,
+                  fieldId: 'multipleSelectFieldVariantOutline',
+                  label: 'Outline',
+                  options: this.exampleOptions
+                }),
+                _react2.default.createElement(_lib.MultipleSelectField, {
+                  changeHandler: logger,
+                  fieldId: 'multipleSelectFieldVariantFilled',
+                  label: 'Filled',
+                  options: this.exampleOptions,
+                  variant: 'filled'
+                })
+              )
             }),
             _react2.default.createElement(_lib.Documentation, {
-              name: 'MultipleSelectField with description and required',
-              component: _react2.default.createElement(_lib.MultipleSelectField, {
-                changeHandler: logger,
-                fieldId: 'multipleSelectFieldDescriptionRequired',
-                label: 'MultipleSelectField with description and required',
-                description: 'Choose which choice you prefer',
-                options: this.exampleOptions,
-                required: true
-              })
+              name: 'Required with helper text',
+              component: _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_lib.MultipleSelectField, {
+                  fieldId: 'multipleSelectFieldWithDescriptionOutline',
+                  changeHandler: logger,
+                  label: 'Favorite fruit',
+                  helperText: 'What is your favorite fruit?',
+                  options: this.exampleOptions,
+                  required: true
+                }),
+                _react2.default.createElement(_lib.MultipleSelectField, {
+                  fieldId: 'multipleSelectFieldWithDescriptionFilled',
+                  changeHandler: logger,
+                  label: 'Favorite fruit',
+                  helperText: 'What is your favorite fruit?',
+                  variant: 'filled',
+                  options: this.exampleOptions,
+                  required: true
+                })
+              )
             }),
             _react2.default.createElement(_lib.Documentation, {
-              name: 'MultipleSelectField with error',
-              component: _react2.default.createElement(_lib.MultipleSelectField, {
-                changeHandler: logger,
-                fieldId: 'multipleSelectFieldError',
-                label: 'MultipleSelectField with error',
-                description: 'Choose which choice you prefer',
-                error: 'You have to choose',
-                options: this.exampleOptions
-              })
+              name: 'Disabled multiple select field',
+              component: _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_lib.MultipleSelectField, {
+                  fieldId: 'multipleSelectFieldDisabledOutline',
+                  changeHandler: logger,
+                  label: 'Disabled multiple select field',
+                  options: this.exampleOptions,
+                  disabled: true
+                }),
+                _react2.default.createElement(_lib.MultipleSelectField, {
+                  fieldId: 'multipleSelectFieldDisabledFilled',
+                  changeHandler: logger,
+                  label: 'Disabled multiple select field',
+                  variant: 'filled',
+                  options: this.exampleOptions,
+                  disabled: true
+                })
+              )
             }),
             _react2.default.createElement(_lib.Documentation, {
-              name: 'MultipleSelectField with error and hidden label',
-              component: _react2.default.createElement(_lib.MultipleSelectField, {
-                changeHandler: logger,
-                fieldId: 'multipleSelectFieldErrorHiddenLabel',
-                label: 'MultipleSelectField with error and hidden label',
-                isLabelVisible: false,
-                options: this.exampleOptions,
-                disabled: true
-              })
+              name: 'Validation states',
+              component: _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(_lib.MultipleSelectField, {
+                    fieldId: 'multipleSelectFieldValidationValidOutline',
+                    changeHandler: logger,
+                    label: 'Favorite fruit',
+                    helperText: 'Looks good!',
+                    validationState: 'valid',
+                    options: this.exampleOptions,
+                    value: ['apples']
+                  }),
+                  _react2.default.createElement(_lib.MultipleSelectField, {
+                    fieldId: 'multipleSelectFieldValidationWarningOutline',
+                    changeHandler: logger,
+                    label: 'Favorite fruit',
+                    helperText: 'Really\u2026?',
+                    validationState: 'warning',
+                    options: this.exampleOptions,
+                    value: ['bananas']
+                  }),
+                  _react2.default.createElement(_lib.MultipleSelectField, {
+                    fieldId: 'multipleSelectFieldValidationInvalidOutline',
+                    changeHandler: logger,
+                    label: 'Favorite fruit',
+                    helperText: 'Uh\u2026',
+                    validationState: 'invalid',
+                    options: this.exampleOptions,
+                    value: ['grapefruits']
+                  })
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(_lib.MultipleSelectField, {
+                    fieldId: 'multipleSelectFieldValidationValidFilled',
+                    changeHandler: logger,
+                    label: 'Favorite fruit',
+                    helperText: 'Looks good!',
+                    validationState: 'valid',
+                    variant: 'filled',
+                    options: this.exampleOptions,
+                    value: ['apples']
+                  }),
+                  _react2.default.createElement(_lib.MultipleSelectField, {
+                    fieldId: 'multipleSelectFieldValidationWarningOutline',
+                    changeHandler: logger,
+                    label: 'Favorite fruit',
+                    helperText: 'Really\u2026?',
+                    validationState: 'warning',
+                    variant: 'filled',
+                    options: this.exampleOptions,
+                    value: ['bananas']
+                  }),
+                  _react2.default.createElement(_lib.MultipleSelectField, {
+                    fieldId: 'multipleSelectFieldValidationInvalidOutline',
+                    changeHandler: logger,
+                    label: 'Favorite fruit',
+                    helperText: 'Uh\u2026',
+                    validationState: 'invalid',
+                    variant: 'filled',
+                    options: this.exampleOptions,
+                    value: ['grapefruits']
+                  })
+                )
+              )
             }),
             _react2.default.createElement(_lib.Documentation, {
-              name: 'MultipleSelectField with multiple selected options',
-              component: _react2.default.createElement(_lib.MultipleSelectField, {
-                changeHandler: logger,
-                fieldId: 'multipleSelectFieldWithMultipleSelectedOptions',
-                label: 'MultipleSelectField with multiple selected options',
-                options: this.exampleOptions,
-                value: ['apple', 'grapefruits']
-              })
+              name: 'Full width select field',
+              component: _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_lib.MultipleSelectField, {
+                  fieldId: 'multipleSelectFieldFullWidthOutline',
+                  changeHandler: logger,
+                  label: 'Favorite fruit',
+                  options: this.exampleOptions,
+                  fullWidth: true
+                }),
+                _react2.default.createElement(_lib.MultipleSelectField, {
+                  fieldId: 'multipleSelectFieldFullWidthFilled',
+                  changeHandler: logger,
+                  label: 'Favorite fruit',
+                  variant: 'filled',
+                  options: this.exampleOptions,
+                  fullWidth: true
+                })
+              )
             }),
             _react2.default.createElement(
               'h3',
@@ -55930,95 +56038,126 @@ var _MultipleSelectField2 = _interopRequireDefault(_MultipleSelectField);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MultipleSelectField = function MultipleSelectField(props) {
-  var labelClass = _MultipleSelectField2.default.label;
-  if (props.isLabelVisible) {
-    if (props.required) {
-      labelClass = _MultipleSelectField2.default.isLabelRequired;
-    }
-  } else {
-    labelClass = _MultipleSelectField2.default.isLabelHidden;
+  var labelVisibilityClass = '';
+  var rootFullWidthClass = '';
+  var rootLayoutClass = '';
+  var rootRequiredClass = '';
+  var rootValidationStateClass = '';
+  var rootVariantClass = '';
+
+  if (!props.isLabelVisible) {
+    labelVisibilityClass = _MultipleSelectField2.default.isLabelHidden;
   }
 
-  var rootClass = _MultipleSelectField2.default.root;
-  if (props.isLabelVisible) {
-    if (props.disabled) {
-      rootClass = _MultipleSelectField2.default.isRootDisabled;
-    }
-  } else {
-    rootClass = _MultipleSelectField2.default.isRootCondensed;
+  if (props.fullWidth) {
+    rootFullWidthClass = _MultipleSelectField2.default.isRootFullWidth;
+  }
+
+  if (props.layout === 'horizontal') {
+    rootLayoutClass = _MultipleSelectField2.default.rootLayoutHorizontal;
+  } else if (props.layout === 'vertical') {
+    rootLayoutClass = _MultipleSelectField2.default.rootLayoutVertical;
+  }
+
+  if (props.required) {
+    rootRequiredClass = _MultipleSelectField2.default.isRootRequired;
+  }
+
+  if (props.validationState === 'invalid') {
+    rootValidationStateClass = _MultipleSelectField2.default.isRootStateInvalid;
+  } else if (props.validationState === 'valid') {
+    rootValidationStateClass = _MultipleSelectField2.default.isRootStateValid;
+  } else if (props.validationState === 'warning') {
+    rootValidationStateClass = _MultipleSelectField2.default.isRootStateWarning;
+  }
+
+  if (props.variant === 'filled') {
+    rootVariantClass = _MultipleSelectField2.default.rootVariantFilled;
+  } else if (props.variant === 'outline') {
+    rootVariantClass = _MultipleSelectField2.default.rootVariantOutline;
   }
 
   return _react2.default.createElement(
     'div',
-    { className: rootClass },
+    {
+      className: ('\n        ' + _MultipleSelectField2.default.root + '\n        ' + rootFullWidthClass + '\n        ' + rootLayoutClass + '\n        ' + rootRequiredClass + '\n        ' + rootValidationStateClass + '\n        ' + rootVariantClass + '\n      ').trim()
+    },
     _react2.default.createElement(
       'label',
-      { htmlFor: props.fieldId },
+      { className: _MultipleSelectField2.default.container, htmlFor: props.fieldId },
       _react2.default.createElement(
         'div',
-        { className: labelClass },
+        {
+          className: ('\n            ' + _MultipleSelectField2.default.label + '\n            ' + labelVisibilityClass + '\n          ').trim()
+        },
         props.label
       ),
       _react2.default.createElement(
-        'select',
-        {
-          id: props.fieldId,
-          disabled: props.disabled,
-          multiple: true,
-          required: props.required,
-          value: props.value,
-          className: props.error ? _MultipleSelectField2.default.isSelectInvalid : _MultipleSelectField2.default.select,
-          onChange: props.changeHandler
-        },
-        props.options.map(function (option) {
-          return _react2.default.createElement(
-            'option',
-            {
-              key: option.value,
-              value: option.value
-            },
-            option.label
-          );
-        })
+        'div',
+        { className: _MultipleSelectField2.default.inputContainer },
+        _react2.default.createElement(
+          'select',
+          {
+            className: _MultipleSelectField2.default.input,
+            disabled: props.disabled,
+            id: props.fieldId,
+            multiple: true,
+            onChange: props.changeHandler,
+            required: props.required,
+            value: props.value
+          },
+          props.options.map(function (option) {
+            return _react2.default.createElement(
+              'option',
+              {
+                key: option.value,
+                value: option.value
+              },
+              option.label
+            );
+          })
+        ),
+        props.variant === 'filled' && _react2.default.createElement('div', { className: _MultipleSelectField2.default.bottomLine })
       )
     ),
-    props.description && _react2.default.createElement(
+    props.helperText && _react2.default.createElement(
       'div',
-      { className: _MultipleSelectField2.default.description },
-      props.description
-    ),
-    props.error && _react2.default.createElement(
-      'div',
-      { className: _MultipleSelectField2.default.error },
-      props.error
+      { className: _MultipleSelectField2.default.helperText },
+      props.helperText
     )
   );
 };
 
 MultipleSelectField.defaultProps = {
   changeHandler: null,
-  description: null,
   disabled: false,
-  error: null,
+  fullWidth: false,
+  helperText: null,
   isLabelVisible: true,
+  layout: 'vertical',
   required: false,
-  value: []
+  validationState: null,
+  value: [],
+  variant: 'outline'
 };
 
 MultipleSelectField.propTypes = {
   changeHandler: _propTypes2.default.func,
-  description: _propTypes2.default.string,
   disabled: _propTypes2.default.bool,
-  error: _propTypes2.default.string,
   fieldId: _propTypes2.default.string.isRequired,
+  fullWidth: _propTypes2.default.bool,
+  helperText: _propTypes2.default.string,
   isLabelVisible: _propTypes2.default.bool,
   label: _propTypes2.default.string.isRequired,
+  layout: _propTypes2.default.oneOf(['horizontal', 'vertical']),
   options: _propTypes2.default.arrayOf(_propTypes2.default.shape({
     label: _propTypes2.default.string.isRequired,
     value: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number])
   })).isRequired,
   required: _propTypes2.default.bool,
-  value: _propTypes2.default.arrayOf(_propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]))
+  validationState: _propTypes2.default.oneOf(['invalid', 'valid', 'warning']),
+  value: _propTypes2.default.arrayOf(_propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number])),
+  variant: _propTypes2.default.oneOf(['filled', 'outline'])
 };
 
 exports.default = MultipleSelectField;
@@ -56082,20 +56221,27 @@ exports = module.exports = __webpack_require__(13)(false);
 
 
 // module
-exports.push([module.i, ".MultipleSelectField__root___auQhi {\n  position: relative;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 0 0.25rem 0 0;\n  margin-bottom: 1rem; }\n  .MultipleSelectField__root___auQhi::after {\n    content: '';\n    position: absolute;\n    top: 2.52083rem;\n    right: 0.5rem;\n    width: 0.41667rem;\n    height: 0.41667rem;\n    margin: 0;\n    vertical-align: middle;\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2012%2012%22%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3Cstyle%3E.cls-1%7Bfill%3A%239a9a9a%3B%7D%3C%2Fstyle%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Ctitle%3ECaret%3C%2Ftitle%3E%0A%20%20%20%20%3Cpath%20class%3D%22cls-1%22%20d%3D%22M6%2C9L1.2%2C4.2a0.68%2C0.68%2C0%2C0%2C1%2C1-1L6%2C7.08%2C9.84%2C3.24a0.68%2C0.68%2C0%2C1%2C1%2C1%2C1Z%22%2F%3E%0A%3C%2Fsvg%3E%0A\");\n    background-size: contain;\n    background-repeat: no-repeat; }\n\n.MultipleSelectField__isRootDisabled___oMn2Z {\n  opacity: 0.5;\n  cursor: not-allowed; }\n  .MultipleSelectField__isRootDisabled___oMn2Z:hover::after {\n    color: #9a9a9a; }\n\n.MultipleSelectField__isRootCondensed___3_keQ { }\n  .MultipleSelectField__isRootCondensed___3_keQ::after {\n    top: 0.77083rem; }\n\n.MultipleSelectField__label___1_U6Y {\n  display: inline-block;\n  margin-bottom: 0.25rem; }\n\n.MultipleSelectField__isLabelRequired___3KFtw { }\n  .MultipleSelectField__isLabelRequired___3KFtw::after {\n    content: ' *'; }\n\n.MultipleSelectField__isLabelHidden___ySRcP {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border: 0; }\n\n.MultipleSelectField__select___25-Dy {\n  height: auto;\n  padding: 0;\n  margin: 0;\n  border: 0;\n  border-radius: 0;\n  background: none;\n  -webkit-box-shadow: none;\n          box-shadow: none;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  display: inline-block;\n  min-width: 2.5rem;\n  color: #000;\n  border-bottom: var(--rui-border-width) solid #9a9a9a;\n  position: relative;\n  z-index: 2;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  width: 100%;\n  padding: 0;\n  font-family: var(--rui-typography-font-family-base);\n  border: var(--rui-border-width) solid #9a9a9a;\n  cursor: pointer; }\n  .MultipleSelectField__select___25-Dy:focus {\n    outline: 0; }\n\n.MultipleSelectField__select___25-Dy::-ms-expand {\n  display: none; }\n\n.MultipleSelectField__select___25-Dy:disabled {\n  opacity: 0.5;\n  cursor: not-allowed; }\n  .MultipleSelectField__select___25-Dy:disabled:hover {\n    border-color: #9a9a9a;\n    background: none; }\n\n.MultipleSelectField__select___25-Dy > option {\n  color: #000; }\n\n.MultipleSelectField__isSelectInvalid___21aQG {\n  border: var(--rui-border-width) solid #a32100;\n  background: -webkit-gradient(linear, left top, left bottom, color-stop(95%, transparent), color-stop(95%, #a32100));\n  background: linear-gradient(to bottom, transparent 95%, #a32100 95%); }\n\n.MultipleSelectField__description___2BU9Z,\n.MultipleSelectField__error___1EPHt {\n  font-size: 0.8rem; }\n\n.MultipleSelectField__error___1EPHt {\n  min-height: 1rem;\n  color: #a32100; }\n", ""]);
+exports.push([module.i, ".MultipleSelectField__root___auQhi {\n  position: relative;\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex; }\n  .MultipleSelectField__root___auQhi:not(:last-of-type) {\n    margin-right: var(--rui-offset-2); }\n  .MultipleSelectField__root___auQhi.MultipleSelectField__rootLayoutHorizontal___3jdFc:not(:last-of-type) {\n    margin-right: calc(2 * var(--rui-offset-2)); }\n\n.MultipleSelectField__input___VAGkf {\n  -webkit-transition-property: opacity, color, border, background, -webkit-box-shadow;\n  transition-property: opacity, color, border, background, -webkit-box-shadow;\n  transition-property: opacity, color, border, background, box-shadow;\n  transition-property: opacity, color, border, background, box-shadow, -webkit-box-shadow;\n  -webkit-transition-duration: 150ms;\n          transition-duration: 150ms;\n  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n  width: 100%;\n  min-width: 240px;\n  height: 2.25rem;\n  padding: var(--rui-offset-1) var(--rui-offset-3);\n  font-weight: 400;\n  line-height: 1.5rem;\n  font-family: var(--rui-typography-font-family-base);\n  vertical-align: middle;\n  border: var(--rui-form-field-border-width) solid var(--rui-form-field-border-color);\n  border-radius: var(--rui-form-field-border-radius);\n  -webkit-box-shadow: none;\n          box-shadow: none;\n  height: auto;\n  min-height: 2.25rem; }\n  .MultipleSelectField__input___VAGkf::-webkit-input-placeholder {\n    opacity: 1;\n    color: var(--rui-form-field-placeholder-color); }\n  .MultipleSelectField__input___VAGkf:-ms-input-placeholder {\n    opacity: 1;\n    color: var(--rui-form-field-placeholder-color); }\n  .MultipleSelectField__input___VAGkf::-ms-input-placeholder {\n    opacity: 1;\n    color: var(--rui-form-field-placeholder-color); }\n  .MultipleSelectField__input___VAGkf::placeholder {\n    opacity: 1;\n    color: var(--rui-form-field-placeholder-color); }\n  .MultipleSelectField__input___VAGkf:hover {\n    border-color: var(--rui-form-field-hover-border-color); }\n  .MultipleSelectField__input___VAGkf:focus {\n    border-color: var(--rui-form-field-focus-border-color); }\n  .MultipleSelectField__input___VAGkf:disabled {\n    opacity: 0.5;\n    -webkit-box-shadow: none;\n            box-shadow: none;\n    cursor: not-allowed;\n    border-color: var(--rui-form-field-border-color); }\n\n.MultipleSelectField__bottomLine___1gqLz {\n  -webkit-transition-property: opacity, -webkit-transform;\n  transition-property: opacity, -webkit-transform;\n  transition-property: transform, opacity;\n  transition-property: transform, opacity, -webkit-transform;\n  -webkit-transition-duration: 180ms;\n          transition-duration: 180ms;\n  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n  opacity: 0;\n  width: 100%;\n  height: 2px;\n  margin-top: -2px;\n  -webkit-transform: scaleX(0);\n          transform: scaleX(0);\n  -webkit-transform-origin: center center;\n          transform-origin: center center;\n  pointer-events: none; }\n  .MultipleSelectField__input___VAGkf:focus ~ .MultipleSelectField__bottomLine___1gqLz {\n    opacity: 1;\n    background-color: var(--rui-form-field-focus-border-color);\n    -webkit-transform: scaleX(1);\n            transform: scaleX(1); }\n\n.MultipleSelectField__helperText___OVAhC {\n  font-size: var(--rui-form-field-helper-text-font-size);\n  color: var(--rui-form-field-helper-text-color); }\n\n.MultipleSelectField__rootVariantFilled___213kO .MultipleSelectField__input___VAGkf {\n  color: var(--rui-form-field-filled-default-color);\n  background-color: var(--rui-form-field-filled-default-background);\n  border-top-color: transparent;\n  border-right-color: transparent;\n  border-left-color: transparent;\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0; }\n  .MultipleSelectField__rootVariantFilled___213kO .MultipleSelectField__input___VAGkf:focus {\n    color: var(--rui-form-field-filled-focus-color);\n    background-color: var(--rui-form-field-filled-focus-background); }\n\n.MultipleSelectField__rootVariantOutline___H1FnD .MultipleSelectField__input___VAGkf {\n  color: var(--rui-form-field-outline-default-color);\n  background-color: var(--rui-form-field-outline-default-background);\n  -webkit-box-shadow: var(--rui-form-field-outline-default-box-shadow);\n          box-shadow: var(--rui-form-field-outline-default-box-shadow); }\n  .MultipleSelectField__rootVariantOutline___H1FnD .MultipleSelectField__input___VAGkf:focus {\n    color: var(--rui-form-field-outline-focus-color);\n    background-color: var(--rui-form-field-outline-focus-background);\n    -webkit-box-shadow: var(--rui-form-field-outline-focus-box-shadow);\n            box-shadow: var(--rui-form-field-outline-focus-box-shadow); }\n\n.MultipleSelectField__isRootRequired___3yADN .MultipleSelectField__label___1_U6Y::after {\n  content: var(--rui-form-field-required-sign);\n  color: var(--rui-form-field-required-sign-color); }\n\n.MultipleSelectField__isRootStateInvalid___3DpoQ .MultipleSelectField__input___VAGkf {\n  border-color: var(--rui-form-field-invalid-border-color);\n  background-color: var(--rui-form-field-invalid-background); }\n  .MultipleSelectField__isRootStateInvalid___3DpoQ .MultipleSelectField__input___VAGkf:hover {\n    border-color: var(--rui-form-field-hover-border-color); }\n  .MultipleSelectField__isRootStateInvalid___3DpoQ .MultipleSelectField__input___VAGkf:focus {\n    border-color: var(--rui-form-field-focus-border-color); }\n\n.MultipleSelectField__isRootStateInvalid___3DpoQ .MultipleSelectField__helperText___OVAhC {\n  color: var(--rui-form-field-invalid-color); }\n\n.MultipleSelectField__isRootStateInvalid___3DpoQ.MultipleSelectField__rootVariantFilled___213kO .MultipleSelectField__input___VAGkf {\n  border-top-color: transparent;\n  border-right-color: transparent;\n  border-left-color: transparent; }\n\n.MultipleSelectField__isRootStateValid___Xe-nl .MultipleSelectField__input___VAGkf {\n  border-color: var(--rui-form-field-valid-border-color);\n  background-color: var(--rui-form-field-valid-background); }\n  .MultipleSelectField__isRootStateValid___Xe-nl .MultipleSelectField__input___VAGkf:hover {\n    border-color: var(--rui-form-field-hover-border-color); }\n  .MultipleSelectField__isRootStateValid___Xe-nl .MultipleSelectField__input___VAGkf:focus {\n    border-color: var(--rui-form-field-focus-border-color); }\n\n.MultipleSelectField__isRootStateValid___Xe-nl .MultipleSelectField__helperText___OVAhC {\n  color: var(--rui-form-field-valid-color); }\n\n.MultipleSelectField__isRootStateValid___Xe-nl.MultipleSelectField__rootVariantFilled___213kO .MultipleSelectField__input___VAGkf {\n  border-top-color: transparent;\n  border-right-color: transparent;\n  border-left-color: transparent; }\n\n.MultipleSelectField__isRootStateWarning___39Q_U .MultipleSelectField__input___VAGkf {\n  border-color: var(--rui-form-field-warning-border-color);\n  background-color: var(--rui-form-field-warning-background); }\n  .MultipleSelectField__isRootStateWarning___39Q_U .MultipleSelectField__input___VAGkf:hover {\n    border-color: var(--rui-form-field-hover-border-color); }\n  .MultipleSelectField__isRootStateWarning___39Q_U .MultipleSelectField__input___VAGkf:focus {\n    border-color: var(--rui-form-field-focus-border-color); }\n\n.MultipleSelectField__isRootStateWarning___39Q_U .MultipleSelectField__helperText___OVAhC {\n  color: var(--rui-form-field-warning-color); }\n\n.MultipleSelectField__isRootStateWarning___39Q_U.MultipleSelectField__rootVariantFilled___213kO .MultipleSelectField__input___VAGkf {\n  border-top-color: transparent;\n  border-right-color: transparent;\n  border-left-color: transparent; }\n\n.MultipleSelectField__isLabelHidden___ySRcP {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border: 0; }\n\n.MultipleSelectField__isRootFullWidth___2i42h {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  width: 100%; }\n  .MultipleSelectField__isRootFullWidth___2i42h .MultipleSelectField__inputContainer___U1rN6 {\n    -webkit-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1; }\n  .MultipleSelectField__isRootFullWidth___2i42h:not(:last-of-type) {\n    margin-bottom: var(--rui-offset-2); }\n  .MultipleSelectField__isRootFullWidth___2i42h:not(:last-of-type), .MultipleSelectField__isRootFullWidth___2i42h.MultipleSelectField__rootLayoutHorizontal___3jdFc:not(:last-of-type) {\n    margin-right: 0; }\n\n.MultipleSelectField__rootLayoutHorizontal___3jdFc,\n.MultipleSelectField__rootLayoutHorizontal___3jdFc .MultipleSelectField__container___LB4ht {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n\n.MultipleSelectField__rootLayoutHorizontal___3jdFc .MultipleSelectField__container___LB4ht {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1; }\n\n.MultipleSelectField__rootLayoutHorizontal___3jdFc .MultipleSelectField__label___1_U6Y {\n  min-width: var(--rui-form-field-horizontal-label-min-width);\n  padding-right: var(--rui-offset-2);\n  margin-top: calc(var(--rui-form-field-input-font-size) - var(--rui-form-field-label-font-size));\n  text-align: var(--rui-form-field-horizontal-label-alignment); }\n\n.MultipleSelectField__rootLayoutHorizontal___3jdFc .MultipleSelectField__helperText___OVAhC {\n  padding-left: var(--rui-offset-2);\n  margin-top: calc(var(--rui-form-field-input-font-size) - var(--rui-form-field-helper-text-font-size)); }\n\n.MultipleSelectField__rootLayoutVertical___1XNmo {\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n  .MultipleSelectField__rootLayoutVertical___1XNmo .MultipleSelectField__label___1_U6Y {\n    padding-bottom: var(--rui-offset-1); }\n  .MultipleSelectField__rootLayoutVertical___1XNmo .MultipleSelectField__helperText___OVAhC {\n    padding-top: var(--rui-offset-1); }\n", ""]);
 
 // exports
 exports.locals = {
 	"root": "MultipleSelectField__root___auQhi",
-	"isRootDisabled": "MultipleSelectField__isRootDisabled___oMn2Z",
-	"isRootCondensed": "MultipleSelectField__isRootCondensed___3_keQ MultipleSelectField__root___auQhi",
+	"rootLayoutHorizontal": "MultipleSelectField__rootLayoutHorizontal___3jdFc",
+	"input": "MultipleSelectField__input___VAGkf",
+	"bottomLine": "MultipleSelectField__bottomLine___1gqLz",
+	"helperText": "MultipleSelectField__helperText___OVAhC",
+	"rootVariantFilled": "MultipleSelectField__rootVariantFilled___213kO",
+	"rootVariantOutline": "MultipleSelectField__rootVariantOutline___H1FnD",
+	"isRootRequired": "MultipleSelectField__isRootRequired___3yADN",
 	"label": "MultipleSelectField__label___1_U6Y",
-	"isLabelRequired": "MultipleSelectField__isLabelRequired___3KFtw MultipleSelectField__label___1_U6Y",
+	"isRootStateInvalid": "MultipleSelectField__isRootStateInvalid___3DpoQ",
+	"isRootStateValid": "MultipleSelectField__isRootStateValid___Xe-nl",
+	"isRootStateWarning": "MultipleSelectField__isRootStateWarning___39Q_U",
 	"isLabelHidden": "MultipleSelectField__isLabelHidden___ySRcP",
-	"select": "MultipleSelectField__select___25-Dy",
-	"isSelectInvalid": "MultipleSelectField__isSelectInvalid___21aQG MultipleSelectField__select___25-Dy",
-	"description": "MultipleSelectField__description___2BU9Z",
-	"error": "MultipleSelectField__error___1EPHt"
+	"isRootFullWidth": "MultipleSelectField__isRootFullWidth___2i42h",
+	"inputContainer": "MultipleSelectField__inputContainer___U1rN6",
+	"container": "MultipleSelectField__container___LB4ht",
+	"rootLayoutVertical": "MultipleSelectField__rootLayoutVertical___1XNmo"
 };
 
 /***/ }),

@@ -306,67 +306,161 @@ class DemoContainer extends React.Component {
                 </React.Fragment>
               )}
             />
-            <h3 id="components-multiple-selectfield" className="typography-size-4 offset-6">Multiple select field</h3>
+            <h3 id="components-multiple-selectfield" className="typography-size-4 offset-6">Multiple Select Field</h3>
             <Documentation
-              name="MultipleSelectField"
+              name="Multiple select field variants"
               component={(
-                <MultipleSelectField
-                  changeHandler={logger}
-                  fieldId="multipleSelectField"
-                  label="MultipleSelectField"
-                  options={this.exampleOptions}
-                />
+                <div>
+                  <MultipleSelectField
+                    changeHandler={logger}
+                    fieldId="multipleSelectFieldVariantOutline"
+                    label="Outline"
+                    options={this.exampleOptions}
+                  />
+                  <MultipleSelectField
+                    changeHandler={logger}
+                    fieldId="multipleSelectFieldVariantFilled"
+                    label="Filled"
+                    options={this.exampleOptions}
+                    variant="filled"
+                  />
+                </div>
               )}
             />
             <Documentation
-              name="MultipleSelectField with description and required"
+              name="Required with helper text"
               component={(
-                <MultipleSelectField
-                  changeHandler={logger}
-                  fieldId="multipleSelectFieldDescriptionRequired"
-                  label="MultipleSelectField with description and required"
-                  description="Choose which choice you prefer"
-                  options={this.exampleOptions}
-                  required
-                />
+                <div>
+                  <MultipleSelectField
+                    fieldId="multipleSelectFieldWithDescriptionOutline"
+                    changeHandler={logger}
+                    label="Favorite fruit"
+                    helperText="What is your favorite fruit?"
+                    options={this.exampleOptions}
+                    required
+                  />
+                  <MultipleSelectField
+                    fieldId="multipleSelectFieldWithDescriptionFilled"
+                    changeHandler={logger}
+                    label="Favorite fruit"
+                    helperText="What is your favorite fruit?"
+                    variant="filled"
+                    options={this.exampleOptions}
+                    required
+                  />
+                </div>
               )}
             />
             <Documentation
-              name="MultipleSelectField with error"
+              name="Disabled multiple select field"
               component={(
-                <MultipleSelectField
-                  changeHandler={logger}
-                  fieldId="multipleSelectFieldError"
-                  label="MultipleSelectField with error"
-                  description="Choose which choice you prefer"
-                  error="You have to choose"
-                  options={this.exampleOptions}
-                />
+                <div>
+                  <MultipleSelectField
+                    fieldId="multipleSelectFieldDisabledOutline"
+                    changeHandler={logger}
+                    label="Disabled multiple select field"
+                    options={this.exampleOptions}
+                    disabled
+                  />
+                  <MultipleSelectField
+                    fieldId="multipleSelectFieldDisabledFilled"
+                    changeHandler={logger}
+                    label="Disabled multiple select field"
+                    variant="filled"
+                    options={this.exampleOptions}
+                    disabled
+                  />
+                </div>
               )}
             />
             <Documentation
-              name="MultipleSelectField with error and hidden label"
+              name="Validation states"
               component={(
-                <MultipleSelectField
-                  changeHandler={logger}
-                  fieldId="multipleSelectFieldErrorHiddenLabel"
-                  label="MultipleSelectField with error and hidden label"
-                  isLabelVisible={false}
-                  options={this.exampleOptions}
-                  disabled
-                />
+                <div>
+                  <div>
+                    <MultipleSelectField
+                      fieldId="multipleSelectFieldValidationValidOutline"
+                      changeHandler={logger}
+                      label="Favorite fruit"
+                      helperText="Looks good!"
+                      validationState="valid"
+                      options={this.exampleOptions}
+                      value={['apples']}
+                    />
+                    <MultipleSelectField
+                      fieldId="multipleSelectFieldValidationWarningOutline"
+                      changeHandler={logger}
+                      label="Favorite fruit"
+                      helperText="Really…?"
+                      validationState="warning"
+                      options={this.exampleOptions}
+                      value={['bananas']}
+                    />
+                    <MultipleSelectField
+                      fieldId="multipleSelectFieldValidationInvalidOutline"
+                      changeHandler={logger}
+                      label="Favorite fruit"
+                      helperText="Uh…"
+                      validationState="invalid"
+                      options={this.exampleOptions}
+                      value={['grapefruits']}
+                    />
+                  </div>
+                  <div>
+                    <MultipleSelectField
+                      fieldId="multipleSelectFieldValidationValidFilled"
+                      changeHandler={logger}
+                      label="Favorite fruit"
+                      helperText="Looks good!"
+                      validationState="valid"
+                      variant="filled"
+                      options={this.exampleOptions}
+                      value={['apples']}
+                    />
+                    <MultipleSelectField
+                      fieldId="multipleSelectFieldValidationWarningOutline"
+                      changeHandler={logger}
+                      label="Favorite fruit"
+                      helperText="Really…?"
+                      validationState="warning"
+                      variant="filled"
+                      options={this.exampleOptions}
+                      value={['bananas']}
+                    />
+                    <MultipleSelectField
+                      fieldId="multipleSelectFieldValidationInvalidOutline"
+                      changeHandler={logger}
+                      label="Favorite fruit"
+                      helperText="Uh…"
+                      validationState="invalid"
+                      variant="filled"
+                      options={this.exampleOptions}
+                      value={['grapefruits']}
+                    />
+                  </div>
+                </div>
               )}
             />
             <Documentation
-              name="MultipleSelectField with multiple selected options"
+              name="Full width select field"
               component={(
-                <MultipleSelectField
-                  changeHandler={logger}
-                  fieldId="multipleSelectFieldWithMultipleSelectedOptions"
-                  label="MultipleSelectField with multiple selected options"
-                  options={this.exampleOptions}
-                  value={['apple', 'grapefruits']}
-                />
+                <div>
+                  <MultipleSelectField
+                    fieldId="multipleSelectFieldFullWidthOutline"
+                    changeHandler={logger}
+                    label="Favorite fruit"
+                    options={this.exampleOptions}
+                    fullWidth
+                  />
+                  <MultipleSelectField
+                    fieldId="multipleSelectFieldFullWidthFilled"
+                    changeHandler={logger}
+                    label="Favorite fruit"
+                    variant="filled"
+                    options={this.exampleOptions}
+                    fullWidth
+                  />
+                </div>
               )}
             />
             <h3 id="components-radio" className="typography-size-4 offset-6">Radio</h3>
