@@ -1,9 +1,12 @@
-@import "../../shared/settings/colors.deprecated";
+@import '../../shared/settings/borders';
+@import '../../shared/settings/colors';
+@import '../../shared/settings/offsets';
 
-$table-cell-padding-x: 0.5rem;
-$table-cell-padding-y: 0.25rem;
-$table-border-color: $gray-light-midtone;
-$table-background-color: $white;
-$table-head-background-color: $white;
-$table-hover-background-color: $light-gray;
-$table-sorted-background-color: $light-gray;
+$table-cell-padding-x: map-get($offset-values, 3);
+$table-cell-padding-y: map-get($offset-values, 1);
+$table-border-width: $border-width;
+$table-border-color: map-get($colors-grays, gray-100);
+$table-background-color: $color-white;
+$table-head-background-color: $color-white;
+$table-hover-background-color: map-get($colors-grays, gray-50);
+$table-sorted-background-color: map-get($colors-grays, gray-50);

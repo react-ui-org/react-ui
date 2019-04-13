@@ -28,9 +28,9 @@ class Table extends React.Component {
           <div className={styles.sortButton}>
             <Button
               clickHandler={() => sort.changeHandler(column.name, sortDirection)}
-              icon={sortDirection === 'asc' ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
-              isLabelVisible={false}
+              icon={sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward'}
               label={sortDirection}
+              labelVisibility="none"
               priority="flat"
             />
           </div>

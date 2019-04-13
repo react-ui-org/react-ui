@@ -1,3 +1,4 @@
+@import '../../shared/tools/transitions';
 @import 'variables';
 
 .tableWrapper {
@@ -15,6 +16,8 @@
 }
 
 .tableRow {
+  @include transition(background);
+
   background-color: $table-background-color;
 
   &:hover {
@@ -34,7 +37,7 @@
 .tableCell {
   padding: $table-cell-padding-y $table-cell-padding-x;
   text-align: left;
-  border-bottom: 1px solid $table-border-color;
+  border-bottom: $table-border-width solid $table-border-color;
 }
 
 .tableHeadCell {
