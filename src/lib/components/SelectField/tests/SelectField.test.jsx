@@ -7,6 +7,8 @@ import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
 import SelectField from '..';
 
+jest.mock('../../Icon/load-material-design-icons');
+
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
     const tree = shallow(<SelectField

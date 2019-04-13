@@ -43,7 +43,12 @@ exports[`rendering renders correctly mandatory props only 1`] = `
       </select>
       <div
         className="caret"
-      />
+      >
+        <Icon
+          icon="expand_more"
+          size="medium"
+        />
+      </div>
     </div>
   </label>
 </div>
@@ -86,7 +91,12 @@ exports[`rendering renders correctly only one option 1`] = `
       </select>
       <div
         className="caret"
-      />
+      >
+        <Icon
+          icon="expand_more"
+          size="medium"
+        />
+      </div>
     </div>
   </label>
 </div>
@@ -137,7 +147,12 @@ exports[`rendering renders correctly with all props 1`] = `
       </select>
       <div
         className="caret"
-      />
+      >
+        <Icon
+          icon="expand_more"
+          size="medium"
+        />
+      </div>
       <div
         className="bottomLine"
       />

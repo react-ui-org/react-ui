@@ -331,6 +331,8 @@
   --rui-form-field-helper-text-color: var(--rui-color-gray-500);
   --rui-form-field-required-sign: '\00a0*'; // non-breaking space and asterisk
   --rui-form-field-required-sign-color: var(--rui-color-gray-500);
+  --rui-form-field-caret-border-style: none;
+  --rui-form-field-caret-background: transparent;
   --rui-form-field-border-width: var(--rui-border-width);
   --rui-form-field-border-radius: var(--rui-border-radius);
   --rui-form-field-border-color: var(--rui-color-gray-200);

@@ -2,7 +2,6 @@
 @import 'typography';
 
 // 1. Field `line-height` is specified in `rem` so inputs do not break when their font size gets changed.
-// 2. Caret color is the same as `--rui-color-gray-600`. Value must be hardcoded as it is injected into SVG by SASS.
 
 $form-field-default-width: 240px;
 $form-field-height: 2.25rem;
@@ -11,8 +10,7 @@ $form-field-font-family: $typography-font-family-base;
 $form-field-font-weight: 400;
 $form-field-line-height: 1.5rem; // 1.
 $form-field-bottom-line-height: 2px;
-$form-field-caret-color: #666; // 2.
-$form-field-caret-size: 1rem;
+$form-field-caret-size: $form-field-height;
 $form-field-horizontal-inner-gap: map-get($offset-values, 2);
 $form-field-horizontal-outer-spacing: map-get($offset-values, 2);
 $form-field-vertical-inner-gap: map-get($offset-values, 1);

@@ -1,13 +1,18 @@
 @import '../settings/forms';
 @import '../themes/forms';
-@import '../tools/icons';
 @import 'explode';
 @import 'transitions';
 
+//
 // Foundation
+// ==========
+
 @mixin form-field() {
-  position: relative;
   display: inline-flex;
+}
+
+@mixin form-field-input-container() {
+  position: relative; // get ready for positioning of bottom line and caret
 }
 
 @mixin form-field-input() {
@@ -63,7 +68,7 @@
 }
 
 @mixin form-field-input-select() {
-  padding-right: calc(#{$form-field-caret-size} + 2 * #{map-get($offset-values, 3)});
+  padding-right: calc(#{$form-field-caret-size} - 2 * #{$form-field-border-width} + #{map-get($offset-values, 2)});
   appearance: none;
 
   &::-ms-expand {
@@ -77,15 +82,18 @@
 }
 
 @mixin form-field-caret() {
+  @include transition(border);
+
   position: absolute;
-  top: 50%;
-  right: map-get($offset-values, 3);
-  width: $form-field-caret-size;
-  height: $form-field-caret-size;
-  background-image: icon-generate-caret($form-field-caret-color);
-  background-size: contain;
-  background-repeat: no-repeat;
-  transform: translateY(-50%);
+  top: $form-field-border-width;
+  right: $form-field-border-width;
+  bottom: $form-field-border-width;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(#{$form-field-caret-size} - 2 * #{$form-field-border-width});
+  border-top-right-radius: $form-field-border-radius;
+  border-bottom-right-radius: $form-field-border-radius;
   pointer-events: none;
 
   .input:disabled ~ & {
@@ -96,10 +104,11 @@
 @mixin form-field-bottom-line() {
   @include transition((transform, opacity), 180ms);
 
+  position: absolute;
+  bottom: 0;
   opacity: 0;
   width: 100%;
   height: $form-field-bottom-line-height;
-  margin-top: -$form-field-bottom-line-height;
   transform: scaleX(0);
   transform-origin: center center;
   pointer-events: none;
@@ -123,7 +132,10 @@
   }
 }
 
+//
 // Variants
+// ========
+
 @mixin form-field-input-variant($variant) {
   $variant-states: map-get($form-field-variants, $variant);
 
@@ -142,7 +154,31 @@
   }
 }
 
+@mixin form-field-input-outline-caret() {
+  $variant-states: map-get($form-field-variants, outline);
+
+  & ~ .caret {
+    border-left: $form-field-border-width $form-field-caret-border-style $form-field-border-color;
+    background-color: $form-field-caret-background;
+  }
+
+  &:hover ~ .caret {
+    border-left-color: $form-field-hover-border-color;
+  }
+
+  &:focus ~ .caret {
+    border-left-color: $form-field-focus-border-color;
+  }
+
+  &:disabled ~ .caret {
+    border-left-color: $form-field-border-color;
+  }
+}
+
+//
 // States
+// ======
+
 @mixin form-field-disabled() {
   opacity: 0.5;
   box-shadow: none;
@@ -176,9 +212,21 @@
   }
 }
 
+@mixin form-field-caret-state($state) {
+  $state-properties: map-get($form-field-states, $state);
+
+  &.rootVariantOutline .caret {
+    border-left-color: map-get($state-properties, border-color);
+  }
+}
+
+//
 // Layouts
-// 1. Unfortunately, `align-items: baseline` does not work with empty inputs in Safari
+// =======
+//
+// 1. Unfortunately, `align-items: baseline` does not work with empty inputs in Safari,
 // so we must emulate this behavior.
+
 @mixin form-field-full-width() {
   display: flex;
   width: 100%;
@@ -225,9 +273,13 @@
   }
 }
 
+//
 // Relationships
+// =============
+//
 // 1. Increase spacing in horizontal layout to visually separate fields.
 // 2. Reset horizontal spacing for vertical neighbors.
+
 @mixin form-field-horizontal-neighbor() {
   &:not(:last-of-type) {
     margin-right: $form-field-horizontal-outer-spacing;

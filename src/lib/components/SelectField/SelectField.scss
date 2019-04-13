@@ -8,7 +8,7 @@
 }
 
 .inputContainer {
-  position: relative; // get ready for caret
+  @include form-field-input-container();
 }
 
 .input {
@@ -35,6 +35,7 @@
 
 .rootVariantOutline .input {
   @include form-field-input-variant(outline);
+  @include form-field-input-outline-caret();
 }
 
 // States
@@ -44,14 +45,17 @@
 
 .isRootStateInvalid {
   @include form-field-state(invalid);
+  @include form-field-caret-state(invalid);
 }
 
 .isRootStateValid {
   @include form-field-state(valid);
+  @include form-field-caret-state(valid);
 }
 
 .isRootStateWarning {
   @include form-field-state(warning);
+  @include form-field-caret-state(warning);
 }
 
 // Invisible label
