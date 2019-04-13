@@ -2,6 +2,7 @@
 @import '../../shared/settings/offsets';
 @import '../../shared/settings/typography';
 @import '../../shared/tools/spacing';
+@import '../../shared/tools/transitions';
 
 .headline {
   padding: map-get($offset-values, 6) map-get($offset-values, 5) map-get($offset-values, 2);
@@ -17,6 +18,8 @@
 
 .navigationLink,
 .subnavigationLink {
+  @include transition((color, background));
+
   display: block;
   padding: map-get($offset-values, 3) map-get($offset-values, 5);
   text-decoration: none;

@@ -1,6 +1,7 @@
 @import '../settings/forms';
 @import '../themes/forms';
 @import 'explode';
+@import 'transitions';
 
 // Foundation
 @mixin form-field() {
@@ -9,6 +10,8 @@
 }
 
 @mixin form-field-input($multiline: false) {
+  @include transition((opacity, color, border, background, box-shadow));
+
   width: 100%;
   min-width: $form-field-default-width;
   height: $form-field-height;
@@ -54,12 +57,15 @@
 }
 
 @mixin form-field-bottom-line() {
+  @include transition((transform, opacity), 180ms);
+
   opacity: 0;
   width: 100%;
   height: $form-field-bottom-line-height;
   margin-top: -$form-field-bottom-line-height;
   transform: scaleX(0);
   transform-origin: center center;
+  pointer-events: none;
 
   .input:focus ~ & {
     opacity: 1;

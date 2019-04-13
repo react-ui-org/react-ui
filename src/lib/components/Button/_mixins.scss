@@ -1,9 +1,12 @@
 @import '../../shared/tools/explode';
 @import '../../shared/tools/forms';
+@import '../../shared/tools/transitions';
 @import 'variables';
 @import 'theme';
 
 @mixin button() {
+  @include transition((opacity, color, border, background, box-shadow));
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
