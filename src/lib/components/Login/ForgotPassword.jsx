@@ -79,4 +79,4 @@ ForgotPassword.propTypes = {
   }).isRequired,
 };
 
-export default withTranslationContext(ForgotPassword);
+export default withTranslationContext(ForgotPassword, 'ForgotPassword');

@@ -91,4 +91,4 @@ Login.propTypes = {
   usernameType: PropTypes.oneOf(['email', PropTypes.string]),
 };
 
-export default withTranslationContext(Login);
+export default withTranslationContext(Login, 'Login');

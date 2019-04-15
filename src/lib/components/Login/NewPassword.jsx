@@ -88,4 +88,4 @@ NewPassword.propTypes = {
   }).isRequired,
 };
 
-export default withTranslationContext(NewPassword);
+export default withTranslationContext(NewPassword, 'NewPassword');

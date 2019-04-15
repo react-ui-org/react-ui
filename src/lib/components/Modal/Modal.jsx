@@ -125,4 +125,4 @@ Modal.propTypes = {
   }).isRequired,
 };
 
-export default withTranslationContext(Modal);
+export default withTranslationContext(Modal, 'Modal');
