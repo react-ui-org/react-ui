@@ -114,77 +114,69 @@ exports[`rendering renders correctly with all props except translations 1`] = `
         <div
           className="footer"
         >
-          <span
-            className="button"
+          <Button
+            block={false}
+            clickHandler={[Function]}
+            disabled={false}
+            icon={null}
+            iconPosition="before"
+            key="Action"
+            label="Action"
+            labelVisibility="all"
+            loading={false}
+            priority="default"
+            size="medium"
+            type="button"
+            variant="primary"
           >
-            <Button
-              block={false}
-              clickHandler={[Function]}
+            <button
+              className="root
+                    priorityDefault
+                    sizeMedium
+                    variantPrimary"
               disabled={false}
-              icon={null}
-              iconPosition="before"
-              key="Action"
-              label="Action"
-              labelVisibility="all"
-              loading={false}
-              priority="default"
-              size="medium"
+              onClick={[Function]}
+              title={null}
               type="button"
-              variant="primary"
             >
-              <button
-                className="root
-                      priorityDefault
-                      sizeMedium
-                      variantPrimary"
-                disabled={false}
-                onClick={[Function]}
-                title={null}
-                type="button"
+              <span
+                className="label"
               >
-                <span
-                  className="label"
-                >
-                  Action
-                </span>
-              </button>
-            </Button>
-          </span>
-          <span
-            className="button"
+                Action
+              </span>
+            </button>
+          </Button>
+          <Button
+            block={false}
+            clickHandler={[Function]}
+            disabled={false}
+            icon={null}
+            iconPosition="before"
+            label="Close"
+            labelVisibility="all"
+            loading={false}
+            priority="flat"
+            size="medium"
+            type="button"
+            variant="primary"
           >
-            <Button
-              block={false}
-              clickHandler={[Function]}
+            <button
+              className="root
+                    priorityFlat
+                    sizeMedium
+                    variantPrimary"
               disabled={false}
-              icon={null}
-              iconPosition="before"
-              label="Close"
-              labelVisibility="all"
-              loading={false}
-              priority="flat"
-              size="medium"
+              onClick={[Function]}
+              title={null}
               type="button"
-              variant="primary"
             >
-              <button
-                className="root
-                      priorityFlat
-                      sizeMedium
-                      variantPrimary"
-                disabled={false}
-                onClick={[Function]}
-                title={null}
-                type="button"
+              <span
+                className="label"
               >
-                <span
-                  className="label"
-                >
-                  Close
-                </span>
-              </button>
-            </Button>
-          </span>
+                Close
+              </span>
+            </button>
+          </Button>
         </div>
       </div>
     </div>
@@ -234,11 +226,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
         </div>
         <div
           className="footer"
-        >
-          <span
-            className="button"
-          />
-        </div>
+        />
       </div>
     </div>
   </Modal>
@@ -348,44 +336,37 @@ exports[`rendering renders correctly with translations 1`] = `
         <div
           className="footer"
         >
-          <span
-            className="button"
-          />
-          <span
-            className="button"
+          <Button
+            block={false}
+            clickHandler={[Function]}
+            disabled={false}
+            icon={null}
+            iconPosition="before"
+            label="Zavřít"
+            labelVisibility="all"
+            loading={false}
+            priority="flat"
+            size="medium"
+            type="button"
+            variant="primary"
           >
-            <Button
-              block={false}
-              clickHandler={[Function]}
+            <button
+              className="root
+                    priorityFlat
+                    sizeMedium
+                    variantPrimary"
               disabled={false}
-              icon={null}
-              iconPosition="before"
-              label="Zavřít"
-              labelVisibility="all"
-              loading={false}
-              priority="flat"
-              size="medium"
+              onClick={[Function]}
+              title={null}
               type="button"
-              variant="primary"
             >
-              <button
-                className="root
-                      priorityFlat
-                      sizeMedium
-                      variantPrimary"
-                disabled={false}
-                onClick={[Function]}
-                title={null}
-                type="button"
+              <span
+                className="label"
               >
-                <span
-                  className="label"
-                >
-                  Zavřít
-                </span>
-              </button>
-            </Button>
-          </span>
+                Zavřít
+              </span>
+            </button>
+          </Button>
         </div>
       </div>
     </div>

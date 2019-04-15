@@ -1,30 +1,20 @@
-@import '../../shared/settings/colors.deprecated';
-@import './variables';
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 99;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-}
+@import 'theme';
+@import 'variables';
 
 .root {
   position: fixed;
   top: 50%;
   left: 50%;
-  z-index: 100;
+  z-index: $modal-zindex;
   display: flex;
   flex-direction: column;
-  width: 46.875rem;
-  max-width: calc(100% - (2 * #{$modal-offset-x}));
-  max-height: calc(100% - (2 * #{$modal-offset-x}));
+  width: $modal-width;
+  max-width: calc(100% - (2 * #{$modal-padding-x}));
+  max-height: calc(100% - (2 * #{$modal-padding-y}));
   overflow-y: auto;
   border-radius: $modal-border-radius;
-  background-color: $white;
-  box-shadow: 0 0 0.312rem 0 transparentize($black, 0.5);
+  background-color: $modal-background;
+  box-shadow: $modal-box-shadow;
   transform: translate(-50%, -50%);
 }
 
@@ -33,17 +23,17 @@
   flex: none;
   align-items: center;
   justify-content: space-between;
-  box-sizing: border-box;
-  padding: $modal-offset-y 0 $modal-offset-y $modal-offset-x;
-}
-
-.body {
-  padding: $modal-offset-y $modal-offset-x;
-  overflow-y: auto;
+  padding: $modal-padding-y 0 $modal-padding-y $modal-padding-x;
 }
 
 .headTitle {
-  margin: 0;
+  margin-bottom: 0;
+  font-size: $modal-head-title-font-size;
+}
+
+.body {
+  padding: $modal-padding-y $modal-padding-x;
+  overflow-y: auto;
 }
 
 .footer {
@@ -52,21 +42,26 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
-  padding: $modal-offset-y $modal-offset-x;
+  padding: $modal-padding-y $modal-padding-x;
   border-bottom-right-radius: $modal-border-radius;
   border-bottom-left-radius: $modal-border-radius;
-  background-color: $gray-light-midtone;
+  background-color: $modal-footer-background;
 }
 
-.button {
-  margin: 0.25rem 0.75rem;
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $modal-overlay-zindex;
+  width: 100vw;
+  height: 100vh;
+  background-color: $modal-overlay-background;
 }
 
 .isContentOverflowing .head {
-  box-shadow: 0 0.4rem 1.7rem transparentize($black, 0.8);
+  box-shadow: $modal-head-box-shadow;
 }
 
 .isContentOverflowing .footer {
-  box-shadow: 0 -0.4rem 2.7rem transparentize($black, 0.8);
+  box-shadow: $modal-footer-box-shadow;
 }

@@ -369,4 +369,13 @@
   --rui-form-field-warning-color: var(--rui-color-warning-darker);
   --rui-form-field-warning-border-color: var(--rui-color-warning-darker);
   --rui-form-field-warning-background: var(--rui-color-warning-light);
+
+  //
+  // Modal
+  // =====
+
+  --rui-modal-background: var(--rui-color-white);
+  --rui-modal-box-shadow: none;
+  --rui-modal-footer-background: var(--rui-color-gray-100);
+  --rui-modal-overlay-background: rgba(0, 0, 0, 0.5);
 }

@@ -77,26 +77,22 @@ class Modal extends React.Component {
             {this.props.children}
           </div>
           <div className={styles.footer}>
-            <span className={styles.button}>
-              {this.props.actions.map(action => (
-                <Button
-                  clickHandler={action.clickHandler}
-                  disabled={action.disabled}
-                  key={action.label}
-                  label={action.label}
-                  loading={action.loading}
-                  variant={action.variant}
-                />
-              ))}
-            </span>
+            {this.props.actions.map(action => (
+              <Button
+                clickHandler={action.clickHandler}
+                disabled={action.disabled}
+                key={action.label}
+                label={action.label}
+                loading={action.loading}
+                variant={action.variant}
+              />
+            ))}
             {this.props.closeHandler && (
-              <span className={styles.button}>
-                <Button
-                  clickHandler={this.props.closeHandler}
-                  label={this.props.translations.close}
-                  priority="flat"
-                />
-              </span>
+              <Button
+                clickHandler={this.props.closeHandler}
+                label={this.props.translations.close}
+                priority="flat"
+              />
             )}
           </div>
         </div>
