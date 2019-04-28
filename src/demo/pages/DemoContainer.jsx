@@ -280,12 +280,10 @@ class DemoContainer extends React.Component {
               name="Modal label"
               component={(
                 <React.Fragment>
-                  {!this.state.showModal && (
-                    <Button
-                      label="Open modal"
-                      clickHandler={() => this.setState({ showModal: true })}
-                    />
-                  )}
+                  <Button
+                    label="Open modal"
+                    clickHandler={() => this.setState({ showModal: true })}
+                  />
                   {this.state.showModal && (
                     <Modal
                       actions={[
