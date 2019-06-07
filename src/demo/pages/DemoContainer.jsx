@@ -255,6 +255,9 @@ class DemoContainer extends React.Component {
               )}
             />
             <h3 id="components-icon" className="typography-size-4 offset-6">Icon</h3>
+            <p>
+              We use <a href="https://material.io/tools/icons/" target="_blank" rel="noopener noreferrer">Material Design icons</a>.
+            </p>
             <Documentation
               name="Icon – default"
               component={<Icon icon="book" />}
