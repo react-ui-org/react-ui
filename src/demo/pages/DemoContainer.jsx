@@ -5,6 +5,7 @@ import '../../lib/core/core.scss';
 
 // React UI components
 import {
+  Alert,
   Button,
   Card,
   CheckboxField,
@@ -116,6 +117,50 @@ class DemoContainer extends React.Component {
           </section>
           <section id="components" className="offset-7">
             <h2 className="typography-size-5 offset-6">Components</h2>
+            <h3 id="components-alert" className="typography-size-4 offset-6">Alert</h3>
+            <Documentation
+              name="Message types"
+              component={(
+                <div>
+                  <Alert type="success">
+                    <span>
+                      <strong>Success: </strong>
+                      Success message
+                    </span>
+                  </Alert>
+                  <Alert type="warning">
+                    <span>
+                      <strong>Warning: </strong>
+                      Warning message
+                    </span>
+                  </Alert>
+                  <Alert type="error">
+                    <span>
+                      <strong>Error: </strong>
+                      Error message
+                    </span>
+                  </Alert>
+                  <Alert type="info">
+                    <span>
+                      <strong>Info: </strong>
+                      Info message
+                    </span>
+                  </Alert>
+                  <Alert type="help">
+                    <span>
+                      <strong>Help: </strong>
+                      Help message
+                    </span>
+                  </Alert>
+                  <Alert>
+                    <span>
+                      <strong>Note: </strong>
+                      Note message
+                    </span>
+                  </Alert>
+                </div>
+              )}
+            />
             <h3 id="components-card" className="typography-size-4 offset-6">Cards</h3>
             <Documentation
               name="Card types"

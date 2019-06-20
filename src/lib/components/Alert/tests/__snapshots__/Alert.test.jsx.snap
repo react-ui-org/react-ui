@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly mandatory props only 1`] = `
+<div
+  className="root
+        note"
+  role="alert"
+>
+  <div
+    className="icon"
+  >
+    <Icon
+      icon="note"
+      size="medium"
+    />
+  </div>
+  <div
+    className="message"
+  />
+</div>
+`;
+
+exports[`rendering renders correctly type 1`] = `
+<div
+  className="root
+        success"
+  role="alert"
+>
+  <div
+    className="icon"
+  >
+    <Icon
+      icon="check_circle"
+      size="medium"
+    />
+  </div>
+  <div
+    className="message"
+  />
+</div>
+`;

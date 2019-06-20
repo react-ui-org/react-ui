@@ -119,6 +119,11 @@
 
   --rui-typography-font-family-base: 'Titillium Web', helvetica, roboto, arial, sans-serif;
   --rui-typography-font-size-base: 100%;
+  --rui-typography-font-weight-thin: 100;
+  --rui-typography-font-weight-light: 300;
+  --rui-typography-font-weight-regular: 400;
+  --rui-typography-font-weight-medium: 500;
+  --rui-typography-font-weight-bold: 700;
   --rui-typography-line-height-base: 1.5rem;
   --rui-typography-size-small: 0.889rem;
   --rui-typography-size-0: 1rem;
@@ -138,11 +143,49 @@
   --rui-icon-size-larger: 2rem;
 
   //
+  // Alerts
+  // =======
+
+  // Alerts: common properties
+  --rui-alert-border-width: var(--rui-border-width);
+  --rui-alert-border-radius: var(--rui-border-radius);
+
+  // Alerts: type: success
+  --rui-alert-success-foreground-color: var(--rui-color-success);
+  --rui-alert-success-background-color: var(--rui-color-white);
+  --rui-alert-success-text-color: var(--rui-page-color);
+
+  // Alerts: type: warning
+  --rui-alert-warning-foreground-color: var(--rui-color-warning);
+  --rui-alert-warning-background-color: var(--rui-color-white);
+  --rui-alert-warning-text-color: var(--rui-page-color);
+
+  // Alerts: type: error
+  --rui-alert-error-foreground-color: var(--rui-color-error);
+  --rui-alert-error-background-color: var(--rui-color-white);
+  --rui-alert-error-text-color: var(--rui-page-color);
+
+  // Alerts: type: info
+  --rui-alert-info-foreground-color: var(--rui-color-info);
+  --rui-alert-info-background-color: var(--rui-color-white);
+  --rui-alert-info-text-color: var(--rui-page-color);
+
+  // Alerts: type: help
+  --rui-alert-help-foreground-color: var(--rui-color-help);
+  --rui-alert-help-background-color: var(--rui-color-white);
+  --rui-alert-help-text-color: var(--rui-page-color);
+
+  // Alerts: type: note
+  --rui-alert-note-foreground-color: var(--rui-color-note);
+  --rui-alert-note-background-color: var(--rui-color-white);
+  --rui-alert-note-text-color: var(--rui-page-color);
+
+  //
   // Buttons
   // =======
 
   // Buttons: common properties
-  --rui-button-font-weight: normal;
+  --rui-button-font-weight: var(--rui-typography-font-weight-regular);
   --rui-button-text-transform: none;
   --rui-button-letter-spacing: 0;
   --rui-button-border-width: var(--rui-border-width);

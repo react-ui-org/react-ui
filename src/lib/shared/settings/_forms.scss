@@ -7,7 +7,7 @@ $form-field-default-width: 240px;
 $form-field-height: 2.25rem;
 $form-field-padding: map-get($offset-values, 1) map-get($offset-values, 3);
 $form-field-font-family: $typography-font-family-base;
-$form-field-font-weight: 400;
+$form-field-font-weight: $typography-font-weight-regular;
 $form-field-line-height: 1.5rem; // 1.
 $form-field-bottom-line-height: 2px;
 $form-field-caret-size: $form-field-height;

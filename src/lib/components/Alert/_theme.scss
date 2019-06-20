@@ -1,0 +1,36 @@
+$alert-border-width: var(--rui-alert-border-width);
+$alert-border-radius: var(--rui-alert-border-radius);
+$alert-icon-size: var(--rui-icon-size-default);
+
+$alert-types: (
+  success: (
+    background-color: var(--rui-alert-success-background-color),
+    foreground-color: var(--rui-alert-success-foreground-color),
+    text-color: var(--rui-alert-success-text-color),
+  ),
+  warning: (
+    background-color: var(--rui-alert-warning-background-color),
+    foreground-color: var(--rui-alert-warning-foreground-color),
+    text-color: var(--rui-alert-warning-text-color),
+  ),
+  error: (
+    background-color: var(--rui-alert-error-background-color),
+    foreground-color: var(--rui-alert-error-foreground-color),
+    text-color: var(--rui-alert-error-text-color),
+  ),
+  info: (
+    background-color: var(--rui-alert-info-background-color),
+    foreground-color: var(--rui-alert-info-foreground-color),
+    text-color: var(--rui-alert-info-text-color),
+  ),
+  help: (
+    background-color: var(--rui-alert-help-background-color),
+    foreground-color: var(--rui-alert-help-foreground-color),
+    text-color: var(--rui-alert-help-text-color),
+  ),
+  note: (
+    background-color: var(--rui-alert-note-background-color),
+    foreground-color: var(--rui-alert-note-foreground-color),
+    text-color: var(--rui-alert-note-text-color),
+  ),
+);

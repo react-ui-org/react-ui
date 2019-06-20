@@ -1,3 +1,4 @@
+@import '../../shared/settings/typography';
 @import '../../shared/settings/colors.deprecated';
 
 @mixin login-root() {
@@ -19,7 +20,7 @@
 
 @mixin login-title() {
   margin-bottom: 1rem;
-  font-weight: 700;
+  font-weight: $typography-font-weight-bold;
   font-size: 1.5rem;
   text-align: center;
 }

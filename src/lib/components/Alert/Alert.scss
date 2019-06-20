@@ -1,0 +1,50 @@
+@import 'mixins';
+
+.root {
+  @include alert();
+}
+
+.icon {
+  position: absolute;
+  left: $alert-offset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  padding-top: calc((#{$alert-min-height} - (2 * #{$alert-border-width}) - #{$alert-icon-size}) / 2);
+}
+
+.message {
+  padding-left: calc(#{$alert-icon-size} + #{$alert-offset});
+  font-weight: $alert-message-font-weight;
+  line-height: $alert-line-height;
+}
+
+.message strong {
+  font-weight: $alert-title-font-weight;
+}
+
+.success {
+  @include alert-type(success);
+}
+
+.warning {
+  @include alert-type(warning);
+}
+
+.error {
+  @include alert-type(error);
+}
+
+.info {
+  @include alert-type(info);
+}
+
+.help {
+  @include alert-type(help);
+}
+
+.note {
+  @include alert-type(note);
+}

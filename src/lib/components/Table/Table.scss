@@ -42,7 +42,7 @@
 
 .tableHeadCell {
   composes: tableCell;
-  font-weight: bold;
+  font-weight: $table-head-font-weight;
   border-bottom-width: 2px;
 }
 

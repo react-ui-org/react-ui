@@ -6,6 +6,10 @@ export default [
   {
     items: [
       {
+        link: '#components-alert',
+        title: 'Alert',
+      },
+      {
         link: '#components-button',
         title: 'Button',
       },
