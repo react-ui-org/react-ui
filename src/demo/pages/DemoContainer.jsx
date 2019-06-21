@@ -254,6 +254,30 @@ class DemoContainer extends React.Component {
                 />
               )}
             />
+            <Documentation
+              name="Checkbox label hidden"
+              component={(
+                <CheckboxField
+                  fieldId="checkboxLabelHidden"
+                  label="checkbox checked and hidden label"
+                  checked
+                  changeHandler={logger}
+                  isLabelVisible={false}
+                />
+              )}
+            />
+            <Documentation
+              name="Checkbox label left"
+              component={(
+                <CheckboxField
+                  fieldId="checkboxLabelLeft"
+                  label="checkbox checked and label left"
+                  checked
+                  changeHandler={logger}
+                  labelPosition="before"
+                />
+              )}
+            />
             <h3 id="components-icon" className="typography-size-4 offset-6">Icon</h3>
             <p>
               We use <a href="https://material.io/tools/icons/" target="_blank" rel="noopener noreferrer">Material Design icons</a>.
@@ -1450,6 +1474,42 @@ class DemoContainer extends React.Component {
                   checked
                   disabled
                   changeHandler={logger}
+                />
+              )}
+            />
+            <Documentation
+              name="Toggle label hidden"
+              component={(
+                <Toggle
+                  fieldId="toggledLabelHidden"
+                  label="toggle checked and label hidden"
+                  checked
+                  changeHandler={logger}
+                  isLabelVisible={false}
+                />
+              )}
+            />
+            <Documentation
+              name="Toggle label left"
+              component={(
+                <Toggle
+                  fieldId="toggledLabelLeft"
+                  label="toggle checked and label left"
+                  checked
+                  changeHandler={logger}
+                  labelPosition="before"
+                />
+              )}
+            />
+            <Documentation
+              name="Toggle label left"
+              component={(
+                <Toggle
+                  fieldId="toggledLabelLeft"
+                  label="toggle disabled and label left"
+                  changeHandler={logger}
+                  labelPosition="before"
+                  disabled
                 />
               )}
             />

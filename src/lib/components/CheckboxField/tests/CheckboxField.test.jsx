@@ -22,6 +22,8 @@ describe('rendering', () => {
       value="value"
       description="some help"
       error="some error"
+      isLabelVisible
+      layoutLabel="right"
       required
       checked
     />);

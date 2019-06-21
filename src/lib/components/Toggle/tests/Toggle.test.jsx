@@ -5,23 +5,25 @@ import {
 } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
-import ToggleButton from '..';
+import Toggle from '..';
 
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
-    const tree = shallow(<ToggleButton fieldId="test" label="label" />);
+    const tree = shallow(<Toggle fieldId="test" label="label" />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
 
   it('renders correctly with all props', () => {
-    const tree = shallow(<ToggleButton
+    const tree = shallow(<Toggle
       label="label"
       disabled
       fieldId="test"
       value="value"
       description="some help"
       error="some error"
+      isLabelVisible
+      layoutLabel="right"
       required
       checked
     />);
@@ -33,7 +35,7 @@ describe('rendering', () => {
 describe('functionality', () => {
   it('calls onChange() when checked', () => {
     const spy = sinon.spy();
-    const component = mount(<ToggleButton
+    const component = mount(<Toggle
       fieldId="test"
       label="label"
       changeHandler={spy}

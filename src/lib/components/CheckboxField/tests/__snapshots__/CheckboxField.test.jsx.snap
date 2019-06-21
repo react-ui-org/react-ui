@@ -5,7 +5,8 @@ exports[`rendering renders correctly mandatory props only 1`] = `
   className="root"
 >
   <label
-    className="inputWrap"
+    className="inputWrap
+            labelPositionAfter"
     htmlFor="test"
   >
     <input
@@ -36,7 +37,8 @@ exports[`rendering renders correctly with all props 1`] = `
   className="root"
 >
   <label
-    className="inputWrap"
+    className="inputWrap
+            labelPositionAfter"
     htmlFor="test"
   >
     <input

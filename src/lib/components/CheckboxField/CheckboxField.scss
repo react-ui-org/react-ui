@@ -1,5 +1,6 @@
 @import '../../shared/settings/borders';
 @import '../../shared/settings/forms.deprecated';
+@import '../../shared/tools/accessibility';
 @import '../../shared/tools/forms.deprecated';
 
 .root {
@@ -48,13 +49,40 @@
   transform: translate(0, ($checkbox-checkmark-size / 2)) rotate(-45deg);
 }
 
+// stylelint-disable selector-max-specificity, selector-nested-pattern
+.labelPositionBefore {
+  .input + .label::before {
+    right: 0;
+    left: auto;
+  }
+
+  .input + .label::after {
+    right: ($checkbox-checkmark-size / 2);
+    left: auto;
+  }
+
+  .label {
+    padding-right: $checkbox-radio-padding-left;
+    padding-left: 0;
+  }
+}
+
+.labelPositionAfter {
+  .input + .label::before {
+    left: 0;
+  }
+
+  .input + .label::after {
+    right: 0;
+  }
+}
+
 .input:disabled + .label {
   @include form-disabled-state();
 
   color: $checkbox-disabled-text-color;
 }
 
-// stylelint-disable selector-max-specificity
 .input:checked + .label::before {
   border: 0;
   background: $form-field-background-color;
@@ -114,4 +142,8 @@
 .error {
   min-height: 1rem;
   color: $form-invalid-color;
+}
+
+.isLabelHidden {
+  @include accessibility-hide-text();
 }
