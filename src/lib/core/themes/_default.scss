@@ -320,6 +320,31 @@
   --rui-button-flat-danger-active-background: var(--rui-color-error-light);
 
   //
+  // Cards
+  // ============
+
+  // Cards: common properties
+  --rui-card-border-width: var(--rui-border-width);
+  --rui-card-border-radius: var(--rui-border-radius);
+  --rui-card-background-color: var(--rui-color-white);
+
+  // Cards: type: default
+  --rui-card-default-border-color: var(--rui-color-gray-400);
+
+  // Cards: type: warning
+  --rui-card-warning-border-color: var(--rui-color-warning);
+
+  // Cards: type: error
+  --rui-card-error-border-color: var(--rui-color-error);
+
+  // Cards: raised
+  --rui-card-raised-box-shadow: 0 0.01rem 0.65rem -0.1rem #{rgba(0, 0, 0, 0.3)};
+
+  // Cards: disabled
+  --rui-card-disabled-border-color: transparent;
+  --rui-card-disabled-background-color: var(--rui-color-gray-200);
+
+  //
   // Forms Fields
   // ============
 

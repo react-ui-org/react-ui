@@ -1,0 +1,29 @@
+@import '../../shared/settings/borders';
+@import '../../shared/settings/colors';
+@import '../../shared/settings/offsets';
+@import '../../shared/tools/breakpoints';
+@import 'mixins';
+
+.root {
+  @include card();
+}
+
+.default {
+  @include card-type(default);
+}
+
+.warning {
+  @include card-type(warning);
+}
+
+.error {
+  @include card-type(error);
+}
+
+.isRootDisabled {
+  @include card-disabled();
+}
+
+.isRootRaised {
+  box-shadow: $card-raised-box-shadow;
+}

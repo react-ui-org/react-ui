@@ -6,6 +6,7 @@ import '../../lib/core/core.scss';
 // React UI components
 import {
   Button,
+  Card,
   CheckboxField,
   Documentation,
   DocumentationLayout,
@@ -115,6 +116,68 @@ class DemoContainer extends React.Component {
           </section>
           <section id="components" className="offset-7">
             <h2 className="typography-size-5 offset-6">Components</h2>
+            <h3 id="components-card" className="typography-size-4 offset-6">Cards</h3>
+            <Documentation
+              name="Card types"
+              component={(
+                <div style={{ display: 'flex' }}>
+                  <Card type="default">
+                    <h4>Default card</h4>
+                    <p>
+                      Default card content <br />
+                      and the other one.
+                    </p>
+                    <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
+                  </Card>
+                  <Card type="warning">
+                    <h4>Warning raised card</h4>
+                    <p>
+                      Warning card content <br />
+                      and the other one.
+                    </p>
+                    <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
+                  </Card>
+                  <Card type="error">
+                    <h4>Error raised card</h4>
+                    <p>
+                      Error card content <br />
+                      and the other one.
+                    </p>
+                    <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
+                  </Card>
+                </div>
+              )}
+            />
+            <Documentation
+              name="Card raised"
+              component={(
+                <div>
+                  <Card type="default" raised>
+                    <h4>Default raised card</h4>
+                    <p>
+                      Default card content <br />
+                      and the other one.
+                    </p>
+                    <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
+                  </Card>
+                </div>
+              )}
+            />
+            <Documentation
+              name="Card disabled"
+              component={(
+                <div>
+                  <Card disabled>
+                    <h4>Disabled card</h4>
+                    <p>
+                      Disabled card content <br />
+                      and the other one.
+                    </p>
+                    <Button clickHandler={loggerClick} label="Click" variant="secondary" block disabled />
+                  </Card>
+                </div>
+              )}
+            />
             <h3 id="components-button" className="typography-size-4 offset-6">Button</h3>
             <Documentation
               name="Default buttons"

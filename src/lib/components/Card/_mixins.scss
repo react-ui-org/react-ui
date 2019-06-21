@@ -1,0 +1,21 @@
+@import '../../shared/settings/offsets';
+@import 'theme';
+
+@mixin card() {
+  width: 100%;
+  padding: map-get($offset-values, 4);
+  border: $card-border-width solid;
+  border-radius: $card-border-radius;
+  background-color: $card-background-color;
+}
+
+@mixin card-type($type) {
+  $type-properties: map-get($card-types, $type);
+
+  border-color: map-get($type-properties, border-color);
+}
+
+@mixin card-disabled() {
+  border-color: map-get($card-disabled, border-color);
+  background-color: map-get($card-disabled, background-color);
+}

@@ -10,6 +10,10 @@ export default [
         title: 'Button',
       },
       {
+        link: '#components-card',
+        title: 'Card',
+      },
+      {
         link: '#components-checkbox',
         title: 'Checkbox',
       },

@@ -1,4 +1,5 @@
 export { default as Button } from './components/Button';
+export { default as Card } from './components/Card';
 export { default as CheckboxField } from './components/CheckboxField';
 export { default as Documentation } from './components/Documentation';
 export { default as DocumentationNavigation } from './components/DocumentationNavigation';
