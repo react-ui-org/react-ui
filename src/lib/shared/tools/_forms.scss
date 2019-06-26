@@ -1,5 +1,6 @@
 @import '../settings/forms';
 @import '../themes/forms';
+@import 'breakpoints';
 @import 'explode';
 @import 'transitions';
 
@@ -237,27 +238,39 @@
 }
 
 @mixin form-field-layout-horizontal() {
-  &,
-  .container {
-    flex-direction: row;
-    align-items: center; // 1.
-  }
-
-  .container {
-    display: flex;
-    flex-grow: 1;
-  }
+  flex-direction: column;
 
   .label {
-    min-width: $form-field-horizontal-label-min-width;
-    padding-right: $form-field-horizontal-inner-gap;
-    margin-top: calc(#{$form-field-input-font-size} - #{$form-field-label-font-size}); // 1.
-    text-align: $form-field-horizontal-label-alignment;
+    padding-bottom: $form-field-vertical-inner-gap;
   }
 
   .helperText {
-    padding-left: $form-field-horizontal-inner-gap;
-    margin-top: calc(#{$form-field-input-font-size} - #{$form-field-helper-text-font-size}); // 1.
+    padding-top: $form-field-vertical-inner-gap;
+  }
+
+  @include breakpoint-up(sm) {
+    &,
+    .container {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .container {
+      display: flex;
+      flex-grow: 1;
+    }
+
+    .label {
+      min-width: $form-field-horizontal-label-min-width;
+      padding-right: $form-field-horizontal-inner-gap;
+      margin-top: calc(#{$form-field-input-font-size} - #{$form-field-label-font-size}); // 1.
+      text-align: $form-field-horizontal-label-alignment;
+    }
+
+    .helperText {
+      padding-left: $form-field-horizontal-inner-gap;
+      margin-top: calc(#{$form-field-input-font-size} - #{$form-field-helper-text-font-size}); // 1.
+    }
   }
 }
 
