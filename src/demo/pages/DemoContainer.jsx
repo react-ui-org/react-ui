@@ -161,21 +161,29 @@ class DemoContainer extends React.Component {
                 </div>
               )}
             />
-            <h3 id="components-card" className="typography-size-4 offset-6">Cards</h3>
+            <h3 id="components-card" className="typography-size-4 offset-6">Card</h3>
             <Documentation
               name="Card types"
               component={(
                 <div style={{ display: 'flex' }}>
-                  <Card type="default">
-                    <h4>Default card</h4>
+                  <Card>
+                    <h4>Flat card</h4>
                     <p>
-                      Default card content <br />
+                      Flat card content <br />
+                      and the other one.
+                    </p>
+                    <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
+                  </Card>
+                  <Card type="bordered">
+                    <h4>Bordered card</h4>
+                    <p>
+                      Bordered card content <br />
                       and the other one.
                     </p>
                     <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
                   </Card>
                   <Card type="warning">
-                    <h4>Warning raised card</h4>
+                    <h4>Warning card</h4>
                     <p>
                       Warning card content <br />
                       and the other one.
@@ -183,7 +191,7 @@ class DemoContainer extends React.Component {
                     <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
                   </Card>
                   <Card type="error">
-                    <h4>Error raised card</h4>
+                    <h4>Error card</h4>
                     <p>
                       Error card content <br />
                       and the other one.
@@ -194,13 +202,13 @@ class DemoContainer extends React.Component {
               )}
             />
             <Documentation
-              name="Card raised"
+              name="Raised card"
               component={(
                 <div>
-                  <Card type="default" raised>
-                    <h4>Default raised card</h4>
+                  <Card raised>
+                    <h4>Raised card</h4>
                     <p>
-                      Default card content <br />
+                      Raised card content <br />
                       and the other one.
                     </p>
                     <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
@@ -209,7 +217,7 @@ class DemoContainer extends React.Component {
               )}
             />
             <Documentation
-              name="Card disabled"
+              name="Disabled card"
               component={(
                 <div>
                   <Card disabled>

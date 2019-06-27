@@ -10,11 +10,13 @@ export const Card = (props) => {
     type,
   } = props;
 
-  let typeClass = styles.default;
+  let typeClass = styles.flat;
   if (type === 'warning') {
     typeClass = styles.warning;
   } else if (type === 'error') {
     typeClass = styles.error;
+  } else if (type === 'bordered') {
+    typeClass = styles.bordered;
   }
 
   let disabledClass = '';
@@ -44,7 +46,7 @@ export const Card = (props) => {
 Card.defaultProps = {
   disabled: false,
   raised: false,
-  type: 'default',
+  type: 'flat',
 };
 
 Card.propTypes = {
@@ -54,7 +56,7 @@ Card.propTypes = {
   ]).isRequired,
   disabled: PropTypes.bool,
   raised: PropTypes.string,
-  type: PropTypes.oneOf(['default', 'warning', 'error']),
+  type: PropTypes.oneOf(['flat', 'bordered', 'warning', 'error']),
 };
 
 export default Card;

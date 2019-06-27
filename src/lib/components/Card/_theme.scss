@@ -1,11 +1,13 @@
 $card-background-color: var(--rui-card-background-color);
 $card-border-width: var(--rui-card-border-width);
 $card-border-radius: var(--rui-card-border-radius);
-$card-raised-box-shadow: var(--rui-card-raised-box-shadow);
 
 $card-types: (
-  default: (
-    border-color: var(--rui-card-default-border-color),
+  flat: (
+    border-color: var(--rui-card-flat-border-color),
+  ),
+  bordered: (
+    border-color: var(--rui-card-bordered-border-color),
   ),
   error: (
     border-color: var(--rui-card-error-border-color),
@@ -18,4 +20,8 @@ $card-types: (
 $card-disabled: (
   background-color: var(--rui-card-disabled-background-color),
   border-color: var(--rui-card-disabled-border-color),
+);
+
+$card-raised: (
+  box-shadow: var(--rui-card-raised-box-shadow),
 );

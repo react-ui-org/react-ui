@@ -6,7 +6,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Card
     disabled={false}
     raised={false}
-    type="default"
+    type="flat"
 >
     <p>
         Card content
@@ -29,7 +29,7 @@ ShallowWrapper {
         Card content
 </p>,
       "className": "root
-        default",
+        flat",
     },
     "ref": null,
     "rendered": Object {
@@ -55,7 +55,7 @@ ShallowWrapper {
           Card content
 </p>,
         "className": "root
-        default",
+        flat",
       },
       "ref": null,
       "rendered": Object {
@@ -98,7 +98,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Card
     disabled={true}
     raised={false}
-    type="default"
+    type="flat"
 >
     <p>
         Card content
@@ -121,7 +121,7 @@ ShallowWrapper {
         Card content
 </p>,
       "className": "root
-        default
+        flat
         isRootDisabled",
     },
     "ref": null,
@@ -148,7 +148,7 @@ ShallowWrapper {
           Card content
 </p>,
         "className": "root
-        default
+        flat
         isRootDisabled",
       },
       "ref": null,
@@ -284,7 +284,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Card
     disabled={false}
     raised={true}
-    type="default"
+    type="flat"
 >
     <p>
         Card content
@@ -307,7 +307,7 @@ ShallowWrapper {
         Card content
 </p>,
       "className": "root
-        default
+        flat
         
         isRootRaised",
     },
@@ -335,7 +335,7 @@ ShallowWrapper {
           Card content
 </p>,
         "className": "root
-        default
+        flat
         
         isRootRaised",
       },

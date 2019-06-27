@@ -371,8 +371,11 @@
   --rui-card-border-radius: var(--rui-border-radius);
   --rui-card-background-color: var(--rui-color-white);
 
-  // Cards: type: default
-  --rui-card-default-border-color: var(--rui-color-gray-400);
+  // Cards: type: flat
+  --rui-card-flat-border-color: transparent;
+
+  // Cards: type: bordered
+  --rui-card-bordered-border-color: var(--rui-color-gray-400);
 
   // Cards: type: warning
   --rui-card-warning-border-color: var(--rui-color-warning);

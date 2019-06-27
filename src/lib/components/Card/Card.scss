@@ -8,8 +8,12 @@
   @include card();
 }
 
-.default {
-  @include card-type(default);
+.flat {
+  @include card-type(flat);
+}
+
+.bordered {
+  @include card-type(bordered);
 }
 
 .warning {
@@ -25,5 +29,5 @@
 }
 
 .isRootRaised {
-  box-shadow: $card-raised-box-shadow;
+  @include card-raised();
 }
