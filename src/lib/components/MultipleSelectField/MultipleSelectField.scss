@@ -7,6 +7,10 @@
   @include form-field-horizontal-neighbor();
 }
 
+.container {
+  @include form-field-container();
+}
+
 .inputContainer {
   @include form-field-input-container();
 }
@@ -55,17 +59,17 @@
 }
 
 // Layouts
-.isRootFullWidth {
-  @include form-field-full-width();
-  @include form-field-vertical-neighbor();
-}
-
 .rootLayoutHorizontal {
   @include form-field-layout-horizontal();
 }
 
 .rootLayoutVertical {
   @include form-field-layout-vertical();
+}
+
+.isRootFullWidth {
+  @include form-field-full-width();
+  @include form-field-vertical-neighbor();
 }
 
 // Sizes

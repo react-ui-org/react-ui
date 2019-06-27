@@ -7,13 +7,20 @@
 //
 // Foundation
 // ==========
+//
+// 1. Get ready for positioning of bottom line and caret.
+// 2. Override hover style of disabled input.
 
 @mixin form-field() {
   display: inline-flex;
 }
 
+@mixin form-field-container() {
+  display: flex;
+}
+
 @mixin form-field-input-container() {
-  position: relative; // get ready for positioning of bottom line and caret
+  position: relative; // 1.
 }
 
 @mixin form-field-input() {
@@ -45,8 +52,7 @@
   &:disabled {
     @include form-field-disabled();
 
-    // Override hover styles
-    border-color: $form-field-border-color;
+    border-color: $form-field-border-color; // 2.
   }
 }
 
@@ -76,7 +82,7 @@
 @mixin form-field-caret() {
   @include transition(border);
 
-  position: absolute;
+  position: absolute; // 1.
   top: $form-field-border-width;
   right: $form-field-border-width;
   bottom: $form-field-border-width;
@@ -115,6 +121,7 @@
 @mixin form-field-helper-text() {
   font-style: $form-field-helper-text-font-style;
   font-size: $form-field-helper-text-font-size;
+  line-height: $form-field-helper-text-line-height;
   color: $form-field-helper-text-color;
 }
 
@@ -216,18 +223,15 @@
 //
 // Layouts
 // =======
-
-@mixin form-field-full-width() {
-  display: flex;
-  width: 100%;
-
-  .inputContainer {
-    flex-grow: 1;
-  }
-}
+//
+// 1. Override horizontal layout alignment.
 
 @mixin form-field-layout-horizontal() {
-  flex-direction: column;
+  &,
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
   .label {
     padding-bottom: $form-field-vertical-inner-gap;
@@ -245,7 +249,6 @@
     }
 
     .container {
-      display: flex;
       flex-grow: 1;
     }
 
@@ -264,7 +267,11 @@
 }
 
 @mixin form-field-layout-vertical() {
-  flex-direction: column;
+  &,
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
   .label {
     padding-bottom: $form-field-vertical-inner-gap;
@@ -272,6 +279,25 @@
 
   .helperText {
     padding-top: $form-field-vertical-inner-gap;
+  }
+}
+
+@mixin form-field-full-width() {
+  width: 100%;
+
+  &,
+  .container {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .inputContainer {
+    flex-grow: 1;
+  }
+
+  &.rootLayoutHorizontal,
+  &.rootLayoutHorizontal .container {
+    align-items: center; // 1.
   }
 }
 
@@ -302,11 +328,11 @@
   &.rootLayoutHorizontal {
     @include breakpoint-up($form-field-horizontal-breakpoint) {
       .label {
-        margin-top: calc(#{map-get($size-properties, font-size)} - #{$form-field-label-font-size}); // 1.
+        margin-top: ($form-field-line-height - $form-field-label-line-height) / 2; // 1.
       }
 
       .helperText {
-        margin-top: calc(#{map-get($size-properties, font-size)} - #{$form-field-helper-text-font-size}); // 1.
+        margin-top: ($form-field-line-height - $form-field-helper-text-line-height) / 2; // 1.
       }
     }
   }
