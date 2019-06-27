@@ -583,6 +583,62 @@ class DemoContainer extends React.Component {
               )}
             />
             <Documentation
+              name="Sizes"
+              component={(
+                <div>
+                  <div className="offset-5">
+                    <MultipleSelectField
+                      fieldId="multipleSelectFieldSizeOutlineSmall"
+                      changeHandler={logger}
+                      label="Small"
+                      options={this.exampleOptions}
+                      size="small"
+                    />
+                    <MultipleSelectField
+                      fieldId="multipleSelectFieldSizeOutlineMedium"
+                      changeHandler={logger}
+                      label="Medium (default)"
+                      options={this.exampleOptions}
+                      size="medium"
+                    />
+                    <MultipleSelectField
+                      fieldId="multipleSelectFieldSizeOutlineLarge"
+                      changeHandler={logger}
+                      label="Large"
+                      options={this.exampleOptions}
+                      size="large"
+                    />
+                  </div>
+                  <div>
+                    <MultipleSelectField
+                      fieldId="multipleSelectFieldSizeFilledSmall"
+                      changeHandler={logger}
+                      label="Small"
+                      options={this.exampleOptions}
+                      size="small"
+                      variant="filled"
+                    />
+                    <MultipleSelectField
+                      fieldId="multipleSelectFieldSizeFilledMedium"
+                      changeHandler={logger}
+                      label="Medium (default)"
+                      options={this.exampleOptions}
+                      size="medium"
+                      variant="filled"
+                    />
+                    <MultipleSelectField
+                      fieldId="multipleSelectFieldSizeFilledLarge"
+                      changeHandler={logger}
+                      label="Large"
+                      options={this.exampleOptions}
+                      size="large"
+                      variant="filled"
+                    />
+                  </div>
+                </div>
+              )}
+            />
+            <Documentation
               name="Full width select field"
               component={(
                 <div>
@@ -736,13 +792,13 @@ class DemoContainer extends React.Component {
               )}
             />
             <Documentation
-              name="Select field with invisible label"
+              name="Select field with hidden label"
               component={(
                 <div>
                   <SelectField
                     fieldId="selectFieldWithInvisibleLabelOutline"
                     changeHandler={logger}
-                    label="Select field with invisible label"
+                    label="Select field with hidden label"
                     helperText="Showing helper text instead"
                     options={this.exampleOptions}
                     isLabelVisible={false}
@@ -750,7 +806,7 @@ class DemoContainer extends React.Component {
                   <SelectField
                     fieldId="selectFieldWithInvisibleLabelFilled"
                     changeHandler={logger}
-                    label="Select field with invisible label"
+                    label="Select field with hidden label"
                     helperText="Showing helper text instead"
                     variant="filled"
                     options={this.exampleOptions}
@@ -822,6 +878,62 @@ class DemoContainer extends React.Component {
                       variant="filled"
                       options={this.exampleOptions}
                       value="grapefruits"
+                    />
+                  </div>
+                </div>
+              )}
+            />
+            <Documentation
+              name="Sizes"
+              component={(
+                <div>
+                  <div className="offset-5">
+                    <SelectField
+                      fieldId="selectFieldSizeOutlineSmall"
+                      changeHandler={logger}
+                      label="Small"
+                      options={this.exampleOptions}
+                      size="small"
+                    />
+                    <SelectField
+                      fieldId="selectFieldSizeOutlineMedium"
+                      changeHandler={logger}
+                      label="Medium (default)"
+                      options={this.exampleOptions}
+                      size="medium"
+                    />
+                    <SelectField
+                      fieldId="selectFieldSizeOutlineLarge"
+                      changeHandler={logger}
+                      label="Large"
+                      options={this.exampleOptions}
+                      size="large"
+                    />
+                  </div>
+                  <div>
+                    <SelectField
+                      fieldId="selectFieldSizeFilledSmall"
+                      changeHandler={logger}
+                      label="Small"
+                      options={this.exampleOptions}
+                      size="small"
+                      variant="filled"
+                    />
+                    <SelectField
+                      fieldId="selectFieldSizeFilledMedium"
+                      changeHandler={logger}
+                      label="Medium (default)"
+                      options={this.exampleOptions}
+                      size="medium"
+                      variant="filled"
+                    />
+                    <SelectField
+                      fieldId="selectFieldSizeFilledLarge"
+                      changeHandler={logger}
+                      label="Large"
+                      options={this.exampleOptions}
+                      size="large"
+                      variant="filled"
                     />
                   </div>
                 </div>
@@ -1052,23 +1164,23 @@ class DemoContainer extends React.Component {
               )}
             />
             <Documentation
-              name="Text area with invisible label"
+              name="Text area with hidden label"
               component={(
                 <div>
                   <TextArea
                     fieldId="textAreaWithInvisibleLabelOutline"
                     changeHandler={logger}
-                    label="Text area with invisible label"
+                    label="Text area with hidden label"
                     helperText="Showing placeholder instead"
-                    placeholder="Text area with invisible label"
+                    placeholder="Text area with hidden label"
                     isLabelVisible={false}
                   />
                   <TextArea
                     fieldId="textAreaWithInvisibleLabelFilled"
                     changeHandler={logger}
-                    label="Text area with invisible label"
+                    label="Text area with hidden label"
                     helperText="Showing placeholder instead"
-                    placeholder="Text area with invisible label"
+                    placeholder="Text area with hidden label"
                     variant="filled"
                     isLabelVisible={false}
                   />
@@ -1131,6 +1243,56 @@ class DemoContainer extends React.Component {
                       helperText="Common, it's so ugly…"
                       validationState="invalid"
                       value="BMW X6"
+                      variant="filled"
+                    />
+                  </div>
+                </div>
+              )}
+            />
+            <Documentation
+              name="Sizes"
+              component={(
+                <div>
+                  <div className="offset-5">
+                    <TextArea
+                      fieldId="textAreaSizeOutlineSmall"
+                      changeHandler={logger}
+                      label="Small"
+                      size="small"
+                    />
+                    <TextArea
+                      fieldId="textAreaSizeOutlineMedium"
+                      changeHandler={logger}
+                      label="Medium (default)"
+                      size="medium"
+                    />
+                    <TextArea
+                      fieldId="textAreaSizeOutlineLarge"
+                      changeHandler={logger}
+                      label="Large"
+                      size="large"
+                    />
+                  </div>
+                  <div>
+                    <TextArea
+                      fieldId="textAreaSizeFilledSmall"
+                      changeHandler={logger}
+                      label="Small"
+                      size="small"
+                      variant="filled"
+                    />
+                    <TextArea
+                      fieldId="textAreaSizeFilledMedium"
+                      changeHandler={logger}
+                      label="Medium (default)"
+                      size="medium"
+                      variant="filled"
+                    />
+                    <TextArea
+                      fieldId="textAreaSizeFilledLarge"
+                      changeHandler={logger}
+                      label="Large"
+                      size="large"
                       variant="filled"
                     />
                   </div>
@@ -1346,23 +1508,23 @@ class DemoContainer extends React.Component {
               )}
             />
             <Documentation
-              name="Text field with invisible label"
+              name="Text field with hidden label"
               component={(
                 <div>
                   <TextField
                     fieldId="textFieldWithInvisibleLabelOutline"
                     changeHandler={logger}
-                    label="Text field with invisible label"
+                    label="Text field with hidden label"
                     helperText="Showing placeholder instead"
-                    placeholder="Text field with invisible label"
+                    placeholder="Text field with hidden label"
                     isLabelVisible={false}
                   />
                   <TextField
                     fieldId="textFieldWithInvisibleLabelFilled"
                     changeHandler={logger}
-                    label="Text field with invisible label"
+                    label="Text field with hidden label"
                     helperText="Showing placeholder instead"
-                    placeholder="Text field with invisible label"
+                    placeholder="Text field with hidden label"
                     variant="filled"
                     isLabelVisible={false}
                   />
@@ -1432,21 +1594,71 @@ class DemoContainer extends React.Component {
               )}
             />
             <Documentation
+              name="Sizes"
+              component={(
+                <div>
+                  <div className="offset-5">
+                    <TextField
+                      fieldId="textFieldSizeOutlineSmall"
+                      changeHandler={logger}
+                      label="Small"
+                      size="small"
+                    />
+                    <TextField
+                      fieldId="textFieldSizeOutlineMedium"
+                      changeHandler={logger}
+                      label="Medium (default)"
+                      size="medium"
+                    />
+                    <TextField
+                      fieldId="textFieldSizeOutlineLarge"
+                      changeHandler={logger}
+                      label="Large"
+                      size="large"
+                    />
+                  </div>
+                  <div>
+                    <TextField
+                      fieldId="textFieldSizeFilledSmall"
+                      changeHandler={logger}
+                      label="Small"
+                      size="small"
+                      variant="filled"
+                    />
+                    <TextField
+                      fieldId="textFieldSizeFilledMedium"
+                      changeHandler={logger}
+                      label="Medium (default)"
+                      size="medium"
+                      variant="filled"
+                    />
+                    <TextField
+                      fieldId="textFieldSizeFilledLarge"
+                      changeHandler={logger}
+                      label="Large"
+                      size="large"
+                      variant="filled"
+                    />
+                  </div>
+                </div>
+              )}
+            />
+            <Documentation
               name="Custom input size"
               component={(
                 <div>
                   <TextField
-                    fieldId="textFieldCustomSizeOutline"
+                    fieldId="textFieldCustomInputSizeOutline"
                     changeHandler={logger}
                     label="Age"
-                    size={3}
+                    inputSize={3}
                   />
                   <TextField
-                    fieldId="textFieldCustomSizeFilled"
+                    fieldId="textFieldCustomInputSizeFilled"
                     changeHandler={logger}
                     label="Age"
                     variant="filled"
-                    size={3}
+                    inputSize={3}
                   />
                 </div>
               )}
@@ -1502,7 +1714,7 @@ class DemoContainer extends React.Component {
                       changeHandler={logger}
                       label="Age"
                       layout="horizontal"
-                      size={3}
+                      inputSize={3}
                     />
                     <TextField
                       fieldId="textFieldHorizontalCustomSizeFilled"
@@ -1511,7 +1723,7 @@ class DemoContainer extends React.Component {
                       helperText="How old do you see yourself?"
                       layout="horizontal"
                       variant="filled"
-                      size={3}
+                      inputSize={3}
                     />
                   </div>
                   <div className="offset-3">
@@ -1569,7 +1781,7 @@ class DemoContainer extends React.Component {
               )}
             />
             <Documentation
-              name="Toggle checked"
+              name="Checked toggle"
               component={(
                 <Toggle
                   fieldId="toggleChecked"
@@ -1582,7 +1794,7 @@ class DemoContainer extends React.Component {
               )}
             />
             <Documentation
-              name="Toggle disabled"
+              name="Disabled toggle"
               component={(
                 <Toggle
                   fieldId="toggledDisabled"
@@ -1594,7 +1806,7 @@ class DemoContainer extends React.Component {
               )}
             />
             <Documentation
-              name="Toggle label hidden"
+              name="Toggle with hidden label"
               component={(
                 <Toggle
                   fieldId="toggledLabelHidden"
@@ -1606,7 +1818,7 @@ class DemoContainer extends React.Component {
               )}
             />
             <Documentation
-              name="Toggle label left"
+              name="Toggle with label on left"
               component={(
                 <Toggle
                   fieldId="toggledLabelLeft"
@@ -1614,18 +1826,6 @@ class DemoContainer extends React.Component {
                   checked
                   changeHandler={logger}
                   labelPosition="before"
-                />
-              )}
-            />
-            <Documentation
-              name="Toggle label left"
-              component={(
-                <Toggle
-                  fieldId="toggledLabelLeft"
-                  label="toggle disabled and label left"
-                  changeHandler={logger}
-                  labelPosition="before"
-                  disabled
                 />
               )}
             />

@@ -395,10 +395,11 @@
   // ============
 
   // Forms fields: common properties
+  --rui-form-field-default-input-width: 240px;
   --rui-form-field-label-font-size: var(--rui-typography-size-0);
-  --rui-form-field-input-font-size: var(--rui-typography-size-0);
   --rui-form-field-placeholder-color: var(--rui-color-gray-500);
   --rui-form-field-helper-text-font-size: var(--rui-typography-size-small);
+  --rui-form-field-helper-text-font-style: normal;
   --rui-form-field-helper-text-color: var(--rui-color-gray-500);
   --rui-form-field-required-sign: '\00a0*'; // non-breaking space and asterisk
   --rui-form-field-required-sign-color: var(--rui-color-gray-500);
@@ -440,6 +441,21 @@
   --rui-form-field-warning-color: var(--rui-color-warning-darker);
   --rui-form-field-warning-border-color: var(--rui-color-warning-darker);
   --rui-form-field-warning-background: var(--rui-color-warning-light);
+
+  // Form fields: sizes: small
+  --rui-form-field-small-height: 1.75rem;
+  --rui-form-field-small-padding: 0 0.5rem;
+  --rui-form-field-small-font-size: var(--rui-typography-size-small);
+
+  // Form fields: sizes: medium
+  --rui-form-field-medium-height: 2.25rem;
+  --rui-form-field-medium-padding: 0.25rem 0.75rem;
+  --rui-form-field-medium-font-size: var(--rui-typography-size-0);
+
+  // Form fields: sizes: large
+  --rui-form-field-large-height: 2.75rem;
+  --rui-form-field-large-padding: 0.5rem 1rem;
+  --rui-form-field-large-font-size: var(--rui-typography-size-1);
 
   //
   // Modal

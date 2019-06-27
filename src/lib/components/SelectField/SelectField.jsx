@@ -8,6 +8,7 @@ const SelectField = (props) => {
   let rootFullWidthClass = '';
   let rootLayoutClass = '';
   let rootRequiredClass = '';
+  let rootSizeClass = '';
   let rootValidationStateClass = '';
   let rootVariantClass = '';
 
@@ -27,6 +28,14 @@ const SelectField = (props) => {
 
   if (props.required) {
     rootRequiredClass = styles.isRootRequired;
+  }
+
+  if (props.size === 'small') {
+    rootSizeClass = styles.rootSizeSmall;
+  } else if (props.size === 'medium') {
+    rootSizeClass = styles.rootSizeMedium;
+  } else if (props.size === 'large') {
+    rootSizeClass = styles.rootSizeLarge;
   }
 
   if (props.validationState === 'invalid') {
@@ -50,6 +59,7 @@ const SelectField = (props) => {
         ${rootFullWidthClass}
         ${rootLayoutClass}
         ${rootRequiredClass}
+        ${rootSizeClass}
         ${rootValidationStateClass}
         ${rootVariantClass}
       `).trim()}
@@ -108,6 +118,7 @@ SelectField.defaultProps = {
   isLabelVisible: true,
   layout: 'vertical',
   required: false,
+  size: 'medium',
   validationState: null,
   value: undefined,
   variant: 'outline',
@@ -130,6 +141,7 @@ SelectField.propTypes = {
     ]),
   })).isRequired,
   required: PropTypes.bool,
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
   validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
   value: PropTypes.oneOfType([
     PropTypes.string,

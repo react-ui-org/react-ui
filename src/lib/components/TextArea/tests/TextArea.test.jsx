@@ -37,6 +37,7 @@ describe('rendering', () => {
       validationState="invalid"
       value="value"
       variant="filled"
+      size="large"
       fullWidth
       disabled
       required

@@ -32,11 +32,12 @@ describe('rendering', () => {
       label="label"
       layout="horizontal"
       placeholder="placeholder"
-      size={3}
+      inputSize={3}
       validationState="invalid"
       type="email"
       value="value"
       variant="filled"
+      size="large"
       fullWidth
       disabled
       required

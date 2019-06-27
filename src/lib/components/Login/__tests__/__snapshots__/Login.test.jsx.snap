@@ -39,12 +39,13 @@ exports[`rendering renders correctly 1`] = `
               fieldId="email"
               fullWidth={true}
               helperText={null}
+              inputSize={null}
               isLabelVisible={true}
               label="E-mail"
               layout="vertical"
               placeholder={null}
               required={true}
-              size={null}
+              size="medium"
               type="email"
               validationState={null}
               variant="outline"
@@ -54,6 +55,7 @@ exports[`rendering renders correctly 1`] = `
                       isRootFullWidth
                       rootLayoutVertical
                       isRootRequired
+                      rootSizeMedium
                       
                       rootVariantOutline"
               >
@@ -89,12 +91,13 @@ exports[`rendering renders correctly 1`] = `
               fieldId="password"
               fullWidth={true}
               helperText={null}
+              inputSize={null}
               isLabelVisible={true}
               label="Password"
               layout="vertical"
               placeholder={null}
               required={true}
-              size={null}
+              size="medium"
               type="password"
               validationState={null}
               variant="outline"
@@ -104,6 +107,7 @@ exports[`rendering renders correctly 1`] = `
                       isRootFullWidth
                       rootLayoutVertical
                       isRootRequired
+                      rootSizeMedium
                       
                       rootVariantOutline"
               >
@@ -239,12 +243,13 @@ exports[`rendering renders correctly with all props except translations 1`] = `
               fieldId="email"
               fullWidth={true}
               helperText={null}
+              inputSize={null}
               isLabelVisible={true}
               label="E-mail"
               layout="vertical"
               placeholder={null}
               required={true}
-              size={null}
+              size="medium"
               type="email"
               validationState={null}
               variant="outline"
@@ -254,6 +259,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                       isRootFullWidth
                       rootLayoutVertical
                       isRootRequired
+                      rootSizeMedium
                       
                       rootVariantOutline"
               >
@@ -289,12 +295,13 @@ exports[`rendering renders correctly with all props except translations 1`] = `
               fieldId="password"
               fullWidth={true}
               helperText={null}
+              inputSize={null}
               isLabelVisible={true}
               label="Password"
               layout="vertical"
               placeholder={null}
               required={true}
-              size={null}
+              size="medium"
               type="password"
               validationState={null}
               variant="outline"
@@ -304,6 +311,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                       isRootFullWidth
                       rootLayoutVertical
                       isRootRequired
+                      rootSizeMedium
                       
                       rootVariantOutline"
               >
@@ -428,12 +436,13 @@ exports[`rendering renders correctly with translations 1`] = `
               fieldId="email"
               fullWidth={true}
               helperText={null}
+              inputSize={null}
               isLabelVisible={true}
               label="E-mail"
               layout="vertical"
               placeholder={null}
               required={true}
-              size={null}
+              size="medium"
               type="email"
               validationState={null}
               variant="outline"
@@ -443,6 +452,7 @@ exports[`rendering renders correctly with translations 1`] = `
                       isRootFullWidth
                       rootLayoutVertical
                       isRootRequired
+                      rootSizeMedium
                       
                       rootVariantOutline"
               >
@@ -478,12 +488,13 @@ exports[`rendering renders correctly with translations 1`] = `
               fieldId="password"
               fullWidth={true}
               helperText={null}
+              inputSize={null}
               isLabelVisible={true}
               label="Heslo"
               layout="vertical"
               placeholder={null}
               required={true}
-              size={null}
+              size="medium"
               type="password"
               validationState={null}
               variant="outline"
@@ -493,6 +504,7 @@ exports[`rendering renders correctly with translations 1`] = `
                       isRootFullWidth
                       rootLayoutVertical
                       isRootRequired
+                      rootSizeMedium
                       
                       rootVariantOutline"
               >
@@ -602,12 +614,13 @@ exports[`rendering renders correctly with username 1`] = `
               fieldId="Username"
               fullWidth={true}
               helperText={null}
+              inputSize={null}
               isLabelVisible={true}
               label="Username"
               layout="vertical"
               placeholder={null}
               required={true}
-              size={null}
+              size="medium"
               type="text"
               validationState={null}
               variant="outline"
@@ -617,6 +630,7 @@ exports[`rendering renders correctly with username 1`] = `
                       isRootFullWidth
                       rootLayoutVertical
                       isRootRequired
+                      rootSizeMedium
                       
                       rootVariantOutline"
               >
@@ -652,12 +666,13 @@ exports[`rendering renders correctly with username 1`] = `
               fieldId="password"
               fullWidth={true}
               helperText={null}
+              inputSize={null}
               isLabelVisible={true}
               label="Password"
               layout="vertical"
               placeholder={null}
               required={true}
-              size={null}
+              size="medium"
               type="password"
               validationState={null}
               variant="outline"
@@ -667,6 +682,7 @@ exports[`rendering renders correctly with username 1`] = `
                       isRootFullWidth
                       rootLayoutVertical
                       isRootRequired
+                      rootSizeMedium
                       
                       rootVariantOutline"
               >

@@ -17,7 +17,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
 
 exports[`rendering renders correctly with size 1`] = `
 <svg
-  className="isRootLarger"
+  className="rootSizeLarger"
   style={
     Object {
       "fill": "currentColor",

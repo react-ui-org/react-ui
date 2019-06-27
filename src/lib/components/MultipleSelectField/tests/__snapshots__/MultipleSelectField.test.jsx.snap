@@ -6,6 +6,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
         
         rootLayoutVertical
         
+        rootSizeMedium
         
         rootVariantOutline"
 >
@@ -54,6 +55,7 @@ exports[`rendering renders correctly only one option 1`] = `
         
         rootLayoutVertical
         
+        rootSizeMedium
         
         rootVariantOutline"
 >
@@ -96,6 +98,7 @@ exports[`rendering renders correctly with all props 1`] = `
         isRootFullWidth
         rootLayoutHorizontal
         isRootRequired
+        rootSizeLarge
         isRootStateInvalid
         rootVariantFilled"
 >
@@ -153,6 +156,7 @@ exports[`rendering renders correctly with one selected option 1`] = `
         
         rootLayoutVertical
         
+        rootSizeMedium
         
         rootVariantOutline"
 >
@@ -205,6 +209,7 @@ exports[`rendering renders correctly with two selected options 1`] = `
         
         rootLayoutVertical
         
+        rootSizeMedium
         
         rootVariantOutline"
 >

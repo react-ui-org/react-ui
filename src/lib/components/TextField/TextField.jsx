@@ -7,6 +7,7 @@ const TextField = (props) => {
   let rootFullWidthClass = '';
   let rootLayoutClass = '';
   let rootRequiredClass = '';
+  let rootSizeClass = '';
   let rootValidationStateClass = '';
   let rootVariantClass = '';
 
@@ -26,6 +27,14 @@ const TextField = (props) => {
 
   if (props.required) {
     rootRequiredClass = styles.isRootRequired;
+  }
+
+  if (props.size === 'small') {
+    rootSizeClass = styles.rootSizeSmall;
+  } else if (props.size === 'medium') {
+    rootSizeClass = styles.rootSizeMedium;
+  } else if (props.size === 'large') {
+    rootSizeClass = styles.rootSizeLarge;
   }
 
   if (props.validationState === 'invalid') {
@@ -49,6 +58,7 @@ const TextField = (props) => {
         ${rootFullWidthClass}
         ${rootLayoutClass}
         ${rootRequiredClass}
+        ${rootSizeClass}
         ${rootValidationStateClass}
         ${rootVariantClass}
       `).trim()}
@@ -70,7 +80,7 @@ const TextField = (props) => {
             onChange={props.changeHandler}
             placeholder={props.placeholder}
             required={props.required}
-            size={props.size}
+            size={props.inputSize}
             type={props.type}
             value={props.value}
           />
@@ -93,11 +103,12 @@ TextField.defaultProps = {
   disabled: false,
   fullWidth: false,
   helperText: null,
+  inputSize: null,
   isLabelVisible: true,
   layout: 'vertical',
   placeholder: null,
   required: false,
-  size: null,
+  size: 'medium',
   type: 'text',
   validationState: null,
   value: undefined,
@@ -110,12 +121,13 @@ TextField.propTypes = {
   fieldId: PropTypes.string.isRequired,
   fullWidth: PropTypes.bool,
   helperText: PropTypes.string,
+  inputSize: PropTypes.number,
   isLabelVisible: PropTypes.bool,
   label: PropTypes.string.isRequired,
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
   placeholder: PropTypes.string,
   required: PropTypes.bool,
-  size: PropTypes.number,
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
   type: PropTypes.oneOf(['email', 'number', 'password', 'tel', 'text']),
   validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
   value: PropTypes.oneOfType([

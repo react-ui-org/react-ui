@@ -20,9 +20,7 @@
   @include transition((opacity, color, border, background, box-shadow));
 
   width: 100%;
-  min-width: $form-field-default-width;
-  height: $form-field-height;
-  padding: $form-field-padding;
+  min-width: $form-field-default-input-width;
   font-weight: $form-field-font-weight;
   line-height: $form-field-line-height;
   font-family: $form-field-font-family;
@@ -59,8 +57,6 @@
 }
 
 @mixin form-field-input-textarea() {
-  height: auto;
-  min-height: $form-field-height;
   resize: vertical;
 
   &[cols] {
@@ -75,11 +71,6 @@
   &::-ms-expand {
     display: none;
   }
-}
-
-@mixin form-field-input-multiple-select() {
-  height: auto;
-  min-height: $form-field-height;
 }
 
 @mixin form-field-caret() {
@@ -122,6 +113,7 @@
 }
 
 @mixin form-field-helper-text() {
+  font-style: $form-field-helper-text-font-style;
   font-size: $form-field-helper-text-font-size;
   color: $form-field-helper-text-color;
 }
@@ -224,9 +216,6 @@
 //
 // Layouts
 // =======
-//
-// 1. Unfortunately, `align-items: baseline` does not work with empty inputs in Safari,
-// so we must emulate this behavior.
 
 @mixin form-field-full-width() {
   display: flex;
@@ -248,7 +237,7 @@
     padding-top: $form-field-vertical-inner-gap;
   }
 
-  @include breakpoint-up(sm) {
+  @include breakpoint-up($form-field-horizontal-breakpoint) {
     &,
     .container {
       flex-direction: row;
@@ -263,13 +252,13 @@
     .label {
       min-width: $form-field-horizontal-label-min-width;
       padding-right: $form-field-horizontal-inner-gap;
-      margin-top: calc(#{$form-field-input-font-size} - #{$form-field-label-font-size}); // 1.
+      padding-bottom: 0;
       text-align: $form-field-horizontal-label-alignment;
     }
 
     .helperText {
+      padding-top: 0;
       padding-left: $form-field-horizontal-inner-gap;
-      margin-top: calc(#{$form-field-input-font-size} - #{$form-field-helper-text-font-size}); // 1.
     }
   }
 }
@@ -283,6 +272,43 @@
 
   .helperText {
     padding-top: $form-field-vertical-inner-gap;
+  }
+}
+
+//
+// Sizes
+// =====
+//
+// 1. Unfortunately, `align-items: baseline` does not work with empty inputs in Safari,
+//    so we must emulate this behavior and align label text with input text manually.
+
+@mixin form-field-size($size, $is-multiline: false) {
+  $size-properties: map-get($form-field-sizes, $size);
+
+  .input {
+    @if $is-multiline {
+      height: auto;
+      min-height: map-get($size-properties, height);
+    }
+
+    @else {
+      height: map-get($size-properties, height);
+    }
+
+    padding: map-get($size-properties, padding);
+    font-size: map-get($size-properties, font-size);
+  }
+
+  &.rootLayoutHorizontal {
+    @include breakpoint-up($form-field-horizontal-breakpoint) {
+      .label {
+        margin-top: calc(#{map-get($size-properties, font-size)} - #{$form-field-label-font-size}); // 1.
+      }
+
+      .helperText {
+        margin-top: calc(#{map-get($size-properties, font-size)} - #{$form-field-helper-text-font-size}); // 1.
+      }
+    }
   }
 }
 

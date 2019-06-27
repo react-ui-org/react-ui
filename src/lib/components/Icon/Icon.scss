@@ -6,19 +6,19 @@
   height: $icon-size-default;
 }
 
-.isRootSmall {
+.rootSizeSmall {
   composes: root;
   width: $icon-size-small;
   height: $icon-size-small;
 }
 
-.isRootLarge {
+.rootSizeLarge {
   composes: root;
   width: $icon-size-large;
   height: $icon-size-large;
 }
 
-.isRootLarger {
+.rootSizeLarger {
   composes: root;
   width: $icon-size-larger;
   height: $icon-size-larger;

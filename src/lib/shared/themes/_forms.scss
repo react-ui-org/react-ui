@@ -1,7 +1,8 @@
+$form-field-default-input-width: var(--rui-form-field-default-input-width);
 $form-field-label-font-size: var(--rui-form-field-label-font-size);
-$form-field-input-font-size: var(--rui-form-field-input-font-size);
 $form-field-placeholder-color: var(--rui-form-field-placeholder-color);
 $form-field-helper-text-font-size: var(--rui-form-field-helper-text-font-size);
+$form-field-helper-text-font-style: var(--rui-form-field-helper-text-font-style);
 $form-field-helper-text-color: var(--rui-form-field-helper-text-color);
 $form-field-required-sign: var(--rui-form-field-required-sign);
 $form-field-required-sign-color: var(--rui-form-field-required-sign-color);
@@ -55,5 +56,23 @@ $form-field-states: (
     color: var(--rui-form-field-warning-color),
     border-color: var(--rui-form-field-warning-border-color),
     background-color: var(--rui-form-field-warning-background),
+  ),
+);
+
+$form-field-sizes: (
+  small: (
+    height: var(--rui-form-field-small-height),
+    padding: var(--rui-form-field-small-padding),
+    font-size: var(--rui-form-field-small-font-size),
+  ),
+  medium: (
+    height: var(--rui-form-field-medium-height),
+    padding: var(--rui-form-field-medium-padding),
+    font-size: var(--rui-form-field-medium-font-size),
+  ),
+  large: (
+    height: var(--rui-form-field-large-height),
+    padding: var(--rui-form-field-large-padding),
+    font-size: var(--rui-form-field-large-font-size),
   ),
 );

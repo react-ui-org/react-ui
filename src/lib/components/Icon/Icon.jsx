@@ -9,11 +9,11 @@ const Icon = (props) => {
   let iconClass = styles.root;
 
   if (props.size === 'small') {
-    iconClass = styles.isRootSmall;
+    iconClass = styles.rootSizeSmall;
   } else if (props.size === 'large') {
-    iconClass = styles.isRootLarge;
+    iconClass = styles.rootSizeLarge;
   } else if (props.size === 'larger') {
-    iconClass = styles.isRootLarger;
+    iconClass = styles.rootSizeLarger;
   }
 
   return (

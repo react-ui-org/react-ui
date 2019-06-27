@@ -52,6 +52,7 @@ describe('rendering', () => {
       value="ch1"
       helperText="some help"
       variant="filled"
+      size="large"
       options={[
         {
           label: 'choice 1',

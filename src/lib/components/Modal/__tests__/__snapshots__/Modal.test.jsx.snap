@@ -85,7 +85,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                   size="large"
                 >
                   <svg
-                    className="isRootLarge"
+                    className="rootSizeLarge"
                     style={
                       Object {
                         "fill": "currentColor",
@@ -307,7 +307,7 @@ exports[`rendering renders correctly with translations 1`] = `
                   size="large"
                 >
                   <svg
-                    className="isRootLarge"
+                    className="rootSizeLarge"
                     style={
                       Object {
                         "fill": "currentColor",

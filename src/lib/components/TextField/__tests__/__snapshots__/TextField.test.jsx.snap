@@ -6,6 +6,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
         
         rootLayoutVertical
         
+        rootSizeMedium
         
         rootVariantOutline"
 >
@@ -42,6 +43,7 @@ exports[`rendering renders correctly with all props 1`] = `
         isRootFullWidth
         rootLayoutHorizontal
         isRootRequired
+        rootSizeLarge
         isRootStateInvalid
         rootVariantFilled"
 >
@@ -88,6 +90,7 @@ exports[`rendering renders correctly with hidden label 1`] = `
         
         rootLayoutVertical
         
+        rootSizeMedium
         
         rootVariantOutline"
 >

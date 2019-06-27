@@ -7,6 +7,7 @@ const MultipleSelectField = (props) => {
   let rootFullWidthClass = '';
   let rootLayoutClass = '';
   let rootRequiredClass = '';
+  let rootSizeClass = '';
   let rootValidationStateClass = '';
   let rootVariantClass = '';
 
@@ -26,6 +27,14 @@ const MultipleSelectField = (props) => {
 
   if (props.required) {
     rootRequiredClass = styles.isRootRequired;
+  }
+
+  if (props.size === 'small') {
+    rootSizeClass = styles.rootSizeSmall;
+  } else if (props.size === 'medium') {
+    rootSizeClass = styles.rootSizeMedium;
+  } else if (props.size === 'large') {
+    rootSizeClass = styles.rootSizeLarge;
   }
 
   if (props.validationState === 'invalid') {
@@ -49,6 +58,7 @@ const MultipleSelectField = (props) => {
         ${rootFullWidthClass}
         ${rootLayoutClass}
         ${rootRequiredClass}
+        ${rootSizeClass}
         ${rootValidationStateClass}
         ${rootVariantClass}
       `).trim()}
@@ -105,6 +115,7 @@ MultipleSelectField.defaultProps = {
   isLabelVisible: true,
   layout: 'vertical',
   required: false,
+  size: 'medium',
   validationState: null,
   value: [],
   variant: 'outline',
@@ -127,6 +138,7 @@ MultipleSelectField.propTypes = {
     ]),
   })).isRequired,
   required: PropTypes.bool,
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
   validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
   value: PropTypes.arrayOf(PropTypes.oneOfType([
     PropTypes.string,

@@ -13,7 +13,6 @@
 
 .input {
   @include form-field-input();
-  @include form-field-input-multiple-select();
 }
 
 .bottomLine {
@@ -67,4 +66,17 @@
 
 .rootLayoutVertical {
   @include form-field-layout-vertical();
+}
+
+// Sizes
+.rootSizeSmall {
+  @include form-field-size(small, $is-multiline: true);
+}
+
+.rootSizeMedium {
+  @include form-field-size(medium, $is-multiline: true);
+}
+
+.rootSizeLarge {
+  @include form-field-size(large, $is-multiline: true);
 }

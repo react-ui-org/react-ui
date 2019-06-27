@@ -7,6 +7,7 @@ const TextArea = (props) => {
   let rootFullWidthClass = '';
   let rootLayoutClass = '';
   let rootRequiredClass = '';
+  let rootSizeClass = '';
   let rootValidationStateClass = '';
   let rootVariantClass = '';
 
@@ -26,6 +27,14 @@ const TextArea = (props) => {
 
   if (props.required) {
     rootRequiredClass = styles.isRootRequired;
+  }
+
+  if (props.size === 'small') {
+    rootSizeClass = styles.rootSizeSmall;
+  } else if (props.size === 'medium') {
+    rootSizeClass = styles.rootSizeMedium;
+  } else if (props.size === 'large') {
+    rootSizeClass = styles.rootSizeLarge;
   }
 
   if (props.validationState === 'invalid') {
@@ -49,6 +58,7 @@ const TextArea = (props) => {
         ${rootFullWidthClass}
         ${rootLayoutClass}
         ${rootRequiredClass}
+        ${rootSizeClass}
         ${rootValidationStateClass}
         ${rootVariantClass}
       `).trim()}
@@ -99,6 +109,7 @@ TextArea.defaultProps = {
   placeholder: null,
   required: false,
   rows: 3,
+  size: 'medium',
   validationState: null,
   value: undefined,
   variant: 'outline',
@@ -117,6 +128,7 @@ TextArea.propTypes = {
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   rows: PropTypes.number,
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
   validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
   value: PropTypes.string,
   variant: PropTypes.oneOf(['filled', 'outline']),

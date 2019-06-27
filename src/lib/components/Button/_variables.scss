@@ -14,7 +14,7 @@ $button-sizes: (
     font-size: $typography-size-small,
   ),
   medium: (
-    height: $form-field-height,
+    height: 2.25rem,
     padding-x: map-get($offset-values, 4),
     font-size: $typography-size-0,
   ),
