@@ -191,16 +191,9 @@
   .input {
     border-color: map-get($state-properties, border-color);
     background-color: map-get($state-properties, background-color);
-
-    &:hover {
-      border-color: $form-field-hover-border-color;
-    }
-
-    &:focus {
-      border-color: $form-field-focus-border-color;
-    }
   }
 
+  .label,
   .helperText {
     color: map-get($state-properties, color);
   }
