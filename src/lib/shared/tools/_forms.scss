@@ -278,6 +278,10 @@
     flex-grow: 1;
   }
 
+  .input {
+    width: 100%;
+  }
+
   &.rootLayoutHorizontal,
   &.rootLayoutHorizontal .container {
     align-items: center; // 1.
