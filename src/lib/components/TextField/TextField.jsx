@@ -80,7 +80,7 @@ const TextField = (props) => {
             onChange={props.changeHandler}
             placeholder={props.placeholder}
             required={props.required}
-            size={props.inputSize}
+            size={props.type !== 'number' ? props.inputSize : null}
             type={props.type}
             value={props.value}
           />

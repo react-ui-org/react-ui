@@ -394,12 +394,13 @@
   // Forms Fields
   // ============
   //
-  // 1. Please note that values under cca 150 px do not take effect due to minimum input width
-  //    defined in browsers.
+  // 1. Please note that `min-width` values under cca 150 px do not take effect due to default input
+  //    width defined in browsers unless `width` (same or smaller) is also defined.
   //    https://stackoverflow.com/questions/36247140/why-dont-flex-items-shrink-past-content-size
 
   // Forms fields: common properties
-  --rui-form-field-default-input-width: 240px; // 1.
+  --rui-form-field-input-width: 100%; // 1.
+  --rui-form-field-input-min-width: 240px; // 1.
   --rui-form-field-label-font-size: var(--rui-typography-size-0);
   --rui-form-field-placeholder-color: var(--rui-color-gray-500);
   --rui-form-field-helper-text-font-size: var(--rui-typography-size-small);

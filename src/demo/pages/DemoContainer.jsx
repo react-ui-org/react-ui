@@ -1212,7 +1212,7 @@ class DemoContainer extends React.Component {
                       fieldId="textAreaValidationInvalidOutline"
                       changeHandler={logger}
                       label="What do you wish for Christmas?"
-                      helperText="Common, it's so ugly…"
+                      helperText="C'mon, it's so ugly…"
                       validationState="invalid"
                       value="BMW X6"
                     />
@@ -1240,7 +1240,7 @@ class DemoContainer extends React.Component {
                       fieldId="textAreaValidationInvalidOutline"
                       changeHandler={logger}
                       label="What do you wish for Christmas?"
-                      helperText="Common, it's so ugly…"
+                      helperText="C'mon, it's so ugly…"
                       validationState="invalid"
                       value="BMW X6"
                       variant="filled"
@@ -1556,7 +1556,7 @@ class DemoContainer extends React.Component {
                       fieldId="textFieldValidationInvalidOutline"
                       changeHandler={logger}
                       label="Name"
-                      helperText="Common, this is not your real name."
+                      helperText="C'mon, this is not your real name."
                       validationState="invalid"
                       value="xx"
                     />
@@ -1584,7 +1584,7 @@ class DemoContainer extends React.Component {
                       fieldId="textFieldValidationInvalidFilled"
                       changeHandler={logger}
                       label="Name"
-                      helperText="Common, this is not your real name."
+                      helperText="C'mon, this is not your real name."
                       validationState="invalid"
                       value="xx"
                       variant="filled"
