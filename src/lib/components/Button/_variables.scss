@@ -1,4 +1,3 @@
-@import '../../shared/settings/forms';
 @import '../../shared/settings/offsets';
 @import '../../shared/settings/typography';
 
@@ -6,21 +5,3 @@ $button-font-family: $typography-font-family-base;
 $button-line-height: $typography-line-height-base;
 $button-icon-offset: map-get($offset-values, 2);
 $button-breakpoint: lg;
-
-$button-sizes: (
-  small: (
-    height: 2rem,
-    padding-x: map-get($offset-values, 3),
-    font-size: $typography-size-small,
-  ),
-  medium: (
-    height: 2.25rem,
-    padding-x: map-get($offset-values, 4),
-    font-size: $typography-size-0,
-  ),
-  large: (
-    height: 2.5rem,
-    padding-x: map-get($offset-values, 5),
-    font-size: $typography-size-1,
-  ),
-);

@@ -267,3 +267,21 @@ $button-variants: (
     ),
   ),
 );
+
+$button-sizes: (
+  small: (
+    height: var(--rui-button-small-height),
+    padding-x: var(--rui-button-small-padding-x),
+    font-size: var(--rui-button-small-font-size),
+  ),
+  medium: (
+    height: var(--rui-button-medium-height),
+    padding-x: var(--rui-button-medium-padding-x),
+    font-size: var(--rui-button-medium-font-size),
+  ),
+  large: (
+    height: var(--rui-button-large-height),
+    padding-x: var(--rui-button-large-padding-x),
+    font-size: var(--rui-button-large-font-size),
+  ),
+);

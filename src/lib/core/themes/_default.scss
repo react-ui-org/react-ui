@@ -362,6 +362,23 @@
   --rui-button-flat-danger-active-color: var(--rui-color-error-darker);
   --rui-button-flat-danger-active-background: var(--rui-color-error-light);
 
+  // Buttons: sizes
+
+  // Buttons: sizes: small
+  --rui-button-small-height: 1.75rem;
+  --rui-button-small-padding-x: var(--rui-offset-3);
+  --rui-button-small-font-size: var(--rui-typography-size-small);
+
+  // Buttons: sizes: medium
+  --rui-button-medium-height: 2.25rem;
+  --rui-button-medium-padding-x: var(--rui-offset-4);
+  --rui-button-medium-font-size: var(--rui-typography-size-0);
+
+  // Buttons: sizes: large
+  --rui-button-large-height: 2.75rem;
+  --rui-button-large-padding-x: var(--rui-offset-5);
+  --rui-button-large-font-size: var(--rui-typography-size-1);
+
   //
   // Cards
   // ============
@@ -397,6 +414,7 @@
   // 1. Please note that `min-width` values under cca 150 px do not take effect due to default input
   //    width defined in browsers unless `width` (same or smaller) is also defined.
   //    https://stackoverflow.com/questions/36247140/why-dont-flex-items-shrink-past-content-size
+  // 2. Append non-breaking space and asterisk to required filed labels.
 
   // Forms fields: common properties
   --rui-form-field-input-width: 100%; // 1.
@@ -406,7 +424,7 @@
   --rui-form-field-helper-text-font-size: var(--rui-typography-size-small);
   --rui-form-field-helper-text-font-style: normal;
   --rui-form-field-helper-text-color: var(--rui-color-gray-500);
-  --rui-form-field-required-sign: '\00a0*'; // non-breaking space and asterisk
+  --rui-form-field-required-sign: '\00a0*'; // 2.
   --rui-form-field-required-sign-color: var(--rui-color-gray-500);
   --rui-form-field-caret-border-style: none;
   --rui-form-field-caret-background: transparent;
@@ -449,17 +467,17 @@
 
   // Form fields: sizes: small
   --rui-form-field-small-height: 1.75rem;
-  --rui-form-field-small-padding: 0 0.5rem;
+  --rui-form-field-small-padding: 0 var(--rui-offset-2);
   --rui-form-field-small-font-size: var(--rui-typography-size-small);
 
   // Form fields: sizes: medium
   --rui-form-field-medium-height: 2.25rem;
-  --rui-form-field-medium-padding: 0.25rem 0.75rem;
+  --rui-form-field-medium-padding: 0.25rem var(--rui-offset-3);
   --rui-form-field-medium-font-size: var(--rui-typography-size-0);
 
   // Form fields: sizes: large
   --rui-form-field-large-height: 2.75rem;
-  --rui-form-field-large-padding: 0.5rem 1rem;
+  --rui-form-field-large-padding: 0.5rem var(--rui-offset-4);
   --rui-form-field-large-font-size: var(--rui-typography-size-1);
 
   //
