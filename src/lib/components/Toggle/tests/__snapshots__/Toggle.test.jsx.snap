@@ -38,7 +38,8 @@ exports[`rendering renders correctly mandatory props only 1`] = `
 exports[`rendering renders correctly with all props 1`] = `
 <div
   className="root
-        labelPositionAfter"
+        labelPositionAfter
+        isRootStateWarning"
 >
   <label
     className="inputWrap"

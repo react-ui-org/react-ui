@@ -4,6 +4,8 @@ import styles from './Radio.scss';
 
 const Radio = (props) => {
   let labelClass = styles.label;
+  let rootValidationStateClass = '';
+
   if (props.isLabelVisible) {
     if (props.required) {
       labelClass = styles.isLabelRequired;
@@ -12,8 +14,21 @@ const Radio = (props) => {
     labelClass = styles.isLabelHidden;
   }
 
+  if (props.validationState === 'invalid') {
+    rootValidationStateClass = styles.isRootStateInvalid;
+  } else if (props.validationState === 'valid') {
+    rootValidationStateClass = styles.isRootStateValid;
+  } else if (props.validationState === 'warning') {
+    rootValidationStateClass = styles.isRootStateWarning;
+  }
+
   return (
-    <div className={styles.root}>
+    <div
+      className={`
+        ${styles.root}
+        ${rootValidationStateClass}
+      `.trim()}
+    >
       <div className={labelClass}>
         {props.label}
       </div>
@@ -62,6 +77,7 @@ Radio.defaultProps = {
   error: null,
   isLabelVisible: true,
   required: false,
+  validationState: null,
   value: undefined,
 };
 
@@ -82,6 +98,7 @@ Radio.propTypes = {
     ]),
   })).isRequired,
   required: PropTypes.bool,
+  validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,

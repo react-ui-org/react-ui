@@ -134,7 +134,8 @@ exports[`rendering renders correctly only one option and hidden label 1`] = `
 
 exports[`rendering renders correctly with all props 1`] = `
 <div
-  className="root"
+  className="root
+        isRootStateWarning"
 >
   <div
     className="isLabelRequired"

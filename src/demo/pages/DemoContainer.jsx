@@ -371,6 +371,34 @@ class DemoContainer extends React.Component {
               )}
             />
             <Documentation
+              name="Validation states"
+              component={(
+                <div>
+                  <CheckboxField
+                    fieldId="checkboxFieldStateValid"
+                    label="checked and valid"
+                    validationState="valid"
+                    checked
+                    changeHandler={logger}
+                  />
+                  <CheckboxField
+                    fieldId="checkboxFieldStateValid"
+                    label="checked with warning"
+                    validationState="warning"
+                    checked
+                    changeHandler={logger}
+                  />
+                  <CheckboxField
+                    fieldId="checkboxFieldStateValid"
+                    label="checked and invalid"
+                    validationState="invalid"
+                    checked
+                    changeHandler={logger}
+                  />
+                </div>
+              )}
+            />
+            <Documentation
               name="Checkbox label hidden"
               component={(
                 <CheckboxField
@@ -671,6 +699,37 @@ class DemoContainer extends React.Component {
                   options={this.exampleOptions}
                   value="apples"
                 />
+              )}
+            />
+            <Documentation
+              name="Validation states"
+              component={(
+                <div>
+                  <Radio
+                    changeHandler={logger}
+                    fieldId="RadioStateValid"
+                    label="Choices valid"
+                    options={this.exampleOptions}
+                    value="apples"
+                    validationState="valid"
+                  />
+                  <Radio
+                    changeHandler={logger}
+                    fieldId="RadioStateWarning"
+                    label="Choices with warning"
+                    options={this.exampleOptions}
+                    value="apples"
+                    validationState="warning"
+                  />
+                  <Radio
+                    changeHandler={logger}
+                    fieldId="RadioStateInvalid"
+                    label="Choices invalid"
+                    options={this.exampleOptions}
+                    value="apples"
+                    validationState="invalid"
+                  />
+                </div>
               )}
             />
             <Documentation
@@ -1791,6 +1850,34 @@ class DemoContainer extends React.Component {
                   changeHandler={logger}
                   error="This should not be checked"
                 />
+              )}
+            />
+            <Documentation
+              name="Validation states"
+              component={(
+                <div>
+                  <Toggle
+                    fieldId="toggledValidationValid"
+                    label="Checked and valid"
+                    validationState="valid"
+                    checked
+                    changeHandler={logger}
+                  />
+                  <Toggle
+                    fieldId="toggledValidationWarning"
+                    label="Checked with warning"
+                    validationState="warning"
+                    checked
+                    changeHandler={logger}
+                  />
+                  <Toggle
+                    fieldId="toggledValidationInvalid"
+                    label="Checked and invalid"
+                    validationState="invalid"
+                    checked
+                    changeHandler={logger}
+                  />
+                </div>
               )}
             />
             <Documentation

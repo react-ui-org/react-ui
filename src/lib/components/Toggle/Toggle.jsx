@@ -5,6 +5,7 @@ import styles from './Toggle.scss';
 const Toggle = (props) => {
   let labelVisibilityClass = '';
   let labelPositionClass = '';
+  let rootValidationStateClass = '';
 
   if (!props.isLabelVisible) {
     labelVisibilityClass = styles.isLabelHidden;
@@ -16,11 +17,20 @@ const Toggle = (props) => {
     labelPositionClass = styles.labelPositionAfter;
   }
 
+  if (props.validationState === 'invalid') {
+    rootValidationStateClass = styles.isRootStateInvalid;
+  } else if (props.validationState === 'valid') {
+    rootValidationStateClass = styles.isRootStateValid;
+  } else if (props.validationState === 'warning') {
+    rootValidationStateClass = styles.isRootStateWarning;
+  }
+
   return (
     <div
       className={(`
         ${styles.root}
         ${labelPositionClass}
+        ${rootValidationStateClass}
       `).trim()}
     >
       <label htmlFor={props.fieldId} className={styles.inputWrap}>
@@ -70,6 +80,7 @@ Toggle.defaultProps = {
   isLabelVisible: true,
   labelPosition: 'after',
   required: false,
+  validationState: null,
   value: undefined,
 };
 
@@ -84,6 +95,7 @@ Toggle.propTypes = {
   label: PropTypes.string.isRequired,
   labelPosition: PropTypes.oneOf(['before', 'after']),
   required: PropTypes.bool,
+  validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,

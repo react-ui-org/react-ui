@@ -60,25 +60,26 @@
   border: $border-width solid $border-color;
 }
 
-@mixin form-checkbox-radio-input-styles($size, $top, $left) {
+@mixin form-checkbox-radio-input-styles($size, $left) {
   position: absolute;
-  top: $top;
+  top: 50%;
   left: $left;
   opacity: 0;
   width: $size;
   height: $size;
+  transform: translateY(-50%);
 }
 
-@mixin form-checkbox-radio-label-styles($min-height, $padding-left, $line-height: 1rem) {
+@mixin form-checkbox-radio-label-styles($min-height, $padding-left) {
   position: relative;
   display: inline-block;
   min-height: $min-height;
   padding-left: $padding-left;
-  line-height: $line-height;
+  line-height: $checkbox-radio-label-height;
   cursor: pointer;
 }
 
-@mixin form-toggle-inactive($height, $width, $top, $left, $border-color) {
+@mixin form-toggle-inactive($width, $height, $top, $left, $border-color) {
   content: '';
   position: absolute;
   top: $top;

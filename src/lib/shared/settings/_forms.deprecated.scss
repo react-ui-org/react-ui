@@ -1,18 +1,21 @@
 // ⚠️ Deprecated for new components.
 
-@import "colors.deprecated";
+@import 'colors';
+@import 'colors.deprecated';
 
 $form-focus-outline-color: $blue-lighter;
 $form-focus-outline-color-inverse: rgba(255, 255, 255, 0.09);
 $form-focus-outline-blur: 2px;
 $form-focus-outline-spread: 2px;
 
-$form-invalid-color: $red-dark;
+$form-invalid-color: map-get($colors-ui, error-dark);
+$form-valid-color: map-get($colors-ui, success-dark);
+$form-warning-color: map-get($colors-ui, warning-dark);
 
 $form-field-height: 1.25rem;
 $form-field-text-color: $black;
 $form-field-border-color: $gray-dark-midtone;
-$form-field-background-color: $blue-light-midtone;
+$form-field-background-color: $green;
 
 $textarea-text-color: $form-field-text-color;
 $textarea-border-color: $lighter-midtone-gray;
@@ -25,12 +28,12 @@ $select-after-color: $gray-dark-midtone;
 $select-after-hover-color: $gray-darker;
 $select-option-text-color: $form-field-text-color;
 
-$checkbox-radio-label-height: 1rem;
-$checkbox-radio-size: 0.666667rem;
+$checkbox-radio-label-height: 2rem;
+$checkbox-radio-size: 1.375rem;
 $checkbox-radio-padding-left: $checkbox-radio-size + 0.5rem;
 $checkbox-radio-top: ($checkbox-radio-label-height - $checkbox-radio-size) / 2;
 
-$checkbox-checkmark-size: 0.333333rem;
+$checkbox-checkmark-size: 0.625rem;
 $checkbox-checkmark-color: $white;
 $checkbox-checkmark-border-style: ($checkbox-checkmark-size / 4) solid $white;
 $checkbox-border-color-indeterminate: $blue-light-midtone;
@@ -38,15 +41,15 @@ $checkbox-disabled-checkmark-color: $gray;
 $checkbox-disabled-text-color: $gray-darker;
 $checkbox-disabled-background-color: $gray-light-midtone;
 
-$radio-checked-box-shadow: inset 0 0 0 0.25rem $form-field-background-color;
+$radio-checked-box-shadow: inset 0 0 0 6px $form-field-background-color;
 $radio-focused-box-shadow: 0 0 $form-focus-outline-blur $form-focus-outline-spread $form-focus-outline-color;
 $radio-disabled-font-color: $gray-darker;
-$radio-disabled-background-color: $gray-light-midtone;
-$radio-disabled-checked-box-shadow: $radio-checked-box-shadow;
+$radio-disabled-background-color: $gray-darker;
+$radio-disabled-checked-box-shadow: inset 0 0 0 6px $gray-light-midtone;
 
-$toggle-width: 2.625rem;
-$toggle-height: 1.375rem;
-$toggle-label-height: $toggle-height;
+$toggle-width: 2 * $checkbox-radio-size;
+$toggle-height: $checkbox-radio-size;
+$toggle-label-height: $checkbox-radio-label-height;
 $toggle-icon-color-border: $gray;
 $toggle-icon-color: $white;
 $toggle-icon-size: 0.625rem;

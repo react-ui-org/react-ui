@@ -26,6 +26,7 @@ describe('rendering', () => {
       layoutLabel="right"
       required
       checked
+      validationState="warning"
     />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();

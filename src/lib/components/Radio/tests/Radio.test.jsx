@@ -78,6 +78,7 @@ describe('rendering', () => {
           value: 'ch2',
         },
       ]}
+      validationState="warning"
     />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();

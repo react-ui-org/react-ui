@@ -1,6 +1,7 @@
 @import '../../shared/settings/borders';
 @import '../../shared/settings/forms.deprecated';
 @import '../../shared/tools/accessibility';
+@import '../../shared/tools/forms';
 @import '../../shared/tools/forms.deprecated';
 
 .root {
@@ -8,16 +9,15 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  padding: 0 0.25rem 0 0;
-  margin-bottom: 1rem;
 }
 
 .inputWrap {
   position: relative;
+  min-height: $checkbox-radio-label-height;
 }
 
 .input {
-  @include form-checkbox-radio-input-styles($checkbox-radio-size, $checkbox-radio-top, 0);
+  @include form-checkbox-radio-input-styles($checkbox-radio-size, 0);
 }
 
 .label {
@@ -38,15 +38,15 @@
 .input + .label::after {
   content: '';
   position: absolute;
-  top: (1rem - $checkbox-radio-size) / 2;
-  left: ($checkbox-checkmark-size / 2);
+  top: 50%;
+  left: calc(#{$checkbox-checkmark-size / 2} + 1px);
   display: none;
   width: $checkbox-checkmark-size;
   height: calc((#{$checkbox-checkmark-size} / 2) + 1px);
   border-color: $checkbox-checkmark-color;
   border-bottom: $checkbox-checkmark-border-style;
   border-left: $checkbox-checkmark-border-style;
-  transform: translate(0, ($checkbox-checkmark-size / 2)) rotate(-45deg);
+  transform: translateY(-50%) rotate(-45deg);
 }
 
 // stylelint-disable selector-max-specificity, selector-nested-pattern
@@ -57,7 +57,7 @@
   }
 
   .input + .label::after {
-    right: ($checkbox-checkmark-size / 2);
+    right: calc(#{$checkbox-checkmark-size / 2} + 1px);
     left: auto;
   }
 
@@ -84,7 +84,6 @@
 }
 
 .input:checked + .label::before {
-  border: 0;
   background: $form-field-background-color;
 }
 
@@ -108,9 +107,13 @@
   box-shadow: $radio-focused-box-shadow;
 }
 
+.input:disabled + .label::before {
+  background-color: $checkbox-disabled-background-color;
+}
+
 .input:focus:checked + .label::before {
   outline: 0;
-  box-shadow: $radio-checked-box-shadow, $radio-focused-box-shadow;
+  box-shadow: $radio-focused-box-shadow;
 }
 
 .input:disabled:checked + .label::before {
@@ -122,28 +125,69 @@
   content: ' *';
 }
 
-.input:checked:disabled + .label::before {
-  background-color: $checkbox-disabled-background-color;
-}
-
 .input:checked:disabled + .label::after {
   $disabled-border-style: ($checkbox-radio-size / 8) solid $checkbox-disabled-checkmark-color;
 
   border-bottom: $disabled-border-style;
   border-left: $disabled-border-style;
 }
-// stylelint-enable
 
 .description,
 .error {
-  font-size: 0.8rem;
+  @include form-field-helper-text();
 }
 
 .error {
   min-height: 1rem;
-  color: $form-invalid-color;
 }
 
 .isLabelHidden {
   @include accessibility-hide-text();
+}
+
+// States
+// stylelint-disable no-descending-specificity
+.isRootStateInvalid .label,
+.isRootStateInvalid .description,
+.isRootStateInvalid .error {
+  color: $form-invalid-color;
+}
+
+.isRootStateInvalid .input + .label::before,
+.isRootStateInvalid .input:checked + .label::before {
+  border-color: $form-invalid-color;
+}
+
+.isRootStateInvalid .input:checked + .label::before {
+  background-color: $form-invalid-color;
+}
+
+.isRootStateValid .label,
+.isRootStateValid .description,
+.isRootStateValid .error {
+  color: $form-valid-color;
+}
+
+.isRootStateValid .input + .label::before,
+.isRootStateValid .input:checked + .label::before {
+  border-color: $form-valid-color;
+}
+
+.isRootStateValid .input:checked + .label::before {
+  background-color: $form-valid-color;
+}
+
+.isRootStateWarning .label,
+.isRootStateWarning .description,
+.isRootStateWarning .error {
+  color: $form-warning-color;
+}
+
+.isRootStateWarning .input + .label::before,
+.isRootStateWarning .input:checked + .label::before {
+  border-color: $form-warning-color;
+}
+
+.isRootStateWarning .input:checked + .label::before {
+  background-color: $form-warning-color;
 }
