@@ -1,3 +1,5 @@
+// 1. Icon buttons should be squares.
+
 @import '../../shared/tools/explode';
 @import '../../shared/tools/forms';
 @import '../../shared/tools/transitions';
@@ -41,6 +43,21 @@
   height: map-get($properties, height);
   padding: 0 map-get($properties, padding-x);
   font-size: map-get($properties, font-size);
+
+  &.withLabelHidden,
+  &.withLabelHiddenMobile {
+    width: map-get($properties, height); // 1.
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  &.withLabelHiddenMobile {
+    @include breakpoint-up($button-breakpoint) {
+      width: auto;
+      padding-right: map-get($properties, padding-x);
+      padding-left: map-get($properties, padding-x);
+    }
+  }
 }
 
 @mixin button-variant($priority, $variant) {

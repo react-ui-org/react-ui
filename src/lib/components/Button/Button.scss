@@ -45,8 +45,15 @@
 
 // Block button
 .isRootBlock {
-  @include form-field-full-width();
   @include form-field-vertical-neighbor();
+
+  width: 100%;
+}
+
+.isRootBlock.withLabelHiddenMobile {
+  @include breakpoint-up($button-breakpoint) {
+    width: 100%;
+  }
 }
 
 // Default priority variants
