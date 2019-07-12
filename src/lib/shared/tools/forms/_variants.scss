@@ -1,0 +1,42 @@
+@import '../../settings/forms';
+@import '../../themes/forms';
+@import '../../tools/explode';
+
+@mixin form-field-input-variant($variant) {
+  $variant-states: map-get($form-field-variants, $variant);
+
+  @include explode(map-get($variant-states, default));
+
+  @if $variant == filled {
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  &:focus {
+    @include explode(map-get($variant-states, focus));
+  }
+}
+
+@mixin form-field-input-outline-caret() {
+  $variant-states: map-get($form-field-variants, outline);
+
+  & ~ .caret {
+    border-left: $form-field-border-width $form-field-caret-border-style $form-field-border-color;
+    background-color: $form-field-caret-background;
+  }
+
+  &:hover ~ .caret {
+    border-left-color: $form-field-hover-border-color;
+  }
+
+  &:focus ~ .caret {
+    border-left-color: $form-field-focus-border-color;
+  }
+
+  &:disabled ~ .caret {
+    border-left-color: $form-field-border-color;
+  }
+}

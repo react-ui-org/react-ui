@@ -1,0 +1,25 @@
+// 1. Increase spacing in horizontal layout to visually separate fields.
+// 2. Reset horizontal spacing for vertical neighbors.
+
+@import '../../settings/forms';
+
+@mixin form-field-horizontal-neighbor() {
+  &:not(:last-of-type) {
+    margin-right: $form-field-horizontal-outer-spacing;
+  }
+
+  &.rootLayoutHorizontal:not(:last-of-type) {
+    margin-right: calc(2 * #{$form-field-horizontal-outer-spacing}); // 1.
+  }
+}
+
+@mixin form-field-vertical-neighbor() {
+  &:not(:last-of-type) {
+    margin-bottom: $form-field-vertical-outer-spacing;
+  }
+
+  &:not(:last-of-type),
+  &.rootLayoutHorizontal:not(:last-of-type) {
+    margin-right: 0; // 2.
+  }
+}

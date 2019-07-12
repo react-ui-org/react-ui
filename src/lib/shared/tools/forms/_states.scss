@@ -1,0 +1,35 @@
+@import '../../themes/forms';
+
+@mixin form-field-disabled() {
+  opacity: 0.5;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+@mixin form-field-state($state) {
+  $state-properties: map-get($form-field-states, $state);
+
+  .input {
+    border-color: map-get($state-properties, border-color);
+    background-color: map-get($state-properties, background-color);
+  }
+
+  .label,
+  .helperText {
+    color: map-get($state-properties, color);
+  }
+
+  &.rootVariantFilled .input {
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-left-color: transparent;
+  }
+}
+
+@mixin form-field-caret-state($state) {
+  $state-properties: map-get($form-field-states, $state);
+
+  &.rootVariantOutline .caret {
+    border-left-color: map-get($state-properties, border-color);
+  }
+}

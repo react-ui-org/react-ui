@@ -1,0 +1,72 @@
+// 1. Override horizontal layout alignment.
+
+@import '../../settings/forms';
+@import '../../themes/forms';
+@import '../breakpoints';
+
+@mixin form-field-layout-vertical() {
+  &,
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .label {
+    padding-bottom: $form-field-vertical-inner-gap;
+  }
+
+  .helperText {
+    padding-top: $form-field-vertical-inner-gap;
+  }
+}
+
+@mixin form-field-layout-horizontal() {
+  @include form-field-layout-vertical();
+
+  @include breakpoint-up($form-field-horizontal-breakpoint) {
+    &,
+    .container {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .container {
+      flex-grow: 1;
+    }
+
+    .label {
+      min-width: $form-field-horizontal-label-min-width;
+      padding-right: $form-field-horizontal-inner-gap;
+      padding-bottom: 0;
+      text-align: $form-field-horizontal-label-alignment;
+    }
+
+    .helperText {
+      padding-top: 0;
+      padding-left: $form-field-horizontal-inner-gap;
+    }
+  }
+}
+
+@mixin form-field-full-width() {
+  width: 100%;
+
+  &,
+  .container {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .inputContainer {
+    flex-grow: 1;
+  }
+
+  .input {
+    width: 100%;
+  }
+
+  &.rootLayoutHorizontal,
+  &.rootLayoutHorizontal .container {
+    align-items: center; // 1.
+  }
+}
