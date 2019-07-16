@@ -35,6 +35,10 @@
   &:disabled {
     @include form-field-disabled();
   }
+
+  &:-moz-focusring {
+    outline: 0;
+  }
 }
 
 @mixin button-size($size) {

@@ -50,7 +50,7 @@ exports[`rendering renders correctly 1`] = `
               validationState={null}
               variant="outline"
             >
-              <div
+              <label
                 className="root
                       isRootFullWidth
                       rootLayoutVertical
@@ -58,32 +58,28 @@ exports[`rendering renders correctly 1`] = `
                       rootSizeMedium
                       
                       rootVariantOutline"
+                htmlFor="email"
               >
-                <label
-                  className="container"
-                  htmlFor="email"
+                <div
+                  className="label"
                 >
-                  <div
-                    className="label"
-                  >
-                    E-mail
-                  </div>
-                  <div
-                    className="inputContainer"
-                  >
-                    <input
-                      className="input"
-                      disabled={false}
-                      id="email"
-                      onChange={[Function]}
-                      placeholder={null}
-                      required={true}
-                      size={null}
-                      type="email"
-                    />
-                  </div>
-                </label>
-              </div>
+                  E-mail
+                </div>
+                <div
+                  className="inputContainer"
+                >
+                  <input
+                    className="input"
+                    disabled={false}
+                    id="email"
+                    onChange={[Function]}
+                    placeholder={null}
+                    required={true}
+                    size={null}
+                    type="email"
+                  />
+                </div>
+              </label>
             </TextField>
             <TextField
               changeHandler={[Function]}
@@ -102,7 +98,7 @@ exports[`rendering renders correctly 1`] = `
               validationState={null}
               variant="outline"
             >
-              <div
+              <label
                 className="root
                       isRootFullWidth
                       rootLayoutVertical
@@ -110,32 +106,28 @@ exports[`rendering renders correctly 1`] = `
                       rootSizeMedium
                       
                       rootVariantOutline"
+                htmlFor="password"
               >
-                <label
-                  className="container"
-                  htmlFor="password"
+                <div
+                  className="label"
                 >
-                  <div
-                    className="label"
-                  >
-                    Password
-                  </div>
-                  <div
-                    className="inputContainer"
-                  >
-                    <input
-                      className="input"
-                      disabled={false}
-                      id="password"
-                      onChange={[Function]}
-                      placeholder={null}
-                      required={true}
-                      size={null}
-                      type="password"
-                    />
-                  </div>
-                </label>
-              </div>
+                  Password
+                </div>
+                <div
+                  className="inputContainer"
+                >
+                  <input
+                    className="input"
+                    disabled={false}
+                    id="password"
+                    onChange={[Function]}
+                    placeholder={null}
+                    required={true}
+                    size={null}
+                    type="password"
+                  />
+                </div>
+              </label>
             </TextField>
           </div>
           <Button
@@ -254,7 +246,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
               validationState={null}
               variant="outline"
             >
-              <div
+              <label
                 className="root
                       isRootFullWidth
                       rootLayoutVertical
@@ -262,32 +254,28 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                       rootSizeMedium
                       
                       rootVariantOutline"
+                htmlFor="email"
               >
-                <label
-                  className="container"
-                  htmlFor="email"
+                <div
+                  className="label"
                 >
-                  <div
-                    className="label"
-                  >
-                    E-mail
-                  </div>
-                  <div
-                    className="inputContainer"
-                  >
-                    <input
-                      className="input"
-                      disabled={false}
-                      id="email"
-                      onChange={[Function]}
-                      placeholder={null}
-                      required={true}
-                      size={null}
-                      type="email"
-                    />
-                  </div>
-                </label>
-              </div>
+                  E-mail
+                </div>
+                <div
+                  className="inputContainer"
+                >
+                  <input
+                    className="input"
+                    disabled={false}
+                    id="email"
+                    onChange={[Function]}
+                    placeholder={null}
+                    required={true}
+                    size={null}
+                    type="email"
+                  />
+                </div>
+              </label>
             </TextField>
             <TextField
               changeHandler={[Function]}
@@ -306,7 +294,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
               validationState={null}
               variant="outline"
             >
-              <div
+              <label
                 className="root
                       isRootFullWidth
                       rootLayoutVertical
@@ -314,32 +302,28 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                       rootSizeMedium
                       
                       rootVariantOutline"
+                htmlFor="password"
               >
-                <label
-                  className="container"
-                  htmlFor="password"
+                <div
+                  className="label"
                 >
-                  <div
-                    className="label"
-                  >
-                    Password
-                  </div>
-                  <div
-                    className="inputContainer"
-                  >
-                    <input
-                      className="input"
-                      disabled={false}
-                      id="password"
-                      onChange={[Function]}
-                      placeholder={null}
-                      required={true}
-                      size={null}
-                      type="password"
-                    />
-                  </div>
-                </label>
-              </div>
+                  Password
+                </div>
+                <div
+                  className="inputContainer"
+                >
+                  <input
+                    className="input"
+                    disabled={false}
+                    id="password"
+                    onChange={[Function]}
+                    placeholder={null}
+                    required={true}
+                    size={null}
+                    type="password"
+                  />
+                </div>
+              </label>
             </TextField>
           </div>
           <Button
@@ -447,7 +431,7 @@ exports[`rendering renders correctly with translations 1`] = `
               validationState={null}
               variant="outline"
             >
-              <div
+              <label
                 className="root
                       isRootFullWidth
                       rootLayoutVertical
@@ -455,32 +439,28 @@ exports[`rendering renders correctly with translations 1`] = `
                       rootSizeMedium
                       
                       rootVariantOutline"
+                htmlFor="email"
               >
-                <label
-                  className="container"
-                  htmlFor="email"
+                <div
+                  className="label"
                 >
-                  <div
-                    className="label"
-                  >
-                    E-mail
-                  </div>
-                  <div
-                    className="inputContainer"
-                  >
-                    <input
-                      className="input"
-                      disabled={false}
-                      id="email"
-                      onChange={[Function]}
-                      placeholder={null}
-                      required={true}
-                      size={null}
-                      type="email"
-                    />
-                  </div>
-                </label>
-              </div>
+                  E-mail
+                </div>
+                <div
+                  className="inputContainer"
+                >
+                  <input
+                    className="input"
+                    disabled={false}
+                    id="email"
+                    onChange={[Function]}
+                    placeholder={null}
+                    required={true}
+                    size={null}
+                    type="email"
+                  />
+                </div>
+              </label>
             </TextField>
             <TextField
               changeHandler={[Function]}
@@ -499,7 +479,7 @@ exports[`rendering renders correctly with translations 1`] = `
               validationState={null}
               variant="outline"
             >
-              <div
+              <label
                 className="root
                       isRootFullWidth
                       rootLayoutVertical
@@ -507,32 +487,28 @@ exports[`rendering renders correctly with translations 1`] = `
                       rootSizeMedium
                       
                       rootVariantOutline"
+                htmlFor="password"
               >
-                <label
-                  className="container"
-                  htmlFor="password"
+                <div
+                  className="label"
                 >
-                  <div
-                    className="label"
-                  >
-                    Heslo
-                  </div>
-                  <div
-                    className="inputContainer"
-                  >
-                    <input
-                      className="input"
-                      disabled={false}
-                      id="password"
-                      onChange={[Function]}
-                      placeholder={null}
-                      required={true}
-                      size={null}
-                      type="password"
-                    />
-                  </div>
-                </label>
-              </div>
+                  Heslo
+                </div>
+                <div
+                  className="inputContainer"
+                >
+                  <input
+                    className="input"
+                    disabled={false}
+                    id="password"
+                    onChange={[Function]}
+                    placeholder={null}
+                    required={true}
+                    size={null}
+                    type="password"
+                  />
+                </div>
+              </label>
             </TextField>
           </div>
           <Button
@@ -625,7 +601,7 @@ exports[`rendering renders correctly with username 1`] = `
               validationState={null}
               variant="outline"
             >
-              <div
+              <label
                 className="root
                       isRootFullWidth
                       rootLayoutVertical
@@ -633,32 +609,28 @@ exports[`rendering renders correctly with username 1`] = `
                       rootSizeMedium
                       
                       rootVariantOutline"
+                htmlFor="Username"
               >
-                <label
-                  className="container"
-                  htmlFor="Username"
+                <div
+                  className="label"
                 >
-                  <div
-                    className="label"
-                  >
-                    Username
-                  </div>
-                  <div
-                    className="inputContainer"
-                  >
-                    <input
-                      className="input"
-                      disabled={false}
-                      id="Username"
-                      onChange={[Function]}
-                      placeholder={null}
-                      required={true}
-                      size={null}
-                      type="text"
-                    />
-                  </div>
-                </label>
-              </div>
+                  Username
+                </div>
+                <div
+                  className="inputContainer"
+                >
+                  <input
+                    className="input"
+                    disabled={false}
+                    id="Username"
+                    onChange={[Function]}
+                    placeholder={null}
+                    required={true}
+                    size={null}
+                    type="text"
+                  />
+                </div>
+              </label>
             </TextField>
             <TextField
               changeHandler={[Function]}
@@ -677,7 +649,7 @@ exports[`rendering renders correctly with username 1`] = `
               validationState={null}
               variant="outline"
             >
-              <div
+              <label
                 className="root
                       isRootFullWidth
                       rootLayoutVertical
@@ -685,32 +657,28 @@ exports[`rendering renders correctly with username 1`] = `
                       rootSizeMedium
                       
                       rootVariantOutline"
+                htmlFor="password"
               >
-                <label
-                  className="container"
-                  htmlFor="password"
+                <div
+                  className="label"
                 >
-                  <div
-                    className="label"
-                  >
-                    Password
-                  </div>
-                  <div
-                    className="inputContainer"
-                  >
-                    <input
-                      className="input"
-                      disabled={false}
-                      id="password"
-                      onChange={[Function]}
-                      placeholder={null}
-                      required={true}
-                      size={null}
-                      type="password"
-                    />
-                  </div>
-                </label>
-              </div>
+                  Password
+                </div>
+                <div
+                  className="inputContainer"
+                >
+                  <input
+                    className="input"
+                    disabled={false}
+                    id="password"
+                    onChange={[Function]}
+                    placeholder={null}
+                    required={true}
+                    size={null}
+                    type="password"
+                  />
+                </div>
+              </label>
             </TextField>
           </div>
           <Button

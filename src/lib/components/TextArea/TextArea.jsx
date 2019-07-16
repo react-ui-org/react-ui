@@ -52,7 +52,7 @@ const TextArea = (props) => {
   }
 
   return (
-    <div
+    <label
       className={(`
         ${styles.root}
         ${rootFullWidthClass}
@@ -62,39 +62,38 @@ const TextArea = (props) => {
         ${rootValidationStateClass}
         ${rootVariantClass}
       `).trim()}
+      htmlFor={props.fieldId}
     >
-      <label className={styles.container} htmlFor={props.fieldId}>
-        <div
-          className={(`
-            ${styles.label}
-            ${labelVisibilityClass}
-          `).trim()}
-        >
-          {props.label}
-        </div>
-        <div className={styles.inputContainer}>
-          <textarea
-            className={styles.input}
-            cols={props.cols}
-            disabled={props.disabled}
-            id={props.fieldId}
-            onChange={props.changeHandler}
-            placeholder={props.placeholder}
-            required={props.required}
-            rows={props.rows}
-            value={props.value}
-          />
-          {props.variant === 'filled' && (
-            <div className={styles.bottomLine} />
-          )}
-        </div>
-      </label>
+      <div
+        className={(`
+          ${styles.label}
+          ${labelVisibilityClass}
+        `).trim()}
+      >
+        {props.label}
+      </div>
+      <div className={styles.inputContainer}>
+        <textarea
+          className={styles.input}
+          cols={props.cols}
+          disabled={props.disabled}
+          id={props.fieldId}
+          onChange={props.changeHandler}
+          placeholder={props.placeholder}
+          required={props.required}
+          rows={props.rows}
+          value={props.value}
+        />
+        {props.variant === 'filled' && (
+          <div className={styles.bottomLine} />
+        )}
+      </div>
       {props.helperText && (
         <div className={styles.helperText}>
           {props.helperText}
         </div>
       )}
-    </div>
+    </label>
   );
 };
 

@@ -8,12 +8,7 @@
 
 // Foundation
 .root {
-  @include form-field();
   @include form-field-horizontal-neighbor();
-}
-
-.container {
-  @include form-field-container();
 }
 
 .inputContainer {

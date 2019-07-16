@@ -1,19 +1,18 @@
 // 1. Input `line-height` is specified in `rem` so inputs do not break when their font size gets
-//    changed later. Label and helper text `line-heights` are also in `rem` to work together
-//    when calculating vertical alignment of horizontal layout.
+//    changed later.
 
 @import 'offsets';
 @import 'typography';
 
+$form-field-label-line-height: 1.5rem;
 $form-field-font-family: $typography-font-family-base;
 $form-field-font-weight: $typography-font-weight-regular;
 $form-field-line-height: 1.5rem; // 1.
+$form-field-helper-text-line-height: 1.2rem;
+$form-field-caret-size: 2.25rem;
 $form-field-bottom-line-height: 2px;
 $form-field-horizontal-breakpoint: md;
 $form-field-horizontal-inner-gap: map-get($offset-values, 2);
 $form-field-horizontal-outer-spacing: map-get($offset-values, 2);
-$form-field-label-line-height: 1.5rem; // 1.
-$form-field-helper-text-line-height: 1.2rem; // 1.
 $form-field-vertical-inner-gap: map-get($offset-values, 1);
 $form-field-vertical-outer-spacing: map-get($offset-values, 2);
-$form-field-caret-size: 2.25rem;

@@ -546,7 +546,7 @@ class DemoContainer extends React.Component {
               name="Validation states"
               component={(
                 <div>
-                  <div>
+                  <div className="offset-5">
                     <MultipleSelectField
                       fieldId="multipleSelectFieldValidationValidOutline"
                       changeHandler={logger}
@@ -878,7 +878,7 @@ class DemoContainer extends React.Component {
               name="Validation states"
               component={(
                 <div>
-                  <div>
+                  <div className="offset-5">
                     <SelectField
                       fieldId="selectFieldValidationValidOutline"
                       changeHandler={logger}
@@ -1250,7 +1250,7 @@ class DemoContainer extends React.Component {
               name="Validation states"
               component={(
                 <div>
-                  <div>
+                  <div className="offset-5">
                     <TextArea
                       fieldId="textAreaValidationValidOutline"
                       changeHandler={logger}
@@ -1278,7 +1278,7 @@ class DemoContainer extends React.Component {
                   </div>
                   <div>
                     <TextArea
-                      fieldId="textAreaValidationValidOutline"
+                      fieldId="textAreaValidationValidFilled"
                       changeHandler={logger}
                       label="What do you wish for Christmas?"
                       helperText="Ho ho ho, looks good!"
@@ -1287,7 +1287,7 @@ class DemoContainer extends React.Component {
                       variant="filled"
                     />
                     <TextArea
-                      fieldId="textAreaValidationWarningOutline"
+                      fieldId="textAreaValidationWarningFilled"
                       changeHandler={logger}
                       label="What do you wish for Christmas?"
                       helperText="Isn't it a little too big for you?"
@@ -1296,7 +1296,7 @@ class DemoContainer extends React.Component {
                       variant="filled"
                     />
                     <TextArea
-                      fieldId="textAreaValidationInvalidOutline"
+                      fieldId="textAreaValidationInvalidFilled"
                       changeHandler={logger}
                       label="What do you wish for Christmas?"
                       helperText="C'mon, it's so ugly…"
@@ -1455,6 +1455,7 @@ class DemoContainer extends React.Component {
                     <TextArea
                       fieldId="textAreaHorizontalFullWidthFilled"
                       changeHandler={logger}
+                      helperText="Write it down"
                       label="Long story short"
                       layout="horizontal"
                       variant="filled"
@@ -1594,7 +1595,7 @@ class DemoContainer extends React.Component {
               name="Validation states"
               component={(
                 <div>
-                  <div>
+                  <div className="offset-5">
                     <TextField
                       fieldId="textFieldValidationValidOutline"
                       changeHandler={logger}
@@ -1789,6 +1790,7 @@ class DemoContainer extends React.Component {
                     <TextField
                       fieldId="textFieldHorizontalFullWidthOutline"
                       changeHandler={logger}
+                      helperText="Write it down"
                       label="Long story short"
                       layout="horizontal"
                       fullWidth

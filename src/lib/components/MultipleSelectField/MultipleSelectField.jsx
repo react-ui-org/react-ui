@@ -52,7 +52,7 @@ const MultipleSelectField = (props) => {
   }
 
   return (
-    <div
+    <label
       className={(`
         ${styles.root}
         ${rootFullWidthClass}
@@ -62,48 +62,47 @@ const MultipleSelectField = (props) => {
         ${rootValidationStateClass}
         ${rootVariantClass}
       `).trim()}
+      htmlFor={props.fieldId}
     >
-      <label className={styles.container} htmlFor={props.fieldId}>
-        <div
-          className={(`
-            ${styles.label}
-            ${labelVisibilityClass}
-          `).trim()}
+      <div
+        className={(`
+          ${styles.label}
+          ${labelVisibilityClass}
+        `).trim()}
+      >
+        {props.label}
+      </div>
+      <div className={styles.inputContainer}>
+        <select
+          className={styles.input}
+          disabled={props.disabled}
+          id={props.fieldId}
+          multiple
+          onChange={props.changeHandler}
+          required={props.required}
+          value={props.value}
         >
-          {props.label}
-        </div>
-        <div className={styles.inputContainer}>
-          <select
-            className={styles.input}
-            disabled={props.disabled}
-            id={props.fieldId}
-            multiple
-            onChange={props.changeHandler}
-            required={props.required}
-            value={props.value}
-          >
-            {
-              props.options.map(option => (
-                <option
-                  key={option.value}
-                  value={option.value}
-                >
-                  {option.label}
-                </option>
-              ))
-            }
-          </select>
-          {props.variant === 'filled' && (
-            <div className={styles.bottomLine} />
-          )}
-        </div>
-      </label>
+          {
+            props.options.map(option => (
+              <option
+                key={option.value}
+                value={option.value}
+              >
+                {option.label}
+              </option>
+            ))
+          }
+        </select>
+        {props.variant === 'filled' && (
+          <div className={styles.bottomLine} />
+        )}
+      </div>
       {props.helperText && (
         <div className={styles.helperText}>
           {props.helperText}
         </div>
       )}
-    </div>
+    </label>
   );
 };
 
