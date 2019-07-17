@@ -4,22 +4,22 @@
 @import '../../settings/forms';
 
 @mixin form-field-horizontal-neighbor() {
-  &:not(:last-of-type) {
+  &:not(:last-child) {
     margin-right: $form-field-horizontal-outer-spacing;
   }
 
-  &.rootLayoutHorizontal:not(:last-of-type) {
+  &.rootLayoutHorizontal:not(:last-child) {
     margin-right: calc(2 * #{$form-field-horizontal-outer-spacing}); // 1.
   }
 }
 
 @mixin form-field-vertical-neighbor() {
-  &:not(:last-of-type) {
+  &:not(:last-child) {
     margin-bottom: $form-field-vertical-outer-spacing;
   }
 
-  &:not(:last-of-type),
-  &.rootLayoutHorizontal:not(:last-of-type) {
+  &:not(:last-child),
+  &.rootLayoutHorizontal:not(:last-child) {
     margin-right: 0; // 2.
   }
 }
