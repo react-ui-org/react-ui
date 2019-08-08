@@ -10,6 +10,10 @@ export default [
         title: 'List',
       },
       {
+        link: '#layout-components-media',
+        title: 'Media',
+      },
+      {
         link: '#layout-components-row',
         title: 'Row',
       },

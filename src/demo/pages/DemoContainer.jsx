@@ -21,6 +21,9 @@ import {
   List,
   ListItem,
   Login,
+  Media,
+  MediaBody,
+  MediaObject,
   Modal,
   MultipleSelectField,
   NewPassword,
@@ -170,6 +173,20 @@ class DemoContainer extends React.Component {
                     <DocumentationPlaceholder text="the longest item, no. 3" />
                   </ListItem>
                 </List>
+              )}
+            />
+            <h3 id="layout-components-media" className="typography-size-4 offset-6">Media</h3>
+            <Documentation
+              name="Default layout"
+              component={(
+                <Media>
+                  <MediaObject>
+                    <DocumentationPlaceholder text="object" />
+                  </MediaObject>
+                  <MediaBody>
+                    <DocumentationPlaceholder text="body" />
+                  </MediaBody>
+                </Media>
               )}
             />
             <h3 id="layout-components-row" className="typography-size-4 offset-6">Row</h3>
