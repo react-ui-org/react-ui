@@ -1,17 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
-import LayoutCenter from '..';
+import { DocumentationLayoutSidebar } from '../index';
 
 describe('rendering', () => {
   it('renders correctly', () => {
-    const tree = shallow(<LayoutCenter />);
+    const tree = shallow(<DocumentationLayoutSidebar />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
 
   it('renders correctly with children', () => {
-    const tree = shallow(<LayoutCenter><div>test</div></LayoutCenter>);
+    const tree = shallow(<DocumentationLayoutSidebar><div>test</div></DocumentationLayoutSidebar>);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });

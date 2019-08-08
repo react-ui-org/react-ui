@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Button from '../Button';
-import TextField from '../TextField';
-import { withTranslationContext } from '../Translation';
-import styles from './ForgotPassword.scss';
+import Button from '../../components/Button';
+import TextField from '../../components/TextField';
+import { withTranslationContext } from '../../components/Translation';
+import styles from './NewPassword.scss';
 
-const ForgotPassword = props => (
+const NewPassword = props => (
   <div className={styles.root}>
     {props.logoUrl && (
       <div className={styles.logoWrap}>
@@ -38,15 +38,23 @@ const ForgotPassword = props => (
         )}
         <div className="offset-3">
           <TextField
-            fieldId="resetEmail"
-            changeHandler={event => props.onChangeHandler('email', event.target.value)}
-            label={props.translations.email}
-            type="email"
+            fieldId="newPassword"
+            changeHandler={event => props.onChangeHandler('newPassword', event.target.value)}
+            label={props.translations.newPassword}
+            type="password"
+            fullWidth
+            required
+          />
+          <TextField
+            fieldId="newPasswordRepeat"
+            changeHandler={event => props.onChangeHandler('newPasswordRepeat', event.target.value)}
+            label={props.translations.repeatNewPassword}
+            type="password"
             fullWidth
             required
           />
         </div>
-        <Button label={props.translations.resetPassword} block type="submit" />
+        <Button label={props.translations.changePassword} block type="submit" />
       </form>
       {props.footer && (
         <div className={styles.footer}>
@@ -57,7 +65,7 @@ const ForgotPassword = props => (
   </div>
 );
 
-ForgotPassword.defaultProps = {
+NewPassword.defaultProps = {
   error: null,
   footer: null,
   logoUrl: null,
@@ -66,7 +74,7 @@ ForgotPassword.defaultProps = {
   title: null,
 };
 
-ForgotPassword.propTypes = {
+NewPassword.propTypes = {
   error: PropTypes.string,
   footer: PropTypes.element,
   logoUrl: PropTypes.string,
@@ -74,9 +82,10 @@ ForgotPassword.propTypes = {
   submitHandler: PropTypes.func,
   title: PropTypes.string,
   translations: PropTypes.shape({
-    email: PropTypes.string.isRequired,
-    resetPassword: PropTypes.string.isRequired,
+    changePassword: PropTypes.string.isRequired,
+    newPassword: PropTypes.string.isRequired,
+    repeatNewPassword: PropTypes.string.isRequired,
   }).isRequired,
 };
 
-export default withTranslationContext(ForgotPassword, 'ForgotPassword');
+export default withTranslationContext(NewPassword, 'NewPassword');

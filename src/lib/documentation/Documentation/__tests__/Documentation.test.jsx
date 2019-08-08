@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
-import Documentation from '..';
+import Documentation from '../index';
 
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {

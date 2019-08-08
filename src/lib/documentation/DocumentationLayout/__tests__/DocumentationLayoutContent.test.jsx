@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
-import { DocumentationLayoutContent } from '..';
+import { DocumentationLayoutContent } from '../index';
 
 describe('rendering', () => {
   it('renders correctly', () => {

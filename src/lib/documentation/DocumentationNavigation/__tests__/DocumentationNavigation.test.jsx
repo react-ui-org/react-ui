@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
-import DocumentationNavigation from '..';
+import DocumentationNavigation from '../index';
 
 describe('rendering', () => {
   const navigationTreeSingleItem = [

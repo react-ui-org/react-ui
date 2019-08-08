@@ -5,7 +5,6 @@ module.exports = {
     'stylelint-config-css-modules',
   ],
   rules: {
-    indentation: 2,
     'at-rule-no-unknown': [
       true, {
         ignoreAtRules: [
@@ -24,8 +23,9 @@ module.exports = {
           'return',
           'warn',
           'while',
-        ]
-      }
+        ],
+      },
     ],
+    indentation: 2,
   },
 };

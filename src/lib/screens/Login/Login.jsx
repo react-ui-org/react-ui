@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Button from '../Button';
-import TextField from '../TextField';
-import { withTranslationContext } from '../Translation';
+import Button from '../../components/Button';
+import TextField from '../../components/TextField';
+import { withTranslationContext } from '../../components/Translation';
 import styles from './Login.scss';
 
 const Login = props => (

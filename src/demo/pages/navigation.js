@@ -6,62 +6,76 @@ export default [
   {
     items: [
       {
-        link: '#components-alert',
+        link: '#ui-components-alert',
         title: 'Alert',
       },
       {
-        link: '#components-button',
+        link: '#ui-components-button',
         title: 'Button',
       },
       {
-        link: '#components-card',
+        link: '#ui-components-card',
         title: 'Card',
       },
       {
-        link: '#components-checkbox',
+        link: '#ui-components-checkbox',
         title: 'Checkbox',
       },
       {
-        link: '#components-icon',
+        link: '#ui-components-icon',
         title: 'Icon',
       },
       {
-        link: '#components-modal',
+        link: '#ui-components-modal',
         title: 'Modal',
       },
       {
-        link: '#components-multiple-selectfield',
+        link: '#ui-components-multiple-selectfield',
         title: 'Multiple Select Field',
       },
       {
-        link: '#components-radio',
+        link: '#ui-components-radio',
         title: 'Radio',
       },
       {
-        link: '#components-selectfield',
+        link: '#ui-components-selectfield',
         title: 'Select Field',
       },
       {
-        link: '#components-table',
+        link: '#ui-components-table',
         title: 'Table',
       },
       {
-        link: '#components-textarea',
+        link: '#ui-components-textarea',
         title: 'Text Area',
       },
       {
-        link: '#components-textfield',
+        link: '#ui-components-textfield',
         title: 'Text Field',
       },
       {
-        link: '#components-toggle',
+        link: '#ui-components-toggle',
         title: 'Toggle',
       },
     ],
-    link: '#components',
-    title: 'Components',
+    link: '#ui-components',
+    title: 'UI Components',
   },
   {
+    items: [
+      {
+        link: '#screens-login',
+        title: 'Login Screen',
+      },
+      {
+        link: '#screens-forgot-password',
+        title: 'Forgot Password Screen',
+      },
+      {
+        link: '#screens-new-password',
+        title: 'New Password Screen',
+      },
+    ],
     link: '#screens',
     title: 'Screens',
   },

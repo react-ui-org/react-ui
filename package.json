@@ -7,7 +7,7 @@
     "build": "npm run lib:build && npm run demo:build",
     "demo:build": "webpack --config webpack.config.demo.js",
     "demo:start": "webpack-dev-server --config webpack.config.demo.js",
-    "demo:test": "stylelint \"src/demo/**/*.scss\" \"demo/css/*.css\" --config stylelint.config.js && eslint --ext js,jsx src/demo",
+    "demo:test": "eslint --ext js,jsx src/demo",
     "lib:build": "webpack -p --config webpack.config.lib.js",
     "lib:test": "stylelint \"src/lib/**/*.scss\" --config stylelint.config.js && eslint --ext js,jsx src/lib && jest -w",
     "prepublish": "npm run lib:build",

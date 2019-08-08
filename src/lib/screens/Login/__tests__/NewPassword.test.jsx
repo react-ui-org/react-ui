@@ -2,9 +2,9 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
-import { NewPassword } from '..';
+import { NewPassword } from '../index';
 
-jest.mock('../../Icon/load-material-design-icons');
+jest.mock('../../../components/Icon/load-material-design-icons');
 
 describe('rendering', () => {
   it('renders correctly', () => {

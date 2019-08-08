@@ -55,7 +55,7 @@ Card.propTypes = {
     PropTypes.node,
   ]).isRequired,
   disabled: PropTypes.bool,
-  raised: PropTypes.string,
+  raised: PropTypes.bool,
   type: PropTypes.oneOf(['flat', 'bordered', 'warning', 'error']),
 };
 

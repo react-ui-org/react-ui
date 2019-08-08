@@ -1,23 +1,30 @@
+// UI components
 export { default as Alert } from './components/Alert';
 export { default as Button } from './components/Button';
 export { default as Card } from './components/Card';
 export { default as CheckboxField } from './components/CheckboxField';
-export { default as Documentation } from './components/Documentation';
-export { default as DocumentationNavigation } from './components/DocumentationNavigation';
-export { DocumentationLayout } from './components/DocumentationLayout';
-export { DocumentationLayoutContent } from './components/DocumentationLayout';
-export { DocumentationLayoutSidebar } from './components/DocumentationLayout';
-export { default as ForgotPassword } from './components/Login/ForgotPassword';
 export { default as Icon } from './components/Icon';
-export { default as LayoutCenter } from './components/LayoutCenter';
-export { default as Login } from './components/Login/Login';
 export { default as Modal } from './components/Modal';
 export { default as MultipleSelectField } from './components/MultipleSelectField';
-export { default as NewPassword } from './components/Login/NewPassword';
 export { default as Radio } from './components/Radio';
 export { default as SelectField } from './components/SelectField';
 export { default as Table } from './components/Table';
 export { default as TextArea } from './components/TextArea';
 export { default as TextField } from './components/TextField';
 export { default as Toggle } from './components/Toggle';
-export { TranslationProvider } from './components/Translation/index';
+export { TranslationProvider } from './components/Translation';
+
+// Layout components
+export { default as LayoutCenter } from './layouts/LayoutCenter';
+
+// Screens
+export { default as ForgotPassword } from './screens/Login/ForgotPassword';
+export { default as Login } from './screens/Login/Login';
+export { default as NewPassword } from './screens/Login/NewPassword';
+
+// Documentation components
+export { default as Documentation } from './documentation/Documentation';
+export { default as DocumentationNavigation } from './documentation/DocumentationNavigation';
+export { DocumentationLayout } from './documentation/DocumentationLayout';
+export { DocumentationLayoutContent } from './documentation/DocumentationLayout';
+export { DocumentationLayoutSidebar } from './documentation/DocumentationLayout';
