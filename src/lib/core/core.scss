@@ -4,6 +4,7 @@
 // 1. SCSS settings
 // Global variables, config switches. Not producing any CSS.
 // Assignments of CSS custom properties can only happen here.
+@import "../shared/settings/borders";
 @import "../shared/settings/breakpoints";
 @import "../shared/settings/colors";
 @import "../shared/settings/links";
@@ -32,4 +33,5 @@
 @import "elements/links";
 @import "elements/lists";
 @import "elements/page";
+@import "elements/rulers";
 @import "elements/small";

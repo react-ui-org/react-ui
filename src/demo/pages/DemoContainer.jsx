@@ -14,14 +14,20 @@ import {
   DocumentationLayoutContent,
   DocumentationLayoutSidebar,
   DocumentationNavigation,
+  DocumentationPlaceholder,
   ForgotPassword,
   Icon,
   LayoutCenter,
+  List,
+  ListItem,
   Login,
   Modal,
   MultipleSelectField,
   NewPassword,
   Radio,
+  Row,
+  RowLeft,
+  RowRight,
   SelectField,
   Table,
   TextField,
@@ -114,9 +120,77 @@ class DemoContainer extends React.Component {
             <h4 className="typography-size-4">.typography-size-4</h4>
             <h4 className="typography-size-5">.typography-size-5</h4>
           </section>
-          <section id="components" className="offset-7">
-            <h2 className="typography-size-5 offset-6">Components</h2>
-            <h3 id="components-alert" className="typography-size-4 offset-6">Alert</h3>
+          <hr />
+          <section id="layout-components" className="offset-7">
+            <h2 className="typography-size-5 offset-6">Layout Components</h2>
+            <h3 id="layout-components-list" className="typography-size-4 offset-6">List</h3>
+            <Documentation
+              name="Default list"
+              component={(
+                <List>
+                  <ListItem>
+                    <DocumentationPlaceholder text="item 1" />
+                  </ListItem>
+                  <ListItem>
+                    <DocumentationPlaceholder text="item 2" />
+                  </ListItem>
+                  <ListItem>
+                    <DocumentationPlaceholder text="item 3" />
+                  </ListItem>
+                </List>
+              )}
+            />
+            <Documentation
+              name="Right-aligned list"
+              component={(
+                <List align="right">
+                  <ListItem>
+                    <DocumentationPlaceholder text="item 1" />
+                  </ListItem>
+                  <ListItem>
+                    <DocumentationPlaceholder text="item 2" />
+                  </ListItem>
+                  <ListItem>
+                    <DocumentationPlaceholder text="item 3" />
+                  </ListItem>
+                </List>
+              )}
+            />
+            <Documentation
+              name="Right-aligned list with auto width"
+              component={(
+                <List align="right" autoWidth>
+                  <ListItem>
+                    <DocumentationPlaceholder text="item no. 1" />
+                  </ListItem>
+                  <ListItem>
+                    <DocumentationPlaceholder text="longer item, no. 2" />
+                  </ListItem>
+                  <ListItem>
+                    <DocumentationPlaceholder text="the longest item, no. 3" />
+                  </ListItem>
+                </List>
+              )}
+            />
+            <h3 id="layout-components-row" className="typography-size-4 offset-6">Row</h3>
+            <Documentation
+              name="Default layout"
+              component={(
+                <Row>
+                  <RowLeft>
+                    <DocumentationPlaceholder text="left part" />
+                  </RowLeft>
+                  <RowRight>
+                    <DocumentationPlaceholder text="right part" />
+                  </RowRight>
+                </Row>
+              )}
+            />
+          </section>
+          <hr />
+          <section id="ui-components" className="offset-7">
+            <h2 className="typography-size-5 offset-6">UI Components</h2>
+            <h3 id="ui-components-alert" className="typography-size-4 offset-6">Alert</h3>
             <Documentation
               name="Message types"
               component={(
@@ -160,7 +234,7 @@ class DemoContainer extends React.Component {
                 </div>
               )}
             />
-            <h3 id="components-card" className="typography-size-4 offset-6">Card</h3>
+            <h3 id="ui-components-card" className="typography-size-4 offset-6">Card</h3>
             <Documentation
               name="Card types"
               component={(
@@ -230,7 +304,7 @@ class DemoContainer extends React.Component {
                 </div>
               )}
             />
-            <h3 id="components-button" className="typography-size-4 offset-6">Button</h3>
+            <h3 id="ui-components-button" className="typography-size-4 offset-6">Button</h3>
             <Documentation
               name="Default buttons"
               component={(
@@ -331,7 +405,7 @@ class DemoContainer extends React.Component {
                 </div>
               )}
             />
-            <h3 id="components-checkbox" className="typography-size-4 offset-6">Checkbox</h3>
+            <h3 id="ui-components-checkbox" className="typography-size-4 offset-6">Checkbox</h3>
             <Documentation
               name="Checkbox"
               component={(
@@ -421,7 +495,7 @@ class DemoContainer extends React.Component {
                 />
               )}
             />
-            <h3 id="components-icon" className="typography-size-4 offset-6">Icon</h3>
+            <h3 id="ui-components-icon" className="typography-size-4 offset-6">Icon</h3>
             <p>
               We use <a href="https://material.io/tools/icons/" target="_blank" rel="noopener noreferrer">Material Design icons</a>.
             </p>
@@ -445,7 +519,7 @@ class DemoContainer extends React.Component {
                 </span>
               )}
             />
-            <h3 id="components-modal" className="typography-size-4 offset-6">Modal</h3>
+            <h3 id="ui-components-modal" className="typography-size-4 offset-6">Modal</h3>
             <Documentation
               name="Modal label"
               component={(
@@ -474,7 +548,7 @@ class DemoContainer extends React.Component {
                 </React.Fragment>
               )}
             />
-            <h3 id="components-multiple-selectfield" className="typography-size-4 offset-6">Multiple Select Field</h3>
+            <h3 id="ui-components-multiple-selectfield" className="typography-size-4 offset-6">Multiple Select Field</h3>
             <Documentation
               name="Multiple select field variants"
               component={(
@@ -687,7 +761,7 @@ class DemoContainer extends React.Component {
                 </div>
               )}
             />
-            <h3 id="components-radio" className="typography-size-4 offset-6">Radio</h3>
+            <h3 id="ui-components-radio" className="typography-size-4 offset-6">Radio</h3>
             <Documentation
               name="Radio"
               component={(
@@ -762,7 +836,7 @@ class DemoContainer extends React.Component {
                 />
               )}
             />
-            <h3 id="components-selectfield" className="typography-size-4 offset-6">Select Field</h3>
+            <h3 id="ui-components-selectfield" className="typography-size-4 offset-6">Select Field</h3>
             <Documentation
               name="Select field variants"
               component={(
@@ -1087,7 +1161,7 @@ class DemoContainer extends React.Component {
                 </div>
               )}
             />
-            <h3 id="components-table" className="typography-size-4 offset-6">Table</h3>
+            <h3 id="ui-components-table" className="typography-size-4 offset-6">Table</h3>
             <Documentation
               name="Table"
               component={(
@@ -1140,7 +1214,7 @@ class DemoContainer extends React.Component {
                 />
               )}
             />
-            <h3 id="components-textarea" className="typography-size-4 offset-6">Text Area</h3>
+            <h3 id="ui-components-textarea" className="typography-size-4 offset-6">Text Area</h3>
             <Documentation
               name="Text area variants"
               component={(
@@ -1485,7 +1559,7 @@ class DemoContainer extends React.Component {
                 </div>
               )}
             />
-            <h3 id="components-textfield" className="typography-size-4 offset-6">Text Field</h3>
+            <h3 id="ui-components-textfield" className="typography-size-4 offset-6">Text Field</h3>
             <Documentation
               name="Text field variants"
               component={(
@@ -1827,7 +1901,7 @@ class DemoContainer extends React.Component {
                 </div>
               )}
             />
-            <h3 id="components-toggle" className="typography-size-4 offset-6">Toggle</h3>
+            <h3 id="ui-components-toggle" className="typography-size-4 offset-6">Toggle</h3>
             <Documentation
               name="Toggle"
               component={(
@@ -1918,6 +1992,7 @@ class DemoContainer extends React.Component {
               )}
             />
           </section>
+          <hr />
           <section id="screens" className="offset-7">
             <h2 className="typography-size-5 offset-6">Screens</h2>
             <h3 id="screens-login" className="typography-size-4 offset-6">Login Screen</h3>

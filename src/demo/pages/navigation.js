@@ -6,6 +6,20 @@ export default [
   {
     items: [
       {
+        link: '#layout-components-list',
+        title: 'List',
+      },
+      {
+        link: '#layout-components-row',
+        title: 'Row',
+      },
+    ],
+    link: '#layout-components',
+    title: 'Layout Components',
+  },
+  {
+    items: [
+      {
         link: '#ui-components-alert',
         title: 'Alert',
       },
