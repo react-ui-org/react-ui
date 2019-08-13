@@ -1,39 +1,41 @@
-// UI components
-export { default as Alert } from './components/Alert';
-export { default as Button } from './components/Button';
-export { default as Card } from './components/Card';
-export { default as CheckboxField } from './components/CheckboxField';
-export { default as Icon } from './components/Icon';
-export { default as Modal } from './components/Modal';
-export { default as MultipleSelectField } from './components/MultipleSelectField';
-export { default as Radio } from './components/Radio';
-export { default as SelectField } from './components/SelectField';
-export { default as Table } from './components/Table';
-export { default as TextArea } from './components/TextArea';
-export { default as TextField } from './components/TextField';
-export { default as Toggle } from './components/Toggle';
-export { TranslationProvider } from './components/Translation';
+// Documentation components
+export { default as Documentation } from './components/documentation/Documentation';
+export { default as DocumentationNavigation } from './components/documentation/DocumentationNavigation';
+export { default as DocumentationPlaceholder } from './components/documentation/DocumentationPlaceholder';
+export { DocumentationLayout } from './components/documentation/DocumentationLayout';
+export { DocumentationLayoutContent } from './components/documentation/DocumentationLayout';
+export { DocumentationLayoutSidebar } from './components/documentation/DocumentationLayout';
 
 // Layout components
-export { default as LayoutCenter } from './layouts/LayoutCenter';
-export { List } from './layouts/List';
-export { ListItem } from './layouts/List';
-export { Media } from './layouts/Media';
-export { MediaBody } from './layouts/Media';
-export { MediaObject } from './layouts/Media';
-export { Row } from './layouts/Row';
-export { RowLeft } from './layouts/Row';
-export { RowRight } from './layouts/Row';
+export { default as LayoutCenter } from './components/layout/LayoutCenter';
+export { List } from './components/layout/List';
+export { ListItem } from './components/layout/List';
+export { Media } from './components/layout/Media';
+export { MediaBody } from './components/layout/Media';
+export { MediaObject } from './components/layout/Media';
+export { Row } from './components/layout/Row';
+export { RowLeft } from './components/layout/Row';
+export { RowRight } from './components/layout/Row';
 
 // Screens
-export { default as ForgotPassword } from './screens/Login/ForgotPassword';
-export { default as Login } from './screens/Login/Login';
-export { default as NewPassword } from './screens/Login/NewPassword';
+export { default as ForgotPassword } from './components/screens/Login/ForgotPassword';
+export { default as Login } from './components/screens/Login/Login';
+export { default as NewPassword } from './components/screens/Login/NewPassword';
 
-// Documentation components
-export { default as Documentation } from './documentation/Documentation';
-export { default as DocumentationNavigation } from './documentation/DocumentationNavigation';
-export { default as DocumentationPlaceholder } from './documentation/DocumentationPlaceholder';
-export { DocumentationLayout } from './documentation/DocumentationLayout';
-export { DocumentationLayoutContent } from './documentation/DocumentationLayout';
-export { DocumentationLayoutSidebar } from './documentation/DocumentationLayout';
+// UI components
+export { default as Alert } from './components/ui/Alert';
+export { default as Button } from './components/ui/Button';
+export { default as Card } from './components/ui/Card';
+export { default as CheckboxField } from './components/ui/CheckboxField';
+export { default as Icon } from './components/ui/Icon';
+export { default as Modal } from './components/ui/Modal';
+export { default as MultipleSelectField } from './components/ui/MultipleSelectField';
+export { default as Radio } from './components/ui/Radio';
+export { default as SelectField } from './components/ui/SelectField';
+export { default as Table } from './components/ui/Table';
+export { default as TextArea } from './components/ui/TextArea';
+export { default as TextField } from './components/ui/TextField';
+export { default as Toggle } from './components/ui/Toggle';
+
+// Translation
+export { TranslationProvider } from './translation';

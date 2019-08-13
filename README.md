@@ -1,35 +1,88 @@
 # React UI
 
-## Usage in Projects
+> React UI is a themeable UI library for React.js apps.
 
-React UI consists of three main building blocks:
+React UI consists of the following building blocks:
 
-1. **Core styles:** basic themeable CSS layer, preparing ground for components.
+1. **Foundation styles:** basic themeable CSS layer. **Mandatory ground zero for components.**
 2. **Components:** reusable and themeable React components.
-3. **Theme (optional):** adjust appearance of your UI via CSS custom properties.
+3. **Theme:** visual appearance of the UI, adjustable with CSS custom properties.
+4. **Utility styles (optional):** tiny CSS classes to handle details like typography, margins etc.
 
-To use React UI in your project:
+## Quick Start Guide
 
-1. `$ npm install --save react-ui`
-2. Import core styles to the topmost level of your React app, for example:
-    ```js
-    // React UI core CSS
-    import 'react-ui/src/lib/core/core.scss';
-    ```
-    ⚠️ As of now, you will need SASS pipeline for this to work. This is to be fixed in the future.
-3. Use React UI components just like you are used to:
-    ```js
-    import { Icon } from 'react-ui';
-    ```
-4. Optionally, use CSS custom properties to theme your UI.
-   Remember to import your theme **after the core styles** so it overwrites the default one.
-   See [`src/lib/core/themes/_default.scss`](./src/lib/core/themes/_default.scss) for the full list of available options.  
+To use React UI in your app:
+
+1. Install it with `$ npm install --save react-ui`.
+2. First import the **theme layer** to the topmost level of your React app.
+   Either use the bundled theme as is:
+   ```js
+   // app.jsx
+   import 'react-ui/src/lib/theme.scss';
+   ```
+   or use it as a foundation to create your custom theme (see Theming for more):
+   ```js
+   // app.jsx
+   import './my-custom-theme.scss';
+   ```
+   ⚠️ As of now, you will need **working SASS pipeline** for this to work.
+   This is to be changed to ready-to-use CSS in the future.
+
+   ℹ️ Technically it is possible to import the theme layer anywhere later in the app.
+   But it's a nice habit to declare variables before using them and that's what we are doing here.
+3. Add React UI **foundation styles**, the ground-zero CSS for React UI components:
+   ```js
+   // app.jsx
+   import 'react-ui/src/lib/theme.scss';
+   import 'react-ui/src/lib/foundation.scss';
+   ```
+4. Optionally add the **utility classes** bundle:
+   ```js
+   // app.jsx
+   import 'react-ui/src/lib/theme.scss';
+   import 'react-ui/src/lib/foundation.scss';
+   import 'react-ui/src/lib/utilities.scss';
+   ```
+5. Finally, use React UI **components** just like you are used to:
+   ```js
+   // MyDashboardScreen.jsx
+   import React from 'react';
+   import { Icon } from 'react-ui';
+
+   export const MyDashboardScreen = () => (
+     <Icon icon="edit" />
+   );
+   ```
+
+## Theming
+
+**CSS custom properties** are used to define common visual properties like colors, fonts, borders,
+shadows, spacing, etc. It is also possible to adjust selected properties of individual components.
+See the [default theme](src/lib/theme.scss) for the full list of available settings.
+
+️ℹ️ Please note that **breakpoint values are exported as read-only** since CSS custom properties
+[cannot be used within media queries](https://www.w3.org/TR/css-variables-1/#using-variables)
+(because media query is not a CSS property).
+
+ℹ️ Please note that CSS custom properties are only supported by modern browsers.
+Refer to [caniuse.com](https://caniuse.com/#feat=css-variables) for compatibility overview.
+
+### Theming Options
+With output size in mind, we recommend to choose from these theming options:
+
+- use the default theme and override just selected settings in your app — useful for tiny adjustments
+- copy the default theme to your app and change whatever is needed — useful for major visual changes
+
+## Extending
+
+To keep your app UI consistent, use the theme properties from `src/lib/theme.scss` also in your
+custom styles.
 
 ## Translations
 
-Structure of translations can be found in file `src/lib/Translation/TranslationContext.jsx`. You can use `TranslationProvider`
-component and pass translated structure from this file into `TranslationProvider` as `translations` props to overwrite default
-translations.
+Structure of translations can be found in file `src/lib/translation/TranslationContext.jsx`.
+You can use `TranslationProvider` component and pass translated structure from this file into
+`TranslationProvider` as `translations` props to overwrite default translations.
 
 Second option is to overwrite translations locally using `translations` props of specific component.
 
@@ -38,9 +91,9 @@ Second option is to overwrite translations locally using `translations` props of
 To build the project:
 
 1. Install local npm packages: `$ npm install`
-2. Run the build: `$ npm build`
+2. Run the build: `$ npm run build`
 
 To run the dev server:
 
 1. Install local npm packages: `$ npm install`
-2. Run the build: `$ npm start`
+2. Run the dev server (usually on `http://localhost:8080`): `$ npm start`

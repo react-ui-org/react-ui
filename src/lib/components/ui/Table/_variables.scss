@@ -1,0 +1,14 @@
+@import '../../../styles/settings/borders';
+@import '../../../styles/settings/colors';
+@import '../../../styles/settings/offsets';
+@import '../../../styles/settings/typography';
+
+$table-cell-padding-x: map-get($offset-values, 3);
+$table-cell-padding-y: map-get($offset-values, 1);
+$table-border-width: $border-width;
+$table-border-color: map-get($colors-grays, gray-100);
+$table-background-color: $color-white;
+$table-head-background-color: $color-white;
+$table-head-font-weight: $typography-font-weight-bold;
+$table-hover-background-color: map-get($colors-grays, gray-50);
+$table-sorted-background-color: map-get($colors-grays, gray-50);

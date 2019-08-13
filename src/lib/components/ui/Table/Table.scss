@@ -1,0 +1,65 @@
+@import '../../../styles/tools/transitions';
+@import 'variables';
+
+.tableWrapper {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+}
+
+.tableRow {
+  @include transition(background);
+
+  background-color: $table-background-color;
+
+  &:hover {
+    background-color: $table-hover-background-color;
+  }
+}
+
+.tableHeadRow {
+  composes: tableRow;
+  background-color: $table-head-background-color;
+
+  &:hover {
+    background-color: $table-head-background-color;
+  }
+}
+
+.tableCell {
+  padding: $table-cell-padding-y $table-cell-padding-x;
+  text-align: left;
+  border-bottom: $table-border-width solid $table-border-color;
+}
+
+.tableHeadCell {
+  composes: tableCell;
+  font-weight: $table-head-font-weight;
+  border-bottom-width: 2px;
+}
+
+.isTableCellSortingActive,
+.isTableHeadCellSortingActive {
+  background-color: $table-sorted-background-color;
+}
+
+.isTableCellSortingActive {
+  composes: tableCell;
+}
+
+.isTableHeadCellSortingActive {
+  composes: tableHeadCell;
+}
+
+.sortButton {
+  display: inline-block;
+  margin-right: $table-cell-padding-x;
+}

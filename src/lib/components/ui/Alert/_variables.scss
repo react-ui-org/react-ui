@@ -1,0 +1,10 @@
+@import '../../../styles/settings/colors';
+@import '../../../styles/settings/offsets';
+@import '../../../styles/settings/typography';
+
+$alert-line-height: 1.2;
+$alert-min-height: 30px;
+$alert-offset: map-get($offset-values, 1);
+$alert-stripe-width: 5px;
+$alert-message-font-weight: $typography-font-weight-light;
+$alert-title-font-weight: $typography-font-weight-bold;

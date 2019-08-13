@@ -1,0 +1,496 @@
+// Default theme. Can be used as a starting point for your custom theme.
+
+@import 'styles/settings/breakpoints';
+
+:root {
+
+  //
+  // Colors
+  // ======
+
+  // Grays
+  --rui-color-white: #fff;
+  --rui-color-black: #000;
+  --rui-color-gray-50: #{darken(#fff, 5%)};
+  --rui-color-gray-100: #{darken(#fff, 10%)};
+  --rui-color-gray-200: #{darken(#fff, 20%)};
+  --rui-color-gray-300: #{darken(#fff, 30%)};
+  --rui-color-gray-400: #{darken(#fff, 40%)};
+  --rui-color-gray-500: #{darken(#fff, 50%)};
+  --rui-color-gray-600: #{darken(#fff, 60%)};
+  --rui-color-gray-700: #{darken(#fff, 70%)};
+  --rui-color-gray-800: #{darken(#fff, 80%)};
+  --rui-color-gray-900: #{darken(#fff, 90%)};
+
+  // Brand colors
+  --rui-color-primary: #00778b;
+  --rui-color-primary-light: #{lighten(#00778b, 70%)};
+  --rui-color-primary-dark: #{darken(#00778b, 4%)};
+  --rui-color-primary-darker: #{darken(#00778b, 8%)};
+  --rui-color-on-primary: #fff;
+  --rui-color-secondary: #fa4616;
+  --rui-color-secondary-light: #{lighten(#fa4616, 45%)};
+  --rui-color-secondary-dark: #{darken(#fa4616, 4%)};
+  --rui-color-secondary-darker: #{darken(#fa4616, 8%)};
+  --rui-color-on-secondary: #fff;
+
+  // UI colors
+  --rui-color-success: #28a745;
+  --rui-color-success-light: #{lighten(#28a745, 55%)};
+  --rui-color-success-dark: #{darken(#28a745, 4%)};
+  --rui-color-success-darker: #{darken(#28a745, 8%)};
+  --rui-color-on-success: #fff;
+  --rui-color-warning: #ffc107;
+  --rui-color-warning-light: #{lighten(#ffc107, 45%)};
+  --rui-color-warning-dark: #{darken(#ffc107, 4%)};
+  --rui-color-warning-darker: #{darken(#ffc107, 8%)};
+  --rui-color-on-warning: #000;
+  --rui-color-error: #dc3545;
+  --rui-color-error-light: #{lighten(#dc3545, 45%)};
+  --rui-color-error-dark: #{darken(#dc3545, 4%)};
+  --rui-color-error-darker: #{darken(#dc3545, 8%)};
+  --rui-color-on-error: #fff;
+  --rui-color-help: #6610f2;
+  --rui-color-help-light: #{lighten(#6610f2, 45%)};
+  --rui-color-help-dark: #{darken(#6610f2, 4%)};
+  --rui-color-help-darker: #{darken(#6610f2, 8%)};
+  --rui-color-on-help: #fff;
+  --rui-color-info: #17a2b8;
+  --rui-color-info-light: #{lighten(#17a2b8, 45%)};
+  --rui-color-info-dark: #{darken(#17a2b8, 4%)};
+  --rui-color-info-darker: #{darken(#17a2b8, 8%)};
+  --rui-color-on-info: #fff;
+  --rui-color-note: #007bff;
+  --rui-color-note-light: #{lighten(#007bff, 45%)};
+  --rui-color-note-dark: #{darken(#007bff, 4%)};
+  --rui-color-note-darker: #{darken(#007bff, 8%)};
+  --rui-color-on-note: #fff;
+
+  //
+  // Layout
+  // ======
+
+  // Breakpoints
+  // Read-only, custom properties cannot be used within media queries as media query is not a property.
+  // https://www.w3.org/TR/css-variables-1/#using-variables
+  --rui-breakpoint-xs: #{map-get($breakpoint-values, xs)};
+  --rui-breakpoint-sm: #{map-get($breakpoint-values, sm)};
+  --rui-breakpoint-md: #{map-get($breakpoint-values, md)};
+  --rui-breakpoint-lg: #{map-get($breakpoint-values, lg)};
+  --rui-breakpoint-xl: #{map-get($breakpoint-values, xl)};
+  --rui-breakpoint-xxl: #{map-get($breakpoint-values, xxl)};
+
+  // Offsets
+  --rui-offset-0: 0;
+  --rui-offset-1: 0.25rem;
+  --rui-offset-2: 0.5rem;
+  --rui-offset-3: 0.75rem;
+  --rui-offset-4: 1rem;
+  --rui-offset-5: 1.5rem;
+  --rui-offset-6: 2rem;
+  --rui-offset-7: 3rem;
+
+  //
+  // Shared Settings
+  // ===============
+
+  // Borders
+  --rui-border-width: 1px;
+  --rui-border-radius: 0.25rem;
+
+  //
+  // Elements
+  // ========
+
+  // Page
+  --rui-page-color: var(--rui-color-black);
+  --rui-page-background: var(--rui-color-gray-50);
+
+  // Links
+  --rui-link-color: #007bff;
+  --rui-link-decoration: none;
+  --rui-link-hover-color: #0056b3;
+  --rui-link-hover-decoration: underline;
+
+  // Lists
+  --rui-list-unordered-style: square;
+
+  //
+  // Typography
+  // ==========
+
+  // Modular scale ratio: 1.125 / 8:9 / major second
+
+  --rui-typography-font-family-base: 'Titillium Web', helvetica, roboto, arial, sans-serif;
+  --rui-typography-font-size-base: 100%;
+  --rui-typography-font-weight-thin: 100;
+  --rui-typography-font-weight-light: 300;
+  --rui-typography-font-weight-regular: 400;
+  --rui-typography-font-weight-medium: 500;
+  --rui-typography-font-weight-bold: 700;
+  --rui-typography-line-height-base: 1.5rem;
+  --rui-typography-size-small: 0.889rem;
+  --rui-typography-size-0: 1rem;
+  --rui-typography-size-1: 1.125rem;
+  --rui-typography-size-2: 1.266rem;
+  --rui-typography-size-3: 1.424rem;
+  --rui-typography-size-4: 1.602rem;
+  --rui-typography-size-5: 1.802rem;
+
+  //
+  // Icons
+  // =====
+
+  --rui-icon-size-small: 0.75rem;
+  --rui-icon-size-default: 1rem;
+  --rui-icon-size-large: 1.5rem;
+  --rui-icon-size-larger: 2rem;
+
+  //
+  // Alerts
+  // =======
+
+  // Alerts: common properties
+  --rui-alert-border-width: var(--rui-border-width);
+  --rui-alert-border-radius: var(--rui-border-radius);
+
+  // Alerts: type: success
+  --rui-alert-success-foreground-color: var(--rui-color-success);
+  --rui-alert-success-background-color: var(--rui-color-white);
+  --rui-alert-success-text-color: var(--rui-page-color);
+
+  // Alerts: type: warning
+  --rui-alert-warning-foreground-color: var(--rui-color-warning);
+  --rui-alert-warning-background-color: var(--rui-color-white);
+  --rui-alert-warning-text-color: var(--rui-page-color);
+
+  // Alerts: type: error
+  --rui-alert-error-foreground-color: var(--rui-color-error);
+  --rui-alert-error-background-color: var(--rui-color-white);
+  --rui-alert-error-text-color: var(--rui-page-color);
+
+  // Alerts: type: info
+  --rui-alert-info-foreground-color: var(--rui-color-info);
+  --rui-alert-info-background-color: var(--rui-color-white);
+  --rui-alert-info-text-color: var(--rui-page-color);
+
+  // Alerts: type: help
+  --rui-alert-help-foreground-color: var(--rui-color-help);
+  --rui-alert-help-background-color: var(--rui-color-white);
+  --rui-alert-help-text-color: var(--rui-page-color);
+
+  // Alerts: type: note
+  --rui-alert-note-foreground-color: var(--rui-color-note);
+  --rui-alert-note-background-color: var(--rui-color-white);
+  --rui-alert-note-text-color: var(--rui-page-color);
+
+  //
+  // Buttons
+  // =======
+
+  // Buttons: common properties
+  --rui-button-font-weight: var(--rui-typography-font-weight-regular);
+  --rui-button-text-transform: none;
+  --rui-button-letter-spacing: 0;
+  --rui-button-border-width: var(--rui-border-width);
+  --rui-button-border-radius: var(--rui-border-radius);
+
+  // Buttons: default priority
+
+  // Buttons: default priority: primary variant
+  --rui-button-default-primary-default-color: var(--rui-color-on-primary);
+  --rui-button-default-primary-default-border-color: var(--rui-color-primary);
+  --rui-button-default-primary-default-background: var(--rui-color-primary);
+  --rui-button-default-primary-default-box-shadow: none;
+  --rui-button-default-primary-hover-color: var(--rui-color-on-primary);
+  --rui-button-default-primary-hover-border-color: var(--rui-color-primary-dark);
+  --rui-button-default-primary-hover-background: var(--rui-color-primary-dark);
+  --rui-button-default-primary-hover-box-shadow: none;
+  --rui-button-default-primary-active-color: var(--rui-color-on-primary);
+  --rui-button-default-primary-active-border-color: var(--rui-color-primary-darker);
+  --rui-button-default-primary-active-background: var(--rui-color-primary-darker);
+  --rui-button-default-primary-active-box-shadow: none;
+
+  // Buttons: default priority: secondary variant
+  --rui-button-default-secondary-default-color: var(--rui-color-on-secondary);
+  --rui-button-default-secondary-default-border-color: var(--rui-color-secondary);
+  --rui-button-default-secondary-default-background: var(--rui-color-secondary);
+  --rui-button-default-secondary-default-box-shadow: none;
+  --rui-button-default-secondary-hover-color: var(--rui-color-on-secondary);
+  --rui-button-default-secondary-hover-border-color: var(--rui-color-secondary-dark);
+  --rui-button-default-secondary-hover-background: var(--rui-color-secondary-dark);
+  --rui-button-default-secondary-hover-box-shadow: none;
+  --rui-button-default-secondary-active-color: var(--rui-color-on-secondary);
+  --rui-button-default-secondary-active-border-color: var(--rui-color-secondary-darker);
+  --rui-button-default-secondary-active-background: var(--rui-color-secondary-darker);
+  --rui-button-default-secondary-active-box-shadow: none;
+
+  // Buttons: default priority: success variant
+  --rui-button-default-success-default-color: var(--rui-color-on-success);
+  --rui-button-default-success-default-border-color: var(--rui-color-success);
+  --rui-button-default-success-default-background: var(--rui-color-success);
+  --rui-button-default-success-default-box-shadow: none;
+  --rui-button-default-success-hover-color: var(--rui-color-on-success);
+  --rui-button-default-success-hover-border-color: var(--rui-color-success-dark);
+  --rui-button-default-success-hover-background: var(--rui-color-success-dark);
+  --rui-button-default-success-hover-box-shadow: none;
+  --rui-button-default-success-active-color: var(--rui-color-on-success);
+  --rui-button-default-success-active-border-color: var(--rui-color-success-darker);
+  --rui-button-default-success-active-background: var(--rui-color-success-darker);
+  --rui-button-default-success-active-box-shadow: none;
+
+  // Buttons: default priority: warning variant
+  --rui-button-default-warning-default-color: var(--rui-color-on-warning);
+  --rui-button-default-warning-default-border-color: var(--rui-color-warning);
+  --rui-button-default-warning-default-background: var(--rui-color-warning);
+  --rui-button-default-warning-default-box-shadow: none;
+  --rui-button-default-warning-hover-color: var(--rui-color-on-warning);
+  --rui-button-default-warning-hover-border-color: var(--rui-color-warning-dark);
+  --rui-button-default-warning-hover-background: var(--rui-color-warning-dark);
+  --rui-button-default-warning-hover-box-shadow: none;
+  --rui-button-default-warning-active-color: var(--rui-color-on-warning);
+  --rui-button-default-warning-active-border-color: var(--rui-color-warning-darker);
+  --rui-button-default-warning-active-background: var(--rui-color-warning-darker);
+  --rui-button-default-warning-active-box-shadow: none;
+
+  // Buttons: default priority: danger variant (uses error color)
+  --rui-button-default-danger-default-color: var(--rui-color-on-error);
+  --rui-button-default-danger-default-border-color: var(--rui-color-error);
+  --rui-button-default-danger-default-background: var(--rui-color-error);
+  --rui-button-default-danger-default-box-shadow: none;
+  --rui-button-default-danger-hover-color: var(--rui-color-on-error);
+  --rui-button-default-danger-hover-border-color: var(--rui-color-error-dark);
+  --rui-button-default-danger-hover-background: var(--rui-color-error-dark);
+  --rui-button-default-danger-hover-box-shadow: none;
+  --rui-button-default-danger-active-color: var(--rui-color-on-error);
+  --rui-button-default-danger-active-border-color: var(--rui-color-error-darker);
+  --rui-button-default-danger-active-background: var(--rui-color-error-darker);
+  --rui-button-default-danger-active-box-shadow: none;
+
+  // Buttons: outline priority
+
+  // Buttons: outline priority: primary variant
+  --rui-button-outline-primary-default-color: var(--rui-color-primary);
+  --rui-button-outline-primary-default-border-color: var(--rui-color-primary);
+  --rui-button-outline-primary-default-background: transparent;
+  --rui-button-outline-primary-hover-color: var(--rui-color-on-primary);
+  --rui-button-outline-primary-hover-border-color: var(--rui-color-primary-dark);
+  --rui-button-outline-primary-hover-background: var(--rui-color-primary-dark);
+  --rui-button-outline-primary-active-color: var(--rui-color-on-primary);
+  --rui-button-outline-primary-active-border-color: var(--rui-color-primary-darker);
+  --rui-button-outline-primary-active-background: var(--rui-color-primary-darker);
+
+  // Buttons: outline priority: secondary variant
+  --rui-button-outline-secondary-default-color: var(--rui-color-secondary);
+  --rui-button-outline-secondary-default-border-color: var(--rui-color-secondary);
+  --rui-button-outline-secondary-default-background: transparent;
+  --rui-button-outline-secondary-hover-color: var(--rui-color-on-secondary);
+  --rui-button-outline-secondary-hover-border-color: var(--rui-color-secondary-dark);
+  --rui-button-outline-secondary-hover-background: var(--rui-color-secondary-dark);
+  --rui-button-outline-secondary-active-color: var(--rui-color-on-secondary);
+  --rui-button-outline-secondary-active-border-color: var(--rui-color-secondary-darker);
+  --rui-button-outline-secondary-active-background: var(--rui-color-secondary-darker);
+
+  // Buttons: outline priority: success variant
+  --rui-button-outline-success-default-color: var(--rui-color-success);
+  --rui-button-outline-success-default-border-color: var(--rui-color-success);
+  --rui-button-outline-success-default-background: transparent;
+  --rui-button-outline-success-hover-color: var(--rui-color-on-success);
+  --rui-button-outline-success-hover-border-color: var(--rui-color-success-dark);
+  --rui-button-outline-success-hover-background: var(--rui-color-success-dark);
+  --rui-button-outline-success-active-color: var(--rui-color-on-success);
+  --rui-button-outline-success-active-border-color: var(--rui-color-success-darker);
+  --rui-button-outline-success-active-background: var(--rui-color-success-darker);
+
+  // Buttons: outline priority: warning variant
+  --rui-button-outline-warning-default-color: var(--rui-color-warning);
+  --rui-button-outline-warning-default-border-color: var(--rui-color-warning);
+  --rui-button-outline-warning-default-background: transparent;
+  --rui-button-outline-warning-hover-color: var(--rui-color-on-warning);
+  --rui-button-outline-warning-hover-border-color: var(--rui-color-warning-dark);
+  --rui-button-outline-warning-hover-background: var(--rui-color-warning-dark);
+  --rui-button-outline-warning-active-color: var(--rui-color-on-warning);
+  --rui-button-outline-warning-active-border-color: var(--rui-color-warning-darker);
+  --rui-button-outline-warning-active-background: var(--rui-color-warning-darker);
+
+  // Buttons: outline priority: danger variant (uses error color)
+  --rui-button-outline-danger-default-color: var(--rui-color-error);
+  --rui-button-outline-danger-default-border-color: var(--rui-color-error);
+  --rui-button-outline-danger-default-background: transparent;
+  --rui-button-outline-danger-hover-color: var(--rui-color-on-error);
+  --rui-button-outline-danger-hover-border-color: var(--rui-color-error-dark);
+  --rui-button-outline-danger-hover-background: var(--rui-color-error-dark);
+  --rui-button-outline-danger-active-color: var(--rui-color-on-error);
+  --rui-button-outline-danger-active-border-color: var(--rui-color-error-darker);
+  --rui-button-outline-danger-active-background: var(--rui-color-error-darker);
+
+  // Buttons: flat
+
+  // Buttons: flat priority: primary variant
+  --rui-button-flat-primary-default-color: var(--rui-color-primary);
+  --rui-button-flat-primary-default-background: transparent;
+  --rui-button-flat-primary-hover-color: var(--rui-color-primary-dark);
+  --rui-button-flat-primary-hover-background: var(--rui-color-primary-light);
+  --rui-button-flat-primary-active-color: var(--rui-color-primary-darker);
+  --rui-button-flat-primary-active-background: var(--rui-color-primary-light);
+
+  // Buttons: flat priority: secondary variant
+  --rui-button-flat-secondary-default-color: var(--rui-color-secondary);
+  --rui-button-flat-secondary-default-background: transparent;
+  --rui-button-flat-secondary-hover-color: var(--rui-color-secondary-dark);
+  --rui-button-flat-secondary-hover-background: var(--rui-color-secondary-light);
+  --rui-button-flat-secondary-active-color: var(--rui-color-secondary-darker);
+  --rui-button-flat-secondary-active-background: var(--rui-color-secondary-light);
+
+  // Buttons: flat priority: success variant
+  --rui-button-flat-success-default-color: var(--rui-color-success);
+  --rui-button-flat-success-default-background: transparent;
+  --rui-button-flat-success-hover-color: var(--rui-color-success-dark);
+  --rui-button-flat-success-hover-background: var(--rui-color-success-light);
+  --rui-button-flat-success-active-color: var(--rui-color-success-darker);
+  --rui-button-flat-success-active-background: var(--rui-color-success-light);
+
+  // Buttons: flat priority: warning variant
+  --rui-button-flat-warning-default-color: var(--rui-color-warning);
+  --rui-button-flat-warning-default-background: transparent;
+  --rui-button-flat-warning-hover-color: var(--rui-color-warning-darker);
+  --rui-button-flat-warning-hover-background: var(--rui-color-warning-light);
+  --rui-button-flat-warning-active-color: var(--rui-color-warning-darker);
+  --rui-button-flat-warning-active-background: var(--rui-color-warning-light);
+
+  // Buttons: flat priority: danger variant (uses error color)
+  --rui-button-flat-danger-default-color: var(--rui-color-error);
+  --rui-button-flat-danger-default-background: transparent;
+  --rui-button-flat-danger-hover-color: var(--rui-color-error-dark);
+  --rui-button-flat-danger-hover-background: var(--rui-color-error-light);
+  --rui-button-flat-danger-active-color: var(--rui-color-error-darker);
+  --rui-button-flat-danger-active-background: var(--rui-color-error-light);
+
+  // Buttons: sizes
+
+  // Buttons: sizes: small
+  --rui-button-small-height: 1.75rem;
+  --rui-button-small-padding-x: var(--rui-offset-3);
+  --rui-button-small-font-size: var(--rui-typography-size-small);
+
+  // Buttons: sizes: medium
+  --rui-button-medium-height: 2.25rem;
+  --rui-button-medium-padding-x: var(--rui-offset-4);
+  --rui-button-medium-font-size: var(--rui-typography-size-0);
+
+  // Buttons: sizes: large
+  --rui-button-large-height: 2.75rem;
+  --rui-button-large-padding-x: var(--rui-offset-5);
+  --rui-button-large-font-size: var(--rui-typography-size-1);
+
+  //
+  // Cards
+  // ============
+
+  // Cards: common properties
+  --rui-card-padding: var(--rui-offset-4);
+  --rui-card-border-width: var(--rui-border-width);
+  --rui-card-border-radius: var(--rui-border-radius);
+  --rui-card-background-color: var(--rui-color-white);
+
+  // Cards: type: flat
+  --rui-card-flat-border-color: transparent;
+
+  // Cards: type: bordered
+  --rui-card-bordered-border-color: var(--rui-color-gray-400);
+
+  // Cards: type: warning
+  --rui-card-warning-border-color: var(--rui-color-warning);
+
+  // Cards: type: error
+  --rui-card-error-border-color: var(--rui-color-error);
+
+  // Cards: raised
+  --rui-card-raised-box-shadow: 0 0.01rem 0.65rem -0.1rem #{rgba(0, 0, 0, 0.3)};
+
+  // Cards: disabled
+  --rui-card-disabled-border-color: transparent;
+  --rui-card-disabled-background-color: var(--rui-color-gray-200);
+
+  //
+  // Forms Fields
+  // ============
+  //
+  // 1. Please note that `min-width` values under cca 150 px do not take effect due to default input
+  //    width defined in browsers unless `width` (same or smaller) is also defined.
+  //    https://stackoverflow.com/questions/36247140/why-dont-flex-items-shrink-past-content-size
+  // 2. Append non-breaking space and asterisk to required filed labels.
+
+  // Forms fields: common properties
+  --rui-form-field-input-width: 100%; // 1.
+  --rui-form-field-input-min-width: 240px; // 1.
+  --rui-form-field-label-font-size: var(--rui-typography-size-0);
+  --rui-form-field-placeholder-color: var(--rui-color-gray-500);
+  --rui-form-field-helper-text-font-size: var(--rui-typography-size-small);
+  --rui-form-field-helper-text-font-style: normal;
+  --rui-form-field-helper-text-color: var(--rui-color-gray-500);
+  --rui-form-field-required-sign: '\00a0*'; // 2.
+  --rui-form-field-required-sign-color: var(--rui-color-gray-500);
+  --rui-form-field-caret-border-style: none;
+  --rui-form-field-caret-background: transparent;
+  --rui-form-field-border-width: var(--rui-border-width);
+  --rui-form-field-border-radius: var(--rui-border-radius);
+  --rui-form-field-border-color: var(--rui-color-gray-200);
+  --rui-form-field-hover-border-color: var(--rui-color-gray-500);
+  --rui-form-field-focus-border-color: var(--rui-color-primary);
+  --rui-form-field-horizontal-label-alignment: left;
+  --rui-form-field-horizontal-label-min-width: auto;
+
+  // Form fields: filled variant
+  --rui-form-field-filled-default-color: var(--rui-page-color);
+  --rui-form-field-filled-default-background: var(--rui-color-gray-50);
+  --rui-form-field-filled-focus-color: var(--rui-page-color);
+  --rui-form-field-filled-focus-background: var(--rui-color-gray-50);
+
+  // Form fields: outline variant
+  --rui-form-field-outline-default-color: var(--rui-page-color);
+  --rui-form-field-outline-default-background: var(--rui-color-white);
+  --rui-form-field-outline-default-box-shadow: none;
+  --rui-form-field-outline-focus-color: var(--rui-page-color);
+  --rui-form-field-outline-focus-background: var(--rui-color-white);
+  --rui-form-field-outline-focus-box-shadow: none;
+
+  // Form fields: states: invalid
+  --rui-form-field-invalid-color: var(--rui-color-error);
+  --rui-form-field-invalid-border-color: var(--rui-color-error);
+  --rui-form-field-invalid-background: var(--rui-color-error-light);
+
+  // Form fields: states: valid
+  --rui-form-field-valid-color: var(--rui-color-success);
+  --rui-form-field-valid-border-color: var(--rui-color-success);
+  --rui-form-field-valid-background: var(--rui-color-success-light);
+
+  // Form fields: states: warning
+  --rui-form-field-warning-color: var(--rui-color-warning-darker);
+  --rui-form-field-warning-border-color: var(--rui-color-warning-darker);
+  --rui-form-field-warning-background: var(--rui-color-warning-light);
+
+  // Form fields: sizes: small
+  --rui-form-field-small-height: 1.75rem;
+  --rui-form-field-small-padding: 0 var(--rui-offset-2);
+  --rui-form-field-small-font-size: var(--rui-typography-size-small);
+
+  // Form fields: sizes: medium
+  --rui-form-field-medium-height: 2.25rem;
+  --rui-form-field-medium-padding: 0.25rem var(--rui-offset-3);
+  --rui-form-field-medium-font-size: var(--rui-typography-size-0);
+
+  // Form fields: sizes: large
+  --rui-form-field-large-height: 2.75rem;
+  --rui-form-field-large-padding: 0.5rem var(--rui-offset-4);
+  --rui-form-field-large-font-size: var(--rui-typography-size-1);
+
+  //
+  // Modal
+  // =====
+
+  --rui-modal-background: var(--rui-color-white);
+  --rui-modal-box-shadow: none;
+  --rui-modal-footer-background: var(--rui-color-gray-100);
+  --rui-modal-overlay-background: rgba(0, 0, 0, 0.5);
+}

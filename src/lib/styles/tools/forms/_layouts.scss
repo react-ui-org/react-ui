@@ -1,0 +1,77 @@
+// 1. Redefine due to specificity.
+
+@import '../../settings/forms';
+@import '../../settings/forms-theme';
+@import '../breakpoints';
+
+@mixin form-field-layout-vertical() {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .label {
+    padding-bottom: $form-field-vertical-inner-gap;
+  }
+
+  .helperText {
+    padding-top: $form-field-vertical-inner-gap;
+  }
+}
+
+@mixin form-field-layout-horizontal() {
+  @include form-field-layout-vertical();
+
+  @include breakpoint-up($form-field-horizontal-breakpoint) {
+    display: inline-grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "label input"
+      ". helpertext";
+
+    .label {
+      grid-area: label;
+      align-self: center;
+      min-width: $form-field-horizontal-label-min-width;
+      padding-right: $form-field-horizontal-inner-gap;
+      padding-bottom: 0;
+      text-align: $form-field-horizontal-label-alignment;
+    }
+
+    .inputContainer {
+      grid-area: input;
+      justify-self: start;
+    }
+
+    .helperText {
+      grid-area: helpertext;
+    }
+  }
+}
+
+@mixin form-field-full-width() {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+
+  .inputContainer {
+    flex-grow: 1;
+  }
+
+  .input {
+    width: 100%;
+  }
+
+  .helperText {
+    width: 100%;
+    max-width: none;
+  }
+
+  &.rootLayoutHorizontal {
+    display: grid; // 1.
+  }
+
+  &.rootLayoutHorizontal .inputContainer {
+    justify-self: stretch;
+  }
+}

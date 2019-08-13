@@ -1,7 +1,8 @@
 import React from 'react';
 
-// React UI core CSS
-import '../../lib/core/core.scss';
+// React UI CSS theme and foundation
+import '../../lib/theme.scss';
+import '../../lib/foundation.scss';
 
 // React UI components
 import {
@@ -38,8 +39,8 @@ import {
   Toggle,
 } from '../../lib';
 
-// React UI CSS utility classes
-import '../../lib/utilities/utilities.scss';
+// React UI utility CSS classes
+import '../../lib/utilities.scss';
 
 import navigationTree from './navigation';
 

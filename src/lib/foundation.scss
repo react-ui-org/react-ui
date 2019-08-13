@@ -1,0 +1,48 @@
+// Basic themeable CSS layer to prepare ground for components.
+// Structured according to ITCSS methodology, ie. most importantly in ascending specificity.
+
+//
+// 1. SCSS settings
+// ================
+//
+// Global variables, config switches. Not producing any CSS.
+// Assignments of CSS custom properties can only happen here.
+
+@import 'styles/settings/borders';
+@import 'styles/settings/breakpoints';
+@import 'styles/settings/colors';
+@import 'styles/settings/links';
+@import 'styles/settings/lists';
+@import 'styles/settings/page';
+
+//
+// 2. SCSS tools
+// =============
+//
+// Default mixins and functions. Still not producing any CSS.
+
+@import 'styles/tools/spacing';
+
+//
+// 3. Generic
+// ==========
+//
+// Ground-zero styles.
+
+@import 'styles/generic/box-sizing';
+@import '~normalize.css/normalize.css';
+@import 'styles/generic/forms';
+@import 'styles/generic/reset';
+@import 'styles/generic/shared';
+
+//
+// 4. Elements
+// ===========
+//
+// Unclassed HTML elements (type selectors).
+
+@import 'styles/elements/links';
+@import 'styles/elements/lists';
+@import 'styles/elements/page';
+@import 'styles/elements/rulers';
+@import 'styles/elements/small';

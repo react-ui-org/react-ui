@@ -1,0 +1,7 @@
+@import '../../../styles/settings/offsets';
+@import '../../../styles/settings/typography';
+
+$button-font-family: $typography-font-family-base;
+$button-line-height: $typography-line-height-base;
+$button-icon-offset: map-get($offset-values, 2);
+$button-breakpoint: lg;
