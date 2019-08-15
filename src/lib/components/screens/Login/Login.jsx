@@ -36,7 +36,7 @@ const Login = props => (
             {props.translations.invalidUsernameOrPassword}
           </div>
         )}
-        <div className="offset-3">
+        <div className="mb-3">
           <TextField
             fieldId={props.usernameType === 'email' ? 'email' : props.usernameType}
             changeHandler={event => props.onChangeHandler('username', event.target.value)}

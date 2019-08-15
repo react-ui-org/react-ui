@@ -36,7 +36,7 @@ const ForgotPassword = props => (
             {props.error}
           </div>
         )}
-        <div className="offset-3">
+        <div className="mb-3">
           <TextField
             fieldId="resetEmail"
             changeHandler={event => props.onChangeHandler('email', event.target.value)}

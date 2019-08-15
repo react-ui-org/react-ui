@@ -1,7 +1,0 @@
-@import '../settings/offsets';
-
-@each $key, $value in $offset-values {
-  :global(.offset-#{$key}) {
-    margin-bottom: $value;
-  }
-}

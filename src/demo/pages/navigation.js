@@ -1,7 +1,25 @@
 export default [
   {
-    link: '#typography',
+    items: [
+      {
+        link: '#foundation-typography',
     title: 'Typography',
+  },
+      {
+        link: '#foundation-icons',
+        title: 'Icons',
+      },
+      {
+        link: '#foundation-spacing',
+        title: 'Spacing',
+      },
+      {
+        link: '#foundation-breakpoints',
+        title: 'Breakpoints',
+      },
+    ],
+    link: '#foundation',
+    title: 'Foundation',
   },
   {
     items: [
@@ -96,5 +114,19 @@ export default [
     ],
     link: '#screens',
     title: 'Screens',
+  },
+  {
+    items: [
+      {
+        link: '#utilities-typography',
+        title: 'Typography',
+      },
+      {
+        link: '#utilities-spacing',
+        title: 'Spacing',
+      },
+    ],
+    link: '#utilities',
+    title: 'Utilities',
   },
 ];

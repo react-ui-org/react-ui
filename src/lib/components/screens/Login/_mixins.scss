@@ -20,7 +20,7 @@
 
 @mixin login-title() {
   margin-bottom: 1rem;
-  font-weight: $typography-font-weight-bold;
+  font-weight: map-get($typography-font-weight-values, bold);
   font-size: 1.5rem;
   text-align: center;
 }

@@ -5,7 +5,7 @@
     @error "Invalid breakpoint specified! #{$breakpoint} doesn't exist. Choose one of #{map-keys($breakpoint-values)}";
   }
 
-  @else if $breakpoint == 'xs' {
+  @else if map-get($breakpoint-values, $breakpoint) == 0 {
     @content;
   }
 

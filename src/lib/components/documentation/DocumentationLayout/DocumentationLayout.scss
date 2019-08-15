@@ -1,9 +1,9 @@
 @import '../../../styles/settings/colors';
 @import '../../../styles/tools/breakpoints';
-@import '../../../styles/tools/spacing';
+@import '../../../styles/tools/offset';
 
 .content {
-  padding: spacing(1);
+  padding: offset(5);
 }
 
 .sidebar {
@@ -34,6 +34,6 @@
 
   .content {
     grid-area: content;
-    padding: spacing(2);
+    padding: offset(7);
   }
 }

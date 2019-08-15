@@ -80,16 +80,34 @@ class DemoContainer extends React.Component {
           <DocumentationNavigation items={navigationTree} />
         </DocumentationLayoutSidebar>
         <DocumentationLayoutContent>
-          <section id="typography" className="offset-7">
-            <h2 className="typography-size-5 offset-6">Typography</h2>
+          <section id="foundation" className="mb-7">
+            <h2 className="typography-size-5 mb-6">Foundation</h2>
+            <h3 id="foundation-typography" className="typography-size-4 mb-6">Typography</h3>
+            <p>
+              React UI uses
+              {' '}
+              <a
+                href="https://fonts.google.com/specimen/Titillium+Web"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Titillium Web
+              </a>
+              {' '}
+              type face.
+            </p>
+            <Documentation
+              name="Typography showcase"
+              component={(
+                <div>
             <p>
               Curabitur sagittis hendrerit ante. Integer pellentesque quam vel velit. Sed vel
-              lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Pellentesque
-              sapien. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit
-              laboriosam, nisi ut aliquid ex ea commodi consequatur? Maecenas sollicitudin.
-              Phasellus faucibus molestie nisl. Excepteur sint occaecat cupidatat non proident, sunt
-              in culpa qui officia deserunt mollit anim id est laborum. Phasellus et lorem id felis
-              nonummy placerat.
+                    lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem.
+                    Pellentesque sapien. Ut enim ad minima veniam, quis nostrum exercitationem ullam
+                    corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
+                    Maecenas sollicitudin. Phasellus faucibus molestie nisl. Excepteur sint occaecat
+                    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                    laborum. Phasellus et lorem id felis nonummy placerat.
             </p>
             <p>
               <strong>Bold text</strong>
@@ -101,7 +119,7 @@ class DemoContainer extends React.Component {
               <small>Small text</small>
             </p>
             <p>
-              <a href="#top">Generic link</a>
+                    <a href="#top">Link</a>
             </p>
             <ul>
               <li>Unordered list item 1</li>
@@ -117,17 +135,56 @@ class DemoContainer extends React.Component {
               Horizontal ruler:
             </p>
             <hr />
-            <h4 className="typography-size-0">.typography-size-0</h4>
-            <h4 className="typography-size-1">.typography-size-1</h4>
-            <h4 className="typography-size-2">.typography-size-2</h4>
-            <h4 className="typography-size-3">.typography-size-3</h4>
-            <h4 className="typography-size-4">.typography-size-4</h4>
-            <h4 className="typography-size-5">.typography-size-5</h4>
+                  <h4 className="typography-size-0">Font size 0</h4>
+                  <h4 className="typography-size-1">Font size 1</h4>
+                  <h4 className="typography-size-2">Font size 2</h4>
+                  <h4 className="typography-size-3">Font size 3</h4>
+                  <h4 className="typography-size-4">Font size 4</h4>
+                  <h4 className="typography-size-5">Font size 5</h4>
+                </div>
+              )}
+            />
+            <h3 id="foundation-icons" className="typography-size-4 mb-6">Icons</h3>
+            <div className="mb-7">
+              <p>
+                React UI uses
+                {' '}
+                <a href="https://material.io/resources/icons/" target="_blank" rel="noopener noreferrer">
+                  Material Design icons
+                </a>.
+              </p>
+            </div>
+            <h3 id="foundation-spacing" className="typography-size-4 mb-6">Spacing</h3>
+            <p>
+              Available spacing values (px values account with 16 px base font size):
+            </p>
+            <ul className="mb-7">
+              <li><code>0:</code> 0 em / 0 px</li>
+              <li><code>1:</code> 0.25 em / 4 px</li>
+              <li><code>2:</code> 0.5 em / 8 px</li>
+              <li><code>3:</code> 0.75 em / 12 px</li>
+              <li><code>4:</code> 1 em / 16 px</li>
+              <li><code>5:</code> 1.5 em / 24 px</li>
+              <li><code>6:</code> 2 em / 32 px</li>
+              <li><code>7:</code> 3 em / 48 px</li>
+            </ul>
+            <h3 id="foundation-breakpoints" className="typography-size-4 mb-6">Breakpoints</h3>
+            <p>
+              Available breakpoints (px values account with 16 px base font size):
+            </p>
+            <ul className="mb-7">
+              <li><code>xs:</code> 0 em / 0 px</li>
+              <li><code>sm:</code> 36 em / 576 px</li>
+              <li><code>md:</code> 48 em / 768 px</li>
+              <li><code>lg:</code> 66 em / 1056 px</li>
+              <li><code>xl:</code> 84 em / 1344 px</li>
+              <li><code>xxl:</code> 90 em / 1440 px</li>
+            </ul>
           </section>
           <hr />
-          <section id="layout-components" className="offset-7">
-            <h2 className="typography-size-5 offset-6">Layout Components</h2>
-            <h3 id="layout-components-list" className="typography-size-4 offset-6">List</h3>
+          <section id="layout-components" className="mb-7">
+            <h2 className="typography-size-5 mb-6">Layout Components</h2>
+            <h3 id="layout-components-list" className="typography-size-4 mb-6">List</h3>
             <Documentation
               name="Default list"
               component={(
@@ -176,7 +233,7 @@ class DemoContainer extends React.Component {
                 </List>
               )}
             />
-            <h3 id="layout-components-media" className="typography-size-4 offset-6">Media</h3>
+            <h3 id="layout-components-media" className="typography-size-4 mb-6">Media</h3>
             <Documentation
               name="Default layout"
               component={(
@@ -190,7 +247,7 @@ class DemoContainer extends React.Component {
                 </Media>
               )}
             />
-            <h3 id="layout-components-row" className="typography-size-4 offset-6">Row</h3>
+            <h3 id="layout-components-row" className="typography-size-4 mb-6">Row</h3>
             <Documentation
               name="Default layout"
               component={(
@@ -206,9 +263,9 @@ class DemoContainer extends React.Component {
             />
           </section>
           <hr />
-          <section id="ui-components" className="offset-7">
-            <h2 className="typography-size-5 offset-6">UI Components</h2>
-            <h3 id="ui-components-alert" className="typography-size-4 offset-6">Alert</h3>
+          <section id="ui-components" className="mb-7">
+            <h2 className="typography-size-5 mb-6">UI Components</h2>
+            <h3 id="ui-components-alert" className="typography-size-4 mb-6">Alert</h3>
             <Documentation
               name="Message types"
               component={(
@@ -252,7 +309,7 @@ class DemoContainer extends React.Component {
                 </div>
               )}
             />
-            <h3 id="ui-components-card" className="typography-size-4 offset-6">Card</h3>
+            <h3 id="ui-components-card" className="typography-size-4 mb-6">Card</h3>
             <Documentation
               name="Card types"
               component={(
@@ -322,7 +379,7 @@ class DemoContainer extends React.Component {
                 </div>
               )}
             />
-            <h3 id="ui-components-button" className="typography-size-4 offset-6">Button</h3>
+            <h3 id="ui-components-button" className="typography-size-4 mb-6">Button</h3>
             <Documentation
               name="Default buttons"
               component={(
@@ -383,7 +440,7 @@ class DemoContainer extends React.Component {
               name="Buttons with icons"
               component={(
                 <div>
-                  <div className="offset-3">
+                  <div className="mb-3">
                     <Button clickHandler={loggerClick} label="Icon before label, small" icon="album" size="small" />
                     <Button clickHandler={loggerClick} label="Icon before label" icon="radio" />
                     <Button clickHandler={loggerClick} label="Icon after label" icon="book" iconPosition="after" />
@@ -423,7 +480,7 @@ class DemoContainer extends React.Component {
                 </div>
               )}
             />
-            <h3 id="ui-components-checkbox" className="typography-size-4 offset-6">Checkbox</h3>
+            <h3 id="ui-components-checkbox" className="typography-size-4 mb-6">Checkbox</h3>
             <Documentation
               name="Checkbox"
               component={(
@@ -513,10 +570,7 @@ class DemoContainer extends React.Component {
                 />
               )}
             />
-            <h3 id="ui-components-icon" className="typography-size-4 offset-6">Icon</h3>
-            <p>
-              We use <a href="https://material.io/tools/icons/" target="_blank" rel="noopener noreferrer">Material Design icons</a>.
-            </p>
+            <h3 id="ui-components-icon" className="typography-size-4 mb-6">Icon</h3>
             <Documentation
               name="Icon – default"
               component={<Icon icon="book" />}
@@ -537,7 +591,7 @@ class DemoContainer extends React.Component {
                 </span>
               )}
             />
-            <h3 id="ui-components-modal" className="typography-size-4 offset-6">Modal</h3>
+            <h3 id="ui-components-modal" className="typography-size-4 mb-6">Modal</h3>
             <Documentation
               name="Modal label"
               component={(
@@ -566,7 +620,7 @@ class DemoContainer extends React.Component {
                 </React.Fragment>
               )}
             />
-            <h3 id="ui-components-multiple-selectfield" className="typography-size-4 offset-6">Multiple Select Field</h3>
+            <h3 id="ui-components-multiple-selectfield" className="typography-size-4 mb-6">Multiple Select Field</h3>
             <Documentation
               name="Multiple select field variants"
               component={(
@@ -637,7 +691,7 @@ class DemoContainer extends React.Component {
               name="Validation states"
               component={(
                 <div>
-                  <div className="offset-5">
+                  <div className="mb-5">
                     <MultipleSelectField
                       fieldId="multipleSelectFieldValidationValidOutline"
                       changeHandler={logger}
@@ -705,7 +759,7 @@ class DemoContainer extends React.Component {
               name="Sizes"
               component={(
                 <div>
-                  <div className="offset-5">
+                  <div className="mb-5">
                     <MultipleSelectField
                       fieldId="multipleSelectFieldSizeOutlineSmall"
                       changeHandler={logger}
@@ -779,7 +833,7 @@ class DemoContainer extends React.Component {
                 </div>
               )}
             />
-            <h3 id="ui-components-radio" className="typography-size-4 offset-6">Radio</h3>
+            <h3 id="ui-components-radio" className="typography-size-4 mb-6">Radio</h3>
             <Documentation
               name="Radio"
               component={(
@@ -854,7 +908,7 @@ class DemoContainer extends React.Component {
                 />
               )}
             />
-            <h3 id="ui-components-selectfield" className="typography-size-4 offset-6">Select Field</h3>
+            <h3 id="ui-components-selectfield" className="typography-size-4 mb-6">Select Field</h3>
             <Documentation
               name="Select field variants"
               component={(
@@ -969,7 +1023,7 @@ class DemoContainer extends React.Component {
               name="Validation states"
               component={(
                 <div>
-                  <div className="offset-5">
+                  <div className="mb-5">
                     <SelectField
                       fieldId="selectFieldValidationValidOutline"
                       changeHandler={logger}
@@ -1037,7 +1091,7 @@ class DemoContainer extends React.Component {
               name="Sizes"
               component={(
                 <div>
-                  <div className="offset-5">
+                  <div className="mb-5">
                     <SelectField
                       fieldId="selectFieldSizeOutlineSmall"
                       changeHandler={logger}
@@ -1115,7 +1169,7 @@ class DemoContainer extends React.Component {
               name="Horizontal layout"
               component={(
                 <div>
-                  <div className="offset-3">
+                  <div className="mb-3">
                     <SelectField
                       fieldId="selectFieldHorizontalOutline"
                       changeHandler={logger}
@@ -1136,7 +1190,7 @@ class DemoContainer extends React.Component {
                       value="grapefruits"
                     />
                   </div>
-                  <div className="offset-3">
+                  <div className="mb-3">
                     <SelectField
                       fieldId="selectFieldHorizontalFullWidthOutline"
                       changeHandler={logger}
@@ -1179,7 +1233,7 @@ class DemoContainer extends React.Component {
                 </div>
               )}
             />
-            <h3 id="ui-components-table" className="typography-size-4 offset-6">Table</h3>
+            <h3 id="ui-components-table" className="typography-size-4 mb-6">Table</h3>
             <Documentation
               name="Table"
               component={(
@@ -1232,7 +1286,7 @@ class DemoContainer extends React.Component {
                 />
               )}
             />
-            <h3 id="ui-components-textarea" className="typography-size-4 offset-6">Text Area</h3>
+            <h3 id="ui-components-textarea" className="typography-size-4 mb-6">Text Area</h3>
             <Documentation
               name="Text area variants"
               component={(
@@ -1341,7 +1395,7 @@ class DemoContainer extends React.Component {
               name="Validation states"
               component={(
                 <div>
-                  <div className="offset-5">
+                  <div className="mb-5">
                     <TextArea
                       fieldId="textAreaValidationValidOutline"
                       changeHandler={logger}
@@ -1403,7 +1457,7 @@ class DemoContainer extends React.Component {
               name="Sizes"
               component={(
                 <div>
-                  <div className="offset-5">
+                  <div className="mb-5">
                     <TextArea
                       fieldId="textAreaSizeOutlineSmall"
                       changeHandler={logger}
@@ -1497,7 +1551,7 @@ class DemoContainer extends React.Component {
               name="Horizontal layout"
               component={(
                 <div>
-                  <div className="offset-3">
+                  <div className="mb-3">
                     <TextArea
                       fieldId="textAreaHorizontalOutline"
                       changeHandler={logger}
@@ -1516,7 +1570,7 @@ class DemoContainer extends React.Component {
                       variant="filled"
                     />
                   </div>
-                  <div className="offset-3">
+                  <div className="mb-3">
                     <TextArea
                       fieldId="textAreaCustomSizeOutline"
                       changeHandler={logger}
@@ -1535,7 +1589,7 @@ class DemoContainer extends React.Component {
                       rows={5}
                     />
                   </div>
-                  <div className="offset-3">
+                  <div className="mb-3">
                     <TextArea
                       fieldId="textAreaHorizontalFullWidthOutline"
                       changeHandler={logger}
@@ -1577,7 +1631,7 @@ class DemoContainer extends React.Component {
                 </div>
               )}
             />
-            <h3 id="ui-components-textfield" className="typography-size-4 offset-6">Text Field</h3>
+            <h3 id="ui-components-textfield" className="typography-size-4 mb-6">Text Field</h3>
             <Documentation
               name="Text field variants"
               component={(
@@ -1686,7 +1740,7 @@ class DemoContainer extends React.Component {
               name="Validation states"
               component={(
                 <div>
-                  <div className="offset-5">
+                  <div className="mb-5">
                     <TextField
                       fieldId="textFieldValidationValidOutline"
                       changeHandler={logger}
@@ -1748,7 +1802,7 @@ class DemoContainer extends React.Component {
               name="Sizes"
               component={(
                 <div>
-                  <div className="offset-5">
+                  <div className="mb-5">
                     <TextField
                       fieldId="textFieldSizeOutlineSmall"
                       changeHandler={logger}
@@ -1840,7 +1894,7 @@ class DemoContainer extends React.Component {
               name="Horizontal layout"
               component={(
                 <div>
-                  <div className="offset-3">
+                  <div className="mb-3">
                     <TextField
                       fieldId="textFieldHorizontalOutline"
                       changeHandler={logger}
@@ -1859,7 +1913,7 @@ class DemoContainer extends React.Component {
                       variant="filled"
                     />
                   </div>
-                  <div className="offset-3">
+                  <div className="mb-3">
                     <TextField
                       fieldId="textFieldHorizontalCustomSizeOutline"
                       changeHandler={logger}
@@ -1877,7 +1931,7 @@ class DemoContainer extends React.Component {
                       inputSize={3}
                     />
                   </div>
-                  <div className="offset-3">
+                  <div className="mb-3">
                     <TextField
                       fieldId="textFieldHorizontalFullWidthOutline"
                       changeHandler={logger}
@@ -1919,7 +1973,7 @@ class DemoContainer extends React.Component {
                 </div>
               )}
             />
-            <h3 id="ui-components-toggle" className="typography-size-4 offset-6">Toggle</h3>
+            <h3 id="ui-components-toggle" className="typography-size-4 mb-6">Toggle</h3>
             <Documentation
               name="Toggle"
               component={(
@@ -2011,9 +2065,9 @@ class DemoContainer extends React.Component {
             />
           </section>
           <hr />
-          <section id="screens" className="offset-7">
-            <h2 className="typography-size-5 offset-6">Screens</h2>
-            <h3 id="screens-login" className="typography-size-4 offset-6">Login Screen</h3>
+          <section id="screens" className="mb-7">
+            <h2 className="typography-size-5 mb-6">Screens</h2>
+            <h3 id="screens-login" className="typography-size-4 mb-6">Login Screen</h3>
             <Documentation
               name="Login screen"
               component={(
@@ -2030,7 +2084,7 @@ class DemoContainer extends React.Component {
                 </LayoutCenter>
               )}
             />
-            <h3 id="screens-forgot-password" className="typography-size-4 offset-6">Forgot Password Screen</h3>
+            <h3 id="screens-forgot-password" className="typography-size-4 mb-6">Forgot Password Screen</h3>
             <Documentation
               name="Forgot password screen"
               component={(
@@ -2047,7 +2101,7 @@ class DemoContainer extends React.Component {
                 </LayoutCenter>
               )}
             />
-            <h3 id="screens-new-password" className="typography-size-4 offset-6">New Password Screen</h3>
+            <h3 id="screens-new-password" className="typography-size-4 mb-6">New Password Screen</h3>
             <Documentation
               name="New password screen"
               component={(
@@ -2062,6 +2116,221 @@ class DemoContainer extends React.Component {
                     )}
                   />
                 </LayoutCenter>
+              )}
+            />
+          </section>
+          <hr />
+          <section id="utilities" className="mb-7">
+            <h2 className="typography-size-5 mb-6">Utilities</h2>
+            <p>
+              Utilities are CSS class names that do just one thing.
+            </p>
+            <h3 id="utilities-typography" className="typography-size-4 mb-6">Typography</h3>
+            <Documentation
+              name="Font sizes"
+              component={(
+                <div>
+                  <div className="typography-size-0 mb-4">
+                    <code>.typography-size-0</code>
+                  </div>
+                  <div className="typography-size-1 mb-4">
+                    <code>.typography-size-1</code>
+                  </div>
+                  <div className="typography-size-2 mb-4">
+                    <code>.typography-size-2</code>
+                  </div>
+                  <div className="typography-size-3 mb-4">
+                    <code>.typography-size-3</code>
+                  </div>
+                  <div className="typography-size-4 mb-4">
+                    <code>.typography-size-4</code>
+                  </div>
+                  <div className="typography-size-5 mb-4">
+                    <code>.typography-size-5</code>
+                  </div>
+                </div>
+              )}
+            />
+            <Documentation
+              name="Text alignment"
+              component={(
+                <div>
+                  <p className="text-left">
+                    <code>.text-left</code>
+                    {' '}
+                    Left aligned text on all viewport sizes.
+                  </p>
+                  <p className="text-center">
+                    <code>.text-center</code>
+                    {' '}
+                    Center aligned text on all viewport sizes.
+                  </p>
+                  <p className="text-right">
+                    <code>.text-right</code>
+                    {' '}
+                    Right aligned text on all viewport sizes.
+                  </p>
+                  <p className="text-sm-left">
+                    <code>.text-sm-left</code>
+                    {' '}
+                    Left aligned text on viewports sized SM (small) or wider.
+                  </p>
+                  <p className="text-md-left">
+                    <code>.text-md-left</code>
+                    {' '}
+                    Left aligned text on viewports sized MD (medium) or wider.
+                  </p>
+                  <p className="text-lg-left">
+                    <code>.text-lg-left</code>
+                    {' '}
+                    Left aligned text on viewports sized LG (large) or wider.
+                  </p>
+                  <p className="text-xl-left">
+                    <code>.text-xl-left</code>
+                    {' '}
+                    Left aligned text on viewports sized XL (extra-large) or wider.
+                  </p>
+                  <p className="text-xxl-left">
+                    <code>.text-xxl-left</code>
+                    {' '}
+                    Left aligned text on viewports sized XXL (XX-large) or wider.
+                  </p>
+                </div>
+              )}
+            />
+            <h3 id="utilities-spacing" className="typography-size-4 mb-6">Spacing</h3>
+            <div className="mb-7">
+              <p>
+                Class name notation is
+                {' '}
+                <a
+                  href="https://getbootstrap.com/docs/4.3/utilities/spacing/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  inspired by Bootstrap 4
+                </a>.
+              </p>
+              <p>
+                The classes are named using the format <code>[property][sides]-[size]</code> for
+                {' '}
+                <code>xs</code> and <code>[property][sides]-[breakpoint]-[size]</code> for
+                {' '}
+                <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, and
+                {' '}
+                <code>xxl</code>.
+              </p>
+              <p>
+                Where <em>property</em> is one of:
+              </p>
+              <ul>
+                <li>
+                  <code>m</code> - for classes that set <code>margin</code>
+                </li>
+                <li>
+                  <code>p</code> - for classes that set <code>padding</code>
+                </li>
+              </ul>
+              <p>
+                Where <em>sides</em> is one of:
+              </p>
+              <ul>
+                <li>
+                  <code>t</code> - for classes that set <code>margin-top</code> or
+                  {' '}
+                  <code>padding-top</code>
+                </li>
+                <li>
+                  <code>b</code> - for classes that set <code>margin-bottom</code> or
+                  {' '}
+                  <code>padding-bottom</code>
+                </li>
+                <li>
+                  <code>l</code> - for classes that set <code>margin-left</code> or
+                  {' '}
+                  <code>padding-left</code>
+                </li>
+                <li>
+                  <code>r</code> - for classes that set <code>margin-right</code> or
+                  {' '}
+                  <code>padding-right</code>
+                </li>
+              </ul>
+              <p>
+                Where <em>size</em> is one of:
+              </p>
+              <ul>
+                <li><code>0</code></li>
+                <li><code>1</code></li>
+                <li><code>2</code></li>
+                <li><code>3</code></li>
+                <li><code>4</code></li>
+                <li><code>5</code></li>
+                <li><code>6</code></li>
+                <li><code>7</code></li>
+                <li><code>auto</code> for classes that set the <code>margin</code> to auto</li>
+              </ul>
+            </div>
+            <Documentation
+              name="Example of bottom margin (all breakpoints)"
+              component={(
+                <div>
+                  <div className="mb-0">
+                    <DocumentationPlaceholder text=".mb-0" />
+                  </div>
+                  <div className="mb-1">
+                    <DocumentationPlaceholder text=".mb-1" />
+                  </div>
+                  <div className="mb-2">
+                    <DocumentationPlaceholder text=".mb-2" />
+                  </div>
+                  <div className="mb-3">
+                    <DocumentationPlaceholder text=".mb-3" />
+                  </div>
+                  <div className="mb-4">
+                    <DocumentationPlaceholder text=".mb-4" />
+                  </div>
+                  <div className="mb-5">
+                    <DocumentationPlaceholder text=".mb-5" />
+                  </div>
+                  <div className="mb-6">
+                    <DocumentationPlaceholder text=".mb-6" />
+                  </div>
+                  <div className="mb-7">
+                    <DocumentationPlaceholder text=".mb-7" />
+                  </div>
+                </div>
+              )}
+            />
+            <Documentation
+              name="Example of left padding from SM screen up"
+              component={(
+                <div>
+                  <div className="pl-sm-0">
+                    <DocumentationPlaceholder text=".pl-sm-0" />
+                  </div>
+                  <div className="pl-sm-1">
+                    <DocumentationPlaceholder text=".pl-sm-1" />
+                  </div>
+                  <div className="pl-sm-2">
+                    <DocumentationPlaceholder text=".pl-sm-2" />
+                  </div>
+                  <div className="pl-sm-3">
+                    <DocumentationPlaceholder text=".pl-sm-3" />
+                  </div>
+                  <div className="pl-sm-4">
+                    <DocumentationPlaceholder text=".pl-sm-4" />
+                  </div>
+                  <div className="pl-sm-5">
+                    <DocumentationPlaceholder text=".pl-sm-5" />
+                  </div>
+                  <div className="pl-sm-6">
+                    <DocumentationPlaceholder text=".pl-sm-6" />
+                  </div>
+                  <div className="pl-sm-7">
+                    <DocumentationPlaceholder text=".pl-7" />
+                  </div>
+                </div>
               )}
             />
           </section>

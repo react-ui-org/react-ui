@@ -36,7 +36,7 @@ const NewPassword = props => (
             {props.error}
           </div>
         )}
-        <div className="offset-3">
+        <div className="mb-3">
           <TextField
             fieldId="newPassword"
             changeHandler={event => props.onChangeHandler('newPassword', event.target.value)}

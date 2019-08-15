@@ -31,7 +31,7 @@ exports[`rendering renders correctly 1`] = `
           onSubmit={[Function]}
         >
           <div
-            className="offset-3"
+            className="mb-3"
           >
             <TextField
               changeHandler={[Function]}
@@ -227,7 +227,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
             Invalid username or password
           </div>
           <div
-            className="offset-3"
+            className="mb-3"
           >
             <TextField
               changeHandler={[Function]}
@@ -412,7 +412,7 @@ exports[`rendering renders correctly with translations 1`] = `
           onSubmit={[Function]}
         >
           <div
-            className="offset-3"
+            className="mb-3"
           >
             <TextField
               changeHandler={[Function]}
@@ -582,7 +582,7 @@ exports[`rendering renders correctly with username 1`] = `
           onSubmit={[Function]}
         >
           <div
-            className="offset-3"
+            className="mb-3"
           >
             <TextField
               changeHandler={[Function]}

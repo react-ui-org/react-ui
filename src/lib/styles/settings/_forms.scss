@@ -6,7 +6,7 @@
 
 $form-field-label-line-height: 1.5rem;
 $form-field-font-family: $typography-font-family-base;
-$form-field-font-weight: $typography-font-weight-regular;
+$form-field-font-weight: map-get($typography-font-weight-values, regular);
 $form-field-line-height: 1.5rem; // 1.
 $form-field-helper-text-line-height: 1.2rem;
 $form-field-caret-size: 2.25rem;

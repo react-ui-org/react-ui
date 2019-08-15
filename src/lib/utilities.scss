@@ -1,4 +1,18 @@
 // Responsive utility classes to tweak small details like typography, margins or padding.
 
-@import 'styles/utilities/offset';
-@import 'styles/utilities/typography';
+@import 'styles/settings/breakpoints';
+@import 'styles/settings/utilities';
+@import 'styles/tools/breakpoints';
+@import 'styles/tools/utilities';
+
+@each $breakpoint in map-keys($breakpoint-values) {
+  @include breakpoint-up($breakpoint) {
+    $infix: if(map-get($breakpoint-values, $breakpoint) == 0, '', '-#{$breakpoint}');
+
+    @each $key, $utility in $utilities {
+      @if type-of($utility) == 'map' and (map-get($utility, responsive) == true or $infix == '') {
+        @include generate-utility($utility, $infix);
+      }
+    }
+  }
+}
