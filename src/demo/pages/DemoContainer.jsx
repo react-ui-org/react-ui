@@ -118,6 +118,9 @@ class DemoContainer extends React.Component {
             <p>
               <small>Small text</small>
             </p>
+                  <p>
+                    <code>Inline code</code>
+                  </p>
             <p>
                     <a href="#top">Link</a>
             </p>
