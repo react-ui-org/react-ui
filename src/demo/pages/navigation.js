@@ -24,6 +24,10 @@ export default [
   {
     items: [
       {
+        link: '#layout-components-centered-layout',
+        title: 'Centered Layout',
+      },
+      {
         link: '#layout-components-list',
         title: 'List',
       },

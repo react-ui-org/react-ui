@@ -187,6 +187,18 @@ class DemoContainer extends React.Component {
           <hr />
           <section id="layout-components" className="mb-7">
             <h2 className="typography-size-5 mb-6">Layout Components</h2>
+            <h3 id="layout-components-centered-layout" className="typography-size-4 mb-6">Centered Layout</h3>
+            <p>
+              Centered layout takes 100 % of viewport height.
+            </p>
+            <Documentation
+              name="Centered Layout"
+              component={(
+                <LayoutCenter>
+                  <DocumentationPlaceholder text="centered content" />
+                </LayoutCenter>
+              )}
+            />
             <h3 id="layout-components-list" className="typography-size-4 mb-6">List</h3>
             <Documentation
               name="Default list"
