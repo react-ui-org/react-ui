@@ -1,6 +1,6 @@
 {
   "name": "react-ui",
-  "version": "0.13.0",
+  "version": "0.14.0",
   "license": "unlicensed",
   "main": "dist/lib.js",
   "scripts": {
@@ -62,7 +62,7 @@
     "stylelint-webpack-plugin": "~0.10.5",
     "svg-sprite-loader": "^4.1.6",
     "webpack": "^3.11.0",
-    "webpack-dev-server": "^2.11.2"
+    "webpack-dev-server": "^2.11.5"
   },
   "dependencies": {
     "babel-polyfill": "^6.20.0",
