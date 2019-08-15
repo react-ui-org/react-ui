@@ -16,6 +16,7 @@ import {
   DocumentationLayoutSidebar,
   DocumentationNavigation,
   DocumentationPlaceholder,
+  DocumentationSwatch,
   ForgotPassword,
   Icon,
   LayoutCenter,
@@ -82,6 +83,88 @@ class DemoContainer extends React.Component {
         <DocumentationLayoutContent>
           <section id="foundation" className="mb-7">
             <h2 className="typography-size-5 mb-6">Foundation</h2>
+            <h3 id="foundation-colors" className="typography-size-4 mb-6">Colors</h3>
+            <div className="mb-7">
+              <h4 className="typography-size-3">Theme Colors</h4>
+              <div className="mb-5">
+                <div>
+                  <DocumentationSwatch color="primary" />
+                  <DocumentationSwatch color="primary-dark" />
+                  <DocumentationSwatch color="primary-darker" />
+                  <DocumentationSwatch color="primary-light" />
+                  <DocumentationSwatch color="on-primary" />
+                </div>
+                <div>
+                  <DocumentationSwatch color="secondary" />
+                  <DocumentationSwatch color="secondary-dark" />
+                  <DocumentationSwatch color="secondary-darker" />
+                  <DocumentationSwatch color="secondary-light" />
+                  <DocumentationSwatch color="on-secondary" />
+                </div>
+              </div>
+              <h4 className="typography-size-3">UI Colors</h4>
+              <div className="mb-5">
+                <div>
+                  <DocumentationSwatch color="success" />
+                  <DocumentationSwatch color="success-dark" />
+                  <DocumentationSwatch color="success-darker" />
+                  <DocumentationSwatch color="success-light" />
+                  <DocumentationSwatch color="on-success" />
+                </div>
+                <div>
+                  <DocumentationSwatch color="warning" />
+                  <DocumentationSwatch color="warning-dark" />
+                  <DocumentationSwatch color="warning-darker" />
+                  <DocumentationSwatch color="warning-light" />
+                  <DocumentationSwatch color="on-warning" />
+                </div>
+                <div>
+                  <DocumentationSwatch color="error" />
+                  <DocumentationSwatch color="error-dark" />
+                  <DocumentationSwatch color="error-darker" />
+                  <DocumentationSwatch color="error-light" />
+                  <DocumentationSwatch color="on-error" />
+                </div>
+                <div>
+                  <DocumentationSwatch color="help" />
+                  <DocumentationSwatch color="help-dark" />
+                  <DocumentationSwatch color="help-darker" />
+                  <DocumentationSwatch color="help-light" />
+                  <DocumentationSwatch color="on-help" />
+                </div>
+                <div>
+                  <DocumentationSwatch color="info" />
+                  <DocumentationSwatch color="info-dark" />
+                  <DocumentationSwatch color="info-darker" />
+                  <DocumentationSwatch color="info-light" />
+                  <DocumentationSwatch color="on-info" />
+                </div>
+                <div>
+                  <DocumentationSwatch color="note" />
+                  <DocumentationSwatch color="note-dark" />
+                  <DocumentationSwatch color="note-darker" />
+                  <DocumentationSwatch color="note-light" />
+                  <DocumentationSwatch color="on-note" />
+                </div>
+              </div>
+              <h4 className="typography-size-3">Grays</h4>
+              <div className="mb-5">
+                <DocumentationSwatch color="white" />
+                <DocumentationSwatch color="black" />
+              </div>
+              <div className="mb-5">
+                <DocumentationSwatch color="gray-50" />
+                <DocumentationSwatch color="gray-100" />
+                <DocumentationSwatch color="gray-200" />
+                <DocumentationSwatch color="gray-300" />
+                <DocumentationSwatch color="gray-400" />
+                <DocumentationSwatch color="gray-500" />
+                <DocumentationSwatch color="gray-600" />
+                <DocumentationSwatch color="gray-700" />
+                <DocumentationSwatch color="gray-800" />
+                <DocumentationSwatch color="gray-900" />
+              </div>
+            </div>
             <h3 id="foundation-typography" className="typography-size-4 mb-6">Typography</h3>
             <p>
               React UI uses
@@ -100,44 +183,44 @@ class DemoContainer extends React.Component {
               name="Typography showcase"
               component={(
                 <div>
-            <p>
-              Curabitur sagittis hendrerit ante. Integer pellentesque quam vel velit. Sed vel
+                  <p>
+                    Curabitur sagittis hendrerit ante. Integer pellentesque quam vel velit. Sed vel
                     lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem.
                     Pellentesque sapien. Ut enim ad minima veniam, quis nostrum exercitationem ullam
                     corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
                     Maecenas sollicitudin. Phasellus faucibus molestie nisl. Excepteur sint occaecat
                     cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
                     laborum. Phasellus et lorem id felis nonummy placerat.
-            </p>
-            <p>
-              <strong>Bold text</strong>
-            </p>
-            <p>
-              <em>Emphasized text</em>
-            </p>
-            <p>
-              <small>Small text</small>
-            </p>
+                  </p>
+                  <p>
+                    <strong>Bold text</strong>
+                  </p>
+                  <p>
+                    <em>Emphasized text</em>
+                  </p>
+                  <p>
+                    <small>Small text</small>
+                  </p>
                   <p>
                     <code>Inline code</code>
                   </p>
-            <p>
+                  <p>
                     <a href="#top">Link</a>
-            </p>
-            <ul>
-              <li>Unordered list item 1</li>
-              <li>Unordered list item 2</li>
-              <li>Unordered list item 3</li>
-            </ul>
-            <ol>
-              <li>Ordered list item 1</li>
-              <li>Ordered list item 2</li>
-              <li>Ordered list item 3</li>
-            </ol>
-            <p>
-              Horizontal ruler:
-            </p>
-            <hr />
+                  </p>
+                  <ul>
+                    <li>Unordered list item 1</li>
+                    <li>Unordered list item 2</li>
+                    <li>Unordered list item 3</li>
+                  </ul>
+                  <ol>
+                    <li>Ordered list item 1</li>
+                    <li>Ordered list item 2</li>
+                    <li>Ordered list item 3</li>
+                  </ol>
+                  <p>
+                    Horizontal ruler:
+                  </p>
+                  <hr />
                   <h4 className="typography-size-0">Font size 0</h4>
                   <h4 className="typography-size-1">Font size 1</h4>
                   <h4 className="typography-size-2">Font size 2</h4>

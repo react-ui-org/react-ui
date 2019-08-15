@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly mandatory props only 1`] = `
+<div
+  className="root"
+  title="primary"
+>
+  <div
+    className="field"
+    style={
+      Object {
+        "backgroundColor": "var(--rui-color-primary)",
+      }
+    }
+  />
+  <div
+    className="label"
+  >
+    primary
+  </div>
+</div>
+`;

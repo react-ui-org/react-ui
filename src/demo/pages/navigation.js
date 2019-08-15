@@ -2,9 +2,13 @@ export default [
   {
     items: [
       {
+        link: '#foundation-colors',
+        title: 'Colors',
+      },
+      {
         link: '#foundation-typography',
-    title: 'Typography',
-  },
+        title: 'Typography',
+      },
       {
         link: '#foundation-icons',
         title: 'Icons',
