@@ -61,6 +61,7 @@ describe('rendering', () => {
           value: 'ch1',
         },
         {
+          disabled: true,
           label: 'choice 2',
           value: 'ch2',
         },

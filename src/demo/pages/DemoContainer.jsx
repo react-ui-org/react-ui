@@ -764,6 +764,24 @@ class DemoContainer extends React.Component {
               )}
             />
             <Documentation
+              name="Disabled multiple select field option"
+              component={(
+                <MultipleSelectField
+                  fieldId="multipleSelectFieldDisabledOutline"
+                  changeHandler={logger}
+                  label="Disabled multiple select field"
+                  options={[
+                    ...this.exampleOptions,
+                    {
+                      disabled: true,
+                      label: 'Oranges',
+                      value: 'oranges',
+                    },
+                  ]}
+                />
+              )}
+            />
+            <Documentation
               name="Disabled multiple select field"
               component={(
                 <div>
@@ -1069,6 +1087,24 @@ class DemoContainer extends React.Component {
                     required
                   />
                 </div>
+              )}
+            />
+            <Documentation
+              name="Disabled select field option"
+              component={(
+                <SelectField
+                  fieldId="selectFieldDisabledOutline"
+                  changeHandler={logger}
+                  label="Disabled select field"
+                  options={[
+                    ...this.exampleOptions,
+                    {
+                      disabled: true,
+                      label: 'Oranges',
+                      value: 'oranges',
+                    },
+                  ]}
+                />
               )}
             />
             <Documentation

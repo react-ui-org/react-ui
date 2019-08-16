@@ -85,6 +85,7 @@ const SelectField = (props) => {
           {
             props.options.map(option => (
               <option
+                disabled={option.disabled}
                 key={option.value}
                 value={option.value}
               >
@@ -133,6 +134,7 @@ SelectField.propTypes = {
   label: PropTypes.string.isRequired,
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
   options: PropTypes.arrayOf(PropTypes.shape({
+    disabled: PropTypes.bool,
     label: PropTypes.string.isRequired,
     value: PropTypes.oneOfType([
       PropTypes.string,

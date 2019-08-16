@@ -131,6 +131,7 @@ exports[`rendering renders correctly with all props 1`] = `
         choice 1
       </option>
       <option
+        disabled={true}
         key="ch2"
         value="ch2"
       >
