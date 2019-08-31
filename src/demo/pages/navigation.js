@@ -126,6 +126,14 @@ export default [
   {
     items: [
       {
+        link: '#utilities-box-alignment',
+        title: 'Box Alignment',
+      },
+      {
+        link: '#utilities-display',
+        title: 'Display',
+      },
+      {
         link: '#utilities-typography',
         title: 'Typography',
       },

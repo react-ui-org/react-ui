@@ -2259,6 +2259,145 @@ class DemoContainer extends React.Component {
             <p>
               Utilities are CSS class names that do just one thing.
             </p>
+            <h3 id="utilities-block-alignment" className="typography-size-4 mb-6">Box Alignment</h3>
+            <p>
+              Class name notation is
+              {' '}
+              <a
+                href="https://getbootstrap.com/docs/4.3/utilities/flex/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                inspired by Bootstrap 4
+              </a>.
+            </p>
+            <p>
+              The classes are named using the format <code>[alignment]-[value]</code> for
+              {' '}
+              <code>xs</code> and <code>[alignment]-[breakpoint]-[value]</code> for
+              {' '}
+              <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, and
+              {' '}
+              <code>xxl</code>.
+            </p>
+            <p>
+              Where <em>alignment</em> is one of:
+            </p>
+            <ul>
+              <li>
+                <code>align-items</code>
+              </li>
+              <li>
+                <code>justify-content</code>
+              </li>
+            </ul>
+            <p>
+              For <code>align-items</code> the <em>value</em> can be:
+            </p>
+            <ul>
+              <li>
+                <code>baseline</code>
+              </li>
+              <li>
+                <code>center</code>
+              </li>
+              <li>
+                <code>flex-start</code>
+              </li>
+              <li>
+                <code>flex-end</code>
+              </li>
+            </ul>
+            <p>
+              For <code>justify-content</code> the <em>value</em> can be:
+            </p>
+            <ul>
+              <li>
+                <code>start</code>
+              </li>
+              <li>
+                <code>end</code>
+              </li>
+              <li>
+                <code>center</code>
+              </li>
+              <li>
+                <code>space-between</code>
+              </li>
+            </ul>
+            <Documentation
+              name="Example class names"
+              component={(
+                <div>
+                  <div className="mb-4">
+                    <code>.align-items-baseline</code>
+                  </div>
+                  <div className="mb-4">
+                    <code>.justify-content-center</code>
+                  </div>
+                  <div className="mb-4">
+                    <code>.justify-content-sm-end</code>
+                  </div>
+                </div>
+              )}
+            />
+            <h3 id="utilities-display" className="typography-size-4 mb-6">Display</h3>
+            <p>
+              Class name notation is
+              {' '}
+              <a
+                href="https://getbootstrap.com/docs/4.3/utilities/display/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                inspired by Bootstrap 4
+              </a>.
+            </p>
+            <p>
+              The classes are named using the format <code>d-[value]</code> for
+              {' '}
+              <code>xs</code> and <code>d-[breakpoint]-[value]</code> for
+              {' '}
+              <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, and
+              {' '}
+              <code>xxl</code>.
+            </p>
+            <p>
+              Where <em>value</em> is one of:
+            </p>
+            <ul>
+              <li>
+                <code>block</code>
+              </li>
+              <li>
+                <code>flex</code>
+              </li>
+              <li>
+                <code>inline</code>
+              </li>
+              <li>
+                <code>inline-flex</code>
+              </li>
+              <li>
+                <code>none</code>
+              </li>
+            </ul>
+            <Documentation
+              name="Example class names"
+              component={(
+                <div>
+                  <div className="mb-4">
+                    <code>.d-none</code>
+                  </div>
+                  <div className="mb-4">
+                    <code>.d-sm-block</code>
+                  </div>
+                  <div className="mb-4">
+                    <code>.d-md-flex</code>
+                  </div>
+                </div>
+              )}
+            />
             <h3 id="utilities-typography" className="typography-size-4 mb-6">Typography</h3>
             <Documentation
               name="Font sizes"

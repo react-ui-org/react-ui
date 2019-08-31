@@ -2,6 +2,24 @@
 @import 'typography';
 
 $utilities: (
+  'display': (
+    responsive: true,
+    property: display,
+    class: d,
+    values: (block, flex, inline, inline-flex, none),
+  ),
+  'align-items': (
+    responsive: true,
+    property: align-items,
+    class: align-items,
+    values: (baseline, center, flex-start, flex-end),
+  ),
+  'justify-content': (
+    responsive: true,
+    property: justify-content,
+    class: justify-content,
+    values: (start, end, center, space-between),
+  ),
   'margin-top': (
     responsive: true,
     property: margin-top,
