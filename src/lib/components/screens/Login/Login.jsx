@@ -5,7 +5,7 @@ import TextField from '../../ui/TextField';
 import { withTranslationContext } from '../../../translation';
 import styles from './Login.scss';
 
-const Login = props => (
+const Login = (props) => (
   <div className={styles.root}>
     {props.logoUrl && (
       <div className={styles.logoWrap}>
@@ -39,7 +39,7 @@ const Login = props => (
         <div className="mb-3">
           <TextField
             fieldId={props.usernameType === 'email' ? 'email' : props.usernameType}
-            changeHandler={event => props.onChangeHandler('username', event.target.value)}
+            changeHandler={(event) => props.onChangeHandler('username', event.target.value)}
             label={props.usernameType === 'email' ? props.translations.email : props.usernameType}
             type={props.usernameType === 'email' ? 'email' : 'text'}
             fullWidth
@@ -47,7 +47,7 @@ const Login = props => (
           />
           <TextField
             fieldId="password"
-            changeHandler={event => props.onChangeHandler('password', event.target.value)}
+            changeHandler={(event) => props.onChangeHandler('password', event.target.value)}
             label={props.translations.password}
             type="password"
             fullWidth
@@ -88,7 +88,7 @@ Login.propTypes = {
     password: PropTypes.string.isRequired,
     signIn: PropTypes.string.isRequired,
   }).isRequired,
-  usernameType: PropTypes.oneOf(['email', PropTypes.string]),
+  usernameType: PropTypes.string,
 };
 
 export default withTranslationContext(Login, 'Login');

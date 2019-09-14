@@ -5,7 +5,7 @@ import {
 } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
-import CheckboxField from '../';
+import CheckboxField from '..';
 
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {

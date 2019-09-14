@@ -46,7 +46,7 @@ exports[`rendering renders correctly with all props 1`] = `
 >
   <div
     className="label
-            isLabelHidden"
+          isLabelHidden"
   >
     label
   </div>
@@ -89,7 +89,7 @@ exports[`rendering renders correctly with hidden label 1`] = `
 >
   <div
     className="label
-            isLabelHidden"
+          isLabelHidden"
   >
     label
   </div>

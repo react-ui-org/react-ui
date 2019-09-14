@@ -66,12 +66,12 @@ exports[`rendering renders correctly with all props except translations 1`] = `
           >
             <button
               className="root
-                    priorityFlat
-                    sizeLarge
-                    variantPrimary
-                    
-                    withIconBefore
-                    withLabelHidden"
+        priorityFlat
+        sizeLarge
+        variantPrimary
+        
+        withIconBefore
+        withLabelHidden"
               disabled={false}
               onClick={[Function]}
               title="Close"
@@ -131,9 +131,9 @@ exports[`rendering renders correctly with all props except translations 1`] = `
           >
             <button
               className="root
-                    priorityDefault
-                    sizeMedium
-                    variantPrimary"
+        priorityDefault
+        sizeMedium
+        variantPrimary"
               disabled={false}
               onClick={[Function]}
               title={null}
@@ -162,9 +162,9 @@ exports[`rendering renders correctly with all props except translations 1`] = `
           >
             <button
               className="root
-                    priorityFlat
-                    sizeMedium
-                    variantPrimary"
+        priorityFlat
+        sizeMedium
+        variantPrimary"
               disabled={false}
               onClick={[Function]}
               title={null}
@@ -288,12 +288,12 @@ exports[`rendering renders correctly with translations 1`] = `
           >
             <button
               className="root
-                    priorityFlat
-                    sizeLarge
-                    variantPrimary
-                    
-                    withIconBefore
-                    withLabelHidden"
+        priorityFlat
+        sizeLarge
+        variantPrimary
+        
+        withIconBefore
+        withLabelHidden"
               disabled={false}
               onClick={[Function]}
               title="Zavřít"
@@ -352,9 +352,9 @@ exports[`rendering renders correctly with translations 1`] = `
           >
             <button
               className="root
-                    priorityFlat
-                    sizeMedium
-                    variantPrimary"
+        priorityFlat
+        sizeMedium
+        variantPrimary"
               disabled={false}
               onClick={[Function]}
               title={null}

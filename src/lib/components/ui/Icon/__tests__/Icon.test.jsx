@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
-import Icon from '../';
+import Icon from '..';
 
 jest.mock('../load-material-design-icons');
 

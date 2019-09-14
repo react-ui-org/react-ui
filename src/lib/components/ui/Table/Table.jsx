@@ -80,9 +80,9 @@ class Table extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {rows.map(row => (
+            {rows.map((row) => (
               <tr key={row.id} className={styles.tableRow}>
-                {columns.map(column => this.renderBodyCell(column, row))}
+                {columns.map((column) => this.renderBodyCell(column, row))}
               </tr>
             ))}
           </tbody>

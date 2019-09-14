@@ -21,7 +21,7 @@ const columnsData = [
     name: 'name',
   },
   {
-    format: row => row.dateOfBirth.toDateString(),
+    format: (row) => row.dateOfBirth.toDateString(),
     label: 'Date of birth',
     name: 'dateOfBirth',
   },

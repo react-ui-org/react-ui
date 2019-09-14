@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
-import LayoutCenter from '../';
+import LayoutCenter from '..';
 
 describe('rendering', () => {
   it('renders correctly', () => {

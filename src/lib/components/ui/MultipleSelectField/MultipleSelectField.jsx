@@ -83,7 +83,7 @@ const MultipleSelectField = (props) => {
           value={props.value}
         >
           {
-            props.options.map(option => (
+            props.options.map((option) => (
               <option
                 disabled={option.disabled}
                 key={option.value}

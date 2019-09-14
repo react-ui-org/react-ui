@@ -45,7 +45,7 @@ import '../../lib/utilities.scss';
 
 import navigationTree from './navigation';
 
-const logger = event => console.log(event.target.value); // eslint-disable-line no-console
+const logger = (event) => console.log(event.target.value); // eslint-disable-line no-console
 const loggerClick = () => console.log('click'); // eslint-disable-line no-console
 const submitter = () => console.log('submitted'); // eslint-disable-line no-console
 
@@ -693,7 +693,7 @@ class DemoContainer extends React.Component {
             <Documentation
               name="Modal label"
               component={(
-                <React.Fragment>
+                <>
                   <Button
                     label="Open modal"
                     clickHandler={() => this.setState({ showModal: true })}
@@ -715,7 +715,7 @@ class DemoContainer extends React.Component {
                       <p>Dialog content</p>
                     </Modal>
                   )}
-                </React.Fragment>
+                </>
               )}
             />
             <h3 id="ui-components-multiple-selectfield" className="typography-size-4 mb-6">Multiple Select Field</h3>
@@ -1384,7 +1384,7 @@ class DemoContainer extends React.Component {
                       name: 'name',
                     },
                     {
-                      format: row => row.dateOfBirth.toLocaleDateString('cz-CZ'),
+                      format: (row) => row.dateOfBirth.toLocaleDateString('cz-CZ'),
                       isSortable: false,
                       label: 'Date of birth',
                       name: 'dateOfBirth',

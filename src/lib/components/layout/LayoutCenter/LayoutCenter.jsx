@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './LayoutCenter.scss';
 
-const LayoutCenter = props => (
+const LayoutCenter = (props) => (
   <div className={styles.root}>
     <div>
       {props.children}

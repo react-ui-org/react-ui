@@ -5,7 +5,7 @@ import {
 } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
-import TextField from '../';
+import TextField from '..';
 
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {

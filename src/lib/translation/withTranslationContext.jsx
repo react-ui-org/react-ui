@@ -3,9 +3,9 @@ import React from 'react';
 import TranslationContext from './TranslationContext';
 
 export default (Component, translationContext) => {
-  const WithTranslationContextComponent = props => (
+  const WithTranslationContextComponent = (props) => (
     <TranslationContext.Consumer>
-      {context => (
+      {(context) => (
         <Component
           {...props}
           translations={props.translations || context.translations[translationContext]}

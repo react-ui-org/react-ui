@@ -3,7 +3,7 @@
 /node_modules
 /src/components
 /src/index.js
-/test
+/tests
 .babelrc
 .editorconfig
 .eslintrc

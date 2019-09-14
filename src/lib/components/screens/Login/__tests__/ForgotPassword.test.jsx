@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
-import { ForgotPassword } from '../';
+import { ForgotPassword } from '..';
 
 jest.mock('../../../ui/Icon/load-material-design-icons');
 

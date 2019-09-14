@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './DocumentationLayout.scss';
 
-const DocumentationLayoutContent = props => (
+const DocumentationLayoutContent = (props) => (
   <main className={styles.content}>
     {props.children}
   </main>

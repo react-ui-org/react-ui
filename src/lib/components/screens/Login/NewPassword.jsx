@@ -5,7 +5,7 @@ import TextField from '../../ui/TextField';
 import { withTranslationContext } from '../../../translation';
 import styles from './NewPassword.scss';
 
-const NewPassword = props => (
+const NewPassword = (props) => (
   <div className={styles.root}>
     {props.logoUrl && (
       <div className={styles.logoWrap}>
@@ -39,7 +39,7 @@ const NewPassword = props => (
         <div className="mb-3">
           <TextField
             fieldId="newPassword"
-            changeHandler={event => props.onChangeHandler('newPassword', event.target.value)}
+            changeHandler={(event) => props.onChangeHandler('newPassword', event.target.value)}
             label={props.translations.newPassword}
             type="password"
             fullWidth
@@ -47,7 +47,7 @@ const NewPassword = props => (
           />
           <TextField
             fieldId="newPasswordRepeat"
-            changeHandler={event => props.onChangeHandler('newPasswordRepeat', event.target.value)}
+            changeHandler={(event) => props.onChangeHandler('newPasswordRepeat', event.target.value)}
             label={props.translations.repeatNewPassword}
             type="password"
             fullWidth

@@ -5,7 +5,7 @@ import TextField from '../../ui/TextField';
 import { withTranslationContext } from '../../../translation';
 import styles from './ForgotPassword.scss';
 
-const ForgotPassword = props => (
+const ForgotPassword = (props) => (
   <div className={styles.root}>
     {props.logoUrl && (
       <div className={styles.logoWrap}>
@@ -39,7 +39,7 @@ const ForgotPassword = props => (
         <div className="mb-3">
           <TextField
             fieldId="resetEmail"
-            changeHandler={event => props.onChangeHandler('email', event.target.value)}
+            changeHandler={(event) => props.onChangeHandler('email', event.target.value)}
             label={props.translations.email}
             type="email"
             fullWidth

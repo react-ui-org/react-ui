@@ -133,7 +133,7 @@ exports[`rendering renders correctly with all props 1`] = `
 >
   <span
     className="icon
-              iconLoading"
+            iconLoading"
   >
     <Icon
       icon="sync"

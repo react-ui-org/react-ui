@@ -52,12 +52,12 @@ exports[`rendering renders correctly 1`] = `
             >
               <label
                 className="root
-                      isRootFullWidth
-                      rootLayoutVertical
-                      isRootRequired
-                      rootSizeMedium
-                      
-                      rootVariantOutline"
+        isRootFullWidth
+        rootLayoutVertical
+        isRootRequired
+        rootSizeMedium
+        
+        rootVariantOutline"
                 htmlFor="email"
               >
                 <div
@@ -100,12 +100,12 @@ exports[`rendering renders correctly 1`] = `
             >
               <label
                 className="root
-                      isRootFullWidth
-                      rootLayoutVertical
-                      isRootRequired
-                      rootSizeMedium
-                      
-                      rootVariantOutline"
+        isRootFullWidth
+        rootLayoutVertical
+        isRootRequired
+        rootSizeMedium
+        
+        rootVariantOutline"
                 htmlFor="password"
               >
                 <div
@@ -146,10 +146,10 @@ exports[`rendering renders correctly 1`] = `
           >
             <button
               className="root
-                    priorityDefault
-                    sizeMedium
-                    variantPrimary
-                    isRootBlock"
+        priorityDefault
+        sizeMedium
+        variantPrimary
+        isRootBlock"
               disabled={false}
               onClick={null}
               title={null}
@@ -248,12 +248,12 @@ exports[`rendering renders correctly with all props except translations 1`] = `
             >
               <label
                 className="root
-                      isRootFullWidth
-                      rootLayoutVertical
-                      isRootRequired
-                      rootSizeMedium
-                      
-                      rootVariantOutline"
+        isRootFullWidth
+        rootLayoutVertical
+        isRootRequired
+        rootSizeMedium
+        
+        rootVariantOutline"
                 htmlFor="email"
               >
                 <div
@@ -296,12 +296,12 @@ exports[`rendering renders correctly with all props except translations 1`] = `
             >
               <label
                 className="root
-                      isRootFullWidth
-                      rootLayoutVertical
-                      isRootRequired
-                      rootSizeMedium
-                      
-                      rootVariantOutline"
+        isRootFullWidth
+        rootLayoutVertical
+        isRootRequired
+        rootSizeMedium
+        
+        rootVariantOutline"
                 htmlFor="password"
               >
                 <div
@@ -342,10 +342,10 @@ exports[`rendering renders correctly with all props except translations 1`] = `
           >
             <button
               className="root
-                    priorityDefault
-                    sizeMedium
-                    variantPrimary
-                    isRootBlock"
+        priorityDefault
+        sizeMedium
+        variantPrimary
+        isRootBlock"
               disabled={false}
               onClick={null}
               title={null}
@@ -433,12 +433,12 @@ exports[`rendering renders correctly with translations 1`] = `
             >
               <label
                 className="root
-                      isRootFullWidth
-                      rootLayoutVertical
-                      isRootRequired
-                      rootSizeMedium
-                      
-                      rootVariantOutline"
+        isRootFullWidth
+        rootLayoutVertical
+        isRootRequired
+        rootSizeMedium
+        
+        rootVariantOutline"
                 htmlFor="email"
               >
                 <div
@@ -481,12 +481,12 @@ exports[`rendering renders correctly with translations 1`] = `
             >
               <label
                 className="root
-                      isRootFullWidth
-                      rootLayoutVertical
-                      isRootRequired
-                      rootSizeMedium
-                      
-                      rootVariantOutline"
+        isRootFullWidth
+        rootLayoutVertical
+        isRootRequired
+        rootSizeMedium
+        
+        rootVariantOutline"
                 htmlFor="password"
               >
                 <div
@@ -527,10 +527,10 @@ exports[`rendering renders correctly with translations 1`] = `
           >
             <button
               className="root
-                    priorityDefault
-                    sizeMedium
-                    variantPrimary
-                    isRootBlock"
+        priorityDefault
+        sizeMedium
+        variantPrimary
+        isRootBlock"
               disabled={false}
               onClick={null}
               title={null}
@@ -603,12 +603,12 @@ exports[`rendering renders correctly with username 1`] = `
             >
               <label
                 className="root
-                      isRootFullWidth
-                      rootLayoutVertical
-                      isRootRequired
-                      rootSizeMedium
-                      
-                      rootVariantOutline"
+        isRootFullWidth
+        rootLayoutVertical
+        isRootRequired
+        rootSizeMedium
+        
+        rootVariantOutline"
                 htmlFor="Username"
               >
                 <div
@@ -651,12 +651,12 @@ exports[`rendering renders correctly with username 1`] = `
             >
               <label
                 className="root
-                      isRootFullWidth
-                      rootLayoutVertical
-                      isRootRequired
-                      rootSizeMedium
-                      
-                      rootVariantOutline"
+        isRootFullWidth
+        rootLayoutVertical
+        isRootRequired
+        rootSizeMedium
+        
+        rootVariantOutline"
                 htmlFor="password"
               >
                 <div
@@ -697,10 +697,10 @@ exports[`rendering renders correctly with username 1`] = `
           >
             <button
               className="root
-                    priorityDefault
-                    sizeMedium
-                    variantPrimary
-                    isRootBlock"
+        priorityDefault
+        sizeMedium
+        variantPrimary
+        isRootBlock"
               disabled={false}
               onClick={null}
               title={null}

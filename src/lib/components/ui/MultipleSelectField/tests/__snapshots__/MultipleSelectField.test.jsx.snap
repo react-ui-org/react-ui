@@ -97,7 +97,7 @@ exports[`rendering renders correctly with all props 1`] = `
 >
   <div
     className="label
-            isLabelHidden"
+          isLabelHidden"
   >
     label
   </div>
@@ -111,7 +111,11 @@ exports[`rendering renders correctly with all props 1`] = `
       multiple={true}
       onChange={null}
       required={true}
-      value="ch1"
+      value={
+        Array [
+          "ch1",
+        ]
+      }
     >
       <option
         key="ch1"

@@ -77,7 +77,7 @@ class Modal extends React.Component {
             {this.props.children}
           </div>
           <div className={styles.footer}>
-            {this.props.actions.map(action => (
+            {this.props.actions.map((action) => (
               <Button
                 clickHandler={action.clickHandler}
                 disabled={action.disabled}

@@ -34,10 +34,10 @@ const Radio = (props) => {
       </div>
       <ul className={styles.list}>
         {
-          props.options.map(option => (
+          props.options.map((option) => (
             <li key={option.value}>
               { /* Rule is deprecated: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/label-has-for.md */ }
-              { /* eslint-disable-next-line jsx-a11y/label-has-for */ }
+              { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
               <label className={styles.inputWrap}>
                 <input
                   name={props.fieldId}

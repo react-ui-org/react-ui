@@ -16,7 +16,11 @@ exports[`rendering renders correctly mandatory props only 1`] = `
   </div>
   <div
     className="message"
-  />
+  >
+    <div>
+      Children
+    </div>
+  </div>
 </div>
 `;
 
@@ -36,6 +40,10 @@ exports[`rendering renders correctly type 1`] = `
   </div>
   <div
     className="message"
-  />
+  >
+    <div>
+      Children
+    </div>
+  </div>
 </div>
 `;

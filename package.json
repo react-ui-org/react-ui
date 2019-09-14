@@ -1,8 +1,79 @@
 {
   "name": "react-ui",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "license": "unlicensed",
   "main": "dist/lib.js",
+  "dependencies": {
+    "material-design-icons": "^3.0.1",
+    "normalize.css": "^8.0.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.6.0",
+    "@visionappscz/eslint-config-visionapps": "^1.1.2",
+    "@visionappscz/stylelint-config-visionapps": "^1.1.0",
+    "@visionappscz/stylelint-config-visionapps-order": "^1.1.0",
+    "autoprefixer": "^9.6.1",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
+    "core-js": "^3.2.1",
+    "css-loader": "^3.2.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.4.0",
+    "eslint": "^6.3.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-loader": "^3.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^2.0.1",
+    "file-loader": "^4.2.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.9.0",
+    "node-sass": "^4.12.0",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^8.0.0",
+    "sinon": "^7.4.2",
+    "style-loader": "^1.0.0",
+    "stylelint": "^10.1.0",
+    "stylelint-config-css-modules": "^1.4.0",
+    "stylelint-order": "^3.1.0",
+    "stylelint-webpack-plugin": "~0.10.5",
+    "svg-sprite-loader": "^4.1.6",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.8",
+    "webpack-dev-server": "^3.8.0",
+    "webpack-visualizer-plugin": "^0.1.11"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|svg)$": "<rootDir>/tests/mocks/emptyMock.js",
+      "\\.(scss)$": "identity-obj-proxy"
+    },
+    "setupFiles": [
+      "<rootDir>/tests/setupJest.js"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/tests/setupEnzyme.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "verbose": true
+  },
   "scripts": {
     "build": "npm run lib:build && npm run demo:build",
     "demo:build": "webpack --config webpack.config.demo.js",
@@ -13,62 +84,5 @@
     "prepublish": "npm run lib:build",
     "start": "npm run demo:start",
     "test": "npm run lib:test && npm run demo:test"
-  },
-  "jest": {
-    "verbose": true,
-    "moduleFileExtensions": [
-      "js",
-      "jsx"
-    ],
-    "moduleNameMapper": {
-      "\\.(jpg|svg)$": "<rootDir>/tests/mocks/emptyMock.js",
-      "\\.(scss)$": "identity-obj-proxy"
-    },
-    "setupTestFrameworkScriptFile": "<rootDir>/test/setup.js"
-  },
-  "devDependencies": {
-    "@visionappscz/stylelint-config-visionapps": "^1.0.0",
-    "@visionappscz/stylelint-config-visionapps-order": "^1.0.0",
-    "autoprefixer": "^9.4.7",
-    "babel-cli": "^6.23.0",
-    "babel-core": "^6.17.0",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-register": "^6.24.1",
-    "css-loader": "^0.28.11",
-    "enzyme": "^3.7.0",
-    "enzyme-adapter-react-16": "^1.6.0",
-    "enzyme-to-json": "^3.3.3",
-    "eslint": "^4.19.1",
-    "eslint-config-visionapps": "^0.1.0",
-    "eslint-loader": "^1.5.0",
-    "eslint-plugin-import": "^2.10.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.7.0",
-    "file-loader": "^0.10.1",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^20.0.4",
-    "json-loader": "^0.5.7",
-    "material-design-icons": "^3.0.1",
-    "node-sass": "^4.12.0",
-    "postcss-loader": "^3.0.0",
-    "sass-loader": "^7.1.0",
-    "sinon": "^3.1.0",
-    "style-loader": "~0.23.1",
-    "stylelint": "^10.1.0",
-    "stylelint-config-css-modules": "^1.4.0",
-    "stylelint-order": "^3.0.1",
-    "stylelint-webpack-plugin": "~0.10.5",
-    "svg-sprite-loader": "^4.1.6",
-    "webpack": "^3.11.0",
-    "webpack-dev-server": "^2.11.5"
-  },
-  "dependencies": {
-    "babel-polyfill": "^6.20.0",
-    "normalize.css": "^8.0.1",
-    "prop-types": "^15.6.1",
-    "react": "^16.3.1",
-    "react-dom": "^16.3.1"
   }
 }

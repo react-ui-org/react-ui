@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './DocumentationPlaceholder.scss';
 
-const DocumentationPlaceholder = props => (
+const DocumentationPlaceholder = (props) => (
   <div className={styles.root}>
     {props.text}
   </div>

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './DocumentationLayout.scss';
 
-const DocumentationLayoutSidebar = props => (
+const DocumentationLayoutSidebar = (props) => (
   <aside className={styles.sidebar}>
     {props.children}
   </aside>

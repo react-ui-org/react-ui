@@ -1,5 +1,6 @@
 const path = require('path');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const VisualizerPlugin = require('webpack-visualizer-plugin');
 
 module.exports = [{
   entry: {
@@ -15,31 +16,32 @@ module.exports = [{
         use: [{ loader: 'babel-loader' }],
       },
       {
-        loaders: [
-          'style-loader',
-          'css-loader?importLoaders=2&modules&localIdentName=[name]__[local]___[hash:base64:5]',
-          'postcss-loader',
-          'sass-loader',
-        ],
         test: /\.scss$/,
+        use: [
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[name]__[local]__[hash:base64:5]',
+              }
+            },
+          },
+          { loader: 'postcss-loader' },
+          { loader: 'sass-loader' },
+        ],
       },
       {
-        loaders: [
-          'svg-sprite-loader',
-        ],
         test: /\.svg$/,
+        use: [
+          { loader: 'svg-sprite-loader' },
+        ],
       },
       {
-        loaders: [
-          'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
-        ],
         test: /\.(svg|jpg)$/,
-      },
-      {
-        include: /\.json$/,
-        loaders: [
-          'json-loader',
-        ],
+        use: [
+          { loader: 'file-loader?hash=sha512&digest=hex&name=[hash].[ext]' },
+        ]
       },
     ],
   },
@@ -53,6 +55,9 @@ module.exports = [{
     new StyleLintPlugin({
       configFile: 'stylelint.config.js',
       syntax: 'scss',
+    }),
+    new VisualizerPlugin({
+      filename: '../../lib-stats.html',
     }),
   ],
   resolve: {

@@ -13,6 +13,7 @@ module.exports = {
           'debug',
           'each',
           'else',
+          'else if',
           'error',
           'extend',
           'for',

@@ -9,18 +9,26 @@ jest.mock('../../Icon/load-material-design-icons');
 
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
-    const tree = shallow(<Alert
-      message="Message"
-    />);
+    const tree = shallow(
+      <Alert
+        message="Message"
+      >
+        <div>Children</div>
+      </Alert>,
+    );
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
 
   it('renders correctly type', () => {
-    const tree = shallow(<Alert
-      message="Message"
-      type="success"
-    />);
+    const tree = shallow(
+      <Alert
+        message="Message"
+        type="success"
+      >
+        <div>Children</div>
+      </Alert>,
+    );
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });

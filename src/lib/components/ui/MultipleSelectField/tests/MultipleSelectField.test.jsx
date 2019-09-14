@@ -5,7 +5,7 @@ import {
 } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
-import MultipleSelectField from '../';
+import MultipleSelectField from '..';
 
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
@@ -49,7 +49,7 @@ describe('rendering', () => {
       label="label"
       layout="horizontal"
       validationState="invalid"
-      value="ch1"
+      value={['ch1']}
       helperText="some help"
       variant="filled"
       size="large"
