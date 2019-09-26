@@ -106,6 +106,26 @@ $button-variants: (
         box-shadow: var(--rui-button-default-danger-active-box-shadow),
       ),
     ),
+    dark: (
+      default: (
+        color: var(--rui-button-default-dark-default-color),
+        border-color: var(--rui-button-default-dark-default-border-color),
+        background-color: var(--rui-button-default-dark-default-background),
+        box-shadow: var(--rui-button-default-dark-default-box-shadow),
+      ),
+      hover: (
+        color: var(--rui-button-default-dark-hover-color),
+        border-color: var(--rui-button-default-dark-hover-border-color),
+        background-color: var(--rui-button-default-dark-hover-background),
+        box-shadow: var(--rui-button-default-dark-hover-box-shadow),
+      ),
+      active: (
+        color: var(--rui-button-default-dark-active-color),
+        border-color: var(--rui-button-default-dark-active-border-color),
+        background-color: var(--rui-button-default-dark-active-background),
+        box-shadow: var(--rui-button-default-dark-active-box-shadow),
+      ),
+    ),
   ),
   outline: (
     primary: (
@@ -193,6 +213,23 @@ $button-variants: (
         background-color: var(--rui-button-outline-danger-active-background),
       ),
     ),
+    dark: (
+      default: (
+        color: var(--rui-button-outline-dark-default-color),
+        border-color: var(--rui-button-outline-dark-default-border-color),
+        background-color: var(--rui-button-outline-dark-default-background),
+      ),
+      hover: (
+        color: var(--rui-button-outline-dark-hover-color),
+        border-color: var(--rui-button-outline-dark-hover-border-color),
+        background-color: var(--rui-button-outline-dark-hover-background),
+      ),
+      active: (
+        color: var(--rui-button-outline-dark-active-color),
+        border-color: var(--rui-button-outline-dark-active-border-color),
+        background-color: var(--rui-button-outline-dark-active-background),
+      ),
+    ),
   ),
   flat: (
     primary: (
@@ -263,6 +300,20 @@ $button-variants: (
       active: (
         color: var(--rui-button-flat-danger-active-color),
         background-color: var(--rui-button-flat-danger-active-background),
+      ),
+    ),
+    dark: (
+      default: (
+        color: var(--rui-button-flat-dark-default-color),
+        background-color: var(--rui-button-flat-dark-default-background),
+      ),
+      hover: (
+        color: var(--rui-button-flat-dark-hover-color),
+        background-color: var(--rui-button-flat-dark-hover-background),
+      ),
+      active: (
+        color: var(--rui-button-flat-dark-active-color),
+        background-color: var(--rui-button-flat-dark-active-background),
       ),
     ),
   ),

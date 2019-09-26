@@ -487,6 +487,7 @@ class DemoContainer extends React.Component {
                   <Button clickHandler={loggerClick} label="Success" variant="success" />
                   <Button clickHandler={loggerClick} label="Warning" variant="warning" />
                   <Button clickHandler={loggerClick} label="Danger" variant="danger" />
+                  <Button clickHandler={loggerClick} label="Dark" variant="dark" />
                 </div>
               )}
             />
@@ -499,6 +500,7 @@ class DemoContainer extends React.Component {
                   <Button clickHandler={loggerClick} label="Success" priority="outline" variant="success" />
                   <Button clickHandler={loggerClick} label="Warning" priority="outline" variant="warning" />
                   <Button clickHandler={loggerClick} label="Danger" priority="outline" variant="danger" />
+                  <Button clickHandler={loggerClick} label="Dark" priority="outline" variant="dark" />
                 </div>
               )}
             />
@@ -511,6 +513,7 @@ class DemoContainer extends React.Component {
                   <Button clickHandler={loggerClick} label="Success" priority="flat" variant="success" />
                   <Button clickHandler={loggerClick} label="Warning" priority="flat" variant="warning" />
                   <Button clickHandler={loggerClick} label="Danger" priority="flat" variant="danger" />
+                  <Button clickHandler={loggerClick} label="Dark" priority="flat" variant="dark" />
                 </div>
               )}
             />

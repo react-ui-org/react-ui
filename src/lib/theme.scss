@@ -267,6 +267,20 @@
   --rui-button-default-danger-active-background: var(--rui-color-error-darker);
   --rui-button-default-danger-active-box-shadow: none;
 
+  // Buttons: default priority: dark variant
+  --rui-button-default-dark-default-color: var(--rui-color-white);
+  --rui-button-default-dark-default-border-color: var(--rui-color-gray-700);
+  --rui-button-default-dark-default-background: var(--rui-color-gray-700);
+  --rui-button-default-dark-default-box-shadow: none;
+  --rui-button-default-dark-hover-color: var(--rui-color-white);
+  --rui-button-default-dark-hover-border-color: var(--rui-color-gray-800);
+  --rui-button-default-dark-hover-background: var(--rui-color-gray-800);
+  --rui-button-default-dark-hover-box-shadow: none;
+  --rui-button-default-dark-active-color: var(--rui-color-white);
+  --rui-button-default-dark-active-border-color: var(--rui-color-gray-900);
+  --rui-button-default-dark-active-background: var(--rui-color-gray-900);
+  --rui-button-default-dark-active-box-shadow: none;
+
   // Buttons: outline priority
 
   // Buttons: outline priority: primary variant
@@ -324,6 +338,17 @@
   --rui-button-outline-danger-active-border-color: var(--rui-color-error-darker);
   --rui-button-outline-danger-active-background: var(--rui-color-error-darker);
 
+  // Buttons: outline priority: dark variant
+  --rui-button-outline-dark-default-color: var(--rui-color-gray-700);
+  --rui-button-outline-dark-default-border-color: var(--rui-color-gray-700);
+  --rui-button-outline-dark-default-background: transparent;
+  --rui-button-outline-dark-hover-color: var(--rui-color-white);
+  --rui-button-outline-dark-hover-border-color: var(--rui-color-gray-800);
+  --rui-button-outline-dark-hover-background: var(--rui-color-gray-800);
+  --rui-button-outline-dark-active-color: var(--rui-color-white);
+  --rui-button-outline-dark-active-border-color: var(--rui-color-gray-900);
+  --rui-button-outline-dark-active-background: var(--rui-color-gray-900);
+
   // Buttons: flat
 
   // Buttons: flat priority: primary variant
@@ -365,6 +390,14 @@
   --rui-button-flat-danger-hover-background: var(--rui-color-error-light);
   --rui-button-flat-danger-active-color: var(--rui-color-error-darker);
   --rui-button-flat-danger-active-background: var(--rui-color-error-light);
+
+  // Buttons: flat priority: dark variant
+  --rui-button-flat-dark-default-color: var(--rui-color-gray-700);
+  --rui-button-flat-dark-default-background: transparent;
+  --rui-button-flat-dark-hover-color: var(--rui-color-gray-800);
+  --rui-button-flat-dark-hover-background: var(--rui-color-gray-50);
+  --rui-button-flat-dark-active-color: var(--rui-color-gray-900);
+  --rui-button-flat-dark-active-background: var(--rui-color-gray-50);
 
   // Buttons: sizes
 

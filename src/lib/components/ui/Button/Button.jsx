@@ -27,6 +27,8 @@ const Button = (props) => {
     variantClass = styles.variantWarning;
   } else if (props.variant === 'danger') {
     variantClass = styles.variantDanger;
+  } else if (props.variant === 'dark') {
+    variantClass = styles.variantDark;
   }
 
   let blockClass = '';
@@ -109,7 +111,7 @@ Button.propTypes = {
   priority: PropTypes.oneOf(['default', 'outline', 'flat']),
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   type: PropTypes.oneOf(['button', 'submit']),
-  variant: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'danger']),
+  variant: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'danger', 'dark']),
 };
 
 export default Button;

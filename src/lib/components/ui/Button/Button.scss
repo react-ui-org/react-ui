@@ -77,6 +77,10 @@
   @include button-variant(default, danger);
 }
 
+.priorityDefault.variantDark {
+  @include button-variant(default, dark);
+}
+
 // Outline priority variants
 .priorityOutline.variantPrimary {
   @include button-variant(outline, primary);
@@ -98,6 +102,10 @@
   @include button-variant(outline, danger);
 }
 
+.priorityOutline.variantDark {
+  @include button-variant(outline, dark);
+}
+
 // Flat priority variants
 .priorityFlat.variantPrimary {
   @include button-variant(flat, primary);
@@ -117,6 +125,10 @@
 
 .priorityFlat.variantDanger {
   @include button-variant(flat, danger);
+}
+
+.priorityFlat.variantDark {
+  @include button-variant(flat, dark);
 }
 
 // Label visibility
