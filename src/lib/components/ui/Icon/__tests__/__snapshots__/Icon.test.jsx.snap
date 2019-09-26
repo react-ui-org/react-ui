@@ -15,9 +15,10 @@ exports[`rendering renders correctly mandatory props only 1`] = `
 </svg>
 `;
 
-exports[`rendering renders correctly with size 1`] = `
+exports[`rendering renders correctly with all props 1`] = `
 <svg
   className="rootSizeLarger"
+  id="custom-id"
   style={
     Object {
       "fill": "currentColor",

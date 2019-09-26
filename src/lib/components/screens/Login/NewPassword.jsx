@@ -6,7 +6,10 @@ import { withTranslationContext } from '../../../translation';
 import styles from './NewPassword.scss';
 
 const NewPassword = (props) => (
-  <div className={styles.root}>
+  <div
+    className={styles.root}
+    id={props.id}
+  >
     {props.logoUrl && (
       <div className={styles.logoWrap}>
         <img
@@ -17,7 +20,10 @@ const NewPassword = (props) => (
       </div>
     )}
     {props.title && (
-      <div className={styles.title}>
+      <div
+        className={styles.title}
+        {...(props.id && { id: `${props.id}__title` })}
+      >
         {props.title}
       </div>
     )}
@@ -32,32 +38,45 @@ const NewPassword = (props) => (
         }}
       >
         {props.error && (
-          <div className={styles.error}>
+          <div
+            className={styles.error}
+            {...(props.id && { id: `${props.id}__errorText` })}
+          >
             {props.error}
           </div>
         )}
         <div className="mb-3">
           <TextField
-            fieldId="newPassword"
+            autoComplete="new-password"
             changeHandler={(event) => props.onChangeHandler('newPassword', event.target.value)}
+            id={props.id ? `${props.id}__newPasswordInput` : 'newPasswordInput'}
             label={props.translations.newPassword}
             type="password"
             fullWidth
             required
           />
           <TextField
-            fieldId="newPasswordRepeat"
+            autoComplete="new-password"
             changeHandler={(event) => props.onChangeHandler('newPasswordRepeat', event.target.value)}
+            id={props.id ? `${props.id}__newPasswordRepeatInput` : 'newPasswordRepeatInput'}
             label={props.translations.repeatNewPassword}
             type="password"
             fullWidth
             required
           />
         </div>
-        <Button label={props.translations.changePassword} block type="submit" />
+        <Button
+          block
+          {...(props.id && { id: `${props.id}__changePasswordButton` })}
+          label={props.translations.changePassword}
+          type="submit"
+        />
       </form>
       {props.footer && (
-        <div className={styles.footer}>
+        <div
+          className={styles.footer}
+          {...(props.id && { id: `${props.id}__footerContent` })}
+        >
           {props.footer}
         </div>
       )}
@@ -68,6 +87,7 @@ const NewPassword = (props) => (
 NewPassword.defaultProps = {
   error: null,
   footer: null,
+  id: undefined,
   logoUrl: null,
   onChangeHandler: null,
   submitHandler: null,
@@ -77,6 +97,7 @@ NewPassword.defaultProps = {
 NewPassword.propTypes = {
   error: PropTypes.string,
   footer: PropTypes.element,
+  id: PropTypes.string,
   logoUrl: PropTypes.string,
   onChangeHandler: PropTypes.func,
   submitHandler: PropTypes.func,

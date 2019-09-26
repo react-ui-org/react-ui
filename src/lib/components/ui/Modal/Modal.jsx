@@ -40,6 +40,7 @@ class Modal extends React.Component {
     return (
       <div
         className={styles.overlay}
+        id={this.props.id}
         onClick={(e) => {
           if (this.props.closeHandler) {
             this.props.closeHandler(e);
@@ -59,7 +60,10 @@ class Modal extends React.Component {
           role="presentation"
         >
           <div className={styles.head}>
-            <h3 className={styles.headTitle}>
+            <h3
+              className={styles.headTitle}
+              {...(this.props.id && { id: `${this.props.id}__title` })}
+            >
               {this.props.title}
             </h3>
             {this.props.closeHandler && (
@@ -70,10 +74,14 @@ class Modal extends React.Component {
                 label={this.props.translations.close}
                 priority="flat"
                 size="large"
+                {...(this.props.id && { id: `${this.props.id}__closeModalHeaderButton` })}
               />
             )}
           </div>
-          <div className={styles.body}>
+          <div
+            className={styles.body}
+            {...(this.props.id && { id: `${this.props.id}__content` })}
+          >
             {this.props.children}
           </div>
           <div className={styles.footer}>
@@ -81,6 +89,7 @@ class Modal extends React.Component {
               <Button
                 clickHandler={action.clickHandler}
                 disabled={action.disabled}
+                id={action.id || undefined}
                 key={action.label}
                 label={action.label}
                 loading={action.loading}
@@ -92,6 +101,7 @@ class Modal extends React.Component {
                 clickHandler={this.props.closeHandler}
                 label={this.props.translations.close}
                 priority="flat"
+                {...(this.props.id && { id: `${this.props.id}__closeModalFooterButton` })}
               />
             )}
           </div>
@@ -104,12 +114,14 @@ class Modal extends React.Component {
 Modal.defaultProps = {
   actions: [],
   closeHandler: null,
+  id: undefined,
 };
 
 Modal.propTypes = {
   actions: PropTypes.arrayOf(PropTypes.shape({
     clickHandler: PropTypes.func.isRequired,
     disabled: PropTypes.bool,
+    id: PropTypes.string,
     label: PropTypes.string.isRequired,
     loading: PropTypes.bool,
     variant: PropTypes.string,
@@ -119,6 +131,7 @@ Modal.propTypes = {
     PropTypes.node,
   ]).isRequired,
   closeHandler: PropTypes.func,
+  id: PropTypes.string,
   title: PropTypes.string.isRequired,
   translations: PropTypes.shape({
     close: PropTypes.string.isRequired,

@@ -15,12 +15,14 @@ describe('rendering', () => {
 
   it('renders correctly with all props except translations', () => {
     const tree = mount(<ForgotPassword
+      id="custom-id"
       logo="http://satyr.io/100x100/33?text=logo"
       title="Company"
       error="Error message"
       footer={(
         <a href="http://example.com">link</a>
       )}
+      usernameType="username"
     />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();

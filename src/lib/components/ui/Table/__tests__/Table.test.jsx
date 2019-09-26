@@ -48,6 +48,7 @@ describe('rendering', () => {
   it('renders correctly with all props', () => {
     const tree = shallow(<Table
       columns={columnsData}
+      id="custom-id"
       rows={rowsData}
       sort={{
         changeHandler: () => {},

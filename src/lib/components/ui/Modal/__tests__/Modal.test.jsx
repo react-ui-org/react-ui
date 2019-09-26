@@ -29,6 +29,7 @@ describe('rendering', () => {
           },
         ]}
         closeHandler={() => {}}
+        id="custom-id"
         title="Modal title"
       >
         Modal content

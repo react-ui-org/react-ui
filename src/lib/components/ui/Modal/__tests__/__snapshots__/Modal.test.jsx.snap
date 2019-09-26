@@ -11,6 +11,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
     ]
   }
   closeHandler={[Function]}
+  id="custom-id"
   title="Modal title"
   translations={null}
 >
@@ -24,6 +25,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
       ]
     }
     closeHandler={[Function]}
+    id="custom-id"
     title="Modal title"
     translations={
       Object {
@@ -33,6 +35,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
   >
     <div
       className="overlay"
+      id="custom-id"
       onClick={[Function]}
       onScroll={[Function]}
       role="presentation"
@@ -47,6 +50,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
         >
           <h3
             className="headTitle"
+            id="custom-id__title"
           >
             Modal title
           </h3>
@@ -56,6 +60,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
             disabled={false}
             icon="close"
             iconPosition="before"
+            id="custom-id__closeModalHeaderButton"
             label="Close"
             labelVisibility="none"
             loading={false}
@@ -73,6 +78,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
         withIconBefore
         withLabelHidden"
               disabled={false}
+              id="custom-id__closeModalHeaderButton"
               onClick={[Function]}
               title="Close"
               type="button"
@@ -100,6 +106,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
               </span>
               <span
                 className="label"
+                id="custom-id__closeModalHeaderButton__label"
               >
                 Close
               </span>
@@ -108,6 +115,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
         </div>
         <div
           className="body"
+          id="custom-id__content"
         >
           Modal content
         </div>
@@ -152,6 +160,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
             disabled={false}
             icon={null}
             iconPosition="before"
+            id="custom-id__closeModalFooterButton"
             label="Close"
             labelVisibility="all"
             loading={false}
@@ -166,12 +175,14 @@ exports[`rendering renders correctly with all props except translations 1`] = `
         sizeMedium
         variantPrimary"
               disabled={false}
+              id="custom-id__closeModalFooterButton"
               onClick={[Function]}
               title={null}
               type="button"
             >
               <span
                 className="label"
+                id="custom-id__closeModalFooterButton__label"
               >
                 Close
               </span>

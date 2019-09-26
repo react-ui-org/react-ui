@@ -33,12 +33,16 @@ const Alert = (props) => {
         ${styles.root}
         ${rootTypeClass}
       `).trim()}
+      id={props.id}
       role="alert"
     >
       <div className={styles.icon}>
         <Icon icon={icon} />
       </div>
-      <div className={styles.message}>
+      <div
+        className={styles.message}
+        {...(props.id && { id: `${props.id}__content` })}
+      >
         {props.children}
       </div>
     </div>
@@ -46,6 +50,7 @@ const Alert = (props) => {
 };
 
 Alert.defaultProps = {
+  id: undefined,
   type: 'note',
 };
 
@@ -54,6 +59,7 @@ Alert.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
+  id: PropTypes.string,
   type: PropTypes.oneOf(Object.keys(alertTypesIcons)),
 };
 

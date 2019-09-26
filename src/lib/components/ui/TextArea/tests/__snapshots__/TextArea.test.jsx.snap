@@ -13,6 +13,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
 >
   <div
     className="label"
+    id="test__label"
   >
     label
   </div>
@@ -47,6 +48,7 @@ exports[`rendering renders correctly with all props 1`] = `
   <div
     className="label
           isLabelHidden"
+    id="test__label"
   >
     label
   </div>
@@ -70,6 +72,7 @@ exports[`rendering renders correctly with all props 1`] = `
   </div>
   <div
     className="helperText"
+    id="test__helperText"
   >
     some help
   </div>
@@ -90,6 +93,7 @@ exports[`rendering renders correctly with hidden label 1`] = `
   <div
     className="label
           isLabelHidden"
+    id="test__label"
   >
     label
   </div>

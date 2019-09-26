@@ -80,6 +80,7 @@ describe('rendering', () => {
       size="large"
       icon="album"
       iconPosition="after"
+      id="custom-id"
       labelVisibility="desktop"
       disabled
       loading

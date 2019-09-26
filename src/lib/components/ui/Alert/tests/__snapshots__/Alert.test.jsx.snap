@@ -24,10 +24,11 @@ exports[`rendering renders correctly mandatory props only 1`] = `
 </div>
 `;
 
-exports[`rendering renders correctly type 1`] = `
+exports[`rendering renders correctly with all props 1`] = `
 <div
   className="root
         success"
+  id="custom-id"
   role="alert"
 >
   <div
@@ -40,6 +41,7 @@ exports[`rendering renders correctly type 1`] = `
   </div>
   <div
     className="message"
+    id="custom-id__content"
   >
     <div>
       Children

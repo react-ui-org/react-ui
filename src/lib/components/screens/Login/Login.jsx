@@ -6,7 +6,10 @@ import { withTranslationContext } from '../../../translation';
 import styles from './Login.scss';
 
 const Login = (props) => (
-  <div className={styles.root}>
+  <div
+    className={styles.root}
+    id={props.id}
+  >
     {props.logoUrl && (
       <div className={styles.logoWrap}>
         <img
@@ -17,7 +20,10 @@ const Login = (props) => (
       </div>
     )}
     {props.title && (
-      <div className={styles.title}>
+      <div
+        className={styles.title}
+        {...(props.id && { id: `${props.id}__title` })}
+      >
         {props.title}
       </div>
     )}
@@ -32,32 +38,45 @@ const Login = (props) => (
         }}
       >
         {props.hasError && (
-          <div className={styles.error}>
+          <div
+            className={styles.error}
+            {...(props.id && { id: `${props.id}__errorText` })}
+          >
             {props.translations.invalidUsernameOrPassword}
           </div>
         )}
         <div className="mb-3">
           <TextField
-            fieldId={props.usernameType === 'email' ? 'email' : props.usernameType}
+            autoComplete="username"
             changeHandler={(event) => props.onChangeHandler('username', event.target.value)}
+            id={props.id ? `${props.id}__usernameInput` : 'usernameInput'}
             label={props.usernameType === 'email' ? props.translations.email : props.usernameType}
             type={props.usernameType === 'email' ? 'email' : 'text'}
             fullWidth
             required
           />
           <TextField
-            fieldId="password"
+            autoComplete="current-password"
             changeHandler={(event) => props.onChangeHandler('password', event.target.value)}
+            id={props.id ? `${props.id}__passwordInput` : 'passwordInput'}
             label={props.translations.password}
             type="password"
             fullWidth
             required
           />
         </div>
-        <Button label={props.translations.signIn} block type="submit" />
+        <Button
+          block
+          label={props.translations.signIn}
+          type="submit"
+          {...(props.id && { id: `${props.id}__signInButton` })}
+        />
       </form>
       {props.footer && (
-        <div className={styles.footer}>
+        <div
+          className={styles.footer}
+          {...(props.id && { id: `${props.id}__footerContent` })}
+        >
           {props.footer}
         </div>
       )}
@@ -68,6 +87,7 @@ const Login = (props) => (
 Login.defaultProps = {
   footer: null,
   hasError: false,
+  id: undefined,
   logoUrl: null,
   onChangeHandler: null,
   submitHandler: null,
@@ -78,6 +98,7 @@ Login.defaultProps = {
 Login.propTypes = {
   footer: PropTypes.element,
   hasError: PropTypes.bool,
+  id: PropTypes.string,
   logoUrl: PropTypes.string,
   onChangeHandler: PropTypes.func,
   submitHandler: PropTypes.func,

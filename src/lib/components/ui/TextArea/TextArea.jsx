@@ -62,13 +62,14 @@ const TextArea = (props) => {
         ${rootValidationStateClass}
         ${rootVariantClass}
       `).trim()}
-      htmlFor={props.fieldId}
+      htmlFor={props.id}
     >
       <div
         className={(`
           ${styles.label}
           ${labelVisibilityClass}
         `).trim()}
+        id={`${props.id}__label`}
       >
         {props.label}
       </div>
@@ -77,7 +78,7 @@ const TextArea = (props) => {
           className={styles.input}
           cols={props.cols}
           disabled={props.disabled}
-          id={props.fieldId}
+          id={props.id}
           onChange={props.changeHandler}
           placeholder={props.placeholder}
           required={props.required}
@@ -89,7 +90,10 @@ const TextArea = (props) => {
         )}
       </div>
       {props.helperText && (
-        <div className={styles.helperText}>
+        <div
+          className={styles.helperText}
+          id={`${props.id}__helperText`}
+        >
           {props.helperText}
         </div>
       )}
@@ -118,9 +122,9 @@ TextArea.propTypes = {
   changeHandler: PropTypes.func,
   cols: PropTypes.number,
   disabled: PropTypes.bool,
-  fieldId: PropTypes.string.isRequired,
   fullWidth: PropTypes.bool,
   helperText: PropTypes.string,
+  id: PropTypes.string.isRequired,
   isLabelVisible: PropTypes.bool,
   label: PropTypes.string.isRequired,
   layout: PropTypes.oneOf(['horizontal', 'vertical']),

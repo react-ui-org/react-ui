@@ -15,6 +15,7 @@ describe('rendering', () => {
 
   it('renders correctly with all props except translations', () => {
     const tree = mount(<Login
+      id="custom-id"
       logo="http://satyr.io/100x100/33?text=logo"
       title="Company"
       hasError

@@ -63,6 +63,7 @@ const Button = (props) => {
         ${iconPositionClass}
         ${labelVisibilityClass}
       `).trim()}
+      id={props.id}
       onClick={props.clickHandler}
       title={props.labelVisibility === 'all' ? null : props.label}
       type={props.type}
@@ -78,7 +79,10 @@ const Button = (props) => {
           <Icon icon={props.loading ? 'sync' : props.icon} size={props.size} />
         </span>
       )}
-      <span className={styles.label}>
+      <span
+        className={styles.label}
+        {...(props.id && { id: `${props.id}__label` })}
+      >
         {props.label}
       </span>
     </button>
@@ -91,6 +95,7 @@ Button.defaultProps = {
   disabled: false,
   icon: null,
   iconPosition: 'before',
+  id: undefined,
   labelVisibility: 'all',
   loading: false,
   priority: 'default',
@@ -105,6 +110,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   icon: PropTypes.string,
   iconPosition: PropTypes.oneOf(['before', 'after']),
+  id: PropTypes.string,
   label: PropTypes.string.isRequired,
   labelVisibility: PropTypes.oneOf(['all', 'desktop', 'none']),
   loading: PropTypes.bool,

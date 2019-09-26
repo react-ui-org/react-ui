@@ -29,7 +29,10 @@ const Radio = (props) => {
         ${rootValidationStateClass}
       `.trim()}
     >
-      <div className={labelClass}>
+      <div
+        className={labelClass}
+        id={`${props.id}__label`}
+      >
         {props.label}
       </div>
       <ul className={styles.list}>
@@ -40,7 +43,8 @@ const Radio = (props) => {
               { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
               <label className={styles.inputWrap}>
                 <input
-                  name={props.fieldId}
+                  id={`${props.id}__item__${option.value}`}
+                  name={props.id}
                   type="radio"
                   value={option.value}
                   onChange={props.changeHandler}
@@ -57,12 +61,18 @@ const Radio = (props) => {
         }
       </ul>
       {props.description && (
-        <div className={styles.description}>
+        <div
+          className={styles.description}
+          id={`${props.id}__descriptionText`}
+        >
           {props.description}
         </div>
       )}
       {props.error && (
-        <div className={styles.error}>
+        <div
+          className={styles.error}
+          id={`${props.id}__errorText`}
+        >
           {props.error}
         </div>
       )}
@@ -86,7 +96,7 @@ Radio.propTypes = {
   description: PropTypes.string,
   disabled: PropTypes.bool,
   error: PropTypes.string,
-  fieldId: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   isLabelVisible: PropTypes.bool,
   label: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(PropTypes.shape({

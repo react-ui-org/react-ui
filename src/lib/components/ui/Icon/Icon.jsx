@@ -18,8 +18,9 @@ const Icon = (props) => {
 
   return (
     <svg
-      style={{ fill: 'currentColor' }}
       className={iconClass}
+      id={props.id}
+      style={{ fill: 'currentColor' }}
     >
       <use xlinkHref={`#ic_${props.icon}_48px`} />
     </svg>
@@ -27,11 +28,13 @@ const Icon = (props) => {
 };
 
 Icon.defaultProps = {
+  id: undefined,
   size: 'medium',
 };
 
 Icon.propTypes = {
   icon: PropTypes.string.isRequired,
+  id: PropTypes.string,
   size: PropTypes.oneOf(['small', 'medium', 'large', 'larger']),
 };
 

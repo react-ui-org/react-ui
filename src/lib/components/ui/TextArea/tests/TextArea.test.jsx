@@ -9,14 +9,14 @@ import TextArea from '..';
 
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
-    const tree = shallow(<TextArea label="label" fieldId="test" />);
+    const tree = shallow(<TextArea label="label" id="test" />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
 
   it('renders correctly with hidden label', () => {
     const tree = shallow(<TextArea
-      fieldId="test"
+      id="test"
       label="label"
       isLabelVisible={false}
     />);
@@ -27,7 +27,7 @@ describe('rendering', () => {
   it('renders correctly with all props', () => {
     const tree = shallow(<TextArea
       cols={10}
-      fieldId="test"
+      id="test"
       helperText="some help"
       isLabelVisible={false}
       label="label"
@@ -51,7 +51,7 @@ describe('functionality', () => {
   it('calls changeHandler()', () => {
     const spy = sinon.spy();
     const component = mount(<TextArea
-      fieldId="test"
+      id="test"
       label="label"
       changeHandler={spy}
     />);

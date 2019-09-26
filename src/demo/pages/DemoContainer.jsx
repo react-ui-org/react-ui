@@ -586,7 +586,7 @@ class DemoContainer extends React.Component {
               name="Checkbox"
               component={(
                 <CheckboxField
-                  fieldId="checkboxField"
+                  id="checkboxField"
                   label="checkbox"
                   changeHandler={logger}
                   required
@@ -598,7 +598,7 @@ class DemoContainer extends React.Component {
               name="Checkbox checked"
               component={(
                 <CheckboxField
-                  fieldId="checkboxFieldChecked"
+                  id="checkboxFieldChecked"
                   label="checkbox checked"
                   checked
                   value="1"
@@ -611,7 +611,7 @@ class DemoContainer extends React.Component {
               name="Checkbox disabled"
               component={(
                 <CheckboxField
-                  fieldId="checkboxFieldDisabled"
+                  id="checkboxFieldDisabled"
                   label="checkbox checked and disabled"
                   checked
                   disabled
@@ -624,21 +624,21 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <CheckboxField
-                    fieldId="checkboxFieldStateValid"
+                    id="checkboxFieldStateValid"
                     label="checked and valid"
                     validationState="valid"
                     checked
                     changeHandler={logger}
                   />
                   <CheckboxField
-                    fieldId="checkboxFieldStateValid"
+                    id="checkboxFieldStateValid"
                     label="checked with warning"
                     validationState="warning"
                     checked
                     changeHandler={logger}
                   />
                   <CheckboxField
-                    fieldId="checkboxFieldStateValid"
+                    id="checkboxFieldStateValid"
                     label="checked and invalid"
                     validationState="invalid"
                     checked
@@ -651,7 +651,7 @@ class DemoContainer extends React.Component {
               name="Checkbox label hidden"
               component={(
                 <CheckboxField
-                  fieldId="checkboxLabelHidden"
+                  id="checkboxLabelHidden"
                   label="checkbox checked and hidden label"
                   checked
                   changeHandler={logger}
@@ -663,7 +663,7 @@ class DemoContainer extends React.Component {
               name="Checkbox label left"
               component={(
                 <CheckboxField
-                  fieldId="checkboxLabelLeft"
+                  id="checkboxLabelLeft"
                   label="checkbox checked and label left"
                   checked
                   changeHandler={logger}
@@ -728,13 +728,13 @@ class DemoContainer extends React.Component {
                 <div>
                   <MultipleSelectField
                     changeHandler={logger}
-                    fieldId="multipleSelectFieldVariantOutline"
+                    id="multipleSelectFieldVariantOutline"
                     label="Outline"
                     options={this.exampleOptions}
                   />
                   <MultipleSelectField
                     changeHandler={logger}
-                    fieldId="multipleSelectFieldVariantFilled"
+                    id="multipleSelectFieldVariantFilled"
                     label="Filled"
                     options={this.exampleOptions}
                     variant="filled"
@@ -747,7 +747,7 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <MultipleSelectField
-                    fieldId="multipleSelectFieldWithDescriptionOutline"
+                    id="multipleSelectFieldWithDescriptionOutline"
                     changeHandler={logger}
                     label="Favorite fruit"
                     helperText="What is your favorite fruit?"
@@ -755,7 +755,7 @@ class DemoContainer extends React.Component {
                     required
                   />
                   <MultipleSelectField
-                    fieldId="multipleSelectFieldWithDescriptionFilled"
+                    id="multipleSelectFieldWithDescriptionFilled"
                     changeHandler={logger}
                     label="Favorite fruit"
                     helperText="What is your favorite fruit?"
@@ -770,7 +770,7 @@ class DemoContainer extends React.Component {
               name="Disabled multiple select field option"
               component={(
                 <MultipleSelectField
-                  fieldId="multipleSelectFieldDisabledOutline"
+                  id="multipleSelectFieldDisabledOutline"
                   changeHandler={logger}
                   label="Disabled multiple select field"
                   options={[
@@ -789,14 +789,14 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <MultipleSelectField
-                    fieldId="multipleSelectFieldDisabledOutline"
+                    id="multipleSelectFieldDisabledOutline"
                     changeHandler={logger}
                     label="Disabled multiple select field"
                     options={this.exampleOptions}
                     disabled
                   />
                   <MultipleSelectField
-                    fieldId="multipleSelectFieldDisabledFilled"
+                    id="multipleSelectFieldDisabledFilled"
                     changeHandler={logger}
                     label="Disabled multiple select field"
                     variant="filled"
@@ -812,7 +812,7 @@ class DemoContainer extends React.Component {
                 <div>
                   <div className="mb-5">
                     <MultipleSelectField
-                      fieldId="multipleSelectFieldValidationValidOutline"
+                      id="multipleSelectFieldValidationValidOutline"
                       changeHandler={logger}
                       label="Favorite fruit"
                       helperText="Looks good!"
@@ -821,7 +821,7 @@ class DemoContainer extends React.Component {
                       value={['apples']}
                     />
                     <MultipleSelectField
-                      fieldId="multipleSelectFieldValidationWarningOutline"
+                      id="multipleSelectFieldValidationWarningOutline"
                       changeHandler={logger}
                       label="Favorite fruit"
                       helperText="Really…?"
@@ -830,7 +830,7 @@ class DemoContainer extends React.Component {
                       value={['bananas']}
                     />
                     <MultipleSelectField
-                      fieldId="multipleSelectFieldValidationInvalidOutline"
+                      id="multipleSelectFieldValidationInvalidOutline"
                       changeHandler={logger}
                       label="Favorite fruit"
                       helperText="Uh…"
@@ -841,7 +841,7 @@ class DemoContainer extends React.Component {
                   </div>
                   <div>
                     <MultipleSelectField
-                      fieldId="multipleSelectFieldValidationValidFilled"
+                      id="multipleSelectFieldValidationValidFilled"
                       changeHandler={logger}
                       label="Favorite fruit"
                       helperText="Looks good!"
@@ -851,7 +851,7 @@ class DemoContainer extends React.Component {
                       value={['apples']}
                     />
                     <MultipleSelectField
-                      fieldId="multipleSelectFieldValidationWarningOutline"
+                      id="multipleSelectFieldValidationWarningOutline"
                       changeHandler={logger}
                       label="Favorite fruit"
                       helperText="Really…?"
@@ -861,7 +861,7 @@ class DemoContainer extends React.Component {
                       value={['bananas']}
                     />
                     <MultipleSelectField
-                      fieldId="multipleSelectFieldValidationInvalidOutline"
+                      id="multipleSelectFieldValidationInvalidOutline"
                       changeHandler={logger}
                       label="Favorite fruit"
                       helperText="Uh…"
@@ -880,21 +880,21 @@ class DemoContainer extends React.Component {
                 <div>
                   <div className="mb-5">
                     <MultipleSelectField
-                      fieldId="multipleSelectFieldSizeOutlineSmall"
+                      id="multipleSelectFieldSizeOutlineSmall"
                       changeHandler={logger}
                       label="Small"
                       options={this.exampleOptions}
                       size="small"
                     />
                     <MultipleSelectField
-                      fieldId="multipleSelectFieldSizeOutlineMedium"
+                      id="multipleSelectFieldSizeOutlineMedium"
                       changeHandler={logger}
                       label="Medium (default)"
                       options={this.exampleOptions}
                       size="medium"
                     />
                     <MultipleSelectField
-                      fieldId="multipleSelectFieldSizeOutlineLarge"
+                      id="multipleSelectFieldSizeOutlineLarge"
                       changeHandler={logger}
                       label="Large"
                       options={this.exampleOptions}
@@ -903,7 +903,7 @@ class DemoContainer extends React.Component {
                   </div>
                   <div>
                     <MultipleSelectField
-                      fieldId="multipleSelectFieldSizeFilledSmall"
+                      id="multipleSelectFieldSizeFilledSmall"
                       changeHandler={logger}
                       label="Small"
                       options={this.exampleOptions}
@@ -911,7 +911,7 @@ class DemoContainer extends React.Component {
                       variant="filled"
                     />
                     <MultipleSelectField
-                      fieldId="multipleSelectFieldSizeFilledMedium"
+                      id="multipleSelectFieldSizeFilledMedium"
                       changeHandler={logger}
                       label="Medium (default)"
                       options={this.exampleOptions}
@@ -919,7 +919,7 @@ class DemoContainer extends React.Component {
                       variant="filled"
                     />
                     <MultipleSelectField
-                      fieldId="multipleSelectFieldSizeFilledLarge"
+                      id="multipleSelectFieldSizeFilledLarge"
                       changeHandler={logger}
                       label="Large"
                       options={this.exampleOptions}
@@ -935,14 +935,14 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <MultipleSelectField
-                    fieldId="multipleSelectFieldFullWidthOutline"
+                    id="multipleSelectFieldFullWidthOutline"
                     changeHandler={logger}
                     label="Favorite fruit"
                     options={this.exampleOptions}
                     fullWidth
                   />
                   <MultipleSelectField
-                    fieldId="multipleSelectFieldFullWidthFilled"
+                    id="multipleSelectFieldFullWidthFilled"
                     changeHandler={logger}
                     label="Favorite fruit"
                     variant="filled"
@@ -958,7 +958,7 @@ class DemoContainer extends React.Component {
               component={(
                 <Radio
                   changeHandler={logger}
-                  fieldId="Radio"
+                  id="Radio"
                   label="Choices"
                   options={this.exampleOptions}
                   value="apples"
@@ -971,7 +971,7 @@ class DemoContainer extends React.Component {
                 <div>
                   <Radio
                     changeHandler={logger}
-                    fieldId="RadioStateValid"
+                    id="RadioStateValid"
                     label="Choices valid"
                     options={this.exampleOptions}
                     value="apples"
@@ -979,7 +979,7 @@ class DemoContainer extends React.Component {
                   />
                   <Radio
                     changeHandler={logger}
-                    fieldId="RadioStateWarning"
+                    id="RadioStateWarning"
                     label="Choices with warning"
                     options={this.exampleOptions}
                     value="apples"
@@ -987,7 +987,7 @@ class DemoContainer extends React.Component {
                   />
                   <Radio
                     changeHandler={logger}
-                    fieldId="RadioStateInvalid"
+                    id="RadioStateInvalid"
                     label="Choices invalid"
                     options={this.exampleOptions}
                     value="apples"
@@ -1001,7 +1001,7 @@ class DemoContainer extends React.Component {
               component={(
                 <Radio
                   changeHandler={logger}
-                  fieldId="RadioDescriptionRequiredDisabledItem"
+                  id="RadioDescriptionRequiredDisabledItem"
                   label="Choices with description, required and disabled item"
                   description="Choose one"
                   options={this.exampleOptions}
@@ -1015,7 +1015,7 @@ class DemoContainer extends React.Component {
               component={(
                 <Radio
                   changeHandler={logger}
-                  fieldId="RadioDisabled"
+                  id="RadioDisabled"
                   label="Choices disabled with hidden label and error and chosen"
                   isLabelVisible={false}
                   description="Choose one"
@@ -1033,13 +1033,13 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <SelectField
-                    fieldId="selectFieldVariantOutline"
+                    id="selectFieldVariantOutline"
                     changeHandler={logger}
                     label="Outline"
                     options={this.exampleOptions}
                   />
                   <SelectField
-                    fieldId="selectFieldVariantFilled"
+                    id="selectFieldVariantFilled"
                     changeHandler={logger}
                     label="Filled"
                     variant="filled"
@@ -1053,14 +1053,14 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <SelectField
-                    fieldId="selectFieldWithDescriptionOutline"
+                    id="selectFieldWithDescriptionOutline"
                     changeHandler={logger}
                     label="Favorite fruit"
                     helperText="What is your favorite fruit?"
                     options={this.exampleOptions}
                   />
                   <SelectField
-                    fieldId="selectFieldWithDescriptionFilled"
+                    id="selectFieldWithDescriptionFilled"
                     changeHandler={logger}
                     label="Favorite fruit"
                     helperText="What is your favorite fruit?"
@@ -1075,14 +1075,14 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <SelectField
-                    fieldId="selectFieldRequiredOutline"
+                    id="selectFieldRequiredOutline"
                     changeHandler={logger}
                     label="This field is required"
                     options={this.exampleOptions}
                     required
                   />
                   <SelectField
-                    fieldId="selectFieldRequiredFilled"
+                    id="selectFieldRequiredFilled"
                     changeHandler={logger}
                     label="This field is required"
                     variant="filled"
@@ -1096,7 +1096,7 @@ class DemoContainer extends React.Component {
               name="Disabled select field option"
               component={(
                 <SelectField
-                  fieldId="selectFieldDisabledOutline"
+                  id="selectFieldDisabledOutline"
                   changeHandler={logger}
                   label="Disabled select field"
                   options={[
@@ -1115,14 +1115,14 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <SelectField
-                    fieldId="selectFieldDisabledOutline"
+                    id="selectFieldDisabledOutline"
                     changeHandler={logger}
                     label="Disabled select field"
                     options={this.exampleOptions}
                     disabled
                   />
                   <SelectField
-                    fieldId="selectFieldDisabledFilled"
+                    id="selectFieldDisabledFilled"
                     changeHandler={logger}
                     label="Disabled select field"
                     variant="filled"
@@ -1137,7 +1137,7 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <SelectField
-                    fieldId="selectFieldWithInvisibleLabelOutline"
+                    id="selectFieldWithInvisibleLabelOutline"
                     changeHandler={logger}
                     label="Select field with hidden label"
                     helperText="Showing helper text instead"
@@ -1145,7 +1145,7 @@ class DemoContainer extends React.Component {
                     isLabelVisible={false}
                   />
                   <SelectField
-                    fieldId="selectFieldWithInvisibleLabelFilled"
+                    id="selectFieldWithInvisibleLabelFilled"
                     changeHandler={logger}
                     label="Select field with hidden label"
                     helperText="Showing helper text instead"
@@ -1162,7 +1162,7 @@ class DemoContainer extends React.Component {
                 <div>
                   <div className="mb-5">
                     <SelectField
-                      fieldId="selectFieldValidationValidOutline"
+                      id="selectFieldValidationValidOutline"
                       changeHandler={logger}
                       label="Favorite fruit"
                       helperText="Looks good!"
@@ -1171,7 +1171,7 @@ class DemoContainer extends React.Component {
                       value="apples"
                     />
                     <SelectField
-                      fieldId="selectFieldValidationWarningOutline"
+                      id="selectFieldValidationWarningOutline"
                       changeHandler={logger}
                       label="Favorite fruit"
                       helperText="Really…?"
@@ -1180,7 +1180,7 @@ class DemoContainer extends React.Component {
                       value="bananas"
                     />
                     <SelectField
-                      fieldId="selectFieldValidationInvalidOutline"
+                      id="selectFieldValidationInvalidOutline"
                       changeHandler={logger}
                       label="Favorite fruit"
                       helperText="Uh…"
@@ -1191,7 +1191,7 @@ class DemoContainer extends React.Component {
                   </div>
                   <div>
                     <SelectField
-                      fieldId="selectFieldValidationValidFilled"
+                      id="selectFieldValidationValidFilled"
                       changeHandler={logger}
                       label="Favorite fruit"
                       helperText="Looks good!"
@@ -1201,7 +1201,7 @@ class DemoContainer extends React.Component {
                       value="apples"
                     />
                     <SelectField
-                      fieldId="selectFieldValidationWarningOutline"
+                      id="selectFieldValidationWarningOutline"
                       changeHandler={logger}
                       label="Favorite fruit"
                       helperText="Really…?"
@@ -1211,7 +1211,7 @@ class DemoContainer extends React.Component {
                       value="bananas"
                     />
                     <SelectField
-                      fieldId="selectFieldValidationInvalidOutline"
+                      id="selectFieldValidationInvalidOutline"
                       changeHandler={logger}
                       label="Favorite fruit"
                       helperText="Uh…"
@@ -1230,21 +1230,21 @@ class DemoContainer extends React.Component {
                 <div>
                   <div className="mb-5">
                     <SelectField
-                      fieldId="selectFieldSizeOutlineSmall"
+                      id="selectFieldSizeOutlineSmall"
                       changeHandler={logger}
                       label="Small"
                       options={this.exampleOptions}
                       size="small"
                     />
                     <SelectField
-                      fieldId="selectFieldSizeOutlineMedium"
+                      id="selectFieldSizeOutlineMedium"
                       changeHandler={logger}
                       label="Medium (default)"
                       options={this.exampleOptions}
                       size="medium"
                     />
                     <SelectField
-                      fieldId="selectFieldSizeOutlineLarge"
+                      id="selectFieldSizeOutlineLarge"
                       changeHandler={logger}
                       label="Large"
                       options={this.exampleOptions}
@@ -1253,7 +1253,7 @@ class DemoContainer extends React.Component {
                   </div>
                   <div>
                     <SelectField
-                      fieldId="selectFieldSizeFilledSmall"
+                      id="selectFieldSizeFilledSmall"
                       changeHandler={logger}
                       label="Small"
                       options={this.exampleOptions}
@@ -1261,7 +1261,7 @@ class DemoContainer extends React.Component {
                       variant="filled"
                     />
                     <SelectField
-                      fieldId="selectFieldSizeFilledMedium"
+                      id="selectFieldSizeFilledMedium"
                       changeHandler={logger}
                       label="Medium (default)"
                       options={this.exampleOptions}
@@ -1269,7 +1269,7 @@ class DemoContainer extends React.Component {
                       variant="filled"
                     />
                     <SelectField
-                      fieldId="selectFieldSizeFilledLarge"
+                      id="selectFieldSizeFilledLarge"
                       changeHandler={logger}
                       label="Large"
                       options={this.exampleOptions}
@@ -1285,14 +1285,14 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <SelectField
-                    fieldId="selectFieldFullWidthOutline"
+                    id="selectFieldFullWidthOutline"
                     changeHandler={logger}
                     label="Favorite fruit"
                     options={this.exampleOptions}
                     fullWidth
                   />
                   <SelectField
-                    fieldId="selectFieldFullWidthFilled"
+                    id="selectFieldFullWidthFilled"
                     changeHandler={logger}
                     label="Favorite fruit"
                     variant="filled"
@@ -1308,7 +1308,7 @@ class DemoContainer extends React.Component {
                 <div>
                   <div className="mb-3">
                     <SelectField
-                      fieldId="selectFieldHorizontalOutline"
+                      id="selectFieldHorizontalOutline"
                       changeHandler={logger}
                       label="Favorite fruit"
                       helperText="What do you like?"
@@ -1316,7 +1316,7 @@ class DemoContainer extends React.Component {
                       options={this.exampleOptions}
                     />
                     <SelectField
-                      fieldId="selectFieldHorizontalFilled"
+                      id="selectFieldHorizontalFilled"
                       changeHandler={logger}
                       label="Favorite fruit"
                       helperText="This kind of fruit does not exist."
@@ -1329,7 +1329,7 @@ class DemoContainer extends React.Component {
                   </div>
                   <div className="mb-3">
                     <SelectField
-                      fieldId="selectFieldHorizontalFullWidthOutline"
+                      id="selectFieldHorizontalFullWidthOutline"
                       changeHandler={logger}
                       label="Favorite fruit"
                       layout="horizontal"
@@ -1337,7 +1337,7 @@ class DemoContainer extends React.Component {
                       fullWidth
                     />
                     <SelectField
-                      fieldId="selectFieldHorizontalFullWidthFilled"
+                      id="selectFieldHorizontalFullWidthFilled"
                       changeHandler={logger}
                       label="Favorite fruit"
                       layout="horizontal"
@@ -1348,7 +1348,7 @@ class DemoContainer extends React.Component {
                   </div>
                   <div>
                     <SelectField
-                      fieldId="selectFieldHorizontalFullWidthLabelInvisibleOutline"
+                      id="selectFieldHorizontalFullWidthLabelInvisibleOutline"
                       changeHandler={logger}
                       label="Favorite fruit"
                       layout="horizontal"
@@ -1357,7 +1357,7 @@ class DemoContainer extends React.Component {
                       fullWidth
                     />
                     <SelectField
-                      fieldId="selectFieldHorizontalFullWidthInvisibleFilled"
+                      id="selectFieldHorizontalFullWidthInvisibleFilled"
                       changeHandler={logger}
                       label="Favorite fruit"
                       layout="horizontal"
@@ -1429,12 +1429,12 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <TextArea
-                    fieldId="textAreaVariantOutline"
+                    id="textAreaVariantOutline"
                     changeHandler={logger}
                     label="Outline"
                   />
                   <TextArea
-                    fieldId="textAreaVariantFilled"
+                    id="textAreaVariantFilled"
                     changeHandler={logger}
                     label="Filled"
                     variant="filled"
@@ -1447,13 +1447,13 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <TextArea
-                    fieldId="textAreaWithDescriptionOutline"
+                    id="textAreaWithDescriptionOutline"
                     changeHandler={logger}
                     label="Address"
                     helperText="Fill in your address"
                   />
                   <TextArea
-                    fieldId="textAreaWithDescriptionFilled"
+                    id="textAreaWithDescriptionFilled"
                     changeHandler={logger}
                     label="Address"
                     helperText="Fill in your address"
@@ -1467,13 +1467,13 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <TextArea
-                    fieldId="textAreaRequiredOutline"
+                    id="textAreaRequiredOutline"
                     changeHandler={logger}
                     label="This field is required"
                     required
                   />
                   <TextArea
-                    fieldId="textAreaRequiredFilled"
+                    id="textAreaRequiredFilled"
                     changeHandler={logger}
                     label="This field is required"
                     variant="filled"
@@ -1487,14 +1487,14 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <TextArea
-                    fieldId="textAreaDisabledOutline"
+                    id="textAreaDisabledOutline"
                     changeHandler={logger}
                     label="Disabled text area"
                     placeholder="This field is disabled"
                     disabled
                   />
                   <TextArea
-                    fieldId="textAreaDisabledFilled"
+                    id="textAreaDisabledFilled"
                     changeHandler={logger}
                     label="Disabled text area"
                     placeholder="This field is disabled"
@@ -1509,7 +1509,7 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <TextArea
-                    fieldId="textAreaWithInvisibleLabelOutline"
+                    id="textAreaWithInvisibleLabelOutline"
                     changeHandler={logger}
                     label="Text area with hidden label"
                     helperText="Showing placeholder instead"
@@ -1517,7 +1517,7 @@ class DemoContainer extends React.Component {
                     isLabelVisible={false}
                   />
                   <TextArea
-                    fieldId="textAreaWithInvisibleLabelFilled"
+                    id="textAreaWithInvisibleLabelFilled"
                     changeHandler={logger}
                     label="Text area with hidden label"
                     helperText="Showing placeholder instead"
@@ -1534,7 +1534,7 @@ class DemoContainer extends React.Component {
                 <div>
                   <div className="mb-5">
                     <TextArea
-                      fieldId="textAreaValidationValidOutline"
+                      id="textAreaValidationValidOutline"
                       changeHandler={logger}
                       label="What do you wish for Christmas?"
                       helperText="Ho ho ho, looks good!"
@@ -1542,7 +1542,7 @@ class DemoContainer extends React.Component {
                       value="BMW M4"
                     />
                     <TextArea
-                      fieldId="textAreaValidationWarningOutline"
+                      id="textAreaValidationWarningOutline"
                       changeHandler={logger}
                       label="What do you wish for Christmas?"
                       helperText="Isn't it a little too big for you?"
@@ -1550,7 +1550,7 @@ class DemoContainer extends React.Component {
                       value="BMW X5"
                     />
                     <TextArea
-                      fieldId="textAreaValidationInvalidOutline"
+                      id="textAreaValidationInvalidOutline"
                       changeHandler={logger}
                       label="What do you wish for Christmas?"
                       helperText="C'mon, it's so ugly…"
@@ -1560,7 +1560,7 @@ class DemoContainer extends React.Component {
                   </div>
                   <div>
                     <TextArea
-                      fieldId="textAreaValidationValidFilled"
+                      id="textAreaValidationValidFilled"
                       changeHandler={logger}
                       label="What do you wish for Christmas?"
                       helperText="Ho ho ho, looks good!"
@@ -1569,7 +1569,7 @@ class DemoContainer extends React.Component {
                       variant="filled"
                     />
                     <TextArea
-                      fieldId="textAreaValidationWarningFilled"
+                      id="textAreaValidationWarningFilled"
                       changeHandler={logger}
                       label="What do you wish for Christmas?"
                       helperText="Isn't it a little too big for you?"
@@ -1578,7 +1578,7 @@ class DemoContainer extends React.Component {
                       variant="filled"
                     />
                     <TextArea
-                      fieldId="textAreaValidationInvalidFilled"
+                      id="textAreaValidationInvalidFilled"
                       changeHandler={logger}
                       label="What do you wish for Christmas?"
                       helperText="C'mon, it's so ugly…"
@@ -1596,19 +1596,19 @@ class DemoContainer extends React.Component {
                 <div>
                   <div className="mb-5">
                     <TextArea
-                      fieldId="textAreaSizeOutlineSmall"
+                      id="textAreaSizeOutlineSmall"
                       changeHandler={logger}
                       label="Small"
                       size="small"
                     />
                     <TextArea
-                      fieldId="textAreaSizeOutlineMedium"
+                      id="textAreaSizeOutlineMedium"
                       changeHandler={logger}
                       label="Medium (default)"
                       size="medium"
                     />
                     <TextArea
-                      fieldId="textAreaSizeOutlineLarge"
+                      id="textAreaSizeOutlineLarge"
                       changeHandler={logger}
                       label="Large"
                       size="large"
@@ -1616,21 +1616,21 @@ class DemoContainer extends React.Component {
                   </div>
                   <div>
                     <TextArea
-                      fieldId="textAreaSizeFilledSmall"
+                      id="textAreaSizeFilledSmall"
                       changeHandler={logger}
                       label="Small"
                       size="small"
                       variant="filled"
                     />
                     <TextArea
-                      fieldId="textAreaSizeFilledMedium"
+                      id="textAreaSizeFilledMedium"
                       changeHandler={logger}
                       label="Medium (default)"
                       size="medium"
                       variant="filled"
                     />
                     <TextArea
-                      fieldId="textAreaSizeFilledLarge"
+                      id="textAreaSizeFilledLarge"
                       changeHandler={logger}
                       label="Large"
                       size="large"
@@ -1645,14 +1645,14 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <TextArea
-                    fieldId="textAreaCustomSizeOutline"
+                    id="textAreaCustomSizeOutline"
                     changeHandler={logger}
                     label="Rows and cols"
                     cols={10}
                     rows={5}
                   />
                   <TextArea
-                    fieldId="textAreaCustomSizeFilled"
+                    id="textAreaCustomSizeFilled"
                     changeHandler={logger}
                     label="Rows and cols"
                     variant="filled"
@@ -1667,14 +1667,14 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <TextArea
-                    fieldId="textAreaFullWidthOutline"
+                    id="textAreaFullWidthOutline"
                     changeHandler={logger}
                     label="What is your story?"
                     placeholder="I was born and raised in…"
                     fullWidth
                   />
                   <TextArea
-                    fieldId="textAreaFullWidthFilled"
+                    id="textAreaFullWidthFilled"
                     changeHandler={logger}
                     label="What is your story?"
                     placeholder="I was born and raised in…"
@@ -1690,14 +1690,14 @@ class DemoContainer extends React.Component {
                 <div>
                   <div className="mb-3">
                     <TextArea
-                      fieldId="textAreaHorizontalOutline"
+                      id="textAreaHorizontalOutline"
                       changeHandler={logger}
                       label="Address"
                       helperText="Where you live"
                       layout="horizontal"
                     />
                     <TextArea
-                      fieldId="textAreaHorizontalFilled"
+                      id="textAreaHorizontalFilled"
                       changeHandler={logger}
                       label="Address"
                       value="Neverland"
@@ -1709,7 +1709,7 @@ class DemoContainer extends React.Component {
                   </div>
                   <div className="mb-3">
                     <TextArea
-                      fieldId="textAreaCustomSizeOutline"
+                      id="textAreaCustomSizeOutline"
                       changeHandler={logger}
                       label="Rows and cols"
                       layout="horizontal"
@@ -1717,7 +1717,7 @@ class DemoContainer extends React.Component {
                       rows={5}
                     />
                     <TextArea
-                      fieldId="textAreaCustomSizeFilled"
+                      id="textAreaCustomSizeFilled"
                       changeHandler={logger}
                       label="Rows and cols"
                       layout="horizontal"
@@ -1728,14 +1728,14 @@ class DemoContainer extends React.Component {
                   </div>
                   <div className="mb-3">
                     <TextArea
-                      fieldId="textAreaHorizontalFullWidthOutline"
+                      id="textAreaHorizontalFullWidthOutline"
                       changeHandler={logger}
                       label="Long story short"
                       layout="horizontal"
                       fullWidth
                     />
                     <TextArea
-                      fieldId="textAreaHorizontalFullWidthFilled"
+                      id="textAreaHorizontalFullWidthFilled"
                       changeHandler={logger}
                       helperText="Write it down"
                       label="Long story short"
@@ -1746,7 +1746,7 @@ class DemoContainer extends React.Component {
                   </div>
                   <div>
                     <TextArea
-                      fieldId="textAreaHorizontalFullWidthLabelInvisibleOutline"
+                      id="textAreaHorizontalFullWidthLabelInvisibleOutline"
                       changeHandler={logger}
                       label="Long story short"
                       placeholder="Full width text area with horizontal layout works better with placeholder"
@@ -1755,7 +1755,7 @@ class DemoContainer extends React.Component {
                       fullWidth
                     />
                     <TextArea
-                      fieldId="textAreaHorizontalFullWidthInvisibleFilled"
+                      id="textAreaHorizontalFullWidthInvisibleFilled"
                       changeHandler={logger}
                       label="Long story short"
                       placeholder="Full width text area with horizontal layout works better with placeholder"
@@ -1774,12 +1774,12 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <TextField
-                    fieldId="textFieldVariantOutline"
+                    id="textFieldVariantOutline"
                     changeHandler={logger}
                     label="Outline"
                   />
                   <TextField
-                    fieldId="textFieldVariantFilled"
+                    id="textFieldVariantFilled"
                     changeHandler={logger}
                     label="Filled"
                     variant="filled"
@@ -1792,13 +1792,13 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <TextField
-                    fieldId="textFieldWithDescriptionOutline"
+                    id="textFieldWithDescriptionOutline"
                     changeHandler={logger}
                     label="Name"
                     helperText="Fill in your real name"
                   />
                   <TextField
-                    fieldId="textFieldWithDescriptionFilled"
+                    id="textFieldWithDescriptionFilled"
                     changeHandler={logger}
                     label="Name"
                     helperText="Fill in your real name"
@@ -1812,13 +1812,13 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <TextField
-                    fieldId="textFieldRequiredOutline"
+                    id="textFieldRequiredOutline"
                     changeHandler={logger}
                     label="This field is required"
                     required
                   />
                   <TextField
-                    fieldId="textFieldRequiredFilled"
+                    id="textFieldRequiredFilled"
                     changeHandler={logger}
                     label="This field is required"
                     variant="filled"
@@ -1832,14 +1832,14 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <TextField
-                    fieldId="textFieldDisabledOutline"
+                    id="textFieldDisabledOutline"
                     changeHandler={logger}
                     label="Disabled text field"
                     placeholder="This field is disabled"
                     disabled
                   />
                   <TextField
-                    fieldId="textFieldDisabledFilled"
+                    id="textFieldDisabledFilled"
                     changeHandler={logger}
                     label="Disabled text field"
                     placeholder="This field is disabled"
@@ -1854,7 +1854,7 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <TextField
-                    fieldId="textFieldWithInvisibleLabelOutline"
+                    id="textFieldWithInvisibleLabelOutline"
                     changeHandler={logger}
                     label="Text field with hidden label"
                     helperText="Showing placeholder instead"
@@ -1862,7 +1862,7 @@ class DemoContainer extends React.Component {
                     isLabelVisible={false}
                   />
                   <TextField
-                    fieldId="textFieldWithInvisibleLabelFilled"
+                    id="textFieldWithInvisibleLabelFilled"
                     changeHandler={logger}
                     label="Text field with hidden label"
                     helperText="Showing placeholder instead"
@@ -1879,7 +1879,7 @@ class DemoContainer extends React.Component {
                 <div>
                   <div className="mb-5">
                     <TextField
-                      fieldId="textFieldValidationValidOutline"
+                      id="textFieldValidationValidOutline"
                       changeHandler={logger}
                       label="User name"
                       helperText="Looks good!"
@@ -1887,7 +1887,7 @@ class DemoContainer extends React.Component {
                       value="terminator"
                     />
                     <TextField
-                      fieldId="textFieldValidationWarningOutline"
+                      id="textFieldValidationWarningOutline"
                       changeHandler={logger}
                       label="Email"
                       helperText="Account with this address already exists, please pick a different address."
@@ -1895,7 +1895,7 @@ class DemoContainer extends React.Component {
                       value="me@example.com"
                     />
                     <TextField
-                      fieldId="textFieldValidationInvalidOutline"
+                      id="textFieldValidationInvalidOutline"
                       changeHandler={logger}
                       label="Name"
                       helperText="C'mon, this is not your real name."
@@ -1905,7 +1905,7 @@ class DemoContainer extends React.Component {
                   </div>
                   <div>
                     <TextField
-                      fieldId="textFieldValidationValidFilled"
+                      id="textFieldValidationValidFilled"
                       changeHandler={logger}
                       label="User name"
                       helperText="Looks good!"
@@ -1914,7 +1914,7 @@ class DemoContainer extends React.Component {
                       variant="filled"
                     />
                     <TextField
-                      fieldId="textFieldValidationWarningFilled"
+                      id="textFieldValidationWarningFilled"
                       changeHandler={logger}
                       label="Email"
                       helperText="Account with this address already exists, please pick a different address."
@@ -1923,7 +1923,7 @@ class DemoContainer extends React.Component {
                       variant="filled"
                     />
                     <TextField
-                      fieldId="textFieldValidationInvalidFilled"
+                      id="textFieldValidationInvalidFilled"
                       changeHandler={logger}
                       label="Name"
                       helperText="C'mon, this is not your real name."
@@ -1941,19 +1941,19 @@ class DemoContainer extends React.Component {
                 <div>
                   <div className="mb-5">
                     <TextField
-                      fieldId="textFieldSizeOutlineSmall"
+                      id="textFieldSizeOutlineSmall"
                       changeHandler={logger}
                       label="Small"
                       size="small"
                     />
                     <TextField
-                      fieldId="textFieldSizeOutlineMedium"
+                      id="textFieldSizeOutlineMedium"
                       changeHandler={logger}
                       label="Medium (default)"
                       size="medium"
                     />
                     <TextField
-                      fieldId="textFieldSizeOutlineLarge"
+                      id="textFieldSizeOutlineLarge"
                       changeHandler={logger}
                       label="Large"
                       size="large"
@@ -1961,21 +1961,21 @@ class DemoContainer extends React.Component {
                   </div>
                   <div>
                     <TextField
-                      fieldId="textFieldSizeFilledSmall"
+                      id="textFieldSizeFilledSmall"
                       changeHandler={logger}
                       label="Small"
                       size="small"
                       variant="filled"
                     />
                     <TextField
-                      fieldId="textFieldSizeFilledMedium"
+                      id="textFieldSizeFilledMedium"
                       changeHandler={logger}
                       label="Medium (default)"
                       size="medium"
                       variant="filled"
                     />
                     <TextField
-                      fieldId="textFieldSizeFilledLarge"
+                      id="textFieldSizeFilledLarge"
                       changeHandler={logger}
                       label="Large"
                       size="large"
@@ -1990,13 +1990,13 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <TextField
-                    fieldId="textFieldCustomInputSizeOutline"
+                    id="textFieldCustomInputSizeOutline"
                     changeHandler={logger}
                     label="Age"
                     inputSize={3}
                   />
                   <TextField
-                    fieldId="textFieldCustomInputSizeFilled"
+                    id="textFieldCustomInputSizeFilled"
                     changeHandler={logger}
                     label="Age"
                     variant="filled"
@@ -2010,14 +2010,14 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <TextField
-                    fieldId="textFieldFullWidthOutline"
+                    id="textFieldFullWidthOutline"
                     changeHandler={logger}
                     label="What is your story?"
                     placeholder="I was born and raised in…"
                     fullWidth
                   />
                   <TextField
-                    fieldId="textFieldFullWidthFilled"
+                    id="textFieldFullWidthFilled"
                     changeHandler={logger}
                     label="What is your story?"
                     placeholder="I was born and raised in…"
@@ -2033,14 +2033,14 @@ class DemoContainer extends React.Component {
                 <div>
                   <div className="mb-3">
                     <TextField
-                      fieldId="textFieldHorizontalOutline"
+                      id="textFieldHorizontalOutline"
                       changeHandler={logger}
                       label="Address"
                       helperText="Where you live"
                       layout="horizontal"
                     />
                     <TextField
-                      fieldId="textFieldHorizontalFilled"
+                      id="textFieldHorizontalFilled"
                       changeHandler={logger}
                       label="Address"
                       value="Neverland"
@@ -2052,14 +2052,14 @@ class DemoContainer extends React.Component {
                   </div>
                   <div className="mb-3">
                     <TextField
-                      fieldId="textFieldHorizontalCustomSizeOutline"
+                      id="textFieldHorizontalCustomSizeOutline"
                       changeHandler={logger}
                       label="Age"
                       layout="horizontal"
                       inputSize={3}
                     />
                     <TextField
-                      fieldId="textFieldHorizontalCustomSizeFilled"
+                      id="textFieldHorizontalCustomSizeFilled"
                       changeHandler={logger}
                       label="Age"
                       helperText="How old do you see yourself?"
@@ -2070,7 +2070,7 @@ class DemoContainer extends React.Component {
                   </div>
                   <div className="mb-3">
                     <TextField
-                      fieldId="textFieldHorizontalFullWidthOutline"
+                      id="textFieldHorizontalFullWidthOutline"
                       changeHandler={logger}
                       helperText="Write it down"
                       label="Long story short"
@@ -2078,7 +2078,7 @@ class DemoContainer extends React.Component {
                       fullWidth
                     />
                     <TextField
-                      fieldId="textFieldHorizontalFullWidthFilled"
+                      id="textFieldHorizontalFullWidthFilled"
                       changeHandler={logger}
                       label="Long story short"
                       layout="horizontal"
@@ -2088,7 +2088,7 @@ class DemoContainer extends React.Component {
                   </div>
                   <div>
                     <TextField
-                      fieldId="textFieldHorizontalFullWidthLabelInvisibleOutline"
+                      id="textFieldHorizontalFullWidthLabelInvisibleOutline"
                       changeHandler={logger}
                       label="Long story short"
                       placeholder="Full width text field with horizontal layout works better with placeholder"
@@ -2097,7 +2097,7 @@ class DemoContainer extends React.Component {
                       fullWidth
                     />
                     <TextField
-                      fieldId="textFieldHorizontalFullWidthInvisibleFilled"
+                      id="textFieldHorizontalFullWidthInvisibleFilled"
                       changeHandler={logger}
                       label="Long story short"
                       placeholder="Full width text field with horizontal layout works better with placeholder"
@@ -2115,7 +2115,7 @@ class DemoContainer extends React.Component {
               name="Toggle"
               component={(
                 <Toggle
-                  fieldId="toggleField"
+                  id="toggleField"
                   label="toggle"
                   changeHandler={logger}
                   required
@@ -2127,7 +2127,7 @@ class DemoContainer extends React.Component {
               name="Checked toggle"
               component={(
                 <Toggle
-                  fieldId="toggleChecked"
+                  id="toggleChecked"
                   label="toggle checked"
                   checked
                   value="1"
@@ -2141,21 +2141,21 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <Toggle
-                    fieldId="toggledValidationValid"
+                    id="toggledValidationValid"
                     label="Checked and valid"
                     validationState="valid"
                     checked
                     changeHandler={logger}
                   />
                   <Toggle
-                    fieldId="toggledValidationWarning"
+                    id="toggledValidationWarning"
                     label="Checked with warning"
                     validationState="warning"
                     checked
                     changeHandler={logger}
                   />
                   <Toggle
-                    fieldId="toggledValidationInvalid"
+                    id="toggledValidationInvalid"
                     label="Checked and invalid"
                     validationState="invalid"
                     checked
@@ -2168,7 +2168,7 @@ class DemoContainer extends React.Component {
               name="Disabled toggle"
               component={(
                 <Toggle
-                  fieldId="toggledDisabled"
+                  id="toggledDisabled"
                   label="toggle checked and disabled"
                   checked
                   disabled
@@ -2180,7 +2180,7 @@ class DemoContainer extends React.Component {
               name="Toggle with hidden label"
               component={(
                 <Toggle
-                  fieldId="toggledLabelHidden"
+                  id="toggledLabelHidden"
                   label="toggle checked and label hidden"
                   checked
                   changeHandler={logger}
@@ -2192,7 +2192,7 @@ class DemoContainer extends React.Component {
               name="Toggle with label on left"
               component={(
                 <Toggle
-                  fieldId="toggledLabelLeft"
+                  id="toggledLabelLeft"
                   label="toggle checked and label left"
                   checked
                   changeHandler={logger}

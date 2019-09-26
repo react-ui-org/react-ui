@@ -20,9 +20,10 @@ describe('rendering', () => {
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
 
-  it('renders correctly type', () => {
+  it('renders correctly with all props', () => {
     const tree = shallow(
       <Alert
+        id="custom-id"
         message="Message"
         type="success"
       >

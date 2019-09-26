@@ -10,7 +10,7 @@ import Radio from '..';
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
     const tree = shallow(<Radio
-      fieldId="test"
+      id="test"
       label="label"
       options={[
         {
@@ -29,7 +29,7 @@ describe('rendering', () => {
 
   it('renders correctly only one option', () => {
     const tree = shallow(<Radio
-      fieldId="test"
+      id="test"
       label="label"
       options={[
         {
@@ -44,7 +44,7 @@ describe('rendering', () => {
 
   it('renders correctly only one option and hidden label', () => {
     const tree = shallow(<Radio
-      fieldId="test"
+      id="test"
       label="label"
       isLabelVisible={false}
       options={[
@@ -62,7 +62,7 @@ describe('rendering', () => {
     const tree = shallow(<Radio
       label="label"
       disabled
-      fieldId="test"
+      id="test"
       value="ch1"
       description="some help"
       error="some error"
@@ -89,7 +89,7 @@ describe('functionality', () => {
   it('calls changeHandler() on changing selected option', () => {
     const spy = sinon.spy();
     const component = mount(<Radio
-      fieldId="id"
+      id="id"
       label="label"
       options={[
         {

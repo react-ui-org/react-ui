@@ -46,3 +46,17 @@ exports[`rendering renders correctly raised 1`] = `
   </p>
 </div>
 `;
+
+exports[`rendering renders correctly with all props 1`] = `
+<div
+  className="root
+        warning
+        isRootDisabled
+        isRootRaised"
+  id="custom-id"
+>
+  <p>
+    Card content
+  </p>
+</div>
+`;

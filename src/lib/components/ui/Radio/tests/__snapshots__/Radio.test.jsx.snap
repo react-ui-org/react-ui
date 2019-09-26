@@ -6,6 +6,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
 >
   <div
     className="label"
+    id="test__label"
   >
     label
   </div>
@@ -21,6 +22,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
         <input
           checked={false}
           className="input"
+          id="test__item__ch1"
           name="test"
           onChange={null}
           type="radio"
@@ -42,6 +44,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
         <input
           checked={false}
           className="input"
+          id="test__item__ch2"
           name="test"
           onChange={null}
           type="radio"
@@ -64,6 +67,7 @@ exports[`rendering renders correctly only one option 1`] = `
 >
   <div
     className="label"
+    id="test__label"
   >
     label
   </div>
@@ -79,6 +83,7 @@ exports[`rendering renders correctly only one option 1`] = `
         <input
           checked={false}
           className="input"
+          id="test__item__ch1"
           name="test"
           onChange={null}
           type="radio"
@@ -101,6 +106,7 @@ exports[`rendering renders correctly only one option and hidden label 1`] = `
 >
   <div
     className="isLabelHidden"
+    id="test__label"
   >
     label
   </div>
@@ -116,6 +122,7 @@ exports[`rendering renders correctly only one option and hidden label 1`] = `
         <input
           checked={false}
           className="input"
+          id="test__item__ch1"
           name="test"
           onChange={null}
           type="radio"
@@ -139,6 +146,7 @@ exports[`rendering renders correctly with all props 1`] = `
 >
   <div
     className="isLabelRequired"
+    id="test__label"
   >
     label
   </div>
@@ -155,6 +163,7 @@ exports[`rendering renders correctly with all props 1`] = `
           checked={true}
           className="input"
           disabled={true}
+          id="test__item__ch1"
           name="test"
           onChange={null}
           type="radio"
@@ -177,6 +186,7 @@ exports[`rendering renders correctly with all props 1`] = `
           checked={false}
           className="input"
           disabled={true}
+          id="test__item__ch2"
           name="test"
           onChange={null}
           type="radio"
@@ -192,11 +202,13 @@ exports[`rendering renders correctly with all props 1`] = `
   </ul>
   <div
     className="description"
+    id="test__descriptionText"
   >
     some help
   </div>
   <div
     className="error"
+    id="test__errorText"
   >
     some error
   </div>

@@ -9,7 +9,7 @@ import Toggle from '..';
 
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
-    const tree = shallow(<Toggle fieldId="test" label="label" />);
+    const tree = shallow(<Toggle id="test" label="label" />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
@@ -18,7 +18,7 @@ describe('rendering', () => {
     const tree = shallow(<Toggle
       label="label"
       disabled
-      fieldId="test"
+      id="test"
       value="value"
       description="some help"
       error="some error"
@@ -37,7 +37,7 @@ describe('functionality', () => {
   it('calls onChange() when checked', () => {
     const spy = sinon.spy();
     const component = mount(<Toggle
-      fieldId="test"
+      id="test"
       label="label"
       changeHandler={spy}
     />);

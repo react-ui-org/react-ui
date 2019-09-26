@@ -9,14 +9,14 @@ import TextField from '..';
 
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
-    const tree = shallow(<TextField fieldId="test" label="label" />);
+    const tree = shallow(<TextField id="test" label="label" />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
 
   it('renders correctly with hidden label', () => {
     const tree = shallow(<TextField
-      fieldId="test"
+      id="test"
       label="label"
       isLabelVisible={false}
     />);
@@ -26,7 +26,9 @@ describe('rendering', () => {
 
   it('renders correctly with all props', () => {
     const tree = shallow(<TextField
-      fieldId="test"
+      autoCapitalize="on"
+      autoComplete="username"
+      id="test"
       helperText="some help"
       isLabelVisible={false}
       label="label"
@@ -51,7 +53,7 @@ describe('functionality', () => {
   it('calls changeHandler()', () => {
     const spy = sinon.spy();
     const component = mount(<TextField
-      fieldId="test"
+      id="test"
       label="label"
       changeHandler={spy}
     />);

@@ -6,6 +6,7 @@ export const Card = (props) => {
   const {
     children,
     disabled,
+    id,
     raised,
     type,
   } = props;
@@ -37,6 +38,7 @@ export const Card = (props) => {
         ${disabledClass}
         ${raisedClass}
       `).trim()}
+      id={id}
     >
       {children}
     </div>
@@ -45,6 +47,7 @@ export const Card = (props) => {
 
 Card.defaultProps = {
   disabled: false,
+  id: undefined,
   raised: false,
   type: 'flat',
 };
@@ -55,6 +58,7 @@ Card.propTypes = {
     PropTypes.node,
   ]).isRequired,
   disabled: PropTypes.bool,
+  id: PropTypes.string,
   raised: PropTypes.bool,
   type: PropTypes.oneOf(['flat', 'bordered', 'warning', 'error']),
 };

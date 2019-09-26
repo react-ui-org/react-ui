@@ -62,21 +62,24 @@ const TextField = (props) => {
         ${rootValidationStateClass}
         ${rootVariantClass}
       `).trim()}
-      htmlFor={props.fieldId}
+      htmlFor={props.id}
     >
       <div
         className={(`
           ${styles.label}
           ${labelVisibilityClass}
         `).trim()}
+        id={`${props.id}__label`}
       >
         {props.label}
       </div>
       <div className={styles.inputContainer}>
         <input
+          autoCapitalize={props.autoCapitalize}
+          autoComplete={props.autoComplete}
           className={styles.input}
           disabled={props.disabled}
-          id={props.fieldId}
+          id={props.id}
           onChange={props.changeHandler}
           placeholder={props.placeholder}
           required={props.required}
@@ -89,7 +92,10 @@ const TextField = (props) => {
         )}
       </div>
       {props.helperText && (
-        <div className={styles.helperText}>
+        <div
+          className={styles.helperText}
+          id={`${props.id}__helperText`}
+        >
           {props.helperText}
         </div>
       )}
@@ -98,6 +104,8 @@ const TextField = (props) => {
 };
 
 TextField.defaultProps = {
+  autoCapitalize: undefined,
+  autoComplete: undefined,
   changeHandler: null,
   disabled: false,
   fullWidth: false,
@@ -115,11 +123,13 @@ TextField.defaultProps = {
 };
 
 TextField.propTypes = {
+  autoCapitalize: PropTypes.string,
+  autoComplete: PropTypes.string,
   changeHandler: PropTypes.func,
   disabled: PropTypes.bool,
-  fieldId: PropTypes.string.isRequired,
   fullWidth: PropTypes.bool,
   helperText: PropTypes.string,
+  id: PropTypes.string.isRequired,
   inputSize: PropTypes.number,
   isLabelVisible: PropTypes.bool,
   label: PropTypes.string.isRequired,

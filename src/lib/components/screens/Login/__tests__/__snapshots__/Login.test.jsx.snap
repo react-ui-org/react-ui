@@ -34,11 +34,12 @@ exports[`rendering renders correctly 1`] = `
             className="mb-3"
           >
             <TextField
+              autoComplete="username"
               changeHandler={[Function]}
               disabled={false}
-              fieldId="email"
               fullWidth={true}
               helperText={null}
+              id="usernameInput"
               inputSize={null}
               isLabelVisible={true}
               label="E-mail"
@@ -58,10 +59,11 @@ exports[`rendering renders correctly 1`] = `
         rootSizeMedium
         
         rootVariantOutline"
-                htmlFor="email"
+                htmlFor="usernameInput"
               >
                 <div
                   className="label"
+                  id="usernameInput__label"
                 >
                   E-mail
                 </div>
@@ -69,9 +71,10 @@ exports[`rendering renders correctly 1`] = `
                   className="inputContainer"
                 >
                   <input
+                    autoComplete="username"
                     className="input"
                     disabled={false}
-                    id="email"
+                    id="usernameInput"
                     onChange={[Function]}
                     placeholder={null}
                     required={true}
@@ -82,11 +85,12 @@ exports[`rendering renders correctly 1`] = `
               </label>
             </TextField>
             <TextField
+              autoComplete="current-password"
               changeHandler={[Function]}
               disabled={false}
-              fieldId="password"
               fullWidth={true}
               helperText={null}
+              id="passwordInput"
               inputSize={null}
               isLabelVisible={true}
               label="Password"
@@ -106,10 +110,11 @@ exports[`rendering renders correctly 1`] = `
         rootSizeMedium
         
         rootVariantOutline"
-                htmlFor="password"
+                htmlFor="passwordInput"
               >
                 <div
                   className="label"
+                  id="passwordInput__label"
                 >
                   Password
                 </div>
@@ -117,9 +122,10 @@ exports[`rendering renders correctly 1`] = `
                   className="inputContainer"
                 >
                   <input
+                    autoComplete="current-password"
                     className="input"
                     disabled={false}
-                    id="password"
+                    id="passwordInput"
                     onChange={[Function]}
                     placeholder={null}
                     required={true}
@@ -179,6 +185,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
     </a>
   }
   hasError={true}
+  id="custom-id"
   logo="http://satyr.io/100x100/33?text=logo"
   title="Company"
   translations={null}
@@ -192,6 +199,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
       </a>
     }
     hasError={true}
+    id="custom-id"
     logo="http://satyr.io/100x100/33?text=logo"
     logoUrl={null}
     onChangeHandler={null}
@@ -209,9 +217,11 @@ exports[`rendering renders correctly with all props except translations 1`] = `
   >
     <div
       className="root"
+      id="custom-id"
     >
       <div
         className="title"
+        id="custom-id__title"
       >
         Company
       </div>
@@ -223,6 +233,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
         >
           <div
             className="error"
+            id="custom-id__errorText"
           >
             Invalid username or password
           </div>
@@ -230,11 +241,12 @@ exports[`rendering renders correctly with all props except translations 1`] = `
             className="mb-3"
           >
             <TextField
+              autoComplete="username"
               changeHandler={[Function]}
               disabled={false}
-              fieldId="email"
               fullWidth={true}
               helperText={null}
+              id="custom-id__usernameInput"
               inputSize={null}
               isLabelVisible={true}
               label="E-mail"
@@ -254,10 +266,11 @@ exports[`rendering renders correctly with all props except translations 1`] = `
         rootSizeMedium
         
         rootVariantOutline"
-                htmlFor="email"
+                htmlFor="custom-id__usernameInput"
               >
                 <div
                   className="label"
+                  id="custom-id__usernameInput__label"
                 >
                   E-mail
                 </div>
@@ -265,9 +278,10 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                   className="inputContainer"
                 >
                   <input
+                    autoComplete="username"
                     className="input"
                     disabled={false}
-                    id="email"
+                    id="custom-id__usernameInput"
                     onChange={[Function]}
                     placeholder={null}
                     required={true}
@@ -278,11 +292,12 @@ exports[`rendering renders correctly with all props except translations 1`] = `
               </label>
             </TextField>
             <TextField
+              autoComplete="current-password"
               changeHandler={[Function]}
               disabled={false}
-              fieldId="password"
               fullWidth={true}
               helperText={null}
+              id="custom-id__passwordInput"
               inputSize={null}
               isLabelVisible={true}
               label="Password"
@@ -302,10 +317,11 @@ exports[`rendering renders correctly with all props except translations 1`] = `
         rootSizeMedium
         
         rootVariantOutline"
-                htmlFor="password"
+                htmlFor="custom-id__passwordInput"
               >
                 <div
                   className="label"
+                  id="custom-id__passwordInput__label"
                 >
                   Password
                 </div>
@@ -313,9 +329,10 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                   className="inputContainer"
                 >
                   <input
+                    autoComplete="current-password"
                     className="input"
                     disabled={false}
-                    id="password"
+                    id="custom-id__passwordInput"
                     onChange={[Function]}
                     placeholder={null}
                     required={true}
@@ -332,6 +349,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
             disabled={false}
             icon={null}
             iconPosition="before"
+            id="custom-id__signInButton"
             label="Sign in"
             labelVisibility="all"
             loading={false}
@@ -347,12 +365,14 @@ exports[`rendering renders correctly with all props except translations 1`] = `
         variantPrimary
         isRootBlock"
               disabled={false}
+              id="custom-id__signInButton"
               onClick={null}
               title={null}
               type="submit"
             >
               <span
                 className="label"
+                id="custom-id__signInButton__label"
               >
                 Sign in
               </span>
@@ -361,6 +381,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
         </form>
         <div
           className="footer"
+          id="custom-id__footerContent"
         >
           <a
             href="http://example.com"
@@ -415,11 +436,12 @@ exports[`rendering renders correctly with translations 1`] = `
             className="mb-3"
           >
             <TextField
+              autoComplete="username"
               changeHandler={[Function]}
               disabled={false}
-              fieldId="email"
               fullWidth={true}
               helperText={null}
+              id="usernameInput"
               inputSize={null}
               isLabelVisible={true}
               label="E-mail"
@@ -439,10 +461,11 @@ exports[`rendering renders correctly with translations 1`] = `
         rootSizeMedium
         
         rootVariantOutline"
-                htmlFor="email"
+                htmlFor="usernameInput"
               >
                 <div
                   className="label"
+                  id="usernameInput__label"
                 >
                   E-mail
                 </div>
@@ -450,9 +473,10 @@ exports[`rendering renders correctly with translations 1`] = `
                   className="inputContainer"
                 >
                   <input
+                    autoComplete="username"
                     className="input"
                     disabled={false}
-                    id="email"
+                    id="usernameInput"
                     onChange={[Function]}
                     placeholder={null}
                     required={true}
@@ -463,11 +487,12 @@ exports[`rendering renders correctly with translations 1`] = `
               </label>
             </TextField>
             <TextField
+              autoComplete="current-password"
               changeHandler={[Function]}
               disabled={false}
-              fieldId="password"
               fullWidth={true}
               helperText={null}
+              id="passwordInput"
               inputSize={null}
               isLabelVisible={true}
               label="Heslo"
@@ -487,10 +512,11 @@ exports[`rendering renders correctly with translations 1`] = `
         rootSizeMedium
         
         rootVariantOutline"
-                htmlFor="password"
+                htmlFor="passwordInput"
               >
                 <div
                   className="label"
+                  id="passwordInput__label"
                 >
                   Heslo
                 </div>
@@ -498,9 +524,10 @@ exports[`rendering renders correctly with translations 1`] = `
                   className="inputContainer"
                 >
                   <input
+                    autoComplete="current-password"
                     className="input"
                     disabled={false}
-                    id="password"
+                    id="passwordInput"
                     onChange={[Function]}
                     placeholder={null}
                     required={true}
@@ -585,11 +612,12 @@ exports[`rendering renders correctly with username 1`] = `
             className="mb-3"
           >
             <TextField
+              autoComplete="username"
               changeHandler={[Function]}
               disabled={false}
-              fieldId="Username"
               fullWidth={true}
               helperText={null}
+              id="usernameInput"
               inputSize={null}
               isLabelVisible={true}
               label="Username"
@@ -609,10 +637,11 @@ exports[`rendering renders correctly with username 1`] = `
         rootSizeMedium
         
         rootVariantOutline"
-                htmlFor="Username"
+                htmlFor="usernameInput"
               >
                 <div
                   className="label"
+                  id="usernameInput__label"
                 >
                   Username
                 </div>
@@ -620,9 +649,10 @@ exports[`rendering renders correctly with username 1`] = `
                   className="inputContainer"
                 >
                   <input
+                    autoComplete="username"
                     className="input"
                     disabled={false}
-                    id="Username"
+                    id="usernameInput"
                     onChange={[Function]}
                     placeholder={null}
                     required={true}
@@ -633,11 +663,12 @@ exports[`rendering renders correctly with username 1`] = `
               </label>
             </TextField>
             <TextField
+              autoComplete="current-password"
               changeHandler={[Function]}
               disabled={false}
-              fieldId="password"
               fullWidth={true}
               helperText={null}
+              id="passwordInput"
               inputSize={null}
               isLabelVisible={true}
               label="Password"
@@ -657,10 +688,11 @@ exports[`rendering renders correctly with username 1`] = `
         rootSizeMedium
         
         rootVariantOutline"
-                htmlFor="password"
+                htmlFor="passwordInput"
               >
                 <div
                   className="label"
+                  id="passwordInput__label"
                 >
                   Password
                 </div>
@@ -668,9 +700,10 @@ exports[`rendering renders correctly with username 1`] = `
                   className="inputContainer"
                 >
                   <input
+                    autoComplete="current-password"
                     className="input"
                     disabled={false}
-                    id="password"
+                    id="passwordInput"
                     onChange={[Function]}
                     placeholder={null}
                     required={true}

@@ -33,10 +33,10 @@ const Toggle = (props) => {
         ${rootValidationStateClass}
       `).trim()}
     >
-      <label htmlFor={props.fieldId} className={styles.inputWrap}>
+      <label htmlFor={props.id} className={styles.inputWrap}>
         <input
-          id={props.fieldId}
-          name={props.fieldId}
+          id={props.id}
+          name={props.id}
           value={props.value}
           onChange={props.changeHandler}
           disabled={props.disabled}
@@ -51,6 +51,7 @@ const Toggle = (props) => {
               ${styles.labelInner}
               ${labelVisibilityClass}
             `).trim()}
+            id={`${props.id}__label`}
           >
             {props.label}
           </span>
@@ -58,12 +59,18 @@ const Toggle = (props) => {
         <span className={styles.toggle} />
       </label>
       {props.description && (
-        <div className={styles.description}>
+        <div
+          className={styles.description}
+          id={`${props.id}__descriptionText`}
+        >
           {props.description}
         </div>
       )}
       {props.error && (
-        <div className={styles.error}>
+        <div
+          className={styles.error}
+          id={`${props.id}__errorText`}
+        >
           {props.error}
         </div>
       )}
@@ -90,7 +97,7 @@ Toggle.propTypes = {
   description: PropTypes.string,
   disabled: PropTypes.bool,
   error: PropTypes.string,
-  fieldId: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   isLabelVisible: PropTypes.bool,
   label: PropTypes.string.isRequired,
   labelPosition: PropTypes.oneOf(['before', 'after']),

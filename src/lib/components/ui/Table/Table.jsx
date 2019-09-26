@@ -15,14 +15,18 @@ class Table extends React.Component {
   }
 
   renderHeaderCell(column) {
-    const { sort } = this.props;
+    const {
+      id,
+      sort,
+    } = this.props;
     const sortDirection = sort && column.name === sort.column ? sort.direction : 'asc';
     const isSortingActive = sort && column.name === sort.column;
 
     return (
       <th
-        key={column.name}
         className={isSortingActive ? styles.isTableHeadCellSortingActive : styles.tableHeadCell}
+        key={column.name}
+        {...(id && { id: `${id}__headerCell__${column.name}` })}
       >
         {sort && column.isSortable && (
           <div className={styles.sortButton}>
@@ -32,6 +36,7 @@ class Table extends React.Component {
               label={sortDirection}
               labelVisibility="none"
               priority="flat"
+              {...(id && { id: `${id}__headerCell__${column.name}__sortButton` })}
             />
           </div>
         )}
@@ -41,14 +46,18 @@ class Table extends React.Component {
   }
 
   renderBodyCell(column, row) {
-    const { sort } = this.props;
+    const {
+      id,
+      sort,
+    } = this.props;
     const isSortingActive = sort && column.name === sort.column;
 
     if (column.format) {
       return (
         <td
-          key={`${row.id}-${column.name}`}
           className={isSortingActive ? styles.isTableCellSortingActive : styles.tableCell}
+          key={`${row.id}-${column.name}`}
+          {...(id && { id: `${id}__bodyCell__${column.name}__${row.id}` })}
         >
           {column.format(row)}
         </td>
@@ -57,8 +66,9 @@ class Table extends React.Component {
 
     return (
       <td
-        key={`${row.id}-${column.name}`}
         className={isSortingActive ? styles.isTableCellSortingActive : styles.tableCell}
+        key={`${row.id}-${column.name}`}
+        {...(id && { id: `${id}__bodyCell__${column.name}__${row.id}` })}
       >
         {row[column.name]}
       </td>
@@ -68,11 +78,15 @@ class Table extends React.Component {
   render() {
     const {
       columns,
+      id,
       rows,
     } = this.props;
 
     return (
-      <div className={styles.tableWrapper}>
+      <div
+        className={styles.tableWrapper}
+        id={id}
+      >
         <table className={styles.table}>
           <thead>
             <tr className={styles.tableHeadRow}>
@@ -93,6 +107,7 @@ class Table extends React.Component {
 }
 
 Table.defaultProps = {
+  id: undefined,
   sort: null,
 };
 
@@ -103,6 +118,7 @@ Table.propTypes = {
     label: PropTypes.string,
     name: PropTypes.string.isRequired,
   })).isRequired,
+  id: PropTypes.string,
   rows: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.oneOfType([
       PropTypes.number,

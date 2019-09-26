@@ -26,4 +26,19 @@ describe('rendering', () => {
 
     expect(tree).toMatchSnapshot();
   });
+
+  it('renders correctly with all props', () => {
+    const tree = shallow(
+      <Card
+        disabled
+        id="custom-id"
+        raised
+        type="warning"
+      >
+        <p>Card content</p>
+      </Card>,
+    );
+
+    expect(tree).toMatchSnapshot();
+  });
 });

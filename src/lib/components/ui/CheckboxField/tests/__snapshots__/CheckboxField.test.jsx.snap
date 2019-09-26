@@ -14,7 +14,6 @@ exports[`rendering renders correctly mandatory props only 1`] = `
       className="input"
       disabled={false}
       id="test"
-      name="test"
       onChange={null}
       required={false}
       type="checkbox"
@@ -24,6 +23,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
     >
       <span
         className="labelInner"
+        id="test__label"
       >
         label
       </span>
@@ -47,7 +47,6 @@ exports[`rendering renders correctly with all props 1`] = `
       className="input"
       disabled={true}
       id="test"
-      name="test"
       onChange={null}
       required={true}
       type="checkbox"
@@ -58,6 +57,7 @@ exports[`rendering renders correctly with all props 1`] = `
     >
       <span
         className="labelInner"
+        id="test__label"
       >
         label
       </span>
@@ -65,11 +65,13 @@ exports[`rendering renders correctly with all props 1`] = `
   </label>
   <div
     className="description"
+    id="test__descriptionText"
   >
     some help
   </div>
   <div
     className="error"
+    id="test__errorText"
   >
     some error
   </div>

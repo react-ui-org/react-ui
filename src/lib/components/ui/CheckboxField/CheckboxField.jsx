@@ -33,15 +33,14 @@ const CheckboxField = (props) => {
       `.trim()}
     >
       <label
-        htmlFor={props.fieldId}
         className={(`
           ${styles.inputWrap}
           ${labelPositionClass}
         `).trim()}
+        htmlFor={props.id}
       >
         <input
-          id={props.fieldId}
-          name={props.fieldId}
+          id={props.id}
           value={props.value}
           onChange={props.changeHandler}
           disabled={props.disabled}
@@ -56,18 +55,25 @@ const CheckboxField = (props) => {
               ${styles.labelInner}
               ${labelVisibilityClass}
             `).trim()}
+            id={`${props.id}__label`}
           >
             {props.label}
           </span>
         </span>
       </label>
       {props.description && (
-        <div className={styles.description}>
+        <div
+          className={styles.description}
+          id={`${props.id}__descriptionText`}
+        >
           {props.description}
         </div>
       )}
       {props.error && (
-        <div className={styles.error}>
+        <div
+          className={styles.error}
+          id={`${props.id}__errorText`}
+        >
           {props.error}
         </div>
       )}
@@ -94,7 +100,7 @@ CheckboxField.propTypes = {
   description: PropTypes.string,
   disabled: PropTypes.bool,
   error: PropTypes.string,
-  fieldId: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   isLabelVisible: PropTypes.bool,
   label: PropTypes.string.isRequired,
   labelPosition: PropTypes.oneOf(['before', 'after']),

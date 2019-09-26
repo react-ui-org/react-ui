@@ -10,7 +10,7 @@ import MultipleSelectField from '..';
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
     const tree = shallow(<MultipleSelectField
-      fieldId="test"
+      id="test"
       label="label"
       options={[
         {
@@ -29,7 +29,7 @@ describe('rendering', () => {
 
   it('renders correctly only one option', () => {
     const tree = shallow(<MultipleSelectField
-      fieldId="test"
+      id="test"
       label="label"
       options={[
         {
@@ -44,7 +44,7 @@ describe('rendering', () => {
 
   it('renders correctly with all props', () => {
     const tree = shallow(<MultipleSelectField
-      fieldId="test"
+      id="test"
       isLabelVisible={false}
       label="label"
       layout="horizontal"
@@ -74,7 +74,7 @@ describe('rendering', () => {
 
   it('renders correctly with one selected option', () => {
     const tree = shallow(<MultipleSelectField
-      fieldId="test"
+      id="test"
       label="label"
       options={[
         {
@@ -94,7 +94,7 @@ describe('rendering', () => {
 
   it('renders correctly with two selected options', () => {
     const tree = shallow(<MultipleSelectField
-      fieldId="test"
+      id="test"
       label="label"
       options={[
         {
@@ -118,7 +118,7 @@ describe('functionality', () => {
     const spy = sinon.spy();
     const component = mount(<MultipleSelectField
       label="label"
-      fieldId="id"
+      id="id"
       options={[
         {
           label: 'choice 1',

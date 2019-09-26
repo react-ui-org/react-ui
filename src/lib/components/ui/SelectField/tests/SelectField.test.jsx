@@ -12,7 +12,7 @@ jest.mock('../../Icon/load-material-design-icons');
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
     const tree = shallow(<SelectField
-      fieldId="test"
+      id="test"
       label="label"
       options={[
         {
@@ -31,7 +31,7 @@ describe('rendering', () => {
 
   it('renders correctly only one option', () => {
     const tree = shallow(<SelectField
-      fieldId="test"
+      id="test"
       label="label"
       options={[
         {
@@ -46,7 +46,7 @@ describe('rendering', () => {
 
   it('renders correctly with all props', () => {
     const tree = shallow(<SelectField
-      fieldId="test"
+      id="test"
       isLabelVisible={false}
       label="label"
       layout="horizontal"
@@ -80,7 +80,7 @@ describe('functionality', () => {
     const spy = sinon.spy();
     const component = mount(<SelectField
       label="label"
-      fieldId="id"
+      id="id"
       options={[
         {
           label: 'choice 1',

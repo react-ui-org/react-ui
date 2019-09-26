@@ -13,6 +13,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
 >
   <div
     className="label"
+    id="test__label"
   >
     label
   </div>
@@ -27,12 +28,14 @@ exports[`rendering renders correctly mandatory props only 1`] = `
       required={false}
     >
       <option
+        id="test__item__ch1"
         key="ch1"
         value="ch1"
       >
         choice 1
       </option>
       <option
+        id="test__item__ch2"
         key="ch2"
         value="ch2"
       >
@@ -64,6 +67,7 @@ exports[`rendering renders correctly only one option 1`] = `
 >
   <div
     className="label"
+    id="test__label"
   >
     label
   </div>
@@ -78,6 +82,7 @@ exports[`rendering renders correctly only one option 1`] = `
       required={false}
     >
       <option
+        id="test__item__ch1"
         key="ch1"
         value="ch1"
       >
@@ -110,6 +115,7 @@ exports[`rendering renders correctly with all props 1`] = `
   <div
     className="label
           isLabelHidden"
+    id="test__label"
   >
     label
   </div>
@@ -125,6 +131,7 @@ exports[`rendering renders correctly with all props 1`] = `
       value="ch1"
     >
       <option
+        id="test__item__ch1"
         key="ch1"
         value="ch1"
       >
@@ -132,6 +139,7 @@ exports[`rendering renders correctly with all props 1`] = `
       </option>
       <option
         disabled={true}
+        id="test__item__ch2"
         key="ch2"
         value="ch2"
       >
@@ -152,6 +160,7 @@ exports[`rendering renders correctly with all props 1`] = `
   </div>
   <div
     className="helperText"
+    id="test__helperText"
   >
     some help
   </div>

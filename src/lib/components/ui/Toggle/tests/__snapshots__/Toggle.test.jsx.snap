@@ -24,6 +24,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
     >
       <span
         className="labelInner"
+        id="test__label"
       >
         label
       </span>
@@ -61,6 +62,7 @@ exports[`rendering renders correctly with all props 1`] = `
     >
       <span
         className="labelInner"
+        id="test__label"
       >
         label
       </span>
@@ -71,11 +73,13 @@ exports[`rendering renders correctly with all props 1`] = `
   </label>
   <div
     className="description"
+    id="test__descriptionText"
   >
     some help
   </div>
   <div
     className="error"
+    id="test__errorText"
   >
     some error
   </div>

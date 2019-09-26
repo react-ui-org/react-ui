@@ -14,9 +14,10 @@ describe('rendering', () => {
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
 
-  it('renders correctly with size', () => {
+  it('renders correctly with all props', () => {
     const tree = shallow(<Icon
       icon="book"
+      id="custom-id"
       size="larger"
     />);
 

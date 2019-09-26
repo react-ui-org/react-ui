@@ -127,6 +127,7 @@ exports[`rendering renders correctly with all props 1`] = `
         withIconAfter
         withLabelHiddenMobile"
   disabled={true}
+  id="custom-id"
   onClick={null}
   title="button"
   type="button"
@@ -142,6 +143,7 @@ exports[`rendering renders correctly with all props 1`] = `
   </span>
   <span
     className="label"
+    id="custom-id__label"
   >
     button
   </span>

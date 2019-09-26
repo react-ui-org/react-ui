@@ -62,13 +62,14 @@ const MultipleSelectField = (props) => {
         ${rootValidationStateClass}
         ${rootVariantClass}
       `).trim()}
-      htmlFor={props.fieldId}
+      htmlFor={props.id}
     >
       <div
         className={(`
           ${styles.label}
           ${labelVisibilityClass}
         `).trim()}
+        id={`${props.id}__label`}
       >
         {props.label}
       </div>
@@ -76,7 +77,7 @@ const MultipleSelectField = (props) => {
         <select
           className={styles.input}
           disabled={props.disabled}
-          id={props.fieldId}
+          id={props.id}
           multiple
           onChange={props.changeHandler}
           required={props.required}
@@ -86,6 +87,7 @@ const MultipleSelectField = (props) => {
             props.options.map((option) => (
               <option
                 disabled={option.disabled}
+                id={`${props.id}__item__${option.value}`}
                 key={option.value}
                 value={option.value}
               >
@@ -99,7 +101,10 @@ const MultipleSelectField = (props) => {
         )}
       </div>
       {props.helperText && (
-        <div className={styles.helperText}>
+        <div
+          className={styles.helperText}
+          id={`${props.id}__helperText`}
+        >
           {props.helperText}
         </div>
       )}
@@ -124,9 +129,9 @@ MultipleSelectField.defaultProps = {
 MultipleSelectField.propTypes = {
   changeHandler: PropTypes.func,
   disabled: PropTypes.bool,
-  fieldId: PropTypes.string.isRequired,
   fullWidth: PropTypes.bool,
   helperText: PropTypes.string,
+  id: PropTypes.string.isRequired,
   isLabelVisible: PropTypes.bool,
   label: PropTypes.string.isRequired,
   layout: PropTypes.oneOf(['horizontal', 'vertical']),

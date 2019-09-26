@@ -63,6 +63,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
 exports[`rendering renders correctly with all props 1`] = `
 <div
   className="tableWrapper"
+  id="custom-id"
 >
   <table
     className="table"
@@ -73,6 +74,7 @@ exports[`rendering renders correctly with all props 1`] = `
       >
         <th
           className="isTableHeadCellSortingActive"
+          id="custom-id__headerCell__id"
           key="id"
         >
           <div
@@ -84,6 +86,7 @@ exports[`rendering renders correctly with all props 1`] = `
               disabled={false}
               icon="arrow_upward"
               iconPosition="before"
+              id="custom-id__headerCell__id__sortButton"
               label="asc"
               labelVisibility="none"
               loading={false}
@@ -97,6 +100,7 @@ exports[`rendering renders correctly with all props 1`] = `
         </th>
         <th
           className="tableHeadCell"
+          id="custom-id__headerCell__name"
           key="name"
         >
           <div
@@ -108,6 +112,7 @@ exports[`rendering renders correctly with all props 1`] = `
               disabled={false}
               icon="arrow_upward"
               iconPosition="before"
+              id="custom-id__headerCell__name__sortButton"
               label="asc"
               labelVisibility="none"
               loading={false}
@@ -121,6 +126,7 @@ exports[`rendering renders correctly with all props 1`] = `
         </th>
         <th
           className="tableHeadCell"
+          id="custom-id__headerCell__dateOfBirth"
           key="dateOfBirth"
         >
           Date of birth
@@ -134,18 +140,21 @@ exports[`rendering renders correctly with all props 1`] = `
       >
         <td
           className="isTableCellSortingActive"
+          id="custom-id__bodyCell__id__1"
           key="1-id"
         >
           1
         </td>
         <td
           className="tableCell"
+          id="custom-id__bodyCell__name__1"
           key="1-name"
         >
           Jan Novak
         </td>
         <td
           className="tableCell"
+          id="custom-id__bodyCell__dateOfBirth__1"
           key="1-dateOfBirth"
         >
           Thu Feb 01 2018
