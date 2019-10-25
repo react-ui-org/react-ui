@@ -25,6 +25,7 @@ export { default as NewPassword } from './components/screens/Login/NewPassword';
 
 // UI components
 export { default as Alert } from './components/ui/Alert';
+export { default as Badge } from './components/ui/Badge';
 export { default as Button } from './components/ui/Button';
 export { default as Card } from './components/ui/Card';
 export { default as CheckboxField } from './components/ui/CheckboxField';

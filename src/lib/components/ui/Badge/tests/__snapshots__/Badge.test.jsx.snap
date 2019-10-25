@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly with all props 1`] = `
+<div
+  className="root
+        outline
+        warning"
+  id="custom-id"
+>
+  3
+</div>
+`;
+
+exports[`rendering renders correctly with number label 1`] = `
+<div
+  className="root
+        
+        note"
+>
+  3
+</div>
+`;
+
+exports[`rendering renders correctly with string label 1`] = `
+<div
+  className="root
+        
+        note"
+>
+  label
+</div>
+`;

@@ -7,6 +7,7 @@ import '../../lib/foundation.scss';
 // React UI components
 import {
   Alert,
+  Badge,
   Button,
   Card,
   CheckboxField,
@@ -365,7 +366,7 @@ class DemoContainer extends React.Component {
             <h2 className="typography-size-5 mb-6">UI Components</h2>
             <h3 id="ui-components-alert" className="typography-size-4 mb-6">Alert</h3>
             <Documentation
-              name="Message types"
+              name="Alert types"
               component={(
                 <div>
                   <Alert type="success">
@@ -405,6 +406,142 @@ class DemoContainer extends React.Component {
                     </span>
                   </Alert>
                 </div>
+              )}
+            />
+            <h3 id="ui-components-badge" className="typography-size-4 mb-6">Badge</h3>
+            <Documentation
+              name="Badge types"
+              component={(
+                <>
+                  <div className="mb-3">
+                    <Badge label={1} />
+                    <Badge label="text" />
+                  </div>
+                  <div className="mb-3">
+                    <Badge label="success" type="success" />
+                    <Badge label="warning" type="warning" />
+                    <Badge label="error" type="error" />
+                    <Badge label="info" type="info" />
+                    <Badge label="help" type="help" />
+                  </div>
+                  <div className="mb-3">
+                    <Badge priority="outline" label="success" type="success" />
+                    <Badge priority="outline" label="warning" type="warning" />
+                    <Badge priority="outline" label="error" type="error" />
+                    <Badge priority="outline" label="info" type="info" />
+                    <Badge priority="outline" label="help" type="help" />
+                  </div>
+                  <div style={{
+                    backgroundColor: '#333',
+                    padding: '1rem',
+                  }}
+                  >
+                    <Badge label="light" type="light" />
+                    <Badge priority="outline" label="light" type="light" />
+                  </div>
+                </>
+              )}
+            />
+            <h3 id="ui-components-button" className="typography-size-4 mb-6">Button</h3>
+            <Documentation
+              name="Default buttons"
+              component={(
+                <>
+                  <Button clickHandler={loggerClick} label="Primary" />
+                  <Button clickHandler={loggerClick} label="Secondary" variant="secondary" />
+                  <Button clickHandler={loggerClick} label="Success" variant="success" />
+                  <Button clickHandler={loggerClick} label="Warning" variant="warning" />
+                  <Button clickHandler={loggerClick} label="Danger" variant="danger" />
+                  <Button clickHandler={loggerClick} label="Dark" variant="dark" />
+                </>
+              )}
+            />
+            <Documentation
+              name="Outline buttons"
+              component={(
+                <>
+                  <Button clickHandler={loggerClick} label="Primary " priority="outline" />
+                  <Button clickHandler={loggerClick} label="Secondary" priority="outline" variant="secondary" />
+                  <Button clickHandler={loggerClick} label="Success" priority="outline" variant="success" />
+                  <Button clickHandler={loggerClick} label="Warning" priority="outline" variant="warning" />
+                  <Button clickHandler={loggerClick} label="Danger" priority="outline" variant="danger" />
+                  <Button clickHandler={loggerClick} label="Dark" priority="outline" variant="dark" />
+                </>
+              )}
+            />
+            <Documentation
+              name="Flat buttons"
+              component={(
+                <>
+                  <Button clickHandler={loggerClick} label="Primary" priority="flat" />
+                  <Button clickHandler={loggerClick} label="Secondary" priority="flat" variant="secondary" />
+                  <Button clickHandler={loggerClick} label="Success" priority="flat" variant="success" />
+                  <Button clickHandler={loggerClick} label="Warning" priority="flat" variant="warning" />
+                  <Button clickHandler={loggerClick} label="Danger" priority="flat" variant="danger" />
+                  <Button clickHandler={loggerClick} label="Dark" priority="flat" variant="dark" />
+                </>
+              )}
+            />
+            <Documentation
+              name="Buttons sizes"
+              component={(
+                <>
+                  <Button clickHandler={loggerClick} label="Small" size="small" />
+                  <Button clickHandler={loggerClick} label="Medium" />
+                  <Button clickHandler={loggerClick} label="Large" size="large" />
+                </>
+              )}
+            />
+            <Documentation
+              name="Disabled buttons"
+              component={(
+                <>
+                  <Button clickHandler={loggerClick} label="Disabled default" disabled />
+                  <Button clickHandler={loggerClick} label="Disabled outline" priority="outline" disabled />
+                  <Button clickHandler={loggerClick} label="Disabled flat" priority="flat" disabled />
+                </>
+              )}
+            />
+            <Documentation
+              name="Buttons with icons"
+              component={(
+                <>
+                  <div className="mb-3">
+                    <Button clickHandler={loggerClick} label="Icon before label, small" icon="album" size="small" />
+                    <Button clickHandler={loggerClick} label="Icon before label" icon="radio" />
+                    <Button clickHandler={loggerClick} label="Icon after label" icon="book" iconPosition="after" />
+                  </div>
+                  <div>
+                    <Button
+                      clickHandler={loggerClick}
+                      label="Icon only"
+                      labelVisibility="none"
+                      icon="radio"
+                    />
+                    <Button
+                      clickHandler={loggerClick}
+                      label="Icon and label on desktop"
+                      labelVisibility="desktop"
+                      icon="radio"
+                    />
+                    <Button clickHandler={loggerClick} label="Icon and label, large" icon="album" size="large" />
+                  </div>
+                </>
+              )}
+            />
+            <Documentation
+              name="Block buttons"
+              component={(
+                <>
+                  <Button clickHandler={loggerClick} label="Block" block />
+                  <Button clickHandler={loggerClick} label="Block with icon" block icon="check" />
+                </>
+              )}
+            />
+            <Documentation
+              name="Loading button"
+              component={(
+                <Button clickHandler={loggerClick} label="Loading button" loading />
               )}
             />
             <h3 id="ui-components-card" className="typography-size-4 mb-6">Card</h3>
@@ -474,110 +611,6 @@ class DemoContainer extends React.Component {
                     </p>
                     <Button clickHandler={loggerClick} label="Click" variant="secondary" block disabled />
                   </Card>
-                </div>
-              )}
-            />
-            <h3 id="ui-components-button" className="typography-size-4 mb-6">Button</h3>
-            <Documentation
-              name="Default buttons"
-              component={(
-                <div>
-                  <Button clickHandler={loggerClick} label="Primary" />
-                  <Button clickHandler={loggerClick} label="Secondary" variant="secondary" />
-                  <Button clickHandler={loggerClick} label="Success" variant="success" />
-                  <Button clickHandler={loggerClick} label="Warning" variant="warning" />
-                  <Button clickHandler={loggerClick} label="Danger" variant="danger" />
-                  <Button clickHandler={loggerClick} label="Dark" variant="dark" />
-                </div>
-              )}
-            />
-            <Documentation
-              name="Outline buttons"
-              component={(
-                <div>
-                  <Button clickHandler={loggerClick} label="Primary " priority="outline" />
-                  <Button clickHandler={loggerClick} label="Secondary" priority="outline" variant="secondary" />
-                  <Button clickHandler={loggerClick} label="Success" priority="outline" variant="success" />
-                  <Button clickHandler={loggerClick} label="Warning" priority="outline" variant="warning" />
-                  <Button clickHandler={loggerClick} label="Danger" priority="outline" variant="danger" />
-                  <Button clickHandler={loggerClick} label="Dark" priority="outline" variant="dark" />
-                </div>
-              )}
-            />
-            <Documentation
-              name="Flat buttons"
-              component={(
-                <div>
-                  <Button clickHandler={loggerClick} label="Primary" priority="flat" />
-                  <Button clickHandler={loggerClick} label="Secondary" priority="flat" variant="secondary" />
-                  <Button clickHandler={loggerClick} label="Success" priority="flat" variant="success" />
-                  <Button clickHandler={loggerClick} label="Warning" priority="flat" variant="warning" />
-                  <Button clickHandler={loggerClick} label="Danger" priority="flat" variant="danger" />
-                  <Button clickHandler={loggerClick} label="Dark" priority="flat" variant="dark" />
-                </div>
-              )}
-            />
-            <Documentation
-              name="Buttons sizes"
-              component={(
-                <div>
-                  <Button clickHandler={loggerClick} label="Small" size="small" />
-                  <Button clickHandler={loggerClick} label="Medium" />
-                  <Button clickHandler={loggerClick} label="Large" size="large" />
-                </div>
-              )}
-            />
-            <Documentation
-              name="Disabled buttons"
-              component={(
-                <div>
-                  <Button clickHandler={loggerClick} label="Disabled default" disabled />
-                  <Button clickHandler={loggerClick} label="Disabled outline" priority="outline" disabled />
-                  <Button clickHandler={loggerClick} label="Disabled flat" priority="flat" disabled />
-                </div>
-              )}
-            />
-            <Documentation
-              name="Buttons with icons"
-              component={(
-                <div>
-                  <div className="mb-3">
-                    <Button clickHandler={loggerClick} label="Icon before label, small" icon="album" size="small" />
-                    <Button clickHandler={loggerClick} label="Icon before label" icon="radio" />
-                    <Button clickHandler={loggerClick} label="Icon after label" icon="book" iconPosition="after" />
-                  </div>
-                  <div>
-                    <Button
-                      clickHandler={loggerClick}
-                      label="Icon only"
-                      labelVisibility="none"
-                      icon="radio"
-                    />
-                    <Button
-                      clickHandler={loggerClick}
-                      label="Icon and label on desktop"
-                      labelVisibility="desktop"
-                      icon="radio"
-                    />
-                    <Button clickHandler={loggerClick} label="Icon and label, large" icon="album" size="large" />
-                  </div>
-                </div>
-              )}
-            />
-            <Documentation
-              name="Block buttons"
-              component={(
-                <div>
-                  <Button clickHandler={loggerClick} label="Block" block />
-                  <Button clickHandler={loggerClick} label="Block with icon" block icon="check" />
-                </div>
-              )}
-            />
-            <Documentation
-              name="Loading button"
-              component={(
-                <div>
-                  <Button clickHandler={loggerClick} label="Loading button" loading />
                 </div>
               )}
             />

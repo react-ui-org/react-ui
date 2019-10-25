@@ -1,0 +1,92 @@
+@import '../../../styles/settings/borders';
+@import '../../../styles/settings/colors';
+@import '../../../styles/settings/typography';
+@import '../../../styles/tools/offset';
+
+$_badge-size: 1.25rem;
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: $_badge-size;
+  height: $_badge-size;
+  padding-right: 0.4rem;
+  padding-left: 0.4rem;
+  overflow: hidden;
+  font-weight: map-get($typography-font-weight-values, bold);
+  font-size: $typography-size-smaller;
+  white-space: nowrap;
+  border-radius: $_badge-size / 2;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+.success {
+  color: map-get($colors-ui, on-success);
+  background-color: map-get($colors-ui, success);
+}
+
+.warning {
+  color: map-get($colors-ui, on-warning);
+  background-color: map-get($colors-ui, warning);
+}
+
+.error {
+  color: map-get($colors-ui, on-error);
+  background-color: map-get($colors-ui, error);
+}
+
+.info {
+  color: map-get($colors-ui, on-info);
+  background-color: map-get($colors-ui, info);
+}
+
+.help {
+  color: map-get($colors-ui, on-help);
+  background-color: map-get($colors-ui, help);
+}
+
+.note {
+  color: map-get($colors-ui, on-note);
+  background-color: map-get($colors-ui, note);
+}
+
+.light {
+  color: $color-black;
+  background-color: $color-white;
+  box-shadow: none;
+}
+
+.outline {
+  border: $border-width solid currentColor;
+  background: none;
+  box-shadow: none;
+}
+
+.outline.success {
+  color: map-get($colors-ui, success);
+}
+
+.outline.warning {
+  color: map-get($colors-ui, warning);
+}
+
+.outline.error {
+  color: map-get($colors-ui, error);
+}
+
+.outline.info {
+  color: map-get($colors-ui, info);
+}
+
+.outline.help {
+  color: map-get($colors-ui, help);
+}
+
+.outline.note {
+  color: map-get($colors-ui, note);
+}
+
+.outline.light {
+  color: $color-white;
+}

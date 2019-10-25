@@ -54,6 +54,10 @@ export default [
         title: 'Alert',
       },
       {
+        link: '#ui-components-badge',
+        title: 'Badge',
+      },
+      {
         link: '#ui-components-button',
         title: 'Button',
       },
