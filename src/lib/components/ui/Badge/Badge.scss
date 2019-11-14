@@ -6,17 +6,17 @@
 $_badge-size: 1.25rem;
 
 .root {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   min-width: $_badge-size;
   height: $_badge-size;
-  padding-right: 0.4rem;
-  padding-left: 0.4rem;
+  padding: 0.25rem 0.35rem;
   overflow: hidden;
   font-weight: map-get($typography-font-weight-values, bold);
   font-size: $typography-size-smaller;
+  line-height: 1;
+  text-align: center;
   white-space: nowrap;
+  vertical-align: baseline;
   border-radius: $_badge-size / 2;
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
 }
@@ -58,6 +58,8 @@ $_badge-size: 1.25rem;
 }
 
 .outline {
+  padding-top: 0.1875rem;
+  padding-bottom: 0.1875rem;
   border: $border-width solid currentColor;
   background: none;
   box-shadow: none;
