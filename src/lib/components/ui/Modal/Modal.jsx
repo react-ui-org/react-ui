@@ -67,15 +67,15 @@ class Modal extends React.Component {
               {this.props.title}
             </h3>
             {this.props.closeHandler && (
-              <Button
-                clickHandler={this.props.closeHandler}
-                icon="close"
-                labelVisibility="none"
-                label={this.props.translations.close}
-                priority="flat"
-                size="large"
+              <button
+                type="button"
+                className={styles.close}
+                onClick={this.props.closeHandler}
+                title={this.props.translations.close}
                 {...(this.props.id && { id: `${this.props.id}__closeModalHeaderButton` })}
-              />
+              >
+                ×
+              </button>
             )}
           </div>
           <div

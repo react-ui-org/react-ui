@@ -81,17 +81,20 @@ exports[`rendering renders correctly with all props 1`] = `
             className="sortButton"
           >
             <Button
+              afterLabel={null}
+              beforeLabel={null}
               block={false}
               clickHandler={[Function]}
               disabled={false}
+              endCorner={null}
               icon="arrow_upward"
-              iconPosition="before"
               id="custom-id__headerCell__id__sortButton"
               label="asc"
               labelVisibility="none"
-              loading={false}
+              loadingIcon={null}
               priority="flat"
               size="medium"
+              startCorner={null}
               type="button"
               variant="primary"
             />
@@ -107,17 +110,20 @@ exports[`rendering renders correctly with all props 1`] = `
             className="sortButton"
           >
             <Button
+              afterLabel={null}
+              beforeLabel={null}
               block={false}
               clickHandler={[Function]}
               disabled={false}
+              endCorner={null}
               icon="arrow_upward"
-              iconPosition="before"
               id="custom-id__headerCell__name__sortButton"
               label="asc"
               labelVisibility="none"
-              loading={false}
+              loadingIcon={null}
               priority="flat"
               size="medium"
+              startCorner={null}
               type="button"
               variant="primary"
             />

@@ -24,6 +24,10 @@
   @include form-field-caret();
 }
 
+.caretIcon {
+  @include form-field-caret-icon();
+}
+
 .bottomLine {
   @include form-field-bottom-line();
 }

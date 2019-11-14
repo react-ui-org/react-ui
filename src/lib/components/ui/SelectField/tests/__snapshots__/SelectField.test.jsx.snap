@@ -45,9 +45,8 @@ exports[`rendering renders correctly mandatory props only 1`] = `
     <div
       className="caret"
     >
-      <Icon
-        icon="expand_more"
-        size="medium"
+      <span
+        className="caretIcon"
       />
     </div>
   </div>
@@ -92,9 +91,8 @@ exports[`rendering renders correctly only one option 1`] = `
     <div
       className="caret"
     >
-      <Icon
-        icon="expand_more"
-        size="medium"
+      <span
+        className="caretIcon"
       />
     </div>
   </div>
@@ -149,9 +147,8 @@ exports[`rendering renders correctly with all props 1`] = `
     <div
       className="caret"
     >
-      <Icon
-        icon="expand_more"
-        size="medium"
+      <span
+        className="caretIcon"
       />
     </div>
     <div

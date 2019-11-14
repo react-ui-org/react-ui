@@ -54,64 +54,15 @@ exports[`rendering renders correctly with all props except translations 1`] = `
           >
             Modal title
           </h3>
-          <Button
-            block={false}
-            clickHandler={[Function]}
-            disabled={false}
-            icon="close"
-            iconPosition="before"
+          <button
+            className="close"
             id="custom-id__closeModalHeaderButton"
-            label="Close"
-            labelVisibility="none"
-            loading={false}
-            priority="flat"
-            size="large"
+            onClick={[Function]}
+            title="Close"
             type="button"
-            variant="primary"
           >
-            <button
-              className="root
-        priorityFlat
-        sizeLarge
-        variantPrimary
-        
-        withIconBefore
-        withLabelHidden"
-              disabled={false}
-              id="custom-id__closeModalHeaderButton"
-              onClick={[Function]}
-              title="Close"
-              type="button"
-            >
-              <span
-                className="icon"
-              >
-                <Icon
-                  icon="close"
-                  size="large"
-                >
-                  <svg
-                    className="rootSizeLarge"
-                    style={
-                      Object {
-                        "fill": "currentColor",
-                      }
-                    }
-                  >
-                    <use
-                      xlinkHref="#ic_close_48px"
-                    />
-                  </svg>
-                </Icon>
-              </span>
-              <span
-                className="label"
-                id="custom-id__closeModalHeaderButton__label"
-              >
-                Close
-              </span>
-            </button>
-          </Button>
+            ×
+          </button>
         </div>
         <div
           className="body"
@@ -123,17 +74,19 @@ exports[`rendering renders correctly with all props except translations 1`] = `
           className="footer"
         >
           <Button
+            afterLabel={null}
+            beforeLabel={null}
             block={false}
             clickHandler={[Function]}
             disabled={false}
-            icon={null}
-            iconPosition="before"
+            endCorner={null}
             key="Action"
             label="Action"
             labelVisibility="all"
-            loading={false}
+            loadingIcon={null}
             priority="default"
             size="medium"
+            startCorner={null}
             type="button"
             variant="primary"
           >
@@ -155,17 +108,19 @@ exports[`rendering renders correctly with all props except translations 1`] = `
             </button>
           </Button>
           <Button
+            afterLabel={null}
+            beforeLabel={null}
             block={false}
             clickHandler={[Function]}
             disabled={false}
-            icon={null}
-            iconPosition="before"
+            endCorner={null}
             id="custom-id__closeModalFooterButton"
             label="Close"
             labelVisibility="all"
-            loading={false}
+            loadingIcon={null}
             priority="flat"
             size="medium"
+            startCorner={null}
             type="button"
             variant="primary"
           >
@@ -283,61 +238,14 @@ exports[`rendering renders correctly with translations 1`] = `
           >
             Modal title
           </h3>
-          <Button
-            block={false}
-            clickHandler={[Function]}
-            disabled={false}
-            icon="close"
-            iconPosition="before"
-            label="Zavřít"
-            labelVisibility="none"
-            loading={false}
-            priority="flat"
-            size="large"
+          <button
+            className="close"
+            onClick={[Function]}
+            title="Zavřít"
             type="button"
-            variant="primary"
           >
-            <button
-              className="root
-        priorityFlat
-        sizeLarge
-        variantPrimary
-        
-        withIconBefore
-        withLabelHidden"
-              disabled={false}
-              onClick={[Function]}
-              title="Zavřít"
-              type="button"
-            >
-              <span
-                className="icon"
-              >
-                <Icon
-                  icon="close"
-                  size="large"
-                >
-                  <svg
-                    className="rootSizeLarge"
-                    style={
-                      Object {
-                        "fill": "currentColor",
-                      }
-                    }
-                  >
-                    <use
-                      xlinkHref="#ic_close_48px"
-                    />
-                  </svg>
-                </Icon>
-              </span>
-              <span
-                className="label"
-              >
-                Zavřít
-              </span>
-            </button>
-          </Button>
+            ×
+          </button>
         </div>
         <div
           className="body"
@@ -348,16 +256,18 @@ exports[`rendering renders correctly with translations 1`] = `
           className="footer"
         >
           <Button
+            afterLabel={null}
+            beforeLabel={null}
             block={false}
             clickHandler={[Function]}
             disabled={false}
-            icon={null}
-            iconPosition="before"
+            endCorner={null}
             label="Zavřít"
             labelVisibility="all"
-            loading={false}
+            loadingIcon={null}
             priority="flat"
             size="medium"
+            startCorner={null}
             type="button"
             variant="primary"
           >
