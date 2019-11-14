@@ -16,9 +16,13 @@
 }
 
 .message {
-  padding-left: calc(#{$alert-icon-size} + #{$alert-offset});
+  padding-left: $alert-offset;
   font-weight: $alert-message-font-weight;
   line-height: $alert-line-height;
+
+  &:not(:first-child) {
+    padding-left: calc(#{$alert-icon-size} + #{$alert-offset});
+  }
 }
 
 .message strong {

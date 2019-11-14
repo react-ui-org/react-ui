@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Icon from '../Icon';
 import styles from './Button.scss';
 
 const Button = (props) => {
@@ -36,15 +35,6 @@ const Button = (props) => {
     blockClass = styles.isRootBlock;
   }
 
-  let iconPositionClass = '';
-  if (props.icon || props.loading) {
-    if (props.iconPosition === 'after' || props.loading) {
-      iconPositionClass = styles.withIconAfter;
-    } else {
-      iconPositionClass = styles.withIconBefore;
-    }
-  }
-
   let labelVisibilityClass = '';
   if (props.labelVisibility === 'desktop') {
     labelVisibilityClass = styles.withLabelHiddenMobile;
@@ -60,23 +50,22 @@ const Button = (props) => {
         ${sizeClass}
         ${variantClass}
         ${blockClass}
-        ${iconPositionClass}
         ${labelVisibilityClass}
       `).trim()}
       id={props.id}
       onClick={props.clickHandler}
       title={props.labelVisibility === 'all' ? null : props.label}
       type={props.type}
-      disabled={props.disabled || props.loading}
+      disabled={props.disabled || !!props.loadingIcon}
     >
-      {(props.icon || props.loading) && (
-        <span
-          className={`
-            ${styles.icon}
-            ${props.loading ? styles.iconLoading : ''}
-          `.trim()}
-        >
-          <Icon icon={props.loading ? 'sync' : props.icon} size={props.size} />
+      {props.startCorner && (
+        <span className={styles.startCorner}>
+          {props.startCorner}
+        </span>
+      )}
+      {props.beforeLabel && (
+        <span className={styles.beforeLabel}>
+          {props.beforeLabel}
         </span>
       )}
       <span
@@ -85,37 +74,56 @@ const Button = (props) => {
       >
         {props.label}
       </span>
+      {props.afterLabel && (
+        <span className={styles.afterLabel}>
+          {props.afterLabel}
+        </span>
+      )}
+      {props.endCorner && (
+        <span className={styles.endCorner}>
+          {props.endCorner}
+        </span>
+      )}
+      {props.loadingIcon && (
+        <span className={styles.loadingIcon}>
+          {props.loadingIcon}
+        </span>
+      )}
     </button>
   );
 };
 
 Button.defaultProps = {
+  afterLabel: null,
+  beforeLabel: null,
   block: false,
   clickHandler: null,
   disabled: false,
-  icon: null,
-  iconPosition: 'before',
+  endCorner: null,
   id: undefined,
   labelVisibility: 'all',
-  loading: false,
+  loadingIcon: null,
   priority: 'default',
   size: 'medium',
+  startCorner: null,
   type: 'button',
   variant: 'primary',
 };
 
 Button.propTypes = {
+  afterLabel: PropTypes.element,
+  beforeLabel: PropTypes.element,
   block: PropTypes.bool,
   clickHandler: PropTypes.func,
   disabled: PropTypes.bool,
-  icon: PropTypes.string,
-  iconPosition: PropTypes.oneOf(['before', 'after']),
+  endCorner: PropTypes.element,
   id: PropTypes.string,
   label: PropTypes.string.isRequired,
   labelVisibility: PropTypes.oneOf(['all', 'desktop', 'none']),
-  loading: PropTypes.bool,
+  loadingIcon: PropTypes.element,
   priority: PropTypes.oneOf(['default', 'outline', 'flat']),
   size: PropTypes.oneOf(['small', 'medium', 'large']),
+  startCorner: PropTypes.element,
   type: PropTypes.oneOf(['button', 'submit']),
   variant: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'danger', 'dark']),
 };

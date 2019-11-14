@@ -408,6 +408,19 @@ class DemoContainer extends React.Component {
                 </div>
               )}
             />
+            <Documentation
+              name="Alert with icon"
+              component={(
+                <div>
+                  <Alert type="success" icon={<Icon icon="check_circle" />}>
+                    <span>
+                      <strong>Success: </strong>
+                      Success message
+                    </span>
+                  </Alert>
+                </div>
+              )}
+            />
             <h3 id="ui-components-badge" className="typography-size-4 mb-6">Badge</h3>
             <Documentation
               name="Badge types"
@@ -503,29 +516,82 @@ class DemoContainer extends React.Component {
               )}
             />
             <Documentation
-              name="Buttons with icons"
+              name="Buttons with Icons"
               component={(
                 <>
                   <div className="mb-3">
-                    <Button clickHandler={loggerClick} label="Icon before label, small" icon="album" size="small" />
-                    <Button clickHandler={loggerClick} label="Icon before label" icon="radio" />
-                    <Button clickHandler={loggerClick} label="Icon after label" icon="book" iconPosition="after" />
+                    <Button
+                      clickHandler={loggerClick}
+                      label="Icon before label"
+                      beforeLabel={<Icon icon="stars" />}
+                    />
+                    <Button
+                      clickHandler={loggerClick}
+                      label="Icon after label"
+                      afterLabel={<Icon icon="stars" />}
+                    />
                   </div>
                   <div>
                     <Button
                       clickHandler={loggerClick}
                       label="Icon only"
                       labelVisibility="none"
-                      icon="radio"
+                      beforeLabel={<Icon icon="stars" />}
                     />
                     <Button
                       clickHandler={loggerClick}
                       label="Icon and label on desktop"
                       labelVisibility="desktop"
-                      icon="radio"
+                      beforeLabel={<Icon icon="stars" />}
                     />
-                    <Button clickHandler={loggerClick} label="Icon and label, large" icon="album" size="large" />
                   </div>
+                </>
+              )}
+            />
+            <Documentation
+              name="Buttons with Badges"
+              component={(
+                <>
+                  <Button
+                    clickHandler={loggerClick}
+                    label="Badge before"
+                    beforeLabel={<Badge label={3} type="light" priority="outline" />}
+                  />
+                  <Button
+                    clickHandler={loggerClick}
+                    label="Badge before, on top"
+                    startCorner={<Badge label={3} />}
+                    variant="secondary"
+                  />
+                  <Button
+                    clickHandler={loggerClick}
+                    label="Badge after"
+                    afterLabel={<Badge label="new" type="warning" />}
+                    variant="primary"
+                    priority="outline"
+                  />
+                  <Button
+                    clickHandler={loggerClick}
+                    label="Badge after, on top"
+                    endCorner={<Badge label={3} />}
+                    variant="secondary"
+                    priority="outline"
+                  />
+                </>
+              )}
+            />
+            <Documentation
+              name="Button with Badge and Icon"
+              component={(
+                <>
+                  <Button
+                    clickHandler={loggerClick}
+                    label="Button with badge and icon"
+                    beforeLabel={<Icon icon="list" />}
+                    startCorner={<Badge label={3} />}
+                    variant="secondary"
+                    priority="outline"
+                  />
                 </>
               )}
             />
@@ -534,14 +600,32 @@ class DemoContainer extends React.Component {
               component={(
                 <>
                   <Button clickHandler={loggerClick} label="Block" block />
-                  <Button clickHandler={loggerClick} label="Block with icon" block icon="check" />
+                  <Button
+                    clickHandler={loggerClick}
+                    label="Block button with icon"
+                    beforeLabel={<Icon icon="stars" />}
+                    block
+                  />
                 </>
               )}
             />
             <Documentation
               name="Loading button"
               component={(
-                <Button clickHandler={loggerClick} label="Loading button" loading />
+                <>
+                  <Button
+                    clickHandler={loggerClick}
+                    label="Loading button"
+                    loadingIcon={<Icon icon="sync" />}
+                  />
+                  <Button
+                    clickHandler={loggerClick}
+                    label="Loading button with icon and badge"
+                    afterLabel={<Icon icon="stars" />}
+                    loadingIcon={<Icon icon="sync" />}
+                    startCorner={<Badge label={3} />}
+                  />
+                </>
               )}
             />
             <h3 id="ui-components-card" className="typography-size-4 mb-6">Card</h3>

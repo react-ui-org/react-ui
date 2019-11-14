@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Icon from '../Icon';
 import styles from './SelectField.scss';
 
 const SelectField = (props) => {
@@ -97,7 +96,7 @@ const SelectField = (props) => {
           }
         </select>
         <div className={styles.caret}>
-          <Icon icon="expand_more" />
+          <span className={styles.caretIcon} />
         </div>
         {props.variant === 'filled' && (
           <div className={styles.bottomLine} />

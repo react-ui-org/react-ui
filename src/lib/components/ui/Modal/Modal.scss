@@ -1,3 +1,4 @@
+@import '../../../styles/tools/offset';
 @import 'theme';
 @import 'variables';
 
@@ -21,14 +22,27 @@
 .head {
   display: flex;
   flex: none;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
-  padding: $modal-padding-y 0 $modal-padding-y $modal-padding-x;
+  padding: $modal-padding-y offset(3) $modal-padding-y $modal-padding-x;
 }
 
 .headTitle {
   margin-bottom: 0;
   font-size: $modal-head-title-font-size;
+}
+
+.close {
+  padding: offset(1) offset(2);
+  font-size: map-get($typography-size-values, 3);
+  line-height: 1;
+  color: inherit;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  appearance: none;
+  user-select: none;
+  cursor: pointer;
 }
 
 .body {

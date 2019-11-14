@@ -1,3 +1,4 @@
+@import '../../../styles/settings/colors';
 @import '../../../styles/tools/accessibility';
 @import '../../../styles/tools/breakpoints';
 @import '../../../styles/tools/forms/relationships';
@@ -14,7 +15,6 @@
   }
 }
 
-// Foundation
 .root {
   @include button();
   @include form-field-horizontal-neighbor();
@@ -24,13 +24,16 @@
   display: block;
 }
 
-.icon {
+.beforeLabel,
+.afterLabel,
+.startCorner,
+.endCorner,
+.loadingIcon {
   display: flex;
   align-items: baseline;
   justify-content: center;
 }
 
-// Sizes
 .sizeSmall {
   @include button-size(small);
 }
@@ -43,7 +46,6 @@
   @include button-size(large);
 }
 
-// Block button
 .isRootBlock {
   @include form-field-vertical-neighbor();
 
@@ -53,6 +55,68 @@
 .isRootBlock.withLabelHiddenMobile {
   @include breakpoint-up($button-breakpoint) {
     width: 100%;
+  }
+}
+
+.withLabelHidden .label,
+.withLabelHiddenMobile .label {
+  @include accessibility-hide-text();
+}
+
+.withLabelHiddenMobile .label {
+  @include breakpoint-up($button-breakpoint) {
+    position: relative;
+    width: auto;
+    height: auto;
+  }
+}
+
+.loadingIcon {
+  animation: rotateIcon 2s linear infinite;
+}
+
+.beforeLabel {
+  margin-right: $button-icon-offset;
+}
+
+.afterLabel,
+.loadingIcon {
+  margin-left: $button-icon-offset;
+}
+
+.startCorner,
+.endCorner {
+  position: absolute;
+  top: -0.35rem;
+}
+
+.startCorner {
+  left: 0;
+  margin-left: -0.35rem;
+}
+
+.endCorner {
+  right: 0;
+  margin-right: -0.35rem;
+}
+
+.withLabelHidden .beforeLabel,
+.withLabelHidden .afterLabel,
+.withLabelHiddenMobile .beforeLabel,
+.withLabelHiddenMobile .afterLabel {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.withLabelHiddenMobile .beforeLabel {
+  @include breakpoint-up($button-breakpoint) {
+    margin-right: $button-icon-offset;
+  }
+}
+
+.withLabelHiddenMobile .afterLabel {
+  @include breakpoint-up($button-breakpoint) {
+    margin-left: $button-icon-offset;
   }
 }
 
@@ -129,53 +193,4 @@
 
 .priorityFlat.variantDark {
   @include button-variant(flat, dark);
-}
-
-// Label visibility
-.withLabelHidden .label,
-.withLabelHiddenMobile .label {
-  @include accessibility-hide-text();
-}
-
-.withLabelHiddenMobile .label {
-  @include breakpoint-up($button-breakpoint) {
-    position: relative;
-    width: auto;
-    height: auto;
-  }
-}
-
-// Icon options
-.withIconAfter {
-  flex-direction: row-reverse;
-}
-
-.iconLoading {
-  animation: rotateIcon 2s linear infinite;
-}
-
-.withIconBefore .icon {
-  margin-right: $button-icon-offset;
-}
-
-.withIconAfter .icon {
-  margin-left: $button-icon-offset;
-}
-
-.withLabelHidden .icon,
-.withLabelHiddenMobile .icon {
-  margin-right: 0;
-  margin-left: 0;
-}
-
-.withLabelHiddenMobile.withIconBefore .icon {
-  @include breakpoint-up($button-breakpoint) {
-    margin-right: $button-icon-offset;
-  }
-}
-
-.withLabelHiddenMobile.withIconAfter .icon {
-  @include breakpoint-up($button-breakpoint) {
-    margin-left: $button-icon-offset;
-  }
 }

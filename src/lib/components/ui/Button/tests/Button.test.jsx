@@ -5,6 +5,8 @@ import {
 } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
+import Badge from '../../Badge';
+import Icon from '../../Icon';
 import Button from '..';
 
 jest.mock('../../Icon/load-material-design-icons');
@@ -57,7 +59,7 @@ describe('rendering', () => {
   it('renders correctly with icon', () => {
     const tree = shallow(<Button
       label="button"
-      icon="album"
+      beforeLabel={<Icon icon="album" />}
     />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
@@ -74,16 +76,18 @@ describe('rendering', () => {
 
   it('renders correctly with all props', () => {
     const tree = shallow(<Button
-      label="button"
       priority="flat"
       variant="success"
       size="large"
-      icon="album"
-      iconPosition="after"
-      id="custom-id"
+      label="button"
       labelVisibility="desktop"
+      beforeLabel={<Icon icon="list" />}
+      afterLabel={<Icon icon="stars" />}
+      startCorner={<Badge label={1} />}
+      endCorner={<Badge label={2} />}
+      loadingIcon={<Icon icon="sync" />}
+      id="custom-id"
       disabled
-      loading
       block
     />);
 

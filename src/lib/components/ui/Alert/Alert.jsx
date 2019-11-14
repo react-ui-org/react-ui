@@ -1,29 +1,21 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Icon from '../Icon';
 import styles from './Alert.scss';
-import alertTypesIcons from './alertTypesIcons';
 
 const Alert = (props) => {
   let rootTypeClass = styles.note;
-  let icon = alertTypesIcons.note;
 
   if (props.type) {
     if (props.type === 'success') {
       rootTypeClass = styles.success;
-      icon = alertTypesIcons.success;
     } else if (props.type === 'error') {
       rootTypeClass = styles.error;
-      icon = alertTypesIcons.error;
     } else if (props.type === 'warning') {
       rootTypeClass = styles.warning;
-      icon = alertTypesIcons.warning;
     } else if (props.type === 'info') {
       rootTypeClass = styles.info;
-      icon = alertTypesIcons.info;
     } else if (props.type === 'help') {
       rootTypeClass = styles.help;
-      icon = alertTypesIcons.help;
     }
   }
 
@@ -36,9 +28,11 @@ const Alert = (props) => {
       id={props.id}
       role="alert"
     >
-      <div className={styles.icon}>
-        <Icon icon={icon} />
-      </div>
+      {props.icon && (
+        <div className={styles.icon}>
+          {props.icon}
+        </div>
+      )}
       <div
         className={styles.message}
         {...(props.id && { id: `${props.id}__content` })}
@@ -50,6 +44,7 @@ const Alert = (props) => {
 };
 
 Alert.defaultProps = {
+  icon: null,
   id: undefined,
   type: 'note',
 };
@@ -59,8 +54,9 @@ Alert.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
+  icon: PropTypes.element,
   id: PropTypes.string,
-  type: PropTypes.oneOf(Object.keys(alertTypesIcons)),
+  type: PropTypes.oneOf(['error', 'help', 'info', 'note', 'success', 'warning']),
 };
 
 export default Alert;

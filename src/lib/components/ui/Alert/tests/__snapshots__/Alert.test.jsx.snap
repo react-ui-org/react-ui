@@ -7,14 +7,6 @@ exports[`rendering renders correctly mandatory props only 1`] = `
   role="alert"
 >
   <div
-    className="icon"
-  >
-    <Icon
-      icon="note"
-      size="medium"
-    />
-  </div>
-  <div
     className="message"
   >
     <div>
@@ -35,7 +27,7 @@ exports[`rendering renders correctly with all props 1`] = `
     className="icon"
   >
     <Icon
-      icon="check_circle"
+      icon="info"
       size="medium"
     />
   </div>

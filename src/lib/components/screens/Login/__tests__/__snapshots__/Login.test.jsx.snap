@@ -137,16 +137,18 @@ exports[`rendering renders correctly 1`] = `
             </TextField>
           </div>
           <Button
+            afterLabel={null}
+            beforeLabel={null}
             block={true}
             clickHandler={null}
             disabled={false}
-            icon={null}
-            iconPosition="before"
+            endCorner={null}
             label="Sign in"
             labelVisibility="all"
-            loading={false}
+            loadingIcon={null}
             priority="default"
             size="medium"
+            startCorner={null}
             type="submit"
             variant="primary"
           >
@@ -344,17 +346,19 @@ exports[`rendering renders correctly with all props except translations 1`] = `
             </TextField>
           </div>
           <Button
+            afterLabel={null}
+            beforeLabel={null}
             block={true}
             clickHandler={null}
             disabled={false}
-            icon={null}
-            iconPosition="before"
+            endCorner={null}
             id="custom-id__signInButton"
             label="Sign in"
             labelVisibility="all"
-            loading={false}
+            loadingIcon={null}
             priority="default"
             size="medium"
+            startCorner={null}
             type="submit"
             variant="primary"
           >
@@ -539,16 +543,18 @@ exports[`rendering renders correctly with translations 1`] = `
             </TextField>
           </div>
           <Button
+            afterLabel={null}
+            beforeLabel={null}
             block={true}
             clickHandler={null}
             disabled={false}
-            icon={null}
-            iconPosition="before"
+            endCorner={null}
             label="Přihlásit se"
             labelVisibility="all"
-            loading={false}
+            loadingIcon={null}
             priority="default"
             size="medium"
+            startCorner={null}
             type="submit"
             variant="primary"
           >
@@ -715,16 +721,18 @@ exports[`rendering renders correctly with username 1`] = `
             </TextField>
           </div>
           <Button
+            afterLabel={null}
+            beforeLabel={null}
             block={true}
             clickHandler={null}
             disabled={false}
-            icon={null}
-            iconPosition="before"
+            endCorner={null}
             label="Sign in"
             labelVisibility="all"
-            loading={false}
+            loadingIcon={null}
             priority="default"
             size="medium"
+            startCorner={null}
             type="submit"
             variant="primary"
           >

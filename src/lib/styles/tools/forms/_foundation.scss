@@ -89,6 +89,16 @@
   }
 }
 
+@mixin form-field-caret-icon() {
+  display: inline-block;
+  width: 0.4375rem;
+  height: 0.4375rem;
+  border-width: 2px;
+  border-style: none solid solid none;
+  border-color: currentColor;
+  transform: translateY(-0.1rem) rotate(45deg);
+}
+
 @mixin form-field-bottom-line() {
   @include transition((transform, opacity), 180ms);
 

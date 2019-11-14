@@ -1,4 +1,5 @@
-// 1. Icon buttons should be squares.
+// 1. Get ready for position of corner elements.
+// 2. Icon buttons should be squares.
 
 @import '../../../styles/tools/explode';
 @import '../../../styles/tools/forms/states';
@@ -9,10 +10,10 @@
 @mixin button() {
   @include transition((opacity, color, border, background, box-shadow));
 
+  position: relative; // 1.
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   font-weight: $button-font-weight;
   line-height: $button-line-height;
   font-family: $button-font-family;
@@ -50,7 +51,7 @@
 
   &.withLabelHidden,
   &.withLabelHiddenMobile {
-    width: map-get($properties, height); // 1.
+    width: map-get($properties, height); // 2.
     padding-right: 0;
     padding-left: 0;
   }

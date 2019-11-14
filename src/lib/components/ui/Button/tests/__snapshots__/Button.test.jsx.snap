@@ -26,7 +26,6 @@ exports[`rendering renders correctly label visibility 1`] = `
         sizeMedium
         variantPrimary
         
-        
         withLabelHidden"
   disabled={false}
   onClick={null}
@@ -124,7 +123,6 @@ exports[`rendering renders correctly with all props 1`] = `
         sizeLarge
         variantSuccess
         isRootBlock
-        withIconAfter
         withLabelHiddenMobile"
   disabled={true}
   id="custom-id"
@@ -133,12 +131,20 @@ exports[`rendering renders correctly with all props 1`] = `
   type="button"
 >
   <span
-    className="icon
-            iconLoading"
+    className="startCorner"
+  >
+    <Badge
+      label={1}
+      priority="default"
+      type="note"
+    />
+  </span>
+  <span
+    className="beforeLabel"
   >
     <Icon
-      icon="sync"
-      size="large"
+      icon="list"
+      size="medium"
     />
   </span>
   <span
@@ -146,6 +152,31 @@ exports[`rendering renders correctly with all props 1`] = `
     id="custom-id__label"
   >
     button
+  </span>
+  <span
+    className="afterLabel"
+  >
+    <Icon
+      icon="stars"
+      size="medium"
+    />
+  </span>
+  <span
+    className="endCorner"
+  >
+    <Badge
+      label={2}
+      priority="default"
+      type="note"
+    />
+  </span>
+  <span
+    className="loadingIcon"
+  >
+    <Icon
+      icon="sync"
+      size="medium"
+    />
   </span>
 </button>
 `;
@@ -155,16 +186,14 @@ exports[`rendering renders correctly with icon 1`] = `
   className="root
         priorityDefault
         sizeMedium
-        variantPrimary
-        
-        withIconBefore"
+        variantPrimary"
   disabled={false}
   onClick={null}
   title={null}
   type="button"
 >
   <span
-    className="icon"
+    className="beforeLabel"
   >
     <Icon
       icon="album"
