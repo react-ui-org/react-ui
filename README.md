@@ -13,12 +13,12 @@ React UI consists of the following building blocks:
 
 To use React UI in your app:
 
-1. Install it with `$ npm install --save react-ui`.
+1. Install it with `$ npm install --save @react-ui-org/react-ui`.
 2. First import the **theme layer** to the topmost level of your React app.
    Either use the bundled theme as is:
    ```js
    // app.jsx
-   import 'react-ui/src/lib/theme.scss';
+   import '@react-ui-org/react-ui/src/lib/theme.scss';
    ```
    or use it as a foundation to create your custom theme (see Theming for more):
    ```js
@@ -33,21 +33,21 @@ To use React UI in your app:
 3. Add React UI **foundation styles**, the ground-zero CSS for React UI components:
    ```js
    // app.jsx
-   import 'react-ui/src/lib/theme.scss';
-   import 'react-ui/src/lib/foundation.scss';
+   import '@react-ui-org/react-ui/src/lib/theme.scss';
+   import '@react-ui-org/react-ui/src/lib/foundation.scss';
    ```
 4. Optionally add the **utility classes** bundle:
    ```js
    // app.jsx
-   import 'react-ui/src/lib/theme.scss';
-   import 'react-ui/src/lib/foundation.scss';
-   import 'react-ui/src/lib/utilities.scss';
+   import '@react-ui-org/react-ui/src/lib/theme.scss';
+   import '@react-ui-org/react-ui/src/lib/foundation.scss';
+   import '@react-ui-org/react-ui/src/lib/utilities.scss';
    ```
 5. Finally, use React UI **components** just like you are used to:
    ```js
    // MyDashboardScreen.jsx
    import React from 'react';
-   import { Icon } from 'react-ui';
+   import { Icon } from '@react-ui-org/react-ui';
 
    export const MyDashboardScreen = () => (
      <Icon icon="edit" />
@@ -97,3 +97,11 @@ To run the dev server:
 
 1. Install local npm packages: `$ npm install`
 2. Run the dev server (usually on `http://localhost:8080`): `$ npm start`
+
+To publish the new version:
+
+1. Update version in `package.json` and `package-lock.json` files
+2. Commit changes: `git commit -m "Bump version vX.Y.Z"`
+3. Create new tag: `git tag -a vX.Y.Z -m "vX.Y.Z"`
+4. Push new tag: `git push --tags`
+5. Publish new version on npm: `npm publish --access public`
