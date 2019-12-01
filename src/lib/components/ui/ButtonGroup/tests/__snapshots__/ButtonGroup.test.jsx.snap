@@ -1,0 +1,178 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly mandatory props only 1`] = `
+<div
+  className="root"
+  role="group"
+>
+  <Button
+    afterLabel={null}
+    beforeLabel={null}
+    block={false}
+    clickHandler={null}
+    disabled={false}
+    endCorner={null}
+    grouped={true}
+    key=".0"
+    label="One"
+    labelVisibility="all"
+    loadingIcon={null}
+    priority="default"
+    size="medium"
+    startCorner={null}
+    type="button"
+    variant="primary"
+  />
+  <Button
+    afterLabel={null}
+    beforeLabel={null}
+    block={false}
+    clickHandler={null}
+    disabled={false}
+    endCorner={null}
+    grouped={true}
+    key=".1"
+    label="Two"
+    labelVisibility="all"
+    loadingIcon={null}
+    priority="default"
+    size="medium"
+    startCorner={null}
+    type="button"
+    variant="primary"
+  />
+</div>
+`;
+
+exports[`rendering renders correctly priority 1`] = `
+<div
+  className="root"
+  role="group"
+>
+  <Button
+    afterLabel={null}
+    beforeLabel={null}
+    block={false}
+    clickHandler={null}
+    disabled={false}
+    endCorner={null}
+    grouped={true}
+    key=".0"
+    label="One"
+    labelVisibility="all"
+    loadingIcon={null}
+    priority="outline"
+    size="medium"
+    startCorner={null}
+    type="button"
+    variant="primary"
+  />
+  <Button
+    afterLabel={null}
+    beforeLabel={null}
+    block={false}
+    clickHandler={null}
+    disabled={false}
+    endCorner={null}
+    grouped={true}
+    key=".1"
+    label="Two"
+    labelVisibility="all"
+    loadingIcon={null}
+    priority="outline"
+    size="medium"
+    startCorner={null}
+    type="button"
+    variant="primary"
+  />
+</div>
+`;
+
+exports[`rendering renders correctly size 1`] = `
+<div
+  className="root"
+  role="group"
+>
+  <Button
+    afterLabel={null}
+    beforeLabel={null}
+    block={false}
+    clickHandler={null}
+    disabled={false}
+    endCorner={null}
+    grouped={true}
+    key=".0"
+    label="One"
+    labelVisibility="all"
+    loadingIcon={null}
+    priority="default"
+    size="large"
+    startCorner={null}
+    type="button"
+    variant="primary"
+  />
+  <Button
+    afterLabel={null}
+    beforeLabel={null}
+    block={false}
+    clickHandler={null}
+    disabled={false}
+    endCorner={null}
+    grouped={true}
+    key=".1"
+    label="Two"
+    labelVisibility="all"
+    loadingIcon={null}
+    priority="default"
+    size="large"
+    startCorner={null}
+    type="button"
+    variant="primary"
+  />
+</div>
+`;
+
+exports[`rendering renders correctly with all props 1`] = `
+<div
+  className="root
+        isRootBlock"
+  role="group"
+>
+  <Button
+    afterLabel={null}
+    beforeLabel={null}
+    block={true}
+    clickHandler={null}
+    disabled={true}
+    endCorner={null}
+    grouped={true}
+    key=".0"
+    label="One"
+    labelVisibility="all"
+    loadingIcon={null}
+    priority="outline"
+    size="small"
+    startCorner={null}
+    type="button"
+    variant="primary"
+  />
+  <Button
+    afterLabel={null}
+    beforeLabel={null}
+    block={true}
+    clickHandler={null}
+    disabled={true}
+    endCorner={null}
+    grouped={true}
+    key=".1"
+    label="Two"
+    labelVisibility="all"
+    loadingIcon={null}
+    priority="outline"
+    size="small"
+    startCorner={null}
+    type="button"
+    variant="primary"
+  />
+</div>
+`;

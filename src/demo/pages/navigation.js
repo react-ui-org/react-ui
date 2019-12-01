@@ -62,6 +62,10 @@ export default [
         title: 'Button',
       },
       {
+        link: '#ui-components-button-group',
+        title: 'Button Group',
+      },
+      {
         link: '#ui-components-card',
         title: 'Card',
       },
