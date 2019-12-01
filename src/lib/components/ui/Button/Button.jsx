@@ -35,6 +35,11 @@ const Button = (props) => {
     blockClass = styles.isRootBlock;
   }
 
+  let groupedClass = '';
+  if (props.grouped) {
+    groupedClass = styles.isRootGrouped;
+  }
+
   let labelVisibilityClass = '';
   if (props.labelVisibility === 'desktop') {
     labelVisibilityClass = styles.withLabelHiddenMobile;
@@ -50,6 +55,7 @@ const Button = (props) => {
         ${sizeClass}
         ${variantClass}
         ${blockClass}
+        ${groupedClass}
         ${labelVisibilityClass}
       `).trim()}
       id={props.id}
@@ -100,6 +106,7 @@ Button.defaultProps = {
   clickHandler: null,
   disabled: false,
   endCorner: null,
+  grouped: false,
   id: undefined,
   labelVisibility: 'all',
   loadingIcon: null,
@@ -117,6 +124,7 @@ Button.propTypes = {
   clickHandler: PropTypes.func,
   disabled: PropTypes.bool,
   endCorner: PropTypes.element,
+  grouped: PropTypes.bool,
   id: PropTypes.string,
   label: PropTypes.string.isRequired,
   labelVisibility: PropTypes.oneOf(['all', 'desktop', 'none']),

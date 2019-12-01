@@ -89,6 +89,7 @@ describe('rendering', () => {
       id="custom-id"
       disabled
       block
+      grouped
     />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();

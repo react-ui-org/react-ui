@@ -9,6 +9,7 @@ import {
   Alert,
   Badge,
   Button,
+  ButtonGroup,
   Card,
   CheckboxField,
   Documentation,
@@ -626,6 +627,45 @@ class DemoContainer extends React.Component {
                     startCorner={<Badge label={3} />}
                   />
                 </>
+              )}
+            />
+            <h3 id="ui-components-button-group" className="typography-size-4 mb-6">Button Group</h3>
+            <Documentation
+              name="Button group"
+              component={(
+                <>
+                  <div className="mb-3">
+                    <ButtonGroup aria-label="Accessible group label">
+                      <Button clickHandler={loggerClick} label="One" variant="dark" />
+                      <Button clickHandler={loggerClick} label="Two" />
+                      <Button clickHandler={loggerClick} label="Three" />
+                    </ButtonGroup>
+                  </div>
+                  <div className="mb-3">
+                    <ButtonGroup aria-label="Accessible group label" priority="outline">
+                      <Button clickHandler={loggerClick} label="One" variant="dark" />
+                      <Button clickHandler={loggerClick} label="Two" />
+                      <Button clickHandler={loggerClick} label="Three" />
+                    </ButtonGroup>
+                  </div>
+                  <div>
+                    <ButtonGroup aria-label="Accessible group label" priority="flat">
+                      <Button clickHandler={loggerClick} label="One" variant="dark" />
+                      <Button clickHandler={loggerClick} label="Two" />
+                      <Button clickHandler={loggerClick} label="Three" />
+                    </ButtonGroup>
+                  </div>
+                </>
+              )}
+            />
+            <Documentation
+              name="Block button group"
+              component={(
+                <ButtonGroup aria-label="Accessible group label" block priority="outline">
+                  <Button clickHandler={loggerClick} label="One" variant="dark" />
+                  <Button clickHandler={loggerClick} label="Two" />
+                  <Button clickHandler={loggerClick} label="Three" />
+                </ButtonGroup>
               )}
             />
             <h3 id="ui-components-card" className="typography-size-4 mb-6">Card</h3>

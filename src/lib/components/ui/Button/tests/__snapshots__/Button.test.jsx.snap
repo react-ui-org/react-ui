@@ -26,6 +26,7 @@ exports[`rendering renders correctly label visibility 1`] = `
         sizeMedium
         variantPrimary
         
+        
         withLabelHidden"
   disabled={false}
   onClick={null}
@@ -123,6 +124,7 @@ exports[`rendering renders correctly with all props 1`] = `
         sizeLarge
         variantSuccess
         isRootBlock
+        isRootGrouped
         withLabelHiddenMobile"
   disabled={true}
   id="custom-id"

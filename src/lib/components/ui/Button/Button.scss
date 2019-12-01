@@ -34,43 +34,6 @@
   justify-content: center;
 }
 
-.sizeSmall {
-  @include button-size(small);
-}
-
-.sizeMedium {
-  @include button-size(medium);
-}
-
-.sizeLarge {
-  @include button-size(large);
-}
-
-.isRootBlock {
-  @include form-field-vertical-neighbor();
-
-  width: 100%;
-}
-
-.isRootBlock.withLabelHiddenMobile {
-  @include breakpoint-up($button-breakpoint) {
-    width: 100%;
-  }
-}
-
-.withLabelHidden .label,
-.withLabelHiddenMobile .label {
-  @include accessibility-hide-text();
-}
-
-.withLabelHiddenMobile .label {
-  @include breakpoint-up($button-breakpoint) {
-    position: relative;
-    width: auto;
-    height: auto;
-  }
-}
-
 .loadingIcon {
   animation: rotateIcon 2s linear infinite;
 }
@@ -98,6 +61,57 @@
 .endCorner {
   right: 0;
   margin-right: -0.35rem;
+}
+
+.sizeSmall {
+  @include button-size(small);
+}
+
+.sizeMedium {
+  @include button-size(medium);
+}
+
+.sizeLarge {
+  @include button-size(large);
+}
+
+.isRootBlock {
+  @include form-field-vertical-neighbor();
+
+  width: 100%;
+}
+
+.isRootBlock.withLabelHiddenMobile {
+  @include breakpoint-up($button-breakpoint) {
+    width: 100%;
+  }
+}
+
+.isRootGrouped {
+  &:not(:first-child) {
+    margin-left: calc(-1 * #{$button-border-width});
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  &:not(:last-child) {
+    margin-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.withLabelHidden .label,
+.withLabelHiddenMobile .label {
+  @include accessibility-hide-text();
+}
+
+.withLabelHiddenMobile .label {
+  @include breakpoint-up($button-breakpoint) {
+    position: relative;
+    width: auto;
+    height: auto;
+  }
 }
 
 .withLabelHidden .beforeLabel,
@@ -193,4 +207,19 @@
 
 .priorityFlat.variantDark {
   @include button-variant(flat, dark);
+}
+
+// Grouped buttons
+.priorityDefault.isRootGrouped:not(:first-child)::before,
+.priorityFlat.isRootGrouped:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  top: calc(-1 * #{$button-border-width});
+  bottom: calc(-1 * #{$button-border-width});
+  left: calc(-1 * #{$button-border-width});
+  border-left: $button-border-width solid $color-white;
+}
+
+.priorityFlat.isRootGrouped:not(:first-child)::before {
+  border-left-color: currentColor;
 }
