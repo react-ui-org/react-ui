@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
+import Icon from '../../Icon';
 import Modal from '..';
 
 jest.mock('../../Icon/load-material-design-icons');
@@ -26,6 +27,27 @@ describe('rendering', () => {
           {
             clickHandler: () => {},
             label: 'Action',
+          },
+        ]}
+        closeHandler={() => {}}
+        id="custom-id"
+        title="Modal title"
+      >
+        Modal content
+      </Modal>
+    ));
+
+    expect(shallowToJson(tree)).toMatchSnapshot();
+  });
+
+  it('renders correctly with all with loading icon props except translations', () => {
+    const tree = mount((
+      <Modal
+        actions={[
+          {
+            clickHandler: () => {},
+            label: 'Action',
+            loadingIcon: <Icon icon="sync" />,
           },
         ]}
         closeHandler={() => {}}

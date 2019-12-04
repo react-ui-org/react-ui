@@ -92,7 +92,7 @@ class Modal extends React.Component {
                 id={action.id || undefined}
                 key={action.label}
                 label={action.label}
-                loading={action.loading}
+                loadingIcon={action.loadingIcon}
                 variant={action.variant}
               />
             ))}
@@ -123,7 +123,7 @@ Modal.propTypes = {
     disabled: PropTypes.bool,
     id: PropTypes.string,
     label: PropTypes.string.isRequired,
-    loading: PropTypes.bool,
+    loadingIcon: PropTypes.element,
     variant: PropTypes.string,
   })),
   children: PropTypes.oneOfType([
