@@ -152,6 +152,192 @@ exports[`rendering renders correctly with all props except translations 1`] = `
 </WithTranslationContextComponent>
 `;
 
+exports[`rendering renders correctly with all with loading icon props except translations 1`] = `
+<WithTranslationContextComponent
+  actions={
+    Array [
+      Object {
+        "clickHandler": [Function],
+        "label": "Action",
+        "loadingIcon": <Icon
+          icon="sync"
+          size="medium"
+        />,
+      },
+    ]
+  }
+  closeHandler={[Function]}
+  id="custom-id"
+  title="Modal title"
+  translations={null}
+>
+  <Modal
+    actions={
+      Array [
+        Object {
+          "clickHandler": [Function],
+          "label": "Action",
+          "loadingIcon": <Icon
+            icon="sync"
+            size="medium"
+          />,
+        },
+      ]
+    }
+    closeHandler={[Function]}
+    id="custom-id"
+    title="Modal title"
+    translations={
+      Object {
+        "close": "Close",
+      }
+    }
+  >
+    <div
+      className="overlay"
+      id="custom-id"
+      onClick={[Function]}
+      onScroll={[Function]}
+      role="presentation"
+    >
+      <div
+        className="root"
+        onClick={[Function]}
+        role="presentation"
+      >
+        <div
+          className="head"
+        >
+          <h3
+            className="headTitle"
+            id="custom-id__title"
+          >
+            Modal title
+          </h3>
+          <button
+            className="close"
+            id="custom-id__closeModalHeaderButton"
+            onClick={[Function]}
+            title="Close"
+            type="button"
+          >
+            ×
+          </button>
+        </div>
+        <div
+          className="body"
+          id="custom-id__content"
+        >
+          Modal content
+        </div>
+        <div
+          className="footer"
+        >
+          <Button
+            afterLabel={null}
+            beforeLabel={null}
+            block={false}
+            clickHandler={[Function]}
+            disabled={false}
+            endCorner={null}
+            grouped={false}
+            key="Action"
+            label="Action"
+            labelVisibility="all"
+            loadingIcon={
+              <Icon
+                icon="sync"
+                size="medium"
+              />
+            }
+            priority="default"
+            size="medium"
+            startCorner={null}
+            type="button"
+            variant="primary"
+          >
+            <button
+              className="root
+        priorityDefault
+        sizeMedium
+        variantPrimary"
+              disabled={true}
+              onClick={[Function]}
+              title={null}
+              type="button"
+            >
+              <span
+                className="label"
+              >
+                Action
+              </span>
+              <span
+                className="loadingIcon"
+              >
+                <Icon
+                  icon="sync"
+                  size="medium"
+                >
+                  <svg
+                    className="root"
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                      }
+                    }
+                  >
+                    <use
+                      xlinkHref="#ic_sync_48px"
+                    />
+                  </svg>
+                </Icon>
+              </span>
+            </button>
+          </Button>
+          <Button
+            afterLabel={null}
+            beforeLabel={null}
+            block={false}
+            clickHandler={[Function]}
+            disabled={false}
+            endCorner={null}
+            grouped={false}
+            id="custom-id__closeModalFooterButton"
+            label="Close"
+            labelVisibility="all"
+            loadingIcon={null}
+            priority="flat"
+            size="medium"
+            startCorner={null}
+            type="button"
+            variant="primary"
+          >
+            <button
+              className="root
+        priorityFlat
+        sizeMedium
+        variantPrimary"
+              disabled={false}
+              id="custom-id__closeModalFooterButton"
+              onClick={[Function]}
+              title={null}
+              type="button"
+            >
+              <span
+                className="label"
+                id="custom-id__closeModalFooterButton__label"
+              >
+                Close
+              </span>
+            </button>
+          </Button>
+        </div>
+      </div>
+    </div>
+  </Modal>
+</WithTranslationContextComponent>
+`;
+
 exports[`rendering renders correctly with mandatory props only 1`] = `
 <WithTranslationContextComponent
   title="Modal title"

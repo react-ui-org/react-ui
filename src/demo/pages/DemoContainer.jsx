@@ -56,6 +56,7 @@ class DemoContainer extends React.Component {
     super(props);
     this.state = {
       showModal: false,
+      showModal2: false,
       tableSortColumn: 'id',
       tableSortDirection: 'asc',
     };
@@ -870,6 +871,35 @@ class DemoContainer extends React.Component {
                         },
                       ]}
                       closeHandler={() => this.setState({ showModal: false })}
+                      title="Modal"
+                    >
+                      <p>Dialog content</p>
+                    </Modal>
+                  )}
+                </>
+              )}
+            />
+            <Documentation
+              name="Modal label with loading icon"
+              component={(
+                <>
+                  <Button
+                    label="Open modal"
+                    clickHandler={() => this.setState({ showModal2: true })}
+                  />
+                  {this.state.showModal2 && (
+                    <Modal
+                      actions={[
+                        {
+                          clickHandler: () => {
+                            loggerClick();
+                            this.setState({ showModal2: false });
+                          },
+                          label: 'Agree',
+                          loadingIcon: <Icon icon="sync" />,
+                        },
+                      ]}
+                      closeHandler={() => this.setState({ showModal2: false })}
                       title="Modal"
                     >
                       <p>Dialog content</p>
