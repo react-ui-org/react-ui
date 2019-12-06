@@ -5,24 +5,20 @@
 }
 
 .icon {
-  position: absolute;
-  left: $alert-offset;
+  position: relative;
+  top: 1px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-self: flex-start;
   justify-content: flex-start;
-  height: 100%;
-  padding-top: calc((#{$alert-min-height} - (2 * #{$alert-border-width}) - #{$alert-icon-size}) / 2);
 }
 
 .message {
-  padding-left: $alert-offset;
+  padding-left: $alert-padding;
   font-weight: $alert-message-font-weight;
+  font-size: $alert-font-size;
   line-height: $alert-line-height;
-
-  &:not(:first-child) {
-    padding-left: calc(#{$alert-icon-size} + #{$alert-offset});
-  }
 }
 
 .message strong {
