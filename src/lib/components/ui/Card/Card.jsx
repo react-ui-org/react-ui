@@ -7,6 +7,7 @@ export const Card = (props) => {
     children,
     disabled,
     id,
+    inList,
     raised,
     type,
   } = props;
@@ -25,6 +26,11 @@ export const Card = (props) => {
     disabledClass = styles.isRootDisabled;
   }
 
+  let inListClass = '';
+  if (inList) {
+    inListClass = styles.isRootInList;
+  }
+
   let raisedClass = '';
   if (raised) {
     raisedClass = styles.isRootRaised;
@@ -36,6 +42,7 @@ export const Card = (props) => {
         ${styles.root}
         ${typeClass}
         ${disabledClass}
+        ${inListClass}
         ${raisedClass}
       `).trim()}
       id={id}
@@ -48,6 +55,7 @@ export const Card = (props) => {
 Card.defaultProps = {
   disabled: false,
   id: undefined,
+  inList: false,
   raised: false,
   type: 'flat',
 };
@@ -59,6 +67,7 @@ Card.propTypes = {
   ]).isRequired,
   disabled: PropTypes.bool,
   id: PropTypes.string,
+  inList: PropTypes.bool,
   raised: PropTypes.bool,
   type: PropTypes.oneOf(['flat', 'bordered', 'warning', 'error']),
 };

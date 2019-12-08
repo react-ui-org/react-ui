@@ -1,0 +1,16 @@
+@import '../../../styles/tools/breakpoints';
+@import '../../../styles/tools/offset';
+@import './theme';
+
+/* autoprefixer grid: off */
+.root {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-gap: $card-list-grid-gap;
+  margin-bottom: offset(4);
+
+  @include breakpoint-up(xs) {
+    grid-template-columns: repeat(auto-fit, minmax($card-list-card-min-width, $card-list-card-max-width));
+  }
+}

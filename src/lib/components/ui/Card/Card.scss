@@ -24,6 +24,10 @@
   @include card-disabled();
 }
 
+.isRootInList {
+  @include card-in-list();
+}
+
 .isRootRaised {
   @include card-raised();
 }

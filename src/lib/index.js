@@ -8,6 +8,7 @@ export { DocumentationLayoutContent } from './components/documentation/Documenta
 export { DocumentationLayoutSidebar } from './components/documentation/DocumentationLayout';
 
 // Layout components
+export { default as CardList } from './components/layout/CardList';
 export { default as LayoutCenter } from './components/layout/LayoutCenter';
 export { List } from './components/layout/List';
 export { ListItem } from './components/layout/List';
