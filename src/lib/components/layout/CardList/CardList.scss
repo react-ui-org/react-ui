@@ -12,5 +12,6 @@
 
   @include breakpoint-up(xs) {
     grid-template-columns: repeat(auto-fit, minmax($card-list-card-min-width, $card-list-card-max-width));
+    justify-content: start;
   }
 }
