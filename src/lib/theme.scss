@@ -419,8 +419,16 @@
   --rui-button-large-font-size: var(--rui-typography-size-1);
 
   //
+  // Card List
+  // =========
+
+  --rui-card-list-card-min-width: 300px;
+  --rui-card-list-card-max-width: auto;
+  --rui-card-list-grid-gap: var(--rui-offset-4);
+
+  //
   // Cards
-  // ============
+  // =====
 
   // Cards: common properties
   --rui-card-padding: var(--rui-offset-4);
@@ -442,6 +450,9 @@
 
   // Cards: raised
   --rui-card-raised-box-shadow: 0 0.01rem 0.65rem -0.1rem #{rgba(0, 0, 0, 0.3)};
+
+  // Cards: in Card List
+  --rui-card-in-list-max-width: 400px;
 
   // Cards: disabled
   --rui-card-disabled-border-color: transparent;

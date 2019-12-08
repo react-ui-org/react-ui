@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly with a single child 1`] = `
+<div
+  className="root"
+>
+  <span
+    inList={true}
+    key=".0"
+  >
+    content
+  </span>
+</div>
+`;
+
+exports[`rendering renders correctly with multiple children 1`] = `
+<div
+  className="root"
+>
+  <span
+    inList={true}
+    key=".0"
+  >
+    content 1
+  </span>
+  <span
+    inList={true}
+    key=".1"
+  >
+    content 2
+  </span>
+  <span
+    inList={true}
+    key=".2"
+  >
+    content 3
+  </span>
+</div>
+`;
+
+exports[`rendering renders correctly with no children 1`] = `""`;

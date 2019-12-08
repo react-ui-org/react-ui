@@ -39,6 +39,7 @@ exports[`rendering renders correctly raised 1`] = `
   className="root
         flat
         
+        
         isRootRaised"
 >
   <p>
@@ -52,6 +53,7 @@ exports[`rendering renders correctly with all props 1`] = `
   className="root
         warning
         isRootDisabled
+        
         isRootRaised"
   id="custom-id"
 >

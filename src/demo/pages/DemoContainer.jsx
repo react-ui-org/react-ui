@@ -11,6 +11,7 @@ import {
   Button,
   ButtonGroup,
   Card,
+  CardList,
   CheckboxField,
   Documentation,
   DocumentationLayout,
@@ -273,6 +274,22 @@ class DemoContainer extends React.Component {
           <hr />
           <section id="layout-components" className="mb-7">
             <h2 className="typography-size-5 mb-6">Layout Components</h2>
+            <h3 id="layout-components-card-list" className="typography-size-4 mb-6">Card List</h3>
+            <p>
+              Card List can be used to render <a href="#ui-components-card">Cards</a> in grid.
+            </p>
+            <Documentation
+              name="Card List"
+              component={(
+                <CardList>
+                  <DocumentationPlaceholder text="card" />
+                  <DocumentationPlaceholder text="card" />
+                  <DocumentationPlaceholder text="card" />
+                  <DocumentationPlaceholder text="card" />
+                  <DocumentationPlaceholder text="card" />
+                </CardList>
+              )}
+            />
             <h3 id="layout-components-centered-layout" className="typography-size-4 mb-6">Centered Layout</h3>
             <p>
               Centered layout takes 100 % of viewport height.
@@ -670,6 +687,9 @@ class DemoContainer extends React.Component {
               )}
             />
             <h3 id="ui-components-card" className="typography-size-4 mb-6">Card</h3>
+            <p>
+              You might want to use Cards along with <a href="#layout-components-card-list">Card List</a> layout.
+            </p>
             <Documentation
               name="Card types"
               component={(

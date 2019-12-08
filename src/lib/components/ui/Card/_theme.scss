@@ -23,6 +23,8 @@ $card-disabled: (
   border-color: var(--rui-card-disabled-border-color),
 );
 
+$card-in-list-max-width: var(--rui-card-in-list-max-width);
+
 $card-raised: (
   box-shadow: var(--rui-card-raised-box-shadow),
 );

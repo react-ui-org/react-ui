@@ -19,6 +19,10 @@
   background-color: map-get($card-disabled, background-color);
 }
 
+@mixin card-in-list() {
+  max-width: $card-in-list-max-width;
+}
+
 @mixin card-raised() {
   box-shadow: map-get($card-raised, box-shadow);
 }
