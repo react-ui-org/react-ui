@@ -3,6 +3,7 @@ import React from 'react';
 // React UI CSS theme and foundation
 import '../../lib/theme.scss';
 import '../../lib/foundation.scss';
+import '../../lib/helpers.scss';
 
 // React UI components
 import {
@@ -635,13 +636,13 @@ class DemoContainer extends React.Component {
                   <Button
                     clickHandler={loggerClick}
                     label="Loading button"
-                    loadingIcon={<Icon icon="sync" />}
+                    loadingIcon={<span className="d-inline-flex animation-spin-counterclockwise"><Icon icon="sync" /></span>}
                   />
                   <Button
                     clickHandler={loggerClick}
                     label="Loading button with icon and badge"
                     afterLabel={<Icon icon="stars" />}
-                    loadingIcon={<Icon icon="sync" />}
+                    loadingIcon={<span className="d-inline-flex animation-spin-counterclockwise"><Icon icon="sync" /></span>}
                     startCorner={<Badge label={3} />}
                   />
                 </>
@@ -2464,12 +2465,42 @@ class DemoContainer extends React.Component {
             />
           </section>
           <hr />
+          <section id="helpers" className="mb-7">
+            <h2 className="typography-size-5 mb-6">Helpers</h2>
+            <p>
+              Helpers are CSS class names for common situations.
+            </p>
+            <h3 id="helpers-animation" className="typography-size-4 mb-6">Animation</h3>
+            <p>
+              Remember that non-block inline elements cannot be animated.
+            </p>
+            <Documentation
+              name="Animation"
+              component={(
+                <>
+                  <p>
+                    <code className="mr-3">.animation-spin-clockwise</code>
+                    <span className="d-inline-flex animation-spin-clockwise">
+                      <Icon icon="sync" />
+                    </span>
+                  </p>
+                  <p>
+                    <code className="mr-3">.animation-spin-counterclockwise</code>
+                    <span className="d-inline-flex animation-spin-counterclockwise">
+                      <Icon icon="sync" />
+                    </span>
+                  </p>
+                </>
+              )}
+            />
+          </section>
+          <hr />
           <section id="utilities" className="mb-7">
             <h2 className="typography-size-5 mb-6">Utilities</h2>
             <p>
               Utilities are CSS class names that do just one thing.
             </p>
-            <h3 id="utilities-block-alignment" className="typography-size-4 mb-6">Box Alignment</h3>
+            <h3 id="utilities-box-alignment" className="typography-size-4 mb-6">Box Alignment</h3>
             <p>
               Class name notation is
               {' '}

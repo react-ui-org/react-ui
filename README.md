@@ -36,11 +36,12 @@ To use React UI in your app:
    import '@react-ui-org/react-ui/src/lib/theme.scss';
    import '@react-ui-org/react-ui/src/lib/foundation.scss';
    ```
-4. Optionally add the **utility classes** bundle:
+4. Optionally add the **helper and utility classes** bundles:
    ```js
    // app.jsx
    import '@react-ui-org/react-ui/src/lib/theme.scss';
    import '@react-ui-org/react-ui/src/lib/foundation.scss';
+   import '@react-ui-org/react-ui/src/lib/helpers.scss';
    import '@react-ui-org/react-ui/src/lib/utilities.scss';
    ```
 5. Finally, use React UI **components** just like you are used to:
