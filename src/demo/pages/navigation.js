@@ -138,6 +138,16 @@ export default [
   {
     items: [
       {
+        link: '#helpers-animation',
+        title: 'Animation',
+      },
+    ],
+    link: '#helpers',
+    title: 'Helpers',
+  },
+  {
+    items: [
+      {
         link: '#utilities-box-alignment',
         title: 'Box Alignment',
       },
