@@ -5,6 +5,7 @@ import {
   shallow,
 } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
+import Icon from '../../Icon';
 import Table from '../Table';
 
 jest.mock('../../Icon/load-material-design-icons');
@@ -51,8 +52,10 @@ describe('rendering', () => {
       id="custom-id"
       rows={rowsData}
       sort={{
+        ascendingIcon: <Icon icon="arrow_upward" />,
         changeHandler: () => {},
         column: 'id',
+        descendingIcon: <Icon icon="arrow_downward" />,
         direction: 'asc',
       }}
     />);
@@ -69,8 +72,10 @@ describe('functionality', () => {
         columns={columnsData}
         rows={rowsData}
         sort={{
+          ascendingIcon: <Icon icon="arrow_upward" />,
           changeHandler: spy,
           column: 'id',
+          descendingIcon: <Icon icon="arrow_downward" />,
           direction: 'asc',
         }}
       />

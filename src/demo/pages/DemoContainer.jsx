@@ -1619,6 +1619,7 @@ class DemoContainer extends React.Component {
                     },
                   ]}
                   sort={{
+                    ascendingIcon: <Icon icon="arrow_upward" />,
                     changeHandler: (column, direction) => {
                       this.setState({
                         tableSortColumn: column,
@@ -1626,6 +1627,7 @@ class DemoContainer extends React.Component {
                       });
                     },
                     column: this.state.tableSortColumn,
+                    descendingIcon: <Icon icon="arrow_downward" />,
                     direction: this.state.tableSortDirection,
                   }}
                 />

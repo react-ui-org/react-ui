@@ -32,7 +32,11 @@ class Table extends React.Component {
           <div className={styles.sortButton}>
             <Button
               clickHandler={() => sort.changeHandler(column.name, sortDirection)}
-              icon={sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward'}
+              beforeLabel={
+                sortDirection === 'asc'
+                  ? sort.ascendingIcon
+                  : sort.descendingIcon
+              }
               label={sortDirection}
               labelVisibility="none"
               priority="flat"
@@ -126,8 +130,10 @@ Table.propTypes = {
     ]).isRequired,
   })).isRequired,
   sort: PropTypes.shape({
+    ascendingIcon: PropTypes.element.isRequired,
     changeHandler: PropTypes.func.isRequired,
     column: PropTypes.string.isRequired,
+    descendingIcon: PropTypes.element.isRequired,
     direction: PropTypes.oneOf(['asc', 'desc']).isRequired,
   }),
 };
