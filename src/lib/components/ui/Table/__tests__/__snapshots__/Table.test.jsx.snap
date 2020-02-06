@@ -82,13 +82,17 @@ exports[`rendering renders correctly with all props 1`] = `
           >
             <Button
               afterLabel={null}
-              beforeLabel={null}
+              beforeLabel={
+                <Icon
+                  icon="arrow_upward"
+                  size="medium"
+                />
+              }
               block={false}
               clickHandler={[Function]}
               disabled={false}
               endCorner={null}
               grouped={false}
-              icon="arrow_upward"
               id="custom-id__headerCell__id__sortButton"
               label="asc"
               labelVisibility="none"
@@ -112,13 +116,17 @@ exports[`rendering renders correctly with all props 1`] = `
           >
             <Button
               afterLabel={null}
-              beforeLabel={null}
+              beforeLabel={
+                <Icon
+                  icon="arrow_upward"
+                  size="medium"
+                />
+              }
               block={false}
               clickHandler={[Function]}
               disabled={false}
               endCorner={null}
               grouped={false}
-              icon="arrow_upward"
               id="custom-id__headerCell__name__sortButton"
               label="asc"
               labelVisibility="none"
