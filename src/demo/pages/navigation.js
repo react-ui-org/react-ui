@@ -47,6 +47,10 @@ export default [
         link: '#layout-components-row',
         title: 'Row',
       },
+      {
+        link: '#layout-components-toolbar',
+        title: 'Toolbar',
+      },
     ],
     link: '#layout-components',
     title: 'Layout Components',

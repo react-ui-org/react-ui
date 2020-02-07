@@ -42,6 +42,9 @@ import {
   TextField,
   TextArea,
   Toggle,
+  Toolbar,
+  ToolbarItem,
+  ToolbarSpacer,
 } from '../../lib';
 
 // React UI utility CSS classes
@@ -378,6 +381,31 @@ class DemoContainer extends React.Component {
                     <DocumentationPlaceholder text="right part" />
                   </RowRight>
                 </Row>
+              )}
+            />
+            <h3 id="layout-components-toolbar" className="typography-size-4 mb-6">Toolbar</h3>
+            <Documentation
+              name="Default layout"
+              component={(
+                <Toolbar>
+                  <ToolbarItem>
+                    <DocumentationPlaceholder text="item" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <DocumentationPlaceholder text="item" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <DocumentationPlaceholder text="item" />
+                  </ToolbarItem>
+                  <ToolbarSpacer />
+                  <ToolbarItem>
+                    <DocumentationPlaceholder text="item" />
+                  </ToolbarItem>
+                  <ToolbarSpacer />
+                  <ToolbarItem>
+                    <DocumentationPlaceholder text="item" />
+                  </ToolbarItem>
+                </Toolbar>
               )}
             />
           </section>

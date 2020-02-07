@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly with a single child 1`] = `
+<div
+  className="toolbar"
+>
+  <span>
+    content
+  </span>
+</div>
+`;
+
+exports[`rendering renders correctly with multiple children 1`] = `
+<div
+  className="toolbar"
+>
+  <span>
+    content 1
+  </span>
+  <span>
+    content 2
+  </span>
+  <span>
+    content 3
+  </span>
+</div>
+`;
