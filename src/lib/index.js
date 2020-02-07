@@ -18,6 +18,9 @@ export { MediaObject } from './components/layout/Media';
 export { Row } from './components/layout/Row';
 export { RowLeft } from './components/layout/Row';
 export { RowRight } from './components/layout/Row';
+export { Toolbar } from './components/layout/Toolbar';
+export { ToolbarItem } from './components/layout/Toolbar';
+export { ToolbarSpacer } from './components/layout/Toolbar';
 
 // Screens
 export { default as ForgotPassword } from './components/screens/Login/ForgotPassword';

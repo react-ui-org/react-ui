@@ -1,0 +1,18 @@
+@import '../../../styles/tools/offset';
+@import 'theme';
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin: calc(-1 * #{$toolbar-spacing});
+}
+
+.item {
+  flex: none;
+  margin: $toolbar-spacing;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
