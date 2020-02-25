@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import withForwardedRef from '../withForwardedRef';
 import styles from './MultipleSelectField.scss';
 
-const MultipleSelectField = (props) => {
+export const MultipleSelectField = (props) => {
   let labelVisibilityClass = '';
   let rootFullWidthClass = '';
   let rootLayoutClass = '';
@@ -80,6 +81,7 @@ const MultipleSelectField = (props) => {
           id={props.id}
           multiple
           onChange={props.changeHandler}
+          ref={props.forwardedRef}
           required={props.required}
           value={props.value}
         >
@@ -115,6 +117,7 @@ const MultipleSelectField = (props) => {
 MultipleSelectField.defaultProps = {
   changeHandler: null,
   disabled: false,
+  forwardedRef: undefined,
   fullWidth: false,
   helperText: null,
   isLabelVisible: true,
@@ -129,6 +132,7 @@ MultipleSelectField.defaultProps = {
 MultipleSelectField.propTypes = {
   changeHandler: PropTypes.func,
   disabled: PropTypes.bool,
+  forwardedRef: PropTypes.func,
   fullWidth: PropTypes.bool,
   helperText: PropTypes.string,
   id: PropTypes.string.isRequired,
@@ -153,4 +157,4 @@ MultipleSelectField.propTypes = {
   variant: PropTypes.oneOf(['filled', 'outline']),
 };
 
-export default MultipleSelectField;
+export default withForwardedRef(MultipleSelectField);

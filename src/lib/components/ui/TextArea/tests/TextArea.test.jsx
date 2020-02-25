@@ -5,7 +5,7 @@ import {
 } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
-import TextArea from '..';
+import { TextArea } from '../TextArea';
 
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {

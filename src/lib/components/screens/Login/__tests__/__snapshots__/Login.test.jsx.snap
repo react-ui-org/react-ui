@@ -33,144 +33,173 @@ exports[`rendering renders correctly 1`] = `
           <div
             className="mb-3"
           >
-            <TextField
+            <ForwardRef(withForwardedRef(TextField))
               autoComplete="username"
               changeHandler={[Function]}
-              disabled={false}
               fullWidth={true}
-              helperText={null}
               id="usernameInput"
-              inputSize={null}
-              isLabelVisible={true}
               label="E-mail"
-              layout="vertical"
-              placeholder={null}
               required={true}
-              size="medium"
               type="email"
-              validationState={null}
-              variant="outline"
             >
-              <label
-                className="root
+              <TextField
+                autoComplete="username"
+                changeHandler={[Function]}
+                disabled={false}
+                forwardedRef={null}
+                fullWidth={true}
+                helperText={null}
+                id="usernameInput"
+                inputSize={null}
+                isLabelVisible={true}
+                label="E-mail"
+                layout="vertical"
+                placeholder={null}
+                required={true}
+                size="medium"
+                type="email"
+                validationState={null}
+                variant="outline"
+              >
+                <label
+                  className="root
         isRootFullWidth
         rootLayoutVertical
         isRootRequired
         rootSizeMedium
         
         rootVariantOutline"
-                htmlFor="usernameInput"
-              >
-                <div
-                  className="label"
-                  id="usernameInput__label"
+                  htmlFor="usernameInput"
                 >
-                  E-mail
-                </div>
-                <div
-                  className="inputContainer"
-                >
-                  <input
-                    autoComplete="username"
-                    className="input"
-                    disabled={false}
-                    id="usernameInput"
-                    onChange={[Function]}
-                    placeholder={null}
-                    required={true}
-                    size={null}
-                    type="email"
-                  />
-                </div>
-              </label>
-            </TextField>
-            <TextField
+                  <div
+                    className="label"
+                    id="usernameInput__label"
+                  >
+                    E-mail
+                  </div>
+                  <div
+                    className="inputContainer"
+                  >
+                    <input
+                      autoComplete="username"
+                      className="input"
+                      disabled={false}
+                      id="usernameInput"
+                      onChange={[Function]}
+                      placeholder={null}
+                      required={true}
+                      size={null}
+                      type="email"
+                    />
+                  </div>
+                </label>
+              </TextField>
+            </ForwardRef(withForwardedRef(TextField))>
+            <ForwardRef(withForwardedRef(TextField))
               autoComplete="current-password"
               changeHandler={[Function]}
-              disabled={false}
               fullWidth={true}
-              helperText={null}
               id="passwordInput"
-              inputSize={null}
-              isLabelVisible={true}
               label="Password"
-              layout="vertical"
-              placeholder={null}
               required={true}
-              size="medium"
               type="password"
-              validationState={null}
-              variant="outline"
             >
-              <label
-                className="root
+              <TextField
+                autoComplete="current-password"
+                changeHandler={[Function]}
+                disabled={false}
+                forwardedRef={null}
+                fullWidth={true}
+                helperText={null}
+                id="passwordInput"
+                inputSize={null}
+                isLabelVisible={true}
+                label="Password"
+                layout="vertical"
+                placeholder={null}
+                required={true}
+                size="medium"
+                type="password"
+                validationState={null}
+                variant="outline"
+              >
+                <label
+                  className="root
         isRootFullWidth
         rootLayoutVertical
         isRootRequired
         rootSizeMedium
         
         rootVariantOutline"
-                htmlFor="passwordInput"
-              >
-                <div
-                  className="label"
-                  id="passwordInput__label"
+                  htmlFor="passwordInput"
                 >
-                  Password
-                </div>
-                <div
-                  className="inputContainer"
-                >
-                  <input
-                    autoComplete="current-password"
-                    className="input"
-                    disabled={false}
-                    id="passwordInput"
-                    onChange={[Function]}
-                    placeholder={null}
-                    required={true}
-                    size={null}
-                    type="password"
-                  />
-                </div>
-              </label>
-            </TextField>
+                  <div
+                    className="label"
+                    id="passwordInput__label"
+                  >
+                    Password
+                  </div>
+                  <div
+                    className="inputContainer"
+                  >
+                    <input
+                      autoComplete="current-password"
+                      className="input"
+                      disabled={false}
+                      id="passwordInput"
+                      onChange={[Function]}
+                      placeholder={null}
+                      required={true}
+                      size={null}
+                      type="password"
+                    />
+                  </div>
+                </label>
+              </TextField>
+            </ForwardRef(withForwardedRef(TextField))>
           </div>
-          <Button
-            afterLabel={null}
-            beforeLabel={null}
+          <ForwardRef(withForwardedRef(Button))
             block={true}
-            clickHandler={null}
-            disabled={false}
-            endCorner={null}
-            grouped={false}
             label="Sign in"
-            labelVisibility="all"
-            loadingIcon={null}
-            priority="default"
-            size="medium"
-            startCorner={null}
             type="submit"
-            variant="primary"
           >
-            <button
-              className="root
+            <Button
+              afterLabel={null}
+              beforeLabel={null}
+              block={true}
+              clickHandler={null}
+              disabled={false}
+              endCorner={null}
+              forwardedRef={null}
+              grouped={false}
+              label="Sign in"
+              labelVisibility="all"
+              loadingIcon={null}
+              priority="default"
+              size="medium"
+              startCorner={null}
+              type="submit"
+              variant="primary"
+            >
+              <button
+                className="root
         priorityDefault
         sizeMedium
         variantPrimary
         isRootBlock"
-              disabled={false}
-              onClick={null}
-              title={null}
-              type="submit"
-            >
-              <span
-                className="label"
+                disabled={false}
+                onClick={null}
+                title={null}
+                type="submit"
               >
-                Sign in
-              </span>
-            </button>
-          </Button>
+                <span
+                  className="label"
+                >
+                  Sign in
+                </span>
+              </button>
+            </Button>
+          </ForwardRef(withForwardedRef(Button))>
         </form>
       </div>
     </div>
@@ -243,147 +272,177 @@ exports[`rendering renders correctly with all props except translations 1`] = `
           <div
             className="mb-3"
           >
-            <TextField
+            <ForwardRef(withForwardedRef(TextField))
               autoComplete="username"
               changeHandler={[Function]}
-              disabled={false}
               fullWidth={true}
-              helperText={null}
               id="custom-id__usernameInput"
-              inputSize={null}
-              isLabelVisible={true}
               label="E-mail"
-              layout="vertical"
-              placeholder={null}
               required={true}
-              size="medium"
               type="email"
-              validationState={null}
-              variant="outline"
             >
-              <label
-                className="root
+              <TextField
+                autoComplete="username"
+                changeHandler={[Function]}
+                disabled={false}
+                forwardedRef={null}
+                fullWidth={true}
+                helperText={null}
+                id="custom-id__usernameInput"
+                inputSize={null}
+                isLabelVisible={true}
+                label="E-mail"
+                layout="vertical"
+                placeholder={null}
+                required={true}
+                size="medium"
+                type="email"
+                validationState={null}
+                variant="outline"
+              >
+                <label
+                  className="root
         isRootFullWidth
         rootLayoutVertical
         isRootRequired
         rootSizeMedium
         
         rootVariantOutline"
-                htmlFor="custom-id__usernameInput"
-              >
-                <div
-                  className="label"
-                  id="custom-id__usernameInput__label"
+                  htmlFor="custom-id__usernameInput"
                 >
-                  E-mail
-                </div>
-                <div
-                  className="inputContainer"
-                >
-                  <input
-                    autoComplete="username"
-                    className="input"
-                    disabled={false}
-                    id="custom-id__usernameInput"
-                    onChange={[Function]}
-                    placeholder={null}
-                    required={true}
-                    size={null}
-                    type="email"
-                  />
-                </div>
-              </label>
-            </TextField>
-            <TextField
+                  <div
+                    className="label"
+                    id="custom-id__usernameInput__label"
+                  >
+                    E-mail
+                  </div>
+                  <div
+                    className="inputContainer"
+                  >
+                    <input
+                      autoComplete="username"
+                      className="input"
+                      disabled={false}
+                      id="custom-id__usernameInput"
+                      onChange={[Function]}
+                      placeholder={null}
+                      required={true}
+                      size={null}
+                      type="email"
+                    />
+                  </div>
+                </label>
+              </TextField>
+            </ForwardRef(withForwardedRef(TextField))>
+            <ForwardRef(withForwardedRef(TextField))
               autoComplete="current-password"
               changeHandler={[Function]}
-              disabled={false}
               fullWidth={true}
-              helperText={null}
               id="custom-id__passwordInput"
-              inputSize={null}
-              isLabelVisible={true}
               label="Password"
-              layout="vertical"
-              placeholder={null}
               required={true}
-              size="medium"
               type="password"
-              validationState={null}
-              variant="outline"
             >
-              <label
-                className="root
+              <TextField
+                autoComplete="current-password"
+                changeHandler={[Function]}
+                disabled={false}
+                forwardedRef={null}
+                fullWidth={true}
+                helperText={null}
+                id="custom-id__passwordInput"
+                inputSize={null}
+                isLabelVisible={true}
+                label="Password"
+                layout="vertical"
+                placeholder={null}
+                required={true}
+                size="medium"
+                type="password"
+                validationState={null}
+                variant="outline"
+              >
+                <label
+                  className="root
         isRootFullWidth
         rootLayoutVertical
         isRootRequired
         rootSizeMedium
         
         rootVariantOutline"
-                htmlFor="custom-id__passwordInput"
-              >
-                <div
-                  className="label"
-                  id="custom-id__passwordInput__label"
+                  htmlFor="custom-id__passwordInput"
                 >
-                  Password
-                </div>
-                <div
-                  className="inputContainer"
-                >
-                  <input
-                    autoComplete="current-password"
-                    className="input"
-                    disabled={false}
-                    id="custom-id__passwordInput"
-                    onChange={[Function]}
-                    placeholder={null}
-                    required={true}
-                    size={null}
-                    type="password"
-                  />
-                </div>
-              </label>
-            </TextField>
+                  <div
+                    className="label"
+                    id="custom-id__passwordInput__label"
+                  >
+                    Password
+                  </div>
+                  <div
+                    className="inputContainer"
+                  >
+                    <input
+                      autoComplete="current-password"
+                      className="input"
+                      disabled={false}
+                      id="custom-id__passwordInput"
+                      onChange={[Function]}
+                      placeholder={null}
+                      required={true}
+                      size={null}
+                      type="password"
+                    />
+                  </div>
+                </label>
+              </TextField>
+            </ForwardRef(withForwardedRef(TextField))>
           </div>
-          <Button
-            afterLabel={null}
-            beforeLabel={null}
+          <ForwardRef(withForwardedRef(Button))
             block={true}
-            clickHandler={null}
-            disabled={false}
-            endCorner={null}
-            grouped={false}
             id="custom-id__signInButton"
             label="Sign in"
-            labelVisibility="all"
-            loadingIcon={null}
-            priority="default"
-            size="medium"
-            startCorner={null}
             type="submit"
-            variant="primary"
           >
-            <button
-              className="root
+            <Button
+              afterLabel={null}
+              beforeLabel={null}
+              block={true}
+              clickHandler={null}
+              disabled={false}
+              endCorner={null}
+              forwardedRef={null}
+              grouped={false}
+              id="custom-id__signInButton"
+              label="Sign in"
+              labelVisibility="all"
+              loadingIcon={null}
+              priority="default"
+              size="medium"
+              startCorner={null}
+              type="submit"
+              variant="primary"
+            >
+              <button
+                className="root
         priorityDefault
         sizeMedium
         variantPrimary
         isRootBlock"
-              disabled={false}
-              id="custom-id__signInButton"
-              onClick={null}
-              title={null}
-              type="submit"
-            >
-              <span
-                className="label"
-                id="custom-id__signInButton__label"
+                disabled={false}
+                id="custom-id__signInButton"
+                onClick={null}
+                title={null}
+                type="submit"
               >
-                Sign in
-              </span>
-            </button>
-          </Button>
+                <span
+                  className="label"
+                  id="custom-id__signInButton__label"
+                >
+                  Sign in
+                </span>
+              </button>
+            </Button>
+          </ForwardRef(withForwardedRef(Button))>
         </form>
         <div
           className="footer"
@@ -441,144 +500,173 @@ exports[`rendering renders correctly with translations 1`] = `
           <div
             className="mb-3"
           >
-            <TextField
+            <ForwardRef(withForwardedRef(TextField))
               autoComplete="username"
               changeHandler={[Function]}
-              disabled={false}
               fullWidth={true}
-              helperText={null}
               id="usernameInput"
-              inputSize={null}
-              isLabelVisible={true}
               label="E-mail"
-              layout="vertical"
-              placeholder={null}
               required={true}
-              size="medium"
               type="email"
-              validationState={null}
-              variant="outline"
             >
-              <label
-                className="root
+              <TextField
+                autoComplete="username"
+                changeHandler={[Function]}
+                disabled={false}
+                forwardedRef={null}
+                fullWidth={true}
+                helperText={null}
+                id="usernameInput"
+                inputSize={null}
+                isLabelVisible={true}
+                label="E-mail"
+                layout="vertical"
+                placeholder={null}
+                required={true}
+                size="medium"
+                type="email"
+                validationState={null}
+                variant="outline"
+              >
+                <label
+                  className="root
         isRootFullWidth
         rootLayoutVertical
         isRootRequired
         rootSizeMedium
         
         rootVariantOutline"
-                htmlFor="usernameInput"
-              >
-                <div
-                  className="label"
-                  id="usernameInput__label"
+                  htmlFor="usernameInput"
                 >
-                  E-mail
-                </div>
-                <div
-                  className="inputContainer"
-                >
-                  <input
-                    autoComplete="username"
-                    className="input"
-                    disabled={false}
-                    id="usernameInput"
-                    onChange={[Function]}
-                    placeholder={null}
-                    required={true}
-                    size={null}
-                    type="email"
-                  />
-                </div>
-              </label>
-            </TextField>
-            <TextField
+                  <div
+                    className="label"
+                    id="usernameInput__label"
+                  >
+                    E-mail
+                  </div>
+                  <div
+                    className="inputContainer"
+                  >
+                    <input
+                      autoComplete="username"
+                      className="input"
+                      disabled={false}
+                      id="usernameInput"
+                      onChange={[Function]}
+                      placeholder={null}
+                      required={true}
+                      size={null}
+                      type="email"
+                    />
+                  </div>
+                </label>
+              </TextField>
+            </ForwardRef(withForwardedRef(TextField))>
+            <ForwardRef(withForwardedRef(TextField))
               autoComplete="current-password"
               changeHandler={[Function]}
-              disabled={false}
               fullWidth={true}
-              helperText={null}
               id="passwordInput"
-              inputSize={null}
-              isLabelVisible={true}
               label="Heslo"
-              layout="vertical"
-              placeholder={null}
               required={true}
-              size="medium"
               type="password"
-              validationState={null}
-              variant="outline"
             >
-              <label
-                className="root
+              <TextField
+                autoComplete="current-password"
+                changeHandler={[Function]}
+                disabled={false}
+                forwardedRef={null}
+                fullWidth={true}
+                helperText={null}
+                id="passwordInput"
+                inputSize={null}
+                isLabelVisible={true}
+                label="Heslo"
+                layout="vertical"
+                placeholder={null}
+                required={true}
+                size="medium"
+                type="password"
+                validationState={null}
+                variant="outline"
+              >
+                <label
+                  className="root
         isRootFullWidth
         rootLayoutVertical
         isRootRequired
         rootSizeMedium
         
         rootVariantOutline"
-                htmlFor="passwordInput"
-              >
-                <div
-                  className="label"
-                  id="passwordInput__label"
+                  htmlFor="passwordInput"
                 >
-                  Heslo
-                </div>
-                <div
-                  className="inputContainer"
-                >
-                  <input
-                    autoComplete="current-password"
-                    className="input"
-                    disabled={false}
-                    id="passwordInput"
-                    onChange={[Function]}
-                    placeholder={null}
-                    required={true}
-                    size={null}
-                    type="password"
-                  />
-                </div>
-              </label>
-            </TextField>
+                  <div
+                    className="label"
+                    id="passwordInput__label"
+                  >
+                    Heslo
+                  </div>
+                  <div
+                    className="inputContainer"
+                  >
+                    <input
+                      autoComplete="current-password"
+                      className="input"
+                      disabled={false}
+                      id="passwordInput"
+                      onChange={[Function]}
+                      placeholder={null}
+                      required={true}
+                      size={null}
+                      type="password"
+                    />
+                  </div>
+                </label>
+              </TextField>
+            </ForwardRef(withForwardedRef(TextField))>
           </div>
-          <Button
-            afterLabel={null}
-            beforeLabel={null}
+          <ForwardRef(withForwardedRef(Button))
             block={true}
-            clickHandler={null}
-            disabled={false}
-            endCorner={null}
-            grouped={false}
             label="Přihlásit se"
-            labelVisibility="all"
-            loadingIcon={null}
-            priority="default"
-            size="medium"
-            startCorner={null}
             type="submit"
-            variant="primary"
           >
-            <button
-              className="root
+            <Button
+              afterLabel={null}
+              beforeLabel={null}
+              block={true}
+              clickHandler={null}
+              disabled={false}
+              endCorner={null}
+              forwardedRef={null}
+              grouped={false}
+              label="Přihlásit se"
+              labelVisibility="all"
+              loadingIcon={null}
+              priority="default"
+              size="medium"
+              startCorner={null}
+              type="submit"
+              variant="primary"
+            >
+              <button
+                className="root
         priorityDefault
         sizeMedium
         variantPrimary
         isRootBlock"
-              disabled={false}
-              onClick={null}
-              title={null}
-              type="submit"
-            >
-              <span
-                className="label"
+                disabled={false}
+                onClick={null}
+                title={null}
+                type="submit"
               >
-                Přihlásit se
-              </span>
-            </button>
-          </Button>
+                <span
+                  className="label"
+                >
+                  Přihlásit se
+                </span>
+              </button>
+            </Button>
+          </ForwardRef(withForwardedRef(Button))>
         </form>
       </div>
     </div>
@@ -620,144 +708,173 @@ exports[`rendering renders correctly with username 1`] = `
           <div
             className="mb-3"
           >
-            <TextField
+            <ForwardRef(withForwardedRef(TextField))
               autoComplete="username"
               changeHandler={[Function]}
-              disabled={false}
               fullWidth={true}
-              helperText={null}
               id="usernameInput"
-              inputSize={null}
-              isLabelVisible={true}
               label="Username"
-              layout="vertical"
-              placeholder={null}
               required={true}
-              size="medium"
               type="text"
-              validationState={null}
-              variant="outline"
             >
-              <label
-                className="root
+              <TextField
+                autoComplete="username"
+                changeHandler={[Function]}
+                disabled={false}
+                forwardedRef={null}
+                fullWidth={true}
+                helperText={null}
+                id="usernameInput"
+                inputSize={null}
+                isLabelVisible={true}
+                label="Username"
+                layout="vertical"
+                placeholder={null}
+                required={true}
+                size="medium"
+                type="text"
+                validationState={null}
+                variant="outline"
+              >
+                <label
+                  className="root
         isRootFullWidth
         rootLayoutVertical
         isRootRequired
         rootSizeMedium
         
         rootVariantOutline"
-                htmlFor="usernameInput"
-              >
-                <div
-                  className="label"
-                  id="usernameInput__label"
+                  htmlFor="usernameInput"
                 >
-                  Username
-                </div>
-                <div
-                  className="inputContainer"
-                >
-                  <input
-                    autoComplete="username"
-                    className="input"
-                    disabled={false}
-                    id="usernameInput"
-                    onChange={[Function]}
-                    placeholder={null}
-                    required={true}
-                    size={null}
-                    type="text"
-                  />
-                </div>
-              </label>
-            </TextField>
-            <TextField
+                  <div
+                    className="label"
+                    id="usernameInput__label"
+                  >
+                    Username
+                  </div>
+                  <div
+                    className="inputContainer"
+                  >
+                    <input
+                      autoComplete="username"
+                      className="input"
+                      disabled={false}
+                      id="usernameInput"
+                      onChange={[Function]}
+                      placeholder={null}
+                      required={true}
+                      size={null}
+                      type="text"
+                    />
+                  </div>
+                </label>
+              </TextField>
+            </ForwardRef(withForwardedRef(TextField))>
+            <ForwardRef(withForwardedRef(TextField))
               autoComplete="current-password"
               changeHandler={[Function]}
-              disabled={false}
               fullWidth={true}
-              helperText={null}
               id="passwordInput"
-              inputSize={null}
-              isLabelVisible={true}
               label="Password"
-              layout="vertical"
-              placeholder={null}
               required={true}
-              size="medium"
               type="password"
-              validationState={null}
-              variant="outline"
             >
-              <label
-                className="root
+              <TextField
+                autoComplete="current-password"
+                changeHandler={[Function]}
+                disabled={false}
+                forwardedRef={null}
+                fullWidth={true}
+                helperText={null}
+                id="passwordInput"
+                inputSize={null}
+                isLabelVisible={true}
+                label="Password"
+                layout="vertical"
+                placeholder={null}
+                required={true}
+                size="medium"
+                type="password"
+                validationState={null}
+                variant="outline"
+              >
+                <label
+                  className="root
         isRootFullWidth
         rootLayoutVertical
         isRootRequired
         rootSizeMedium
         
         rootVariantOutline"
-                htmlFor="passwordInput"
-              >
-                <div
-                  className="label"
-                  id="passwordInput__label"
+                  htmlFor="passwordInput"
                 >
-                  Password
-                </div>
-                <div
-                  className="inputContainer"
-                >
-                  <input
-                    autoComplete="current-password"
-                    className="input"
-                    disabled={false}
-                    id="passwordInput"
-                    onChange={[Function]}
-                    placeholder={null}
-                    required={true}
-                    size={null}
-                    type="password"
-                  />
-                </div>
-              </label>
-            </TextField>
+                  <div
+                    className="label"
+                    id="passwordInput__label"
+                  >
+                    Password
+                  </div>
+                  <div
+                    className="inputContainer"
+                  >
+                    <input
+                      autoComplete="current-password"
+                      className="input"
+                      disabled={false}
+                      id="passwordInput"
+                      onChange={[Function]}
+                      placeholder={null}
+                      required={true}
+                      size={null}
+                      type="password"
+                    />
+                  </div>
+                </label>
+              </TextField>
+            </ForwardRef(withForwardedRef(TextField))>
           </div>
-          <Button
-            afterLabel={null}
-            beforeLabel={null}
+          <ForwardRef(withForwardedRef(Button))
             block={true}
-            clickHandler={null}
-            disabled={false}
-            endCorner={null}
-            grouped={false}
             label="Sign in"
-            labelVisibility="all"
-            loadingIcon={null}
-            priority="default"
-            size="medium"
-            startCorner={null}
             type="submit"
-            variant="primary"
           >
-            <button
-              className="root
+            <Button
+              afterLabel={null}
+              beforeLabel={null}
+              block={true}
+              clickHandler={null}
+              disabled={false}
+              endCorner={null}
+              forwardedRef={null}
+              grouped={false}
+              label="Sign in"
+              labelVisibility="all"
+              loadingIcon={null}
+              priority="default"
+              size="medium"
+              startCorner={null}
+              type="submit"
+              variant="primary"
+            >
+              <button
+                className="root
         priorityDefault
         sizeMedium
         variantPrimary
         isRootBlock"
-              disabled={false}
-              onClick={null}
-              title={null}
-              type="submit"
-            >
-              <span
-                className="label"
+                disabled={false}
+                onClick={null}
+                title={null}
+                type="submit"
               >
-                Sign in
-              </span>
-            </button>
-          </Button>
+                <span
+                  className="label"
+                >
+                  Sign in
+                </span>
+              </button>
+            </Button>
+          </ForwardRef(withForwardedRef(Button))>
         </form>
       </div>
     </div>

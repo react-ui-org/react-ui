@@ -7,7 +7,7 @@ import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
 import Badge from '../../Badge';
 import Icon from '../../Icon';
-import Button from '..';
+import { Button } from '../Button';
 
 jest.mock('../../Icon/load-material-design-icons');
 

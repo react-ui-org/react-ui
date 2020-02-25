@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import withForwardedRef from '../withForwardedRef';
 import styles from './TextField.scss';
 
-const TextField = (props) => {
+export const TextField = (props) => {
   let labelVisibilityClass = '';
   let rootFullWidthClass = '';
   let rootLayoutClass = '';
@@ -82,6 +83,7 @@ const TextField = (props) => {
           id={props.id}
           onChange={props.changeHandler}
           placeholder={props.placeholder}
+          ref={props.forwardedRef}
           required={props.required}
           size={props.type !== 'number' ? props.inputSize : null}
           type={props.type}
@@ -108,6 +110,7 @@ TextField.defaultProps = {
   autoComplete: undefined,
   changeHandler: null,
   disabled: false,
+  forwardedRef: undefined,
   fullWidth: false,
   helperText: null,
   inputSize: null,
@@ -127,6 +130,7 @@ TextField.propTypes = {
   autoComplete: PropTypes.string,
   changeHandler: PropTypes.func,
   disabled: PropTypes.bool,
+  forwardedRef: PropTypes.func,
   fullWidth: PropTypes.bool,
   helperText: PropTypes.string,
   id: PropTypes.string.isRequired,
@@ -146,4 +150,4 @@ TextField.propTypes = {
   variant: PropTypes.oneOf(['filled', 'outline']),
 };
 
-export default TextField;
+export default withForwardedRef(TextField);

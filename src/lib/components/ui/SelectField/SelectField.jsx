@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import withForwardedRef from '../withForwardedRef';
 import styles from './SelectField.scss';
 
-const SelectField = (props) => {
+export const SelectField = (props) => {
   let labelVisibilityClass = '';
   let rootFullWidthClass = '';
   let rootLayoutClass = '';
@@ -79,6 +80,7 @@ const SelectField = (props) => {
           disabled={props.disabled}
           id={props.id}
           onChange={props.changeHandler}
+          ref={props.forwardedRef}
           required={props.required}
           value={props.value}
         >
@@ -117,6 +119,7 @@ const SelectField = (props) => {
 SelectField.defaultProps = {
   changeHandler: null,
   disabled: false,
+  forwardedRef: undefined,
   fullWidth: false,
   helperText: null,
   isLabelVisible: true,
@@ -131,6 +134,7 @@ SelectField.defaultProps = {
 SelectField.propTypes = {
   changeHandler: PropTypes.func,
   disabled: PropTypes.bool,
+  forwardedRef: PropTypes.func,
   fullWidth: PropTypes.bool,
   helperText: PropTypes.string,
   id: PropTypes.string.isRequired,
@@ -155,4 +159,4 @@ SelectField.propTypes = {
   variant: PropTypes.oneOf(['filled', 'outline']),
 };
 
-export default SelectField;
+export default withForwardedRef(SelectField);
