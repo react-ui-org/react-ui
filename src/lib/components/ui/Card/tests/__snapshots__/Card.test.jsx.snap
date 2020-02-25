@@ -3,7 +3,7 @@
 exports[`rendering renders correctly 1`] = `
 <div
   className="root
-        flat"
+        isTypeFlat"
 >
   <p>
     Card content
@@ -14,8 +14,8 @@ exports[`rendering renders correctly 1`] = `
 exports[`rendering renders correctly disabled 1`] = `
 <div
   className="root
-        flat
-        isRootDisabled"
+        isTypeFlat
+        isDisabled"
 >
   <p>
     Card content
@@ -26,7 +26,7 @@ exports[`rendering renders correctly disabled 1`] = `
 exports[`rendering renders correctly error 1`] = `
 <div
   className="root
-        error"
+        isTypeError"
 >
   <p>
     Card content
@@ -37,10 +37,10 @@ exports[`rendering renders correctly error 1`] = `
 exports[`rendering renders correctly raised 1`] = `
 <div
   className="root
-        flat
+        isTypeFlat
         
         
-        isRootRaised"
+        isRaised"
 >
   <p>
     Card content
@@ -51,10 +51,10 @@ exports[`rendering renders correctly raised 1`] = `
 exports[`rendering renders correctly with all props 1`] = `
 <div
   className="root
-        warning
-        isRootDisabled
+        isTypeWarning
+        isDisabled
         
-        isRootRaised"
+        isRaised"
   id="custom-id"
 >
   <p>

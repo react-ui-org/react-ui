@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Card from '..';
+import { Card } from '../Card';
 
 describe('rendering', () => {
   it('renders correctly', () => {

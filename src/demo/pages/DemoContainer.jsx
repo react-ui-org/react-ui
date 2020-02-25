@@ -12,6 +12,8 @@ import {
   Button,
   ButtonGroup,
   Card,
+  CardBody,
+  CardFooter,
   CardList,
   CheckboxField,
   Documentation,
@@ -213,7 +215,7 @@ class DemoContainer extends React.Component {
                     <code>Inline code</code>
                   </p>
                   <p>
-                    <a href="#top">Link</a>
+                    <a href="#foundation">Link</a>
                   </p>
                   <ul>
                     <li>Unordered list item 1</li>
@@ -724,36 +726,52 @@ class DemoContainer extends React.Component {
               component={(
                 <div style={{ display: 'flex' }}>
                   <Card>
-                    <h4>Flat card</h4>
-                    <p>
-                      Flat card content <br />
-                      and the other one.
-                    </p>
-                    <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
+                    <CardBody>
+                      <h4>Flat card</h4>
+                      <p>
+                        Flat card content <br />
+                        and the other one.
+                      </p>
+                    </CardBody>
+                    <CardFooter>
+                      <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
+                    </CardFooter>
                   </Card>
                   <Card type="bordered">
-                    <h4>Bordered card</h4>
-                    <p>
-                      Bordered card content <br />
-                      and the other one.
-                    </p>
-                    <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
+                    <CardBody>
+                      <h4>Bordered card</h4>
+                      <p>
+                        Bordered card content <br />
+                        and the other one.
+                      </p>
+                    </CardBody>
+                    <CardFooter>
+                      <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
+                    </CardFooter>
                   </Card>
                   <Card type="warning">
-                    <h4>Warning card</h4>
-                    <p>
-                      Warning card content <br />
-                      and the other one.
-                    </p>
-                    <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
+                    <CardBody>
+                      <h4>Warning card</h4>
+                      <p>
+                        Warning card content <br />
+                        and the other one.
+                      </p>
+                    </CardBody>
+                    <CardFooter>
+                      <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
+                    </CardFooter>
                   </Card>
                   <Card type="error">
-                    <h4>Error card</h4>
-                    <p>
-                      Error card content <br />
-                      and the other one.
-                    </p>
-                    <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
+                    <CardBody>
+                      <h4>Error card</h4>
+                      <p>
+                        Error card content <br />
+                        and the other one.
+                      </p>
+                    </CardBody>
+                    <CardFooter>
+                      <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
+                    </CardFooter>
                   </Card>
                 </div>
               )}
@@ -763,12 +781,14 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <Card raised>
-                    <h4>Raised card</h4>
-                    <p>
-                      Raised card content <br />
-                      and the other one.
-                    </p>
-                    <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
+                    <CardBody>
+                      <h4>Raised card</h4>
+                      <p>
+                        Raised card content <br />
+                        and the other one.
+                      </p>
+                      <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
+                    </CardBody>
                   </Card>
                 </div>
               )}
@@ -778,12 +798,16 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <Card disabled>
-                    <h4>Disabled card</h4>
-                    <p>
-                      Disabled card content <br />
-                      and the other one.
-                    </p>
-                    <Button clickHandler={loggerClick} label="Click" variant="secondary" block disabled />
+                    <CardBody>
+                      <h4>Disabled card</h4>
+                      <p>
+                        Disabled card content <br />
+                        and the other one.
+                      </p>
+                    </CardBody>
+                    <CardFooter>
+                      <Button clickHandler={loggerClick} label="Click" variant="secondary" block disabled />
+                    </CardFooter>
                   </Card>
                 </div>
               )}
