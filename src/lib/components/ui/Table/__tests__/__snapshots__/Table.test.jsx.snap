@@ -80,28 +80,18 @@ exports[`rendering renders correctly with all props 1`] = `
           <div
             className="sortButton"
           >
-            <Button
-              afterLabel={null}
+            <ForwardRef(withForwardedRef(Button))
               beforeLabel={
                 <Icon
                   icon="arrow_upward"
                   size="medium"
                 />
               }
-              block={false}
               clickHandler={[Function]}
-              disabled={false}
-              endCorner={null}
-              grouped={false}
               id="custom-id__headerCell__id__sortButton"
               label="asc"
               labelVisibility="none"
-              loadingIcon={null}
               priority="flat"
-              size="medium"
-              startCorner={null}
-              type="button"
-              variant="primary"
             />
           </div>
           Id
@@ -114,28 +104,18 @@ exports[`rendering renders correctly with all props 1`] = `
           <div
             className="sortButton"
           >
-            <Button
-              afterLabel={null}
+            <ForwardRef(withForwardedRef(Button))
               beforeLabel={
                 <Icon
                   icon="arrow_upward"
                   size="medium"
                 />
               }
-              block={false}
               clickHandler={[Function]}
-              disabled={false}
-              endCorner={null}
-              grouped={false}
               id="custom-id__headerCell__name__sortButton"
               label="asc"
               labelVisibility="none"
-              loadingIcon={null}
               priority="flat"
-              size="medium"
-              startCorner={null}
-              type="button"
-              variant="primary"
             />
           </div>
           Name

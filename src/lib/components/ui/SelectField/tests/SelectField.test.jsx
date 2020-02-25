@@ -5,7 +5,7 @@ import {
 } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
-import SelectField from '..';
+import { SelectField } from '../SelectField';
 
 jest.mock('../../Icon/load-material-design-icons');
 

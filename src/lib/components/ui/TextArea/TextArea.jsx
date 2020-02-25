@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import withForwardedRef from '../withForwardedRef';
 import styles from './TextArea.scss';
 
-const TextArea = (props) => {
+export const TextArea = (props) => {
   let labelVisibilityClass = '';
   let rootFullWidthClass = '';
   let rootLayoutClass = '';
@@ -81,6 +82,7 @@ const TextArea = (props) => {
           id={props.id}
           onChange={props.changeHandler}
           placeholder={props.placeholder}
+          ref={props.forwardedRef}
           required={props.required}
           rows={props.rows}
           value={props.value}
@@ -105,6 +107,7 @@ TextArea.defaultProps = {
   changeHandler: null,
   cols: null,
   disabled: false,
+  forwardedRef: undefined,
   fullWidth: false,
   helperText: null,
   isLabelVisible: true,
@@ -122,6 +125,7 @@ TextArea.propTypes = {
   changeHandler: PropTypes.func,
   cols: PropTypes.number,
   disabled: PropTypes.bool,
+  forwardedRef: PropTypes.func,
   fullWidth: PropTypes.bool,
   helperText: PropTypes.string,
   id: PropTypes.string.isRequired,
@@ -137,4 +141,4 @@ TextArea.propTypes = {
   variant: PropTypes.oneOf(['filled', 'outline']),
 };
 
-export default TextArea;
+export default withForwardedRef(TextArea);

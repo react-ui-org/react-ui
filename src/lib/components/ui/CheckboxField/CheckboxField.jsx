@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import withForwardedRef from '../withForwardedRef';
 import styles from './CheckboxField.scss';
 
-const CheckboxField = (props) => {
+export const CheckboxField = (props) => {
   let labelVisibilityClass = '';
   let labelPositionClass = '';
   let rootValidationStateClass = '';
@@ -45,6 +46,7 @@ const CheckboxField = (props) => {
           onChange={props.changeHandler}
           disabled={props.disabled}
           checked={props.checked}
+          ref={props.forwardedRef}
           required={props.required}
           type="checkbox"
           className={styles.input}
@@ -87,6 +89,7 @@ CheckboxField.defaultProps = {
   description: null,
   disabled: false,
   error: null,
+  forwardedRef: undefined,
   isLabelVisible: true,
   labelPosition: 'after',
   required: false,
@@ -100,6 +103,7 @@ CheckboxField.propTypes = {
   description: PropTypes.string,
   disabled: PropTypes.bool,
   error: PropTypes.string,
+  forwardedRef: PropTypes.func,
   id: PropTypes.string.isRequired,
   isLabelVisible: PropTypes.bool,
   label: PropTypes.string.isRequired,
@@ -112,4 +116,4 @@ CheckboxField.propTypes = {
   ]),
 };
 
-export default CheckboxField;
+export default withForwardedRef(CheckboxField);

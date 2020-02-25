@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import withForwardedRef from '../withForwardedRef';
 import styles from './Button.scss';
 
-const Button = (props) => {
+export const Button = (props) => {
   let priorityClass = styles.priorityDefault;
   if (props.priority === 'outline') {
     priorityClass = styles.priorityOutline;
@@ -58,11 +59,12 @@ const Button = (props) => {
         ${groupedClass}
         ${labelVisibilityClass}
       `).trim()}
+      disabled={props.disabled || !!props.loadingIcon}
       id={props.id}
       onClick={props.clickHandler}
+      ref={props.forwardedRef}
       title={props.labelVisibility === 'all' ? null : props.label}
       type={props.type}
-      disabled={props.disabled || !!props.loadingIcon}
     >
       {props.startCorner && (
         <span className={styles.startCorner}>
@@ -106,6 +108,7 @@ Button.defaultProps = {
   clickHandler: null,
   disabled: false,
   endCorner: null,
+  forwardedRef: undefined,
   grouped: false,
   id: undefined,
   labelVisibility: 'all',
@@ -124,6 +127,7 @@ Button.propTypes = {
   clickHandler: PropTypes.func,
   disabled: PropTypes.bool,
   endCorner: PropTypes.element,
+  forwardedRef: PropTypes.func,
   grouped: PropTypes.bool,
   id: PropTypes.string,
   label: PropTypes.string.isRequired,
@@ -136,4 +140,4 @@ Button.propTypes = {
   variant: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'danger', 'dark']),
 };
 
-export default Button;
+export default withForwardedRef(Button);
