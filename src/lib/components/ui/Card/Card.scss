@@ -1,33 +1,48 @@
 @import 'mixins';
 
 .root {
-  @include card();
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: $card-border-width solid;
+  border-radius: $card-border-radius;
+  background-color: $card-background-color;
 }
 
-.flat {
+.body {
+  flex: 1 0 auto;
+  padding: $card-padding;
+}
+
+.footer {
+  padding: $card-padding;
+}
+
+.isTypeFlat {
   @include card-type(flat);
 }
 
-.bordered {
+.isTypeBordered {
   @include card-type(bordered);
 }
 
-.warning {
+.isTypeWarning {
   @include card-type(warning);
 }
 
-.error {
+.isTypeError {
   @include card-type(error);
 }
 
-.isRootDisabled {
-  @include card-disabled();
+.isDisabled {
+  border-color: map-get($card-disabled, border-color);
+  background-color: map-get($card-disabled, background-color);
 }
 
-.isRootInList {
-  @include card-in-list();
+.isInList {
+  max-width: $card-in-list-max-width;
 }
 
-.isRootRaised {
-  @include card-raised();
+.isRaised {
+  box-shadow: map-get($card-raised, box-shadow);
 }

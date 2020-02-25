@@ -12,28 +12,28 @@ export const Card = (props) => {
     type,
   } = props;
 
-  let typeClass = styles.flat;
+  let typeClass = styles.isTypeFlat;
   if (type === 'warning') {
-    typeClass = styles.warning;
+    typeClass = styles.isTypeWarning;
   } else if (type === 'error') {
-    typeClass = styles.error;
+    typeClass = styles.isTypeError;
   } else if (type === 'bordered') {
-    typeClass = styles.bordered;
+    typeClass = styles.isTypeBordered;
   }
 
   let disabledClass = '';
   if (disabled) {
-    disabledClass = styles.isRootDisabled;
+    disabledClass = styles.isDisabled;
   }
 
   let inListClass = '';
   if (inList) {
-    inListClass = styles.isRootInList;
+    inListClass = styles.isInList;
   }
 
   let raisedClass = '';
   if (raised) {
-    raisedClass = styles.isRootRaised;
+    raisedClass = styles.isRaised;
   }
 
   return (
