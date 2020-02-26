@@ -16,6 +16,7 @@ module.exports = [{
       path.join(__dirname, 'src/demo/index.jsx'),
     ],
   },
+  mode: 'production',
   module: {
     rules: [
       {
@@ -32,7 +33,7 @@ module.exports = [{
             options: {
               modules: {
                 localIdentName: '[name]__[local]__[hash:base64:5]',
-              }
+              },
             },
           },
           { loader: 'postcss-loader' },
@@ -49,7 +50,7 @@ module.exports = [{
         test: /\.(svg|jpg)$/,
         use: [
           { loader: 'file-loader?hash=sha512&digest=hex&name=[hash].[ext]' },
-        ]
+        ],
       },
     ],
   },

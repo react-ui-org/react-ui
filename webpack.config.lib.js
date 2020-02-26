@@ -8,6 +8,7 @@ module.exports = [{
       path.join(__dirname, 'src/lib/index.js'),
     ],
   },
+  mode: 'production',
   module: {
     rules: [
       {
@@ -41,7 +42,7 @@ module.exports = [{
         test: /\.(svg|jpg)$/,
         use: [
           { loader: 'file-loader?hash=sha512&digest=hex&name=[hash].[ext]' },
-        ]
+        ],
       },
     ],
   },
