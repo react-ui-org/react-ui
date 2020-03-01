@@ -3,10 +3,7 @@ import {
   shallow,
 } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
-import Icon from '../../Icon';
 import Alert from '../Alert';
-
-jest.mock('../../Icon/load-material-design-icons');
 
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
@@ -24,7 +21,7 @@ describe('rendering', () => {
   it('renders correctly with all props', () => {
     const tree = shallow(
       <Alert
-        icon={<Icon icon="info" />}
+        icon={<span className="icon" />}
         id="custom-id"
         message="Message"
         type="success"

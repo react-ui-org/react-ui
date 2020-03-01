@@ -82,9 +82,8 @@ exports[`rendering renders correctly with all props 1`] = `
           >
             <ForwardRef(withForwardedRef(Button))
               beforeLabel={
-                <Icon
-                  icon="arrow_upward"
-                  size="medium"
+                <span
+                  className="icon"
                 />
               }
               clickHandler={[Function]}
@@ -106,9 +105,8 @@ exports[`rendering renders correctly with all props 1`] = `
           >
             <ForwardRef(withForwardedRef(Button))
               beforeLabel={
-                <Icon
-                  icon="arrow_upward"
-                  size="medium"
+                <span
+                  className="icon"
                 />
               }
               clickHandler={[Function]}

@@ -5,10 +5,7 @@ import {
   shallow,
 } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
-import Icon from '../../Icon';
 import Table from '../Table';
-
-jest.mock('../../Icon/load-material-design-icons');
 
 const columnsData = [
   {
@@ -52,10 +49,10 @@ describe('rendering', () => {
       id="custom-id"
       rows={rowsData}
       sort={{
-        ascendingIcon: <Icon icon="arrow_upward" />,
+        ascendingIcon: <span className="icon" />,
         changeHandler: () => {},
         column: 'id',
-        descendingIcon: <Icon icon="arrow_downward" />,
+        descendingIcon: <span className="icon" />,
         direction: 'asc',
       }}
     />);
@@ -72,10 +69,10 @@ describe('functionality', () => {
         columns={columnsData}
         rows={rowsData}
         sort={{
-          ascendingIcon: <Icon icon="arrow_upward" />,
+          ascendingIcon: <span className="icon" />,
           changeHandler: spy,
           column: 'id',
-          descendingIcon: <Icon icon="arrow_downward" />,
+          descendingIcon: <span className="icon" />,
           direction: 'asc',
         }}
       />

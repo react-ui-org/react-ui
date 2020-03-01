@@ -10,10 +10,6 @@ export default [
         title: 'Typography',
       },
       {
-        link: '#foundation-icons',
-        title: 'Icons',
-      },
-      {
         link: '#foundation-spacing',
         title: 'Spacing',
       },

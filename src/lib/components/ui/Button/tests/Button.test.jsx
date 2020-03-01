@@ -6,10 +6,7 @@ import {
 import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
 import Badge from '../../Badge';
-import Icon from '../../Icon';
 import { Button } from '../Button';
-
-jest.mock('../../Icon/load-material-design-icons');
 
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
@@ -59,7 +56,7 @@ describe('rendering', () => {
   it('renders correctly with icon', () => {
     const tree = shallow(<Button
       label="button"
-      beforeLabel={<Icon icon="album" />}
+      beforeLabel={<span className="icon" />}
     />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
@@ -81,11 +78,11 @@ describe('rendering', () => {
       size="large"
       label="button"
       labelVisibility="desktop"
-      beforeLabel={<Icon icon="list" />}
-      afterLabel={<Icon icon="stars" />}
+      beforeLabel={<span className="icon" />}
+      afterLabel={<span className="icon" />}
       startCorner={<Badge label={1} />}
       endCorner={<Badge label={2} />}
-      loadingIcon={<Icon icon="sync" />}
+      loadingIcon={<span className="icon" />}
       id="custom-id"
       disabled
       block

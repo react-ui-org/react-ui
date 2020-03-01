@@ -2,10 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
-import Icon from '../../Icon';
 import Modal from '..';
-
-jest.mock('../../Icon/load-material-design-icons');
 
 describe('rendering', () => {
   it('renders correctly with mandatory props only', () => {
@@ -47,7 +44,7 @@ describe('rendering', () => {
           {
             clickHandler: () => {},
             label: 'Action',
-            loadingIcon: <Icon icon="sync" />,
+            loadingIcon: <span className="icon" />,
           },
         ]}
         closeHandler={() => {}}

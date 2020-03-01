@@ -24,7 +24,6 @@ import {
   DocumentationPlaceholder,
   DocumentationSwatch,
   ForgotPassword,
-  Icon,
   LayoutCenter,
   List,
   ListItem,
@@ -48,6 +47,9 @@ import {
   ToolbarItem,
   ToolbarSpacer,
 } from '../../lib';
+
+// Demo components
+import { Icon } from '../components/Icon';
 
 // React UI utility CSS classes
 import '../../lib/utilities.scss';
@@ -240,30 +242,6 @@ class DemoContainer extends React.Component {
                 </div>
               )}
             />
-            <h3 id="foundation-icons" className="typography-size-4 mb-6">Icons</h3>
-            <div className="mb-7">
-              <p>
-                React UI uses
-                {' '}
-                <a href="https://material.io/resources/icons/" target="_blank" rel="noopener noreferrer">
-                  Material Design icons
-                </a>.
-              </p>
-            </div>
-            <h3 id="foundation-spacing" className="typography-size-4 mb-6">Spacing</h3>
-            <p>
-              Available spacing values (px values account with 16 px base font size):
-            </p>
-            <ul className="mb-7">
-              <li><code>0:</code> 0 em / 0 px</li>
-              <li><code>1:</code> 0.25 em / 4 px</li>
-              <li><code>2:</code> 0.5 em / 8 px</li>
-              <li><code>3:</code> 0.75 em / 12 px</li>
-              <li><code>4:</code> 1 em / 16 px</li>
-              <li><code>5:</code> 1.5 em / 24 px</li>
-              <li><code>6:</code> 2 em / 32 px</li>
-              <li><code>7:</code> 3 em / 48 px</li>
-            </ul>
             <h3 id="foundation-breakpoints" className="typography-size-4 mb-6">Breakpoints</h3>
             <p>
               Available breakpoints (px values account with 16 px base font size):
@@ -462,7 +440,7 @@ class DemoContainer extends React.Component {
               name="Alert with icon"
               component={(
                 <div>
-                  <Alert type="success" icon={<Icon icon="check_circle" />}>
+                  <Alert type="success" icon={<Icon icon="success" />}>
                     <span>
                       <strong>Success: </strong>
                       Success message
@@ -573,12 +551,12 @@ class DemoContainer extends React.Component {
                     <Button
                       clickHandler={loggerClick}
                       label="Icon before label"
-                      beforeLabel={<Icon icon="stars" />}
+                      beforeLabel={<Icon icon="star" />}
                     />
                     <Button
                       clickHandler={loggerClick}
                       label="Icon after label"
-                      afterLabel={<Icon icon="stars" />}
+                      afterLabel={<Icon icon="star" />}
                     />
                   </div>
                   <div>
@@ -586,13 +564,13 @@ class DemoContainer extends React.Component {
                       clickHandler={loggerClick}
                       label="Icon only"
                       labelVisibility="none"
-                      beforeLabel={<Icon icon="stars" />}
+                      beforeLabel={<Icon icon="star" />}
                     />
                     <Button
                       clickHandler={loggerClick}
                       label="Icon and label on desktop"
                       labelVisibility="desktop"
-                      beforeLabel={<Icon icon="stars" />}
+                      beforeLabel={<Icon icon="star" />}
                     />
                   </div>
                 </>
@@ -637,7 +615,7 @@ class DemoContainer extends React.Component {
                   <Button
                     clickHandler={loggerClick}
                     label="Button with badge and icon"
-                    beforeLabel={<Icon icon="list" />}
+                    beforeLabel={<Icon icon="star" />}
                     startCorner={<Badge label={3} />}
                     variant="secondary"
                     priority="outline"
@@ -653,7 +631,7 @@ class DemoContainer extends React.Component {
                   <Button
                     clickHandler={loggerClick}
                     label="Block button with icon"
-                    beforeLabel={<Icon icon="stars" />}
+                    beforeLabel={<Icon icon="star" />}
                     block
                   />
                 </>
@@ -666,13 +644,13 @@ class DemoContainer extends React.Component {
                   <Button
                     clickHandler={loggerClick}
                     label="Loading button"
-                    loadingIcon={<span className="d-inline-flex animation-spin-counterclockwise"><Icon icon="sync" /></span>}
+                    loadingIcon={<span className="d-inline-flex animation-spin-counterclockwise"><Icon icon="loading" /></span>}
                   />
                   <Button
                     clickHandler={loggerClick}
                     label="Loading button with icon and badge"
-                    afterLabel={<Icon icon="stars" />}
-                    loadingIcon={<span className="d-inline-flex animation-spin-counterclockwise"><Icon icon="sync" /></span>}
+                    afterLabel={<span className="icon" />}
+                    loadingIcon={<span className="d-inline-flex animation-spin-counterclockwise"><Icon icon="loading" /></span>}
                     startCorner={<Badge label={3} />}
                   />
                 </>
@@ -902,27 +880,6 @@ class DemoContainer extends React.Component {
                 />
               )}
             />
-            <h3 id="ui-components-icon" className="typography-size-4 mb-6">Icon</h3>
-            <Documentation
-              name="Icon – default"
-              component={<Icon icon="book" />}
-            />
-            <Documentation
-              name="Icon — small"
-              component={<Icon icon="book" size="small" />}
-            />
-            <Documentation
-              name="Icon – large"
-              component={<Icon icon="album" size="large" />}
-            />
-            <Documentation
-              name="Icon – larger, colored"
-              component={(
-                <span style={{ color: '#bada55' }}>
-                  <Icon icon="book" size="larger" />
-                </span>
-              )}
-            />
             <h3 id="ui-components-modal" className="typography-size-4 mb-6">Modal</h3>
             <Documentation
               name="Modal label"
@@ -969,7 +926,7 @@ class DemoContainer extends React.Component {
                             this.setState({ showModal2: false });
                           },
                           label: 'Agree',
-                          loadingIcon: <Icon icon="sync" />,
+                          loadingIcon: <Icon icon="loading" />,
                         },
                       ]}
                       closeHandler={() => this.setState({ showModal2: false })}
@@ -1671,7 +1628,7 @@ class DemoContainer extends React.Component {
                     },
                   ]}
                   sort={{
-                    ascendingIcon: <Icon icon="arrow_upward" />,
+                    ascendingIcon: <Icon icon="up" />,
                     changeHandler: (column, direction) => {
                       this.setState({
                         tableSortColumn: column,
@@ -1679,7 +1636,7 @@ class DemoContainer extends React.Component {
                       });
                     },
                     column: this.state.tableSortColumn,
-                    descendingIcon: <Icon icon="arrow_downward" />,
+                    descendingIcon: <Icon icon="down" />,
                     direction: this.state.tableSortDirection,
                   }}
                 />
@@ -2472,6 +2429,7 @@ class DemoContainer extends React.Component {
               component={(
                 <LayoutCenter>
                   <Login
+                    onChangeHandler={() => {}}
                     logoUrl="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzJfMV8iIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgODQxLjkgNTk1LjMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDg0MS45IDU5NS4zIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGZpbGw9IiM2MURBRkIiIGQ9Ik02NjYuMywyOTYuNWMwLTMyLjUtNDAuNy02My4zLTEwMy4xLTgyLjRjMTQuNC02My42LDgtMTE0LjItMjAuMi0xMzAuNGMtNi41LTMuOC0xNC4xLTUuNi0yMi40LTUuNnYyMi4zDQoJCWM0LjYsMCw4LjMsMC45LDExLjQsMi42YzEzLjYsNy44LDE5LjUsMzcuNSwxNC45LDc1LjdjLTEuMSw5LjQtMi45LDE5LjMtNS4xLDI5LjRjLTE5LjYtNC44LTQxLTguNS02My41LTEwLjkNCgkJYy0xMy41LTE4LjUtMjcuNS0zNS4zLTQxLjYtNTBjMzIuNi0zMC4zLDYzLjItNDYuOSw4NC00Ni45bDAtMjIuM2MwLDAsMCwwLDAsMGMtMjcuNSwwLTYzLjUsMTkuNi05OS45LDUzLjYNCgkJYy0zNi40LTMzLjgtNzIuNC01My4yLTk5LjktNTMuMnYyMi4zYzIwLjcsMCw1MS40LDE2LjUsODQsNDYuNmMtMTQsMTQuNy0yOCwzMS40LTQxLjMsNDkuOWMtMjIuNiwyLjQtNDQsNi4xLTYzLjYsMTENCgkJYy0yLjMtMTAtNC0xOS43LTUuMi0yOWMtNC43LTM4LjIsMS4xLTY3LjksMTQuNi03NS44YzMtMS44LDYuOS0yLjYsMTEuNS0yLjZsMC0yMi4zYzAsMCwwLDAsMCwwYy04LjQsMC0xNiwxLjgtMjIuNiw1LjYNCgkJYy0yOC4xLDE2LjItMzQuNCw2Ni43LTE5LjksMTMwLjFjLTYyLjIsMTkuMi0xMDIuNyw0OS45LTEwMi43LDgyLjNjMCwzMi41LDQwLjcsNjMuMywxMDMuMSw4Mi40Yy0xNC40LDYzLjYtOCwxMTQuMiwyMC4yLDEzMC40DQoJCWM2LjUsMy44LDE0LjEsNS42LDIyLjUsNS42YzI3LjUsMCw2My41LTE5LjYsOTkuOS01My42YzM2LjQsMzMuOCw3Mi40LDUzLjIsOTkuOSw1My4yYzguNCwwLDE2LTEuOCwyMi42LTUuNg0KCQljMjguMS0xNi4yLDM0LjQtNjYuNywxOS45LTEzMC4xQzYyNS44LDM1OS43LDY2Ni4zLDMyOC45LDY2Ni4zLDI5Ni41eiBNNTM2LjEsMjI5LjhjLTMuNywxMi45LTguMywyNi4yLTEzLjUsMzkuNQ0KCQljLTQuMS04LTguNC0xNi0xMy4xLTI0Yy00LjYtOC05LjUtMTUuOC0xNC40LTIzLjRDNTA5LjMsMjI0LDUyMywyMjYuNiw1MzYuMSwyMjkuOHogTTQ5MC4zLDMzNi4zYy03LjgsMTMuNS0xNS44LDI2LjMtMjQuMSwzOC4yDQoJCWMtMTQuOSwxLjMtMzAsMi00NS4yLDJjLTE1LjEsMC0zMC4yLTAuNy00NS0xLjljLTguMy0xMS45LTE2LjQtMjQuNi0yNC4yLTM4Yy03LjYtMTMuMS0xNC41LTI2LjQtMjAuOC0zOS44DQoJCWM2LjItMTMuNCwxMy4yLTI2LjgsMjAuNy0zOS45YzcuOC0xMy41LDE1LjgtMjYuMywyNC4xLTM4LjJjMTQuOS0xLjMsMzAtMiw0NS4yLTJjMTUuMSwwLDMwLjIsMC43LDQ1LDEuOQ0KCQljOC4zLDExLjksMTYuNCwyNC42LDI0LjIsMzhjNy42LDEzLjEsMTQuNSwyNi40LDIwLjgsMzkuOEM1MDQuNywzMDkuOCw0OTcuOCwzMjMuMiw0OTAuMywzMzYuM3ogTTUyMi42LDMyMy4zDQoJCWM1LjQsMTMuNCwxMCwyNi44LDEzLjgsMzkuOGMtMTMuMSwzLjItMjYuOSw1LjktNDEuMiw4YzQuOS03LjcsOS44LTE1LjYsMTQuNC0yMy43QzUxNC4yLDMzOS40LDUxOC41LDMzMS4zLDUyMi42LDMyMy4zeg0KCQkgTTQyMS4yLDQzMGMtOS4zLTkuNi0xOC42LTIwLjMtMjcuOC0zMmM5LDAuNCwxOC4yLDAuNywyNy41LDAuN2M5LjQsMCwxOC43LTAuMiwyNy44LTAuN0M0MzkuNyw0MDkuNyw0MzAuNCw0MjAuNCw0MjEuMiw0MzB6DQoJCSBNMzQ2LjgsMzcxLjFjLTE0LjItMi4xLTI3LjktNC43LTQxLTcuOWMzLjctMTIuOSw4LjMtMjYuMiwxMy41LTM5LjVjNC4xLDgsOC40LDE2LDEzLjEsMjRDMzM3LjEsMzU1LjcsMzQxLjksMzYzLjUsMzQ2LjgsMzcxLjF6DQoJCSBNNDIwLjcsMTYzYzkuMyw5LjYsMTguNiwyMC4zLDI3LjgsMzJjLTktMC40LTE4LjItMC43LTI3LjUtMC43Yy05LjQsMC0xOC43LDAuMi0yNy44LDAuN0M0MDIuMiwxODMuMyw0MTEuNSwxNzIuNiw0MjAuNywxNjN6DQoJCSBNMzQ2LjcsMjIxLjljLTQuOSw3LjctOS44LDE1LjYtMTQuNCwyMy43Yy00LjYsOC04LjksMTYtMTMsMjRjLTUuNC0xMy40LTEwLTI2LjgtMTMuOC0zOS44QzMxOC42LDIyNi43LDMzMi40LDIyNCwzNDYuNywyMjEuOXoNCgkJIE0yNTYuMiwzNDcuMWMtMzUuNC0xNS4xLTU4LjMtMzQuOS01OC4zLTUwLjZjMC0xNS43LDIyLjktMzUuNiw1OC4zLTUwLjZjOC42LTMuNywxOC03LDI3LjctMTAuMWM1LjcsMTkuNiwxMy4yLDQwLDIyLjUsNjAuOQ0KCQljLTkuMiwyMC44LTE2LjYsNDEuMS0yMi4yLDYwLjZDMjc0LjMsMzU0LjIsMjY0LjksMzUwLjgsMjU2LjIsMzQ3LjF6IE0zMTAsNDkwYy0xMy42LTcuOC0xOS41LTM3LjUtMTQuOS03NS43DQoJCWMxLjEtOS40LDIuOS0xOS4zLDUuMS0yOS40YzE5LjYsNC44LDQxLDguNSw2My41LDEwLjljMTMuNSwxOC41LDI3LjUsMzUuMyw0MS42LDUwYy0zMi42LDMwLjMtNjMuMiw0Ni45LTg0LDQ2LjkNCgkJQzMxNi44LDQ5Mi42LDMxMyw0OTEuNywzMTAsNDkweiBNNTQ3LjIsNDEzLjhjNC43LDM4LjItMS4xLDY3LjktMTQuNiw3NS44Yy0zLDEuOC02LjksMi42LTExLjUsMi42Yy0yMC43LDAtNTEuNC0xNi41LTg0LTQ2LjYNCgkJYzE0LTE0LjcsMjgtMzEuNCw0MS4zLTQ5LjljMjIuNi0yLjQsNDQtNi4xLDYzLjYtMTFDNTQ0LjMsMzk0LjgsNTQ2LjEsNDA0LjUsNTQ3LjIsNDEzLjh6IE01ODUuNywzNDcuMWMtOC42LDMuNy0xOCw3LTI3LjcsMTAuMQ0KCQljLTUuNy0xOS42LTEzLjItNDAtMjIuNS02MC45YzkuMi0yMC44LDE2LjYtNDEuMSwyMi4yLTYwLjZjOS45LDMuMSwxOS4zLDYuNSwyOC4xLDEwLjJjMzUuNCwxNS4xLDU4LjMsMzQuOSw1OC4zLDUwLjYNCgkJQzY0NCwzMTIuMiw2MjEuMSwzMzIuMSw1ODUuNywzNDcuMXoiLz4NCgk8cG9seWdvbiBmaWxsPSIjNjFEQUZCIiBwb2ludHM9IjMyMC44LDc4LjQgMzIwLjgsNzguNCAzMjAuOCw3OC40IAkiLz4NCgk8Y2lyY2xlIGZpbGw9IiM2MURBRkIiIGN4PSI0MjAuOSIgY3k9IjI5Ni41IiByPSI0NS43Ii8+DQoJPHBvbHlnb24gZmlsbD0iIzYxREFGQiIgcG9pbnRzPSI1MjAuNSw3OC4xIDUyMC41LDc4LjEgNTIwLjUsNzguMSAJIi8+DQo8L2c+DQo8L3N2Zz4NCg=="
                     title="Company"
                     hasError
@@ -2489,6 +2447,7 @@ class DemoContainer extends React.Component {
               component={(
                 <LayoutCenter>
                   <ForgotPassword
+                    onChangeHandler={() => {}}
                     logoUrl="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzJfMV8iIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgODQxLjkgNTk1LjMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDg0MS45IDU5NS4zIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGZpbGw9IiM2MURBRkIiIGQ9Ik02NjYuMywyOTYuNWMwLTMyLjUtNDAuNy02My4zLTEwMy4xLTgyLjRjMTQuNC02My42LDgtMTE0LjItMjAuMi0xMzAuNGMtNi41LTMuOC0xNC4xLTUuNi0yMi40LTUuNnYyMi4zDQoJCWM0LjYsMCw4LjMsMC45LDExLjQsMi42YzEzLjYsNy44LDE5LjUsMzcuNSwxNC45LDc1LjdjLTEuMSw5LjQtMi45LDE5LjMtNS4xLDI5LjRjLTE5LjYtNC44LTQxLTguNS02My41LTEwLjkNCgkJYy0xMy41LTE4LjUtMjcuNS0zNS4zLTQxLjYtNTBjMzIuNi0zMC4zLDYzLjItNDYuOSw4NC00Ni45bDAtMjIuM2MwLDAsMCwwLDAsMGMtMjcuNSwwLTYzLjUsMTkuNi05OS45LDUzLjYNCgkJYy0zNi40LTMzLjgtNzIuNC01My4yLTk5LjktNTMuMnYyMi4zYzIwLjcsMCw1MS40LDE2LjUsODQsNDYuNmMtMTQsMTQuNy0yOCwzMS40LTQxLjMsNDkuOWMtMjIuNiwyLjQtNDQsNi4xLTYzLjYsMTENCgkJYy0yLjMtMTAtNC0xOS43LTUuMi0yOWMtNC43LTM4LjIsMS4xLTY3LjksMTQuNi03NS44YzMtMS44LDYuOS0yLjYsMTEuNS0yLjZsMC0yMi4zYzAsMCwwLDAsMCwwYy04LjQsMC0xNiwxLjgtMjIuNiw1LjYNCgkJYy0yOC4xLDE2LjItMzQuNCw2Ni43LTE5LjksMTMwLjFjLTYyLjIsMTkuMi0xMDIuNyw0OS45LTEwMi43LDgyLjNjMCwzMi41LDQwLjcsNjMuMywxMDMuMSw4Mi40Yy0xNC40LDYzLjYtOCwxMTQuMiwyMC4yLDEzMC40DQoJCWM2LjUsMy44LDE0LjEsNS42LDIyLjUsNS42YzI3LjUsMCw2My41LTE5LjYsOTkuOS01My42YzM2LjQsMzMuOCw3Mi40LDUzLjIsOTkuOSw1My4yYzguNCwwLDE2LTEuOCwyMi42LTUuNg0KCQljMjguMS0xNi4yLDM0LjQtNjYuNywxOS45LTEzMC4xQzYyNS44LDM1OS43LDY2Ni4zLDMyOC45LDY2Ni4zLDI5Ni41eiBNNTM2LjEsMjI5LjhjLTMuNywxMi45LTguMywyNi4yLTEzLjUsMzkuNQ0KCQljLTQuMS04LTguNC0xNi0xMy4xLTI0Yy00LjYtOC05LjUtMTUuOC0xNC40LTIzLjRDNTA5LjMsMjI0LDUyMywyMjYuNiw1MzYuMSwyMjkuOHogTTQ5MC4zLDMzNi4zYy03LjgsMTMuNS0xNS44LDI2LjMtMjQuMSwzOC4yDQoJCWMtMTQuOSwxLjMtMzAsMi00NS4yLDJjLTE1LjEsMC0zMC4yLTAuNy00NS0xLjljLTguMy0xMS45LTE2LjQtMjQuNi0yNC4yLTM4Yy03LjYtMTMuMS0xNC41LTI2LjQtMjAuOC0zOS44DQoJCWM2LjItMTMuNCwxMy4yLTI2LjgsMjAuNy0zOS45YzcuOC0xMy41LDE1LjgtMjYuMywyNC4xLTM4LjJjMTQuOS0xLjMsMzAtMiw0NS4yLTJjMTUuMSwwLDMwLjIsMC43LDQ1LDEuOQ0KCQljOC4zLDExLjksMTYuNCwyNC42LDI0LjIsMzhjNy42LDEzLjEsMTQuNSwyNi40LDIwLjgsMzkuOEM1MDQuNywzMDkuOCw0OTcuOCwzMjMuMiw0OTAuMywzMzYuM3ogTTUyMi42LDMyMy4zDQoJCWM1LjQsMTMuNCwxMCwyNi44LDEzLjgsMzkuOGMtMTMuMSwzLjItMjYuOSw1LjktNDEuMiw4YzQuOS03LjcsOS44LTE1LjYsMTQuNC0yMy43QzUxNC4yLDMzOS40LDUxOC41LDMzMS4zLDUyMi42LDMyMy4zeg0KCQkgTTQyMS4yLDQzMGMtOS4zLTkuNi0xOC42LTIwLjMtMjcuOC0zMmM5LDAuNCwxOC4yLDAuNywyNy41LDAuN2M5LjQsMCwxOC43LTAuMiwyNy44LTAuN0M0MzkuNyw0MDkuNyw0MzAuNCw0MjAuNCw0MjEuMiw0MzB6DQoJCSBNMzQ2LjgsMzcxLjFjLTE0LjItMi4xLTI3LjktNC43LTQxLTcuOWMzLjctMTIuOSw4LjMtMjYuMiwxMy41LTM5LjVjNC4xLDgsOC40LDE2LDEzLjEsMjRDMzM3LjEsMzU1LjcsMzQxLjksMzYzLjUsMzQ2LjgsMzcxLjF6DQoJCSBNNDIwLjcsMTYzYzkuMyw5LjYsMTguNiwyMC4zLDI3LjgsMzJjLTktMC40LTE4LjItMC43LTI3LjUtMC43Yy05LjQsMC0xOC43LDAuMi0yNy44LDAuN0M0MDIuMiwxODMuMyw0MTEuNSwxNzIuNiw0MjAuNywxNjN6DQoJCSBNMzQ2LjcsMjIxLjljLTQuOSw3LjctOS44LDE1LjYtMTQuNCwyMy43Yy00LjYsOC04LjksMTYtMTMsMjRjLTUuNC0xMy40LTEwLTI2LjgtMTMuOC0zOS44QzMxOC42LDIyNi43LDMzMi40LDIyNCwzNDYuNywyMjEuOXoNCgkJIE0yNTYuMiwzNDcuMWMtMzUuNC0xNS4xLTU4LjMtMzQuOS01OC4zLTUwLjZjMC0xNS43LDIyLjktMzUuNiw1OC4zLTUwLjZjOC42LTMuNywxOC03LDI3LjctMTAuMWM1LjcsMTkuNiwxMy4yLDQwLDIyLjUsNjAuOQ0KCQljLTkuMiwyMC44LTE2LjYsNDEuMS0yMi4yLDYwLjZDMjc0LjMsMzU0LjIsMjY0LjksMzUwLjgsMjU2LjIsMzQ3LjF6IE0zMTAsNDkwYy0xMy42LTcuOC0xOS41LTM3LjUtMTQuOS03NS43DQoJCWMxLjEtOS40LDIuOS0xOS4zLDUuMS0yOS40YzE5LjYsNC44LDQxLDguNSw2My41LDEwLjljMTMuNSwxOC41LDI3LjUsMzUuMyw0MS42LDUwYy0zMi42LDMwLjMtNjMuMiw0Ni45LTg0LDQ2LjkNCgkJQzMxNi44LDQ5Mi42LDMxMyw0OTEuNywzMTAsNDkweiBNNTQ3LjIsNDEzLjhjNC43LDM4LjItMS4xLDY3LjktMTQuNiw3NS44Yy0zLDEuOC02LjksMi42LTExLjUsMi42Yy0yMC43LDAtNTEuNC0xNi41LTg0LTQ2LjYNCgkJYzE0LTE0LjcsMjgtMzEuNCw0MS4zLTQ5LjljMjIuNi0yLjQsNDQtNi4xLDYzLjYtMTFDNTQ0LjMsMzk0LjgsNTQ2LjEsNDA0LjUsNTQ3LjIsNDEzLjh6IE01ODUuNywzNDcuMWMtOC42LDMuNy0xOCw3LTI3LjcsMTAuMQ0KCQljLTUuNy0xOS42LTEzLjItNDAtMjIuNS02MC45YzkuMi0yMC44LDE2LjYtNDEuMSwyMi4yLTYwLjZjOS45LDMuMSwxOS4zLDYuNSwyOC4xLDEwLjJjMzUuNCwxNS4xLDU4LjMsMzQuOSw1OC4zLDUwLjYNCgkJQzY0NCwzMTIuMiw2MjEuMSwzMzIuMSw1ODUuNywzNDcuMXoiLz4NCgk8cG9seWdvbiBmaWxsPSIjNjFEQUZCIiBwb2ludHM9IjMyMC44LDc4LjQgMzIwLjgsNzguNCAzMjAuOCw3OC40IAkiLz4NCgk8Y2lyY2xlIGZpbGw9IiM2MURBRkIiIGN4PSI0MjAuOSIgY3k9IjI5Ni41IiByPSI0NS43Ii8+DQoJPHBvbHlnb24gZmlsbD0iIzYxREFGQiIgcG9pbnRzPSI1MjAuNSw3OC4xIDUyMC41LDc4LjEgNTIwLjUsNzguMSAJIi8+DQo8L2c+DQo8L3N2Zz4NCg=="
                     title="Company"
                     hasError
@@ -2506,6 +2465,7 @@ class DemoContainer extends React.Component {
               component={(
                 <LayoutCenter>
                   <NewPassword
+                    onChangeHandler={() => {}}
                     logoUrl="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzJfMV8iIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgODQxLjkgNTk1LjMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDg0MS45IDU5NS4zIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGZpbGw9IiM2MURBRkIiIGQ9Ik02NjYuMywyOTYuNWMwLTMyLjUtNDAuNy02My4zLTEwMy4xLTgyLjRjMTQuNC02My42LDgtMTE0LjItMjAuMi0xMzAuNGMtNi41LTMuOC0xNC4xLTUuNi0yMi40LTUuNnYyMi4zDQoJCWM0LjYsMCw4LjMsMC45LDExLjQsMi42YzEzLjYsNy44LDE5LjUsMzcuNSwxNC45LDc1LjdjLTEuMSw5LjQtMi45LDE5LjMtNS4xLDI5LjRjLTE5LjYtNC44LTQxLTguNS02My41LTEwLjkNCgkJYy0xMy41LTE4LjUtMjcuNS0zNS4zLTQxLjYtNTBjMzIuNi0zMC4zLDYzLjItNDYuOSw4NC00Ni45bDAtMjIuM2MwLDAsMCwwLDAsMGMtMjcuNSwwLTYzLjUsMTkuNi05OS45LDUzLjYNCgkJYy0zNi40LTMzLjgtNzIuNC01My4yLTk5LjktNTMuMnYyMi4zYzIwLjcsMCw1MS40LDE2LjUsODQsNDYuNmMtMTQsMTQuNy0yOCwzMS40LTQxLjMsNDkuOWMtMjIuNiwyLjQtNDQsNi4xLTYzLjYsMTENCgkJYy0yLjMtMTAtNC0xOS43LTUuMi0yOWMtNC43LTM4LjIsMS4xLTY3LjksMTQuNi03NS44YzMtMS44LDYuOS0yLjYsMTEuNS0yLjZsMC0yMi4zYzAsMCwwLDAsMCwwYy04LjQsMC0xNiwxLjgtMjIuNiw1LjYNCgkJYy0yOC4xLDE2LjItMzQuNCw2Ni43LTE5LjksMTMwLjFjLTYyLjIsMTkuMi0xMDIuNyw0OS45LTEwMi43LDgyLjNjMCwzMi41LDQwLjcsNjMuMywxMDMuMSw4Mi40Yy0xNC40LDYzLjYtOCwxMTQuMiwyMC4yLDEzMC40DQoJCWM2LjUsMy44LDE0LjEsNS42LDIyLjUsNS42YzI3LjUsMCw2My41LTE5LjYsOTkuOS01My42YzM2LjQsMzMuOCw3Mi40LDUzLjIsOTkuOSw1My4yYzguNCwwLDE2LTEuOCwyMi42LTUuNg0KCQljMjguMS0xNi4yLDM0LjQtNjYuNywxOS45LTEzMC4xQzYyNS44LDM1OS43LDY2Ni4zLDMyOC45LDY2Ni4zLDI5Ni41eiBNNTM2LjEsMjI5LjhjLTMuNywxMi45LTguMywyNi4yLTEzLjUsMzkuNQ0KCQljLTQuMS04LTguNC0xNi0xMy4xLTI0Yy00LjYtOC05LjUtMTUuOC0xNC40LTIzLjRDNTA5LjMsMjI0LDUyMywyMjYuNiw1MzYuMSwyMjkuOHogTTQ5MC4zLDMzNi4zYy03LjgsMTMuNS0xNS44LDI2LjMtMjQuMSwzOC4yDQoJCWMtMTQuOSwxLjMtMzAsMi00NS4yLDJjLTE1LjEsMC0zMC4yLTAuNy00NS0xLjljLTguMy0xMS45LTE2LjQtMjQuNi0yNC4yLTM4Yy03LjYtMTMuMS0xNC41LTI2LjQtMjAuOC0zOS44DQoJCWM2LjItMTMuNCwxMy4yLTI2LjgsMjAuNy0zOS45YzcuOC0xMy41LDE1LjgtMjYuMywyNC4xLTM4LjJjMTQuOS0xLjMsMzAtMiw0NS4yLTJjMTUuMSwwLDMwLjIsMC43LDQ1LDEuOQ0KCQljOC4zLDExLjksMTYuNCwyNC42LDI0LjIsMzhjNy42LDEzLjEsMTQuNSwyNi40LDIwLjgsMzkuOEM1MDQuNywzMDkuOCw0OTcuOCwzMjMuMiw0OTAuMywzMzYuM3ogTTUyMi42LDMyMy4zDQoJCWM1LjQsMTMuNCwxMCwyNi44LDEzLjgsMzkuOGMtMTMuMSwzLjItMjYuOSw1LjktNDEuMiw4YzQuOS03LjcsOS44LTE1LjYsMTQuNC0yMy43QzUxNC4yLDMzOS40LDUxOC41LDMzMS4zLDUyMi42LDMyMy4zeg0KCQkgTTQyMS4yLDQzMGMtOS4zLTkuNi0xOC42LTIwLjMtMjcuOC0zMmM5LDAuNCwxOC4yLDAuNywyNy41LDAuN2M5LjQsMCwxOC43LTAuMiwyNy44LTAuN0M0MzkuNyw0MDkuNyw0MzAuNCw0MjAuNCw0MjEuMiw0MzB6DQoJCSBNMzQ2LjgsMzcxLjFjLTE0LjItMi4xLTI3LjktNC43LTQxLTcuOWMzLjctMTIuOSw4LjMtMjYuMiwxMy41LTM5LjVjNC4xLDgsOC40LDE2LDEzLjEsMjRDMzM3LjEsMzU1LjcsMzQxLjksMzYzLjUsMzQ2LjgsMzcxLjF6DQoJCSBNNDIwLjcsMTYzYzkuMyw5LjYsMTguNiwyMC4zLDI3LjgsMzJjLTktMC40LTE4LjItMC43LTI3LjUtMC43Yy05LjQsMC0xOC43LDAuMi0yNy44LDAuN0M0MDIuMiwxODMuMyw0MTEuNSwxNzIuNiw0MjAuNywxNjN6DQoJCSBNMzQ2LjcsMjIxLjljLTQuOSw3LjctOS44LDE1LjYtMTQuNCwyMy43Yy00LjYsOC04LjksMTYtMTMsMjRjLTUuNC0xMy40LTEwLTI2LjgtMTMuOC0zOS44QzMxOC42LDIyNi43LDMzMi40LDIyNCwzNDYuNywyMjEuOXoNCgkJIE0yNTYuMiwzNDcuMWMtMzUuNC0xNS4xLTU4LjMtMzQuOS01OC4zLTUwLjZjMC0xNS43LDIyLjktMzUuNiw1OC4zLTUwLjZjOC42LTMuNywxOC03LDI3LjctMTAuMWM1LjcsMTkuNiwxMy4yLDQwLDIyLjUsNjAuOQ0KCQljLTkuMiwyMC44LTE2LjYsNDEuMS0yMi4yLDYwLjZDMjc0LjMsMzU0LjIsMjY0LjksMzUwLjgsMjU2LjIsMzQ3LjF6IE0zMTAsNDkwYy0xMy42LTcuOC0xOS41LTM3LjUtMTQuOS03NS43DQoJCWMxLjEtOS40LDIuOS0xOS4zLDUuMS0yOS40YzE5LjYsNC44LDQxLDguNSw2My41LDEwLjljMTMuNSwxOC41LDI3LjUsMzUuMyw0MS42LDUwYy0zMi42LDMwLjMtNjMuMiw0Ni45LTg0LDQ2LjkNCgkJQzMxNi44LDQ5Mi42LDMxMyw0OTEuNywzMTAsNDkweiBNNTQ3LjIsNDEzLjhjNC43LDM4LjItMS4xLDY3LjktMTQuNiw3NS44Yy0zLDEuOC02LjksMi42LTExLjUsMi42Yy0yMC43LDAtNTEuNC0xNi41LTg0LTQ2LjYNCgkJYzE0LTE0LjcsMjgtMzEuNCw0MS4zLTQ5LjljMjIuNi0yLjQsNDQtNi4xLDYzLjYtMTFDNTQ0LjMsMzk0LjgsNTQ2LjEsNDA0LjUsNTQ3LjIsNDEzLjh6IE01ODUuNywzNDcuMWMtOC42LDMuNy0xOCw3LTI3LjcsMTAuMQ0KCQljLTUuNy0xOS42LTEzLjItNDAtMjIuNS02MC45YzkuMi0yMC44LDE2LjYtNDEuMSwyMi4yLTYwLjZjOS45LDMuMSwxOS4zLDYuNSwyOC4xLDEwLjJjMzUuNCwxNS4xLDU4LjMsMzQuOSw1OC4zLDUwLjYNCgkJQzY0NCwzMTIuMiw2MjEuMSwzMzIuMSw1ODUuNywzNDcuMXoiLz4NCgk8cG9seWdvbiBmaWxsPSIjNjFEQUZCIiBwb2ludHM9IjMyMC44LDc4LjQgMzIwLjgsNzguNCAzMjAuOCw3OC40IAkiLz4NCgk8Y2lyY2xlIGZpbGw9IiM2MURBRkIiIGN4PSI0MjAuOSIgY3k9IjI5Ni41IiByPSI0NS43Ii8+DQoJPHBvbHlnb24gZmlsbD0iIzYxREFGQiIgcG9pbnRzPSI1MjAuNSw3OC4xIDUyMC41LDc4LjEgNTIwLjUsNzguMSAJIi8+DQo8L2c+DQo8L3N2Zz4NCg=="
                     title="Company"
                     hasError
@@ -2535,13 +2495,13 @@ class DemoContainer extends React.Component {
                   <p>
                     <code className="mr-3">.animation-spin-clockwise</code>
                     <span className="d-inline-flex animation-spin-clockwise">
-                      <Icon icon="sync" />
+                      <Icon icon="loading" />
                     </span>
                   </p>
                   <p>
                     <code className="mr-3">.animation-spin-counterclockwise</code>
                     <span className="d-inline-flex animation-spin-counterclockwise">
-                      <Icon icon="sync" />
+                      <Icon icon="loading" />
                     </span>
                   </p>
                 </>
