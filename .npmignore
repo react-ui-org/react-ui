@@ -4,14 +4,16 @@
 /node_modules
 /src/demo
 /tests
-.babelrc
 .browserslistrc
 .editorconfig
 .eslintrc
+.gitignore
+babel.config.js
 build.sh
 demo-stats.html
 docker-compose.yml
 Jenkinsfile
+jest.config.js
 lib-stats.html
 package-lock.json
 postcss.config.js

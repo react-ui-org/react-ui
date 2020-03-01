@@ -24,24 +24,12 @@ module.exports = [{
             options: {
               modules: {
                 localIdentName: '[name]__[local]__[hash:base64:5]',
-              }
+              },
             },
           },
           { loader: 'postcss-loader' },
           { loader: 'sass-loader' },
         ],
-      },
-      {
-        test: /\.svg$/,
-        use: [
-          { loader: 'svg-sprite-loader' },
-        ],
-      },
-      {
-        test: /\.(svg|jpg)$/,
-        use: [
-          { loader: 'file-loader?hash=sha512&digest=hex&name=[hash].[ext]' },
-        ]
       },
     ],
   },
@@ -57,7 +45,7 @@ module.exports = [{
       syntax: 'scss',
     }),
     new VisualizerPlugin({
-      filename: '../../lib-stats.html',
+      filename: '../lib-stats.html',
     }),
   ],
   resolve: {
