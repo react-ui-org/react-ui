@@ -32,24 +32,12 @@ module.exports = [{
             options: {
               modules: {
                 localIdentName: '[name]__[local]__[hash:base64:5]',
-              }
+              },
             },
           },
           { loader: 'postcss-loader' },
           { loader: 'sass-loader' },
         ],
-      },
-      {
-        test: /\.svg$/,
-        use: [
-          { loader: 'svg-sprite-loader' },
-        ],
-      },
-      {
-        test: /\.(svg|jpg)$/,
-        use: [
-          { loader: 'file-loader?hash=sha512&digest=hex&name=[hash].[ext]' },
-        ]
       },
     ],
   },
@@ -57,6 +45,10 @@ module.exports = [{
     filename: '[name].js',
     path: path.join(__dirname, 'demo/generated'),
     publicPath: '/generated/',
+  },
+  performance: {
+    maxAssetSize: 750000,
+    maxEntrypointSize: 750000,
   },
   plugins: [
     new StyleLintPlugin({
