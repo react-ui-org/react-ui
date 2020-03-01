@@ -26,9 +26,8 @@ exports[`rendering renders correctly with all props 1`] = `
   <div
     className="icon"
   >
-    <Icon
-      icon="info"
-      size="medium"
+    <span
+      className="icon"
     />
   </div>
   <div

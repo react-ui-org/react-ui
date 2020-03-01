@@ -144,9 +144,8 @@ exports[`rendering renders correctly with all props 1`] = `
   <span
     className="beforeLabel"
   >
-    <Icon
-      icon="list"
-      size="medium"
+    <span
+      className="icon"
     />
   </span>
   <span
@@ -158,9 +157,8 @@ exports[`rendering renders correctly with all props 1`] = `
   <span
     className="afterLabel"
   >
-    <Icon
-      icon="stars"
-      size="medium"
+    <span
+      className="icon"
     />
   </span>
   <span
@@ -175,9 +173,8 @@ exports[`rendering renders correctly with all props 1`] = `
   <span
     className="loadingIcon"
   >
-    <Icon
-      icon="sync"
-      size="medium"
+    <span
+      className="icon"
     />
   </span>
 </button>
@@ -197,9 +194,8 @@ exports[`rendering renders correctly with icon 1`] = `
   <span
     className="beforeLabel"
   >
-    <Icon
-      icon="album"
-      size="medium"
+    <span
+      className="icon"
     />
   </span>
   <span

@@ -173,9 +173,8 @@ exports[`rendering renders correctly with all with loading icon props except tra
       Object {
         "clickHandler": [Function],
         "label": "Action",
-        "loadingIcon": <Icon
-          icon="sync"
-          size="medium"
+        "loadingIcon": <span
+          className="icon"
         />,
       },
     ]
@@ -191,9 +190,8 @@ exports[`rendering renders correctly with all with loading icon props except tra
         Object {
           "clickHandler": [Function],
           "label": "Action",
-          "loadingIcon": <Icon
-            icon="sync"
-            size="medium"
+          "loadingIcon": <span
+            className="icon"
           />,
         },
       ]
@@ -252,9 +250,8 @@ exports[`rendering renders correctly with all with loading icon props except tra
             key="Action"
             label="Action"
             loadingIcon={
-              <Icon
-                icon="sync"
-                size="medium"
+              <span
+                className="icon"
               />
             }
           >
@@ -270,9 +267,8 @@ exports[`rendering renders correctly with all with loading icon props except tra
               label="Action"
               labelVisibility="all"
               loadingIcon={
-                <Icon
-                  icon="sync"
-                  size="medium"
+                <span
+                  className="icon"
                 />
               }
               priority="default"
@@ -299,23 +295,9 @@ exports[`rendering renders correctly with all with loading icon props except tra
                 <span
                   className="loadingIcon"
                 >
-                  <Icon
-                    icon="sync"
-                    size="medium"
-                  >
-                    <svg
-                      className="root"
-                      style={
-                        Object {
-                          "fill": "currentColor",
-                        }
-                      }
-                    >
-                      <use
-                        xlinkHref="#ic_sync_48px"
-                      />
-                    </svg>
-                  </Icon>
+                  <span
+                    className="icon"
+                  />
                 </span>
               </button>
             </Button>

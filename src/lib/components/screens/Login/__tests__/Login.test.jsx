@@ -4,8 +4,6 @@ import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
 import { Login } from '..';
 
-jest.mock('../../../ui/Icon/load-material-design-icons');
-
 describe('rendering', () => {
   it('renders correctly', () => {
     const tree = mount(<Login />);
