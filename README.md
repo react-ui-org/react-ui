@@ -48,10 +48,13 @@ To use React UI in your app:
    ```js
    // MyDashboardScreen.jsx
    import React from 'react';
-   import { Icon } from '@react-ui-org/react-ui';
+   import { Button } from '@react-ui-org/react-ui';
 
    export const MyDashboardScreen = () => (
-     <Icon icon="edit" />
+     <Button
+       clickHandler={() => {}}
+       label="Save changes"
+     />
    );
    ```
 
@@ -78,6 +81,9 @@ With output size in mind, we recommend to choose from these theming options:
 
 To keep your app UI consistent, use the theme properties from `src/lib/theme.scss` also in your
 custom styles.
+
+Icons are not included in the library to allow more flexibility and to reduce its size. Components
+that require icons allow to them to be passed in via props.
 
 ## Translations
 
