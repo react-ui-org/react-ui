@@ -16,13 +16,6 @@ import {
   CardFooter,
   CardList,
   CheckboxField,
-  Documentation,
-  DocumentationLayout,
-  DocumentationLayoutContent,
-  DocumentationLayoutSidebar,
-  DocumentationNavigation,
-  DocumentationPlaceholder,
-  DocumentationSwatch,
   ForgotPassword,
   LayoutCenter,
   List,
@@ -49,7 +42,16 @@ import {
 } from '../../lib';
 
 // Demo components
-import { Icon } from '../components/Icon';
+import {
+  Documentation,
+  Layout,
+  LayoutContent,
+  LayoutSidebar,
+  Navigation,
+  Placeholder,
+  Icon,
+  Swatch,
+} from '../components';
 
 // React UI utility CSS classes
 import '../../lib/utilities.scss';
@@ -88,11 +90,11 @@ class DemoContainer extends React.Component {
 
   render() {
     return (
-      <DocumentationLayout>
-        <DocumentationLayoutSidebar>
-          <DocumentationNavigation items={navigationTree} />
-        </DocumentationLayoutSidebar>
-        <DocumentationLayoutContent>
+      <Layout>
+        <LayoutSidebar>
+          <Navigation items={navigationTree} />
+        </LayoutSidebar>
+        <LayoutContent>
           <section id="foundation" className="mb-7">
             <h2 className="typography-size-5 mb-6">Foundation</h2>
             <h3 id="foundation-colors" className="typography-size-4 mb-6">Colors</h3>
@@ -100,81 +102,81 @@ class DemoContainer extends React.Component {
               <h4 className="typography-size-3">Theme Colors</h4>
               <div className="mb-5">
                 <div>
-                  <DocumentationSwatch color="primary" />
-                  <DocumentationSwatch color="primary-dark" />
-                  <DocumentationSwatch color="primary-darker" />
-                  <DocumentationSwatch color="primary-light" />
-                  <DocumentationSwatch color="on-primary" />
+                  <Swatch color="primary" />
+                  <Swatch color="primary-dark" />
+                  <Swatch color="primary-darker" />
+                  <Swatch color="primary-light" />
+                  <Swatch color="on-primary" />
                 </div>
                 <div>
-                  <DocumentationSwatch color="secondary" />
-                  <DocumentationSwatch color="secondary-dark" />
-                  <DocumentationSwatch color="secondary-darker" />
-                  <DocumentationSwatch color="secondary-light" />
-                  <DocumentationSwatch color="on-secondary" />
+                  <Swatch color="secondary" />
+                  <Swatch color="secondary-dark" />
+                  <Swatch color="secondary-darker" />
+                  <Swatch color="secondary-light" />
+                  <Swatch color="on-secondary" />
                 </div>
               </div>
               <h4 className="typography-size-3">UI Colors</h4>
               <div className="mb-5">
                 <div>
-                  <DocumentationSwatch color="success" />
-                  <DocumentationSwatch color="success-dark" />
-                  <DocumentationSwatch color="success-darker" />
-                  <DocumentationSwatch color="success-light" />
-                  <DocumentationSwatch color="on-success" />
+                  <Swatch color="success" />
+                  <Swatch color="success-dark" />
+                  <Swatch color="success-darker" />
+                  <Swatch color="success-light" />
+                  <Swatch color="on-success" />
                 </div>
                 <div>
-                  <DocumentationSwatch color="warning" />
-                  <DocumentationSwatch color="warning-dark" />
-                  <DocumentationSwatch color="warning-darker" />
-                  <DocumentationSwatch color="warning-light" />
-                  <DocumentationSwatch color="on-warning" />
+                  <Swatch color="warning" />
+                  <Swatch color="warning-dark" />
+                  <Swatch color="warning-darker" />
+                  <Swatch color="warning-light" />
+                  <Swatch color="on-warning" />
                 </div>
                 <div>
-                  <DocumentationSwatch color="error" />
-                  <DocumentationSwatch color="error-dark" />
-                  <DocumentationSwatch color="error-darker" />
-                  <DocumentationSwatch color="error-light" />
-                  <DocumentationSwatch color="on-error" />
+                  <Swatch color="error" />
+                  <Swatch color="error-dark" />
+                  <Swatch color="error-darker" />
+                  <Swatch color="error-light" />
+                  <Swatch color="on-error" />
                 </div>
                 <div>
-                  <DocumentationSwatch color="help" />
-                  <DocumentationSwatch color="help-dark" />
-                  <DocumentationSwatch color="help-darker" />
-                  <DocumentationSwatch color="help-light" />
-                  <DocumentationSwatch color="on-help" />
+                  <Swatch color="help" />
+                  <Swatch color="help-dark" />
+                  <Swatch color="help-darker" />
+                  <Swatch color="help-light" />
+                  <Swatch color="on-help" />
                 </div>
                 <div>
-                  <DocumentationSwatch color="info" />
-                  <DocumentationSwatch color="info-dark" />
-                  <DocumentationSwatch color="info-darker" />
-                  <DocumentationSwatch color="info-light" />
-                  <DocumentationSwatch color="on-info" />
+                  <Swatch color="info" />
+                  <Swatch color="info-dark" />
+                  <Swatch color="info-darker" />
+                  <Swatch color="info-light" />
+                  <Swatch color="on-info" />
                 </div>
                 <div>
-                  <DocumentationSwatch color="note" />
-                  <DocumentationSwatch color="note-dark" />
-                  <DocumentationSwatch color="note-darker" />
-                  <DocumentationSwatch color="note-light" />
-                  <DocumentationSwatch color="on-note" />
+                  <Swatch color="note" />
+                  <Swatch color="note-dark" />
+                  <Swatch color="note-darker" />
+                  <Swatch color="note-light" />
+                  <Swatch color="on-note" />
                 </div>
               </div>
               <h4 className="typography-size-3">Grays</h4>
               <div className="mb-5">
-                <DocumentationSwatch color="white" />
-                <DocumentationSwatch color="black" />
+                <Swatch color="white" />
+                <Swatch color="black" />
               </div>
               <div className="mb-5">
-                <DocumentationSwatch color="gray-50" />
-                <DocumentationSwatch color="gray-100" />
-                <DocumentationSwatch color="gray-200" />
-                <DocumentationSwatch color="gray-300" />
-                <DocumentationSwatch color="gray-400" />
-                <DocumentationSwatch color="gray-500" />
-                <DocumentationSwatch color="gray-600" />
-                <DocumentationSwatch color="gray-700" />
-                <DocumentationSwatch color="gray-800" />
-                <DocumentationSwatch color="gray-900" />
+                <Swatch color="gray-50" />
+                <Swatch color="gray-100" />
+                <Swatch color="gray-200" />
+                <Swatch color="gray-300" />
+                <Swatch color="gray-400" />
+                <Swatch color="gray-500" />
+                <Swatch color="gray-600" />
+                <Swatch color="gray-700" />
+                <Swatch color="gray-800" />
+                <Swatch color="gray-900" />
               </div>
             </div>
             <h3 id="foundation-typography" className="typography-size-4 mb-6">Typography</h3>
@@ -266,11 +268,11 @@ class DemoContainer extends React.Component {
               name="Card List"
               component={(
                 <CardList>
-                  <DocumentationPlaceholder text="card" />
-                  <DocumentationPlaceholder text="card" />
-                  <DocumentationPlaceholder text="card" />
-                  <DocumentationPlaceholder text="card" />
-                  <DocumentationPlaceholder text="card" />
+                  <Placeholder text="card" />
+                  <Placeholder text="card" />
+                  <Placeholder text="card" />
+                  <Placeholder text="card" />
+                  <Placeholder text="card" />
                 </CardList>
               )}
             />
@@ -282,7 +284,7 @@ class DemoContainer extends React.Component {
               name="Centered Layout"
               component={(
                 <LayoutCenter>
-                  <DocumentationPlaceholder text="centered content" />
+                  <Placeholder text="centered content" />
                 </LayoutCenter>
               )}
             />
@@ -292,13 +294,13 @@ class DemoContainer extends React.Component {
               component={(
                 <List>
                   <ListItem>
-                    <DocumentationPlaceholder text="item 1" />
+                    <Placeholder text="item 1" />
                   </ListItem>
                   <ListItem>
-                    <DocumentationPlaceholder text="item 2" />
+                    <Placeholder text="item 2" />
                   </ListItem>
                   <ListItem>
-                    <DocumentationPlaceholder text="item 3" />
+                    <Placeholder text="item 3" />
                   </ListItem>
                 </List>
               )}
@@ -308,13 +310,13 @@ class DemoContainer extends React.Component {
               component={(
                 <List align="right">
                   <ListItem>
-                    <DocumentationPlaceholder text="item 1" />
+                    <Placeholder text="item 1" />
                   </ListItem>
                   <ListItem>
-                    <DocumentationPlaceholder text="item 2" />
+                    <Placeholder text="item 2" />
                   </ListItem>
                   <ListItem>
-                    <DocumentationPlaceholder text="item 3" />
+                    <Placeholder text="item 3" />
                   </ListItem>
                 </List>
               )}
@@ -324,13 +326,13 @@ class DemoContainer extends React.Component {
               component={(
                 <List align="right" autoWidth>
                   <ListItem>
-                    <DocumentationPlaceholder text="item no. 1" />
+                    <Placeholder text="item no. 1" />
                   </ListItem>
                   <ListItem>
-                    <DocumentationPlaceholder text="longer item, no. 2" />
+                    <Placeholder text="longer item, no. 2" />
                   </ListItem>
                   <ListItem>
-                    <DocumentationPlaceholder text="the longest item, no. 3" />
+                    <Placeholder text="the longest item, no. 3" />
                   </ListItem>
                 </List>
               )}
@@ -341,10 +343,10 @@ class DemoContainer extends React.Component {
               component={(
                 <Media>
                   <MediaObject>
-                    <DocumentationPlaceholder text="object" />
+                    <Placeholder text="object" />
                   </MediaObject>
                   <MediaBody>
-                    <DocumentationPlaceholder text="body" />
+                    <Placeholder text="body" />
                   </MediaBody>
                 </Media>
               )}
@@ -355,10 +357,10 @@ class DemoContainer extends React.Component {
               component={(
                 <Row>
                   <RowLeft>
-                    <DocumentationPlaceholder text="left part" />
+                    <Placeholder text="left part" />
                   </RowLeft>
                   <RowRight>
-                    <DocumentationPlaceholder text="right part" />
+                    <Placeholder text="right part" />
                   </RowRight>
                 </Row>
               )}
@@ -369,21 +371,21 @@ class DemoContainer extends React.Component {
               component={(
                 <Toolbar>
                   <ToolbarItem>
-                    <DocumentationPlaceholder text="item" />
+                    <Placeholder text="item" />
                   </ToolbarItem>
                   <ToolbarItem>
-                    <DocumentationPlaceholder text="item" />
+                    <Placeholder text="item" />
                   </ToolbarItem>
                   <ToolbarItem>
-                    <DocumentationPlaceholder text="item" />
-                  </ToolbarItem>
-                  <ToolbarSpacer />
-                  <ToolbarItem>
-                    <DocumentationPlaceholder text="item" />
+                    <Placeholder text="item" />
                   </ToolbarItem>
                   <ToolbarSpacer />
                   <ToolbarItem>
-                    <DocumentationPlaceholder text="item" />
+                    <Placeholder text="item" />
+                  </ToolbarItem>
+                  <ToolbarSpacer />
+                  <ToolbarItem>
+                    <Placeholder text="item" />
                   </ToolbarItem>
                 </Toolbar>
               )}
@@ -2804,28 +2806,28 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <div className="mb-0">
-                    <DocumentationPlaceholder text=".mb-0" />
+                    <Placeholder text=".mb-0" />
                   </div>
                   <div className="mb-1">
-                    <DocumentationPlaceholder text=".mb-1" />
+                    <Placeholder text=".mb-1" />
                   </div>
                   <div className="mb-2">
-                    <DocumentationPlaceholder text=".mb-2" />
+                    <Placeholder text=".mb-2" />
                   </div>
                   <div className="mb-3">
-                    <DocumentationPlaceholder text=".mb-3" />
+                    <Placeholder text=".mb-3" />
                   </div>
                   <div className="mb-4">
-                    <DocumentationPlaceholder text=".mb-4" />
+                    <Placeholder text=".mb-4" />
                   </div>
                   <div className="mb-5">
-                    <DocumentationPlaceholder text=".mb-5" />
+                    <Placeholder text=".mb-5" />
                   </div>
                   <div className="mb-6">
-                    <DocumentationPlaceholder text=".mb-6" />
+                    <Placeholder text=".mb-6" />
                   </div>
                   <div className="mb-7">
-                    <DocumentationPlaceholder text=".mb-7" />
+                    <Placeholder text=".mb-7" />
                   </div>
                 </div>
               )}
@@ -2835,35 +2837,35 @@ class DemoContainer extends React.Component {
               component={(
                 <div>
                   <div className="pl-sm-0">
-                    <DocumentationPlaceholder text=".pl-sm-0" />
+                    <Placeholder text=".pl-sm-0" />
                   </div>
                   <div className="pl-sm-1">
-                    <DocumentationPlaceholder text=".pl-sm-1" />
+                    <Placeholder text=".pl-sm-1" />
                   </div>
                   <div className="pl-sm-2">
-                    <DocumentationPlaceholder text=".pl-sm-2" />
+                    <Placeholder text=".pl-sm-2" />
                   </div>
                   <div className="pl-sm-3">
-                    <DocumentationPlaceholder text=".pl-sm-3" />
+                    <Placeholder text=".pl-sm-3" />
                   </div>
                   <div className="pl-sm-4">
-                    <DocumentationPlaceholder text=".pl-sm-4" />
+                    <Placeholder text=".pl-sm-4" />
                   </div>
                   <div className="pl-sm-5">
-                    <DocumentationPlaceholder text=".pl-sm-5" />
+                    <Placeholder text=".pl-sm-5" />
                   </div>
                   <div className="pl-sm-6">
-                    <DocumentationPlaceholder text=".pl-sm-6" />
+                    <Placeholder text=".pl-sm-6" />
                   </div>
                   <div className="pl-sm-7">
-                    <DocumentationPlaceholder text=".pl-7" />
+                    <Placeholder text=".pl-7" />
                   </div>
                 </div>
               )}
             />
           </section>
-        </DocumentationLayoutContent>
-      </DocumentationLayout>
+        </LayoutContent>
+      </Layout>
     );
   }
 }

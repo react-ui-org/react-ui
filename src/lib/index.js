@@ -1,12 +1,3 @@
-// Documentation components
-export { default as Documentation } from './components/documentation/Documentation';
-export { default as DocumentationNavigation } from './components/documentation/DocumentationNavigation';
-export { default as DocumentationPlaceholder } from './components/documentation/DocumentationPlaceholder';
-export { default as DocumentationSwatch } from './components/documentation/DocumentationSwatch';
-export { DocumentationLayout } from './components/documentation/DocumentationLayout';
-export { DocumentationLayoutContent } from './components/documentation/DocumentationLayout';
-export { DocumentationLayoutSidebar } from './components/documentation/DocumentationLayout';
-
 // Layout components
 export { default as CardList } from './components/layout/CardList';
 export { default as LayoutCenter } from './components/layout/LayoutCenter';

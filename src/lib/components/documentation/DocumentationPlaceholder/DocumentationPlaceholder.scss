@@ -1,8 +1,0 @@
-@import '../../../styles/settings/colors';
-@import '../../../styles/tools/offset';
-
-.root {
-  padding: offset(3);
-  border: 1px solid map-get($colors-grays, gray-200);
-  background-color: map-get($colors-grays, gray-50);
-}
