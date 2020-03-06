@@ -2,7 +2,7 @@ const path = require('path');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const VisualizerPlugin = require('webpack-visualizer-plugin');
 
-module.exports = [{
+module.exports = (env, argv) => ({
   devServer: {
     contentBase: './demo',
     disableHostCheck: true,
@@ -31,7 +31,9 @@ module.exports = [{
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: '[name]__[local]__[hash:base64:5]',
+                localIdentName: argv.mode === 'production'
+                  ? '[hash:base64:8]'
+                  : '[name]__[local]__[hash:base64:8]',
               },
             },
           },
@@ -63,4 +65,4 @@ module.exports = [{
     extensions: ['.js', '.jsx', '.scss'],
     modules: ['src', 'node_modules'],
   },
-}];
+});
