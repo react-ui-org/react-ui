@@ -1,0 +1,44 @@
+@import '../../../lib/styles/settings/colors';
+@import '../../../lib/styles/settings/typography';
+@import '../../../lib/styles/tools/offset';
+@import '../../../lib/styles/tools/transitions';
+
+.headline {
+  padding: offset(6) offset(5) offset(2);
+  font-weight: map-get($typography-font-weight-values, regular);
+  font-size: map-get($typography-size-values, 3);
+}
+
+.root,
+.subnavigation {
+  padding-left: 0;
+  list-style: none;
+}
+
+.navigationLink,
+.subnavigationLink {
+  @include transition((color, background));
+
+  display: block;
+  padding: offset(3) offset(5);
+  text-decoration: none;
+  color: inherit;
+}
+
+.navigationLink {
+  font-weight: map-get($typography-font-weight-values, bold);
+}
+
+.subnavigationLink {
+  padding-left: offset(7);
+  color: map-get($colors-grays, gray-600);
+}
+
+.navigationLink:hover,
+.navigationLink:focus,
+.subnavigationLink:hover,
+.subnavigationLink:focus {
+  text-decoration: none;
+  color: inherit;
+  background-color: map-get($colors-grays, gray-50);
+}

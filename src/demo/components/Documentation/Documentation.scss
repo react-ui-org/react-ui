@@ -1,0 +1,13 @@
+@import '../../../lib/styles/settings/colors';
+@import '../../../lib/styles/settings/typography';
+@import '../../../lib/styles/tools/offset';
+
+.root {
+  margin-bottom: offset(7);
+}
+
+.sandbox {
+  padding: offset(5);
+  border: 2px dashed map-get($colors-grays, gray-200);
+  background-color: $color-white;
+}
