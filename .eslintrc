@@ -1,5 +1,9 @@
 {
-  "extends" : ["@visionappscz/eslint-config-visionapps"],
+  "extends" : [
+    "@visionappscz/eslint-config-visionapps",
+    "plugin:markdown/recommended",
+    "plugin:mdx/recommended"
+  ],
   "env": {
     "browser": true,
     "jest": true
@@ -14,5 +18,15 @@
     // Bedřich Schindler <bedrich@visionapps.cz>, 14. 9. 2019
     // These rules will be fixed later due to huge amouut of errors after update
     "react/destructuring-assignment": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.mdx"],
+      "rules": {
+        "react/jsx-filename-extension": [1, { "extensions": [".mdx"] }],
+        "react/jsx-indent": "off", // Gives false positives in MDX files.
+        "semi": "off" // We don't want to clutter our MDX with semicolons.
+      }
+    }
+  ]
 }
