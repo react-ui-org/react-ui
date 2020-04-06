@@ -1,0 +1,9 @@
+// See https://github.com/DavidAnson/markdownlint#rules--aliases for the complete list of rules.
+
+{
+  "default": true,
+  "MD033": false, // Allow inline JSX.
+  "line-length": {
+    "tables": false
+  }
+}

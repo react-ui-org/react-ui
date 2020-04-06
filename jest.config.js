@@ -6,6 +6,9 @@ module.exports = {
   moduleNameMapper: {
     '\\.scss$': 'identity-obj-proxy',
   },
+  modulePathIgnorePatterns: [
+    '<rootDir>/.docz/',
+  ],
   setupFiles: [
     '<rootDir>/tests/setupJest.js',
   ],
