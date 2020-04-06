@@ -69,6 +69,12 @@
   }
 }
 
+@mixin form-field-input-select-option() {
+  option:disabled {
+    color: $form-field-disabled-select-option-color;
+  }
+}
+
 @mixin form-field-caret() {
   @include transition(border);
 

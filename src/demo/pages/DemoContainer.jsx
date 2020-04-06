@@ -988,19 +988,35 @@ class DemoContainer extends React.Component {
             <Documentation
               name="Disabled multiple select field option"
               component={(
-                <MultipleSelectField
-                  id="multipleSelectFieldDisabledOutline"
-                  changeHandler={logger}
-                  label="Disabled multiple select field"
-                  options={[
-                    ...this.exampleOptions,
-                    {
-                      disabled: true,
-                      label: 'Oranges',
-                      value: 'oranges',
-                    },
-                  ]}
-                />
+                <>
+                  <MultipleSelectField
+                    id="multipleSelectFieldDisabledOutline"
+                    changeHandler={logger}
+                    label="Disabled multiple select field"
+                    options={[
+                      ...this.exampleOptions,
+                      {
+                        disabled: true,
+                        label: 'Oranges',
+                        value: 'oranges',
+                      },
+                    ]}
+                  />
+                  <MultipleSelectField
+                    id="multipleSelectFieldDisabledOutline"
+                    changeHandler={logger}
+                    label="Disabled multiple select field"
+                    variant="filled"
+                    options={[
+                      ...this.exampleOptions,
+                      {
+                        disabled: true,
+                        label: 'Oranges',
+                        value: 'oranges',
+                      },
+                    ]}
+                  />
+                </>
               )}
             />
             <Documentation
@@ -1314,19 +1330,35 @@ class DemoContainer extends React.Component {
             <Documentation
               name="Disabled select field option"
               component={(
-                <SelectField
-                  id="selectFieldDisabledOutline"
-                  changeHandler={logger}
-                  label="Disabled select field"
-                  options={[
-                    ...this.exampleOptions,
-                    {
-                      disabled: true,
-                      label: 'Oranges',
-                      value: 'oranges',
-                    },
-                  ]}
-                />
+                <>
+                  <SelectField
+                    id="selectFieldDisabledOutline"
+                    changeHandler={logger}
+                    label="Disabled select field"
+                    options={[
+                      ...this.exampleOptions,
+                      {
+                        disabled: true,
+                        label: 'Oranges',
+                        value: 'oranges',
+                      },
+                    ]}
+                  />
+                  <SelectField
+                    id="selectFieldDisabledOutline"
+                    changeHandler={logger}
+                    label="Disabled select field"
+                    variant="filled"
+                    options={[
+                      ...this.exampleOptions,
+                      {
+                        disabled: true,
+                        label: 'Oranges',
+                        value: 'oranges',
+                      },
+                    ]}
+                  />
+                </>
               )}
             />
             <Documentation
