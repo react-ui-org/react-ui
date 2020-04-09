@@ -1,27 +1,14 @@
 @import '../../../styles/tools/offset';
 @import 'theme';
 
-.toolbar {
+.toolbar,
+.group {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
+}
+
+.toolbar {
   margin: calc(-1 * #{$toolbar-spacing});
-}
-
-.isToolbarAlignedToTop {
-  align-items: flex-start;
-}
-
-.isToolbarAlignedToMiddle {
-  align-items: center;
-}
-
-.isToolbarAlignedToBottom {
-  align-items: flex-end;
-}
-
-.isToolbarAlignedToBaseline {
-  align-items: baseline;
 }
 
 .item {
@@ -31,4 +18,20 @@
 
 .spacer {
   flex: 1 1 auto;
+}
+
+.isAlignedToTop {
+  align-items: flex-start;
+}
+
+.isAlignedToMiddle {
+  align-items: center;
+}
+
+.isAlignedToBottom {
+  align-items: flex-end;
+}
+
+.isAlignedToBaseline {
+  align-items: baseline;
 }

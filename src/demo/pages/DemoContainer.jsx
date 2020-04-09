@@ -37,6 +37,7 @@ import {
   TextArea,
   Toggle,
   Toolbar,
+  ToolbarGroup,
   ToolbarItem,
   ToolbarSpacer,
 } from '../../lib';
@@ -404,6 +405,32 @@ class DemoContainer extends React.Component {
                   <ToolbarItem>
                     <Placeholder text="item" />
                   </ToolbarItem>
+                  <ToolbarSpacer />
+                  <ToolbarItem>
+                    <Placeholder text="item" />
+                  </ToolbarItem>
+                  <ToolbarSpacer />
+                  <ToolbarItem>
+                    <Placeholder text="item" />
+                  </ToolbarItem>
+                </Toolbar>
+              )}
+            />
+            <Documentation
+              name="Grouped items"
+              component={(
+                <Toolbar>
+                  <ToolbarGroup>
+                    <ToolbarItem>
+                      <Placeholder text="group item" />
+                    </ToolbarItem>
+                    <ToolbarItem>
+                      <Placeholder text="group item" />
+                    </ToolbarItem>
+                    <ToolbarItem>
+                      <Placeholder text="group item" />
+                    </ToolbarItem>
+                  </ToolbarGroup>
                   <ToolbarSpacer />
                   <ToolbarItem>
                     <Placeholder text="item" />
