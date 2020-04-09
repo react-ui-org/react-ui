@@ -2,7 +2,17 @@
 
 exports[`rendering renders correctly with a single child 1`] = `
 <div
-  className="toolbar"
+  className="toolbar isToolbarAlignedToBottom"
+>
+  <span>
+    content
+  </span>
+</div>
+`;
+
+exports[`rendering renders correctly with all props 1`] = `
+<div
+  className="toolbar isToolbarAlignedToMiddle"
 >
   <span>
     content
@@ -12,7 +22,7 @@ exports[`rendering renders correctly with a single child 1`] = `
 
 exports[`rendering renders correctly with multiple children 1`] = `
 <div
-  className="toolbar"
+  className="toolbar isToolbarAlignedToBottom"
 >
   <span>
     content 1
