@@ -390,6 +390,31 @@ class DemoContainer extends React.Component {
                 </Toolbar>
               )}
             />
+            <Documentation
+              name="Custom alignment"
+              component={(
+                <Toolbar align="middle">
+                  <ToolbarItem>
+                    <Placeholder text="item" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Placeholder text="item" />
+                    <Placeholder text="item" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Placeholder text="item" />
+                  </ToolbarItem>
+                  <ToolbarSpacer />
+                  <ToolbarItem>
+                    <Placeholder text="item" />
+                  </ToolbarItem>
+                  <ToolbarSpacer />
+                  <ToolbarItem>
+                    <Placeholder text="item" />
+                  </ToolbarItem>
+                </Toolbar>
+              )}
+            />
           </section>
           <hr />
           <section id="ui-components" className="mb-7">

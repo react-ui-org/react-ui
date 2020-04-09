@@ -24,4 +24,14 @@ describe('rendering', () => {
 
     expect(tree).toMatchSnapshot();
   });
+
+  it('renders correctly with all props', () => {
+    const tree = shallow((
+      <Toolbar align="middle">
+        <span>content</span>
+      </Toolbar>
+    ));
+
+    expect(tree).toMatchSnapshot();
+  });
 });

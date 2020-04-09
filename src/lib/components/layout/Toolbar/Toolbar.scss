@@ -8,6 +8,22 @@
   margin: calc(-1 * #{$toolbar-spacing});
 }
 
+.isToolbarAlignedToTop {
+  align-items: flex-start;
+}
+
+.isToolbarAlignedToMiddle {
+  align-items: center;
+}
+
+.isToolbarAlignedToBottom {
+  align-items: flex-end;
+}
+
+.isToolbarAlignedToBaseline {
+  align-items: baseline;
+}
+
 .item {
   flex: none;
   margin: $toolbar-spacing;
