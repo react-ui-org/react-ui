@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './Toolbar.scss';
 
-const Toolbar = (props) => {
+const ToolbarGroup = (props) => {
   const {
     align,
     children,
@@ -27,7 +27,7 @@ const Toolbar = (props) => {
   return (
     <div
       className={[
-        styles.toolbar,
+        styles.group,
         alignClass(align),
       ].join(' ')}
     >
@@ -36,11 +36,11 @@ const Toolbar = (props) => {
   );
 };
 
-Toolbar.defaultProps = {
+ToolbarGroup.defaultProps = {
   align: 'bottom',
 };
 
-Toolbar.propTypes = {
+ToolbarGroup.propTypes = {
   align: PropTypes.oneOf(['top', 'middle', 'bottom', 'baseline']),
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
@@ -48,4 +48,4 @@ Toolbar.propTypes = {
   ]).isRequired,
 };
 
-export default Toolbar;
+export default ToolbarGroup;

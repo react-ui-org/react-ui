@@ -10,6 +10,7 @@ export { Row } from './components/layout/Row';
 export { RowLeft } from './components/layout/Row';
 export { RowRight } from './components/layout/Row';
 export { Toolbar } from './components/layout/Toolbar';
+export { ToolbarGroup } from './components/layout/Toolbar';
 export { ToolbarItem } from './components/layout/Toolbar';
 export { ToolbarSpacer } from './components/layout/Toolbar';
 
