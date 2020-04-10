@@ -29,8 +29,8 @@ import {
   NewPassword,
   Radio,
   Row,
-  RowLeft,
-  RowRight,
+  RowEnd,
+  RowStart,
   SelectField,
   Table,
   TextField,
@@ -356,12 +356,12 @@ class DemoContainer extends React.Component {
               name="Default layout"
               component={(
                 <Row>
-                  <RowLeft>
-                    <Placeholder text="left part" />
-                  </RowLeft>
-                  <RowRight>
-                    <Placeholder text="right part" />
-                  </RowRight>
+                  <RowStart>
+                    <Placeholder text="start" />
+                  </RowStart>
+                  <RowEnd>
+                    <Placeholder text="end" />
+                  </RowEnd>
                 </Row>
               )}
             />

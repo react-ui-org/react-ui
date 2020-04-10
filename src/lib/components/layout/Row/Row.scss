@@ -7,12 +7,12 @@
   margin-bottom: offset(3);
 }
 
-.left,
-.right {
+.start,
+.end {
   flex: none;
 }
 
-.right {
+.end {
   padding-left: offset(3);
   margin-left: auto;
 }
