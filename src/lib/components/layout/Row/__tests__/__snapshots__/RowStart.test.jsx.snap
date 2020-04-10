@@ -2,7 +2,7 @@
 
 exports[`rendering renders correctly with a single child 1`] = `
 <div
-  className="left"
+  className="start"
 >
   <span>
     content
@@ -12,7 +12,7 @@ exports[`rendering renders correctly with a single child 1`] = `
 
 exports[`rendering renders correctly with multiple children 1`] = `
 <div
-  className="left"
+  className="start"
 >
   <span>
     content 1

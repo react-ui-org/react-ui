@@ -1,3 +1,3 @@
 export { default as Row } from './Row';
-export { default as RowLeft } from './RowLeft';
-export { default as RowRight } from './RowRight';
+export { default as RowEnd } from './RowEnd';
+export { default as RowStart } from './RowStart';

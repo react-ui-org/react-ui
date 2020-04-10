@@ -2,17 +2,17 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './Row.scss';
 
-const RowRight = ({ children }) => (
-  <div className={styles.right}>
+const RowStart = ({ children }) => (
+  <div className={styles.start}>
     {children}
   </div>
 );
 
-RowRight.propTypes = {
+RowStart.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
 };
 
-export default RowRight;
+export default RowStart;

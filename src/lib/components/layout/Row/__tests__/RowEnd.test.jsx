@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import RowLeft from '../RowLeft';
+import RowStart from '../RowStart';
 
 describe('rendering', () => {
   it('renders correctly with a single child', () => {
     const tree = shallow((
-      <RowLeft>
+      <RowStart>
         <span>content</span>
-      </RowLeft>
+      </RowStart>
     ));
 
     expect(tree).toMatchSnapshot();
@@ -15,11 +15,11 @@ describe('rendering', () => {
 
   it('renders correctly with multiple children', () => {
     const tree = shallow((
-      <RowLeft>
+      <RowStart>
         <span>content 1</span>
         <span>content 2</span>
         <span>content 3</span>
-      </RowLeft>
+      </RowStart>
     ));
 
     expect(tree).toMatchSnapshot();
