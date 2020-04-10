@@ -12,7 +12,6 @@ export { RowRight } from './components/layout/Row';
 export { Toolbar } from './components/layout/Toolbar';
 export { ToolbarGroup } from './components/layout/Toolbar';
 export { ToolbarItem } from './components/layout/Toolbar';
-export { ToolbarSpacer } from './components/layout/Toolbar';
 
 // Screens
 export { default as ForgotPassword } from './components/screens/Login/ForgotPassword';

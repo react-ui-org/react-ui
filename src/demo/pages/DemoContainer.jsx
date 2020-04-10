@@ -39,7 +39,6 @@ import {
   Toolbar,
   ToolbarGroup,
   ToolbarItem,
-  ToolbarSpacer,
 } from '../../lib';
 
 // Demo components
@@ -368,76 +367,48 @@ class DemoContainer extends React.Component {
             />
             <h3 id="layout-components-toolbar" className="typography-size-4 mb-6">Toolbar</h3>
             <Documentation
-              name="Default layout"
+              name="Example layout with group and space-between justification"
               component={(
-                <Toolbar>
-                  <ToolbarItem>
-                    <Placeholder text="item" />
-                  </ToolbarItem>
-                  <ToolbarItem>
-                    <Placeholder text="item" />
-                  </ToolbarItem>
-                  <ToolbarItem>
-                    <Placeholder text="item" />
-                  </ToolbarItem>
-                  <ToolbarSpacer />
-                  <ToolbarItem>
-                    <Placeholder text="item" />
-                  </ToolbarItem>
-                  <ToolbarSpacer />
-                  <ToolbarItem>
-                    <Placeholder text="item" />
-                  </ToolbarItem>
-                </Toolbar>
-              )}
-            />
-            <Documentation
-              name="Custom alignment"
-              component={(
-                <Toolbar align="middle">
-                  <ToolbarItem>
-                    <Placeholder text="item" />
-                  </ToolbarItem>
-                  <ToolbarItem>
-                    <Placeholder text="item" />
-                    <Placeholder text="item" />
-                  </ToolbarItem>
-                  <ToolbarItem>
-                    <Placeholder text="item" />
-                  </ToolbarItem>
-                  <ToolbarSpacer />
-                  <ToolbarItem>
-                    <Placeholder text="item" />
-                  </ToolbarItem>
-                  <ToolbarSpacer />
-                  <ToolbarItem>
-                    <Placeholder text="item" />
-                  </ToolbarItem>
-                </Toolbar>
-              )}
-            />
-            <Documentation
-              name="Grouped items"
-              component={(
-                <Toolbar>
+                <Toolbar justify="space-between">
                   <ToolbarGroup>
                     <ToolbarItem>
-                      <Placeholder text="group item" />
+                      <Placeholder text="grouped item 1" />
                     </ToolbarItem>
                     <ToolbarItem>
-                      <Placeholder text="group item" />
+                      <Placeholder text="grouped item 2" />
                     </ToolbarItem>
                     <ToolbarItem>
-                      <Placeholder text="group item" />
+                      <Placeholder text="grouped item 3" />
                     </ToolbarItem>
                   </ToolbarGroup>
-                  <ToolbarSpacer />
                   <ToolbarItem>
-                    <Placeholder text="item" />
+                    <Placeholder text="item A" />
                   </ToolbarItem>
-                  <ToolbarSpacer />
                   <ToolbarItem>
-                    <Placeholder text="item" />
+                    <Placeholder text="item B" />
+                  </ToolbarItem>
+                </Toolbar>
+              )}
+            />
+            <Documentation
+              name="Centered justification and alignment"
+              component={(
+                <Toolbar align="middle" justify="center">
+                  <ToolbarItem>
+                    <Placeholder text="item 1" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Placeholder text="item 2a" />
+                    <Placeholder text="item 2b" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Placeholder text="item 3" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Placeholder text="item 4" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Placeholder text="item 5" />
                   </ToolbarItem>
                 </Toolbar>
               )}

@@ -27,7 +27,7 @@ describe('rendering', () => {
 
   it('renders correctly with all props', () => {
     const tree = shallow((
-      <Toolbar align="middle">
+      <Toolbar align="middle" justify="center">
         <span>content</span>
       </Toolbar>
     ));

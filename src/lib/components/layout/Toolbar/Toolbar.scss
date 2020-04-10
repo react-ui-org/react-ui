@@ -35,3 +35,19 @@
 .isAlignedToBaseline {
   align-items: baseline;
 }
+
+.isJustifiedToStart {
+  justify-content: flex-start;
+}
+
+.isJustifiedToCenter {
+  justify-content: center;
+}
+
+.isJustifiedToEnd {
+  justify-content: flex-end;
+}
+
+.isJustifiedToSpaceBetween {
+  justify-content: space-between;
+}
