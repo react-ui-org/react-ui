@@ -15,6 +15,10 @@ import {
   CardBody,
   CardFooter,
   CardList,
+  CTA,
+  CTACenter,
+  CTAEnd,
+  CTAStart,
   CheckboxField,
   ForgotPassword,
   LayoutCenter,
@@ -286,6 +290,57 @@ class DemoContainer extends React.Component {
                 <LayoutCenter>
                   <Placeholder text="centered content" />
                 </LayoutCenter>
+              )}
+            />
+            <h3 id="layout-components-cta" className="typography-size-4 mb-6">CTA</h3>
+            <p>
+              CTA layout is designed for a centered CTA and optional secondary actions aligned to
+              sides (on large viewports).
+            </p>
+            <Documentation
+              name="CTA layout"
+              component={(
+                <CTA>
+                  <CTAStart>
+                    <Placeholder text="secondary start" />
+                  </CTAStart>
+                  <CTACenter>
+                    <Placeholder text="CTA" />
+                  </CTACenter>
+                  <CTAEnd>
+                    <Placeholder text="secondary end" />
+                  </CTAEnd>
+                </CTA>
+              )}
+            />
+            <Documentation
+              name="CTA layout with custom alignment"
+              component={(
+                <CTA align="middle">
+                  <CTAStart>
+                    <Placeholder text="secondary start" />
+                  </CTAStart>
+                  <CTACenter>
+                    <Placeholder text="CTA a" />
+                    <Placeholder text="CTA b" />
+                  </CTACenter>
+                  <CTAEnd>
+                    <Placeholder text="secondary end" />
+                  </CTAEnd>
+                </CTA>
+              )}
+            />
+            <Documentation
+              name="CTA layout with single secondary action"
+              component={(
+                <CTA align="middle">
+                  <CTACenter>
+                    <Placeholder text="CTA" />
+                  </CTACenter>
+                  <CTAEnd>
+                    <Placeholder text="secondary end" />
+                  </CTAEnd>
+                </CTA>
               )}
             />
             <h3 id="layout-components-list" className="typography-size-4 mb-6">List</h3>

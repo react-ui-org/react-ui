@@ -32,6 +32,10 @@ export default [
         title: 'Centered Layout',
       },
       {
+        link: '#layout-components-cta',
+        title: 'CTA',
+      },
+      {
         link: '#layout-components-list',
         title: 'List',
       },

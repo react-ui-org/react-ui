@@ -1,6 +1,10 @@
 // Layout components
 export { default as CardList } from './components/layout/CardList';
 export { default as LayoutCenter } from './components/layout/LayoutCenter';
+export { CTA } from './components/layout/CTA';
+export { CTACenter } from './components/layout/CTA';
+export { CTAEnd } from './components/layout/CTA';
+export { CTAStart } from './components/layout/CTA';
 export { List } from './components/layout/List';
 export { ListItem } from './components/layout/List';
 export { Media } from './components/layout/Media';

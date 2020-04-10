@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import styles from './CenteredCTA.scss';
+import styles from './CTA.scss';
 
-const CenteredCTAEnd = (props) => {
+const CTAEnd = (props) => {
   const {
     children,
   } = props;
@@ -14,11 +14,11 @@ const CenteredCTAEnd = (props) => {
   );
 };
 
-CenteredCTAEnd.propTypes = {
+CTAEnd.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
 };
 
-export default CenteredCTAEnd;
+export default CTAEnd;

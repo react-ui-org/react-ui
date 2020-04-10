@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly with a single child 1`] = `
+<div
+  className="root isAlignedToBaseline"
+>
+  <span>
+    content
+  </span>
+</div>
+`;
+
+exports[`rendering renders correctly with all props 1`] = `
+<div
+  className="root isAlignedToMiddle"
+>
+  <span>
+    content
+  </span>
+</div>
+`;
+
+exports[`rendering renders correctly with multiple children 1`] = `
+<div
+  className="root isAlignedToBaseline"
+>
+  <span>
+    content 1
+  </span>
+  <span>
+    content 2
+  </span>
+  <span>
+    content 3
+  </span>
+</div>
+`;
