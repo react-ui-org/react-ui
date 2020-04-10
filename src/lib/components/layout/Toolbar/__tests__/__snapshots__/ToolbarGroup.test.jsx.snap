@@ -2,7 +2,7 @@
 
 exports[`rendering renders correctly with a single child 1`] = `
 <div
-  className="group isAlignedToBottom"
+  className="group isAlignedToTop"
 >
   <span>
     content
@@ -22,7 +22,7 @@ exports[`rendering renders correctly with all props 1`] = `
 
 exports[`rendering renders correctly with multiple children 1`] = `
 <div
-  className="group isAlignedToBottom"
+  className="group isAlignedToTop"
 >
   <span>
     content 1

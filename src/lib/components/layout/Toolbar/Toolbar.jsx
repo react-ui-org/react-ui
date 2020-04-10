@@ -55,7 +55,7 @@ const Toolbar = (props) => {
 };
 
 Toolbar.defaultProps = {
-  align: 'bottom',
+  align: 'top',
   justify: 'start',
 };
 
