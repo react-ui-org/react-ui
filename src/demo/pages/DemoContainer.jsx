@@ -446,6 +446,27 @@ class DemoContainer extends React.Component {
               )}
             />
             <Documentation
+              name="Toolbar with disabled wrapping"
+              component={(
+                <Toolbar justify="space-between" nowrap>
+                  <ToolbarGroup>
+                    <ToolbarItem>
+                      <Placeholder text="grouped item 1" />
+                    </ToolbarItem>
+                    <ToolbarItem>
+                      <Placeholder text="grouped item 2" />
+                    </ToolbarItem>
+                    <ToolbarItem>
+                      <Placeholder text="grouped item 3" />
+                    </ToolbarItem>
+                  </ToolbarGroup>
+                  <ToolbarItem>
+                    <Placeholder text="item A" />
+                  </ToolbarItem>
+                </Toolbar>
+              )}
+            />
+            <Documentation
               name="Centered justification and alignment"
               component={(
                 <Toolbar align="middle" justify="center">

@@ -7,6 +7,7 @@ const Toolbar = (props) => {
     align,
     children,
     justify,
+    nowrap,
   } = props;
 
   const alignClass = (value) => {
@@ -45,6 +46,7 @@ const Toolbar = (props) => {
     <div
       className={[
         styles.toolbar,
+        nowrap ? styles.isNowrap : null,
         alignClass(align),
         justifyClass(justify),
       ].join(' ')}
@@ -57,6 +59,7 @@ const Toolbar = (props) => {
 Toolbar.defaultProps = {
   align: 'top',
   justify: 'start',
+  nowrap: false,
 };
 
 Toolbar.propTypes = {
@@ -66,6 +69,7 @@ Toolbar.propTypes = {
     PropTypes.node,
   ]).isRequired,
   justify: PropTypes.oneOf(['start', 'center', 'end', 'space-between']),
+  nowrap: PropTypes.bool,
 };
 
 export default Toolbar;
