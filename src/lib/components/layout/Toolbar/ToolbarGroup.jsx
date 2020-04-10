@@ -37,7 +37,7 @@ const ToolbarGroup = (props) => {
 };
 
 ToolbarGroup.defaultProps = {
-  align: 'bottom',
+  align: 'top',
 };
 
 ToolbarGroup.propTypes = {
