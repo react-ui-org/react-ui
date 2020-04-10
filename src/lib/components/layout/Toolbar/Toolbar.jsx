@@ -6,6 +6,7 @@ const Toolbar = (props) => {
   const {
     align,
     children,
+    justify,
   } = props;
 
   const alignClass = (value) => {
@@ -24,11 +25,28 @@ const Toolbar = (props) => {
     return styles.isAlignedToBaseline;
   };
 
+  const justifyClass = (value) => {
+    if (value === 'start') {
+      return styles.isJustifiedToStart;
+    }
+
+    if (value === 'center') {
+      return styles.isJustifiedToCenter;
+    }
+
+    if (value === 'end') {
+      return styles.isJustifiedToEnd;
+    }
+
+    return styles.isJustifiedToSpaceBetween;
+  };
+
   return (
     <div
       className={[
         styles.toolbar,
         alignClass(align),
+        justifyClass(justify),
       ].join(' ')}
     >
       {children}
@@ -38,6 +56,7 @@ const Toolbar = (props) => {
 
 Toolbar.defaultProps = {
   align: 'bottom',
+  justify: 'start',
 };
 
 Toolbar.propTypes = {
@@ -46,6 +65,7 @@ Toolbar.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
+  justify: PropTypes.oneOf(['start', 'center', 'end', 'space-between']),
 };
 
 export default Toolbar;
