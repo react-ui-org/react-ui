@@ -5,6 +5,7 @@ import styles from './Card.scss';
 export const Card = (props) => {
   const {
     children,
+    dense,
     disabled,
     id,
     inList,
@@ -19,6 +20,11 @@ export const Card = (props) => {
     typeClass = styles.isTypeError;
   } else if (type === 'bordered') {
     typeClass = styles.isTypeBordered;
+  }
+
+  let denseClass = '';
+  if (dense) {
+    denseClass = styles.isDense;
   }
 
   let disabledClass = '';
@@ -41,6 +47,7 @@ export const Card = (props) => {
       className={(`
         ${styles.root}
         ${typeClass}
+        ${denseClass}
         ${disabledClass}
         ${inListClass}
         ${raisedClass}
@@ -53,6 +60,7 @@ export const Card = (props) => {
 };
 
 Card.defaultProps = {
+  dense: false,
   disabled: false,
   id: undefined,
   inList: false,
@@ -65,6 +73,7 @@ Card.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
+  dense: PropTypes.bool,
   disabled: PropTypes.bool,
   id: PropTypes.string,
   inList: PropTypes.bool,

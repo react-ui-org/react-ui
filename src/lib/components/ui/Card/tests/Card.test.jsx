@@ -30,6 +30,7 @@ describe('rendering', () => {
   it('renders correctly with all props', () => {
     const tree = shallow(
       <Card
+        dense
         disabled
         id="custom-id"
         raised
