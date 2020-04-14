@@ -1,4 +1,5 @@
 @import 'mixins';
+@import 'theme';
 
 .root {
   display: flex;
@@ -45,4 +46,9 @@
 
 .isRaised {
   box-shadow: map-get($card-raised, box-shadow);
+}
+
+.isDense .body,
+.isDense .footer {
+  padding: $card-dense-padding;
 }

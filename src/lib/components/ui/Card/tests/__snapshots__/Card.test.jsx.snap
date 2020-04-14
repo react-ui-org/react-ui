@@ -15,6 +15,7 @@ exports[`rendering renders correctly disabled 1`] = `
 <div
   className="root
         isTypeFlat
+        
         isDisabled"
 >
   <p>
@@ -40,6 +41,7 @@ exports[`rendering renders correctly raised 1`] = `
         isTypeFlat
         
         
+        
         isRaised"
 >
   <p>
@@ -52,6 +54,7 @@ exports[`rendering renders correctly with all props 1`] = `
 <div
   className="root
         isTypeWarning
+        isDense
         isDisabled
         
         isRaised"

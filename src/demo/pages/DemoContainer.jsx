@@ -873,6 +873,23 @@ class DemoContainer extends React.Component {
               )}
             />
             <Documentation
+              name="Dense raised card"
+              component={(
+                <div>
+                  <Card dense raised>
+                    <CardBody>
+                      <h4>Dense raised card</h4>
+                      <p>
+                        Dense card content <br />
+                        and the other one.
+                      </p>
+                      <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
+                    </CardBody>
+                  </Card>
+                </div>
+              )}
+            />
+            <Documentation
               name="Disabled card"
               component={(
                 <div>
