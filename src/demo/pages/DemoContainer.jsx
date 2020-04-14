@@ -1000,7 +1000,7 @@ class DemoContainer extends React.Component {
             />
             <h3 id="ui-components-modal" className="typography-size-4 mb-6">Modal</h3>
             <Documentation
-              name="Modal label"
+              name="Modal"
               component={(
                 <>
                   <Button
@@ -1028,7 +1028,7 @@ class DemoContainer extends React.Component {
               )}
             />
             <Documentation
-              name="Modal label with loading icon"
+              name="Small modal with loading icon"
               component={(
                 <>
                   <Button
@@ -1048,7 +1048,8 @@ class DemoContainer extends React.Component {
                         },
                       ]}
                       closeHandler={() => this.setState({ showModal2: false })}
-                      title="Modal"
+                      size="small"
+                      title="Small modal"
                     >
                       <p>Dialog content</p>
                     </Modal>

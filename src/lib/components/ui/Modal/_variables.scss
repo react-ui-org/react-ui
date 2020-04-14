@@ -6,7 +6,6 @@
 
 // 1. Intentionally using direct color to prevent custom properties from being passed into `rgba` function.
 
-$modal-width: 46rem;
 $modal-padding-x: map-get($offset-values, 5);
 $modal-padding-y: map-get($offset-values, 3);
 $modal-border-radius: $border-radius;

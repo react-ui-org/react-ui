@@ -28,6 +28,7 @@ describe('rendering', () => {
         ]}
         closeHandler={() => {}}
         id="custom-id"
+        size="large"
         title="Modal title"
       >
         Modal content
@@ -37,7 +38,7 @@ describe('rendering', () => {
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
 
-  it('renders correctly with all with loading icon props except translations', () => {
+  it('renders correctly with all props except translations and with a loading icon', () => {
     const tree = mount((
       <Modal
         actions={[
@@ -49,6 +50,7 @@ describe('rendering', () => {
         ]}
         closeHandler={() => {}}
         id="custom-id"
+        size="small"
         title="Modal title"
       >
         Modal content

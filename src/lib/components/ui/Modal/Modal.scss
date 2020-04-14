@@ -9,7 +9,6 @@
   z-index: $modal-zindex;
   display: flex;
   flex-direction: column;
-  width: $modal-width;
   max-width: calc(100% - (2 * #{$modal-padding-x}));
   max-height: calc(100% - (2 * #{$modal-padding-y}));
   overflow-y: auto;
@@ -78,4 +77,16 @@
 
 .isContentOverflowing .footer {
   box-shadow: $modal-footer-box-shadow;
+}
+
+.isRootSmall {
+  width: $modal-size-small-width;
+}
+
+.isRootMedium {
+  width: $modal-size-medium-width;
+}
+
+.isRootLarge {
+  width: $modal-size-large-width;
 }
