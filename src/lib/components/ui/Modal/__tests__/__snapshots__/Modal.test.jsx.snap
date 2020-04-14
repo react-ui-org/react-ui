@@ -12,6 +12,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
   }
   closeHandler={[Function]}
   id="custom-id"
+  size="large"
   title="Modal title"
   translations={null}
 >
@@ -26,6 +27,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
     }
     closeHandler={[Function]}
     id="custom-id"
+    size="large"
     title="Modal title"
     translations={
       Object {
@@ -41,7 +43,8 @@ exports[`rendering renders correctly with all props except translations 1`] = `
       role="presentation"
     >
       <div
-        className="root"
+        className="root
+            isRootLarge"
         onClick={[Function]}
         role="presentation"
       >
@@ -166,7 +169,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
 </WithTranslationContextComponent>
 `;
 
-exports[`rendering renders correctly with all with loading icon props except translations 1`] = `
+exports[`rendering renders correctly with all props except translations and with a loading icon 1`] = `
 <WithTranslationContextComponent
   actions={
     Array [
@@ -181,6 +184,7 @@ exports[`rendering renders correctly with all with loading icon props except tra
   }
   closeHandler={[Function]}
   id="custom-id"
+  size="small"
   title="Modal title"
   translations={null}
 >
@@ -198,6 +202,7 @@ exports[`rendering renders correctly with all with loading icon props except tra
     }
     closeHandler={[Function]}
     id="custom-id"
+    size="small"
     title="Modal title"
     translations={
       Object {
@@ -213,7 +218,8 @@ exports[`rendering renders correctly with all with loading icon props except tra
       role="presentation"
     >
       <div
-        className="root"
+        className="root
+            isRootSmall"
         onClick={[Function]}
         role="presentation"
       >
@@ -362,6 +368,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
   <Modal
     actions={Array []}
     closeHandler={null}
+    size="medium"
     title="Modal title"
     translations={
       Object {
@@ -376,7 +383,8 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
       role="presentation"
     >
       <div
-        className="root"
+        className="root
+            isRootMedium"
         onClick={[Function]}
         role="presentation"
       >
@@ -416,6 +424,7 @@ exports[`rendering renders correctly with translations 1`] = `
   <Modal
     actions={Array []}
     closeHandler={[Function]}
+    size="medium"
     title="Modal title"
     translations={
       Object {
@@ -430,7 +439,8 @@ exports[`rendering renders correctly with translations 1`] = `
       role="presentation"
     >
       <div
-        className="root"
+        className="root
+            isRootMedium"
         onClick={[Function]}
         role="presentation"
       >

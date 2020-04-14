@@ -37,6 +37,18 @@ class Modal extends React.Component {
   }
 
   render() {
+    const sizeClass = (size) => {
+      if (size === 'small') {
+        return styles.isRootSmall;
+      }
+
+      if (size === 'medium') {
+        return styles.isRootMedium;
+      }
+
+      return styles.isRootLarge;
+    };
+
     return (
       <div
         className={styles.overlay}
@@ -52,6 +64,7 @@ class Modal extends React.Component {
         <div
           className={`
             ${styles.root}
+            ${sizeClass(this.props.size)}
             ${this.state.isContentOverflowing ? styles.isContentOverflowing : ''}
           `.trim()}
           onClick={(e) => {
@@ -115,6 +128,7 @@ Modal.defaultProps = {
   actions: [],
   closeHandler: null,
   id: undefined,
+  size: 'medium',
 };
 
 Modal.propTypes = {
@@ -132,6 +146,7 @@ Modal.propTypes = {
   ]).isRequired,
   closeHandler: PropTypes.func,
   id: PropTypes.string,
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
   title: PropTypes.string.isRequired,
   translations: PropTypes.shape({
     close: PropTypes.string.isRequired,
