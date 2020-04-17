@@ -72,6 +72,7 @@ class DemoContainer extends React.Component {
     this.state = {
       showModal: false,
       showModal2: false,
+      showModal3: false,
       tableSortColumn: 'id',
       tableSortDirection: 'asc',
     };
@@ -1050,6 +1051,35 @@ class DemoContainer extends React.Component {
                       closeHandler={() => this.setState({ showModal2: false })}
                       size="small"
                       title="Small modal"
+                    >
+                      <p>Dialog content</p>
+                    </Modal>
+                  )}
+                </>
+              )}
+            />
+            <Documentation
+              name="Auto-sized modal"
+              component={(
+                <>
+                  <Button
+                    label="Open modal"
+                    clickHandler={() => this.setState({ showModal3: true })}
+                  />
+                  {this.state.showModal3 && (
+                    <Modal
+                      actions={[
+                        {
+                          clickHandler: () => {
+                            loggerClick();
+                            this.setState({ showModal3: false });
+                          },
+                          label: 'Agree',
+                        },
+                      ]}
+                      closeHandler={() => this.setState({ showModal3: false })}
+                      size="auto"
+                      title="Auto-sized modal"
                     >
                       <p>Dialog content</p>
                     </Modal>
