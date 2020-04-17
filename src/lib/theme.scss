@@ -79,6 +79,7 @@
   --rui-breakpoint-lg: #{map-get($breakpoint-values, lg)};
   --rui-breakpoint-xl: #{map-get($breakpoint-values, xl)};
   --rui-breakpoint-xxl: #{map-get($breakpoint-values, xxl)};
+  --rui-breakpoint-xxxl: #{map-get($breakpoint-values, xxxl)};
 
   // Offsets
   --rui-offset-0: 0;
