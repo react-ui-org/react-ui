@@ -46,7 +46,11 @@ class Modal extends React.Component {
         return styles.isRootMedium;
       }
 
-      return styles.isRootLarge;
+      if (size === 'large') {
+        return styles.isRootLarge;
+      }
+
+      return styles.isRootAuto;
     };
 
     return (
@@ -146,7 +150,7 @@ Modal.propTypes = {
   ]).isRequired,
   closeHandler: PropTypes.func,
   id: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  size: PropTypes.oneOf(['small', 'medium', 'large', 'auto']),
   title: PropTypes.string.isRequired,
   translations: PropTypes.shape({
     close: PropTypes.string.isRequired,
