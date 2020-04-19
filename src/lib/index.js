@@ -31,6 +31,7 @@ export { Card } from './components/ui/Card';
 export { CardBody } from './components/ui/Card';
 export { CardFooter } from './components/ui/Card';
 export { default as CheckboxField } from './components/ui/CheckboxField';
+export { default as MenuButton } from './components/ui/MenuButton';
 export { default as Modal } from './components/ui/Modal';
 export { default as MultipleSelectField } from './components/ui/MultipleSelectField';
 export { default as Radio } from './components/ui/Radio';

@@ -90,6 +90,10 @@ export default [
         title: 'Modal',
       },
       {
+        link: '#ui-components-menu-button',
+        title: 'Menu Button',
+      },
+      {
         link: '#ui-components-multiple-selectfield',
         title: 'Multiple Select Field',
       },

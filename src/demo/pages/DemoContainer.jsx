@@ -28,6 +28,7 @@ import {
   Media,
   MediaBody,
   MediaObject,
+  MenuButton,
   Modal,
   MultipleSelectField,
   NewPassword,
@@ -997,6 +998,557 @@ class DemoContainer extends React.Component {
                   changeHandler={logger}
                   labelPosition="before"
                 />
+              )}
+            />
+
+            <h3 id="ui-components-menu-button" className="typography-size-4 mb-6">MenuButton</h3>
+            <Documentation
+              name="Default menu buttons"
+              component={(
+                <>
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                        variant: 'primary',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                        variant: 'primary',
+                      },
+                    ]}
+                    label="Primary"
+                  />
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                        variant: 'secondary',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                        variant: 'secondary',
+                      },
+                    ]}
+                    label="Secondary"
+                    variant="secondary"
+                  />
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                        variant: 'success',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                        variant: 'success',
+                      },
+                    ]}
+                    label="Success"
+                    variant="success"
+                  />
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                        variant: 'warning',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                        variant: 'warning',
+                      },
+                    ]}
+                    label="Warning"
+                    variant="warning"
+                  />
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                        variant: 'danger',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                        variant: 'danger',
+                      },
+                    ]}
+                    label="Danger"
+                    variant="danger"
+                  />
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                        variant: 'dark',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                        variant: 'dark',
+                      },
+                    ]}
+                    label="Dark"
+                    variant="dark"
+                  />
+                </>
+              )}
+            />
+            <Documentation
+              name="Outline menu buttons"
+              component={(
+                <>
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                      },
+                    ]}
+                    label="Primary outline"
+                    priority="outline"
+                  />
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                        variant: 'secondary',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                        variant: 'secondary',
+                      },
+                    ]}
+                    label="Secondary outline"
+                    priority="outline"
+                    variant="secondary"
+                  />
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                        variant: 'success',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                        variant: 'success',
+                      },
+                    ]}
+                    label="Success outline"
+                    priority="outline"
+                    variant="success"
+                  />
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                        variant: 'warning',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                        variant: 'warning',
+                      },
+                    ]}
+                    label="Warning outline"
+                    priority="outline"
+                    variant="warning"
+                  />
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                        variant: 'danger',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                        variant: 'danger',
+                      },
+                    ]}
+                    label="Danger outline"
+                    priority="outline"
+                    variant="danger"
+                  />
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                        variant: 'dark',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                        variant: 'dark',
+                      },
+                    ]}
+                    label="Dark outline"
+                    priority="outline"
+                    variant="dark"
+                  />
+                </>
+              )}
+            />
+            <Documentation
+              name="Flat menu buttons"
+              component={(
+                <>
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                      },
+                    ]}
+                    label="Primary flat"
+                    priority="flat"
+                  />
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                        variant: 'secondary',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                        variant: 'secondary',
+                      },
+                    ]}
+                    label="Secondary flat"
+                    priority="flat"
+                    variant="secondary"
+                  />
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                        variant: 'success',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                        variant: 'success',
+                      },
+                    ]}
+                    label="Success flat"
+                    priority="flat"
+                    variant="success"
+                  />
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                        variant: 'warning',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                        variant: 'warning',
+                      },
+                    ]}
+                    label="Warning flat"
+                    priority="flat"
+                    variant="warning"
+                  />
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                        variant: 'danger',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                        variant: 'danger',
+                      },
+                    ]}
+                    label="Danger flat"
+                    priority="flat"
+                    variant="danger"
+                  />
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                        variant: 'dark',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                        variant: 'dark',
+                      },
+                    ]}
+                    label="Dark flat"
+                    priority="flat"
+                    variant="dark"
+                  />
+                </>
+              )}
+            />
+            <Documentation
+              name="Menu button sizes"
+              component={(
+                <>
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                      },
+                    ]}
+                    label="Small"
+                    size="small"
+                  />
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                      },
+                    ]}
+                    label="Medium"
+                  />
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                      },
+                    ]}
+                    label="Large"
+                    size="large"
+                  />
+                </>
+              )}
+            />
+            <Documentation
+              name="Disabled buttons"
+              component={(
+                <>
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                      },
+                    ]}
+                    disabled
+                    label="Disabled default"
+                  />
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                      },
+                    ]}
+                    disabled
+                    label="Disabled outline"
+                    priority="outline"
+                  />
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                      },
+                    ]}
+                    disabled
+                    label="Disabled flat"
+                    priority="flat"
+                  />
+                </>
+              )}
+            />
+            <Documentation
+              name="Menu buttons with Icons"
+              component={(
+                <>
+                  <MenuButton
+                    beforeLabel={<Icon icon="star" />}
+                    buttons={[
+                      {
+                        beforeIcon: <Icon icon="star" />,
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                      },
+                      { type: 'separator' },
+                      {
+                        beforeIcon: <Icon icon="star" />,
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                      },
+                    ]}
+                    disabled
+                    label="With icon before"
+                  />
+                  <MenuButton
+                    afterLabel={<Icon icon="star" />}
+                    buttons={[
+                      {
+                        afterLabel: <Icon icon="star" />,
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                      },
+                      { type: 'separator' },
+                      {
+                        afterLabel: <Icon icon="star" />,
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                      },
+                    ]}
+                    disabled
+                    label="With icon after"
+                  />
+                </>
+              )}
+            />
+            <Documentation
+              name="Loading menu buttons"
+              component={(
+                <>
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        type: 'button',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                      },
+                    ]}
+                    disabled
+                    label="With loader"
+                    loadingIcon={<span className="d-inline-flex animation-spin-counterclockwise"><Icon icon="loading" /></span>}
+                    size="small"
+                  />
+                  <MenuButton
+                    buttons={[
+                      {
+                        clickHandler: loggerClick,
+                        label: 'First action',
+                        loadingIcon: <span className="d-inline-flex animation-spin-counterclockwise"><Icon icon="loading" /></span>,
+                        type: 'button',
+                      },
+                      { type: 'separator' },
+                      {
+                        clickHandler: loggerClick,
+                        label: 'Second action',
+                        loadingIcon: <span className="d-inline-flex animation-spin-counterclockwise"><Icon icon="loading" /></span>,
+                      },
+                    ]}
+                    label="With loader inside"
+                    size="small"
+                  />
+                </>
               )}
             />
             <h3 id="ui-components-modal" className="typography-size-4 mb-6">Modal</h3>
