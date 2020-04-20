@@ -1,4 +1,5 @@
 @import '../../../styles/tools/offset';
+@import '../../../styles/tools/reset';
 @import 'theme';
 @import 'variables';
 
@@ -32,16 +33,12 @@
 }
 
 .close {
+  @include reset-button();
+
   padding: offset(1) offset(2);
   font-size: map-get($typography-size-values, 3);
   line-height: 1;
   color: inherit;
-  border: 0;
-  background: none;
-  box-shadow: none;
-  appearance: none;
-  user-select: none;
-  cursor: pointer;
 }
 
 .body {

@@ -102,6 +102,10 @@ export default [
         title: 'Radio',
       },
       {
+        link: '#ui-components-scrollview',
+        title: 'Scroll View',
+      },
+      {
         link: '#ui-components-selectfield',
         title: 'Select Field',
       },

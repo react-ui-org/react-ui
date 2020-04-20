@@ -7,6 +7,7 @@
 
 @import '../../settings/forms';
 @import '../../settings/forms-theme';
+@import '../../tools/caret';
 @import '../../tools/offset';
 @import '../transitions';
 @import 'states';
@@ -123,13 +124,7 @@
 }
 
 @mixin form-field-caret-icon() {
-  display: inline-block;
-  width: 0.4375rem;
-  height: 0.4375rem;
-  border-width: 2px;
-  border-style: none solid solid none;
-  border-color: currentColor;
-  transform: translateY(-0.1rem) rotate(45deg);
+  @include caret();
 }
 
 @mixin form-field-bottom-line() {
