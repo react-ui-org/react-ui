@@ -35,6 +35,7 @@ export { default as CheckboxField } from './components/ui/CheckboxField';
 export { default as Modal } from './components/ui/Modal';
 export { default as MultipleSelectField } from './components/ui/MultipleSelectField';
 export { default as Radio } from './components/ui/Radio';
+export { default as ScrollView } from './components/ui/ScrollView';
 export { default as SelectField } from './components/ui/SelectField';
 export { default as Table } from './components/ui/Table';
 export { default as TextArea } from './components/ui/TextArea';

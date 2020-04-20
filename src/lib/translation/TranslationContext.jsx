@@ -23,6 +23,10 @@ const TranslationContext = React.createContext({
       newPassword: 'New password',
       repeatNewPassword: 'Repeat new password',
     },
+    ScrollView: {
+      next: 'Next',
+      previous: 'Previous',
+    },
   },
 });
 

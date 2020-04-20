@@ -1,0 +1,14 @@
+@mixin caret($rotate: 0) {
+  @include caret-rotate();
+
+  display: inline-block;
+  width: 0.4375rem;
+  height: 0.4375rem;
+  border-width: 2px;
+  border-style: none solid solid none;
+  border-color: currentColor;
+}
+
+@mixin caret-rotate($rotate: 0) {
+  transform: translateY(-0.1rem) rotate($rotate + 45deg);
+}

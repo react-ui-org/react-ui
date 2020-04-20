@@ -1,0 +1,193 @@
+@import '../../../styles/tools/caret';
+@import '../../../styles/tools/hide-scrollbar';
+@import '../../../styles/tools/reset';
+@import '../../../styles/tools/transitions';
+@import 'theme';
+
+// 1. Scrolling shadows are implemented as pseudo elements. This way we can customise them only
+//    thanks to custom properties.
+// 2. Clip scrolling shadows.
+// 3. Create stacking context just to avoid scrolling shadows being covered by content.
+// 4. Make the content bounding rectangle spread beyond the visible part.
+// 5. Prevent undesired vertical scrolling that may occur with tables inside.
+
+$_arrow-inner-offset: 0.5rem;
+$_arrow-outer-offset: 1rem;
+
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden; // 2.
+
+  // 1.
+  &::before,
+  &::after {
+    @include transition((visibility, opacity, transform));
+
+    content: '';
+    position: absolute;
+    z-index: 1;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    width: var(--rui-local-shadow-width);
+    height: var(--rui-local-shadow-height);
+  }
+
+  &::before {
+    background: var(--rui-local-start-shadow-background);
+    box-shadow: var(--rui-local-start-shadow-box-shadow);
+  }
+
+  &::after {
+    background: var(--rui-local-end-shadow-background);
+    box-shadow: var(--rui-local-end-shadow-box-shadow);
+  }
+}
+
+.viewport {
+  position: relative; // 3.
+  width: 100%;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.arrowPrev,
+.arrowNext {
+  @include reset-button();
+  @include transition((visibility, opacity, transform));
+
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  align-items: center;
+  justify-content: center;
+  color: var(--rui-local-arrow-color);
+}
+
+.arrowIcon {
+  @include caret();
+}
+
+.isRootVertical {
+  height: 100%;
+}
+
+.isRootVertical .viewport {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.isRootVertical .arrowPrev {
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  padding-top: $_arrow-outer-offset;
+  padding-bottom: $_arrow-inner-offset;
+  transform: translateY($scrollview-arrow-initial-offset);
+}
+
+.isRootVertical .arrowPrev .arrowIcon {
+  @include caret-rotate(180);
+}
+
+.isRootVertical .arrowNext {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding-top: $_arrow-inner-offset;
+  padding-bottom: $_arrow-outer-offset;
+  transform: translateY(calc(-1 * #{$scrollview-arrow-initial-offset}));
+}
+
+.isRootHorizontal .arrowPrev {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding-right: $_arrow-inner-offset;
+  padding-left: $_arrow-outer-offset;
+  transform: translateX($scrollview-arrow-initial-offset);
+}
+
+.isRootHorizontal .arrowPrev .arrowIcon {
+  @include caret-rotate(90);
+}
+
+.isRootHorizontal .arrowNext {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding-right: $_arrow-outer-offset;
+  padding-left: $_arrow-inner-offset;
+  transform: translateX(calc(-1 * #{$scrollview-arrow-initial-offset}));
+}
+
+.isRootHorizontal .arrowNext .arrowIcon {
+  @include caret-rotate(270);
+}
+
+.isRootVertical::before,
+.isRootVertical::after {
+  right: 0;
+  left: 0;
+}
+
+.isRootVertical::before {
+  top: 0;
+  transform: translateY($scrollview-shadow-initial-offset);
+}
+
+.isRootVertical::after {
+  bottom: 0;
+  transform: translateY(calc(-1 * #{$scrollview-shadow-initial-offset}));
+}
+
+.isRootHorizontal .viewport {
+  overflow-x: auto;
+  overflow-y: hidden; // 5.
+}
+
+.isRootHorizontal .content {
+  display: inline-flex; // 4.
+  min-width: 100%;
+}
+
+.isRootHorizontal::before,
+.isRootHorizontal::after {
+  top: 0;
+  bottom: 0;
+}
+
+.isRootHorizontal::before {
+  left: 0;
+  transform: translateX($scrollview-shadow-initial-offset);
+}
+
+.isRootHorizontal::after {
+  right: 0;
+  transform: translateX(calc(-1 * #{$scrollview-shadow-initial-offset}));
+}
+
+.isRootScrolledAtStart::before,
+.isRootScrolledAtStart .arrowPrev {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.isRootScrolledAtEnd::after,
+.isRootScrolledAtEnd .arrowNext {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.hasRootScrollbarDisabled .viewport {
+  @include hide-scrollbar();
+}
