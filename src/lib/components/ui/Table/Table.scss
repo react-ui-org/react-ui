@@ -1,17 +1,8 @@
 @import '../../../styles/tools/transitions';
 @import 'variables';
 
-.tableWrapper {
-  display: block;
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-}
-
 .table {
   width: 100%;
-  max-width: 100%;
   border-collapse: collapse;
 }
 

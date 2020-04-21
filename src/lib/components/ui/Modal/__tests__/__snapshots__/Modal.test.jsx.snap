@@ -11,7 +11,18 @@ exports[`rendering renders correctly with all props except translations 1`] = `
     ]
   }
   closeHandler={[Function]}
+  disableBodyScrolling={true}
   id="custom-id"
+  scrollViewEndShadow={
+    Object {
+      "background": "none",
+    }
+  }
+  scrollViewStartShadow={
+    Object {
+      "background": "none",
+    }
+  }
   size="large"
   title="Modal title"
   translations={null}
@@ -27,8 +38,31 @@ exports[`rendering renders correctly with all props except translations 1`] = `
     }
     autoFocus={true}
     closeHandler={[Function]}
+    disableBodyScrolling={true}
     id="custom-id"
     portalId={null}
+    scrollMode="body"
+    scrollViewEndShadow={
+      Object {
+        "background": "none",
+      }
+    }
+    scrollViewEndShadowStyle={
+      Object {
+        "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+      }
+    }
+    scrollViewShadowSize="16px"
+    scrollViewStartShadow={
+      Object {
+        "background": "none",
+      }
+    }
+    scrollViewStartShadowStyle={
+      Object {
+        "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+      }
+    }
     size="large"
     title="Modal title"
     translations={
@@ -41,7 +75,6 @@ exports[`rendering renders correctly with all props except translations 1`] = `
       className="overlay"
       id="custom-id"
       onClick={[Function]}
-      onScroll={[Function]}
       role="presentation"
     >
       <div
@@ -70,10 +103,87 @@ exports[`rendering renders correctly with all props except translations 1`] = `
           </button>
         </div>
         <div
-          className="body"
-          id="custom-id__content"
+          className="body isBodyScrollable"
         >
-          Modal content
+          <WithTranslationContextComponent
+            customEndShadowStyle={
+              Object {
+                "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+              }
+            }
+            customStartShadowStyle={
+              Object {
+                "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+              }
+            }
+            shadowSize="16px"
+            translations={null}
+          >
+            <ScrollView
+              arrows={false}
+              arrowsScrollStep={200}
+              customEndShadowStyle={
+                Object {
+                  "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+                }
+              }
+              customNextArrow={null}
+              customPrevArrow={null}
+              customStartShadowStyle={
+                Object {
+                  "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+                }
+              }
+              debounce={50}
+              direction="vertical"
+              scrollbar={true}
+              shadowColor={
+                Object {
+                  "alpha": 1,
+                  "blue": 255,
+                  "green": 255,
+                  "red": 255,
+                }
+              }
+              shadowSize="16px"
+              translations={
+                Object {
+                  "next": "Next",
+                  "previous": "Previous",
+                }
+              }
+            >
+              <div
+                className="root    isRootVertical"
+                style={
+                  Object {
+                    "--rui-local-arrow-color": "inherit",
+                    "--rui-local-end-shadow-background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+                    "--rui-local-end-shadow-box-shadow": "none",
+                    "--rui-local-shadow-height": "16px",
+                    "--rui-local-shadow-width": "auto",
+                    "--rui-local-start-shadow-background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+                    "--rui-local-start-shadow-box-shadow": "none",
+                  }
+                }
+              >
+                <div
+                  className="viewport"
+                >
+                  <div
+                    className="content"
+                  >
+                    <div
+                      className="content"
+                      id="custom-id__content"
+                    >
+                      Modal content
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ScrollView>
+          </WithTranslationContextComponent>
         </div>
         <div
           className="footer"
@@ -226,7 +336,19 @@ exports[`rendering renders correctly with all props except translations and with
     ]
   }
   closeHandler={[Function]}
+  disableBodyScrolling={true}
   id="custom-id"
+  scrollViewEndShadow={
+    Object {
+      "background": "none",
+    }
+  }
+  scrollViewShadowSize="30px"
+  scrollViewStartShadow={
+    Object {
+      "background": "none",
+    }
+  }
   size="small"
   title="Modal title"
   translations={null}
@@ -245,8 +367,31 @@ exports[`rendering renders correctly with all props except translations and with
     }
     autoFocus={true}
     closeHandler={[Function]}
+    disableBodyScrolling={true}
     id="custom-id"
     portalId={null}
+    scrollMode="body"
+    scrollViewEndShadow={
+      Object {
+        "background": "none",
+      }
+    }
+    scrollViewEndShadowStyle={
+      Object {
+        "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+      }
+    }
+    scrollViewShadowSize="30px"
+    scrollViewStartShadow={
+      Object {
+        "background": "none",
+      }
+    }
+    scrollViewStartShadowStyle={
+      Object {
+        "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+      }
+    }
     size="small"
     title="Modal title"
     translations={
@@ -259,7 +404,6 @@ exports[`rendering renders correctly with all props except translations and with
       className="overlay"
       id="custom-id"
       onClick={[Function]}
-      onScroll={[Function]}
       role="presentation"
     >
       <div
@@ -288,10 +432,87 @@ exports[`rendering renders correctly with all props except translations and with
           </button>
         </div>
         <div
-          className="body"
-          id="custom-id__content"
+          className="body isBodyScrollable"
         >
-          Modal content
+          <WithTranslationContextComponent
+            customEndShadowStyle={
+              Object {
+                "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+              }
+            }
+            customStartShadowStyle={
+              Object {
+                "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+              }
+            }
+            shadowSize="30px"
+            translations={null}
+          >
+            <ScrollView
+              arrows={false}
+              arrowsScrollStep={200}
+              customEndShadowStyle={
+                Object {
+                  "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+                }
+              }
+              customNextArrow={null}
+              customPrevArrow={null}
+              customStartShadowStyle={
+                Object {
+                  "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+                }
+              }
+              debounce={50}
+              direction="vertical"
+              scrollbar={true}
+              shadowColor={
+                Object {
+                  "alpha": 1,
+                  "blue": 255,
+                  "green": 255,
+                  "red": 255,
+                }
+              }
+              shadowSize="30px"
+              translations={
+                Object {
+                  "next": "Next",
+                  "previous": "Previous",
+                }
+              }
+            >
+              <div
+                className="root    isRootVertical"
+                style={
+                  Object {
+                    "--rui-local-arrow-color": "inherit",
+                    "--rui-local-end-shadow-background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+                    "--rui-local-end-shadow-box-shadow": "none",
+                    "--rui-local-shadow-height": "30px",
+                    "--rui-local-shadow-width": "auto",
+                    "--rui-local-start-shadow-background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+                    "--rui-local-start-shadow-box-shadow": "none",
+                  }
+                }
+              >
+                <div
+                  className="viewport"
+                >
+                  <div
+                    className="content"
+                  >
+                    <div
+                      className="content"
+                      id="custom-id__content"
+                    >
+                      Modal content
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ScrollView>
+          </WithTranslationContextComponent>
         </div>
         <div
           className="footer"
@@ -464,6 +685,18 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
     autoFocus={true}
     closeHandler={null}
     portalId={null}
+    scrollMode="body"
+    scrollViewEndShadowStyle={
+      Object {
+        "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+      }
+    }
+    scrollViewShadowSize="16px"
+    scrollViewStartShadowStyle={
+      Object {
+        "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+      }
+    }
     size="medium"
     title="Modal title"
     translations={
@@ -475,7 +708,6 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
     <div
       className="overlay"
       onClick={[Function]}
-      onScroll={[Function]}
       role="presentation"
     >
       <div
@@ -494,9 +726,86 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </h3>
         </div>
         <div
-          className="body"
+          className="body isBodyScrollable"
         >
-          Modal content
+          <WithTranslationContextComponent
+            customEndShadowStyle={
+              Object {
+                "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+              }
+            }
+            customStartShadowStyle={
+              Object {
+                "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+              }
+            }
+            shadowSize="16px"
+            translations={null}
+          >
+            <ScrollView
+              arrows={false}
+              arrowsScrollStep={200}
+              customEndShadowStyle={
+                Object {
+                  "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+                }
+              }
+              customNextArrow={null}
+              customPrevArrow={null}
+              customStartShadowStyle={
+                Object {
+                  "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+                }
+              }
+              debounce={50}
+              direction="vertical"
+              scrollbar={true}
+              shadowColor={
+                Object {
+                  "alpha": 1,
+                  "blue": 255,
+                  "green": 255,
+                  "red": 255,
+                }
+              }
+              shadowSize="16px"
+              translations={
+                Object {
+                  "next": "Next",
+                  "previous": "Previous",
+                }
+              }
+            >
+              <div
+                className="root    isRootVertical"
+                style={
+                  Object {
+                    "--rui-local-arrow-color": "inherit",
+                    "--rui-local-end-shadow-background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+                    "--rui-local-end-shadow-box-shadow": "none",
+                    "--rui-local-shadow-height": "16px",
+                    "--rui-local-shadow-width": "auto",
+                    "--rui-local-start-shadow-background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+                    "--rui-local-start-shadow-box-shadow": "none",
+                  }
+                }
+              >
+                <div
+                  className="viewport"
+                >
+                  <div
+                    className="content"
+                  >
+                    <div
+                      className="content"
+                    >
+                      Modal content
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ScrollView>
+          </WithTranslationContextComponent>
         </div>
         <div
           className="footer"
@@ -529,6 +838,18 @@ exports[`rendering renders correctly with portal id 1`] = `
     autoFocus={true}
     closeHandler={null}
     portalId="app-modal-portal"
+    scrollMode="body"
+    scrollViewEndShadowStyle={
+      Object {
+        "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+      }
+    }
+    scrollViewShadowSize="16px"
+    scrollViewStartShadowStyle={
+      Object {
+        "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+      }
+    }
     size="medium"
     title="Modal title"
     translations={
@@ -561,9 +882,26 @@ exports[`rendering renders correctly with portal id 1`] = `
                 </h3>
               </div>
               <div
-                class="body"
+                class="body isBodyScrollable"
               >
-                Modal content
+                <div
+                  class="root    isRootVertical"
+                  style="--rui-local-arrow-color: inherit; --rui-local-shadow-width: auto; --rui-local-shadow-height: 16px; --rui-local-start-shadow-background: radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%); --rui-local-start-shadow-box-shadow: none; --rui-local-end-shadow-background: radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%); --rui-local-end-shadow-box-shadow: none;"
+                >
+                  <div
+                    class="viewport"
+                  >
+                    <div
+                      class="content"
+                    >
+                      <div
+                        class="content"
+                      >
+                        Modal content
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div
                 class="footer"
@@ -580,7 +918,6 @@ exports[`rendering renders correctly with portal id 1`] = `
       <div
         className="overlay"
         onClick={[Function]}
-        onScroll={[Function]}
         role="presentation"
       >
         <div
@@ -599,9 +936,86 @@ exports[`rendering renders correctly with portal id 1`] = `
             </h3>
           </div>
           <div
-            className="body"
+            className="body isBodyScrollable"
           >
-            Modal content
+            <WithTranslationContextComponent
+              customEndShadowStyle={
+                Object {
+                  "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+                }
+              }
+              customStartShadowStyle={
+                Object {
+                  "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+                }
+              }
+              shadowSize="16px"
+              translations={null}
+            >
+              <ScrollView
+                arrows={false}
+                arrowsScrollStep={200}
+                customEndShadowStyle={
+                  Object {
+                    "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+                  }
+                }
+                customNextArrow={null}
+                customPrevArrow={null}
+                customStartShadowStyle={
+                  Object {
+                    "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+                  }
+                }
+                debounce={50}
+                direction="vertical"
+                scrollbar={true}
+                shadowColor={
+                  Object {
+                    "alpha": 1,
+                    "blue": 255,
+                    "green": 255,
+                    "red": 255,
+                  }
+                }
+                shadowSize="16px"
+                translations={
+                  Object {
+                    "next": "Next",
+                    "previous": "Previous",
+                  }
+                }
+              >
+                <div
+                  className="root    isRootVertical"
+                  style={
+                    Object {
+                      "--rui-local-arrow-color": "inherit",
+                      "--rui-local-end-shadow-background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+                      "--rui-local-end-shadow-box-shadow": "none",
+                      "--rui-local-shadow-height": "16px",
+                      "--rui-local-shadow-width": "auto",
+                      "--rui-local-start-shadow-background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+                      "--rui-local-start-shadow-box-shadow": "none",
+                    }
+                  }
+                >
+                  <div
+                    className="viewport"
+                  >
+                    <div
+                      className="content"
+                    >
+                      <div
+                        className="content"
+                      >
+                        Modal content
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ScrollView>
+            </WithTranslationContextComponent>
           </div>
           <div
             className="footer"
@@ -639,6 +1053,18 @@ exports[`rendering renders correctly with translations 1`] = `
     autoFocus={true}
     closeHandler={[Function]}
     portalId={null}
+    scrollMode="body"
+    scrollViewEndShadowStyle={
+      Object {
+        "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+      }
+    }
+    scrollViewShadowSize="16px"
+    scrollViewStartShadowStyle={
+      Object {
+        "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+      }
+    }
     size="medium"
     title="Modal title"
     translations={
@@ -650,7 +1076,6 @@ exports[`rendering renders correctly with translations 1`] = `
     <div
       className="overlay"
       onClick={[Function]}
-      onScroll={[Function]}
       role="presentation"
     >
       <div
@@ -677,9 +1102,86 @@ exports[`rendering renders correctly with translations 1`] = `
           </button>
         </div>
         <div
-          className="body"
+          className="body isBodyScrollable"
         >
-          Modal content
+          <WithTranslationContextComponent
+            customEndShadowStyle={
+              Object {
+                "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+              }
+            }
+            customStartShadowStyle={
+              Object {
+                "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+              }
+            }
+            shadowSize="16px"
+            translations={null}
+          >
+            <ScrollView
+              arrows={false}
+              arrowsScrollStep={200}
+              customEndShadowStyle={
+                Object {
+                  "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+                }
+              }
+              customNextArrow={null}
+              customPrevArrow={null}
+              customStartShadowStyle={
+                Object {
+                  "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+                }
+              }
+              debounce={50}
+              direction="vertical"
+              scrollbar={true}
+              shadowColor={
+                Object {
+                  "alpha": 1,
+                  "blue": 255,
+                  "green": 255,
+                  "red": 255,
+                }
+              }
+              shadowSize="16px"
+              translations={
+                Object {
+                  "next": "Next",
+                  "previous": "Previous",
+                }
+              }
+            >
+              <div
+                className="root    isRootVertical"
+                style={
+                  Object {
+                    "--rui-local-arrow-color": "inherit",
+                    "--rui-local-end-shadow-background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+                    "--rui-local-end-shadow-box-shadow": "none",
+                    "--rui-local-shadow-height": "16px",
+                    "--rui-local-shadow-width": "auto",
+                    "--rui-local-start-shadow-background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+                    "--rui-local-start-shadow-box-shadow": "none",
+                  }
+                }
+              >
+                <div
+                  className="viewport"
+                >
+                  <div
+                    className="content"
+                  >
+                    <div
+                      className="content"
+                    >
+                      Modal content
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ScrollView>
+          </WithTranslationContextComponent>
         </div>
         <div
           className="footer"

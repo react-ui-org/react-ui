@@ -75,6 +75,8 @@ class DemoContainer extends React.Component {
       showModal: false,
       showModal2: false,
       showModal3: false,
+      showModal4: false,
+      showModal5: false,
       tableSortColumn: 'id',
       tableSortDirection: 'asc',
     };
@@ -1489,7 +1491,7 @@ class DemoContainer extends React.Component {
               )}
             />
             <Documentation
-              name="Small modal with loading icon"
+              name="Modal with long content and a loading icon"
               component={(
                 <>
                   <Button
@@ -1510,16 +1512,17 @@ class DemoContainer extends React.Component {
                       ]}
                       closeHandler={() => this.setState({ showModal2: false })}
                       size="small"
-                      title="Small modal"
+                      title="Modal with long content"
                     >
-                      <p>Dialog content</p>
+                      {/* eslint-disable-next-line max-len */}
+                      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc.Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc.</p>
                     </Modal>
                   )}
                 </>
               )}
             />
             <Documentation
-              name="Auto-sized modal"
+              name="Modal with disabled body scrolling"
               component={(
                 <>
                   <Button
@@ -1535,9 +1538,41 @@ class DemoContainer extends React.Component {
                             this.setState({ showModal3: false });
                           },
                           label: 'Agree',
+                          loadingIcon: <Icon icon="loading" />,
                         },
                       ]}
                       closeHandler={() => this.setState({ showModal3: false })}
+                      scrollMode="modal"
+                      size="small"
+                      title="Modal with disabled body scrolling"
+                    >
+                      {/* eslint-disable-next-line max-len */}
+                      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc.Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc.</p>
+                    </Modal>
+                  )}
+                </>
+              )}
+            />
+            <Documentation
+              name="Auto-sized modal"
+              component={(
+                <>
+                  <Button
+                    label="Open modal"
+                    clickHandler={() => this.setState({ showModal4: true })}
+                  />
+                  {this.state.showModal4 && (
+                    <Modal
+                      actions={[
+                        {
+                          clickHandler: () => {
+                            loggerClick();
+                            this.setState({ showModal4: false });
+                          },
+                          label: 'Agree',
+                        },
+                      ]}
+                      closeHandler={() => this.setState({ showModal4: false })}
                       size="auto"
                       title="Auto-sized modal"
                     >
@@ -1548,27 +1583,27 @@ class DemoContainer extends React.Component {
               )}
             />
             <Documentation
-              name="Modal rendered in portal"
+              name="Modal rendered in React portal"
               component={(
                 <>
                   <Button
                     label="Open modal"
-                    clickHandler={() => this.setState({ showModal: true })}
+                    clickHandler={() => this.setState({ showModal5: true })}
                   />
-                  {this.state.showModal && (
+                  {this.state.showModal5 && (
                     <Modal
                       actions={[
                         {
                           clickHandler: () => {
                             loggerClick();
-                            this.setState({ showModal: false });
+                            this.setState({ showModal5: false });
                           },
                           label: 'Agree',
                         },
                       ]}
-                      closeHandler={() => this.setState({ showModal: false })}
+                      closeHandler={() => this.setState({ showModal5: false })}
                       portalId="app-modal-portal"
-                      title="Modal"
+                      title="Modal in React portal"
                     >
                       <p>Dialog content</p>
                     </Modal>
@@ -2445,6 +2480,91 @@ class DemoContainer extends React.Component {
                     direction: this.state.tableSortDirection,
                   }}
                 />
+              )}
+            />
+            <Documentation
+              name="Responsive Table with Scroll View"
+              component={(
+                <ScrollView direction="horizontal" shadowSize="100px">
+                  <Table
+                    columns={[
+                      {
+                        isSortable: true,
+                        label: 'Id',
+                        name: 'id',
+                      },
+                      {
+                        format: (row) => (
+                          <span style={{ whiteSpace: 'nowrap' }}>{row.name}</span>
+                        ),
+                        isSortable: true,
+                        label: 'Name',
+                        name: 'name',
+                      },
+                      {
+                        format: (row) => (
+                          <span style={{ whiteSpace: 'nowrap' }}>
+                            {row.dateOfBirth.toLocaleDateString('cz-CZ')}
+                          </span>
+                        ),
+                        isSortable: false,
+                        label: 'Date of birth',
+                        name: 'dateOfBirth',
+                      },
+                      {
+                        format: (row) => (
+                          <span style={{ whiteSpace: 'nowrap' }}>{row.address}</span>
+                        ),
+                        isSortable: false,
+                        label: 'Address',
+                        name: 'address',
+                      },
+                      {
+                        format: (row) => (
+                          <span style={{ whiteSpace: 'nowrap' }}>{row.note}</span>
+                        ),
+                        isSortable: false,
+                        label: 'Note',
+                        name: 'note',
+                      },
+                    ]}
+                    rows={[
+                      {
+                        address: '2020 Very Cool Street with a Very Long Name, Prague CZ',
+                        dateOfBirth: new Date(2000, 12, 31),
+                        id: 1,
+                        name: 'Jan Novak',
+                        note: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.',
+                      },
+                      {
+                        address: '2020 Very Cool Street with a Very Long Name, Prague CZ',
+                        dateOfBirth: new Date(2018, 1, 1),
+                        id: 2,
+                        name: 'Josef Novak',
+                        note: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.',
+                      },
+                      {
+                        address: '2020 Very Cool Street with a Very Long Name, Prague CZ',
+                        dateOfBirth: new Date(1970, 12, 24),
+                        id: 3,
+                        name: 'Jiří Novak',
+                        note: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.',
+                      },
+                    ]}
+                    sort={{
+                      ascendingIcon: <Icon icon="up" />,
+                      changeHandler: (column, direction) => {
+                        this.setState({
+                          tableSortColumn: column,
+                          tableSortDirection: direction === 'asc' ? 'desc' : 'asc',
+                        });
+                      },
+                      column: this.state.tableSortColumn,
+                      descendingIcon: <Icon icon="down" />,
+                      direction: this.state.tableSortDirection,
+                    }}
+                  />
+                </ScrollView>
               )}
             />
             <h3 id="ui-components-textarea" className="typography-size-4 mb-6">Text Area</h3>
