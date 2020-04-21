@@ -87,25 +87,20 @@ class Table extends React.Component {
     } = this.props;
 
     return (
-      <div
-        className={styles.tableWrapper}
-        id={id}
-      >
-        <table className={styles.table}>
-          <thead>
-            <tr className={styles.tableHeadRow}>
-              {columns.map(this.renderHeaderCell)}
+      <table id={id} className={styles.table}>
+        <thead>
+          <tr className={styles.tableHeadRow}>
+            {columns.map(this.renderHeaderCell)}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr key={row.id} className={styles.tableRow}>
+              {columns.map((column) => this.renderBodyCell(column, row))}
             </tr>
-          </thead>
-          <tbody>
-            {rows.map((row) => (
-              <tr key={row.id} className={styles.tableRow}>
-                {columns.map((column) => this.renderBodyCell(column, row))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
     );
   }
 }

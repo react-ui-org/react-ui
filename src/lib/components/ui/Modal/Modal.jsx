@@ -1,27 +1,23 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { createPortal } from 'react-dom';
-import Button from '../Button';
+import transferProps from '../../../utils/transferProps';
+import { withTranslationContext } from '../../../translation';
 import {
   Toolbar,
   ToolbarItem,
 } from '../../layout/Toolbar';
-import transferProps from '../../../utils/transferProps';
-import { withTranslationContext } from '../../../translation';
+import Button from '../Button';
+import ScrollView from '../ScrollView';
 import styles from './Modal.scss';
 
 class Modal extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      isContentOverflowing: false,
-    };
-
     this.childrenWrapperRef = React.createRef();
     this.submitButtonRef = React.createRef();
 
-    this.setGradient = this.setGradient.bind(this);
     this.keyPressHandler = this.keyPressHandler.bind(this);
   }
 
@@ -55,17 +51,14 @@ class Modal extends React.Component {
     window.document.removeEventListener('keydown', this.keyPressHandler, false);
   }
 
-  setGradient() {
-    if (!this.state.isContentOverflowing) {
-      this.setState({ isContentOverflowing: true });
-    }
-  }
-
   keyPressHandler(e) {
-    const { actions } = this.props;
+    const {
+      actions,
+      closeHandler,
+    } = this.props;
 
-    if (e.keyCode === 27 && this.props.closeHandler) {
-      this.props.closeHandler();
+    if (e.keyCode === 27 && closeHandler) {
+      closeHandler();
     }
 
     if (e.keyCode === 13 && e.target.nodeName !== 'BUTTON') {
@@ -78,7 +71,21 @@ class Modal extends React.Component {
   }
 
   preRender() {
-    const sizeClass = (size) => {
+    const {
+      actions,
+      children,
+      closeHandler,
+      id,
+      scrollMode,
+      scrollViewEndShadowStyle,
+      scrollViewShadowSize,
+      scrollViewStartShadowStyle,
+      size,
+      title,
+      translations,
+    } = this.props;
+
+    const sizeClass = () => {
       if (size === 'small') {
         return styles.isRootSmall;
       }
@@ -94,23 +101,58 @@ class Modal extends React.Component {
       return styles.isRootAuto;
     };
 
+    const modalBody = () => {
+      const content = (
+        <div
+          ref={this.childrenWrapperRef}
+          className={styles.content}
+          {...(id && { id: `${id}__content` })}
+        >
+          {children}
+        </div>
+      );
+
+      if (scrollMode === 'body') {
+        return (
+          <div
+            className={[
+              styles.body,
+              styles.isBodyScrollable,
+            ].join(' ')}
+          >
+            <ScrollView
+              customStartShadowStyle={scrollViewStartShadowStyle}
+              customEndShadowStyle={scrollViewEndShadowStyle}
+              shadowSize={scrollViewShadowSize}
+            >
+              {content}
+            </ScrollView>
+          </div>
+        );
+      }
+
+      return (
+        <div className={styles.body}>
+          {content}
+        </div>
+      );
+    };
+
     return (
       <div
         className={styles.overlay}
-        id={this.props.id}
+        id={id}
         onClick={(e) => {
-          if (this.props.closeHandler) {
-            this.props.closeHandler(e);
+          if (closeHandler) {
+            closeHandler(e);
           }
         }}
-        onScroll={this.setGradient}
         role="presentation"
       >
         <div
           className={`
             ${styles.root}
-            ${sizeClass(this.props.size)}
-            ${this.state.isContentOverflowing ? styles.isContentOverflowing : ''}
+            ${sizeClass()}
           `.trim()}
           onClick={(e) => {
             e.stopPropagation();
@@ -120,32 +162,26 @@ class Modal extends React.Component {
           <div className={styles.head}>
             <h3
               className={styles.headTitle}
-              {...(this.props.id && { id: `${this.props.id}__title` })}
+              {...(id && { id: `${id}__title` })}
             >
-              {this.props.title}
+              {title}
             </h3>
-            {this.props.closeHandler && (
+            {closeHandler && (
               <button
                 type="button"
                 className={styles.close}
-                onClick={this.props.closeHandler}
-                title={this.props.translations.close}
-                {...(this.props.id && { id: `${this.props.id}__closeModalHeaderButton` })}
+                onClick={closeHandler}
+                title={translations.close}
+                {...(id && { id: `${id}__closeModalHeaderButton` })}
               >
                 ×
               </button>
             )}
           </div>
-          <div
-            className={styles.body}
-            ref={this.childrenWrapperRef}
-            {...(this.props.id && { id: `${this.props.id}__content` })}
-          >
-            {this.props.children}
-          </div>
+          {modalBody()}
           <div className={styles.footer}>
             <Toolbar justify="center" dense>
-              {this.props.actions.map((action) => (
+              {actions.map((action) => (
                 <ToolbarItem key={action.label}>
                   <Button
                     {...transferProps(action)}
@@ -160,13 +196,13 @@ class Modal extends React.Component {
                   />
                 </ToolbarItem>
               ))}
-              {this.props.closeHandler && (
+              {closeHandler && (
                 <ToolbarItem>
                   <Button
-                    clickHandler={this.props.closeHandler}
-                    label={this.props.translations.close}
+                    clickHandler={closeHandler}
+                    label={translations.close}
                     priority="flat"
-                    {...(this.props.id && { id: `${this.props.id}__closeModalFooterButton` })}
+                    {...(id && { id: `${id}__closeModalFooterButton` })}
                   />
                 </ToolbarItem>
               )}
@@ -194,6 +230,14 @@ Modal.defaultProps = {
   closeHandler: null,
   id: undefined,
   portalId: null,
+  scrollMode: 'body',
+  scrollViewEndShadowStyle: {
+    background: 'radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)',
+  },
+  scrollViewShadowSize: '16px',
+  scrollViewStartShadowStyle: {
+    background: 'radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)',
+  },
   size: 'medium',
 };
 
@@ -211,6 +255,16 @@ Modal.propTypes = {
   closeHandler: PropTypes.func,
   id: PropTypes.string,
   portalId: PropTypes.string,
+  scrollMode: PropTypes.oneOf(['body', 'modal']),
+  scrollViewEndShadowStyle: PropTypes.shape({
+    background: PropTypes.string,
+    boxShadow: PropTypes.string,
+  }),
+  scrollViewShadowSize: PropTypes.string,
+  scrollViewStartShadowStyle: PropTypes.shape({
+    background: PropTypes.string,
+    boxShadow: PropTypes.string,
+  }),
   size: PropTypes.oneOf(['small', 'medium', 'large', 'auto']),
   title: PropTypes.string.isRequired,
   translations: PropTypes.shape({

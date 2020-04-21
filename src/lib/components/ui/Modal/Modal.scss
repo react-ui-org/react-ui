@@ -42,8 +42,17 @@
 }
 
 .body {
+  flex: 1 1 auto;
+}
+
+.isBodyScrollable {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.content {
   padding: $modal-padding-y $modal-padding-x;
-  overflow-y: auto;
 }
 
 .footer {
@@ -66,14 +75,6 @@
   width: 100vw;
   height: 100vh;
   background-color: $modal-overlay-background;
-}
-
-.isContentOverflowing .head {
-  box-shadow: $modal-head-box-shadow;
-}
-
-.isContentOverflowing .footer {
-  box-shadow: $modal-footer-box-shadow;
 }
 
 .isRootSmall {

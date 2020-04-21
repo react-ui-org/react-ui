@@ -27,7 +27,10 @@ describe('rendering', () => {
           },
         ]}
         closeHandler={() => {}}
+        disableBodyScrolling
         id="custom-id"
+        scrollViewEndShadow={{ background: 'none' }}
+        scrollViewStartShadow={{ background: 'none' }}
         size="large"
         title="Modal title"
       >
@@ -49,7 +52,11 @@ describe('rendering', () => {
           },
         ]}
         closeHandler={() => {}}
+        disableBodyScrolling
         id="custom-id"
+        scrollViewEndShadow={{ background: 'none' }}
+        scrollViewShadowSize="30px"
+        scrollViewStartShadow={{ background: 'none' }}
         size="small"
         title="Modal title"
       >
