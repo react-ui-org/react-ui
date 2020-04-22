@@ -85,3 +85,40 @@ exports[`rendering renders correctly with all props 1`] = `
   </div>
 </div>
 `;
+
+exports[`rendering renders correctly with html element attributes 1`] = `
+<div
+  className="root
+        labelPositionAfter"
+>
+  <label
+    className="inputWrap"
+    htmlFor="test"
+  >
+    <input
+      checked={false}
+      className="input"
+      disabled={false}
+      id="test"
+      name="test"
+      onChange={null}
+      required={false}
+      tabIndex={-1}
+      type="checkbox"
+    />
+    <span
+      className="label"
+    >
+      <span
+        className="labelInner"
+        id="test__label"
+      >
+        label
+      </span>
+    </span>
+    <span
+      className="toggle"
+    />
+  </label>
+</div>
+`;

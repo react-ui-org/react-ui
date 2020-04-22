@@ -76,6 +76,7 @@ export const TextArea = (props) => {
       </div>
       <div className={styles.inputContainer}>
         <textarea
+          {...props.htmlElementAttributes}
           className={styles.input}
           cols={props.cols}
           disabled={props.disabled}
@@ -110,6 +111,7 @@ TextArea.defaultProps = {
   forwardedRef: undefined,
   fullWidth: false,
   helperText: null,
+  htmlElementAttributes: {},
   isLabelVisible: true,
   layout: 'vertical',
   placeholder: null,
@@ -128,6 +130,9 @@ TextArea.propTypes = {
   forwardedRef: PropTypes.func,
   fullWidth: PropTypes.bool,
   helperText: PropTypes.string,
+  htmlElementAttributes: PropTypes.shape({
+    rows: PropTypes.number,
+  }),
   id: PropTypes.string.isRequired,
   isLabelVisible: PropTypes.bool,
   label: PropTypes.string.isRequired,

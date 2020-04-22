@@ -76,6 +76,7 @@ export const SelectField = (props) => {
       </div>
       <div className={styles.inputContainer}>
         <select
+          {...props.htmlElementAttributes}
           className={styles.input}
           disabled={props.disabled}
           id={props.id}
@@ -122,6 +123,7 @@ SelectField.defaultProps = {
   forwardedRef: undefined,
   fullWidth: false,
   helperText: null,
+  htmlElementAttributes: {},
   isLabelVisible: true,
   layout: 'vertical',
   required: false,
@@ -137,6 +139,7 @@ SelectField.propTypes = {
   forwardedRef: PropTypes.func,
   fullWidth: PropTypes.bool,
   helperText: PropTypes.string,
+  htmlElementAttributes: PropTypes.shape({}),
   id: PropTypes.string.isRequired,
   isLabelVisible: PropTypes.bool,
   label: PropTypes.string.isRequired,

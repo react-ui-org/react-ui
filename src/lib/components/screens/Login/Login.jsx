@@ -47,8 +47,8 @@ const Login = (props) => (
         )}
         <div className="mb-3">
           <TextField
-            autoComplete="username"
             changeHandler={(event) => props.onChangeHandler('username', event.target.value)}
+            htmlElementAttributes={{ autoComplete: 'username' }}
             id={props.id ? `${props.id}__usernameInput` : 'usernameInput'}
             label={props.usernameType === 'email' ? props.translations.email : props.usernameType}
             type={props.usernameType === 'email' ? 'email' : 'text'}
@@ -56,8 +56,8 @@ const Login = (props) => (
             required
           />
           <TextField
-            autoComplete="current-password"
             changeHandler={(event) => props.onChangeHandler('password', event.target.value)}
+            htmlElementAttributes={{ autoComplete: 'current-password' }}
             id={props.id ? `${props.id}__passwordInput` : 'passwordInput'}
             label={props.translations.password}
             type="password"

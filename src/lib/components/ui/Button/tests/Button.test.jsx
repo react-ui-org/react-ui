@@ -91,6 +91,15 @@ describe('rendering', () => {
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
+
+  it('renders correctly with html element attributes', () => {
+    const tree = shallow(<Button
+      htmlElementAttributes={{ tabIndex: -1 }}
+      label="button"
+    />);
+
+    expect(shallowToJson(tree)).toMatchSnapshot();
+  });
 });
 
 describe('functionality', () => {

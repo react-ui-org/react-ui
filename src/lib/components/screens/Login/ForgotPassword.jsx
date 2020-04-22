@@ -47,8 +47,8 @@ const ForgotPassword = (props) => (
         )}
         <div className="mb-3">
           <TextField
-            autoComplete="username"
             changeHandler={(event) => props.onChangeHandler('email', event.target.value)}
+            htmlElementAttributes={{ autoComplete: 'username' }}
             id={props.id ? `${props.id}__resetEmailInput` : 'resetEmailInput'}
             label={props.translations.email}
             type={props.usernameType === 'email' ? 'email' : 'text'}

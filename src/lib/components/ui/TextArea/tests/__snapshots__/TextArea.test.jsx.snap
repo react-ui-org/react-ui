@@ -113,3 +113,38 @@ exports[`rendering renders correctly with hidden label 1`] = `
   </div>
 </label>
 `;
+
+exports[`rendering renders correctly with html element attributes 1`] = `
+<label
+  className="root
+        
+        rootLayoutVertical
+        
+        rootSizeMedium
+        
+        rootVariantOutline"
+  htmlFor="test"
+>
+  <div
+    className="label"
+    id="test__label"
+  >
+    label
+  </div>
+  <div
+    className="inputContainer"
+  >
+    <textarea
+      className="input"
+      cols={null}
+      disabled={false}
+      id="test"
+      onChange={null}
+      placeholder={null}
+      required={false}
+      rows={3}
+      tabIndex={-1}
+    />
+  </div>
+</label>
+`;

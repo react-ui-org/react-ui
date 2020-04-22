@@ -180,6 +180,26 @@ exports[`rendering renders correctly with all props 1`] = `
 </button>
 `;
 
+exports[`rendering renders correctly with html element attributes 1`] = `
+<button
+  className="root
+        priorityDefault
+        sizeMedium
+        variantPrimary"
+  disabled={false}
+  onClick={null}
+  tabIndex={-1}
+  title={null}
+  type="button"
+>
+  <span
+    className="label"
+  >
+    button
+  </span>
+</button>
+`;
+
 exports[`rendering renders correctly with icon 1`] = `
 <button
   className="root

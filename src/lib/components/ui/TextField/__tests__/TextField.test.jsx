@@ -26,8 +26,6 @@ describe('rendering', () => {
 
   it('renders correctly with all props', () => {
     const tree = shallow(<TextField
-      autoCapitalize="on"
-      autoComplete="username"
       id="test"
       helperText="some help"
       isLabelVisible={false}
@@ -43,6 +41,16 @@ describe('rendering', () => {
       fullWidth
       disabled
       required
+    />);
+
+    expect(shallowToJson(tree)).toMatchSnapshot();
+  });
+
+  it('renders correctly with html element attributes', () => {
+    const tree = shallow(<TextField
+      htmlElementAttributes={{ tabIndex: -1 }}
+      id="test"
+      label="label"
     />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();

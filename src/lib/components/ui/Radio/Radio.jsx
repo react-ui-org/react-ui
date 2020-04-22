@@ -43,6 +43,7 @@ const Radio = (props) => {
               { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
               <label className={styles.inputWrap}>
                 <input
+                  {...props.htmlElementAttributes}
                   id={`${props.id}__item__${option.value}`}
                   name={props.id}
                   type="radio"
@@ -85,6 +86,7 @@ Radio.defaultProps = {
   description: null,
   disabled: false,
   error: null,
+  htmlElementAttributes: {},
   isLabelVisible: true,
   required: false,
   validationState: null,
@@ -96,6 +98,7 @@ Radio.propTypes = {
   description: PropTypes.string,
   disabled: PropTypes.bool,
   error: PropTypes.string,
+  htmlElementAttributes: PropTypes.shape({}),
   id: PropTypes.string.isRequired,
   isLabelVisible: PropTypes.bool,
   label: PropTypes.string.isRequired,

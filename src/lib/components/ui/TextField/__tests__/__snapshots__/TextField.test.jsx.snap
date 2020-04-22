@@ -56,8 +56,6 @@ exports[`rendering renders correctly with all props 1`] = `
     className="inputContainer"
   >
     <input
-      autoCapitalize="on"
-      autoComplete="username"
       className="input"
       disabled={true}
       id="test"
@@ -110,6 +108,41 @@ exports[`rendering renders correctly with hidden label 1`] = `
       placeholder={null}
       required={false}
       size={null}
+      type="text"
+    />
+  </div>
+</label>
+`;
+
+exports[`rendering renders correctly with html element attributes 1`] = `
+<label
+  className="root
+        
+        rootLayoutVertical
+        
+        rootSizeMedium
+        
+        rootVariantOutline"
+  htmlFor="test"
+>
+  <div
+    className="label"
+    id="test__label"
+  >
+    label
+  </div>
+  <div
+    className="inputContainer"
+  >
+    <input
+      className="input"
+      disabled={false}
+      id="test"
+      onChange={null}
+      placeholder={null}
+      required={false}
+      size={null}
+      tabIndex={-1}
       type="text"
     />
   </div>

@@ -50,6 +50,7 @@ export const Button = (props) => {
 
   return (
     <button
+      {...props.htmlElementAttributes}
       className={(`
         ${styles.root}
         ${priorityClass}
@@ -110,6 +111,7 @@ Button.defaultProps = {
   endCorner: null,
   forwardedRef: undefined,
   grouped: false,
+  htmlElementAttributes: {},
   id: undefined,
   labelVisibility: 'all',
   loadingIcon: null,
@@ -129,6 +131,7 @@ Button.propTypes = {
   endCorner: PropTypes.element,
   forwardedRef: PropTypes.func,
   grouped: PropTypes.bool,
+  htmlElementAttributes: PropTypes.shape({}),
   id: PropTypes.string,
   label: PropTypes.string.isRequired,
   labelVisibility: PropTypes.oneOf(['all', 'desktop', 'none']),

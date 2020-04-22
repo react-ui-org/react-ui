@@ -41,6 +41,7 @@ export const CheckboxField = (props) => {
         htmlFor={props.id}
       >
         <input
+          {...props.htmlElementAttributes}
           id={props.id}
           value={props.value}
           onChange={props.changeHandler}
@@ -90,6 +91,7 @@ CheckboxField.defaultProps = {
   disabled: false,
   error: null,
   forwardedRef: undefined,
+  htmlElementAttributes: {},
   isLabelVisible: true,
   labelPosition: 'after',
   required: false,
@@ -104,6 +106,7 @@ CheckboxField.propTypes = {
   disabled: PropTypes.bool,
   error: PropTypes.string,
   forwardedRef: PropTypes.func,
+  htmlElementAttributes: PropTypes.shape({}),
   id: PropTypes.string.isRequired,
   isLabelVisible: PropTypes.bool,
   label: PropTypes.string.isRequired,

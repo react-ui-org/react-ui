@@ -111,6 +111,26 @@ describe('rendering', () => {
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
+
+  it('renders correctly with html element attributes', () => {
+    const tree = shallow(<MultipleSelectField
+      htmlElementAttributes={{ tabIndex: -1 }}
+      id="test"
+      label="label"
+      options={[
+        {
+          label: 'choice 1',
+          value: 'ch1',
+        },
+        {
+          label: 'choice 2',
+          value: 'ch2',
+        },
+      ]}
+    />);
+
+    expect(shallowToJson(tree)).toMatchSnapshot();
+  });
 });
 
 describe('functionality', () => {

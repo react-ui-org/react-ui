@@ -214,3 +214,66 @@ exports[`rendering renders correctly with all props 1`] = `
   </div>
 </div>
 `;
+
+exports[`rendering renders correctly with html element attributes 1`] = `
+<div
+  className="root"
+>
+  <div
+    className="label"
+    id="test__label"
+  >
+    label
+  </div>
+  <ul
+    className="list"
+  >
+    <li
+      key="ch1"
+    >
+      <label
+        className="inputWrap"
+      >
+        <input
+          checked={false}
+          className="input"
+          id="test__item__ch1"
+          name="test"
+          onChange={null}
+          tabIndex={-1}
+          type="radio"
+          value="ch1"
+        />
+        <span
+          className="radioLabel"
+        >
+          choice 1
+        </span>
+      </label>
+    </li>
+    <li
+      key="ch2"
+    >
+      <label
+        className="inputWrap"
+      >
+        <input
+          checked={false}
+          className="input"
+          id="test__item__ch2"
+          name="test"
+          onChange={null}
+          tabIndex={-1}
+          type="radio"
+          value="ch2"
+        />
+        <span
+          className="radioLabel"
+        >
+          choice 2
+        </span>
+      </label>
+    </li>
+  </ul>
+</div>
+`;

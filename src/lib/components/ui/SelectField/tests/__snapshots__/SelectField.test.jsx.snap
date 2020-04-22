@@ -163,3 +163,57 @@ exports[`rendering renders correctly with all props 1`] = `
   </div>
 </label>
 `;
+
+exports[`rendering renders correctly with html element attributes 1`] = `
+<label
+  className="root
+        
+        rootLayoutVertical
+        
+        rootSizeMedium
+        
+        rootVariantOutline"
+  htmlFor="test"
+>
+  <div
+    className="label"
+    id="test__label"
+  >
+    label
+  </div>
+  <div
+    className="inputContainer"
+  >
+    <select
+      className="input"
+      disabled={false}
+      id="test"
+      onChange={null}
+      required={false}
+      tabIndex={-1}
+    >
+      <option
+        id="test__item__ch1"
+        key="ch1"
+        value="ch1"
+      >
+        choice 1
+      </option>
+      <option
+        id="test__item__ch2"
+        key="ch2"
+        value="ch2"
+      >
+        choice 2
+      </option>
+    </select>
+    <div
+      className="caret"
+    >
+      <span
+        className="caretIcon"
+      />
+    </div>
+  </div>
+</label>
+`;

@@ -47,8 +47,8 @@ const NewPassword = (props) => (
         )}
         <div className="mb-3">
           <TextField
-            autoComplete="new-password"
             changeHandler={(event) => props.onChangeHandler('newPassword', event.target.value)}
+            htmlElementAttributes={{ autoComplete: 'new-password' }}
             id={props.id ? `${props.id}__newPasswordInput` : 'newPasswordInput'}
             label={props.translations.newPassword}
             type="password"
@@ -56,8 +56,8 @@ const NewPassword = (props) => (
             required
           />
           <TextField
-            autoComplete="new-password"
             changeHandler={(event) => props.onChangeHandler('newPasswordRepeat', event.target.value)}
+            htmlElementAttributes={{ autoComplete: 'new-password' }}
             id={props.id ? `${props.id}__newPasswordRepeatInput` : 'newPasswordRepeatInput'}
             label={props.translations.repeatNewPassword}
             type="password"

@@ -5,8 +5,9 @@ import styles from './ButtonGroup.scss';
 export const ButtonGroup = (props) => {
   const {
     block,
-    disabled,
     children,
+    disabled,
+    htmlElementAttributes,
     priority,
     size,
     ...other
@@ -32,6 +33,7 @@ export const ButtonGroup = (props) => {
         }
 
         return React.cloneElement(child, {
+          ...htmlElementAttributes,
           block,
           disabled,
           grouped: true,
@@ -46,6 +48,7 @@ export const ButtonGroup = (props) => {
 ButtonGroup.defaultProps = {
   block: false,
   disabled: false,
+  htmlElementAttributes: {},
   priority: 'default',
   size: 'medium',
 };
@@ -54,6 +57,7 @@ ButtonGroup.propTypes = {
   block: PropTypes.bool,
   children: PropTypes.arrayOf(PropTypes.element).isRequired,
   disabled: PropTypes.bool,
+  htmlElementAttributes: PropTypes.shape({}),
   priority: PropTypes.oneOf(['default', 'outline', 'flat']),
   size: PropTypes.oneOf(['small', 'medium', 'large']),
 };

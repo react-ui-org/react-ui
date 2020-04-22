@@ -76,8 +76,7 @@ export const TextField = (props) => {
       </div>
       <div className={styles.inputContainer}>
         <input
-          autoCapitalize={props.autoCapitalize}
-          autoComplete={props.autoComplete}
+          {...props.htmlElementAttributes}
           className={styles.input}
           disabled={props.disabled}
           id={props.id}
@@ -106,13 +105,12 @@ export const TextField = (props) => {
 };
 
 TextField.defaultProps = {
-  autoCapitalize: undefined,
-  autoComplete: undefined,
   changeHandler: null,
   disabled: false,
   forwardedRef: undefined,
   fullWidth: false,
   helperText: null,
+  htmlElementAttributes: {},
   inputSize: null,
   isLabelVisible: true,
   layout: 'vertical',
@@ -126,13 +124,12 @@ TextField.defaultProps = {
 };
 
 TextField.propTypes = {
-  autoCapitalize: PropTypes.string,
-  autoComplete: PropTypes.string,
   changeHandler: PropTypes.func,
   disabled: PropTypes.bool,
   forwardedRef: PropTypes.func,
   fullWidth: PropTypes.bool,
   helperText: PropTypes.string,
+  htmlElementAttributes: PropTypes.shape({}),
   id: PropTypes.string.isRequired,
   inputSize: PropTypes.number,
   isLabelVisible: PropTypes.bool,

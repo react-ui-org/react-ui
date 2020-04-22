@@ -34,21 +34,29 @@ exports[`rendering renders correctly 1`] = `
             className="mb-3"
           >
             <ForwardRef(withForwardedRef(TextField))
-              autoComplete="username"
               changeHandler={[Function]}
               fullWidth={true}
+              htmlElementAttributes={
+                Object {
+                  "autoComplete": "username",
+                }
+              }
               id="usernameInput"
               label="E-mail"
               required={true}
               type="email"
             >
               <TextField
-                autoComplete="username"
                 changeHandler={[Function]}
                 disabled={false}
                 forwardedRef={null}
                 fullWidth={true}
                 helperText={null}
+                htmlElementAttributes={
+                  Object {
+                    "autoComplete": "username",
+                  }
+                }
                 id="usernameInput"
                 inputSize={null}
                 isLabelVisible={true}
@@ -96,21 +104,29 @@ exports[`rendering renders correctly 1`] = `
               </TextField>
             </ForwardRef(withForwardedRef(TextField))>
             <ForwardRef(withForwardedRef(TextField))
-              autoComplete="current-password"
               changeHandler={[Function]}
               fullWidth={true}
+              htmlElementAttributes={
+                Object {
+                  "autoComplete": "current-password",
+                }
+              }
               id="passwordInput"
               label="Password"
               required={true}
               type="password"
             >
               <TextField
-                autoComplete="current-password"
                 changeHandler={[Function]}
                 disabled={false}
                 forwardedRef={null}
                 fullWidth={true}
                 helperText={null}
+                htmlElementAttributes={
+                  Object {
+                    "autoComplete": "current-password",
+                  }
+                }
                 id="passwordInput"
                 inputSize={null}
                 isLabelVisible={true}
@@ -172,6 +188,7 @@ exports[`rendering renders correctly 1`] = `
               endCorner={null}
               forwardedRef={null}
               grouped={false}
+              htmlElementAttributes={Object {}}
               label="Sign in"
               labelVisibility="all"
               loadingIcon={null}
@@ -273,21 +290,29 @@ exports[`rendering renders correctly with all props except translations 1`] = `
             className="mb-3"
           >
             <ForwardRef(withForwardedRef(TextField))
-              autoComplete="username"
               changeHandler={[Function]}
               fullWidth={true}
+              htmlElementAttributes={
+                Object {
+                  "autoComplete": "username",
+                }
+              }
               id="custom-id__usernameInput"
               label="E-mail"
               required={true}
               type="email"
             >
               <TextField
-                autoComplete="username"
                 changeHandler={[Function]}
                 disabled={false}
                 forwardedRef={null}
                 fullWidth={true}
                 helperText={null}
+                htmlElementAttributes={
+                  Object {
+                    "autoComplete": "username",
+                  }
+                }
                 id="custom-id__usernameInput"
                 inputSize={null}
                 isLabelVisible={true}
@@ -335,21 +360,29 @@ exports[`rendering renders correctly with all props except translations 1`] = `
               </TextField>
             </ForwardRef(withForwardedRef(TextField))>
             <ForwardRef(withForwardedRef(TextField))
-              autoComplete="current-password"
               changeHandler={[Function]}
               fullWidth={true}
+              htmlElementAttributes={
+                Object {
+                  "autoComplete": "current-password",
+                }
+              }
               id="custom-id__passwordInput"
               label="Password"
               required={true}
               type="password"
             >
               <TextField
-                autoComplete="current-password"
                 changeHandler={[Function]}
                 disabled={false}
                 forwardedRef={null}
                 fullWidth={true}
                 helperText={null}
+                htmlElementAttributes={
+                  Object {
+                    "autoComplete": "current-password",
+                  }
+                }
                 id="custom-id__passwordInput"
                 inputSize={null}
                 isLabelVisible={true}
@@ -412,6 +445,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
               endCorner={null}
               forwardedRef={null}
               grouped={false}
+              htmlElementAttributes={Object {}}
               id="custom-id__signInButton"
               label="Sign in"
               labelVisibility="all"
@@ -501,21 +535,29 @@ exports[`rendering renders correctly with translations 1`] = `
             className="mb-3"
           >
             <ForwardRef(withForwardedRef(TextField))
-              autoComplete="username"
               changeHandler={[Function]}
               fullWidth={true}
+              htmlElementAttributes={
+                Object {
+                  "autoComplete": "username",
+                }
+              }
               id="usernameInput"
               label="E-mail"
               required={true}
               type="email"
             >
               <TextField
-                autoComplete="username"
                 changeHandler={[Function]}
                 disabled={false}
                 forwardedRef={null}
                 fullWidth={true}
                 helperText={null}
+                htmlElementAttributes={
+                  Object {
+                    "autoComplete": "username",
+                  }
+                }
                 id="usernameInput"
                 inputSize={null}
                 isLabelVisible={true}
@@ -563,21 +605,29 @@ exports[`rendering renders correctly with translations 1`] = `
               </TextField>
             </ForwardRef(withForwardedRef(TextField))>
             <ForwardRef(withForwardedRef(TextField))
-              autoComplete="current-password"
               changeHandler={[Function]}
               fullWidth={true}
+              htmlElementAttributes={
+                Object {
+                  "autoComplete": "current-password",
+                }
+              }
               id="passwordInput"
               label="Heslo"
               required={true}
               type="password"
             >
               <TextField
-                autoComplete="current-password"
                 changeHandler={[Function]}
                 disabled={false}
                 forwardedRef={null}
                 fullWidth={true}
                 helperText={null}
+                htmlElementAttributes={
+                  Object {
+                    "autoComplete": "current-password",
+                  }
+                }
                 id="passwordInput"
                 inputSize={null}
                 isLabelVisible={true}
@@ -639,6 +689,7 @@ exports[`rendering renders correctly with translations 1`] = `
               endCorner={null}
               forwardedRef={null}
               grouped={false}
+              htmlElementAttributes={Object {}}
               label="Přihlásit se"
               labelVisibility="all"
               loadingIcon={null}
@@ -709,21 +760,29 @@ exports[`rendering renders correctly with username 1`] = `
             className="mb-3"
           >
             <ForwardRef(withForwardedRef(TextField))
-              autoComplete="username"
               changeHandler={[Function]}
               fullWidth={true}
+              htmlElementAttributes={
+                Object {
+                  "autoComplete": "username",
+                }
+              }
               id="usernameInput"
               label="Username"
               required={true}
               type="text"
             >
               <TextField
-                autoComplete="username"
                 changeHandler={[Function]}
                 disabled={false}
                 forwardedRef={null}
                 fullWidth={true}
                 helperText={null}
+                htmlElementAttributes={
+                  Object {
+                    "autoComplete": "username",
+                  }
+                }
                 id="usernameInput"
                 inputSize={null}
                 isLabelVisible={true}
@@ -771,21 +830,29 @@ exports[`rendering renders correctly with username 1`] = `
               </TextField>
             </ForwardRef(withForwardedRef(TextField))>
             <ForwardRef(withForwardedRef(TextField))
-              autoComplete="current-password"
               changeHandler={[Function]}
               fullWidth={true}
+              htmlElementAttributes={
+                Object {
+                  "autoComplete": "current-password",
+                }
+              }
               id="passwordInput"
               label="Password"
               required={true}
               type="password"
             >
               <TextField
-                autoComplete="current-password"
                 changeHandler={[Function]}
                 disabled={false}
                 forwardedRef={null}
                 fullWidth={true}
                 helperText={null}
+                htmlElementAttributes={
+                  Object {
+                    "autoComplete": "current-password",
+                  }
+                }
                 id="passwordInput"
                 inputSize={null}
                 isLabelVisible={true}
@@ -847,6 +914,7 @@ exports[`rendering renders correctly with username 1`] = `
               endCorner={null}
               forwardedRef={null}
               grouped={false}
+              htmlElementAttributes={Object {}}
               label="Sign in"
               labelVisibility="all"
               loadingIcon={null}

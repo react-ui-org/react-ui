@@ -104,3 +104,31 @@ exports[`rendering renders correctly with all props 1`] = `
   />
 </div>
 `;
+
+exports[`rendering renders correctly with html element attributes 1`] = `
+<div
+  className="root"
+  role="group"
+>
+  <ForwardRef(withForwardedRef(Button))
+    block={false}
+    disabled={false}
+    grouped={true}
+    key=".0"
+    label="One"
+    priority="default"
+    size="medium"
+    tabIndex={-1}
+  />
+  <ForwardRef(withForwardedRef(Button))
+    block={false}
+    disabled={false}
+    grouped={true}
+    key=".1"
+    label="Two"
+    priority="default"
+    size="medium"
+    tabIndex={-1}
+  />
+</div>
+`;

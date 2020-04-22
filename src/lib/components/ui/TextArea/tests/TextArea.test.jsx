@@ -45,6 +45,16 @@ describe('rendering', () => {
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
+
+  it('renders correctly with html element attributes', () => {
+    const tree = shallow(<TextArea
+      htmlElementAttributes={{ tabIndex: -1 }}
+      label="label"
+      id="test"
+    />);
+
+    expect(shallowToJson(tree)).toMatchSnapshot();
+  });
 });
 
 describe('functionality', () => {

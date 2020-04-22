@@ -31,6 +31,16 @@ describe('rendering', () => {
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
+
+  it('renders correctly with html element attributes', () => {
+    const tree = shallow(<CheckboxField
+      htmlElementAttributes={{ tabIndex: -1 }}
+      id="test"
+      label="label"
+    />);
+
+    expect(shallowToJson(tree)).toMatchSnapshot();
+  });
 });
 
 describe('functionality', () => {
