@@ -55,10 +55,7 @@ List.defaultProps = {
 List.propTypes = {
   align: PropTypes.oneOf(['left', 'right']),
   autoWidth: PropTypes.bool,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
+  children: PropTypes.node,
 };
 
 export default List;

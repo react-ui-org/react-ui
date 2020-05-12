@@ -64,7 +64,7 @@
     "demo:build": "webpack --mode production --config webpack.config.demo.js",
     "demo:start": "webpack-dev-server --mode development --config webpack.config.demo.js",
     "demo:test": "eslint --ext js,jsx src/demo",
-    "lib:build": "webpack --mode production --config webpack.config.lib.js",
+    "lib:build": "webpack --mode development --config webpack.config.lib.js && webpack --mode production --config webpack.config.lib.js",
     "lib:test": "stylelint \"src/lib/**/*.scss\" --config stylelint.config.js && eslint --ext js,jsx src/lib && jest -w",
     "prepublishOnly": "npm run lib:build",
     "start": "npm run demo:start",

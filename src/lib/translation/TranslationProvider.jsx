@@ -16,10 +16,7 @@ TranslationProvider.defaultProps = {
 };
 
 TranslationProvider.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
+  children: PropTypes.node,
   translations: PropTypes.shape({}).isRequired,
 };
 

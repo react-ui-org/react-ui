@@ -11,6 +11,7 @@
 babel.config.js
 demo-stats.html
 jest.config.js
+lib-stats.development.html
 lib-stats.html
 package-lock.json
 postcss.config.js

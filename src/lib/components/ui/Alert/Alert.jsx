@@ -50,11 +50,8 @@ Alert.defaultProps = {
 };
 
 Alert.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
-  icon: PropTypes.element,
+  children: PropTypes.node.isRequired,
+  icon: PropTypes.node,
   id: PropTypes.string,
   type: PropTypes.oneOf(['error', 'help', 'info', 'note', 'success', 'warning']),
 };

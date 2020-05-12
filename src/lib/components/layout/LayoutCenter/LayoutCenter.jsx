@@ -15,7 +15,7 @@ LayoutCenter.defaultProps = {
 };
 
 LayoutCenter.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
 };
 
 export default LayoutCenter;

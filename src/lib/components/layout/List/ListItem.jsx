@@ -19,10 +19,7 @@ ListItem.defaultProps = {
 };
 
 ListItem.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
+  children: PropTypes.node,
 };
 
 export default ListItem;

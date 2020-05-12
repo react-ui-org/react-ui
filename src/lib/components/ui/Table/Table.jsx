@@ -130,10 +130,10 @@ Table.propTypes = {
     ]).isRequired,
   })).isRequired,
   sort: PropTypes.shape({
-    ascendingIcon: PropTypes.element.isRequired,
+    ascendingIcon: PropTypes.node.isRequired,
     changeHandler: PropTypes.func.isRequired,
     column: PropTypes.string.isRequired,
-    descendingIcon: PropTypes.element.isRequired,
+    descendingIcon: PropTypes.node.isRequired,
     direction: PropTypes.oneOf(['asc', 'desc']).isRequired,
   }),
 };

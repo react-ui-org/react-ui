@@ -38,10 +38,7 @@ CardList.defaultProps = {
 };
 
 CardList.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
+  children: PropTypes.node,
   id: PropTypes.string,
 };
 

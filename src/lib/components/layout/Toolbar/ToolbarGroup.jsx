@@ -42,10 +42,7 @@ ToolbarGroup.defaultProps = {
 
 ToolbarGroup.propTypes = {
   align: PropTypes.oneOf(['top', 'middle', 'bottom', 'baseline']),
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default ToolbarGroup;
