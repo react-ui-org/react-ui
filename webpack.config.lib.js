@@ -2,7 +2,13 @@ const path = require('path');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const VisualizerPlugin = require('webpack-visualizer-plugin');
 
+const MAX_DEVELOPMENT_OUTPUT_SIZE = 1250000;
+const MAX_PRODUCTION_OUTPUT_SIZE = 175000;
+
 module.exports = (env, argv) => ({
+  devtool: argv.mode === 'production'
+    ? false
+    : 'eval-cheap-module-source-map',
   entry: {
     lib: [
       path.join(__dirname, 'src/lib/index.js'),
@@ -36,10 +42,20 @@ module.exports = (env, argv) => ({
     ],
   },
   output: {
-    filename: '[name].js',
+    filename: argv.mode === 'production'
+      ? '[name].js'
+      : '[name].development.js',
     libraryTarget: 'umd',
     path: path.join(__dirname, 'dist'),
     publicPath: '/dist/',
+  },
+  performance: {
+    maxAssetSize: argv.mode === 'production'
+      ? MAX_PRODUCTION_OUTPUT_SIZE
+      : MAX_DEVELOPMENT_OUTPUT_SIZE,
+    maxEntrypointSize: argv.mode === 'production'
+      ? MAX_PRODUCTION_OUTPUT_SIZE
+      : MAX_DEVELOPMENT_OUTPUT_SIZE,
   },
   plugins: [
     new StyleLintPlugin({
@@ -47,7 +63,9 @@ module.exports = (env, argv) => ({
       syntax: 'scss',
     }),
     new VisualizerPlugin({
-      filename: '../lib-stats.html',
+      filename: argv.mode === 'production'
+        ? '../lib-stats.html'
+        : '../lib-stats.development.html',
     }),
   ],
   resolve: {

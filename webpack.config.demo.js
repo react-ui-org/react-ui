@@ -2,6 +2,8 @@ const path = require('path');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const VisualizerPlugin = require('webpack-visualizer-plugin');
 
+const MAX_OUTPUT_SIZE = 750000;
+
 module.exports = (env, argv) => ({
   devServer: {
     contentBase: './demo',
@@ -49,8 +51,8 @@ module.exports = (env, argv) => ({
     publicPath: '/generated/',
   },
   performance: {
-    maxAssetSize: 750000,
-    maxEntrypointSize: 750000,
+    maxAssetSize: MAX_OUTPUT_SIZE,
+    maxEntrypointSize: MAX_OUTPUT_SIZE,
   },
   plugins: [
     new StyleLintPlugin({

@@ -96,7 +96,7 @@ Login.defaultProps = {
 };
 
 Login.propTypes = {
-  footer: PropTypes.element,
+  footer: PropTypes.node,
   hasError: PropTypes.bool,
   id: PropTypes.string,
   logoUrl: PropTypes.string,

@@ -129,21 +129,21 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  afterLabel: PropTypes.element,
-  beforeLabel: PropTypes.element,
+  afterLabel: PropTypes.node,
+  beforeLabel: PropTypes.node,
   block: PropTypes.bool,
   clickHandler: PropTypes.func,
   disabled: PropTypes.bool,
-  endCorner: PropTypes.element,
+  endCorner: PropTypes.node,
   forwardedRef: PropTypes.func,
   grouped: PropTypes.bool,
   id: PropTypes.string,
   label: PropTypes.string.isRequired,
   labelVisibility: PropTypes.oneOf(['all', 'desktop', 'none']),
-  loadingIcon: PropTypes.element,
+  loadingIcon: PropTypes.node,
   priority: PropTypes.oneOf(['default', 'outline', 'flat']),
   size: PropTypes.oneOf(['small', 'medium', 'large']),
-  startCorner: PropTypes.element,
+  startCorner: PropTypes.node,
   type: PropTypes.oneOf(['button', 'submit']),
   variant: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'danger', 'dark']),
 };

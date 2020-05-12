@@ -96,7 +96,7 @@ NewPassword.defaultProps = {
 
 NewPassword.propTypes = {
   error: PropTypes.string,
-  footer: PropTypes.element,
+  footer: PropTypes.node,
   id: PropTypes.string,
   logoUrl: PropTypes.string,
   onChangeHandler: PropTypes.func,

@@ -69,10 +69,7 @@ Card.defaultProps = {
 };
 
 Card.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
+  children: PropTypes.node.isRequired,
   dense: PropTypes.bool,
   disabled: PropTypes.bool,
   id: PropTypes.string,
