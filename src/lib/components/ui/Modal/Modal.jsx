@@ -111,6 +111,7 @@ class Modal extends React.Component {
                 label={action.label}
                 loadingIcon={action.loadingIcon}
                 variant={action.variant}
+                type={action.type || 'button'}
               />
             ))}
             {this.props.closeHandler && (
@@ -142,6 +143,7 @@ Modal.propTypes = {
     id: PropTypes.string,
     label: PropTypes.string.isRequired,
     loadingIcon: PropTypes.element,
+    type: PropTypes.string,
     variant: PropTypes.string,
   })),
   children: PropTypes.oneOfType([

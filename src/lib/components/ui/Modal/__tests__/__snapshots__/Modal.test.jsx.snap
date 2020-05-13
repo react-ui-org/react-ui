@@ -80,6 +80,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
             clickHandler={[Function]}
             key="Action"
             label="Action"
+            type="button"
           >
             <Button
               afterLabel={null}
@@ -260,6 +261,7 @@ exports[`rendering renders correctly with all props except translations and with
                 className="icon"
               />
             }
+            type="button"
           >
             <Button
               afterLabel={null}
