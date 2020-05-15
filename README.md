@@ -1,5 +1,10 @@
 # React UI
 
+![npm](https://img.shields.io/npm/v/@react-ui-org/react-ui)
+![David](https://img.shields.io/david/react-ui-org/react-ui)
+![Build and run tests](https://github.com/react-ui-org/react-ui/workflows/Build%20and%20run%20tests/badge.svg)
+![npm bundle size](https://img.shields.io/bundlephobia/min/@react-ui-org/react-ui)
+
 > React UI is a themeable UI library for React.js apps.
 
 React UI consists of the following building blocks:
