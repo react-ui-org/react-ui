@@ -23,7 +23,7 @@ describe('rendering', () => {
       description="some help"
       error="some error"
       isLabelVisible
-      layoutLabel="right"
+      labelPosition="after"
       required
       checked
       validationState="warning"

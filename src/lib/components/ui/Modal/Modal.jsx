@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Button from '../Button';
+import transferProps from '../../../utils/transferProps';
 import { withTranslationContext } from '../../../translation';
 import styles from './Modal.scss';
 
@@ -104,6 +105,7 @@ class Modal extends React.Component {
           <div className={styles.footer}>
             {this.props.actions.map((action) => (
               <Button
+                {...transferProps(action)}
                 clickHandler={action.clickHandler}
                 disabled={action.disabled}
                 id={action.id || undefined}

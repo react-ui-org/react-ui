@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import transferProps from '../../../utils/transferProps';
 import withForwardedRef from '../withForwardedRef';
 import styles from './TextArea.scss';
 
@@ -52,6 +53,12 @@ export const TextArea = (props) => {
     rootVariantClass = styles.rootVariantOutline;
   }
 
+  const propsToTransfer = transferProps(
+    props,
+    ['changeHandler', 'cols', 'disabled', 'fullWidth', 'helperText', 'id', 'isLabelVisible',
+      'label', 'layout', 'placeholder', 'required', 'rows', 'size', 'validationState', 'value', 'variant'],
+  );
+
   return (
     <label
       className={(`
@@ -76,6 +83,7 @@ export const TextArea = (props) => {
       </div>
       <div className={styles.inputContainer}>
         <textarea
+          {...propsToTransfer}
           className={styles.input}
           cols={props.cols}
           disabled={props.disabled}

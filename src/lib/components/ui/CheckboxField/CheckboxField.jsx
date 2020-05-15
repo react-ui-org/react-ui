@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import transferProps from '../../../utils/transferProps';
 import withForwardedRef from '../withForwardedRef';
 import styles from './CheckboxField.scss';
 
@@ -26,6 +27,12 @@ export const CheckboxField = (props) => {
     rootValidationStateClass = styles.isRootStateWarning;
   }
 
+  const propsToTransfer = transferProps(
+    props,
+    ['changeHandler', 'checked', 'description', 'disabled', 'error', 'id', 'isLabelVisible',
+      'label', 'labelPosition', 'required', 'validationState', 'value'],
+  );
+
   return (
     <div
       className={`
@@ -41,6 +48,7 @@ export const CheckboxField = (props) => {
         htmlFor={props.id}
       >
         <input
+          {...propsToTransfer}
           id={props.id}
           value={props.value}
           onChange={props.changeHandler}
