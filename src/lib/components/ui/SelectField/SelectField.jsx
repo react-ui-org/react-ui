@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import transferProps from '../../../utils/transferProps';
 import withForwardedRef from '../withForwardedRef';
 import styles from './SelectField.scss';
 
@@ -52,6 +53,12 @@ export const SelectField = (props) => {
     rootVariantClass = styles.rootVariantOutline;
   }
 
+  const propsToTransfer = transferProps(
+    props,
+    ['changeHandler', 'disabled', 'fullWidth', 'helperText', 'id', 'isLabelVisible',
+      'label', 'layout', 'options', 'required', 'size', 'validationState', 'value', 'variant'],
+  );
+
   return (
     <label
       className={(`
@@ -76,6 +83,7 @@ export const SelectField = (props) => {
       </div>
       <div className={styles.inputContainer}>
         <select
+          {...propsToTransfer}
           className={styles.input}
           disabled={props.disabled}
           id={props.id}

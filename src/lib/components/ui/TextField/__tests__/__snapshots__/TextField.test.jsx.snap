@@ -56,8 +56,6 @@ exports[`rendering renders correctly with all props 1`] = `
     className="inputContainer"
   >
     <input
-      autoCapitalize="on"
-      autoComplete="username"
       className="input"
       disabled={true}
       id="test"
