@@ -2777,6 +2777,52 @@ class DemoContainer extends React.Component {
                 </div>
               )}
             />
+            <h3 id="utilities-colors" className="typography-size-4 mb-6">Colors</h3>
+            <p>
+              Class name notation is
+              {' '}
+              <a
+                href="https://getbootstrap.com/docs/4.5/utilities/colors/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                inspired by Bootstrap 4
+              </a>.
+            </p>
+            <Documentation
+              name="Text colors"
+              component={(
+                <div>
+                  <div className="text-primary mb-4">
+                    <code>.text-primary</code>
+                  </div>
+                  <div className="text-secondary mb-4">
+                    <code>.text-secondary</code>
+                  </div>
+                  <div className="text-success mb-4">
+                    <code>.text-success</code>
+                  </div>
+                  <div className="text-warning mb-4">
+                    <code>.text-warning</code>
+                  </div>
+                  <div className="text-error mb-4">
+                    <code>.text-error</code>
+                  </div>
+                  <div className="text-help mb-4">
+                    <code>.text-help</code>
+                  </div>
+                  <div className="text-info mb-4">
+                    <code>.text-info</code>
+                  </div>
+                  <div className="text-note mb-4">
+                    <code>.text-note</code>
+                  </div>
+                  <div className="text-muted">
+                    <code>.text-muted</code>
+                  </div>
+                </div>
+              )}
+            />
             <h3 id="utilities-display" className="typography-size-4 mb-6">Display</h3>
             <p>
               Class name notation is

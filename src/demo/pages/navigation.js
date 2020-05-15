@@ -156,6 +156,10 @@ export default [
         title: 'Box Alignment',
       },
       {
+        link: '#utilities-colors',
+        title: 'Colors',
+      },
+      {
         link: '#utilities-display',
         title: 'Display',
       },
