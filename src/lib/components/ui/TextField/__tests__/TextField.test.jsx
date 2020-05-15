@@ -26,8 +26,6 @@ describe('rendering', () => {
 
   it('renders correctly with all props', () => {
     const tree = shallow(<TextField
-      autoCapitalize="on"
-      autoComplete="username"
       id="test"
       helperText="some help"
       isLabelVisible={false}

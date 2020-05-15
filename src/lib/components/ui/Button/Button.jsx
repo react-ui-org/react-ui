@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import transferProps from '../../../utils/transferProps';
 import withForwardedRef from '../withForwardedRef';
 import styles from './Button.scss';
 
@@ -48,8 +49,15 @@ export const Button = (props) => {
     labelVisibilityClass = styles.withLabelHidden;
   }
 
+  const propsToTransfer = transferProps(
+    props,
+    ['afterLabel', 'beforeLabel', 'block', 'clickHandler', 'disabled', 'endCorner', 'grouped', 'id',
+      'label', 'labelVisibility', 'loadingIcon', 'priority', 'size', 'startCorner', 'type', 'variant'],
+  );
+
   return (
     <button
+      {...propsToTransfer}
       className={(`
         ${styles.root}
         ${priorityClass}

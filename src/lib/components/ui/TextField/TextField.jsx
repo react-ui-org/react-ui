@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import transferProps from '../../../utils/transferProps';
 import withForwardedRef from '../withForwardedRef';
 import styles from './TextField.scss';
 
@@ -52,6 +53,12 @@ export const TextField = (props) => {
     rootVariantClass = styles.rootVariantOutline;
   }
 
+  const propsToTransfer = transferProps(
+    props,
+    ['changeHandler', 'disabled', 'fullWidth', 'helperText', 'id', 'inputSize', 'isLabelVisible',
+      'label', 'layout', 'placeholder', 'required', 'size', 'type', 'validationState', 'value', 'variant'],
+  );
+
   return (
     <label
       className={(`
@@ -76,8 +83,7 @@ export const TextField = (props) => {
       </div>
       <div className={styles.inputContainer}>
         <input
-          autoCapitalize={props.autoCapitalize}
-          autoComplete={props.autoComplete}
+          {...propsToTransfer}
           className={styles.input}
           disabled={props.disabled}
           id={props.id}
@@ -106,8 +112,6 @@ export const TextField = (props) => {
 };
 
 TextField.defaultProps = {
-  autoCapitalize: undefined,
-  autoComplete: undefined,
   changeHandler: null,
   disabled: false,
   forwardedRef: undefined,
@@ -126,8 +130,6 @@ TextField.defaultProps = {
 };
 
 TextField.propTypes = {
-  autoCapitalize: PropTypes.string,
-  autoComplete: PropTypes.string,
   changeHandler: PropTypes.func,
   disabled: PropTypes.bool,
   forwardedRef: PropTypes.func,

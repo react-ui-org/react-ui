@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import transferProps from '../../../utils/transferProps';
 import withForwardedRef from '../withForwardedRef';
 import styles from './Toggle.scss';
 
@@ -26,6 +27,12 @@ export const Toggle = (props) => {
     rootValidationStateClass = styles.isRootStateWarning;
   }
 
+  const propsToTransfer = transferProps(
+    props,
+    ['changeHandler', 'checked', 'description', 'disabled', 'error', 'id', 'isLabelVisible',
+      'label', 'labelPosition', 'required', 'validationState', 'value'],
+  );
+
   return (
     <div
       className={(`
@@ -36,6 +43,7 @@ export const Toggle = (props) => {
     >
       <label htmlFor={props.id} className={styles.inputWrap}>
         <input
+          {...propsToTransfer}
           id={props.id}
           name={props.id}
           value={props.value}

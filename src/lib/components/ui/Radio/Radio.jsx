@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import transferProps from '../../../utils/transferProps';
 import styles from './Radio.scss';
 
 const Radio = (props) => {
@@ -22,6 +23,12 @@ const Radio = (props) => {
     rootValidationStateClass = styles.isRootStateWarning;
   }
 
+  const propsToTransfer = transferProps(
+    props,
+    ['changeHandler', 'description', 'disabled', 'error', 'id', 'isLabelVisible',
+      'label', 'options', 'required', 'validationState', 'value'],
+  );
+
   return (
     <div
       className={`
@@ -43,6 +50,7 @@ const Radio = (props) => {
               { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
               <label className={styles.inputWrap}>
                 <input
+                  {...propsToTransfer}
                   id={`${props.id}__item__${option.value}`}
                   name={props.id}
                   type="radio"
