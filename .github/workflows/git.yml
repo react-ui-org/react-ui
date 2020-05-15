@@ -1,0 +1,13 @@
+name: Git Checks
+
+on: [pull_request]
+
+jobs:
+  block-merge-with-autosquash-commits:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - name: Block Merge with Autosquash Commits
+        uses: xt0rted/block-autosquash-commits-action@v2.0.0
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
