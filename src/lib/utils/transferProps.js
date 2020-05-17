@@ -1,4 +1,4 @@
-const ALWAYS_BLACKLISTED_PROPS = ['children', 'className', 'forwardedRef'];
+const ALWAYS_BLACKLISTED_PROPS = ['children', 'className', 'forwardedRef', 'staticContext'];
 
 export default (props, blacklistedProps) => {
   const propsToTransfer = { ...props };

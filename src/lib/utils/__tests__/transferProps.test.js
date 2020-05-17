@@ -30,6 +30,7 @@ describe('transferProps', () => {
       children: 'value',
       className: 'value',
       forwardedRef: 'value',
+      staticContext: 'value',
     };
     const blacklistedProps = null;
     const expectedProps = {};
