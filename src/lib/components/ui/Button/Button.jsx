@@ -86,7 +86,7 @@ export const Button = (props) => {
       )}
       <span
         className={styles.label}
-        {...(props.id && { id: `${props.id}__label` })}
+        {...(props.id && { id: `${props.id}__labelText` })}
       >
         {props.label}
       </span>

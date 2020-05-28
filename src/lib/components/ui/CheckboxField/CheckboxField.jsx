@@ -46,6 +46,7 @@ export const CheckboxField = (props) => {
           ${labelPositionClass}
         `).trim()}
         htmlFor={props.id}
+        id={`${props.id}__label`}
       >
         <input
           {...propsToTransfer}
@@ -65,7 +66,7 @@ export const CheckboxField = (props) => {
               ${styles.labelInner}
               ${labelVisibilityClass}
             `).trim()}
-            id={`${props.id}__label`}
+            id={`${props.id}__labelText`}
           >
             {props.label}
           </span>

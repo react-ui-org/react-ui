@@ -70,10 +70,11 @@ exports[`rendering renders correctly 1`] = `
         
         rootVariantOutline"
                   htmlFor="usernameInput"
+                  id="usernameInput__label"
                 >
                   <div
                     className="label"
-                    id="usernameInput__label"
+                    id="usernameInput__labelText"
                   >
                     E-mail
                   </div>
@@ -132,10 +133,11 @@ exports[`rendering renders correctly 1`] = `
         
         rootVariantOutline"
                   htmlFor="passwordInput"
+                  id="passwordInput__label"
                 >
                   <div
                     className="label"
-                    id="passwordInput__label"
+                    id="passwordInput__labelText"
                   >
                     Password
                   </div>
@@ -309,10 +311,11 @@ exports[`rendering renders correctly with all props except translations 1`] = `
         
         rootVariantOutline"
                   htmlFor="custom-id__usernameInput"
+                  id="custom-id__usernameInput__label"
                 >
                   <div
                     className="label"
-                    id="custom-id__usernameInput__label"
+                    id="custom-id__usernameInput__labelText"
                   >
                     E-mail
                   </div>
@@ -371,10 +374,11 @@ exports[`rendering renders correctly with all props except translations 1`] = `
         
         rootVariantOutline"
                   htmlFor="custom-id__passwordInput"
+                  id="custom-id__passwordInput__label"
                 >
                   <div
                     className="label"
-                    id="custom-id__passwordInput__label"
+                    id="custom-id__passwordInput__labelText"
                   >
                     Password
                   </div>
@@ -436,7 +440,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
               >
                 <span
                   className="label"
-                  id="custom-id__signInButton__label"
+                  id="custom-id__signInButton__labelText"
                 >
                   Sign in
                 </span>
@@ -537,10 +541,11 @@ exports[`rendering renders correctly with translations 1`] = `
         
         rootVariantOutline"
                   htmlFor="usernameInput"
+                  id="usernameInput__label"
                 >
                   <div
                     className="label"
-                    id="usernameInput__label"
+                    id="usernameInput__labelText"
                   >
                     E-mail
                   </div>
@@ -599,10 +604,11 @@ exports[`rendering renders correctly with translations 1`] = `
         
         rootVariantOutline"
                   htmlFor="passwordInput"
+                  id="passwordInput__label"
                 >
                   <div
                     className="label"
-                    id="passwordInput__label"
+                    id="passwordInput__labelText"
                   >
                     Heslo
                   </div>
@@ -745,10 +751,11 @@ exports[`rendering renders correctly with username 1`] = `
         
         rootVariantOutline"
                   htmlFor="usernameInput"
+                  id="usernameInput__label"
                 >
                   <div
                     className="label"
-                    id="usernameInput__label"
+                    id="usernameInput__labelText"
                   >
                     Username
                   </div>
@@ -807,10 +814,11 @@ exports[`rendering renders correctly with username 1`] = `
         
         rootVariantOutline"
                   htmlFor="passwordInput"
+                  id="passwordInput__label"
                 >
                   <div
                     className="label"
-                    id="passwordInput__label"
+                    id="passwordInput__labelText"
                   >
                     Password
                   </div>

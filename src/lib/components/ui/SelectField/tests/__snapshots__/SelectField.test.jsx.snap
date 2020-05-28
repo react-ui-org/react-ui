@@ -10,10 +10,11 @@ exports[`rendering renders correctly mandatory props only 1`] = `
         
         rootVariantOutline"
   htmlFor="test"
+  id="test__label"
 >
   <div
     className="label"
-    id="test__label"
+    id="test__labelText"
   >
     label
   </div>
@@ -63,10 +64,11 @@ exports[`rendering renders correctly only one option 1`] = `
         
         rootVariantOutline"
   htmlFor="test"
+  id="test__label"
 >
   <div
     className="label"
-    id="test__label"
+    id="test__labelText"
   >
     label
   </div>
@@ -109,11 +111,12 @@ exports[`rendering renders correctly with all props 1`] = `
         isRootStateInvalid
         rootVariantFilled"
   htmlFor="test"
+  id="test__label"
 >
   <div
     className="label
           isLabelHidden"
-    id="test__label"
+    id="test__labelText"
   >
     label
   </div>

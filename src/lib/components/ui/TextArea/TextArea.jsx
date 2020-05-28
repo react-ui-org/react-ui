@@ -71,13 +71,14 @@ export const TextArea = (props) => {
         ${rootVariantClass}
       `).trim()}
       htmlFor={props.id}
+      id={`${props.id}__label`}
     >
       <div
         className={(`
           ${styles.label}
           ${labelVisibilityClass}
         `).trim()}
-        id={`${props.id}__label`}
+        id={`${props.id}__labelText`}
       >
         {props.label}
       </div>
