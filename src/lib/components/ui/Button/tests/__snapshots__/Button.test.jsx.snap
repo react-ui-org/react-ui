@@ -150,7 +150,7 @@ exports[`rendering renders correctly with all props 1`] = `
   </span>
   <span
     className="label"
-    id="custom-id__label"
+    id="custom-id__labelText"
   >
     button
   </span>

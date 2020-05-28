@@ -6,7 +6,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
 >
   <div
     className="label"
-    id="test__label"
+    id="test__labelText"
   >
     label
   </div>
@@ -18,6 +18,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
     >
       <label
         className="inputWrap"
+        id="test__item__ch1__label"
       >
         <input
           checked={false}
@@ -30,6 +31,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
         />
         <span
           className="radioLabel"
+          id="test__item__ch1__labelText"
         >
           choice 1
         </span>
@@ -40,6 +42,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
     >
       <label
         className="inputWrap"
+        id="test__item__ch2__label"
       >
         <input
           checked={false}
@@ -52,6 +55,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
         />
         <span
           className="radioLabel"
+          id="test__item__ch2__labelText"
         >
           choice 2
         </span>
@@ -67,7 +71,7 @@ exports[`rendering renders correctly only one option 1`] = `
 >
   <div
     className="label"
-    id="test__label"
+    id="test__labelText"
   >
     label
   </div>
@@ -79,6 +83,7 @@ exports[`rendering renders correctly only one option 1`] = `
     >
       <label
         className="inputWrap"
+        id="test__item__ch1__label"
       >
         <input
           checked={false}
@@ -91,6 +96,7 @@ exports[`rendering renders correctly only one option 1`] = `
         />
         <span
           className="radioLabel"
+          id="test__item__ch1__labelText"
         >
           choice 1
         </span>
@@ -106,7 +112,7 @@ exports[`rendering renders correctly only one option and hidden label 1`] = `
 >
   <div
     className="isLabelHidden"
-    id="test__label"
+    id="test__labelText"
   >
     label
   </div>
@@ -118,6 +124,7 @@ exports[`rendering renders correctly only one option and hidden label 1`] = `
     >
       <label
         className="inputWrap"
+        id="test__item__ch1__label"
       >
         <input
           checked={false}
@@ -130,6 +137,7 @@ exports[`rendering renders correctly only one option and hidden label 1`] = `
         />
         <span
           className="radioLabel"
+          id="test__item__ch1__labelText"
         >
           choice 1
         </span>
@@ -146,7 +154,7 @@ exports[`rendering renders correctly with all props 1`] = `
 >
   <div
     className="isLabelRequired"
-    id="test__label"
+    id="test__labelText"
   >
     label
   </div>
@@ -158,6 +166,7 @@ exports[`rendering renders correctly with all props 1`] = `
     >
       <label
         className="inputWrap"
+        id="test__item__ch1__label"
       >
         <input
           checked={true}
@@ -171,6 +180,7 @@ exports[`rendering renders correctly with all props 1`] = `
         />
         <span
           className="radioLabel"
+          id="test__item__ch1__labelText"
         >
           choice 1
         </span>
@@ -181,6 +191,7 @@ exports[`rendering renders correctly with all props 1`] = `
     >
       <label
         className="inputWrap"
+        id="test__item__ch2__label"
       >
         <input
           checked={false}
@@ -194,6 +205,7 @@ exports[`rendering renders correctly with all props 1`] = `
         />
         <span
           className="radioLabel"
+          id="test__item__ch2__labelText"
         >
           choice 2
         </span>

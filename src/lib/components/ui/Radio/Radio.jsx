@@ -38,7 +38,7 @@ const Radio = (props) => {
     >
       <div
         className={labelClass}
-        id={`${props.id}__label`}
+        id={`${props.id}__labelText`}
       >
         {props.label}
       </div>
@@ -48,7 +48,10 @@ const Radio = (props) => {
             <li key={option.value}>
               { /* Rule is deprecated: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/label-has-for.md */ }
               { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
-              <label className={styles.inputWrap}>
+              <label
+                className={styles.inputWrap}
+                id={`${props.id}__item__${option.value}__label`}
+              >
                 <input
                   {...propsToTransfer}
                   id={`${props.id}__item__${option.value}`}
@@ -60,7 +63,10 @@ const Radio = (props) => {
                   disabled={props.disabled || option.disabled}
                   checked={(props.value === option.value) || false}
                 />
-                <span className={styles.radioLabel}>
+                <span
+                  className={styles.radioLabel}
+                  id={`${props.id}__item__${option.value}__labelText`}
+                >
                   { option.label }
                 </span>
               </label>

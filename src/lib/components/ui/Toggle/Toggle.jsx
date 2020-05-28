@@ -41,7 +41,11 @@ export const Toggle = (props) => {
         ${rootValidationStateClass}
       `).trim()}
     >
-      <label htmlFor={props.id} className={styles.inputWrap}>
+      <label
+        className={styles.inputWrap}
+        htmlFor={props.id}
+        id={`${props.id}__label`}
+      >
         <input
           {...propsToTransfer}
           id={props.id}
@@ -61,7 +65,7 @@ export const Toggle = (props) => {
               ${styles.labelInner}
               ${labelVisibilityClass}
             `).trim()}
-            id={`${props.id}__label`}
+            id={`${props.id}__labelText`}
           >
             {props.label}
           </span>

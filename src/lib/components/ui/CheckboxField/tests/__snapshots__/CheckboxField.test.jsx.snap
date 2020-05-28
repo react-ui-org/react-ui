@@ -8,6 +8,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
     className="inputWrap
           labelPositionAfter"
     htmlFor="test"
+    id="test__label"
   >
     <input
       checked={false}
@@ -23,7 +24,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
     >
       <span
         className="labelInner"
-        id="test__label"
+        id="test__labelText"
       >
         label
       </span>
@@ -41,6 +42,7 @@ exports[`rendering renders correctly with all props 1`] = `
     className="inputWrap
           labelPositionAfter"
     htmlFor="test"
+    id="test__label"
   >
     <input
       checked={true}
@@ -57,7 +59,7 @@ exports[`rendering renders correctly with all props 1`] = `
     >
       <span
         className="labelInner"
-        id="test__label"
+        id="test__labelText"
       >
         label
       </span>

@@ -155,7 +155,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
               >
                 <span
                   className="label"
-                  id="custom-id__closeModalFooterButton__label"
+                  id="custom-id__closeModalFooterButton__labelText"
                 >
                   Close
                 </span>
@@ -346,7 +346,7 @@ exports[`rendering renders correctly with all props except translations and with
               >
                 <span
                   className="label"
-                  id="custom-id__closeModalFooterButton__label"
+                  id="custom-id__closeModalFooterButton__labelText"
                 >
                   Close
                 </span>
