@@ -49,7 +49,7 @@
 
 // States
 .isRootRequired .label {
-  @include form-field-required-label();
+  @include form-field-label-required();
 }
 
 .isRootStateInvalid {

@@ -1,13 +1,12 @@
-// 1. Redefine due to specificity.
+// 1. Define grid spacing as padding on child elements because grid areas make row and column gaps
+//    show up even when not necessary.
 
 @import '../../settings/forms';
 @import '../../settings/forms-theme';
 @import '../breakpoints';
 
 @mixin form-field-layout-vertical() {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: inline-block;
 
   .label {
     padding-bottom: $form-field-vertical-inner-gap;
@@ -23,24 +22,22 @@
 
   @include breakpoint-up($form-field-horizontal-breakpoint) {
     display: inline-grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto auto;
+    grid-template-columns: max-content min-content;
     grid-template-areas:
       "label input"
       ". helpertext";
+    align-items: center;
 
     .label {
       grid-area: label;
-      align-self: center;
       min-width: $form-field-horizontal-label-min-width;
-      padding-right: $form-field-horizontal-inner-gap;
-      padding-bottom: 0;
+      padding-right: $form-field-horizontal-inner-gap; // 1.
+      padding-bottom: 0; // 1.
       text-align: $form-field-horizontal-label-alignment;
     }
 
     .inputContainer {
       grid-area: input;
-      justify-self: start;
     }
 
     .helperText {
@@ -51,27 +48,17 @@
 
 @mixin form-field-full-width() {
   display: flex;
-  align-items: stretch;
+  flex-direction: column;
   width: 100%;
-
-  .inputContainer {
-    flex-grow: 1;
-  }
 
   .input {
     width: 100%;
   }
 
-  .helperText {
-    width: 100%;
-    max-width: none;
-  }
-
-  &.rootLayoutHorizontal {
-    display: grid; // 1.
-  }
-
-  &.rootLayoutHorizontal .inputContainer {
-    justify-self: stretch;
+  @include breakpoint-up($form-field-horizontal-breakpoint) {
+    &.rootLayoutHorizontal {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+    }
   }
 }

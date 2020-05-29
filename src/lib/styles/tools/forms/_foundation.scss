@@ -7,6 +7,13 @@
 @import '../transitions';
 @import 'states';
 
+@mixin form-field-label-required() {
+  &::after {
+    content: $form-field-required-sign;
+    color: $form-field-required-sign-color;
+  }
+}
+
 @mixin form-field-input-container() {
   position: relative; // 1.
   display: inline-flex;
@@ -129,11 +136,4 @@
   font-size: $form-field-helper-text-font-size;
   line-height: $form-field-helper-text-line-height;
   color: $form-field-helper-text-color;
-}
-
-@mixin form-field-required-label() {
-  &::after {
-    content: $form-field-required-sign;
-    color: $form-field-required-sign-color;
-  }
 }
