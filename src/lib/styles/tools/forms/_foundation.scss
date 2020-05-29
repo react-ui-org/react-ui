@@ -125,8 +125,6 @@
 }
 
 @mixin form-field-helper-text() {
-  width: $form-field-input-width;
-  min-width: $form-field-input-min-width;
   font-style: $form-field-helper-text-font-style;
   font-size: $form-field-helper-text-font-size;
   line-height: $form-field-helper-text-line-height;
