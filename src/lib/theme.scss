@@ -461,7 +461,7 @@
   // 2. Append non-breaking space and asterisk to required filed labels.
 
   // Forms fields: common properties
-  --rui-form-field-input-width: 100%; // 1.
+  --rui-form-field-input-width: auto; // 1.
   --rui-form-field-input-min-width: 240px; // 1.
   --rui-form-field-disabled-select-option-color: var(--rui-color-gray-300);
   --rui-form-field-label-font-size: var(--rui-typography-size-0);
