@@ -73,6 +73,10 @@
   @include form-field-vertical-neighbor();
 }
 
+.hasRootSmallInput {
+  @include form-field-layout-with-small-input();
+}
+
 // Sizes
 .rootSizeSmall {
   @include form-field-size(small);

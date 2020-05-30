@@ -68,6 +68,7 @@ exports[`rendering renders correctly 1`] = `
         isRootRequired
         rootSizeMedium
         
+        
         rootVariantOutline"
                   htmlFor="usernameInput"
                   id="usernameInput__label"
@@ -130,6 +131,7 @@ exports[`rendering renders correctly 1`] = `
         rootLayoutVertical
         isRootRequired
         rootSizeMedium
+        
         
         rootVariantOutline"
                   htmlFor="passwordInput"
@@ -309,6 +311,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
         isRootRequired
         rootSizeMedium
         
+        
         rootVariantOutline"
                   htmlFor="custom-id__usernameInput"
                   id="custom-id__usernameInput__label"
@@ -371,6 +374,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
         rootLayoutVertical
         isRootRequired
         rootSizeMedium
+        
         
         rootVariantOutline"
                   htmlFor="custom-id__passwordInput"
@@ -539,6 +543,7 @@ exports[`rendering renders correctly with translations 1`] = `
         isRootRequired
         rootSizeMedium
         
+        
         rootVariantOutline"
                   htmlFor="usernameInput"
                   id="usernameInput__label"
@@ -601,6 +606,7 @@ exports[`rendering renders correctly with translations 1`] = `
         rootLayoutVertical
         isRootRequired
         rootSizeMedium
+        
         
         rootVariantOutline"
                   htmlFor="passwordInput"
@@ -749,6 +755,7 @@ exports[`rendering renders correctly with username 1`] = `
         isRootRequired
         rootSizeMedium
         
+        
         rootVariantOutline"
                   htmlFor="usernameInput"
                   id="usernameInput__label"
@@ -811,6 +818,7 @@ exports[`rendering renders correctly with username 1`] = `
         rootLayoutVertical
         isRootRequired
         rootSizeMedium
+        
         
         rootVariantOutline"
                   htmlFor="passwordInput"

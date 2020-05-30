@@ -1,12 +1,23 @@
-// 1. Define grid spacing as padding on child elements because grid areas make row and column gaps
+// 1. Form fields in vertical layout take as much space as they need. Labels and helper texts do
+//    *not* wrap unless forced by container of the field.
+// 2. Form fields in horizontal layout only take as much space as their label needs without being
+//    wrapped (`max-content`). Helper text is aligned below input and wrapped.
+// 3. Define grid spacing as padding on child elements because grid areas make row and column gaps
 //    show up even when not necessary.
+// 4. When input size is small and form field layout is set to horizontal, expand helper text over
+//    full form field width to improve its readability. Otherwise the text would be packed into a
+//    very narrow column and hard to read. To prevent the helper text from growing the layout more
+//    than necessary (ie. in state without helper text) `min-content` grid sizing must be used along
+//    with disabled wrapping of label.
+// 5. Full-width horizontal form fields prefer not wrapping the label unless necessary
+//    (`max-content`).
 
 @import '../../settings/forms';
 @import '../../settings/forms-theme';
 @import '../breakpoints';
 
 @mixin form-field-layout-vertical() {
-  display: inline-block;
+  display: inline-block; // 1.
 
   .label {
     padding-bottom: $form-field-vertical-inner-gap;
@@ -21,8 +32,8 @@
   @include form-field-layout-vertical();
 
   @include breakpoint-up($form-field-horizontal-breakpoint) {
-    display: inline-grid;
-    grid-template-columns: max-content min-content;
+    display: inline-grid; // 2.
+    grid-template-columns: max-content min-content; // 2.
     grid-template-areas:
       "label input"
       ". helpertext";
@@ -31,8 +42,8 @@
     .label {
       grid-area: label;
       min-width: $form-field-horizontal-label-min-width;
-      padding-right: $form-field-horizontal-inner-gap; // 1.
-      padding-bottom: 0; // 1.
+      padding-right: $form-field-horizontal-inner-gap; // 3.
+      padding-bottom: 0; // 3.
       text-align: $form-field-horizontal-label-alignment;
     }
 
@@ -42,6 +53,21 @@
 
     .helperText {
       grid-area: helpertext;
+    }
+  }
+}
+
+@mixin form-field-layout-with-small-input() {
+  @include breakpoint-up($form-field-horizontal-breakpoint) {
+    &.rootLayoutHorizontal {
+      grid-template-columns: min-content min-content; // 4.
+      grid-template-areas:
+        "label input"
+        "helpertext helpertext"; // 4.
+    }
+
+    &.rootLayoutHorizontal .label {
+      white-space: nowrap; // 4.
     }
   }
 }
@@ -58,7 +84,7 @@
   @include breakpoint-up($form-field-horizontal-breakpoint) {
     &.rootLayoutHorizontal {
       display: grid;
-      grid-template-columns: max-content 1fr;
+      grid-template-columns: max-content 1fr; // 5.
     }
   }
 }

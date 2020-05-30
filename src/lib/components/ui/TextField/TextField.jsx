@@ -5,11 +5,14 @@ import withForwardedRef from '../withForwardedRef';
 import styles from './TextField.scss';
 
 export const TextField = (props) => {
+  const SMALL_INPUT_SIZE = 10;
+
   let labelVisibilityClass = '';
   let rootFullWidthClass = '';
   let rootLayoutClass = '';
   let rootRequiredClass = '';
   let rootSizeClass = '';
+  let rootSmallInputClass = '';
   let rootValidationStateClass = '';
   let rootVariantClass = '';
 
@@ -19,6 +22,10 @@ export const TextField = (props) => {
 
   if (props.fullWidth) {
     rootFullWidthClass = styles.isRootFullWidth;
+  }
+
+  if (props.inputSize && props.inputSize <= SMALL_INPUT_SIZE) {
+    rootSmallInputClass = styles.hasRootSmallInput;
   }
 
   if (props.layout === 'horizontal') {
@@ -67,6 +74,7 @@ export const TextField = (props) => {
         ${rootLayoutClass}
         ${rootRequiredClass}
         ${rootSizeClass}
+        ${rootSmallInputClass}
         ${rootValidationStateClass}
         ${rootVariantClass}
       `).trim()}

@@ -8,6 +8,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
         
         rootSizeMedium
         
+        
         rootVariantOutline"
   htmlFor="test"
   id="test__label"
@@ -42,6 +43,7 @@ exports[`rendering renders correctly with all props 1`] = `
         rootLayoutHorizontal
         isRootRequired
         rootSizeLarge
+        hasRootSmallInput
         isRootStateInvalid
         rootVariantFilled"
   htmlFor="test"
@@ -88,6 +90,7 @@ exports[`rendering renders correctly with hidden label 1`] = `
         rootLayoutVertical
         
         rootSizeMedium
+        
         
         rootVariantOutline"
   htmlFor="test"
