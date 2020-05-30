@@ -5,6 +5,7 @@ export { CTA } from './components/layout/CTA';
 export { CTACenter } from './components/layout/CTA';
 export { CTAEnd } from './components/layout/CTA';
 export { CTAStart } from './components/layout/CTA';
+export { default as FormLayout } from './components/layout/FormLayout';
 export { List } from './components/layout/List';
 export { ListItem } from './components/layout/List';
 export { Media } from './components/layout/Media';

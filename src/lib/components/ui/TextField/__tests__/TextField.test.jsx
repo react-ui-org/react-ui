@@ -28,6 +28,7 @@ describe('rendering', () => {
     const tree = shallow(<TextField
       id="test"
       helperText="some help"
+      inFormLayout
       isLabelVisible={false}
       label="label"
       layout="horizontal"

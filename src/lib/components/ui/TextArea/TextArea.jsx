@@ -7,6 +7,7 @@ import styles from './TextArea.scss';
 export const TextArea = (props) => {
   let labelVisibilityClass = '';
   let rootFullWidthClass = '';
+  let rootInFormLayoutClass = '';
   let rootLayoutClass = '';
   let rootRequiredClass = '';
   let rootSizeClass = '';
@@ -19,6 +20,10 @@ export const TextArea = (props) => {
 
   if (props.fullWidth) {
     rootFullWidthClass = styles.isRootFullWidth;
+  }
+
+  if (props.inFormLayout) {
+    rootInFormLayoutClass = styles.isRootInFormLayout;
   }
 
   if (props.layout === 'horizontal') {
@@ -55,7 +60,7 @@ export const TextArea = (props) => {
 
   const propsToTransfer = transferProps(
     props,
-    ['changeHandler', 'cols', 'disabled', 'fullWidth', 'helperText', 'id', 'isLabelVisible',
+    ['changeHandler', 'cols', 'disabled', 'fullWidth', 'helperText', 'id', 'inFormLayout', 'isLabelVisible',
       'label', 'layout', 'placeholder', 'required', 'rows', 'size', 'validationState', 'value', 'variant'],
   );
 
@@ -64,6 +69,7 @@ export const TextArea = (props) => {
       className={(`
         ${styles.root}
         ${rootFullWidthClass}
+        ${rootInFormLayoutClass}
         ${rootLayoutClass}
         ${rootRequiredClass}
         ${rootSizeClass}
@@ -119,6 +125,7 @@ TextArea.defaultProps = {
   forwardedRef: undefined,
   fullWidth: false,
   helperText: null,
+  inFormLayout: false,
   isLabelVisible: true,
   layout: 'vertical',
   placeholder: null,
@@ -138,6 +145,7 @@ TextArea.propTypes = {
   fullWidth: PropTypes.bool,
   helperText: PropTypes.string,
   id: PropTypes.string.isRequired,
+  inFormLayout: PropTypes.bool,
   isLabelVisible: PropTypes.bool,
   label: PropTypes.string.isRequired,
   layout: PropTypes.oneOf(['horizontal', 'vertical']),

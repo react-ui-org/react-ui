@@ -4,6 +4,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
 <label
   className="root
         
+        
         rootLayoutVertical
         
         rootSizeMedium
@@ -40,6 +41,7 @@ exports[`rendering renders correctly with all props 1`] = `
 <label
   className="root
         isRootFullWidth
+        isRootInFormLayout
         rootLayoutHorizontal
         isRootRequired
         rootSizeLarge
@@ -86,6 +88,7 @@ exports[`rendering renders correctly with all props 1`] = `
 exports[`rendering renders correctly with hidden label 1`] = `
 <label
   className="root
+        
         
         rootLayoutVertical
         

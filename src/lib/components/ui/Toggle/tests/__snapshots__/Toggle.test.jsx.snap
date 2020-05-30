@@ -41,6 +41,8 @@ exports[`rendering renders correctly with all props 1`] = `
 <div
   className="root
         labelPositionAfter
+        isRootInFormLayout
+        isRootLayoutHorizontal
         isRootStateWarning"
 >
   <label

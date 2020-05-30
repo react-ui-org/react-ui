@@ -21,6 +21,7 @@ import {
   CTAStart,
   CheckboxField,
   ForgotPassword,
+  FormLayout,
   LayoutCenter,
   List,
   ListItem,
@@ -342,6 +343,371 @@ class DemoContainer extends React.Component {
                     <Placeholder text="secondary end" />
                   </CTAEnd>
                 </CTA>
+              )}
+            />
+            <h3 id="layout-components-form-layout" className="typography-size-4 mb-6">Form Layout</h3>
+            <p>
+              Vertical Form Layout works similar to List except that List Items are not needed.
+              Vertical form field layout is forced.
+            </p>
+            <Documentation
+              name="Vertical Form Layout"
+              component={(
+                <FormLayout>
+                  <>
+                    <TextField
+                      id="formLayoutVerticalFirstName"
+                      changeHandler={logger}
+                      label="First Name"
+                    />
+                    <TextField
+                      id="formLayoutVerticalLastName"
+                      changeHandler={logger}
+                      label="Last Name"
+                    />
+                  </>
+                  <TextField
+                    id="formLayoutVerticalEmail"
+                    changeHandler={logger}
+                    label="Email address"
+                    type="email"
+                    helperText="Optional"
+                  />
+                  <>
+                    <TextField
+                      id="formLayoutVerticalAddress1"
+                      changeHandler={logger}
+                      label="Address"
+                      placeholder="Address line 1"
+                    />
+                    <TextField
+                      id="formLayoutVerticalAddress2"
+                      changeHandler={logger}
+                      isLabelVisible={false}
+                      label="Address 2"
+                      placeholder="Address line 2"
+                    />
+                    <TextField
+                      id="formLayoutVerticalZip"
+                      changeHandler={logger}
+                      helperText="ZIP should be 5 to 6 digits long code."
+                      label="ZIP"
+                      inputSize={6}
+                      validationState="invalid"
+                    />
+                    <TextField
+                      id="formLayoutVerticalCountry"
+                      changeHandler={logger}
+                      label="Country"
+                    />
+                    <CheckboxField
+                      id="formLayoutVerticalDelivery"
+                      changeHandler={logger}
+                      label="This is my delivery address"
+                    />
+                  </>
+                  <SelectField
+                    id="formLayoutVerticalFruit"
+                    changeHandler={logger}
+                    label="Your favourite fruit"
+                    options={this.exampleOptions}
+                  />
+                  <TextArea
+                    id="formLayoutVerticalMessage"
+                    changeHandler={logger}
+                    fullWidth
+                    label="Message"
+                    rows={3}
+                  />
+                  <Toggle
+                    id="formLayoutVerticalNewsletter"
+                    changeHandler={logger}
+                    checked
+                    description="Only once per week!"
+                    label="Receive weekly newsletter"
+                    required
+                  />
+                  <Radio
+                    id="formLayoutVerticalFruit2"
+                    changeHandler={logger}
+                    label="And fruit again!"
+                    options={this.exampleOptions}
+                    value="apples"
+                  />
+                </FormLayout>
+              )}
+            />
+            <p>
+              Horizontal Form Layout is designed for horizontal form fields.
+              It is applied starting from <code>md</code> viewport size onwards.
+              Horizontal form field layout is forced.
+            </p>
+            <Documentation
+              name="Horizontal Form Layout"
+              component={(
+                <FormLayout fieldLayout="horizontal">
+                  <>
+                    <TextField
+                      id="formLayoutHorizontalFirstName"
+                      changeHandler={logger}
+                      label="First Name"
+                    />
+                    <TextField
+                      id="formLayoutHorizontalLastName"
+                      changeHandler={logger}
+                      label="Last Name"
+                    />
+                  </>
+                  <TextField
+                    id="formLayoutHorizontalEmail"
+                    changeHandler={logger}
+                    label="Email address"
+                    type="email"
+                    helperText="Optional"
+                  />
+                  <>
+                    <TextField
+                      id="formLayoutHorizontalAddress1"
+                      changeHandler={logger}
+                      label="Address"
+                      placeholder="Address line 1"
+                    />
+                    <TextField
+                      id="formLayoutHorizontalAddress2"
+                      changeHandler={logger}
+                      isLabelVisible={false}
+                      label="Address 2"
+                      placeholder="Address line 2"
+                    />
+                    <TextField
+                      id="formLayoutHorizontalZip"
+                      changeHandler={logger}
+                      helperText="ZIP should be 5 to 6 digits long code."
+                      label="ZIP"
+                      inputSize={6}
+                      validationState="invalid"
+                    />
+                    <TextField
+                      id="formLayoutHorizontalCountry"
+                      changeHandler={logger}
+                      label="Country"
+                    />
+                    <CheckboxField
+                      id="formLayoutHorizontalDelivery"
+                      changeHandler={logger}
+                      label="This is my delivery address"
+                    />
+                  </>
+                  <SelectField
+                    id="formLayoutHorizontalFruit"
+                    changeHandler={logger}
+                    label="Your favourite fruit"
+                    options={this.exampleOptions}
+                  />
+                  <TextArea
+                    id="formLayoutHorizontalMessage"
+                    changeHandler={logger}
+                    fullWidth
+                    label="Message"
+                    rows={3}
+                  />
+                  <Toggle
+                    id="formLayoutHorizontalNewsletter"
+                    changeHandler={logger}
+                    checked
+                    label="Receive weekly newsletter"
+                    required
+                    description="Only once per week!"
+                  />
+                  <Radio
+                    id="formLayoutHorizontalFruit2"
+                    changeHandler={logger}
+                    label="And fruit again!"
+                    options={this.exampleOptions}
+                    value="apples"
+                  />
+                </FormLayout>
+              )}
+            />
+            <Documentation
+              name="Horizontal Form Layout with Custom Label Width"
+              component={(
+                <FormLayout
+                  fieldLayout="horizontal"
+                  labelWidth="15em"
+                >
+                  <>
+                    <TextField
+                      id="formLayoutHorizontalCustomFirstName"
+                      changeHandler={logger}
+                      label="First Name"
+                    />
+                    <TextField
+                      id="formLayoutHorizontalCustomLastName"
+                      changeHandler={logger}
+                      label="Last Name"
+                    />
+                  </>
+                  <TextField
+                    id="formLayoutHorizontalCustomEmail"
+                    changeHandler={logger}
+                    label="Email address"
+                    type="email"
+                    helperText="Optional"
+                  />
+                  <>
+                    <TextField
+                      id="formLayoutHorizontalCustomAddress1"
+                      changeHandler={logger}
+                      label="Address"
+                      placeholder="Address line 1"
+                    />
+                    <TextField
+                      id="formLayoutHorizontalCustomAddress2"
+                      changeHandler={logger}
+                      isLabelVisible={false}
+                      label="Address 2"
+                      placeholder="Address line 2"
+                    />
+                    <TextField
+                      id="formLayoutHorizontalCustomZip"
+                      changeHandler={logger}
+                      helperText="ZIP should be 5 to 6 digits long code."
+                      label="ZIP"
+                      inputSize={6}
+                      validationState="invalid"
+                    />
+                    <TextField
+                      id="formLayoutHorizontalCustomCountry"
+                      changeHandler={logger}
+                      label="Country"
+                    />
+                    <CheckboxField
+                      id="formLayoutHorizontalCustomDelivery"
+                      changeHandler={logger}
+                      label="This is my delivery address"
+                    />
+                  </>
+                  <SelectField
+                    id="formLayoutHorizontalCustomFruit"
+                    changeHandler={logger}
+                    label="Your favourite fruit"
+                    options={this.exampleOptions}
+                  />
+                  <TextArea
+                    id="formLayoutHorizontalCustomMessage"
+                    changeHandler={logger}
+                    fullWidth
+                    label="Message"
+                    rows={3}
+                  />
+                  <Toggle
+                    id="formLayoutHorizontalCustomNewsletter"
+                    changeHandler={logger}
+                    checked
+                    label="Receive weekly newsletter"
+                    required
+                    description="Only once per week!"
+                  />
+                  <Radio
+                    id="formLayoutHorizontalCustomFruit2"
+                    changeHandler={logger}
+                    label="And fruit again!"
+                    options={this.exampleOptions}
+                    value="apples"
+                  />
+                </FormLayout>
+              )}
+            />
+            <Documentation
+              name="Horizontal Form Layout with Auto-Width Labels (Firefox only, custom fallback)"
+              component={(
+                <FormLayout
+                  fieldLayout="horizontal"
+                  labelWidth="auto"
+                  labelAutoWidthFallback="12em"
+                >
+                  <>
+                    <TextField
+                      id="formLayoutHorizontalAutoFirstName"
+                      changeHandler={logger}
+                      label="First Name"
+                    />
+                    <TextField
+                      id="formLayoutHorizontalAutoLastName"
+                      changeHandler={logger}
+                      label="Last Name"
+                    />
+                  </>
+                  <TextField
+                    id="formLayoutHorizontalAutoEmail"
+                    changeHandler={logger}
+                    label="Email address"
+                    type="email"
+                    helperText="Optional"
+                  />
+                  <>
+                    <TextField
+                      id="formLayoutHorizontalAutoAddress1"
+                      changeHandler={logger}
+                      label="Address"
+                      placeholder="Address line 1"
+                    />
+                    <TextField
+                      id="formLayoutHorizontalAutoAddress2"
+                      changeHandler={logger}
+                      isLabelVisible={false}
+                      label="Address 2"
+                      placeholder="Address line 2"
+                    />
+                    <TextField
+                      id="formLayoutHorizontalAutoZip"
+                      changeHandler={logger}
+                      helperText="ZIP should be 5 to 6 digits long code."
+                      label="ZIP"
+                      inputSize={6}
+                      validationState="invalid"
+                    />
+                    <TextField
+                      id="formLayoutHorizontalAutoCountry"
+                      changeHandler={logger}
+                      label="Country"
+                    />
+                    <CheckboxField
+                      id="formLayoutHorizontalAutoDelivery"
+                      changeHandler={logger}
+                      label="This is my delivery address"
+                    />
+                  </>
+                  <SelectField
+                    id="formLayoutHorizontalAutoFruit"
+                    changeHandler={logger}
+                    label="Your favourite fruit"
+                    options={this.exampleOptions}
+                  />
+                  <TextArea
+                    id="formLayoutHorizontalAutoMessage"
+                    changeHandler={logger}
+                    fullWidth
+                    label="Message"
+                    rows={3}
+                  />
+                  <Toggle
+                    id="formLayoutHorizontalAutoNewsletter"
+                    changeHandler={logger}
+                    checked
+                    label="Receive weekly newsletter"
+                    required
+                    description="Only once per week!"
+                  />
+                  <Radio
+                    id="formLayoutHorizontalAutoFruit2"
+                    changeHandler={logger}
+                    label="And fruit again!"
+                    options={this.exampleOptions}
+                    value="apples"
+                  />
+                </FormLayout>
               )}
             />
             <h3 id="layout-components-list" className="typography-size-4 mb-6">List</h3>

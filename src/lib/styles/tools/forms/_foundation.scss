@@ -7,6 +7,10 @@
 @import '../transitions';
 @import 'states';
 
+@mixin form-field-label() {
+  overflow-wrap: break-word;
+}
+
 @mixin form-field-label-required() {
   &::after {
     content: $form-field-required-sign;

@@ -5,6 +5,8 @@ import styles from './Radio.scss';
 
 const Radio = (props) => {
   let labelClass = styles.label;
+  let rootInFormLayoutClass = '';
+  let rootLayoutClass = '';
   let rootValidationStateClass = '';
 
   if (props.isLabelVisible) {
@@ -13,6 +15,14 @@ const Radio = (props) => {
     }
   } else {
     labelClass = styles.isLabelHidden;
+  }
+
+  if (props.inFormLayout) {
+    rootInFormLayoutClass = styles.isRootInFormLayout;
+  }
+
+  if (props.layout === 'horizontal') {
+    rootLayoutClass = styles.isRootLayoutHorizontal;
   }
 
   if (props.validationState === 'invalid') {
@@ -25,14 +35,16 @@ const Radio = (props) => {
 
   const propsToTransfer = transferProps(
     props,
-    ['changeHandler', 'description', 'disabled', 'error', 'id', 'isLabelVisible',
-      'label', 'options', 'required', 'validationState', 'value'],
+    ['changeHandler', 'description', 'disabled', 'error', 'id', 'inFormLayout', 'isLabelVisible',
+      'label', 'layout', 'options', 'required', 'validationState', 'value'],
   );
 
   return (
     <div
       className={`
         ${styles.root}
+        ${rootInFormLayoutClass}
+        ${rootLayoutClass}
         ${rootValidationStateClass}
       `.trim()}
     >
@@ -99,7 +111,9 @@ Radio.defaultProps = {
   description: null,
   disabled: false,
   error: null,
+  inFormLayout: false,
   isLabelVisible: true,
+  layout: 'vertical',
   required: false,
   validationState: null,
   value: undefined,
@@ -111,8 +125,10 @@ Radio.propTypes = {
   disabled: PropTypes.bool,
   error: PropTypes.string,
   id: PropTypes.string.isRequired,
+  inFormLayout: PropTypes.bool,
   isLabelVisible: PropTypes.bool,
   label: PropTypes.string.isRequired,
+  layout: PropTypes.oneOf(['horizontal', 'vertical']),
   options: PropTypes.arrayOf(PropTypes.shape({
     disabled: PropTypes.bool,
     label: PropTypes.string.isRequired,

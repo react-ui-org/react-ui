@@ -9,6 +9,7 @@ export const TextField = (props) => {
 
   let labelVisibilityClass = '';
   let rootFullWidthClass = '';
+  let rootInFormLayoutClass = '';
   let rootLayoutClass = '';
   let rootRequiredClass = '';
   let rootSizeClass = '';
@@ -22,6 +23,10 @@ export const TextField = (props) => {
 
   if (props.fullWidth) {
     rootFullWidthClass = styles.isRootFullWidth;
+  }
+
+  if (props.inFormLayout) {
+    rootInFormLayoutClass = styles.isRootInFormLayout;
   }
 
   if (props.inputSize && props.inputSize <= SMALL_INPUT_SIZE) {
@@ -62,7 +67,7 @@ export const TextField = (props) => {
 
   const propsToTransfer = transferProps(
     props,
-    ['changeHandler', 'disabled', 'fullWidth', 'helperText', 'id', 'inputSize', 'isLabelVisible',
+    ['changeHandler', 'disabled', 'fullWidth', 'helperText', 'id', 'inFormLayout', 'inputSize', 'isLabelVisible',
       'label', 'layout', 'placeholder', 'required', 'size', 'type', 'validationState', 'value', 'variant'],
   );
 
@@ -71,6 +76,7 @@ export const TextField = (props) => {
       className={(`
         ${styles.root}
         ${rootFullWidthClass}
+        ${rootInFormLayoutClass}
         ${rootLayoutClass}
         ${rootRequiredClass}
         ${rootSizeClass}
@@ -126,6 +132,7 @@ TextField.defaultProps = {
   forwardedRef: undefined,
   fullWidth: false,
   helperText: null,
+  inFormLayout: false,
   inputSize: null,
   isLabelVisible: true,
   layout: 'vertical',
@@ -145,6 +152,7 @@ TextField.propTypes = {
   fullWidth: PropTypes.bool,
   helperText: PropTypes.string,
   id: PropTypes.string.isRequired,
+  inFormLayout: PropTypes.bool,
   inputSize: PropTypes.number,
   isLabelVisible: PropTypes.bool,
   label: PropTypes.string.isRequired,

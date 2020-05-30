@@ -1,0 +1,55 @@
+// 1. Form field label width is defined using custom property. Form Layout variants are created just
+//    by adjusting this value, either through a particular modification class, or manually through
+//    a prop. Form fields then inherit the layout using the `subgrid` feature which makes it possible
+//    to turn on automatic size of grid column with labels (in supporting browsers). There is always
+//    a fallback value for browsers that don't support `subgrid` (see `tools/forms/_layouts.scss`).
+//    This value is passed down to form fields utilising custom property cascade.
+// 2. By default, form field label width is set to a configurable global value.
+// 3. Custom label width can be entered individually through a prop for each use of Form Layout.
+// 4. Form Layout can also automatically adjust the width of column with labels according to the
+//    longest label (which is possible only with `subgrid`). By default, automatic width is limited
+//    to 50 % of available horizontal space. However, the automatic width is currently supported
+//    only in Firefox so a fallback value is necessary (a global default which can be customised per
+//    use).
+
+@import '../../../styles/settings/forms';
+@import '../../../styles/settings/forms-theme';
+@import '../../../styles/settings/layouts';
+@import '../../../styles/tools/breakpoints';
+@import '../../../styles/tools/offset';
+
+.root {
+  margin-bottom: $layout-common-bottom-offset;
+}
+
+.rootFieldLayoutVertical,
+.rootFieldLayoutHorizontal {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: $form-field-vertical-outer-spacing;
+}
+
+.rootFieldLayoutHorizontal {
+  @include breakpoint-up($form-field-horizontal-breakpoint) {
+    grid-template-columns: var(--rui-local-label-width) 1fr; // 1.
+  }
+}
+
+.hasRootLabelWidthDefault {
+  --rui-local-label-width: #{$form-layout-horizontal-label-default-width}; // 1., 2.
+  --rui-local-label-width-fallback: #{$form-layout-horizontal-label-default-width}; // 1., 2.
+}
+
+.hasRootLabelWidthCustom {
+  --rui-local-label-width: var(--rui-custom-label-width); // 3.
+  --rui-local-label-width-fallback: var(--rui-custom-label-width); // 3.
+}
+
+.hasRootLabelWidthAuto {
+  --rui-local-label-width: #{$form-layout-horizontal-label-auto-width}; // 4.
+  --rui-local-label-width-fallback: #{$form-layout-horizontal-label-auto-width-fallback}; // 4.
+}
+
+.hasRootLabelWidthAuto.hasRootCustomLabelAutoWidthFallback {
+  --rui-local-label-width-fallback: var(--rui-custom-label-auto-width-fallback); // 4.
+}

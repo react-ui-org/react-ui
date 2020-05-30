@@ -1,3 +1,4 @@
+@import '../../../styles/settings/layouts';
 @import '../../../styles/tools/breakpoints';
 @import '../../../styles/tools/offset';
 @import './theme';
@@ -8,7 +9,7 @@
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   grid-gap: $card-list-grid-gap;
-  margin-bottom: offset(4);
+  margin-bottom: $layout-common-bottom-offset;
 
   @include breakpoint-up(sm) {
     grid-template-columns: repeat(auto-fit, minmax($card-list-card-min-width, $card-list-card-max-width));
