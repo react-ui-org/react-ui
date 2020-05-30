@@ -19,6 +19,8 @@ describe('rendering', () => {
       label="label"
       disabled
       id="test"
+      inFormLayout
+      layout="horizontal"
       value="value"
       description="some help"
       error="some error"

@@ -459,6 +459,8 @@
   //    width defined in browsers unless `width` (same or smaller) is also defined.
   //    https://stackoverflow.com/questions/36247140/why-dont-flex-items-shrink-past-content-size
   // 2. Append non-breaking space and asterisk to required filed labels.
+  // 3. Avoid using `fit-content()` for label width, it behaves differently in Chrome vs. FF for
+  //    inline grid.
 
   // Forms fields: common properties
   --rui-form-field-input-width: auto; // 1.
@@ -479,7 +481,9 @@
   --rui-form-field-hover-border-color: var(--rui-color-gray-500);
   --rui-form-field-focus-border-color: var(--rui-color-primary);
   --rui-form-field-horizontal-label-alignment: left;
-  --rui-form-field-horizontal-label-min-width: auto;
+  --rui-form-field-horizontal-label-min-width: 0;
+  --rui-form-field-horizontal-label-width: minmax(auto, 50%); // 3.
+  --rui-form-field-horizontal-full-width-label-width: fit-content(50%);
 
   // Form fields: filled variant
   --rui-form-field-filled-default-color: var(--rui-page-color);
@@ -524,6 +528,14 @@
   --rui-form-field-large-height: 2.75rem;
   --rui-form-field-large-padding: 0.5rem var(--rui-offset-4);
   --rui-form-field-large-font-size: var(--rui-typography-size-1);
+
+  //
+  // Form Layout
+  // ===========
+
+  --rui-form-layout-horizontal-label-auto-width: fit-content(50%);
+  --rui-form-layout-horizontal-label-auto-width-fallback: 10em;
+  --rui-form-layout-horizontal-label-default-width: 10em;
 
   //
   // Modal

@@ -9,6 +9,8 @@
 }
 
 .label {
+  @include form-field-label();
+
   display: inline-block;
   margin-bottom: 0.25rem;
 }
@@ -48,6 +50,7 @@
 }
 
 .radioLabel {
+  @include form-field-label();
   @include form-checkbox-radio-label-styles($checkbox-radio-label-height, $checkbox-radio-padding-left);
 }
 
@@ -150,4 +153,12 @@
 
 .isRootStateWarning .input:checked + .radioLabel::before {
   box-shadow: inset 0 0 0 6px $form-warning-color;
+}
+
+.isRootLayoutHorizontal {
+  position: relative; // Just set something until the component is refactored (#20).
+}
+
+.isRootInFormLayout {
+  @include form-field-in-form-layout();
 }

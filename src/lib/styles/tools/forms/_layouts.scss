@@ -1,7 +1,10 @@
-// 1. Form fields in vertical layout take as much space as they need. Labels and helper texts do
-//    *not* wrap unless forced by container of the field.
-// 2. Form fields in horizontal layout only take as much space as their label needs without being
-//    wrapped (`max-content`). Helper text is aligned below input and wrapped.
+// 1. Form fields in vertical layout take up as much space as they need. Labels and helper texts do
+//    not wrap until forced by container of the field. Min and max limits make extra long words break
+//    if necessary.
+// 2. Form fields in horizontal layout also take up only as much space as they need. Labels do not
+//    wrap until label width limit is reached (50 % of available horizontal space by default).
+//    Helper texts are aligned below input and wrapped. Beware that automatic label wrapping isn't
+//    possible with small inputs (4.).
 // 3. Define grid spacing as padding on child elements because grid areas make row and column gaps
 //    show up even when not necessary.
 // 4. When input size is small and form field layout is set to horizontal, expand helper text over
@@ -9,8 +12,15 @@
 //    very narrow column and hard to read. To prevent the helper text from growing the layout more
 //    than necessary (ie. in state without helper text) `min-content` grid sizing must be used along
 //    with disabled wrapping of label.
-// 5. Full-width horizontal form fields prefer not wrapping the label unless necessary
-//    (`max-content`).
+// 5. Full-width horizontal form fields prefer not wrapping the label until a limit is reached
+//    (50 % of available horizontal space by default, same as in 2.).
+// 6. Justify inputs to `start` in horizontal layouts to fix positioning issues with Select Fields.
+//    Reverted for full-width fields.
+// 7. When form field exists inside Form Layout, automatic margins are removed as the Form Layout
+//    takes care of proper spacing.
+// 8. Horizontal Form Layout defines the grid settings which are inherited and applied using
+//    `subgrid`. A fallback is supplied to browsers that don't support `subgrid` yet. See
+//    Form Layout styles for more.
 
 @import '../../settings/forms';
 @import '../../settings/forms-theme';
@@ -18,6 +28,8 @@
 
 @mixin form-field-layout-vertical() {
   display: inline-block; // 1.
+  min-width: 0; // 1.
+  max-width: 100%; // 1.
 
   .label {
     padding-bottom: $form-field-vertical-inner-gap;
@@ -33,7 +45,7 @@
 
   @include breakpoint-up($form-field-horizontal-breakpoint) {
     display: inline-grid; // 2.
-    grid-template-columns: max-content min-content; // 2.
+    grid-template-columns: $form-field-horizontal-label-width min-content; // 2.
     grid-template-areas:
       "label input"
       ". helpertext";
@@ -49,6 +61,7 @@
 
     .inputContainer {
       grid-area: input;
+      justify-self: start; // 6.
     }
 
     .helperText {
@@ -84,7 +97,40 @@
   @include breakpoint-up($form-field-horizontal-breakpoint) {
     &.rootLayoutHorizontal {
       display: grid;
-      grid-template-columns: max-content 1fr; // 5.
+      grid-template-columns: $form-field-horizontal-full-width-label-width 1fr; // 5.
+    }
+
+    &.rootLayoutHorizontal .inputContainer {
+      justify-self: stretch; // 6.
+    }
+  }
+}
+
+@mixin form-field-in-form-layout() {
+  &:not(:last-child),
+  &.rootLayoutHorizontal:not(:last-child) {
+    margin-right: 0; // 7.
+    margin-bottom: 0; // 7.
+  }
+
+  @include breakpoint-up($form-field-horizontal-breakpoint) {
+    &.rootLayoutHorizontal,
+    &.rootLayoutHorizontal.hasRootSmallInput {
+      grid: inherit; // 8.
+      grid-template-columns: var(--rui-local-label-width-fallback) 1fr; // 8.
+      grid-template-columns: subgrid; // 8.
+      grid-column: span 2; // 8.
+    }
+
+    &.rootLayoutHorizontal .label,
+    &.rootLayoutHorizontal .inputContainer,
+    &.rootLayoutHorizontal .helperText {
+      grid-area: unset; // 8.
+    }
+
+    &.rootLayoutHorizontal .inputContainer,
+    &.rootLayoutHorizontal .helperText {
+      grid-column-start: 2; // 8.
     }
   }
 }

@@ -36,6 +36,10 @@ export default [
         title: 'CTA',
       },
       {
+        link: '#layout-components-form-layout',
+        title: 'Form Layout',
+      },
+      {
         link: '#layout-components-list',
         title: 'List',
       },

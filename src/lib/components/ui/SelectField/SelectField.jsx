@@ -7,6 +7,7 @@ import styles from './SelectField.scss';
 export const SelectField = (props) => {
   let labelVisibilityClass = '';
   let rootFullWidthClass = '';
+  let rootInFormLayoutClass = '';
   let rootLayoutClass = '';
   let rootRequiredClass = '';
   let rootSizeClass = '';
@@ -19,6 +20,10 @@ export const SelectField = (props) => {
 
   if (props.fullWidth) {
     rootFullWidthClass = styles.isRootFullWidth;
+  }
+
+  if (props.inFormLayout) {
+    rootInFormLayoutClass = styles.isRootInFormLayout;
   }
 
   if (props.layout === 'horizontal') {
@@ -55,7 +60,7 @@ export const SelectField = (props) => {
 
   const propsToTransfer = transferProps(
     props,
-    ['changeHandler', 'disabled', 'fullWidth', 'helperText', 'id', 'isLabelVisible',
+    ['changeHandler', 'disabled', 'fullWidth', 'helperText', 'id', 'inFormLayout', 'isLabelVisible',
       'label', 'layout', 'options', 'required', 'size', 'validationState', 'value', 'variant'],
   );
 
@@ -64,6 +69,7 @@ export const SelectField = (props) => {
       className={(`
         ${styles.root}
         ${rootFullWidthClass}
+        ${rootInFormLayoutClass}
         ${rootLayoutClass}
         ${rootRequiredClass}
         ${rootSizeClass}
@@ -131,6 +137,7 @@ SelectField.defaultProps = {
   forwardedRef: undefined,
   fullWidth: false,
   helperText: null,
+  inFormLayout: false,
   isLabelVisible: true,
   layout: 'vertical',
   required: false,
@@ -147,6 +154,7 @@ SelectField.propTypes = {
   fullWidth: PropTypes.bool,
   helperText: PropTypes.string,
   id: PropTypes.string.isRequired,
+  inFormLayout: PropTypes.bool,
   isLabelVisible: PropTypes.bool,
   label: PropTypes.string.isRequired,
   layout: PropTypes.oneOf(['horizontal', 'vertical']),

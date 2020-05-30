@@ -45,6 +45,7 @@ describe('rendering', () => {
   it('renders correctly with all props', () => {
     const tree = shallow(<SelectField
       id="test"
+      inFormLayout
       isLabelVisible={false}
       label="label"
       layout="horizontal"

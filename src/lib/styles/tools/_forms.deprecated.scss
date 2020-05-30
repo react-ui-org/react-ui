@@ -1,7 +1,9 @@
 // ⚠️ Deprecated for new components.
 
 @import '../settings/borders';
+@import '../settings/forms';
 @import '../settings/forms.deprecated';
+@import '../tools/breakpoints';
 
 @mixin form-disabled-state() {
   opacity: 0.5;
@@ -98,4 +100,22 @@
   opacity: 0;
   width: $width;
   height: $height;
+}
+
+@mixin form-field-in-form-layout() {
+  @include breakpoint-up($form-field-horizontal-breakpoint) {
+    &.isRootLayoutHorizontal {
+      display: grid;
+      grid: inherit;
+      grid-template-columns: var(--rui-local-label-width-fallback) 1fr;
+      grid-template-columns: subgrid;
+      grid-column: span 2;
+    }
+
+    &.isRootLayoutHorizontal .inputWrap,
+    &.isRootLayoutHorizontal .description,
+    &.isRootLayoutHorizontal .error {
+      grid-column-start: 2;
+    }
+  }
 }

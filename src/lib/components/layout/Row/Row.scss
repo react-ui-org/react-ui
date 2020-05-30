@@ -1,10 +1,11 @@
+@import '../../../styles/settings/layouts';
 @import '../../../styles/tools/offset';
 
 .row {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  margin-bottom: offset(3);
+  margin-bottom: $layout-common-bottom-offset;
 }
 
 .start,

@@ -11,6 +11,10 @@
   @include form-field-horizontal-neighbor();
 }
 
+.label {
+  @include form-field-label();
+}
+
 .inputContainer {
   @include form-field-input-container();
 }
@@ -84,6 +88,10 @@
 .isRootFullWidth {
   @include form-field-full-width();
   @include form-field-vertical-neighbor();
+}
+
+.isRootInFormLayout {
+  @include form-field-in-form-layout();
 }
 
 // Sizes

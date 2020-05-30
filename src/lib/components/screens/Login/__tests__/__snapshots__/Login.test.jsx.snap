@@ -50,6 +50,7 @@ exports[`rendering renders correctly 1`] = `
                 fullWidth={true}
                 helperText={null}
                 id="usernameInput"
+                inFormLayout={false}
                 inputSize={null}
                 isLabelVisible={true}
                 label="E-mail"
@@ -64,6 +65,7 @@ exports[`rendering renders correctly 1`] = `
                 <label
                   className="root
         isRootFullWidth
+        
         rootLayoutVertical
         isRootRequired
         rootSizeMedium
@@ -114,6 +116,7 @@ exports[`rendering renders correctly 1`] = `
                 fullWidth={true}
                 helperText={null}
                 id="passwordInput"
+                inFormLayout={false}
                 inputSize={null}
                 isLabelVisible={true}
                 label="Password"
@@ -128,6 +131,7 @@ exports[`rendering renders correctly 1`] = `
                 <label
                   className="root
         isRootFullWidth
+        
         rootLayoutVertical
         isRootRequired
         rootSizeMedium
@@ -293,6 +297,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                 fullWidth={true}
                 helperText={null}
                 id="custom-id__usernameInput"
+                inFormLayout={false}
                 inputSize={null}
                 isLabelVisible={true}
                 label="E-mail"
@@ -307,6 +312,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                 <label
                   className="root
         isRootFullWidth
+        
         rootLayoutVertical
         isRootRequired
         rootSizeMedium
@@ -357,6 +363,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                 fullWidth={true}
                 helperText={null}
                 id="custom-id__passwordInput"
+                inFormLayout={false}
                 inputSize={null}
                 isLabelVisible={true}
                 label="Password"
@@ -371,6 +378,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                 <label
                   className="root
         isRootFullWidth
+        
         rootLayoutVertical
         isRootRequired
         rootSizeMedium
@@ -525,6 +533,7 @@ exports[`rendering renders correctly with translations 1`] = `
                 fullWidth={true}
                 helperText={null}
                 id="usernameInput"
+                inFormLayout={false}
                 inputSize={null}
                 isLabelVisible={true}
                 label="E-mail"
@@ -539,6 +548,7 @@ exports[`rendering renders correctly with translations 1`] = `
                 <label
                   className="root
         isRootFullWidth
+        
         rootLayoutVertical
         isRootRequired
         rootSizeMedium
@@ -589,6 +599,7 @@ exports[`rendering renders correctly with translations 1`] = `
                 fullWidth={true}
                 helperText={null}
                 id="passwordInput"
+                inFormLayout={false}
                 inputSize={null}
                 isLabelVisible={true}
                 label="Heslo"
@@ -603,6 +614,7 @@ exports[`rendering renders correctly with translations 1`] = `
                 <label
                   className="root
         isRootFullWidth
+        
         rootLayoutVertical
         isRootRequired
         rootSizeMedium
@@ -737,6 +749,7 @@ exports[`rendering renders correctly with username 1`] = `
                 fullWidth={true}
                 helperText={null}
                 id="usernameInput"
+                inFormLayout={false}
                 inputSize={null}
                 isLabelVisible={true}
                 label="Username"
@@ -751,6 +764,7 @@ exports[`rendering renders correctly with username 1`] = `
                 <label
                   className="root
         isRootFullWidth
+        
         rootLayoutVertical
         isRootRequired
         rootSizeMedium
@@ -801,6 +815,7 @@ exports[`rendering renders correctly with username 1`] = `
                 fullWidth={true}
                 helperText={null}
                 id="passwordInput"
+                inFormLayout={false}
                 inputSize={null}
                 isLabelVisible={true}
                 label="Password"
@@ -815,6 +830,7 @@ exports[`rendering renders correctly with username 1`] = `
                 <label
                   className="root
         isRootFullWidth
+        
         rootLayoutVertical
         isRootRequired
         rootSizeMedium

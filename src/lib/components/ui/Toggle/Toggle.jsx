@@ -7,6 +7,8 @@ import styles from './Toggle.scss';
 export const Toggle = (props) => {
   let labelVisibilityClass = '';
   let labelPositionClass = '';
+  let rootInFormLayoutClass = '';
+  let rootLayoutClass = '';
   let rootValidationStateClass = '';
 
   if (!props.isLabelVisible) {
@@ -19,6 +21,14 @@ export const Toggle = (props) => {
     labelPositionClass = styles.labelPositionAfter;
   }
 
+  if (props.inFormLayout) {
+    rootInFormLayoutClass = styles.isRootInFormLayout;
+  }
+
+  if (props.layout === 'horizontal') {
+    rootLayoutClass = styles.isRootLayoutHorizontal;
+  }
+
   if (props.validationState === 'invalid') {
     rootValidationStateClass = styles.isRootStateInvalid;
   } else if (props.validationState === 'valid') {
@@ -29,8 +39,8 @@ export const Toggle = (props) => {
 
   const propsToTransfer = transferProps(
     props,
-    ['changeHandler', 'checked', 'description', 'disabled', 'error', 'id', 'isLabelVisible',
-      'label', 'labelPosition', 'required', 'validationState', 'value'],
+    ['changeHandler', 'checked', 'description', 'disabled', 'error', 'id', 'inFormLayout', 'isLabelVisible',
+      'label', 'labelPosition', 'layout', 'required', 'validationState', 'value'],
   );
 
   return (
@@ -38,6 +48,8 @@ export const Toggle = (props) => {
       className={(`
         ${styles.root}
         ${labelPositionClass}
+        ${rootInFormLayoutClass}
+        ${rootLayoutClass}
         ${rootValidationStateClass}
       `).trim()}
     >
@@ -99,8 +111,10 @@ Toggle.defaultProps = {
   disabled: false,
   error: null,
   forwardedRef: undefined,
+  inFormLayout: false,
   isLabelVisible: true,
   labelPosition: 'after',
+  layout: 'vertical',
   required: false,
   validationState: null,
   value: undefined,
@@ -114,9 +128,11 @@ Toggle.propTypes = {
   error: PropTypes.string,
   forwardedRef: PropTypes.func,
   id: PropTypes.string.isRequired,
+  inFormLayout: PropTypes.bool,
   isLabelVisible: PropTypes.bool,
   label: PropTypes.string.isRequired,
   labelPosition: PropTypes.oneOf(['before', 'after']),
+  layout: PropTypes.oneOf(['horizontal', 'vertical']),
   required: PropTypes.bool,
   validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
   value: PropTypes.oneOfType([

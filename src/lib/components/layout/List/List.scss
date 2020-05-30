@@ -1,7 +1,8 @@
+@import '../../../styles/settings/layouts';
 @import '../../../styles/tools/offset';
 
 .root {
-  margin-bottom: offset(4);
+  margin-bottom: $layout-common-bottom-offset;
 }
 
 .list {

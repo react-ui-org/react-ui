@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly with a single child 1`] = `
+<div
+  className="root rootFieldLayoutVertical  "
+  style={Object {}}
+>
+  <span
+    inFormLayout={true}
+    key=".0"
+    layout="vertical"
+  >
+    content
+  </span>
+</div>
+`;
+
+exports[`rendering renders correctly with all props 1`] = `
+<div
+  className="root rootFieldLayoutHorizontal hasRootLabelWidthAuto hasRootCustomLabelAutoWidthFallback"
+  id="test-id"
+  style={
+    Object {
+      "--rui-custom-label-auto-width-fallback": "200px",
+    }
+  }
+>
+  <span
+    inFormLayout={true}
+    key=".0"
+    layout="horizontal"
+  >
+    content
+  </span>
+</div>
+`;
+
+exports[`rendering renders correctly with custom label width 1`] = `
+<div
+  className="root rootFieldLayoutHorizontal hasRootLabelWidthCustom "
+  id="test-id"
+  style={
+    Object {
+      "--rui-custom-label-width": "300px",
+    }
+  }
+>
+  <span
+    inFormLayout={true}
+    key=".0"
+    layout="horizontal"
+  >
+    content
+  </span>
+</div>
+`;
+
+exports[`rendering renders correctly with multiple children 1`] = `
+<div
+  className="root rootFieldLayoutVertical  "
+  style={Object {}}
+>
+  <span
+    inFormLayout={true}
+    key=".0"
+    layout="vertical"
+  >
+    content 1
+  </span>
+  <span
+    inFormLayout={true}
+    key=".1"
+    layout="vertical"
+  >
+    content 2
+  </span>
+  <span
+    inFormLayout={true}
+    key=".2"
+    layout="vertical"
+  >
+    content 3
+  </span>
+</div>
+`;

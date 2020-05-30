@@ -29,6 +29,7 @@ describe('rendering', () => {
       cols={10}
       id="test"
       helperText="some help"
+      inFormLayout
       isLabelVisible={false}
       label="label"
       layout="horizontal"
