@@ -1,3 +1,4 @@
+import flattenChildren from 'react-keyed-flatten-children';
 import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './FormLayout.scss';
@@ -66,7 +67,7 @@ const FormLayout = (props) => {
       ].join(' ')}
       style={inlineStyle(customLabelWidth, labelAutoWidthFallback)}
     >
-      {React.Children.map(children, (child) => {
+      {flattenChildren(children).map((child) => {
         if (!React.isValidElement(child)) {
           return null;
         }

@@ -1,3 +1,4 @@
+import flattenChildren from 'react-keyed-flatten-children';
 import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './CardList.scss';
@@ -19,7 +20,7 @@ const CardList = (props) => {
       className={styles.root}
       {...other}
     >
-      {React.Children.map(children, (child) => {
+      {flattenChildren(children).map((child) => {
         if (!React.isValidElement(child)) {
           return null;
         }
