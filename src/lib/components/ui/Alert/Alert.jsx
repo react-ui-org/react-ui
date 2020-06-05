@@ -1,49 +1,81 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withTranslationContext } from '../../../translation';
 import styles from './Alert.scss';
 
 const Alert = (props) => {
-  let rootTypeClass = styles.note;
+  const {
+    children,
+    closeHandler,
+    icon,
+    id,
+    translations,
+    type,
+  } = props;
 
-  if (props.type) {
-    if (props.type === 'success') {
-      rootTypeClass = styles.success;
-    } else if (props.type === 'error') {
-      rootTypeClass = styles.error;
-    } else if (props.type === 'warning') {
-      rootTypeClass = styles.warning;
-    } else if (props.type === 'info') {
-      rootTypeClass = styles.info;
-    } else if (props.type === 'help') {
-      rootTypeClass = styles.help;
+  const rootTypeClass = (variant) => {
+    if (variant === 'success') {
+      return styles.isRootSuccess;
     }
-  }
+
+    if (variant === 'error') {
+      return styles.isRootError;
+    }
+
+    if (variant === 'warning') {
+      return styles.isRootWarning;
+    }
+
+    if (variant === 'info') {
+      return styles.isRootInfo;
+    }
+
+    if (variant === 'help') {
+      return styles.isRootHelp;
+    }
+
+    return styles.isRootNote;
+  };
 
   return (
     <div
-      className={(`
-        ${styles.root}
-        ${rootTypeClass}
-      `).trim()}
-      id={props.id}
+      className={[
+        styles.root,
+        rootTypeClass(type),
+      ].join(' ')}
+      id={id}
       role="alert"
     >
-      {props.icon && (
+      {icon && (
         <div className={styles.icon}>
-          {props.icon}
+          {icon}
         </div>
       )}
       <div
         className={styles.message}
-        {...(props.id && { id: `${props.id}__content` })}
+        {...(id && { id: `${id}__content` })}
       >
-        {props.children}
+        {children}
       </div>
+      {closeHandler && (
+        <button
+          type="button"
+          {...(id && { id: `${id}__close` })}
+          className={styles.close}
+          onClick={() => closeHandler()}
+          onKeyPress={() => closeHandler()}
+          tabIndex="0"
+          title={translations.close}
+        >
+          <span className={styles.closeSign}>×</span>
+        </button>
+      )}
     </div>
   );
 };
 
 Alert.defaultProps = {
+  closeHandler: null,
   icon: null,
   id: undefined,
   type: 'note',
@@ -51,9 +83,13 @@ Alert.defaultProps = {
 
 Alert.propTypes = {
   children: PropTypes.node.isRequired,
+  closeHandler: PropTypes.func,
   icon: PropTypes.node,
   id: PropTypes.string,
+  translations: PropTypes.shape({
+    close: PropTypes.string.isRequired,
+  }).isRequired,
   type: PropTypes.oneOf(['error', 'help', 'info', 'note', 'success', 'warning']),
 };
 
-export default Alert;
+export default withTranslationContext(Alert, 'Alert');

@@ -1,14 +1,9 @@
-@import '../../../styles/settings/colors';
-@import '../../../styles/settings/offsets';
 @import '../../../styles/settings/typography';
 @import './theme';
 
 $alert-font-size: map-get($typography-size-values, 0);
-$alert-line-height: 1.2;
-$alert-min-height:
-  calc(
-    #{$alert-font-size} * #{$alert-line-height} + 2 * #{$alert-padding} + 2 * #{$alert-border-width}
-  );
+$alert-line-height: 1.5;
+$alert-min-height: calc(#{$alert-font-size} * #{$alert-line-height} + 2 * #{$alert-padding});
 $alert-stripe-width: 5px;
 $alert-message-font-weight: map-get($typography-font-weight-values, light);
 $alert-title-font-weight: map-get($typography-font-weight-values, bold);

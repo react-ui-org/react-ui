@@ -2,6 +2,9 @@ import React from 'react';
 
 const TranslationContext = React.createContext({
   translations: {
+    Alert: {
+      close: 'Close',
+    },
     ForgotPassword: {
       email: 'E-mail',
       resetPassword: 'Reset password',

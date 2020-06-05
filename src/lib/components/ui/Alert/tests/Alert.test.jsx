@@ -1,16 +1,13 @@
 import React from 'react';
-import {
-  shallow,
-} from 'enzyme';
+import sinon from 'sinon';
+import { mount } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
-import Alert from '../Alert';
+import Alert from '..';
 
 describe('rendering', () => {
-  it('renders correctly mandatory props only', () => {
-    const tree = shallow(
-      <Alert
-        message="Message"
-      >
+  it('renders correctly', () => {
+    const tree = mount(
+      <Alert>
         <div>Children</div>
       </Alert>,
     );
@@ -19,11 +16,11 @@ describe('rendering', () => {
   });
 
   it('renders correctly with all props', () => {
-    const tree = shallow(
+    const tree = mount(
       <Alert
+        closeHandler={() => {}}
         icon={<span className="icon" />}
         id="custom-id"
-        message="Message"
         type="success"
       >
         <div>Children</div>
@@ -31,5 +28,22 @@ describe('rendering', () => {
     );
 
     expect(shallowToJson(tree)).toMatchSnapshot();
+  });
+});
+
+describe('functionality', () => {
+  it('calls closeHandler() on Close button click', () => {
+    const spy = sinon.spy();
+    const component = mount((
+      <Alert
+        closeHandler={spy}
+        type="success"
+      >
+        <div>Children</div>
+      </Alert>
+    ));
+
+    component.find('button').at(0).simulate('click');
+    expect(spy.calledOnce).toEqual(true);
   });
 });

@@ -1,20 +1,37 @@
+@import '../../../styles/tools/offset';
 @import 'mixins';
 
 .root {
-  @include alert();
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  border-width: $alert-border-width $alert-border-width $alert-border-width $alert-stripe-width;
+  border-style: solid;
+  border-radius: $alert-border-radius;
+}
+
+.close,
+.icon,
+.message {
+  padding: $alert-padding;
+}
+
+.close,
+.icon {
+  height: $alert-min-height;
 }
 
 .icon {
   display: flex;
   flex: none;
   align-items: center;
-  align-self: flex-start;
   justify-content: center;
-  height: calc(#{$alert-line-height} * #{$alert-font-size});
+  padding-right: 0;
 }
 
 .message {
-  padding-left: $alert-padding;
+  flex-grow: 1;
   font-weight: $alert-message-font-weight;
   font-size: $alert-font-size;
   line-height: $alert-line-height;
@@ -24,26 +41,42 @@
   font-weight: $alert-title-font-weight;
 }
 
-.success {
+.close {
+  font-size: map-get($typography-size-values, 3);
+  line-height: 1;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  appearance: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.closeSign {
+  position: relative;
+  top: -0.1em;
+}
+
+.isRootSuccess {
   @include alert-type(success);
 }
 
-.warning {
+.isRootWarning {
   @include alert-type(warning);
 }
 
-.error {
+.isRootError {
   @include alert-type(error);
 }
 
-.info {
+.isRootInfo {
   @include alert-type(info);
 }
 
-.help {
+.isRootHelp {
   @include alert-type(help);
 }
 
-.note {
+.isRootNote {
   @include alert-type(note);
 }
