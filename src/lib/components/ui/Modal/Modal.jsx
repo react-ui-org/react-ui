@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Button from '../Button';
+import {
+  Toolbar,
+  ToolbarItem,
+} from '../../layout/Toolbar';
 import transferProps from '../../../utils/transferProps';
 import { withTranslationContext } from '../../../translation';
 import styles from './Modal.scss';
@@ -103,26 +107,31 @@ class Modal extends React.Component {
             {this.props.children}
           </div>
           <div className={styles.footer}>
-            {this.props.actions.map((action) => (
-              <Button
-                {...transferProps(action)}
-                clickHandler={action.clickHandler}
-                disabled={action.disabled}
-                id={action.id || undefined}
-                key={action.label}
-                label={action.label}
-                loadingIcon={action.loadingIcon}
-                variant={action.variant}
-              />
-            ))}
-            {this.props.closeHandler && (
-              <Button
-                clickHandler={this.props.closeHandler}
-                label={this.props.translations.close}
-                priority="flat"
-                {...(this.props.id && { id: `${this.props.id}__closeModalFooterButton` })}
-              />
-            )}
+            <Toolbar>
+              {this.props.actions.map((action) => (
+                <ToolbarItem key={action.label}>
+                  <Button
+                    {...transferProps(action)}
+                    clickHandler={action.clickHandler}
+                    disabled={action.disabled}
+                    id={action.id || undefined}
+                    label={action.label}
+                    loadingIcon={action.loadingIcon}
+                    variant={action.variant}
+                  />
+                </ToolbarItem>
+              ))}
+              {this.props.closeHandler && (
+                <ToolbarItem>
+                  <Button
+                    clickHandler={this.props.closeHandler}
+                    label={this.props.translations.close}
+                    priority="flat"
+                    {...(this.props.id && { id: `${this.props.id}__closeModalFooterButton` })}
+                  />
+                </ToolbarItem>
+              )}
+            </Toolbar>
           </div>
         </div>
       </div>

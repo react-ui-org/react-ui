@@ -1,13 +1,11 @@
 @import '../../../styles/settings/colors';
 @import '../../../styles/tools/accessibility';
 @import '../../../styles/tools/breakpoints';
-@import '../../../styles/tools/forms/relationships';
 @import 'mixins';
 @import 'variables';
 
 .root {
   @include button();
-  @include form-field-horizontal-neighbor();
 }
 
 .label {
@@ -62,8 +60,6 @@
 }
 
 .isRootBlock {
-  @include form-field-vertical-neighbor();
-
   width: 100%;
 }
 
@@ -81,7 +77,6 @@
   }
 
   &:not(:last-child) {
-    margin-right: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
