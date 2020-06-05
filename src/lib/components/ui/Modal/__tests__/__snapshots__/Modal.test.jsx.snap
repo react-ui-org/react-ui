@@ -76,92 +76,115 @@ exports[`rendering renders correctly with all props except translations 1`] = `
         <div
           className="footer"
         >
-          <ForwardRef(withForwardedRef(Button))
-            clickHandler={[Function]}
-            key="Action"
-            label="Action"
+          <Toolbar
+            align="top"
+            justify="start"
+            nowrap={false}
           >
-            <Button
-              afterLabel={null}
-              beforeLabel={null}
-              block={false}
-              clickHandler={[Function]}
-              disabled={false}
-              endCorner={null}
-              forwardedRef={null}
-              grouped={false}
-              label="Action"
-              labelVisibility="all"
-              loadingIcon={null}
-              priority="default"
-              size="medium"
-              startCorner={null}
-              type="button"
-              variant="primary"
+            <div
+              className="toolbar  isAlignedToTop isJustifiedToStart"
             >
-              <button
-                className="root
+              <ToolbarItem
+                key="Action"
+              >
+                <div
+                  className="item"
+                >
+                  <ForwardRef(withForwardedRef(Button))
+                    clickHandler={[Function]}
+                    label="Action"
+                  >
+                    <Button
+                      afterLabel={null}
+                      beforeLabel={null}
+                      block={false}
+                      clickHandler={[Function]}
+                      disabled={false}
+                      endCorner={null}
+                      forwardedRef={null}
+                      grouped={false}
+                      label="Action"
+                      labelVisibility="all"
+                      loadingIcon={null}
+                      priority="default"
+                      size="medium"
+                      startCorner={null}
+                      type="button"
+                      variant="primary"
+                    >
+                      <button
+                        className="root
         priorityDefault
         sizeMedium
         variantPrimary"
-                disabled={false}
-                onClick={[Function]}
-                title={null}
-                type="button"
-              >
-                <span
-                  className="label"
+                        disabled={false}
+                        onClick={[Function]}
+                        title={null}
+                        type="button"
+                      >
+                        <span
+                          className="label"
+                        >
+                          Action
+                        </span>
+                      </button>
+                    </Button>
+                  </ForwardRef(withForwardedRef(Button))>
+                </div>
+              </ToolbarItem>
+              <ToolbarItem>
+                <div
+                  className="item"
                 >
-                  Action
-                </span>
-              </button>
-            </Button>
-          </ForwardRef(withForwardedRef(Button))>
-          <ForwardRef(withForwardedRef(Button))
-            clickHandler={[Function]}
-            id="custom-id__closeModalFooterButton"
-            label="Close"
-            priority="flat"
-          >
-            <Button
-              afterLabel={null}
-              beforeLabel={null}
-              block={false}
-              clickHandler={[Function]}
-              disabled={false}
-              endCorner={null}
-              forwardedRef={null}
-              grouped={false}
-              id="custom-id__closeModalFooterButton"
-              label="Close"
-              labelVisibility="all"
-              loadingIcon={null}
-              priority="flat"
-              size="medium"
-              startCorner={null}
-              type="button"
-              variant="primary"
-            >
-              <button
-                className="root
+                  <ForwardRef(withForwardedRef(Button))
+                    clickHandler={[Function]}
+                    id="custom-id__closeModalFooterButton"
+                    label="Close"
+                    priority="flat"
+                  >
+                    <Button
+                      afterLabel={null}
+                      beforeLabel={null}
+                      block={false}
+                      clickHandler={[Function]}
+                      disabled={false}
+                      endCorner={null}
+                      forwardedRef={null}
+                      grouped={false}
+                      id="custom-id__closeModalFooterButton"
+                      label="Close"
+                      labelVisibility="all"
+                      loadingIcon={null}
+                      priority="flat"
+                      size="medium"
+                      startCorner={null}
+                      type="button"
+                      variant="primary"
+                    >
+                      <button
+                        className="root
         priorityFlat
         sizeMedium
         variantPrimary"
-                disabled={false}
-                id="custom-id__closeModalFooterButton"
-                onClick={[Function]}
-                title={null}
-                type="button"
-              >
-                <span
-                  className="label"
-                  id="custom-id__closeModalFooterButton__labelText"
-                >
-                  Close
-                </span>
-              </button>
-            </Button>
-          </ForwardRef(withForwardedRef(Button))>
+                        disabled={false}
+                        id="custom-id__closeModalFooterButton"
+                        onClick={[Function]}
+                        title={null}
+                        type="button"
+                      >
+                        <span
+                          className="label"
+                          id="custom-id__closeModalFooterButton__labelText"
+                        >
+                          Close
+                        </span>
+                      </button>
+                    </Button>
+                  </ForwardRef(withForwardedRef(Button))>
+                </div>
+              </ToolbarItem>
+            </div>
+          </Toolbar>
         </div>
       </div>
     </div>
@@ -251,108 +274,131 @@ exports[`rendering renders correctly with all props except translations and with
         <div
           className="footer"
         >
-          <ForwardRef(withForwardedRef(Button))
-            clickHandler={[Function]}
-            key="Action"
-            label="Action"
-            loadingIcon={
-              <span
-                className="icon"
-              />
-            }
+          <Toolbar
+            align="top"
+            justify="start"
+            nowrap={false}
           >
-            <Button
-              afterLabel={null}
-              beforeLabel={null}
-              block={false}
-              clickHandler={[Function]}
-              disabled={false}
-              endCorner={null}
-              forwardedRef={null}
-              grouped={false}
-              label="Action"
-              labelVisibility="all"
-              loadingIcon={
-                <span
-                  className="icon"
-                />
-              }
-              priority="default"
-              size="medium"
-              startCorner={null}
-              type="button"
-              variant="primary"
+            <div
+              className="toolbar  isAlignedToTop isJustifiedToStart"
             >
-              <button
-                className="root
+              <ToolbarItem
+                key="Action"
+              >
+                <div
+                  className="item"
+                >
+                  <ForwardRef(withForwardedRef(Button))
+                    clickHandler={[Function]}
+                    label="Action"
+                    loadingIcon={
+                      <span
+                        className="icon"
+                      />
+                    }
+                  >
+                    <Button
+                      afterLabel={null}
+                      beforeLabel={null}
+                      block={false}
+                      clickHandler={[Function]}
+                      disabled={false}
+                      endCorner={null}
+                      forwardedRef={null}
+                      grouped={false}
+                      label="Action"
+                      labelVisibility="all"
+                      loadingIcon={
+                        <span
+                          className="icon"
+                        />
+                      }
+                      priority="default"
+                      size="medium"
+                      startCorner={null}
+                      type="button"
+                      variant="primary"
+                    >
+                      <button
+                        className="root
         priorityDefault
         sizeMedium
         variantPrimary"
-                disabled={true}
-                onClick={[Function]}
-                title={null}
-                type="button"
-              >
-                <span
-                  className="label"
+                        disabled={true}
+                        onClick={[Function]}
+                        title={null}
+                        type="button"
+                      >
+                        <span
+                          className="label"
+                        >
+                          Action
+                        </span>
+                        <span
+                          className="loadingIcon"
+                        >
+                          <span
+                            className="icon"
+                          />
+                        </span>
+                      </button>
+                    </Button>
+                  </ForwardRef(withForwardedRef(Button))>
+                </div>
+              </ToolbarItem>
+              <ToolbarItem>
+                <div
+                  className="item"
                 >
-                  Action
-                </span>
-                <span
-                  className="loadingIcon"
-                >
-                  <span
-                    className="icon"
-                  />
-                </span>
-              </button>
-            </Button>
-          </ForwardRef(withForwardedRef(Button))>
-          <ForwardRef(withForwardedRef(Button))
-            clickHandler={[Function]}
-            id="custom-id__closeModalFooterButton"
-            label="Close"
-            priority="flat"
-          >
-            <Button
-              afterLabel={null}
-              beforeLabel={null}
-              block={false}
-              clickHandler={[Function]}
-              disabled={false}
-              endCorner={null}
-              forwardedRef={null}
-              grouped={false}
-              id="custom-id__closeModalFooterButton"
-              label="Close"
-              labelVisibility="all"
-              loadingIcon={null}
-              priority="flat"
-              size="medium"
-              startCorner={null}
-              type="button"
-              variant="primary"
-            >
-              <button
-                className="root
+                  <ForwardRef(withForwardedRef(Button))
+                    clickHandler={[Function]}
+                    id="custom-id__closeModalFooterButton"
+                    label="Close"
+                    priority="flat"
+                  >
+                    <Button
+                      afterLabel={null}
+                      beforeLabel={null}
+                      block={false}
+                      clickHandler={[Function]}
+                      disabled={false}
+                      endCorner={null}
+                      forwardedRef={null}
+                      grouped={false}
+                      id="custom-id__closeModalFooterButton"
+                      label="Close"
+                      labelVisibility="all"
+                      loadingIcon={null}
+                      priority="flat"
+                      size="medium"
+                      startCorner={null}
+                      type="button"
+                      variant="primary"
+                    >
+                      <button
+                        className="root
         priorityFlat
         sizeMedium
         variantPrimary"
-                disabled={false}
-                id="custom-id__closeModalFooterButton"
-                onClick={[Function]}
-                title={null}
-                type="button"
-              >
-                <span
-                  className="label"
-                  id="custom-id__closeModalFooterButton__labelText"
-                >
-                  Close
-                </span>
-              </button>
-            </Button>
-          </ForwardRef(withForwardedRef(Button))>
+                        disabled={false}
+                        id="custom-id__closeModalFooterButton"
+                        onClick={[Function]}
+                        title={null}
+                        type="button"
+                      >
+                        <span
+                          className="label"
+                          id="custom-id__closeModalFooterButton__labelText"
+                        >
+                          Close
+                        </span>
+                      </button>
+                    </Button>
+                  </ForwardRef(withForwardedRef(Button))>
+                </div>
+              </ToolbarItem>
+            </div>
+          </Toolbar>
         </div>
       </div>
     </div>
@@ -404,7 +450,17 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
         </div>
         <div
           className="footer"
-        />
+        >
+          <Toolbar
+            align="top"
+            justify="start"
+            nowrap={false}
+          >
+            <div
+              className="toolbar  isAlignedToTop isJustifiedToStart"
+            />
+          </Toolbar>
+        </div>
       </div>
     </div>
   </Modal>
@@ -469,47 +525,63 @@ exports[`rendering renders correctly with translations 1`] = `
         <div
           className="footer"
         >
-          <ForwardRef(withForwardedRef(Button))
-            clickHandler={[Function]}
-            label="Zavřít"
-            priority="flat"
+          <Toolbar
+            align="top"
+            justify="start"
+            nowrap={false}
           >
-            <Button
-              afterLabel={null}
-              beforeLabel={null}
-              block={false}
-              clickHandler={[Function]}
-              disabled={false}
-              endCorner={null}
-              forwardedRef={null}
-              grouped={false}
-              label="Zavřít"
-              labelVisibility="all"
-              loadingIcon={null}
-              priority="flat"
-              size="medium"
-              startCorner={null}
-              type="button"
-              variant="primary"
+            <div
+              className="toolbar  isAlignedToTop isJustifiedToStart"
             >
-              <button
-                className="root
+              <ToolbarItem>
+                <div
+                  className="item"
+                >
+                  <ForwardRef(withForwardedRef(Button))
+                    clickHandler={[Function]}
+                    label="Zavřít"
+                    priority="flat"
+                  >
+                    <Button
+                      afterLabel={null}
+                      beforeLabel={null}
+                      block={false}
+                      clickHandler={[Function]}
+                      disabled={false}
+                      endCorner={null}
+                      forwardedRef={null}
+                      grouped={false}
+                      label="Zavřít"
+                      labelVisibility="all"
+                      loadingIcon={null}
+                      priority="flat"
+                      size="medium"
+                      startCorner={null}
+                      type="button"
+                      variant="primary"
+                    >
+                      <button
+                        className="root
         priorityFlat
         sizeMedium
         variantPrimary"
-                disabled={false}
-                onClick={[Function]}
-                title={null}
-                type="button"
-              >
-                <span
-                  className="label"
-                >
-                  Zavřít
-                </span>
-              </button>
-            </Button>
-          </ForwardRef(withForwardedRef(Button))>
+                        disabled={false}
+                        onClick={[Function]}
+                        title={null}
+                        type="button"
+                      >
+                        <span
+                          className="label"
+                        >
+                          Zavřít
+                        </span>
+                      </button>
+                    </Button>
+                  </ForwardRef(withForwardedRef(Button))>
+                </div>
+              </ToolbarItem>
+            </div>
+          </Toolbar>
         </div>
       </div>
     </div>

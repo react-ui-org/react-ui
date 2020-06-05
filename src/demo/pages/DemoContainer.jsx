@@ -955,125 +955,185 @@ class DemoContainer extends React.Component {
             <Documentation
               name="Default buttons"
               component={(
-                <>
-                  <Button clickHandler={loggerClick} label="Primary" />
-                  <Button clickHandler={loggerClick} label="Secondary" variant="secondary" />
-                  <Button clickHandler={loggerClick} label="Success" variant="success" />
-                  <Button clickHandler={loggerClick} label="Warning" variant="warning" />
-                  <Button clickHandler={loggerClick} label="Danger" variant="danger" />
-                  <Button clickHandler={loggerClick} label="Dark" variant="dark" />
-                </>
+                <Toolbar>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Primary" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Secondary" variant="secondary" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Success" variant="success" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Warning" variant="warning" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Danger" variant="danger" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Dark" variant="dark" />
+                  </ToolbarItem>
+                </Toolbar>
               )}
             />
             <Documentation
               name="Outline buttons"
               component={(
-                <>
-                  <Button clickHandler={loggerClick} label="Primary " priority="outline" />
-                  <Button clickHandler={loggerClick} label="Secondary" priority="outline" variant="secondary" />
-                  <Button clickHandler={loggerClick} label="Success" priority="outline" variant="success" />
-                  <Button clickHandler={loggerClick} label="Warning" priority="outline" variant="warning" />
-                  <Button clickHandler={loggerClick} label="Danger" priority="outline" variant="danger" />
-                  <Button clickHandler={loggerClick} label="Dark" priority="outline" variant="dark" />
-                </>
+                <Toolbar>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Primary " priority="outline" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Secondary" priority="outline" variant="secondary" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Success" priority="outline" variant="success" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Warning" priority="outline" variant="warning" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Danger" priority="outline" variant="danger" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Dark" priority="outline" variant="dark" />
+                  </ToolbarItem>
+                </Toolbar>
               )}
             />
             <Documentation
               name="Flat buttons"
               component={(
-                <>
-                  <Button clickHandler={loggerClick} label="Primary" priority="flat" />
-                  <Button clickHandler={loggerClick} label="Secondary" priority="flat" variant="secondary" />
-                  <Button clickHandler={loggerClick} label="Success" priority="flat" variant="success" />
-                  <Button clickHandler={loggerClick} label="Warning" priority="flat" variant="warning" />
-                  <Button clickHandler={loggerClick} label="Danger" priority="flat" variant="danger" />
-                  <Button clickHandler={loggerClick} label="Dark" priority="flat" variant="dark" />
-                </>
+                <Toolbar>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Primary" priority="flat" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Secondary" priority="flat" variant="secondary" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Success" priority="flat" variant="success" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Warning" priority="flat" variant="warning" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Danger" priority="flat" variant="danger" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Dark" priority="flat" variant="dark" />
+                  </ToolbarItem>
+                </Toolbar>
               )}
             />
             <Documentation
               name="Buttons sizes"
               component={(
-                <>
-                  <Button clickHandler={loggerClick} label="Small" size="small" />
-                  <Button clickHandler={loggerClick} label="Medium" />
-                  <Button clickHandler={loggerClick} label="Large" size="large" />
-                </>
+                <Toolbar>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Small" size="small" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Medium" />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Large" size="large" />
+                  </ToolbarItem>
+                </Toolbar>
               )}
             />
             <Documentation
               name="Disabled buttons"
               component={(
-                <>
-                  <Button clickHandler={loggerClick} label="Disabled default" disabled />
-                  <Button clickHandler={loggerClick} label="Disabled outline" priority="outline" disabled />
-                  <Button clickHandler={loggerClick} label="Disabled flat" priority="flat" disabled />
-                </>
+                <Toolbar>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Disabled default" disabled />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Disabled outline" priority="outline" disabled />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Disabled flat" priority="flat" disabled />
+                  </ToolbarItem>
+                </Toolbar>
               )}
             />
             <Documentation
               name="Buttons with Icons"
               component={(
-                <>
-                  <div className="mb-3">
+                <Toolbar>
+                  <ToolbarItem>
                     <Button
                       clickHandler={loggerClick}
                       label="Icon before label"
                       beforeLabel={<Icon icon="star" />}
                     />
+                  </ToolbarItem>
+                  <ToolbarItem>
                     <Button
                       clickHandler={loggerClick}
                       label="Icon after label"
                       afterLabel={<Icon icon="star" />}
                     />
-                  </div>
-                  <div>
+                  </ToolbarItem>
+                  <ToolbarItem>
                     <Button
                       clickHandler={loggerClick}
                       label="Icon only"
                       labelVisibility="none"
                       beforeLabel={<Icon icon="star" />}
                     />
+                  </ToolbarItem>
+                  <ToolbarItem>
                     <Button
                       clickHandler={loggerClick}
                       label="Icon and label on desktop"
                       labelVisibility="desktop"
                       beforeLabel={<Icon icon="star" />}
                     />
-                  </div>
-                </>
+                  </ToolbarItem>
+                </Toolbar>
               )}
             />
             <Documentation
               name="Buttons with Badges"
               component={(
-                <>
-                  <Button
-                    clickHandler={loggerClick}
-                    label="Badge before"
-                    beforeLabel={<Badge label={3} type="light" priority="outline" />}
-                  />
-                  <Button
-                    clickHandler={loggerClick}
-                    label="Badge before, on top"
-                    startCorner={<Badge label={3} />}
-                    variant="secondary"
-                  />
-                  <Button
-                    clickHandler={loggerClick}
-                    label="Badge after"
-                    afterLabel={<Badge label="new" type="warning" />}
-                    variant="primary"
-                    priority="outline"
-                  />
-                  <Button
-                    clickHandler={loggerClick}
-                    label="Badge after, on top"
-                    endCorner={<Badge label={3} />}
-                    variant="secondary"
-                    priority="outline"
-                  />
-                </>
+                <Toolbar>
+                  <ToolbarItem>
+                    <Button
+                      clickHandler={loggerClick}
+                      label="Badge before"
+                      beforeLabel={<Badge label={3} type="light" priority="outline" />}
+                    />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button
+                      clickHandler={loggerClick}
+                      label="Badge before, on top"
+                      startCorner={<Badge label={3} />}
+                      variant="secondary"
+                    />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button
+                      clickHandler={loggerClick}
+                      label="Badge after"
+                      afterLabel={<Badge label="new" type="warning" />}
+                      variant="primary"
+                      priority="outline"
+                    />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button
+                      clickHandler={loggerClick}
+                      label="Badge after, on top"
+                      endCorner={<Badge label={3} />}
+                      variant="secondary"
+                      priority="outline"
+                    />
+                  </ToolbarItem>
+                </Toolbar>
               )}
             />
             <Documentation
@@ -1095,7 +1155,9 @@ class DemoContainer extends React.Component {
               name="Block buttons"
               component={(
                 <>
-                  <Button clickHandler={loggerClick} label="Block" block />
+                  <div className="mb-4">
+                    <Button clickHandler={loggerClick} label="Block" block />
+                  </div>
                   <Button
                     clickHandler={loggerClick}
                     label="Block button with icon"
@@ -1108,20 +1170,24 @@ class DemoContainer extends React.Component {
             <Documentation
               name="Loading button"
               component={(
-                <>
-                  <Button
-                    clickHandler={loggerClick}
-                    label="Loading button"
-                    loadingIcon={<span className="d-inline-flex animation-spin-counterclockwise"><Icon icon="loading" /></span>}
-                  />
-                  <Button
-                    clickHandler={loggerClick}
-                    label="Loading button with icon and badge"
-                    afterLabel={<span className="icon" />}
-                    loadingIcon={<span className="d-inline-flex animation-spin-counterclockwise"><Icon icon="loading" /></span>}
-                    startCorner={<Badge label={3} />}
-                  />
-                </>
+                <Toolbar>
+                  <ToolbarItem>
+                    <Button
+                      clickHandler={loggerClick}
+                      label="Loading button"
+                      loadingIcon={<span className="d-inline-flex animation-spin-counterclockwise"><Icon icon="loading" /></span>}
+                    />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button
+                      clickHandler={loggerClick}
+                      label="Loading button with icon and badge"
+                      afterLabel={<span className="icon" />}
+                      loadingIcon={<span className="d-inline-flex animation-spin-counterclockwise"><Icon icon="loading" /></span>}
+                      startCorner={<Badge label={3} />}
+                    />
+                  </ToolbarItem>
+                </Toolbar>
               )}
             />
             <h3 id="ui-components-button-group" className="typography-size-4 mb-6">Button Group</h3>
@@ -1170,7 +1236,7 @@ class DemoContainer extends React.Component {
             <Documentation
               name="Card types"
               component={(
-                <div style={{ display: 'flex' }}>
+                <CardList>
                   <Card>
                     <CardBody>
                       <h4>Flat card</h4>
@@ -1219,60 +1285,54 @@ class DemoContainer extends React.Component {
                       <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
                     </CardFooter>
                   </Card>
-                </div>
+                </CardList>
               )}
             />
             <Documentation
               name="Raised card"
               component={(
-                <div>
-                  <Card raised>
-                    <CardBody>
-                      <h4>Raised card</h4>
-                      <p>
-                        Raised card content <br />
-                        and the other one.
-                      </p>
-                      <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
-                    </CardBody>
-                  </Card>
-                </div>
+                <Card raised>
+                  <CardBody>
+                    <h4>Raised card</h4>
+                    <p>
+                      Raised card content <br />
+                      and the other one.
+                    </p>
+                    <Button clickHandler={loggerClick} label="Click" variant="secondary" />
+                  </CardBody>
+                </Card>
               )}
             />
             <Documentation
               name="Dense raised card"
               component={(
-                <div>
-                  <Card dense raised>
-                    <CardBody>
-                      <h4>Dense raised card</h4>
-                      <p>
-                        Dense card content <br />
-                        and the other one.
-                      </p>
-                      <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
-                    </CardBody>
-                  </Card>
-                </div>
+                <Card dense raised>
+                  <CardBody>
+                    <h4>Dense raised card</h4>
+                    <p>
+                      Dense card content <br />
+                      and the other one.
+                    </p>
+                    <Button clickHandler={loggerClick} label="Click" variant="secondary" />
+                  </CardBody>
+                </Card>
               )}
             />
             <Documentation
               name="Disabled card"
               component={(
-                <div>
-                  <Card disabled>
-                    <CardBody>
-                      <h4>Disabled card</h4>
-                      <p>
-                        Disabled card content <br />
-                        and the other one.
-                      </p>
-                    </CardBody>
-                    <CardFooter>
-                      <Button clickHandler={loggerClick} label="Click" variant="secondary" block disabled />
-                    </CardFooter>
-                  </Card>
-                </div>
+                <Card disabled>
+                  <CardBody>
+                    <h4>Disabled card</h4>
+                    <p>
+                      Disabled card content <br />
+                      and the other one.
+                    </p>
+                  </CardBody>
+                  <CardFooter>
+                    <Button clickHandler={loggerClick} label="Click" variant="secondary" disabled />
+                  </CardFooter>
+                </Card>
               )}
             />
             <h3 id="ui-components-checkbox" className="typography-size-4 mb-6">Checkbox</h3>
