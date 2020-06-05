@@ -4,9 +4,9 @@ exports[`rendering renders correctly with a single child 1`] = `
 <div
   className="row"
 >
-  <span>
-    content
-  </span>
+  <RowStart>
+    start
+  </RowStart>
 </div>
 `;
 
@@ -14,14 +14,11 @@ exports[`rendering renders correctly with multiple children 1`] = `
 <div
   className="row"
 >
-  <span>
-    content 1
-  </span>
-  <span>
-    content 2
-  </span>
-  <span>
-    content 3
-  </span>
+  <RowStart>
+    start
+  </RowStart>
+  <RowEnd>
+    end
+  </RowEnd>
 </div>
 `;

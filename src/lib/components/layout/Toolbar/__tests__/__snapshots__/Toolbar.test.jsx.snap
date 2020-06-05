@@ -4,19 +4,38 @@ exports[`rendering renders correctly with a single child 1`] = `
 <div
   className="toolbar  isAlignedToTop isJustifiedToStart"
 >
-  <span>
-    content
-  </span>
+  <ToolbarItem>
+    item
+  </ToolbarItem>
 </div>
 `;
 
-exports[`rendering renders correctly with all props 1`] = `
+exports[`rendering renders correctly with group and all props 1`] = `
 <div
-  className="toolbar isNowrap isAlignedToMiddle isJustifiedToCenter"
+  className="toolbar isNowrap isAlignedToMiddle isJustifiedToSpaceBetween"
 >
-  <span>
-    content
-  </span>
+  <ToolbarItem>
+    item 1
+  </ToolbarItem>
+  <ToolbarItem>
+    item 2
+  </ToolbarItem>
+  <ToolbarItem>
+    item 3
+  </ToolbarItem>
+  <ToolbarGroup
+    align="top"
+  >
+    <ToolbarItem>
+      group item 1
+    </ToolbarItem>
+    <ToolbarItem>
+      group item 2
+    </ToolbarItem>
+    <ToolbarItem>
+      group item 3
+    </ToolbarItem>
+  </ToolbarGroup>
 </div>
 `;
 
@@ -24,14 +43,43 @@ exports[`rendering renders correctly with multiple children 1`] = `
 <div
   className="toolbar  isAlignedToTop isJustifiedToStart"
 >
-  <span>
-    content 1
-  </span>
-  <span>
-    content 2
-  </span>
-  <span>
-    content 3
-  </span>
+  <ToolbarItem>
+    item 1
+  </ToolbarItem>
+  <ToolbarItem>
+    item 2
+  </ToolbarItem>
+  <ToolbarItem>
+    item 3
+  </ToolbarItem>
+</div>
+`;
+
+exports[`rendering renders correctly with multiple children and groups 1`] = `
+<div
+  className="toolbar  isAlignedToTop isJustifiedToStart"
+>
+  <ToolbarItem>
+    item 1
+  </ToolbarItem>
+  <ToolbarItem>
+    item 2
+  </ToolbarItem>
+  <ToolbarItem>
+    item 3
+  </ToolbarItem>
+  <ToolbarGroup
+    align="top"
+  >
+    <ToolbarItem>
+      group item 1
+    </ToolbarItem>
+    <ToolbarItem>
+      group item 2
+    </ToolbarItem>
+    <ToolbarItem>
+      group item 3
+    </ToolbarItem>
+  </ToolbarGroup>
 </div>
 `;

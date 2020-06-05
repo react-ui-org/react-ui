@@ -1,12 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import TextField from '../../../ui/TextField';
 import FormLayout from '../FormLayout';
 
 describe('rendering', () => {
   it('renders correctly with a single child', () => {
     const tree = shallow((
       <FormLayout>
-        <span>content</span>
+        <TextField id="test-id" label="Text field" />
       </FormLayout>
     ));
 
@@ -16,9 +17,9 @@ describe('rendering', () => {
   it('renders correctly with multiple children', () => {
     const tree = shallow((
       <FormLayout>
-        <span>content 1</span>
-        <span>content 2</span>
-        <span>content 3</span>
+        <TextField id="test-id-1" label="Text field 1" />
+        <TextField id="test-id-2" label="Text field 2" />
+        <TextField id="test-id-3" label="Text field 3" />
       </FormLayout>
     ));
 
@@ -32,7 +33,7 @@ describe('rendering', () => {
         id="test-id"
         labelWidth="300px"
       >
-        <span>content</span>
+        <TextField id="test-id" label="Text field" />
       </FormLayout>
     ));
 
@@ -47,7 +48,7 @@ describe('rendering', () => {
         labelAutoWidthFallback="200px"
         labelWidth="auto"
       >
-        <span>content</span>
+        <TextField id="test-id" label="Text field" />
       </FormLayout>
     ));
 

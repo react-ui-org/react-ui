@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { Card } from '../../../ui/Card/Card';
 import CardList from '../CardList';
 
 describe('rendering', () => {
@@ -14,7 +15,7 @@ describe('rendering', () => {
   it('renders correctly with a single child', () => {
     const tree = shallow((
       <CardList>
-        <span>content</span>
+        <Card>content</Card>
       </CardList>
     ));
 
@@ -24,9 +25,9 @@ describe('rendering', () => {
   it('renders correctly with multiple children', () => {
     const tree = shallow((
       <CardList>
-        <span>content 1</span>
-        <span>content 2</span>
-        <span>content 3</span>
+        <Card>content 1</Card>
+        <Card>content 2</Card>
+        <Card>content 3</Card>
       </CardList>
     ));
 

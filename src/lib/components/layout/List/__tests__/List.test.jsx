@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import List from '../List';
+import ListItem from '../ListItem';
 
 describe('rendering', () => {
   it('renders correctly with no children', () => {
@@ -14,7 +15,7 @@ describe('rendering', () => {
   it('renders correctly with a single child', () => {
     const tree = shallow((
       <List>
-        <span>content</span>
+        <ListItem>content</ListItem>
       </List>
     ));
 
@@ -24,9 +25,9 @@ describe('rendering', () => {
   it('renders correctly with multiple children', () => {
     const tree = shallow((
       <List>
-        <span>content 1</span>
-        <span>content 2</span>
-        <span>content 3</span>
+        <ListItem>content 1</ListItem>
+        <ListItem>content 2</ListItem>
+        <ListItem>content 3</ListItem>
       </List>
     ));
 
@@ -36,9 +37,9 @@ describe('rendering', () => {
   it('renders correctly with multiple children and all props', () => {
     const tree = shallow((
       <List align="right" autoWidth>
-        <span>content 1</span>
-        <span>content 2</span>
-        <span>content 3</span>
+        <ListItem>content 1</ListItem>
+        <ListItem>content 2</ListItem>
+        <ListItem>content 3</ListItem>
       </List>
     ));
 

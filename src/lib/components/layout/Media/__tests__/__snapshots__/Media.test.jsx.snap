@@ -4,9 +4,9 @@ exports[`rendering renders correctly with a single child 1`] = `
 <div
   className="media"
 >
-  <span>
-    content
-  </span>
+  <MediaBody>
+    body
+  </MediaBody>
 </div>
 `;
 
@@ -14,14 +14,11 @@ exports[`rendering renders correctly with multiple children 1`] = `
 <div
   className="media"
 >
-  <span>
-    content 1
-  </span>
-  <span>
-    content 2
-  </span>
-  <span>
-    content 3
-  </span>
+  <MediaObject>
+    object
+  </MediaObject>
+  <MediaBody>
+    body
+  </MediaBody>
 </div>
 `;

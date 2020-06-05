@@ -1,12 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import ToolbarGroup from '../ToolbarGroup';
+import ToolbarItem from '../ToolbarItem';
 
 describe('rendering', () => {
   it('renders correctly with a single child', () => {
     const tree = shallow((
       <ToolbarGroup>
-        <span>content</span>
+        <ToolbarItem>item</ToolbarItem>
       </ToolbarGroup>
     ));
 
@@ -16,9 +17,9 @@ describe('rendering', () => {
   it('renders correctly with multiple children', () => {
     const tree = shallow((
       <ToolbarGroup>
-        <span>content 1</span>
-        <span>content 2</span>
-        <span>content 3</span>
+        <ToolbarItem>item 1</ToolbarItem>
+        <ToolbarItem>item 2</ToolbarItem>
+        <ToolbarItem>item 3</ToolbarItem>
       </ToolbarGroup>
     ));
 
@@ -28,7 +29,7 @@ describe('rendering', () => {
   it('renders correctly with all props', () => {
     const tree = shallow((
       <ToolbarGroup align="middle">
-        <span>content</span>
+        <ToolbarItem>item</ToolbarItem>
       </ToolbarGroup>
     ));
 
