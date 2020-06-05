@@ -1,42 +1,98 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering renders correctly mandatory props only 1`] = `
-<div
-  className="root
-        note"
-  role="alert"
+exports[`rendering renders correctly 1`] = `
+<WithTranslationContextComponent
+  translations={null}
 >
-  <div
-    className="message"
+  <Alert
+    closeHandler={null}
+    icon={null}
+    translations={
+      Object {
+        "close": "Close",
+      }
+    }
+    type="note"
   >
-    <div>
-      Children
+    <div
+      className="root isRootNote"
+      role="alert"
+    >
+      <div
+        className="message"
+      >
+        <div>
+          Children
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  </Alert>
+</WithTranslationContextComponent>
 `;
 
 exports[`rendering renders correctly with all props 1`] = `
-<div
-  className="root
-        success"
-  id="custom-id"
-  role="alert"
->
-  <div
-    className="icon"
-  >
+<WithTranslationContextComponent
+  closeHandler={[Function]}
+  icon={
     <span
       className="icon"
     />
-  </div>
-  <div
-    className="message"
-    id="custom-id__content"
+  }
+  id="custom-id"
+  translations={null}
+  type="success"
+>
+  <Alert
+    closeHandler={[Function]}
+    icon={
+      <span
+        className="icon"
+      />
+    }
+    id="custom-id"
+    translations={
+      Object {
+        "close": "Close",
+      }
+    }
+    type="success"
   >
-    <div>
-      Children
+    <div
+      className="root isRootSuccess"
+      id="custom-id"
+      role="alert"
+    >
+      <div
+        className="icon"
+      >
+        <span
+          className="icon"
+        />
+      </div>
+      <div
+        className="message"
+        id="custom-id__content"
+      >
+        <div>
+          Children
+        </div>
+      </div>
+      <button
+        className="close"
+        id="custom-id__close"
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        tabIndex="0"
+        title="Close"
+        type="button"
+      >
+        <span
+          className="closeSign"
+        >
+          ×
+        </span>
+      </button>
     </div>
-  </div>
-</div>
+  </Alert>
+</WithTranslationContextComponent>
 `;

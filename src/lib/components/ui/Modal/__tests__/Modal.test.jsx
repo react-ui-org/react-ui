@@ -92,4 +92,3 @@ describe('functionality', () => {
     expect(spy.calledTwice).toEqual(true);
   });
 });
-

@@ -864,57 +864,90 @@ class DemoContainer extends React.Component {
             <Documentation
               name="Alert types"
               component={(
-                <div>
-                  <Alert type="success">
-                    <span>
-                      <strong>Success: </strong>
-                      Success message
-                    </span>
-                  </Alert>
-                  <Alert type="warning">
-                    <span>
-                      <strong>Warning: </strong>
-                      Warning message
-                    </span>
-                  </Alert>
-                  <Alert type="error">
-                    <span>
-                      <strong>Error: </strong>
-                      Error message
-                    </span>
-                  </Alert>
-                  <Alert type="info">
-                    <span>
-                      <strong>Info: </strong>
-                      Info message
-                    </span>
-                  </Alert>
-                  <Alert type="help">
-                    <span>
-                      <strong>Help: </strong>
-                      Help message
-                    </span>
-                  </Alert>
-                  <Alert>
-                    <span>
-                      <strong>Note: </strong>
-                      Note message
-                    </span>
-                  </Alert>
-                </div>
+                <>
+                  <div className="mb-4">
+                    <Alert type="success">
+                      <span>
+                        <strong>Success: </strong>
+                        Success message
+                      </span>
+                    </Alert>
+                  </div>
+                  <div className="mb-4">
+                    <Alert type="warning">
+                      <span>
+                        <strong>Warning: </strong>
+                        Warning message
+                      </span>
+                    </Alert>
+                  </div>
+                  <div className="mb-4">
+                    <Alert type="error">
+                      <span>
+                        <strong>Error: </strong>
+                        Error message
+                      </span>
+                    </Alert>
+                  </div>
+                  <div className="mb-4">
+                    <Alert type="info">
+                      <span>
+                        <strong>Info: </strong>
+                        Info message
+                      </span>
+                    </Alert>
+                  </div>
+                  <div className="mb-4">
+                    <Alert type="help">
+                      <span>
+                        <strong>Help: </strong>
+                        Help message
+                      </span>
+                    </Alert>
+                  </div>
+                  <div>
+                    <Alert>
+                      <span>
+                        <strong>Note: </strong>
+                        Note message
+                      </span>
+                    </Alert>
+                  </div>
+                </>
               )}
             />
             <Documentation
-              name="Alert with icon"
+              name="Dismissible alert with icon"
               component={(
-                <div>
-                  <Alert type="success" icon={<Icon icon="success" />}>
-                    <span>
-                      <strong>Success: </strong>
-                      Success message
-                    </span>
-                  </Alert>
-                </div>
+                <Alert
+                  closeHandler={loggerClick}
+                  icon={<Icon icon="success" />}
+                  type="success"
+                >
+                  <span>
+                    <strong>Success: </strong>
+                    Success message
+                  </span>
+                </Alert>
+              )}
+            />
+            <Documentation
+              name="Dismissible alert with long content"
+              component={(
+                <Alert
+                  closeHandler={loggerClick}
+                  icon={<Icon icon="success" />}
+                  type="success"
+                >
+                  <span>
+                    <strong>Success: </strong>
+                    Curabitur sagittis hendrerit ante. Integer pellentesque quam vel velit. Sed vel
+                    lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem.
+                    Pellentesque sapien. Ut enim ad minima veniam, quis nostrum exercitationem ullam
+                    corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
+                    Maecenas sollicitudin.
+                  </span>
+                </Alert>
               )}
             />
             <h3 id="ui-components-badge" className="typography-size-4 mb-6">Badge</h3>
