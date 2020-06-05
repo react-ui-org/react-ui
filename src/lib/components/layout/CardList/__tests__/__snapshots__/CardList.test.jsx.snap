@@ -4,12 +4,16 @@ exports[`rendering renders correctly with a single child 1`] = `
 <div
   className="root"
 >
-  <span
+  <Card
+    dense={false}
+    disabled={false}
     inList={true}
     key=".0"
+    raised={false}
+    type="flat"
   >
     content
-  </span>
+  </Card>
 </div>
 `;
 
@@ -17,24 +21,36 @@ exports[`rendering renders correctly with multiple children 1`] = `
 <div
   className="root"
 >
-  <span
+  <Card
+    dense={false}
+    disabled={false}
     inList={true}
     key=".0"
+    raised={false}
+    type="flat"
   >
     content 1
-  </span>
-  <span
+  </Card>
+  <Card
+    dense={false}
+    disabled={false}
     inList={true}
     key=".1"
+    raised={false}
+    type="flat"
   >
     content 2
-  </span>
-  <span
+  </Card>
+  <Card
+    dense={false}
+    disabled={false}
     inList={true}
     key=".2"
+    raised={false}
+    type="flat"
   >
     content 3
-  </span>
+  </Card>
 </div>
 `;
 

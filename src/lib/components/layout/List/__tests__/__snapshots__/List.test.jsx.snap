@@ -8,9 +8,9 @@ exports[`rendering renders correctly with a single child 1`] = `
     className="list
           alignLeft"
   >
-    <span>
+    <ListItem>
       content
-    </span>
+    </ListItem>
   </ul>
 </div>
 `;
@@ -23,15 +23,15 @@ exports[`rendering renders correctly with multiple children 1`] = `
     className="list
           alignLeft"
   >
-    <span>
+    <ListItem>
       content 1
-    </span>
-    <span>
+    </ListItem>
+    <ListItem>
       content 2
-    </span>
-    <span>
+    </ListItem>
+    <ListItem>
       content 3
-    </span>
+    </ListItem>
   </ul>
 </div>
 `;
@@ -45,15 +45,15 @@ exports[`rendering renders correctly with multiple children and all props 1`] = 
     className="list
           alignRight"
   >
-    <span>
+    <ListItem>
       content 1
-    </span>
-    <span>
+    </ListItem>
+    <ListItem>
       content 2
-    </span>
-    <span>
+    </ListItem>
+    <ListItem>
       content 3
-    </span>
+    </ListItem>
   </ul>
 </div>
 `;

@@ -4,9 +4,9 @@ exports[`rendering renders correctly with a single child 1`] = `
 <div
   className="group isAlignedToTop"
 >
-  <span>
-    content
-  </span>
+  <ToolbarItem>
+    item
+  </ToolbarItem>
 </div>
 `;
 
@@ -14,9 +14,9 @@ exports[`rendering renders correctly with all props 1`] = `
 <div
   className="group isAlignedToMiddle"
 >
-  <span>
-    content
-  </span>
+  <ToolbarItem>
+    item
+  </ToolbarItem>
 </div>
 `;
 
@@ -24,14 +24,14 @@ exports[`rendering renders correctly with multiple children 1`] = `
 <div
   className="group isAlignedToTop"
 >
-  <span>
-    content 1
-  </span>
-  <span>
-    content 2
-  </span>
-  <span>
-    content 3
-  </span>
+  <ToolbarItem>
+    item 1
+  </ToolbarItem>
+  <ToolbarItem>
+    item 2
+  </ToolbarItem>
+  <ToolbarItem>
+    item 3
+  </ToolbarItem>
 </div>
 `;

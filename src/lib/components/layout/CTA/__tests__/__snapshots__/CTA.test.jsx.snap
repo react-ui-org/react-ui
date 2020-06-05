@@ -4,9 +4,9 @@ exports[`rendering renders correctly with a single child 1`] = `
 <div
   className="root isAlignedToBaseline"
 >
-  <span>
+  <CTACenter>
     content
-  </span>
+  </CTACenter>
 </div>
 `;
 
@@ -14,9 +14,15 @@ exports[`rendering renders correctly with all props 1`] = `
 <div
   className="root isAlignedToMiddle"
 >
-  <span>
-    content
-  </span>
+  <CTAStart>
+    content 1
+  </CTAStart>
+  <CTACenter>
+    content 2
+  </CTACenter>
+  <CTAEnd>
+    content 3
+  </CTAEnd>
 </div>
 `;
 
@@ -24,14 +30,14 @@ exports[`rendering renders correctly with multiple children 1`] = `
 <div
   className="root isAlignedToBaseline"
 >
-  <span>
+  <CTAStart>
     content 1
-  </span>
-  <span>
+  </CTAStart>
+  <CTACenter>
     content 2
-  </span>
-  <span>
+  </CTACenter>
+  <CTAEnd>
     content 3
-  </span>
+  </CTAEnd>
 </div>
 `;
