@@ -15,14 +15,6 @@
   margin: $toolbar-spacing;
 }
 
-.isNowrap {
-  flex-wrap: nowrap;
-}
-
-.isNowrap > .item {
-  flex: 0 1 auto;
-}
-
 .isAlignedToTop {
   align-items: flex-start;
 }
@@ -53,4 +45,29 @@
 
 .isJustifiedToSpaceBetween {
   justify-content: space-between;
+}
+
+.isNowrap {
+  flex-wrap: nowrap;
+}
+
+.isNowrap > .item {
+  flex: 0 1 auto;
+}
+
+.isDense {
+  margin: calc(-1 * #{$toolbar-spacing-dense});
+}
+
+.isDense .item {
+  margin: $toolbar-spacing-dense;
+}
+
+.isDense > .isDense {
+  margin: 0;
+}
+
+.toolbar:not(.isDense) > .isDense,
+.group:not(.isDense) > .isDense {
+  margin: $toolbar-spacing-dense;
 }

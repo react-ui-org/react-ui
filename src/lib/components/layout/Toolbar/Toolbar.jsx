@@ -6,6 +6,7 @@ const Toolbar = (props) => {
   const {
     align,
     children,
+    dense,
     justify,
     nowrap,
   } = props;
@@ -46,6 +47,7 @@ const Toolbar = (props) => {
     <div
       className={[
         styles.toolbar,
+        dense ? styles.isDense : null,
         nowrap ? styles.isNowrap : null,
         alignClass(align),
         justifyClass(justify),
@@ -58,6 +60,7 @@ const Toolbar = (props) => {
 
 Toolbar.defaultProps = {
   align: 'top',
+  dense: false,
   justify: 'start',
   nowrap: false,
 };
@@ -65,6 +68,7 @@ Toolbar.defaultProps = {
 Toolbar.propTypes = {
   align: PropTypes.oneOf(['top', 'middle', 'bottom', 'baseline']),
   children: PropTypes.node.isRequired,
+  dense: PropTypes.bool,
   justify: PropTypes.oneOf(['start', 'center', 'end', 'space-between']),
   nowrap: PropTypes.bool,
 };

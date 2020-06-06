@@ -789,10 +789,10 @@ class DemoContainer extends React.Component {
             />
             <h3 id="layout-components-toolbar" className="typography-size-4 mb-6">Toolbar</h3>
             <Documentation
-              name="Example layout with group and space-between justification"
+              name="Example layout with not-wrapping dense group and space-between justification"
               component={(
                 <Toolbar justify="space-between">
-                  <ToolbarGroup>
+                  <ToolbarGroup dense nowrap>
                     <ToolbarItem>
                       <Placeholder text="grouped item 1" />
                     </ToolbarItem>
@@ -813,9 +813,9 @@ class DemoContainer extends React.Component {
               )}
             />
             <Documentation
-              name="Toolbar with disabled wrapping"
+              name="Dense toolbar with disabled wrapping (groups still wrap)"
               component={(
-                <Toolbar justify="space-between" nowrap>
+                <Toolbar justify="space-between" dense nowrap>
                   <ToolbarGroup>
                     <ToolbarItem>
                       <Placeholder text="grouped item 1" />
