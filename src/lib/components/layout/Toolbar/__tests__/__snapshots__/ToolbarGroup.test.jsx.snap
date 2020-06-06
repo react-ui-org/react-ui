@@ -2,7 +2,7 @@
 
 exports[`rendering renders correctly with a single child 1`] = `
 <div
-  className="group isAlignedToTop"
+  className="group   isAlignedToTop"
 >
   <ToolbarItem>
     item
@@ -12,7 +12,7 @@ exports[`rendering renders correctly with a single child 1`] = `
 
 exports[`rendering renders correctly with all props 1`] = `
 <div
-  className="group isAlignedToMiddle"
+  className="group isDense isNowrap isAlignedToMiddle"
 >
   <ToolbarItem>
     item
@@ -22,7 +22,7 @@ exports[`rendering renders correctly with all props 1`] = `
 
 exports[`rendering renders correctly with multiple children 1`] = `
 <div
-  className="group isAlignedToTop"
+  className="group   isAlignedToTop"
 >
   <ToolbarItem>
     item 1

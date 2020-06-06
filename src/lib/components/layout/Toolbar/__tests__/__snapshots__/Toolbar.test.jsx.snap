@@ -2,7 +2,7 @@
 
 exports[`rendering renders correctly with a single child 1`] = `
 <div
-  className="toolbar  isAlignedToTop isJustifiedToStart"
+  className="toolbar   isAlignedToTop isJustifiedToStart"
 >
   <ToolbarItem>
     item
@@ -12,7 +12,7 @@ exports[`rendering renders correctly with a single child 1`] = `
 
 exports[`rendering renders correctly with group and all props 1`] = `
 <div
-  className="toolbar isNowrap isAlignedToMiddle isJustifiedToSpaceBetween"
+  className="toolbar isDense isNowrap isAlignedToMiddle isJustifiedToSpaceBetween"
 >
   <ToolbarItem>
     item 1
@@ -25,6 +25,8 @@ exports[`rendering renders correctly with group and all props 1`] = `
   </ToolbarItem>
   <ToolbarGroup
     align="top"
+    dense={false}
+    nowrap={false}
   >
     <ToolbarItem>
       group item 1
@@ -41,7 +43,7 @@ exports[`rendering renders correctly with group and all props 1`] = `
 
 exports[`rendering renders correctly with multiple children 1`] = `
 <div
-  className="toolbar  isAlignedToTop isJustifiedToStart"
+  className="toolbar   isAlignedToTop isJustifiedToStart"
 >
   <ToolbarItem>
     item 1
@@ -57,7 +59,7 @@ exports[`rendering renders correctly with multiple children 1`] = `
 
 exports[`rendering renders correctly with multiple children and groups 1`] = `
 <div
-  className="toolbar  isAlignedToTop isJustifiedToStart"
+  className="toolbar   isAlignedToTop isJustifiedToStart"
 >
   <ToolbarItem>
     item 1
@@ -70,6 +72,8 @@ exports[`rendering renders correctly with multiple children and groups 1`] = `
   </ToolbarItem>
   <ToolbarGroup
     align="top"
+    dense={false}
+    nowrap={false}
   >
     <ToolbarItem>
       group item 1

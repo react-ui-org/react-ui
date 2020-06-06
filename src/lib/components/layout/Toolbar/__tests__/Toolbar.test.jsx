@@ -46,7 +46,7 @@ describe('rendering', () => {
 
   it('renders correctly with group and all props', () => {
     const tree = shallow((
-      <Toolbar align="middle" justify="space-between" nowrap>
+      <Toolbar align="middle" justify="space-between" dense nowrap>
         <ToolbarItem>item 1</ToolbarItem>
         <ToolbarItem>item 2</ToolbarItem>
         <ToolbarItem>item 3</ToolbarItem>

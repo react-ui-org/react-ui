@@ -78,11 +78,12 @@ exports[`rendering renders correctly with all props except translations 1`] = `
         >
           <Toolbar
             align="top"
+            dense={true}
             justify="start"
             nowrap={false}
           >
             <div
-              className="toolbar  isAlignedToTop isJustifiedToStart"
+              className="toolbar isDense  isAlignedToTop isJustifiedToStart"
             >
               <ToolbarItem
                 key="Action"
@@ -276,11 +277,12 @@ exports[`rendering renders correctly with all props except translations and with
         >
           <Toolbar
             align="top"
+            dense={true}
             justify="start"
             nowrap={false}
           >
             <div
-              className="toolbar  isAlignedToTop isJustifiedToStart"
+              className="toolbar isDense  isAlignedToTop isJustifiedToStart"
             >
               <ToolbarItem
                 key="Action"
@@ -453,11 +455,12 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
         >
           <Toolbar
             align="top"
+            dense={true}
             justify="start"
             nowrap={false}
           >
             <div
-              className="toolbar  isAlignedToTop isJustifiedToStart"
+              className="toolbar isDense  isAlignedToTop isJustifiedToStart"
             />
           </Toolbar>
         </div>
@@ -527,11 +530,12 @@ exports[`rendering renders correctly with translations 1`] = `
         >
           <Toolbar
             align="top"
+            dense={true}
             justify="start"
             nowrap={false}
           >
             <div
-              className="toolbar  isAlignedToTop isJustifiedToStart"
+              className="toolbar isDense  isAlignedToTop isJustifiedToStart"
             >
               <ToolbarItem>
                 <div

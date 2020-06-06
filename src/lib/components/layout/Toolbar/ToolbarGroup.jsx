@@ -6,6 +6,8 @@ const ToolbarGroup = (props) => {
   const {
     align,
     children,
+    dense,
+    nowrap,
   } = props;
 
   const alignClass = (value) => {
@@ -28,6 +30,8 @@ const ToolbarGroup = (props) => {
     <div
       className={[
         styles.group,
+        dense ? styles.isDense : null,
+        nowrap ? styles.isNowrap : null,
         alignClass(align),
       ].join(' ')}
     >
@@ -38,11 +42,15 @@ const ToolbarGroup = (props) => {
 
 ToolbarGroup.defaultProps = {
   align: 'top',
+  dense: false,
+  nowrap: false,
 };
 
 ToolbarGroup.propTypes = {
   align: PropTypes.oneOf(['top', 'middle', 'bottom', 'baseline']),
   children: PropTypes.node.isRequired,
+  dense: PropTypes.bool,
+  nowrap: PropTypes.bool,
 };
 
 export default ToolbarGroup;
