@@ -73,6 +73,25 @@ describe('rendering', () => {
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
+
+  it('renders correctly with portal id', () => {
+    const modalRoot = global.document.createElement('div');
+    modalRoot.setAttribute('id', 'app-modal-portal');
+
+    const body = global.document.querySelector('body');
+    body.appendChild(modalRoot);
+
+    const tree = mount((
+      <Modal
+        portalId="app-modal-portal"
+        title="Modal title"
+      >
+        Modal content
+      </Modal>
+    ));
+
+    expect(shallowToJson(tree)).toMatchSnapshot();
+  });
 });
 
 describe('functionality', () => {

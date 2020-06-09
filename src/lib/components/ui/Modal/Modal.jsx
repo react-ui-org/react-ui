@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { createPortal } from 'react-dom';
 import Button from '../Button';
 import {
   Toolbar,
@@ -41,7 +42,7 @@ class Modal extends React.Component {
     }
   }
 
-  render() {
+  preRender() {
     const sizeClass = (size) => {
       if (size === 'small') {
         return styles.isRootSmall;
@@ -137,12 +138,23 @@ class Modal extends React.Component {
       </div>
     );
   }
+
+  render() {
+    const { portalId } = this.props;
+
+    if (portalId === null) {
+      return this.preRender();
+    }
+
+    return createPortal(this.preRender(), document.getElementById(portalId));
+  }
 }
 
 Modal.defaultProps = {
   actions: [],
   closeHandler: null,
   id: undefined,
+  portalId: null,
   size: 'medium',
 };
 
@@ -158,6 +170,7 @@ Modal.propTypes = {
   children: PropTypes.node.isRequired,
   closeHandler: PropTypes.func,
   id: PropTypes.string,
+  portalId: PropTypes.string,
   size: PropTypes.oneOf(['small', 'medium', 'large', 'auto']),
   title: PropTypes.string.isRequired,
   translations: PropTypes.shape({

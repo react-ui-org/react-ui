@@ -1546,6 +1546,35 @@ class DemoContainer extends React.Component {
                 </>
               )}
             />
+            <Documentation
+              name="Modal rendered in portal"
+              component={(
+                <>
+                  <Button
+                    label="Open modal"
+                    clickHandler={() => this.setState({ showModal: true })}
+                  />
+                  {this.state.showModal && (
+                    <Modal
+                      actions={[
+                        {
+                          clickHandler: () => {
+                            loggerClick();
+                            this.setState({ showModal: false });
+                          },
+                          label: 'Agree',
+                        },
+                      ]}
+                      closeHandler={() => this.setState({ showModal: false })}
+                      portalId="app-modal-portal"
+                      title="Modal"
+                    >
+                      <p>Dialog content</p>
+                    </Modal>
+                  )}
+                </>
+              )}
+            />
             <h3 id="ui-components-multiple-selectfield" className="typography-size-4 mb-6">Multiple Select Field</h3>
             <Documentation
               name="Multiple select field variants"

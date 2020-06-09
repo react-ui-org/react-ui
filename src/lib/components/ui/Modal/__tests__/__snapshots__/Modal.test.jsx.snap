@@ -27,6 +27,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
     }
     closeHandler={[Function]}
     id="custom-id"
+    portalId={null}
     size="large"
     title="Modal title"
     translations={
@@ -226,6 +227,7 @@ exports[`rendering renders correctly with all props except translations and with
     }
     closeHandler={[Function]}
     id="custom-id"
+    portalId={null}
     size="small"
     title="Modal title"
     translations={
@@ -416,6 +418,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
   <Modal
     actions={Array []}
     closeHandler={null}
+    portalId={null}
     size="medium"
     title="Modal title"
     translations={
@@ -470,6 +473,111 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
 </WithTranslationContextComponent>
 `;
 
+exports[`rendering renders correctly with portal id 1`] = `
+<WithTranslationContextComponent
+  portalId="app-modal-portal"
+  title="Modal title"
+  translations={null}
+>
+  <Modal
+    actions={Array []}
+    closeHandler={null}
+    portalId="app-modal-portal"
+    size="medium"
+    title="Modal title"
+    translations={
+      Object {
+        "close": "Close",
+      }
+    }
+  >
+    <Portal
+      containerInfo={
+        <div
+          id="app-modal-portal"
+        >
+          <div
+            class="overlay"
+            role="presentation"
+          >
+            <div
+              class="root
+            isRootMedium"
+              role="presentation"
+            >
+              <div
+                class="head"
+              >
+                <h3
+                  class="headTitle"
+                >
+                  Modal title
+                </h3>
+              </div>
+              <div
+                class="body"
+              >
+                Modal content
+              </div>
+              <div
+                class="footer"
+              >
+                <div
+                  class="toolbar isDense  isAlignedToTop isJustifiedToStart"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <div
+        className="overlay"
+        onClick={[Function]}
+        onScroll={[Function]}
+        role="presentation"
+      >
+        <div
+          className="root
+            isRootMedium"
+          onClick={[Function]}
+          role="presentation"
+        >
+          <div
+            className="head"
+          >
+            <h3
+              className="headTitle"
+            >
+              Modal title
+            </h3>
+          </div>
+          <div
+            className="body"
+          >
+            Modal content
+          </div>
+          <div
+            className="footer"
+          >
+            <Toolbar
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            >
+              <div
+                className="toolbar isDense  isAlignedToTop isJustifiedToStart"
+              />
+            </Toolbar>
+          </div>
+        </div>
+      </div>
+    </Portal>
+  </Modal>
+</WithTranslationContextComponent>
+`;
+
 exports[`rendering renders correctly with translations 1`] = `
 <WithTranslationContextComponent
   closeHandler={[Function]}
@@ -483,6 +591,7 @@ exports[`rendering renders correctly with translations 1`] = `
   <Modal
     actions={Array []}
     closeHandler={[Function]}
+    portalId={null}
     size="medium"
     title="Modal title"
     translations={
