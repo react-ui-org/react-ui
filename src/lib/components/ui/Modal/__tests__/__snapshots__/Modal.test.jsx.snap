@@ -25,6 +25,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
         },
       ]
     }
+    autoFocus={true}
     closeHandler={[Function]}
     id="custom-id"
     portalId={null}
@@ -95,6 +96,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                   <ForwardRef(withForwardedRef(Button))
                     clickHandler={[Function]}
                     label="Action"
+                    type="button"
                   >
                     <Button
                       afterLabel={null}
@@ -103,7 +105,23 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                       clickHandler={[Function]}
                       disabled={false}
                       endCorner={null}
-                      forwardedRef={null}
+                      forwardedRef={
+                        Object {
+                          "current": <button
+                            class="root
+        priorityDefault
+        sizeMedium
+        variantPrimary"
+                            type="button"
+                          >
+                            <span
+                              class="label"
+                            >
+                              Action
+                            </span>
+                          </button>,
+                        }
+                      }
                       grouped={false}
                       label="Action"
                       labelVisibility="all"
@@ -225,6 +243,7 @@ exports[`rendering renders correctly with all props except translations and with
         },
       ]
     }
+    autoFocus={true}
     closeHandler={[Function]}
     id="custom-id"
     portalId={null}
@@ -300,6 +319,7 @@ exports[`rendering renders correctly with all props except translations and with
                         className="icon"
                       />
                     }
+                    type="button"
                   >
                     <Button
                       afterLabel={null}
@@ -308,7 +328,31 @@ exports[`rendering renders correctly with all props except translations and with
                       clickHandler={[Function]}
                       disabled={false}
                       endCorner={null}
-                      forwardedRef={null}
+                      forwardedRef={
+                        Object {
+                          "current": <button
+                            class="root
+        priorityDefault
+        sizeMedium
+        variantPrimary"
+                            disabled=""
+                            type="button"
+                          >
+                            <span
+                              class="label"
+                            >
+                              Action
+                            </span>
+                            <span
+                              class="loadingIcon"
+                            >
+                              <span
+                                class="icon"
+                              />
+                            </span>
+                          </button>,
+                        }
+                      }
                       grouped={false}
                       label="Action"
                       labelVisibility="all"
@@ -417,6 +461,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
 >
   <Modal
     actions={Array []}
+    autoFocus={true}
     closeHandler={null}
     portalId={null}
     size="medium"
@@ -481,6 +526,7 @@ exports[`rendering renders correctly with portal id 1`] = `
 >
   <Modal
     actions={Array []}
+    autoFocus={true}
     closeHandler={null}
     portalId="app-modal-portal"
     size="medium"
@@ -590,6 +636,7 @@ exports[`rendering renders correctly with translations 1`] = `
 >
   <Modal
     actions={Array []}
+    autoFocus={true}
     closeHandler={[Function]}
     portalId={null}
     size="medium"

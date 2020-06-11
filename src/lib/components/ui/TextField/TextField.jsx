@@ -159,7 +159,10 @@ TextField.defaultProps = {
 TextField.propTypes = {
   changeHandler: PropTypes.func,
   disabled: PropTypes.bool,
-  forwardedRef: PropTypes.func,
+  forwardedRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.any }),
+  ]),
   fullWidth: PropTypes.bool,
   helperText: PropTypes.string,
   id: PropTypes.string.isRequired,
