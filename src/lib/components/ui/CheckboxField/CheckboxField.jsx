@@ -126,7 +126,10 @@ CheckboxField.propTypes = {
   description: PropTypes.string,
   disabled: PropTypes.bool,
   error: PropTypes.string,
-  forwardedRef: PropTypes.func,
+  forwardedRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.any }),
+  ]),
   id: PropTypes.string.isRequired,
   inFormLayout: PropTypes.bool,
   isLabelVisible: PropTypes.bool,

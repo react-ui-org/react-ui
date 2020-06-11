@@ -18,16 +18,41 @@ class Modal extends React.Component {
       isContentOverflowing: false,
     };
 
+    this.childrenWrapperRef = React.createRef();
+    this.submitButtonRef = React.createRef();
+
     this.setGradient = this.setGradient.bind(this);
-    this.pressEscapeHandler = this.pressEscapeHandler.bind(this);
+    this.keyPressHandler = this.keyPressHandler.bind(this);
   }
 
   componentDidMount() {
-    window.document.addEventListener('keydown', this.pressEscapeHandler, false);
+    const { autoFocus } = this.props;
+
+    window.document.addEventListener('keydown', this.keyPressHandler, false);
+
+    // If `autoFocus` is set to `true`, following code finds first form field element
+    // (input, textarea or select) or submit button and auto focuses it. This is necessary
+    // to have focus on one of those elements to be able to submit form by pressing Enter key.
+    if (autoFocus && this.childrenWrapperRef && this.childrenWrapperRef.current) {
+      const childrenWrapperElement = this.childrenWrapperRef.current;
+      const childrenElements = childrenWrapperElement.querySelectorAll('*');
+      const formFieldEl = Array.from(childrenElements).find(
+        (element) => ['INPUT', 'TEXTAREA', 'SELECT'].includes(element.nodeName),
+      );
+
+      if (formFieldEl) {
+        formFieldEl.focus();
+        return;
+      }
+
+      if (this.submitButtonRef && this.submitButtonRef.current) {
+        this.submitButtonRef.current.focus();
+      }
+    }
   }
 
   componentWillUnmount() {
-    window.document.removeEventListener('keydown', this.pressEscapeHandler, false);
+    window.document.removeEventListener('keydown', this.keyPressHandler, false);
   }
 
   setGradient() {
@@ -36,9 +61,19 @@ class Modal extends React.Component {
     }
   }
 
-  pressEscapeHandler(e) {
+  keyPressHandler(e) {
+    const { actions } = this.props;
+
     if (e.keyCode === 27 && this.props.closeHandler) {
       this.props.closeHandler();
+    }
+
+    if (e.keyCode === 13 && e.target.nodeName !== 'BUTTON') {
+      const submitAction = actions.find((action) => action.type === 'submit');
+
+      if (submitAction && !submitAction.disabled) {
+        submitAction.clickHandler(e);
+      }
     }
   }
 
@@ -103,6 +138,7 @@ class Modal extends React.Component {
           </div>
           <div
             className={styles.body}
+            ref={this.childrenWrapperRef}
             {...(this.props.id && { id: `${this.props.id}__content` })}
           >
             {this.props.children}
@@ -118,6 +154,8 @@ class Modal extends React.Component {
                     id={action.id || undefined}
                     label={action.label}
                     loadingIcon={action.loadingIcon}
+                    ref={this.submitButtonRef}
+                    type="button"
                     variant={action.variant}
                   />
                 </ToolbarItem>
@@ -152,6 +190,7 @@ class Modal extends React.Component {
 
 Modal.defaultProps = {
   actions: [],
+  autoFocus: true,
   closeHandler: null,
   id: undefined,
   portalId: null,
@@ -167,6 +206,7 @@ Modal.propTypes = {
     loadingIcon: PropTypes.node,
     variant: PropTypes.string,
   })),
+  autoFocus: PropTypes.bool,
   children: PropTypes.node.isRequired,
   closeHandler: PropTypes.func,
   id: PropTypes.string,

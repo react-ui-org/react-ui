@@ -135,7 +135,10 @@ Button.propTypes = {
   clickHandler: PropTypes.func,
   disabled: PropTypes.bool,
   endCorner: PropTypes.node,
-  forwardedRef: PropTypes.func,
+  forwardedRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.any }),
+  ]),
   grouped: PropTypes.bool,
   id: PropTypes.string,
   label: PropTypes.string.isRequired,
