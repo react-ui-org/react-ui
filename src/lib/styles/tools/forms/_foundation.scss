@@ -1,6 +1,7 @@
 // 1. Get ready for positioning of bottom line and caret.
 // 2. Override hover style of disabled input.
-// 3. Always prefer the `size` attribute when defined.
+// 3. Always prefer the `size` attribute when defined. Use CSS for sizing to normalize resulting
+//    width across browsers.
 // 4. Let inputs properly fit various layout scenarios.
 // 5. Leave out space for Select Field caret.
 
@@ -67,7 +68,13 @@
 
 @mixin form-field-input-text() {
   &[size] {
-    width: auto; // 3.
+    width:
+      calc(
+        1ch * var(--rui-custom-input-size)
+        + 2 * var(--rui-local-padding-horizontal)
+        + 2 * #{$form-field-border-width}
+      ); // 3.
+
     min-width: auto; // 3.
   }
 }
