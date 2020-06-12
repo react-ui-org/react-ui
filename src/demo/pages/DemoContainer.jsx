@@ -1274,48 +1274,48 @@ class DemoContainer extends React.Component {
                     <CardBody>
                       <h4>Flat card</h4>
                       <p>
-                        Flat card content <br />
-                        and the other one.
+                        Flat card content<br />
+                        that spans two lines.
                       </p>
                     </CardBody>
                     <CardFooter>
-                      <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
+                      <Button clickHandler={loggerClick} label="Click" block />
                     </CardFooter>
                   </Card>
                   <Card type="bordered">
                     <CardBody>
                       <h4>Bordered card</h4>
                       <p>
-                        Bordered card content <br />
-                        and the other one.
+                        Bordered card content<br />
+                        that spans two lines.
                       </p>
                     </CardBody>
                     <CardFooter>
-                      <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
+                      <Button clickHandler={loggerClick} label="Click" block />
                     </CardFooter>
                   </Card>
                   <Card type="warning">
                     <CardBody>
                       <h4>Warning card</h4>
                       <p>
-                        Warning card content <br />
-                        and the other one.
+                        Warning card content<br />
+                        that spans two lines.
                       </p>
                     </CardBody>
                     <CardFooter>
-                      <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
+                      <Button clickHandler={loggerClick} label="Click" block />
                     </CardFooter>
                   </Card>
                   <Card type="error">
                     <CardBody>
                       <h4>Error card</h4>
                       <p>
-                        Error card content <br />
-                        and the other one.
+                        Error card content<br />
+                        that spans two lines.
                       </p>
                     </CardBody>
                     <CardFooter>
-                      <Button clickHandler={loggerClick} label="Click" variant="secondary" block />
+                      <Button clickHandler={loggerClick} label="Click" block />
                     </CardFooter>
                   </Card>
                 </CardList>
@@ -1328,10 +1328,10 @@ class DemoContainer extends React.Component {
                   <CardBody>
                     <h4>Raised card</h4>
                     <p>
-                      Raised card content <br />
-                      and the other one.
+                      Raised card content<br />
+                      that spans two lines.
                     </p>
-                    <Button clickHandler={loggerClick} label="Click" variant="secondary" />
+                    <Button clickHandler={loggerClick} label="Click" />
                   </CardBody>
                 </Card>
               )}
@@ -1343,10 +1343,10 @@ class DemoContainer extends React.Component {
                   <CardBody>
                     <h4>Dense raised card</h4>
                     <p>
-                      Dense card content <br />
-                      and the other one.
+                      Dense card content<br />
+                      that spans two lines.
                     </p>
-                    <Button clickHandler={loggerClick} label="Click" variant="secondary" />
+                    <Button clickHandler={loggerClick} label="Click" />
                   </CardBody>
                 </Card>
               )}
@@ -1358,12 +1358,12 @@ class DemoContainer extends React.Component {
                   <CardBody>
                     <h4>Disabled card</h4>
                     <p>
-                      Disabled card content <br />
-                      and the other one.
+                      Disabled card content<br />
+                      that spans two lines.
                     </p>
                   </CardBody>
                   <CardFooter>
-                    <Button clickHandler={loggerClick} label="Click" variant="secondary" disabled />
+                    <Button clickHandler={loggerClick} label="Click" disabled />
                   </CardFooter>
                 </Card>
               )}

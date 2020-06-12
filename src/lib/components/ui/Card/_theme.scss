@@ -22,6 +22,7 @@ $card-types: (
 $card-disabled: (
   background-color: var(--rui-card-disabled-background-color),
   border-color: var(--rui-card-disabled-border-color),
+  opacity: var(--rui-card-disabled-opacity),
 );
 
 $card-in-list-max-width: var(--rui-card-in-list-max-width);

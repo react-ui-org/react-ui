@@ -433,7 +433,7 @@
   --rui-card-flat-border-color: transparent;
 
   // Cards: type: bordered
-  --rui-card-bordered-border-color: var(--rui-color-gray-400);
+  --rui-card-bordered-border-color: var(--rui-color-gray-200);
 
   // Cards: type: warning
   --rui-card-warning-border-color: var(--rui-color-warning);
@@ -450,6 +450,7 @@
   // Cards: disabled
   --rui-card-disabled-border-color: transparent;
   --rui-card-disabled-background-color: var(--rui-color-gray-50);
+  --rui-card-disabled-opacity: 0.6;
 
   //
   // Forms Fields
