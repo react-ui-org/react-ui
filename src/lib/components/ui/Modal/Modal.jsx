@@ -108,7 +108,7 @@ class Modal extends React.Component {
             {this.props.children}
           </div>
           <div className={styles.footer}>
-            <Toolbar dense>
+            <Toolbar justify="center" dense>
               {this.props.actions.map((action) => (
                 <ToolbarItem key={action.label}>
                   <Button

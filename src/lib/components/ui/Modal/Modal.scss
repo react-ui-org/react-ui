@@ -93,4 +93,6 @@
 
 .isRootAuto {
   width: auto;
+  min-width: $modal-size-auto-min-width;
+  max-width: $modal-size-auto-max-width;
 }
