@@ -36,6 +36,7 @@
 }
 
 .isDisabled {
+  opacity: map-get($card-disabled, opacity);
   border-color: map-get($card-disabled, border-color);
   background-color: map-get($card-disabled, background-color);
 }
