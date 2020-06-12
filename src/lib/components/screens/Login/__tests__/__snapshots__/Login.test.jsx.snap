@@ -74,6 +74,7 @@ exports[`rendering renders correctly 1`] = `
         rootVariantOutline"
                   htmlFor="usernameInput"
                   id="usernameInput__label"
+                  style={Object {}}
                 >
                   <div
                     className="label"
@@ -140,6 +141,7 @@ exports[`rendering renders correctly 1`] = `
         rootVariantOutline"
                   htmlFor="passwordInput"
                   id="passwordInput__label"
+                  style={Object {}}
                 >
                   <div
                     className="label"
@@ -321,6 +323,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
         rootVariantOutline"
                   htmlFor="custom-id__usernameInput"
                   id="custom-id__usernameInput__label"
+                  style={Object {}}
                 >
                   <div
                     className="label"
@@ -387,6 +390,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
         rootVariantOutline"
                   htmlFor="custom-id__passwordInput"
                   id="custom-id__passwordInput__label"
+                  style={Object {}}
                 >
                   <div
                     className="label"
@@ -557,6 +561,7 @@ exports[`rendering renders correctly with translations 1`] = `
         rootVariantOutline"
                   htmlFor="usernameInput"
                   id="usernameInput__label"
+                  style={Object {}}
                 >
                   <div
                     className="label"
@@ -623,6 +628,7 @@ exports[`rendering renders correctly with translations 1`] = `
         rootVariantOutline"
                   htmlFor="passwordInput"
                   id="passwordInput__label"
+                  style={Object {}}
                 >
                   <div
                     className="label"
@@ -773,6 +779,7 @@ exports[`rendering renders correctly with username 1`] = `
         rootVariantOutline"
                   htmlFor="usernameInput"
                   id="usernameInput__label"
+                  style={Object {}}
                 >
                   <div
                     className="label"
@@ -839,6 +846,7 @@ exports[`rendering renders correctly with username 1`] = `
         rootVariantOutline"
                   htmlFor="passwordInput"
                   id="passwordInput__label"
+                  style={Object {}}
                 >
                   <div
                     className="label"

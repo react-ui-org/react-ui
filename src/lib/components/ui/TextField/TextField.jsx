@@ -65,6 +65,16 @@ export const TextField = (props) => {
     rootVariantClass = styles.rootVariantOutline;
   }
 
+  const inlineStyle = (inputSize) => {
+    const style = {};
+
+    if (inputSize) {
+      style['--rui-custom-input-size'] = inputSize;
+    }
+
+    return style;
+  };
+
   const propsToTransfer = transferProps(
     props,
     ['changeHandler', 'disabled', 'fullWidth', 'helperText', 'id', 'inFormLayout', 'inputSize', 'isLabelVisible',
@@ -86,6 +96,7 @@ export const TextField = (props) => {
       `).trim()}
       htmlFor={props.id}
       id={`${props.id}__label`}
+      style={inlineStyle(props.inputSize)}
     >
       <div
         className={(`
