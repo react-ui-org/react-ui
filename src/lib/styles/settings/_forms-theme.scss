@@ -66,17 +66,20 @@ $form-field-states: (
 $form-field-sizes: (
   small: (
     height: var(--rui-form-field-small-height),
-    padding: var(--rui-form-field-small-padding),
+    padding-vertical: var(--rui-form-field-small-padding-vertical),
+    padding-horizontal: var(--rui-form-field-small-padding-horizontal),
     font-size: var(--rui-form-field-small-font-size),
   ),
   medium: (
     height: var(--rui-form-field-medium-height),
-    padding: var(--rui-form-field-medium-padding),
+    padding-vertical: var(--rui-form-field-medium-padding-vertical),
+    padding-horizontal: var(--rui-form-field-medium-padding-horizontal),
     font-size: var(--rui-form-field-medium-font-size),
   ),
   large: (
     height: var(--rui-form-field-large-height),
-    padding: var(--rui-form-field-large-padding),
+    padding-vertical: var(--rui-form-field-large-padding-vertical),
+    padding-horizontal: var(--rui-form-field-large-padding-horizontal),
     font-size: var(--rui-form-field-large-font-size),
   ),
 );

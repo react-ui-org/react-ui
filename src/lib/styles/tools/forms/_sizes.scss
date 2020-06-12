@@ -1,9 +1,4 @@
-// 1. Unfortunately, `align-items: baseline` does not work with empty inputs in Safari,
-//    so we must emulate this behavior and align label text with input text manually.
-
-@import '../../settings/forms';
 @import '../../settings/forms-theme';
-@import '../breakpoints';
 
 @mixin form-field-size($size, $is-multiline: false) {
   $size-properties: map-get($form-field-sizes, $size);
@@ -15,18 +10,11 @@
     }
 
     @else {
-      height: map-get($size-properties, height);
+      --rui-local-height: #{map-get($size-properties, height)};
     }
 
-    padding: map-get($size-properties, padding);
-    font-size: map-get($size-properties, font-size);
-  }
-
-  &.rootLayoutHorizontal {
-    @include breakpoint-up($form-field-horizontal-breakpoint) {
-      .label {
-        margin-top: ($form-field-line-height - $form-field-label-line-height) / 2; // 1.
-      }
-    }
+    --rui-local-padding-vertical: #{map-get($size-properties, padding-vertical)};
+    --rui-local-padding-horizontal: #{map-get($size-properties, padding-horizontal)};
+    --rui-local-font-size: #{map-get($size-properties, font-size)};
   }
 }

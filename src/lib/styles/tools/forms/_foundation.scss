@@ -2,9 +2,11 @@
 // 2. Override hover style of disabled input.
 // 3. Always prefer the `size` attribute when defined.
 // 4. Let inputs properly fit various layout scenarios.
+// 5. Leave out space for Select Field caret.
 
 @import '../../settings/forms';
 @import '../../settings/forms-theme';
+@import '../../tools/offset';
 @import '../transitions';
 @import 'states';
 
@@ -32,7 +34,10 @@
   width: $form-field-input-width;
   min-width: $form-field-input-min-width;
   max-width: 100%; // 4.
+  height: var(--rui-local-height);
+  padding: var(--rui-local-padding-vertical) var(--rui-local-padding-horizontal);
   font-weight: $form-field-font-weight;
+  font-size: var(--rui-local-font-size);
   line-height: $form-field-line-height;
   font-family: $form-field-font-family;
   vertical-align: middle;
@@ -76,7 +81,7 @@
 }
 
 @mixin form-field-input-select() {
-  padding-right: calc(#{$form-field-caret-size} - 2 * #{$form-field-border-width} + #{map-get($offset-values, 2)});
+  padding-right: calc(#{$form-field-caret-size} + #{offset(2)}); // 5.
   appearance: none;
 
   &::-ms-expand {
