@@ -80,11 +80,11 @@ exports[`rendering renders correctly with all props except translations 1`] = `
           <Toolbar
             align="top"
             dense={true}
-            justify="start"
+            justify="center"
             nowrap={false}
           >
             <div
-              className="toolbar isDense  isAlignedToTop isJustifiedToStart"
+              className="toolbar isDense  isAlignedToTop isJustifiedToCenter"
             >
               <ToolbarItem
                 key="Action"
@@ -280,11 +280,11 @@ exports[`rendering renders correctly with all props except translations and with
           <Toolbar
             align="top"
             dense={true}
-            justify="start"
+            justify="center"
             nowrap={false}
           >
             <div
-              className="toolbar isDense  isAlignedToTop isJustifiedToStart"
+              className="toolbar isDense  isAlignedToTop isJustifiedToCenter"
             >
               <ToolbarItem
                 key="Action"
@@ -459,11 +459,11 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           <Toolbar
             align="top"
             dense={true}
-            justify="start"
+            justify="center"
             nowrap={false}
           >
             <div
-              className="toolbar isDense  isAlignedToTop isJustifiedToStart"
+              className="toolbar isDense  isAlignedToTop isJustifiedToCenter"
             />
           </Toolbar>
         </div>
@@ -523,7 +523,7 @@ exports[`rendering renders correctly with portal id 1`] = `
                 class="footer"
               >
                 <div
-                  class="toolbar isDense  isAlignedToTop isJustifiedToStart"
+                  class="toolbar isDense  isAlignedToTop isJustifiedToCenter"
                 />
               </div>
             </div>
@@ -563,11 +563,11 @@ exports[`rendering renders correctly with portal id 1`] = `
             <Toolbar
               align="top"
               dense={true}
-              justify="start"
+              justify="center"
               nowrap={false}
             >
               <div
-                className="toolbar isDense  isAlignedToTop isJustifiedToStart"
+                className="toolbar isDense  isAlignedToTop isJustifiedToCenter"
               />
             </Toolbar>
           </div>
@@ -640,11 +640,11 @@ exports[`rendering renders correctly with translations 1`] = `
           <Toolbar
             align="top"
             dense={true}
-            justify="start"
+            justify="center"
             nowrap={false}
           >
             <div
-              className="toolbar isDense  isAlignedToTop isJustifiedToStart"
+              className="toolbar isDense  isAlignedToTop isJustifiedToCenter"
             >
               <ToolbarItem>
                 <div
