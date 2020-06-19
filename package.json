@@ -60,6 +60,10 @@
     "webpack-dev-server": "^3.11.0",
     "webpack-visualizer-plugin": "^0.1.11"
   },
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
   "scripts": {
     "build": "npm run lib:build && npm run demo:build",
     "demo:build": "webpack --mode production --config webpack.config.demo.js",

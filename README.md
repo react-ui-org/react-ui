@@ -18,8 +18,9 @@ React UI consists of the following building blocks:
 
 To use React UI in your app:
 
-1. Install it with `$ npm install --save @react-ui-org/react-ui`.
-2. First import the **theme layer** to the topmost level of your React app.
+1. Install `react` and `react-dom` in your application with `$ npm install --save react react-dom`
+2. Install `react-ui` with `$ npm install --save @react-ui-org/react-ui`.
+3. First import the **theme layer** to the topmost level of your React app.
    Either use the bundled theme as is:
    ```js
    // app.jsx
@@ -35,13 +36,13 @@ To use React UI in your app:
 
    ℹ️ Technically it is possible to import the theme layer anywhere later in the app.
    But it's a nice habit to declare variables before using them and that's what we are doing here.
-3. Add React UI **foundation styles**, the ground-zero CSS for React UI components:
+4. Add React UI **foundation styles**, the ground-zero CSS for React UI components:
    ```js
    // app.jsx
    import '@react-ui-org/react-ui/src/lib/theme.scss';
    import '@react-ui-org/react-ui/src/lib/foundation.scss';
    ```
-4. Optionally add the **helper and utility classes** bundles:
+5. Optionally add the **helper and utility classes** bundles:
    ```js
    // app.jsx
    import '@react-ui-org/react-ui/src/lib/theme.scss';
@@ -49,7 +50,7 @@ To use React UI in your app:
    import '@react-ui-org/react-ui/src/lib/helpers.scss';
    import '@react-ui-org/react-ui/src/lib/utilities.scss';
    ```
-5. Finally, use React UI **components** just like you are used to:
+6. Finally, use React UI **components** just like you are used to:
    ```js
    // MyDashboardScreen.jsx
    import React from 'react';
@@ -117,3 +118,24 @@ To publish the new version:
 3. Create new tag: `git tag -a vX.Y.Z -m "vX.Y.Z"`
 4. Push new tag: `git push --tags`
 5. Publish new version on npm: `npm publish --access public`
+
+### Package linking
+
+The best option for development of React UI is to link `react-ui` into your application with `npm link`.
+
+1. In React UI repository run `npm link` 
+2. In your application run `npm link @react-ui-org/react-ui`
+
+To prevent [Invalid Hook Call Warning](https://reactjs.org/warnings/invalid-hook-call-warning.html#duplicate-react)
+when React UI is linked, add following code to Webpack configuration of your client:
+
+```
+const path = require('path');
+
+resolve: {
+  alias: {
+    react: path.resolve('./node_modules/react'),
+    'react-dom': path.resolve('./node_modules/react-dom'),
+  },
+}
+```
