@@ -3,7 +3,7 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 const VisualizerPlugin = require('webpack-visualizer-plugin');
 
 const MAX_DEVELOPMENT_OUTPUT_SIZE = 1250000;
-const MAX_PRODUCTION_OUTPUT_SIZE = 180000;
+const MAX_PRODUCTION_OUTPUT_SIZE = 190000;
 
 module.exports = (env, argv) => ({
   devtool: argv.mode === 'production'
@@ -13,6 +13,22 @@ module.exports = (env, argv) => ({
     lib: [
       path.join(__dirname, 'src/lib/index.js'),
     ],
+  },
+  externals: {
+    react: {
+      amd: 'react',
+      commonjs: 'react',
+      commonjs2: 'react',
+      root: 'React',
+      umd: 'react',
+    },
+    'react-dom': {
+      amd: 'react-dom',
+      commonjs: 'react-dom',
+      commonjs2: 'react-dom',
+      root: 'ReactDOM',
+      umd: 'react-dom',
+    },
   },
   module: {
     rules: [
@@ -50,6 +66,7 @@ module.exports = (env, argv) => ({
     publicPath: '/dist/',
   },
   performance: {
+    hints: 'error',
     maxAssetSize: argv.mode === 'production'
       ? MAX_PRODUCTION_OUTPUT_SIZE
       : MAX_DEVELOPMENT_OUTPUT_SIZE,
