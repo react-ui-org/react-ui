@@ -1064,6 +1064,12 @@ class DemoContainer extends React.Component {
               )}
             />
             <Documentation
+              name="Link button"
+              component={(
+                <Button clickHandler={loggerClick} label="Button that looks like a link" priority="link" />
+              )}
+            />
+            <Documentation
               name="Buttons sizes"
               component={(
                 <Toolbar>
@@ -1082,7 +1088,7 @@ class DemoContainer extends React.Component {
             <Documentation
               name="Disabled buttons"
               component={(
-                <Toolbar>
+                <Toolbar align="middle">
                   <ToolbarItem>
                     <Button clickHandler={loggerClick} label="Disabled default" disabled />
                   </ToolbarItem>
@@ -1092,13 +1098,16 @@ class DemoContainer extends React.Component {
                   <ToolbarItem>
                     <Button clickHandler={loggerClick} label="Disabled flat" priority="flat" disabled />
                   </ToolbarItem>
+                  <ToolbarItem>
+                    <Button clickHandler={loggerClick} label="Disabled link" priority="link" disabled />
+                  </ToolbarItem>
                 </Toolbar>
               )}
             />
             <Documentation
               name="Buttons with Icons"
               component={(
-                <Toolbar>
+                <Toolbar align="middle">
                   <ToolbarItem>
                     <Button
                       clickHandler={loggerClick}
@@ -1127,6 +1136,14 @@ class DemoContainer extends React.Component {
                       label="Icon and label on desktop"
                       labelVisibility="desktop"
                       beforeLabel={<Icon icon="star" />}
+                    />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button
+                      clickHandler={loggerClick}
+                      beforeLabel={<Icon icon="star" />}
+                      label="Link button with icon"
+                      priority="link"
                     />
                   </ToolbarItem>
                 </Toolbar>

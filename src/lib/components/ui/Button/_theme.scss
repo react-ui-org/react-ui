@@ -317,6 +317,16 @@ $button-variants: (
       ),
     ),
   ),
+  link: (
+    default: (
+      color: var(--rui-link-color),
+      text-decoration: var(--rui-link-decoration),
+    ),
+    hover: (
+      color: var(--rui-link-hover-color),
+      text-decoration: var(--rui-link-hover-decoration),
+    ),
+  ),
 );
 
 $button-sizes: (

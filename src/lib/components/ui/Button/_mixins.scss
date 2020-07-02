@@ -3,9 +3,10 @@
 
 @import '../../../styles/tools/explode';
 @import '../../../styles/tools/forms/states';
+@import '../../../styles/tools/reset';
 @import '../../../styles/tools/transitions';
-@import 'variables';
 @import 'theme';
+@import 'variables';
 
 @mixin button() {
   @include transition((opacity, color, border, background, box-shadow));
@@ -39,6 +40,33 @@
 
   &:-moz-focusring {
     outline: 0;
+  }
+}
+
+@mixin button-unset() {
+  @include reset-button();
+
+  font-weight: unset;
+  line-height: unset;
+  font-family: unset;
+  text-transform: unset;
+  vertical-align: unset;
+  user-select: unset;
+  transition: unset;
+}
+
+@mixin button-link() {
+  $properties: map-get($button-variants, link);
+
+  @include button-unset();
+
+  text-decoration: map-get(map-get($properties, default), text-decoration);
+  color: map-get(map-get($properties, default), color);
+
+  &:not(:disabled):hover,
+  &:not(:disabled):focus {
+    text-decoration: map-get(map-get($properties, hover), text-decoration);
+    color: map-get(map-get($properties, hover), color);
   }
 }
 

@@ -1,7 +1,9 @@
-@import '../../../styles/settings/offsets';
+@import '../../../styles/settings/colors';
 @import '../../../styles/settings/typography';
+@import '../../../styles/tools/offset';
 
 $button-font-family: $typography-font-family-base;
 $button-line-height: $typography-line-height-base;
-$button-icon-offset: map-get($offset-values, 2);
+$button-icon-offset: offset(2);
 $button-breakpoint: lg;
+$button-group-separator-color: $color-white;
