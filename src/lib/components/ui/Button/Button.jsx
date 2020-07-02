@@ -5,48 +5,79 @@ import withForwardedRef from '../withForwardedRef';
 import styles from './Button.scss';
 
 export const Button = (props) => {
-  let priorityClass = styles.priorityDefault;
-  if (props.priority === 'outline') {
-    priorityClass = styles.priorityOutline;
-  } else if (props.priority === 'flat') {
-    priorityClass = styles.priorityFlat;
-  }
+  const {
+    afterLabel,
+    beforeLabel,
+    block,
+    clickHandler,
+    disabled,
+    endCorner,
+    forwardedRef,
+    grouped,
+    id,
+    label,
+    labelVisibility,
+    loadingIcon,
+    priority,
+    size,
+    startCorner,
+    type,
+    variant,
+  } = props;
 
-  let sizeClass = styles.sizeMedium;
-  if (props.size === 'small') {
-    sizeClass = styles.sizeSmall;
-  } else if (props.size === 'large') {
-    sizeClass = styles.sizeLarge;
-  }
-
-  let variantClass = styles.variantSecondary;
-  if (props.variant === 'primary') {
-    variantClass = styles.variantPrimary;
-  } else if (props.variant === 'success') {
-    variantClass = styles.variantSuccess;
-  } else if (props.variant === 'warning') {
-    variantClass = styles.variantWarning;
-  } else if (props.variant === 'danger') {
-    variantClass = styles.variantDanger;
-  } else if (props.variant === 'dark') {
-    variantClass = styles.variantDark;
-  }
-
+  let priorityClass = '';
+  let sizeClass = '';
+  let variantClass = '';
   let blockClass = '';
-  if (props.block) {
-    blockClass = styles.isRootBlock;
-  }
-
   let groupedClass = '';
-  if (props.grouped) {
-    groupedClass = styles.isRootGrouped;
+  let labelVisibilityClass = '';
+
+  if (priority === 'default') {
+    priorityClass = styles.priorityDefault;
+  } else if (priority === 'outline') {
+    priorityClass = styles.priorityOutline;
+  } else if (priority === 'flat') {
+    priorityClass = styles.priorityFlat;
+  } else if (priority === 'link') {
+    priorityClass = styles.priorityLink;
   }
 
-  let labelVisibilityClass = '';
-  if (props.labelVisibility === 'desktop') {
-    labelVisibilityClass = styles.withLabelHiddenMobile;
-  } else if (props.labelVisibility === 'none') {
-    labelVisibilityClass = styles.withLabelHidden;
+  if (priority !== 'link') {
+    if (size === 'small') {
+      sizeClass = styles.sizeSmall;
+    } else if (size === 'medium') {
+      sizeClass = styles.sizeMedium;
+    } else if (size === 'large') {
+      sizeClass = styles.sizeLarge;
+    }
+
+    if (variant === 'primary') {
+      variantClass = styles.variantPrimary;
+    } else if (variant === 'secondary') {
+      variantClass = styles.variantSecondary;
+    } else if (variant === 'success') {
+      variantClass = styles.variantSuccess;
+    } else if (variant === 'warning') {
+      variantClass = styles.variantWarning;
+    } else if (variant === 'danger') {
+      variantClass = styles.variantDanger;
+    } else if (variant === 'dark') {
+      variantClass = styles.variantDark;
+    }
+
+    if (block) {
+      blockClass = styles.isRootBlock;
+    }
+
+    if (grouped) {
+      groupedClass = styles.isRootGrouped;
+    }
+
+    if (labelVisibility === 'desktop') {
+      labelVisibilityClass = styles.withLabelHiddenMobile;
+    } else if (labelVisibility === 'none') {
+      labelVisibilityClass = styles.withLabelHidden;
+    }
   }
 
   const propsToTransfer = transferProps(
@@ -67,42 +98,42 @@ export const Button = (props) => {
         ${groupedClass}
         ${labelVisibilityClass}
       `).trim()}
-      disabled={props.disabled || !!props.loadingIcon}
-      id={props.id}
-      onClick={props.clickHandler}
-      ref={props.forwardedRef}
-      title={props.labelVisibility === 'all' ? null : props.label}
-      type={props.type}
+      disabled={disabled || !!loadingIcon}
+      id={id}
+      onClick={clickHandler}
+      ref={forwardedRef}
+      title={labelVisibility === 'all' ? null : label}
+      type={type}
     >
-      {props.startCorner && (
+      {priority !== 'link' && startCorner && (
         <span className={styles.startCorner}>
-          {props.startCorner}
+          {startCorner}
         </span>
       )}
-      {props.beforeLabel && (
+      {beforeLabel && (
         <span className={styles.beforeLabel}>
-          {props.beforeLabel}
+          {beforeLabel}
         </span>
       )}
       <span
         className={styles.label}
-        {...(props.id && { id: `${props.id}__labelText` })}
+        {...(id && { id: `${id}__labelText` })}
       >
-        {props.label}
+        {label}
       </span>
-      {props.afterLabel && (
+      {afterLabel && (
         <span className={styles.afterLabel}>
-          {props.afterLabel}
+          {afterLabel}
         </span>
       )}
-      {props.endCorner && (
+      {priority !== 'link' && endCorner && (
         <span className={styles.endCorner}>
-          {props.endCorner}
+          {endCorner}
         </span>
       )}
-      {props.loadingIcon && (
+      {priority !== 'link' && loadingIcon && (
         <span className={styles.loadingIcon}>
-          {props.loadingIcon}
+          {loadingIcon}
         </span>
       )}
     </button>
@@ -144,7 +175,7 @@ Button.propTypes = {
   label: PropTypes.string.isRequired,
   labelVisibility: PropTypes.oneOf(['all', 'desktop', 'none']),
   loadingIcon: PropTypes.node,
-  priority: PropTypes.oneOf(['default', 'outline', 'flat']),
+  priority: PropTypes.oneOf(['default', 'outline', 'flat', 'link']),
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   startCorner: PropTypes.node,
   type: PropTypes.oneOf(['button', 'submit']),

@@ -1,0 +1,125 @@
+@import '../../../styles/tools/accessibility';
+@import '../../../styles/tools/breakpoints';
+@import 'mixins';
+@import 'theme';
+@import 'variables';
+
+.root {
+  @include button();
+}
+
+.label {
+  display: block;
+}
+
+.beforeLabel,
+.afterLabel,
+.startCorner,
+.endCorner,
+.loadingIcon {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.beforeLabel {
+  margin-right: $button-icon-offset;
+}
+
+.afterLabel,
+.loadingIcon {
+  margin-left: $button-icon-offset;
+}
+
+.startCorner,
+.endCorner {
+  position: absolute;
+  top: -0.35rem;
+}
+
+.startCorner {
+  left: 0;
+  margin-left: -0.35rem;
+}
+
+.endCorner {
+  right: 0;
+  margin-right: -0.35rem;
+}
+
+.sizeSmall {
+  @include button-size(small);
+}
+
+.sizeMedium {
+  @include button-size(medium);
+}
+
+.sizeLarge {
+  @include button-size(large);
+}
+
+.isRootBlock {
+  width: 100%;
+}
+
+.isRootBlock.withLabelHiddenMobile {
+  @include breakpoint-up($button-breakpoint) {
+    width: 100%;
+  }
+}
+
+.isRootGrouped {
+  &:not(:first-child) {
+    margin-left: calc(-1 * #{$button-border-width});
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  &:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.withLabelHidden .label,
+.withLabelHiddenMobile .label {
+  @include accessibility-hide-text();
+}
+
+.withLabelHiddenMobile .label {
+  @include breakpoint-up($button-breakpoint) {
+    position: relative;
+    width: auto;
+    height: auto;
+  }
+}
+
+.withLabelHidden .beforeLabel,
+.withLabelHidden .afterLabel,
+.withLabelHiddenMobile .beforeLabel,
+.withLabelHiddenMobile .afterLabel {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.withLabelHiddenMobile .beforeLabel {
+  @include breakpoint-up($button-breakpoint) {
+    margin-right: $button-icon-offset;
+  }
+}
+
+.withLabelHiddenMobile .afterLabel {
+  @include breakpoint-up($button-breakpoint) {
+    margin-left: $button-icon-offset;
+  }
+}
+
+.withLabelHidden .loadingIcon,
+.withLabelHiddenMobile .loadingIcon {
+  display: none;
+
+  @include breakpoint-up($button-breakpoint) {
+    display: initial;
+  }
+}

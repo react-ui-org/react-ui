@@ -26,6 +26,36 @@ describe('rendering', () => {
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
 
+  it('renders correctly priority `link`', () => {
+    const tree = shallow(<Button
+      label="link"
+      priority="link"
+    />);
+
+    expect(shallowToJson(tree)).toMatchSnapshot();
+  });
+
+  it('renders correctly priority `link` with all props', () => {
+    const tree = shallow(<Button
+      priority="link"
+      variant="success"
+      size="large"
+      label="link"
+      labelVisibility="desktop"
+      beforeLabel={<span className="icon" />}
+      afterLabel={<span className="icon" />}
+      startCorner={<Badge label={1} />}
+      endCorner={<Badge label={2} />}
+      loadingIcon={<span className="icon" />}
+      id="custom-id"
+      disabled
+      block
+      grouped
+    />);
+
+    expect(shallowToJson(tree)).toMatchSnapshot();
+  });
+
   it('renders correctly flat', () => {
     const tree = shallow(<Button
       label="button"
