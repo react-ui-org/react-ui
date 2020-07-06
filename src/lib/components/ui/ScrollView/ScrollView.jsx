@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, {
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
 } from 'react';
@@ -10,11 +11,17 @@ import { getElementsPositionDifference } from '../../../services/elementPosition
 import { withTranslationContext } from '../../../translation';
 import styles from './ScrollView.scss';
 
+// Function `getElementsPositionDifference` sometimes returns floating point values that results
+// in inaccurate detection of start/end. It is necessary to accept this inaccuracy and take
+// every value less or equal to 1px as start/end.
+const EDGE_DETECTION_INACCURACY_PX = 1;
+
 export const ScrollView = (props) => {
   const {
     arrows,
     arrowsColor,
     arrowsScrollStep,
+    autoScroll,
     children,
     customEndShadowStyle,
     customNextArrow,
@@ -29,6 +36,7 @@ export const ScrollView = (props) => {
     translations,
   } = props;
 
+  const [isAutoScrollInProgress, setIsAutoScrollInProgress] = useState(false);
   const [isScrolledAtStart, setIsScrolledAtStart] = useState(false);
   const [isScrolledAtEnd, setIsScrolledAtEnd] = useState(false);
 
@@ -38,8 +46,10 @@ export const ScrollView = (props) => {
   const scrollViewViewportEl = useRef(null);
 
   const handleScrollViewState = (currentPosition) => {
-    const isScrolledAtStartActive = currentPosition[scrollPositionStart] < 0;
-    const isScrolledAtEndActive = currentPosition[scrollPositionEnd] > 0;
+    const isScrolledAtStartActive = currentPosition[scrollPositionStart]
+      <= -1 * EDGE_DETECTION_INACCURACY_PX;
+    const isScrolledAtEndActive = currentPosition[scrollPositionEnd]
+      >= EDGE_DETECTION_INACCURACY_PX;
 
     if (isScrolledAtStartActive !== isScrolledAtStart) {
       setIsScrolledAtStart(isScrolledAtStartActive);
@@ -48,6 +58,57 @@ export const ScrollView = (props) => {
     if (isScrolledAtEndActive !== isScrolledAtEnd) {
       setIsScrolledAtEnd(isScrolledAtEndActive);
     }
+  };
+
+  /**
+   * It handles scroll event fired on `scrollViewViewportEl` element. If autoScroll is in progress,
+   * and element it scrolled to the end of viewport, `isAutoScrollInProgress` is set to `false`.
+   */
+  const handleScrollWhenAutoScrollIsInProgress = () => {
+    const currentPosition = getElementsPositionDifference(
+      scrollViewContentEl,
+      scrollViewViewportEl,
+    );
+
+    if (currentPosition[scrollPositionEnd] <= EDGE_DETECTION_INACCURACY_PX) {
+      setIsAutoScrollInProgress(false);
+      scrollViewViewportEl.current.removeEventListener('scroll', handleScrollWhenAutoScrollIsInProgress);
+    }
+  };
+
+  /**
+   * If autoScroll is enabled, it automatically scrolls viewport element to the end of the
+   * the viewport when content is changed. It is performed only when viewport element is
+   * scrolled to the end of the viewport or when viewport element is in any position but
+   * autoScroll triggered by previous change is still in progress.
+   */
+  const handleScrollWhenAutoScrollIsEnabled = (forceAutoScroll = false) => {
+    if (autoScroll === 'off') {
+      return () => {};
+    }
+
+    const scrollViewContentElement = scrollViewContentEl.current;
+    const scrollViewViewportElement = scrollViewViewportEl.current;
+
+    const differenceX = direction === 'horizontal' ? scrollViewContentElement.offsetWidth : 0;
+    const differenceY = direction !== 'horizontal' ? scrollViewContentElement.offsetHeight : 0;
+
+    if (autoScroll === 'always' || forceAutoScroll) {
+      scrollViewViewportElement.scrollBy(differenceX, differenceY);
+    } else if (!isScrolledAtEnd || isAutoScrollInProgress) {
+      setIsAutoScrollInProgress(true);
+      scrollViewViewportElement.scrollBy(differenceX, differenceY);
+
+      // Handler `handleScrollWhenAutoScrollIsInProgress` sets `isAutoScrollInProgress` to `false`
+      // when viewport element is scrolled to the end of the viewport
+      scrollViewViewportElement.addEventListener('scroll', handleScrollWhenAutoScrollIsInProgress);
+
+      return () => {
+        scrollViewViewportElement.removeEventListener('scroll', handleScrollWhenAutoScrollIsInProgress);
+      };
+    }
+
+    return () => {};
   };
 
   useEffect(
@@ -60,7 +121,10 @@ export const ScrollView = (props) => {
   );
 
   useLoadResize(
-    (currentPosition) => (handleScrollViewState(currentPosition)),
+    (currentPosition) => {
+      handleScrollViewState(currentPosition);
+      handleScrollWhenAutoScrollIsEnabled(true);
+    },
     [isScrolledAtStart, isScrolledAtEnd],
     scrollViewContentEl,
     scrollViewViewportEl,
@@ -73,6 +137,17 @@ export const ScrollView = (props) => {
     scrollViewContentEl,
     scrollViewViewportEl,
     debounce,
+  );
+
+  const autoScrollChildrenKeys = autoScroll !== 'off' && children && React.Children
+    .map(children, (child) => child.key)
+    .reduce((reducedKeys, childKey) => reducedKeys + childKey, '');
+  const autoScrollChildrenLength = autoScroll !== 'off' && children && children.length;
+
+  useLayoutEffect(
+    handleScrollWhenAutoScrollIsEnabled,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [autoScroll, autoScrollChildrenKeys, autoScrollChildrenLength],
   );
 
   const setAlpha = (rgba, alpha) => ({
@@ -193,6 +268,7 @@ ScrollView.defaultProps = {
   arrows: false,
   arrowsColor: undefined,
   arrowsScrollStep: 200,
+  autoScroll: 'off',
   customEndShadowStyle: {},
   customNextArrow: null,
   customPrevArrow: null,
@@ -214,6 +290,17 @@ ScrollView.propTypes = {
   arrows: PropTypes.bool,
   arrowsColor: PropTypes.string,
   arrowsScrollStep: PropTypes.number,
+  /**
+   * Auto scroll mechanism requires to have `key` prop set for every child present in `children`
+   * prop because it detects changes of these keys. Otherwise it will not work.
+   *
+   * Option `always` means that auto scroll scrolls to the end every time content changes.
+   * Option `detectEnd` means that auto scroll scrolls to the end only when content is changed and
+   * user is scrolled at the end of the viewport at moment of change .
+   *
+   * See https://reactjs.org/docs/lists-and-keys.html#keys
+   */
+  autoScroll: PropTypes.oneOf(['always', 'detectEnd', 'off']),
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
