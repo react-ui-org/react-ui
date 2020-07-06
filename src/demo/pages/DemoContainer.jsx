@@ -66,9 +66,33 @@ const loggerClick = () => console.log('click'); // eslint-disable-line no-consol
 const submitter = () => console.log('submitted'); // eslint-disable-line no-console
 
 class DemoContainer extends React.Component {
+  static generateRandomString() {
+    const texts = [
+      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
+      'Aenean commodo ligula eget dolor. Aenean massa.',
+      'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+      'Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.',
+      'Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.',
+      'In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.',
+    ];
+
+    let text = '';
+    const repeatAmount = Math.floor(Math.random() * 9);
+
+    for (let i = 0; i < (repeatAmount + 1); i += 1) {
+      text += texts[Math.floor(Math.random() * Math.floor(texts.length - 1))];
+    }
+
+    return text;
+  }
+
   constructor(props) {
     super(props);
     this.state = {
+      scrollView1: this.constructor.generateRandomString(),
+      scrollView1AutoScroll: 'always',
+      scrollView2: this.constructor.generateRandomString(),
+      scrollView2AutoScroll: 'always',
       showModal: false,
       showModal2: false,
       showModal3: false,
@@ -1789,6 +1813,11 @@ class DemoContainer extends React.Component {
               Otherwise users without horizontal-scrolling-enabled device (like an old-school mouse)
               might not be able to access your content.
             </p>
+            <p>
+              If you use auto scroll mechanism, it requires to have `key` prop set for every child
+              present in `children` prop because it detects changes of these keys. Otherwise it
+              will not work as expected.
+            </p>
             <Documentation
               name="Vertical Scroll View"
               component={(
@@ -1916,6 +1945,123 @@ class DemoContainer extends React.Component {
                     />
                   </ScrollView>
                 </div>
+              )}
+            />
+            <Documentation
+              name="Verical Scroll View with auto scroll"
+              component={(
+                <>
+                  <div className="mb-5">
+                    <Toolbar justify="space-between">
+                      <ToolbarItem>
+                        <Radio
+                          changeHandler={(e) => {
+                            this.setState({
+                              scrollView1AutoScroll: e.target.value,
+                            });
+                          }}
+                          options={[
+                            {
+                              label: 'Always',
+                              value: 'always',
+                            },
+                            {
+                              label: 'When end detected',
+                              value: 'detectEnd',
+                            },
+                          ]}
+                          id="scrollView1AutoScroll"
+                          label="Autoscroll:"
+                          value={this.state.scrollView1AutoScroll}
+                        />
+                      </ToolbarItem>
+                      <ToolbarItem>
+                        <Button
+                          label="Add text into scroll view"
+                          clickHandler={
+                            () => {
+                              this.setState((prevState) => ({
+                                scrollView1: `${prevState.scrollView1}  ${this.constructor.generateRandomString()}`,
+                              }));
+                            }
+                          }
+                        />
+                      </ToolbarItem>
+                    </Toolbar>
+                  </div>
+                  <div style={{ height: '200px' }}>
+                    <ScrollView
+                      arrows
+                      autoScroll={this.state.scrollView1AutoScroll}
+                    >
+                      <Placeholder
+                        key={this.state.scrollView1.length}
+                        text={this.state.scrollView1}
+                      />
+                    </ScrollView>
+                  </div>
+                </>
+              )}
+            />
+            <Documentation
+              name="Horizontal Scroll View with auto scroll"
+              component={(
+                <>
+                  <div className="mb-5">
+                    <Toolbar justify="space-between">
+                      <ToolbarItem>
+                        <Radio
+                          changeHandler={(e) => {
+                            this.setState({
+                              scrollView2AutoScroll: e.target.value,
+                            });
+                          }}
+                          options={[
+                            {
+                              label: 'Always',
+                              value: 'always',
+                            },
+                            {
+                              label: 'When end detected',
+                              value: 'detectEnd',
+                            },
+                          ]}
+                          id="scrollView2AutoScroll"
+                          label="Autoscroll:"
+                          value={this.state.scrollView2AutoScroll}
+                        />
+                      </ToolbarItem>
+                      <ToolbarItem>
+                        <Button
+                          label="Add text into scroll view"
+                          clickHandler={
+                            () => {
+                              this.setState((prevState) => ({
+                                scrollView2: `${prevState.scrollView2}  ${this.constructor.generateRandomString()}`,
+                              }));
+                            }
+                          }
+                        />
+                      </ToolbarItem>
+                    </Toolbar>
+                  </div>
+                  <div>
+                    <ScrollView
+                      arrows
+                      autoScroll={this.state.scrollView2AutoScroll}
+                      direction="horizontal"
+                    >
+                      <div
+                        key={this.state.scrollView2.length}
+                        style={{ whiteSpace: 'nowrap' }}
+                      >
+                        <Placeholder
+                          text={this.state.scrollView2}
+                        />
+                      </div>
+                    </ScrollView>
+                  </div>
+                </>
               )}
             />
             <h3 id="ui-components-selectfield" className="typography-size-4 mb-6">Select Field</h3>

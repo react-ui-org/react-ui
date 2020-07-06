@@ -122,6 +122,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
             <ScrollView
               arrows={false}
               arrowsScrollStep={200}
+              autoScroll="off"
               customEndShadowStyle={
                 Object {
                   "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
@@ -453,6 +454,7 @@ exports[`rendering renders correctly with all props except translations and with
             <ScrollView
               arrows={false}
               arrowsScrollStep={200}
+              autoScroll="off"
               customEndShadowStyle={
                 Object {
                   "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
@@ -757,6 +759,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             <ScrollView
               arrows={false}
               arrowsScrollStep={200}
+              autoScroll="off"
               customEndShadowStyle={
                 Object {
                   "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
@@ -954,6 +957,7 @@ exports[`rendering renders correctly with portal id 1`] = `
               <ScrollView
                 arrows={false}
                 arrowsScrollStep={200}
+                autoScroll="off"
                 customEndShadowStyle={
                   Object {
                     "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
@@ -1110,6 +1114,7 @@ exports[`rendering renders correctly with translations 1`] = `
             <ScrollView
               arrows={false}
               arrowsScrollStep={200}
+              autoScroll="off"
               customEndShadowStyle={
                 Object {
                   "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
