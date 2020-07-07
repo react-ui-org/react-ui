@@ -22,27 +22,35 @@ To use React UI in your app:
 2. Install `react-ui` with `$ npm install --save @react-ui-org/react-ui`.
 3. First import the **theme layer** to the topmost level of your React app.
    Either use the bundled theme as is:
+
    ```js
    // app.jsx
    import '@react-ui-org/react-ui/src/lib/theme.scss';
    ```
+
    or use it as a foundation to create your custom theme (see Theming for more):
+
    ```js
    // app.jsx
    import './my-custom-theme.scss';
    ```
-   ⚠️ As of now, you will need **working SASS pipeline** for this to work.
-   This is to be changed to ready-to-use CSS in the future.
 
-   ℹ️ Technically it is possible to import the theme layer anywhere later in the app.
-   But it's a nice habit to declare variables before using them and that's what we are doing here.
+   ⚠️ As of now, you will need **working SASS pipeline** for this to work. This is to be changed
+   to ready-to-use CSS in the future.
+
+   ℹ️ Technically it is possible to import the theme layer anywhere later in the app. But it's a
+   nice habit to declare variables before using them and that's what we are doing here.
+
 4. Add React UI **foundation styles**, the ground-zero CSS for React UI components:
+
    ```js
    // app.jsx
    import '@react-ui-org/react-ui/src/lib/theme.scss';
    import '@react-ui-org/react-ui/src/lib/foundation.scss';
    ```
+
 5. Optionally add the **helper and utility classes** bundles:
+
    ```js
    // app.jsx
    import '@react-ui-org/react-ui/src/lib/theme.scss';
@@ -50,7 +58,9 @@ To use React UI in your app:
    import '@react-ui-org/react-ui/src/lib/helpers.scss';
    import '@react-ui-org/react-ui/src/lib/utilities.scss';
    ```
+
 6. Finally, use React UI **components** just like you are used to:
+
    ```js
    // MyDashboardScreen.jsx
    import React from 'react';
@@ -74,13 +84,15 @@ See the [default theme](src/lib/theme.scss) for the full list of available setti
 [cannot be used within media queries](https://www.w3.org/TR/css-variables-1/#using-variables)
 (because media query is not a CSS property).
 
-ℹ️ Please note that CSS custom properties are only supported by modern browsers.
-Refer to [caniuse.com](https://caniuse.com/#feat=css-variables) for compatibility overview.
+ℹ️ Please note that CSS custom properties are only supported by modern browsers. Refer to
+[caniuse.com](https://caniuse.com/#feat=css-variables) for compatibility overview.
 
 ### Theming Options
+
 With output size in mind, we recommend to choose from these theming options:
 
-- use the default theme and override just selected settings in your app — useful for tiny adjustments
+- use the default theme and override just selected settings in your app — useful for tiny
+  adjustments
 - copy the default theme to your app and change whatever is needed — useful for major visual changes
 
 ## Extending
@@ -93,8 +105,8 @@ that require icons allow to them to be passed in via props.
 
 ## Translations
 
-Structure of translations can be found in file `src/lib/translation/TranslationContext.jsx`.
-You can use `TranslationProvider` component and pass translated structure from this file into
+Structure of translations can be found in file `src/lib/translation/TranslationContext.jsx`. You
+can use `TranslationProvider` component and pass translated structure from this file into
 `TranslationProvider` as `translations` props to overwrite default translations.
 
 Second option is to overwrite translations locally using `translations` props of specific component.
@@ -121,15 +133,17 @@ To publish the new version:
 
 ### Package linking
 
-The best option for development of React UI is to link `react-ui` into your application with `npm link`.
+The best option for development of React UI is to link `react-ui` into your application with
+`npm link`.
 
-1. In React UI repository run `npm link` 
+1. In React UI repository run `npm link`
 2. In your application run `npm link @react-ui-org/react-ui`
 
-To prevent [Invalid Hook Call Warning](https://reactjs.org/warnings/invalid-hook-call-warning.html#duplicate-react)
+To prevent
+[Invalid Hook Call Warning](https://reactjs.org/warnings/invalid-hook-call-warning.html#duplicate-react)
 when React UI is linked, add following code to Webpack configuration of your client:
 
-```
+```js
 const path = require('path');
 
 resolve: {

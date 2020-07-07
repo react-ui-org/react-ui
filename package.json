@@ -46,6 +46,7 @@
     "eslint-plugin-react-hooks": "^4.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.0.1",
+    "markdownlint-cli": "~0.23.2",
     "node-sass": "^4.14.1",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^8.0.2",
@@ -71,8 +72,9 @@
     "demo:test": "eslint --ext js,jsx src/demo",
     "lib:build": "webpack --mode development --config webpack.config.lib.js && webpack --mode production --config webpack.config.lib.js",
     "lib:test": "stylelint \"src/lib/**/*.scss\" --config stylelint.config.js && eslint --ext js,jsx src/lib && jest -w",
+    "lint-markdown": "markdownlint **/*.md --ignore dist --ignore node_modules",
     "prepublishOnly": "npm run lib:build",
     "start": "npm run demo:start",
-    "test": "npm run lib:test && npm run demo:test"
+    "test": "npm run lint-markdown && npm run lib:test && npm run demo:test"
   }
 }
