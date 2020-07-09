@@ -74,6 +74,32 @@ To use React UI in your app:
    );
    ```
 
+### Development Mode
+
+It is possible to run React UI in your app in development mode. This is useful because:
+
+- In production mode React UI uses non-human-readable class names.
+- Runtime check (i.e. PropTypes) are suppressed in production mode.
+
+To enable development mode, add the following code to the `webpack.config.js` file in your app:
+
+```js
+module.exports = (env, argv) => ({
+  /* … */
+  resolve: {
+    alias: {
+      // Allow to run react-ui in development mode for easier development
+      '@react-ui-org/react-ui$': argv.mode === 'production'
+        ? '@react-ui-org/react-ui/dist/lib.js'
+        : '@react-ui-org/react-ui/dist/lib.development.js',
+    }
+  }
+  /* … */
+});
+```
+
+Then run webpack with the `--mode=production` or `--mode=development` flag.
+
 ## Theming
 
 **CSS custom properties** are used to define common visual properties like colors, fonts, borders,
