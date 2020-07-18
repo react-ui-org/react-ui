@@ -628,7 +628,7 @@ class DemoContainer extends React.Component {
                 <FormLayout
                   fieldLayout="horizontal"
                   labelWidth="auto"
-                  labelAutoWidthFallback="12em"
+                  labelWidthFallback="12em"
                 >
                   <>
                     <TextField
@@ -705,6 +705,97 @@ class DemoContainer extends React.Component {
                   />
                   <Radio
                     id="formLayoutHorizontalAutoFruit2"
+                    changeHandler={logger}
+                    label="And fruit again!"
+                    options={this.exampleOptions}
+                    value="apples"
+                  />
+                </FormLayout>
+              )}
+            />
+            <Documentation
+              name="Horizontal Form Layout with Limited-Width Labels (Firefox only, custom fallback; doesn't work inside auto-width Modals)"
+              component={(
+                <FormLayout
+                  fieldLayout="horizontal"
+                  labelWidth="limited"
+                  labelWidthFallback="12em"
+                >
+                  <>
+                    <TextField
+                      id="formLayoutHorizontalLimitedFirstName"
+                      changeHandler={logger}
+                      label="First Name"
+                    />
+                    <TextField
+                      id="formLayoutHorizontalLimitedLastName"
+                      changeHandler={logger}
+                      label="Last Name"
+                    />
+                  </>
+                  <TextField
+                    id="formLayoutHorizontalLimitedEmail"
+                    changeHandler={logger}
+                    label="Email address"
+                    type="email"
+                    helperText="Optional"
+                  />
+                  <>
+                    <TextField
+                      id="formLayoutHorizontalLimitedAddress1"
+                      changeHandler={logger}
+                      label="Address"
+                      placeholder="Address line 1"
+                    />
+                    <TextField
+                      id="formLayoutHorizontalLimitedAddress2"
+                      changeHandler={logger}
+                      isLabelVisible={false}
+                      label="Address 2"
+                      placeholder="Address line 2"
+                    />
+                    <TextField
+                      id="formLayoutHorizontalLimitedZip"
+                      changeHandler={logger}
+                      helperText="ZIP should be 5 to 6 digits long code."
+                      label="ZIP"
+                      inputSize={6}
+                      validationState="invalid"
+                    />
+                    <TextField
+                      id="formLayoutHorizontalLimitedCountry"
+                      changeHandler={logger}
+                      label="Country"
+                    />
+                    <CheckboxField
+                      id="formLayoutHorizontalLimitedDelivery"
+                      changeHandler={logger}
+                      label="This is my delivery address"
+                    />
+                  </>
+                  <SelectField
+                    id="formLayoutHorizontalLimitedFruit"
+                    changeHandler={logger}
+                    label="Your favourite fruit"
+                    options={this.exampleOptions}
+                  />
+                  <TextArea
+                    id="formLayoutHorizontalLimitedMessage"
+                    changeHandler={logger}
+                    fullWidth
+                    label="Message"
+                    rows={3}
+                  />
+                  <Toggle
+                    id="formLayoutHorizontalLimitedNewsletter"
+                    changeHandler={logger}
+                    checked
+                    label="Receive weekly newsletter"
+                    required
+                    description="Only once per week!"
+                  />
+                  <Radio
+                    id="formLayoutHorizontalLimitedFruit2"
                     changeHandler={logger}
                     label="And fruit again!"
                     options={this.exampleOptions}

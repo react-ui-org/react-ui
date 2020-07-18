@@ -17,11 +17,11 @@ exports[`rendering renders correctly with a single child 1`] = `
 
 exports[`rendering renders correctly with all props 1`] = `
 <div
-  className="root rootFieldLayoutHorizontal hasRootLabelWidthAuto hasRootCustomLabelAutoWidthFallback"
+  className="root rootFieldLayoutHorizontal hasRootLabelWidthAuto hasRootCustomLabelWidthFallback"
   id="test-id"
   style={
     Object {
-      "--rui-custom-label-auto-width-fallback": "200px",
+      "--rui-custom-label-width-fallback": "200px",
     }
   }
 >
