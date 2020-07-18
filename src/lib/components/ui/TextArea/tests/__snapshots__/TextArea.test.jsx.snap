@@ -20,18 +20,22 @@ exports[`rendering renders correctly mandatory props only 1`] = `
     label
   </div>
   <div
-    className="inputContainer"
+    className="field"
   >
-    <textarea
-      className="input"
-      cols={null}
-      disabled={false}
-      id="test"
-      onChange={null}
-      placeholder={null}
-      required={false}
-      rows={3}
-    />
+    <div
+      className="inputContainer"
+    >
+      <textarea
+        className="input"
+        cols={null}
+        disabled={false}
+        id="test"
+        onChange={null}
+        placeholder={null}
+        required={false}
+        rows={3}
+      />
+    </div>
   </div>
 </label>
 `;
@@ -57,28 +61,32 @@ exports[`rendering renders correctly with all props 1`] = `
     label
   </div>
   <div
-    className="inputContainer"
+    className="field"
   >
-    <textarea
-      className="input"
-      cols={10}
-      disabled={true}
-      id="test"
-      onChange={null}
-      placeholder="placeholder"
-      required={true}
-      rows={5}
-      value="value"
-    />
     <div
-      className="bottomLine"
-    />
-  </div>
-  <div
-    className="helperText"
-    id="test__helperText"
-  >
-    some help
+      className="inputContainer"
+    >
+      <textarea
+        className="input"
+        cols={10}
+        disabled={true}
+        id="test"
+        onChange={null}
+        placeholder="placeholder"
+        required={true}
+        rows={5}
+        value="value"
+      />
+      <div
+        className="bottomLine"
+      />
+    </div>
+    <div
+      className="helperText"
+      id="test__helperText"
+    >
+      some help
+    </div>
   </div>
 </label>
 `;
@@ -104,18 +112,22 @@ exports[`rendering renders correctly with hidden label 1`] = `
     label
   </div>
   <div
-    className="inputContainer"
+    className="field"
   >
-    <textarea
-      className="input"
-      cols={null}
-      disabled={false}
-      id="test"
-      onChange={null}
-      placeholder={null}
-      required={false}
-      rows={3}
-    />
+    <div
+      className="inputContainer"
+    >
+      <textarea
+        className="input"
+        cols={null}
+        disabled={false}
+        id="test"
+        onChange={null}
+        placeholder={null}
+        required={false}
+        rows={3}
+      />
+    </div>
   </div>
 </label>
 `;

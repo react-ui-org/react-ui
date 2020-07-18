@@ -22,18 +22,22 @@ exports[`rendering renders correctly mandatory props only 1`] = `
     label
   </div>
   <div
-    className="inputContainer"
+    className="field"
   >
-    <input
-      className="input"
-      disabled={false}
-      id="test"
-      onChange={null}
-      placeholder={null}
-      required={false}
-      size={null}
-      type="text"
-    />
+    <div
+      className="inputContainer"
+    >
+      <input
+        className="input"
+        disabled={false}
+        id="test"
+        onChange={null}
+        placeholder={null}
+        required={false}
+        size={null}
+        type="text"
+      />
+    </div>
   </div>
 </label>
 `;
@@ -65,28 +69,32 @@ exports[`rendering renders correctly with all props 1`] = `
     label
   </div>
   <div
-    className="inputContainer"
+    className="field"
   >
-    <input
-      className="input"
-      disabled={true}
-      id="test"
-      onChange={null}
-      placeholder="placeholder"
-      required={true}
-      size={3}
-      type="email"
-      value="value"
-    />
     <div
-      className="bottomLine"
-    />
-  </div>
-  <div
-    className="helperText"
-    id="test__helperText"
-  >
-    some help
+      className="inputContainer"
+    >
+      <input
+        className="input"
+        disabled={true}
+        id="test"
+        onChange={null}
+        placeholder="placeholder"
+        required={true}
+        size={3}
+        type="email"
+        value="value"
+      />
+      <div
+        className="bottomLine"
+      />
+    </div>
+    <div
+      className="helperText"
+      id="test__helperText"
+    >
+      some help
+    </div>
   </div>
 </label>
 `;
@@ -114,18 +122,22 @@ exports[`rendering renders correctly with hidden label 1`] = `
     label
   </div>
   <div
-    className="inputContainer"
+    className="field"
   >
-    <input
-      className="input"
-      disabled={false}
-      id="test"
-      onChange={null}
-      placeholder={null}
-      required={false}
-      size={null}
-      type="text"
-    />
+    <div
+      className="inputContainer"
+    >
+      <input
+        className="input"
+        disabled={false}
+        id="test"
+        onChange={null}
+        placeholder={null}
+        required={false}
+        size={null}
+        type="text"
+      />
+    </div>
   </div>
 </label>
 `;

@@ -3,6 +3,10 @@
 @mixin form-field-size($size, $is-multiline: false) {
   $size-properties: map-get($form-field-sizes, $size);
 
+  --rui-local-padding-vertical: #{map-get($size-properties, padding-vertical)};
+  --rui-local-padding-horizontal: #{map-get($size-properties, padding-horizontal)};
+  --rui-local-font-size: #{map-get($size-properties, font-size)};
+
   .input {
     @if $is-multiline {
       height: auto;
@@ -12,9 +16,5 @@
     @else {
       --rui-local-height: #{map-get($size-properties, height)};
     }
-
-    --rui-local-padding-vertical: #{map-get($size-properties, padding-vertical)};
-    --rui-local-padding-horizontal: #{map-get($size-properties, padding-horizontal)};
-    --rui-local-font-size: #{map-get($size-properties, font-size)};
   }
 }
