@@ -88,45 +88,47 @@ export const SelectField = (props) => {
       >
         {props.label}
       </div>
-      <div className={styles.inputContainer}>
-        <select
-          {...propsToTransfer}
-          className={styles.input}
-          disabled={props.disabled}
-          id={props.id}
-          onChange={props.changeHandler}
-          ref={props.forwardedRef}
-          required={props.required}
-          value={props.value}
-        >
-          {
-            props.options.map((option) => (
-              <option
-                disabled={option.disabled}
-                id={`${props.id}__item__${option.value}`}
-                key={option.value}
-                value={option.value}
-              >
-                {option.label}
-              </option>
-            ))
-          }
-        </select>
-        <div className={styles.caret}>
-          <span className={styles.caretIcon} />
+      <div className={styles.field}>
+        <div className={styles.inputContainer}>
+          <select
+            {...propsToTransfer}
+            className={styles.input}
+            disabled={props.disabled}
+            id={props.id}
+            onChange={props.changeHandler}
+            ref={props.forwardedRef}
+            required={props.required}
+            value={props.value}
+          >
+            {
+              props.options.map((option) => (
+                <option
+                  disabled={option.disabled}
+                  id={`${props.id}__item__${option.value}`}
+                  key={option.value}
+                  value={option.value}
+                >
+                  {option.label}
+                </option>
+              ))
+            }
+          </select>
+          <div className={styles.caret}>
+            <span className={styles.caretIcon} />
+          </div>
+          {props.variant === 'filled' && (
+            <div className={styles.bottomLine} />
+          )}
         </div>
-        {props.variant === 'filled' && (
-          <div className={styles.bottomLine} />
+        {props.helperText && (
+          <div
+            className={styles.helperText}
+            id={`${props.id}__helperText`}
+          >
+            {props.helperText}
+          </div>
         )}
       </div>
-      {props.helperText && (
-        <div
-          className={styles.helperText}
-          id={`${props.id}__helperText`}
-        >
-          {props.helperText}
-        </div>
-      )}
     </label>
   );
 };

@@ -4,6 +4,8 @@
 //    width across browsers.
 // 4. Let inputs properly fit various layout scenarios.
 // 5. Leave out space for Select Field caret.
+// 6. Align label to input baseline. Achieved with `padding-top` since `align-items: baseline`
+//    unfortunately doesn't work for blank text inputs in Safari.
 
 @import '../../settings/forms';
 @import '../../settings/forms-theme';
@@ -13,6 +15,7 @@
 @import 'states';
 
 @mixin form-field-label() {
+  padding-top: calc(#{$form-field-border-width} + var(--rui-local-padding-vertical)); // 6.
   overflow-wrap: break-word;
 }
 

@@ -88,32 +88,34 @@ export const TextArea = (props) => {
       >
         {props.label}
       </div>
-      <div className={styles.inputContainer}>
-        <textarea
-          {...propsToTransfer}
-          className={styles.input}
-          cols={props.cols}
-          disabled={props.disabled}
-          id={props.id}
-          onChange={props.changeHandler}
-          placeholder={props.placeholder}
-          ref={props.forwardedRef}
-          required={props.required}
-          rows={props.rows}
-          value={props.value}
-        />
-        {props.variant === 'filled' && (
-          <div className={styles.bottomLine} />
+      <div className={styles.field}>
+        <div className={styles.inputContainer}>
+          <textarea
+            {...propsToTransfer}
+            className={styles.input}
+            cols={props.cols}
+            disabled={props.disabled}
+            id={props.id}
+            onChange={props.changeHandler}
+            placeholder={props.placeholder}
+            ref={props.forwardedRef}
+            required={props.required}
+            rows={props.rows}
+            value={props.value}
+          />
+          {props.variant === 'filled' && (
+            <div className={styles.bottomLine} />
+          )}
+        </div>
+        {props.helperText && (
+          <div
+            className={styles.helperText}
+            id={`${props.id}__helperText`}
+          >
+            {props.helperText}
+          </div>
         )}
       </div>
-      {props.helperText && (
-        <div
-          className={styles.helperText}
-          id={`${props.id}__helperText`}
-        >
-          {props.helperText}
-        </div>
-      )}
     </label>
   );
 };

@@ -83,19 +83,23 @@ exports[`rendering renders correctly 1`] = `
                     E-mail
                   </div>
                   <div
-                    className="inputContainer"
+                    className="field"
                   >
-                    <input
-                      autoComplete="username"
-                      className="input"
-                      disabled={false}
-                      id="usernameInput"
-                      onChange={[Function]}
-                      placeholder={null}
-                      required={true}
-                      size={null}
-                      type="email"
-                    />
+                    <div
+                      className="inputContainer"
+                    >
+                      <input
+                        autoComplete="username"
+                        className="input"
+                        disabled={false}
+                        id="usernameInput"
+                        onChange={[Function]}
+                        placeholder={null}
+                        required={true}
+                        size={null}
+                        type="email"
+                      />
+                    </div>
                   </div>
                 </label>
               </TextField>
@@ -150,19 +154,23 @@ exports[`rendering renders correctly 1`] = `
                     Password
                   </div>
                   <div
-                    className="inputContainer"
+                    className="field"
                   >
-                    <input
-                      autoComplete="current-password"
-                      className="input"
-                      disabled={false}
-                      id="passwordInput"
-                      onChange={[Function]}
-                      placeholder={null}
-                      required={true}
-                      size={null}
-                      type="password"
-                    />
+                    <div
+                      className="inputContainer"
+                    >
+                      <input
+                        autoComplete="current-password"
+                        className="input"
+                        disabled={false}
+                        id="passwordInput"
+                        onChange={[Function]}
+                        placeholder={null}
+                        required={true}
+                        size={null}
+                        type="password"
+                      />
+                    </div>
                   </div>
                 </label>
               </TextField>
@@ -332,19 +340,23 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                     E-mail
                   </div>
                   <div
-                    className="inputContainer"
+                    className="field"
                   >
-                    <input
-                      autoComplete="username"
-                      className="input"
-                      disabled={false}
-                      id="custom-id__usernameInput"
-                      onChange={[Function]}
-                      placeholder={null}
-                      required={true}
-                      size={null}
-                      type="email"
-                    />
+                    <div
+                      className="inputContainer"
+                    >
+                      <input
+                        autoComplete="username"
+                        className="input"
+                        disabled={false}
+                        id="custom-id__usernameInput"
+                        onChange={[Function]}
+                        placeholder={null}
+                        required={true}
+                        size={null}
+                        type="email"
+                      />
+                    </div>
                   </div>
                 </label>
               </TextField>
@@ -399,19 +411,23 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                     Password
                   </div>
                   <div
-                    className="inputContainer"
+                    className="field"
                   >
-                    <input
-                      autoComplete="current-password"
-                      className="input"
-                      disabled={false}
-                      id="custom-id__passwordInput"
-                      onChange={[Function]}
-                      placeholder={null}
-                      required={true}
-                      size={null}
-                      type="password"
-                    />
+                    <div
+                      className="inputContainer"
+                    >
+                      <input
+                        autoComplete="current-password"
+                        className="input"
+                        disabled={false}
+                        id="custom-id__passwordInput"
+                        onChange={[Function]}
+                        placeholder={null}
+                        required={true}
+                        size={null}
+                        type="password"
+                      />
+                    </div>
                   </div>
                 </label>
               </TextField>
@@ -570,19 +586,23 @@ exports[`rendering renders correctly with translations 1`] = `
                     E-mail
                   </div>
                   <div
-                    className="inputContainer"
+                    className="field"
                   >
-                    <input
-                      autoComplete="username"
-                      className="input"
-                      disabled={false}
-                      id="usernameInput"
-                      onChange={[Function]}
-                      placeholder={null}
-                      required={true}
-                      size={null}
-                      type="email"
-                    />
+                    <div
+                      className="inputContainer"
+                    >
+                      <input
+                        autoComplete="username"
+                        className="input"
+                        disabled={false}
+                        id="usernameInput"
+                        onChange={[Function]}
+                        placeholder={null}
+                        required={true}
+                        size={null}
+                        type="email"
+                      />
+                    </div>
                   </div>
                 </label>
               </TextField>
@@ -637,19 +657,23 @@ exports[`rendering renders correctly with translations 1`] = `
                     Heslo
                   </div>
                   <div
-                    className="inputContainer"
+                    className="field"
                   >
-                    <input
-                      autoComplete="current-password"
-                      className="input"
-                      disabled={false}
-                      id="passwordInput"
-                      onChange={[Function]}
-                      placeholder={null}
-                      required={true}
-                      size={null}
-                      type="password"
-                    />
+                    <div
+                      className="inputContainer"
+                    >
+                      <input
+                        autoComplete="current-password"
+                        className="input"
+                        disabled={false}
+                        id="passwordInput"
+                        onChange={[Function]}
+                        placeholder={null}
+                        required={true}
+                        size={null}
+                        type="password"
+                      />
+                    </div>
                   </div>
                 </label>
               </TextField>
@@ -788,19 +812,23 @@ exports[`rendering renders correctly with username 1`] = `
                     Username
                   </div>
                   <div
-                    className="inputContainer"
+                    className="field"
                   >
-                    <input
-                      autoComplete="username"
-                      className="input"
-                      disabled={false}
-                      id="usernameInput"
-                      onChange={[Function]}
-                      placeholder={null}
-                      required={true}
-                      size={null}
-                      type="text"
-                    />
+                    <div
+                      className="inputContainer"
+                    >
+                      <input
+                        autoComplete="username"
+                        className="input"
+                        disabled={false}
+                        id="usernameInput"
+                        onChange={[Function]}
+                        placeholder={null}
+                        required={true}
+                        size={null}
+                        type="text"
+                      />
+                    </div>
                   </div>
                 </label>
               </TextField>
@@ -855,19 +883,23 @@ exports[`rendering renders correctly with username 1`] = `
                     Password
                   </div>
                   <div
-                    className="inputContainer"
+                    className="field"
                   >
-                    <input
-                      autoComplete="current-password"
-                      className="input"
-                      disabled={false}
-                      id="passwordInput"
-                      onChange={[Function]}
-                      placeholder={null}
-                      required={true}
-                      size={null}
-                      type="password"
-                    />
+                    <div
+                      className="inputContainer"
+                    >
+                      <input
+                        autoComplete="current-password"
+                        className="input"
+                        disabled={false}
+                        id="passwordInput"
+                        onChange={[Function]}
+                        placeholder={null}
+                        required={true}
+                        size={null}
+                        type="password"
+                      />
+                    </div>
                   </div>
                 </label>
               </TextField>

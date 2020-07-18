@@ -6,6 +6,7 @@ import styles from './TextField.scss';
 
 export const TextField = (props) => {
   const SMALL_INPUT_SIZE = 10;
+  const HAS_SMALL_INPUT = props.inputSize && props.inputSize <= SMALL_INPUT_SIZE;
 
   let labelVisibilityClass = '';
   let rootFullWidthClass = '';
@@ -29,7 +30,7 @@ export const TextField = (props) => {
     rootInFormLayoutClass = styles.isRootInFormLayout;
   }
 
-  if (props.inputSize && props.inputSize <= SMALL_INPUT_SIZE) {
+  if (HAS_SMALL_INPUT) {
     rootSmallInputClass = styles.hasRootSmallInput;
   }
 
@@ -107,32 +108,34 @@ export const TextField = (props) => {
       >
         {props.label}
       </div>
-      <div className={styles.inputContainer}>
-        <input
-          {...propsToTransfer}
-          className={styles.input}
-          disabled={props.disabled}
-          id={props.id}
-          onChange={props.changeHandler}
-          placeholder={props.placeholder}
-          ref={props.forwardedRef}
-          required={props.required}
-          size={props.type !== 'number' ? props.inputSize : null}
-          type={props.type}
-          value={props.value}
-        />
-        {props.variant === 'filled' && (
-          <div className={styles.bottomLine} />
+      <div className={styles.field}>
+        <div className={styles.inputContainer}>
+          <input
+            {...propsToTransfer}
+            className={styles.input}
+            disabled={props.disabled}
+            id={props.id}
+            onChange={props.changeHandler}
+            placeholder={props.placeholder}
+            ref={props.forwardedRef}
+            required={props.required}
+            size={props.type !== 'number' ? props.inputSize : null}
+            type={props.type}
+            value={props.value}
+          />
+          {props.variant === 'filled' && (
+            <div className={styles.bottomLine} />
+          )}
+        </div>
+        {props.helperText && (
+          <div
+            className={styles.helperText}
+            id={`${props.id}__helperText`}
+          >
+            {props.helperText}
+          </div>
         )}
       </div>
-      {props.helperText && (
-        <div
-          className={styles.helperText}
-          id={`${props.id}__helperText`}
-        >
-          {props.helperText}
-        </div>
-      )}
     </label>
   );
 };
