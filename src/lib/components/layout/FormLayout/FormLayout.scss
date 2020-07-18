@@ -7,10 +7,9 @@
 // 2. By default, form field label width is set to a configurable global value.
 // 3. Custom label width can be entered individually through a prop for each use of Form Layout.
 // 4. Form Layout can also automatically adjust the width of column with labels according to the
-//    longest label (which is possible only with `subgrid`). By default, automatic width is limited
-//    to 50 % of available horizontal space. However, the automatic width is currently supported
-//    only in Firefox so a fallback value is necessary (a global default which can be customised per
-//    use).
+//    longest label (which is possible only with `subgrid`). However, this feature is currently
+//    supported only in Firefox so a fallback value is necessary for non-supporting browsers
+//    (a global default which can be customised per use).
 
 @import '../../../styles/settings/forms';
 @import '../../../styles/settings/forms-theme';
@@ -39,16 +38,22 @@
   --rui-local-label-width-fallback: #{$form-layout-horizontal-label-default-width}; // 1., 2.
 }
 
-.hasRootLabelWidthCustom {
-  --rui-local-label-width: var(--rui-custom-label-width); // 3.
-  --rui-local-label-width-fallback: var(--rui-custom-label-width); // 3.
-}
-
 .hasRootLabelWidthAuto {
   --rui-local-label-width: #{$form-layout-horizontal-label-auto-width}; // 4.
   --rui-local-label-width-fallback: #{$form-layout-horizontal-label-auto-width-fallback}; // 4.
 }
 
-.hasRootLabelWidthAuto.hasRootCustomLabelAutoWidthFallback {
-  --rui-local-label-width-fallback: var(--rui-custom-label-auto-width-fallback); // 4.
+.hasRootLabelWidthLimited {
+  --rui-local-label-width: #{$form-layout-horizontal-label-limited-width}; // 4.
+  --rui-local-label-width-fallback: #{$form-layout-horizontal-label-limited-width-fallback}; // 4.
+}
+
+.hasRootLabelWidthCustom {
+  --rui-local-label-width: var(--rui-custom-label-width); // 3.
+  --rui-local-label-width-fallback: var(--rui-custom-label-width); // 3.
+}
+
+.hasRootLabelWidthAuto.hasRootCustomLabelWidthFallback,
+.hasRootLabelWidthLimited.hasRootCustomLabelWidthFallback {
+  --rui-local-label-width-fallback: var(--rui-custom-label-width-fallback); // 4.
 }

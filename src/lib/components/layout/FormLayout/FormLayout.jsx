@@ -3,22 +3,25 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './FormLayout.scss';
 
+const PREDEFINED_LABEL_WIDTH_VALUES = ['auto', 'default', 'limited'];
+
 const FormLayout = (props) => {
   const {
     children,
     fieldLayout,
     id,
-    labelAutoWidthFallback,
     labelWidth,
+    labelWidthFallback,
   } = props;
 
   if (!children) {
     return null;
   }
 
+  const HAS_CUSTOM_LABEL_WIDTH = !PREDEFINED_LABEL_WIDTH_VALUES.includes(labelWidth);
   let customLabelWidth;
 
-  if (labelWidth !== 'auto' && labelWidth !== 'default') {
+  if (HAS_CUSTOM_LABEL_WIDTH) {
     customLabelWidth = labelWidth;
   }
 
@@ -31,7 +34,7 @@ const FormLayout = (props) => {
   };
 
   const labelWidthClass = (width) => {
-    if (width !== 'auto' && width !== 'default') {
+    if (HAS_CUSTOM_LABEL_WIDTH) {
       return styles.hasRootLabelWidthCustom;
     }
 
@@ -39,18 +42,22 @@ const FormLayout = (props) => {
       return styles.hasRootLabelWidthAuto;
     }
 
+    if (width === 'limited') {
+      return styles.hasRootLabelWidthLimited;
+    }
+
     return styles.hasRootLabelWidthDefault;
   };
 
-  const inlineStyle = (customWidth, customAutoWidthFallback) => {
+  const inlineStyle = (customWidth, customWidthFallback) => {
     const style = {};
 
     if (customWidth) {
       style['--rui-custom-label-width'] = customWidth;
     }
 
-    if (customAutoWidthFallback) {
-      style['--rui-custom-label-auto-width-fallback'] = customAutoWidthFallback;
+    if (customWidthFallback) {
+      style['--rui-custom-label-width-fallback'] = customWidthFallback;
     }
 
     return style;
@@ -63,9 +70,9 @@ const FormLayout = (props) => {
         styles.root,
         fieldLayoutClass(fieldLayout),
         fieldLayout === 'horizontal' ? labelWidthClass(labelWidth) : '',
-        labelAutoWidthFallback ? styles.hasRootCustomLabelAutoWidthFallback : '',
+        labelWidthFallback ? styles.hasRootCustomLabelWidthFallback : '',
       ].join(' ')}
-      style={inlineStyle(customLabelWidth, labelAutoWidthFallback)}
+      style={inlineStyle(customLabelWidth, labelWidthFallback)}
     >
       {flattenChildren(children).map((child) => {
         if (!React.isValidElement(child)) {
@@ -85,19 +92,19 @@ FormLayout.defaultProps = {
   children: null,
   fieldLayout: 'vertical',
   id: undefined,
-  labelAutoWidthFallback: undefined,
   labelWidth: 'default',
+  labelWidthFallback: undefined,
 };
 
 FormLayout.propTypes = {
   children: PropTypes.node,
   fieldLayout: PropTypes.oneOf(['horizontal', 'vertical']),
   id: PropTypes.string,
-  labelAutoWidthFallback: PropTypes.string,
   labelWidth: PropTypes.oneOfType([
-    PropTypes.oneOf(['auto', 'default']),
+    PropTypes.oneOf(PREDEFINED_LABEL_WIDTH_VALUES),
     PropTypes.string,
   ]),
+  labelWidthFallback: PropTypes.string,
 };
 
 export default FormLayout;

@@ -45,8 +45,8 @@ describe('rendering', () => {
       <FormLayout
         fieldLayout="horizontal"
         id="test-id"
-        labelAutoWidthFallback="200px"
         labelWidth="auto"
+        labelWidthFallback="200px"
       >
         <TextField id="test-id" label="Text field" />
       </FormLayout>
