@@ -1,0 +1,29 @@
+@import '../../../styles/tools/forms/layouts';
+
+.root {
+  @include form-field-in-form-layout();
+}
+
+.label {
+  overflow-wrap: break-word;
+}
+
+.rootLayoutHorizontal {
+  @include form-field-layout-horizontal();
+}
+
+.rootLayoutVertical {
+  @include form-field-layout-vertical();
+}
+
+.rootLayoutHorizontal .field,
+.rootLayoutVertical .field {
+  width: auto;
+}
+
+.root.rootLayoutHorizontal {
+  @include breakpoint-up($form-field-horizontal-breakpoint) {
+    grid-template-columns: var(--rui-local-label-width-fallback) 1fr;
+    grid-template-columns: subgrid;
+  }
+}

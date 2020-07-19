@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly with a single child 1`] = `
+<div
+  className="root
+      rootLayoutVertical"
+>
+  <div
+    className="field"
+  >
+    <span>
+      Custom text in form
+    </span>
+  </div>
+</div>
+`;
+
+exports[`rendering renders correctly with all props 1`] = `
+<div
+  className="root
+      rootLayoutHorizontal"
+  id="my-custom-field"
+>
+  <div
+    className="label"
+    id="my-custom-field__label"
+  >
+    Label
+  </div>
+  <div
+    className="field"
+    id="my-custom-field__field"
+  >
+    <span>
+      Custom text in form 1
+    </span>
+    <span>
+      Custom text in form 2
+    </span>
+    <span>
+      Custom text in form 3
+    </span>
+  </div>
+</div>
+`;
+
+exports[`rendering renders correctly with multiple children 1`] = `
+<div
+  className="root
+      rootLayoutVertical"
+>
+  <div
+    className="field"
+  >
+    <span>
+      Custom text in form 1
+    </span>
+    <span>
+      Custom text in form 2
+    </span>
+    <span>
+      Custom text in form 3
+    </span>
+  </div>
+</div>
+`;
