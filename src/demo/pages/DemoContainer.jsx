@@ -22,6 +22,7 @@ import {
   CheckboxField,
   ForgotPassword,
   FormLayout,
+  FormLayoutCustomField,
   LayoutCenter,
   List,
   ListItem,
@@ -398,11 +399,12 @@ class DemoContainer extends React.Component {
                       inputSize={6}
                       validationState="invalid"
                     />
-                    <TextField
+                    <FormLayoutCustomField
                       id="formLayoutVerticalCountry"
-                      changeHandler={logger}
                       label="Country"
-                    />
+                    >
+                      <span>Czech Republic</span>
+                    </FormLayoutCustomField>
                     <CheckboxField
                       id="formLayoutVerticalDelivery"
                       changeHandler={logger}
@@ -490,11 +492,12 @@ class DemoContainer extends React.Component {
                       inputSize={6}
                       validationState="invalid"
                     />
-                    <TextField
+                    <FormLayoutCustomField
                       id="formLayoutHorizontalCountry"
-                      changeHandler={logger}
                       label="Country"
-                    />
+                    >
+                      <span>Czech Republic</span>
+                    </FormLayoutCustomField>
                     <CheckboxField
                       id="formLayoutHorizontalDelivery"
                       changeHandler={logger}
@@ -580,11 +583,12 @@ class DemoContainer extends React.Component {
                       inputSize={6}
                       validationState="invalid"
                     />
-                    <TextField
+                    <FormLayoutCustomField
                       id="formLayoutHorizontalCustomCountry"
-                      changeHandler={logger}
                       label="Country"
-                    />
+                    >
+                      <span>Czech Republic</span>
+                    </FormLayoutCustomField>
                     <CheckboxField
                       id="formLayoutHorizontalCustomDelivery"
                       changeHandler={logger}
@@ -671,11 +675,12 @@ class DemoContainer extends React.Component {
                       inputSize={6}
                       validationState="invalid"
                     />
-                    <TextField
+                    <FormLayoutCustomField
                       id="formLayoutHorizontalAutoCountry"
-                      changeHandler={logger}
                       label="Country"
-                    />
+                    >
+                      <span>Czech Republic</span>
+                    </FormLayoutCustomField>
                     <CheckboxField
                       id="formLayoutHorizontalAutoDelivery"
                       changeHandler={logger}
@@ -762,11 +767,12 @@ class DemoContainer extends React.Component {
                       inputSize={6}
                       validationState="invalid"
                     />
-                    <TextField
+                    <FormLayoutCustomField
                       id="formLayoutHorizontalLimitedCountry"
-                      changeHandler={logger}
                       label="Country"
-                    />
+                    >
+                      <span>Czech Republic</span>
+                    </FormLayoutCustomField>
                     <CheckboxField
                       id="formLayoutHorizontalLimitedDelivery"
                       changeHandler={logger}
