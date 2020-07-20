@@ -181,6 +181,10 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                     </div>
                   </div>
                 </div>
+                <div
+                  aria-hidden={true}
+                  className="scrollingShadows"
+                />
               </div>
             </ScrollView>
           </WithTranslationContextComponent>
@@ -510,6 +514,10 @@ exports[`rendering renders correctly with all props except translations and with
                     </div>
                   </div>
                 </div>
+                <div
+                  aria-hidden={true}
+                  className="scrollingShadows"
+                />
               </div>
             </ScrollView>
           </WithTranslationContextComponent>
@@ -803,6 +811,10 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                     </div>
                   </div>
                 </div>
+                <div
+                  aria-hidden={true}
+                  className="scrollingShadows"
+                />
               </div>
             </ScrollView>
           </WithTranslationContextComponent>
@@ -901,6 +913,10 @@ exports[`rendering renders correctly with portal id 1`] = `
                       </div>
                     </div>
                   </div>
+                  <div
+                    aria-hidden="true"
+                    class="scrollingShadows"
+                  />
                 </div>
               </div>
               <div
@@ -1013,6 +1029,10 @@ exports[`rendering renders correctly with portal id 1`] = `
                       </div>
                     </div>
                   </div>
+                  <div
+                    aria-hidden={true}
+                    className="scrollingShadows"
+                  />
                 </div>
               </ScrollView>
             </WithTranslationContextComponent>
@@ -1179,6 +1199,10 @@ exports[`rendering renders correctly with translations 1`] = `
                     </div>
                   </div>
                 </div>
+                <div
+                  aria-hidden={true}
+                  className="scrollingShadows"
+                />
               </div>
             </ScrollView>
           </WithTranslationContextComponent>

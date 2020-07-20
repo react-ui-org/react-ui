@@ -1,34 +1,50 @@
+// 1. Scrolling shadows are implemented as pseudo elements. This way we can customise them only
+//    with custom properties.
+// 2. Stack scrolling shadows  over viewport content while keeping the content interactive.
+//
+//    - `.scrollingShadows` is positioned absolutely over the `.root`, with auto `z-index` (this is
+//      important!), and with `overflow: hidden` to clip the shadows (ie. its pseudo elements).
+//    - The `.viewport` is in `.root`'s stacking context and remains interactive because its
+//      `z-index` is higher than the auto `z-index` of `.scrollingShadows`.
+//
+// 3. Optional arrows are positioned relative to the `.root` and stacked on top of scrolling
+//    shadows. They can be shifted outside the `ScrollView` area only because `overflow: hidden` is
+//    **not** present at `.root`.
+//
+// 4. Make the `.content`'s bounding rectangle spread beyond the part visible through `.viewport`.
+// 5. Prevent undesired vertical scrolling that may occur with tables inside.
+// 6. Make `ScrollView` adjust to flexible layouts.
+
 @import '../../../styles/tools/caret';
 @import '../../../styles/tools/hide-scrollbar';
 @import '../../../styles/tools/reset';
 @import '../../../styles/tools/transitions';
 @import 'theme';
 
-// 1. Scrolling shadows are implemented as pseudo elements. This way we can customise them only
-//    thanks to custom properties.
-// 2. Clip scrolling shadows.
-// 3. Create stacking context just to avoid scrolling shadows being covered by content.
-// 4. Make the content bounding rectangle spread beyond the visible part.
-// 5. Prevent undesired vertical scrolling that may occur with tables inside.
-
 $_arrow-inner-offset: 0.5rem;
 $_arrow-outer-offset: 1rem;
 
 .root {
-  position: relative;
+  position: relative; // 2.
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+// 1.
+.scrollingShadows {
+  position: absolute; // 2.
+  width: 100%; // 2.
+  height: 100%; // 2.
   overflow: hidden; // 2.
 
-  // 1.
   &::before,
   &::after {
     @include transition((visibility, opacity, transform));
 
     content: '';
     position: absolute;
-    z-index: 1;
+    z-index: 2; // 2.
     display: block;
     visibility: hidden;
     opacity: 0;
@@ -48,7 +64,7 @@ $_arrow-outer-offset: 1rem;
 }
 
 .viewport {
-  position: relative; // 3.
+  z-index: 1; // 2.
   width: 100%;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
@@ -59,8 +75,8 @@ $_arrow-outer-offset: 1rem;
   @include reset-button();
   @include transition((visibility, opacity, transform));
 
-  position: absolute;
-  z-index: 2;
+  position: absolute; // 3.
+  z-index: 3; // 3.
   display: flex;
   visibility: hidden;
   opacity: 0;
@@ -75,11 +91,12 @@ $_arrow-outer-offset: 1rem;
 
 .isRootVertical {
   height: 100%;
+  min-height: 0; // 6.
 }
 
 .isRootVertical .viewport {
   height: 100%;
-  overflow-y: auto;
+  overflow-y: auto; // 2.
 }
 
 .isRootVertical .arrowPrev {
@@ -104,6 +121,10 @@ $_arrow-outer-offset: 1rem;
   padding-top: $_arrow-inner-offset;
   padding-bottom: $_arrow-outer-offset;
   transform: translateY(calc(-1 * #{$scrollview-arrow-initial-offset}));
+}
+
+.isRootHorizontal {
+  min-width: 0; // 6.
 }
 
 .isRootHorizontal .arrowPrev {
@@ -132,24 +153,24 @@ $_arrow-outer-offset: 1rem;
   @include caret-rotate(270);
 }
 
-.isRootVertical::before,
-.isRootVertical::after {
+.isRootVertical .scrollingShadows::before,
+.isRootVertical .scrollingShadows::after {
   right: 0;
   left: 0;
 }
 
-.isRootVertical::before {
+.isRootVertical .scrollingShadows::before {
   top: 0;
   transform: translateY($scrollview-shadow-initial-offset);
 }
 
-.isRootVertical::after {
+.isRootVertical .scrollingShadows::after {
   bottom: 0;
   transform: translateY(calc(-1 * #{$scrollview-shadow-initial-offset}));
 }
 
 .isRootHorizontal .viewport {
-  overflow-x: auto;
+  overflow-x: auto; // 2.
   overflow-y: hidden; // 5.
 }
 
@@ -158,30 +179,30 @@ $_arrow-outer-offset: 1rem;
   min-width: 100%;
 }
 
-.isRootHorizontal::before,
-.isRootHorizontal::after {
+.isRootHorizontal .scrollingShadows::before,
+.isRootHorizontal .scrollingShadows::after {
   top: 0;
   bottom: 0;
 }
 
-.isRootHorizontal::before {
+.isRootHorizontal .scrollingShadows::before {
   left: 0;
   transform: translateX($scrollview-shadow-initial-offset);
 }
 
-.isRootHorizontal::after {
+.isRootHorizontal .scrollingShadows::after {
   right: 0;
   transform: translateX(calc(-1 * #{$scrollview-shadow-initial-offset}));
 }
 
-.isRootScrolledAtStart::before,
+.isRootScrolledAtStart .scrollingShadows::before,
 .isRootScrolledAtStart .arrowPrev {
   visibility: visible;
   opacity: 1;
   transform: translate(0, 0);
 }
 
-.isRootScrolledAtEnd::after,
+.isRootScrolledAtEnd .scrollingShadows::after,
 .isRootScrolledAtEnd .arrowNext {
   visibility: visible;
   opacity: 1;

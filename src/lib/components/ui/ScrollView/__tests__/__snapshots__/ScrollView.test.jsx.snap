@@ -55,6 +55,10 @@ exports[`rendering renders correctly with a single child 1`] = `
           </span>
         </div>
       </div>
+      <div
+        aria-hidden={true}
+        className="scrollingShadows"
+      />
     </div>
   </ScrollView>
 </WithTranslationContextComponent>
@@ -179,6 +183,10 @@ exports[`rendering renders correctly with all props 1`] = `
           </span>
         </div>
       </div>
+      <div
+        aria-hidden={true}
+        className="scrollingShadows"
+      />
       <button
         className="arrowPrev"
         id="my-scrollview__arrowPrevButton"
@@ -263,6 +271,10 @@ exports[`rendering renders correctly with arrows 1`] = `
           </span>
         </div>
       </div>
+      <div
+        aria-hidden={true}
+        className="scrollingShadows"
+      />
       <button
         className="arrowPrev"
         onClick={[Function]}
@@ -349,6 +361,10 @@ exports[`rendering renders correctly with multiple children 1`] = `
           </span>
         </div>
       </div>
+      <div
+        aria-hidden={true}
+        className="scrollingShadows"
+      />
     </div>
   </ScrollView>
 </WithTranslationContextComponent>
@@ -410,6 +426,10 @@ exports[`rendering renders correctly with scrollbar disabled 1`] = `
           </span>
         </div>
       </div>
+      <div
+        aria-hidden={true}
+        className="scrollingShadows"
+      />
     </div>
   </ScrollView>
 </WithTranslationContextComponent>
