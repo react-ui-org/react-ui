@@ -148,6 +148,7 @@ export const ScrollView = (props) => {
           {children}
         </div>
       </div>
+      <div className={styles.scrollingShadows} aria-hidden />
       {arrows && (
         <>
           <button
