@@ -1,7 +1,28 @@
 {
   "name": "@react-ui-org/react-ui",
+  "description": "React UI is a themeable UI library for React apps.",
   "version": "0.32.0",
+  "keywords": [
+    "react",
+    "ui",
+    "components",
+    "themeable",
+    "ui-library",
+    "ui-components",
+    "pattern-library",
+    "component-library",
+    "react-components",
+    "react-component-library"
+  ],
+  "homepage": "https://react-ui.io",
+  "author": "The React UI Authors (https://github.com/react-ui-org/react-ui/graphs/contributors)",
+  "contributors": [
+    "RACOM s.r.o."
+  ],
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/react-ui-org/react-ui/issues"
+  },
   "main": "dist/lib.js",
   "repository": {
     "type": "git",
