@@ -145,6 +145,7 @@
 
     // Elevations
     --rui-elevation-1: 0 0.01rem 0.65rem -0.1rem #{rgba(0, 0, 0, 0.3)};
+    --rui-elevation-2: 0.2rem 0.25rem 1.2rem -0.1rem #{rgba(0, 0, 0, 0.15)};
 
     // Accessibility
     --rui-tap-target-size: 10mm;
@@ -901,6 +902,19 @@
     --rui-Paper--muted__background-color: var(--rui-disabled-background-color);
     --rui-Paper--muted__opacity: var(--rui-disabled-opacity);
     --rui-Paper--raised__box-shadow: var(--rui-elevation-1);
+
+    //
+    // Popover
+    // =======
+
+    --rui-Popover__width: 15rem;
+    --rui-Popover__padding: var(--rui-spacing-3);
+    --rui-Popover__border-width: 0;
+    --rui-Popover__border-color: transparent;
+    --rui-Popover__border-radius: var(--rui-border-radius);
+    --rui-Popover__color: var(--rui-color-black);
+    --rui-Popover__background-color: var(--rui-color-white);
+    --rui-Popover__box-shadow: var(--rui-elevation-2);
 
     //
     // ScrollView
