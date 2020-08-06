@@ -1,0 +1,231 @@
+// 1. Reset positioning for controlled variant.
+// 2. Shift Popover so there is space for the arrow between Popover and reference element.
+// 3. Add top offset in case it's not defined by external library.
+
+@use "theme";
+
+.root {
+    position: absolute;
+    width: theme.$width;
+    padding: theme.$padding;
+    color: theme.$color;
+    border: theme.$border-width solid theme.$border-color;
+    border-radius: theme.$border-radius;
+    background-color: theme.$background-color;
+    box-shadow: theme.$box-shadow;
+}
+
+.arrow {
+    position: absolute;
+    width: theme.$arrow-width;
+    height: theme.$arrow-height;
+    transform-origin: center bottom;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        border-style: solid;
+        border-color: transparent;
+    }
+
+    &::before {
+        bottom: 0;
+        border-width: theme.$arrow-height theme.$arrow-height 0;
+        border-top-color: theme.$border-color;
+    }
+
+    &::after {
+        bottom: theme.$border-width;
+        border-width: theme.$arrow-height theme.$arrow-height 0;
+        border-top-color: theme.$background-color;
+    }
+}
+
+// Sides
+.isRootAtTop {
+    bottom: 100%;
+}
+
+.isRootAtBottom {
+    top: 100%;
+}
+
+.isRootAtLeft {
+    right: 100%;
+}
+
+.isRootAtRight {
+    left: 100%;
+}
+
+// Arrows
+.isRootAtTop > .arrow {
+    top: 100%;
+}
+
+.isRootAtBottom > .arrow {
+    bottom: 100%;
+}
+
+.isRootAtLeft > .arrow {
+    left: 100%;
+}
+
+.isRootAtRight > .arrow {
+    right: 100%;
+}
+
+// Side alignments: top
+.isRootAtTop.isRootAtCenter {
+    left: 50%;
+    transform: translate(-50%, #{-1 * theme.$arrow-height});
+}
+
+.isRootAtTop.isRootAtStart {
+    left: 0;
+    transform: translate(0, #{-1 * theme.$arrow-height});
+}
+
+.isRootAtTop.isRootAtEnd {
+    right: 0;
+    transform: translate(0, #{-1 * theme.$arrow-height});
+}
+
+.isRootAtTop.isRootAtCenter > .arrow {
+    left: 50%;
+    transform: translate(-50%, 0) rotateZ(0);
+}
+
+.isRootAtTop.isRootAtStart > .arrow {
+    left: theme.$arrow-corner-offset;
+    transform: translate(0, 0) rotateZ(0);
+}
+
+.isRootAtTop.isRootAtEnd > .arrow {
+    right: theme.$arrow-corner-offset;
+    transform: translate(0, 0) rotateZ(0);
+}
+
+// Side alignments: bottom
+.isRootAtBottom.isRootAtCenter {
+    left: 50%;
+    transform: translate(-50%, #{theme.$arrow-height});
+}
+
+.isRootAtBottom.isRootAtStart {
+    left: 0;
+    transform: translate(0, #{theme.$arrow-height});
+}
+
+.isRootAtBottom.isRootAtEnd {
+    right: 0;
+    transform: translate(0, #{theme.$arrow-height});
+}
+
+.isRootAtBottom.isRootAtCenter > .arrow {
+    left: 50%;
+    transform: translate(-50%, -100%) rotateZ(180deg);
+}
+
+.isRootAtBottom.isRootAtStart > .arrow {
+    left: theme.$arrow-corner-offset;
+    transform: translate(0, -100%) rotateZ(180deg);
+}
+
+.isRootAtBottom.isRootAtEnd > .arrow {
+    right: theme.$arrow-corner-offset;
+    transform: translate(0, -100%) rotateZ(180deg);
+}
+
+// Side alignments: left
+.isRootAtLeft.isRootAtCenter {
+    top: 50%;
+    transform: translate(#{-1 * theme.$arrow-height}, -50%);
+}
+
+.isRootAtLeft.isRootAtStart {
+    top: 0;
+    transform: translate(#{-1 * theme.$arrow-height}, 0);
+}
+
+.isRootAtLeft.isRootAtEnd {
+    bottom: 0;
+    transform: translate(#{-1 * theme.$arrow-height}, 0);
+}
+
+.isRootAtLeft.isRootAtCenter > .arrow {
+    top: 50%;
+    transform: translate(0, -100%) rotateZ(-90deg);
+}
+
+.isRootAtLeft.isRootAtStart > .arrow {
+    top: theme.$arrow-corner-offset;
+    transform: translate(0, 0) rotateZ(-90deg);
+}
+
+.isRootAtLeft.isRootAtEnd > .arrow {
+    bottom: theme.$arrow-corner-offset;
+    transform: translate(0, -100%) rotateZ(-90deg);
+}
+
+// Side alignments: right
+.isRootAtRight.isRootAtCenter {
+    top: 50%;
+    transform: translate(#{theme.$arrow-height}, -50%);
+}
+
+.isRootAtRight.isRootAtStart {
+    top: 0;
+    transform: translate(#{theme.$arrow-height}, 0);
+}
+
+.isRootAtRight.isRootAtEnd {
+    bottom: 0;
+    transform: translate(#{theme.$arrow-height}, 0);
+}
+
+.isRootAtRight.isRootAtCenter > .arrow {
+    top: 50%;
+    transform: translate(0, -100%) rotateZ(90deg);
+}
+
+.isRootAtRight.isRootAtStart > .arrow {
+    top: theme.$arrow-corner-offset;
+    transform: translate(0, 0) rotateZ(90deg);
+}
+
+.isRootAtRight.isRootAtEnd > .arrow {
+    bottom: theme.$arrow-corner-offset;
+    transform: translate(0, -100%) rotateZ(90deg);
+}
+
+// Controlled
+.isRootControlled.isRootAtTop,
+.isRootControlled.isRootAtBottom,
+.isRootControlled.isRootAtLeft,
+.isRootControlled.isRootAtRight {
+    inset: unset; // 1.
+}
+
+.isRootControlled.isRootAtTop {
+    transform: translate(0, #{-1 * theme.$arrow-height}); // 2.
+}
+
+.isRootControlled.isRootAtBottom {
+    transform: translate(0, #{theme.$arrow-height}); // 2.
+}
+
+.isRootControlled.isRootAtLeft {
+    transform: translate(#{-1 * theme.$arrow-height}, 0); // 2.
+}
+
+.isRootControlled.isRootAtRight {
+    transform: translate(#{theme.$arrow-height}, 0); // 2.
+}
+
+.isRootControlled.isRootAtLeft.isRootAtStart,
+.isRootControlled.isRootAtRight.isRootAtStart {
+    top: 0; // 3.
+}

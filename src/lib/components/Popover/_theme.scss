@@ -1,0 +1,16 @@
+// 1. Height must be linked to width to create 90-degree angle.
+
+@use "sass:math";
+
+$width: var(--rui-Popover__width);
+$padding: var(--rui-Popover__padding);
+$border-width: var(--rui-Popover__border-width);
+$border-color: var(--rui-Popover__border-color);
+$border-radius: var(--rui-Popover__border-radius);
+$color: var(--rui-Popover__color);
+$background-color: var(--rui-Popover__background-color);
+$box-shadow: var(--rui-Popover__box-shadow);
+
+$arrow-width: 1rem;
+$arrow-height: math.div($arrow-width, 2); // 1.
+$arrow-corner-offset: 0.75rem;
