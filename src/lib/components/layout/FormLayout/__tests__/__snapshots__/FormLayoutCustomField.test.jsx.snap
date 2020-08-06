@@ -3,6 +3,7 @@
 exports[`rendering renders correctly with a single child 1`] = `
 <div
   className="root
+      
       rootLayoutVertical"
 >
   <div
@@ -18,6 +19,7 @@ exports[`rendering renders correctly with a single child 1`] = `
 exports[`rendering renders correctly with all props 1`] = `
 <div
   className="root
+      isRootFullWidth
       rootLayoutHorizontal"
   id="my-custom-field"
 >
@@ -47,6 +49,7 @@ exports[`rendering renders correctly with all props 1`] = `
 exports[`rendering renders correctly with multiple children 1`] = `
 <div
   className="root
+      
       rootLayoutVertical"
 >
   <div

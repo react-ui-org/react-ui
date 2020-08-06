@@ -4,6 +4,7 @@ import styles from './FormLayoutCustomField.scss';
 
 const FormLayoutCustomField = ({
   children,
+  fullWidth,
   id,
   label,
   layout,
@@ -12,6 +13,7 @@ const FormLayoutCustomField = ({
     id={id}
     className={`
       ${styles.root}
+      ${fullWidth ? styles.isRootFullWidth : ''}
       ${layout === 'vertical' ? styles.rootLayoutVertical : styles.rootLayoutHorizontal}
     `.trim()}
   >
@@ -34,6 +36,7 @@ const FormLayoutCustomField = ({
 
 FormLayoutCustomField.defaultProps = {
   children: null,
+  fullWidth: false,
   id: undefined,
   label: null,
   layout: 'vertical',
@@ -41,6 +44,7 @@ FormLayoutCustomField.defaultProps = {
 
 FormLayoutCustomField.propTypes = {
   children: PropTypes.node,
+  fullWidth: PropTypes.bool,
   id: PropTypes.string,
   label: PropTypes.string,
   layout: PropTypes.oneOf(['horizontal', 'vertical']),

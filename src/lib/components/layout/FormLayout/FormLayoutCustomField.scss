@@ -21,6 +21,10 @@
   width: auto;
 }
 
+.isRootFullWidth .field {
+  justify-self: stretch;
+}
+
 .root.rootLayoutHorizontal {
   @include breakpoint-up($form-field-horizontal-breakpoint) {
     grid-template-columns: var(--rui-local-label-width-fallback) 1fr;
