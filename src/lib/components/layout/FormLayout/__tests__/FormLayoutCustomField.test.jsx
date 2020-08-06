@@ -28,6 +28,7 @@ describe('rendering', () => {
   it('renders correctly with all props', () => {
     const tree = shallow((
       <FormLayoutCustomField
+        fullWidth
         label="Label"
         id="my-custom-field"
         layout="horizontal"
