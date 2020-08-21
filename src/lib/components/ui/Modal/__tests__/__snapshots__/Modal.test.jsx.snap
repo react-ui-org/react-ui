@@ -253,7 +253,6 @@ exports[`rendering renders correctly with all props except translations 1`] = `
         variantPrimary"
                         disabled={false}
                         onClick={[Function]}
-                        title={null}
                         type="button"
                       >
                         <span
@@ -303,7 +302,6 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                         disabled={false}
                         id="custom-id__closeModalFooterButton"
                         onClick={[Function]}
-                        title={null}
                         type="button"
                       >
                         <span
@@ -563,7 +561,11 @@ exports[`rendering renders correctly with all props except translations and with
                             class="root
         priorityDefault
         sizeMedium
-        variantPrimary"
+        variantPrimary
+        
+        
+        
+        isRootLoading"
                             disabled=""
                             type="button"
                           >
@@ -600,10 +602,13 @@ exports[`rendering renders correctly with all props except translations and with
                         className="root
         priorityDefault
         sizeMedium
-        variantPrimary"
+        variantPrimary
+        
+        
+        
+        isRootLoading"
                         disabled={true}
                         onClick={[Function]}
-                        title={null}
                         type="button"
                       >
                         <span
@@ -660,7 +665,6 @@ exports[`rendering renders correctly with all props except translations and with
                         disabled={false}
                         id="custom-id__closeModalFooterButton"
                         onClick={[Function]}
-                        title={null}
                         type="button"
                       >
                         <span
@@ -1253,7 +1257,6 @@ exports[`rendering renders correctly with translations 1`] = `
         variantPrimary"
                         disabled={false}
                         onClick={[Function]}
-                        title={null}
                         type="button"
                       >
                         <span
