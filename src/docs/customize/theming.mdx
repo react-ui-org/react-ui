@@ -1,0 +1,80 @@
+---
+name: Theming
+menu: Customize
+route: /customize/theming
+---
+
+# Theming
+
+From the very beginning, React UI has been designed with a great emphasis on
+customizability. We decided to leverage CSS custom properties for this feature
+for two main reasons:
+
+1. We believe in **power of native CSS**. Preprocessors are still a thing, but
+   it's not necessary to go as far as for CSS-in-JS to make a UI customizable.
+
+2. Thanks to its JavaScript API, CSS custom properties are both **readable and
+   writable from JS code**.
+
+## Theming Options
+
+CSS custom properties are used to define common visual properties like colors,
+fonts, borders, shadows, or spacing. They come prefixed with `rui-` so they
+don't get in way of other custom properties in your project.
+
+Example `theme.scss`:
+
+```scss
+:root {
+  // Brand colors
+  --rui-color-primary: #00778b;
+  --rui-color-primary-light: #{lighten(#00778b, 70%)};
+  --rui-color-primary-dark: #{darken(#00778b, 4%)};
+  --rui-color-primary-darker: #{darken(#00778b, 8%)};
+  --rui-color-on-primary: #fff;
+  --rui-color-secondary: #fa4616;
+  --rui-color-secondary-light: #{lighten(#fa4616, 45%)};
+  --rui-color-secondary-dark: #{darken(#fa4616, 4%)};
+  --rui-color-secondary-darker: #{darken(#fa4616, 8%)};
+  --rui-color-on-secondary: #fff;
+}
+```
+
+It is also possible to adjust some properties on individual components level,
+preferably by reusing the global settings:
+
+```scss
+:root {
+  // Alerts: common properties
+  --rui-alert-border-width: var(--rui-border-width);
+  --rui-alert-border-radius: var(--rui-border-radius);
+  --rui-alert-padding: var(--rui-spacing-2);
+}
+```
+
+You can adjust any of these options in your styles. See the
+[default theme](https://github.com/react-ui-org/react-ui/blob/master/src/lib/theme.scss)
+for the full list of available settings.
+
+️👉 Please note that **breakpoint values are exported as read-only** since CSS
+custom properties
+[cannot be used within media queries](https://www.w3.org/TR/css-variables-1/#using-variables)
+(because media query is not a CSS property).
+
+## Best Practices
+
+It's a good idea to start with changing the **global settings first**. Widely
+reused settings such as colors, typography, borders or spacing values should be
+adjusted first because they define the basic appearance of all components.
+
+Having finished the customization at the global level, you can **then proceed to
+customize the appearance of individual components** — if necessary at all. Even
+then you should also reuse existing global settings as much as possible to
+ensure that your UI is consistent and works as a system.
+
+For the same reason, if you have any custom components in your UI, you should
+**reuse the global theming options in your own CSS**, too.
+
+---
+
+Next: [Translations →](/customize/translations)
