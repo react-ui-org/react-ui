@@ -1,0 +1,64 @@
+---
+name: Typography
+menu: Foundation
+route: /foundation/typography
+---
+
+# Typography
+
+import { Playground } from 'docz'
+
+Typography is the basic means to present information to users. It also serves to
+communicate the hierarchy of a page.
+
+React UI is designed with
+[Titillium Web](https://fonts.google.com/specimen/Titillium+Web) font,
+a geometric sans with a wide variety of weights and styles. You can change it to
+a custom font by [overriding](/getting-started/theming) the
+`--rui-typography-font-family-base` CSS custom property. Font size and weight
+values can be customised as well.
+
+<Playground>
+  <h4 className="typography-size-0">Font size 0 (base font size)</h4>
+  <h4 className="typography-size-1">Font size 1</h4>
+  <h4 className="typography-size-2">Font size 2</h4>
+  <h4 className="typography-size-3">Font size 3</h4>
+  <h4 className="typography-size-4">Font size 4</h4>
+  <h4 className="typography-size-5">Font size 5</h4>
+  <p>
+    Curabitur sagittis hendrerit ante. Integer pellentesque quam vel velit. Sed
+    vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem.
+    Pellentesque sapien. Ut enim ad minima veniam, quis nostrum exercitationem
+    ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
+    consequatur?
+  </p>
+  <p>
+    <strong>Bold text</strong>
+  </p>
+  <p>
+    <em>Emphasized text</em>
+  </p>
+  <p>
+    <small>Small text</small>
+  </p>
+  <p>
+    <code>Inline code</code>
+  </p>
+  <p>
+    <a href="/">Link</a>
+  </p>
+  <ul>
+    <li>Unordered list item 1</li>
+    <li>Unordered list item 2</li>
+    <li>Unordered list item 3</li>
+  </ul>
+  <ol>
+    <li>Ordered list item 1</li>
+    <li>Ordered list item 2</li>
+    <li>Ordered list item 3</li>
+  </ol>
+</Playground>
+
+---
+
+Next: [Icons →](/foundation/icons)

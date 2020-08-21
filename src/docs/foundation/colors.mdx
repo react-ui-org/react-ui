@@ -1,0 +1,131 @@
+---
+name: Colors
+menu: Foundation
+route: /foundation/colors
+---
+
+# Colors
+
+import Swatch from '../_components/Swatch'
+
+Colors help you communicate the structure of your UI, emphasize any important
+information, or signal different states of the UI. **Use colors intentionally**
+— they are not a decoration, they should always serve a purpose.
+
+## General Guidelines
+
+We have different shades for all of our **brand and UI colors** in React UI. The
+following principles apply for them:
+
+- Every color has **three additional shades** defined: light, dark, and darker.
+  These additional shades should only be used for specific cases.
+- **Light shade** of any color should only be used for background.
+- **Dark shades** should be used for text on light shade background to improve
+  contrast, or to reflect a state of a component (hover, focus, active).
+- Every color suggests **what color should be used for text** placed on it. You
+  don't have to think if black or white is better — just use `on-primary` for
+  text on primary color background or `on-success` for success color background,
+  and you should be safe.
+
+A full scale of **shades of gray** is here at your disposal. But remember it's
+better to choose just a couple of them rather than using all shades of gray
+impulsively. **Reducing your gray color palette to three or four shades will
+help you keep your UI clean** and unobtrusive.
+
+All colors can be changed by [overriding](/getting-started/theming) the
+corresponding CSS custom properties.
+
+## Brand Colors
+
+Primary and secondary brand colors represent the visual identity of your
+project.
+
+<div>
+  <Swatch color="primary" />
+  <Swatch color="primary-dark" />
+  <Swatch color="primary-darker" />
+  <Swatch color="primary-light" />
+  <Swatch color="on-primary" />
+</div>
+<div>
+  <Swatch color="secondary" />
+  <Swatch color="secondary-dark" />
+  <Swatch color="secondary-darker" />
+  <Swatch color="secondary-light" />
+  <Swatch color="on-secondary" />
+</div>
+
+## UI Colors
+
+UI colors are used to communicate a meaning: green means success, orange means
+warning, red means danger or error, etc.
+
+<div>
+  <Swatch color="success" />
+  <Swatch color="success-dark" />
+  <Swatch color="success-darker" />
+  <Swatch color="success-light" />
+  <Swatch color="on-success" />
+</div>
+<div>
+  <Swatch color="warning" />
+  <Swatch color="warning-dark" />
+  <Swatch color="warning-darker" />
+  <Swatch color="warning-light" />
+  <Swatch color="on-warning" />
+</div>
+<div>
+  <Swatch color="error" />
+  <Swatch color="error-dark" />
+  <Swatch color="error-darker" />
+  <Swatch color="error-light" />
+  <Swatch color="on-error" />
+</div>
+<div>
+  <Swatch color="help" />
+  <Swatch color="help-dark" />
+  <Swatch color="help-darker" />
+  <Swatch color="help-light" />
+  <Swatch color="on-help" />
+</div>
+<div>
+  <Swatch color="info" />
+  <Swatch color="info-dark" />
+  <Swatch color="info-darker" />
+  <Swatch color="info-light" />
+  <Swatch color="on-info" />
+</div>
+<div>
+  <Swatch color="note" />
+  <Swatch color="note-dark" />
+  <Swatch color="note-darker" />
+  <Swatch color="note-light" />
+  <Swatch color="on-note" />
+</div>
+
+## Grays
+
+Shades of should be used to communicate structure, either with backgrounds, or
+with borders. They are all neutral grays, which means they are derived from pure
+white color (`#fff`).
+
+<div>
+  <Swatch color="white" />
+  <Swatch color="black" />
+</div>
+<div>
+  <Swatch color="gray-50" />
+  <Swatch color="gray-100" />
+  <Swatch color="gray-200" />
+  <Swatch color="gray-300" />
+  <Swatch color="gray-400" />
+  <Swatch color="gray-500" />
+  <Swatch color="gray-600" />
+  <Swatch color="gray-700" />
+  <Swatch color="gray-800" />
+  <Swatch color="gray-900" />
+</div>
+
+---
+
+Next: [Typography →](/foundation/typography)
