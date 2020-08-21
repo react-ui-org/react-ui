@@ -1,0 +1,104 @@
+---
+name: Badge
+menu: 'Components: UI'
+route: /components/ui/badge
+---
+
+# Badge
+
+Badge highlights content with short additional information.
+
+import {
+  Playground,
+  Props,
+} from 'docz'
+import { Badge } from './Badge'
+
+## Basic Usage
+
+To use the Badge component, you need to import it first:
+
+```js
+import { Badge } from '@react-ui-org/react-ui';
+```
+
+And use it:
+
+<Playground>
+  <Badge label="Hello!" />
+</Playground>
+
+## General Guidelines
+
+Use badges to highlight content with a **short and brief** additional
+information: a number, a word, but no more than two words.
+
+## Priorities
+
+There are two **visual priorities** of badges to choose from, from highest to
+lowest:
+
+1. default
+2. outline
+
+All priorities come in following **color variants** (types):
+
+* all [UI colors](/foundation/colors#ui-colors): success, warning, error, help,
+  info, note
+* light color
+
+### Default
+
+High-emphasis priority to draw user's attention.
+
+<Playground>
+  <Badge label="1" type="success" />
+  <Badge label="2" type="warning" />
+  <Badge label="3" type="error" />
+  <Badge label="10" type="help" />
+  <Badge label="34" type="info" />
+  <Badge label="99+" type="note" />
+  <Badge label="365" type="light" />
+</Playground>
+
+<Playground>
+  <Badge label="Success" type="success" />
+  <Badge label="Warning" type="warning" />
+  <Badge label="Error" type="error" />
+  <Badge label="Help" type="help" />
+  <Badge label="Info" type="info" />
+  <Badge label="Note" type="note" />
+  <Badge label="Light" type="light" />
+</Playground>
+
+### Outline
+
+Medium-emphasis priority to provide additional context in an unobtrusive way.
+
+<Playground>
+  <Badge label="1" priority="outline" type="success" />
+  <Badge label="2" priority="outline" type="warning" />
+  <Badge label="3" priority="outline" type="error" />
+  <Badge label="10" priority="outline" type="help" />
+  <Badge label="34" priority="outline" type="info" />
+  <Badge label="99+" priority="outline" type="note" />
+  <Badge label="365" priority="outline" type="light" />
+</Playground>
+
+<Playground>
+  <Badge label="Success" priority="outline" type="success" />
+  <Badge label="Warning" priority="outline" type="warning" />
+  <Badge label="Error" priority="outline" type="error" />
+  <Badge label="Help" priority="outline" type="help" />
+  <Badge label="Info" priority="outline" type="info" />
+  <Badge label="Note" priority="outline" type="note" />
+  <Badge label="Light" priority="outline" type="light" />
+</Playground>
+
+## API
+
+<Props of={Badge} />
+
+---
+
+Next: [Button →](/components/ui/button)

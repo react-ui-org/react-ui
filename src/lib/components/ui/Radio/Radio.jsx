@@ -3,7 +3,7 @@ import React from 'react';
 import transferProps from '../../../utils/transferProps';
 import styles from './Radio.scss';
 
-const Radio = (props) => {
+export const Radio = (props) => {
   let labelClass = styles.label;
   let rootInFormLayoutClass = '';
   let rootLayoutClass = '';
@@ -120,15 +120,48 @@ Radio.defaultProps = {
 };
 
 Radio.propTypes = {
+  /**
+   * Function to call when the input has changed.
+   */
   changeHandler: PropTypes.func,
+  /**
+   * Optional description.
+   */
   description: PropTypes.string,
+  /**
+   * If `true`, the input will be disabled.
+   */
   disabled: PropTypes.bool,
+  /**
+   * Error message to be displayed.
+   */
   error: PropTypes.string,
+  /**
+   * Prefix for ID of important inner elements: `<ID>__labelText`, `<ID>__descriptionText`,
+   * `<ID>__errorText`, and all options: `<ID>__item__<VALUE>` (individual inputs),
+   * `<ID>__item__<VALUE>__label`, and `<ID>__item__<VALUE>__labelText`.
+   */
   id: PropTypes.string.isRequired,
+  /**
+   * Treat the field differently when it's inside a FormLayout. Do not set manually!
+   */
   inFormLayout: PropTypes.bool,
+  /**
+   * If `false`, the label will be visually hidden (but remains accessible by assistive
+   * technologies).
+   */
   isLabelVisible: PropTypes.bool,
+  /**
+   * Label of the group of options.
+   */
   label: PropTypes.string.isRequired,
+  /**
+   * Layout of the field. It has impact only on Radio inside a FormLayout.
+   */
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
+  /**
+   * Set of options to be chosen from.
+   */
   options: PropTypes.arrayOf(PropTypes.shape({
     disabled: PropTypes.bool,
     label: PropTypes.string.isRequired,
@@ -137,8 +170,17 @@ Radio.propTypes = {
       PropTypes.number,
     ]),
   })).isRequired,
+  /**
+   * If `true`, the input will be required.
+   */
   required: PropTypes.bool,
+  /**
+   * Alter the field to provide feedback based on validation result.
+   */
   validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
+  /**
+   * Value of the input.
+   */
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,

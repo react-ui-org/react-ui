@@ -150,19 +150,54 @@ SelectField.defaultProps = {
 };
 
 SelectField.propTypes = {
+  /**
+   * Function to call when the input has changed.
+   */
   changeHandler: PropTypes.func,
+  /**
+   * If `true`, the input will be disabled.
+   */
   disabled: PropTypes.bool,
+  /**
+   * Reference forwarded to the `select` element.
+   */
   forwardedRef: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.shape({ current: PropTypes.any }),
   ]),
+  /**
+   * If `true`, the field will span the full width of its parent.
+   */
   fullWidth: PropTypes.bool,
+  /**
+   * Optional description.
+   */
   helperText: PropTypes.string,
+  /**
+   * ID of the input HTML element. It also serves as a prefix for important inner elements:
+   * `<ID>__label`, `<ID>__labelText`, `<ID>__helperText`, and all options: `<ID>__item__<VALUE>`.
+   */
   id: PropTypes.string.isRequired,
+  /**
+   * Treat the field differently when it's inside a FormLayout. Do not set manually!
+   */
   inFormLayout: PropTypes.bool,
+  /**
+   * If `false`, the label will be visually hidden (but remains accessible by assistive
+   * technologies).
+   */
   isLabelVisible: PropTypes.bool,
+  /**
+   * Select field label.
+   */
   label: PropTypes.string.isRequired,
+  /**
+   * Layout of the field.
+   */
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
+  /**
+   * Set of options to be chosen from.
+   */
   options: PropTypes.arrayOf(PropTypes.shape({
     disabled: PropTypes.bool,
     label: PropTypes.string.isRequired,
@@ -171,13 +206,28 @@ SelectField.propTypes = {
       PropTypes.number,
     ]),
   })).isRequired,
+  /**
+   * If `true`, the input will be required.
+   */
   required: PropTypes.bool,
+  /**
+   * Size of the field.
+   */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
+  /**
+   * Alter the field to provide feedback based on validation result.
+   */
   validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
+  /**
+   * Value of the input.
+   */
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
   ]),
+  /**
+   * Design variant of the field, further customizable with CSS custom properties.
+   */
   variant: PropTypes.oneOf(['filled', 'outline']),
 };
 

@@ -11,7 +11,7 @@ import Button from '../Button';
 import ScrollView from '../ScrollView';
 import styles from './Modal.scss';
 
-class Modal extends React.Component {
+export class Modal extends React.Component {
   constructor(props) {
     super(props);
 
@@ -244,6 +244,9 @@ Modal.defaultProps = {
 };
 
 Modal.propTypes = {
+  /**
+   * Actions to be rendered in modal footer.
+   */
   actions: PropTypes.arrayOf(PropTypes.shape({
     clickHandler: PropTypes.func.isRequired,
     disabled: PropTypes.bool,
@@ -252,26 +255,67 @@ Modal.propTypes = {
     loadingIcon: PropTypes.node,
     variant: PropTypes.string,
   })),
+  /**
+   * If `true`, focus the first action in the footer when the modal is opened.
+   */
   autoFocus: PropTypes.bool,
+  /**
+   * Content of the modal.
+   */
   children: PropTypes.node.isRequired,
+  /**
+   * If a function is provided, the close buttons will be displayed.
+   */
   closeHandler: PropTypes.func,
+  /**
+   * ID of the root HTML element. It also serves as a prefix for the element holding the content of
+   * the modal and for the close buttons: `<ID>__content`, `<ID>__closeModalHeaderButton`,
+   * `<ID>__closeModalFooterButton`.
+   */
   id: PropTypes.string,
+  /**
+   * If set, the modal is rendered in the React Portal with that ID.
+   */
   portalId: PropTypes.string,
+  /**
+   * How to treat the modal when its content is too long to fit the screen. The `body` option
+   * turns on scrolling just for the modal content, while the `modal` option enables scrolling of
+   * the entire modal, including the header and the footer.
+   */
   scrollMode: PropTypes.oneOf(['body', 'modal']),
+  /**
+   * Custom CSS for the end scrolling shadow.
+   */
   scrollViewEndShadowStyle: PropTypes.shape({
     background: PropTypes.string,
     boxShadow: PropTypes.string,
   }),
+  /**
+   * Size of the scrolling shadows.
+   */
   scrollViewShadowSize: PropTypes.string,
+  /**
+   * Custom CSS for the start scrolling shadow.
+   */
   scrollViewStartShadowStyle: PropTypes.shape({
     background: PropTypes.string,
     boxShadow: PropTypes.string,
   }),
+  /**
+   * Size of the modal.
+   */
   size: PropTypes.oneOf(['small', 'medium', 'large', 'auto']),
+  /**
+   * Title displayed in modal header.
+   */
   title: PropTypes.string.isRequired,
+  /**
+   * Translations required by the component.
+   */
   translations: PropTypes.shape({
     close: PropTypes.string.isRequired,
   }).isRequired,
 };
 
-export default withTranslationContext(Modal, 'Modal');
+export const TranslatedModal = withTranslationContext(Modal, 'Modal');
+export default TranslatedModal;

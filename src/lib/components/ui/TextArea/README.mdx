@@ -1,0 +1,393 @@
+---
+name: TextArea
+menu: 'Components: UI'
+route: /components/ui/text-area
+---
+
+# TextArea
+
+TextArea enables users to add longer text to a form.
+
+import {
+  Playground,
+  Props,
+} from 'docz'
+import { TextArea } from './TextArea'
+
+## Basic Usage
+
+To use the TextArea component, you need to import it first:
+
+```js
+import { TextArea } from '@react-ui-org/react-ui';
+```
+
+And use it:
+
+<Playground>
+  <TextArea id="my-text-area" label="Your feedback" />
+</Playground>
+
+## General Guidelines
+
+- Use **short and descriptive labels**, ideally nouns rather than seemingly
+  polite phrases like _Please enter your message_. Short labels will help your
+  users accomplish their task faster.
+
+- Only make the TextArea's label invisible when there is **another visual
+  clue** to guide users through filling the input. Using the first option as
+  label is not recommended either — it disappears once user makes their choice.
+
+- When a short label is not enough, use **help texts to guide users** before
+  they enter anything.
+
+- Optionally you can **pre-fill your text fields with a placeholder** to give
+  users an example of what they're expected to fill in. Just remember the
+  placeholder disappears once a value is entered so don't put anything important
+  there. Usually, en example value starting with “Eg.” works best.
+
+- Use **clear, calm error messages** when there's a problem with what they
+  entered. Be positive and focus on solutions to make the error message helpful.
+
+- Ensure the height of a text area **fits within mobile screen sizes.**
+
+## Design Variants
+
+To satisfy the design requirements of your project, all input fields in React UI
+come in **two design variants** to choose from: outline and filled. Both can be
+further [customized](/getting-started/theming) with CSS custom properties.
+
+<Playground>
+  <TextArea
+    id="my-text-area-outline"
+    label="Your feedback"
+  />
+  <TextArea
+    id="my-text-area-filled"
+    label="Your feedback"
+    variant="filled"
+  />
+</Playground>
+
+## Sizes
+
+Aside from the default (medium) size, two additional sizes are available: small
+and large.
+
+<Playground>
+  <TextArea
+    id="my-text-area-outline-small"
+    label="Your feedback"
+    size="small"
+  />
+  <TextArea
+    id="my-text-area-outline-medium"
+    label="Your feedback"
+  />
+  <TextArea
+    id="my-text-area-outline-large"
+    label="Your feedback"
+    size="large"
+  />
+  <TextArea
+    id="my-text-area-filled-small"
+    label="Your feedback"
+    size="small"
+    variant="filled"
+  />
+  <TextArea
+    id="my-text-area-filled-medium"
+    label="Your feedback"
+    variant="filled"
+  />
+  <TextArea
+    id="my-text-area-filled-large"
+    label="Your feedback"
+    size="large"
+    variant="filled"
+  />
+</Playground>
+
+Full-width fields span the full width of a parent:
+
+<Playground>
+  <TextArea
+    id="my-text-area-outline-full-width"
+    label="Your feedback"
+    fullWidth
+  />
+  <TextArea
+    id="my-text-area-filled-full-width"
+    label="Your feedback"
+    variant="filled"
+    fullWidth
+  />
+</Playground>
+
+## Input Size
+
+The default width of all inputs is 240 px, and it can be
+[customized](/getting-started/theming) with a CSS custom property. However, you
+can also **control the size of individual text areas** using the `rows` and
+`cols` properties. Additionally, text areas are vertically resizable by users.
+
+👉 Remember that the `cols` and `rows` HTML attributes **do not limit on how
+many characters** the user can enter. Use the
+[`maxlength` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#Min_and_max_length)
+to achieve that effect.
+
+<Playground>
+  <TextArea
+    id="my-text-area-outline-input-size"
+    label="Your feedback"
+    cols={50}
+    rows={6}
+  />
+  <TextArea
+    id="my-text-area-filled-input-size"
+    label="Your feedback"
+    variant="filled"
+    cols={50}
+    rows={6}
+  />
+</Playground>
+
+## Forwarding HTML Attributes
+
+When you want to improve the accessibility of your text fields even further, you
+can **add whatever HTML attribute you like.** All attributes that don't
+interfere with [component's API](#api) are forwarded to the native HTML input.
+
+<Playground>
+  <TextArea
+    id="my-text-area-outline-forwarding"
+    label="Address"
+    autoComplete="street-address"
+    minLength={3}
+    maxLength={80}
+  />
+  <TextArea
+    id="my-text-area-filled-forwarding"
+    label="Address"
+    variant="filled"
+    autoComplete="street-address"
+    minLength={3}
+    maxLength={80}
+  />
+</Playground>
+
+👉 Refer to the MDN reference for the full list of
+[supported attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#Attributes).
+
+## Invisible Label
+
+In some cases, it may be convenient to visually hide the field label. The label
+remains accessible to assistive technologies.
+
+While it may be acceptable for login screens with just a few fields or other
+simple forms, it's dangerous to hide labels from users in most cases. Keep in
+mind you should **provide another visual clue** so users know what to fill into
+the input.
+
+<Playground>
+  <TextArea
+    id="my-text-area-outline-hidden-label"
+    label="Feedback"
+    isLabelVisible={false}
+    placeholder="Eg. What I liked the best was…"
+  />
+  <TextArea
+    id="my-text-area-filled-hidden-label"
+    label="Feedback"
+    isLabelVisible={false}
+    variant="filled"
+    placeholder="Eg. What I liked the best was…"
+  />
+</Playground>
+
+## Horizontal Layout
+
+The default vertical layout is very easy to use and work with. However, there
+are situations where horizontal layout suits better — and that's why React UI
+supports this kind of layout as well.
+
+<Playground>
+  <TextArea
+    id="my-text-area-outline-horizontal"
+    label="Your feedback"
+    layout="horizontal"
+  />
+  <TextArea
+    id="my-text-area-filled-horizontal"
+    label="Your feedback"
+    layout="horizontal"
+    variant="filled"
+  />
+  <TextArea
+    id="my-text-area-outline-horizontal-full-width"
+    label="Your feedback"
+    layout="horizontal"
+    fullWidth
+  />
+  <TextArea
+    id="my-text-area-filled-horizontal-full-width"
+    label="Your feedback"
+    layout="horizontal"
+    variant="filled"
+    fullWidth
+  />
+  <TextArea
+    id="my-text-area-outline-horizontal-full-width-invisible-label"
+    isLabelVisible={false}
+    label="Your feedback"
+    layout="horizontal"
+    placeholder="Your feedback"
+    fullWidth
+  />
+  <TextArea
+    id="my-text-area-filled-horizontal-full-width-invisible-label"
+    isLabelVisible={false}
+    label="Your feedback"
+    layout="horizontal"
+    placeholder="Your feedback"
+    variant="filled"
+    fullWidth
+  />
+</Playground>
+
+## Help Text
+
+You may provide an additional help text to clarify how the input should be
+filled.
+
+<Playground>
+  <TextArea
+    id="my-text-area-outline-help-text"
+    label="Your feedback"
+    helperText="Why would you recommend us?"
+  />
+  <TextArea
+    id="my-text-area-filled-help-text"
+    label="Your feedback"
+    variant="filled"
+    helperText="Why would you recommend us?"
+  />
+  <TextArea
+    id="my-text-area-outline-help-text-horizontal"
+    label="Your feedback"
+    layout="horizontal"
+    helperText="Why would you recommend us?"
+  />
+  <TextArea
+    id="my-text-area-filled-help-text-horizontal"
+    label="Your feedback"
+    layout="horizontal"
+    helperText="Why would you recommend us?"
+    variant="filled"
+  />
+  <TextArea
+    id="my-text-area-outline-help-text-horizontal-full-width"
+    label="Your feedback"
+    layout="horizontal"
+    helperText="Why would you recommend us?"
+    fullWidth
+  />
+  <TextArea
+    id="my-text-area-filled-help-text-horizontal-full-width"
+    label="Your feedback"
+    layout="horizontal"
+    variant="filled"
+    helperText="Why would you recommend us?"
+    fullWidth
+  />
+</Playground>
+
+## States
+
+### Validation States
+
+Validation states visually present the result of validation of the input. You
+should always **provide a help text for states other than valid** so users know
+what happened and what action they should take or what options they have.
+
+<Playground>
+  <TextArea
+    id="my-text-area-outline-success"
+    label="Your feedback"
+    validationState="valid"
+    helperText="Looks good!"
+    changeHandler={() => {}}
+    value="Like that!"
+    required
+  />
+  <TextArea
+    id="my-text-area-outline-warning"
+    label="Your feedback"
+    validationState="warning"
+    helperText="The feedback should be at least 3 characters long."
+    value=".."
+    changeHandler={() => {}}
+    required
+  />
+  <TextArea
+    id="my-text-area-outline-error"
+    label="Your feedback"
+    validationState="invalid"
+    helperText="Please share your feedback with us."
+    required
+  />
+  <TextArea
+    id="my-text-area-filled-success"
+    label="Your feedback"
+    validationState="valid"
+    variant="filled"
+    helperText="Looks good!"
+    changeHandler={() => {}}
+    value="Like that!"
+    required
+  />
+  <TextArea
+    id="my-text-area-filled-warning"
+    label="Your feedback"
+    validationState="warning"
+    variant="filled"
+    helperText="The feedback should be at least 3 characters long."
+    changeHandler={() => {}}
+    value=".."
+    required
+  />
+  <TextArea
+    id="my-text-area-filled-error"
+    label="Your feedback"
+    validationState="invalid"
+    variant="filled"
+    helperText="Please share your feedback with us."
+    required
+  />
+</Playground>
+
+### Disabled State
+
+It's possible to disable the whole input.
+
+<Playground>
+  <TextArea
+    id="my-text-area-outline-disabled"
+    label="Your feedback"
+    disabled
+  />
+  <TextArea
+    id="my-text-area-filled-disabled"
+    label="Your feedback"
+    variant="filled"
+    disabled
+  />
+</Playground>
+
+## API
+
+<Props of={TextArea} />
+
+---
+
+Next: [Toggle →](/components/ui/toggle)

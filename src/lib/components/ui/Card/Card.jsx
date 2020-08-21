@@ -79,12 +79,33 @@ Card.defaultProps = {
 };
 
 Card.propTypes = {
+  /**
+   * Slot for individual Card elements that build up the inner layout: CardBody and CardFooter.
+   */
   children: PropTypes.node.isRequired,
+  /**
+   * Make the card more compact.
+   */
   dense: PropTypes.bool,
+  /**
+   * If `true`, the card will be disabled.
+   */
   disabled: PropTypes.bool,
+  /**
+   * ID of the root HTML element.
+   */
   id: PropTypes.string,
+  /**
+   * Add shadow to pull the card above the surface.
+   */
   raised: PropTypes.bool,
+  /**
+   * Color variant to clarify importance and meaning of the button.
+   */
   type: PropTypes.oneOf(['success', 'warning', 'error', 'help', 'info', 'note']),
+  /**
+   * Visual card variants.
+   */
   variant: PropTypes.oneOf(['flat', 'bordered']),
 };
 

@@ -3,7 +3,7 @@ import React from 'react';
 import Button from '../Button';
 import styles from './Table.scss';
 
-class Table extends React.Component {
+export class Table extends React.Component {
   constructor(props) {
     super(props);
 
@@ -111,19 +111,34 @@ Table.defaultProps = {
 };
 
 Table.propTypes = {
+  /**
+   * Table data columns, optionally sortable. The `format` function can be used to process the
+   * column data before displaying them.
+   */
   columns: PropTypes.arrayOf(PropTypes.shape({
     format: PropTypes.func,
     isSortable: PropTypes.bool,
     label: PropTypes.string,
     name: PropTypes.string.isRequired,
   })).isRequired,
+  /**
+   * ID of the root HTML element. It also serves as a prefix for important inner elements:
+   * `<ID>__headerCell__<COLUMN_NAME>`, `<ID>__headerCell__<COLUMN_NAME>__sortButton`, and
+   * `<ID>__bodyCell__<COLUMN_NAME>__<ROW_ID>`.
+   */
   id: PropTypes.string,
+  /**
+   * Table data rows paired with columns through column IDs.
+   */
   rows: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.oneOfType([
       PropTypes.number,
       PropTypes.string,
     ]).isRequired,
   })).isRequired,
+  /**
+   * Sorting configuration required to make columns sortable.
+   */
   sort: PropTypes.shape({
     ascendingIcon: PropTypes.node.isRequired,
     changeHandler: PropTypes.func.isRequired,

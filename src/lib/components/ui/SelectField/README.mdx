@@ -1,0 +1,568 @@
+---
+name: SelectField
+menu: 'Components: UI'
+route: /components/ui/select-field
+---
+
+# SelectField
+
+SelectField allows users to select one option from a set.
+
+import {
+  Playground,
+  Props,
+} from 'docz'
+import { SelectField } from './SelectField'
+
+## Basic Usage
+
+To use the SelectField component, you need to import it first:
+
+```js
+import { SelectField } from '@react-ui-org/react-ui';
+```
+
+And use it:
+
+<Playground>
+  <SelectField
+    id="my-select-field"
+    label="Your favourite fruit"
+    options={[
+      {
+        label: 'Apple',
+        value: 'apple',
+      },
+      {
+        label: 'Banana',
+        value: 'banana',
+      },
+      {
+        label: 'Grapefruit',
+        value: 'grapefruit',
+      },
+    ]}
+  />
+</Playground>
+
+## General Guidelines
+
+- Use SelectField for **many options**. For sets of just a few options
+  (say 3 at maximum) consider using the [Radio](/components/ui/radio) component.
+  This will help keep your UI clean and uncluttered and prevent your users from
+  being overwhelmed by too many options.
+
+- **Don't use for boolean** (true/false) selection or to toggle things on and
+  off. [CheckboxField](/components/ui/checkbox-field) and
+  [Toggle](/components/ui/toggle) are more suitable for such cases.
+
+- Use **short and descriptive labels**, ideally nouns rather than seemingly
+  polite phrases like _Please select your favourite fruit_. Short labels will
+  help your users accomplish their task faster.
+
+- Only make the SelectField's label invisible when there is **another visual
+  clue** to guide users through filling the input. Using the first option as
+  label is not recommended either — it disappears once user makes their choice.
+
+- When a short label is not enough, use **help texts to guide users** before
+  they enter anything.
+
+- Use **clear, calm error messages** when there's a problem with what they
+  entered.
+
+- In case of a large amount of options, consider **grouping related items
+  together** by nesting them (implements the `optgroup` HTML element).
+
+👉 We use the **native `select`** HTML element to improve user experience on
+mobile devices by using the native select of the platform.
+
+## Design Variants
+
+To satisfy the design requirements of your project, all input fields in React UI
+come in two design variants to choose from: outline and filled. Both can be
+further [customized](/getting-started/theming) with CSS custom properties.
+
+<Playground>
+  {() => {
+    const options = [
+      {
+        label: 'Apple',
+        value: 'apple',
+      },
+      {
+        label: 'Banana',
+        value: 'banana',
+      },
+      {
+        label: 'Grapefruit',
+        value: 'grapefruit',
+      },
+    ];
+    return (
+      <>
+        <SelectField
+          id="my-select-field-outline"
+          label="Your favourite fruit"
+          options={options}
+        />
+        <SelectField
+          id="my-select-field-filled"
+          label="Your favourite fruit"
+          options={options}
+          variant="filled"
+        />
+      </>
+    );
+  }}
+</Playground>
+
+## Sizes
+
+Aside from the default (medium) size, two additional sizes are available: small
+and large.
+
+<Playground>
+  {() => {
+    const options = [
+      {
+        label: 'Apple',
+        value: 'apple',
+      },
+      {
+        label: 'Banana',
+        value: 'banana',
+      },
+      {
+        label: 'Grapefruit',
+        value: 'grapefruit',
+      },
+    ];
+    return (
+      <>
+        <SelectField
+          id="my-select-field-outline-small"
+          label="Your favourite fruit"
+          options={options}
+          size="small"
+        />
+        <SelectField
+          id="my-select-field-outline-medium"
+          label="Your favourite fruit"
+          options={options}
+        />
+        <SelectField
+          id="my-select-field-outline-large"
+          label="Your favourite fruit"
+          options={options}
+          size="large"
+        />
+        <SelectField
+          id="my-select-field-filled-small"
+          label="Your favourite fruit"
+          options={options}
+          size="small"
+          variant="filled"
+        />
+        <SelectField
+          id="my-select-field-filled-medium"
+          label="Your favourite fruit"
+          options={options}
+          variant="filled"
+        />
+        <SelectField
+          id="my-select-field-filled-large"
+          label="Your favourite fruit"
+          options={options}
+          size="large"
+          variant="filled"
+        />
+      </>
+    );
+  }}
+</Playground>
+
+Full-width fields span the full width of a parent:
+
+<Playground>
+  {() => {
+    const options = [
+      {
+        label: 'Apple',
+        value: 'apple',
+      },
+      {
+        label: 'Banana',
+        value: 'banana',
+      },
+      {
+        label: 'Grapefruit',
+        value: 'grapefruit',
+      },
+    ];
+    return (
+      <>
+        <SelectField
+          id="my-select-field-outline-full-width"
+          label="Your favourite fruit"
+          options={options}
+          fullWidth
+        />
+        <SelectField
+          id="my-select-field-filled-full-width"
+          label="Your favourite fruit"
+          options={options}
+          variant="filled"
+          fullWidth
+        />
+      </>
+    );
+  }}
+</Playground>
+
+## Invisible Label
+
+While it may be acceptable for login screens with just a few fields or for other
+simple forms, it's dangerous to hide labels from users in most cases. Keep in
+mind you should **provide another visual clue** so users know what to fill into
+the input.
+
+<Playground>
+  {() => {
+    const options = [
+      {
+        label: 'Apple',
+        value: 'apple',
+      },
+      {
+        label: 'Banana',
+        value: 'banana',
+      },
+      {
+        label: 'Grapefruit',
+        value: 'grapefruit',
+      },
+    ];
+    return (
+      <>
+        <SelectField
+          id="my-select-field-outline-hidden-label"
+          label="Your favourite fruit"
+          isLabelVisible={false}
+          options={options}
+        />
+        <SelectField
+          id="my-select-field-filled-hidden-label"
+          label="Your favourite fruit"
+          isLabelVisible={false}
+          options={options}
+          variant="filled"
+        />
+      </>
+    );
+  }}
+</Playground>
+
+## Horizontal Layout
+
+The default vertical layout is very easy to use and work with. However, there
+are situations where horizontal layout suits better — and that's why React UI
+supports this kind of layout as well.
+
+<Playground>
+  {() => {
+    const options = [
+      {
+        label: 'Apple',
+        value: 'apple',
+      },
+      {
+        label: 'Banana',
+        value: 'banana',
+      },
+      {
+        label: 'Grapefruit',
+        value: 'grapefruit',
+      },
+    ];
+    return (
+      <>
+        <SelectField
+          id="my-select-field-outline-horizontal"
+          label="Your favourite fruit"
+          layout="horizontal"
+          options={options}
+        />
+        <SelectField
+          id="my-select-field-filled-horizontal"
+          label="Your favourite fruit"
+          layout="horizontal"
+          options={options}
+          variant="filled"
+        />
+        <SelectField
+          id="my-select-field-outline-horizontal-full-width"
+          label="Your favourite fruit"
+          layout="horizontal"
+          options={options}
+          fullWidth
+        />
+        <SelectField
+          id="my-select-field-filled-horizontal-full-width"
+          label="Your favourite fruit"
+          layout="horizontal"
+          options={options}
+          variant="filled"
+          fullWidth
+        />
+        <SelectField
+          id="my-select-field-outline-horizontal-full-width-invisible-label"
+          isLabelVisible={false}
+          label="Your favourite fruit"
+          layout="horizontal"
+          options={options}
+          fullWidth
+        />
+        <SelectField
+          id="my-select-field-filled-horizontal-full-width-invisible-label"
+          isLabelVisible={false}
+          label="Your favourite fruit"
+          layout="horizontal"
+          options={options}
+          variant="filled"
+          fullWidth
+        />
+      </>
+    );
+  }}
+</Playground>
+
+## Help Text
+
+You may provide an additional help text to clarify how the input should be
+filled.
+
+<Playground>
+  {() => {
+    const options = [
+      {
+        label: 'Apple',
+        value: 'apple',
+      },
+      {
+        label: 'Banana',
+        value: 'banana',
+      },
+      {
+        label: 'Grapefruit',
+        value: 'grapefruit',
+      },
+    ];
+    return (
+      <>
+        <SelectField
+          id="my-select-field-outline-help-text"
+          label="Your favourite fruit"
+          options={options}
+          helperText="Choose one or more kinds of fruit to feel happy."
+        />
+        <SelectField
+          id="my-select-field-filled-help-text"
+          label="Your favourite fruit"
+          options={options}
+          variant="filled"
+          helperText="Choose one or more kinds of fruit to feel happy."
+        />
+        <SelectField
+          id="my-select-field-outline-help-text-horizontal"
+          label="Your favourite fruit"
+          layout="horizontal"
+          options={options}
+          helperText="Choose one or more kinds of fruit to feel happy."
+        />
+        <SelectField
+          id="my-select-field-filled-help-text-horizontal"
+          label="Your favourite fruit"
+          layout="horizontal"
+          options={options}
+          helperText="Choose one or more kinds of fruit to feel happy."
+          variant="filled"
+        />
+        <SelectField
+          id="my-select-field-outline-help-text-horizontal-full-width"
+          label="Your favourite fruit"
+          layout="horizontal"
+          options={options}
+          helperText="Choose one or more kinds of fruit to feel happy."
+          fullWidth
+        />
+        <SelectField
+          id="my-select-field-filled-help-text-horizontal-full-width"
+          label="Your favourite fruit"
+          layout="horizontal"
+          options={options}
+          variant="filled"
+          helperText="Choose one or more kinds of fruit to feel happy."
+          fullWidth
+        />
+      </>
+    );
+  }}
+</Playground>
+
+## States
+
+### Validation States
+
+Validation states visually present the result of validation of the input. You
+should always **provide a help text for states other than valid** so users know
+what happened and what action they should take or what options they have.
+
+<Playground>
+  {() => {
+    const options = [
+      {
+        label: 'Apple',
+        value: 'apple',
+      },
+      {
+        label: 'Banana',
+        value: 'banana',
+      },
+      {
+        label: 'Grapefruit',
+        value: 'grapefruit',
+      },
+    ];
+    return (
+      <>
+        <SelectField
+          id="my-select-field-outline-success"
+          label="Your favourite fruit"
+          options={options}
+          validationState="valid"
+          value="apple"
+          helperText="Great, they're in stock!"
+          changeHandler={() => {}}
+          required
+        />
+        <SelectField
+          id="my-select-field-outline-warning"
+          label="Your favourite fruit"
+          options={options}
+          validationState="warning"
+          value="grapefruit"
+          helperText="Oh, really?"
+          changeHandler={() => {}}
+          required
+        />
+        <SelectField
+          id="my-select-field-outline-error"
+          label="Your favourite fruit"
+          options={options}
+          validationState="invalid"
+          helperText="You must select at least one kind of fruit."
+          required
+        />
+        <SelectField
+          id="my-select-field-filled-success"
+          label="Your favourite fruit"
+          options={options}
+          validationState="valid"
+          value="apple"
+          variant="filled"
+          helperText="Great, they're in stock!"
+          changeHandler={() => {}}
+          required
+        />
+        <SelectField
+          id="my-select-field-filled-warning"
+          label="Your favourite fruit"
+          options={options}
+          validationState="warning"
+          value="grapefruit"
+          variant="filled"
+          helperText="Oh, really?"
+          changeHandler={() => {}}
+          required
+        />
+        <SelectField
+          id="my-select-field-filled-error"
+          label="Your favourite fruit"
+          options={options}
+          validationState="invalid"
+          variant="filled"
+          helperText="You must select at least one kind of fruit."
+          required
+        />
+      </>
+    );
+  }}
+</Playground>
+
+### Disabled State
+
+It's possible to disable just some options or the whole input.
+
+<Playground>
+  {() => {
+    const options = [
+      {
+        label: 'Apple',
+        value: 'apple',
+      },
+      {
+        disabled: true,
+        label: 'Banana',
+        value: 'banana',
+      },
+      {
+        label: 'Grapefruit',
+        value: 'grapefruit',
+      },
+    ];
+    return (
+      <>
+        <SelectField
+          id="my-select-field-outline-disabled-option"
+          label="Your favourite fruit"
+          options={options}
+          value="apple"
+          changeHandler={() => {}}
+        />
+        <SelectField
+          id="my-select-field-filled-disabled-option"
+          label="Your favourite fruit"
+          options={options}
+          value="apple"
+          changeHandler={() => {}}
+          variant="filled"
+        />
+        <SelectField
+          id="my-select-field-outline-disabled"
+          label="Your favourite fruit"
+          options={options}
+          value="apple"
+          changeHandler={() => {}}
+          disabled
+        />
+        <SelectField
+          id="my-select-field-filled-disabled"
+          label="Your favourite fruit"
+          options={options}
+          value="apple"
+          changeHandler={() => {}}
+          variant="filled"
+          disabled
+        />
+      </>
+    );
+  }}
+</Playground>
+
+## API
+
+<Props of={SelectField} />
+
+---
+
+Next: [Table →](/components/ui/table)

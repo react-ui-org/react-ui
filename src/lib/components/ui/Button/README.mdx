@@ -1,0 +1,298 @@
+---
+name: Button
+menu: 'Components: UI'
+route: /components/ui/button
+---
+
+# Button
+
+import {
+  Playground,
+  Props,
+} from 'docz'
+import { Icon } from '../../../../docs/_components/Icon/Icon'
+import { Badge } from '../Badge/Badge'
+import { Button } from './Button'
+
+Buttons allow users to take actions.
+
+## Basic Usage
+
+To use the Button component, you need to import it first:
+
+```js
+import { Button } from '@react-ui-org/react-ui';
+```
+
+And use it:
+
+<Playground>
+  <Button label="My button" />
+</Playground>
+
+## General Guidelines
+
+- Use **short yet comprehensible labels** to make buttons fit small screens.
+
+- Since buttons are there to take actions, **use a verb** to make it obvious
+  what your buttons do.
+
+- **Don't overwhelm your UI** with too many high-emphasis actions. There should
+  always be one but chances are that having more of them is not necessary.
+
+## Priorities
+
+There are three **visual priorities** of buttons to choose from, from highest to
+lowest:
+
+1. default
+2. outline
+3. flat
+
+All priorities come in following **color variants**:
+
+- [brand colors](/foundation/colors#brand-colors): primary, secondary
+- selected [UI colors](/foundation/colors#ui-colors): success, warning, danger
+  (based on error color, uses a different name because error button doesn't make
+  much sense)
+- dark color
+
+To complete the list, there is also a link priority which is reserved for
+special cases.
+
+### Default
+
+The default, high-emphasis priority should be used for primary actions of your
+app. Use it sparingly but remember there should always be one on a screen.
+
+<Playground>
+  <Button label="Primary" />
+  <Button label="Secondary" variant="secondary" />
+  <Button label="Success" variant="success" />
+  <Button label="Warning" variant="warning" />
+  <Button label="Danger" variant="danger" />
+  <Button label="Dark" variant="dark" />
+</Playground>
+
+Default, unconfigured button comes in **medium** size, **default** visual
+priority, and **primary** color variant.
+
+### Outline
+
+Medium-emphasis buttons. They are designed to contain actions that are
+important but not primary in your app.
+
+<Playground>
+  <Button priority="outline" label="Primary" />
+  <Button priority="outline" label="Secondary" variant="secondary" />
+  <Button priority="outline" label="Success" variant="success" />
+  <Button priority="outline" label="Warning" variant="warning" />
+  <Button priority="outline" label="Danger" variant="danger" />
+  <Button priority="outline" label="Dark" variant="dark" />
+</Playground>
+
+### Flat
+
+Flat buttons are designed for less pronounced actions to help maintain focus on
+the content.
+
+<Playground>
+  <Button priority="flat" label="Primary" />
+  <Button priority="flat" label="Secondary" variant="secondary" />
+  <Button priority="flat" label="Success" variant="success" />
+  <Button priority="flat" label="Warning" variant="warning" />
+  <Button priority="flat" label="Danger" variant="danger" />
+  <Button priority="flat" label="Dark" variant="dark" />
+</Playground>
+
+### Link
+
+Link button is more a workaround than a priority level. Use it for what needs
+to appear as navigation to users but where a button must be used due to
+technical reasons. Under normal circumstances, you should always use a link
+HTML element `<a href="…">` for navigation.
+
+⚠️ **Avoid using link buttons for actions**, choose flat or outline priority
+instead. This is because users expect navigation to happen when clicking on
+something what looks like a link.
+
+<Playground>
+  <Button label="Link that needs to be implemented as button" priority="link" />
+</Playground>
+
+## Sizes
+
+Aside from the default (medium) size, two additional sizes are available: small
+and large.
+
+<Playground>
+  <Button label="Small" size="small" />
+  <Button label="Medium" />
+  <Button label="Large" size="large" />
+</Playground>
+
+Block buttons span the full width of a parent:
+
+<Playground>
+  <Button label="Block button" block />
+</Playground>
+
+## Buttons with Icons
+
+To improve clarity or to draw attention to the action, icons can be added
+before or after the button's label.
+
+👉 Please note there are no icons pre-packed in React UI. Visit
+[Icons](/foundation/icons) to see how it works.
+
+<Playground>
+  <Button
+    label="Icon before label"
+    beforeLabel={<Icon icon="star" />}
+  />
+  <Button
+    label="Icon after label"
+    afterLabel={<Icon icon="star" />}
+  />
+  <Button
+    label="Link button with icon"
+    beforeLabel={<Icon icon="star" />}
+    priority="link"
+  />
+</Playground>
+
+### Icon Buttons
+
+For clear and simple actions, buttons can visually consist just of an icon.
+Label remains mandatory to keep the button accessible. Icon buttons can
+optionally enhance on desktop and display the label once there is enough room
+for it.
+
+<Playground>
+  <Button
+    label="Icon button"
+    labelVisibility="none"
+    afterLabel={<Icon icon="pencil" />}
+  />
+  <Button
+    label="Icon button with label visible on desktop"
+    labelVisibility="desktop"
+    beforeLabel={<Icon icon="pencil" />}
+  />
+</Playground>
+
+## Buttons with Badges
+
+A [Badge](/components/ui/badge) can be added to buttons to provide additional
+information or to draw user's attention.
+
+<Playground>
+  <Button
+    label="Badge before"
+    beforeLabel={<Badge label={3} type="light" priority="outline" />}
+  />
+  <Button
+    label="Badge before, on top"
+    startCorner={<Badge label={3} />}
+  />
+  <Button
+    label="Badge after, on top"
+    endCorner={<Badge label={3} />}
+    priority="outline"
+  />
+  <Button
+    label="Badge after"
+    afterLabel={<Badge label="new" type="warning" />}
+    priority="outline"
+  />
+</Playground>
+
+### Icon Buttons with a Badge
+
+Badges play nicely with icon buttons, too:
+
+<Playground>
+  <Button
+    label="Icon button with badge"
+    labelVisibility="none"
+    priority="outline"
+    beforeLabel={<Icon icon="warning-sign" />}
+    startCorner={<Badge label={3} type="warning" />}
+  />
+  <Button
+    label="Icon button with badge"
+    labelVisibility="desktop"
+    priority="outline"
+    beforeLabel={<Icon icon="warning-sign" />}
+    startCorner={<Badge label={3} type="error" />}
+  />
+</Playground>
+
+## States
+
+### Disabled State
+
+Disabled state makes the action unavailable.
+
+<Playground>
+  <Button label="Disabled default button" disabled />
+  <Button label="Disabled outline button" priority="outline" disabled />
+  <Button label="Disabled flat button" priority="flat" disabled />
+</Playground>
+
+### Loading State
+
+When an action triggers an asynchronous process on background, the button's
+loading state can be indicated by showing a loading icon. Buttons in loading
+state are automatically made disabled to prevent unwanted interaction.
+
+<Playground>
+  <Button
+    label="Button in loading state"
+    loadingIcon={(
+      <span className="d-inline-flex animation-spin-counterclockwise">
+        <Icon icon="loading" />
+      </span>
+    )}
+  />
+  <Button
+    label="Icon button in loading state"
+    labelVisibility="none"
+    beforeLabel={<Icon icon="pencil" />}
+    loadingIcon={(
+      <span className="d-inline-flex animation-spin-counterclockwise">
+        <Icon icon="loading" />
+      </span>
+    )}
+  />
+  <Button
+    label="Icon button with badge, loading"
+    labelVisibility="desktop"
+    beforeLabel={<Icon icon="pencil" />}
+    loadingIcon={(
+      <span className="d-inline-flex animation-spin-counterclockwise">
+        <Icon icon="loading" />
+      </span>
+    )}
+    startCorner={<Badge label={3} type="error" />}
+  />
+  <Button
+    label="Icon after label, loading"
+    afterLabel={<Icon icon="up" />}
+    loadingIcon={(
+      <span className="d-inline-flex animation-spin-counterclockwise">
+        <Icon icon="loading" />
+      </span>
+    )}
+  />
+</Playground>
+
+👉 Visit the [Helpers](/helpers) section to see how the icon animation is made.
+
+## API
+
+<Props of={Button} />
+
+---
+
+Next: [ButtonGroup →](/components/ui/button-group)

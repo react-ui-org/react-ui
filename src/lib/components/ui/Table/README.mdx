@@ -1,0 +1,262 @@
+---
+name: Table
+menu: 'Components: UI'
+route: /components/ui/table
+---
+
+# Table
+
+Table presents complex tabular data in an easy-to-scan way.
+
+import {
+  Playground,
+  Props,
+} from 'docz'
+import { Icon } from '../../../../docs/_components/Icon/Icon'
+import { TranslatedScrollView as ScrollView } from '../ScrollView/ScrollView'
+import { Table } from './Table'
+
+## Basic Usage
+
+To use the Table component, you need to import it first:
+
+```js
+import { Table } from '@react-ui-org/react-ui';
+```
+
+And use it:
+
+<Playground>
+  <Table
+    columns={[
+      {
+        label: 'ID',
+        name: 'id',
+      },
+      {
+        label: 'Name',
+        name: 'name',
+      },
+      {
+        format: (row) => row.dateOfBirth.toLocaleDateString('en-GB'),
+        label: 'Date of birth',
+        name: 'dateOfBirth',
+      },
+    ]}
+    rows={[
+      {
+        dateOfBirth: new Date(1940, 10, 9),
+        id: 1,
+        name: 'John Lennon',
+      },
+      {
+        dateOfBirth: new Date(1942, 6, 18),
+        id: 2,
+        name: 'Paul McCartney',
+      },
+      {
+        dateOfBirth: new Date(1943, 2, 25),
+        id: 3,
+        name: 'George Harrison',
+      },
+      {
+        dateOfBirth: new Date(1940, 7, 7),
+        id: 4,
+        name: 'Richard Starkey (Ringo Starr)',
+      },
+    ]}
+  />
+</Playground>
+
+## General Guidelines
+
+- **Keep headers short** so users can quickly scan the content of the table.
+  Just one or two words should be enough.
+
+- Tables are **good for displaying complex tabular data.** For simpler data sets
+  or even plain key-value pairs, consider using the [List](/components/ui/list)
+  component.
+
+- Tables make **lots of information easier to scan and compare.** If you have
+  fewer sections and want to emphasize each group more, consider using
+  [Cards](/components/ui/card).
+
+## Responsive Tables
+
+The easiest way to make tables responsive is to wrap them with the
+[ScrollView](/components/ui/scroll-view) component in the horizontal mode.
+
+<Playground>
+  <ScrollView direction="horizontal" shadowSize="100px">
+    <Table
+      columns={[
+        {
+          label: 'ID',
+          name: 'id',
+        },
+        {
+          format: (row) => (
+            <span style={{ whiteSpace: 'nowrap' }}>{row.name}</span>
+          ),
+          label: 'Name',
+          name: 'name',
+        },
+        {
+          format: (row) => (
+            <span style={{ whiteSpace: 'nowrap' }}>{row.note}</span>
+          ),
+          label: 'Note',
+          name: 'note',
+        },
+        {
+          format: (row) => row.dateOfBirth.toLocaleDateString('en-GB'),
+          label: 'Date of birth',
+          name: 'dateOfBirth',
+        },
+      ]}
+      rows={[
+        {
+          dateOfBirth: new Date(1940, 10, 9),
+          id: 1,
+          name: 'John Lennon',
+          note: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. '
+            + 'Aenean commodo ligula eget dolor. Aenean massa. Cum sociis '
+            + 'natoque penatibus et magnis dis parturient montes, nascetur '
+            + 'ridiculus mus. Donec quam felis, ultricies nec, pellentesque '
+            + 'eu, pretium quis, sem.',
+        },
+        {
+          dateOfBirth: new Date(1942, 6, 18),
+          id: 2,
+          name: 'Paul McCartney',
+          note: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. '
+            + 'Aenean commodo ligula eget dolor. Aenean massa. Cum sociis '
+            + 'natoque penatibus et magnis dis parturient montes, nascetur '
+            + 'ridiculus mus. Donec quam felis, ultricies nec, pellentesque '
+            + 'eu, pretium quis, sem.',
+        },
+        {
+          dateOfBirth: new Date(1943, 2, 25),
+          id: 3,
+          name: 'George Harrison',
+          note: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. '
+            + 'Aenean commodo ligula eget dolor. Aenean massa. Cum sociis '
+            + 'natoque penatibus et magnis dis parturient montes, nascetur '
+            + 'ridiculus mus. Donec quam felis, ultricies nec, pellentesque '
+            + 'eu, pretium quis, sem.',
+        },
+        {
+          dateOfBirth: new Date(1940, 7, 7),
+          id: 4,
+          name: 'Richard Starkey (Ringo Starr)',
+          note: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. '
+            + 'Aenean commodo ligula eget dolor. Aenean massa. Cum sociis '
+            + 'natoque penatibus et magnis dis parturient montes, nascetur '
+            + 'ridiculus mus. Donec quam felis, ultricies nec, pellentesque '
+            + 'eu, pretium quis, sem.',
+        },
+      ]}
+    />
+  </ScrollView>
+</Playground>
+
+## Sortable Columns
+
+The Table supports sorting indicators by adding a simple configuration.
+
+⚠️ The Table component only provides necessary visual support for sorting. Aside
+from icons, you must **provide the comparing functionality yourself** if you
+aren't rendering **already sorted data.** The reason for this decision is that
+it's better for performance to get the paged and sorted data right from the
+server rather than loading and processing it all in the browser afterwards.
+
+The following is an example of custom sorting function executed on the client.
+
+<Playground>
+  {() => {
+    const [tableSortColumn, setTableSortColumn] = React.useState('id');
+    const [tableSortDirection, setTableSortDirection] = React.useState('asc');
+    const [rows, setRows] = React.useState([
+      {
+        dateOfBirth: new Date(1940, 10, 9),
+        id: 1,
+        name: 'John Lennon',
+      },
+      {
+        dateOfBirth: new Date(1942, 6, 18),
+        id: 2,
+        name: 'Paul McCartney',
+      },
+      {
+        dateOfBirth: new Date(1943, 2, 25),
+        id: 3,
+        name: 'George Harrison',
+      },
+      {
+        dateOfBirth: new Date(1940, 7, 7),
+        id: 4,
+        name: 'Richard Starkey (Ringo Starr)',
+      },
+    ]);
+    const compare = (items, key, direction) => {
+      const sortedItems = [...items];
+      if (key === 'id' || key === 'dateOfBirth') {
+        sortedItems.sort((a, b) => b[key] - a[key]);
+      } else if (key === 'name') {
+        sortedItems.sort((a, b) => {
+          if (a.name < b.name) {
+            return -1;
+          }
+          if (a.name > b.name) {
+            return 1;
+          }
+          return 0;
+        });
+      }
+      return direction === 'desc' ? sortedItems.reverse() : sortedItems;
+    };
+    const columns = [
+      {
+        isSortable: true,
+        label: 'ID',
+        name: 'id',
+      },
+      {
+        isSortable: true,
+        label: 'Name',
+        name: 'name',
+      },
+      {
+        format: (row) => row.dateOfBirth.toISOString(),
+        isSortable: true,
+        label: 'Date of birth',
+        name: 'dateOfBirth',
+      },
+    ];
+    return (
+      <Table
+        columns={columns}
+        rows={rows}
+        sort={{
+          ascendingIcon: <Icon icon="up" />,
+          changeHandler: (column, direction) => {
+            setTableSortColumn(column);
+            setTableSortDirection(direction === 'asc' ? 'desc' : 'asc');
+            setRows(compare(rows, column, direction));
+          },
+          column: tableSortColumn,
+          descendingIcon: <Icon icon="down" />,
+          direction: tableSortDirection,
+        }}
+      />
+    );
+  }}
+</Playground>
+
+## API
+
+<Props of={Table} />
+
+---
+
+Next: [TextArea →](/components/ui/text-area)

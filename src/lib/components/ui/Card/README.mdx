@@ -1,0 +1,253 @@
+---
+name: Card
+menu: 'Components: UI'
+route: /components/ui/card
+---
+
+# Card
+
+import {
+  Playground,
+  Props,
+} from 'docz'
+import { Button } from '../Button/Button'
+import { Card } from './Card'
+import CardBody from './CardBody'
+import CardFooter from './CardFooter'
+
+Cards contain content and actions about a single subject.
+
+## Basic Usage
+
+To use the Card component, you need to import at least Card and
+[CardBody](#cardbody) components:
+
+```js
+import { Card, CardBody } from '@react-ui-org/react-ui';
+```
+
+And use it:
+
+<Playground>
+  <Card>
+    <CardBody>
+      Hello!
+    </CardBody>
+  </Card>
+</Playground>
+
+## General Guidelines
+
+- The default (flat) card is **designed for a non-white background.** You may
+  want to either use a different [variant](#variants) or
+  [customize](/getting-started/theming) the default appearance to make it stand
+  out on white surfaces.
+
+- The [CardBody](#cardbody) component is the only required element in a card.
+  [CardFooter](#cardfooter) is optional.
+
+- Use **medium or low-emphasis buttons** when there are more cards, eg. in a
+  grid. It will help you keep the UI clean and easy to scan.
+
+## Card Composition
+
+Aside from the mandatory [CardBody](#cardbody) element, you can add a
+[CardFooter](#cardfooter) to better separate your card's actions from the rest
+of the content.
+
+Import all necessary components:
+
+```js
+import { Card, CardBody, CardFooter } from '@react-ui-org/react-ui';
+````
+
+And use them:
+
+<Playground>
+  <Card>
+    <CardBody>
+      Hello! I&apos;m card with a footer.
+    </CardBody>
+    <CardFooter>
+      <Button label="Read more" priority="outline" />
+    </CardFooter>
+  </Card>
+</Playground>
+
+👉 CardFooter is required in case you need to align the actions of multiple
+cards with varying height of content.
+
+## Raised Card
+
+Add optional shadow to lift the card above surface.
+
+<Playground>
+  <Card raised>
+    <CardBody>
+      Hello! I&apos;m a raised card with a footer.
+    </CardBody>
+    <CardFooter>
+      <Button label="Read more" priority="outline" />
+    </CardFooter>
+  </Card>
+</Playground>
+
+## Bordered Card
+
+Use a border when you need to visually separate the card from its background.
+
+<Playground>
+  <Card type="bordered">
+    <CardBody>
+      Hello! I&apos;m card with a border and a footer.
+    </CardBody>
+    <CardFooter>
+      <Button label="Read more" priority="outline" />
+    </CardFooter>
+  </Card>
+  <Card type="bordered" raised>
+    <CardBody>
+      Hello! I&apos;m a raised card with a border and a footer.
+    </CardBody>
+    <CardFooter>
+      <Button label="Read more" priority="outline" />
+    </CardFooter>
+  </Card>
+</Playground>
+
+## Dense Card
+
+Use a dense card when you need to save space on screen. Other elements in the
+card should be also smaller to keep the card contained and easy to scan.
+
+<Playground>
+  <Card dense raised>
+    <CardBody>
+      <small>Hello! I&apos;m a dense card. Everything is smaller here.</small>
+    </CardBody>
+    <CardFooter>
+      <Button label="Read more" priority="outline" size="small" />
+    </CardFooter>
+  </Card>
+</Playground>
+
+## Variants
+
+All [UI colors](/foundation/colors#ui-colors) (success, warning, error, help,
+info, and note) are supported by cards to cover various needs of your app. The
+bordered card type is forced automatically to make sure the border is visible.
+
+<Playground>
+  <Card type="success">
+    <CardBody>
+      Hello! I&apos;m success variant of card.
+    </CardBody>
+    <CardFooter>
+      <Button label="Read more" priority="outline" variant="success" />
+    </CardFooter>
+  </Card>
+  <Card type="warning">
+    <CardBody>
+      Hello! I&apos;m warning variant of card.
+    </CardBody>
+    <CardFooter>
+      <Button label="Read more" priority="outline" variant="warning" />
+    </CardFooter>
+  </Card>
+  <Card type="error">
+    <CardBody>
+      Hello! I&apos;m error variant of card.
+    </CardBody>
+    <CardFooter>
+      <Button label="Read more" priority="outline" variant="danger" />
+    </CardFooter>
+  </Card>
+  <Card type="help">
+    <CardBody>
+      Hello! I&apos;m help variant of card.
+    </CardBody>
+    <CardFooter>
+      <Button label="Read more" priority="outline" variant="dark" />
+    </CardFooter>
+  </Card>
+  <Card type="info">
+    <CardBody>
+      Hello! I&apos;m info variant of card.
+    </CardBody>
+    <CardFooter>
+      <Button label="Read more" priority="outline" variant="dark" />
+    </CardFooter>
+  </Card>
+  <Card type="note">
+    <CardBody>
+      Hello! I&apos;m note variant of card.
+    </CardBody>
+    <CardFooter>
+      <Button label="Read more" priority="outline" variant="dark" />
+    </CardFooter>
+  </Card>
+</Playground>
+
+## States
+
+### Disabled State
+
+An entire card can appear disabled. However, you'll still need to manually
+disable its interactive elements to disallow user's interaction.
+
+<Playground>
+  <Card disabled>
+    <CardBody>
+      Hello! I&apos;m a disabled card.
+    </CardBody>
+    <CardFooter>
+      <Button label="Read more" priority="outline" disabled />
+    </CardFooter>
+  </Card>
+  <Card disabled raised>
+    <CardBody>
+      Hello! I&apos;m a disabled raised card.
+    </CardBody>
+    <CardFooter>
+      <Button label="Read more" priority="outline" disabled />
+    </CardFooter>
+  </Card>
+  <Card variant="bordered" disabled>
+    <CardBody>
+      Hello! I&apos;m a disabled bordered card.
+    </CardBody>
+    <CardFooter>
+      <Button label="Read more" priority="outline" disabled />
+    </CardFooter>
+  </Card>
+  <Card type="success" disabled>
+    <CardBody>
+      Hello! I&apos;m a disabled success variant of card.
+    </CardBody>
+    <CardFooter>
+      <Button label="Read more" priority="outline" variant="success" disabled />
+    </CardFooter>
+  </Card>
+</Playground>
+
+## API
+
+<Props of={Card} />
+
+## CardBody
+
+CardBody is the only required element in a card. See
+[Card Composition](#card-composition) for all details.
+
+<Props of={CardBody} />
+
+## CardFooter
+
+Separate your card actions with CardFooter. See
+[Card Composition](#card-composition) for all details.
+
+<Props of={CardFooter} />
+
+---
+
+Next: [CheckboxField →](/components/ui/checkbox-field)

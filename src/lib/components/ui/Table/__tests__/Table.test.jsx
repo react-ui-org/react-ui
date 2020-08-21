@@ -5,7 +5,7 @@ import {
   shallow,
 } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
-import Table from '../Table';
+import { Table } from '../Table';
 
 const columnsData = [
   {

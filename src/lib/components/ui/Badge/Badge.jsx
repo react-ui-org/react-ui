@@ -54,12 +54,24 @@ Badge.defaultProps = {
 };
 
 Badge.propTypes = {
+  /**
+   * ID of the root HTML element.
+   */
   id: PropTypes.string,
+  /**
+   * Text to be displayed.
+   */
   label: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
   ]).isRequired,
+  /**
+   * Visual priority to highlight or suppress the badge.
+   */
   priority: PropTypes.oneOf(['default', 'outline']),
+  /**
+   * Color variant to clarify importance and meaning of the badge.
+   */
   type: PropTypes.oneOf(['error', 'help', 'info', 'note', 'success', 'warning', 'light']),
 };
 
