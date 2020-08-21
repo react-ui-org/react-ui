@@ -115,11 +115,27 @@
   }
 }
 
-.withLabelHidden .loadingIcon,
-.withLabelHiddenMobile .loadingIcon {
-  display: none;
+.withLabelHidden.isRootLoading .loadingIcon,
+.withLabelHiddenMobile.isRootLoading .loadingIcon {
+  margin-left: 0;
+}
 
+.withLabelHidden.isRootLoading .beforeLabel,
+.withLabelHidden.isRootLoading .afterLabel,
+.withLabelHiddenMobile.isRootLoading .beforeLabel,
+.withLabelHiddenMobile.isRootLoading .afterLabel {
+  display: none;
+}
+
+.withLabelHiddenMobile.isRootLoading .beforeLabel,
+.withLabelHiddenMobile.isRootLoading .afterLabel {
   @include breakpoint-up($button-breakpoint) {
-    display: initial;
+    display: flex;
+  }
+}
+
+.withLabelHiddenMobile.isRootLoading .loadingIcon {
+  @include breakpoint-up($button-breakpoint) {
+    margin-left: $button-icon-offset;
   }
 }

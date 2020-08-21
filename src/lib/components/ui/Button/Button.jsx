@@ -31,6 +31,7 @@ export const Button = (props) => {
   let blockClass = '';
   let groupedClass = '';
   let labelVisibilityClass = '';
+  let loadingClass = '';
 
   if (priority === 'default') {
     priorityClass = styles.priorityDefault;
@@ -78,6 +79,10 @@ export const Button = (props) => {
     } else if (labelVisibility === 'none') {
       labelVisibilityClass = styles.withLabelHidden;
     }
+
+    if (loadingIcon) {
+      loadingClass = styles.isRootLoading;
+    }
   }
 
   const propsToTransfer = transferProps(
@@ -97,12 +102,12 @@ export const Button = (props) => {
         ${blockClass}
         ${groupedClass}
         ${labelVisibilityClass}
+        ${loadingClass}
       `).trim()}
       disabled={disabled || !!loadingIcon}
       id={id}
       onClick={clickHandler}
       ref={forwardedRef}
-      title={labelVisibility === 'all' ? null : label}
       type={type}
     >
       {priority !== 'link' && startCorner && (

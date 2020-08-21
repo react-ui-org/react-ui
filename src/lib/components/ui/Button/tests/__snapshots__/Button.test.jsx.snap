@@ -8,7 +8,6 @@ exports[`rendering renders correctly flat 1`] = `
         variantPrimary"
   disabled={false}
   onClick={null}
-  title={null}
   type="button"
 >
   <span
@@ -30,7 +29,6 @@ exports[`rendering renders correctly label visibility 1`] = `
         withLabelHidden"
   disabled={false}
   onClick={null}
-  title="button"
   type="button"
 >
   <span
@@ -49,7 +47,6 @@ exports[`rendering renders correctly mandatory props only 1`] = `
         variantPrimary"
   disabled={false}
   onClick={null}
-  title={null}
   type="button"
 >
   <span
@@ -66,7 +63,6 @@ exports[`rendering renders correctly priority \`link\` 1`] = `
         priorityLink"
   disabled={false}
   onClick={null}
-  title={null}
   type="button"
 >
   <span
@@ -84,7 +80,6 @@ exports[`rendering renders correctly priority \`link\` with all props 1`] = `
   disabled={true}
   id="custom-id"
   onClick={null}
-  title="link"
   type="button"
 >
   <span
@@ -118,7 +113,6 @@ exports[`rendering renders correctly priority 1`] = `
         variantPrimary"
   disabled={false}
   onClick={null}
-  title={null}
   type="button"
 >
   <span
@@ -137,7 +131,6 @@ exports[`rendering renders correctly size 1`] = `
         variantPrimary"
   disabled={false}
   onClick={null}
-  title={null}
   type="button"
 >
   <span
@@ -156,7 +149,6 @@ exports[`rendering renders correctly variant 1`] = `
         variantSuccess"
   disabled={false}
   onClick={null}
-  title={null}
   type="button"
 >
   <span
@@ -175,11 +167,11 @@ exports[`rendering renders correctly with all props 1`] = `
         variantSuccess
         isRootBlock
         isRootGrouped
-        withLabelHiddenMobile"
+        withLabelHiddenMobile
+        isRootLoading"
   disabled={true}
   id="custom-id"
   onClick={null}
-  title="button"
   type="button"
 >
   <span
@@ -238,7 +230,6 @@ exports[`rendering renders correctly with icon 1`] = `
         variantPrimary"
   disabled={false}
   onClick={null}
-  title={null}
   type="button"
 >
   <span
