@@ -1,0 +1,136 @@
+---
+name: Usage
+menu: 'Getting Started'
+route: /getting-started/usage
+---
+
+# Usage
+
+## Responsive Meta Tag
+
+React UI is designed and developed mobile-first, a strategy in which we first
+write code for mobile devices, and then scale up components as necessary using
+CSS media queries. To ensure proper rendering and touch zooming for all devices,
+add the responsive viewport meta tag to your `<head>` element:
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+```
+
+## Fonts
+
+React UI is designed with the Titillium Web font. Add it to your project eg. via
+Google Fonts in your `<head>` element:
+
+```html
+<link
+  href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap"
+  rel="stylesheet"
+/>
+```
+
+Remember to include all necessary font weights (and only them — for better
+performance).
+
+## Foundation CSS
+
+React UI honors ITCSS principles to make sure that its CSS code base will work
+and perform well even in large scale. There are two global CSS layers:
+
+- **Theme:** a collection of hundreds of CSS custom properties that define the
+  look of your app. See [Theming](/getting-started/theming) for more.
+- **Foundation:** the ground-zero CSS for React UI components. Includes global
+  resets and fixes rendering inconsistencies across browsers with
+  `normalize.css`. Not to be confused with the Foundation CSS framework.
+
+Import the two global CSS layers as early as possible in your document:
+
+```js
+import '@react-ui-org/react-ui/src/lib/theme.scss';
+import '@react-ui-org/react-ui/src/lib/foundation.scss';
+```
+
+⚠️ As of now, you will need **working SASS pipeline** for this to work. This is
+to be changed to a ready-to-use CSS in the future.
+
+️👉️ Because of using CSS custom properties, it is technically possible to import
+the theme layer anywhere later in the app. But it's a nice habit to declare
+variables before using them.
+
+## Components
+
+Import and use any of React UI components in your app:
+
+```jsx
+import { Button } from '@react-ui-org/react-ui';
+
+<Button label="My Button" />
+```
+
+## Full Example
+
+Example HTML:
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>React UI Example</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
+```
+
+Example JSX:
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Button } from '@react-ui-org/react-ui';
+import '@react-ui-org/react-ui/src/lib/theme.scss';
+import '@react-ui-org/react-ui/src/lib/foundation.scss';
+
+const App = () => (
+  <Button label="My Button" />
+);
+
+ReactDOM.render(<App />, document.querySelector('#app'));
+```
+
+## Helpers and Utilities
+
+Helpers and utilities are tiny CSS classes that can handle details like
+[typography](/utilities/typography), [spacing](/utilities/spacing),
+[colors](/utilities/colors), etc.
+
+While the **utility classes do just one thing** (they set a single CSS rule and
+use the otherwise disallowed `!important` to enforce it) and are often
+responsive (can be adjusted for individual breakpoints), the **helper classes
+can compose multiple CSS rules** to do a bit more complicated tasks.
+
+To use helpers and utilities, just import them along the base CSS layers of
+React UI:
+
+```js
+import '@react-ui-org/react-ui/src/lib/theme.scss';
+import '@react-ui-org/react-ui/src/lib/foundation.scss';
+import '@react-ui-org/react-ui/src/lib/helpers.scss';
+import '@react-ui-org/react-ui/src/lib/utilities.scss';
+```
+
+The class name notation is
+[inspired by Bootstrap](https://getbootstrap.com/docs/4.5/utilities/), so if you
+are familiar with Bootstrap, you will feel at home here.
+
+---
+
+Next: [Theming →](/getting-started/theming)
