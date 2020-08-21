@@ -51,10 +51,25 @@ ButtonGroup.defaultProps = {
 };
 
 ButtonGroup.propTypes = {
+  /**
+   * If `true`, the button group will span the full width of its parent.
+   */
   block: PropTypes.bool,
+  /**
+   * Buttons to be grouped.
+   */
   children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  /**
+   * If `true`, all buttons inside the group will be disabled.
+   */
   disabled: PropTypes.bool,
+  /**
+   * Visual priority to highlight or suppress the buttons.
+   */
   priority: PropTypes.oneOf(['default', 'outline', 'flat']),
+  /**
+   * Size of the buttons.
+   */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 

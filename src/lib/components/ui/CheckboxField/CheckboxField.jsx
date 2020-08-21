@@ -121,23 +121,70 @@ CheckboxField.defaultProps = {
 };
 
 CheckboxField.propTypes = {
+  /**
+   * Function to call when the input is toggled.
+   */
   changeHandler: PropTypes.func,
+  /**
+   * If `true`, the input will be checked.
+   */
   checked: PropTypes.bool,
+  /**
+   * Optional description.
+   */
   description: PropTypes.string,
+  /**
+   * If `true`, the input will be disabled.
+   */
   disabled: PropTypes.bool,
+  /**
+   * Error message to be displayed.
+   */
   error: PropTypes.string,
+  /**
+   * Reference forwarded to the `input` element.
+   */
   forwardedRef: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.shape({ current: PropTypes.any }),
   ]),
+  /**
+   * ID of the input HTML element. It also serves as a prefix for important inner elements:
+   * `<ID>__label`, `<ID>__labelText`, `<ID>__descriptionText`, and `<ID>__errorText`.
+   */
   id: PropTypes.string.isRequired,
+  /**
+   * Treat the field differently when it's inside a FormLayout. Do not set manually!
+   */
   inFormLayout: PropTypes.bool,
+  /**
+   * If `false`, the label will be visually hidden (but remains accessible by assistive
+   * technologies).
+   */
   isLabelVisible: PropTypes.bool,
+  /**
+   * Checkbox field label.
+   */
   label: PropTypes.string.isRequired,
+  /**
+   * Placement of the label relative to the input.
+   */
   labelPosition: PropTypes.oneOf(['before', 'after']),
+  /**
+   * Layout of the field. It has impact only on CheckboxField inside a FormLayout.
+   */
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
+  /**
+   * If `true`, the input will be required.
+   */
   required: PropTypes.bool,
+  /**
+   * Alter the field to provide feedback based on validation result.
+   */
   validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
+  /**
+   * Value of the input.
+   */
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,

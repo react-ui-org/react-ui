@@ -287,49 +287,98 @@ ScrollView.defaultProps = {
 };
 
 ScrollView.propTypes = {
+  /**
+   * If `true`, display the arrow controls.
+   */
   arrows: PropTypes.bool,
+  /**
+   * Text color of the arrow controls. Accepts any valid CSS color value.
+   */
   arrowsColor: PropTypes.string,
+  /**
+   * Portion to scroll by when the arrows are clicked, in px.
+   */
   arrowsScrollStep: PropTypes.number,
   /**
-   * Auto scroll mechanism requires to have `key` prop set for every child present in `children`
-   * prop because it detects changes of these keys. Otherwise it will not work.
+   * Auto scroll mechanism requires to have the `key` prop set for every child present in `children`
+   * prop because it detects changes of these keys. Without the keys, it will not work.
    *
-   * Option `always` means that auto scroll scrolls to the end every time content changes.
-   * Option `detectEnd` means that auto scroll scrolls to the end only when content is changed and
-   * user is scrolled at the end of the viewport at moment of change .
+   * Option `always` means that auto scroll scrolls to the end every time the content changes.
+   * Option `detectEnd` means that auto scroll scrolls to the end only when the content is changed
+   * and the user scrolled at the end of the viewport at the moment of the change.
    *
    * See https://reactjs.org/docs/lists-and-keys.html#keys
    */
   autoScroll: PropTypes.oneOf(['always', 'detectEnd', 'off']),
+  /**
+   * Content to be scrollable.
+   */
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
+  /**
+   * Custom CSS to replace the default end scrolling shadow.
+   */
   customEndShadowStyle: PropTypes.shape({
     background: PropTypes.string,
     boxShadow: PropTypes.string,
   }),
+  /**
+   * Custom HTML or React Component to replace the default next-arrow control.
+   */
   customNextArrow: PropTypes.node,
+  /**
+   * Custom HTML or React Component to replace the default prev-arrow control.
+   */
   customPrevArrow: PropTypes.node,
+  /**
+   * Custom CSS to replace the default start scrolling shadow.
+   */
   customStartShadowStyle: PropTypes.shape({
     background: PropTypes.string,
     boxShadow: PropTypes.string,
   }),
+  /**
+   * Delay in ms before the display of arrows and scrolling shadows is evaluated during interaction.
+   */
   debounce: PropTypes.number,
+  /**
+   * Direction of scrolling.
+   */
   direction: PropTypes.oneOf(['horizontal', 'vertical']),
+  /**
+   * ID of the root HTML element. It also serves as a prefix for important inner elements:
+   * `<ID>__content`, `<ID>__arrowPrevButton`, and `<ID>__arrowNextButton`.
+   */
   id: PropTypes.string,
+  /**
+   * If `false`, the system scrollbar will be hidden.
+   */
   scrollbar: PropTypes.bool,
+  /**
+   * Color of the default scrolling shadows in the RGBA format. It doesn't have effect on custom
+   * scrolling shadows.
+   */
   shadowColor: PropTypes.shape({
     alpha: PropTypes.number.isRequired,
     blue: PropTypes.number.isRequired,
     green: PropTypes.number.isRequired,
     red: PropTypes.number.isRequired,
   }),
+  /**
+   * Size of scrolling shadows. Works as height in the vertical mode and as width in the horizontal
+   * mode.
+   */
   shadowSize: PropTypes.string,
+  /**
+   * Translations required by the component.
+   */
   translations: PropTypes.shape({
     next: PropTypes.string.isRequired,
     previous: PropTypes.string.isRequired,
   }).isRequired,
 };
 
-export default withTranslationContext(ScrollView, 'ScrollView');
+export const TranslatedScrollView = withTranslationContext(ScrollView, 'ScrollView');
+export default TranslatedScrollView;

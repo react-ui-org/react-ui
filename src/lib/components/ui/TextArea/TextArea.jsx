@@ -140,26 +140,82 @@ TextArea.defaultProps = {
 };
 
 TextArea.propTypes = {
+  /**
+   * Function to call when the input has changed.
+   */
   changeHandler: PropTypes.func,
+  /**
+   * The number of visible text columns for the control.
+   */
   cols: PropTypes.number,
+  /**
+   * If `true`, the input will be disabled.
+   */
   disabled: PropTypes.bool,
+  /**
+   * Reference forwarded to the `textarea` element.
+   */
   forwardedRef: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.shape({ current: PropTypes.any }),
   ]),
+  /**
+   * If `true`, the field will span the full width of its parent.
+   */
   fullWidth: PropTypes.bool,
+  /**
+   * Optional description.
+   */
   helperText: PropTypes.string,
+  /**
+   * ID of the input HTML element. It also serves as a prefix for important inner elements:
+   * `<ID>__label`, `<ID>__labelText`, and `<ID>__helperText`.
+   */
   id: PropTypes.string.isRequired,
+  /**
+   * Treat the field differently when it's inside a FormLayout. Do not set manually!
+   */
   inFormLayout: PropTypes.bool,
+  /**
+   * If `false`, the label will be visually hidden (but remains accessible by assistive
+   * technologies).
+   */
   isLabelVisible: PropTypes.bool,
+  /**
+   * Text field label.
+   */
   label: PropTypes.string.isRequired,
+  /**
+   * Layout of the field.
+   */
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
+  /**
+   * Optional example value.
+   */
   placeholder: PropTypes.string,
+  /**
+   * If `true`, the input will be required.
+   */
   required: PropTypes.bool,
+  /**
+   * The number of visible text lines for the control.
+   */
   rows: PropTypes.number,
+  /**
+   * Size of the field.
+   */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
+  /**
+   * Alter the field to provide feedback based on validation result.
+   */
   validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
+  /**
+   * Value of the input.
+   */
   value: PropTypes.string,
+  /**
+   * Design variant of the field, further customizable with CSS custom properties.
+   */
   variant: PropTypes.oneOf(['filled', 'outline']),
 };
 
