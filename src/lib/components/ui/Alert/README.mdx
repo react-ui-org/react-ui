@@ -1,0 +1,172 @@
+---
+name: Alert
+menu: 'Components: UI'
+route: /components/ui/alert
+---
+
+# Alert
+
+import {
+  Playground,
+  Props,
+} from 'docz'
+import { Icon } from '../../../../docs/_components/Icon/Icon'
+import { Button } from '../Button/Button'
+import {
+  TranslatedAlert as Alert,
+  Alert as ParsableAlert,
+} from './Alert'
+
+Alert presents feedback or important information to users.
+
+## Basic Usage
+
+To implement the Alert component, you need to import it first:
+
+```js
+import { Alert } from '@react-ui-org/react-ui';
+```
+
+And use it:
+
+<Playground>
+  <Alert>
+    Hello!
+  </Alert>
+</Playground>
+
+See [API](#api) for all available options.
+
+## General Guidelines
+
+- **Be simple and short** and explain to users why you are interrupting them
+  with an alert. Clearly say what happened or what is going to happen. Provide a
+  brief title when the message is too long.
+
+- **Use icons** to improve the accessibility of alerts because color may not be
+  enough for everyone. [See how](#alerts-with-icons).
+
+## Alert Types
+
+There are six types of alerts (matching all available
+[UI colors](/foundation/colors#ui-colors)) to cover all possible needs of your
+project: note, success, warning, error, help, and info.
+
+### Note (default)
+
+When no type is specified, a neutral informative alert appears:
+
+<Playground>
+  <Alert>
+    <strong>Note:</strong> This feature may not be available in all regions.
+  </Alert>
+</Playground>
+
+### Success
+
+Success alerts confirm that an operation has been processed successfully.
+
+<Playground>
+  <Alert type="success">
+    <strong>Success:</strong> Settings have been successfully saved.
+  </Alert>
+</Playground>
+
+### Warning
+
+Use warning alerts when a potentially unfavourable situation may occur. You may
+suggest an action to resolve the problem.
+
+<Playground>
+  <Alert type="warning">
+    <strong>Warning:</strong> Your credit card is going to expire soon.
+    {' '}
+    <a href="/">Update my payment options</a>
+  </Alert>
+</Playground>
+
+### Error
+
+Error alerts say there is something that block users from continuing that
+requires their immediate attention. The alert should offer a solution to the
+problem.
+
+<Playground>
+  <Alert type="error">
+    <strong>Error:</strong> Cannot connect to the server. Is your internet
+    connection working fine?
+    {' '}
+    <a href="/">Try again</a>
+  </Alert>
+</Playground>
+
+### Help
+
+This kind of alert can be used to display helpful information.
+
+<Playground>
+  <Alert type="help">
+    <strong>Help:</strong> You should choose a password you don&apos;t use
+    anywhere else.
+  </Alert>
+</Playground>
+
+### Info
+
+Another common, informative alert.
+
+<Playground>
+  <Alert type="info">
+    <strong>Info:</strong> This feature depends on user&apos;s OS preferences.
+  </Alert>
+</Playground>
+
+## Alerts with Icons
+
+An icon can (and should) accompany the message.
+
+👉 Please note there are no icons pre-packed in React UI. Visit
+[Icons](/foundation/icons) to see how it works.
+
+<Playground>
+  <Alert type="success" icon={<Icon icon="success" />}>
+    <strong>Success:</strong> Settings have been successfully saved.
+  </Alert>
+</Playground>
+
+## Dismissible Alerts
+
+You can make an alert dismissible by providing a function that closes it on
+click on the close button:
+
+<Playground>
+  {() => {
+    const [isAlertVisible, setIsAlertVisible] = React.useState(true);
+    return (
+      <>
+        {isAlertVisible ? (
+          <Alert
+            type="success"
+            icon={<Icon icon="success" />}
+            closeHandler={() => setIsAlertVisible(false)}
+          >
+            <strong>Success:</strong> Settings have been successfully saved.
+          </Alert>
+        ) : (
+          <Button
+            clickHandler={() => setIsAlertVisible(true)}
+            label="Show alert"
+          />
+        )}
+      </>
+    );
+  }}
+</Playground>
+
+## API
+
+<Props of={ParsableAlert} />
+
+---
+
+Next: [Badge →](/components/ui/badge)

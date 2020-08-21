@@ -15,6 +15,9 @@ const CardBody = (props) => {
 };
 
 CardBody.propTypes = {
+  /**
+   * Content of the card.
+   */
   children: PropTypes.node.isRequired,
 };
 

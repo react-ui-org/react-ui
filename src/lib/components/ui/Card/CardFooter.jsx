@@ -15,6 +15,9 @@ const CardFooter = (props) => {
 };
 
 CardFooter.propTypes = {
+  /**
+   * Card actions, usually buttons.
+   */
   children: PropTypes.node.isRequired,
 };
 

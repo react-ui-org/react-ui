@@ -165,25 +165,77 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
+  /**
+   * Element to be displayed after label, eg. an icon.
+   */
   afterLabel: PropTypes.node,
+  /**
+   * Element to be displayed before label, eg. an icon.
+   */
   beforeLabel: PropTypes.node,
+  /**
+   * If `true`, the button will span the full width of its parent.
+   */
   block: PropTypes.bool,
+  /**
+   * Function to call when the button is clicked.
+   */
   clickHandler: PropTypes.func,
+  /**
+   * If `true`, the button will be disabled.
+   */
   disabled: PropTypes.bool,
+  /**
+   * Element to be displayed in the top right corner.
+   */
   endCorner: PropTypes.node,
+  /**
+   * Reference forwarded to the `button` element.
+   */
   forwardedRef: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.shape({ current: PropTypes.any }),
   ]),
+  /**
+   * Treat button differently when it's inside `ButtonGroup`. Do not set manually!
+   */
   grouped: PropTypes.bool,
+  /**
+   * ID of the root HTML element.
+   */
   id: PropTypes.string,
+  /**
+   * Button label.
+   */
   label: PropTypes.string.isRequired,
+  /**
+   * Defines when the button label should be visible.
+   */
   labelVisibility: PropTypes.oneOf(['all', 'desktop', 'none']),
+  /**
+   * Element to be displayed as a loading icon. When defined, it implies the button is in the
+   * loading state.
+   */
   loadingIcon: PropTypes.node,
+  /**
+   * Visual priority to highlight or suppress the button.
+   */
   priority: PropTypes.oneOf(['default', 'outline', 'flat', 'link']),
+  /**
+   * Size of the button.
+   */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
+  /**
+   * Element to be displayed in the top left corner.
+   */
   startCorner: PropTypes.node,
+  /**
+   * Set the HTML `type` attribute of the `button` element.
+   */
   type: PropTypes.oneOf(['button', 'submit']),
+  /**
+   * Color variant to clarify importance and meaning of the button.
+   */
   variant: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'danger', 'dark']),
 };
 

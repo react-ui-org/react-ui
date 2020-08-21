@@ -1,0 +1,356 @@
+---
+name: Modal
+menu: 'Components: UI'
+route: /components/ui/modal
+---
+
+# Modal
+
+Modal allows to prompt users to take or complete an action.
+
+import {
+  Playground,
+  Props,
+} from 'docz'
+import { Button } from '../Button/Button'
+import {
+  TranslatedModal as Modal,
+  Modal as ParsableModal,
+} from './Modal'
+
+## Basic Usage
+
+To implement the Modal component, you need to import it first:
+
+```js
+import { Modal } from '@react-ui-org/react-ui';
+```
+
+And use it:
+
+<Playground>
+  {() => {
+    const [modalOpen, setModalOpen] = React.useState(false);
+    return (
+      <>
+        <Button
+          clickHandler={() => setModalOpen(true)}
+          label="Launch modal"
+          priority="outline"
+        />
+        <div>
+          {modalOpen && (
+            <Modal
+              title="Warning"
+              actions={[{
+                clickHandler: () => setModalOpen(false),
+                label: 'Delete',
+                variant: 'danger',
+              }]}
+              closeHandler={() => setModalOpen(false)}
+            >
+              <p>
+                Do you really want to delete the user <code>admin</code>?
+                This cannot be undone.
+              </p>
+            </Modal>
+          )}
+        </div>
+      </>
+    );
+  }}
+</Playground>
+
+See [API](#api) for all available options.
+
+## General Guidelines
+
+- Use modals to **confirm an action,** display a **blocking alert**, or to
+  reveal **contextual options or settings** that cannot be displayed inline
+  with the parent content.
+
+- **The title** should communicate the **purpose of the modal** rather than a
+  generic text. Eg. “Delete the user?” tells more than “Are you sure?” or
+  “Warning”.
+
+- **Modal actions** should correspond to the modal purpose, too. Eg. “Delete”
+  tells better what happens rather than “OK”.
+
+- Modal **automatically focuses the first form field** by default which allows
+  users to confirm the modal by hitting enter key (requires an action of type
+  `submit`). When no field is found then the first button in footer is focused.
+  To turn this feature off, set the `autofocus` prop to `false`.
+
+- **Avoid stacking** of modals. While it may technically work, the modal is just
+  not designed for that.
+
+## Sizes
+
+Modal is available in three fixed-width sizes: small, medium, and large. Modals
+of any size automatically shrink when they cannot fit the screen width.
+
+<Playground>
+  {() => {
+    const [modalOpen, setModalOpen] = React.useState(false);
+    const [modalSize, setModalSize] = React.useState('small');
+    return (
+      <>
+        <Button
+          clickHandler={() => {
+            setModalSize('small');
+            setModalOpen(true);
+          }}
+          label="Launch small modal"
+          priority="outline"
+        />
+        <Button
+          clickHandler={() => {
+            setModalSize('medium');
+            setModalOpen(true);
+          }}
+          label="Launch medium modal"
+          priority="outline"
+        />
+        <Button
+          clickHandler={() => {
+            setModalSize('large');
+            setModalOpen(true);
+          }}
+          label="Launch large modal"
+          priority="outline"
+        />
+        <div>
+          {modalOpen && (
+            <Modal
+              title="Delete the user?"
+              actions={[{
+                clickHandler: () => setModalOpen(false),
+                label: 'Delete',
+                variant: 'danger',
+              }]}
+              closeHandler={() => setModalOpen(false)}
+              size={modalSize}
+            >
+              <p>
+                Do you really want to delete the user <code>admin</code>?
+                This cannot be undone.
+              </p>
+            </Modal>
+          )}
+        </div>
+      </>
+    );
+  }}
+</Playground>
+
+On top of that, the modal is able to adjust to the width of its content.
+
+👉 Please note the auto width may not function correctly in combination with
+other auto layout mechanisms, eg. the auto-width
+[FormLayout](/components/layout/form-layout#label-width). It's just too much
+magic that doesn't work together yet 🎩.
+
+<Playground>
+  {() => {
+    const [modalOpen, setModalOpen] = React.useState(false);
+    return (
+      <>
+        <Button
+          clickHandler={() => setModalOpen(true)}
+          label="Launch auto-width modal"
+          priority="outline"
+        />
+        <div>
+          {modalOpen && (
+            <Modal
+              title="Delete the user?"
+              actions={[{
+                clickHandler: () => setModalOpen(false),
+                label: 'Delete',
+                variant: 'danger',
+              }]}
+              closeHandler={() => setModalOpen(false)}
+              size="auto"
+            >
+              <p>
+                Do you really want to delete the user <code>admin</code>?
+                This cannot be undone.
+              </p>
+            </Modal>
+          )}
+        </div>
+      </>
+    );
+  }}
+</Playground>
+
+## Scrolling Long Content
+
+When modals become too long for the user's viewport or device, they scroll
+independent of the page itself.
+
+The inner implementation of body scrolling uses a partially
+[customizable](#api) instance of the [ScrollView](/components/ui/scroll-view)
+component.
+
+<Playground>
+  {() => {
+    const [modalOpen, setModalOpen] = React.useState(false);
+    const [modalScrollMode, setModalScrollMode] = React.useState('body');
+    return (
+      <>
+        <Button
+          clickHandler={() => {
+            setModalScrollMode('body');
+            setModalOpen(true);
+          }}
+          label="Launch modal with scrolling body"
+          priority="outline"
+        />
+        <Button
+          clickHandler={() => {
+            setModalScrollMode('modal');
+            setModalOpen(true);
+          }}
+          label="Launch scrolling modal"
+          priority="outline"
+        />
+        <div>
+          {modalOpen && (
+            <Modal
+              title="Modal with long content"
+              actions={[{
+                clickHandler: () => setModalOpen(false),
+                label: 'OK',
+              }]}
+              autoFocus={false}
+              closeHandler={() => setModalOpen(false)}
+              scrollMode={modalScrollMode}
+              size="small"
+            >
+              <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+                commodo ligula eget dolor. Aenean massa.
+              </p>
+              <p>
+                Cum sociis natoque penatibus et magnis dis parturient montes,
+                nascetur ridiculus mus. Donec quam felis, ultricies nec,
+                pellentesque eu, pretium quis, sem.
+              </p>
+              <p>
+                Nulla consequat massa quis enim. Donec pede justo, fringilla
+                vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus
+                ut, imperdiet a, venenatis vitae, justo.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+                commodo ligula eget dolor. Aenean massa.
+              </p>
+              <p>
+                Cum sociis natoque penatibus et magnis dis parturient montes,
+                nascetur ridiculus mus. Donec quam felis, ultricies nec,
+                pellentesque eu, pretium quis, sem.
+              </p>
+              <p>
+                Nulla consequat massa quis enim. Donec pede justo, fringilla
+                vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus
+                ut, imperdiet a, venenatis vitae, justo.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+                commodo ligula eget dolor. Aenean massa.
+              </p>
+              <p>
+                Cum sociis natoque penatibus et magnis dis parturient montes,
+                nascetur ridiculus mus. Donec quam felis, ultricies nec,
+                pellentesque eu, pretium quis, sem.
+              </p>
+              <p>
+                Nulla consequat massa quis enim. Donec pede justo, fringilla
+                vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus
+                ut, imperdiet a, venenatis vitae, justo.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+                commodo ligula eget dolor. Aenean massa.
+              </p>
+              <p>
+                Cum sociis natoque penatibus et magnis dis parturient montes,
+                nascetur ridiculus mus. Donec quam felis, ultricies nec,
+                pellentesque eu, pretium quis, sem.
+              </p>
+              <p>
+                Nulla consequat massa quis enim. Donec pede justo, fringilla
+                vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus
+                ut, imperdiet a, venenatis vitae, justo.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+                commodo ligula eget dolor. Aenean massa.
+              </p>
+              <p>
+                Cum sociis natoque penatibus et magnis dis parturient montes,
+                nascetur ridiculus mus. Donec quam felis, ultricies nec,
+                pellentesque eu, pretium quis, sem.
+              </p>
+              <p>
+                Nulla consequat massa quis enim. Donec pede justo, fringilla
+                vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus
+                ut, imperdiet a, venenatis vitae, justo.
+              </p>
+            </Modal>
+          )}
+        </div>
+      </>
+    );
+  }}
+</Playground>
+
+### Long Content and Autofocus
+
+👉 If you set the `scrollMode` to `modal`, you may want to turn `autoFocus` off
+to prevent the modal from scrolling to the end immediately after being opened.
+
+## Blocking Modals
+
+There are situations when you need to interrupt user's flow and lock entire UI
+to prevent interaction. That's where blocking modals may come handy.
+
+<Playground>
+  {() => {
+    const [modalOpen, setModalOpen] = React.useState(false);
+    return (
+      <>
+        <Button
+          clickHandler={() => setModalOpen(true)}
+          label="Launch blocking modal"
+          priority="outline"
+        />
+        <div>
+          {modalOpen && (
+            <Modal title="Update is in progress" size="auto">
+              <p>
+                <span role="img" aria-label="Warning">⚠️</span>
+                Please wait a few seconds until the firmware update is finished.
+                Don&apos;t turn off the device!
+              </p>
+              <Button
+                clickHandler={() => setModalOpen(false)}
+                label="Close the demo"
+                priority="flat"
+              />
+            </Modal>
+          )}
+        </div>
+      </>
+    );
+  }}
+</Playground>
+
+## API
+
+<Props of={ParsableModal} />
+
+---
+
+Next: [Radio →](/components/ui/radio)

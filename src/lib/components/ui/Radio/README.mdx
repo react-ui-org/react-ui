@@ -1,0 +1,269 @@
+---
+name: Radio
+menu: 'Components: UI'
+route: /components/ui/radio
+---
+
+# Radio
+
+Radio allows users to select one option from a set.
+
+import {
+  Playground,
+  Props,
+} from 'docz'
+import { Radio } from './Radio'
+
+## Basic Usage
+
+To implement the Radio component, you need to import it first:
+
+```js
+import { Radio } from '@react-ui-org/react-ui';
+```
+
+And use it:
+
+<Playground>
+  {() => {
+    const [fruit, setFruit] = React.useState('apple');
+    return (
+      <Radio
+        changeHandler={(e) => setFruit(e.target.value)}
+        id="my-radio"
+        label="Your favourite fruit"
+        options={[
+          {
+            label: 'Apple',
+            value: 'apple',
+          },
+          {
+            label: 'Banana',
+            value: 'banana',
+          },
+          {
+            label: 'Grapefruit',
+            value: 'grapefruit',
+          },
+        ]}
+        value={fruit}
+      />
+    );
+  }}
+</Playground>
+
+See [API](#api) for all available options.
+
+## General Guidelines
+
+- Use Radio for **just a few options**. For larger sets of many options (say 4
+  and more) consider using the [SelectField](/components/ui/select-field)
+  component. This will help keep your UI clean and uncluttered and prevent your
+  users from being overwhelmed by too many options.
+
+- **Don't use for boolean** (true/false) selection or to toggle things on and
+  off. [CheckboxField](/components/ui/checkbox-field) and
+  [Toggle](/components/ui/toggle) are more suitable for such cases.
+
+- Use **short and descriptive labels**, ideally nouns rather than seemingly
+  polite phrases like _Please select your favourite fruit_. Short labels will
+  help your users accomplish their task faster.
+
+- Only make the Radio's label invisible when there is **another visual
+  clue** to guide users through filling the input.
+
+- When a short label is not enough, use **help texts to guide users** before
+  they enter anything.
+
+- Use **clear, calm error messages** when there's a problem with what they
+  entered.
+
+📖 [Read more about checkboxes and radios at Nielsen Norman Group.](https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/)
+
+## Invisible Label
+
+While it may be acceptable for login screens with just a few fields or for other
+simple forms, it's dangerous to hide labels from users in most cases. Keep in
+mind you should **provide another visual clue** so users know what to fill into
+the input.
+
+<Playground>
+  {() => {
+    const [frequency, setFrequency] = React.useState('weekly');
+    return (
+      <Radio
+        changeHandler={(e) => setFrequency(e.target.value)}
+        id="my-radio-hidden-label"
+        isLabelVisible={false}
+        label="Newsletter frequency"
+        options={[
+          {
+            label: 'I want to subscribe to the weekly newsletter',
+            value: 'weekly',
+          },
+          {
+            label: 'I want to subscribe to the monthly newsletter',
+            value: 'monthly',
+          },
+          {
+            label: "I don't wish to receive anything",
+            value: 'never',
+          },
+        ]}
+        value={frequency}
+      />
+    );
+  }}
+</Playground>
+
+## Help Text
+
+You may provide an additional help text to clarify how the input should be
+filled.
+
+<Playground>
+  {() => {
+    const [fruit, setFruit] = React.useState('apple');
+    return (
+      <Radio
+        changeHandler={(e) => setFruit(e.target.value)}
+        description="What do you prefer?"
+        id="my-radio-help-text"
+        label="Your favourite fruit"
+        options={[
+          {
+            label: 'Apple',
+            value: 'apple',
+          },
+          {
+            label: 'Banana',
+            value: 'banana',
+          },
+          {
+            label: 'Grapefruit',
+            value: 'grapefruit',
+          },
+        ]}
+        value={fruit}
+      />
+    );
+  }}
+</Playground>
+
+## States
+
+### Validation States
+
+Validation states visually present the result of validation of the input. You
+should always **provide a help text for states other than valid** so users know
+what happened and what action they should take or what options they have.
+
+<Playground>
+  {() => {
+    const [fruit, setFruit] = React.useState('apple');
+    const options = [
+      {
+        label: 'Apple',
+        value: 'apple',
+      },
+      {
+        label: 'Banana',
+        value: 'banana',
+      },
+      {
+        label: 'Grapefruit',
+        value: 'grapefruit',
+      },
+    ];
+    return (
+      <>
+        <Radio
+          changeHandler={(e) => setFruit(e.target.value)}
+          description="Great, they're in stock!"
+          id="my-radio-success"
+          label="Your favourite fruit"
+          options={options}
+          required
+          validationState="valid"
+          value={fruit}
+        />
+        <Radio
+          changeHandler={(e) => setFruit(e.target.value)}
+          description="Oh, really?"
+          id="my-radio-warning"
+          label="Your favourite fruit"
+          options={options}
+          required
+          validationState="warning"
+          value={fruit}
+        />
+        <Radio
+          changeHandler={(e) => setFruit(e.target.value)}
+          error="You must select one kind of fruit."
+          id="my-radio-error"
+          label="Your favourite fruit"
+          options={options}
+          required
+          validationState="invalid"
+          value={fruit}
+        />
+      </>
+    );
+  }}
+</Playground>
+
+### Disabled State
+
+It's possible to disable just some options or the whole set.
+
+<Playground>
+  {() => {
+    const [fruit, setFruit] = React.useState('apple');
+    const options = [
+      {
+        label: 'Apple',
+        value: 'apple',
+      },
+      {
+        label: 'Banana',
+        value: 'banana',
+      },
+      {
+        disabled: true,
+        label: 'Grapefruit',
+        value: 'grapefruit',
+      },
+    ];
+    return (
+      <>
+        <Radio
+          changeHandler={(e) => setFruit(e.target.value)}
+          id="my-radio-disabled-option"
+          label="Your favourite fruit"
+          options={options}
+          value={fruit}
+        />
+        <Radio
+          changeHandler={(e) => setFruit(e.target.value)}
+          disabled
+          id="my-radio-disabled"
+          label="Your favourite fruit"
+          options={options}
+          value="apple"
+        />
+      </>
+    );
+  }}
+</Playground>
+
+## API
+
+In addition to the options below, you can add any custom attributes that do not
+interfere with the API, and they will be passed to the `input` HTML element.
+This is useful mainly to improve component's accessibility.
+
+<Props of={Radio} />
+
+---
+
+Next: [ScrollView →](/components/ui/scroll-view)

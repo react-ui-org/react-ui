@@ -7,7 +7,7 @@ import styles from './Swatch.scss';
 //   getComputedStyle(document.documentElement).getPropertyValue(propertyName)
 // );
 
-const Swatch = ({ color }) => {
+export const Swatch = ({ color }) => {
   const colorCustomProperty = `--rui-color-${color}`;
   // const colorValue = getCssProperty(colorCustomProperty);
 
