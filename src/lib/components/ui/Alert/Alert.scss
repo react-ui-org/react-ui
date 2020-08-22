@@ -32,13 +32,14 @@
 
 .message {
   flex-grow: 1;
-  font-weight: $alert-message-font-weight;
+  font-weight: $alert-font-weight;
   font-size: $alert-font-size;
   line-height: $alert-line-height;
 }
 
+.message a,
 .message strong {
-  font-weight: $alert-title-font-weight;
+  font-weight: $alert-emphasis-font-weight;
 }
 
 .close {
