@@ -8,6 +8,7 @@
   border-color: $foreground-color;
   background-color: map-get($type-properties, background-color);
 
+  a,
   strong,
   .close,
   .icon {
