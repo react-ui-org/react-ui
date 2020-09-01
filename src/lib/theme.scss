@@ -432,17 +432,17 @@
   --rui-card-border-radius: var(--rui-border-radius);
   --rui-card-background-color: var(--rui-color-white);
 
-  // Cards: type: flat
+  // Cards: variants
   --rui-card-flat-border-color: transparent;
-
-  // Cards: type: bordered
   --rui-card-bordered-border-color: var(--rui-color-gray-200);
 
-  // Cards: type: warning
+  // Cards: types
+  --rui-card-success-border-color: var(--rui-color-success);
   --rui-card-warning-border-color: var(--rui-color-warning);
-
-  // Cards: type: error
   --rui-card-error-border-color: var(--rui-color-error);
+  --rui-card-help-border-color: var(--rui-color-help);
+  --rui-card-info-border-color: var(--rui-color-info);
+  --rui-card-note-border-color: var(--rui-color-note);
 
   // Cards: raised
   --rui-card-raised-box-shadow: 0 0.01rem 0.65rem -0.1rem #{rgba(0, 0, 0, 0.3)};
@@ -451,7 +451,6 @@
   --rui-card-in-list-max-width: 400px;
 
   // Cards: disabled
-  --rui-card-disabled-border-color: transparent;
   --rui-card-disabled-background-color: var(--rui-color-gray-50);
   --rui-card-disabled-opacity: 0.6;
 

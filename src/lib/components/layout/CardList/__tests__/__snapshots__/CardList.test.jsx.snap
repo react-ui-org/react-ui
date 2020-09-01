@@ -10,7 +10,8 @@ exports[`rendering renders correctly with a single child 1`] = `
     inList={true}
     key=".0"
     raised={false}
-    type="flat"
+    type={null}
+    variant="flat"
   >
     content
   </Card>
@@ -27,7 +28,8 @@ exports[`rendering renders correctly with multiple children 1`] = `
     inList={true}
     key=".0"
     raised={false}
-    type="flat"
+    type={null}
+    variant="flat"
   >
     content 1
   </Card>
@@ -37,7 +39,8 @@ exports[`rendering renders correctly with multiple children 1`] = `
     inList={true}
     key=".1"
     raised={false}
-    type="flat"
+    type={null}
+    variant="flat"
   >
     content 2
   </Card>
@@ -47,7 +50,8 @@ exports[`rendering renders correctly with multiple children 1`] = `
     inList={true}
     key=".2"
     raised={false}
-    type="flat"
+    type={null}
+    variant="flat"
   >
     content 3
   </Card>
