@@ -19,12 +19,16 @@
   padding: $card-padding;
 }
 
-.isTypeFlat {
-  @include card-type(flat);
+.isVariantFlat {
+  @include card-variant(flat);
 }
 
-.isTypeBordered {
-  @include card-type(bordered);
+.isVariantBordered {
+  @include card-variant(bordered);
+}
+
+.isTypeSuccess {
+  @include card-type(success);
 }
 
 .isTypeWarning {
@@ -35,9 +39,20 @@
   @include card-type(error);
 }
 
+.isTypeHelp {
+  @include card-type(help);
+}
+
+.isTypeInfo {
+  @include card-type(info);
+}
+
+.isTypeNote {
+  @include card-type(note);
+}
+
 .isDisabled {
   opacity: map-get($card-disabled, opacity);
-  border-color: map-get($card-disabled, border-color);
   background-color: map-get($card-disabled, background-color);
 }
 

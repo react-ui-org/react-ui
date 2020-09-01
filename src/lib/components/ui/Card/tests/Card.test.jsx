@@ -35,6 +35,7 @@ describe('rendering', () => {
         id="custom-id"
         raised
         type="warning"
+        variant="flat"
       >
         <p>Card content</p>
       </Card>,

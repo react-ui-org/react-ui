@@ -5,23 +5,37 @@ $card-border-width: var(--rui-card-border-width);
 $card-border-radius: var(--rui-card-border-radius);
 
 $card-types: (
+  success: (
+    border-color: var(--rui-card-success-border-color),
+  ),
+  warning: (
+    border-color: var(--rui-card-warning-border-color),
+  ),
+  error: (
+    border-color: var(--rui-card-error-border-color),
+  ),
+  help: (
+    border-color: var(--rui-card-help-border-color),
+  ),
+  info: (
+    border-color: var(--rui-card-info-border-color),
+  ),
+  note: (
+    border-color: var(--rui-card-note-border-color),
+  ),
+);
+
+$card-variants: (
   flat: (
     border-color: var(--rui-card-flat-border-color),
   ),
   bordered: (
     border-color: var(--rui-card-bordered-border-color),
   ),
-  error: (
-    border-color: var(--rui-card-error-border-color),
-  ),
-  warning: (
-    border-color: var(--rui-card-warning-border-color),
-  ),
 );
 
 $card-disabled: (
   background-color: var(--rui-card-disabled-background-color),
-  border-color: var(--rui-card-disabled-border-color),
   opacity: var(--rui-card-disabled-opacity),
 );
 

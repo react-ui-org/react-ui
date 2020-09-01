@@ -5,3 +5,9 @@
 
   border-color: map-get($type-properties, border-color);
 }
+
+@mixin card-variant($variant) {
+  $variant-properties: map-get($card-variants, $variant);
+
+  border-color: map-get($variant-properties, border-color);
+}
