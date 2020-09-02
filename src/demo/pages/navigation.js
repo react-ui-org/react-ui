@@ -24,10 +24,6 @@ export default [
   {
     items: [
       {
-        link: '#layout-components-card-list',
-        title: 'Card List',
-      },
-      {
         link: '#layout-components-centered-layout',
         title: 'Centered Layout',
       },
@@ -38,6 +34,10 @@ export default [
       {
         link: '#layout-components-form-layout',
         title: 'Form Layout',
+      },
+      {
+        link: '#layout-components-grid',
+        title: 'Grid',
       },
       {
         link: '#layout-components-list',

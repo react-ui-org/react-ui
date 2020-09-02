@@ -1,5 +1,4 @@
 // Layout components
-export { default as CardList } from './components/layout/CardList';
 export { default as LayoutCenter } from './components/layout/LayoutCenter';
 export { CTA } from './components/layout/CTA';
 export { CTACenter } from './components/layout/CTA';
@@ -7,6 +6,7 @@ export { CTAEnd } from './components/layout/CTA';
 export { CTAStart } from './components/layout/CTA';
 export { FormLayout } from './components/layout/FormLayout';
 export { FormLayoutCustomField } from './components/layout/FormLayout';
+export { default as Grid } from './components/layout/Grid';
 export { List } from './components/layout/List';
 export { ListItem } from './components/layout/List';
 export { Media } from './components/layout/Media';

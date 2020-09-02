@@ -8,7 +8,6 @@ export const Card = (props) => {
     dense,
     disabled,
     id,
-    inList,
     raised,
     type,
     variant,
@@ -48,11 +47,6 @@ export const Card = (props) => {
     disabledClass = styles.isDisabled;
   }
 
-  let inListClass = '';
-  if (inList) {
-    inListClass = styles.isInList;
-  }
-
   let raisedClass = '';
   if (raised) {
     raisedClass = styles.isRaised;
@@ -66,7 +60,6 @@ export const Card = (props) => {
         ${variantClass}
         ${denseClass}
         ${disabledClass}
-        ${inListClass}
         ${raisedClass}
       `).trim()}
       id={id}
@@ -80,7 +73,6 @@ Card.defaultProps = {
   dense: false,
   disabled: false,
   id: undefined,
-  inList: false,
   raised: false,
   type: null,
   variant: 'flat',
@@ -91,7 +83,6 @@ Card.propTypes = {
   dense: PropTypes.bool,
   disabled: PropTypes.bool,
   id: PropTypes.string,
-  inList: PropTypes.bool,
   raised: PropTypes.bool,
   type: PropTypes.oneOf(['success', 'warning', 'error', 'help', 'info', 'note']),
   variant: PropTypes.oneOf(['flat', 'bordered']),

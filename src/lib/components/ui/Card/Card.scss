@@ -56,10 +56,6 @@
   background-color: map-get($card-disabled, background-color);
 }
 
-.isInList {
-  max-width: $card-in-list-max-width;
-}
-
 .isRaised {
   box-shadow: map-get($card-raised, box-shadow);
 }

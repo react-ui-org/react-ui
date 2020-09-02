@@ -1,9 +1,9 @@
 import flattenChildren from 'react-keyed-flatten-children';
 import PropTypes from 'prop-types';
 import React from 'react';
-import styles from './CardList.scss';
+import styles from './Grid.scss';
 
-const CardList = (props) => {
+export const Grid = (props) => {
   const {
     children,
     id,
@@ -25,22 +25,20 @@ const CardList = (props) => {
           return null;
         }
 
-        return React.cloneElement(child, {
-          inList: true,
-        });
+        return React.cloneElement(child);
       })}
     </div>
   );
 };
 
-CardList.defaultProps = {
+Grid.defaultProps = {
   children: null,
   id: undefined,
 };
 
-CardList.propTypes = {
+Grid.propTypes = {
   children: PropTypes.node,
   id: PropTypes.string,
 };
 
-export default CardList;
+export default Grid;
