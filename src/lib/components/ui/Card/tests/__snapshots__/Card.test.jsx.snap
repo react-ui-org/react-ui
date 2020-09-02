@@ -45,7 +45,6 @@ exports[`rendering renders correctly raised 1`] = `
         isVariantFlat
         
         
-        
         isRaised"
 >
   <p>
@@ -61,7 +60,6 @@ exports[`rendering renders correctly with all props 1`] = `
         isVariantBordered
         isDense
         isDisabled
-        
         isRaised"
   id="custom-id"
 >

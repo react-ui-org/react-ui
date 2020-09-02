@@ -14,7 +14,6 @@ import {
   Card,
   CardBody,
   CardFooter,
-  CardList,
   CTA,
   CTACenter,
   CTAEnd,
@@ -23,6 +22,7 @@ import {
   ForgotPassword,
   FormLayout,
   FormLayoutCustomField,
+  Grid,
   LayoutCenter,
   List,
   ListItem,
@@ -266,23 +266,6 @@ class DemoContainer extends React.Component {
           </section>
           <hr />
           <section id="layout-components" className="mb-7">
-            <h2 className="typography-size-5 mb-6">Layout Components</h2>
-            <h3 id="layout-components-card-list" className="typography-size-4 mb-6">Card List</h3>
-            <p>
-              Card List can be used to render <a href="#ui-components-card">Cards</a> in grid.
-            </p>
-            <Documentation
-              name="Card List"
-              component={(
-                <CardList>
-                  <Placeholder text="card" />
-                  <Placeholder text="card" />
-                  <Placeholder text="card" />
-                  <Placeholder text="card" />
-                  <Placeholder text="card" />
-                </CardList>
-              )}
-            />
             <h3 id="layout-components-centered-layout" className="typography-size-4 mb-6">Centered Layout</h3>
             <p>
               Centered layout takes 100 % of viewport height.
@@ -805,6 +788,23 @@ class DemoContainer extends React.Component {
                     value="apples"
                   />
                 </FormLayout>
+              )}
+            />
+            <h2 className="typography-size-5 mb-6">Layout Components</h2>
+            <h3 id="layout-components-grid" className="typography-size-4 mb-6">Grid</h3>
+            <p>
+              Grid can be used eg. to render <a href="#ui-components-card">Cards</a> in grid.
+            </p>
+            <Documentation
+              name="Grid"
+              component={(
+                <Grid>
+                  <Placeholder text="card" />
+                  <Placeholder text="card" />
+                  <Placeholder text="card" />
+                  <Placeholder text="card" />
+                  <Placeholder text="card" />
+                </Grid>
               )}
             />
             <h3 id="layout-components-list" className="typography-size-4 mb-6">List</h3>
@@ -1364,12 +1364,12 @@ class DemoContainer extends React.Component {
             />
             <h3 id="ui-components-card" className="typography-size-4 mb-6">Card</h3>
             <p>
-              You might want to use Cards along with <a href="#layout-components-card-list">Card List</a> layout.
+              You might want to use Cards along with the <a href="#layout-components-grid">Grid</a> layout.
             </p>
             <Documentation
               name="Card types"
               component={(
-                <CardList>
+                <Grid>
                   <Card>
                     <CardBody>
                       <h4>Flat card</h4>
@@ -1418,7 +1418,7 @@ class DemoContainer extends React.Component {
                       <Button clickHandler={loggerClick} label="Click" block />
                     </CardFooter>
                   </Card>
-                </CardList>
+                </Grid>
               )}
             />
             <Documentation
