@@ -34,9 +34,6 @@ import {
   MultipleSelectField,
   NewPassword,
   Radio,
-  Row,
-  RowEnd,
-  RowStart,
   ScrollView,
   SelectField,
   Table,
@@ -871,20 +868,6 @@ class DemoContainer extends React.Component {
                     <Placeholder text="body" />
                   </MediaBody>
                 </Media>
-              )}
-            />
-            <h3 id="layout-components-row" className="typography-size-4 mb-6">Row</h3>
-            <Documentation
-              name="Default layout"
-              component={(
-                <Row>
-                  <RowStart>
-                    <Placeholder text="start" />
-                  </RowStart>
-                  <RowEnd>
-                    <Placeholder text="end" />
-                  </RowEnd>
-                </Row>
               )}
             />
             <h3 id="layout-components-toolbar" className="typography-size-4 mb-6">Toolbar</h3>
