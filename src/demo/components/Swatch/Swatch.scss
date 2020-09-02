@@ -1,17 +1,17 @@
 @import '../../../lib/styles/settings/typography';
-@import '../../../lib/styles/tools/offset';
+@import '../../../lib/styles/tools/spacing';
 
 .root {
   display: inline-block;
-  margin-right: offset(3);
-  margin-bottom: offset(3);
+  margin-right: spacing(3);
+  margin-bottom: spacing(3);
   text-align: center;
 }
 
 .field {
   width: 120px;
   height: 60px;
-  margin-bottom: offset(1);
+  margin-bottom: spacing(1);
   border: 1px solid rgba(0, 0, 0, 0.15);
 }
 

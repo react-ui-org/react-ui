@@ -1,5 +1,6 @@
 // 1. Scrolling shadows are implemented as pseudo elements. This way we can customise them only
 //    with custom properties.
+//
 // 2. Stack scrolling shadows  over viewport content while keeping the content interactive.
 //
 //    - `.scrollingShadows` is positioned absolutely over the `.root`, with auto `z-index` (this is
@@ -18,11 +19,12 @@
 @import '../../../styles/tools/caret';
 @import '../../../styles/tools/hide-scrollbar';
 @import '../../../styles/tools/reset';
+@import '../../../styles/tools/spacing';
 @import '../../../styles/tools/transitions';
 @import 'theme';
 
-$_arrow-inner-offset: 0.5rem;
-$_arrow-outer-offset: 1rem;
+$_arrow-inner-spacing: spacing(2);
+$_arrow-outer-spacing: spacing(4);
 
 .root {
   position: relative; // 2.
@@ -104,8 +106,8 @@ $_arrow-outer-offset: 1rem;
   right: 0;
   left: 0;
   width: 100%;
-  padding-top: $_arrow-outer-offset;
-  padding-bottom: $_arrow-inner-offset;
+  padding-top: $_arrow-outer-spacing;
+  padding-bottom: $_arrow-inner-spacing;
   transform: translateY($scrollview-arrow-initial-offset);
 }
 
@@ -118,8 +120,8 @@ $_arrow-outer-offset: 1rem;
   bottom: 0;
   left: 0;
   width: 100%;
-  padding-top: $_arrow-inner-offset;
-  padding-bottom: $_arrow-outer-offset;
+  padding-top: $_arrow-inner-spacing;
+  padding-bottom: $_arrow-outer-spacing;
   transform: translateY(calc(-1 * #{$scrollview-arrow-initial-offset}));
 }
 
@@ -131,8 +133,8 @@ $_arrow-outer-offset: 1rem;
   top: 0;
   bottom: 0;
   left: 0;
-  padding-right: $_arrow-inner-offset;
-  padding-left: $_arrow-outer-offset;
+  padding-right: $_arrow-inner-spacing;
+  padding-left: $_arrow-outer-spacing;
   transform: translateX($scrollview-arrow-initial-offset);
 }
 
@@ -144,8 +146,8 @@ $_arrow-outer-offset: 1rem;
   top: 0;
   right: 0;
   bottom: 0;
-  padding-right: $_arrow-outer-offset;
-  padding-left: $_arrow-inner-offset;
+  padding-right: $_arrow-outer-spacing;
+  padding-left: $_arrow-inner-spacing;
   transform: translateX(calc(-1 * #{$scrollview-arrow-initial-offset}));
 }
 

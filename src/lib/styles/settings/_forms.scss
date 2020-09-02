@@ -1,7 +1,7 @@
 // 1. Input `line-height` is specified in `rem` so inputs do not break when their font size gets
 //    changed later.
 
-@import 'offsets';
+@import '../tools/spacing';
 @import 'typography';
 
 $form-field-font-family: $typography-font-family-base;
@@ -11,7 +11,7 @@ $form-field-helper-text-line-height: 1.2rem;
 $form-field-caret-size: 2.25rem;
 $form-field-bottom-line-height: 2px;
 $form-field-horizontal-breakpoint: md;
-$form-field-horizontal-inner-gap: map-get($offset-values, 2);
-$form-field-horizontal-outer-spacing: map-get($offset-values, 2);
-$form-field-vertical-inner-gap: map-get($offset-values, 1);
-$form-field-vertical-outer-spacing: map-get($offset-values, 2);
+$form-field-horizontal-inner-gap: spacing(2);
+$form-field-horizontal-outer-spacing: spacing(2);
+$form-field-vertical-inner-gap: spacing(1);
+$form-field-vertical-outer-spacing: spacing(2);

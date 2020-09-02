@@ -1,5 +1,5 @@
-@import '../../../styles/tools/offset';
 @import '../../../styles/tools/reset';
+@import '../../../styles/tools/spacing';
 @import 'theme';
 @import 'variables';
 
@@ -24,7 +24,7 @@
   flex: none;
   align-items: baseline;
   justify-content: space-between;
-  padding: $modal-padding-y offset(3) $modal-padding-y $modal-padding-x;
+  padding: $modal-padding-y spacing(3) $modal-padding-y $modal-padding-x;
 }
 
 .headTitle {
@@ -35,7 +35,7 @@
 .close {
   @include reset-button();
 
-  padding: offset(1) offset(2);
+  padding: spacing(1) spacing(2);
   font-size: map-get($typography-size-values, 3);
   line-height: 1;
   color: inherit;
