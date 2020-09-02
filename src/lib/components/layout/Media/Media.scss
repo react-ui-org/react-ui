@@ -1,14 +1,14 @@
 @import '../../../styles/settings/layouts';
-@import '../../../styles/tools/offset';
+@import '../../../styles/tools/spacing';
 
 .media {
   display: flex;
   align-items: flex-start;
-  margin-bottom: $layout-common-bottom-offset;
+  margin-bottom: $layout-common-bottom-spacing;
 }
 
 .object {
-  margin-right: offset(3);
+  margin-right: spacing(3);
 }
 
 .body {

@@ -1,9 +1,9 @@
 @import '../../../styles/tools/breakpoints';
-@import '../../../styles/tools/offset';
+@import '../../../styles/tools/spacing';
 
 $_cta-breakpoint: lg;
-$_cta-spacing: offset(1);
-$_cta-column-gap: offset(3);
+$_cta-spacing: spacing(1);
+$_cta-column-gap: spacing(3);
 
 .root {
   display: flex;

@@ -23,12 +23,12 @@
 }
 
 .beforeLabel {
-  margin-right: $button-icon-offset;
+  margin-right: $button-icon-spacing;
 }
 
 .afterLabel,
 .loadingIcon {
-  margin-left: $button-icon-offset;
+  margin-left: $button-icon-spacing;
 }
 
 .startCorner,
@@ -105,13 +105,13 @@
 
 .withLabelHiddenMobile .beforeLabel {
   @include breakpoint-up($button-breakpoint) {
-    margin-right: $button-icon-offset;
+    margin-right: $button-icon-spacing;
   }
 }
 
 .withLabelHiddenMobile .afterLabel {
   @include breakpoint-up($button-breakpoint) {
-    margin-left: $button-icon-offset;
+    margin-left: $button-icon-spacing;
   }
 }
 
@@ -136,6 +136,6 @@
 
 .withLabelHiddenMobile.isRootLoading .loadingIcon {
   @include breakpoint-up($button-breakpoint) {
-    margin-left: $button-icon-offset;
+    margin-left: $button-icon-spacing;
   }
 }

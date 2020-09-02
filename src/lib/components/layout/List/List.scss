@@ -1,8 +1,8 @@
 @import '../../../styles/settings/layouts';
-@import '../../../styles/tools/offset';
+@import '../../../styles/tools/spacing';
 
 .root {
-  margin-bottom: $layout-common-bottom-offset;
+  margin-bottom: $layout-common-bottom-spacing;
 }
 
 .list {
@@ -15,7 +15,7 @@
 
 .item {
   width: 100%;
-  margin-bottom: offset(2);
+  margin-bottom: spacing(2);
 
   &:last-child {
     margin-bottom: 0;

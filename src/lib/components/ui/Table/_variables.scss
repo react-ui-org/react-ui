@@ -1,10 +1,10 @@
 @import '../../../styles/settings/borders';
 @import '../../../styles/settings/colors';
-@import '../../../styles/settings/offsets';
 @import '../../../styles/settings/typography';
+@import '../../../styles/tools/spacing';
 
-$table-cell-padding-x: map-get($offset-values, 3);
-$table-cell-padding-y: map-get($offset-values, 1);
+$table-cell-padding-x: spacing(3);
+$table-cell-padding-y: spacing(1);
 $table-border-width: $border-width;
 $table-border-color: map-get($colors-grays, gray-100);
 $table-background-color: $color-white;

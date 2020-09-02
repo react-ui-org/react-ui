@@ -8,7 +8,7 @@
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   grid-gap: $card-list-grid-gap;
-  margin-bottom: $layout-common-bottom-offset;
+  margin-bottom: $layout-common-bottom-spacing;
 
   @include breakpoint-up(sm) {
     grid-template-columns: repeat(auto-fit, minmax($card-list-card-min-width, $card-list-card-max-width));

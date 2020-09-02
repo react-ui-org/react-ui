@@ -1,11 +1,11 @@
 @import '../../../styles/settings/borders';
 @import '../../../styles/settings/colors';
-@import '../../../styles/settings/offsets';
 @import '../../../styles/settings/typography';
 @import '../../../styles/settings/zindexes';
+@import '../../../styles/tools/spacing';
 
-$modal-padding-x: map-get($offset-values, 5);
-$modal-padding-y: map-get($offset-values, 3);
+$modal-padding-x: spacing(5);
+$modal-padding-y: spacing(3);
 $modal-border-radius: $border-radius;
 $modal-head-title-font-size: map-get($typography-size-values, 1);
 $modal-zindex: $zindex-modal;

@@ -11,7 +11,7 @@
 @import '../../settings/forms';
 @import '../../settings/forms-theme';
 @import '../../tools/caret';
-@import '../../tools/offset';
+@import '../spacing';
 @import '../transitions';
 @import 'states';
 
@@ -97,7 +97,7 @@
 }
 
 @mixin form-field-input-select() {
-  padding-right: calc(#{$form-field-caret-size} + #{offset(2)}); // 5.
+  padding-right: calc(#{$form-field-caret-size} + #{spacing(2)}); // 5.
   appearance: none;
 
   &::-ms-expand {
