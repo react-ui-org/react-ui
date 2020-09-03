@@ -1,20 +1,30 @@
 // Layout components
-export { default as LayoutCenter } from './components/layout/LayoutCenter';
-export { CTA } from './components/layout/CTA';
-export { CTACenter } from './components/layout/CTA';
-export { CTAEnd } from './components/layout/CTA';
-export { CTAStart } from './components/layout/CTA';
-export { FormLayout } from './components/layout/FormLayout';
-export { FormLayoutCustomField } from './components/layout/FormLayout';
+export { default as Center } from './components/layout/Center';
+export {
+  CTA,
+  CTACenter,
+  CTAEnd,
+  CTAStart,
+} from './components/layout/CTA';
+export {
+  FormLayout,
+  FormLayoutCustomField,
+} from './components/layout/FormLayout';
 export { default as Grid } from './components/layout/Grid';
-export { List } from './components/layout/List';
-export { ListItem } from './components/layout/List';
-export { Media } from './components/layout/Media';
-export { MediaBody } from './components/layout/Media';
-export { MediaObject } from './components/layout/Media';
-export { Toolbar } from './components/layout/Toolbar';
-export { ToolbarGroup } from './components/layout/Toolbar';
-export { ToolbarItem } from './components/layout/Toolbar';
+export {
+  List,
+  ListItem,
+} from './components/layout/List';
+export {
+  Media,
+  MediaBody,
+  MediaObject,
+} from './components/layout/Media';
+export {
+  Toolbar,
+  ToolbarGroup,
+  ToolbarItem,
+} from './components/layout/Toolbar';
 
 // Screens
 export { default as ForgotPassword } from './components/screens/Login/ForgotPassword';
@@ -26,9 +36,11 @@ export { default as Alert } from './components/ui/Alert';
 export { default as Badge } from './components/ui/Badge';
 export { default as Button } from './components/ui/Button';
 export { default as ButtonGroup } from './components/ui/ButtonGroup';
-export { Card } from './components/ui/Card';
-export { CardBody } from './components/ui/Card';
-export { CardFooter } from './components/ui/Card';
+export {
+  Card,
+  CardBody,
+  CardFooter,
+} from './components/ui/Card';
 export { default as CheckboxField } from './components/ui/CheckboxField';
 export { default as Modal } from './components/ui/Modal';
 export { default as MultipleSelectField } from './components/ui/MultipleSelectField';

@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import styles from './LayoutCenter.scss';
+import styles from './Center.scss';
 
-const LayoutCenter = (props) => (
+export const Center = (props) => (
   <div className={styles.root}>
     <div>
       {props.children}
@@ -10,12 +10,12 @@ const LayoutCenter = (props) => (
   </div>
 );
 
-LayoutCenter.defaultProps = {
+Center.defaultProps = {
   children: null,
 };
 
-LayoutCenter.propTypes = {
+Center.propTypes = {
   children: PropTypes.node,
 };
 
-export default LayoutCenter;
+export default Center;
