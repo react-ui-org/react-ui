@@ -827,7 +827,7 @@ class DemoContainer extends React.Component {
             <Documentation
               name="Right-aligned list"
               component={(
-                <List align="right">
+                <List align="end">
                   <ListItem>
                     <Placeholder text="item 1" />
                   </ListItem>
@@ -843,7 +843,7 @@ class DemoContainer extends React.Component {
             <Documentation
               name="Right-aligned list with auto width"
               component={(
-                <List align="right" autoWidth>
+                <List align="end" autoWidth>
                   <ListItem>
                     <Placeholder text="item no. 1" />
                   </ListItem>
