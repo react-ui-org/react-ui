@@ -15,10 +15,10 @@ const List = (props) => {
 
   let alignClass = '';
 
-  if (align === 'left') {
-    alignClass = styles.alignLeft;
-  } else if (align === 'right') {
-    alignClass = styles.alignRight;
+  if (align === 'start') {
+    alignClass = styles.alignStart;
+  } else if (align === 'end') {
+    alignClass = styles.alignEnd;
   }
 
   let autoWidthClass = '';
@@ -47,13 +47,13 @@ const List = (props) => {
 };
 
 List.defaultProps = {
-  align: 'left',
+  align: 'start',
   autoWidth: false,
   children: null,
 };
 
 List.propTypes = {
-  align: PropTypes.oneOf(['left', 'right']),
+  align: PropTypes.oneOf(['start', 'end']),
   autoWidth: PropTypes.bool,
   children: PropTypes.node,
 };

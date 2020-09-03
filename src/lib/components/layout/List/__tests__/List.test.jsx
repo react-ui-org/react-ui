@@ -36,7 +36,7 @@ describe('rendering', () => {
 
   it('renders correctly with multiple children and all props', () => {
     const tree = shallow((
-      <List align="right" autoWidth>
+      <List align="end" autoWidth>
         <ListItem>content 1</ListItem>
         <ListItem>content 2</ListItem>
         <ListItem>content 3</ListItem>

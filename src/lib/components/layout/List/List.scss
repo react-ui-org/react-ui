@@ -22,13 +22,22 @@
   }
 }
 
-.alignLeft {
+.alignStart {
   align-items: flex-start;
+  text-align: left;
 }
 
-.alignRight {
+.alignEnd {
   align-items: flex-end;
   text-align: right;
+}
+
+[dir="rtl"] .alignStart {
+  text-align: right;
+}
+
+[dir="rtl"] .alignEnd {
+  text-align: left;
 }
 
 .isAutoWidth .list {

@@ -6,7 +6,7 @@ exports[`rendering renders correctly with a single child 1`] = `
 >
   <ul
     className="list
-          alignLeft"
+          alignStart"
   >
     <ListItem>
       content
@@ -21,7 +21,7 @@ exports[`rendering renders correctly with multiple children 1`] = `
 >
   <ul
     className="list
-          alignLeft"
+          alignStart"
   >
     <ListItem>
       content 1
@@ -43,7 +43,7 @@ exports[`rendering renders correctly with multiple children and all props 1`] = 
 >
   <ul
     className="list
-          alignRight"
+          alignEnd"
   >
     <ListItem>
       content 1
