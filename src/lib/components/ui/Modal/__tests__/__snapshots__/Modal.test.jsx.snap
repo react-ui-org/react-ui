@@ -823,20 +823,6 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </ScrollView>
           </WithTranslationContextComponent>
         </div>
-        <div
-          className="footer"
-        >
-          <Toolbar
-            align="top"
-            dense={true}
-            justify="center"
-            nowrap={false}
-          >
-            <div
-              className="toolbar isDense  isAlignedToTop isJustifiedToCenter"
-            />
-          </Toolbar>
-        </div>
       </div>
     </div>
   </Modal>
@@ -922,13 +908,6 @@ exports[`rendering renders correctly with portal id 1`] = `
                     class="scrollingShadows"
                   />
                 </div>
-              </div>
-              <div
-                class="footer"
-              >
-                <div
-                  class="toolbar isDense  isAlignedToTop isJustifiedToCenter"
-                />
               </div>
             </div>
           </div>
@@ -1040,20 +1019,6 @@ exports[`rendering renders correctly with portal id 1`] = `
                 </div>
               </ScrollView>
             </WithTranslationContextComponent>
-          </div>
-          <div
-            className="footer"
-          >
-            <Toolbar
-              align="top"
-              dense={true}
-              justify="center"
-              nowrap={false}
-            >
-              <div
-                className="toolbar isDense  isAlignedToTop isJustifiedToCenter"
-              />
-            </Toolbar>
           </div>
         </div>
       </div>
