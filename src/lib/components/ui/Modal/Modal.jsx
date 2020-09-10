@@ -179,35 +179,37 @@ class Modal extends React.Component {
             )}
           </div>
           {modalBody()}
-          <div className={styles.footer}>
-            <Toolbar justify="center" dense>
-              {actions.map((action) => (
-                <ToolbarItem key={action.label}>
-                  <Button
-                    {...transferProps(action)}
-                    clickHandler={action.clickHandler}
-                    disabled={action.disabled}
-                    id={action.id || undefined}
-                    label={action.label}
-                    loadingIcon={action.loadingIcon}
-                    ref={this.submitButtonRef}
-                    type="button"
-                    variant={action.variant}
-                  />
-                </ToolbarItem>
-              ))}
-              {closeHandler && (
-                <ToolbarItem>
-                  <Button
-                    clickHandler={closeHandler}
-                    label={translations.close}
-                    priority="flat"
-                    {...(id && { id: `${id}__closeModalFooterButton` })}
-                  />
-                </ToolbarItem>
-              )}
-            </Toolbar>
-          </div>
+          {(actions.length || closeHandler) && (
+            <div className={styles.footer}>
+              <Toolbar justify="center" dense>
+                {actions.map((action) => (
+                  <ToolbarItem key={action.label}>
+                    <Button
+                      {...transferProps(action)}
+                      clickHandler={action.clickHandler}
+                      disabled={action.disabled}
+                      id={action.id || undefined}
+                      label={action.label}
+                      loadingIcon={action.loadingIcon}
+                      ref={this.submitButtonRef}
+                      type="button"
+                      variant={action.variant}
+                    />
+                  </ToolbarItem>
+                ))}
+                {closeHandler && (
+                  <ToolbarItem>
+                    <Button
+                      clickHandler={closeHandler}
+                      label={translations.close}
+                      priority="flat"
+                      {...(id && { id: `${id}__closeModalFooterButton` })}
+                    />
+                  </ToolbarItem>
+                )}
+              </Toolbar>
+            </div>
+          )}
         </div>
       </div>
     );
