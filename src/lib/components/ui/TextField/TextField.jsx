@@ -6,7 +6,31 @@ import styles from './TextField.scss';
 
 export const TextField = (props) => {
   const SMALL_INPUT_SIZE = 10;
-  const HAS_SMALL_INPUT = props.inputSize && props.inputSize <= SMALL_INPUT_SIZE;
+
+  const setCustomInputSizeByType = (inputType, inputSize, max) => {
+    if (inputType === 'number' && max) {
+      return max.toString().length;
+    }
+
+    if (inputSize) {
+      return inputSize;
+    }
+
+    return null;
+  };
+
+  const setInlineStyle = (customSize) => {
+    const style = {};
+
+    if (customSize) {
+      style['--rui-custom-input-size'] = customSize;
+    }
+
+    return style;
+  };
+
+  const customInputSize = setCustomInputSizeByType(props.type, props.inputSize, props.max);
+  const hasSmallInput = (customInputSize !== null) && (customInputSize <= SMALL_INPUT_SIZE);
 
   let labelVisibilityClass = '';
   let rootFullWidthClass = '';
@@ -30,7 +54,7 @@ export const TextField = (props) => {
     rootInFormLayoutClass = styles.isRootInFormLayout;
   }
 
-  if (HAS_SMALL_INPUT) {
+  if (hasSmallInput) {
     rootSmallInputClass = styles.hasRootSmallInput;
   }
 
@@ -66,20 +90,10 @@ export const TextField = (props) => {
     rootVariantClass = styles.rootVariantOutline;
   }
 
-  const inlineStyle = (inputSize) => {
-    const style = {};
-
-    if (inputSize) {
-      style['--rui-custom-input-size'] = inputSize;
-    }
-
-    return style;
-  };
-
   const propsToTransfer = transferProps(
     props,
     ['changeHandler', 'disabled', 'fullWidth', 'helperText', 'id', 'inFormLayout', 'inputSize', 'isLabelVisible',
-      'label', 'layout', 'placeholder', 'required', 'size', 'type', 'validationState', 'value', 'variant'],
+      'label', 'layout', 'max', 'placeholder', 'required', 'size', 'type', 'validationState', 'value', 'variant'],
   );
 
   return (
@@ -97,7 +111,7 @@ export const TextField = (props) => {
       `).trim()}
       htmlFor={props.id}
       id={`${props.id}__label`}
-      style={inlineStyle(props.inputSize)}
+      style={setInlineStyle(customInputSize)}
     >
       <div
         className={(`
@@ -115,6 +129,7 @@ export const TextField = (props) => {
             className={styles.input}
             disabled={props.disabled}
             id={props.id}
+            max={props.type === 'number' ? props.max : null}
             onChange={props.changeHandler}
             placeholder={props.placeholder}
             ref={props.forwardedRef}
@@ -150,6 +165,7 @@ TextField.defaultProps = {
   inputSize: null,
   isLabelVisible: true,
   layout: 'vertical',
+  max: null,
   placeholder: null,
   required: false,
   size: 'medium',
@@ -174,6 +190,7 @@ TextField.propTypes = {
   isLabelVisible: PropTypes.bool,
   label: PropTypes.string.isRequired,
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
+  max: PropTypes.number,
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   size: PropTypes.oneOf(['small', 'medium', 'large']),

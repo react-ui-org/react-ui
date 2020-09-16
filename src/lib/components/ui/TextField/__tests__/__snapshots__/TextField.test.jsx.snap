@@ -31,11 +31,106 @@ exports[`rendering renders correctly mandatory props only 1`] = `
         className="input"
         disabled={false}
         id="test"
+        max={null}
         onChange={null}
         placeholder={null}
         required={false}
         size={null}
         type="text"
+      />
+    </div>
+  </div>
+</label>
+`;
+
+exports[`rendering renders correctly the number input type 1`] = `
+<label
+  className="root
+        
+        
+        rootLayoutVertical
+        
+        rootSizeMedium
+        
+        
+        rootVariantOutline"
+  htmlFor="test"
+  id="test__label"
+  style={
+    Object {
+      "--rui-custom-input-size": 13,
+    }
+  }
+>
+  <div
+    className="label"
+    id="test__labelText"
+  >
+    Number input type
+  </div>
+  <div
+    className="field"
+  >
+    <div
+      className="inputContainer"
+    >
+      <input
+        className="input"
+        disabled={false}
+        id="test"
+        max={1000000000000}
+        onChange={null}
+        placeholder={null}
+        required={false}
+        size={null}
+        type="number"
+      />
+    </div>
+  </div>
+</label>
+`;
+
+exports[`rendering renders correctly the number input type with small input 1`] = `
+<label
+  className="root
+        
+        
+        rootLayoutVertical
+        
+        rootSizeMedium
+        hasRootSmallInput
+        
+        rootVariantOutline"
+  htmlFor="test"
+  id="test__label"
+  style={
+    Object {
+      "--rui-custom-input-size": 1,
+    }
+  }
+>
+  <div
+    className="label"
+    id="test__labelText"
+  >
+    Number input type
+  </div>
+  <div
+    className="field"
+  >
+    <div
+      className="inputContainer"
+    >
+      <input
+        className="input"
+        disabled={false}
+        id="test"
+        max={3}
+        onChange={null}
+        placeholder={null}
+        required={false}
+        size={null}
+        type="number"
       />
     </div>
   </div>
@@ -50,14 +145,14 @@ exports[`rendering renders correctly with all props 1`] = `
         rootLayoutHorizontal
         isRootRequired
         rootSizeLarge
-        hasRootSmallInput
+        
         isRootStateInvalid
         rootVariantFilled"
   htmlFor="test"
   id="test__label"
   style={
     Object {
-      "--rui-custom-input-size": 3,
+      "--rui-custom-input-size": 20,
     }
   }
 >
@@ -66,7 +161,7 @@ exports[`rendering renders correctly with all props 1`] = `
           isLabelHidden"
     id="test__labelText"
   >
-    label
+    All props
   </div>
   <div
     className="field"
@@ -78,10 +173,11 @@ exports[`rendering renders correctly with all props 1`] = `
         className="input"
         disabled={true}
         id="test"
+        max={null}
         onChange={null}
         placeholder="placeholder"
         required={true}
-        size={3}
+        size={20}
         type="email"
         value="value"
       />
@@ -94,6 +190,51 @@ exports[`rendering renders correctly with all props 1`] = `
       id="test__helperText"
     >
       some help
+    </div>
+  </div>
+</label>
+`;
+
+exports[`rendering renders correctly with custom props 1`] = `
+<label
+  className="root
+        
+        
+        rootLayoutVertical
+        
+        rootSizeMedium
+        
+        
+        rootVariantOutline"
+  htmlFor="test"
+  id="test__label"
+  style={Object {}}
+>
+  <div
+    className="label"
+    id="test__labelText"
+  >
+    With custom props
+  </div>
+  <div
+    className="field"
+  >
+    <div
+      className="inputContainer"
+    >
+      <input
+        autoCapitalize="off"
+        autoComplete="off"
+        className="input"
+        disabled={false}
+        id="test"
+        max={null}
+        onChange={null}
+        placeholder={null}
+        required={false}
+        size={null}
+        type="text"
+      />
     </div>
   </div>
 </label>
@@ -119,7 +260,7 @@ exports[`rendering renders correctly with hidden label 1`] = `
           isLabelHidden"
     id="test__labelText"
   >
-    label
+    With hidden label
   </div>
   <div
     className="field"
@@ -131,10 +272,58 @@ exports[`rendering renders correctly with hidden label 1`] = `
         className="input"
         disabled={false}
         id="test"
+        max={null}
         onChange={null}
         placeholder={null}
         required={false}
         size={null}
+        type="text"
+      />
+    </div>
+  </div>
+</label>
+`;
+
+exports[`rendering renders correctly with small input 1`] = `
+<label
+  className="root
+        
+        
+        rootLayoutVertical
+        
+        rootSizeMedium
+        hasRootSmallInput
+        
+        rootVariantOutline"
+  htmlFor="test"
+  id="test__label"
+  style={
+    Object {
+      "--rui-custom-input-size": 5,
+    }
+  }
+>
+  <div
+    className="label"
+    id="test__labelText"
+  >
+    Small input
+  </div>
+  <div
+    className="field"
+  >
+    <div
+      className="inputContainer"
+    >
+      <input
+        className="input"
+        disabled={false}
+        id="test"
+        max={null}
+        onChange={null}
+        placeholder={null}
+        required={false}
+        size={5}
         type="text"
       />
     </div>

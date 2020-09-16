@@ -2986,15 +2986,30 @@ class DemoContainer extends React.Component {
                   <TextField
                     id="textFieldCustomInputSizeOutline"
                     changeHandler={logger}
-                    label="Age"
+                    label="Title"
                     inputSize={3}
                   />
                   <TextField
                     id="textFieldCustomInputSizeFilled"
                     changeHandler={logger}
-                    label="Age"
+                    label="Title"
                     variant="filled"
                     inputSize={3}
+                  />
+                  <TextField
+                    id="textFieldCustomInputSizeNumberOutline"
+                    changeHandler={logger}
+                    label="Age"
+                    max={100}
+                    type="number"
+                  />
+                  <TextField
+                    id="textFieldCustomInputSizeNumberFilled"
+                    changeHandler={logger}
+                    label="Age"
+                    variant="filled"
+                    max={100}
+                    type="number"
                   />
                 </div>
               )}
