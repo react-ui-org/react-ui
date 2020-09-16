@@ -54,6 +54,7 @@
   border: $form-field-border-width solid $form-field-border-color;
   border-radius: $form-field-border-radius;
   box-shadow: none;
+  appearance: none;
 
   &::placeholder {
     opacity: 1;
