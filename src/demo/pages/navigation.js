@@ -94,10 +94,6 @@ export default [
         title: 'Modal',
       },
       {
-        link: '#ui-components-multiple-selectfield',
-        title: 'Multiple Select Field',
-      },
-      {
         link: '#ui-components-radio',
         title: 'Radio',
       },
