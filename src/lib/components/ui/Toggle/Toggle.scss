@@ -205,7 +205,7 @@
 }
 
 .isRootStateInvalid .input + .label::after {
-  background-image: icon-generate-close(darken(#ffc107, 4%));
+  background-image: icon-generate-close(darken(#dc3545, 4%));
 }
 
 .isRootStateInvalid .input:checked + .label::before {
@@ -228,7 +228,7 @@
 }
 
 .isRootStateValid .input + .label::after {
-  background-image: icon-generate-close(darken(#ffc107, 4%));
+  background-image: icon-generate-close(darken(#28a745, 4%));
 }
 
 .isRootStateValid .input:checked + .label::before {
