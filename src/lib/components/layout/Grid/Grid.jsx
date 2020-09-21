@@ -37,7 +37,13 @@ Grid.defaultProps = {
 };
 
 Grid.propTypes = {
+  /**
+   * Items to be aligned in the grid.
+   */
   children: PropTypes.node,
+  /**
+   * ID of the root HTML element.
+   */
   id: PropTypes.string,
 };
 

@@ -5,7 +5,7 @@ import styles from './FormLayout.scss';
 
 const PREDEFINED_LABEL_WIDTH_VALUES = ['auto', 'default', 'limited'];
 
-const FormLayout = (props) => {
+export const FormLayout = (props) => {
   const {
     children,
     fieldLayout,
@@ -97,13 +97,30 @@ FormLayout.defaultProps = {
 };
 
 FormLayout.propTypes = {
+  /**
+   * Supported form field components: CheckboxField, Radio, SelectField, TextArea, TextField,
+   * Toggle, and FormLayoutCustomField.
+   */
   children: PropTypes.node,
+  /**
+   * Layout that is forced on children form fields.
+   */
   fieldLayout: PropTypes.oneOf(['horizontal', 'vertical']),
+  /**
+   * ID of the root HTML element.
+   */
   id: PropTypes.string,
+  /**
+   * Width of the column with form field labels. Only available if the `fieldLayout` is set to
+   * `horizontal`.
+   */
   labelWidth: PropTypes.oneOfType([
     PropTypes.oneOf(PREDEFINED_LABEL_WIDTH_VALUES),
     PropTypes.string,
   ]),
+  /**
+   * Fallback value applied when `labelWidth` is either `auto` or `limited`.
+   */
   labelWidthFallback: PropTypes.string,
 };
 

@@ -1,0 +1,302 @@
+---
+name: Toolbar
+menu: 'Components: Layouts'
+route: /components/layout/toolbar
+---
+
+# Toolbar
+
+import {
+  Playground,
+  Props,
+} from 'docz'
+import { Placeholder } from '../../../../docs/_components/Placeholder/Placeholder'
+import { CheckboxField } from '../../ui/CheckboxField/CheckboxField'
+import { Button } from '../../ui/Button/Button'
+import { ButtonGroup } from '../../ui/ButtonGroup/ButtonGroup'
+import { Toolbar } from './Toolbar'
+import { ToolbarGroup } from './ToolbarGroup'
+import { ToolbarItem } from './ToolbarItem'
+
+The responsive Toolbar layout is a versatile tool that allows spacing, grouping,
+and aligning inline items.
+
+## Basic Usage
+
+To implement the Toolbar component, you need to import it first:
+
+```js
+import { Toolbar, ToolbarItem } from '@react-ui-org/react-ui';
+```
+
+And use it:
+
+<Playground>
+  <Toolbar>
+    <ToolbarItem>
+      <Placeholder bordered>Toolbar item</Placeholder>
+    </ToolbarItem>
+    <ToolbarItem>
+      <Placeholder bordered>Toolbar item</Placeholder>
+    </ToolbarItem>
+    <ToolbarItem>
+      <Placeholder bordered>Toolbar item</Placeholder>
+    </ToolbarItem>
+  </Toolbar>
+</Playground>
+
+See [API](#api) for all available options.
+
+## General Guidelines
+
+- **Wrap your items** into the ToolbarItem component. This ensures your content
+  is properly spaced and aligned with other Toolbar elements. Do **not** try to
+  put any custom HTML or React components directly into the Toolbar layout
+  without wrapping it with the ToolbarItem first.
+
+- Use the Toolbar layout **only for [inline elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elements)**
+  (which includes inline blocks). For [block-level element](https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elements)
+  layouts, consider using rather [spacing helpers](/css-helpers/spacing) or the
+  [List](/components/layout/list) layout.
+
+## Alignment
+
+You can tweak your Toolbar layout using rich alignment options, both in
+horizontal and vertical direction.
+
+👉 At the current stage of development, React UI is **RTL aware** so switching
+to a fully RTL-compatible behavior in the future should be painless. That's why
+the alignment values are called rather `start` than `left` and `end` instead of
+`right`.
+
+<Playground>
+  {() => {
+    const [alignment, setAlignment] = React.useState('top');
+    const [justification, setJustification] = React.useState('start');
+    return (
+      <div>
+        <div className="mb-2">
+          <span id="alignment-label" className="mr-3">Alignment:</span>
+          <ButtonGroup aria-labelledby="#alignment-label">
+            <Button
+              label="top"
+              clickHandler={() => setAlignment('top')}
+              variant={alignment === 'top' ? 'dark' : 'primary'}
+            />
+            <Button
+              label="middle"
+              clickHandler={() => setAlignment('middle')}
+              variant={alignment === 'middle' ? 'dark' : 'primary'}
+            />
+            <Button
+              label="bottom"
+              clickHandler={() => setAlignment('bottom')}
+              variant={alignment === 'bottom' ? 'dark' : 'primary'}
+            />
+            <Button
+              label="baseline"
+              clickHandler={() => setAlignment('baseline')}
+              variant={alignment === 'baseline' ? 'dark' : 'primary'}
+            />
+          </ButtonGroup>
+        </div>
+        <div className="mb-5">
+          <span id="justification-label" className="mr-3">Justification:</span>
+          <ButtonGroup aria-labelledby="#justification-label">
+            <Button
+              label="start"
+              clickHandler={() => setJustification('start')}
+              variant={justification === 'start' ? 'dark' : 'primary'}
+            />
+            <Button
+              label="center"
+              clickHandler={() => setJustification('center')}
+              variant={justification === 'center' ? 'dark' : 'primary'}
+            />
+            <Button
+              label="end"
+              clickHandler={() => setJustification('end')}
+              variant={justification === 'end' ? 'dark' : 'primary'}
+            />
+            <Button
+              label="space-between"
+              clickHandler={() => setJustification('space-between')}
+              variant={justification === 'space-between' ? 'dark' : 'primary'}
+            />
+          </ButtonGroup>
+        </div>
+        <Toolbar align={alignment} justify={justification}>
+          <ToolbarItem>
+            <Placeholder bordered>First item</Placeholder>
+          </ToolbarItem>
+          <ToolbarItem>
+            <Placeholder bordered>
+              Second item<br />
+              is taller
+            </Placeholder>
+          </ToolbarItem>
+          <ToolbarItem>
+            <Placeholder bordered>Third item</Placeholder>
+          </ToolbarItem>
+        </Toolbar>
+      </div>
+    );
+  }}
+</Playground>
+
+## Groups
+
+Toolbar items can be grouped which enables you aligning related items together.
+To provide the best possible flexibility for building your layout, the
+ToolbarGroup allows you to set many options similar to the Toolbar: vertical
+alignment, [dense spacing](#dense-layout), or [disable wrapping](#wrapping).
+
+<Playground>
+  <Toolbar justify="space-between">
+    <ToolbarGroup>
+      <ToolbarItem>
+        <Placeholder bordered>Group A</Placeholder>
+      </ToolbarItem>
+      <ToolbarItem>
+        <Placeholder bordered>Group A</Placeholder>
+      </ToolbarItem>
+    </ToolbarGroup>
+    <ToolbarGroup align="middle">
+      <ToolbarItem>
+        <Placeholder bordered>Group B</Placeholder>
+      </ToolbarItem>
+      <ToolbarItem>
+        <Placeholder bordered>Group B</Placeholder>
+      </ToolbarItem>
+    </ToolbarGroup>
+    <ToolbarItem>
+      <Placeholder bordered>Item</Placeholder>
+    </ToolbarItem>
+  </Toolbar>
+</Playground>
+
+## Dense Layout
+
+Sometimes it's useful to get related items even closer together. This can be
+easily achieved through the `dense` option which can be applied on individual
+toolbar groups, or on the entire toolbar.
+
+<Playground>
+  {() => {
+    const [isGroupDense, setIsGroupDense] = React.useState(true);
+    const [isToolbarDense, setIsToolbarDense] = React.useState(false);
+    return (
+      <div>
+        <div className="mb-5">
+          <CheckboxField
+            id="is-group-dense"
+            label="Dense ToolbarGroup"
+            changeHandler={(e) => setIsGroupDense(e.target.checked)}
+            checked={isGroupDense}
+          />
+          <CheckboxField
+            id="is-toolbar-dense"
+            label="Dense Toolbar"
+            changeHandler={(e) => setIsToolbarDense(e.target.checked)}
+            checked={isToolbarDense}
+          />
+        </div>
+        <Toolbar dense={isToolbarDense}>
+          <ToolbarGroup dense={isGroupDense}>
+            <ToolbarItem>
+              <Placeholder bordered>Group item</Placeholder>
+            </ToolbarItem>
+            <ToolbarItem>
+              <Placeholder bordered>Group item</Placeholder>
+            </ToolbarItem>
+          </ToolbarGroup>
+          <ToolbarItem>
+            <Placeholder bordered>Standalone item</Placeholder>
+          </ToolbarItem>
+          <ToolbarItem>
+            <Placeholder bordered>Standalone item</Placeholder>
+          </ToolbarItem>
+        </Toolbar>
+      </div>
+    );
+  }}
+</Playground>
+
+## Wrapping
+
+By default, all toolbar items are queued up one after another in a row. The
+items automatically wrap and create a new row. To prevent this behavior, just
+set the `nowrap` option on the Toolbar or on individual ToolbarGroups. Note that
+ToolbarGroups can still wrap when the wrapping is disabled just on their parent
+Toolbar.
+
+Try resizing the playground below to see how it works.
+
+<Playground>
+  <>
+    <p>Disabled wrapping on entire toolbar:</p>
+    <Toolbar justify="space-between" nowrap>
+      <ToolbarGroup>
+        <ToolbarItem>
+          <Placeholder bordered>Group A</Placeholder>
+        </ToolbarItem>
+        <ToolbarItem>
+          <Placeholder bordered>Group A</Placeholder>
+        </ToolbarItem>
+      </ToolbarGroup>
+      <ToolbarGroup>
+        <ToolbarItem>
+          <Placeholder bordered>Group B</Placeholder>
+        </ToolbarItem>
+        <ToolbarItem>
+          <Placeholder bordered>Group B</Placeholder>
+        </ToolbarItem>
+      </ToolbarGroup>
+      <ToolbarItem>
+        <Placeholder bordered>Item</Placeholder>
+      </ToolbarItem>
+    </Toolbar>
+    <p>Disabled wrapping on toolbar groups:</p>
+    <Toolbar justify="space-between">
+      <ToolbarGroup nowrap>
+        <ToolbarItem>
+          <Placeholder bordered>Group A</Placeholder>
+        </ToolbarItem>
+        <ToolbarItem>
+          <Placeholder bordered>Group A</Placeholder>
+        </ToolbarItem>
+      </ToolbarGroup>
+      <ToolbarGroup nowrap>
+        <ToolbarItem>
+          <Placeholder bordered>Group B</Placeholder>
+        </ToolbarItem>
+        <ToolbarItem>
+          <Placeholder bordered>Group B</Placeholder>
+        </ToolbarItem>
+      </ToolbarGroup>
+      <ToolbarItem>
+        <Placeholder bordered>Item</Placeholder>
+      </ToolbarItem>
+    </Toolbar>
+  </>
+</Playground>
+
+## API
+
+<Props of={Toolbar} />
+
+## ToolbarGroup
+
+A wrapper for grouping ToolbarItems together.
+
+<Props of={ToolbarGroup} />
+
+## ToolbarItem
+
+A wrapper for individual toolbar items.
+
+<Props of={ToolbarItem} />
+
+---
+
+Next: [Animation →](/css-helpers/animation)

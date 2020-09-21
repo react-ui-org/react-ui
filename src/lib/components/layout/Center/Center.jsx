@@ -15,6 +15,9 @@ Center.defaultProps = {
 };
 
 Center.propTypes = {
+  /**
+   * The content to be centered.
+   */
   children: PropTypes.node,
 };
 

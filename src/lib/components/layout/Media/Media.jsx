@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './Media.scss';
 
-const Media = (props) => {
+export const Media = (props) => {
   const {
     children,
   } = props;
@@ -15,6 +15,9 @@ const Media = (props) => {
 };
 
 Media.propTypes = {
+  /**
+   * Slot for MediaBody and MediaObject components.
+   */
   children: PropTypes.node.isRequired,
 };
 

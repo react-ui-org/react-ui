@@ -1,0 +1,60 @@
+---
+name: Grid
+menu: 'Components: Layouts'
+route: /components/layout/grid
+---
+
+# Grid
+
+import {
+  Playground,
+  Props,
+} from 'docz'
+import { Placeholder } from '../../../../docs/_components/Placeholder/Placeholder'
+import { Grid } from './Grid'
+
+The responsive Grid layout aligns content into an organized grid.
+
+## Basic Usage
+
+To implement the Grid component, you need to import it first:
+
+```js
+import { Grid } from '@react-ui-org/react-ui';
+```
+
+And use it:
+
+<Playground>
+  <Grid>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+  </Grid>
+</Playground>
+
+See [API](#api) for all available options.
+
+## General Guidelines
+
+- To align your items in the grid, **simply wrap** them with the Grid
+  component. Unlike other grid frameworks, **no additional markup** like
+  GridItem or Cell is necessary. This is possible thanks to the
+  [CSS grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout),
+  the right tool for two-dimensional layouts.
+
+- If you need your items to have **equal height** even with content of varying
+  length, it may be necessary to set `height: 100%` on them.
+
+👉 The default column width algorithm is `repeat(auto-fit, minmax(300px, auto))`
+and it can be [customized](/customize/theming) with CSS custom properties.
+More layout options are [coming soon](https://github.com/react-ui-org/react-ui/issues/149)!
+
+## API
+
+<Props of={Grid} />
+
+---
+
+Next: [List →](/components/layout/list)

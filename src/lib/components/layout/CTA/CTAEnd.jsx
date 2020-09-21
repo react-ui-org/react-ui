@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './CTA.scss';
 
-const CTAEnd = (props) => {
+export const CTAEnd = (props) => {
   const {
     children,
   } = props;
@@ -15,6 +15,9 @@ const CTAEnd = (props) => {
 };
 
 CTAEnd.propTypes = {
+  /**
+   * Content of the end element.
+   */
   children: PropTypes.node.isRequired,
 };
 
