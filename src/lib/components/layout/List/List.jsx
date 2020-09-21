@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './List.scss';
 
-const List = (props) => {
+export const List = (props) => {
   const {
     align,
     autoWidth,
@@ -53,8 +53,17 @@ List.defaultProps = {
 };
 
 List.propTypes = {
+  /**
+   * Horizontal alignment of list items.
+   */
   align: PropTypes.oneOf(['start', 'end']),
+  /**
+   * If `true`, the list items will take up only as much horizontal space as necessary.
+   */
   autoWidth: PropTypes.bool,
+  /**
+   * Individual ListItems.
+   */
   children: PropTypes.node,
 };
 

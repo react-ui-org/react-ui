@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import TextField from '../../../ui/TextField';
-import FormLayout from '../FormLayout';
+import { FormLayout } from '../FormLayout';
 
 describe('rendering', () => {
   it('renders correctly with a single child', () => {

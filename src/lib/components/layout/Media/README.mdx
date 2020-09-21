@@ -1,0 +1,65 @@
+---
+name: Media
+menu: 'Components: Layouts'
+route: /components/layout/media
+---
+
+# Media
+
+import {
+  Playground,
+  Props,
+} from 'docz'
+import { Placeholder } from '../../../../docs/_components/Placeholder/Placeholder'
+import { Media } from './Media'
+import { MediaBody } from './MediaBody'
+import { MediaObject } from './MediaObject'
+
+The Media layout nicely aligns text content next to an object.
+
+## Basic Usage
+
+To use the Media component, you need to import it first:
+
+```js
+import { Media, MediaBody, MediaObject } from '@react-ui-org/react-ui';
+```
+
+And use it:
+
+<Playground>
+  <Media>
+    <MediaObject>
+      <Placeholder bordered>Media object</Placeholder>
+    </MediaObject>
+    <MediaBody>
+      <Placeholder bordered>Media body</Placeholder>
+    </MediaBody>
+  </Media>
+</Playground>
+
+## General Guidelines
+
+Use the Media layout for **highly repetitive layouts** like comments, article
+teasers, etc., ie. when you need a **fixed-sized object** (eg. an image) and an
+**area that expands** over the remaining horizontal space (eg. a paragraph).
+
+## API
+
+<Props of={Media} />
+
+## MediaBody
+
+A place for the text content.
+
+<Props of={MediaBody} />
+
+## MediaObject
+
+A place for the media object.
+
+<Props of={MediaObject} />
+
+---
+
+Next: [Toolbar →](/components/layout/toolbar)

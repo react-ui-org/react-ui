@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import FormLayoutCustomField from '../FormLayoutCustomField';
+import { FormLayoutCustomField } from '../FormLayoutCustomField';
 
 describe('rendering', () => {
   it('renders correctly with a single child', () => {

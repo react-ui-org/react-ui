@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './Toolbar.scss';
 
-const ToolbarGroup = (props) => {
+export const ToolbarGroup = (props) => {
   const {
     align,
     children,
@@ -47,9 +47,21 @@ ToolbarGroup.defaultProps = {
 };
 
 ToolbarGroup.propTypes = {
+  /**
+   * Vertical alignment of toolbar items in the group.
+   */
   align: PropTypes.oneOf(['top', 'middle', 'bottom', 'baseline']),
+  /**
+   * Grouped ToolbarItems.
+   */
   children: PropTypes.node.isRequired,
+  /**
+   * If `true`, spacing of toolbar items in the group will be reduced.
+   */
   dense: PropTypes.bool,
+  /**
+   * If set, the toolbar group will not wrap.
+   */
   nowrap: PropTypes.bool,
 };
 

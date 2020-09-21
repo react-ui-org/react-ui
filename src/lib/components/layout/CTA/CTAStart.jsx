@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './CTA.scss';
 
-const CTAStart = (props) => {
+export const CTAStart = (props) => {
   const {
     children,
   } = props;
@@ -15,6 +15,9 @@ const CTAStart = (props) => {
 };
 
 CTAStart.propTypes = {
+  /**
+   * Content of the start element.
+   */
   children: PropTypes.node.isRequired,
 };
 

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './Toolbar.scss';
 
-const Toolbar = (props) => {
+export const Toolbar = (props) => {
   const {
     align,
     children,
@@ -66,10 +66,25 @@ Toolbar.defaultProps = {
 };
 
 Toolbar.propTypes = {
+  /**
+   * Vertical alignment of toolbar items and groups.
+   */
   align: PropTypes.oneOf(['top', 'middle', 'bottom', 'baseline']),
+  /**
+   * Individual ToolbarItems and ToolbarGroups.
+   */
   children: PropTypes.node.isRequired,
+  /**
+   * If `true`, spacing of all toolbar items in the toolbar will be reduced.
+   */
   dense: PropTypes.bool,
+  /**
+   * Horizontal alignment (distribution) of toolbar items and groups.
+   */
   justify: PropTypes.oneOf(['start', 'center', 'end', 'space-between']),
+  /**
+   * If set, the toolbar will not wrap.
+   */
   nowrap: PropTypes.bool,
 };
 

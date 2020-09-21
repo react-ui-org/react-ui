@@ -1,0 +1,366 @@
+---
+name: FormLayout
+menu: 'Components: Layouts'
+route: /components/layout/form-layout
+---
+
+# FormLayout
+
+The FormLayout aligns form fields into an organized grid.
+
+import {
+  Playground,
+  Props,
+} from 'docz'
+import { Placeholder } from '../../../../docs/_components/Placeholder/Placeholder'
+import { Button } from '../../ui/Button/Button'
+import { ButtonGroup } from '../../ui/ButtonGroup/ButtonGroup'
+import { CheckboxField } from '../../ui/CheckboxField/CheckboxField'
+import { Radio } from '../../ui/Radio/Radio'
+import { SelectField } from '../../ui/SelectField/SelectField'
+import { TextArea } from '../../ui/TextArea/TextArea'
+import { TextField } from '../../ui/TextField/TextField'
+import { Toggle } from '../../ui/Toggle/Toggle'
+import { Toolbar } from '../Toolbar/Toolbar'
+import { ToolbarItem } from '../Toolbar/ToolbarItem'
+import { FormLayout } from './FormLayout'
+import { FormLayoutCustomField } from './FormLayoutCustomField'
+
+## Basic Usage
+
+To use the FormLayout component, you need to import it first:
+
+```js
+import { FormLayout } from '@react-ui-org/react-ui';
+```
+
+And use it:
+
+<Playground>
+  <FormLayout>
+    <TextField id="my-text-field" label="A form element" />
+  </FormLayout>
+</Playground>
+
+## General Guidelines
+
+Since all form fields in React UI are styled as inline blocks, they **queue up
+one after another in a row by default.** The FormLayout component is there to
+make building **vertical and horizontal forms** easy. It uses the right tool for
+the job: the
+[CSS grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout).
+
+- Put **only form field components** from React UI inside the FormLayout and
+  make sure they are **direct descendants** of it (React
+  [fragments](https://reactjs.org/docs/fragments.html)
+  are supported!). All React UI form components are ready for this use case and
+  don't need to be wrapped in any `div`s. Namely, the FormLayout supports the
+  following React UI components:
+  [CheckboxField](/components/ui/checkbox-field),
+  [Radio](/components/ui/radio), [SelectField](/components/ui/select-field),
+  [TextArea](/components/ui/text-area), [TextField](/components/ui/text-field),
+  and [Toggle](/components/ui/toggle).
+
+- Use the [FormLayoutCustomField](#custom-fields) component when you need to
+  place any **custom content** inside the FormLayout. This layout helper ensures
+  your content is properly spaced and aligned with other FormLayout elements.
+  Do **not** try to put any custom HTML or React components directly into
+  FormLayout without wrapping it with the FormLayoutCustomField first.
+
+## Vertical Layout
+
+Vertical FormLayout works similar to the [List](/components/layout/list) layout
+except that no equivalent of ListItems is needed. It stacks the form fields
+vertically while it forces the vertical layout mode on them. To use this layout,
+simply wrap your form fields with the FormLayout component:
+
+<Playground>
+  <FormLayout>
+    <TextField id="my-text-field-vertical-1" label="A form element" />
+    <TextField id="my-text-field-vertical-2" label="Another form element" />
+    <TextField id="my-text-field-vertical-3" label="Yet another one" />
+  </FormLayout>
+</Playground>
+
+## Horizontal Layout
+
+Horizontal FormLayout is designed for horizontal form fields: it nicely **aligns
+the labels and the inputs in an organized grid.** It is applied starting from
+the `md` viewport size onward, and it forces the horizontal layout on the
+fields.
+
+<Playground>
+  <FormLayout fieldLayout="horizontal">
+    <TextField id="my-text-field-horizontal-1" label="A form element" />
+    <TextField id="my-text-field-horizontal-2" label="Another form element" />
+    <TextField id="my-text-field-horizontal-3" label="Yet another one" />
+  </FormLayout>
+</Playground>
+
+### Label Width
+
+In the horizontal layout mode, it's possible to fine-tune the way how the form
+will be aligned through the `labelWidth` option to cover various design
+requirements. It comes with **three globally shared options:** default width,
+auto width, and limited width. For cases where an individual manual width works
+better, there is the **local custom width mode** which enables setting a width
+that is applied just for the current FormLayout.
+
+⚠️ **Limited browser support:** The horizontal FormLayout uses the relatively
+new
+[CSS subgrid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Subgrid)
+layout which is currently
+[supported only by Firefox](https://caniuse.com/css-subgrid). However, we use
+fallback solutions to achieve the closest possible result. The fallbacks will be
+[removed](https://github.com/react-ui-org/react-ui/issues/127) once CSS subgrid
+is fully supported in browsers that we support.
+
+👉 All global label width options (including their fallback values, where
+available) can be easily [customized](/getting-started/theming) with CSS custom
+properties.
+
+#### Label Width Options
+
+- The `default` mode (global) sets the width of all labels to a **global default
+  value** which is 10 em. There is no fallback value for this option.
+
+- The `auto` mode (global) aligns the form **according to the longest label.**
+  Its default fallback width is 10 em.
+
+- The `limited` mode (global) works as `auto` except it's intended for values
+  that **set a limit for the label width.** Its default value is
+  `fitcontent(50%)` which also aligns the form according to the longest label
+  like `auto`, but with the difference that the labels cannot be wider than
+  50 % of the FormLayout. Its default fallback width is 10 em.
+
+- The `custom` mode (local) allows you to enter any **custom label width for
+  individual FormLayouts.** There is no default or fallback value for this
+  option.
+
+👉 Please note the `auto` and `limited` label width options may not function
+correctly in combination with other auto layout mechanisms, eg. the auto-width
+[Modal](/components/ui/modal). It's just too much magic that doesn't work
+together yet 🎩.
+
+Try to resize the playground **in Firefox** to see how individual options work.
+(The custom option works in all browsers.)
+
+<Playground>
+  {() => {
+    const [labelWidth, setLabelWidth] = React.useState('default');
+    const [customLabelWidth, setCustomLabelWidth] = React.useState('20em');
+    return (
+      <div>
+        <div className="mb-6">
+          <Toolbar align="baseline">
+            <ToolbarItem>
+              <span id="label-width-options-label">Label width:</span>
+            </ToolbarItem>
+            <ToolbarItem>
+              <ButtonGroup aria-labelledby="#label-width-options-label">
+                <Button
+                  label="default"
+                  clickHandler={() => setLabelWidth('default')}
+                  variant={labelWidth === 'default' ? 'dark' : 'primary'}
+                />
+                <Button
+                  label="auto"
+                  clickHandler={() => setLabelWidth('auto')}
+                  variant={labelWidth === 'auto' ? 'dark' : 'primary'}
+                />
+                <Button
+                  label="limited"
+                  clickHandler={() => setLabelWidth('limited')}
+                  variant={labelWidth === 'limited' ? 'dark' : 'primary'}
+                />
+                <Button
+                  label="custom"
+                  clickHandler={() => setLabelWidth('custom')}
+                  variant={labelWidth === 'custom' ? 'dark' : 'primary'}
+                />
+              </ButtonGroup>
+            </ToolbarItem>
+            {labelWidth === 'custom' && (
+              <ToolbarItem>
+                <TextField
+                  changeHandler={(e) => (
+                    setCustomLabelWidth(e.target.value)
+                  )}
+                  id="form-layout-custom-label-width"
+                  inputSize={5}
+                  isLabelVisible={false}
+                  label="Custom label width"
+                  layout="horizontal"
+                  value={customLabelWidth}
+                />
+              </ToolbarItem>
+            )}
+          </Toolbar>
+        </div>
+        <FormLayout
+          fieldLayout="horizontal"
+          labelWidth={labelWidth === 'custom' ? customLabelWidth : labelWidth}
+        >
+          <TextField id="my-text-field-label-width-1" label="A form element" />
+          <TextField
+            id="my-text-field-label-width-2"
+            label={'Another form element with a very long label that is so '
+              + 'long that in the auto mode, it should make the label column '
+              + 'grow until the inputs reach the end of the line, but it will '
+              + 'not exceed 50 % of the FormLayout width in the limited label '
+              + 'width mode'}
+          />
+          <TextField id="my-text-field-label-width-3" label="Yet another one" />
+        </FormLayout>
+      </div>
+    );
+  }}
+</Playground>
+
+## Custom Fields
+
+You can even place any content you need into the FormLayout — just wrap it with
+the [FormLayoutCustomField](#formlayoutcustomfield) component. This layout
+helper ensures your content is properly spaced and aligned with to other
+FormLayout elements. FormLayoutCustomFields are designed to work solely inside
+the FormLayout component.
+
+<Playground>
+  <FormLayout fieldLayout="horizontal">
+    <TextField id="my-text-field-custom-1" label="A form element" />
+    <FormLayoutCustomField label="Optional label">
+      <Placeholder bordered>Custom content</Placeholder>
+    </FormLayoutCustomField>
+    <TextField id="my-text-field-custom-2" label="Another form element" />
+  </FormLayout>
+</Playground>
+
+## Full Example
+
+This is a demo of all supported form components within the FormLayout.
+
+<Playground>
+  <FormLayout fieldLayout="horizontal">
+    <>
+      <TextField
+        id="form-layout-horizontal-first-name"
+        changeHandler={() => {}}
+        label="First Name"
+      />
+      <TextField
+        id="form-layout-horizontal-last-name"
+        changeHandler={() => {}}
+        label="Last Name"
+      />
+    </>
+    <TextField
+      id="form-layout-horizontal-email"
+      changeHandler={() => {}}
+      label="Email address"
+      type="email"
+      helperText="Optional"
+    />
+    <>
+      <TextField
+        id="form-layout-horizontal-address-1"
+        changeHandler={() => {}}
+        label="Address"
+        placeholder="Address line 1"
+      />
+      <TextField
+        id="form-layout-horizontal-address-2"
+        changeHandler={() => {}}
+        isLabelVisible={false}
+        label="Address 2"
+        placeholder="Address line 2"
+      />
+      <TextField
+        id="form-layout-horizontal-zip"
+        changeHandler={() => {}}
+        helperText="ZIP should be 5 to 6 digits long code."
+        label="ZIP"
+        inputSize={6}
+        validationState="invalid"
+      />
+      <FormLayoutCustomField
+        id="form-layout-horizontal-country"
+        label="Country"
+      >
+        <span>Czech Republic</span>
+      </FormLayoutCustomField>
+      <CheckboxField
+        id="form-layout-horizontal-delivery"
+        changeHandler={() => {}}
+        label="This is my delivery address"
+      />
+    </>
+    <SelectField
+      id="form-layout-horizontal-fruit"
+      changeHandler={() => {}}
+      label="Your favourite fruit"
+      options={[
+        {
+          label: 'Apple',
+          value: 'apple',
+        },
+        {
+          label: 'Banana',
+          value: 'banana',
+        },
+        {
+          label: 'Grapefruit',
+          value: 'grapefruit',
+        },
+      ]}
+    />
+    <TextArea
+      id="form-layout-horizontal-message"
+      changeHandler={() => {}}
+      fullWidth
+      label="Message"
+      rows={3}
+    />
+    <Toggle
+      id="form-layout-horizontal-newsletter"
+      changeHandler={() => {}}
+      checked
+      label="Receive weekly newsletter"
+      required
+      description="Only once per week!"
+    />
+    <Radio
+      id="form-layout-horizontal-fruit-2"
+      changeHandler={() => {}}
+      label="And fruit again!"
+      options={[
+        {
+          label: 'Apple',
+          value: 'apple',
+        },
+        {
+          label: 'Banana',
+          value: 'banana',
+        },
+        {
+          label: 'Grapefruit',
+          value: 'grapefruit',
+        },
+      ]}
+      value="apple"
+    />
+  </FormLayout>
+</Playground>
+
+## API
+
+<Props of={FormLayout} />
+
+## FormLayoutCustomField
+
+A place for custom content inside FormLayout.
+
+<Props of={FormLayoutCustomField} />
+
+---
+
+Next: [Grid →](/components/layout/grid)

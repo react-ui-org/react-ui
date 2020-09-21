@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './Toolbar.scss';
 
-const ToolbarItem = (props) => {
+export const ToolbarItem = (props) => {
   const {
     children,
   } = props;
@@ -15,6 +15,9 @@ const ToolbarItem = (props) => {
 };
 
 ToolbarItem.propTypes = {
+  /**
+   * Content of the toolbar item.
+   */
   children: PropTypes.node.isRequired,
 };
 
