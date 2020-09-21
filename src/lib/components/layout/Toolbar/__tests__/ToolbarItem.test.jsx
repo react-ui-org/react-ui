@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ToolbarItem from '../ToolbarItem';
+import { ToolbarItem } from '../ToolbarItem';
 
 describe('rendering', () => {
   it('renders correctly with a single child', () => {

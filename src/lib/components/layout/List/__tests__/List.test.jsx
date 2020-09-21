@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import List from '../List';
-import ListItem from '../ListItem';
+import { List } from '../List';
+import { ListItem } from '../ListItem';
 
 describe('rendering', () => {
   it('renders correctly with no children', () => {

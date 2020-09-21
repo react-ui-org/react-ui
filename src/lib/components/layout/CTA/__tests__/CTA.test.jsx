@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import CTA from '../CTA';
-import CTACenter from '../CTACenter';
-import CTAEnd from '../CTAEnd';
-import CTAStart from '../CTAStart';
+import { CTA } from '../CTA';
+import { CTACenter } from '../CTACenter';
+import { CTAEnd } from '../CTAEnd';
+import { CTAStart } from '../CTAStart';
 
 describe('rendering', () => {
   it('renders correctly with a single child', () => {

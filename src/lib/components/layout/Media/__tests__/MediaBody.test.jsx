@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import MediaBody from '../MediaBody';
+import { MediaBody } from '../MediaBody';
 
 describe('rendering', () => {
   it('renders correctly with a single child', () => {

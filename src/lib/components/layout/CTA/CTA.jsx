@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './CTA.scss';
 
-const CTA = (props) => {
+export const CTA = (props) => {
   const {
     align,
     children,
@@ -41,9 +41,14 @@ CTA.defaultProps = {
 };
 
 CTA.propTypes = {
+  /**
+   * Vertical alignment of CTA elements.
+   */
   align: PropTypes.oneOf(['top', 'middle', 'bottom', 'baseline']),
+  /**
+   * Slot for individual CTA elements: CTAStart, CTACenter, and CTAEnd.
+   */
   children: PropTypes.node.isRequired,
-
 };
 
 export default CTA;

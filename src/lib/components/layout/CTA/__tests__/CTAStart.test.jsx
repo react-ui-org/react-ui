@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import CTAStart from '../CTAStart';
+import { CTAStart } from '../CTAStart';
 
 describe('rendering', () => {
   it('renders correctly with a single child', () => {

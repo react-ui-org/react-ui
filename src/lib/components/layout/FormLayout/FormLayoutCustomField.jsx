@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './FormLayoutCustomField.scss';
 
-const FormLayoutCustomField = ({
+export const FormLayoutCustomField = ({
   children,
   fullWidth,
   id,
@@ -43,10 +43,25 @@ FormLayoutCustomField.defaultProps = {
 };
 
 FormLayoutCustomField.propTypes = {
+  /**
+   * Custom HTML or React component(s).
+   */
   children: PropTypes.node,
+  /**
+   * If `true`, the field will span the full width of its parent.
+   */
   fullWidth: PropTypes.bool,
+  /**
+   * ID of the root HTML element.
+   */
   id: PropTypes.string,
+  /**
+   * Optional label of the field.
+   */
   label: PropTypes.string,
+  /**
+   * Layout of the field, controlled by parent FormLayout.
+   */
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
 };
 

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './List.scss';
 
-const ListItem = ({ children }) => {
+export const ListItem = ({ children }) => {
   if (!children) {
     return null;
   }
@@ -19,6 +19,9 @@ ListItem.defaultProps = {
 };
 
 ListItem.propTypes = {
+  /**
+   * Content of the list item.
+   */
   children: PropTypes.node,
 };
 

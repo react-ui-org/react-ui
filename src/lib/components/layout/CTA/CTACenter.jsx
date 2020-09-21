@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './CTA.scss';
 
-const CTACenter = (props) => {
+export const CTACenter = (props) => {
   const {
     children,
   } = props;
@@ -15,6 +15,9 @@ const CTACenter = (props) => {
 };
 
 CTACenter.propTypes = {
+  /**
+   * Content of the center element.
+   */
   children: PropTypes.node.isRequired,
 };
 
