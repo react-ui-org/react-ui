@@ -212,13 +212,13 @@ export const ScrollView = (props) => {
         customStartShadowStyle,
         customEndShadowStyle,
       )}
-      {...(id && { id })}
+      id={id}
     >
       <div className={styles.viewport} ref={scrollViewViewportEl}>
         <div
           className={styles.content}
           ref={scrollViewContentEl}
-          {...(id && { id: `${id}__content` })}
+          id={id && `${id}__content`}
         >
           {children}
         </div>
@@ -236,7 +236,7 @@ export const ScrollView = (props) => {
               arrowsScrollStep,
             )}
             title={translations.previous}
-            {...(id && { id: `${id}__arrowPrevButton` })}
+            id={id && `${id}__arrowPrevButton`}
           >
             {customPrevArrow || (
               <span className={styles.arrowIcon} aria-hidden />
@@ -252,7 +252,7 @@ export const ScrollView = (props) => {
               arrowsScrollStep,
             )}
             title={translations.next}
-            {...(id && { id: `${id}__arrowNextButton` })}
+            id={id && `${id}__arrowNextButton`}
           >
             {customNextArrow || (
               <span className={styles.arrowIcon} aria-hidden />

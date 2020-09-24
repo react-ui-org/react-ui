@@ -62,7 +62,7 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls changeHandler() on Close button click', () => {
+  it('calls changeHandler() on sorting button click', () => {
     const spy = sinon.spy();
     const component = mount((
       <Table
