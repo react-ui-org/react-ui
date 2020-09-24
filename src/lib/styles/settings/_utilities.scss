@@ -7,7 +7,7 @@ $utilities: (
     responsive: true,
     property: display,
     class: d,
-    values: (block, flex, inline, inline-flex, none),
+    values: (block, flex, inline, inline-block, inline-flex, none),
   ),
   'align-items': (
     responsive: true,
@@ -19,7 +19,7 @@ $utilities: (
     responsive: true,
     property: justify-content,
     class: justify-content,
-    values: (start, end, center, space-between),
+    values: (start, flex-start, end, flex-end, center, space-between),
   ),
   'margin-top': (
     responsive: true,
