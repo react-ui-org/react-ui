@@ -1,8 +1,0 @@
-@import '../../../lib/styles/settings/colors';
-@import '../../../lib/styles/tools/spacing';
-
-.root {
-  padding: spacing(3);
-  border: 1px solid map-get($colors-grays, gray-200);
-  background-color: map-get($colors-grays, gray-50);
-}
