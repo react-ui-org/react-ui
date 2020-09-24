@@ -1,0 +1,170 @@
+---
+name: Box Alignment
+menu: CSS Helpers
+route: /css-helpers/box-alignment
+---
+
+# Box Alignment
+
+import { Playground } from 'docz'
+import { Placeholder } from '../_components/Placeholder/Placeholder'
+
+Responsive box-alignment helper classes allow aligning the content across both
+axes by setting the `align-items` and `justify-content` CSS properties.
+
+Use the box-alignment classes **on flex or grid containers,** they will not work
+elsewhere.
+
+👉 If you need to quickly create a flex container, there is the
+[`.d-flex`](/css-helpers/display) helper class at your disposal.
+
+📖 Read more about
+[flexbox](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox)
+and [grid](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids)
+layout concepts.
+
+## Naming System
+
+The classes are named using the format `[alignment]-[value]` for `xs` and
+`[alignment]-[breakpoint]-[value]` for `sm`, `md`, `lg`, `xl`, `xxl`, and
+`xxxl` [breakpoints](/foundation/breakpoints).
+
+Where `alignment` is one of:
+
+- `align-items`
+- `justify-content`
+
+For `align-items` the value can be:
+
+- `start`
+- `flex-start`
+- `center`
+- `baseline`
+- `end`
+- `flex-end`
+
+For `justify-content` the value can be:
+
+- `start`
+- `flex-start`
+- `center`
+- `end`
+- `flex-end`
+- `space-between`
+
+👉 The difference between `start`/`flex-start` and `end`/`flex-end` is that the
+prefixed variants are intended for flexbox while the versions without prefix
+only work inside a grid layout.
+
+📖 [Read more about CSS Box Alignment concepts.](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Alignment)
+
+## Horizontal (Main-Axis) Alignment (Justification)
+
+There are 6 options of alignment on the main axis: `start` (`flex-start` for
+flexbox), `center`, `end` (`flex-end` for flexbox), and `space-between`.
+
+<Playground>
+  <>
+    <div className="d-flex justify-content-flex-start">
+      <Placeholder bordered>
+        <code>.justify-content-flex-start</code>
+      </Placeholder>
+    </div>
+    <div className="d-flex justify-content-center">
+      <Placeholder bordered>
+        <code>.justify-content-center</code>
+      </Placeholder>
+    </div>
+    <div className="d-flex justify-content-flex-end">
+      <Placeholder bordered>
+        <code>.justify-content-flex-end</code>
+      </Placeholder>
+    </div>
+    <div className="d-flex justify-content-space-between">
+      <Placeholder bordered>
+        <code>.justify-content-space-between</code>
+      </Placeholder>
+      <Placeholder bordered>
+        <code>.justify-content-space-between</code>
+      </Placeholder>
+    </div>
+  </>
+</Playground>
+
+## Vertical (Cross-Axis) Alignment
+
+There are 6 options of alignment on the cross axis: `start` (`flex-start` for
+flexbox), `center`, `end` (`flex-end` for flexbox), and `baseline`.
+
+<Playground>
+  <>
+    <Placeholder bordered>
+      <div className="d-flex align-items-flex-start" style={{ height: '6rem' }}>
+        <Placeholder bordered>
+          <code>.align-items-flex-start</code>
+        </Placeholder>
+      </div>
+    </Placeholder>
+    <Placeholder bordered>
+      <div className="d-flex align-items-center" style={{ height: '6rem' }}>
+        <Placeholder bordered>
+          <code>.align-items-center</code>
+        </Placeholder>
+      </div>
+    </Placeholder>
+    <Placeholder bordered>
+      <div className="d-flex align-items-flex-end" style={{ height: '6rem' }}>
+        <Placeholder bordered>
+          <code>.align-items-flex-end</code>
+        </Placeholder>
+      </div>
+    </Placeholder>
+    <Placeholder bordered>
+      <div className="d-flex align-items-baseline" style={{ height: '6rem' }}>
+        <Placeholder bordered>
+          <code>.align-items-baseline</code>
+        </Placeholder>
+        <Placeholder bordered>
+          <code style={{ lineHeight: 4 }}>.align-items-baseline</code>
+        </Placeholder>
+      </div>
+    </Placeholder>
+  </>
+</Playground>
+
+## Responsive Box Alignment
+
+From `sm` up you can set the desired box alignment for individual
+[breakpoints](/foundation/breakpoints).
+
+<Playground>
+  <>
+    <div className="d-flex justify-content-sm-flex-start">
+      <Placeholder bordered>
+        <code>.justify-content-sm-flex-start</code>
+      </Placeholder>
+    </div>
+    <div className="d-flex justify-content-md-center">
+      <Placeholder bordered>
+        <code>.justify-content-md-center</code>
+      </Placeholder>
+    </div>
+    <div className="d-flex justify-content-lg-flex-end">
+      <Placeholder bordered>
+        <code>.justify-content-lg-flex-end</code>
+      </Placeholder>
+    </div>
+    <div className="d-flex justify-content-xl-space-between">
+      <Placeholder bordered>
+        <code>.justify-content-xl-space-between</code>
+      </Placeholder>
+      <Placeholder bordered>
+        <code>.justify-content-xl-space-between</code>
+      </Placeholder>
+    </div>
+  </>
+</Playground>
+
+---
+
+Next: [Colors →](/css-helpers/colors)
