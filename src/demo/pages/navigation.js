@@ -128,24 +128,6 @@ export default [
   {
     items: [
       {
-        link: '#screens-login',
-        title: 'Login Screen',
-      },
-      {
-        link: '#screens-forgot-password',
-        title: 'Forgot Password Screen',
-      },
-      {
-        link: '#screens-new-password',
-        title: 'New Password Screen',
-      },
-    ],
-    link: '#screens',
-    title: 'Screens',
-  },
-  {
-    items: [
-      {
         link: '#helpers-animation',
         title: 'Animation',
       },
