@@ -1,0 +1,19 @@
+name: PR Labeler
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  pr-labeler:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: TimonVS/pr-labeler-action@v3
+        with:
+          BC: bc/*
+          feature: feature/*
+          bugfix: bugfix/*
+          maintenance: maintenance/*
+          skip-changelog: ['release', 'release/*']
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
