@@ -53,9 +53,6 @@ import {
   Swatch,
 } from '../components';
 
-// React UI utility CSS classes
-import '../../lib/utilities.scss';
-
 import navigationTree from './navigation';
 
 const logger = (event) => console.log(event.target.value); // eslint-disable-line no-console

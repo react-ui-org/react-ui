@@ -56,7 +56,6 @@ To use React UI in your app:
    import '@react-ui-org/react-ui/src/lib/theme.scss';
    import '@react-ui-org/react-ui/src/lib/foundation.scss';
    import '@react-ui-org/react-ui/src/lib/helpers.scss';
-   import '@react-ui-org/react-ui/src/lib/utilities.scss';
    ```
 
 6. Finally, use React UI **components** just like you are used to:

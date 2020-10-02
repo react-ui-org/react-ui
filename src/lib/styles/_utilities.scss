@@ -1,9 +1,7 @@
-// Responsive utility classes to tweak small details like typography, margins or padding.
-
-@import 'styles/settings/breakpoints';
-@import 'styles/settings/utilities';
-@import 'styles/tools/breakpoints';
-@import 'styles/tools/utilities';
+@import 'settings/breakpoints';
+@import 'settings/utilities';
+@import 'tools/breakpoints';
+@import 'tools/utilities';
 
 @each $breakpoint in map-keys($breakpoint-values) {
   @include breakpoint-up($breakpoint) {
