@@ -4,7 +4,7 @@ const codeMaxHeight = 'min(66vh, 1000px)';
 const defaultFontFamily = '"Titillium Web", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
 
 export default {
-  ignore: ['LICENSE.md'],
+  ignore: ['LICENSE.md', 'README.md'],
   menu: [
     'Home',
     {
@@ -43,6 +43,13 @@ export default {
         'Typography',
       ],
       name: 'CSS Helpers',
+    },
+    {
+      menu: [
+        'Guidelines',
+        'Releasing',
+      ],
+      name: 'Contribute',
     },
   ],
   themeConfig: {

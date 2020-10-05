@@ -1,0 +1,5 @@
+BC: bc/*
+feature: feature/*
+bugfix: bugfix/*
+maintenance: maintenance/*
+'skip changelog': release/*
