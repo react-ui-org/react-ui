@@ -6,21 +6,25 @@ menu: Contribute
 
 # Releasing
 
-The release process is fully automated. The only condition is that contributors
-must follow the [contributing guidelines](/contribute/guidelines).
+The release process is fully automated so you can release a new version just
+by bumping version number in `package.json`. However, there are several chances
+to adjust both version and changelog if you wish to do so for a reason.
 
-How it works:
+In order for the automation to work properly, contributors must follow the
+[contributing guidelines](/contribute/guidelines).
 
-- Pull requests are automatically labelled based on branch name. The labels are
-  used for:
+## How It Works
 
-  - resolving next [semantic version number](https://semver.org)
-    (BREAKING.FEATURE.PATCH)
-  - grouping changes in changelog
+1. Pull requests are automatically labelled by branch name. Labels are then used
+   for:
 
-- Release changelog is generated as pull requests are merged into the `master`
-  branch. Invididual PR names are listed and grouped by type based on the label
-  added to them previously.
+   1. resolving next [semantic version number](https://semver.org)
+      (BREAKING.FEATURE.PATCH),
+   2. grouping changes in changelog.
+
+2. Release draft with changelog is generated as pull requests are merged into
+   the `master` branch. Invididual PR names are listed and grouped by type based
+   on label(s) added to them previously.
 
 See the source of `.github/workflows` for details.
 
@@ -32,13 +36,27 @@ See the source of `.github/workflows` for details.
    branch names). Check out the release draft on
    [GitHub releases page](https://github.com/react-ui-org/react-ui/releases) to
    see what the changelog looks like and what will be the next version number.
+   **Don't edit manually until you are ready to publish the release.** Release
+   draft is automatically overwritten everytime a change is merged to `master`.
 
-2. **Manual:** once you are ready to publish a release, bump the version number
-   in `package.json` and `package-lock.json`. Make sure it matches the resolved
-   version number in the release draft. Commit as `Bump version` in
-   `release/<VERSION_NUMBER>` branch, create a pull request and merge it.
+2. **Manual:** once you are ready to publish a release:
 
-3. **Automatic:** once the release pull request from step 2 is merged, the
+   1. **Bump the version number** in `package.json` and `package-lock.json`.
+      Make sure it matches the intended version number in the release draft.
+      **Don't combine this step with any other changes,** they wouldn't be
+      reflected in the changelog.
+
+   2. Now is also your **chance to review and adjust (if necessary) the intended
+      version and actual changelog before the release is published.**
+      Automatic release drafting is skipped when a version change in
+      `package.json` is  detected so this time your changes will not be
+      overwritten. Save your changes in release draft with the _Save draft_
+      button, **do not publish** yet!
+
+   3. Get back to the repository, commit both files as `Bump version` in
+      `release/<VERSION_NUMBER>` branch, create a pull request, and merge it.
+
+3. **Automatic:** once the release pull request from step 2.3 is merged, the
    following actions are triggered automatically:
 
    1. GitHub release draft with name corresponding to the version number from

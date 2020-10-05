@@ -26,14 +26,16 @@ In order for the automation to work in the best possible way (we use GitHub
 Actions), please follow these guidelines:
 
 - **One pull request per subject.** Don't combine unrelated changes in a single
-  PR.
+  PR unless they are really subtle details such as fix of a typo.
 
-- **Name your branches according to the nature of change.** Choose one of:
+- **Name your branches according to nature of change.** Choose one of:
+
   - `bc/*` for breaking changes
   - `feature/*` for features
   - `bugfix/*` for bugfixes
-  - `maintenance/*` for maintenance
-  - `release/*` for releases (administrators only)
+  - `refactoring/*` for refactoring of the library
+  - `maintenance/*` for maintenance (builds, dependencies, automation, etc.)
+  - `release/*` for [releases](/contribute/releasing) (administrators only)
 
 - **Write clear PR names.** Use imperative and write in English, eg. _Create
   `ScrollView` component_. Optionally use Markdown code blocks to emphasize.
@@ -45,8 +47,9 @@ Actions), please follow these guidelines:
   emphasize.
 
 Pull requests are labelled automatically. You can add more labels to better
-qualify the nature of the change. Use the `skip changelog` label to exclude a
-pull request from changelog.
+qualify the nature of the change — in such case, it will be included in all
+corresponding changelog groups. Or use the `skip changelog` label to exclude a
+pull request from the changelog.
 
 ## Package Linking
 

@@ -98,5 +98,6 @@ Then run webpack with the `--mode=production` or `--mode=development` flag.
 
 We appreciate any contributions you might make. 🙏
 
-Please check out our [Contributing Guide](/contribute/guidelines). It includes
+Please check out our
+[Contributing Guide](https://react-ui.io/contribute/guidelines). It includes
 contribution guidelines and information on how to run and develop the project.
