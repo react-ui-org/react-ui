@@ -1,0 +1,132 @@
+name: Release Management
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Test
+        run: npm test
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: docs
+          path: dist/docs
+
+  update_release_draft:
+    needs: [build_and_test]
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Draft release on GitHub
+        uses: release-drafter/release-drafter@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish_release_draft_on_version_bump:
+    needs: [update_release_draft]
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+
+      # An existing release draft is published only if there is a version bump in `package.json`.
+      - name: Publish the matching GitHub release draft
+        id: github_release
+        uses: JamesMGreene/node-draft-releaser@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Write out the release URL
+        run: echo "Released at $RELEASE_URL"
+        env:
+          RELEASE_URL: ${{ steps.github_release.outputs.release_url }}
+
+  publish_package_to_npm:
+    needs: [publish_release_draft_on_version_bump]
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Install
+        run: npm ci
+
+      - name: Publish to npm
+        run: npm publish --dry-run
+        # run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
+
+  deploy_docs:
+    needs: [publish_release_draft_on_version_bump]
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2.3.1
+        with:
+          persist-credentials: false
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v1
+        with:
+          name: docs
+
+      - name: Deploy docs to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@3.6.2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FOLDER: docs # Must match the name of the artifact used.
+          REPOSITORY_NAME: react-ui-org/react-ui-docs
+          ACCESS_TOKEN: ${{ secrets.DOCS_REPOSITORY_ACCESS_TOKEN }}
+          BRANCH: master
+          TARGET_FOLDER: docs
+          COMMIT_MESSAGE: Release new version
+          CLEAN: true
