@@ -26,12 +26,12 @@ describe('rendering', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders correctly with custom label width', () => {
+  it('renders correctly with auto label width', () => {
     const tree = shallow((
       <FormLayout
         fieldLayout="horizontal"
         id="test-id"
-        labelWidth="300px"
+        labelWidth="auto"
       >
         <TextField id="test-id" label="Text field" />
       </FormLayout>
@@ -40,13 +40,12 @@ describe('rendering', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders correctly with all props', () => {
+  it('renders correctly with custom label width', () => {
     const tree = shallow((
       <FormLayout
         fieldLayout="horizontal"
         id="test-id"
-        labelWidth="auto"
-        labelWidthFallback="200px"
+        labelWidth="300px"
       >
         <TextField id="test-id" label="Text field" />
       </FormLayout>

@@ -18,10 +18,7 @@ export const FormLayoutCustomField = ({
     `.trim()}
   >
     {label && (
-      <div
-        id={id && `${id}__label`}
-        className={styles.label}
-      >
+      <div id={id && `${id}__label`}>
         {label}
       </div>
     )}

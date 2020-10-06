@@ -107,44 +107,31 @@ auto width, and limited width. For cases where an individual manual width works
 better, there is the **local custom width mode** which enables setting a width
 that is applied just for the current FormLayout.
 
-⚠️ **Limited browser support:** The horizontal FormLayout uses the relatively
-new
-[CSS subgrid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Subgrid)
-layout which is currently
-[supported only by Firefox](https://caniuse.com/css-subgrid). However, we use
-fallback solutions to achieve the closest possible result. The fallbacks will be
-[removed](https://github.com/react-ui-org/react-ui/issues/127) once CSS subgrid
-is fully supported in browsers that we support.
-
-👉 All global label width options (including their fallback values, where
-available) can be easily [customized](/customize/theming) with CSS custom
-properties.
+👉 All global label width options can be easily [customized](/customize/theming)
+with CSS custom properties.
 
 #### Label Width Options
 
 - The `default` mode (global) sets the width of all labels to a **global default
-  value** which is 10 em. There is no fallback value for this option.
+  value** which is 10 em.
 
 - The `auto` mode (global) aligns the form **according to the longest label.**
-  Its default fallback width is 10 em.
 
 - The `limited` mode (global) works as `auto` except it's intended for values
   that **set a limit for the label width.** Its default value is
   `fitcontent(50%)` which also aligns the form according to the longest label
   like `auto`, but with the difference that the labels cannot be wider than
-  50 % of the FormLayout. Its default fallback width is 10 em.
+  50 % of the FormLayout.
 
 - The `custom` mode (local) allows you to enter any **custom label width for
-  individual FormLayouts.** There is no default or fallback value for this
-  option.
+  individual FormLayouts.**
 
 👉 Please note the `auto` and `limited` label width options may not function
 correctly in combination with other auto layout mechanisms, eg. the auto-width
 [Modal](/components/ui/modal). It's just too much magic that doesn't work
 together yet 🎩.
 
-Try to resize the playground **in Firefox** to see how individual options work.
-(The custom option works in all browsers.)
+Try to resize the playground to see how individual options work.
 
 <Playground>
   {() => {
@@ -241,7 +228,7 @@ the FormLayout component.
 This is a demo of all supported form components within the FormLayout.
 
 <Playground>
-  <FormLayout fieldLayout="horizontal">
+  <FormLayout fieldLayout="horizontal" labelWidth="auto">
     <>
       <TextField
         id="form-layout-horizontal-first-name"

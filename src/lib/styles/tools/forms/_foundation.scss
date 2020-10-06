@@ -21,7 +21,6 @@
 
 @mixin form-field-label() {
   padding-top: calc(#{$form-field-border-width} + var(--rui-local-padding-vertical)); // 6.
-  overflow-wrap: break-word;
 }
 
 @mixin form-field-label-required() {

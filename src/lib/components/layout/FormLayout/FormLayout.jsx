@@ -11,19 +11,13 @@ export const FormLayout = (props) => {
     fieldLayout,
     id,
     labelWidth,
-    labelWidthFallback,
   } = props;
 
   if (!children) {
     return null;
   }
 
-  const HAS_CUSTOM_LABEL_WIDTH = !PREDEFINED_LABEL_WIDTH_VALUES.includes(labelWidth);
-  let customLabelWidth;
-
-  if (HAS_CUSTOM_LABEL_WIDTH) {
-    customLabelWidth = labelWidth;
-  }
+  const hasCustomLabelWidth = !PREDEFINED_LABEL_WIDTH_VALUES.includes(labelWidth);
 
   const fieldLayoutClass = (layout) => {
     if (layout === 'horizontal') {
@@ -34,7 +28,7 @@ export const FormLayout = (props) => {
   };
 
   const labelWidthClass = (width) => {
-    if (HAS_CUSTOM_LABEL_WIDTH) {
+    if (hasCustomLabelWidth) {
       return styles.hasRootLabelWidthCustom;
     }
 
@@ -49,20 +43,6 @@ export const FormLayout = (props) => {
     return styles.hasRootLabelWidthDefault;
   };
 
-  const inlineStyle = (customWidth, customWidthFallback) => {
-    const style = {};
-
-    if (customWidth) {
-      style['--rui-custom-label-width'] = customWidth;
-    }
-
-    if (customWidthFallback) {
-      style['--rui-custom-label-width-fallback'] = customWidthFallback;
-    }
-
-    return style;
-  };
-
   return (
     <div
       id={id}
@@ -70,9 +50,8 @@ export const FormLayout = (props) => {
         styles.root,
         fieldLayoutClass(fieldLayout),
         fieldLayout === 'horizontal' ? labelWidthClass(labelWidth) : '',
-        labelWidthFallback ? styles.hasRootCustomLabelWidthFallback : '',
       ].join(' ')}
-      style={inlineStyle(customLabelWidth, labelWidthFallback)}
+      {...hasCustomLabelWidth ? { style: { '--rui-custom-label-width': labelWidth } } : {}}
     >
       {flattenChildren(children).map((child) => {
         if (!React.isValidElement(child)) {
@@ -93,7 +72,6 @@ FormLayout.defaultProps = {
   fieldLayout: 'vertical',
   id: undefined,
   labelWidth: 'default',
-  labelWidthFallback: undefined,
 };
 
 FormLayout.propTypes = {
@@ -118,10 +96,6 @@ FormLayout.propTypes = {
     PropTypes.oneOf(PREDEFINED_LABEL_WIDTH_VALUES),
     PropTypes.string,
   ]),
-  /**
-   * Fallback value applied when `labelWidth` is either `auto` or `limited`.
-   */
-  labelWidthFallback: PropTypes.string,
 };
 
 export default FormLayout;

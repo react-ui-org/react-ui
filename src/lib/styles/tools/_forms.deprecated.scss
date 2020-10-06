@@ -107,9 +107,12 @@
     &.isRootLayoutHorizontal {
       display: grid;
       grid: inherit;
-      grid-template-columns: var(--rui-local-label-width-fallback) 1fr;
       grid-template-columns: subgrid;
       grid-column: span 2;
+
+      @supports not (grid-template-columns: subgrid) {
+        display: contents;
+      }
     }
 
     &.isRootLayoutHorizontal .inputWrap,

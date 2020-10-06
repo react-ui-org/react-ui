@@ -2,8 +2,7 @@
 
 exports[`rendering renders correctly with a single child 1`] = `
 <div
-  className="root rootFieldLayoutVertical  "
-  style={Object {}}
+  className="root rootFieldLayoutVertical "
 >
   <ForwardRef(withForwardedRef(TextField))
     id="test-id"
@@ -15,15 +14,10 @@ exports[`rendering renders correctly with a single child 1`] = `
 </div>
 `;
 
-exports[`rendering renders correctly with all props 1`] = `
+exports[`rendering renders correctly with auto label width 1`] = `
 <div
-  className="root rootFieldLayoutHorizontal hasRootLabelWidthAuto hasRootCustomLabelWidthFallback"
+  className="root rootFieldLayoutHorizontal hasRootLabelWidthAuto"
   id="test-id"
-  style={
-    Object {
-      "--rui-custom-label-width-fallback": "200px",
-    }
-  }
 >
   <ForwardRef(withForwardedRef(TextField))
     id="test-id"
@@ -37,7 +31,7 @@ exports[`rendering renders correctly with all props 1`] = `
 
 exports[`rendering renders correctly with custom label width 1`] = `
 <div
-  className="root rootFieldLayoutHorizontal hasRootLabelWidthCustom "
+  className="root rootFieldLayoutHorizontal hasRootLabelWidthCustom"
   id="test-id"
   style={
     Object {
@@ -57,8 +51,7 @@ exports[`rendering renders correctly with custom label width 1`] = `
 
 exports[`rendering renders correctly with multiple children 1`] = `
 <div
-  className="root rootFieldLayoutVertical  "
-  style={Object {}}
+  className="root rootFieldLayoutVertical "
 >
   <ForwardRef(withForwardedRef(TextField))
     id="test-id-1"
