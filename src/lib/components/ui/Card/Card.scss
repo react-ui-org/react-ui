@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  border: $card-border-width solid;
+  border: $card-border-width solid transparent;
   border-radius: $card-border-radius;
   background-color: $card-background-color;
 }
