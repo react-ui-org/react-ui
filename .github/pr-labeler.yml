@@ -2,5 +2,6 @@ BC: bc/*
 feature: feature/*
 bugfix: bugfix/*
 refactoring: refactoring/*
+documentation: ['docs/*', 'documentation/*']
 maintenance: maintenance/*
 'skip changelog': release/*

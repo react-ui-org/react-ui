@@ -34,6 +34,7 @@ Actions), please follow these guidelines:
   - `feature/*` for features
   - `bugfix/*` for bugfixes
   - `refactoring/*` for refactoring of the library
+  - `docs/*` or `documentation/*` for changes in docs
   - `maintenance/*` for maintenance (builds, dependencies, automation, etc.)
   - `release/*` for [releases](/contribute/releasing) (administrators only)
 
