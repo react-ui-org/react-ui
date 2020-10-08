@@ -51,7 +51,7 @@ jobs:
 
   update_release_draft:
     needs: [build_and_test]
-    if: needs.build_and_test.outputs.version_changed == 'false'
+    if: needs.build_and_test.outputs.version_changed != 'true'
     runs-on: ubuntu-18.04
     steps:
       - name: Draft release on GitHub
