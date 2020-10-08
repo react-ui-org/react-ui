@@ -14,6 +14,15 @@ const Wrapper = ({ children }) => (
         href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap"
         rel="stylesheet"
       />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-173070814-1" />
+      <script>
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-173070814-1');
+        `}
+      </script>
     </Helmet>
     {children}
   </>
