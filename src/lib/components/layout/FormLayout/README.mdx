@@ -21,6 +21,7 @@ import { SelectField } from '../../ui/SelectField/SelectField'
 import { TextArea } from '../../ui/TextArea/TextArea'
 import { TextField } from '../../ui/TextField/TextField'
 import { Toggle } from '../../ui/Toggle/Toggle'
+import { Center } from '../Center/Center'
 import { Toolbar } from '../Toolbar/Toolbar'
 import { ToolbarItem } from '../Toolbar/ToolbarItem'
 import { FormLayout } from './FormLayout'
@@ -68,6 +69,12 @@ the job: the
   your content is properly spaced and aligned with other FormLayout elements.
   Do **not** try to put any custom HTML or React components directly into
   FormLayout without wrapping it with the FormLayoutCustomField first.
+
+👉 For usage in auto-width Modal, you may need to turn on the `autoWidth` option
+for your FormLayout. This prevents FormLayout from unexpectedly growing in
+browsers that don't support
+[CSS subgrid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Subgrid)
+in cases when there are longer error messages or helper texts.
 
 ## Vertical Layout
 
@@ -128,8 +135,8 @@ with CSS custom properties.
 
 👉 Please note the `auto` and `limited` label width options may not function
 correctly in combination with other auto layout mechanisms, eg. the auto-width
-[Modal](/components/ui/modal). It's just too much magic that doesn't work
-together yet 🎩.
+[Modal](/components/ui/modal). It's just too much of magic that doesn't quite
+work together yet 🎩.
 
 Try to resize the playground to see how individual options work.
 
@@ -205,6 +212,23 @@ Try to resize the playground to see how individual options work.
   }}
 </Playground>
 
+## Alignment
+
+To align whole FormLayout to center of a container, simply wrap it with the
+[Center](/components/layout/center) layout.
+
+<Playground>
+  <Placeholder bordered height="24rem">
+    <Center>
+      <FormLayout autoWidth>
+        <TextField id="my-text-field-auto-width-1" label="A form element" />
+        <TextField id="my-text-field-auto-width-2" label="Another form element" />
+        <TextField id="my-text-field-auto-width-3" label="Yet another one" />
+      </FormLayout>
+    </Center>
+  </Placeholder>
+</Playground>
+
 ## Custom Fields
 
 You can even place any content you need into the FormLayout — just wrap it with
@@ -225,7 +249,7 @@ the FormLayout component.
 
 ## Full Example
 
-This is a demo of all supported form components within the FormLayout.
+This is a demo of all components supported by FormLayout.
 
 <Playground>
   <FormLayout fieldLayout="horizontal" labelWidth="auto">

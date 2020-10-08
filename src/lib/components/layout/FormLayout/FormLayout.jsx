@@ -7,6 +7,7 @@ const PREDEFINED_LABEL_WIDTH_VALUES = ['auto', 'default', 'limited'];
 
 export const FormLayout = (props) => {
   const {
+    autoWidth,
     children,
     fieldLayout,
     id,
@@ -49,6 +50,7 @@ export const FormLayout = (props) => {
       className={[
         styles.root,
         fieldLayoutClass(fieldLayout),
+        autoWidth ? styles.isRootAutoWidth : '',
         fieldLayout === 'horizontal' ? labelWidthClass(labelWidth) : '',
       ].join(' ')}
       {...hasCustomLabelWidth ? { style: { '--rui-custom-label-width': labelWidth } } : {}}
@@ -68,6 +70,7 @@ export const FormLayout = (props) => {
 };
 
 FormLayout.defaultProps = {
+  autoWidth: false,
   children: null,
   fieldLayout: 'vertical',
   id: undefined,
@@ -75,6 +78,10 @@ FormLayout.defaultProps = {
 };
 
 FormLayout.propTypes = {
+  /**
+   * If `true`, FormLayout will take up only as much horizontal space as necessary.
+   */
+  autoWidth: PropTypes.bool,
   /**
    * Supported form field components: CheckboxField, Radio, SelectField, TextArea, TextField,
    * Toggle, and FormLayoutCustomField.

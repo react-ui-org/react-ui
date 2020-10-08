@@ -18,19 +18,21 @@
 @import '../../../styles/tools/breakpoints';
 
 .root {
+  --rui-local-field-width: 1fr;
+
   margin-bottom: $layout-common-bottom-spacing;
 }
 
 .rootFieldLayoutVertical,
 .rootFieldLayoutHorizontal {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: var(--rui-local-field-width);
   grid-row-gap: $form-field-vertical-outer-spacing;
 }
 
 .rootFieldLayoutHorizontal {
   @include breakpoint-up($form-field-horizontal-breakpoint) {
-    grid-template-columns: var(--rui-local-label-width) 1fr; // 1.
+    grid-template-columns: var(--rui-local-label-width) var(--rui-local-field-width); // 1.
   }
 }
 
@@ -48,4 +50,8 @@
 
 .hasRootLabelWidthCustom {
   --rui-local-label-width: var(--rui-custom-label-width); // 3.
+}
+
+.isRootAutoWidth {
+  --rui-local-field-width: min-content;
 }
