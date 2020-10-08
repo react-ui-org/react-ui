@@ -8,7 +8,7 @@ jobs:
   build_and_test:
     runs-on: ubuntu-18.04
     outputs:
-      version_changed: steps.check_package_version.outputs.changed
+      version_changed: ${{ steps.check_package_version.outputs.changed }}
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
@@ -43,6 +43,14 @@ jobs:
         id: check_package_version
         uses: EndBug/version-check@v1
 
+      - name: Log when version changed
+        if: steps.check_package_version.outputs.changed == 'true'
+        run: 'echo "Version change found in commit ${{ steps.check_package_version.outputs.commit }}! New version: ${{ steps.check_package_version.outputs.version }} (${{ steps.check_package_version.outputs.type }})"'
+
+      - name: Log when version unchanged
+        if: steps.check_package_version.outputs.changed != 'true'
+        run: 'echo "No version change"'
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v1
         with:
@@ -51,7 +59,7 @@ jobs:
 
   update_release_draft:
     needs: [build_and_test]
-    if: needs.build_and_test.outputs.version_changed == 'false'
+    if: needs.build_and_test.outputs.version_changed != 'true'
     runs-on: ubuntu-18.04
     steps:
       - name: Draft release on GitHub
