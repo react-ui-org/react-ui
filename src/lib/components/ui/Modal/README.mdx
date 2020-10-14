@@ -86,8 +86,8 @@ See [API](#api) for all available options.
 
 ## Sizes
 
-Modal is available in three fixed-width sizes: small, medium, and large. Modals
-of any size automatically shrink when they cannot fit the screen width.
+Modal is available in three fixed-width sizes: small, medium, large and fullscreen.
+Modals of any size automatically shrink when they cannot fit the screen width.
 
 <Playground>
   {() => {
@@ -117,6 +117,14 @@ of any size automatically shrink when they cannot fit the screen width.
             setModalOpen(true);
           }}
           label="Launch large modal"
+          priority="outline"
+        />
+        <Button
+          clickHandler={() => {
+            setModalSize('fullscreen');
+            setModalOpen(true);
+          }}
+          label="Launch fullscreen modal"
           priority="outline"
         />
         <div>
