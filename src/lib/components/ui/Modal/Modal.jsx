@@ -98,6 +98,10 @@ export class Modal extends React.Component {
         return styles.isRootLarge;
       }
 
+      if (size === 'fullscreen') {
+        return styles.isRootFullscreen;
+      }
+
       return styles.isRootAuto;
     };
 
@@ -304,7 +308,7 @@ Modal.propTypes = {
   /**
    * Size of the modal.
    */
-  size: PropTypes.oneOf(['small', 'medium', 'large', 'auto']),
+  size: PropTypes.oneOf(['small', 'medium', 'large', 'fullscreen', 'auto']),
   /**
    * Title displayed in modal header.
    */

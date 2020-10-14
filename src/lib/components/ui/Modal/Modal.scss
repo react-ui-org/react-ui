@@ -89,6 +89,15 @@
   width: $modal-size-large-width;
 }
 
+.isRootFullscreen {
+  width: $modal-size-fullscreen-width;
+  height: $modal-size-fullscreen-height;
+}
+
+.isRootFullscreen .content {
+  height: 100%;
+}
+
 .isRootAuto {
   width: auto;
   min-width: $modal-size-auto-min-width;
