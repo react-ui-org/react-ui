@@ -1,9 +1,11 @@
 /.docz
 /.github
 /.idea
+/docs
 /node_modules
 /src/docs/
 /src/gatsby-theme-docz/
+/src/**/__tests__
 /tests
 .browserslistrc
 .editorconfig
@@ -18,5 +20,6 @@ lib-stats.development.html
 lib-stats.html
 package-lock.json
 postcss.config.js
+RELEASING.md
 stylelint.config.js
 webpack.config.lib.js

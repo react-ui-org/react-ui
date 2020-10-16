@@ -1,5 +1,6 @@
 /.docz
-/node_modules
 /dist
+/docs
+/node_modules
 lib-stats.development.html
 lib-stats.html
