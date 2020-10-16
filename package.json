@@ -95,7 +95,7 @@
   },
   "scripts": {
     "build": "concurrently \"npm run lib:build\" \"npm run docs:build\"",
-    "docs:build": "rimraf .docz dist/docs && docz build --dest dist/docs",
+    "docs:build": "rimraf .docz docs && docz build --dest docs",
     "docs:dev": "rimraf .docz && docz dev",
     "docs:serve": "rimraf .docz && npm run docs:build && docz serve",
     "lib:build": "concurrently \"webpack --mode development --config webpack.config.lib.js\" \"webpack --mode production --config webpack.config.lib.js\"",
