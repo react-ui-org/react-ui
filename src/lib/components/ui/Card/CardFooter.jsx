@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './Card.scss';
 
-const CardFooter = (props) => {
+export const CardFooter = (props) => {
   const {
     children,
   } = props;
