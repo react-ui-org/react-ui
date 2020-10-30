@@ -11,9 +11,10 @@ import {
   Props,
 } from 'docz'
 import { Button } from '../Button/Button'
+import { ScrollView } from '../ScrollView/ScrollView'
 import { Card } from './Card'
-import CardBody from './CardBody'
-import CardFooter from './CardFooter'
+import { CardBody } from './CardBody'
+import { CardFooter } from './CardFooter'
 
 Cards contain content and actions about a single subject.
 
@@ -45,15 +46,15 @@ See [API](#api) for all available options.
   [customize](/customize/theming) the default appearance to make it stand
   out on white surfaces.
 
-- The [CardBody](#cardbody) component is the only required element in a card.
-  [CardFooter](#cardfooter) is optional.
+- Use options [CardBody](#cardbody) and [CardFooter](#cardfooter) components to
+  provide your content with expected spacing.
 
 - Use **medium or low-emphasis buttons** when there are more cards, eg. in a
   grid. It will help you keep the UI clean and easy to scan.
 
 ## Card Composition
 
-Aside from the mandatory [CardBody](#cardbody) element, you can add a
+Aside from the [CardBody](#cardbody) element, you can add a
 [CardFooter](#cardfooter) to better separate your card's actions from the rest
 of the content.
 
@@ -68,7 +69,7 @@ And use them:
 <Playground>
   <Card>
     <CardBody>
-      Hello! I&apos;m card with a footer.
+      Hello! I&apos;m card with footer.
     </CardBody>
     <CardFooter>
       <Button label="Read more" priority="outline" />
@@ -86,7 +87,7 @@ Add optional shadow to lift the card above surface.
 <Playground>
   <Card raised>
     <CardBody>
-      Hello! I&apos;m a raised card with a footer.
+      Hello! I&apos;m raised card with footer.
     </CardBody>
     <CardFooter>
       <Button label="Read more" priority="outline" />
@@ -101,7 +102,7 @@ Use a border when you need to visually separate the card from its background.
 <Playground>
   <Card variant="bordered">
     <CardBody>
-      Hello! I&apos;m card with a border and a footer.
+      Hello! I&apos;m card with border and footer.
     </CardBody>
     <CardFooter>
       <Button label="Read more" priority="outline" />
@@ -109,7 +110,7 @@ Use a border when you need to visually separate the card from its background.
   </Card>
   <Card variant="bordered" raised>
     <CardBody>
-      Hello! I&apos;m a raised card with a border and a footer.
+      Hello! I&apos;m raised card with border and footer.
     </CardBody>
     <CardFooter>
       <Button label="Read more" priority="outline" />
@@ -125,12 +126,50 @@ card should be also smaller to keep the card contained and easy to scan.
 <Playground>
   <Card dense raised>
     <CardBody>
-      <small>Hello! I&apos;m a dense card. Everything is smaller here.</small>
+      <small>Hello! I&apos;m dense card. Everything is smaller here.</small>
     </CardBody>
     <CardFooter>
       <Button label="Read more" priority="outline" size="small" />
     </CardFooter>
   </Card>
+</Playground>
+
+## Scrollable Card
+
+Combine Card with [ScrollView](/components/ui/scroll-view) to enable scrolling
+for card content.
+
+<Playground>
+  <div
+    style={{
+      display: 'flex',
+      height: '200px',
+    }}
+  >
+    <Card raised>
+      <ScrollView>
+        <CardBody>
+          Hello! I&apos;m scrollable card.
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+          ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
+          dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+          ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa
+          quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
+          arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+          Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras
+          dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend
+          tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
+          enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
+          Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean
+          imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper
+          ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus
+          eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing
+          sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,
+          hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus.
+        </CardBody>
+      </ScrollView>
+    </Card>
+  </div>
 </Playground>
 
 ## Card Types
@@ -194,8 +233,8 @@ bordered card type is forced automatically to make sure the border is visible.
 
 ### Disabled State
 
-An entire card can appear disabled. However, you'll still need to manually
-disable its interactive elements to disallow user's interaction.
+Entire card can appear disabled. However, you'll still need to manually disable
+its interactive elements to disallow user's interaction.
 
 <Playground>
   <Card disabled>
@@ -238,8 +277,8 @@ disable its interactive elements to disallow user's interaction.
 
 ## CardBody
 
-CardBody is the only required element in a card. See
-[Card Composition](#card-composition) for all details.
+Space your content with CardBody. See [Card Composition](#card-composition) for
+all details.
 
 <Props of={CardBody} />
 

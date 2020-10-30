@@ -80,7 +80,8 @@ Card.defaultProps = {
 
 Card.propTypes = {
   /**
-   * Slot for individual Card elements that build up the inner layout: CardBody and CardFooter.
+   * Slot for individual Card elements that build up the inner layout: CardBody, CardFooter, or
+   * ScrollView.
    */
   children: PropTypes.node.isRequired,
   /**
