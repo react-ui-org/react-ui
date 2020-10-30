@@ -1,17 +1,56 @@
+// 1. Read value of `--rui-local-<PROPERTY>-<BREAKPOINT>` that might have been defined by
+//    JavaScript and assign it to `--rui-local-<PROPERTY>` used in 2.
+//
+//    Fallback cascade containing fallbacks for all previous breakpoints recursively is included
+//    using CSS custom property fallback mechanism like this:
+//
+//    Fallback for `xs` breakpoint: `<INITIAL FALLBACK>`
+//    Fallback for `sm` breakpoint: `var(--rui-local-<PROPERTY>-xs, <INITIAL FALLBACK>)`
+//    Fallback for `md` breakpoint: `var(--rui-local-<PROPERTY>-sm, var(--rui-local-<PROPERTY>-xs, <INITIAL FALLBACK>))`
+//
+//    … etc, up to the largest breakpoint.
+//
+//    A media query is then created for each breakpoint (with exception of `xs` which doesn't need a
+//    media query) and a corresponding responsive custom property variant is assigned to
+//    `--rui-local-<PROPERTY>` that is used later in CSS, see 2.
+//
+//    Example for `sm` breakpoint:
+//
+//    `--rui-local-<PROPERTY>: var(--rui-local-<PROPERTY>-sm, var(--rui-local-<PROPERTY>-xs, <INITIAL FALLBACK>))`
+//
+// 2. Apply custom property value that is defined within current breakpoint, see 1.
+//
+// 3. Any valid auto-flow algorithm can be used. It's applied globally for all breakpoints.
+
 @import '../../../styles/settings/layouts';
-@import '../../../styles/tools/breakpoints';
-@import './theme';
+@import 'mixins';
 
-/* autoprefixer grid: off */
 .root {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
-  grid-gap: $grid-gap;
-  margin-bottom: $layout-common-bottom-spacing;
+  $_properties: (
+    columns: var(--rui-grid-columns),
+    column-gap: var(--rui-grid-column-gap),
+    rows: var(--rui-grid-rows),
+    row-gap: var(--rui-grid-row-gap),
+  );
 
-  @include breakpoint-up(sm) {
-    grid-template-columns: repeat(auto-fit, minmax($grid-item-min-width, $grid-item-max-width));
-    justify-content: start;
-  }
+  @include assign-responsive-custom-properties($_properties); // 1.
+
+  display: grid;
+  grid-template-columns: var(--rui-local-columns); // 2.
+  grid-template-rows: var(--rui-local-rows); // 2.
+  grid-gap: var(--rui-local-row-gap) var(--rui-local-column-gap); // 2.
+  grid-auto-flow: var(--rui-local-auto-flow, var(--rui-grid-auto-flow)); // 3.
+  margin-bottom: $layout-common-bottom-spacing;
+}
+
+.span {
+  $_properties: (
+    column-span: 1,
+    row-span: 1,
+  );
+
+  @include assign-responsive-custom-properties($_properties); // 1.
+
+  grid-column: span var(--rui-local-column-span, 1); // 2.
+  grid-row: span var(--rui-local-row-span, 1); // 2.
 }
