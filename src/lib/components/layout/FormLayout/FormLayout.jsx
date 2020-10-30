@@ -55,6 +55,10 @@ export const FormLayout = (props) => {
       ].join(' ')}
       {...hasCustomLabelWidth ? { style: { '--rui-custom-label-width': labelWidth } } : {}}
     >
+      {/*
+        Flatten children to one-dimensional array so we get over React Fragments with the `map()`
+        function.
+      */}
       {flattenChildren(children).map((child) => {
         if (!React.isValidElement(child)) {
           return null;

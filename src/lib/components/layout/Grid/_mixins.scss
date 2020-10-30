@@ -1,0 +1,37 @@
+@import '../../../styles/settings/breakpoints';
+@import '../../../styles/tools/breakpoints';
+
+// Generate fallback cascade using `var()` function fallbacks.
+//
+// $property-name: <string> Custom property name
+// $initial-fallback: <string> Initial fallback value
+// $current-breakpoint: <one of $breakpoint-values> Generate cascade for breakpoints smaller than this one
+@function _generate-custom-property-fallback-cascade($property-name, $initial-fallback, $current-breakpoint) {
+  $fallback-cascade: $initial-fallback;
+
+  @each $breakpoint in map-keys($breakpoint-values) {
+    @if $breakpoint == $current-breakpoint {
+      @return $fallback-cascade;
+    }
+
+    $fallback-cascade: var(--rui-local-#{$property-name}-#{$breakpoint}, $fallback-cascade);
+  }
+}
+
+// Read custom properties within a given breakpoint and assign them to expected output custom
+// properties. Use a generated fallback cascade should the custom property be undefined.
+//
+// $properties: <map of <<property name>: <initial fallback value>> pairs>
+@mixin assign-responsive-custom-properties($properties) {
+  @each $breakpoint in map-keys($breakpoint-values) {
+    @include breakpoint-up($breakpoint) {
+      @each $property-name, $initial-fallback in $properties {
+        --rui-local-#{$property-name}:
+          var(
+            --rui-local-#{$property-name}-#{$breakpoint},
+            #{_generate-custom-property-fallback-cascade($property-name, $initial-fallback, $breakpoint)}
+          );
+      }
+    }
+  }
+}

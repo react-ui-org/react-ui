@@ -73,6 +73,8 @@
   // Breakpoints
   // Read-only, custom properties cannot be used within media queries as media query is not a property.
   // https://www.w3.org/TR/css-variables-1/#using-variables
+  //
+  // ⚠️ Keep in sync with `src/lib/styles/settings/_breakpoints.scss`.
   --rui-breakpoint-xs: #{map-get($breakpoint-values, xs)};
   --rui-breakpoint-sm: #{map-get($breakpoint-values, sm)};
   --rui-breakpoint-md: #{map-get($breakpoint-values, md)};
@@ -536,9 +538,11 @@
   // Grid
   // ====
 
-  --rui-grid-item-min-width: 300px;
-  --rui-grid-item-max-width: auto;
-  --rui-grid-gap: var(--rui-spacing-4);
+  --rui-grid-columns: 1fr;
+  --rui-grid-column-gap: var(--rui-spacing-4);
+  --rui-grid-rows: auto;
+  --rui-grid-row-gap: var(--rui-spacing-4);
+  --rui-grid-auto-flow: initial;
 
   //
   // Modal

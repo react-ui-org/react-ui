@@ -10,7 +10,10 @@ export {
   FormLayout,
   FormLayoutCustomField,
 } from './components/layout/FormLayout';
-export { default as Grid } from './components/layout/Grid';
+export {
+  Grid,
+  GridSpan,
+} from './components/layout/Grid';
 export {
   List,
   ListItem,
