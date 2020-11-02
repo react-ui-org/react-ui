@@ -94,6 +94,21 @@ module.exports = (env, argv) => ({
 
 Then run webpack with the `--mode=production` or `--mode=development` flag.
 
+## Sponsors
+
+<p>
+    <br />
+    <a href="https://www.racom.eu">
+      <img src="public/racom.svg" width="190" height="30" alt="RACOM" />
+    </a>
+    <br />
+    <br />
+</p>
+
+> Development of React UI is largely supported by
+> [RACOM](https://www.racom.eu)—one of the leading global players in wireless
+> Critical Infrastructure.
+
 ## Contributing
 
 We appreciate any contributions you might make. 🙏

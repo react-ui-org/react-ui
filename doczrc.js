@@ -53,6 +53,7 @@ export default {
       name: 'Contribute',
     },
   ],
+  public: '/public',
   themeConfig: {
     colors: {
       modes: {
