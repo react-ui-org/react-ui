@@ -23,6 +23,15 @@ const Wrapper = ({ children }) => (
           gtag('config', 'UA-173070814-1');
         `}
       </script>
+      <style type="text/css">
+        {`
+          @media (prefers-reduced-motion: no-preference) {
+            html {
+              scroll-behavior: smooth;
+            }
+          }
+        `}
+      </style>
     </Helmet>
     {children}
   </>
