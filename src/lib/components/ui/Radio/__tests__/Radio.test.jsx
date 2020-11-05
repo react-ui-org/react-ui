@@ -45,8 +45,8 @@ describe('rendering', () => {
   it('renders correctly only one option and hidden label', () => {
     const tree = shallow(<Radio
       id="test"
-      label="label"
       isLabelVisible={false}
+      label="label"
       options={[
         {
           label: 'choice 1',
@@ -60,15 +60,12 @@ describe('rendering', () => {
 
   it('renders correctly with all props', () => {
     const tree = shallow(<Radio
-      label="label"
       disabled
+      helpText="some help"
       id="test"
       inFormLayout
+      label="label"
       layout="horizontal"
-      value="ch1"
-      description="some help"
-      error="some error"
-      required
       options={[
         {
           disabled: true,
@@ -80,7 +77,10 @@ describe('rendering', () => {
           value: 'ch2',
         },
       ]}
+      required
       validationState="warning"
+      validationText="some error"
+      value="ch1"
     />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
@@ -91,6 +91,7 @@ describe('functionality', () => {
   it('calls changeHandler() on changing selected option', () => {
     const spy = sinon.spy();
     const component = mount(<Radio
+      changeHandler={spy}
       id="id"
       label="label"
       options={[
@@ -103,7 +104,6 @@ describe('functionality', () => {
           value: 'ch2',
         },
       ]}
-      changeHandler={spy}
       value="ch2"
     />);
 

@@ -78,11 +78,11 @@ turning the toggle on or off.
       <Toggle
         changeHandler={() => setStudioQuality(!studioQuality)}
         checked={studioQuality}
-        description={
+        helpText={
           'Unrivaled audio quality. Uses the MQA audio format. '
           + 'Transfers a lot of data.'
         }
-        id="my-toggle-with-helper-text"
+        id="my-toggle-with-help-text"
         label="Listen in studio quality"
       />
     );
@@ -131,8 +131,9 @@ It's also possible to display the label before the input:
 ### Validation States
 
 Validation states visually present the result of validation of the input. You
-should always **provide a help text for states other than valid** so users know
-what happened and what action they should take or what options they have.
+should always **provide a validation message for states other than valid** so
+users know what happened and what action they should take or what options they
+have.
 
 <Playground>
   {() => {
@@ -149,21 +150,21 @@ what happened and what action they should take or what options they have.
         <Toggle
           changeHandler={() => setStudioQuality(!studioQuality)}
           checked={studioQuality}
-          description={
-            'Looks like you are connected over cellular network. '
-            + 'Please make sure you know what you are doing.'
-          }
           id="my-toggle-warning"
           label="Listen in studio quality"
           validationState="warning"
+          validationText={
+            'Looks like you are connected over cellular network. '
+            + 'Please make sure you know what you are doing.'
+          }
         />
         <Toggle
           changeHandler={() => setStudioQuality(!studioQuality)}
           checked={studioQuality}
-          error="Please upgrade your plan to make this option available."
           id="my-toggle-invalid"
           label="Listen in studio quality"
           validationState="invalid"
+          validationText="Please upgrade your plan to make this option available."
         />
       </>
     );

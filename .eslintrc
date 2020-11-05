@@ -11,13 +11,7 @@
   "rules": {
     "func-names": "off",
     "react/jsx-props-no-spreading": "off",
-    "react/jsx-one-expression-per-line": "off",
-    // Bedřich Schindler <bedrich@visionapps.cz>, 14. 9. 2019
-    // Because of bug in eslint-config-react https://github.com/yannickcr/eslint-plugin-react/issues/1846
-    "react/button-has-type": "off",
-    // Bedřich Schindler <bedrich@visionapps.cz>, 14. 9. 2019
-    // These rules will be fixed later due to huge amouut of errors after update
-    "react/destructuring-assignment": "off"
+    "react/jsx-one-expression-per-line": "off"
   },
   "overrides": [
     {

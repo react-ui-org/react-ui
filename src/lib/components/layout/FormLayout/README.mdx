@@ -74,7 +74,7 @@ the job: the
 for your FormLayout. This prevents FormLayout from unexpectedly growing in
 browsers that don't support
 [CSS subgrid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Subgrid)
-in cases when there are longer error messages or helper texts.
+in cases when there are longer validation messages or help texts.
 
 ## Vertical Layout
 
@@ -268,9 +268,9 @@ This is a demo of all components supported by FormLayout.
     <TextField
       id="form-layout-horizontal-email"
       changeHandler={() => {}}
+      helpText="Optional"
       label="Email address"
       type="email"
-      helperText="Optional"
     />
     <>
       <TextField
@@ -289,10 +289,10 @@ This is a demo of all components supported by FormLayout.
       <TextField
         id="form-layout-horizontal-zip"
         changeHandler={() => {}}
-        helperText="ZIP should be 5 to 6 digits long code."
         label="ZIP"
         inputSize={6}
         validationState="invalid"
+        validationText="ZIP should be 5 to 6 digits long code."
       />
       <FormLayoutCustomField
         id="form-layout-horizontal-country"
@@ -336,9 +336,9 @@ This is a demo of all components supported by FormLayout.
       id="form-layout-horizontal-newsletter"
       changeHandler={() => {}}
       checked
+      helpText="Only once per week!"
       label="Receive weekly newsletter"
       required
-      description="Only once per week!"
     />
     <Radio
       id="form-layout-horizontal-fruit-2"

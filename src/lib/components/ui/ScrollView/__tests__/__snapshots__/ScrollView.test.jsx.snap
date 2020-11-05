@@ -194,6 +194,7 @@ exports[`rendering renders correctly with all props 1`] = `
         id="my-scrollview__arrowPrevButton"
         onClick={[Function]}
         title="Previous"
+        type="button"
       >
         <span>
           ←
@@ -204,6 +205,7 @@ exports[`rendering renders correctly with all props 1`] = `
         id="my-scrollview__arrowNextButton"
         onClick={[Function]}
         title="Next"
+        type="button"
       >
         <span>
           →
@@ -282,6 +284,7 @@ exports[`rendering renders correctly with arrows 1`] = `
         className="arrowPrev"
         onClick={[Function]}
         title="Previous"
+        type="button"
       >
         <span
           aria-hidden={true}
@@ -292,6 +295,7 @@ exports[`rendering renders correctly with arrows 1`] = `
         className="arrowNext"
         onClick={[Function]}
         title="Next"
+        type="button"
       >
         <span
           aria-hidden={true}

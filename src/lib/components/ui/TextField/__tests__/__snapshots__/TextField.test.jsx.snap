@@ -2,21 +2,13 @@
 
 exports[`rendering renders correctly mandatory props only 1`] = `
 <label
-  className="root
-        
-        
-        rootLayoutVertical
-        
-        rootSizeMedium
-        
-        
-        rootVariantOutline"
+  className="root    rootLayoutVertical  rootSizeMedium  rootVariantOutline"
   htmlFor="test"
   id="test__label"
   style={Object {}}
 >
   <div
-    className="label"
+    className="label "
     id="test__labelText"
   >
     label
@@ -45,15 +37,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
 
 exports[`rendering renders correctly the number input type 1`] = `
 <label
-  className="root
-        
-        
-        rootLayoutVertical
-        
-        rootSizeMedium
-        
-        
-        rootVariantOutline"
+  className="root    rootLayoutVertical  rootSizeMedium  rootVariantOutline"
   htmlFor="test"
   id="test__label"
   style={
@@ -63,7 +47,7 @@ exports[`rendering renders correctly the number input type 1`] = `
   }
 >
   <div
-    className="label"
+    className="label "
     id="test__labelText"
   >
     Number input type
@@ -92,15 +76,7 @@ exports[`rendering renders correctly the number input type 1`] = `
 
 exports[`rendering renders correctly the number input type with small input 1`] = `
 <label
-  className="root
-        
-        
-        rootLayoutVertical
-        
-        rootSizeMedium
-        hasRootSmallInput
-        
-        rootVariantOutline"
+  className="root  hasRootSmallInput  rootLayoutVertical  rootSizeMedium  rootVariantOutline"
   htmlFor="test"
   id="test__label"
   style={
@@ -110,7 +86,7 @@ exports[`rendering renders correctly the number input type with small input 1`] 
   }
 >
   <div
-    className="label"
+    className="label "
     id="test__labelText"
   >
     Number input type
@@ -139,15 +115,7 @@ exports[`rendering renders correctly the number input type with small input 1`] 
 
 exports[`rendering renders correctly with all props 1`] = `
 <label
-  className="root
-        isRootFullWidth
-        isRootInFormLayout
-        rootLayoutHorizontal
-        isRootRequired
-        rootSizeLarge
-        
-        isRootStateInvalid
-        rootVariantFilled"
+  className="root isRootFullWidth  isRootInFormLayout rootLayoutHorizontal isRootRequired rootSizeLarge isRootStateInvalid rootVariantFilled"
   htmlFor="test"
   id="test__label"
   style={
@@ -157,8 +125,7 @@ exports[`rendering renders correctly with all props 1`] = `
   }
 >
   <div
-    className="label
-          isLabelHidden"
+    className="label isLabelHidden"
     id="test__labelText"
   >
     All props
@@ -186,10 +153,16 @@ exports[`rendering renders correctly with all props 1`] = `
       />
     </div>
     <div
-      className="helperText"
-      id="test__helperText"
+      className="helpText"
+      id="test__helpText"
     >
       some help
+    </div>
+    <div
+      className="validationText"
+      id="test__validationText"
+    >
+      some error
     </div>
   </div>
 </label>
@@ -197,21 +170,13 @@ exports[`rendering renders correctly with all props 1`] = `
 
 exports[`rendering renders correctly with custom props 1`] = `
 <label
-  className="root
-        
-        
-        rootLayoutVertical
-        
-        rootSizeMedium
-        
-        
-        rootVariantOutline"
+  className="root    rootLayoutVertical  rootSizeMedium  rootVariantOutline"
   htmlFor="test"
   id="test__label"
   style={Object {}}
 >
   <div
-    className="label"
+    className="label "
     id="test__labelText"
   >
     With custom props
@@ -242,22 +207,13 @@ exports[`rendering renders correctly with custom props 1`] = `
 
 exports[`rendering renders correctly with hidden label 1`] = `
 <label
-  className="root
-        
-        
-        rootLayoutVertical
-        
-        rootSizeMedium
-        
-        
-        rootVariantOutline"
+  className="root    rootLayoutVertical  rootSizeMedium  rootVariantOutline"
   htmlFor="test"
   id="test__label"
   style={Object {}}
 >
   <div
-    className="label
-          isLabelHidden"
+    className="label isLabelHidden"
     id="test__labelText"
   >
     With hidden label
@@ -286,15 +242,7 @@ exports[`rendering renders correctly with hidden label 1`] = `
 
 exports[`rendering renders correctly with small input 1`] = `
 <label
-  className="root
-        
-        
-        rootLayoutVertical
-        
-        rootSizeMedium
-        hasRootSmallInput
-        
-        rootVariantOutline"
+  className="root  hasRootSmallInput  rootLayoutVertical  rootSizeMedium  rootVariantOutline"
   htmlFor="test"
   id="test__label"
   style={
@@ -304,7 +252,7 @@ exports[`rendering renders correctly with small input 1`] = `
   }
 >
   <div
-    className="label"
+    className="label "
     id="test__labelText"
   >
     Small input

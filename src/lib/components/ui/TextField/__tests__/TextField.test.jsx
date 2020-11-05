@@ -17,8 +17,8 @@ describe('rendering', () => {
   it('renders correctly with hidden label', () => {
     const tree = shallow(<TextField
       id="test"
-      label="With hidden label"
       isLabelVisible={false}
+      label="With hidden label"
     />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
@@ -27,8 +27,8 @@ describe('rendering', () => {
   it('renders correctly with small input', () => {
     const tree = shallow(<TextField
       id="test"
-      label="Small input"
       inputSize={5}
+      label="Small input"
     />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
@@ -58,10 +58,10 @@ describe('rendering', () => {
 
   it('renders correctly with custom props', () => {
     const tree = shallow(<TextField
-      id="test"
-      label="With custom props"
       autoCapitalize="off"
       autoComplete="off"
+      id="test"
+      label="With custom props"
     />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
@@ -69,23 +69,24 @@ describe('rendering', () => {
 
   it('renders correctly with all props', () => {
     const tree = shallow(<TextField
+      disabled
+      fullWidth
+      helpText="some help"
       id="test"
-      helperText="some help"
       inFormLayout
+      inputSize={20}
       isLabelVisible={false}
       label="All props"
       layout="horizontal"
       max={30}
       placeholder="placeholder"
-      inputSize={20}
-      validationState="invalid"
+      required
+      size="large"
       type="email"
+      validationState="invalid"
+      validationText="some error"
       value="value"
       variant="filled"
-      size="large"
-      fullWidth
-      disabled
-      required
     />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
@@ -96,9 +97,9 @@ describe('functionality', () => {
   it('calls changeHandler()', () => {
     const spy = sinon.spy();
     const component = mount(<TextField
+      changeHandler={spy}
       id="test"
       label="label"
-      changeHandler={spy}
     />);
 
     component

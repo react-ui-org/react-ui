@@ -167,9 +167,9 @@
   }
 }
 
-@mixin form-field-helper-text() {
-  font-style: $form-field-helper-text-font-style;
-  font-size: $form-field-helper-text-font-size;
-  line-height: $form-field-helper-text-line-height;
-  color: $form-field-helper-text-color;
+@mixin form-field-help-text() {
+  font-style: $form-field-help-text-font-style;
+  font-size: $form-field-help-text-font-size;
+  line-height: $form-field-help-text-line-height;
+  color: $form-field-help-text-color;
 }

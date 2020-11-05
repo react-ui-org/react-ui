@@ -91,6 +91,8 @@ export const Button = (props) => {
       'label', 'labelVisibility', 'loadingIcon', 'priority', 'size', 'startCorner', 'type', 'variant'],
   );
 
+  /* No worries, `type` is always assigned correctly through props. */
+  /* eslint-disable react/button-has-type */
   return (
     <button
       {...propsToTransfer}
@@ -144,6 +146,7 @@ export const Button = (props) => {
     </button>
   );
 };
+/* eslint-enable react/button-has-type */
 
 Button.defaultProps = {
   afterLabel: null,

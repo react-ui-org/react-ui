@@ -227,6 +227,7 @@ export const ScrollView = (props) => {
       {arrows && (
         <>
           <button
+            type="button"
             className={styles.arrowPrev}
             onClick={() => arrowHandler(
               scrollViewContentEl,
@@ -243,6 +244,7 @@ export const ScrollView = (props) => {
             )}
           </button>
           <button
+            type="button"
             className={styles.arrowNext}
             onClick={() => arrowHandler(
               scrollViewContentEl,

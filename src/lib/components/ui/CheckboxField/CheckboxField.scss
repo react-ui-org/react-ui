@@ -133,12 +133,12 @@
   border-left: $disabled-border-style;
 }
 
-.description,
-.error {
-  @include form-field-helper-text();
+.helpText,
+.validationText {
+  @include form-field-help-text();
 }
 
-.error {
+.validationText {
   min-height: 1rem;
 }
 
@@ -149,8 +149,7 @@
 // States
 // stylelint-disable no-descending-specificity
 .isRootStateInvalid .label,
-.isRootStateInvalid .description,
-.isRootStateInvalid .error {
+.isRootStateInvalid .validationText {
   color: $form-invalid-color;
 }
 
@@ -164,8 +163,7 @@
 }
 
 .isRootStateValid .label,
-.isRootStateValid .description,
-.isRootStateValid .error {
+.isRootStateValid .validationText {
   color: $form-valid-color;
 }
 
@@ -179,8 +177,7 @@
 }
 
 .isRootStateWarning .label,
-.isRootStateWarning .description,
-.isRootStateWarning .error {
+.isRootStateWarning .validationText {
   color: $form-warning-color;
 }
 

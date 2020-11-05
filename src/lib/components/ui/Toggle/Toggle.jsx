@@ -1,103 +1,90 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import getRootValidationStateClassName from '../../../helpers/getRootValidationStateClassName';
 import transferProps from '../../../utils/transferProps';
 import withForwardedRef from '../withForwardedRef';
 import styles from './Toggle.scss';
 
 export const Toggle = (props) => {
-  let labelVisibilityClass = '';
-  let labelPositionClass = '';
-  let rootInFormLayoutClass = '';
-  let rootLayoutClass = '';
-  let rootValidationStateClass = '';
-
-  if (!props.isLabelVisible) {
-    labelVisibilityClass = styles.isLabelHidden;
-  }
-
-  if (props.labelPosition === 'before') {
-    labelPositionClass = styles.labelPositionBefore;
-  } else if (props.labelPosition === 'after') {
-    labelPositionClass = styles.labelPositionAfter;
-  }
-
-  if (props.inFormLayout) {
-    rootInFormLayoutClass = styles.isRootInFormLayout;
-  }
-
-  if (props.layout === 'horizontal') {
-    rootLayoutClass = styles.isRootLayoutHorizontal;
-  }
-
-  if (props.validationState === 'invalid') {
-    rootValidationStateClass = styles.isRootStateInvalid;
-  } else if (props.validationState === 'valid') {
-    rootValidationStateClass = styles.isRootStateValid;
-  } else if (props.validationState === 'warning') {
-    rootValidationStateClass = styles.isRootStateWarning;
-  }
+  const {
+    changeHandler,
+    checked,
+    disabled,
+    forwardedRef,
+    helpText,
+    id,
+    inFormLayout,
+    isLabelVisible,
+    label,
+    labelPosition,
+    layout,
+    required,
+    validationState,
+    validationText,
+    value,
+  } = props;
 
   const propsToTransfer = transferProps(
     props,
-    ['changeHandler', 'checked', 'description', 'disabled', 'error', 'id', 'inFormLayout', 'isLabelVisible',
-      'label', 'labelPosition', 'layout', 'required', 'validationState', 'value'],
+    ['changeHandler', 'checked', 'description', 'disabled', 'helpText', 'id', 'inFormLayout', 'isLabelVisible',
+      'label', 'labelPosition', 'layout', 'required', 'validationState', 'validationText', 'value'],
   );
 
   return (
     <div
-      className={(`
-        ${styles.root}
-        ${labelPositionClass}
-        ${rootInFormLayoutClass}
-        ${rootLayoutClass}
-        ${rootValidationStateClass}
-      `).trim()}
+      className={[
+        styles.root,
+        inFormLayout ? styles.isRootInFormLayout : '',
+        labelPosition === 'before' ? styles.labelPositionBefore : styles.labelPositionAfter,
+        layout === 'horizontal' ? styles.isRootLayoutHorizontal : '',
+        getRootValidationStateClassName(validationState, styles),
+      ].join(' ')}
     >
       <label
         className={styles.inputWrap}
-        htmlFor={props.id}
-        id={`${props.id}__label`}
+        htmlFor={id}
+        id={`${id}__label`}
       >
         <input
           {...propsToTransfer}
-          id={props.id}
-          name={props.id}
-          value={props.value}
-          onChange={props.changeHandler}
-          disabled={props.disabled}
-          checked={props.checked}
-          ref={props.forwardedRef}
-          required={props.required}
-          type="checkbox"
+          checked={checked}
           className={styles.input}
+          disabled={disabled}
+          id={id}
+          name={id}
+          onChange={changeHandler}
+          ref={forwardedRef}
+          required={required}
+          type="checkbox"
+          value={value}
         />
         <span className={styles.label}>
           <span
-            className={(`
-              ${styles.labelInner}
-              ${labelVisibilityClass}
-            `).trim()}
-            id={`${props.id}__labelText`}
+            className={[
+              styles.labelInner,
+              isLabelVisible ? '' : styles.isLabelHidden,
+            ].join(' ')}
+            id={`${id}__labelText`}
           >
-            {props.label}
+            {label}
           </span>
         </span>
         <span className={styles.toggle} />
       </label>
-      {props.description && (
+      {helpText && (
         <div
-          className={styles.description}
-          id={`${props.id}__descriptionText`}
+          className={styles.helpText}
+          id={`${id}__helpText`}
         >
-          {props.description}
+          {helpText}
         </div>
       )}
-      {props.error && (
+      {validationText && (
         <div
-          className={styles.error}
-          id={`${props.id}__errorText`}
+          className={styles.validationText}
+          id={`${id}__validationText`}
         >
-          {props.error}
+          {validationText}
         </div>
       )}
     </div>
@@ -107,16 +94,16 @@ export const Toggle = (props) => {
 Toggle.defaultProps = {
   changeHandler: null,
   checked: false,
-  description: null,
   disabled: false,
-  error: null,
   forwardedRef: undefined,
+  helpText: null,
   inFormLayout: false,
   isLabelVisible: true,
   labelPosition: 'after',
   layout: 'vertical',
   required: false,
   validationState: null,
+  validationText: null,
   value: undefined,
 };
 
@@ -130,17 +117,9 @@ Toggle.propTypes = {
    */
   checked: PropTypes.bool,
   /**
-   * Optional description.
-   */
-  description: PropTypes.string,
-  /**
    * If `true`, the input will be disabled.
    */
   disabled: PropTypes.bool,
-  /**
-   * Error message to be displayed.
-   */
-  error: PropTypes.string,
   /**
    * Reference forwarded to the `input` element.
    */
@@ -149,8 +128,12 @@ Toggle.propTypes = {
     PropTypes.shape({ current: PropTypes.any }),
   ]),
   /**
+   * Optional help text.
+   */
+  helpText: PropTypes.node,
+  /**
    * ID of the input HTML element. It also serves as a prefix for important inner elements:
-   * `<ID>__label`, `<ID>__labelText`, `<ID>__descriptionText`, and `<ID>__errorText`.
+   * `<ID>__label`, `<ID>__labelText`, `<ID>__helpText`, and `<ID>__validationText`.
    */
   id: PropTypes.string.isRequired,
   /**
@@ -182,6 +165,10 @@ Toggle.propTypes = {
    * Alter the field to provide feedback based on validation result.
    */
   validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
+  /**
+   * Validation message to be displayed.
+   */
+  validationText: PropTypes.node,
   /**
    * Value of the input.
    */

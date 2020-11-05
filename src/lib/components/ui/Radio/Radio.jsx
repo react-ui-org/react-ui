@@ -1,83 +1,73 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import getRootValidationStateClassName from '../../../helpers/getRootValidationStateClassName';
 import transferProps from '../../../utils/transferProps';
 import styles from './Radio.scss';
 
 export const Radio = (props) => {
-  let labelClass = styles.label;
-  let rootInFormLayoutClass = '';
-  let rootLayoutClass = '';
-  let rootValidationStateClass = '';
-
-  if (props.isLabelVisible) {
-    if (props.required) {
-      labelClass = styles.isLabelRequired;
-    }
-  } else {
-    labelClass = styles.isLabelHidden;
-  }
-
-  if (props.inFormLayout) {
-    rootInFormLayoutClass = styles.isRootInFormLayout;
-  }
-
-  if (props.layout === 'horizontal') {
-    rootLayoutClass = styles.isRootLayoutHorizontal;
-  }
-
-  if (props.validationState === 'invalid') {
-    rootValidationStateClass = styles.isRootStateInvalid;
-  } else if (props.validationState === 'valid') {
-    rootValidationStateClass = styles.isRootStateValid;
-  } else if (props.validationState === 'warning') {
-    rootValidationStateClass = styles.isRootStateWarning;
-  }
+  const {
+    changeHandler,
+    disabled,
+    helpText,
+    id,
+    inFormLayout,
+    isLabelVisible,
+    label,
+    layout,
+    options,
+    required,
+    validationState,
+    validationText,
+    value,
+  } = props;
 
   const propsToTransfer = transferProps(
     props,
-    ['changeHandler', 'description', 'disabled', 'error', 'id', 'inFormLayout', 'isLabelVisible',
-      'label', 'layout', 'options', 'required', 'validationState', 'value'],
+    ['changeHandler', 'disabled', 'helpText', 'id', 'inFormLayout', 'isLabelVisible',
+      'label', 'layout', 'options', 'required', 'validationState', 'validationText', 'value'],
   );
 
   return (
     <div
-      className={`
-        ${styles.root}
-        ${rootInFormLayoutClass}
-        ${rootLayoutClass}
-        ${rootValidationStateClass}
-      `.trim()}
+      className={[
+        styles.root,
+        inFormLayout ? styles.isRootInFormLayout : '',
+        layout === 'horizontal' ? styles.isRootLayoutHorizontal : '',
+        getRootValidationStateClassName(validationState, styles),
+      ].join(' ')}
     >
       <div
-        className={labelClass}
-        id={`${props.id}__labelText`}
+        className={[
+          isLabelVisible ? '' : styles.isLabelHidden,
+          isLabelVisible && required ? styles.isLabelRequired : '',
+        ].join(' ')}
+        id={`${id}__labelText`}
       >
-        {props.label}
+        {label}
       </div>
       <ul className={styles.list}>
         {
-          props.options.map((option) => (
+          options.map((option) => (
             <li key={option.value}>
-              { /* Rule is deprecated: https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/label-has-for.md */ }
-              { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
               <label
                 className={styles.inputWrap}
-                id={`${props.id}__item__${option.value}__label`}
+                htmlFor={`${id}__item__${option.value}`}
+                id={`${id}__item__${option.value}__label`}
               >
                 <input
                   {...propsToTransfer}
-                  id={`${props.id}__item__${option.value}`}
-                  name={props.id}
+                  className={styles.input}
+                  checked={(value === option.value) || false}
+                  disabled={disabled || option.disabled}
+                  id={`${id}__item__${option.value}`}
+                  name={id}
+                  onChange={changeHandler}
                   type="radio"
                   value={option.value}
-                  onChange={props.changeHandler}
-                  className={styles.input}
-                  disabled={props.disabled || option.disabled}
-                  checked={(props.value === option.value) || false}
                 />
                 <span
                   className={styles.radioLabel}
-                  id={`${props.id}__item__${option.value}__labelText`}
+                  id={`${id}__item__${option.value}__labelText`}
                 >
                   { option.label }
                 </span>
@@ -86,20 +76,20 @@ export const Radio = (props) => {
           ))
         }
       </ul>
-      {props.description && (
+      {helpText && (
         <div
-          className={styles.description}
-          id={`${props.id}__descriptionText`}
+          className={styles.helpText}
+          id={`${id}__helpText`}
         >
-          {props.description}
+          {helpText}
         </div>
       )}
-      {props.error && (
+      {validationText && (
         <div
-          className={styles.error}
-          id={`${props.id}__errorText`}
+          className={styles.validationText}
+          id={`${id}__validationText`}
         >
-          {props.error}
+          {validationText}
         </div>
       )}
     </div>
@@ -108,14 +98,14 @@ export const Radio = (props) => {
 
 Radio.defaultProps = {
   changeHandler: null,
-  description: null,
   disabled: false,
-  error: null,
+  helpText: null,
   inFormLayout: false,
   isLabelVisible: true,
   layout: 'vertical',
   required: false,
   validationState: null,
+  validationText: null,
   value: undefined,
 };
 
@@ -125,20 +115,16 @@ Radio.propTypes = {
    */
   changeHandler: PropTypes.func,
   /**
-   * Optional description.
-   */
-  description: PropTypes.string,
-  /**
    * If `true`, the input will be disabled.
    */
   disabled: PropTypes.bool,
   /**
-   * Error message to be displayed.
+   * Optional help text.
    */
-  error: PropTypes.string,
+  helpText: PropTypes.node,
   /**
-   * Prefix for ID of important inner elements: `<ID>__labelText`, `<ID>__descriptionText`,
-   * `<ID>__errorText`, and all options: `<ID>__item__<VALUE>` (individual inputs),
+   * Prefix for ID of important inner elements: `<ID>__labelText`, `<ID>__helpText`,
+   * `<ID>__validationText`, and all options: `<ID>__item__<VALUE>` (individual inputs),
    * `<ID>__item__<VALUE>__label`, and `<ID>__item__<VALUE>__labelText`.
    */
   id: PropTypes.string.isRequired,
@@ -178,6 +164,10 @@ Radio.propTypes = {
    * Alter the field to provide feedback based on validation result.
    */
   validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
+  /**
+   * Validation message to be displayed.
+   */
+  validationText: PropTypes.node,
   /**
    * Value of the input.
    */

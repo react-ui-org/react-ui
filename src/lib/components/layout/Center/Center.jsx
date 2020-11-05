@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './Center.scss';
 
-export const Center = (props) => (
+export const Center = ({ children }) => (
   <div className={styles.root}>
     <div>
-      {props.children}
+      {children}
     </div>
   </div>
 );

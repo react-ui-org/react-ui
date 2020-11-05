@@ -371,32 +371,32 @@ filled.
   <TextField
     id="my-text-field-outline-help-text"
     label="First name"
-    helperText="Choose one or more kinds of fruit to feel happy."
+    helpText="Choose one or more kinds of fruit to feel happy."
   />
   <TextField
     id="my-text-field-filled-help-text"
     label="First name"
     variant="filled"
-    helperText="Choose one or more kinds of fruit to feel happy."
+    helpText="Choose one or more kinds of fruit to feel happy."
   />
   <TextField
     id="my-text-field-outline-help-text-horizontal"
     label="First name"
     layout="horizontal"
-    helperText="Choose one or more kinds of fruit to feel happy."
+    helpText="Choose one or more kinds of fruit to feel happy."
   />
   <TextField
     id="my-text-field-filled-help-text-horizontal"
     label="First name"
     layout="horizontal"
-    helperText="Choose one or more kinds of fruit to feel happy."
+    helpText="Choose one or more kinds of fruit to feel happy."
     variant="filled"
   />
   <TextField
     id="my-text-field-outline-help-text-horizontal-full-width"
     label="First name"
     layout="horizontal"
-    helperText="Choose one or more kinds of fruit to feel happy."
+    helpText="Choose one or more kinds of fruit to feel happy."
     fullWidth
   />
   <TextField
@@ -404,7 +404,7 @@ filled.
     label="First name"
     layout="horizontal"
     variant="filled"
-    helperText="Choose one or more kinds of fruit to feel happy."
+    helpText="Choose one or more kinds of fruit to feel happy."
     fullWidth
   />
 </Playground>
@@ -420,7 +420,7 @@ the help text expands over the full field width when the desired input width
     inputSize={3}
     label="Title"
     layout="horizontal"
-    helperText="What academic degree do you hold?"
+    helpText="What academic degree do you hold?"
   />
   <TextField
     id="my-text-field-filled-help-text-input-size-horizontal"
@@ -428,7 +428,7 @@ the help text expands over the full field width when the desired input width
     label="Title"
     layout="horizontal"
     variant="filled"
-    helperText="What academic degree do you hold?"
+    helpText="What academic degree do you hold?"
   />
   <TextField
     id="my-text-field-outline-help-text-input-size-number-horizontal"
@@ -437,7 +437,7 @@ the help text expands over the full field width when the desired input width
     min={13}
     max={120}
     type="number"
-    helperText="How old do you see yourself?"
+    helpText="How old do you see yourself?"
   />
   <TextField
     id="my-text-field-filled-help-text-input-size-number-horizontal"
@@ -447,7 +447,7 @@ the help text expands over the full field width when the desired input width
     max={120}
     variant="filled"
     type="number"
-    helperText="How old do you see yourself?"
+    helpText="How old do you see yourself?"
   />
 </Playground>
 
@@ -456,15 +456,16 @@ the help text expands over the full field width when the desired input width
 ### Validation States
 
 Validation states visually present the result of validation of the input. You
-should always **provide a help text for states other than valid** so users know
-what happened and what action they should take or what options they have.
+should always **provide a validation message for states other than valid** so
+users know what happened and what action they should take or what options they
+have.
 
 <Playground>
   <TextField
     id="my-text-field-outline-success"
     label="User name"
     validationState="valid"
-    helperText="Looks good!"
+    validationText="Looks good!"
     changeHandler={() => {}}
     value="johnny1986"
     required
@@ -473,7 +474,7 @@ what happened and what action they should take or what options they have.
     id="my-text-field-outline-warning"
     label="User name"
     validationState="warning"
-    helperText="Account with this name already exists, pick a different one."
+    validationText="Account with this name already exists, pick a different one."
     value="joe"
     changeHandler={() => {}}
     required
@@ -482,15 +483,15 @@ what happened and what action they should take or what options they have.
     id="my-text-field-outline-error"
     label="User name"
     validationState="invalid"
-    helperText="Please enter a user name of your choice."
+    validationText="Please enter a user name of your choice."
     required
   />
   <TextField
     id="my-text-field-filled-success"
     label="User name"
     validationState="valid"
+    validationText="Looks good!"
     variant="filled"
-    helperText="Looks good!"
     changeHandler={() => {}}
     value="johnny1986"
     required
@@ -499,8 +500,8 @@ what happened and what action they should take or what options they have.
     id="my-text-field-filled-warning"
     label="User name"
     validationState="warning"
+    validationText="Account with this name already exists, pick a different one."
     variant="filled"
-    helperText="Account with this name already exists, pick a different one."
     changeHandler={() => {}}
     value="joe"
     required
@@ -509,8 +510,8 @@ what happened and what action they should take or what options they have.
     id="my-text-field-filled-error"
     label="User name"
     validationState="invalid"
+    validationText="Please enter a user name of your choice."
     variant="filled"
-    helperText="Please enter a user name of your choice."
     required
   />
 </Playground>

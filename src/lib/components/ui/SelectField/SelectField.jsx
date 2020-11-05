@@ -1,110 +1,79 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import getRootSizeClassName from '../../../helpers/getRootSizeClassName';
+import getRootValidationStateClassName from '../../../helpers/getRootValidationStateClassName';
 import transferProps from '../../../utils/transferProps';
 import withForwardedRef from '../withForwardedRef';
 import styles from './SelectField.scss';
 
 export const SelectField = (props) => {
-  let labelVisibilityClass = '';
-  let rootFullWidthClass = '';
-  let rootInFormLayoutClass = '';
-  let rootLayoutClass = '';
-  let rootRequiredClass = '';
-  let rootSizeClass = '';
-  let rootValidationStateClass = '';
-  let rootVariantClass = '';
-
-  if (!props.isLabelVisible) {
-    labelVisibilityClass = styles.isLabelHidden;
-  }
-
-  if (props.fullWidth) {
-    rootFullWidthClass = styles.isRootFullWidth;
-  }
-
-  if (props.inFormLayout) {
-    rootInFormLayoutClass = styles.isRootInFormLayout;
-  }
-
-  if (props.layout === 'horizontal') {
-    rootLayoutClass = styles.rootLayoutHorizontal;
-  } else if (props.layout === 'vertical') {
-    rootLayoutClass = styles.rootLayoutVertical;
-  }
-
-  if (props.required) {
-    rootRequiredClass = styles.isRootRequired;
-  }
-
-  if (props.size === 'small') {
-    rootSizeClass = styles.rootSizeSmall;
-  } else if (props.size === 'medium') {
-    rootSizeClass = styles.rootSizeMedium;
-  } else if (props.size === 'large') {
-    rootSizeClass = styles.rootSizeLarge;
-  }
-
-  if (props.validationState === 'invalid') {
-    rootValidationStateClass = styles.isRootStateInvalid;
-  } else if (props.validationState === 'valid') {
-    rootValidationStateClass = styles.isRootStateValid;
-  } else if (props.validationState === 'warning') {
-    rootValidationStateClass = styles.isRootStateWarning;
-  }
-
-  if (props.variant === 'filled') {
-    rootVariantClass = styles.rootVariantFilled;
-  } else if (props.variant === 'outline') {
-    rootVariantClass = styles.rootVariantOutline;
-  }
+  const {
+    changeHandler,
+    disabled,
+    forwardedRef,
+    fullWidth,
+    helpText,
+    id,
+    inFormLayout,
+    isLabelVisible,
+    label,
+    layout,
+    options,
+    required,
+    size,
+    validationState,
+    validationText,
+    value,
+    variant,
+  } = props;
 
   const propsToTransfer = transferProps(
     props,
-    ['changeHandler', 'disabled', 'fullWidth', 'helperText', 'id', 'inFormLayout', 'isLabelVisible',
-      'label', 'layout', 'options', 'required', 'size', 'validationState', 'value', 'variant'],
+    ['changeHandler', 'disabled', 'fullWidth', 'helpText', 'id', 'inFormLayout', 'isLabelVisible',
+      'label', 'layout', 'options', 'required', 'size', 'validationState', 'validationText', 'value', 'variant'],
   );
 
   return (
     <label
-      className={(`
-        ${styles.root}
-        ${rootFullWidthClass}
-        ${rootInFormLayoutClass}
-        ${rootLayoutClass}
-        ${rootRequiredClass}
-        ${rootSizeClass}
-        ${rootValidationStateClass}
-        ${rootVariantClass}
-      `).trim()}
-      htmlFor={props.id}
-      id={`${props.id}__label`}
+      className={[
+        styles.root,
+        fullWidth ? styles.isRootFullWidth : '',
+        inFormLayout ? styles.isRootInFormLayout : '',
+        layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
+        required ? styles.isRootRequired : '',
+        getRootSizeClassName(size, styles),
+        getRootValidationStateClassName(validationState, styles),
+        variant === 'filled' ? styles.rootVariantFilled : styles.rootVariantOutline,
+      ].join(' ')}
+      htmlFor={id}
+      id={`${id}__label`}
     >
       <div
-        className={(`
-          ${styles.label}
-          ${labelVisibilityClass}
-        `).trim()}
-        id={`${props.id}__labelText`}
+        className={[
+          styles.label,
+          isLabelVisible ? '' : styles.isLabelHidden,
+        ].join(' ')}
+        id={`${id}__labelText`}
       >
-        {props.label}
+        {label}
       </div>
       <div className={styles.field}>
         <div className={styles.inputContainer}>
           <select
             {...propsToTransfer}
             className={styles.input}
-            disabled={props.disabled}
-            id={props.id}
-            onChange={props.changeHandler}
-            ref={props.forwardedRef}
-            required={props.required}
-            value={props.value}
+            disabled={disabled}
+            id={id}
+            onChange={changeHandler}
+            ref={forwardedRef}
+            required={required}
+            value={value}
           >
             {
-              props.options.map((option) => (
+              options.map((option) => (
                 <option
                   disabled={option.disabled}
-                  id={`${props.id}__item__${option.value}`}
+                  id={`${id}__item__${option.value}`}
                   key={option.value}
                   value={option.value}
                 >
@@ -116,16 +85,24 @@ export const SelectField = (props) => {
           <div className={styles.caret}>
             <span className={styles.caretIcon} />
           </div>
-          {props.variant === 'filled' && (
+          {variant === 'filled' && (
             <div className={styles.bottomLine} />
           )}
         </div>
-        {props.helperText && (
+        {helpText && (
           <div
-            className={styles.helperText}
-            id={`${props.id}__helperText`}
+            className={styles.helpText}
+            id={`${id}__helpText`}
           >
-            {props.helperText}
+            {helpText}
+          </div>
+        )}
+        {validationText && (
+          <div
+            className={styles.validationText}
+            id={`${id}__validationText`}
+          >
+            {validationText}
           </div>
         )}
       </div>
@@ -138,13 +115,14 @@ SelectField.defaultProps = {
   disabled: false,
   forwardedRef: undefined,
   fullWidth: false,
-  helperText: null,
+  helpText: null,
   inFormLayout: false,
   isLabelVisible: true,
   layout: 'vertical',
   required: false,
   size: 'medium',
   validationState: null,
+  validationText: null,
   value: undefined,
   variant: 'outline',
 };
@@ -170,12 +148,13 @@ SelectField.propTypes = {
    */
   fullWidth: PropTypes.bool,
   /**
-   * Optional description.
+   * Optional help text.
    */
-  helperText: PropTypes.string,
+  helpText: PropTypes.node,
   /**
    * ID of the input HTML element. It also serves as a prefix for important inner elements:
-   * `<ID>__label`, `<ID>__labelText`, `<ID>__helperText`, and all options: `<ID>__item__<VALUE>`.
+   * `<ID>__label`, `<ID>__labelText`, `<ID>__helpText`, `<ID>__validationText`, and all options:
+   * `<ID>__item__<VALUE>`.
    */
   id: PropTypes.string.isRequired,
   /**
@@ -218,6 +197,10 @@ SelectField.propTypes = {
    * Alter the field to provide feedback based on validation result.
    */
   validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
+  /**
+   * Validation message to be displayed.
+   */
+  validationText: PropTypes.node,
   /**
    * Value of the input.
    */

@@ -2,11 +2,10 @@
 
 exports[`rendering renders correctly mandatory props only 1`] = `
 <div
-  className="root"
+  className="root   "
 >
   <label
-    className="inputWrap
-          labelPositionAfter"
+    className="inputWrap labelPositionAfter"
     htmlFor="test"
     id="test__label"
   >
@@ -23,7 +22,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
       className="label"
     >
       <span
-        className="labelInner"
+        className="labelInner "
         id="test__labelText"
       >
         label
@@ -35,14 +34,10 @@ exports[`rendering renders correctly mandatory props only 1`] = `
 
 exports[`rendering renders correctly with all props 1`] = `
 <div
-  className="root
-        isRootInFormLayout
-        isRootLayoutHorizontal
-        isRootStateWarning"
+  className="root isRootInFormLayout isRootLayoutHorizontal isRootStateWarning"
 >
   <label
-    className="inputWrap
-          labelPositionAfter"
+    className="inputWrap labelPositionAfter"
     htmlFor="test"
     id="test__label"
   >
@@ -60,7 +55,7 @@ exports[`rendering renders correctly with all props 1`] = `
       className="label"
     >
       <span
-        className="labelInner"
+        className="labelInner "
         id="test__labelText"
       >
         label
@@ -68,14 +63,14 @@ exports[`rendering renders correctly with all props 1`] = `
     </span>
   </label>
   <div
-    className="description"
-    id="test__descriptionText"
+    className="helpText"
+    id="test__helpText"
   >
     some help
   </div>
   <div
-    className="error"
-    id="test__errorText"
+    className="validationText"
+    id="test__validationText"
   >
     some error
   </div>
