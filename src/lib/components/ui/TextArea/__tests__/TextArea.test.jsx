@@ -27,21 +27,22 @@ describe('rendering', () => {
   it('renders correctly with all props', () => {
     const tree = shallow(<TextArea
       cols={10}
+      disabled
+      fullWidth
+      helpText="some help"
       id="test"
-      helperText="some help"
       inFormLayout
       isLabelVisible={false}
       label="label"
       layout="horizontal"
       placeholder="placeholder"
+      required
       rows={5}
+      size="large"
       validationState="invalid"
+      validationText="some error"
       value="value"
       variant="filled"
-      size="large"
-      fullWidth
-      disabled
-      required
     />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
@@ -52,9 +53,9 @@ describe('functionality', () => {
   it('calls changeHandler()', () => {
     const spy = sinon.spy();
     const component = mount(<TextArea
+      changeHandler={spy}
       id="test"
       label="label"
-      changeHandler={spy}
     />);
 
     component

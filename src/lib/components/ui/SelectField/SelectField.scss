@@ -38,8 +38,9 @@
   @include form-field-bottom-line();
 }
 
-.helperText {
-  @include form-field-helper-text();
+.helpText,
+.validationText {
+  @include form-field-help-text();
 }
 
 // Variants

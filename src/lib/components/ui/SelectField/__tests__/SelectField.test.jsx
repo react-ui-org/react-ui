@@ -44,16 +44,14 @@ describe('rendering', () => {
 
   it('renders correctly with all props', () => {
     const tree = shallow(<SelectField
+      disabled
+      fullWidth
+      helpText="some help"
       id="test"
       inFormLayout
       isLabelVisible={false}
       label="label"
       layout="horizontal"
-      validationState="invalid"
-      value="ch1"
-      helperText="some help"
-      variant="filled"
-      size="large"
       options={[
         {
           label: 'choice 1',
@@ -65,9 +63,11 @@ describe('rendering', () => {
           value: 'ch2',
         },
       ]}
-      fullWidth
-      disabled
       required
+      size="large"
+      validationState="invalid"
+      value="ch1"
+      variant="filled"
     />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
@@ -78,8 +78,9 @@ describe('functionality', () => {
   it('calls changeHandler() on changing selected option', () => {
     const spy = sinon.spy();
     const component = mount(<SelectField
-      label="label"
+      changeHandler={spy}
       id="id"
+      label="label"
       options={[
         {
           label: 'choice 1',
@@ -90,7 +91,6 @@ describe('functionality', () => {
           value: 'ch2',
         },
       ]}
-      changeHandler={spy}
       value="ch1"
     />);
 

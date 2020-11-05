@@ -2,14 +2,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './List.scss';
 
-export const List = (props) => {
-  const {
-    align,
-    autoWidth,
-    children,
-  } = props;
-
-  if (!props.children) {
+export const List = ({
+  align,
+  autoWidth,
+  children,
+}) => {
+  if (!children) {
     return null;
   }
 

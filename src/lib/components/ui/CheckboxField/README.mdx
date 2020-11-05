@@ -84,8 +84,8 @@ turning the checkbox on or off.
       <CheckboxField
         changeHandler={() => setGetNewsletter(!getNewsletter)}
         checked={getNewsletter}
-        description="We will not bother you more than once a month, we promise!"
-        id="my-checkbox-with-helper-text"
+        helpText="We will not bother you more than once a month, we promise!"
+        id="my-checkbox-with-help-text"
         label="Send me newsletter"
       />
     );
@@ -134,8 +134,9 @@ It's also possible to display the label before the input:
 ### Validation States
 
 Validation states visually present the result of validation of the input. You
-should always **provide a help text for states other than valid** so users know
-what happened and what action they should take or what options they have.
+should always **provide validation message for states other than valid** so
+users know what happened and what action they should take or what options they
+have.
 
 <Playground>
   {() => {
@@ -152,19 +153,19 @@ what happened and what action they should take or what options they have.
         <CheckboxField
           changeHandler={() => setAgree(!agree)}
           checked={agree}
-          description="Please wait 10 minutes until we verify your data."
           id="my-checkbox-warning"
           label="I agree"
           validationState="warning"
+          validationText="Please wait 10 minutes until we verify your data."
         />
         <CheckboxField
           changeHandler={() => setAgree(!agree)}
           checked={agree}
-          error="You must agree to be able to proceed."
           id="my-checkbox-invalid"
           label="I agree"
           required
           validationState="invalid"
+          validationText="You must agree to be able to proceed."
         />
       </>
     );
@@ -177,15 +178,15 @@ Disabled state makes the input unavailable.
 
 <Playground>
   <CheckboxField
-    label="Disabled checkbox"
-    id="my-checkbox-disabled"
     disabled
+    id="my-checkbox-disabled"
+    label="Disabled checkbox"
   />
   <CheckboxField
-    label="Disabled checkbox, checked"
-    id="my-checkbox-checked-disabled"
-    disabled
     checked
+    disabled
+    id="my-checkbox-checked-disabled"
+    label="Disabled checkbox, checked"
   />
 </Playground>
 

@@ -4,17 +4,19 @@
 // 2. Form fields in horizontal layout also take up only as much space as they need. Labels do not
 //    wrap until label width limit is reached (50 % of available horizontal space by default).
 //
-// 3. Helper texts are aligned below input and wrapped. Their width is always limited to the width
-//    of the input field so they don't shift adjacent elements when they show up.
+// 3. Help texts and validation messages are aligned below input and wrapped. Their width is always
+//    limited to the width of the input field so they don't shift adjacent elements when they show
+//    up.
 //
 // 4. Define grid spacing as padding of child elements because grid areas make row and column gaps
 //    show up even when not necessary.
 //
-// 5. When input size is small and form field layout is set to horizontal, expand helper text over
-//    full form field width to improve its readability. Otherwise the text would be packed into a
-//    very narrow column and hard to read. To prevent the helper text from growing the layout more
-//    than necessary (ie. the size without helper text), `min-content` grid sizing must be used
-//    along with disabled wrapping of label.
+// 5. When input size is small and form field layout is set to horizontal, expand help text and
+//    validation message over full form field width to improve their readability. Otherwise the text
+//    would be packed into a very narrow column and hard to read. To prevent help text and
+//    validation message from growing the layout more than necessary (ie. the size without
+//    help/validation text), `min-content` grid sizing must be used along with disabled wrapping of
+//    label.
 //
 // 6. Full-width horizontal form fields prefer not wrapping the label until a limit is reached
 //    (50 % of available horizontal space by default, same as in 2.).
@@ -48,7 +50,8 @@
     max-width: 100%; // 3.
   }
 
-  .helperText {
+  .helpText,
+  .validationText {
     padding-top: $form-field-vertical-inner-gap;
   }
 }
@@ -83,7 +86,8 @@
       grid-template-columns: min-content min-content; // 5.
       grid-template-areas:
         "label field"
-        "helpertext helpertext"; // 5.
+        "helptext helptext"
+        "validationtext validationtext"; // 5.
     }
 
     &.rootLayoutHorizontal .label {
@@ -98,8 +102,12 @@
       grid-area: field; // 5.
     }
 
-    &.rootLayoutHorizontal .helperText {
-      grid-area: helpertext; // 5.
+    &.rootLayoutHorizontal .helpText {
+      grid-area: helptext; // 5.
+    }
+
+    &.rootLayoutHorizontal .validationText {
+      grid-area: validationtext; // 5.
     }
   }
 }
@@ -153,13 +161,15 @@
     &.rootLayoutHorizontal .label,
     &.rootLayoutHorizontal .field,
     &.rootLayoutHorizontal .inputContainer,
-    &.rootLayoutHorizontal .helperText {
+    &.rootLayoutHorizontal .helpText,
+    &.rootLayoutHorizontal .validationText {
       grid-area: unset; // 9.
     }
 
     &.rootLayoutHorizontal .field,
     &.rootLayoutHorizontal .inputContainer,
-    &.rootLayoutHorizontal .helperText {
+    &.rootLayoutHorizontal .helpText,
+    &.rootLayoutHorizontal .validationText {
       grid-column-start: 2; // 9.
     }
 

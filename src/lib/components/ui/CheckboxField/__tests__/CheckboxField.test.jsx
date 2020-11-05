@@ -16,19 +16,19 @@ describe('rendering', () => {
 
   it('renders correctly with all props', () => {
     const tree = shallow(<CheckboxField
-      label="label"
+      checked
       disabled
+      helpText="some help"
       id="test"
       inFormLayout
-      layout="horizontal"
-      value="value"
-      description="some help"
-      error="some error"
       isLabelVisible
+      label="label"
       labelPosition="after"
+      layout="horizontal"
       required
-      checked
+      value="value"
       validationState="warning"
+      validationText="some error"
     />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
@@ -39,9 +39,9 @@ describe('functionality', () => {
   it('calls onChange() when checked', () => {
     const spy = sinon.spy();
     const component = mount(<CheckboxField
+      changeHandler={spy}
       id="test"
       label="label"
-      changeHandler={spy}
     />);
 
     component

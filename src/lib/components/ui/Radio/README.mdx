@@ -127,7 +127,7 @@ filled.
     return (
       <Radio
         changeHandler={(e) => setFruit(e.target.value)}
-        description="What do you prefer?"
+        helpText="What do you prefer?"
         id="my-radio-help-text"
         label="Your favourite fruit"
         options={[
@@ -155,8 +155,9 @@ filled.
 ### Validation States
 
 Validation states visually present the result of validation of the input. You
-should always **provide a help text for states other than valid** so users know
-what happened and what action they should take or what options they have.
+should always **provide a validation message for states other than valid** so
+users know what happened and what action they should take or what options they
+have.
 
 <Playground>
   {() => {
@@ -179,32 +180,32 @@ what happened and what action they should take or what options they have.
       <>
         <Radio
           changeHandler={(e) => setFruit(e.target.value)}
-          description="Great, they're in stock!"
           id="my-radio-success"
           label="Your favourite fruit"
           options={options}
           required
           validationState="valid"
+          validationText="Great, they're in stock!"
           value={fruit}
         />
         <Radio
           changeHandler={(e) => setFruit(e.target.value)}
-          description="Oh, really?"
           id="my-radio-warning"
           label="Your favourite fruit"
           options={options}
           required
           validationState="warning"
+          validationText="Oh, really?"
           value={fruit}
         />
         <Radio
           changeHandler={(e) => setFruit(e.target.value)}
-          error="You must select one kind of fruit."
           id="my-radio-error"
           label="Your favourite fruit"
           options={options}
           required
           validationState="invalid"
+          validationText="You must select one kind of fruit."
           value={fruit}
         />
       </>

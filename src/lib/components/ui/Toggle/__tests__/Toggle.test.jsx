@@ -16,19 +16,19 @@ describe('rendering', () => {
 
   it('renders correctly with all props', () => {
     const tree = shallow(<Toggle
-      label="label"
+      checked
       disabled
       id="test"
+      helpText="some help"
       inFormLayout
-      layout="horizontal"
-      value="value"
-      description="some help"
-      error="some error"
       isLabelVisible
+      label="label"
       labelPosition="after"
+      layout="horizontal"
       required
-      checked
       validationState="warning"
+      validationText="some error"
+      value="value"
     />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
@@ -39,9 +39,9 @@ describe('functionality', () => {
   it('calls onChange() when checked', () => {
     const spy = sinon.spy();
     const component = mount(<Toggle
+      changeHandler={spy}
       id="test"
       label="label"
-      changeHandler={spy}
     />);
 
     component

@@ -412,7 +412,7 @@ filled.
       <>
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          helperText="Choose one or more kinds of fruit to feel happy."
+          helpText="Choose one or more kinds of fruit to feel happy."
           id="my-select-field-outline-help-text"
           label="Your favourite fruit"
           options={options}
@@ -420,7 +420,7 @@ filled.
         />
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          helperText="Choose one or more kinds of fruit to feel happy."
+          helpText="Choose one or more kinds of fruit to feel happy."
           id="my-select-field-filled-help-text"
           label="Your favourite fruit"
           options={options}
@@ -429,7 +429,7 @@ filled.
         />
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          helperText="Choose one or more kinds of fruit to feel happy."
+          helpText="Choose one or more kinds of fruit to feel happy."
           id="my-select-field-outline-help-text-horizontal"
           label="Your favourite fruit"
           layout="horizontal"
@@ -438,7 +438,7 @@ filled.
         />
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          helperText="Choose one or more kinds of fruit to feel happy."
+          helpText="Choose one or more kinds of fruit to feel happy."
           id="my-select-field-filled-help-text-horizontal"
           label="Your favourite fruit"
           layout="horizontal"
@@ -449,7 +449,7 @@ filled.
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
           fullWidth
-          helperText="Choose one or more kinds of fruit to feel happy."
+          helpText="Choose one or more kinds of fruit to feel happy."
           id="my-select-field-outline-help-text-horizontal-full-width"
           label="Your favourite fruit"
           layout="horizontal"
@@ -459,7 +459,7 @@ filled.
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
           fullWidth
-          helperText="Choose one or more kinds of fruit to feel happy."
+          helpText="Choose one or more kinds of fruit to feel happy."
           id="my-select-field-filled-help-text-horizontal-full-width"
           label="Your favourite fruit"
           layout="horizontal"
@@ -477,8 +477,9 @@ filled.
 ### Validation States
 
 Validation states visually present the result of validation of the input. You
-should always **provide a help text for states other than valid** so users know
-what happened and what action they should take or what options they have.
+should always **provide a validation message for states other than valid** so
+users know what happened and what action they should take or what options they
+have.
 
 <Playground>
   {() => {
@@ -501,65 +502,65 @@ what happened and what action they should take or what options they have.
       <>
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          helperText="Great, they're in stock!"
           id="my-select-field-outline-success"
           label="Your favourite fruit"
           options={options}
           required
           validationState="valid"
+          validationText="Great, they're in stock!"
           value={fruit}
         />
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          helperText="Oh, really?"
           id="my-select-field-outline-warning"
           label="Your favourite fruit"
           options={options}
           required
           validationState="warning"
+          validationText="Oh, really?"
           value={fruit}
         />
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          helperText="You must select at least one kind of fruit."
           id="my-select-field-outline-error"
           label="Your favourite fruit"
           options={options}
           required
           validationState="invalid"
+          validationText="You must select at least one kind of fruit."
           value={fruit}
         />
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          helperText="Great, they're in stock!"
           id="my-select-field-filled-success"
           label="Your favourite fruit"
           options={options}
           required
           validationState="valid"
+          validationText="Great, they're in stock!"
           value={fruit}
           variant="filled"
         />
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          helperText="Oh, really?"
           id="my-select-field-filled-warning"
           label="Your favourite fruit"
           options={options}
           required
           validationState="warning"
+          validationText="Oh, really?"
           value={fruit}
           variant="filled"
         />
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          helperText="You must select at least one kind of fruit."
           id="my-select-field-filled-error"
           label="Your favourite fruit"
           options={options}
           required
           value={fruit}
           validationState="invalid"
+          validationText="You must select at least one kind of fruit."
           variant="filled"
         />
       </>

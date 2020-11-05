@@ -99,20 +99,19 @@
   box-shadow: $radio-disabled-checked-box-shadow;
 }
 
-.description,
-.error {
-  @include form-field-helper-text();
+.helpText,
+.validationText {
+  @include form-field-help-text();
 }
 
-.error {
+.validationText {
   min-height: 1rem;
 }
 
 // States
 // stylelint-disable no-descending-specificity
 .isRootStateInvalid .radioLabel,
-.isRootStateInvalid .description,
-.isRootStateInvalid .error {
+.isRootStateInvalid .validationText {
   color: $form-invalid-color;
 }
 
@@ -126,8 +125,7 @@
 }
 
 .isRootStateValid .radioLabel,
-.isRootStateValid .description,
-.isRootStateValid .error {
+.isRootStateValid .validationText {
   color: $form-valid-color;
 }
 
@@ -141,8 +139,7 @@
 }
 
 .isRootStateWarning .radioLabel,
-.isRootStateWarning .description,
-.isRootStateWarning .error {
+.isRootStateWarning .validationText {
   color: $form-warning-color;
 }
 
