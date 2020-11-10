@@ -41,7 +41,7 @@ jobs:
 
       - name: Check package.json for version change
         id: check_package_version
-        uses: EndBug/version-check@v1
+        uses: EndBug/version-check@v1.6.0
 
       - name: Log when version changed
         if: steps.check_package_version.outputs.changed == 'true'
@@ -63,7 +63,7 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - name: Draft release on GitHub
-        uses: release-drafter/release-drafter@v5
+        uses: release-drafter/release-drafter@v5.12.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -80,7 +80,7 @@ jobs:
       # `build_and_test` job first so this job is skipped rather than exited with an error.
       - name: Publish matching GitHub release draft
         id: github_release
-        uses: JamesMGreene/node-draft-releaser@v1
+        uses: JamesMGreene/node-draft-releaser@v1.1.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -139,7 +139,7 @@ jobs:
           name: docs
 
       - name: Deploy docs to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@3.6.2
+        uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FOLDER: docs # Must match the name of the artifact used.

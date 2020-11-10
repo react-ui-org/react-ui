@@ -53,8 +53,9 @@ See the source of `.github/workflows` for details.
       overwritten. Save your changes in release draft with the _Save draft_
       button, **do not publish** yet!
 
-   3. Get back to the repository, commit both files as `Bump version` in
-      `release/<VERSION_NUMBER>` branch, create a pull request, and merge it.
+   3. Get back to the repository, commit both files as
+      `Bump version to <VERSION_NUMBER>` in `release/<VERSION_NUMBER>` branch,
+      create a pull request, hold your breath, and—merge it.
 
 3. **Automatic:** once the release pull request from step 2.3 is merged, the
    following actions are triggered automatically:
@@ -64,3 +65,6 @@ See the source of `.github/workflows` for details.
    2. Git tag with the version number from step 2 is added to `master` branch.
    3. Package is built and published to npm package registry.
    4. Documentation is built and deployed to production.
+
+**Note:** prefix version number with `v` everywhere except in `package.json` and
+`package-lock.json`.
