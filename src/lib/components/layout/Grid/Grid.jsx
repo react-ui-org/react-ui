@@ -4,11 +4,15 @@ import { generateResponsiveCustomProperties } from './helpers/generateResponsive
 import styles from './Grid.scss';
 
 export const Grid = ({
+  alignContent,
+  alignItems,
   autoFlow,
   children,
   columnGap,
   columns,
   id,
+  justifyContent,
+  justifyItems,
   rowGap,
   rows,
   ...other
@@ -27,6 +31,10 @@ export const Grid = ({
         ...generateResponsiveCustomProperties(columnGap, 'column-gap'),
         ...generateResponsiveCustomProperties(rows, 'rows'),
         ...generateResponsiveCustomProperties(rowGap, 'row-gap'),
+        ...generateResponsiveCustomProperties(alignContent, 'align-content'),
+        ...generateResponsiveCustomProperties(alignItems, 'align-items'),
+        ...generateResponsiveCustomProperties(justifyContent, 'justify-content'),
+        ...generateResponsiveCustomProperties(justifyItems, 'justify-items'),
       }}
       {...other}
     >
@@ -39,16 +47,52 @@ export const Grid = ({
 /* eslint-disable sort-keys */
 
 Grid.defaultProps = {
+  alignContent: undefined,
+  alignItems: undefined,
+  autoFlow: undefined,
   children: null,
   columnGap: undefined,
   columns: undefined,
-  autoFlow: undefined,
   id: undefined,
+  justifyContent: undefined,
+  justifyItems: undefined,
   rowGap: undefined,
   rows: undefined,
 };
 
 Grid.propTypes = {
+  /**
+   * Content alignment. Accepts any valid value of `align-content` CSS property.
+   * See [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content) for more.
+   */
+  alignContent: PropTypes.oneOf([
+    PropTypes.string,
+    PropTypes.shape({
+      xs: PropTypes.string,
+      sm: PropTypes.string,
+      md: PropTypes.string,
+      lg: PropTypes.string,
+      xl: PropTypes.string,
+      xxl: PropTypes.string,
+      xxxl: PropTypes.string,
+    }),
+  ]),
+  /**
+   * Items alignment. Accepts any valid value of `align-items` CSS property.
+   * See [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items) for more.
+   */
+  alignItems: PropTypes.oneOf([
+    PropTypes.string,
+    PropTypes.shape({
+      xs: PropTypes.string,
+      sm: PropTypes.string,
+      md: PropTypes.string,
+      lg: PropTypes.string,
+      xl: PropTypes.string,
+      xxl: PropTypes.string,
+      xxxl: PropTypes.string,
+    }),
+  ]),
   /**
    * Grid auto-flow algorithm to be used. Accepts any valid value of `grid-auto-flow` CSS property.
    * See [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow) for more.
@@ -94,6 +138,38 @@ Grid.propTypes = {
    * ID of the root HTML element.
    */
   id: PropTypes.string,
+  /**
+   * Content justification. Accepts any valid value of `justify-content` CSS property.
+   * See [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content) for more.
+   */
+  justifyContent: PropTypes.oneOf([
+    PropTypes.string,
+    PropTypes.shape({
+      xs: PropTypes.string,
+      sm: PropTypes.string,
+      md: PropTypes.string,
+      lg: PropTypes.string,
+      xl: PropTypes.string,
+      xxl: PropTypes.string,
+      xxxl: PropTypes.string,
+    }),
+  ]),
+  /**
+   * Items justification. Accepts any valid value of `justify-items` CSS property.
+   * See [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items) for more.
+   */
+  justifyItems: PropTypes.oneOf([
+    PropTypes.string,
+    PropTypes.shape({
+      xs: PropTypes.string,
+      sm: PropTypes.string,
+      md: PropTypes.string,
+      lg: PropTypes.string,
+      xl: PropTypes.string,
+      xxl: PropTypes.string,
+      xxxl: PropTypes.string,
+    }),
+  ]),
   /**
    * Gap between rows. Accepts any valid value of `grid-row-gap` CSS property.
    * See [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap) for more.
