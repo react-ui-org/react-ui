@@ -1,28 +1,15 @@
 import transferProps from '../transferProps';
 
 describe('transferProps', () => {
-  it('returns all props when blacklisted props are not present', () => {
+  it('returns all props when always blacklisted props are not present', () => {
     const props = {
       propA: 'value',
       propB: 'value',
       propC: 'value',
     };
-    const blacklistedProps = null;
     const expectedProps = { ...props };
 
-    expect(transferProps(props, blacklistedProps)).toEqual(expectedProps);
-  });
-
-  it('returns filtered props when blacklisted props are present', () => {
-    const props = {
-      propA: 'value',
-      propB: 'value',
-      propC: 'value',
-    };
-    const blacklistedProps = ['propA', 'propC'];
-    const expectedProps = { propB: 'value' };
-
-    expect(transferProps(props, blacklistedProps)).toEqual(expectedProps);
+    expect(transferProps(props)).toEqual(expectedProps);
   });
 
   it('returns filtered props using always blacklisted props', () => {
@@ -32,9 +19,8 @@ describe('transferProps', () => {
       forwardedRef: 'value',
       staticContext: 'value',
     };
-    const blacklistedProps = null;
     const expectedProps = {};
 
-    expect(transferProps(props, blacklistedProps)).toEqual(expectedProps);
+    expect(transferProps(props)).toEqual(expectedProps);
   });
 });

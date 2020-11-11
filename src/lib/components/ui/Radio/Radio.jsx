@@ -4,97 +4,88 @@ import getRootValidationStateClassName from '../../../helpers/getRootValidationS
 import transferProps from '../../../utils/transferProps';
 import styles from './Radio.scss';
 
-export const Radio = (props) => {
-  const {
-    changeHandler,
-    disabled,
-    helpText,
-    id,
-    inFormLayout,
-    isLabelVisible,
-    label,
-    layout,
-    options,
-    required,
-    validationState,
-    validationText,
-    value,
-  } = props;
-
-  const propsToTransfer = transferProps(
-    props,
-    ['changeHandler', 'disabled', 'helpText', 'id', 'inFormLayout', 'isLabelVisible',
-      'label', 'layout', 'options', 'required', 'validationState', 'validationText', 'value'],
-  );
-
-  return (
+export const Radio = ({
+  changeHandler,
+  disabled,
+  helpText,
+  id,
+  inFormLayout,
+  isLabelVisible,
+  label,
+  layout,
+  options,
+  required,
+  validationState,
+  validationText,
+  value,
+  ...restProps
+}) => (
+  <div
+    className={[
+      styles.root,
+      inFormLayout ? styles.isRootInFormLayout : '',
+      layout === 'horizontal' ? styles.isRootLayoutHorizontal : '',
+      getRootValidationStateClassName(validationState, styles),
+    ].join(' ')}
+  >
     <div
       className={[
-        styles.root,
-        inFormLayout ? styles.isRootInFormLayout : '',
-        layout === 'horizontal' ? styles.isRootLayoutHorizontal : '',
-        getRootValidationStateClassName(validationState, styles),
+        isLabelVisible ? '' : styles.isLabelHidden,
+        isLabelVisible && required ? styles.isLabelRequired : '',
       ].join(' ')}
+      id={`${id}__labelText`}
     >
-      <div
-        className={[
-          isLabelVisible ? '' : styles.isLabelHidden,
-          isLabelVisible && required ? styles.isLabelRequired : '',
-        ].join(' ')}
-        id={`${id}__labelText`}
-      >
-        {label}
-      </div>
-      <ul className={styles.list}>
-        {
-          options.map((option) => (
-            <li key={option.value}>
-              <label
-                className={styles.inputWrap}
-                htmlFor={`${id}__item__${option.value}`}
-                id={`${id}__item__${option.value}__label`}
-              >
-                <input
-                  {...propsToTransfer}
-                  className={styles.input}
-                  checked={(value === option.value) || false}
-                  disabled={disabled || option.disabled}
-                  id={`${id}__item__${option.value}`}
-                  name={id}
-                  onChange={changeHandler}
-                  type="radio"
-                  value={option.value}
-                />
-                <span
-                  className={styles.radioLabel}
-                  id={`${id}__item__${option.value}__labelText`}
-                >
-                  { option.label }
-                </span>
-              </label>
-            </li>
-          ))
-        }
-      </ul>
-      {helpText && (
-        <div
-          className={styles.helpText}
-          id={`${id}__helpText`}
-        >
-          {helpText}
-        </div>
-      )}
-      {validationText && (
-        <div
-          className={styles.validationText}
-          id={`${id}__validationText`}
-        >
-          {validationText}
-        </div>
-      )}
+      {label}
     </div>
-  );
-};
+    <ul className={styles.list}>
+      {
+        options.map((option) => (
+          <li key={option.value}>
+            <label
+              className={styles.inputWrap}
+              htmlFor={`${id}__item__${option.value}`}
+              id={`${id}__item__${option.value}__label`}
+            >
+              <input
+                {...transferProps(restProps)}
+                className={styles.input}
+                checked={(value === option.value) || false}
+                disabled={disabled || option.disabled}
+                id={`${id}__item__${option.value}`}
+                name={id}
+                onChange={changeHandler}
+                type="radio"
+                value={option.value}
+              />
+              <span
+                className={styles.radioLabel}
+                id={`${id}__item__${option.value}__labelText`}
+              >
+                { option.label }
+              </span>
+            </label>
+          </li>
+        ))
+      }
+    </ul>
+    {helpText && (
+      <div
+        className={styles.helpText}
+        id={`${id}__helpText`}
+      >
+        {helpText}
+      </div>
+    )}
+    {validationText && (
+      <div
+        className={styles.validationText}
+        id={`${id}__validationText`}
+      >
+        {validationText}
+      </div>
+    )}
+  </div>
+);
 
 Radio.defaultProps = {
   changeHandler: null,
