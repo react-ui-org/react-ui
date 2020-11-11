@@ -6,109 +6,100 @@ import transferProps from '../../../utils/transferProps';
 import withForwardedRef from '../withForwardedRef';
 import styles from './SelectField.scss';
 
-export const SelectField = (props) => {
-  const {
-    changeHandler,
-    disabled,
-    forwardedRef,
-    fullWidth,
-    helpText,
-    id,
-    inFormLayout,
-    isLabelVisible,
-    label,
-    layout,
-    options,
-    required,
-    size,
-    validationState,
-    validationText,
-    value,
-    variant,
-  } = props;
-
-  const propsToTransfer = transferProps(
-    props,
-    ['changeHandler', 'disabled', 'fullWidth', 'helpText', 'id', 'inFormLayout', 'isLabelVisible',
-      'label', 'layout', 'options', 'required', 'size', 'validationState', 'validationText', 'value', 'variant'],
-  );
-
-  return (
-    <label
+export const SelectField = ({
+  changeHandler,
+  disabled,
+  forwardedRef,
+  fullWidth,
+  helpText,
+  id,
+  inFormLayout,
+  isLabelVisible,
+  label,
+  layout,
+  options,
+  required,
+  size,
+  validationState,
+  validationText,
+  value,
+  variant,
+  ...restProps
+}) => (
+  <label
+    className={[
+      styles.root,
+      fullWidth ? styles.isRootFullWidth : '',
+      inFormLayout ? styles.isRootInFormLayout : '',
+      layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
+      required ? styles.isRootRequired : '',
+      getRootSizeClassName(size, styles),
+      getRootValidationStateClassName(validationState, styles),
+      variant === 'filled' ? styles.rootVariantFilled : styles.rootVariantOutline,
+    ].join(' ')}
+    htmlFor={id}
+    id={`${id}__label`}
+  >
+    <div
       className={[
-        styles.root,
-        fullWidth ? styles.isRootFullWidth : '',
-        inFormLayout ? styles.isRootInFormLayout : '',
-        layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
-        required ? styles.isRootRequired : '',
-        getRootSizeClassName(size, styles),
-        getRootValidationStateClassName(validationState, styles),
-        variant === 'filled' ? styles.rootVariantFilled : styles.rootVariantOutline,
+        styles.label,
+        isLabelVisible ? '' : styles.isLabelHidden,
       ].join(' ')}
-      htmlFor={id}
-      id={`${id}__label`}
+      id={`${id}__labelText`}
     >
-      <div
-        className={[
-          styles.label,
-          isLabelVisible ? '' : styles.isLabelHidden,
-        ].join(' ')}
-        id={`${id}__labelText`}
-      >
-        {label}
-      </div>
-      <div className={styles.field}>
-        <div className={styles.inputContainer}>
-          <select
-            {...propsToTransfer}
-            className={styles.input}
-            disabled={disabled}
-            id={id}
-            onChange={changeHandler}
-            ref={forwardedRef}
-            required={required}
-            value={value}
-          >
-            {
-              options.map((option) => (
-                <option
-                  disabled={option.disabled}
-                  id={`${id}__item__${option.value}`}
-                  key={option.value}
-                  value={option.value}
-                >
-                  {option.label}
-                </option>
-              ))
-            }
-          </select>
-          <div className={styles.caret}>
-            <span className={styles.caretIcon} />
-          </div>
-          {variant === 'filled' && (
-            <div className={styles.bottomLine} />
-          )}
+      {label}
+    </div>
+    <div className={styles.field}>
+      <div className={styles.inputContainer}>
+        <select
+          {...transferProps(restProps)}
+          className={styles.input}
+          disabled={disabled}
+          id={id}
+          onChange={changeHandler}
+          ref={forwardedRef}
+          required={required}
+          value={value}
+        >
+          {
+            options.map((option) => (
+              <option
+                disabled={option.disabled}
+                id={`${id}__item__${option.value}`}
+                key={option.value}
+                value={option.value}
+              >
+                {option.label}
+              </option>
+            ))
+          }
+        </select>
+        <div className={styles.caret}>
+          <span className={styles.caretIcon} />
         </div>
-        {helpText && (
-          <div
-            className={styles.helpText}
-            id={`${id}__helpText`}
-          >
-            {helpText}
-          </div>
-        )}
-        {validationText && (
-          <div
-            className={styles.validationText}
-            id={`${id}__validationText`}
-          >
-            {validationText}
-          </div>
+        {variant === 'filled' && (
+          <div className={styles.bottomLine} />
         )}
       </div>
-    </label>
-  );
-};
+      {helpText && (
+        <div
+          className={styles.helpText}
+          id={`${id}__helpText`}
+        >
+          {helpText}
+        </div>
+      )}
+      {validationText && (
+        <div
+          className={styles.validationText}
+          id={`${id}__validationText`}
+        >
+          {validationText}
+        </div>
+      )}
+    </div>
+  </label>
+);
 
 SelectField.defaultProps = {
   changeHandler: null,

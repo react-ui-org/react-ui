@@ -2,46 +2,37 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './ButtonGroup.scss';
 
-export const ButtonGroup = (props) => {
-  const {
-    block,
-    disabled,
-    children,
-    priority,
-    size,
-    ...other
-  } = props;
+export const ButtonGroup = ({
+  block,
+  disabled,
+  children,
+  priority,
+  size,
+  ...restProps
+}) => (
+  <div
+    className={[
+      styles.root,
+      block ? styles.isRootBlock : '',
+    ].join(' ')}
+    role="group"
+    {...restProps}
+  >
+    {React.Children.map(children, (child) => {
+      if (!React.isValidElement(child)) {
+        return null;
+      }
 
-  let blockClass = '';
-  if (block) {
-    blockClass = styles.isRootBlock;
-  }
-
-  return (
-    <div
-      className={`
-        ${styles.root}
-        ${blockClass}
-      `.trim()}
-      role="group"
-      {...other}
-    >
-      {React.Children.map(children, (child) => {
-        if (!React.isValidElement(child)) {
-          return null;
-        }
-
-        return React.cloneElement(child, {
-          block,
-          disabled,
-          grouped: true,
-          priority,
-          size,
-        });
-      })}
-    </div>
-  );
-};
+      return React.cloneElement(child, {
+        block,
+        disabled,
+        grouped: true,
+        priority,
+        size,
+      });
+    })}
+  </div>
+);
 
 ButtonGroup.defaultProps = {
   block: false,

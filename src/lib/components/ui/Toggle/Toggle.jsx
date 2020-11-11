@@ -5,91 +5,82 @@ import transferProps from '../../../utils/transferProps';
 import withForwardedRef from '../withForwardedRef';
 import styles from './Toggle.scss';
 
-export const Toggle = (props) => {
-  const {
-    changeHandler,
-    checked,
-    disabled,
-    forwardedRef,
-    helpText,
-    id,
-    inFormLayout,
-    isLabelVisible,
-    label,
-    labelPosition,
-    layout,
-    required,
-    validationState,
-    validationText,
-    value,
-  } = props;
-
-  const propsToTransfer = transferProps(
-    props,
-    ['changeHandler', 'checked', 'description', 'disabled', 'helpText', 'id', 'inFormLayout', 'isLabelVisible',
-      'label', 'labelPosition', 'layout', 'required', 'validationState', 'validationText', 'value'],
-  );
-
-  return (
-    <div
-      className={[
-        styles.root,
-        inFormLayout ? styles.isRootInFormLayout : '',
-        labelPosition === 'before' ? styles.labelPositionBefore : styles.labelPositionAfter,
-        layout === 'horizontal' ? styles.isRootLayoutHorizontal : '',
-        getRootValidationStateClassName(validationState, styles),
-      ].join(' ')}
+export const Toggle = ({
+  changeHandler,
+  checked,
+  disabled,
+  forwardedRef,
+  helpText,
+  id,
+  inFormLayout,
+  isLabelVisible,
+  label,
+  labelPosition,
+  layout,
+  required,
+  validationState,
+  validationText,
+  value,
+  ...restProps
+}) => (
+  <div
+    className={[
+      styles.root,
+      inFormLayout ? styles.isRootInFormLayout : '',
+      labelPosition === 'before' ? styles.labelPositionBefore : styles.labelPositionAfter,
+      layout === 'horizontal' ? styles.isRootLayoutHorizontal : '',
+      getRootValidationStateClassName(validationState, styles),
+    ].join(' ')}
+  >
+    <label
+      className={styles.inputWrap}
+      htmlFor={id}
+      id={`${id}__label`}
     >
-      <label
-        className={styles.inputWrap}
-        htmlFor={id}
-        id={`${id}__label`}
-      >
-        <input
-          {...propsToTransfer}
-          checked={checked}
-          className={styles.input}
-          disabled={disabled}
-          id={id}
-          name={id}
-          onChange={changeHandler}
-          ref={forwardedRef}
-          required={required}
-          type="checkbox"
-          value={value}
-        />
-        <span className={styles.label}>
-          <span
-            className={[
-              styles.labelInner,
-              isLabelVisible ? '' : styles.isLabelHidden,
-            ].join(' ')}
-            id={`${id}__labelText`}
-          >
-            {label}
-          </span>
+      <input
+        {...transferProps(restProps)}
+        checked={checked}
+        className={styles.input}
+        disabled={disabled}
+        id={id}
+        name={id}
+        onChange={changeHandler}
+        ref={forwardedRef}
+        required={required}
+        type="checkbox"
+        value={value}
+      />
+      <span className={styles.label}>
+        <span
+          className={[
+            styles.labelInner,
+            isLabelVisible ? '' : styles.isLabelHidden,
+          ].join(' ')}
+          id={`${id}__labelText`}
+        >
+          {label}
         </span>
-        <span className={styles.toggle} />
-      </label>
-      {helpText && (
-        <div
-          className={styles.helpText}
-          id={`${id}__helpText`}
-        >
-          {helpText}
-        </div>
-      )}
-      {validationText && (
-        <div
-          className={styles.validationText}
-          id={`${id}__validationText`}
-        >
-          {validationText}
-        </div>
-      )}
-    </div>
-  );
-};
+      </span>
+      <span className={styles.toggle} />
+    </label>
+    {helpText && (
+      <div
+        className={styles.helpText}
+        id={`${id}__helpText`}
+      >
+        {helpText}
+      </div>
+    )}
+    {validationText && (
+      <div
+        className={styles.validationText}
+        id={`${id}__validationText`}
+      >
+        {validationText}
+      </div>
+    )}
+  </div>
+);
 
 Toggle.defaultProps = {
   changeHandler: null,

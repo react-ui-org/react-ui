@@ -9,38 +9,31 @@ import styles from './TextField.scss';
 
 const SMALL_INPUT_SIZE = 10;
 
-export const TextField = (props) => {
-  const {
-    changeHandler,
-    disabled,
-    forwardedRef,
-    fullWidth,
-    helpText,
-    id,
-    inFormLayout,
-    inputSize,
-    isLabelVisible,
-    label,
-    layout,
-    max,
-    placeholder,
-    required,
-    size,
-    type,
-    validationState,
-    validationText,
-    value,
-    variant,
-  } = props;
-
+export const TextField = ({
+  changeHandler,
+  disabled,
+  forwardedRef,
+  fullWidth,
+  helpText,
+  id,
+  inFormLayout,
+  inputSize,
+  isLabelVisible,
+  label,
+  layout,
+  max,
+  placeholder,
+  required,
+  size,
+  type,
+  validationState,
+  validationText,
+  value,
+  variant,
+  ...restProps
+}) => {
   const customInputSize = getCustomInputSizeByType(type, inputSize, max);
   const hasSmallInput = (customInputSize !== null) && (customInputSize <= SMALL_INPUT_SIZE);
-
-  const propsToTransfer = transferProps(
-    props,
-    ['changeHandler', 'disabled', 'fullWidth', 'helpText', 'id', 'inFormLayout', 'inputSize', 'isLabelVisible',
-      'label', 'layout', 'max', 'placeholder', 'required', 'size', 'type', 'validationState', 'validationText', 'value', 'variant'],
-  );
 
   return (
     <label
@@ -71,7 +64,7 @@ export const TextField = (props) => {
       <div className={styles.field}>
         <div className={styles.inputContainer}>
           <input
-            {...propsToTransfer}
+            {...transferProps(restProps)}
             className={styles.input}
             disabled={disabled}
             id={id}

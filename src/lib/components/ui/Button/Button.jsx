@@ -4,27 +4,26 @@ import transferProps from '../../../utils/transferProps';
 import withForwardedRef from '../withForwardedRef';
 import styles from './Button.scss';
 
-export const Button = (props) => {
-  const {
-    afterLabel,
-    beforeLabel,
-    block,
-    clickHandler,
-    disabled,
-    endCorner,
-    forwardedRef,
-    grouped,
-    id,
-    label,
-    labelVisibility,
-    loadingIcon,
-    priority,
-    size,
-    startCorner,
-    type,
-    variant,
-  } = props;
-
+export const Button = ({
+  afterLabel,
+  beforeLabel,
+  block,
+  clickHandler,
+  disabled,
+  endCorner,
+  forwardedRef,
+  grouped,
+  id,
+  label,
+  labelVisibility,
+  loadingIcon,
+  priority,
+  size,
+  startCorner,
+  type,
+  variant,
+  ...restProps
+}) => {
   let priorityClass = '';
   let sizeClass = '';
   let variantClass = '';
@@ -85,17 +84,11 @@ export const Button = (props) => {
     }
   }
 
-  const propsToTransfer = transferProps(
-    props,
-    ['afterLabel', 'beforeLabel', 'block', 'clickHandler', 'disabled', 'endCorner', 'grouped', 'id',
-      'label', 'labelVisibility', 'loadingIcon', 'priority', 'size', 'startCorner', 'type', 'variant'],
-  );
-
   /* No worries, `type` is always assigned correctly through props. */
   /* eslint-disable react/button-has-type */
   return (
     <button
-      {...propsToTransfer}
+      {...transferProps(restProps)}
       className={(`
         ${styles.root}
         ${priorityClass}

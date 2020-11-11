@@ -2,7 +2,7 @@
 
 exports[`rendering renders correctly mandatory props only 1`] = `
 <div
-  className="root"
+  className="root "
   role="group"
 >
   <ForwardRef(withForwardedRef(Button))
@@ -28,7 +28,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
 
 exports[`rendering renders correctly priority 1`] = `
 <div
-  className="root"
+  className="root "
   role="group"
 >
   <ForwardRef(withForwardedRef(Button))
@@ -54,7 +54,7 @@ exports[`rendering renders correctly priority 1`] = `
 
 exports[`rendering renders correctly size 1`] = `
 <div
-  className="root"
+  className="root "
   role="group"
 >
   <ForwardRef(withForwardedRef(Button))
@@ -80,8 +80,7 @@ exports[`rendering renders correctly size 1`] = `
 
 exports[`rendering renders correctly with all props 1`] = `
 <div
-  className="root
-        isRootBlock"
+  className="root isRootBlock"
   role="group"
 >
   <ForwardRef(withForwardedRef(Button))

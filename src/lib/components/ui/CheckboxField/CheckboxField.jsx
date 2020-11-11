@@ -5,91 +5,82 @@ import transferProps from '../../../utils/transferProps';
 import withForwardedRef from '../withForwardedRef';
 import styles from './CheckboxField.scss';
 
-export const CheckboxField = (props) => {
-  const {
-    changeHandler,
-    checked,
-    disabled,
-    forwardedRef,
-    helpText,
-    id,
-    inFormLayout,
-    isLabelVisible,
-    label,
-    labelPosition,
-    layout,
-    required,
-    validationState,
-    validationText,
-    value,
-  } = props;
-
-  const propsToTransfer = transferProps(
-    props,
-    ['changeHandler', 'checked', 'disabled', 'helpText', 'id', 'inFormLayout', 'isLabelVisible',
-      'label', 'labelPosition', 'layout', 'required', 'validationState', 'validationText', 'value'],
-  );
-
-  return (
-    <div
+export const CheckboxField = ({
+  changeHandler,
+  checked,
+  disabled,
+  forwardedRef,
+  helpText,
+  id,
+  inFormLayout,
+  isLabelVisible,
+  label,
+  labelPosition,
+  layout,
+  required,
+  validationState,
+  validationText,
+  value,
+  ...restProps
+}) => (
+  <div
+    className={[
+      styles.root,
+      inFormLayout ? styles.isRootInFormLayout : '',
+      layout === 'horizontal' ? styles.isRootLayoutHorizontal : '',
+      getRootValidationStateClassName(validationState, styles),
+    ].join(' ')}
+  >
+    <label
       className={[
-        styles.root,
-        inFormLayout ? styles.isRootInFormLayout : '',
-        layout === 'horizontal' ? styles.isRootLayoutHorizontal : '',
-        getRootValidationStateClassName(validationState, styles),
+        styles.inputWrap,
+        labelPosition === 'before' ? styles.labelPositionBefore : styles.labelPositionAfter,
       ].join(' ')}
+      htmlFor={id}
+      id={`${id}__label`}
     >
-      <label
-        className={[
-          styles.inputWrap,
-          labelPosition === 'before' ? styles.labelPositionBefore : styles.labelPositionAfter,
-        ].join(' ')}
-        htmlFor={id}
-        id={`${id}__label`}
-      >
-        <input
-          {...propsToTransfer}
-          id={id}
-          value={value}
-          onChange={changeHandler}
-          disabled={disabled}
-          checked={checked}
-          ref={forwardedRef}
-          required={required}
-          type="checkbox"
-          className={styles.input}
-        />
-        <span className={styles.label}>
-          <span
-            className={[
-              styles.labelInner,
-              isLabelVisible ? '' : styles.isLabelHidden,
-            ].join(' ')}
-            id={`${id}__labelText`}
-          >
-            {label}
-          </span>
+      <input
+        {...transferProps(restProps)}
+        id={id}
+        value={value}
+        onChange={changeHandler}
+        disabled={disabled}
+        checked={checked}
+        ref={forwardedRef}
+        required={required}
+        type="checkbox"
+        className={styles.input}
+      />
+      <span className={styles.label}>
+        <span
+          className={[
+            styles.labelInner,
+            isLabelVisible ? '' : styles.isLabelHidden,
+          ].join(' ')}
+          id={`${id}__labelText`}
+        >
+          {label}
         </span>
-      </label>
-      {helpText && (
-        <div
-          className={styles.helpText}
-          id={`${id}__helpText`}
-        >
-          {helpText}
-        </div>
-      )}
-      {validationText && (
-        <div
-          className={styles.validationText}
-          id={`${id}__validationText`}
-        >
-          {validationText}
-        </div>
-      )}
-    </div>
-  );
-};
+      </span>
+    </label>
+    {helpText && (
+      <div
+        className={styles.helpText}
+        id={`${id}__helpText`}
+      >
+        {helpText}
+      </div>
+    )}
+    {validationText && (
+      <div
+        className={styles.validationText}
+        id={`${id}__validationText`}
+      >
+        {validationText}
+      </div>
+    )}
+  </div>
+);
 
 CheckboxField.defaultProps = {
   changeHandler: null,
