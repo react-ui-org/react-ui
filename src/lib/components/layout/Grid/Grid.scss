@@ -31,6 +31,10 @@
     column-gap: var(--rui-grid-column-gap),
     rows: var(--rui-grid-rows),
     row-gap: var(--rui-grid-row-gap),
+    align-content: var(--rui-grid-align-content),
+    align-items: var(--rui-grid-align-items),
+    justify-content: var(--rui-grid-justify-content),
+    justify-items: var(--rui-grid-justify-items),
   );
 
   @include assign-responsive-custom-properties($_properties); // 1.
@@ -40,6 +44,10 @@
   grid-template-rows: var(--rui-local-rows); // 2.
   grid-gap: var(--rui-local-row-gap) var(--rui-local-column-gap); // 2.
   grid-auto-flow: var(--rui-local-auto-flow, var(--rui-grid-auto-flow)); // 3.
+  align-content: var(--rui-local-align-content, var(--rui-grid-align-content)); // 2.
+  align-items: var(--rui-local-align-items, var(--rui-grid-align-items)); // 2.
+  justify-content: var(--rui-local-justify-content, var(--rui-grid-justify-content)); // 2.
+  justify-items: var(--rui-local-justify-items, var(--rui-grid-justify-items)); // 2.
   margin-bottom: $layout-common-bottom-spacing;
 }
 
