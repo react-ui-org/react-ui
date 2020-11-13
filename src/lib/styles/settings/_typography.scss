@@ -1,4 +1,4 @@
-$typography-font-weight-values: (
+$font-weight-values: (
   thin: var(--rui-typography-font-weight-thin),
   light: var(--rui-typography-font-weight-light),
   regular: var(--rui-typography-font-weight-regular),
@@ -6,7 +6,7 @@ $typography-font-weight-values: (
   bold: var(--rui-typography-font-weight-bold),
 );
 
-$typography-size-values: (
+$size-values: (
   0: var(--rui-typography-size-0),
   1: var(--rui-typography-size-1),
   2: var(--rui-typography-size-2),
@@ -15,9 +15,9 @@ $typography-size-values: (
   5: var(--rui-typography-size-5),
 );
 
-$typography-size-small: var(--rui-typography-size-small);
-$typography-size-smaller: var(--rui-typography-size-smaller);
+$size-small: var(--rui-typography-size-small);
+$size-smaller: var(--rui-typography-size-smaller);
 
-$typography-font-family-base: var(--rui-typography-font-family-base);
-$typography-font-size-base: var(--rui-typography-font-size-base);
-$typography-line-height-base: var(--rui-typography-line-height-base);
+$font-family-base: var(--rui-typography-font-family-base);
+$font-size-base: var(--rui-typography-font-size-base);
+$line-height-base: var(--rui-typography-line-height-base);

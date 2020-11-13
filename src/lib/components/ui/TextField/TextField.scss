@@ -1,101 +1,101 @@
-@import '../../../styles/tools/forms/foundation';
-@import '../../../styles/tools/forms/layouts';
-@import '../../../styles/tools/forms/relationships';
-@import '../../../styles/tools/forms/sizes';
-@import '../../../styles/tools/forms/states';
-@import '../../../styles/tools/forms/variants';
-@import '../../../styles/tools/accessibility';
+@use '../../../styles/tools/accessibility';
+@use '../../../styles/tools/forms/foundation';
+@use '../../../styles/tools/forms/layouts';
+@use '../../../styles/tools/forms/relationships';
+@use '../../../styles/tools/forms/sizes';
+@use '../../../styles/tools/forms/states';
+@use '../../../styles/tools/forms/variants';
 
 // Foundation
 .root {
-  @include form-field();
-  @include form-field-horizontal-neighbor();
+  @include foundation.field();
+  @include relationships.field-horizontal-neighbor();
 }
 
 .label {
-  @include form-field-label();
+  @include foundation.field-label();
 }
 
 .inputContainer {
-  @include form-field-input-container();
+  @include foundation.field-input-container();
 }
 
 .input {
-  @include form-field-input();
-  @include form-field-input-text();
+  @include foundation.field-input();
+  @include foundation.field-input-text();
 }
 
 .bottomLine {
-  @include form-field-bottom-line();
+  @include foundation.field-bottom-line();
 }
 
 .helpText,
 .validationText {
-  @include form-field-help-text();
+  @include foundation.field-help-text();
 }
 
 // Variants
 .rootVariantFilled .input {
-  @include form-field-input-variant(filled);
+  @include variants.field-input-variant(filled);
 }
 
 .rootVariantOutline .input {
-  @include form-field-input-variant(outline);
+  @include variants.field-input-variant(outline);
 }
 
 // States
 .isRootRequired .label {
-  @include form-field-label-required();
+  @include foundation.field-label-required();
 }
 
 .isRootStateInvalid {
-  @include form-field-state(invalid);
+  @include states.field-state(invalid);
 }
 
 .isRootStateValid {
-  @include form-field-state(valid);
+  @include states.field-state(valid);
 }
 
 .isRootStateWarning {
-  @include form-field-state(warning);
+  @include states.field-state(warning);
 }
 
 // Invisible label
 .isLabelHidden {
-  @include accessibility-hide-text();
+  @include accessibility.hide-text();
 }
 
 // Layouts
 .rootLayoutHorizontal {
-  @include form-field-layout-horizontal();
+  @include layouts.field-layout-horizontal();
 }
 
 .rootLayoutVertical {
-  @include form-field-layout-vertical();
+  @include layouts.field-layout-vertical();
 }
 
 .isRootFullWidth {
-  @include form-field-full-width();
-  @include form-field-vertical-neighbor();
+  @include layouts.field-full-width();
+  @include relationships.field-vertical-neighbor();
 }
 
 .isRootInFormLayout {
-  @include form-field-in-form-layout();
+  @include layouts.field-in-form-layout();
 }
 
 .hasRootSmallInput {
-  @include form-field-layout-with-small-input();
+  @include layouts.field-layout-with-small-input();
 }
 
 // Sizes
 .rootSizeSmall {
-  @include form-field-size(small);
+  @include sizes.field-size(small);
 }
 
 .rootSizeMedium {
-  @include form-field-size(medium);
+  @include sizes.field-size(medium);
 }
 
 .rootSizeLarge {
-  @include form-field-size(large);
+  @include sizes.field-size(large);
 }

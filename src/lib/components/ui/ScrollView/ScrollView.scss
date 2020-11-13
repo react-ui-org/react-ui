@@ -16,15 +16,15 @@
 // 5. Prevent undesired vertical scrolling that may occur with tables inside.
 // 6. Make `ScrollView` adjust to flexible layouts.
 
-@import '../../../styles/tools/caret';
-@import '../../../styles/tools/hide-scrollbar';
-@import '../../../styles/tools/reset';
-@import '../../../styles/tools/spacing';
-@import '../../../styles/tools/transitions';
-@import 'theme';
+@use '../../../styles/tools/caret';
+@use '../../../styles/tools/reset';
+@use '../../../styles/tools/scrollbar';
+@use '../../../styles/tools/spacing';
+@use '../../../styles/tools/transition';
+@use 'theme';
 
-$_arrow-inner-spacing: spacing(2);
-$_arrow-outer-spacing: spacing(4);
+$_arrow-inner-spacing: spacing.of(2);
+$_arrow-outer-spacing: spacing.of(4);
 
 .root {
   position: relative; // 2.
@@ -42,7 +42,7 @@ $_arrow-outer-spacing: spacing(4);
 
   &::before,
   &::after {
-    @include transition((visibility, opacity, transform));
+    @include transition.add((visibility, opacity, transform));
 
     content: '';
     position: absolute;
@@ -74,8 +74,8 @@ $_arrow-outer-spacing: spacing(4);
 
 .arrowPrev,
 .arrowNext {
-  @include reset-button();
-  @include transition((visibility, opacity, transform));
+  @include reset.button();
+  @include transition.add((visibility, opacity, transform));
 
   position: absolute; // 3.
   z-index: 3; // 3.
@@ -88,7 +88,7 @@ $_arrow-outer-spacing: spacing(4);
 }
 
 .arrowIcon {
-  @include caret();
+  @include caret.create();
 }
 
 .isRootVertical {
@@ -108,11 +108,11 @@ $_arrow-outer-spacing: spacing(4);
   width: 100%;
   padding-top: $_arrow-outer-spacing;
   padding-bottom: $_arrow-inner-spacing;
-  transform: translateY($scrollview-arrow-initial-offset);
+  transform: translateY(theme.$arrow-initial-offset);
 }
 
 .isRootVertical .arrowPrev .arrowIcon {
-  @include caret-rotate(180);
+  @include caret.rotate(180);
 }
 
 .isRootVertical .arrowNext {
@@ -122,7 +122,7 @@ $_arrow-outer-spacing: spacing(4);
   width: 100%;
   padding-top: $_arrow-inner-spacing;
   padding-bottom: $_arrow-outer-spacing;
-  transform: translateY(calc(-1 * #{$scrollview-arrow-initial-offset}));
+  transform: translateY(calc(-1 * #{theme.$arrow-initial-offset}));
 }
 
 .isRootHorizontal {
@@ -135,11 +135,11 @@ $_arrow-outer-spacing: spacing(4);
   left: 0;
   padding-right: $_arrow-inner-spacing;
   padding-left: $_arrow-outer-spacing;
-  transform: translateX($scrollview-arrow-initial-offset);
+  transform: translateX(theme.$arrow-initial-offset);
 }
 
 .isRootHorizontal .arrowPrev .arrowIcon {
-  @include caret-rotate(90);
+  @include caret.rotate(90);
 }
 
 .isRootHorizontal .arrowNext {
@@ -148,11 +148,11 @@ $_arrow-outer-spacing: spacing(4);
   bottom: 0;
   padding-right: $_arrow-outer-spacing;
   padding-left: $_arrow-inner-spacing;
-  transform: translateX(calc(-1 * #{$scrollview-arrow-initial-offset}));
+  transform: translateX(calc(-1 * #{theme.$arrow-initial-offset}));
 }
 
 .isRootHorizontal .arrowNext .arrowIcon {
-  @include caret-rotate(270);
+  @include caret.rotate(270);
 }
 
 .isRootVertical .scrollingShadows::before,
@@ -163,12 +163,12 @@ $_arrow-outer-spacing: spacing(4);
 
 .isRootVertical .scrollingShadows::before {
   top: 0;
-  transform: translateY($scrollview-shadow-initial-offset);
+  transform: translateY(theme.$shadow-initial-offset);
 }
 
 .isRootVertical .scrollingShadows::after {
   bottom: 0;
-  transform: translateY(calc(-1 * #{$scrollview-shadow-initial-offset}));
+  transform: translateY(calc(-1 * #{theme.$shadow-initial-offset}));
 }
 
 .isRootHorizontal .viewport {
@@ -189,12 +189,12 @@ $_arrow-outer-spacing: spacing(4);
 
 .isRootHorizontal .scrollingShadows::before {
   left: 0;
-  transform: translateX($scrollview-shadow-initial-offset);
+  transform: translateX(theme.$shadow-initial-offset);
 }
 
 .isRootHorizontal .scrollingShadows::after {
   right: 0;
-  transform: translateX(calc(-1 * #{$scrollview-shadow-initial-offset}));
+  transform: translateX(calc(-1 * #{theme.$shadow-initial-offset}));
 }
 
 .isRootScrolledAtStart .scrollingShadows::before,
@@ -212,5 +212,5 @@ $_arrow-outer-spacing: spacing(4);
 }
 
 .hasRootScrollbarDisabled .viewport {
-  @include hide-scrollbar();
+  @include scrollbar.hide();
 }

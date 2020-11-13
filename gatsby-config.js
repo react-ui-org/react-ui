@@ -5,6 +5,7 @@ module.exports = {
         cssLoaderOptions: {
           localIdentName: '[name]__[local]__[hash:base64:8]',
         },
+        includePaths: ['../node_modules'],
         sassRuleModulesTest: /\.scss$/,
       },
       resolve: 'gatsby-plugin-sass',

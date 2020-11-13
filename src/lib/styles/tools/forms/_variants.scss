@@ -1,11 +1,10 @@
-@import '../../settings/forms';
-@import '../../settings/forms-theme';
-@import '../explode';
+@use '../../settings/forms-theme' as theme;
+@use '../list';
 
-@mixin form-field-input-variant($variant) {
-  $variant-states: map-get($form-field-variants, $variant);
+@mixin field-input-variant($variant) {
+  $variant-states: map-get(theme.$field-variants, $variant);
 
-  @include explode(map-get($variant-states, default));
+  @include list.explode(map-get($variant-states, default));
 
   @if $variant == filled {
     border-top-color: transparent;
@@ -16,27 +15,27 @@
   }
 
   &:focus {
-    @include explode(map-get($variant-states, focus));
+    @include list.explode(map-get($variant-states, focus));
   }
 }
 
-@mixin form-field-input-outline-caret() {
-  $variant-states: map-get($form-field-variants, outline);
+@mixin field-input-outline-caret() {
+  $variant-states: map-get(theme.$field-variants, outline);
 
   & ~ .caret {
-    border-left: $form-field-border-width $form-field-caret-border-style $form-field-border-color;
-    background-color: $form-field-caret-background;
+    border-left: theme.$field-border-width theme.$field-caret-border-style theme.$field-border-color;
+    background-color: theme.$field-caret-background;
   }
 
   &:hover ~ .caret {
-    border-left-color: $form-field-hover-border-color;
+    border-left-color: theme.$field-hover-border-color;
   }
 
   &:focus ~ .caret {
-    border-left-color: $form-field-focus-border-color;
+    border-left-color: theme.$field-focus-border-color;
   }
 
   &:disabled ~ .caret {
-    border-left-color: $form-field-border-color;
+    border-left-color: theme.$field-border-color;
   }
 }

@@ -1,30 +1,31 @@
 // 1. Get ready for position of corner elements and group separator.
 // 2. Icon buttons should be squares.
 
-@import '../../../styles/tools/explode';
-@import '../../../styles/tools/forms/states';
-@import '../../../styles/tools/reset';
-@import '../../../styles/tools/transitions';
-@import 'theme';
-@import 'variables';
+@use '../../../styles/tools/breakpoint';
+@use '../../../styles/tools/forms/states';
+@use '../../../styles/tools/list';
+@use '../../../styles/tools/reset';
+@use '../../../styles/tools/transition';
+@use 'settings';
+@use 'theme';
 
 @mixin button() {
-  @include transition((opacity, color, border, background, box-shadow));
+  @include transition.add((opacity, color, border, background, box-shadow));
 
   position: relative; // 1.
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: $button-font-weight;
-  line-height: $button-line-height;
-  font-family: $button-font-family;
+  font-weight: theme.$font-weight;
+  line-height: settings.$line-height;
+  font-family: settings.$font-family;
   text-align: center;
   text-overflow: ellipsis;
   text-decoration: none;
-  text-transform: $button-text-transform;
+  text-transform: theme.$text-transform;
   vertical-align: middle;
-  border: $button-border-width solid transparent;
-  border-radius: $button-border-radius;
+  border: theme.$border-width solid transparent;
+  border-radius: theme.$border-radius;
   user-select: none;
   cursor: pointer;
 
@@ -34,7 +35,7 @@
   }
 
   &:disabled {
-    @include form-field-disabled();
+    @include states.field-disabled();
   }
 
   &:-moz-focusring {
@@ -43,7 +44,7 @@
 }
 
 @mixin button-unset() {
-  @include reset-button();
+  @include reset.button();
 
   font-weight: unset;
   line-height: unset;
@@ -55,7 +56,7 @@
 }
 
 @mixin button-link() {
-  $properties: map-get($button-variants, link);
+  $properties: map-get(theme.$variants, link);
 
   @include button-unset();
 
@@ -70,7 +71,7 @@
 }
 
 @mixin button-size($size) {
-  $properties: map-get($button-sizes, $size);
+  $properties: map-get(theme.$sizes, $size);
 
   height: map-get($properties, height);
   padding: 0 map-get($properties, padding-x);
@@ -84,7 +85,7 @@
   }
 
   &.withLabelHiddenMobile {
-    @include breakpoint-up($button-breakpoint) {
+    @include breakpoint.up(settings.$breakpoint) {
       width: auto;
       padding-right: map-get($properties, padding-x);
       padding-left: map-get($properties, padding-x);
@@ -93,21 +94,21 @@
 }
 
 @mixin button-variant($priority, $variant) {
-  $priority-variants: map-get($button-variants, $priority);
+  $priority-variants: map-get(theme.$variants, $priority);
   $variant-states: map-get($priority-variants, $variant);
 
-  @include explode(map-get($variant-states, default));
+  @include list.explode(map-get($variant-states, default));
 
   &:hover,
   &:focus {
-    @include explode(map-get($variant-states, hover));
+    @include list.explode(map-get($variant-states, hover));
   }
 
   &:active {
-    @include explode(map-get($variant-states, active));
+    @include list.explode(map-get($variant-states, active));
   }
 
   &:disabled {
-    @include explode(map-get($variant-states, default));
+    @include list.explode(map-get($variant-states, default));
   }
 }

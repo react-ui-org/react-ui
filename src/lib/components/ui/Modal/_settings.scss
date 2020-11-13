@@ -1,0 +1,11 @@
+@use '../../../styles/settings/borders';
+@use '../../../styles/settings/typography';
+@use '../../../styles/settings/z-indexes';
+@use '../../../styles/tools/spacing';
+
+$padding-x: spacing.of(5);
+$padding-y: spacing.of(3);
+$border-radius: borders.$radius;
+$head-title-font-size: map-get(typography.$size-values, 1);
+$z-index: z-indexes.$modal;
+$overlay-z-index: z-indexes.$modal-overlay;

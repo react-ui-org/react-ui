@@ -1,10 +1,12 @@
+@use '../settings/links';
+
 a {
-  text-decoration: $link-decoration;
-  color: $link-color;
+  text-decoration: links.$decoration;
+  color: links.$color;
 
   &:hover,
   &:focus {
-    text-decoration: $link-hover-decoration;
-    color: $link-hover-color;
+    text-decoration: links.$hover-decoration;
+    color: links.$hover-color;
   }
 }

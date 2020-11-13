@@ -1,15 +1,15 @@
-@import '../../../styles/tools/forms/layouts';
+@use '../../../styles/tools/forms/layouts';
 
 .root {
-  @include form-field-in-form-layout();
+  @include layouts.field-in-form-layout();
 }
 
 .rootLayoutHorizontal {
-  @include form-field-layout-horizontal();
+  @include layouts.field-layout-horizontal();
 }
 
 .rootLayoutVertical {
-  @include form-field-layout-vertical();
+  @include layouts.field-layout-vertical();
 }
 
 .rootLayoutHorizontal .field,

@@ -1,66 +1,66 @@
-@import 'mixins';
-@import 'theme';
+@use 'tools';
+@use 'theme';
 
 .root {
   display: flex;
   flex-direction: column;
   width: 100%;
-  border: $card-border-width solid transparent;
-  border-radius: $card-border-radius;
-  background-color: $card-background-color;
+  border: theme.$border-width solid transparent;
+  border-radius: theme.$border-radius;
+  background-color: theme.$background-color;
 }
 
 .body {
   flex: 1 0 auto;
-  padding: $card-padding;
+  padding: theme.$padding;
 }
 
 .footer {
-  padding: $card-padding;
+  padding: theme.$padding;
 }
 
 .isVariantFlat {
-  @include card-variant(flat);
+  @include tools.card-variant(flat);
 }
 
 .isVariantBordered {
-  @include card-variant(bordered);
+  @include tools.card-variant(bordered);
 }
 
 .isTypeSuccess {
-  @include card-type(success);
+  @include tools.card-type(success);
 }
 
 .isTypeWarning {
-  @include card-type(warning);
+  @include tools.card-type(warning);
 }
 
 .isTypeError {
-  @include card-type(error);
+  @include tools.card-type(error);
 }
 
 .isTypeHelp {
-  @include card-type(help);
+  @include tools.card-type(help);
 }
 
 .isTypeInfo {
-  @include card-type(info);
+  @include tools.card-type(info);
 }
 
 .isTypeNote {
-  @include card-type(note);
+  @include tools.card-type(note);
 }
 
 .isDisabled {
-  opacity: map-get($card-disabled, opacity);
-  background-color: map-get($card-disabled, background-color);
+  opacity: map-get(theme.$disabled, opacity);
+  background-color: map-get(theme.$disabled, background-color);
 }
 
 .isRaised {
-  box-shadow: map-get($card-raised, box-shadow);
+  box-shadow: map-get(theme.$raised, box-shadow);
 }
 
 .isDense .body,
 .isDense .footer {
-  padding: $card-dense-padding;
+  padding: theme.$dense-padding;
 }

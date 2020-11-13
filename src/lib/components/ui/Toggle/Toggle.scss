@@ -1,9 +1,10 @@
-@import '../../../styles/settings/borders';
-@import '../../../styles/settings/forms.deprecated';
-@import '../../../styles/tools/accessibility';
-@import '../../../styles/tools/forms/foundation';
-@import '../../../styles/tools/forms.deprecated';
-@import '../../../styles/tools/icons.deprecated';
+@use '../../../styles/settings/borders';
+@use '../../../styles/settings/colors.deprecated' as deprecated-colors;
+@use '../../../styles/settings/forms.deprecated' as deprecated-settings;
+@use '../../../styles/tools/accessibility';
+@use '../../../styles/tools/forms/foundation';
+@use '../../../styles/tools/forms.deprecated' as deprecated-tools;
+@use '../../../styles/tools/icon.deprecated' as deprecated-icon;
 
 .root {
   position: relative;
@@ -11,66 +12,66 @@
   flex-direction: column;
   align-items: flex-start;
   box-sizing: border-box;
-  min-height: $toggle-label-height;
+  min-height: deprecated-settings.$toggle-label-height;
 }
 
 .inputWrap {
   position: relative;
-  height: $toggle-label-height;
+  height: deprecated-settings.$toggle-label-height;
 }
 
 .input {
-  @include form-toggle-input-styles(
-    $toggle-height,
-    $toggle-width,
-    $checkbox-radio-top,
+  @include deprecated-tools.toggle-input-styles(
+    deprecated-settings.$toggle-height,
+    deprecated-settings.$toggle-width,
+    deprecated-settings.$checkbox-radio-top,
     0
   );
 }
 
 .toggle {
   position: absolute;
-  top: $checkbox-radio-top;
+  top: deprecated-settings.$checkbox-radio-top;
   display: inline-block;
-  width: $toggle-width / 2;
-  height: $toggle-height;
-  border: $border-width solid $toggle-icon-color-border;
-  border-radius: $border-radius;
-  background-color: $toggle-icon-color;
+  width: deprecated-settings.$toggle-width / 2;
+  height: deprecated-settings.$toggle-height;
+  border: borders.$width solid deprecated-settings.$toggle-icon-color-border;
+  border-radius: borders.$radius;
+  background-color: deprecated-settings.$toggle-icon-color;
   cursor: pointer;
 }
 
 .label {
-  @include form-field-label();
-  @include form-checkbox-radio-label-styles($toggle-label-height, 0);
+  @include foundation.field-label();
+  @include deprecated-tools.checkbox-radio-label-styles(deprecated-settings.$toggle-label-height, 0);
 }
 
 .input + .label::before {
-  @include form-toggle-inactive(
-    $toggle-width,
-    $toggle-height,
-    $checkbox-radio-top,
+  @include deprecated-tools.toggle-inactive(
+    deprecated-settings.$toggle-width,
+    deprecated-settings.$toggle-height,
+    deprecated-settings.$checkbox-radio-top,
     0,
-    $form-field-border-color
+    deprecated-settings.$form-field-border-color
   );
 
-  border-radius: $border-radius;
+  border-radius: borders.$radius;
 }
 
 .input + .label::after {
   content: '';
   position: absolute;
   top: 50%;
-  width: $toggle-icon-size;
-  height: $toggle-icon-size;
-  background: icon-generate-close() no-repeat;
+  width: deprecated-settings.$toggle-icon-size;
+  height: deprecated-settings.$toggle-icon-size;
+  background: deprecated-icon.generate-close() no-repeat;
   transform: translateY(-45%);
 }
 
 // stylelint-disable selector-nested-pattern, no-descending-specificity, selector-max-specificity
 .labelPositionBefore {
   .input + .label::before {
-    right: -1 * ($toggle-width + 0.525rem);
+    right: -1 * (deprecated-settings.$toggle-width + 0.525rem);
     left: auto;
   }
 
@@ -80,25 +81,25 @@
   }
 
   .input ~ .toggle {
-    right: -1 * (($toggle-width / 2) + 0.525rem);
+    right: -1 * ((deprecated-settings.$toggle-width / 2) + 0.525rem);
   }
 
   .input:checked ~ .toggle {
-    right: -1 * ($toggle-width + 0.525rem);
+    right: -1 * (deprecated-settings.$toggle-width + 0.525rem);
   }
 
   .input + .label::after {
-    right: -1 * ($toggle-width + (0.525rem / 2));
+    right: -1 * (deprecated-settings.$toggle-width + (0.525rem / 2));
   }
 
   .input:checked + .label::after {
-    right: -1 * ($toggle-width / 2 + 0.2rem);
+    right: -1 * (deprecated-settings.$toggle-width / 2 + 0.2rem);
   }
 }
 
 .labelPositionAfter {
   .label {
-    padding-left: $toggle-padding-left;
+    padding-left: deprecated-settings.$toggle-padding-left;
   }
 
   .toggle {
@@ -106,50 +107,50 @@
   }
 
   .input:checked ~ .toggle {
-    left: $toggle-width / 2;
+    left: deprecated-settings.$toggle-width / 2;
   }
 
   .input + .label::after {
-    left: ($toggle-width / 4) + 1.05rem;
+    left: (deprecated-settings.$toggle-width / 4) + 1.05rem;
   }
 
   .input:checked + .label::after {
-    left: ($toggle-width / 2) - 0.95rem;
+    left: (deprecated-settings.$toggle-width / 2) - 0.95rem;
   }
 }
 
 .input:disabled + .label {
-  @include form-disabled-state();
+  @include deprecated-tools.disabled-state();
 
-  color: $checkbox-disabled-text-color;
+  color: deprecated-settings.$checkbox-disabled-text-color;
 }
 
 .input:disabled ~ .toggle {
-  @include form-disabled-state();
+  @include deprecated-tools.disabled-state();
 }
 
 .input:checked + .label::before {
-  background: $toggle-color-checked;
+  background: deprecated-settings.$toggle-color-checked;
 }
 
 .input:checked + .label::after {
-  background-image: icon-generate-checkmark();
+  background-image: deprecated-icon.generate-checkmark();
 }
 
 .input:focus + .label::before {
   outline: 0;
-  box-shadow: $radio-focused-box-shadow;
+  box-shadow: deprecated-settings.$radio-focused-box-shadow;
 }
 
 .input:indeterminate + .label::before {
-  border: $border-width solid $checkbox-border-color-indeterminate;
+  border: borders.$width solid deprecated-settings.$checkbox-border-color-indeterminate;
 }
 
 .input:indeterminate + .label::after {
   display: inline-block;
-  border-bottom-color: $checkbox-border-color-indeterminate;
+  border-bottom-color: deprecated-settings.$checkbox-border-color-indeterminate;
   border-left: 0;
-  transform: translate(0, ($checkbox-checkmark-size / 2));
+  transform: translate(0, (deprecated-settings.$checkbox-checkmark-size / 2));
 }
 
 .input:focus:checked + .label::before {
@@ -157,7 +158,7 @@
 }
 
 .input:disabled:checked + .label::before {
-  background-color: $radio-disabled-background-color;
+  background-color: deprecated-settings.$radio-disabled-background-color;
 }
 
 .input:required + .label .labelInner::after {
@@ -165,22 +166,25 @@
 }
 
 .input:checked:disabled ~ .toggle {
-  @include form-disabled-state();
+  @include deprecated-tools.disabled-state();
 }
 
 .input:checked:disabled + .label::before {
-  background-color: $checkbox-disabled-background-color;
+  background-color: deprecated-settings.$checkbox-disabled-background-color;
 }
 
 .input:checked:disabled + .label::after {
-  $disabled-border-style: ($checkbox-radio-size / 8) solid $checkbox-disabled-checkmark-color;
+  $disabled-border-style:
+    (deprecated-settings.$checkbox-radio-size / 8)
+    solid
+    deprecated-settings.$checkbox-disabled-checkmark-color;
 }
 
 // stylelint-enable
 
 .helpText,
 .validationText {
-  @include form-field-help-text();
+  @include foundation.field-help-text();
 }
 
 .validationText {
@@ -188,75 +192,75 @@
 }
 
 .isLabelHidden {
-  @include accessibility-hide-text();
+  @include accessibility.hide-text();
 }
 
 // States
 // stylelint-disable no-descending-specificity, selector-max-specificity
 .isRootStateInvalid .label,
 .isRootStateInvalid .validationText {
-  color: $form-invalid-color;
+  color: deprecated-settings.$form-invalid-color;
 }
 
 .isRootStateInvalid .input + .label::before {
-  border-color: $form-invalid-color;
-  background-color: $white;
+  border-color: deprecated-settings.$form-invalid-color;
+  background-color: deprecated-colors.$white;
 }
 
 .isRootStateInvalid .input + .label::after {
-  background-image: icon-generate-close(darken(#dc3545, 4%));
+  background-image: deprecated-icon.generate-close(darken(#dc3545, 4%));
 }
 
 .isRootStateInvalid .input:checked + .label::before {
-  background-color: $form-invalid-color;
+  background-color: deprecated-settings.$form-invalid-color;
 }
 
 .isRootStateInvalid .input:checked + .label::after {
-  background-image: icon-generate-checkmark($white);
+  background-image: deprecated-icon.generate-checkmark(deprecated-colors.$white);
 }
 
 .isRootStateValid .label,
 .isRootStateValid .validationText {
-  color: $form-valid-color;
+  color: deprecated-settings.$form-valid-color;
 }
 
 .isRootStateValid .input + .label::before {
-  border-color: $form-valid-color;
-  background-color: $white;
+  border-color: deprecated-settings.$form-valid-color;
+  background-color: deprecated-colors.$white;
 }
 
 .isRootStateValid .input + .label::after {
-  background-image: icon-generate-close(darken(#28a745, 4%));
+  background-image: deprecated-icon.generate-close(darken(#28a745, 4%));
 }
 
 .isRootStateValid .input:checked + .label::before {
-  background-color: $form-valid-color;
+  background-color: deprecated-settings.$form-valid-color;
 }
 
 .isRootStateValid .input:checked + .label::after {
-  background-image: icon-generate-checkmark($white);
+  background-image: deprecated-icon.generate-checkmark(deprecated-colors.$white);
 }
 
 .isRootStateWarning .label,
 .isRootStateWarning .validationText {
-  color: $form-warning-color;
+  color: deprecated-settings.$form-warning-color;
 }
 
 .isRootStateWarning .input + .label::before {
-  border-color: $form-warning-color;
-  background-color: $white;
+  border-color: deprecated-settings.$form-warning-color;
+  background-color: deprecated-colors.$white;
 }
 
 .isRootStateWarning .input + .label::after {
-  background-image: icon-generate-close(darken(#ffc107, 4%));
+  background-image: deprecated-icon.generate-close(darken(#ffc107, 4%));
 }
 
 .isRootStateWarning .input:checked + .label::before {
-  background-color: $form-warning-color;
+  background-color: deprecated-settings.$form-warning-color;
 }
 
 .isRootStateWarning .input:checked + .label::after {
-  background-image: icon-generate-checkmark($white);
+  background-image: deprecated-icon.generate-checkmark(deprecated-colors.$white);
 }
 
 .isRootLayoutHorizontal {
@@ -264,5 +268,5 @@
 }
 
 .isRootInFormLayout {
-  @include form-field-in-form-layout();
+  @include deprecated-tools.field-in-form-layout();
 }

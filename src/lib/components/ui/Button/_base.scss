@@ -1,11 +1,11 @@
-@import '../../../styles/tools/accessibility';
-@import '../../../styles/tools/breakpoints';
-@import 'mixins';
-@import 'theme';
-@import 'variables';
+@use '../../../styles/tools/accessibility';
+@use '../../../styles/tools/breakpoint';
+@use 'settings';
+@use 'theme';
+@use 'tools';
 
 .root {
-  @include button();
+  @include tools.button();
 }
 
 .label {
@@ -23,12 +23,12 @@
 }
 
 .beforeLabel {
-  margin-right: $button-icon-spacing;
+  margin-right: settings.$icon-spacing;
 }
 
 .afterLabel,
 .loadingIcon {
-  margin-left: $button-icon-spacing;
+  margin-left: settings.$icon-spacing;
 }
 
 .startCorner,
@@ -48,15 +48,15 @@
 }
 
 .sizeSmall {
-  @include button-size(small);
+  @include tools.button-size(small);
 }
 
 .sizeMedium {
-  @include button-size(medium);
+  @include tools.button-size(medium);
 }
 
 .sizeLarge {
-  @include button-size(large);
+  @include tools.button-size(large);
 }
 
 .isRootBlock {
@@ -64,14 +64,14 @@
 }
 
 .isRootBlock.withLabelHiddenMobile {
-  @include breakpoint-up($button-breakpoint) {
+  @include breakpoint.up(settings.$breakpoint) {
     width: 100%;
   }
 }
 
 .isRootGrouped {
   &:not(:first-child) {
-    margin-left: calc(-1 * #{$button-border-width});
+    margin-left: calc(-1 * #{theme.$border-width});
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
@@ -84,11 +84,11 @@
 
 .withLabelHidden .label,
 .withLabelHiddenMobile .label {
-  @include accessibility-hide-text();
+  @include accessibility.hide-text();
 }
 
 .withLabelHiddenMobile .label {
-  @include breakpoint-up($button-breakpoint) {
+  @include breakpoint.up(settings.$breakpoint) {
     position: relative;
     width: auto;
     height: auto;
@@ -104,14 +104,14 @@
 }
 
 .withLabelHiddenMobile .beforeLabel {
-  @include breakpoint-up($button-breakpoint) {
-    margin-right: $button-icon-spacing;
+  @include breakpoint.up(settings.$breakpoint) {
+    margin-right: settings.$icon-spacing;
   }
 }
 
 .withLabelHiddenMobile .afterLabel {
-  @include breakpoint-up($button-breakpoint) {
-    margin-left: $button-icon-spacing;
+  @include breakpoint.up(settings.$breakpoint) {
+    margin-left: settings.$icon-spacing;
   }
 }
 
@@ -129,13 +129,13 @@
 
 .withLabelHiddenMobile.isRootLoading .beforeLabel,
 .withLabelHiddenMobile.isRootLoading .afterLabel {
-  @include breakpoint-up($button-breakpoint) {
+  @include breakpoint.up(settings.$breakpoint) {
     display: flex;
   }
 }
 
 .withLabelHiddenMobile.isRootLoading .loadingIcon {
-  @include breakpoint-up($button-breakpoint) {
-    margin-left: $button-icon-spacing;
+  @include breakpoint.up(settings.$breakpoint) {
+    margin-left: settings.$icon-spacing;
   }
 }

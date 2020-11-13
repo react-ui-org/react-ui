@@ -1,14 +1,14 @@
-@import '../../../lib/styles/settings/colors';
-@import '../../../lib/styles/tools/spacing';
+@use '../../../lib/styles/settings/colors';
+@use '../../../lib/styles/tools/spacing';
 
 .root {
   --rui-local-height: auto;
 
   height: var(--rui-local-height);
-  padding: spacing(3);
-  background-color: $color-white;
+  padding: spacing.of(3);
+  background-color: colors.$white;
 }
 
 .isRootBordered {
-  border: 2px dashed map-get($colors-grays, gray-200);
+  border: 2px dashed map-get(colors.$grays, gray-200);
 }

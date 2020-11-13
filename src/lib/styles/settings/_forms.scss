@@ -1,18 +1,18 @@
 // 1. Input `line-height` is specified in `rem` so inputs do not break when their font size gets
 //    changed later.
 
-@import '../tools/spacing';
-@import 'typography';
+@use '../tools/spacing';
+@use 'typography';
 
-$form-field-font-family: $typography-font-family-base;
-$form-field-font-weight: map-get($typography-font-weight-values, regular);
-$form-field-line-height: 1.5rem; // 1.
-$form-field-help-text-line-height: 1.2rem;
-$form-field-caret-size: 2.25rem;
-$form-field-input-number-arrows-width: 1.25rem;
-$form-field-bottom-line-height: 2px;
-$form-field-horizontal-breakpoint: md;
-$form-field-horizontal-inner-gap: spacing(2);
-$form-field-horizontal-outer-spacing: spacing(2);
-$form-field-vertical-inner-gap: spacing(1);
-$form-field-vertical-outer-spacing: spacing(2);
+$field-font-family: typography.$font-family-base;
+$field-font-weight: map-get(typography.$font-weight-values, regular);
+$field-line-height: 1.5rem; // 1.
+$field-help-text-line-height: 1.2rem;
+$field-caret-size: 2.25rem;
+$field-input-number-arrows-width: 1.25rem;
+$field-bottom-line-height: 2px;
+$field-horizontal-breakpoint: md;
+$field-horizontal-inner-gap: spacing.of(2);
+$field-horizontal-outer-spacing: spacing.of(2);
+$field-vertical-inner-gap: spacing.of(1);
+$field-vertical-outer-spacing: spacing.of(2);

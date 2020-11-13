@@ -1,10 +1,10 @@
-$button-font-weight: var(--rui-button-font-weight);
-$button-letter-spacing: var(--rui-button-letter-spacing);
-$button-text-transform: var(--rui-button-text-transform);
-$button-border-width: var(--rui-button-border-width);
-$button-border-radius: var(--rui-button-border-radius);
+$font-weight: var(--rui-button-font-weight);
+$letter-spacing: var(--rui-button-letter-spacing);
+$text-transform: var(--rui-button-text-transform);
+$border-width: var(--rui-button-border-width);
+$border-radius: var(--rui-button-border-radius);
 
-$button-variants: (
+$variants: (
   default: (
     primary: (
       default: (
@@ -329,7 +329,7 @@ $button-variants: (
   ),
 );
 
-$button-sizes: (
+$sizes: (
   small: (
     height: var(--rui-button-small-height),
     padding-x: var(--rui-button-small-padding-x),

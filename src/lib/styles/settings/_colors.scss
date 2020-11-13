@@ -1,7 +1,7 @@
-$color-white: var(--rui-color-white);
-$color-black: var(--rui-color-black);
+$white: var(--rui-color-white);
+$black: var(--rui-color-black);
 
-$colors-grays: (
+$grays: (
   gray-50: var(--rui-color-gray-50),
   gray-100: var(--rui-color-gray-100),
   gray-200: var(--rui-color-gray-200),
@@ -14,7 +14,7 @@ $colors-grays: (
   gray-900: var(--rui-color-gray-900),
 );
 
-$colors-theme: (
+$theme: (
   primary: var(--rui-color-primary),
   primary-light: var(--rui-color-primary-light),
   primary-dark: var(--rui-color-primary-dark),
@@ -27,7 +27,7 @@ $colors-theme: (
   on-secondary: var(--rui-color-on-secondary),
 );
 
-$colors-ui: (
+$ui: (
   success: var(--rui-color-success),
   success-light: var(--rui-color-success-light),
   success-dark: var(--rui-color-success-dark),

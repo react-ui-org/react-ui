@@ -1,27 +1,28 @@
 // ⚠️ Deprecated for new components.
 
-@import '../settings/borders';
-@import '../settings/forms';
-@import '../settings/forms.deprecated';
-@import '../tools/breakpoints';
+@use '../settings/borders';
+@use '../settings/colors.deprecated' as deprecated-colors;
+@use '../settings/forms' as settings;
+@use '../settings/forms.deprecated' as deprecated-settings;
+@use 'breakpoint';
 
-@mixin form-disabled-state() {
+@mixin disabled-state() {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-@mixin form-border-bottom-animation($border-color) {
+@mixin border-bottom-animation($border-color) {
   background: linear-gradient(to bottom, transparent 95%, $border-color 95%) no-repeat;
   background-size: 0 100%;
   transition: background-size 0.2s ease;
 
   &:focus {
-    border-bottom: $border-width solid $border-color;
+    border-bottom: borders.$width solid $border-color;
     background-size: 100% 100%;
   }
 }
 
-@mixin form-custom-inputs($height) {
+@mixin custom-inputs($height) {
   height: $height;
   padding: 0;
   margin: 0;
@@ -36,22 +37,22 @@
   }
 }
 
-@mixin form-field-base($min-width, $border-bottom-width) {
+@mixin field-base($min-width, $border-bottom-width) {
   display: inline-block;
   min-width: $min-width;
-  color: $form-field-text-color;
-  border-bottom: $border-width solid $border-bottom-width;
+  color: deprecated-settings.$form-field-text-color;
+  border-bottom: borders.$width solid $border-bottom-width;
 }
 
-@mixin form-outline(
-  $outline-color: $form-focus-outline-color,
-  $outline-blur: $form-focus-outline-blur,
-  $outline-spread: $form-focus-outline-spread) {
+@mixin outline(
+  $outline-color: deprecated-settings.$form-focus-outline-color,
+  $outline-blur: deprecated-settings.$form-focus-outline-blur,
+  $outline-spread: deprecated-settings.$form-focus-outline-spread) {
   outline: 0;
   box-shadow: 0 0 $outline-blur $outline-spread $outline-color;
 }
 
-@mixin form-checkbox-radio-shared-inactive($size, $top, $left, $border-color) {
+@mixin checkbox-radio-shared-inactive($size, $top, $left, $border-color) {
   content: '';
   position: absolute;
   top: $top;
@@ -59,10 +60,10 @@
   display: inline-block;
   width: $size;
   height: $size;
-  border: $border-width solid $border-color;
+  border: borders.$width solid $border-color;
 }
 
-@mixin form-checkbox-radio-input-styles($size, $left) {
+@mixin checkbox-radio-input-styles($size, $left) {
   position: absolute;
   top: 50%;
   left: $left;
@@ -72,16 +73,16 @@
   transform: translateY(-50%);
 }
 
-@mixin form-checkbox-radio-label-styles($min-height, $padding-left) {
+@mixin checkbox-radio-label-styles($min-height, $padding-left) {
   position: relative;
   display: inline-block;
   min-height: $min-height;
   padding-left: $padding-left;
-  line-height: $checkbox-radio-label-height;
+  line-height: deprecated-settings.$checkbox-radio-label-height;
   cursor: pointer;
 }
 
-@mixin form-toggle-inactive($width, $height, $top, $left, $border-color) {
+@mixin toggle-inactive($width, $height, $top, $left, $border-color) {
   content: '';
   position: absolute;
   top: $top;
@@ -89,11 +90,11 @@
   display: inline-block;
   width: $width;
   height: $height;
-  border: $border-width solid $border-color;
-  background-color: $gray-light-midtone;
+  border: borders.$width solid $border-color;
+  background-color: deprecated-colors.$gray-light-midtone;
 }
 
-@mixin form-toggle-input-styles($height, $width, $top, $left) {
+@mixin toggle-input-styles($height, $width, $top, $left) {
   position: absolute;
   top: $top;
   left: $left;
@@ -102,8 +103,8 @@
   height: $height;
 }
 
-@mixin form-field-in-form-layout() {
-  @include breakpoint-up($form-field-horizontal-breakpoint) {
+@mixin field-in-form-layout() {
+  @include breakpoint.up(settings.$field-horizontal-breakpoint) {
     &.isRootLayoutHorizontal {
       display: grid;
       grid: inherit;
