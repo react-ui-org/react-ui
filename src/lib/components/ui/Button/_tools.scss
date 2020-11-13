@@ -10,7 +10,7 @@
 @use 'theme';
 
 @mixin button() {
-  @include transition.add((opacity, color, border, background, box-shadow));
+  @include transition.add((opacity, color, border-color, background-color, box-shadow));
 
   position: relative; // 1.
   display: inline-flex;
