@@ -116,8 +116,8 @@
     }
 
     &.isRootLayoutHorizontal .inputWrap,
-    &.isRootLayoutHorizontal .description,
-    &.isRootLayoutHorizontal .error {
+    &.isRootLayoutHorizontal .helpText,
+    &.isRootLayoutHorizontal .validationText {
       grid-column-start: 2;
     }
   }
