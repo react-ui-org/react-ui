@@ -1,13 +1,13 @@
-@import '../../settings/forms-theme';
+@use '../../settings/forms-theme' as theme;
 
-@mixin form-field-disabled() {
+@mixin field-disabled() {
   opacity: 0.5;
   box-shadow: none;
   cursor: not-allowed;
 }
 
-@mixin form-field-state($state) {
-  $state-properties: map-get($form-field-states, $state);
+@mixin field-state($state) {
+  $state-properties: map-get(theme.$field-states, $state);
 
   .input {
     border-color: map-get($state-properties, border-color);
@@ -26,8 +26,8 @@
   }
 }
 
-@mixin form-field-caret-state($state) {
-  $state-properties: map-get($form-field-states, $state);
+@mixin field-caret-state($state) {
+  $state-properties: map-get(theme.$field-states, $state);
 
   &.rootVariantOutline .caret {
     border-left-color: map-get($state-properties, border-color);

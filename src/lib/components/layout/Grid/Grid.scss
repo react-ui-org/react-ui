@@ -22,11 +22,11 @@
 //
 // 3. Any valid auto-flow algorithm can be used. It's applied globally for all breakpoints.
 
-@import '../../../styles/settings/layouts';
-@import 'mixins';
+@use '../../../styles/settings/layouts';
+@use 'tools';
 
 .root {
-  $_properties: (
+  $properties: (
     columns: var(--rui-grid-columns),
     column-gap: var(--rui-grid-column-gap),
     rows: var(--rui-grid-rows),
@@ -37,7 +37,7 @@
     justify-items: var(--rui-grid-justify-items),
   );
 
-  @include assign-responsive-custom-properties($_properties); // 1.
+  @include tools.assign-responsive-custom-properties($properties); // 1.
 
   display: grid;
   grid-template-columns: var(--rui-local-columns); // 2.
@@ -48,16 +48,16 @@
   align-items: var(--rui-local-align-items, var(--rui-grid-align-items)); // 2.
   justify-content: var(--rui-local-justify-content, var(--rui-grid-justify-content)); // 2.
   justify-items: var(--rui-local-justify-items, var(--rui-grid-justify-items)); // 2.
-  margin-bottom: $layout-common-bottom-spacing;
+  margin-bottom: layouts.$common-bottom-spacing;
 }
 
 .span {
-  $_properties: (
+  $properties: (
     column-span: 1,
     row-span: 1,
   );
 
-  @include assign-responsive-custom-properties($_properties); // 1.
+  @include tools.assign-responsive-custom-properties($properties); // 1.
 
   grid-column: span var(--rui-local-column-span, 1); // 2.
   grid-row: span var(--rui-local-row-span, 1); // 2.

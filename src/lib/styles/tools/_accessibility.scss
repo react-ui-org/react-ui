@@ -1,7 +1,7 @@
 // Screen readers only
 // Inspired by Bootstrap
 // https://github.com/twbs/bootstrap/blob/master/scss/mixins/_screen-reader.scss
-@mixin accessibility-hide-text() {
+@mixin hide-text() {
   position: absolute;
   width: 1px;
   height: 1px;

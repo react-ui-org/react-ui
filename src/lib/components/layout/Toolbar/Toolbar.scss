@@ -1,4 +1,4 @@
-@import 'theme';
+@use 'theme';
 
 .toolbar,
 .group {
@@ -7,12 +7,12 @@
 }
 
 .toolbar {
-  margin: calc(-1 * #{$toolbar-spacing});
+  margin: calc(-1 * #{theme.$spacing});
 }
 
 .item {
   flex: none;
-  margin: $toolbar-spacing;
+  margin: theme.$spacing;
 }
 
 .isAlignedToTop {
@@ -56,11 +56,11 @@
 }
 
 .isDense {
-  margin: calc(-1 * #{$toolbar-spacing-dense});
+  margin: calc(-1 * #{theme.$spacing-dense});
 }
 
 .isDense .item {
-  margin: $toolbar-spacing-dense;
+  margin: theme.$spacing-dense;
 }
 
 .isDense > .isDense {
@@ -69,5 +69,5 @@
 
 .toolbar:not(.isDense) > .isDense,
 .group:not(.isDense) > .isDense {
-  margin: $toolbar-spacing-dense;
+  margin: theme.$spacing-dense;
 }

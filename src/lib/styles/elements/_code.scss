@@ -1,4 +1,6 @@
+@use '../settings/colors';
+
 code {
   padding: 0.15em 0.5em;
-  background-color: map-get($colors-grays, gray-100);
+  background-color: map-get(colors.$grays, gray-100);
 }

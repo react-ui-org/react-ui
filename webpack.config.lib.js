@@ -52,7 +52,14 @@ module.exports = (env, argv) => ({
             },
           },
           { loader: 'postcss-loader' },
-          { loader: 'sass-loader' },
+          {
+            loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                includePaths: ['node_modules'],
+              },
+            },
+          },
         ],
       },
     ],

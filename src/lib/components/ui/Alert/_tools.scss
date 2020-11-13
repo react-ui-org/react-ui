@@ -1,7 +1,7 @@
-@import 'variables';
+@use 'theme';
 
-@mixin alert-type($type) {
-  $type-properties: map-get($alert-types, $type);
+@mixin type($type) {
+  $type-properties: map-get(theme.$types, $type);
   $foreground-color: map-get($type-properties, foreground-color);
 
   color: map-get($type-properties, text-color);

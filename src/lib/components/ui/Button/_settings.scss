@@ -1,0 +1,9 @@
+@use '../../../styles/settings/colors';
+@use '../../../styles/settings/typography';
+@use '../../../styles/tools/spacing';
+
+$font-family: typography.$font-family-base;
+$line-height: typography.$line-height-base;
+$icon-spacing: spacing.of(2);
+$breakpoint: lg;
+$group-separator-color: colors.$white;

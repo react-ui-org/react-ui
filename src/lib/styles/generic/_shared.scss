@@ -1,3 +1,5 @@
+@use '../tools/spacing';
+
 // Always declare margins in the same direction.
 address,
 h1,
@@ -16,5 +18,5 @@ figure,
 hr,
 table,
 fieldset {
-  margin-bottom: spacing(5);
+  margin-bottom: spacing.of(5);
 }

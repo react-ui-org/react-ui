@@ -1,5 +1,8 @@
+@use '../settings/borders';
+@use '../settings/colors';
+
 hr {
   border: 0;
-  border-top: $border-width solid map-get($colors-grays, gray-200);
+  border-top: borders.$width solid map-get(colors.$grays, gray-200);
   background: none;
 }

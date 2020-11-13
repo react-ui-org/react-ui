@@ -1,8 +1,8 @@
-@import '../../../styles/settings/layouts';
-@import '../../../styles/tools/spacing';
+@use '../../../styles/settings/layouts';
+@use '../../../styles/tools/spacing';
 
 .root {
-  margin-bottom: $layout-common-bottom-spacing;
+  margin-bottom: layouts.$common-bottom-spacing;
 }
 
 .list {
@@ -15,7 +15,7 @@
 
 .item {
   width: 100%;
-  margin-bottom: spacing(2);
+  margin-bottom: spacing.of(2);
 
   &:last-child {
     margin-bottom: 0;

@@ -1,0 +1,15 @@
+@use '../settings/animations';
+
+$reduced-transitions: transform;
+
+@mixin add($property, $duration: 150ms) {
+  @if (type-of($property) == list) {
+    transition-property: #{$property};
+    transition-duration: $duration;
+    transition-timing-function: animations.$standard-timing-function;
+  }
+
+  @else {
+    transition: $property $duration animations.$standard-timing-function;
+  }
+}

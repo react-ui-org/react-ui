@@ -9,7 +9,7 @@
 // General purpose helpers for common situations. They can compose multiple CSS rules to do a bit
 // more complicated tasks.
 
-@import 'styles/helpers/animation';
+@use 'styles/helpers/animation';
 
 //
 // 2. Utilities
@@ -19,4 +19,4 @@
 // thing: they set a single CSS rule and use the otherwise disallowed `!important` to enforce it.
 // Also they are often responsive (can be adjusted for individual breakpoints).
 
-@import 'styles/utilities';
+@use 'styles/utilities';

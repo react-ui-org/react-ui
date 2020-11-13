@@ -1,5 +1,5 @@
-@import '../../../styles/tools/transitions';
-@import 'variables';
+@use '../../../styles/tools/transition';
+@use 'settings';
 
 .table {
   width: 100%;
@@ -7,39 +7,39 @@
 }
 
 .tableRow {
-  @include transition(background);
+  @include transition.add(background);
 
-  background-color: $table-background-color;
+  background-color: settings.$background-color;
 
   &:hover {
-    background-color: $table-hover-background-color;
+    background-color: settings.$hover-background-color;
   }
 }
 
 .tableHeadRow {
   composes: tableRow;
-  background-color: $table-head-background-color;
+  background-color: settings.$head-background-color;
 
   &:hover {
-    background-color: $table-head-background-color;
+    background-color: settings.$head-background-color;
   }
 }
 
 .tableCell {
-  padding: $table-cell-padding-y $table-cell-padding-x;
+  padding: settings.$cell-padding-y settings.$cell-padding-x;
   text-align: left;
-  border-bottom: $table-border-width solid $table-border-color;
+  border-bottom: settings.$border-width solid settings.$border-color;
 }
 
 .tableHeadCell {
   composes: tableCell;
-  font-weight: $table-head-font-weight;
+  font-weight: settings.$head-font-weight;
   border-bottom-width: 2px;
 }
 
 .isTableCellSortingActive,
 .isTableHeadCellSortingActive {
-  background-color: $table-sorted-background-color;
+  background-color: settings.$sorted-background-color;
 }
 
 .isTableCellSortingActive {
@@ -52,5 +52,5 @@
 
 .sortButton {
   display: inline-block;
-  margin-right: $table-cell-padding-x;
+  margin-right: settings.$cell-padding-x;
 }

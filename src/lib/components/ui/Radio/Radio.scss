@@ -1,6 +1,7 @@
-@import '../../../styles/settings/forms.deprecated';
-@import '../../../styles/tools/forms/foundation';
-@import '../../../styles/tools/forms.deprecated';
+@use '../../../styles/settings/colors.deprecated' as deprecated-colors;
+@use '../../../styles/settings/forms.deprecated' as deprecated-settings;
+@use '../../../styles/tools/forms/foundation';
+@use '../../../styles/tools/forms.deprecated' as deprecated-tools;
 
 .root {
   position: relative;
@@ -9,7 +10,7 @@
 }
 
 .label {
-  @include form-field-label();
+  @include foundation.field-label();
 
   display: inline-block;
   margin-bottom: 0.25rem;
@@ -42,16 +43,19 @@
 
 .inputWrap {
   position: relative;
-  min-height: $checkbox-radio-label-height;
+  min-height: deprecated-settings.$checkbox-radio-label-height;
 }
 
 .input {
-  @include form-checkbox-radio-input-styles($checkbox-radio-size, 0);
+  @include deprecated-tools.checkbox-radio-input-styles(deprecated-settings.$checkbox-radio-size, 0);
 }
 
 .radioLabel {
-  @include form-field-label();
-  @include form-checkbox-radio-label-styles($checkbox-radio-label-height, $checkbox-radio-padding-left);
+  @include foundation.field-label();
+  @include deprecated-tools.checkbox-radio-label-styles(
+    deprecated-settings.$checkbox-radio-label-height,
+    deprecated-settings.$checkbox-radio-padding-left
+  );
 }
 
 .radioLabel:empty {
@@ -59,49 +63,49 @@
 }
 
 .input + .radioLabel::before {
-  @include form-checkbox-radio-shared-inactive(
-    $checkbox-radio-size,
-    $checkbox-radio-top,
+  @include deprecated-tools.checkbox-radio-shared-inactive(
+    deprecated-settings.$checkbox-radio-size,
+    deprecated-settings.$checkbox-radio-top,
     0,
-    $form-field-border-color
+    deprecated-settings.$form-field-border-color
   );
 
   border-radius: 50%;
 }
 
 .input:disabled + .radioLabel {
-  @include form-disabled-state();
+  @include deprecated-tools.disabled-state();
 
-  color: $radio-disabled-font-color;
+  color: deprecated-settings.$radio-disabled-font-color;
 }
 
 /* stylelint-disable selector-max-specificity */
 .input:checked + .radioLabel::before {
-  box-shadow: $radio-checked-box-shadow;
+  box-shadow: deprecated-settings.$radio-checked-box-shadow;
 }
 
 .input:focus + .radioLabel::before {
   outline: 0;
-  box-shadow: $radio-focused-box-shadow;
+  box-shadow: deprecated-settings.$radio-focused-box-shadow;
 }
 
 .input:disabled + .radioLabel::before {
-  background-color: $gray-light-midtone;
+  background-color: deprecated-colors.$gray-light-midtone;
 }
 
 .input:focus:checked + .radioLabel::before {
   outline: 0;
-  box-shadow: $radio-checked-box-shadow, $radio-focused-box-shadow;
+  box-shadow: deprecated-settings.$radio-checked-box-shadow, deprecated-settings.$radio-focused-box-shadow;
 }
 
 .input:disabled:checked + .radioLabel::before {
-  background-color: $radio-disabled-background-color;
-  box-shadow: $radio-disabled-checked-box-shadow;
+  background-color: deprecated-settings.$radio-disabled-background-color;
+  box-shadow: deprecated-settings.$radio-disabled-checked-box-shadow;
 }
 
 .helpText,
 .validationText {
-  @include form-field-help-text();
+  @include foundation.field-help-text();
 }
 
 .validationText {
@@ -112,44 +116,44 @@
 // stylelint-disable no-descending-specificity
 .isRootStateInvalid .radioLabel,
 .isRootStateInvalid .validationText {
-  color: $form-invalid-color;
+  color: deprecated-settings.$form-invalid-color;
 }
 
 .isRootStateInvalid .input + .radioLabel::before,
 .isRootStateInvalid .input:checked + .radioLabel::before {
-  border-color: $form-invalid-color;
+  border-color: deprecated-settings.$form-invalid-color;
 }
 
 .isRootStateInvalid .input:checked + .radioLabel::before {
-  box-shadow: inset 0 0 0 6px $form-invalid-color;
+  box-shadow: inset 0 0 0 6px deprecated-settings.$form-invalid-color;
 }
 
 .isRootStateValid .radioLabel,
 .isRootStateValid .validationText {
-  color: $form-valid-color;
+  color: deprecated-settings.$form-valid-color;
 }
 
 .isRootStateValid .input + .radioLabel::before,
 .isRootStateValid .input:checked + .radioLabel::before {
-  border-color: $form-valid-color;
+  border-color: deprecated-settings.$form-valid-color;
 }
 
 .isRootStateValid .input:checked + .radioLabel::before {
-  box-shadow: inset 0 0 0 6px $form-valid-color;
+  box-shadow: inset 0 0 0 6px deprecated-settings.$form-valid-color;
 }
 
 .isRootStateWarning .radioLabel,
 .isRootStateWarning .validationText {
-  color: $form-warning-color;
+  color: deprecated-settings.$form-warning-color;
 }
 
 .isRootStateWarning .input + .radioLabel::before,
 .isRootStateWarning .input:checked + .radioLabel::before {
-  border-color: $form-warning-color;
+  border-color: deprecated-settings.$form-warning-color;
 }
 
 .isRootStateWarning .input:checked + .radioLabel::before {
-  box-shadow: inset 0 0 0 6px $form-warning-color;
+  box-shadow: inset 0 0 0 6px deprecated-settings.$form-warning-color;
 }
 
 .isRootLayoutHorizontal {
@@ -157,5 +161,5 @@
 }
 
 .isRootInFormLayout {
-  @include form-field-in-form-layout();
+  @include deprecated-tools.field-in-form-layout();
 }

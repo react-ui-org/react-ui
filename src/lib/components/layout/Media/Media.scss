@@ -1,14 +1,14 @@
-@import '../../../styles/settings/layouts';
-@import '../../../styles/tools/spacing';
+@use '../../../styles/settings/layouts';
+@use '../../../styles/tools/spacing';
 
 .media {
   display: flex;
   align-items: flex-start;
-  margin-bottom: $layout-common-bottom-spacing;
+  margin-bottom: layouts.$common-bottom-spacing;
 }
 
 .object {
-  margin-right: spacing(3);
+  margin-right: spacing.of(3);
 }
 
 .body {

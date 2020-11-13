@@ -1,10 +1,10 @@
-$card-padding: var(--rui-card-padding);
-$card-dense-padding: var(--rui-card-dense-padding);
-$card-background-color: var(--rui-card-background-color);
-$card-border-width: var(--rui-card-border-width);
-$card-border-radius: var(--rui-card-border-radius);
+$padding: var(--rui-card-padding);
+$dense-padding: var(--rui-card-dense-padding);
+$background-color: var(--rui-card-background-color);
+$border-width: var(--rui-card-border-width);
+$border-radius: var(--rui-card-border-radius);
 
-$card-types: (
+$types: (
   success: (
     border-color: var(--rui-card-success-border-color),
   ),
@@ -25,7 +25,7 @@ $card-types: (
   ),
 );
 
-$card-variants: (
+$variants: (
   flat: (
     border-color: var(--rui-card-flat-border-color),
   ),
@@ -34,11 +34,11 @@ $card-variants: (
   ),
 );
 
-$card-disabled: (
+$disabled: (
   background-color: var(--rui-card-disabled-background-color),
   opacity: var(--rui-card-disabled-opacity),
 );
 
-$card-raised: (
+$raised: (
   box-shadow: var(--rui-card-raised-box-shadow),
 );

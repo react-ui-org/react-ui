@@ -1,21 +1,22 @@
-@import '../../../styles/tools/reset';
-@import '../../../styles/tools/spacing';
-@import 'theme';
-@import 'variables';
+@use '../../../styles/settings/typography';
+@use '../../../styles/tools/reset';
+@use '../../../styles/tools/spacing';
+@use 'settings';
+@use 'theme';
 
 .root {
   position: fixed;
   top: 50%;
   left: 50%;
-  z-index: $modal-zindex;
+  z-index: settings.$z-index;
   display: flex;
   flex-direction: column;
-  max-width: calc(100% - (2 * #{$modal-padding-x}));
-  max-height: calc(100% - (2 * #{$modal-padding-y}));
+  max-width: calc(100% - (2 * #{settings.$padding-x}));
+  max-height: calc(100% - (2 * #{settings.$padding-y}));
   overflow-y: auto;
-  border-radius: $modal-border-radius;
-  background-color: $modal-background;
-  box-shadow: $modal-box-shadow;
+  border-radius: settings.$border-radius;
+  background-color: theme.$background;
+  box-shadow: theme.$box-shadow;
   transform: translate(-50%, -50%);
 }
 
@@ -24,19 +25,19 @@
   flex: none;
   align-items: baseline;
   justify-content: space-between;
-  padding: $modal-padding-y spacing(3) $modal-padding-y $modal-padding-x;
+  padding: settings.$padding-y spacing.of(3) settings.$padding-y settings.$padding-x;
 }
 
 .headTitle {
   margin-bottom: 0;
-  font-size: $modal-head-title-font-size;
+  font-size: settings.$head-title-font-size;
 }
 
 .close {
-  @include reset-button();
+  @include reset.button();
 
-  padding: spacing(1) spacing(2);
-  font-size: map-get($typography-size-values, 3);
+  padding: spacing.of(1) spacing.of(2);
+  font-size: map-get(typography.$size-values, 3);
   line-height: 1;
   color: inherit;
 }
@@ -52,7 +53,7 @@
 }
 
 .content {
-  padding: $modal-padding-y $modal-padding-x;
+  padding: settings.$padding-y settings.$padding-x;
 }
 
 .footer {
@@ -61,37 +62,37 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  padding: $modal-padding-y $modal-padding-x;
-  border-bottom-right-radius: $modal-border-radius;
-  border-bottom-left-radius: $modal-border-radius;
-  background-color: $modal-footer-background;
+  padding: settings.$padding-y settings.$padding-x;
+  border-bottom-right-radius: settings.$border-radius;
+  border-bottom-left-radius: settings.$border-radius;
+  background-color: theme.$footer-background;
 }
 
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: $modal-overlay-zindex;
+  z-index: settings.$overlay-z-index;
   width: 100vw;
   height: 100vh;
-  background-color: $modal-overlay-background;
+  background-color: theme.$overlay-background;
 }
 
 .isRootSmall {
-  width: $modal-size-small-width;
+  width: theme.$size-small-width;
 }
 
 .isRootMedium {
-  width: $modal-size-medium-width;
+  width: theme.$size-medium-width;
 }
 
 .isRootLarge {
-  width: $modal-size-large-width;
+  width: theme.$size-large-width;
 }
 
 .isRootFullscreen {
-  width: $modal-size-fullscreen-width;
-  height: $modal-size-fullscreen-height;
+  width: theme.$size-fullscreen-width;
+  height: theme.$size-fullscreen-height;
 }
 
 .isRootFullscreen .content {
@@ -100,6 +101,6 @@
 
 .isRootAuto {
   width: auto;
-  min-width: $modal-size-auto-min-width;
-  max-width: $modal-size-auto-max-width;
+  min-width: theme.$size-auto-min-width;
+  max-width: theme.$size-auto-max-width;
 }

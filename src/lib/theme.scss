@@ -1,6 +1,6 @@
 // Default theme. Can be used as a starting point for your custom theme.
 
-@import 'styles/settings/breakpoints';
+@use 'styles/settings/breakpoints';
 
 :root {
 
@@ -75,13 +75,13 @@
   // https://www.w3.org/TR/css-variables-1/#using-variables
   //
   // ⚠️ Keep in sync with `src/lib/styles/settings/_breakpoints.scss`.
-  --rui-breakpoint-xs: #{map-get($breakpoint-values, xs)};
-  --rui-breakpoint-sm: #{map-get($breakpoint-values, sm)};
-  --rui-breakpoint-md: #{map-get($breakpoint-values, md)};
-  --rui-breakpoint-lg: #{map-get($breakpoint-values, lg)};
-  --rui-breakpoint-xl: #{map-get($breakpoint-values, xl)};
-  --rui-breakpoint-xxl: #{map-get($breakpoint-values, xxl)};
-  --rui-breakpoint-xxxl: #{map-get($breakpoint-values, xxxl)};
+  --rui-breakpoint-xs: #{map-get(breakpoints.$values, xs)};
+  --rui-breakpoint-sm: #{map-get(breakpoints.$values, sm)};
+  --rui-breakpoint-md: #{map-get(breakpoints.$values, md)};
+  --rui-breakpoint-lg: #{map-get(breakpoints.$values, lg)};
+  --rui-breakpoint-xl: #{map-get(breakpoints.$values, xl)};
+  --rui-breakpoint-xxl: #{map-get(breakpoints.$values, xxl)};
+  --rui-breakpoint-xxxl: #{map-get(breakpoints.$values, xxxl)};
 
   // Spacing
   --rui-spacing-0: 0;

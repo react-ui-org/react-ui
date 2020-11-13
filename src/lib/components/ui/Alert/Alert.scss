@@ -1,25 +1,27 @@
-@import '../../../styles/tools/reset';
-@import '../../../styles/tools/spacing';
-@import 'mixins';
+@use '../../../styles/settings/typography';
+@use '../../../styles/tools/reset';
+@use 'settings';
+@use 'theme';
+@use 'tools';
 
 .root {
   position: relative;
   display: flex;
   align-items: flex-start;
   width: 100%;
-  border-width: $alert-border-width $alert-border-width $alert-border-width $alert-stripe-width;
+  border-width: theme.$border-width theme.$border-width theme.$border-width theme.$stripe-width;
   border-style: solid;
-  border-radius: $alert-border-radius;
+  border-radius: theme.$border-radius;
 }
 
 .icon,
 .message {
-  padding: $alert-padding;
+  padding: theme.$padding;
 }
 
 .close,
 .icon {
-  height: $alert-min-height;
+  height: settings.$min-height;
 }
 
 .icon {
@@ -32,21 +34,21 @@
 
 .message {
   flex-grow: 1;
-  font-weight: $alert-font-weight;
-  font-size: $alert-font-size;
-  line-height: $alert-line-height;
+  font-weight: theme.$font-weight;
+  font-size: settings.$font-size;
+  line-height: settings.$line-height;
 }
 
 .message a,
 .message strong {
-  font-weight: $alert-emphasis-font-weight;
+  font-weight: theme.$emphasis-font-weight;
 }
 
 .close {
-  @include reset-button();
+  @include reset.button();
 
-  padding: $alert-padding;
-  font-size: map-get($typography-size-values, 3);
+  padding: theme.$padding;
+  font-size: map-get(typography.$size-values, 3);
   line-height: 1;
 }
 
@@ -56,25 +58,25 @@
 }
 
 .isRootSuccess {
-  @include alert-type(success);
+  @include tools.type(success);
 }
 
 .isRootWarning {
-  @include alert-type(warning);
+  @include tools.type(warning);
 }
 
 .isRootError {
-  @include alert-type(error);
+  @include tools.type(error);
 }
 
 .isRootInfo {
-  @include alert-type(info);
+  @include tools.type(info);
 }
 
 .isRootHelp {
-  @include alert-type(help);
+  @include tools.type(help);
 }
 
 .isRootNote {
-  @include alert-type(note);
+  @include tools.type(note);
 }

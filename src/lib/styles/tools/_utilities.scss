@@ -1,7 +1,7 @@
 // Utility generator
 // Inspired by Bootstrap 4
 
-@mixin generate-utility($utility, $infix) {
+@mixin generate($utility, $infix) {
   $values: map-get($utility, values);
 
   // If the values are a list or string, convert it into a map

@@ -31,18 +31,18 @@
 //    A fallback is supplied to browsers that don't support `subgrid` yet. See FormLayout styles
 //    for more.
 
-@import '../../settings/forms';
-@import '../../settings/forms-theme';
-@import '../breakpoints';
+@use '../../settings/forms' as settings;
+@use '../../settings/forms-theme' as theme;
+@use '../breakpoint';
 
-@mixin form-field-layout-vertical() {
+@mixin field-layout-vertical() {
   display: inline-flex; // 1.
   flex-direction: column;
   min-width: 0; // 1.
   max-width: 100%; // 1.
 
   .label {
-    padding-bottom: $form-field-vertical-inner-gap;
+    padding-bottom: settings.$field-vertical-inner-gap;
   }
 
   .field {
@@ -52,25 +52,25 @@
 
   .helpText,
   .validationText {
-    padding-top: $form-field-vertical-inner-gap;
+    padding-top: settings.$field-vertical-inner-gap;
   }
 }
 
-@mixin form-field-layout-horizontal() {
-  @include form-field-layout-vertical();
+@mixin field-layout-horizontal() {
+  @include field-layout-vertical();
 
-  @include breakpoint-up($form-field-horizontal-breakpoint) {
+  @include breakpoint.up(settings.$field-horizontal-breakpoint) {
     display: inline-grid; // 2.
-    grid-template-columns: $form-field-horizontal-label-width min-content; // 2.
-    grid-template-areas: "label field";
+    grid-template-columns: theme.$field-horizontal-label-width min-content; // 2.
+    grid-template-areas: 'label field';
     align-items: start;
 
     .label {
       grid-area: label;
-      min-width: $form-field-horizontal-label-min-width;
-      padding-right: $form-field-horizontal-inner-gap; // 4.
+      min-width: theme.$field-horizontal-label-min-width;
+      padding-right: settings.$field-horizontal-inner-gap; // 4.
       padding-bottom: 0; // 4.
-      text-align: $form-field-horizontal-label-alignment;
+      text-align: theme.$field-horizontal-label-alignment;
     }
 
     .field {
@@ -80,14 +80,14 @@
   }
 }
 
-@mixin form-field-layout-with-small-input() {
-  @include breakpoint-up($form-field-horizontal-breakpoint) {
+@mixin field-layout-with-small-input() {
+  @include breakpoint.up(settings.$field-horizontal-breakpoint) {
     &.rootLayoutHorizontal {
       grid-template-columns: min-content min-content; // 5.
       grid-template-areas:
-        "label field"
-        "helptext helptext"
-        "validationtext validationtext"; // 5.
+        'label field'
+        'helptext helptext'
+        'validationtext validationtext'; // 5.
     }
 
     &.rootLayoutHorizontal .label {
@@ -112,7 +112,7 @@
   }
 }
 
-@mixin form-field-full-width() {
+@mixin field-full-width() {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -123,10 +123,10 @@
     width: 100%;
   }
 
-  @include breakpoint-up($form-field-horizontal-breakpoint) {
+  @include breakpoint.up(settings.$field-horizontal-breakpoint) {
     &.rootLayoutHorizontal {
       display: grid;
-      grid-template-columns: $form-field-horizontal-full-width-label-width 1fr; // 6.
+      grid-template-columns: theme.$field-horizontal-full-width-label-width 1fr; // 6.
     }
 
     &.rootLayoutHorizontal .field {
@@ -135,14 +135,14 @@
   }
 }
 
-@mixin form-field-in-form-layout() {
+@mixin field-in-form-layout() {
   &:not(:last-child),
   &.rootLayoutHorizontal:not(:last-child) {
     margin-right: 0; // 8.
     margin-bottom: 0; // 8.
   }
 
-  @include breakpoint-up($form-field-horizontal-breakpoint) {
+  @include breakpoint.up(settings.$field-horizontal-breakpoint) {
     &.rootLayoutHorizontal,
     &.rootLayoutHorizontal.hasRootSmallInput {
       grid: inherit; // 9.
