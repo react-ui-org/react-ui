@@ -38,7 +38,7 @@
 }
 
 @mixin field-input() {
-  @include transition.add((opacity, color, border, background, box-shadow));
+  @include transition.add((opacity, color, border-color, background-color, box-shadow));
 
   width: theme.$field-input-width;
   min-width: theme.$field-input-min-width;
@@ -125,7 +125,7 @@
 }
 
 @mixin field-caret() {
-  @include transition.add(border);
+  @include transition.add((border-color));
 
   position: absolute; // 1.
   top: theme.$field-border-width;

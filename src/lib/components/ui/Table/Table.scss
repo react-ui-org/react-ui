@@ -7,7 +7,7 @@
 }
 
 .tableRow {
-  @include transition.add(background);
+  @include transition.add((background-color));
 
   background-color: settings.$background-color;
 
