@@ -2,7 +2,7 @@ const path = require('path');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const VisualizerPlugin = require('webpack-visualizer-plugin');
 
-const MAX_DEVELOPMENT_OUTPUT_SIZE = 1500000;
+const MAX_DEVELOPMENT_OUTPUT_SIZE = 1850000;
 const MAX_PRODUCTION_OUTPUT_SIZE = 200000;
 
 module.exports = (env, argv) => ({
@@ -84,6 +84,7 @@ module.exports = (env, argv) => ({
   plugins: [
     new StyleLintPlugin({
       configFile: 'stylelint.config.js',
+      files: '**/*.scss',
       syntax: 'scss',
     }),
     new VisualizerPlugin({
