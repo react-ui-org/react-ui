@@ -190,6 +190,7 @@ Button.propTypes = {
    */
   forwardedRef: PropTypes.oneOfType([
     PropTypes.func,
+    // eslint-disable-next-line react/forbid-prop-types
     PropTypes.shape({ current: PropTypes.any }),
   ]),
   /**
