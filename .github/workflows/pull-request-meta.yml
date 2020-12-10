@@ -1,0 +1,19 @@
+name: Pull Request Meta
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  process_pr_meta:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Assign to author
+        uses: samspills/assign-pr-to-author@v1.0
+        with:
+          repo-token: '${{ secrets.GITHUB_TOKEN }}'
+
+      - name: Add labels
+        uses: TimonVS/pr-labeler-action@v3.1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
