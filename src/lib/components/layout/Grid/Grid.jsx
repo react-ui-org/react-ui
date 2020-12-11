@@ -26,7 +26,7 @@ export const Grid = ({
       id={id}
       className={styles.root}
       style={{
-        '--rui-local-auto-flow': autoFlow,
+        ...(typeof autoFlow !== 'undefined' ? { '--rui-local-auto-flow': autoFlow } : {}),
         ...generateResponsiveCustomProperties(columns, 'columns'),
         ...generateResponsiveCustomProperties(columnGap, 'column-gap'),
         ...generateResponsiveCustomProperties(rows, 'rows'),
@@ -65,7 +65,7 @@ Grid.propTypes = {
    * Content alignment. Accepts any valid value of `align-content` CSS property.
    * See [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content) for more.
    */
-  alignContent: PropTypes.oneOf([
+  alignContent: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.shape({
       xs: PropTypes.string,
@@ -81,7 +81,7 @@ Grid.propTypes = {
    * Items alignment. Accepts any valid value of `align-items` CSS property.
    * See [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items) for more.
    */
-  alignItems: PropTypes.oneOf([
+  alignItems: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.shape({
       xs: PropTypes.string,
@@ -106,7 +106,7 @@ Grid.propTypes = {
    * Gap between columns. Accepts any valid value of `grid-column-gap` CSS property.
    * See [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap) for more.
    */
-  columnGap: PropTypes.oneOf([
+  columnGap: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.shape({
       xs: PropTypes.string,
@@ -122,7 +122,7 @@ Grid.propTypes = {
    * Grid columns. Accepts any valid value of `grid-template-columns` CSS property.
    * See [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns) for more.
    */
-  columns: PropTypes.oneOf([
+  columns: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.shape({
       xs: PropTypes.string,
@@ -142,7 +142,7 @@ Grid.propTypes = {
    * Content justification. Accepts any valid value of `justify-content` CSS property.
    * See [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content) for more.
    */
-  justifyContent: PropTypes.oneOf([
+  justifyContent: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.shape({
       xs: PropTypes.string,
@@ -158,7 +158,7 @@ Grid.propTypes = {
    * Items justification. Accepts any valid value of `justify-items` CSS property.
    * See [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items) for more.
    */
-  justifyItems: PropTypes.oneOf([
+  justifyItems: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.shape({
       xs: PropTypes.string,
@@ -174,7 +174,7 @@ Grid.propTypes = {
    * Gap between rows. Accepts any valid value of `grid-row-gap` CSS property.
    * See [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap) for more.
    */
-  rowGap: PropTypes.oneOf([
+  rowGap: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.shape({
       xs: PropTypes.string,
@@ -190,7 +190,7 @@ Grid.propTypes = {
    * Grid rows. Accepts any valid value of `grid-template-rows` CSS property.
    * See [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows) for more.
    */
-  rows: PropTypes.oneOf([
+  rows: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.shape({
       xs: PropTypes.string,

@@ -47,7 +47,7 @@ GridSpan.propTypes = {
   /**
    * Number of columns to span.
    */
-  columns: PropTypes.oneOf([
+  columns: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.shape({
       xs: PropTypes.number,
@@ -66,7 +66,7 @@ GridSpan.propTypes = {
   /**
    * Number of rows to span.
    */
-  rows: PropTypes.oneOf([
+  rows: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.shape({
       xs: PropTypes.number,
