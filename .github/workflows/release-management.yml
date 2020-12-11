@@ -83,6 +83,8 @@ jobs:
         uses: JamesMGreene/node-draft-releaser@v1.1.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          allow_release_name_update: 'false'
 
       - name: Write out the release URL
         run: echo "Released at $RELEASE_URL"
