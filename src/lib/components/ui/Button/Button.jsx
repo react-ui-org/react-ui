@@ -32,8 +32,8 @@ export const Button = ({
   let labelVisibilityClass = '';
   let loadingClass = '';
 
-  if (priority === 'default') {
-    priorityClass = styles.priorityDefault;
+  if (priority === 'filled') {
+    priorityClass = styles.priorityFilled;
   } else if (priority === 'outline') {
     priorityClass = styles.priorityOutline;
   } else if (priority === 'flat') {
@@ -153,7 +153,7 @@ Button.defaultProps = {
   id: undefined,
   labelVisibility: 'all',
   loadingIcon: null,
-  priority: 'default',
+  priority: 'filled',
   size: 'medium',
   startCorner: null,
   type: 'button',
@@ -217,7 +217,7 @@ Button.propTypes = {
   /**
    * Visual priority to highlight or suppress the button.
    */
-  priority: PropTypes.oneOf(['default', 'outline', 'flat', 'link']),
+  priority: PropTypes.oneOf(['filled', 'outline', 'flat', 'link']),
   /**
    * Size of the button.
    */

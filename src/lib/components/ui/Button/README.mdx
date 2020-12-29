@@ -47,7 +47,7 @@ See [API](#api) for all available options.
 There are three **visual priorities** of buttons to choose from, from highest to
 lowest:
 
-1. default
+1. filled
 2. outline
 3. flat
 
@@ -62,7 +62,7 @@ All priorities come in following **color variants**:
 To complete the list, there is also a link priority which is reserved for
 special cases.
 
-### Default
+### Filled
 
 The default, high-emphasis priority should be used for primary actions of your
 app. Use it sparingly but remember there should always be one on a screen.
@@ -76,7 +76,7 @@ app. Use it sparingly but remember there should always be one on a screen.
   <Button label="Dark" variant="dark" />
 </Playground>
 
-Default, unconfigured button comes in **medium** size, **default** visual
+Default, unconfigured button comes in **medium** size, **filled** visual
 priority, and **primary** color variant.
 
 ### Outline
@@ -237,7 +237,7 @@ Badges play nicely with icon buttons, too:
 Disabled state makes the action unavailable.
 
 <Playground>
-  <Button label="Disabled default button" disabled />
+  <Button label="Disabled filled button" disabled />
   <Button label="Disabled outline button" priority="outline" disabled />
   <Button label="Disabled flat button" priority="flat" disabled />
 </Playground>

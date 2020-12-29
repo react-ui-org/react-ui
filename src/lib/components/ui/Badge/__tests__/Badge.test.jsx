@@ -4,15 +4,7 @@ import { shallowToJson } from 'enzyme-to-json';
 import { Badge } from '../Badge';
 
 describe('rendering', () => {
-  it('renders correctly with number label', () => {
-    const tree = shallow(
-      <Badge label={3} />,
-    );
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly with string label', () => {
+  it('renders correctly with label', () => {
     const tree = shallow(
       <Badge label="label" />,
     );

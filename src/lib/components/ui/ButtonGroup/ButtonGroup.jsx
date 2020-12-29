@@ -37,7 +37,7 @@ export const ButtonGroup = ({
 ButtonGroup.defaultProps = {
   block: false,
   disabled: false,
-  priority: 'default',
+  priority: 'filled',
   size: 'medium',
 };
 
@@ -57,7 +57,7 @@ ButtonGroup.propTypes = {
   /**
    * Visual priority to highlight or suppress the buttons.
    */
-  priority: PropTypes.oneOf(['default', 'outline', 'flat']),
+  priority: PropTypes.oneOf(['filled', 'outline', 'flat']),
   /**
    * Size of the buttons.
    */

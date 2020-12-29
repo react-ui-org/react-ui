@@ -2,28 +2,28 @@
 @use 'theme';
 @use 'tools';
 
-.priorityDefault.variantPrimary {
-  @include tools.button-variant(default, primary);
+.priorityFilled.variantPrimary {
+  @include tools.button-variant(filled, primary);
 }
 
-.priorityDefault.variantSecondary {
-  @include tools.button-variant(default, secondary);
+.priorityFilled.variantSecondary {
+  @include tools.button-variant(filled, secondary);
 }
 
-.priorityDefault.variantSuccess {
-  @include tools.button-variant(default, success);
+.priorityFilled.variantSuccess {
+  @include tools.button-variant(filled, success);
 }
 
-.priorityDefault.variantWarning {
-  @include tools.button-variant(default, warning);
+.priorityFilled.variantWarning {
+  @include tools.button-variant(filled, warning);
 }
 
-.priorityDefault.variantDanger {
-  @include tools.button-variant(default, danger);
+.priorityFilled.variantDanger {
+  @include tools.button-variant(filled, danger);
 }
 
-.priorityDefault.variantDark {
-  @include tools.button-variant(default, dark);
+.priorityFilled.variantDark {
+  @include tools.button-variant(filled, dark);
 }
 
 .priorityOutline.variantPrimary {
@@ -78,7 +78,7 @@
   @include tools.button-link();
 }
 
-.priorityDefault.isRootGrouped:not(:first-child)::before,
+.priorityFilled.isRootGrouped:not(:first-child)::before,
 .priorityFlat.isRootGrouped:not(:first-child)::before {
   content: '';
   position: absolute;
