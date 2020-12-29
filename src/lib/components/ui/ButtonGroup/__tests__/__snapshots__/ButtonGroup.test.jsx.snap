@@ -11,7 +11,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
     grouped={true}
     key=".0"
     label="One"
-    priority="default"
+    priority="filled"
     size="medium"
   />
   <ForwardRef(withForwardedRef(Button))
@@ -20,7 +20,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
     grouped={true}
     key=".1"
     label="Two"
-    priority="default"
+    priority="filled"
     size="medium"
   />
 </div>
@@ -63,7 +63,7 @@ exports[`rendering renders correctly size 1`] = `
     grouped={true}
     key=".0"
     label="One"
-    priority="default"
+    priority="filled"
     size="large"
   />
   <ForwardRef(withForwardedRef(Button))
@@ -72,7 +72,7 @@ exports[`rendering renders correctly size 1`] = `
     grouped={true}
     key=".1"
     label="Two"
-    priority="default"
+    priority="filled"
     size="large"
   />
 </div>

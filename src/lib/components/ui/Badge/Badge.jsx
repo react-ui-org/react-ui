@@ -49,7 +49,7 @@ export const Badge = (props) => {
 
 Badge.defaultProps = {
   id: undefined,
-  priority: 'default',
+  priority: 'filled',
   type: 'note',
 };
 
@@ -68,7 +68,7 @@ Badge.propTypes = {
   /**
    * Visual priority to highlight or suppress the badge.
    */
-  priority: PropTypes.oneOf(['default', 'outline']),
+  priority: PropTypes.oneOf(['filled', 'outline']),
   /**
    * Color variant to clarify importance and meaning of the badge.
    */

@@ -224,7 +224,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                         Object {
                           "current": <button
                             class="root
-        priorityDefault
+        priorityFilled
         sizeMedium
         variantPrimary"
                             type="button"
@@ -241,7 +241,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                       label="Action"
                       labelVisibility="all"
                       loadingIcon={null}
-                      priority="default"
+                      priority="filled"
                       size="medium"
                       startCorner={null}
                       type="button"
@@ -249,7 +249,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
                     >
                       <button
                         className="root
-        priorityDefault
+        priorityFilled
         sizeMedium
         variantPrimary"
                         disabled={false}
@@ -561,7 +561,7 @@ exports[`rendering renders correctly with all props except translations and with
                         Object {
                           "current": <button
                             class="root
-        priorityDefault
+        priorityFilled
         sizeMedium
         variantPrimary
         
@@ -594,7 +594,7 @@ exports[`rendering renders correctly with all props except translations and with
                           className="icon"
                         />
                       }
-                      priority="default"
+                      priority="filled"
                       size="medium"
                       startCorner={null}
                       type="button"
@@ -602,7 +602,7 @@ exports[`rendering renders correctly with all props except translations and with
                     >
                       <button
                         className="root
-        priorityDefault
+        priorityFilled
         sizeMedium
         variantPrimary
         

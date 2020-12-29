@@ -21,7 +21,7 @@ exports[`rendering renders correctly flat 1`] = `
 exports[`rendering renders correctly label visibility 1`] = `
 <button
   className="root
-        priorityDefault
+        priorityFilled
         sizeMedium
         variantPrimary
         
@@ -42,7 +42,7 @@ exports[`rendering renders correctly label visibility 1`] = `
 exports[`rendering renders correctly mandatory props only 1`] = `
 <button
   className="root
-        priorityDefault
+        priorityFilled
         sizeMedium
         variantPrimary"
   disabled={false}
@@ -126,7 +126,7 @@ exports[`rendering renders correctly priority 1`] = `
 exports[`rendering renders correctly size 1`] = `
 <button
   className="root
-        priorityDefault
+        priorityFilled
         sizeLarge
         variantPrimary"
   disabled={false}
@@ -144,7 +144,7 @@ exports[`rendering renders correctly size 1`] = `
 exports[`rendering renders correctly variant 1`] = `
 <button
   className="root
-        priorityDefault
+        priorityFilled
         sizeMedium
         variantSuccess"
   disabled={false}
@@ -179,7 +179,7 @@ exports[`rendering renders correctly with all props 1`] = `
   >
     <Badge
       label={1}
-      priority="default"
+      priority="filled"
       type="note"
     />
   </span>
@@ -208,7 +208,7 @@ exports[`rendering renders correctly with all props 1`] = `
   >
     <Badge
       label={2}
-      priority="default"
+      priority="filled"
       type="note"
     />
   </span>
@@ -225,7 +225,7 @@ exports[`rendering renders correctly with all props 1`] = `
 exports[`rendering renders correctly with icon 1`] = `
 <button
   className="root
-        priorityDefault
+        priorityFilled
         sizeMedium
         variantPrimary"
   disabled={false}

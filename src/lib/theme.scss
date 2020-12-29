@@ -194,91 +194,91 @@
   --rui-button-border-width: var(--rui-border-width);
   --rui-button-border-radius: var(--rui-border-radius);
 
-  // Buttons: default priority
+  // Buttons: filled priority
 
-  // Buttons: default priority: primary variant
-  --rui-button-default-primary-default-color: var(--rui-color-on-primary);
-  --rui-button-default-primary-default-border-color: var(--rui-color-primary);
-  --rui-button-default-primary-default-background: var(--rui-color-primary);
-  --rui-button-default-primary-default-box-shadow: none;
-  --rui-button-default-primary-hover-color: var(--rui-color-on-primary);
-  --rui-button-default-primary-hover-border-color: var(--rui-color-primary-dark);
-  --rui-button-default-primary-hover-background: var(--rui-color-primary-dark);
-  --rui-button-default-primary-hover-box-shadow: none;
-  --rui-button-default-primary-active-color: var(--rui-color-on-primary);
-  --rui-button-default-primary-active-border-color: var(--rui-color-primary-darker);
-  --rui-button-default-primary-active-background: var(--rui-color-primary-darker);
-  --rui-button-default-primary-active-box-shadow: none;
+  // Buttons: filled priority: primary variant
+  --rui-button-filled-primary-default-color: var(--rui-color-on-primary);
+  --rui-button-filled-primary-default-border-color: var(--rui-color-primary);
+  --rui-button-filled-primary-default-background: var(--rui-color-primary);
+  --rui-button-filled-primary-default-box-shadow: none;
+  --rui-button-filled-primary-hover-color: var(--rui-color-on-primary);
+  --rui-button-filled-primary-hover-border-color: var(--rui-color-primary-dark);
+  --rui-button-filled-primary-hover-background: var(--rui-color-primary-dark);
+  --rui-button-filled-primary-hover-box-shadow: none;
+  --rui-button-filled-primary-active-color: var(--rui-color-on-primary);
+  --rui-button-filled-primary-active-border-color: var(--rui-color-primary-darker);
+  --rui-button-filled-primary-active-background: var(--rui-color-primary-darker);
+  --rui-button-filled-primary-active-box-shadow: none;
 
-  // Buttons: default priority: secondary variant
-  --rui-button-default-secondary-default-color: var(--rui-color-on-secondary);
-  --rui-button-default-secondary-default-border-color: var(--rui-color-secondary);
-  --rui-button-default-secondary-default-background: var(--rui-color-secondary);
-  --rui-button-default-secondary-default-box-shadow: none;
-  --rui-button-default-secondary-hover-color: var(--rui-color-on-secondary);
-  --rui-button-default-secondary-hover-border-color: var(--rui-color-secondary-dark);
-  --rui-button-default-secondary-hover-background: var(--rui-color-secondary-dark);
-  --rui-button-default-secondary-hover-box-shadow: none;
-  --rui-button-default-secondary-active-color: var(--rui-color-on-secondary);
-  --rui-button-default-secondary-active-border-color: var(--rui-color-secondary-darker);
-  --rui-button-default-secondary-active-background: var(--rui-color-secondary-darker);
-  --rui-button-default-secondary-active-box-shadow: none;
+  // Buttons: filled priority: secondary variant
+  --rui-button-filled-secondary-default-color: var(--rui-color-on-secondary);
+  --rui-button-filled-secondary-default-border-color: var(--rui-color-secondary);
+  --rui-button-filled-secondary-default-background: var(--rui-color-secondary);
+  --rui-button-filled-secondary-default-box-shadow: none;
+  --rui-button-filled-secondary-hover-color: var(--rui-color-on-secondary);
+  --rui-button-filled-secondary-hover-border-color: var(--rui-color-secondary-dark);
+  --rui-button-filled-secondary-hover-background: var(--rui-color-secondary-dark);
+  --rui-button-filled-secondary-hover-box-shadow: none;
+  --rui-button-filled-secondary-active-color: var(--rui-color-on-secondary);
+  --rui-button-filled-secondary-active-border-color: var(--rui-color-secondary-darker);
+  --rui-button-filled-secondary-active-background: var(--rui-color-secondary-darker);
+  --rui-button-filled-secondary-active-box-shadow: none;
 
-  // Buttons: default priority: success variant
-  --rui-button-default-success-default-color: var(--rui-color-on-success);
-  --rui-button-default-success-default-border-color: var(--rui-color-success);
-  --rui-button-default-success-default-background: var(--rui-color-success);
-  --rui-button-default-success-default-box-shadow: none;
-  --rui-button-default-success-hover-color: var(--rui-color-on-success);
-  --rui-button-default-success-hover-border-color: var(--rui-color-success-dark);
-  --rui-button-default-success-hover-background: var(--rui-color-success-dark);
-  --rui-button-default-success-hover-box-shadow: none;
-  --rui-button-default-success-active-color: var(--rui-color-on-success);
-  --rui-button-default-success-active-border-color: var(--rui-color-success-darker);
-  --rui-button-default-success-active-background: var(--rui-color-success-darker);
-  --rui-button-default-success-active-box-shadow: none;
+  // Buttons: filled priority: success variant
+  --rui-button-filled-success-default-color: var(--rui-color-on-success);
+  --rui-button-filled-success-default-border-color: var(--rui-color-success);
+  --rui-button-filled-success-default-background: var(--rui-color-success);
+  --rui-button-filled-success-default-box-shadow: none;
+  --rui-button-filled-success-hover-color: var(--rui-color-on-success);
+  --rui-button-filled-success-hover-border-color: var(--rui-color-success-dark);
+  --rui-button-filled-success-hover-background: var(--rui-color-success-dark);
+  --rui-button-filled-success-hover-box-shadow: none;
+  --rui-button-filled-success-active-color: var(--rui-color-on-success);
+  --rui-button-filled-success-active-border-color: var(--rui-color-success-darker);
+  --rui-button-filled-success-active-background: var(--rui-color-success-darker);
+  --rui-button-filled-success-active-box-shadow: none;
 
-  // Buttons: default priority: warning variant
-  --rui-button-default-warning-default-color: var(--rui-color-on-warning);
-  --rui-button-default-warning-default-border-color: var(--rui-color-warning);
-  --rui-button-default-warning-default-background: var(--rui-color-warning);
-  --rui-button-default-warning-default-box-shadow: none;
-  --rui-button-default-warning-hover-color: var(--rui-color-on-warning);
-  --rui-button-default-warning-hover-border-color: var(--rui-color-warning-dark);
-  --rui-button-default-warning-hover-background: var(--rui-color-warning-dark);
-  --rui-button-default-warning-hover-box-shadow: none;
-  --rui-button-default-warning-active-color: var(--rui-color-on-warning);
-  --rui-button-default-warning-active-border-color: var(--rui-color-warning-darker);
-  --rui-button-default-warning-active-background: var(--rui-color-warning-darker);
-  --rui-button-default-warning-active-box-shadow: none;
+  // Buttons: filled priority: warning variant
+  --rui-button-filled-warning-default-color: var(--rui-color-on-warning);
+  --rui-button-filled-warning-default-border-color: var(--rui-color-warning);
+  --rui-button-filled-warning-default-background: var(--rui-color-warning);
+  --rui-button-filled-warning-default-box-shadow: none;
+  --rui-button-filled-warning-hover-color: var(--rui-color-on-warning);
+  --rui-button-filled-warning-hover-border-color: var(--rui-color-warning-dark);
+  --rui-button-filled-warning-hover-background: var(--rui-color-warning-dark);
+  --rui-button-filled-warning-hover-box-shadow: none;
+  --rui-button-filled-warning-active-color: var(--rui-color-on-warning);
+  --rui-button-filled-warning-active-border-color: var(--rui-color-warning-darker);
+  --rui-button-filled-warning-active-background: var(--rui-color-warning-darker);
+  --rui-button-filled-warning-active-box-shadow: none;
 
-  // Buttons: default priority: danger variant (uses error color)
-  --rui-button-default-danger-default-color: var(--rui-color-on-error);
-  --rui-button-default-danger-default-border-color: var(--rui-color-error);
-  --rui-button-default-danger-default-background: var(--rui-color-error);
-  --rui-button-default-danger-default-box-shadow: none;
-  --rui-button-default-danger-hover-color: var(--rui-color-on-error);
-  --rui-button-default-danger-hover-border-color: var(--rui-color-error-dark);
-  --rui-button-default-danger-hover-background: var(--rui-color-error-dark);
-  --rui-button-default-danger-hover-box-shadow: none;
-  --rui-button-default-danger-active-color: var(--rui-color-on-error);
-  --rui-button-default-danger-active-border-color: var(--rui-color-error-darker);
-  --rui-button-default-danger-active-background: var(--rui-color-error-darker);
-  --rui-button-default-danger-active-box-shadow: none;
+  // Buttons: filled priority: danger variant (uses error color)
+  --rui-button-filled-danger-default-color: var(--rui-color-on-error);
+  --rui-button-filled-danger-default-border-color: var(--rui-color-error);
+  --rui-button-filled-danger-default-background: var(--rui-color-error);
+  --rui-button-filled-danger-default-box-shadow: none;
+  --rui-button-filled-danger-hover-color: var(--rui-color-on-error);
+  --rui-button-filled-danger-hover-border-color: var(--rui-color-error-dark);
+  --rui-button-filled-danger-hover-background: var(--rui-color-error-dark);
+  --rui-button-filled-danger-hover-box-shadow: none;
+  --rui-button-filled-danger-active-color: var(--rui-color-on-error);
+  --rui-button-filled-danger-active-border-color: var(--rui-color-error-darker);
+  --rui-button-filled-danger-active-background: var(--rui-color-error-darker);
+  --rui-button-filled-danger-active-box-shadow: none;
 
-  // Buttons: default priority: dark variant
-  --rui-button-default-dark-default-color: var(--rui-color-white);
-  --rui-button-default-dark-default-border-color: var(--rui-color-gray-700);
-  --rui-button-default-dark-default-background: var(--rui-color-gray-700);
-  --rui-button-default-dark-default-box-shadow: none;
-  --rui-button-default-dark-hover-color: var(--rui-color-white);
-  --rui-button-default-dark-hover-border-color: var(--rui-color-gray-800);
-  --rui-button-default-dark-hover-background: var(--rui-color-gray-800);
-  --rui-button-default-dark-hover-box-shadow: none;
-  --rui-button-default-dark-active-color: var(--rui-color-white);
-  --rui-button-default-dark-active-border-color: var(--rui-color-gray-900);
-  --rui-button-default-dark-active-background: var(--rui-color-gray-900);
-  --rui-button-default-dark-active-box-shadow: none;
+  // Buttons: filled priority: dark variant
+  --rui-button-filled-dark-default-color: var(--rui-color-white);
+  --rui-button-filled-dark-default-border-color: var(--rui-color-gray-700);
+  --rui-button-filled-dark-default-background: var(--rui-color-gray-700);
+  --rui-button-filled-dark-default-box-shadow: none;
+  --rui-button-filled-dark-hover-color: var(--rui-color-white);
+  --rui-button-filled-dark-hover-border-color: var(--rui-color-gray-800);
+  --rui-button-filled-dark-hover-background: var(--rui-color-gray-800);
+  --rui-button-filled-dark-hover-box-shadow: none;
+  --rui-button-filled-dark-active-color: var(--rui-color-white);
+  --rui-button-filled-dark-active-border-color: var(--rui-color-gray-900);
+  --rui-button-filled-dark-active-background: var(--rui-color-gray-900);
+  --rui-button-filled-dark-active-box-shadow: none;
 
   // Buttons: outline priority
 
