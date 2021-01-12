@@ -3,8 +3,8 @@
 @mixin field-size($size, $is-multiline: false) {
   $size-properties: map-get(theme.$field-sizes, $size);
 
-  --rui-local-padding-vertical: #{map-get($size-properties, padding-vertical)};
-  --rui-local-padding-horizontal: #{map-get($size-properties, padding-horizontal)};
+  --rui-local-padding-y: #{map-get($size-properties, padding-y)};
+  --rui-local-padding-x: #{map-get($size-properties, padding-x)};
   --rui-local-font-size: #{map-get($size-properties, font-size)};
 
   .input {

@@ -68,11 +68,14 @@ export default {
     },
     styles: {
       Container: {
+        '& > table': {
+          fontSize: 'smaller',
+        },
         '& [data-testid="live-preview"]': {
           fontSize: '1rem', // Set the font size in playground to override the docs theme default.
           p: 3,
         },
-        '& [data-testid="live-preview"] > *': {
+        '& [data-testid="live-preview"] > *:not(.example), & [data-testid="live-preview"] .example > *': {
           m: 1,
           maxWidth: ['-webkit-fill-available', '-moz-available'], // Fix overflowing full-width components in some browsers.
         },

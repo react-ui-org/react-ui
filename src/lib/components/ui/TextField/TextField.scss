@@ -3,7 +3,6 @@
 @use '../../../styles/tools/forms/layouts';
 @use '../../../styles/tools/forms/relationships';
 @use '../../../styles/tools/forms/sizes';
-@use '../../../styles/tools/forms/states';
 @use '../../../styles/tools/forms/variants';
 
 // Foundation
@@ -34,30 +33,30 @@
   @include foundation.field-help-text();
 }
 
-// Variants
-.rootVariantFilled .input {
-  @include variants.field-input-variant(filled);
-}
-
-.rootVariantOutline .input {
-  @include variants.field-input-variant(outline);
-}
-
-// States
 .isRootRequired .label {
   @include foundation.field-label-required();
 }
 
+// Variants
+.rootVariantFilled {
+  @include variants.field-variant(filled);
+}
+
+.rootVariantOutline {
+  @include variants.field-variant(outline);
+}
+
+// States
 .isRootStateInvalid {
-  @include states.field-state(invalid);
+  @include variants.field-variant(invalid);
 }
 
 .isRootStateValid {
-  @include states.field-state(valid);
+  @include variants.field-variant(valid);
 }
 
 .isRootStateWarning {
-  @include states.field-state(warning);
+  @include variants.field-variant(warning);
 }
 
 // Invisible label

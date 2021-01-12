@@ -34,6 +34,7 @@ export const TextArea = ({
       fullWidth ? styles.isRootFullWidth : '',
       inFormLayout ? styles.isRootInFormLayout : '',
       layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
+      disabled ? styles.isRootDisabled : '',
       required ? styles.isRootRequired : '',
       getRootSizeClassName(size, styles),
       getRootValidationStateClassName(validationState, styles),
