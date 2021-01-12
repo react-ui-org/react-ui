@@ -16,3 +16,17 @@ $field-horizontal-inner-gap: spacing.of(2);
 $field-horizontal-outer-spacing: spacing.of(2);
 $field-vertical-inner-gap: spacing.of(1);
 $field-vertical-outer-spacing: spacing.of(2);
+
+$themeable-variant-states: (
+  filled: (default, hover, focus, disabled),
+  outline: (default, hover, focus, disabled),
+  invalid: (default, disabled),
+  valid: (default, disabled),
+  warning: (default, disabled),
+);
+$themeable-state-properties: (
+  default: (color, border-color, background, box-shadow, surrounding-text-color),
+  hover: (color, border-color, background, box-shadow),
+  focus: (color, border-color, background, box-shadow),
+  disabled: (color, border-color, background, box-shadow, surrounding-text-color),
+);

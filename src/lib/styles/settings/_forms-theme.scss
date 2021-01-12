@@ -1,6 +1,12 @@
+// Variant specific theme options are obtained dynamically because there is way too many of them to
+// maintain manually. See `tools/forms/_variants.scss` for details.
+
 $field-input-width: var(--rui-form-field-input-width);
 $field-input-min-width: var(--rui-form-field-input-min-width);
-$field-disabled-select-option-color: var(--rui-form-field-disabled-select-option-color);
+$field-border-width: var(--rui-form-field-border-width);
+$field-border-radius: var(--rui-form-field-border-radius);
+
+$field-label-color: var(--rui-form-field-label-color);
 $field-label-font-size: var(--rui-form-field-label-font-size);
 $field-placeholder-color: var(--rui-form-field-placeholder-color);
 $field-help-text-font-size: var(--rui-form-field-help-text-font-size);
@@ -10,76 +16,33 @@ $field-required-sign: var(--rui-form-field-required-sign);
 $field-required-sign-color: var(--rui-form-field-required-sign-color);
 $field-caret-border-style: var(--rui-form-field-caret-border-style);
 $field-caret-background: var(--rui-form-field-caret-background);
-$field-border-width: var(--rui-form-field-border-width);
-$field-border-color: var(--rui-form-field-border-color);
-$field-border-radius: var(--rui-form-field-border-radius);
-$field-hover-border-color: var(--rui-form-field-hover-border-color);
-$field-focus-border-color: var(--rui-form-field-focus-border-color);
+
+$field-disabled-cursor: var(--rui-form-field-disabled-cursor);
+$field-disabled-opacity: var(--rui-form-field-disabled-opacity);
+$field-disabled-select-option-color: var(--rui-form-field-disabled-select-option-color);
+
 $field-horizontal-label-alignment: var(--rui-form-field-horizontal-label-alignment);
 $field-horizontal-label-min-width: var(--rui-form-field-horizontal-label-min-width);
 $field-horizontal-label-width: var(--rui-form-field-horizontal-label-width);
 $field-horizontal-full-width-label-width: var(--rui-form-field-horizontal-full-width-label-width);
 
-$field-variants: (
-  filled: (
-    default: (
-      color: var(--rui-form-field-filled-default-color),
-      background-color: var(--rui-form-field-filled-default-background),
-    ),
-    focus: (
-      color: var(--rui-form-field-filled-focus-color),
-      background-color: var(--rui-form-field-filled-focus-background),
-    ),
-  ),
-  outline: (
-    default: (
-      color: var(--rui-form-field-outline-default-color),
-      background-color: var(--rui-form-field-outline-default-background),
-      box-shadow: var(--rui-form-field-outline-default-box-shadow),
-    ),
-    focus: (
-      color: var(--rui-form-field-outline-focus-color),
-      background-color: var(--rui-form-field-outline-focus-background),
-      box-shadow: var(--rui-form-field-outline-focus-box-shadow),
-    ),
-  ),
-);
-
-$field-states: (
-  invalid: (
-    color: var(--rui-form-field-invalid-color),
-    border-color: var(--rui-form-field-invalid-border-color),
-    background-color: var(--rui-form-field-invalid-background),
-  ),
-  valid: (
-    color: var(--rui-form-field-valid-color),
-    border-color: var(--rui-form-field-valid-border-color),
-    background-color: var(--rui-form-field-valid-background),
-  ),
-  warning: (
-    color: var(--rui-form-field-warning-color),
-    border-color: var(--rui-form-field-warning-border-color),
-    background-color: var(--rui-form-field-warning-background),
-  ),
-);
-
 $field-sizes: (
   small: (
     height: var(--rui-form-field-small-height),
-    padding-vertical: var(--rui-form-field-small-padding-vertical),
-    padding-horizontal: var(--rui-form-field-small-padding-horizontal),
+    padding-y: var(--rui-form-field-small-padding-y),
+    padding-x: var(--rui-form-field-small-padding-x),
     font-size: var(--rui-form-field-small-font-size),
   ),
   medium: (
     height: var(--rui-form-field-medium-height),
-    padding-vertical: var(--rui-form-field-medium-padding-vertical),
-    padding-horizontal: var(--rui-form-field-medium-padding-horizontal),
+    padding-y: var(--rui-form-field-medium-padding-y),
+    padding-x: var(--rui-form-field-medium-padding-x),
     font-size: var(--rui-form-field-medium-font-size),
   ),
   large: (
     height: var(--rui-form-field-large-height),
-    padding-vertical: var(--rui-form-field-large-padding-vertical),
-    padding-horizontal: var(--rui-form-field-large-padding-horizontal),
+    padding-y: var(--rui-form-field-large-padding-y),
+    padding-x: var(--rui-form-field-large-padding-x),
     font-size: var(--rui-form-field-large-font-size),
   ),
 );

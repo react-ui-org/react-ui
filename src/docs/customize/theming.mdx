@@ -6,6 +6,10 @@ route: /customize/theming
 
 # Theming
 
+import { Playground } from 'docz'
+import { SelectField } from '../../lib/components/ui/SelectField/SelectField'
+import { TextField } from '../../lib/components/ui/TextField/TextField'
+
 From the very beginning, React UI has been designed with a great emphasis on
 customizability. We decided to leverage CSS custom properties for this feature
 for two main reasons:
@@ -60,6 +64,371 @@ for the full list of available settings.
 custom properties
 [cannot be used within media queries](https://www.w3.org/TR/css-variables-1/#using-variables)
 (because media query is not a CSS property).
+
+## Forms
+
+### Basic Theming
+
+The following theme options define basic appearance of form fields. The options
+can be divided into three groups by their specificity:
+
+#### Common Options
+
+Theming options affecting all form components.
+
+| Custom Property                                      | Description                                                  |
+|------------------------------------------------------|--------------------------------------------------------------|
+| `--rui-form-field-label-color`                       | Label text color                                             |
+| `--rui-form-field-label-font-size`                   | Label font size                                              |
+| `--rui-form-field-help-text-font-size`               | Help text font size                                          |
+| `--rui-form-field-help-text-font-style`              | Help text font style, eg. italic                             |
+| `--rui-form-field-help-text-color`                   | Help text color                                              |
+| `--rui-form-field-required-sign`                     | Text appended to required input labels                       |
+| `--rui-form-field-required-sign-color`               | Color of text appended to required input labels              |
+| `--rui-form-field-disabled-cursor`                   | Cursor to show on hovering disabled form fields              |
+| `--rui-form-field-disabled-opacity`                  | Opacity of disabled form fields (inc. label and help text)   |
+| `--rui-form-field-horizontal-label-alignment`        | Text alignment of labels in horizontal layout                |
+| `--rui-form-field-horizontal-label-min-width`        | Minimum width of labels in horizontal layout                 |
+| `--rui-form-field-horizontal-label-width`            | Default width of labels in horizontal layout                 |
+| `--rui-form-field-horizontal-full-width-label-width` | Default width of labels in full-width horizontal layout      |
+
+#### Shared TextField, TextArea and SelectField Options
+
+Options shared by some components. This includes
+[TextField](/components/ui/text-field),
+[TextArea](/components/ui/text-area), and
+[SelectField](/components/ui/select-field).
+
+| Custom Property                                      | Description                                                  |
+|------------------------------------------------------|--------------------------------------------------------------|
+| `--rui-form-field-input-width`                       | Default text input and select box width                      |
+| `--rui-form-field-input-min-width`                   | Minimum text input and select box width                      |
+| `--rui-form-field-border-width`                      | Control border width                                         |
+| `--rui-form-field-border-radius`                     | Control corner radius                                        |
+| `--rui-form-field-placeholder-color`                 | Placeholder text color                                       |
+
+#### SelectField Specific Options
+
+| Custom Property                                      | Description                                                  |
+|------------------------------------------------------|--------------------------------------------------------------|
+| `--rui-form-field-caret-border-style`                | SelectField arrow border style (eg. solid)                   |
+| `--rui-form-field-caret-background`                  | SelectField arrow background                                 |
+| `--rui-form-field-disabled-select-option-color`      | Text color of disabled SelectField options                   |
+
+#### Example
+
+<Playground>
+{() => {
+  const [fruit, setFruit] = React.useState('apple');
+  const options = [
+    {
+      label: 'Apple',
+      value: 'apple',
+    },
+    {
+      label: 'Banana',
+      value: 'banana',
+    },
+    {
+      label: 'Grapefruit',
+      value: 'grapefruit',
+    },
+  ];
+  return (
+    <>
+      <style type="text/css">
+        {`
+          .example--themed-form-fields {
+            --rui-form-field-input-width: 300px;
+            --rui-form-field-border-width: 2px;
+            --rui-form-field-border-radius: 0.5rem;
+            --rui-form-field-caret-border-style: solid;
+          }
+        `}
+      </style>
+      <TextField
+        id="default-outline-text-field"
+        label="Default outline text field"
+      />
+      <TextField
+        id="default-filled-text-field"
+        label="Default filled text field"
+        variant="filled"
+      />
+      <SelectField
+        changeHandler={(e) => setFruit(e.target.value)}
+        id="default-outline-select-field"
+        label="Default outline select field"
+        options={options}
+        value={fruit}
+      />
+      <div className="example example--themed-form-fields">
+        <TextField
+          id="themed-outline-text-field"
+          label="Themed outline text field"
+        />
+        <TextField
+          id="themed-filled-text-field"
+          label="Themed filled text field"
+          variant="filled"
+        />
+        <SelectField
+          changeHandler={(e) => setFruit(e.target.value)}
+          id="themed-outline-select-field"
+          label="Themed outline select field"
+          options={options}
+          value={fruit}
+        />
+      </div>
+    </>
+  )
+}}
+</Playground>
+
+#### Validation States
+
+Theming options for validation states are shared by all components. Naming
+convention looks as follows:
+
+`--rui-form-field-<VALIDATION STATE>-<INTERACTION STATE>-<PROPERTY>`
+
+Where:
+
+- `<VALIDATION STATE>` is one of `invalid`, `valid`, or `warning`
+- `<INTERACTION STATE>` is one of `default` or `disabled`
+- `<PROPERTY>` is one of `color`, `border-color`, `background`, `box-shadow`, or
+  `surrounding-text-color`
+
+Not all properties are used by all components, this varies from component to
+component. Also, `hover` interaction state is unavailable for validation states,
+`default` state appearance is retained on hovering. `focus` state is inherited
+from default form field appearance (i.e. as if no validation state was set).
+
+Example:
+
+<Playground>
+{() => {
+  const [fruit, setFruit] = React.useState('apple');
+  const options = [
+    {
+      label: 'Apple',
+      value: 'apple',
+    },
+    {
+      label: 'Banana',
+      value: 'banana',
+    },
+    {
+      label: 'Grapefruit',
+      value: 'grapefruit',
+    },
+  ];
+  return (
+    <>
+      <style type="text/css">
+        {`
+        .example--themed-form-field-validation-states {
+          --rui-form-field-valid-default-color: white;
+          --rui-form-field-valid-default-background: var(--rui-color-success);
+        }
+      `}
+      </style>
+      <TextField
+        id="default-valid-text-field"
+        label="Default valid text field"
+        validationState="valid"
+        validationText="This field is valid"
+      />
+      <SelectField
+        changeHandler={(e) => setFruit(e.target.value)}
+        id="default-valid-select-field"
+        label="Default valid select field"
+        options={options}
+        validationState="valid"
+        validationText="This field is valid"
+        value={fruit}
+      />
+      <div className="example example--themed-form-field-validation-states">
+        <TextField
+          id="themed-valid-text-field"
+          label="Themed valid text field"
+          validationState="valid"
+          validationText="This field is valid"
+        />
+        <SelectField
+          changeHandler={(e) => setFruit(e.target.value)}
+          id="themed-valid-select-field"
+          label="Themed valid select field"
+          options={options}
+          validationState="valid"
+          validationText="This field is valid"
+          value={fruit}
+        />
+      </div>
+    </>
+  )
+}}
+</Playground>
+
+#### Text Control and Select Box Variants
+
+Theming options for textual controls and select boxes:
+[TextField](/components/ui/text-field),
+[TextArea](/components/ui/text-area), and
+[SelectField](/components/ui/select-field).
+Naming is very similar to validation state options:
+
+`--rui-form-field-<VISUAL VARIANT>-<INTERACTION STATE>-<PROPERTY>`
+
+Where:
+
+- `<VISUAL VARIANT>` is one of `filled` or `outline`
+- `<INTERACTION STATE>` is one of `default`, `hover`, `focus`, or `disabled`
+- `<PROPERTY>` is one of `color`, `border-color`, `background`, `box-shadow`, or
+  `surrounding-text-color` (the last one being available only for
+  `default` and `disabled` interaction states)
+
+Example:
+
+<Playground>
+{() => {
+  const [fruit, setFruit] = React.useState('apple');
+  const options = [
+    {
+      label: 'Apple',
+      value: 'apple',
+    },
+    {
+      label: 'Banana',
+      value: 'banana',
+    },
+    {
+      label: 'Grapefruit',
+      value: 'grapefruit',
+    },
+  ];
+  return (
+    <>
+      <style type="text/css">
+        {`
+        .example--themed-form-field-variants {
+          --rui-form-field-border-width: 0px;
+          --rui-form-field-outline-default-box-shadow:
+            0.1em 0.1em 0.5em rgba(0, 0, 0, 0.2);
+          --rui-form-field-outline-hover-box-shadow:
+            0.1em 0.1em 0.75em rgba(0, 0, 0, 0.3);
+          --rui-form-field-outline-focus-box-shadow:
+            inset 0.1em 0.1em 0.25em rgba(0, 0, 0, 0.2);
+        }
+      `}
+      </style>
+      <TextField
+        id="default-outline-text-field"
+        label="Default outline text field"
+      />
+      <SelectField
+        changeHandler={(e) => setFruit(e.target.value)}
+        id="default-outline-select-field"
+        label="Default outline select field"
+        options={options}
+        value={fruit}
+      />
+      <div className="example example--themed-form-field-variants">
+        <TextField
+          id="themed-outline-text-field"
+          label="Themed outline text field"
+        />
+        <SelectField
+          changeHandler={(e) => setFruit(e.target.value)}
+          id="themed-outline-select-field"
+          label="Themed outline select field"
+          options={options}
+          value={fruit}
+        />
+      </div>
+    </>
+  )
+}}
+</Playground>
+
+### Form Field Sizes
+
+Available sizes can be adjusted as follows:
+
+`--rui-form-field-<SIZE>-<PROPERTY>`
+
+Where:
+
+- `<SIZE>` is one of `small`, `medium`, or `large`
+- `<PROPERTY>` is one of `height`, `padding-x`, `padding-y`, or `font-size`
+
+Example:
+
+<Playground>
+{() => {
+  const [fruit, setFruit] = React.useState('apple');
+  const options = [
+    {
+      label: 'Apple',
+      value: 'apple',
+    },
+    {
+      label: 'Banana',
+      value: 'banana',
+    },
+    {
+      label: 'Grapefruit',
+      value: 'grapefruit',
+    },
+  ];
+  return (
+    <>
+      <style type="text/css">
+        {`
+        .example--themed-form-field-sizes {
+          --rui-form-field-border-radius: 0.5rem;
+          --rui-form-field-medium-height: 3rem;
+          --rui-form-field-medium-padding-x: 1.25rem;
+          --rui-form-field-caret-border-style: solid;
+        }
+      `}
+      </style>
+      <TextField
+        id="default-medium-text-field"
+        label="Default medium text field"
+      />
+      <SelectField
+        changeHandler={(e) => setFruit(e.target.value)}
+        id="default-medium-select-field"
+        label="Default medium select field"
+        options={options}
+        value={fruit}
+      />
+      <div className="example example--themed-form-field-sizes">
+        <TextField
+          id="themed-medium-text-field"
+          label="Themed medium text field"
+        />
+        <SelectField
+          changeHandler={(e) => setFruit(e.target.value)}
+          id="themed-medium-select-field"
+          label="Themed medium select field"
+          options={options}
+          value={fruit}
+        />
+      </div>
+    </>
+  )
+}}
+</Playground>
+
+### Form Layout
+
+| Custom Property                                      | Description                                                  |
+|------------------------------------------------------|--------------------------------------------------------------|
+| `--rui-form-layout-horizontal-label-auto-width`      | Width of labels in horizontal form layout, `auto` sizing     |
+| `--rui-form-layout-horizontal-label-limited-width`   | Width of labels in horizontal form layout, `limited` sizing  |
+| `--rui-form-layout-horizontal-label-default-width`   | Width of labels in horizontal form layout, `default` sizing  |
 
 ## Best Practices
 

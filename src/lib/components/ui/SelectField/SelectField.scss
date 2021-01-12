@@ -3,7 +3,6 @@
 @use '../../../styles/tools/forms/layouts';
 @use '../../../styles/tools/forms/relationships';
 @use '../../../styles/tools/forms/sizes';
-@use '../../../styles/tools/forms/states';
 @use '../../../styles/tools/forms/variants';
 
 // Foundation
@@ -43,34 +42,30 @@
   @include foundation.field-help-text();
 }
 
-// Variants
-.rootVariantFilled .input {
-  @include variants.field-input-variant(filled);
-}
-
-.rootVariantOutline .input {
-  @include variants.field-input-variant(outline);
-  @include variants.field-input-outline-caret();
-}
-
-// States
 .isRootRequired .label {
   @include foundation.field-label-required();
 }
 
+// Variants
+.rootVariantFilled {
+  @include variants.field-variant(filled, $has-caret: true);
+}
+
+.rootVariantOutline {
+  @include variants.field-variant(outline, $has-caret: true);
+}
+
+// States
 .isRootStateInvalid {
-  @include states.field-state(invalid);
-  @include states.field-caret-state(invalid);
+  @include variants.field-variant(invalid, $has-caret: true);
 }
 
 .isRootStateValid {
-  @include states.field-state(valid);
-  @include states.field-caret-state(valid);
+  @include variants.field-variant(valid, $has-caret: true);
 }
 
 .isRootStateWarning {
-  @include states.field-state(warning);
-  @include states.field-caret-state(warning);
+  @include variants.field-variant(warning, $has-caret: true);
 }
 
 // Invisible label

@@ -457,73 +457,79 @@
   //    inline grid.
 
   // Forms fields: common properties
-  --rui-form-field-input-width: auto; // 1.
-  --rui-form-field-input-min-width: 240px; // 1.
-  --rui-form-field-disabled-select-option-color: var(--rui-color-gray-300);
+  --rui-form-field-label-color: inherit;
   --rui-form-field-label-font-size: var(--rui-typography-size-0);
-  --rui-form-field-placeholder-color: var(--rui-color-gray-500);
   --rui-form-field-help-text-font-size: var(--rui-typography-size-small);
   --rui-form-field-help-text-font-style: normal;
   --rui-form-field-help-text-color: var(--rui-color-gray-500);
   --rui-form-field-required-sign: '\00a0*'; // 2.
   --rui-form-field-required-sign-color: var(--rui-color-gray-500);
-  --rui-form-field-caret-border-style: none;
-  --rui-form-field-caret-background: transparent;
-  --rui-form-field-border-width: var(--rui-border-width);
-  --rui-form-field-border-radius: var(--rui-border-radius);
-  --rui-form-field-border-color: var(--rui-color-gray-200);
-  --rui-form-field-hover-border-color: var(--rui-color-gray-500);
-  --rui-form-field-focus-border-color: var(--rui-color-primary);
+  --rui-form-field-disabled-cursor: not-allowed;
+  --rui-form-field-disabled-opacity: 0.5;
   --rui-form-field-horizontal-label-alignment: left;
   --rui-form-field-horizontal-label-min-width: 0;
   --rui-form-field-horizontal-label-width: minmax(auto, 50%); // 3.
   --rui-form-field-horizontal-full-width-label-width: fit-content(50%);
 
+  // Form fields: text controls and select boxes
+  --rui-form-field-input-width: auto; // 1.
+  --rui-form-field-input-min-width: 240px; // 1.
+  --rui-form-field-border-width: var(--rui-border-width);
+  --rui-form-field-border-radius: var(--rui-border-radius);
+  --rui-form-field-placeholder-color: var(--rui-color-gray-500);
+
+  // Form fields: component specific
+  --rui-form-field-caret-border-style: none;
+  --rui-form-field-caret-background: transparent;
+  --rui-form-field-disabled-select-option-color: var(--rui-color-gray-300);
+
   // Form fields: filled variant
   --rui-form-field-filled-default-color: var(--rui-page-color);
+  --rui-form-field-filled-default-border-color: var(--rui-color-gray-200);
   --rui-form-field-filled-default-background: var(--rui-color-gray-50);
-  --rui-form-field-filled-focus-color: var(--rui-page-color);
-  --rui-form-field-filled-focus-background: var(--rui-color-gray-50);
+  --rui-form-field-filled-default-box-shadow: none;
+  --rui-form-field-filled-hover-border-color: var(--rui-color-gray-500);
+  --rui-form-field-filled-focus-border-color: var(--rui-color-primary);
 
   // Form fields: outline variant
   --rui-form-field-outline-default-color: var(--rui-page-color);
+  --rui-form-field-outline-default-border-color: var(--rui-color-gray-200);
   --rui-form-field-outline-default-background: var(--rui-color-white);
   --rui-form-field-outline-default-box-shadow: none;
-  --rui-form-field-outline-focus-color: var(--rui-page-color);
-  --rui-form-field-outline-focus-background: var(--rui-color-white);
-  --rui-form-field-outline-focus-box-shadow: none;
+  --rui-form-field-outline-hover-border-color: var(--rui-color-gray-500);
+  --rui-form-field-outline-focus-border-color: var(--rui-color-primary);
 
-  // Form fields: states: invalid
-  --rui-form-field-invalid-color: var(--rui-color-error);
-  --rui-form-field-invalid-border-color: var(--rui-color-error);
-  --rui-form-field-invalid-background: var(--rui-color-error-light);
+  // Form fields: validation states: invalid
+  --rui-form-field-invalid-default-border-color: var(--rui-color-error);
+  --rui-form-field-invalid-default-background: var(--rui-color-error-light);
+  --rui-form-field-invalid-default-surrounding-text-color: var(--rui-color-error);
 
-  // Form fields: states: valid
-  --rui-form-field-valid-color: var(--rui-color-success);
-  --rui-form-field-valid-border-color: var(--rui-color-success);
-  --rui-form-field-valid-background: var(--rui-color-success-light);
+  // Form fields: validation states: valid
+  --rui-form-field-valid-default-border-color: var(--rui-color-success);
+  --rui-form-field-valid-default-background: var(--rui-color-success-light);
+  --rui-form-field-valid-default-surrounding-text-color: var(--rui-color-success);
 
-  // Form fields: states: warning
-  --rui-form-field-warning-color: var(--rui-color-warning-darker);
-  --rui-form-field-warning-border-color: var(--rui-color-warning-darker);
-  --rui-form-field-warning-background: var(--rui-color-warning-light);
+  // Form fields: validation states: warning
+  --rui-form-field-warning-default-border-color: var(--rui-color-warning-darker);
+  --rui-form-field-warning-default-background: var(--rui-color-warning-light);
+  --rui-form-field-warning-default-surrounding-text-color: var(--rui-color-warning-darker);
 
   // Form fields: sizes: small
   --rui-form-field-small-height: 1.75rem;
-  --rui-form-field-small-padding-vertical: 0.0625rem;
-  --rui-form-field-small-padding-horizontal: var(--rui-spacing-2);
+  --rui-form-field-small-padding-y: 0.0625rem;
+  --rui-form-field-small-padding-x: var(--rui-spacing-2);
   --rui-form-field-small-font-size: var(--rui-typography-size-small);
 
   // Form fields: sizes: medium
   --rui-form-field-medium-height: 2.25rem;
-  --rui-form-field-medium-padding-vertical: 0.3125rem;
-  --rui-form-field-medium-padding-horizontal: var(--rui-spacing-3);
+  --rui-form-field-medium-padding-y: 0.3125rem;
+  --rui-form-field-medium-padding-x: var(--rui-spacing-3);
   --rui-form-field-medium-font-size: var(--rui-typography-size-0);
 
   // Form fields: sizes: large
   --rui-form-field-large-height: 2.75rem;
-  --rui-form-field-large-padding-vertical: 0.5625rem;
-  --rui-form-field-large-padding-horizontal: var(--rui-spacing-4);
+  --rui-form-field-large-padding-y: 0.5625rem;
+  --rui-form-field-large-padding-x: var(--rui-spacing-4);
   --rui-form-field-large-font-size: var(--rui-typography-size-1);
 
   //

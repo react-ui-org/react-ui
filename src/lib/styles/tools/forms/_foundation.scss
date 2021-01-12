@@ -1,26 +1,25 @@
 // 1. Get ready for positioning of bottom line and caret.
-// 2. Override hover style of disabled input.
-// 3. Always prefer the `size` and `max` attribute when defined. Use CSS for sizing to normalize
+// 2. Always prefer the `size` and `max` attribute when defined. Use CSS for sizing to normalize
 //    resulting width across browsers.
-// 4. Let inputs properly fit various layout scenarios.
-// 5. Leave out space for Select Field caret.
-// 6. Align label to input baseline. Achieved with `padding-top` since `align-items: baseline`
+// 3. Let inputs properly fit various layout scenarios.
+// 4. Leave out space for Select Field caret.
+// 5. Align label to input baseline. Achieved with `padding-top` since `align-items: baseline`
 //    unfortunately doesn't work for blank text inputs in Safari.
-// 7. Don't let text alignment be affected by a parent.
+// 6. Don't let text alignment be affected by a parent.
 
 @use '../../settings/forms' as settings;
 @use '../../settings/forms-theme' as theme;
 @use '../../tools/caret';
 @use '../spacing';
 @use '../transition';
-@use 'states';
 
 @mixin field() {
-  text-align: left; // 7.
+  text-align: left; // 6.
 }
 
 @mixin field-label() {
-  padding-top: calc(#{theme.$field-border-width} + var(--rui-local-padding-vertical)); // 6.
+  padding-top: calc(#{theme.$field-border-width} + var(--rui-local-padding-y)); // 5.
+  color: var(--rui-local-surrounding-text-color, #{theme.$field-label-color});
 }
 
 @mixin field-label-required() {
@@ -33,8 +32,8 @@
 @mixin field-input-container() {
   position: relative; // 1.
   display: inline-flex;
-  min-width: 0; // 4.
-  max-width: 100%; // 4.
+  min-width: 0; // 3.
+  max-width: 100%; // 3.
 }
 
 @mixin field-input() {
@@ -42,62 +41,43 @@
 
   width: theme.$field-input-width;
   min-width: theme.$field-input-min-width;
-  max-width: 100%; // 4.
+  max-width: 100%; // 3.
   height: var(--rui-local-height);
-  padding: var(--rui-local-padding-vertical) var(--rui-local-padding-horizontal);
+  padding: var(--rui-local-padding-y) var(--rui-local-padding-x);
   font-weight: settings.$field-font-weight;
   font-size: var(--rui-local-font-size);
   line-height: settings.$field-line-height;
   font-family: settings.$field-font-family;
   vertical-align: middle;
-  border: theme.$field-border-width solid theme.$field-border-color;
+  color: var(--rui-local-color);
+  border: theme.$field-border-width solid var(--rui-local-border-color);
   border-radius: theme.$field-border-radius;
-  box-shadow: none;
+  background: var(--rui-local-background);
+  box-shadow: var(--rui-local-box-shadow);
   appearance: none;
 
   &::placeholder {
     opacity: 1;
     color: theme.$field-placeholder-color;
   }
-
-  &:hover {
-    border-color: theme.$field-hover-border-color;
-  }
-
-  &:focus {
-    border-color: theme.$field-focus-border-color;
-  }
-
-  &:disabled {
-    @include states.field-disabled();
-
-    border-color: theme.$field-border-color; // 2.
-  }
 }
 
 @mixin field-input-text() {
   &[max],
   &[size] {
-    min-width: auto; // 3.
+    width:
+      calc(
+        1ch * var(--rui-custom-input-size)
+        + var(--rui-local-arrows-width, 0)
+        + 2 * var(--rui-local-padding-x)
+        + 2 * #{theme.$field-border-width}
+      ); // 2.
+
+    min-width: auto; // 2.
   }
 
   &[max] {
-    width:
-      calc(
-        1ch * var(--rui-custom-input-size)
-        + #{settings.$field-input-number-arrows-width}
-        + 2 * var(--rui-local-padding-horizontal)
-        + 2 * #{theme.$field-border-width}
-      ); // 3.
-  }
-
-  &[size] {
-    width:
-      calc(
-        1ch * var(--rui-custom-input-size)
-        + 2 * var(--rui-local-padding-horizontal)
-        + 2 * #{theme.$field-border-width}
-      ); // 3.
+    --rui-local-arrows-width: #{settings.$field-input-number-arrows-width};
   }
 }
 
@@ -110,7 +90,7 @@
 }
 
 @mixin field-input-select() {
-  padding-right: calc(#{settings.$field-caret-size} + #{spacing.of(2)}); // 5.
+  padding-right: calc(#{settings.$field-caret-size} + #{spacing.of(2)}); // 4.
   appearance: none;
 
   &::-ms-expand {
@@ -138,14 +118,12 @@
   border-top-right-radius: theme.$field-border-radius;
   border-bottom-right-radius: theme.$field-border-radius;
   pointer-events: none;
-
-  .input:disabled ~ & {
-    @include states.field-disabled();
-  }
 }
 
 @mixin field-caret-icon() {
   @include caret.create();
+
+  border-color: var(--rui-local-color);
 }
 
 @mixin field-bottom-line() {
@@ -162,7 +140,7 @@
 
   .input:focus ~ & {
     opacity: 1;
-    background-color: theme.$field-focus-border-color;
+    background-color: var(--rui-local-border-color);
     transform: scaleX(1);
   }
 }
@@ -171,5 +149,5 @@
   font-style: theme.$field-help-text-font-style;
   font-size: theme.$field-help-text-font-size;
   line-height: settings.$field-help-text-line-height;
-  color: theme.$field-help-text-color;
+  color: var(--rui-local-surrounding-text-color, #{theme.$field-help-text-color});
 }

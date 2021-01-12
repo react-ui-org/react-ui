@@ -43,6 +43,7 @@ export const TextField = ({
         hasSmallInput ? styles.hasRootSmallInput : '',
         inFormLayout ? styles.isRootInFormLayout : '',
         layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
+        disabled ? styles.isRootDisabled : '',
         required ? styles.isRootRequired : '',
         getRootSizeClassName(size, styles),
         getRootValidationStateClassName(validationState, styles),

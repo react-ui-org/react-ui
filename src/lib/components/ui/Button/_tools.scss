@@ -2,7 +2,6 @@
 // 2. Icon buttons should be squares.
 
 @use '../../../styles/tools/breakpoint';
-@use '../../../styles/tools/forms/states';
 @use '../../../styles/tools/list';
 @use '../../../styles/tools/reset';
 @use '../../../styles/tools/transition';
@@ -35,7 +34,8 @@
   }
 
   &:disabled {
-    @include states.field-disabled();
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 
   &:-moz-focusring {

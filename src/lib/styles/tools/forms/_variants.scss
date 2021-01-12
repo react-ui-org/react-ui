@@ -1,41 +1,115 @@
+// 1. Due to complexity, it's easier and safer to resolve variant custom properties dynamically with
+//    a mixin. This way it's also easier to make theming adjustments to all supported modifications
+//    in one place. Generated custom properties are consumed mainly in foundation field styles (see
+//    `tools/forms/_foundation.scss` for more).
+//
+// 2. Interaction states other than `default` default to the `default` (sic!) state appearance if
+//    corresponding custom properties are not provided.
+//
+// 3. `.input:focus` is added just in case `:focus-within` doesn't work.
+
+@use 'sass:list';
 @use '../../settings/forms-theme' as theme;
-@use '../list';
+@use '../../settings/forms' as settings;
 
-@mixin field-input-variant($variant) {
-  $variant-states: map-get(theme.$field-variants, $variant);
+@mixin _disabled-state() {
+  opacity: theme.$field-disabled-opacity;
+  cursor: theme.$field-disabled-cursor;
+}
 
-  @include list.explode(map-get($variant-states, default));
-
-  @if $variant == filled {
-    border-top-color: transparent;
-    border-right-color: transparent;
-    border-left-color: transparent;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+// 1.
+@mixin _get-themeable-properties($variant, $state) {
+  @if (not list.index(map-keys(settings.$themeable-variant-states), $variant)) {
+    @error "Invalid variant specified! #{$variant} doesn't exist. "
+      + "Choose one of #{map-keys(settings.$themeable-variant-states)}.";
   }
 
-  &:focus {
-    @include list.explode(map-get($variant-states, focus));
+  @if (not list.index(map-keys(settings.$themeable-state-properties), $state)) {
+    @error "Invalid state specified! #{$state} doesn't exist. "
+      + "Choose one of #{map-keys(settings.$themeable-state-properties)}.";
+  }
+
+  $properties: map-get(settings.$themeable-state-properties, $state);
+
+  @if ($state == default) {
+    @each $property in $properties {
+      --rui-local-#{$property}: var(--rui-form-field-#{$variant}-#{$state}-#{$property});
+    }
+  }
+
+  // 2.
+  @else {
+    @each $property in $properties {
+      --rui-local-#{$property}:
+        var(
+          --rui-form-field-#{$variant}-#{$state}-#{$property},
+          var(--rui-form-field-#{$variant}-default-#{$property})
+        );
+    }
   }
 }
 
-@mixin field-input-outline-caret() {
-  $variant-states: map-get(theme.$field-variants, outline);
+@mixin _get-variant-theme($variant) {
+  $themeable-states: map-get(settings.$themeable-variant-states, $variant);
 
-  & ~ .caret {
-    border-left: theme.$field-border-width theme.$field-caret-border-style theme.$field-border-color;
-    background-color: theme.$field-caret-background;
+  @if (list.index($themeable-states, hover)) {
+    @include _get-themeable-properties($variant, default);
+
+    &:hover {
+      @include _get-themeable-properties($variant, hover);
+    }
   }
 
-  &:hover ~ .caret {
-    border-left-color: theme.$field-hover-border-color;
+  @else {
+    &,
+    &:hover {
+      @include _get-themeable-properties($variant, default);
+    }
   }
 
-  &:focus ~ .caret {
-    border-left-color: theme.$field-focus-border-color;
+  @if (list.index($themeable-states, focus)) {
+    // 3.
+    &:focus-within,
+    &:focus-within:hover,
+    .input:focus {
+      @include _get-themeable-properties($variant, focus);
+    }
   }
 
-  &:disabled ~ .caret {
-    border-left-color: theme.$field-border-color;
+  @if (list.index($themeable-states, disabled)) {
+    &.isRootDisabled {
+      @include _get-themeable-properties($variant, disabled);
+    }
+  }
+}
+
+@mixin field-variant($variant, $has-caret: false) {
+  @include _get-variant-theme($variant);
+
+  @if ($variant == 'filled' or $variant == 'outline') {
+    .input:disabled {
+      @include _disabled-state();
+    }
+  }
+
+  @if ($variant == 'filled') {
+    .input {
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-left-color: transparent;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  @if ($variant == 'outline' and $has-caret) {
+    .caret {
+      border-left: theme.$field-border-width theme.$field-caret-border-style var(--rui-local-border-color);
+      background-color: theme.$field-caret-background;
+    }
+
+    &.isRootDisabled .caret {
+      @include _disabled-state();
+    }
   }
 }
