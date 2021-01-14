@@ -85,7 +85,7 @@
   top: calc(-1 * #{theme.$border-width});
   bottom: calc(-1 * #{theme.$border-width});
   left: calc(-1 * #{theme.$border-width});
-  border-left: theme.$border-width solid settings.$group-separator-color;
+  border-left: theme.$border-width solid theme.$group-filled-separator-color;
 }
 
 .priorityFlat.isRootGrouped:not(:first-child)::before {

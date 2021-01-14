@@ -300,6 +300,161 @@ This is useful mainly to improve component's accessibility.
 
 <Props of={Button} />
 
+## Theming
+
+### Common Theming Options
+
+The following theme options are common to all priorities and variants
+**except** the `link` priority (see [below for more](#link-priority)):
+
+| Custom Property               | Description                                  |
+|-------------------------------|----------------------------------------------|
+| `--rui-button-font-weight`    | Font weight                                  |
+| `--rui-button-text-transform` | Text transform, eg. uppercase or small-caps  |
+| `--rui-button-letter-spacing` | Spacing between letters                      |
+| `--rui-button-border-width`   | Border width                                 |
+| `--rui-button-border-radius`  | Corner radius                                |
+
+### Theming Priorities and Variants
+
+It's possible to adjust the theme for specific priority, variant, and state.
+Naming convention looks as follows:
+
+`--rui-button-<PRIORITY>-<VARIANT>-<INTERACTION STATE>-<PROPERTY>`
+
+Where:
+
+- `<PRIORITY>` is one of `filled`, `outline`, or `flat` (see
+   [Priorities](#priorities) and [API](#api))
+- `<VARIANT>` is one of `primary`, `secondary`, `success`, `warning`, `danger`,
+   or `dark` (see variants of [each priority](#priorities) and [API](#api))
+- `<INTERATCION STATE>` is one of `default`, `hover`, `active`, or `disabled`
+  (the last one being optional)
+- `<PROPERTY>` is one of:
+  - `color`, `border-color`, `background`, or `box-shadow` for the `filled`
+    priority
+  - `color`, `border-color`, or `background` for the `outline` priority
+  - `color` or `background` for the `flat` priority
+
+#### Theming Link Priority
+
+The `link` priority is treated a bit different because from the theming point of
+view it doesn't share anything with other priorities. However, it shares
+everything with common links and thus can be adjusted using their theme options:
+
+| Custom Property               | Description                                  |
+|-------------------------------|----------------------------------------------|
+| `--rui-link-color`            | Text color                                   |
+| `--rui-link-decoration`       | Text decoration, eg. underline               |
+| `--rui-link-hover-color`      | Text color on hover                          |
+| `--rui-link-hover-decoration` | Text decoration on hover                     |
+
+### Theming Sizes
+
+Available sizes can be adjusted as follows:
+
+`--rui-button-<SIZE>-<PROPERTY>`
+
+Where:
+
+- `<SIZE>` is one of `small`, `medium`, or `large` (see [Sizes](#sizes) and
+  [API](#api))
+- `<PROPERTY>` is one of `height`, `padding-x`, or `font-size`
+
+### Example Theme
+
+<Playground>
+  <style type="text/css">
+    {`
+      .example--themed-buttons {
+        --rui-button-font-weight: bold;
+        --rui-button-letter-spacing: 0.05em;
+        --rui-button-text-transform: uppercase;
+        --rui-button-border-radius: 0;
+        --rui-button-filled-primary-default-box-shadow:
+          0.1em 0.1em 0.5em rgba(0, 0, 0, 0.3);
+        --rui-button-medium-height: 3rem;
+        --rui-button-medium-padding-x: 1.25rem;
+      }
+    `}
+  </style>
+  <Button label="Default filled button" />
+  <Button label="Default outline button" priority="outline" />
+  <div className="example example--themed-buttons">
+    <Button label="Themed filled button" />
+    <Button label="Themed outline button" priority="outline" />
+  </div>
+</Playground>
+
+### Theming Disabled State
+
+The `disabled` state offers a bit more of design flexibility compared to other
+interaction states. Firstly, there are a few common options for this state:
+
+| Custom Property                 | Description                                 |
+|---------------------------------|---------------------------------------------|
+| `--rui-button-disabled-opacity` | Opacity of disabled buttons                 |
+| `--rui-button-disabled-cursor`  | Cursor to show on hovering disabled buttons |
+
+Secondly, it can be further adjusted using priority and variant specific
+options for the disabled state:
+
+ `--rui-button-<PRIORITY>-<VARIANT>-disabled-<PROPERTY>`
+
+Undefined theming options are inherited from the `default` interaction state.
+
+Example:
+
+<Playground>
+  <style type="text/css">
+    {`
+      .example--themed-disabled-buttons {
+        --rui-button-border-radius: 0;
+        --rui-button-disabled-opacity: 0.4;
+        --rui-button-disabled-cursor: default;
+        --rui-button-filled-primary-disabled-color: slate;
+        --rui-button-filled-primary-disabled-border-color: silver;
+        --rui-button-filled-primary-disabled-background: silver;
+        --rui-button-filled-success-disabled-color: slate;
+        --rui-button-filled-success-disabled-border-color: silver;
+        --rui-button-filled-success-disabled-background: silver;
+        --rui-button-outline-primary-disabled-color: slate;
+        --rui-button-outline-primary-disabled-border-color: silver;
+      }
+    `}
+  </style>
+  <Button
+    label="Default filled primary button, disabled"
+    disabled
+  />
+  <Button
+    label="Default filled success button, disabled"
+    variant="success"
+    disabled
+  />
+  <Button
+    label="Default outline primary button, disabled"
+    priority="outline"
+    disabled
+  />
+  <div className="example example--themed-disabled-buttons">
+    <Button
+      label="Themed filled primary button, disabled"
+      disabled
+    />
+    <Button
+      label="Themed filled success button, disabled"
+      variant="success"
+      disabled
+    />
+    <Button
+      label="Themed outline primary button, disabled"
+      priority="outline"
+      disabled
+    />
+  </div>
+</Playground>
+
 ---
 
 Next: [ButtonGroup →](/components/ui/button-group)
