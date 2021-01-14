@@ -76,6 +76,7 @@ export class Modal extends React.Component {
       children,
       closeHandler,
       id,
+      position,
       scrollMode,
       scrollViewEndShadowStyle,
       scrollViewShadowSize,
@@ -85,24 +86,32 @@ export class Modal extends React.Component {
       translations,
     } = this.props;
 
-    const sizeClass = () => {
-      if (size === 'small') {
-        return styles.isRootSmall;
+    const sizeClass = (modalSize) => {
+      if (modalSize === 'small') {
+        return styles.isRootSizeSmall;
       }
 
-      if (size === 'medium') {
-        return styles.isRootMedium;
+      if (modalSize === 'medium') {
+        return styles.isRootSizeMedium;
       }
 
-      if (size === 'large') {
-        return styles.isRootLarge;
+      if (modalSize === 'large') {
+        return styles.isRootSizeLarge;
       }
 
-      if (size === 'fullscreen') {
-        return styles.isRootFullscreen;
+      if (modalSize === 'fullscreen') {
+        return styles.isRootSizeFullscreen;
       }
 
-      return styles.isRootAuto;
+      return styles.isRootSizeAuto;
+    };
+
+    const positionClass = (modalPosition) => {
+      if (modalPosition === 'top') {
+        return styles.isRootPositionTop;
+      }
+
+      return styles.isRootPositionCenter;
     };
 
     const modalBody = () => {
@@ -154,10 +163,11 @@ export class Modal extends React.Component {
         role="presentation"
       >
         <div
-          className={`
-            ${styles.root}
-            ${sizeClass()}
-          `.trim()}
+          className={[
+            styles.root,
+            sizeClass(size),
+            positionClass(position),
+          ].join(' ')}
           onClick={(e) => {
             e.stopPropagation();
           }}
@@ -236,6 +246,7 @@ Modal.defaultProps = {
   closeHandler: null,
   id: undefined,
   portalId: null,
+  position: 'center',
   scrollMode: 'body',
   scrollViewEndShadowStyle: {
     background: 'radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)',
@@ -281,6 +292,10 @@ Modal.propTypes = {
    * If set, the modal is rendered in the React Portal with that ID.
    */
   portalId: PropTypes.string,
+  /**
+   * Vertical position of the modal inside browser window.
+   */
+  position: PropTypes.oneOf(['top', 'center']),
   /**
    * How to treat the modal when its content is too long to fit the screen. The `body` option
    * turns on scrolling just for the modal content, while the `modal` option enables scrolling of
