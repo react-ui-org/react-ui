@@ -192,6 +192,56 @@ magic that doesn't work together yet 🎩.
   }}
 </Playground>
 
+## Position
+
+Modal can be aligned either to top or center of the screen.
+
+<Playground>
+  {() => {
+    const [modalOpen, setModalOpen] = React.useState(false);
+    const [modalPosition, setModalPosition] = React.useState('center');
+    return (
+      <>
+        <Button
+          clickHandler={() => {
+            setModalPosition('center');
+            setModalOpen(true);
+          }}
+          label="Launch modal at center"
+          priority="outline"
+        />
+        <Button
+          clickHandler={() => {
+            setModalPosition('top');
+            setModalOpen(true);
+          }}
+          label="Launch modal at top"
+          priority="outline"
+        />
+        <div>
+          {modalOpen && (
+            <Modal
+              title="Delete the user?"
+              actions={[{
+                clickHandler: () => setModalOpen(false),
+                label: 'Delete',
+                variant: 'danger',
+              }]}
+              closeHandler={() => setModalOpen(false)}
+              position={modalPosition}
+            >
+              <p>
+                Do you really want to delete the user <code>admin</code>?
+                This cannot be undone.
+              </p>
+            </Modal>
+          )}
+        </div>
+      </>
+    );
+  }}
+</Playground>
+
 ## Scrolling Long Content
 
 When modals become too long for the user's viewport or device, they scroll

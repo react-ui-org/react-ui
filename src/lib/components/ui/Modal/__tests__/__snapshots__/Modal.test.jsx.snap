@@ -41,6 +41,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
     disableBodyScrolling={true}
     id="custom-id"
     portalId={null}
+    position="center"
     scrollMode="body"
     scrollViewEndShadow={
       Object {
@@ -78,8 +79,7 @@ exports[`rendering renders correctly with all props except translations 1`] = `
       role="presentation"
     >
       <div
-        className="root
-            isRootLarge"
+        className="root isRootSizeLarge isRootPositionCenter"
         onClick={[Function]}
         role="presentation"
       >
@@ -373,6 +373,7 @@ exports[`rendering renders correctly with all props except translations and with
     disableBodyScrolling={true}
     id="custom-id"
     portalId={null}
+    position="center"
     scrollMode="body"
     scrollViewEndShadow={
       Object {
@@ -410,8 +411,7 @@ exports[`rendering renders correctly with all props except translations and with
       role="presentation"
     >
       <div
-        className="root
-            isRootSmall"
+        className="root isRootSizeSmall isRootPositionCenter"
         onClick={[Function]}
         role="presentation"
       >
@@ -699,6 +699,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
     autoFocus={true}
     closeHandler={null}
     portalId={null}
+    position="center"
     scrollMode="body"
     scrollViewEndShadowStyle={
       Object {
@@ -725,8 +726,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
       role="presentation"
     >
       <div
-        className="root
-            isRootMedium"
+        className="root isRootSizeMedium isRootPositionCenter"
         onClick={[Function]}
         role="presentation"
       >
@@ -843,6 +843,7 @@ exports[`rendering renders correctly with portal id 1`] = `
     autoFocus={true}
     closeHandler={null}
     portalId="app-modal-portal"
+    position="center"
     scrollMode="body"
     scrollViewEndShadowStyle={
       Object {
@@ -873,8 +874,7 @@ exports[`rendering renders correctly with portal id 1`] = `
             role="presentation"
           >
             <div
-              class="root
-            isRootMedium"
+              class="root isRootSizeMedium isRootPositionCenter"
               role="presentation"
             >
               <div
@@ -923,8 +923,7 @@ exports[`rendering renders correctly with portal id 1`] = `
         role="presentation"
       >
         <div
-          className="root
-            isRootMedium"
+          className="root isRootSizeMedium isRootPositionCenter"
           onClick={[Function]}
           role="presentation"
         >
@@ -1046,6 +1045,7 @@ exports[`rendering renders correctly with translations 1`] = `
     autoFocus={true}
     closeHandler={[Function]}
     portalId={null}
+    position="center"
     scrollMode="body"
     scrollViewEndShadowStyle={
       Object {
@@ -1072,8 +1072,7 @@ exports[`rendering renders correctly with translations 1`] = `
       role="presentation"
     >
       <div
-        className="root
-            isRootMedium"
+        className="root isRootSizeMedium isRootPositionCenter"
         onClick={[Function]}
         role="presentation"
       >

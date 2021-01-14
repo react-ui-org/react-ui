@@ -1,23 +1,29 @@
 @use '../../../styles/settings/typography';
+@use '../../../styles/tools/breakpoint';
 @use '../../../styles/tools/reset';
 @use '../../../styles/tools/spacing';
 @use 'settings';
 @use 'theme';
 
 .root {
+  --local-outer-offset: #{theme.$outer-offset-xs};
+
   position: fixed;
-  top: 50%;
   left: 50%;
   z-index: settings.$z-index;
   display: flex;
   flex-direction: column;
-  max-width: calc(100% - (2 * #{settings.$padding-x}));
-  max-height: calc(100% - (2 * #{settings.$padding-y}));
+  max-width: calc(100% - (2 * var(--local-outer-offset)));
+  max-height: calc(100% - (2 * var(--local-outer-offset)));
   overflow-y: auto;
   border-radius: settings.$border-radius;
   background-color: theme.$background;
   box-shadow: theme.$box-shadow;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
+
+  @include breakpoint.up(sm) {
+    --local-outer-offset: #{theme.$outer-offset-sm};
+  }
 }
 
 .head {
@@ -78,29 +84,38 @@
   background-color: theme.$overlay-background;
 }
 
-.isRootSmall {
+.isRootSizeSmall {
   width: theme.$size-small-width;
 }
 
-.isRootMedium {
+.isRootSizeMedium {
   width: theme.$size-medium-width;
 }
 
-.isRootLarge {
+.isRootSizeLarge {
   width: theme.$size-large-width;
 }
 
-.isRootFullscreen {
+.isRootSizeFullscreen {
   width: theme.$size-fullscreen-width;
   height: theme.$size-fullscreen-height;
 }
 
-.isRootFullscreen .content {
+.isRootSizeFullscreen .content {
   height: 100%;
 }
 
-.isRootAuto {
+.isRootSizeAuto {
   width: auto;
   min-width: theme.$size-auto-min-width;
   max-width: theme.$size-auto-max-width;
+}
+
+.isRootPositionCenter {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.isRootPositionTop {
+  top: var(--local-outer-offset);
 }
