@@ -189,10 +189,12 @@
 
   // Buttons: common properties
   --rui-button-font-weight: var(--rui-typography-font-weight-regular);
-  --rui-button-text-transform: none;
   --rui-button-letter-spacing: 0;
+  --rui-button-text-transform: none;
   --rui-button-border-width: var(--rui-border-width);
   --rui-button-border-radius: var(--rui-border-radius);
+  --rui-button-disabled-opacity: 0.5;
+  --rui-button-disabled-cursor: not-allowed;
 
   // Buttons: filled priority
 
@@ -414,6 +416,12 @@
   --rui-button-large-height: 2.75rem;
   --rui-button-large-padding-x: var(--rui-spacing-5);
   --rui-button-large-font-size: var(--rui-typography-size-1);
+
+  //
+  // Button Group
+  // ============
+
+  --rui-button-group-filled-separator-color: var(--rui-color-white);
 
   //
   // Cards

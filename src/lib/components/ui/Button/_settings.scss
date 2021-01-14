@@ -1,4 +1,3 @@
-@use '../../../styles/settings/colors';
 @use '../../../styles/settings/typography';
 @use '../../../styles/tools/spacing';
 
@@ -6,4 +5,11 @@ $font-family: typography.$font-family-base;
 $line-height: typography.$line-height-base;
 $icon-spacing: spacing.of(2);
 $breakpoint: lg;
-$group-separator-color: colors.$white;
+
+$themeable-variants: (primary, secondary, success, warning, danger, dark);
+$themeable-states: (default, hover, active, disabled);
+$themeable-priority-properties: (
+  filled: (color, border-color, background, box-shadow),
+  outline: (color, border-color, background),
+  flat: (color, background),
+);

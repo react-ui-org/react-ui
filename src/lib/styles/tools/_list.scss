@@ -1,5 +1,0 @@
-@mixin explode($properties) {
-  @each $key, $value in $properties {
-    #{$key}: $value;
-  }
-}
