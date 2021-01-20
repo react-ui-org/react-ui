@@ -49,5 +49,5 @@ export { default as TextArea } from './components/ui/TextArea';
 export { default as TextField } from './components/ui/TextField';
 export { default as Toggle } from './components/ui/Toggle';
 
-// Translation
-export { TranslationProvider } from './translation';
+// Provider
+export { RUIProvider } from './provider';
