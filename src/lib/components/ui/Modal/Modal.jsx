@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { createPortal } from 'react-dom';
 import transferProps from '../../../utils/transferProps';
-import { withTranslationContext } from '../../../translation';
+import { withProviderContext } from '../../../provider';
 import {
   Toolbar,
   ToolbarItem,
@@ -336,5 +336,5 @@ Modal.propTypes = {
   }).isRequired,
 };
 
-export const TranslatedModal = withTranslationContext(Modal, 'Modal');
+export const TranslatedModal = withProviderContext(Modal, 'Modal');
 export default TranslatedModal;

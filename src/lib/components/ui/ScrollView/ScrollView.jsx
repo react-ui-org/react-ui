@@ -7,8 +7,8 @@ import React, {
 } from 'react';
 import { useLoadResize } from '../../../hooks/useLoadResizeHook';
 import { useScrollPosition } from '../../../hooks/useScrollPositionHook';
+import { withProviderContext } from '../../../provider';
 import { getElementsPositionDifference } from '../../../services/elementPositionService';
-import { withTranslationContext } from '../../../translation';
 import styles from './ScrollView.scss';
 
 // Function `getElementsPositionDifference` sometimes returns floating point values that results
@@ -382,5 +382,5 @@ ScrollView.propTypes = {
   }).isRequired,
 };
 
-export const TranslatedScrollView = withTranslationContext(ScrollView, 'ScrollView');
+export const TranslatedScrollView = withProviderContext(ScrollView, 'ScrollView');
 export default TranslatedScrollView;

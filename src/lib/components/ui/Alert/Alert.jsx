@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withTranslationContext } from '../../../translation';
+import { withProviderContext } from '../../../provider';
 import styles from './Alert.scss';
 
 export const Alert = (props) => {
@@ -112,5 +112,5 @@ Alert.propTypes = {
   type: PropTypes.oneOf(['error', 'help', 'info', 'note', 'success', 'warning']),
 };
 
-export const TranslatedAlert = withTranslationContext(Alert, 'Alert');
+export const TranslatedAlert = withProviderContext(Alert, 'Alert');
 export default TranslatedAlert;

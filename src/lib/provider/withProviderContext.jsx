@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import TranslationContext from './TranslationContext';
+import RUIContext from './RUIContext';
 
 export default (Component, translationContext) => {
   const WithTranslationContextComponent = (props) => (
-    <TranslationContext.Consumer>
+    <RUIContext.Consumer>
       {(context) => (
         <Component
           {...props}
           translations={props.translations || context.translations[translationContext]}
         />
       )}
-    </TranslationContext.Consumer>
+    </RUIContext.Consumer>
   );
 
   WithTranslationContextComponent.defaultProps = {
