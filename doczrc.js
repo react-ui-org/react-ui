@@ -17,8 +17,9 @@ export default {
     },
     {
       menu: [
-        'Theming',
+        'Global Props',
         'Translations',
+        'Theming',
       ],
       name: 'Customize',
     },

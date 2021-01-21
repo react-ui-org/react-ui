@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import getRootValidationStateClassName from '../../../helpers/getRootValidationStateClassName';
+import { withProviderContext } from '../../../provider';
 import transferProps from '../../../utils/transferProps';
 import styles from './Radio.scss';
 
@@ -168,4 +169,6 @@ Radio.propTypes = {
   ]),
 };
 
-export default Radio;
+export const RadioWithContext = withProviderContext(Radio, 'Radio');
+
+export default RadioWithContext;

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withProviderContext } from '../../../provider';
 import styles from './Toolbar.scss';
 
 export const ToolbarItem = (props) => {
@@ -21,4 +22,6 @@ ToolbarItem.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default ToolbarItem;
+export const ToolbarItemWithContext = withProviderContext(ToolbarItem, 'ToolbarItem');
+
+export default ToolbarItemWithContext;

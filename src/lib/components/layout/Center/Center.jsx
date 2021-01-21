@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withProviderContext } from '../../../provider';
 import styles from './Center.scss';
 
 export const Center = ({ children }) => (
@@ -21,4 +22,6 @@ Center.propTypes = {
   children: PropTypes.node,
 };
 
-export default Center;
+export const CenterWithContext = withProviderContext(Center, 'Center');
+
+export default CenterWithContext;

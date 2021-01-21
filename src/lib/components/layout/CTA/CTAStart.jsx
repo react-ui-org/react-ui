@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withProviderContext } from '../../../provider';
 import styles from './CTA.scss';
 
 export const CTAStart = (props) => {
@@ -21,4 +22,6 @@ CTAStart.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default CTAStart;
+export const CTAStartWithContext = withProviderContext(CTAStart, 'CTAStart');
+
+export default CTAStartWithContext;

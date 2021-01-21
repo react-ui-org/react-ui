@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withProviderContext } from '../../../provider';
 import styles from './Badge.scss';
 
 export const Badge = (props) => {
@@ -75,4 +76,6 @@ Badge.propTypes = {
   type: PropTypes.oneOf(['error', 'help', 'info', 'note', 'success', 'warning', 'light']),
 };
 
-export default Badge;
+export const BadgeWithContext = withProviderContext(Badge, 'Badge');
+
+export default BadgeWithContext;

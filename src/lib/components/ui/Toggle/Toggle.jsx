@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import getRootValidationStateClassName from '../../../helpers/getRootValidationStateClassName';
+import { withProviderContext } from '../../../provider';
 import transferProps from '../../../utils/transferProps';
 import withForwardedRef from '../withForwardedRef';
 import styles from './Toggle.scss';
@@ -170,4 +171,6 @@ Toggle.propTypes = {
   ]),
 };
 
-export default withForwardedRef(Toggle);
+export const ToggleWithContext = withProviderContext(withForwardedRef(Toggle), 'Toggle');
+
+export default ToggleWithContext;

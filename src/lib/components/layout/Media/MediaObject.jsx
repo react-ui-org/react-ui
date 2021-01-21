@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withProviderContext } from '../../../provider';
 import styles from './Media.scss';
 
 export const MediaObject = ({ children }) => (
@@ -15,4 +16,6 @@ MediaObject.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default MediaObject;
+export const MediaObjectWithContext = withProviderContext(MediaObject, 'MediaObject');
+
+export default MediaObjectWithContext;

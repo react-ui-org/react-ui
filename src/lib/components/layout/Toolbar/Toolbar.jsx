@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withProviderContext } from '../../../provider';
 import styles from './Toolbar.scss';
 
 export const Toolbar = (props) => {
@@ -88,4 +89,6 @@ Toolbar.propTypes = {
   nowrap: PropTypes.bool,
 };
 
-export default Toolbar;
+export const ToolbarWithContext = withProviderContext(Toolbar, 'Toolbar');
+
+export default ToolbarWithContext;

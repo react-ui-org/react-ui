@@ -1,18 +1,9 @@
 import React from 'react';
+import defaultTranslations from '../translations/en';
 
 const RUIContext = React.createContext({
-  translations: {
-    Alert: {
-      close: 'Close',
-    },
-    Modal: {
-      close: 'Close',
-    },
-    ScrollView: {
-      next: 'Next',
-      previous: 'Previous',
-    },
-  },
+  globalProps: {},
+  translations: defaultTranslations,
 });
 
 export default RUIContext;

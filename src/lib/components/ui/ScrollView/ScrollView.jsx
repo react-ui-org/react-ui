@@ -382,5 +382,6 @@ ScrollView.propTypes = {
   }).isRequired,
 };
 
-export const TranslatedScrollView = withProviderContext(ScrollView, 'ScrollView');
-export default TranslatedScrollView;
+export const ScrollViewWithContext = withProviderContext(ScrollView, 'ScrollView');
+
+export default ScrollViewWithContext;

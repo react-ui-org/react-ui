@@ -1,6 +1,7 @@
 import flattenChildren from 'react-keyed-flatten-children';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withProviderContext } from '../../../provider';
 import styles from './FormLayout.scss';
 
 const PREDEFINED_LABEL_WIDTH_VALUES = ['auto', 'default', 'limited'];
@@ -109,4 +110,6 @@ FormLayout.propTypes = {
   ]),
 };
 
-export default FormLayout;
+export const FormLayoutWithContext = withProviderContext(FormLayout, 'FormLayout');
+
+export default FormLayoutWithContext;

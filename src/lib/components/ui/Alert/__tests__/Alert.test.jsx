@@ -2,12 +2,13 @@ import React from 'react';
 import sinon from 'sinon';
 import { mount } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
-import Alert from '..';
+import defaultTranslations from '../../../../translations/en';
+import { Alert } from '../Alert';
 
 describe('rendering', () => {
   it('renders correctly', () => {
     const tree = mount(
-      <Alert>
+      <Alert translations={defaultTranslations.Alert}>
         <div>Children</div>
       </Alert>,
     );
@@ -21,6 +22,7 @@ describe('rendering', () => {
         closeHandler={() => {}}
         icon={<span className="icon" />}
         id="custom-id"
+        translations={defaultTranslations.Alert}
         type="success"
       >
         <div>Children</div>
@@ -37,6 +39,7 @@ describe('functionality', () => {
     const component = mount((
       <Alert
         closeHandler={spy}
+        translations={defaultTranslations.Alert}
         type="success"
       >
         <div>Children</div>

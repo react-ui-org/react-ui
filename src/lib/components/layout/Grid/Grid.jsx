@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withProviderContext } from '../../../provider';
 import { generateResponsiveCustomProperties } from './helpers/generateResponsiveCustomProperties';
 import styles from './Grid.scss';
 
@@ -204,4 +205,6 @@ Grid.propTypes = {
   ]),
 };
 
-export default Grid;
+export const GridWithContext = withProviderContext(Grid, 'Grid');
+
+export default GridWithContext;

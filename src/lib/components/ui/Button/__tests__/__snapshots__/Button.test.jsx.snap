@@ -177,10 +177,8 @@ exports[`rendering renders correctly with all props 1`] = `
   <span
     className="startCorner"
   >
-    <Badge
+    <WithProviderContextComponent
       label={1}
-      priority="filled"
-      type="note"
     />
   </span>
   <span
@@ -206,10 +204,8 @@ exports[`rendering renders correctly with all props 1`] = `
   <span
     className="endCorner"
   >
-    <Badge
+    <WithProviderContextComponent
       label={2}
-      priority="filled"
-      type="note"
     />
   </span>
   <span

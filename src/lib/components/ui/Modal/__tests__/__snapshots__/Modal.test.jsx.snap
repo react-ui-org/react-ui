@@ -1,332 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering renders correctly with all props except translations 1`] = `
-<WithTranslationContextComponent
-  actions={
-    Array [
-      Object {
-        "clickHandler": [Function],
-        "label": "Action",
-      },
-    ]
-  }
-  closeHandler={[Function]}
-  disableBodyScrolling={true}
-  id="custom-id"
-  scrollViewEndShadow={
-    Object {
-      "background": "none",
-    }
-  }
-  scrollViewStartShadow={
-    Object {
-      "background": "none",
-    }
-  }
-  size="large"
-  title="Modal title"
-  translations={null}
->
-  <Modal
-    actions={
-      Array [
-        Object {
-          "clickHandler": [Function],
-          "label": "Action",
-        },
-      ]
-    }
-    autoFocus={true}
-    closeHandler={[Function]}
-    disableBodyScrolling={true}
-    id="custom-id"
-    portalId={null}
-    position="center"
-    scrollMode="body"
-    scrollViewEndShadow={
-      Object {
-        "background": "none",
-      }
-    }
-    scrollViewEndShadowStyle={
-      Object {
-        "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
-      }
-    }
-    scrollViewShadowSize="16px"
-    scrollViewStartShadow={
-      Object {
-        "background": "none",
-      }
-    }
-    scrollViewStartShadowStyle={
-      Object {
-        "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
-      }
-    }
-    size="large"
-    title="Modal title"
-    translations={
-      Object {
-        "close": "Close",
-      }
-    }
-  >
-    <div
-      className="overlay"
-      id="custom-id"
-      onClick={[Function]}
-      role="presentation"
-    >
-      <div
-        className="root isRootSizeLarge isRootPositionCenter"
-        onClick={[Function]}
-        role="presentation"
-      >
-        <div
-          className="head"
-        >
-          <h3
-            className="headTitle"
-            id="custom-id__title"
-          >
-            Modal title
-          </h3>
-          <button
-            className="close"
-            id="custom-id__closeModalHeaderButton"
-            onClick={[Function]}
-            title="Close"
-            type="button"
-          >
-            ×
-          </button>
-        </div>
-        <div
-          className="body isBodyScrollable"
-        >
-          <WithTranslationContextComponent
-            customEndShadowStyle={
-              Object {
-                "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
-              }
-            }
-            customStartShadowStyle={
-              Object {
-                "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
-              }
-            }
-            shadowSize="16px"
-            translations={null}
-          >
-            <ScrollView
-              arrows={false}
-              arrowsScrollStep={200}
-              autoScroll="off"
-              customEndShadowStyle={
-                Object {
-                  "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
-                }
-              }
-              customNextArrow={null}
-              customPrevArrow={null}
-              customStartShadowStyle={
-                Object {
-                  "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
-                }
-              }
-              debounce={50}
-              direction="vertical"
-              scrollbar={true}
-              shadowColor={
-                Object {
-                  "alpha": 1,
-                  "blue": 255,
-                  "green": 255,
-                  "red": 255,
-                }
-              }
-              shadowSize="16px"
-              translations={
-                Object {
-                  "next": "Next",
-                  "previous": "Previous",
-                }
-              }
-            >
-              <div
-                className="root    isRootVertical"
-                style={
-                  Object {
-                    "--rui-local-arrow-color": "inherit",
-                    "--rui-local-end-shadow-background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
-                    "--rui-local-end-shadow-box-shadow": "none",
-                    "--rui-local-shadow-height": "16px",
-                    "--rui-local-shadow-width": "auto",
-                    "--rui-local-start-shadow-background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
-                    "--rui-local-start-shadow-box-shadow": "none",
-                  }
-                }
-              >
-                <div
-                  className="viewport"
-                >
-                  <div
-                    className="content"
-                  >
-                    <div
-                      className="content"
-                      id="custom-id__content"
-                    >
-                      Modal content
-                    </div>
-                  </div>
-                </div>
-                <div
-                  aria-hidden={true}
-                  className="scrollingShadows"
-                />
-              </div>
-            </ScrollView>
-          </WithTranslationContextComponent>
-        </div>
-        <div
-          className="footer"
-        >
-          <Toolbar
-            align="top"
-            dense={true}
-            justify="center"
-            nowrap={false}
-          >
-            <div
-              className="toolbar isDense  isAlignedToTop isJustifiedToCenter"
-            >
-              <ToolbarItem
-                key="Action"
-              >
-                <div
-                  className="item"
-                >
-                  <ForwardRef(withForwardedRef(Button))
-                    clickHandler={[Function]}
-                    label="Action"
-                    type="button"
-                  >
-                    <Button
-                      afterLabel={null}
-                      beforeLabel={null}
-                      block={false}
-                      clickHandler={[Function]}
-                      disabled={false}
-                      endCorner={null}
-                      forwardedRef={
-                        Object {
-                          "current": <button
-                            class="root
-        priorityFilled
-        sizeMedium
-        variantPrimary"
-                            type="button"
-                          >
-                            <span
-                              class="label"
-                            >
-                              Action
-                            </span>
-                          </button>,
-                        }
-                      }
-                      grouped={false}
-                      label="Action"
-                      labelVisibility="all"
-                      loadingIcon={null}
-                      priority="filled"
-                      size="medium"
-                      startCorner={null}
-                      type="button"
-                      variant="primary"
-                    >
-                      <button
-                        className="root
-        priorityFilled
-        sizeMedium
-        variantPrimary"
-                        disabled={false}
-                        onClick={[Function]}
-                        type="button"
-                      >
-                        <span
-                          className="label"
-                        >
-                          Action
-                        </span>
-                      </button>
-                    </Button>
-                  </ForwardRef(withForwardedRef(Button))>
-                </div>
-              </ToolbarItem>
-              <ToolbarItem>
-                <div
-                  className="item"
-                >
-                  <ForwardRef(withForwardedRef(Button))
-                    clickHandler={[Function]}
-                    id="custom-id__closeModalFooterButton"
-                    label="Close"
-                    priority="flat"
-                  >
-                    <Button
-                      afterLabel={null}
-                      beforeLabel={null}
-                      block={false}
-                      clickHandler={[Function]}
-                      disabled={false}
-                      endCorner={null}
-                      forwardedRef={null}
-                      grouped={false}
-                      id="custom-id__closeModalFooterButton"
-                      label="Close"
-                      labelVisibility="all"
-                      loadingIcon={null}
-                      priority="flat"
-                      size="medium"
-                      startCorner={null}
-                      type="button"
-                      variant="primary"
-                    >
-                      <button
-                        className="root
-        priorityFlat
-        sizeMedium
-        variantPrimary"
-                        disabled={false}
-                        id="custom-id__closeModalFooterButton"
-                        onClick={[Function]}
-                        type="button"
-                      >
-                        <span
-                          className="label"
-                          id="custom-id__closeModalFooterButton__labelText"
-                        >
-                          Close
-                        </span>
-                      </button>
-                    </Button>
-                  </ForwardRef(withForwardedRef(Button))>
-                </div>
-              </ToolbarItem>
-            </div>
-          </Toolbar>
-        </div>
-      </div>
-    </div>
-  </Modal>
-</WithTranslationContextComponent>
-`;
-
-exports[`rendering renders correctly with all props except translations and with a loading icon 1`] = `
-<WithTranslationContextComponent
+exports[`rendering renders correctly with all props except loading icon 1`] = `
+<WithProviderContextComponent
   actions={
     Array [
       Object {
@@ -354,7 +29,11 @@ exports[`rendering renders correctly with all props except translations and with
   }
   size="small"
   title="Modal title"
-  translations={null}
+  translations={
+    Object {
+      "close": "Close",
+    }
+  }
 >
   <Modal
     actions={
@@ -437,7 +116,7 @@ exports[`rendering renders correctly with all props except translations and with
         <div
           className="body isBodyScrollable"
         >
-          <WithTranslationContextComponent
+          <WithProviderContextComponent
             customEndShadowStyle={
               Object {
                 "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
@@ -449,7 +128,6 @@ exports[`rendering renders correctly with all props except translations and with
               }
             }
             shadowSize="30px"
-            translations={null}
           >
             <ScrollView
               arrows={false}
@@ -520,179 +198,192 @@ exports[`rendering renders correctly with all props except translations and with
                 />
               </div>
             </ScrollView>
-          </WithTranslationContextComponent>
+          </WithProviderContextComponent>
         </div>
         <div
           className="footer"
         >
-          <Toolbar
-            align="top"
+          <WithProviderContextComponent
             dense={true}
             justify="center"
-            nowrap={false}
           >
-            <div
-              className="toolbar isDense  isAlignedToTop isJustifiedToCenter"
+            <Toolbar
+              align="top"
+              dense={true}
+              justify="center"
+              nowrap={false}
             >
-              <ToolbarItem
-                key="Action"
+              <div
+                className="toolbar isDense  isAlignedToTop isJustifiedToCenter"
               >
-                <div
-                  className="item"
+                <WithProviderContextComponent
+                  key="Action"
                 >
-                  <ForwardRef(withForwardedRef(Button))
-                    clickHandler={[Function]}
-                    label="Action"
-                    loadingIcon={
-                      <span
-                        className="icon"
-                      />
-                    }
-                    type="button"
-                  >
-                    <Button
-                      afterLabel={null}
-                      beforeLabel={null}
-                      block={false}
-                      clickHandler={[Function]}
-                      disabled={false}
-                      endCorner={null}
-                      forwardedRef={
-                        Object {
-                          "current": <button
-                            class="root
-        priorityFilled
-        sizeMedium
-        variantPrimary
-        
-        
-        
-        isRootLoading"
-                            disabled=""
-                            type="button"
-                          >
-                            <span
-                              class="label"
-                            >
-                              Action
-                            </span>
-                            <span
-                              class="loadingIcon"
-                            >
-                              <span
-                                class="icon"
-                              />
-                            </span>
-                          </button>,
-                        }
-                      }
-                      grouped={false}
-                      label="Action"
-                      labelVisibility="all"
-                      loadingIcon={
-                        <span
-                          className="icon"
-                        />
-                      }
-                      priority="filled"
-                      size="medium"
-                      startCorner={null}
-                      type="button"
-                      variant="primary"
+                  <ToolbarItem>
+                    <div
+                      className="item"
                     >
-                      <button
-                        className="root
-        priorityFilled
-        sizeMedium
-        variantPrimary
-        
-        
-        
-        isRootLoading"
-                        disabled={true}
-                        onClick={[Function]}
-                        type="button"
-                      >
-                        <span
-                          className="label"
-                        >
-                          Action
-                        </span>
-                        <span
-                          className="loadingIcon"
-                        >
+                      <WithProviderContextComponent
+                        clickHandler={[Function]}
+                        forwardedRef={
+                          Object {
+                            "current": null,
+                          }
+                        }
+                        label="Action"
+                        loadingIcon={
                           <span
                             className="icon"
                           />
-                        </span>
-                      </button>
-                    </Button>
-                  </ForwardRef(withForwardedRef(Button))>
-                </div>
-              </ToolbarItem>
-              <ToolbarItem>
-                <div
-                  className="item"
-                >
-                  <ForwardRef(withForwardedRef(Button))
-                    clickHandler={[Function]}
-                    id="custom-id__closeModalFooterButton"
-                    label="Close"
-                    priority="flat"
-                  >
-                    <Button
-                      afterLabel={null}
-                      beforeLabel={null}
-                      block={false}
-                      clickHandler={[Function]}
-                      disabled={false}
-                      endCorner={null}
-                      forwardedRef={null}
-                      grouped={false}
-                      id="custom-id__closeModalFooterButton"
-                      label="Close"
-                      labelVisibility="all"
-                      loadingIcon={null}
-                      priority="flat"
-                      size="medium"
-                      startCorner={null}
-                      type="button"
-                      variant="primary"
+                        }
+                        type="button"
+                      >
+                        <ForwardRef(withForwardedRef(Button))
+                          clickHandler={[Function]}
+                          forwardedRef={
+                            Object {
+                              "current": null,
+                            }
+                          }
+                          label="Action"
+                          loadingIcon={
+                            <span
+                              className="icon"
+                            />
+                          }
+                          type="button"
+                        >
+                          <Button
+                            afterLabel={null}
+                            beforeLabel={null}
+                            block={false}
+                            clickHandler={[Function]}
+                            disabled={false}
+                            endCorner={null}
+                            forwardedRef={null}
+                            grouped={false}
+                            label="Action"
+                            labelVisibility="all"
+                            loadingIcon={
+                              <span
+                                className="icon"
+                              />
+                            }
+                            priority="filled"
+                            size="medium"
+                            startCorner={null}
+                            type="button"
+                            variant="primary"
+                          >
+                            <button
+                              className="root
+        priorityFilled
+        sizeMedium
+        variantPrimary
+        
+        
+        
+        isRootLoading"
+                              disabled={true}
+                              onClick={[Function]}
+                              type="button"
+                            >
+                              <span
+                                className="label"
+                              >
+                                Action
+                              </span>
+                              <span
+                                className="loadingIcon"
+                              >
+                                <span
+                                  className="icon"
+                                />
+                              </span>
+                            </button>
+                          </Button>
+                        </ForwardRef(withForwardedRef(Button))>
+                      </WithProviderContextComponent>
+                    </div>
+                  </ToolbarItem>
+                </WithProviderContextComponent>
+                <WithProviderContextComponent>
+                  <ToolbarItem>
+                    <div
+                      className="item"
                     >
-                      <button
-                        className="root
+                      <WithProviderContextComponent
+                        clickHandler={[Function]}
+                        id="custom-id__closeModalFooterButton"
+                        label="Close"
+                        priority="flat"
+                      >
+                        <ForwardRef(withForwardedRef(Button))
+                          clickHandler={[Function]}
+                          id="custom-id__closeModalFooterButton"
+                          label="Close"
+                          priority="flat"
+                        >
+                          <Button
+                            afterLabel={null}
+                            beforeLabel={null}
+                            block={false}
+                            clickHandler={[Function]}
+                            disabled={false}
+                            endCorner={null}
+                            forwardedRef={null}
+                            grouped={false}
+                            id="custom-id__closeModalFooterButton"
+                            label="Close"
+                            labelVisibility="all"
+                            loadingIcon={null}
+                            priority="flat"
+                            size="medium"
+                            startCorner={null}
+                            type="button"
+                            variant="primary"
+                          >
+                            <button
+                              className="root
         priorityFlat
         sizeMedium
         variantPrimary"
-                        disabled={false}
-                        id="custom-id__closeModalFooterButton"
-                        onClick={[Function]}
-                        type="button"
-                      >
-                        <span
-                          className="label"
-                          id="custom-id__closeModalFooterButton__labelText"
-                        >
-                          Close
-                        </span>
-                      </button>
-                    </Button>
-                  </ForwardRef(withForwardedRef(Button))>
-                </div>
-              </ToolbarItem>
-            </div>
-          </Toolbar>
+                              disabled={false}
+                              id="custom-id__closeModalFooterButton"
+                              onClick={[Function]}
+                              type="button"
+                            >
+                              <span
+                                className="label"
+                                id="custom-id__closeModalFooterButton__labelText"
+                              >
+                                Close
+                              </span>
+                            </button>
+                          </Button>
+                        </ForwardRef(withForwardedRef(Button))>
+                      </WithProviderContextComponent>
+                    </div>
+                  </ToolbarItem>
+                </WithProviderContextComponent>
+              </div>
+            </Toolbar>
+          </WithProviderContextComponent>
         </div>
       </div>
     </div>
   </Modal>
-</WithTranslationContextComponent>
+</WithProviderContextComponent>
 `;
 
 exports[`rendering renders correctly with mandatory props only 1`] = `
-<WithTranslationContextComponent
+<WithProviderContextComponent
   title="Modal title"
-  translations={null}
+  translations={
+    Object {
+      "close": "Close",
+    }
+  }
 >
   <Modal
     actions={Array []}
@@ -742,7 +433,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
         <div
           className="body isBodyScrollable"
         >
-          <WithTranslationContextComponent
+          <WithProviderContextComponent
             customEndShadowStyle={
               Object {
                 "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
@@ -754,7 +445,6 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               }
             }
             shadowSize="16px"
-            translations={null}
           >
             <ScrollView
               arrows={false}
@@ -824,19 +514,23 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 />
               </div>
             </ScrollView>
-          </WithTranslationContextComponent>
+          </WithProviderContextComponent>
         </div>
       </div>
     </div>
   </Modal>
-</WithTranslationContextComponent>
+</WithProviderContextComponent>
 `;
 
 exports[`rendering renders correctly with portal id 1`] = `
-<WithTranslationContextComponent
+<WithProviderContextComponent
   portalId="app-modal-portal"
   title="Modal title"
-  translations={null}
+  translations={
+    Object {
+      "close": "Close",
+    }
+  }
 >
   <Modal
     actions={Array []}
@@ -939,7 +633,7 @@ exports[`rendering renders correctly with portal id 1`] = `
           <div
             className="body isBodyScrollable"
           >
-            <WithTranslationContextComponent
+            <WithProviderContextComponent
               customEndShadowStyle={
                 Object {
                   "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
@@ -951,7 +645,6 @@ exports[`rendering renders correctly with portal id 1`] = `
                 }
               }
               shadowSize="16px"
-              translations={null}
             >
               <ScrollView
                 arrows={false}
@@ -1021,17 +714,17 @@ exports[`rendering renders correctly with portal id 1`] = `
                   />
                 </div>
               </ScrollView>
-            </WithTranslationContextComponent>
+            </WithProviderContextComponent>
           </div>
         </div>
       </div>
     </Portal>
   </Modal>
-</WithTranslationContextComponent>
+</WithProviderContextComponent>
 `;
 
 exports[`rendering renders correctly with translations 1`] = `
-<WithTranslationContextComponent
+<WithProviderContextComponent
   closeHandler={[Function]}
   title="Modal title"
   translations={
@@ -1096,7 +789,7 @@ exports[`rendering renders correctly with translations 1`] = `
         <div
           className="body isBodyScrollable"
         >
-          <WithTranslationContextComponent
+          <WithProviderContextComponent
             customEndShadowStyle={
               Object {
                 "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
@@ -1108,7 +801,6 @@ exports[`rendering renders correctly with translations 1`] = `
               }
             }
             shadowSize="16px"
-            translations={null}
           >
             <ScrollView
               arrows={false}
@@ -1178,71 +870,84 @@ exports[`rendering renders correctly with translations 1`] = `
                 />
               </div>
             </ScrollView>
-          </WithTranslationContextComponent>
+          </WithProviderContextComponent>
         </div>
         <div
           className="footer"
         >
-          <Toolbar
-            align="top"
+          <WithProviderContextComponent
             dense={true}
             justify="center"
-            nowrap={false}
           >
-            <div
-              className="toolbar isDense  isAlignedToTop isJustifiedToCenter"
+            <Toolbar
+              align="top"
+              dense={true}
+              justify="center"
+              nowrap={false}
             >
-              <ToolbarItem>
-                <div
-                  className="item"
-                >
-                  <ForwardRef(withForwardedRef(Button))
-                    clickHandler={[Function]}
-                    label="Zavřít"
-                    priority="flat"
-                  >
-                    <Button
-                      afterLabel={null}
-                      beforeLabel={null}
-                      block={false}
-                      clickHandler={[Function]}
-                      disabled={false}
-                      endCorner={null}
-                      forwardedRef={null}
-                      grouped={false}
-                      label="Zavřít"
-                      labelVisibility="all"
-                      loadingIcon={null}
-                      priority="flat"
-                      size="medium"
-                      startCorner={null}
-                      type="button"
-                      variant="primary"
+              <div
+                className="toolbar isDense  isAlignedToTop isJustifiedToCenter"
+              >
+                <WithProviderContextComponent>
+                  <ToolbarItem>
+                    <div
+                      className="item"
                     >
-                      <button
-                        className="root
+                      <WithProviderContextComponent
+                        clickHandler={[Function]}
+                        label="Zavřít"
+                        priority="flat"
+                      >
+                        <ForwardRef(withForwardedRef(Button))
+                          clickHandler={[Function]}
+                          label="Zavřít"
+                          priority="flat"
+                        >
+                          <Button
+                            afterLabel={null}
+                            beforeLabel={null}
+                            block={false}
+                            clickHandler={[Function]}
+                            disabled={false}
+                            endCorner={null}
+                            forwardedRef={null}
+                            grouped={false}
+                            label="Zavřít"
+                            labelVisibility="all"
+                            loadingIcon={null}
+                            priority="flat"
+                            size="medium"
+                            startCorner={null}
+                            type="button"
+                            variant="primary"
+                          >
+                            <button
+                              className="root
         priorityFlat
         sizeMedium
         variantPrimary"
-                        disabled={false}
-                        onClick={[Function]}
-                        type="button"
-                      >
-                        <span
-                          className="label"
-                        >
-                          Zavřít
-                        </span>
-                      </button>
-                    </Button>
-                  </ForwardRef(withForwardedRef(Button))>
-                </div>
-              </ToolbarItem>
-            </div>
-          </Toolbar>
+                              disabled={false}
+                              onClick={[Function]}
+                              type="button"
+                            >
+                              <span
+                                className="label"
+                              >
+                                Zavřít
+                              </span>
+                            </button>
+                          </Button>
+                        </ForwardRef(withForwardedRef(Button))>
+                      </WithProviderContextComponent>
+                    </div>
+                  </ToolbarItem>
+                </WithProviderContextComponent>
+              </div>
+            </Toolbar>
+          </WithProviderContextComponent>
         </div>
       </div>
     </div>
   </Modal>
-</WithTranslationContextComponent>
+</WithProviderContextComponent>
 `;

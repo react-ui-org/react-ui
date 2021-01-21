@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withProviderContext } from '../../../provider';
 import styles from './ButtonGroup.scss';
 
 export const ButtonGroup = ({
@@ -64,4 +65,6 @@ ButtonGroup.propTypes = {
   size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
-export default ButtonGroup;
+export const ButtonGroupWithContext = withProviderContext(ButtonGroup, 'ButtonGroup');
+
+export default ButtonGroupWithContext;

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withProviderContext } from '../../../provider';
 import styles from './Card.scss';
 
 export const Card = (props) => {
@@ -110,4 +111,6 @@ Card.propTypes = {
   variant: PropTypes.oneOf(['flat', 'bordered']),
 };
 
-export default Card;
+export const CardWithContext = withProviderContext(Card, 'Card');
+
+export default CardWithContext;
