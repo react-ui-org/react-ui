@@ -3,7 +3,8 @@ import { mount } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
 import * as elementPositionService from '../../../../services/elementPositionService';
-import ScrollView from '..';
+import defaultTranslations from '../../../../translations/en';
+import { ScrollView } from '../ScrollView';
 
 describe('rendering', () => {
   const mockedPositionDifference = {
@@ -18,7 +19,7 @@ describe('rendering', () => {
 
   it('renders correctly with a single child', () => {
     const tree = mount((
-      <ScrollView>
+      <ScrollView translations={defaultTranslations.ScrollView}>
         <span>content</span>
       </ScrollView>
     ));
@@ -28,7 +29,7 @@ describe('rendering', () => {
 
   it('renders correctly with multiple children', () => {
     const tree = mount((
-      <ScrollView>
+      <ScrollView translations={defaultTranslations.ScrollView}>
         <span>content 1</span>
         <span>content 2</span>
         <span>content 3</span>
@@ -40,7 +41,10 @@ describe('rendering', () => {
 
   it('renders correctly with scrollbar disabled', () => {
     const tree = mount((
-      <ScrollView scrollbar={false}>
+      <ScrollView
+        scrollbar={false}
+        translations={defaultTranslations.ScrollView}
+      >
         <span>content</span>
       </ScrollView>
     ));
@@ -50,7 +54,12 @@ describe('rendering', () => {
 
   it('renders correctly with arrows', () => {
     const tree = mount((
-      <ScrollView arrows arrowsColor="white" arrowsScrollStep={200}>
+      <ScrollView
+        arrows
+        arrowsColor="white"
+        arrowsScrollStep={200}
+        translations={defaultTranslations.ScrollView}
+      >
         <span>content</span>
       </ScrollView>
     ));
@@ -83,6 +92,7 @@ describe('rendering', () => {
           red: 122,
         }}
         shadowSize="100px"
+        translations={defaultTranslations.ScrollView}
       >
         <span>content 1</span>
         <span>content 2</span>

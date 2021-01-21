@@ -205,7 +205,7 @@ export class Modal extends React.Component {
                       id={action.id || undefined}
                       label={action.label}
                       loadingIcon={action.loadingIcon}
-                      ref={this.submitButtonRef}
+                      forwardedRef={this.submitButtonRef}
                       type="button"
                       variant={action.variant}
                     />
@@ -336,5 +336,6 @@ Modal.propTypes = {
   }).isRequired,
 };
 
-export const TranslatedModal = withProviderContext(Modal, 'Modal');
-export default TranslatedModal;
+export const ModalWithContext = withProviderContext(Modal, 'Modal');
+
+export default ModalWithContext;

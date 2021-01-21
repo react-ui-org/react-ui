@@ -73,7 +73,7 @@ exports[`rendering renders correctly with all props 1`] = `
         <div
           className="sortButton"
         >
-          <ForwardRef(withForwardedRef(Button))
+          <WithProviderContextComponent
             beforeLabel={
               <span
                 className="icon"
@@ -96,7 +96,7 @@ exports[`rendering renders correctly with all props 1`] = `
         <div
           className="sortButton"
         >
-          <ForwardRef(withForwardedRef(Button))
+          <WithProviderContextComponent
             beforeLabel={
               <span
                 className="icon"

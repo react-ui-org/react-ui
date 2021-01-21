@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
+import defaultTranslations from '../../../../translations/en';
 import Modal from '..';
 
 describe('rendering', () => {
@@ -9,6 +10,7 @@ describe('rendering', () => {
     const tree = mount((
       <Modal
         title="Modal title"
+        translations={defaultTranslations.Modal}
       >
         Modal content
       </Modal>
@@ -17,31 +19,7 @@ describe('rendering', () => {
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
 
-  it('renders correctly with all props except translations', () => {
-    const tree = mount((
-      <Modal
-        actions={[
-          {
-            clickHandler: () => {},
-            label: 'Action',
-          },
-        ]}
-        closeHandler={() => {}}
-        disableBodyScrolling
-        id="custom-id"
-        scrollViewEndShadow={{ background: 'none' }}
-        scrollViewStartShadow={{ background: 'none' }}
-        size="large"
-        title="Modal title"
-      >
-        Modal content
-      </Modal>
-    ));
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly with all props except translations and with a loading icon', () => {
+  it('renders correctly with all props except loading icon', () => {
     const tree = mount((
       <Modal
         actions={[
@@ -59,6 +37,7 @@ describe('rendering', () => {
         scrollViewStartShadow={{ background: 'none' }}
         size="small"
         title="Modal title"
+        translations={defaultTranslations.Modal}
       >
         Modal content
       </Modal>
@@ -92,6 +71,7 @@ describe('rendering', () => {
       <Modal
         portalId="app-modal-portal"
         title="Modal title"
+        translations={defaultTranslations.Modal}
       >
         Modal content
       </Modal>
@@ -108,6 +88,7 @@ describe('functionality', () => {
       <Modal
         closeHandler={spy}
         title="Modal title"
+        translations={defaultTranslations.Modal}
       >
         Modal content
       </Modal>
@@ -124,6 +105,7 @@ describe('functionality', () => {
       <Modal
         closeHandler={spy}
         title="Modal title"
+        translations={defaultTranslations.Modal}
       >
         Modal content
       </Modal>
@@ -150,6 +132,7 @@ describe('functionality', () => {
         ]}
         closeHandler={() => {}}
         title="Modal title"
+        translations={defaultTranslations.Modal}
       >
         Modal content
       </Modal>
@@ -181,6 +164,7 @@ describe('functionality', () => {
         ]}
         closeHandler={() => {}}
         title="Modal title"
+        translations={defaultTranslations.Modal}
       >
         Modal content
       </Modal>
@@ -209,6 +193,7 @@ describe('functionality', () => {
         ]}
         closeHandler={() => {}}
         title="Modal title"
+        translations={defaultTranslations.Modal}
       >
         Modal content
       </Modal>
@@ -234,6 +219,7 @@ describe('functionality', () => {
         ]}
         closeHandler={() => {}}
         title="Modal title"
+        translations={defaultTranslations.Modal}
       >
         Modal content
       </Modal>

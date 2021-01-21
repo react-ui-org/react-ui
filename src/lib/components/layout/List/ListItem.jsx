@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withProviderContext } from '../../../provider';
 import styles from './List.scss';
 
 export const ListItem = ({ children }) => {
@@ -25,4 +26,6 @@ ListItem.propTypes = {
   children: PropTypes.node,
 };
 
-export default ListItem;
+export const ListItemWithContext = withProviderContext(ListItem, 'ListItem');
+
+export default ListItemWithContext;

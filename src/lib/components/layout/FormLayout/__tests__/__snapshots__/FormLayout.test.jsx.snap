@@ -4,7 +4,7 @@ exports[`rendering renders correctly with a single child 1`] = `
 <div
   className="root rootFieldLayoutVertical  "
 >
-  <ForwardRef(withForwardedRef(TextField))
+  <WithProviderContextComponent
     id="test-id"
     inFormLayout={true}
     key=".0"
@@ -19,7 +19,7 @@ exports[`rendering renders correctly with auto label width 1`] = `
   className="root rootFieldLayoutHorizontal  hasRootLabelWidthAuto"
   id="test-id"
 >
-  <ForwardRef(withForwardedRef(TextField))
+  <WithProviderContextComponent
     id="test-id"
     inFormLayout={true}
     key=".0"
@@ -39,7 +39,7 @@ exports[`rendering renders correctly with custom label width 1`] = `
     }
   }
 >
-  <ForwardRef(withForwardedRef(TextField))
+  <WithProviderContextComponent
     id="test-id"
     inFormLayout={true}
     key=".0"
@@ -53,21 +53,21 @@ exports[`rendering renders correctly with multiple children 1`] = `
 <div
   className="root rootFieldLayoutVertical  "
 >
-  <ForwardRef(withForwardedRef(TextField))
+  <WithProviderContextComponent
     id="test-id-1"
     inFormLayout={true}
     key=".0"
     label="Text field 1"
     layout="vertical"
   />
-  <ForwardRef(withForwardedRef(TextField))
+  <WithProviderContextComponent
     id="test-id-2"
     inFormLayout={true}
     key=".1"
     label="Text field 2"
     layout="vertical"
   />
-  <ForwardRef(withForwardedRef(TextField))
+  <WithProviderContextComponent
     id="test-id-3"
     inFormLayout={true}
     key=".2"

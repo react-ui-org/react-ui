@@ -1,37 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering renders correctly 1`] = `
-<WithTranslationContextComponent
-  translations={null}
->
-  <Alert
-    closeHandler={null}
-    icon={null}
-    translations={
-      Object {
-        "close": "Close",
-      }
+<Alert
+  closeHandler={null}
+  icon={null}
+  translations={
+    Object {
+      "close": "Close",
     }
-    type="note"
+  }
+  type="note"
+>
+  <div
+    className="root isRootNote"
+    role="alert"
   >
     <div
-      className="root isRootNote"
-      role="alert"
+      className="message"
     >
-      <div
-        className="message"
-      >
-        <div>
-          Children
-        </div>
+      <div>
+        Children
       </div>
     </div>
-  </Alert>
-</WithTranslationContextComponent>
+  </div>
+</Alert>
 `;
 
 exports[`rendering renders correctly with all props 1`] = `
-<WithTranslationContextComponent
+<Alert
   closeHandler={[Function]}
   icon={
     <span
@@ -39,60 +35,48 @@ exports[`rendering renders correctly with all props 1`] = `
     />
   }
   id="custom-id"
-  translations={null}
+  translations={
+    Object {
+      "close": "Close",
+    }
+  }
   type="success"
 >
-  <Alert
-    closeHandler={[Function]}
-    icon={
+  <div
+    className="root isRootSuccess"
+    id="custom-id"
+    role="alert"
+  >
+    <div
+      className="icon"
+    >
       <span
         className="icon"
       />
-    }
-    id="custom-id"
-    translations={
-      Object {
-        "close": "Close",
-      }
-    }
-    type="success"
-  >
-    <div
-      className="root isRootSuccess"
-      id="custom-id"
-      role="alert"
-    >
-      <div
-        className="icon"
-      >
-        <span
-          className="icon"
-        />
-      </div>
-      <div
-        className="message"
-        id="custom-id__content"
-      >
-        <div>
-          Children
-        </div>
-      </div>
-      <button
-        className="close"
-        id="custom-id__close"
-        onClick={[Function]}
-        onKeyPress={[Function]}
-        tabIndex="0"
-        title="Close"
-        type="button"
-      >
-        <span
-          className="closeSign"
-        >
-          ×
-        </span>
-      </button>
     </div>
-  </Alert>
-</WithTranslationContextComponent>
+    <div
+      className="message"
+      id="custom-id__content"
+    >
+      <div>
+        Children
+      </div>
+    </div>
+    <button
+      className="close"
+      id="custom-id__close"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      tabIndex="0"
+      title="Close"
+      type="button"
+    >
+      <span
+        className="closeSign"
+      >
+        ×
+      </span>
+    </button>
+  </div>
+</Alert>
 `;

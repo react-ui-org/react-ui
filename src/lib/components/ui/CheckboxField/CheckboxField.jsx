@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import getRootValidationStateClassName from '../../../helpers/getRootValidationStateClassName';
+import { withProviderContext } from '../../../provider';
 import transferProps from '../../../utils/transferProps';
 import withForwardedRef from '../withForwardedRef';
 import styles from './CheckboxField.scss';
@@ -170,4 +171,6 @@ CheckboxField.propTypes = {
   ]),
 };
 
-export default withForwardedRef(CheckboxField);
+export const CheckboxFieldWithContext = withProviderContext(withForwardedRef(CheckboxField), 'CheckboxField');
+
+export default CheckboxFieldWithContext;

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import getRootSizeClassName from '../../../helpers/getRootSizeClassName';
 import getRootValidationStateClassName from '../../../helpers/getRootValidationStateClassName';
+import { withProviderContext } from '../../../provider';
 import transferProps from '../../../utils/transferProps';
 import withForwardedRef from '../withForwardedRef';
 import getCustomInputSizeByType from './helpers/getCustomInputSizeByType';
@@ -216,4 +217,6 @@ TextField.propTypes = {
   variant: PropTypes.oneOf(['filled', 'outline']),
 };
 
-export default withForwardedRef(TextField);
+export const TextFieldWithContext = withProviderContext(withForwardedRef(TextField), 'TextField');
+
+export default TextFieldWithContext;

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withProviderContext } from '../../../provider';
 import styles from './FormLayoutCustomField.scss';
 
 export const FormLayoutCustomField = ({
@@ -62,4 +63,6 @@ FormLayoutCustomField.propTypes = {
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
 };
 
-export default FormLayoutCustomField;
+export const FormLayoutCustomFieldWithContext = withProviderContext(FormLayoutCustomField, 'FormLayoutCustomField');
+
+export default FormLayoutCustomFieldWithContext;

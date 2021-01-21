@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withProviderContext } from '../../../provider';
 import styles from './Toolbar.scss';
 
 export const ToolbarGroup = (props) => {
@@ -65,4 +66,6 @@ ToolbarGroup.propTypes = {
   nowrap: PropTypes.bool,
 };
 
-export default ToolbarGroup;
+export const ToolbarGroupWithContext = withProviderContext(ToolbarGroup, 'ToolbarGroup');
+
+export default ToolbarGroupWithContext;

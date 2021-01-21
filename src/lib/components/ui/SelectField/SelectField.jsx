@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import getRootSizeClassName from '../../../helpers/getRootSizeClassName';
 import getRootValidationStateClassName from '../../../helpers/getRootValidationStateClassName';
+import { withProviderContext } from '../../../provider';
 import transferProps from '../../../utils/transferProps';
 import withForwardedRef from '../withForwardedRef';
 import styles from './SelectField.scss';
@@ -207,4 +208,6 @@ SelectField.propTypes = {
   variant: PropTypes.oneOf(['filled', 'outline']),
 };
 
-export default withForwardedRef(SelectField);
+export const SelectFieldWithContext = withProviderContext(withForwardedRef(SelectField), 'SelectField');
+
+export default SelectFieldWithContext;

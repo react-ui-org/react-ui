@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withProviderContext } from '../../../provider';
 import transferProps from '../../../utils/transferProps';
 import withForwardedRef from '../withForwardedRef';
 import styles from './Button.scss';
@@ -236,4 +237,6 @@ Button.propTypes = {
   variant: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'danger', 'dark']),
 };
 
-export default withForwardedRef(Button);
+export const ButtonWithContext = withProviderContext(withForwardedRef(Button), 'Button');
+
+export default ButtonWithContext;

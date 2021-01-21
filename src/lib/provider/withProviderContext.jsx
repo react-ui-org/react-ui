@@ -2,25 +2,31 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import RUIContext from './RUIContext';
 
-export default (Component, translationContext) => {
-  const WithTranslationContextComponent = (props) => (
+export default (Component, componentName) => {
+  const WithProviderContextComponent = (props) => (
     <RUIContext.Consumer>
-      {(context) => (
-        <Component
-          {...props}
-          translations={props.translations || context.translations[translationContext]}
-        />
-      )}
+      {(context) => {
+        const contextGlobalProps = context?.globalProps ? context.globalProps[componentName] : null;
+        const contextTranslations = context?.translations ? context.translations[componentName] : null;
+
+        return (
+          <Component
+            {...contextGlobalProps}
+            {...props}
+            translations={props.translations || contextTranslations}
+          />
+        );
+      }}
     </RUIContext.Consumer>
   );
 
-  WithTranslationContextComponent.defaultProps = {
-    translations: null,
+  WithProviderContextComponent.defaultProps = {
+    translations: undefined,
   };
 
-  WithTranslationContextComponent.propTypes = {
+  WithProviderContextComponent.propTypes = {
     translations: PropTypes.shape({}),
   };
 
-  return WithTranslationContextComponent;
+  return WithProviderContextComponent;
 };

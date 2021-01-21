@@ -5,7 +5,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
   className="root "
   role="group"
 >
-  <ForwardRef(withForwardedRef(Button))
+  <WithProviderContextComponent
     block={false}
     disabled={false}
     grouped={true}
@@ -14,7 +14,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
     priority="filled"
     size="medium"
   />
-  <ForwardRef(withForwardedRef(Button))
+  <WithProviderContextComponent
     block={false}
     disabled={false}
     grouped={true}
@@ -31,7 +31,7 @@ exports[`rendering renders correctly priority 1`] = `
   className="root "
   role="group"
 >
-  <ForwardRef(withForwardedRef(Button))
+  <WithProviderContextComponent
     block={false}
     disabled={false}
     grouped={true}
@@ -40,7 +40,7 @@ exports[`rendering renders correctly priority 1`] = `
     priority="outline"
     size="medium"
   />
-  <ForwardRef(withForwardedRef(Button))
+  <WithProviderContextComponent
     block={false}
     disabled={false}
     grouped={true}
@@ -57,7 +57,7 @@ exports[`rendering renders correctly size 1`] = `
   className="root "
   role="group"
 >
-  <ForwardRef(withForwardedRef(Button))
+  <WithProviderContextComponent
     block={false}
     disabled={false}
     grouped={true}
@@ -66,7 +66,7 @@ exports[`rendering renders correctly size 1`] = `
     priority="filled"
     size="large"
   />
-  <ForwardRef(withForwardedRef(Button))
+  <WithProviderContextComponent
     block={false}
     disabled={false}
     grouped={true}
@@ -83,7 +83,7 @@ exports[`rendering renders correctly with all props 1`] = `
   className="root isRootBlock"
   role="group"
 >
-  <ForwardRef(withForwardedRef(Button))
+  <WithProviderContextComponent
     block={true}
     disabled={true}
     grouped={true}
@@ -92,7 +92,7 @@ exports[`rendering renders correctly with all props 1`] = `
     priority="outline"
     size="small"
   />
-  <ForwardRef(withForwardedRef(Button))
+  <WithProviderContextComponent
     block={true}
     disabled={true}
     grouped={true}

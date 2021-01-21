@@ -112,5 +112,6 @@ Alert.propTypes = {
   type: PropTypes.oneOf(['error', 'help', 'info', 'note', 'success', 'warning']),
 };
 
-export const TranslatedAlert = withProviderContext(Alert, 'Alert');
-export default TranslatedAlert;
+export const AlertWithContext = withProviderContext(Alert, 'Alert');
+
+export default AlertWithContext;

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withProviderContext } from '../../../provider';
 import styles from './Card.scss';
 
 export const CardFooter = (props) => {
@@ -21,4 +22,6 @@ CardFooter.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default CardFooter;
+export const CardFooterWithContext = withProviderContext(CardFooter, 'CardFooter');
+
+export default CardFooterWithContext;
