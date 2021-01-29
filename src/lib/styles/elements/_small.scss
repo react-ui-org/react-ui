@@ -1,4 +1,4 @@
-@use '../settings/typography';
+@use '../theme/typography';
 
 small {
   font-size: typography.$size-small;

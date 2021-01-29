@@ -1,5 +1,5 @@
 // Variant specific theme options are obtained dynamically because there is way too many of them to
-// maintain manually. See `tools/forms/_variants.scss` for details.
+// maintain manually. See `settings/_forms.scss` and `tools/forms/_variants.scss` for details.
 
 $field-input-width: var(--rui-form-field-input-width);
 $field-input-min-width: var(--rui-form-field-input-min-width);

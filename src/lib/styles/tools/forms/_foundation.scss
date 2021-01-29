@@ -8,7 +8,7 @@
 // 6. Don't let text alignment be affected by a parent.
 
 @use '../../settings/forms' as settings;
-@use '../../settings/forms-theme' as theme;
+@use '../../theme/forms' as theme;
 @use '../../tools/caret';
 @use '../spacing';
 @use '../transition';

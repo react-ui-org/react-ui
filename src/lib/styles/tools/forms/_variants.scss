@@ -9,8 +9,8 @@
 // 3. `.input:focus` is added just in case `:focus-within` doesn't work.
 
 @use 'sass:list';
-@use '../../settings/forms-theme' as theme;
 @use '../../settings/forms' as settings;
+@use '../../theme/forms' as theme;
 
 @mixin _disabled-state() {
   opacity: theme.$field-disabled-opacity;
