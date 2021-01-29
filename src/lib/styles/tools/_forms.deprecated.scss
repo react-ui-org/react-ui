@@ -1,9 +1,9 @@
 // ⚠️ Deprecated for new components.
 
-@use '../settings/borders';
 @use '../settings/colors.deprecated' as deprecated-colors;
 @use '../settings/forms' as settings;
 @use '../settings/forms.deprecated' as deprecated-settings;
+@use '../theme/borders';
 @use 'breakpoint';
 
 @mixin disabled-state() {

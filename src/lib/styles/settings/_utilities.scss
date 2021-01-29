@@ -1,6 +1,6 @@
-@use 'colors';
-@use 'spacing';
-@use 'typography';
+@use '../theme/colors';
+@use '../theme/spacing';
+@use '../theme/typography';
 
 $map: (
   'display': (

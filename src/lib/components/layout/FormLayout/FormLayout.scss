@@ -13,8 +13,8 @@
 //    (a global default which can be customised per use).
 
 @use '../../../styles/settings/forms' as settings;
-@use '../../../styles/settings/forms-theme' as theme;
 @use '../../../styles/settings/layouts';
+@use '../../../styles/theme/forms' as theme;
 @use '../../../styles/tools/breakpoint';
 
 .root {

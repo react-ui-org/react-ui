@@ -32,7 +32,7 @@
 //    for more.
 
 @use '../../settings/forms' as settings;
-@use '../../settings/forms-theme' as theme;
+@use '../../theme/forms' as theme;
 @use '../breakpoint';
 
 @mixin field-layout-vertical() {

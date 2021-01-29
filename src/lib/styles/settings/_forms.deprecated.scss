@@ -1,6 +1,6 @@
 // ⚠️ Deprecated for new components.
 
-@use 'colors';
+@use '../theme/colors';
 @use 'colors.deprecated' as deprecated-colors;
 
 $form-focus-outline-color: deprecated-colors.$blue-lighter;

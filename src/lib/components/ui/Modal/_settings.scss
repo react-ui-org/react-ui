@@ -1,6 +1,6 @@
-@use '../../../styles/settings/borders';
-@use '../../../styles/settings/typography';
 @use '../../../styles/settings/z-indexes';
+@use '../../../styles/theme/borders';
+@use '../../../styles/theme/typography';
 @use '../../../styles/tools/spacing';
 
 $padding-x: spacing.of(5);

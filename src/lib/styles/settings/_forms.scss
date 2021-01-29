@@ -1,8 +1,8 @@
 // 1. Input `line-height` is specified in `rem` so inputs do not break when their font size gets
 //    changed later.
 
+@use '../theme/typography';
 @use '../tools/spacing';
-@use 'typography';
 
 $field-font-family: typography.$font-family-base;
 $field-font-weight: map-get(typography.$font-weight-values, regular);

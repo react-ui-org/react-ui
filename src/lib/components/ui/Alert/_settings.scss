@@ -1,4 +1,4 @@
-@use '../../../styles/settings/typography';
+@use '../../../styles/theme/typography';
 @use 'theme';
 
 $font-size: map-get(typography.$size-values, 0);
