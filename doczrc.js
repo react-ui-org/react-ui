@@ -73,6 +73,7 @@ export default {
       dark: vsDarkTheme,
       light: vsDarkTheme,
     },
+    showPlaygroundEditor: false,
     styles: {
       Container: {
         '& > table': {
