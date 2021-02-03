@@ -63,6 +63,12 @@ export default {
         },
       },
     },
+    editor: {
+      fontSize: 1,
+    },
+    fonts: {
+      monospace: 'var(--rui-code-font-family)',
+    },
     prism: {
       dark: vsDarkTheme,
       light: vsDarkTheme,
@@ -112,6 +118,9 @@ export default {
         },
         code: {
           bg: 'rgba(0, 0, 0, 0.05)',
+        },
+        'code, pre': {
+          fontSize: '80%', // Adjust code font size to work better with 20px body text size.
         },
         h1: {
           fontFamily: defaultFontFamily,
