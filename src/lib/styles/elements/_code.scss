@@ -1,4 +1,11 @@
+@use '../theme/code';
 @use '../theme/colors';
+
+code,
+pre {
+  font-size: code.$font-size;
+  font-family: code.$font-family;
+}
 
 code {
   padding: 0.15em 0.5em;
