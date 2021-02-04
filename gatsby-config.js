@@ -9,12 +9,16 @@ module.exports = {
         sassRuleModulesTest: /\.scss$/,
       },
       resolve: 'gatsby-plugin-sass',
-    }, {
+    },
+    {
       options: {
         files: '**/*.{md,mdx}',
         title: 'React UI',
       },
       resolve: 'gatsby-theme-docz',
+    },
+    {
+      resolve: '@nejcm/docz-theme-extended',
     },
   ],
 };
