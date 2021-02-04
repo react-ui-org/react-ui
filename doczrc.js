@@ -5,55 +5,66 @@ const defaultFontFamily = '"Titillium Web", Roboto, Helvetica, Arial, sans-serif
 
 export default {
   dest: 'docs',
+  groups: {
+    '': [],
+    Basics: [
+      'Getting Started',
+      'Foundation',
+    ],
+    Components: [
+      'UI',
+      'Layouts',
+    ],
+    Helpers: [
+      'CSS Helpers',
+    ],
+    // eslint-disable-next-line sort-keys
+    Guides: [
+      'Customize',
+      'Contribute',
+    ],
+  },
   ignore: ['LICENSE.md', 'README.md'],
+  lang: 'en',
   menu: [
-    'Home',
+    'Introduction',
     {
       menu: [
         'Installation',
         'Usage',
+        'Browsers & Devices',
       ],
       name: 'Getting Started',
     },
     {
-      menu: [
-        'Global Props',
-        'Translations',
-        'Theming',
-      ],
-      name: 'Customize',
-    },
-    {
-      menu: [
-        'Breakpoints',
-        'Colors',
-        'Typography',
-        'Icons',
-        'Spacing',
-      ],
+      menu: [],
       name: 'Foundation',
     },
-    'Components: UI',
-    'Components: Layouts',
     {
-      menu: [
-        'Animation',
-        'Box Alignment',
-        'Colors',
-        'Display',
-        'Spacing',
-        'Typography',
-      ],
+      menu: [],
+      name: 'UI',
+    },
+    {
+      menu: [],
+      name: 'Layouts',
+    },
+    {
+      menu: [],
       name: 'CSS Helpers',
     },
     {
-      menu: [
-        'Guidelines',
-        'Releasing',
-      ],
+      menu: [],
+      name: 'Customize',
+    },
+    {
+      menu: [],
       name: 'Contribute',
     },
   ],
+  menuDisplayName: {
+    Layouts: 'Layouts',
+    UI: 'UI Components',
+  },
   public: '/public',
   themeConfig: {
     colors: {
@@ -69,10 +80,24 @@ export default {
     fonts: {
       monospace: 'var(--rui-code-font-family)',
     },
+    footer: {
+      navigation: true,
+    },
+    header: {
+      fixed: false,
+      icons: 'minimal',
+    },
+    menu: {
+      headings: {
+        rightSide: true,
+      },
+      search: false,
+    },
     prism: {
       dark: vsDarkTheme,
       light: vsDarkTheme,
     },
+    search: true,
     showPlaygroundEditor: false,
     styles: {
       Container: {
@@ -148,7 +173,7 @@ export default {
         hr: {
           my: 6,
         },
-        maxWidth: 900,
+        maxWidth: 1150,
         ol: {
           ml: 5,
         },
