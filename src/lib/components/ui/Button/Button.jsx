@@ -237,6 +237,6 @@ Button.propTypes = {
   variant: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'danger', 'dark']),
 };
 
-export const ButtonWithContext = withProviderContext(withForwardedRef(Button), 'Button');
+export const ButtonWithContext = withForwardedRef(withProviderContext(Button, 'Button'));
 
 export default ButtonWithContext;

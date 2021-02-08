@@ -182,13 +182,14 @@ exports[`rendering renders component with default provider 1`] = `
                       <div
                         className="item"
                       >
-                        <WithProviderContextComponent
+                        <ForwardRef(withForwardedRef(WithProviderContextComponent))
                           clickHandler={[Function]}
                           label="Close"
                           priority="flat"
                         >
-                          <ForwardRef(withForwardedRef(Button))
+                          <WithProviderContextComponent
                             clickHandler={[Function]}
+                            forwardedRef={null}
                             label="Close"
                             priority="flat"
                           >
@@ -226,8 +227,8 @@ exports[`rendering renders component with default provider 1`] = `
                                 </span>
                               </button>
                             </Button>
-                          </ForwardRef(withForwardedRef(Button))>
-                        </WithProviderContextComponent>
+                          </WithProviderContextComponent>
+                        </ForwardRef(withForwardedRef(WithProviderContextComponent))>
                       </div>
                     </ToolbarItem>
                   </WithProviderContextComponent>
@@ -427,13 +428,14 @@ exports[`rendering renders component with provided both translations and global 
                       <div
                         className="item"
                       >
-                        <WithProviderContextComponent
+                        <ForwardRef(withForwardedRef(WithProviderContextComponent))
                           clickHandler={[Function]}
                           label="Zavřít"
                           priority="flat"
                         >
-                          <ForwardRef(withForwardedRef(Button))
+                          <WithProviderContextComponent
                             clickHandler={[Function]}
+                            forwardedRef={null}
                             label="Zavřít"
                             priority="flat"
                           >
@@ -471,8 +473,8 @@ exports[`rendering renders component with provided both translations and global 
                                 </span>
                               </button>
                             </Button>
-                          </ForwardRef(withForwardedRef(Button))>
-                        </WithProviderContextComponent>
+                          </WithProviderContextComponent>
+                        </ForwardRef(withForwardedRef(WithProviderContextComponent))>
                       </div>
                     </ToolbarItem>
                   </WithProviderContextComponent>
@@ -675,13 +677,14 @@ exports[`rendering renders component with provided global props 1`] = `
                       <div
                         className="item"
                       >
-                        <WithProviderContextComponent
+                        <ForwardRef(withForwardedRef(WithProviderContextComponent))
                           clickHandler={[Function]}
                           label="Close"
                           priority="flat"
                         >
-                          <ForwardRef(withForwardedRef(Button))
+                          <WithProviderContextComponent
                             clickHandler={[Function]}
+                            forwardedRef={null}
                             label="Close"
                             priority="flat"
                           >
@@ -719,8 +722,8 @@ exports[`rendering renders component with provided global props 1`] = `
                                 </span>
                               </button>
                             </Button>
-                          </ForwardRef(withForwardedRef(Button))>
-                        </WithProviderContextComponent>
+                          </WithProviderContextComponent>
+                        </ForwardRef(withForwardedRef(WithProviderContextComponent))>
                       </div>
                     </ToolbarItem>
                   </WithProviderContextComponent>
@@ -914,13 +917,14 @@ exports[`rendering renders component with provided translations 1`] = `
                       <div
                         className="item"
                       >
-                        <WithProviderContextComponent
+                        <ForwardRef(withForwardedRef(WithProviderContextComponent))
                           clickHandler={[Function]}
                           label="Zavřít"
                           priority="flat"
                         >
-                          <ForwardRef(withForwardedRef(Button))
+                          <WithProviderContextComponent
                             clickHandler={[Function]}
+                            forwardedRef={null}
                             label="Zavřít"
                             priority="flat"
                           >
@@ -958,8 +962,8 @@ exports[`rendering renders component with provided translations 1`] = `
                                 </span>
                               </button>
                             </Button>
-                          </ForwardRef(withForwardedRef(Button))>
-                        </WithProviderContextComponent>
+                          </WithProviderContextComponent>
+                        </ForwardRef(withForwardedRef(WithProviderContextComponent))>
                       </div>
                     </ToolbarItem>
                   </WithProviderContextComponent>
@@ -1139,13 +1143,14 @@ exports[`rendering renders component without provider 1`] = `
                     <div
                       className="item"
                     >
-                      <WithProviderContextComponent
+                      <ForwardRef(withForwardedRef(WithProviderContextComponent))
                         clickHandler={[Function]}
                         label="Close"
                         priority="flat"
                       >
-                        <ForwardRef(withForwardedRef(Button))
+                        <WithProviderContextComponent
                           clickHandler={[Function]}
+                          forwardedRef={null}
                           label="Close"
                           priority="flat"
                         >
@@ -1183,8 +1188,8 @@ exports[`rendering renders component without provider 1`] = `
                               </span>
                             </button>
                           </Button>
-                        </ForwardRef(withForwardedRef(Button))>
-                      </WithProviderContextComponent>
+                        </WithProviderContextComponent>
+                      </ForwardRef(withForwardedRef(WithProviderContextComponent))>
                     </div>
                   </ToolbarItem>
                 </WithProviderContextComponent>

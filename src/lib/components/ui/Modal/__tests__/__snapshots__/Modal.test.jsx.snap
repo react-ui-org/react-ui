@@ -223,7 +223,7 @@ exports[`rendering renders correctly with all props except loading icon 1`] = `
                     <div
                       className="item"
                     >
-                      <WithProviderContextComponent
+                      <ForwardRef(withForwardedRef(WithProviderContextComponent))
                         clickHandler={[Function]}
                         forwardedRef={
                           Object {
@@ -238,13 +238,9 @@ exports[`rendering renders correctly with all props except loading icon 1`] = `
                         }
                         type="button"
                       >
-                        <ForwardRef(withForwardedRef(Button))
+                        <WithProviderContextComponent
                           clickHandler={[Function]}
-                          forwardedRef={
-                            Object {
-                              "current": null,
-                            }
-                          }
+                          forwardedRef={null}
                           label="Action"
                           loadingIcon={
                             <span
@@ -302,8 +298,8 @@ exports[`rendering renders correctly with all props except loading icon 1`] = `
                               </span>
                             </button>
                           </Button>
-                        </ForwardRef(withForwardedRef(Button))>
-                      </WithProviderContextComponent>
+                        </WithProviderContextComponent>
+                      </ForwardRef(withForwardedRef(WithProviderContextComponent))>
                     </div>
                   </ToolbarItem>
                 </WithProviderContextComponent>
@@ -312,14 +308,15 @@ exports[`rendering renders correctly with all props except loading icon 1`] = `
                     <div
                       className="item"
                     >
-                      <WithProviderContextComponent
+                      <ForwardRef(withForwardedRef(WithProviderContextComponent))
                         clickHandler={[Function]}
                         id="custom-id__closeModalFooterButton"
                         label="Close"
                         priority="flat"
                       >
-                        <ForwardRef(withForwardedRef(Button))
+                        <WithProviderContextComponent
                           clickHandler={[Function]}
+                          forwardedRef={null}
                           id="custom-id__closeModalFooterButton"
                           label="Close"
                           priority="flat"
@@ -361,8 +358,8 @@ exports[`rendering renders correctly with all props except loading icon 1`] = `
                               </span>
                             </button>
                           </Button>
-                        </ForwardRef(withForwardedRef(Button))>
-                      </WithProviderContextComponent>
+                        </WithProviderContextComponent>
+                      </ForwardRef(withForwardedRef(WithProviderContextComponent))>
                     </div>
                   </ToolbarItem>
                 </WithProviderContextComponent>
@@ -893,13 +890,14 @@ exports[`rendering renders correctly with translations 1`] = `
                     <div
                       className="item"
                     >
-                      <WithProviderContextComponent
+                      <ForwardRef(withForwardedRef(WithProviderContextComponent))
                         clickHandler={[Function]}
                         label="Zavřít"
                         priority="flat"
                       >
-                        <ForwardRef(withForwardedRef(Button))
+                        <WithProviderContextComponent
                           clickHandler={[Function]}
+                          forwardedRef={null}
                           label="Zavřít"
                           priority="flat"
                         >
@@ -937,8 +935,8 @@ exports[`rendering renders correctly with translations 1`] = `
                               </span>
                             </button>
                           </Button>
-                        </ForwardRef(withForwardedRef(Button))>
-                      </WithProviderContextComponent>
+                        </WithProviderContextComponent>
+                      </ForwardRef(withForwardedRef(WithProviderContextComponent))>
                     </div>
                   </ToolbarItem>
                 </WithProviderContextComponent>
