@@ -217,6 +217,6 @@ TextField.propTypes = {
   variant: PropTypes.oneOf(['filled', 'outline']),
 };
 
-export const TextFieldWithContext = withProviderContext(withForwardedRef(TextField), 'TextField');
+export const TextFieldWithContext = withForwardedRef(withProviderContext(TextField, 'TextField'));
 
 export default TextFieldWithContext;
