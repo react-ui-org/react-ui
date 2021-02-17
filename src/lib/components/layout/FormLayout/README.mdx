@@ -72,7 +72,8 @@ the job: the
 
 👉 For usage in auto-width Modal, you may need to turn on the `autoWidth` option
 for your FormLayout. This prevents FormLayout from unexpectedly growing in
-browsers that don't support
+browsers that
+[don't support](https://github.com/react-ui-org/react-ui/issues/232)
 [CSS subgrid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Subgrid)
 in cases when there are longer validation messages or help texts.
 
@@ -132,11 +133,6 @@ with CSS custom properties.
 
 - The `custom` mode (local) allows you to enter any **custom label width for
   individual FormLayouts.**
-
-👉 Please note the `auto` and `limited` label width options may not function
-correctly in combination with other auto layout mechanisms, eg. the auto-width
-[Modal](/components/ui/modal). It's just too much of magic that doesn't quite
-work together yet 🎩.
 
 Try to resize the playground to see how individual options work.
 
@@ -211,6 +207,26 @@ Try to resize the playground to see how individual options work.
     );
   }}
 </Playground>
+
+### Limitations
+
+#### Modals
+
+Please note the `auto` and `limited` label width options may not function
+correctly in combination with other auto layout mechanisms, e.g. the auto-width
+[Modal](/components/ui/modal). It's just too much of magic that doesn't quite
+work together yet 🎩.
+
+#### Inline Form Fields
+
+CheckboxField and Toggle always display their labels after inputs inside
+FormLayout. In other words, their labels never appear in a column with other
+fields' labels even when they have `labelPosition` set to `before`. This feature
+[will be implemented](https://github.com/react-ui-org/react-ui/issues/232)
+once
+[CSS subgrid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Subgrid)
+is fully supported in
+[browsers that we support](/getting-started/browsers-and-devices).
 
 ## Alignment
 
@@ -372,3 +388,12 @@ This is a demo of all components supported by FormLayout.
 A place for custom content inside FormLayout.
 
 <Props table of={FormLayoutCustomField} />
+
+## Theming
+
+| Custom Property                                      | Description                                                  |
+|------------------------------------------------------|--------------------------------------------------------------|
+| `--rui-form-layout-horizontal-label-auto-width`      | Label width in automatic layout                              |
+| `--rui-form-layout-horizontal-label-limited-width`   | Label width in limited-width layout                          |
+| `--rui-form-layout-horizontal-label-default-width`   | Label width in the default layout                            |
+| `--rui-form-layout-row-gap`                          | Gap between individual rows                                  |

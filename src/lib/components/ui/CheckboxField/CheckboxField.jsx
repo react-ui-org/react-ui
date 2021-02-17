@@ -24,46 +24,41 @@ export const CheckboxField = ({
   value,
   ...restProps
 }) => (
-  <div
+  <label
     className={[
       styles.root,
       inFormLayout ? styles.isRootInFormLayout : '',
-      layout === 'horizontal' ? styles.isRootLayoutHorizontal : '',
+      labelPosition === 'before' ? styles.hasRootLabelBefore : '',
+      disabled ? styles.isRootDisabled : '',
+      required ? styles.isRootRequired : '',
       getRootValidationStateClassName(validationState, styles),
     ].join(' ')}
+    htmlFor={id}
+    id={`${id}__label`}
   >
-    <label
-      className={[
-        styles.inputWrap,
-        labelPosition === 'before' ? styles.labelPositionBefore : styles.labelPositionAfter,
-      ].join(' ')}
-      htmlFor={id}
-      id={`${id}__label`}
-    >
+    <div className={styles.field}>
       <input
         {...transferProps(restProps)}
-        id={id}
-        value={value}
-        onChange={changeHandler}
-        disabled={disabled}
         checked={checked}
+        className={styles.input}
+        disabled={disabled}
+        id={id}
+        onChange={changeHandler}
         ref={forwardedRef}
         required={required}
         type="checkbox"
-        className={styles.input}
+        value={value}
       />
-      <span className={styles.label}>
-        <span
-          className={[
-            styles.labelInner,
-            isLabelVisible ? '' : styles.isLabelHidden,
-          ].join(' ')}
-          id={`${id}__labelText`}
-        >
-          {label}
-        </span>
-      </span>
-    </label>
+      <div
+        className={[
+          styles.label,
+          isLabelVisible ? '' : styles.isLabelHidden,
+        ].join(' ')}
+        id={`${id}__labelText`}
+      >
+        {label}
+      </div>
+    </div>
     {helpText && (
       <div
         className={styles.helpText}
@@ -80,7 +75,7 @@ export const CheckboxField = ({
         {validationText}
       </div>
     )}
-  </div>
+  </label>
 );
 
 CheckboxField.defaultProps = {

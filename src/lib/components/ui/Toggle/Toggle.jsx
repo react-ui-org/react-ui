@@ -24,20 +24,19 @@ export const Toggle = ({
   value,
   ...restProps
 }) => (
-  <div
+  <label
     className={[
       styles.root,
       inFormLayout ? styles.isRootInFormLayout : '',
-      labelPosition === 'before' ? styles.labelPositionBefore : styles.labelPositionAfter,
-      layout === 'horizontal' ? styles.isRootLayoutHorizontal : '',
+      labelPosition === 'before' ? styles.hasRootLabelBefore : '',
+      disabled ? styles.isRootDisabled : '',
+      required ? styles.isRootRequired : '',
       getRootValidationStateClassName(validationState, styles),
     ].join(' ')}
+    htmlFor={id}
+    id={`${id}__label`}
   >
-    <label
-      className={styles.inputWrap}
-      htmlFor={id}
-      id={`${id}__label`}
-    >
+    <div className={styles.field}>
       <input
         {...transferProps(restProps)}
         checked={checked}
@@ -51,19 +50,16 @@ export const Toggle = ({
         type="checkbox"
         value={value}
       />
-      <span className={styles.label}>
-        <span
-          className={[
-            styles.labelInner,
-            isLabelVisible ? '' : styles.isLabelHidden,
-          ].join(' ')}
-          id={`${id}__labelText`}
-        >
-          {label}
-        </span>
-      </span>
-      <span className={styles.toggle} />
-    </label>
+      <div
+        className={[
+          styles.label,
+          isLabelVisible ? '' : styles.isLabelHidden,
+        ].join(' ')}
+        id={`${id}__labelText`}
+      >
+        {label}
+      </div>
+    </div>
     {helpText && (
       <div
         className={styles.helpText}
@@ -80,7 +76,7 @@ export const Toggle = ({
         {validationText}
       </div>
     )}
-  </div>
+  </label>
 );
 
 Toggle.defaultProps = {

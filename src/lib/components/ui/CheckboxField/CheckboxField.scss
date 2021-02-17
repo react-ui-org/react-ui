@@ -1,205 +1,57 @@
-@use '../../../styles/settings/forms.deprecated' as deprecated-settings;
-@use '../../../styles/theme/borders';
-@use '../../../styles/tools/accessibility';
 @use '../../../styles/tools/forms/foundation';
-@use '../../../styles/tools/forms.deprecated' as deprecated-tools;
+@use '../../../styles/tools/forms/inline-field-layout';
+@use '../../../styles/tools/forms/relationships';
+@use '../../../styles/tools/forms/variants';
+@use '../../../styles/tools/accessibility';
 
+// Foundation
 .root {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-.inputWrap {
-  position: relative;
-  min-height: deprecated-settings.$checkbox-radio-label-height;
-}
-
-.input {
-  @include deprecated-tools.checkbox-radio-input-styles(deprecated-settings.$checkbox-radio-size, 0);
+  @include foundation.root();
+  @include inline-field-layout.root();
+  @include variants.visual(neutral);
+  @include relationships.horizontal-neighbor();
 }
 
 .label {
-  @include foundation.field-label();
-  @include deprecated-tools.checkbox-radio-label-styles(
-    deprecated-settings.$checkbox-radio-label-height,
-    deprecated-settings.$checkbox-radio-padding-left
-  );
+  @include foundation.label();
 }
 
-.input + .label::before {
-  @include deprecated-tools.checkbox-radio-shared-inactive(
-    deprecated-settings.$checkbox-radio-size,
-    deprecated-settings.$checkbox-radio-top,
-    0,
-    deprecated-settings.$form-field-border-color
-  );
-
-  border-radius: borders.$radius;
-}
-
-.input + .label::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: calc(#{deprecated-settings.$checkbox-checkmark-size / 2} + 1px);
-  display: none;
-  width: deprecated-settings.$checkbox-checkmark-size;
-  height: calc((#{deprecated-settings.$checkbox-checkmark-size} / 2) + 1px);
-  border-color: deprecated-settings.$checkbox-checkmark-color;
-  border-bottom: deprecated-settings.$checkbox-checkmark-border-style;
-  border-left: deprecated-settings.$checkbox-checkmark-border-style;
-  transform: translateY(-50%) rotate(-45deg);
-}
-
-// stylelint-disable selector-max-specificity, selector-nested-pattern
-.labelPositionBefore {
-  .input + .label::before {
-    right: 0;
-    left: auto;
-  }
-
-  .input + .label::after {
-    right: calc(#{deprecated-settings.$checkbox-checkmark-size / 2} + 1px);
-    left: auto;
-  }
-
-  .label {
-    padding-right: deprecated-settings.$checkbox-radio-padding-left;
-    padding-left: 0;
-  }
-}
-
-.labelPositionAfter {
-  .input + .label::before {
-    left: 0;
-  }
-
-  .input + .label::after {
-    right: 0;
-  }
-}
-
-.input:disabled + .label {
-  @include deprecated-tools.disabled-state();
-
-  color: deprecated-settings.$checkbox-disabled-text-color;
-}
-
-.input:checked + .label::before {
-  background: deprecated-settings.$form-field-background-color;
-}
-
-.input:checked + .label::after {
-  display: inline-block;
-}
-
-.input:indeterminate + .label::before {
-  border: borders.$width solid deprecated-settings.$checkbox-border-color-indeterminate;
-}
-
-.input:indeterminate + .label::after {
-  display: inline-block;
-  border-bottom-color: deprecated-settings.$checkbox-border-color-indeterminate;
-  border-left: 0;
-  transform: translate(0, (deprecated-settings.$checkbox-checkmark-size / 2));
-}
-
-.input:focus + .label::before {
-  outline: 0;
-  box-shadow: deprecated-settings.$radio-focused-box-shadow;
-}
-
-.input:disabled + .label::before {
-  background-color: deprecated-settings.$checkbox-disabled-background-color;
-}
-
-.input:focus:checked + .label::before {
-  outline: 0;
-  box-shadow: deprecated-settings.$radio-focused-box-shadow;
-}
-
-.input:disabled:checked + .label::before {
-  background-color: deprecated-settings.$radio-disabled-background-color;
-  box-shadow: deprecated-settings.$radio-disabled-checked-box-shadow;
-}
-
-.input:required + .label .labelInner::after {
-  content: ' *';
-}
-
-.input:checked:disabled + .label::after {
-  $disabled-border-style:
-    (deprecated-settings.$checkbox-radio-size / 8)
-    solid
-    deprecated-settings.$checkbox-disabled-checkmark-color;
-
-  border-bottom: $disabled-border-style;
-  border-left: $disabled-border-style;
+.field {
+  @include inline-field-layout.field();
 }
 
 .helpText,
 .validationText {
-  @include foundation.field-help-text();
+  @include foundation.help-text();
 }
 
-.validationText {
-  min-height: 1rem;
+.isRootRequired .label {
+  @include foundation.label-required();
 }
 
+// States
+.isRootStateInvalid {
+  @include variants.feedback(invalid);
+}
+
+.isRootStateValid {
+  @include variants.feedback(valid);
+}
+
+.isRootStateWarning {
+  @include variants.feedback(warning);
+}
+
+// Invisible label
 .isLabelHidden {
   @include accessibility.hide-text();
 }
 
-// States
-// stylelint-disable no-descending-specificity
-.isRootStateInvalid .label,
-.isRootStateInvalid .validationText {
-  color: deprecated-settings.$form-invalid-color;
-}
-
-.isRootStateInvalid .input + .label::before,
-.isRootStateInvalid .input:checked + .label::before {
-  border-color: deprecated-settings.$form-invalid-color;
-}
-
-.isRootStateInvalid .input:checked + .label::before {
-  background-color: deprecated-settings.$form-invalid-color;
-}
-
-.isRootStateValid .label,
-.isRootStateValid .validationText {
-  color: deprecated-settings.$form-valid-color;
-}
-
-.isRootStateValid .input + .label::before,
-.isRootStateValid .input:checked + .label::before {
-  border-color: deprecated-settings.$form-valid-color;
-}
-
-.isRootStateValid .input:checked + .label::before {
-  background-color: deprecated-settings.$form-valid-color;
-}
-
-.isRootStateWarning .label,
-.isRootStateWarning .validationText {
-  color: deprecated-settings.$form-warning-color;
-}
-
-.isRootStateWarning .input + .label::before,
-.isRootStateWarning .input:checked + .label::before {
-  border-color: deprecated-settings.$form-warning-color;
-}
-
-.isRootStateWarning .input:checked + .label::before {
-  background-color: deprecated-settings.$form-warning-color;
-}
-
-.isRootLayoutHorizontal {
-  position: relative; // Just set something until the component is refactored (#20).
+// Layouts
+.hasRootLabelBefore {
+  @include inline-field-layout.has-label-before();
 }
 
 .isRootInFormLayout {
-  @include deprecated-tools.field-in-form-layout();
+  @include inline-field-layout.in-form-layout();
 }

@@ -1,272 +1,57 @@
-@use '../../../styles/settings/colors.deprecated' as deprecated-colors;
-@use '../../../styles/settings/forms.deprecated' as deprecated-settings;
-@use '../../../styles/theme/borders';
-@use '../../../styles/tools/accessibility';
 @use '../../../styles/tools/forms/foundation';
-@use '../../../styles/tools/forms.deprecated' as deprecated-tools;
-@use '../../../styles/tools/icon.deprecated' as deprecated-icon;
+@use '../../../styles/tools/forms/inline-field-layout';
+@use '../../../styles/tools/forms/relationships';
+@use '../../../styles/tools/forms/variants';
+@use '../../../styles/tools/accessibility';
 
+// Foundation
 .root {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  box-sizing: border-box;
-  min-height: deprecated-settings.$toggle-label-height;
-}
-
-.inputWrap {
-  position: relative;
-  height: deprecated-settings.$toggle-label-height;
-}
-
-.input {
-  @include deprecated-tools.toggle-input-styles(
-    deprecated-settings.$toggle-height,
-    deprecated-settings.$toggle-width,
-    deprecated-settings.$checkbox-radio-top,
-    0
-  );
-}
-
-.toggle {
-  position: absolute;
-  top: deprecated-settings.$checkbox-radio-top;
-  display: inline-block;
-  width: deprecated-settings.$toggle-width / 2;
-  height: deprecated-settings.$toggle-height;
-  border: borders.$width solid deprecated-settings.$toggle-icon-color-border;
-  border-radius: borders.$radius;
-  background-color: deprecated-settings.$toggle-icon-color;
-  cursor: pointer;
+  @include foundation.root();
+  @include inline-field-layout.root();
+  @include variants.visual(neutral);
+  @include relationships.horizontal-neighbor();
 }
 
 .label {
-  @include foundation.field-label();
-  @include deprecated-tools.checkbox-radio-label-styles(deprecated-settings.$toggle-label-height, 0);
+  @include foundation.label();
 }
 
-.input + .label::before {
-  @include deprecated-tools.toggle-inactive(
-    deprecated-settings.$toggle-width,
-    deprecated-settings.$toggle-height,
-    deprecated-settings.$checkbox-radio-top,
-    0,
-    deprecated-settings.$form-field-border-color
-  );
-
-  border-radius: borders.$radius;
+.field {
+  @include inline-field-layout.field();
 }
-
-.input + .label::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: deprecated-settings.$toggle-icon-size;
-  height: deprecated-settings.$toggle-icon-size;
-  background: deprecated-icon.generate-close() no-repeat;
-  transform: translateY(-45%);
-}
-
-// stylelint-disable selector-nested-pattern, no-descending-specificity, selector-max-specificity
-.labelPositionBefore {
-  .input + .label::before {
-    right: -1 * (deprecated-settings.$toggle-width + 0.525rem);
-    left: auto;
-  }
-
-  .toggle {
-    right: 0;
-    left: auto;
-  }
-
-  .input ~ .toggle {
-    right: -1 * ((deprecated-settings.$toggle-width / 2) + 0.525rem);
-  }
-
-  .input:checked ~ .toggle {
-    right: -1 * (deprecated-settings.$toggle-width + 0.525rem);
-  }
-
-  .input + .label::after {
-    right: -1 * (deprecated-settings.$toggle-width + (0.525rem / 2));
-  }
-
-  .input:checked + .label::after {
-    right: -1 * (deprecated-settings.$toggle-width / 2 + 0.2rem);
-  }
-}
-
-.labelPositionAfter {
-  .label {
-    padding-left: deprecated-settings.$toggle-padding-left;
-  }
-
-  .toggle {
-    left: 0;
-  }
-
-  .input:checked ~ .toggle {
-    left: deprecated-settings.$toggle-width / 2;
-  }
-
-  .input + .label::after {
-    left: (deprecated-settings.$toggle-width / 4) + 1.05rem;
-  }
-
-  .input:checked + .label::after {
-    left: (deprecated-settings.$toggle-width / 2) - 0.95rem;
-  }
-}
-
-.input:disabled + .label {
-  @include deprecated-tools.disabled-state();
-
-  color: deprecated-settings.$checkbox-disabled-text-color;
-}
-
-.input:disabled ~ .toggle {
-  @include deprecated-tools.disabled-state();
-}
-
-.input:checked + .label::before {
-  background: deprecated-settings.$toggle-color-checked;
-}
-
-.input:checked + .label::after {
-  background-image: deprecated-icon.generate-checkmark();
-}
-
-.input:focus + .label::before {
-  outline: 0;
-  box-shadow: deprecated-settings.$radio-focused-box-shadow;
-}
-
-.input:indeterminate + .label::before {
-  border: borders.$width solid deprecated-settings.$checkbox-border-color-indeterminate;
-}
-
-.input:indeterminate + .label::after {
-  display: inline-block;
-  border-bottom-color: deprecated-settings.$checkbox-border-color-indeterminate;
-  border-left: 0;
-  transform: translate(0, (deprecated-settings.$checkbox-checkmark-size / 2));
-}
-
-.input:focus:checked + .label::before {
-  outline: 0;
-}
-
-.input:disabled:checked + .label::before {
-  background-color: deprecated-settings.$radio-disabled-background-color;
-}
-
-.input:required + .label .labelInner::after {
-  content: ' *';
-}
-
-.input:checked:disabled ~ .toggle {
-  @include deprecated-tools.disabled-state();
-}
-
-.input:checked:disabled + .label::before {
-  background-color: deprecated-settings.$checkbox-disabled-background-color;
-}
-
-.input:checked:disabled + .label::after {
-  $disabled-border-style:
-    (deprecated-settings.$checkbox-radio-size / 8)
-    solid
-    deprecated-settings.$checkbox-disabled-checkmark-color;
-}
-
-// stylelint-enable
 
 .helpText,
 .validationText {
-  @include foundation.field-help-text();
+  @include foundation.help-text();
 }
 
-.validationText {
-  min-height: 1rem;
+.isRootRequired .label {
+  @include foundation.label-required();
 }
 
+// States
+.isRootStateInvalid {
+  @include variants.feedback(invalid);
+}
+
+.isRootStateValid {
+  @include variants.feedback(valid);
+}
+
+.isRootStateWarning {
+  @include variants.feedback(warning);
+}
+
+// Invisible label
 .isLabelHidden {
   @include accessibility.hide-text();
 }
 
-// States
-// stylelint-disable no-descending-specificity, selector-max-specificity
-.isRootStateInvalid .label,
-.isRootStateInvalid .validationText {
-  color: deprecated-settings.$form-invalid-color;
-}
-
-.isRootStateInvalid .input + .label::before {
-  border-color: deprecated-settings.$form-invalid-color;
-  background-color: deprecated-colors.$white;
-}
-
-.isRootStateInvalid .input + .label::after {
-  background-image: deprecated-icon.generate-close(darken(#dc3545, 4%));
-}
-
-.isRootStateInvalid .input:checked + .label::before {
-  background-color: deprecated-settings.$form-invalid-color;
-}
-
-.isRootStateInvalid .input:checked + .label::after {
-  background-image: deprecated-icon.generate-checkmark(deprecated-colors.$white);
-}
-
-.isRootStateValid .label,
-.isRootStateValid .validationText {
-  color: deprecated-settings.$form-valid-color;
-}
-
-.isRootStateValid .input + .label::before {
-  border-color: deprecated-settings.$form-valid-color;
-  background-color: deprecated-colors.$white;
-}
-
-.isRootStateValid .input + .label::after {
-  background-image: deprecated-icon.generate-close(darken(#28a745, 4%));
-}
-
-.isRootStateValid .input:checked + .label::before {
-  background-color: deprecated-settings.$form-valid-color;
-}
-
-.isRootStateValid .input:checked + .label::after {
-  background-image: deprecated-icon.generate-checkmark(deprecated-colors.$white);
-}
-
-.isRootStateWarning .label,
-.isRootStateWarning .validationText {
-  color: deprecated-settings.$form-warning-color;
-}
-
-.isRootStateWarning .input + .label::before {
-  border-color: deprecated-settings.$form-warning-color;
-  background-color: deprecated-colors.$white;
-}
-
-.isRootStateWarning .input + .label::after {
-  background-image: deprecated-icon.generate-close(darken(#ffc107, 4%));
-}
-
-.isRootStateWarning .input:checked + .label::before {
-  background-color: deprecated-settings.$form-warning-color;
-}
-
-.isRootStateWarning .input:checked + .label::after {
-  background-image: deprecated-icon.generate-checkmark(deprecated-colors.$white);
-}
-
-.isRootLayoutHorizontal {
-  position: relative; // Just set something until the component is refactored (#20).
+// Layouts
+.hasRootLabelBefore {
+  @include inline-field-layout.has-label-before();
 }
 
 .isRootInFormLayout {
-  @include deprecated-tools.field-in-form-layout();
+  @include inline-field-layout.in-form-layout();
 }

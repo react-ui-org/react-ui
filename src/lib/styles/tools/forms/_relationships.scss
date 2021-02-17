@@ -3,19 +3,19 @@
 
 @use '../../settings/forms' as settings;
 
-@mixin field-horizontal-neighbor() {
+@mixin horizontal-neighbor() {
   &:not(:last-child) {
-    margin-right: settings.$field-horizontal-outer-spacing;
+    margin-right: settings.$horizontal-outer-spacing;
   }
 
   &.rootLayoutHorizontal:not(:last-child) {
-    margin-right: calc(2 * #{settings.$field-horizontal-outer-spacing}); // 1.
+    margin-right: calc(2 * #{settings.$horizontal-outer-spacing}); // 1.
   }
 }
 
-@mixin field-vertical-neighbor() {
+@mixin vertical-neighbor() {
   &:not(:last-child) {
-    margin-bottom: settings.$field-vertical-outer-spacing;
+    margin-bottom: settings.$vertical-outer-spacing;
   }
 
   &:not(:last-child),

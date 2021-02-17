@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering renders correctly mandatory props only 1`] = `
-<div
-  className="root   "
+<label
+  className="root     "
+  htmlFor="test"
+  id="test__label"
 >
-  <label
-    className="inputWrap labelPositionAfter"
-    htmlFor="test"
-    id="test__label"
+  <div
+    className="field"
   >
     <input
       checked={false}
@@ -18,28 +18,24 @@ exports[`rendering renders correctly mandatory props only 1`] = `
       required={false}
       type="checkbox"
     />
-    <span
-      className="label"
+    <div
+      className="label "
+      id="test__labelText"
     >
-      <span
-        className="labelInner "
-        id="test__labelText"
-      >
-        label
-      </span>
-    </span>
-  </label>
-</div>
+      label
+    </div>
+  </div>
+</label>
 `;
 
 exports[`rendering renders correctly with all props 1`] = `
-<div
-  className="root isRootInFormLayout isRootLayoutHorizontal isRootStateWarning"
+<label
+  className="root isRootInFormLayout  isRootDisabled isRootRequired isRootStateWarning"
+  htmlFor="test"
+  id="test__label"
 >
-  <label
-    className="inputWrap labelPositionAfter"
-    htmlFor="test"
-    id="test__label"
+  <div
+    className="field"
   >
     <input
       checked={true}
@@ -51,17 +47,13 @@ exports[`rendering renders correctly with all props 1`] = `
       type="checkbox"
       value="value"
     />
-    <span
-      className="label"
+    <div
+      className="label "
+      id="test__labelText"
     >
-      <span
-        className="labelInner "
-        id="test__labelText"
-      >
-        label
-      </span>
-    </span>
-  </label>
+      label
+    </div>
+  </div>
   <div
     className="helpText"
     id="test__helpText"
@@ -74,5 +66,5 @@ exports[`rendering renders correctly with all props 1`] = `
   >
     some error
   </div>
-</div>
+</label>
 `;

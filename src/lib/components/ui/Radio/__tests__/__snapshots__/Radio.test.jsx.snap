@@ -2,232 +2,248 @@
 
 exports[`rendering renders correctly mandatory props only 1`] = `
 <div
-  className="root   "
+  className="root  rootLayoutVertical   "
 >
   <div
-    className=" "
+    className="label "
     id="test__labelText"
   >
     label
   </div>
-  <ul
-    className="list"
+  <div
+    className="field"
   >
-    <li
-      key="ch1"
+    <ul
+      className="list"
     >
-      <label
-        className="inputWrap"
-        htmlFor="test__item__ch1"
-        id="test__item__ch1__label"
+      <li
+        key="ch1"
       >
-        <input
-          checked={false}
-          className="input"
-          id="test__item__ch1"
-          name="test"
-          onChange={null}
-          type="radio"
-          value="ch1"
-        />
-        <span
-          className="radioLabel"
-          id="test__item__ch1__labelText"
+        <label
+          className="option"
+          htmlFor="test__item__ch1"
+          id="test__item__ch1__label"
         >
-          choice 1
-        </span>
-      </label>
-    </li>
-    <li
-      key="ch2"
-    >
-      <label
-        className="inputWrap"
-        htmlFor="test__item__ch2"
-        id="test__item__ch2__label"
+          <input
+            checked={false}
+            className="input"
+            id="test__item__ch1"
+            name="test"
+            onChange={null}
+            type="radio"
+            value="ch1"
+          />
+          <span
+            className="optionLabel"
+            id="test__item__ch1__labelText"
+          >
+            choice 1
+          </span>
+        </label>
+      </li>
+      <li
+        key="ch2"
       >
-        <input
-          checked={false}
-          className="input"
-          id="test__item__ch2"
-          name="test"
-          onChange={null}
-          type="radio"
-          value="ch2"
-        />
-        <span
-          className="radioLabel"
-          id="test__item__ch2__labelText"
+        <label
+          className="option"
+          htmlFor="test__item__ch2"
+          id="test__item__ch2__label"
         >
-          choice 2
-        </span>
-      </label>
-    </li>
-  </ul>
+          <input
+            checked={false}
+            className="input"
+            id="test__item__ch2"
+            name="test"
+            onChange={null}
+            type="radio"
+            value="ch2"
+          />
+          <span
+            className="optionLabel"
+            id="test__item__ch2__labelText"
+          >
+            choice 2
+          </span>
+        </label>
+      </li>
+    </ul>
+  </div>
 </div>
 `;
 
 exports[`rendering renders correctly only one option 1`] = `
 <div
-  className="root   "
+  className="root  rootLayoutVertical   "
 >
   <div
-    className=" "
+    className="label "
     id="test__labelText"
   >
     label
   </div>
-  <ul
-    className="list"
+  <div
+    className="field"
   >
-    <li
-      key="ch1"
+    <ul
+      className="list"
     >
-      <label
-        className="inputWrap"
-        htmlFor="test__item__ch1"
-        id="test__item__ch1__label"
+      <li
+        key="ch1"
       >
-        <input
-          checked={false}
-          className="input"
-          id="test__item__ch1"
-          name="test"
-          onChange={null}
-          type="radio"
-          value="ch1"
-        />
-        <span
-          className="radioLabel"
-          id="test__item__ch1__labelText"
+        <label
+          className="option"
+          htmlFor="test__item__ch1"
+          id="test__item__ch1__label"
         >
-          choice 1
-        </span>
-      </label>
-    </li>
-  </ul>
+          <input
+            checked={false}
+            className="input"
+            id="test__item__ch1"
+            name="test"
+            onChange={null}
+            type="radio"
+            value="ch1"
+          />
+          <span
+            className="optionLabel"
+            id="test__item__ch1__labelText"
+          >
+            choice 1
+          </span>
+        </label>
+      </li>
+    </ul>
+  </div>
 </div>
 `;
 
 exports[`rendering renders correctly only one option and hidden label 1`] = `
 <div
-  className="root   "
+  className="root  rootLayoutVertical   "
 >
   <div
-    className="isLabelHidden "
+    className="label isLabelHidden"
     id="test__labelText"
   >
     label
   </div>
-  <ul
-    className="list"
+  <div
+    className="field"
   >
-    <li
-      key="ch1"
+    <ul
+      className="list"
     >
-      <label
-        className="inputWrap"
-        htmlFor="test__item__ch1"
-        id="test__item__ch1__label"
+      <li
+        key="ch1"
       >
-        <input
-          checked={false}
-          className="input"
-          id="test__item__ch1"
-          name="test"
-          onChange={null}
-          type="radio"
-          value="ch1"
-        />
-        <span
-          className="radioLabel"
-          id="test__item__ch1__labelText"
+        <label
+          className="option"
+          htmlFor="test__item__ch1"
+          id="test__item__ch1__label"
         >
-          choice 1
-        </span>
-      </label>
-    </li>
-  </ul>
+          <input
+            checked={false}
+            className="input"
+            id="test__item__ch1"
+            name="test"
+            onChange={null}
+            type="radio"
+            value="ch1"
+          />
+          <span
+            className="optionLabel"
+            id="test__item__ch1__labelText"
+          >
+            choice 1
+          </span>
+        </label>
+      </li>
+    </ul>
+  </div>
 </div>
 `;
 
 exports[`rendering renders correctly with all props 1`] = `
 <div
-  className="root isRootInFormLayout isRootLayoutHorizontal isRootStateWarning"
+  className="root isRootInFormLayout rootLayoutHorizontal isRootDisabled isRootRequired isRootStateWarning"
 >
   <div
-    className=" isLabelRequired"
+    className="label "
     id="test__labelText"
   >
     label
   </div>
-  <ul
-    className="list"
-  >
-    <li
-      key="ch1"
-    >
-      <label
-        className="inputWrap"
-        htmlFor="test__item__ch1"
-        id="test__item__ch1__label"
-      >
-        <input
-          checked={true}
-          className="input"
-          disabled={true}
-          id="test__item__ch1"
-          name="test"
-          onChange={null}
-          type="radio"
-          value="ch1"
-        />
-        <span
-          className="radioLabel"
-          id="test__item__ch1__labelText"
-        >
-          choice 1
-        </span>
-      </label>
-    </li>
-    <li
-      key="ch2"
-    >
-      <label
-        className="inputWrap"
-        htmlFor="test__item__ch2"
-        id="test__item__ch2__label"
-      >
-        <input
-          checked={false}
-          className="input"
-          disabled={true}
-          id="test__item__ch2"
-          name="test"
-          onChange={null}
-          type="radio"
-          value="ch2"
-        />
-        <span
-          className="radioLabel"
-          id="test__item__ch2__labelText"
-        >
-          choice 2
-        </span>
-      </label>
-    </li>
-  </ul>
   <div
-    className="helpText"
-    id="test__helpText"
+    className="field"
   >
-    some help
-  </div>
-  <div
-    className="validationText"
-    id="test__validationText"
-  >
-    some error
+    <ul
+      className="list"
+    >
+      <li
+        key="ch1"
+      >
+        <label
+          className="option"
+          htmlFor="test__item__ch1"
+          id="test__item__ch1__label"
+        >
+          <input
+            checked={true}
+            className="input"
+            disabled={true}
+            id="test__item__ch1"
+            name="test"
+            onChange={null}
+            type="radio"
+            value="ch1"
+          />
+          <span
+            className="optionLabel"
+            id="test__item__ch1__labelText"
+          >
+            choice 1
+          </span>
+        </label>
+      </li>
+      <li
+        key="ch2"
+      >
+        <label
+          className="option"
+          htmlFor="test__item__ch2"
+          id="test__item__ch2__label"
+        >
+          <input
+            checked={false}
+            className="input"
+            disabled={true}
+            id="test__item__ch2"
+            name="test"
+            onChange={null}
+            type="radio"
+            value="ch2"
+          />
+          <span
+            className="optionLabel"
+            id="test__item__ch2__labelText"
+          >
+            choice 2
+          </span>
+        </label>
+      </li>
+    </ul>
+    <div
+      className="helpText"
+      id="test__helpText"
+    >
+      some help
+    </div>
+    <div
+      className="validationText"
+      id="test__validationText"
+    >
+      some error
+    </div>
   </div>
 </div>
 `;

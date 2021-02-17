@@ -1,0 +1,127 @@
+// 1. Get ready for positioning of bottom line and caret.
+// 2. Always prefer `size` and `max` attributes when defined. Use CSS for sizing to normalize
+//    result width across browsers.
+// 3. Let inputs properly fit various layout scenarios.
+// 4. Leave out space for SelectField caret.
+
+@use '../../settings/forms' as settings;
+@use '../../theme/forms' as theme;
+@use '../../tools/caret';
+@use '../spacing';
+@use '../transition';
+
+@mixin input-container() {
+  position: relative; // 1.
+  display: inline-flex;
+  min-width: 0; // 3.
+  max-width: 100%; // 3.
+}
+
+@mixin input() {
+  @include transition.add((opacity, color, border-color, background-color, box-shadow));
+
+  width: theme.$field-input-width;
+  min-width: theme.$field-input-min-width;
+  max-width: 100%; // 3.
+  height: var(--rui-local-height);
+  padding: var(--rui-local-padding-y) var(--rui-local-padding-x);
+  font-weight: settings.$input-font-weight;
+  font-size: var(--rui-local-font-size);
+  line-height: settings.$input-line-height;
+  font-family: settings.$input-font-family;
+  vertical-align: middle;
+  color: var(--rui-local-color);
+  border: theme.$field-border-width solid var(--rui-local-border-color);
+  border-radius: theme.$field-border-radius;
+  background: var(--rui-local-background);
+  box-shadow: var(--rui-local-box-shadow);
+  appearance: none;
+
+  &::placeholder {
+    opacity: 1;
+    color: theme.$field-placeholder-color;
+  }
+}
+
+@mixin input-text() {
+  &[max],
+  &[size] {
+    width:
+      calc(
+        1ch * var(--rui-custom-input-size)
+        + var(--rui-local-arrows-width, 0)
+        + 2 * var(--rui-local-padding-x)
+        + 2 * #{theme.$field-border-width}
+      ); // 2.
+
+    min-width: auto; // 2.
+  }
+
+  &[max] {
+    --rui-local-arrows-width: #{settings.$box-field-input-number-arrows-width};
+  }
+}
+
+@mixin input-textarea() {
+  resize: vertical;
+
+  &[cols] {
+    min-width: auto;
+  }
+}
+
+@mixin input-select() {
+  padding-right: calc(#{settings.$box-field-caret-size} + #{spacing.of(2)}); // 4.
+  appearance: none;
+
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+@mixin input-select-option() {
+  option:disabled {
+    color: theme.$field-disabled-select-option-color;
+  }
+}
+
+@mixin caret() {
+  @include transition.add((border-color));
+
+  position: absolute; // 1.
+  top: theme.$field-border-width;
+  right: theme.$field-border-width;
+  bottom: theme.$field-border-width;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(#{settings.$box-field-caret-size} - 2 * #{theme.$field-border-width});
+  border-top-right-radius: theme.$field-border-radius;
+  border-bottom-right-radius: theme.$field-border-radius;
+  pointer-events: none;
+}
+
+@mixin caret-icon() {
+  @include caret.create();
+
+  border-color: var(--rui-local-color);
+}
+
+@mixin bottom-line() {
+  @include transition.add((transform, opacity), 180ms);
+
+  position: absolute; // 1.
+  bottom: 0;
+  opacity: 0;
+  width: 100%;
+  height: settings.$box-field-bottom-line-height;
+  transform: scaleX(0);
+  transform-origin: center center;
+  pointer-events: none;
+
+  .input:focus ~ & {
+    opacity: 1;
+    background-color: var(--rui-local-border-color);
+    transform: scaleX(1);
+  }
+}

@@ -1,0 +1,210 @@
+// 1.  Inline form fields and fields with vertical layout take up as much space as they need. Labels
+//     do not wrap until forced by container of the field. Min and max limits make extra long words
+//     break if necessary.
+//
+// 2.  Form fields in horizontal layout also take up only as much space as they need. Labels do not
+//     wrap until label width limit is reached (50 % of available horizontal space by default).
+//
+// 3. Help texts and validation messages are aligned below input and wrapped. Their width is always
+//    limited to the width of the input field so they don't shift adjacent elements when they show
+//    up. This applies unless the field is inside FormLayout (see 10).
+//
+// 4.  Define grid spacing as padding of child elements because grid areas make row and column gaps
+//     show up even when not necessary.
+//
+// 5.  When input size is small and form field layout is set to horizontal, expand help text and
+//     validation message over full form field width to improve their readability. Otherwise the
+//     text would be packed into a very narrow column and hard to read. To prevent help text and
+//     validation message from growing the layout more than necessary (ie. the size without
+//     help/validation text), `min-content` grid sizing must be used along with disabled wrapping of
+//     label.
+//
+// 6.  Full-width horizontal form fields prefer not wrapping the label until a limit is reached
+//     (50 % of available horizontal space by default, same as in 2.).
+//
+// 7.  Justify inputs to `start` in horizontal layouts to fix positioning issues with Select Fields.
+//     Reverted for full-width fields.
+//
+// 8.  When form field exists inside FormLayout, automatic margins are removed as the FormLayout
+//     takes care of proper spacing.
+//
+// 9.  Grid settings are inherited from horizontal FormLayout and applied using `subgrid`.
+//     A fallback is supplied to browsers that don't support `subgrid` yet. See FormLayout styles
+//     for more.
+//     https://github.com/react-ui-org/react-ui/issues/232
+//
+// 10. Help texts and validation messages can take up full width of FormLayout. There is no reason
+//     to make them wrap as they cannot break layout of FormLayout.
+//
+// 11. Align label to input baseline. Achieved with `padding-top` since `align-items: baseline`
+//     unfortunately doesn't work for blank text inputs in Safari. Default to zero when
+//     `--rui-local-padding-y` is not defined.
+//
+// 12. Reset width previously set by inline field layout (see `_inline-field-layout.scss`).
+//
+// 13. Make fields just as wide as necessary. Fields should be interactive only where their visible
+//     content is.
+
+@use '../../settings/forms' as settings;
+@use '../../theme/forms' as theme;
+@use '../breakpoint';
+
+@mixin vertical($has-list: false) {
+  @if ($has-list) {
+    --rui-local-vertical-gap: #{settings.$vertical-inner-gap-large};
+  }
+
+  display: inline-flex; // 1.
+  flex-direction: column;
+  min-width: 0; // 1.
+  max-width: 100%; // 1.
+
+  .label {
+    padding-bottom: var(--rui-local-vertical-gap, #{settings.$vertical-inner-gap});
+  }
+
+  .helpText,
+  .validationText {
+    padding-top: var(--rui-local-vertical-gap, #{settings.$vertical-inner-gap});
+  }
+
+  .field {
+    width: min-content; // 3.
+    max-width: 100%; // 3.
+  }
+}
+
+@mixin horizontal() {
+  @include breakpoint.up(settings.$horizontal-breakpoint) {
+    display: inline-grid; // 2.
+    grid-template-columns: theme.$field-horizontal-label-width min-content; // 2.
+    grid-template-areas: 'label field';
+    align-items: start;
+
+    .label {
+      grid-area: label;
+      min-width: theme.$field-horizontal-label-min-width;
+      padding-top:
+        calc(
+          #{theme.$field-border-width}
+          + var(--rui-local-padding-y, -1 * #{theme.$field-border-width})
+        ); // 11.
+
+      padding-right: settings.$horizontal-inner-gap; // 4.
+      padding-bottom: 0; // 4.
+      text-align: theme.$field-horizontal-label-alignment;
+    }
+
+    .field {
+      grid-area: field;
+      justify-self: start; // 7.
+    }
+  }
+}
+
+@mixin horizontal-with-small-input() {
+  @include breakpoint.up(settings.$horizontal-breakpoint) {
+    grid-template-columns: min-content min-content; // 5.
+    grid-template-areas:
+      'label field'
+      'helptext helptext'
+      'validationtext validationtext'; // 5.
+
+    .label {
+      white-space: nowrap; // 5.
+    }
+
+    .field {
+      display: contents; // 5.
+    }
+
+    .inputContainer {
+      grid-area: field; // 5.
+    }
+
+    .helpText {
+      grid-area: helptext; // 5.
+    }
+
+    .validationText {
+      grid-area: validationtext; // 5.
+    }
+  }
+}
+
+@mixin full-width() {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .field,
+  .inputContainer,
+  .input {
+    width: 100%;
+  }
+
+  @include breakpoint.up(settings.$horizontal-breakpoint) {
+    &.rootLayoutHorizontal {
+      display: grid;
+      grid-template-columns: theme.$field-horizontal-full-width-label-width 1fr; // 6.
+    }
+
+    &.rootLayoutHorizontal .field {
+      justify-self: stretch; // 7.
+    }
+  }
+}
+
+@mixin in-form-layout() {
+  justify-self: start; // 13.
+
+  .field {
+    width: auto; // 10.
+  }
+
+  &:not(:last-child),
+  &.rootLayoutHorizontal:not(:last-child) {
+    margin-right: 0; // 8.
+    margin-bottom: 0; // 8.
+  }
+
+  @include breakpoint.up(settings.$horizontal-breakpoint) {
+    .optionLabel {
+      width: auto; // 12.
+    }
+
+    &.rootLayoutHorizontal,
+    &.rootLayoutHorizontal.hasRootSmallInput {
+      grid: inherit; // 9.
+      grid-template-columns: subgrid; // 9.
+      grid-column: span 2; // 9.
+
+      @supports not (grid-template-columns: subgrid) {
+        display: contents; // 9.
+      }
+    }
+
+    &.rootLayoutHorizontal.isRootFullWidth {
+      grid-template-columns: subgrid; // 9.
+    }
+
+    &.rootLayoutHorizontal .label,
+    &.rootLayoutHorizontal .field,
+    &.rootLayoutHorizontal .inputContainer,
+    &.rootLayoutHorizontal .helpText,
+    &.rootLayoutHorizontal .validationText {
+      grid-area: unset; // 9.
+    }
+
+    &.rootLayoutHorizontal .field,
+    &.rootLayoutHorizontal .inputContainer,
+    &.rootLayoutHorizontal .helpText,
+    &.rootLayoutHorizontal .validationText {
+      grid-column-start: 2; // 9.
+    }
+
+    &.rootLayoutHorizontal.hasRootSmallInput .field {
+      display: block; // 5.
+    }
+  }
+}

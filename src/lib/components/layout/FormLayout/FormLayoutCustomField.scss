@@ -1,19 +1,20 @@
-@use '../../../styles/tools/forms/layouts';
+@use '../../../styles/tools/forms/box-field-layout';
 
 .root {
-  @include layouts.field-in-form-layout();
+  @include box-field-layout.in-form-layout();
+}
+
+.rootLayoutVertical,
+.rootLayoutHorizontal {
+  @include box-field-layout.vertical();
 }
 
 .rootLayoutHorizontal {
-  @include layouts.field-layout-horizontal();
+  @include box-field-layout.horizontal();
 }
 
-.rootLayoutVertical {
-  @include layouts.field-layout-vertical();
-}
-
-.rootLayoutHorizontal .field,
-.rootLayoutVertical .field {
+.rootLayoutVertical .field,
+.rootLayoutHorizontal .field {
   width: auto;
 }
 
