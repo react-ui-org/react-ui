@@ -545,12 +545,13 @@
   --rui-form-field-large-font-size: var(--rui-typography-size-1);
 
   //
-  // Form Layout
-  // ===========
+  // FormLayout
+  // ==========
 
   --rui-form-layout-horizontal-label-auto-width: auto;
   --rui-form-layout-horizontal-label-limited-width: fit-content(50%);
   --rui-form-layout-horizontal-label-default-width: 10em;
+  --rui-form-layout-row-gap: var(--rui-spacing-4);
 
   //
   // Grid

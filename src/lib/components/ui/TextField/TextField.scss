@@ -1,62 +1,63 @@
-@use '../../../styles/tools/accessibility';
+@use '../../../styles/tools/forms/box-field-elements';
+@use '../../../styles/tools/forms/box-field-layout';
 @use '../../../styles/tools/forms/foundation';
-@use '../../../styles/tools/forms/layouts';
 @use '../../../styles/tools/forms/relationships';
 @use '../../../styles/tools/forms/sizes';
 @use '../../../styles/tools/forms/variants';
+@use '../../../styles/tools/accessibility';
 
 // Foundation
 .root {
-  @include foundation.field();
-  @include relationships.field-horizontal-neighbor();
+  @include foundation.root();
+  @include relationships.horizontal-neighbor();
 }
 
 .label {
-  @include foundation.field-label();
+  @include foundation.label();
 }
 
 .inputContainer {
-  @include foundation.field-input-container();
+  @include box-field-elements.input-container();
 }
 
 .input {
-  @include foundation.field-input();
-  @include foundation.field-input-text();
+  @include box-field-elements.input();
+  @include box-field-elements.input-text();
 }
 
 .bottomLine {
-  @include foundation.field-bottom-line();
+  @include box-field-elements.bottom-line();
 }
 
 .helpText,
 .validationText {
-  @include foundation.field-help-text();
+  @include foundation.help-text();
 }
 
 .isRootRequired .label {
-  @include foundation.field-label-required();
+  @include foundation.label-required();
 }
 
 // Variants
 .rootVariantFilled {
-  @include variants.field-variant(filled);
+  @include variants.visual(filled);
 }
 
 .rootVariantOutline {
-  @include variants.field-variant(outline);
+  @include variants.visual(outline);
 }
 
 // States
 .isRootStateInvalid {
-  @include variants.field-variant(invalid);
+  @include variants.feedback(invalid);
 }
 
 .isRootStateValid {
-  @include variants.field-variant(valid);
+  @include variants.feedback(valid);
 }
 
 .isRootStateWarning {
-  @include variants.field-variant(warning);
+  @include variants.feedback(warning);
 }
 
 // Invisible label
@@ -65,36 +66,37 @@
 }
 
 // Layouts
+.rootLayoutVertical,
 .rootLayoutHorizontal {
-  @include layouts.field-layout-horizontal();
+  @include box-field-layout.vertical();
 }
 
-.rootLayoutVertical {
-  @include layouts.field-layout-vertical();
+.rootLayoutHorizontal {
+  @include box-field-layout.horizontal();
 }
 
 .isRootFullWidth {
-  @include layouts.field-full-width();
-  @include relationships.field-vertical-neighbor();
+  @include box-field-layout.full-width();
+  @include relationships.vertical-neighbor();
 }
 
 .isRootInFormLayout {
-  @include layouts.field-in-form-layout();
+  @include box-field-layout.in-form-layout();
 }
 
-.hasRootSmallInput {
-  @include layouts.field-layout-with-small-input();
+.hasRootSmallInput.rootLayoutHorizontal {
+  @include box-field-layout.horizontal-with-small-input();
 }
 
 // Sizes
 .rootSizeSmall {
-  @include sizes.field-size(small);
+  @include sizes.size(small);
 }
 
 .rootSizeMedium {
-  @include sizes.field-size(medium);
+  @include sizes.size(medium);
 }
 
 .rootSizeLarge {
-  @include sizes.field-size(large);
+  @include sizes.size(large);
 }

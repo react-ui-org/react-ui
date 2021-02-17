@@ -1,0 +1,78 @@
+// 1. Inline form fields and fields with vertical layout take up as much space as they need. Labels
+//    do not wrap until forced by container of the field. Min and max limits make extra long words
+//    break if necessary.
+//
+// 2. When form field exists inside FormLayout, automatic margins are removed as the FormLayout
+//    takes care of proper spacing.
+//
+// 3. Retain multiline field layout and make the field fit parent layout using `inline-grid`
+//    (`inline-flex` cannot do the job).
+//
+// 4. Make fields just as wide as necessary. Fields should be interactive only where their visible
+//    content is.
+
+@use '../../settings/forms' as settings;
+@use '../../theme/typography';
+@use '../breakpoint';
+
+@mixin root() {
+  display: inline-flex; // 1.
+  flex-wrap: wrap;
+  align-items: baseline;
+  width: min-content;
+  min-width: 0; // 1.
+  max-width: 100%; // 1.
+
+  .helpText,
+  .validationText {
+    padding-top: settings.$vertical-inner-gap;
+  }
+}
+
+@mixin field() {
+  display: flex; // 1.
+  align-items: flex-start;
+  min-width: 0; // 1.
+
+  .input {
+    flex: none;
+  }
+
+  .label,
+  .optionLabel {
+    width: max-content; // 1.
+    margin-left: settings.$inline-field-inner-gap;
+  }
+}
+
+@mixin has-label-before() {
+  .field {
+    flex-direction: row-reverse;
+  }
+
+  .label,
+  .optionLabel {
+    margin-right: settings.$inline-field-inner-gap;
+    margin-left: 0;
+  }
+}
+
+@mixin in-form-layout() {
+  display: inline-grid; // 3.
+  width: auto; // 3., 4.
+  justify-self: start; // 4.
+
+  &:not(:last-child) {
+    margin-right: 0; // 2.
+    margin-bottom: 0; // 2.
+  }
+
+  @include breakpoint.up(settings.$horizontal-breakpoint) {
+    grid-column-start: 2;
+
+    .label,
+    .optionLabel {
+      width: auto; // 1.
+    }
+  }
+}

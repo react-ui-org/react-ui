@@ -17,23 +17,25 @@
   cursor: theme.$field-disabled-cursor;
 }
 
+@function _get-themeable-states() {
+  $visual-variant-states: settings.$themeable-visual-variant-states;
+  $feedback-variant-states: settings.$themeable-feedback-variant-states;
+
+  @return map-merge($visual-variant-states, $feedback-variant-states);
+}
+
 // 1.
-@mixin _get-themeable-properties($variant, $state) {
-  @if (not list.index(map-keys(settings.$themeable-variant-states), $variant)) {
-    @error "Invalid variant specified! #{$variant} doesn't exist. "
-      + "Choose one of #{map-keys(settings.$themeable-variant-states)}.";
-  }
-
-  @if (not list.index(map-keys(settings.$themeable-state-properties), $state)) {
-    @error "Invalid state specified! #{$state} doesn't exist. "
-      + "Choose one of #{map-keys(settings.$themeable-state-properties)}.";
-  }
-
+@mixin _generate-custom-properties($variant, $state) {
   $properties: map-get(settings.$themeable-state-properties, $state);
+  $variant-infix: '#{$variant}-';
+
+  @if ($variant == neutral) {
+    $variant-infix: '';
+  }
 
   @if ($state == default) {
     @each $property in $properties {
-      --rui-local-#{$property}: var(--rui-form-field-#{$variant}-#{$state}-#{$property});
+      --rui-local-#{$property}: var(--rui-form-field-#{$variant-infix}#{$state}-#{$property});
     }
   }
 
@@ -42,15 +44,31 @@
     @each $property in $properties {
       --rui-local-#{$property}:
         var(
-          --rui-form-field-#{$variant}-#{$state}-#{$property},
-          var(--rui-form-field-#{$variant}-default-#{$property})
+          --rui-form-field-#{$variant-infix}#{$state}-#{$property},
+          var(--rui-form-field-#{$variant-infix}default-#{$property})
         );
     }
   }
 }
 
-@mixin _get-variant-theme($variant) {
-  $themeable-states: map-get(settings.$themeable-variant-states, $variant);
+@mixin _get-themeable-properties($variant, $state) {
+  $themeable-states: _get-themeable-states();
+
+  @if (not list.index(map-keys($themeable-states), $variant)) {
+    @error "Invalid variant specified! #{$variant} doesn't exist. "
+      + "Choose one of #{map-keys($themeable-states)}.";
+  }
+
+  @if (not list.index(map-keys(settings.$themeable-state-properties), $state)) {
+    @error "Invalid state specified! #{$state} doesn't exist. "
+      + "Choose one of #{map-keys(settings.$themeable-state-properties)}.";
+  }
+
+  @include _generate-custom-properties($variant, $state);
+}
+
+@mixin _get-theme($variant) {
+  $themeable-states: map-get(_get-themeable-states(), $variant);
 
   @if (list.index($themeable-states, hover)) {
     @include _get-themeable-properties($variant, default);
@@ -83,13 +101,11 @@
   }
 }
 
-@mixin field-variant($variant, $has-caret: false) {
-  @include _get-variant-theme($variant);
+@mixin visual($variant, $has-caret: false) {
+  @include _get-theme($variant);
 
-  @if ($variant == 'filled' or $variant == 'outline') {
-    .input:disabled {
-      @include _disabled-state();
-    }
+  .input:disabled {
+    @include _disabled-state();
   }
 
   @if ($variant == 'filled') {
@@ -112,4 +128,8 @@
       @include _disabled-state();
     }
   }
+}
+
+@mixin feedback($state) {
+  @include _get-theme($state);
 }

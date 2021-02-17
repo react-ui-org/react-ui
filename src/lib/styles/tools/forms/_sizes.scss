@@ -1,6 +1,6 @@
 @use '../../theme/forms' as theme;
 
-@mixin field-size($size, $is-multiline: false) {
+@mixin size($size, $is-multiline: false) {
   $size-properties: map-get(theme.$field-sizes, $size);
 
   --rui-local-padding-y: #{map-get($size-properties, padding-y)};

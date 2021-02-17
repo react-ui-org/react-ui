@@ -24,6 +24,7 @@ exports[`rendering renders correctly with all props 1`] = `
   id="my-custom-field"
 >
   <div
+    className="label"
     id="my-custom-field__label"
   >
     Label

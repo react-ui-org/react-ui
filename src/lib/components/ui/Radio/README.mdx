@@ -116,6 +116,41 @@ the input.
   }}
 </Playground>
 
+## Horizontal Layout
+
+The default vertical layout is very easy to use and work with. However, there
+are situations where horizontal layout suits better — and that's why React UI
+supports this kind of layout as well.
+
+<Playground>
+  {() => {
+    const [frequency, setFrequency] = React.useState('weekly');
+    return (
+      <Radio
+        changeHandler={(e) => setFrequency(e.target.value)}
+        id="my-radio-horizontal"
+        label="Newsletter frequency"
+        layout="horizontal"
+        options={[
+          {
+            label: 'I want to subscribe to the weekly newsletter',
+            value: 'weekly',
+          },
+          {
+            label: 'I want to subscribe to the monthly newsletter',
+            value: 'monthly',
+          },
+          {
+            label: "I don't wish to receive anything",
+            value: 'never',
+          },
+        ]}
+        value={frequency}
+      />
+    );
+  }}
+</Playground>
+
 ## Help Text
 
 You may provide an additional help text to clarify how the input should be

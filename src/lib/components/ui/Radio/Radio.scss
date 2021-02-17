@@ -1,165 +1,75 @@
-@use '../../../styles/settings/colors.deprecated' as deprecated-colors;
-@use '../../../styles/settings/forms.deprecated' as deprecated-settings;
+@use '../../../styles/tools/forms/box-field-elements';
+@use '../../../styles/tools/forms/box-field-layout';
 @use '../../../styles/tools/forms/foundation';
-@use '../../../styles/tools/forms.deprecated' as deprecated-tools;
+@use '../../../styles/tools/forms/inline-field-layout';
+@use '../../../styles/tools/forms/relationships';
+@use '../../../styles/tools/forms/variants';
+@use '../../../styles/tools/accessibility';
+@use '../../../styles/tools/reset';
+@use '../../../styles/tools/spacing';
 
+// Foundation
 .root {
-  position: relative;
-  display: block;
-  box-sizing: border-box;
+  @include foundation.root();
+  @include variants.visual(neutral);
+  @include relationships.horizontal-neighbor();
 }
 
-.label {
-  @include foundation.field-label();
-
-  display: inline-block;
-  margin-bottom: 0.25rem;
-}
-
-.isLabelRequired {
-  composes: label;
-
-  &::after {
-    content: ' *';
-  }
-}
-
-.isLabelHidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+.label,
+.optionLabel {
+  @include foundation.label();
 }
 
 .list {
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
+  @include reset.list();
 }
 
-.inputWrap {
-  position: relative;
-  min-height: deprecated-settings.$checkbox-radio-label-height;
-}
-
-.input {
-  @include deprecated-tools.checkbox-radio-input-styles(deprecated-settings.$checkbox-radio-size, 0);
-}
-
-.radioLabel {
-  @include foundation.field-label();
-  @include deprecated-tools.checkbox-radio-label-styles(
-    deprecated-settings.$checkbox-radio-label-height,
-    deprecated-settings.$checkbox-radio-padding-left
-  );
-}
-
-.radioLabel:empty {
-  padding-left: 0;
-}
-
-.input + .radioLabel::before {
-  @include deprecated-tools.checkbox-radio-shared-inactive(
-    deprecated-settings.$checkbox-radio-size,
-    deprecated-settings.$checkbox-radio-top,
-    0,
-    deprecated-settings.$form-field-border-color
-  );
-
-  border-radius: 50%;
-}
-
-.input:disabled + .radioLabel {
-  @include deprecated-tools.disabled-state();
-
-  color: deprecated-settings.$radio-disabled-font-color;
-}
-
-/* stylelint-disable selector-max-specificity */
-.input:checked + .radioLabel::before {
-  box-shadow: deprecated-settings.$radio-checked-box-shadow;
-}
-
-.input:focus + .radioLabel::before {
-  outline: 0;
-  box-shadow: deprecated-settings.$radio-focused-box-shadow;
-}
-
-.input:disabled + .radioLabel::before {
-  background-color: deprecated-colors.$gray-light-midtone;
-}
-
-.input:focus:checked + .radioLabel::before {
-  outline: 0;
-  box-shadow: deprecated-settings.$radio-checked-box-shadow, deprecated-settings.$radio-focused-box-shadow;
-}
-
-.input:disabled:checked + .radioLabel::before {
-  background-color: deprecated-settings.$radio-disabled-background-color;
-  box-shadow: deprecated-settings.$radio-disabled-checked-box-shadow;
+.option {
+  @include inline-field-layout.field();
 }
 
 .helpText,
 .validationText {
-  @include foundation.field-help-text();
+  @include foundation.help-text();
 }
 
-.validationText {
-  min-height: 1rem;
+.isRootRequired .label {
+  @include foundation.label-required();
 }
 
 // States
-// stylelint-disable no-descending-specificity
-.isRootStateInvalid .radioLabel,
-.isRootStateInvalid .validationText {
-  color: deprecated-settings.$form-invalid-color;
+.isRootStateInvalid {
+  @include variants.feedback(invalid);
 }
 
-.isRootStateInvalid .input + .radioLabel::before,
-.isRootStateInvalid .input:checked + .radioLabel::before {
-  border-color: deprecated-settings.$form-invalid-color;
+.isRootStateValid {
+  @include variants.feedback(valid);
 }
 
-.isRootStateInvalid .input:checked + .radioLabel::before {
-  box-shadow: inset 0 0 0 6px deprecated-settings.$form-invalid-color;
+.isRootStateWarning {
+  @include variants.feedback(warning);
 }
 
-.isRootStateValid .radioLabel,
-.isRootStateValid .validationText {
-  color: deprecated-settings.$form-valid-color;
+// Invisible label
+.isLabelHidden {
+  @include accessibility.hide-text();
 }
 
-.isRootStateValid .input + .radioLabel::before,
-.isRootStateValid .input:checked + .radioLabel::before {
-  border-color: deprecated-settings.$form-valid-color;
+// Layouts
+.rootLayoutVertical,
+.rootLayoutHorizontal {
+  @include box-field-layout.vertical($has-list: true);
 }
 
-.isRootStateValid .input:checked + .radioLabel::before {
-  box-shadow: inset 0 0 0 6px deprecated-settings.$form-valid-color;
+.rootLayoutHorizontal {
+  @include box-field-layout.horizontal();
 }
 
-.isRootStateWarning .radioLabel,
-.isRootStateWarning .validationText {
-  color: deprecated-settings.$form-warning-color;
-}
-
-.isRootStateWarning .input + .radioLabel::before,
-.isRootStateWarning .input:checked + .radioLabel::before {
-  border-color: deprecated-settings.$form-warning-color;
-}
-
-.isRootStateWarning .input:checked + .radioLabel::before {
-  box-shadow: inset 0 0 0 6px deprecated-settings.$form-warning-color;
-}
-
-.isRootLayoutHorizontal {
-  position: relative; // Just set something until the component is refactored (#20).
+.isRootFullWidth {
+  @include box-field-layout.full-width();
+  @include relationships.vertical-neighbor();
 }
 
 .isRootInFormLayout {
-  @include deprecated-tools.field-in-form-layout();
+  @include box-field-layout.in-form-layout();
 }
