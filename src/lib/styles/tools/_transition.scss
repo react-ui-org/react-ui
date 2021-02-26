@@ -6,6 +6,7 @@
 $_allowed-transitions: (
   border-color,
   background-color,
+  background-position,
   box-shadow,
   color,
   opacity,
@@ -43,7 +44,7 @@ $_reduced-motion-disallowed-transitions: (transform);
 @mixin add($properties, $duration: 150ms) {
   $property-list: ();
 
-  @if type-of($properties) != string and type-of($properties) != list {
+  @if type-of($properties) != 'string' and type-of($properties) != 'list' {
     @error "Transition properties must be a string or a Sass list, `#{$properties}` given.";
   }
 

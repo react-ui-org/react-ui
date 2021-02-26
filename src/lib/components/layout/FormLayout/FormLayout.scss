@@ -13,10 +13,10 @@
 //    (a global default which can be customised per use).
 //    https://github.com/react-ui-org/react-ui/issues/232
 
-@use '../../../styles/settings/forms' as settings;
+@use '../../../styles/settings/forms';
 @use '../../../styles/settings/layouts';
-@use '../../../styles/theme/forms' as theme;
 @use '../../../styles/tools/breakpoint';
+@use 'theme';
 
 .root {
   --rui-local-field-width: 1fr;
@@ -28,25 +28,25 @@
 .rootFieldLayoutHorizontal {
   display: grid;
   grid-template-columns: var(--rui-local-field-width);
-  grid-row-gap: theme.$layout-row-gap;
+  grid-row-gap: theme.$row-gap;
 }
 
 .rootFieldLayoutHorizontal {
-  @include breakpoint.up(settings.$horizontal-breakpoint) {
+  @include breakpoint.up(forms.$horizontal-breakpoint) {
     grid-template-columns: var(--rui-local-label-width) var(--rui-local-field-width); // 1.
   }
 }
 
 .hasRootLabelWidthDefault {
-  --rui-local-label-width: #{theme.$layout-horizontal-label-default-width}; // 1., 2.
+  --rui-local-label-width: #{theme.$horizontal-label-default-width}; // 1., 2.
 }
 
 .hasRootLabelWidthAuto {
-  --rui-local-label-width: #{theme.$layout-horizontal-label-auto-width}; // 4.
+  --rui-local-label-width: #{theme.$horizontal-label-auto-width}; // 4.
 }
 
 .hasRootLabelWidthLimited {
-  --rui-local-label-width: #{theme.$layout-horizontal-label-limited-width}; // 4.
+  --rui-local-label-width: #{theme.$horizontal-label-limited-width}; // 4.
 }
 
 .hasRootLabelWidthCustom {

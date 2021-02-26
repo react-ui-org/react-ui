@@ -1,0 +1,26 @@
+// 1. Don't let text alignment be affected by a parent.
+
+@use '../../settings/form-fields' as settings;
+@use '../../theme/form-fields' as theme;
+
+@mixin root() {
+  text-align: left; // 1.
+}
+
+@mixin label() {
+  color: var(--rui-local-surrounding-text-color, #{theme.$label-color});
+}
+
+@mixin label-required() {
+  &::after {
+    content: theme.$required-sign;
+    color: theme.$required-sign-color;
+  }
+}
+
+@mixin help-text() {
+  font-style: theme.$help-text-font-style;
+  font-size: theme.$help-text-font-size;
+  line-height: settings.$help-text-line-height;
+  color: var(--rui-local-surrounding-text-color, #{theme.$help-text-color});
+}

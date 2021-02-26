@@ -1,0 +1,789 @@
+---
+name: Forms Theming
+menu: Customize
+submenu: Theming
+route: /customize/theming/forms
+---
+
+# Forms Theming
+
+import { Playground } from 'docz'
+import { CheckboxField } from '../../../lib/components/ui/CheckboxField/CheckboxField'
+import { Radio } from '../../../lib/components/ui/Radio/Radio'
+import { SelectField } from '../../../lib/components/ui/SelectField/SelectField'
+import { TextField } from '../../../lib/components/ui/TextField/TextField'
+import { Toggle } from '../../../lib/components/ui/Toggle/Toggle'
+
+To make forms theming easy and robust, form components have many theming
+options in common.
+
+General naming convention for CSS custom properties looks as follows:
+
+`--rui-form-field-[<TYPE>]-[<MODIFICATION>]-[<ELEMENT>-[<ELEMENT
+TYPE]]-[<INTERACTION STATE>]-<PROPERTY>`
+
+Items in brackets are optional. As you read on you will notice some theming
+option groups may have less complicated conventions (that are still subset of
+the naming system above).
+
+## Basic Theming
+
+The following theme options define basic appearance of all form fields.
+
+| Custom Property                                      | Description                                                  |
+|------------------------------------------------------|--------------------------------------------------------------|
+| `--rui-form-field-label-color`                       | Label text color                                             |
+| `--rui-form-field-label-font-size`                   | Label font size                                              |
+| `--rui-form-field-help-text-font-size`               | Help text font size                                          |
+| `--rui-form-field-help-text-font-style`              | Help text font style, eg. italic                             |
+| `--rui-form-field-help-text-color`                   | Help text color                                              |
+| `--rui-form-field-required-sign`                     | Text appended to required input labels                       |
+| `--rui-form-field-required-sign-color`               | Color of text appended to required input labels              |
+
+## Horizontal Layout
+
+Options for fields that support horizontal layout.
+
+| Custom Property                                      | Description                                                  |
+|------------------------------------------------------|--------------------------------------------------------------|
+| `--rui-form-field-horizontal-label-alignment`        | Text alignment of labels in horizontal layout                |
+| `--rui-form-field-horizontal-label-min-width`        | Minimum width of labels in horizontal layout                 |
+| `--rui-form-field-horizontal-label-width`            | Default width of labels in horizontal layout                 |
+| `--rui-form-field-horizontal-full-width-label-width` | Default width of labels in full-width horizontal layout      |
+
+## Box Fields
+
+Options shared by box form controls. This includes
+[TextField](/components/ui/text-field),
+[TextArea](/components/ui/text-area), and
+[SelectField](/components/ui/select-field).
+
+| Custom Property                                      | Description                                                  |
+|------------------------------------------------------|--------------------------------------------------------------|
+| `--rui-form-field-box-input-width`                   | Default text input and select box width                      |
+| `--rui-form-field-box-input-min-width`               | Minimum text input and select box width                      |
+| `--rui-form-field-box-border-width`                  | Control border width                                         |
+| `--rui-form-field-box-border-radius`                 | Control corner radius                                        |
+| `--rui-form-field-box-placeholder-color`             | Placeholder text color                                       |
+
+Example:
+
+<Playground>
+  {() => {
+    const [fruit, setFruit] = React.useState('apple');
+    const options = [
+      {
+        label: 'Apple',
+        value: 'apple',
+      },
+      {
+        label: 'Banana',
+        value: 'banana',
+      },
+      {
+        label: 'Grapefruit',
+        value: 'grapefruit',
+      },
+    ];
+    return (
+      <>
+        <style type="text/css">
+          {`
+          .example--themed-form-fields {
+            --rui-form-field-box-input-width: 300px;
+            --rui-form-field-box-border-width: 2px;
+            --rui-form-field-box-border-radius: 0.5rem;
+          }
+        `}
+        </style>
+        <TextField
+          id="default-outline-text-field"
+          label="Default outline text field"
+        />
+        <TextField
+          id="default-filled-text-field"
+          label="Default filled text field"
+          variant="filled"
+        />
+        <SelectField
+          changeHandler={(e) => setFruit(e.target.value)}
+          id="default-outline-select-field"
+          label="Default outline select field"
+          options={options}
+          value={fruit}
+        />
+        <div className="example example--themed-form-fields mt-6">
+          <TextField
+            id="themed-outline-text-field"
+            label="Themed outline text field"
+          />
+          <TextField
+            id="themed-filled-text-field"
+            label="Themed filled text field"
+            variant="filled"
+          />
+          <SelectField
+            changeHandler={(e) => setFruit(e.target.value)}
+            id="themed-outline-select-field"
+            label="Themed outline select field"
+            options={options}
+            value={fruit}
+          />
+        </div>
+      </>
+    )
+  }}
+</Playground>
+
+### Box Field Variants
+
+Theming options for box form controls. Naming convention looks as follows:
+
+`--rui-form-field-box-<VISUAL VARIANT>-<INTERACTION STATE>-<PROPERTY>`
+
+Where:
+
+- `<VISUAL VARIANT>` is one of `filled` or `outline`
+- `<INTERACTION STATE>` is one of `default`, `hover`, `focus`, or `disabled`
+- `<PROPERTY>` is one of `color`, `border-color`, `background`, `box-shadow`, or
+  `surrounding-text-color` (the last one being available only for `default` and
+  `disabled` interaction states)
+
+Example:
+
+<Playground>
+  {() => {
+    const [fruit, setFruit] = React.useState('apple');
+    const options = [
+      {
+        label: 'Apple',
+        value: 'apple',
+      },
+      {
+        label: 'Banana',
+        value: 'banana',
+      },
+      {
+        label: 'Grapefruit',
+        value: 'grapefruit',
+      },
+    ];
+    return (
+      <>
+        <style type="text/css">
+          {`
+        .example--themed-form-field-variants {
+          --rui-form-field-box-border-width: 0px;
+          --rui-form-field-box-outline-default-box-shadow:
+            0.1em 0.1em 0.5em rgba(0, 0, 0, 0.2);
+          --rui-form-field-box-outline-hover-box-shadow:
+            0.1em 0.1em 0.75em rgba(0, 0, 0, 0.3);
+          --rui-form-field-box-outline-focus-box-shadow:
+            inset 0.1em 0.1em 0.25em rgba(0, 0, 0, 0.2);
+        }
+      `}
+        </style>
+        <TextField
+          id="default-outline-text-field"
+          label="Default outline text field"
+        />
+        <SelectField
+          changeHandler={(e) => setFruit(e.target.value)}
+          id="default-outline-select-field"
+          label="Default outline select field"
+          options={options}
+          value={fruit}
+        />
+        <div className="example example--themed-form-field-variants mt-6">
+          <TextField
+            id="themed-outline-text-field"
+            label="Themed outline text field"
+          />
+          <SelectField
+            changeHandler={(e) => setFruit(e.target.value)}
+            id="themed-outline-select-field"
+            label="Themed outline select field"
+            options={options}
+            value={fruit}
+          />
+        </div>
+      </>
+    )
+  }}
+</Playground>
+
+### Box Field Sizes
+
+Available sizes can be adjusted as follows:
+
+`--rui-form-field-box-<SIZE>-<PROPERTY>`
+
+Where:
+
+- `<SIZE>` is one of `small`, `medium`, or `large`
+- `<PROPERTY>` is one of `height`, `padding-x`, `padding-y`, or `font-size`
+
+Example:
+
+<Playground>
+  {() => {
+    const [fruit, setFruit] = React.useState('apple');
+    const options = [
+      {
+        label: 'Apple',
+        value: 'apple',
+      },
+      {
+        label: 'Banana',
+        value: 'banana',
+      },
+      {
+        label: 'Grapefruit',
+        value: 'grapefruit',
+      },
+    ];
+    return (
+      <>
+        <style type="text/css">
+          {`
+        .example--themed-form-field-sizes {
+          --rui-form-field-box-medium-height: 3rem;
+          --rui-form-field-box-medium-padding-x: 1.25rem;
+        }
+      `}
+        </style>
+        <TextField
+          id="default-medium-text-field"
+          label="Default medium text field"
+        />
+        <SelectField
+          changeHandler={(e) => setFruit(e.target.value)}
+          id="default-medium-select-field"
+          label="Default medium select field"
+          options={options}
+          value={fruit}
+        />
+        <div className="example example--themed-form-field-sizes mt-6">
+          <TextField
+            id="themed-medium-text-field"
+            label="Themed medium text field"
+          />
+          <SelectField
+            changeHandler={(e) => setFruit(e.target.value)}
+            id="themed-medium-select-field"
+            label="Themed medium select field"
+            options={options}
+            value={fruit}
+          />
+        </div>
+      </>
+    )
+  }}
+</Playground>
+
+## Check Fields
+
+Options shared by checkable form controls. This includes
+[CheckboxField](/components/ui/checkbox-field), [Radio](/components/ui/radio),
+and [Toggle](/components/ui/toggle).
+
+| Custom Property                                      | Description                                                  |
+|------------------------------------------------------|--------------------------------------------------------------|
+| `--rui-form-field-check-input-size`                  | Size of check inputs                                         |
+| `--rui-form-field-check-input-border-width`          | Border width of check inputs                                 |
+| `--rui-form-field-check-input-focus-box-shadow`      | Box shadow to highlight focused inputs                       |
+
+Interaction states:
+
+| Custom Property                                      | Description                                                  |
+|------------------------------------------------------|--------------------------------------------------------------|
+| `--rui-form-field-check-default-border-color`        | Border color of unchecked inputs                             |
+| `--rui-form-field-check-default-check-background-color` | Background color of unchecked inputs                      |
+| `--rui-form-field-check-checked-border-color`        | Border color of checked inputs                               |
+| `--rui-form-field-check-checked-check-background-color` | Background color of checked inputs                        |
+| `--rui-form-field-check-disabled-border-color`        | Border color of disabled unchecked inputs                   |
+| `--rui-form-field-check-disabled-check-background-color` | Background color of disabled unchecked inputs            |
+| `--rui-form-field-check-checked-disabled-border-color` | Border color of disabled checked inputs                    |
+| `--rui-form-field-check-checked-disabled-check-background-color` | Background color of disabled checked inputs      |
+
+Example:
+
+<Playground>
+  {() => {
+    const [agree, setAgree] = React.useState(true);
+    const [fruit, setFruit] = React.useState('apple');
+    const [studioQuality, setStudioQuality] = React.useState(true);
+    return (
+      <>
+        <style type="text/css">
+          {`
+            .example--themed-check-fields {
+              --rui-form-field-check-input-border-width: 2px;
+              --rui-form-field-check-checked-border-color: LightSeaGreen;
+              --rui-form-field-check-checked-check-background-color: MediumAquamarine;
+            }
+          `}
+        </style>
+        <Radio
+          changeHandler={(e) => setFruit(e.target.value)}
+          id="default-radio"
+          label="Default radio"
+          options={[
+            {
+              label: 'Apple',
+              value: 'apple',
+            },
+            {
+              label: 'Banana',
+              value: 'banana',
+            },
+            {
+              label: 'Grapefruit',
+              value: 'grapefruit',
+            },
+          ]}
+          value={fruit}
+        />
+        <CheckboxField
+          changeHandler={() => setAgree(!agree)}
+          checked={agree}
+          id="default-checkbox"
+          label="Default checkbox"
+        />
+        <Toggle
+          changeHandler={() => setStudioQuality(!studioQuality)}
+          checked={studioQuality}
+          id="default-toggle"
+          label="Default toggle"
+        />
+        <div className="example example--themed-check-fields mt-6">
+          <Radio
+            changeHandler={(e) => setFruit(e.target.value)}
+            id="themed-radio"
+            label="Themed radio"
+            options={[
+              {
+                label: 'Apple',
+                value: 'apple',
+              },
+              {
+                label: 'Banana',
+                value: 'banana',
+              },
+              {
+                label: 'Grapefruit',
+                value: 'grapefruit',
+              },
+            ]}
+            value={fruit}
+          />
+          <CheckboxField
+            changeHandler={() => setAgree(!agree)}
+            checked={agree}
+            id="themed-checkbox"
+            label="Themed checkbox"
+          />
+          <Toggle
+            changeHandler={() => setStudioQuality(!studioQuality)}
+            checked={studioQuality}
+            id="themed-toggle"
+            label="Themed toggle"
+          />
+        </div>
+      </>
+    )
+  }}
+</Playground>
+
+## Validation States
+
+Theming options for validation states are shared by all form components. Naming
+convention looks as follows:
+
+`--rui-form-field-<VALIDATION STATE>-<INTERACTION STATE>-<PROPERTY>`
+
+Where:
+
+- `<VALIDATION STATE>` is one of `invalid`, `valid`, or `warning`
+- `<INTERACTION STATE>` is one of `default`, `checked`, `disabled`, or
+  `checked-disabled`
+- `<PROPERTY>` is one of `color`, `border-color`, `background`,
+  `check-background-color`, `box-shadow`, or `surrounding-text-color`
+
+Not all properties are used by all components, this varies from component to
+component. Also, `hover` interaction state is unavailable for validation states
+everywhere — `default` state appearance is retained on hovering. For box fields,
+`focus` state for validation states is inherited from default form field
+appearance (i.e. as if no validation state was set).
+
+Example:
+
+<Playground>
+  {() => {
+    const [agree, setAgree] = React.useState(true);
+    const [fruit, setFruit] = React.useState('apple');
+    const [studioQuality, setStudioQuality] = React.useState(true);
+    const options = [
+      {
+        label: 'Apple',
+        value: 'apple',
+      },
+      {
+        label: 'Banana',
+        value: 'banana',
+      },
+      {
+        label: 'Grapefruit',
+        value: 'grapefruit',
+      },
+    ];
+    return (
+      <>
+        <style type="text/css">
+          {`
+        .example--themed-form-field-validation-states {
+          --rui-form-field-valid-default-color: white;
+          --rui-form-field-valid-default-border-color: LightSeaGreen;
+          --rui-form-field-valid-default-background: MediumAquamarine;
+          --rui-form-field-valid-default-check-background-color: MediumAquamarine;
+          --rui-form-field-valid-default-surrounding-text-color: DarkSlateGray;
+          --rui-form-field-valid-checked-check-background-color: MediumAquamarine;
+        }
+      `}
+        </style>
+        <TextField
+          id="default-valid-text-field"
+          label="Default valid text field"
+          validationState="valid"
+          validationText="This field is valid"
+        />
+        <SelectField
+          changeHandler={(e) => setFruit(e.target.value)}
+          id="default-valid-select-field"
+          label="Default valid select field"
+          options={options}
+          validationState="valid"
+          validationText="This field is valid"
+          value={fruit}
+        />
+        <Radio
+          changeHandler={(e) => setFruit(e.target.value)}
+          id="default-valid-radio"
+          label="Default valid radio"
+          options={[
+            {
+              label: 'Apple',
+              value: 'apple',
+            },
+            {
+              label: 'Banana',
+              value: 'banana',
+            },
+            {
+              label: 'Grapefruit',
+              value: 'grapefruit',
+            },
+          ]}
+          validationState="valid"
+          validationText="This field is valid"
+          value={fruit}
+        />
+        <CheckboxField
+          changeHandler={() => setAgree(!agree)}
+          checked={agree}
+          id="default-valid-checkbox"
+          label="Default valid checkbox"
+          validationState="valid"
+          validationText="This field is valid"
+        />
+        <Toggle
+          changeHandler={() => setStudioQuality(!studioQuality)}
+          checked={studioQuality}
+          id="default-valid-toggle"
+          label="Default valid toggle"
+          validationState="valid"
+          validationText="This field is valid"
+        />
+        <div className="example example--themed-form-field-validation-states mt-6">
+          <TextField
+            id="themed-valid-text-field"
+            label="Themed valid text field"
+            validationState="valid"
+            validationText="This field is valid"
+          />
+          <SelectField
+            changeHandler={(e) => setFruit(e.target.value)}
+            id="themed-valid-select-field"
+            label="Themed valid select field"
+            options={options}
+            validationState="valid"
+            validationText="This field is valid"
+            value={fruit}
+          />
+          <Radio
+            changeHandler={(e) => setFruit(e.target.value)}
+            id="themed-valid-radio"
+            label="Themed valid radio"
+            options={[
+              {
+                label: 'Apple',
+                value: 'apple',
+              },
+              {
+                label: 'Banana',
+                value: 'banana',
+              },
+              {
+                label: 'Grapefruit',
+                value: 'grapefruit',
+              },
+            ]}
+            validationState="valid"
+            validationText="This field is valid"
+            value={fruit}
+          />
+          <CheckboxField
+            changeHandler={() => setAgree(!agree)}
+            checked={agree}
+            id="themed-valid-checkbox"
+            label="Themed valid checkbox"
+            validationState="valid"
+            validationText="This field is valid"
+          />
+          <Toggle
+            changeHandler={() => setStudioQuality(!studioQuality)}
+            checked={studioQuality}
+            id="themed-valid-toggle"
+            label="Themed valid toggle"
+            validationState="valid"
+            validationText="This field is valid"
+          />
+        </div>
+      </>
+    )
+  }}
+</Playground>
+
+## Disabled State
+
+By default, all disabled form fields are semi-transparent and change mouse
+cursor on hover so users know the fields cannot be used.
+
+| Custom Property                                      | Description                                                  |
+|------------------------------------------------------|--------------------------------------------------------------|
+| `--rui-form-field-disabled-cursor`                   | Cursor to show on hovering disabled form fields              |
+| `--rui-form-field-disabled-opacity`                  | Opacity of disabled form fields (inc. label and help text)   |
+
+Should your design require custom styling of disabled fields, individual field
+types and validation states can be fine-tuned by several theming options
+available. All you need is to define all necessary custom properties following
+the naming conventions documented in previous sections (for simplicity, the
+properties do not exist in the default theme, we only use transparency to mark
+disabled fields by default). Namely, you will be interested in `disabled` and
+`checked-disabled` interaction states and properties that are available for
+styling of these states.
+
+Example:
+
+<Playground>
+  {() => {
+    const options = [
+      {
+        label: 'Apple',
+        value: 'apple',
+      },
+      {
+        label: 'Banana',
+        value: 'banana',
+      },
+      {
+        label: 'Grapefruit',
+        value: 'grapefruit',
+      },
+    ];
+    return (
+      <>
+        <style type="text/css">
+          {`
+          .example--themed-form-field-disabled-state {
+            /*_Common_*/
+            --rui-form-field-disabled-opacity: 1;
+            /*_Check fields_*/
+            --rui-form-field-check-disabled-border-color: silver;
+            --rui-form-field-check-disabled-check-background-color: gainsboro;
+            --rui-form-field-check-disabled-surrounding-text-color: silver;
+            --rui-form-field-check-checked-disabled-border-color: silver;
+            --rui-form-field-check-checked-disabled-check-background-color: gainsboro;
+            /*_Outline box fields_*/
+            --rui-form-field-box-outline-disabled-color: DarkGray;
+            --rui-form-field-box-outline-disabled-border-color: silver;
+            --rui-form-field-box-outline-disabled-background: gainsboro;
+            --rui-form-field-box-outline-disabled-surrounding-text-color: silver;
+            /*_Invalid state_*/
+            --rui-form-field-invalid-disabled-color: DarkGray;
+            --rui-form-field-invalid-disabled-border-color: silver;
+            --rui-form-field-invalid-disabled-background: gainsboro;
+            --rui-form-field-invalid-disabled-check-background-color: gainsboro;
+            --rui-form-field-invalid-disabled-surrounding-text-color: silver;
+            --rui-form-field-invalid-checked-disabled-check-background-color: gainsboro;
+            /*_Warning state_*/
+            --rui-form-field-warning-disabled-color: DarkGray;
+            --rui-form-field-warning-disabled-border-color: silver;
+            --rui-form-field-warning-disabled-background: gainsboro;
+            --rui-form-field-warning-disabled-check-background-color: gainsboro;
+            --rui-form-field-warning-disabled-surrounding-text-color: silver;
+            --rui-form-field-warning-checked-disabled-check-background-color: gainsboro;
+            /*_Valid state_*/
+            --rui-form-field-valid-disabled-color: DarkGray;
+            --rui-form-field-valid-disabled-border-color: silver;
+            --rui-form-field-valid-disabled-background: gainsboro;
+            --rui-form-field-valid-disabled-check-background-color: gainsboro;
+            --rui-form-field-valid-disabled-surrounding-text-color: silver;
+            --rui-form-field-valid-checked-disabled-check-background-color: gainsboro;
+          }
+        `}
+        </style>
+        <TextField
+          disabled
+          id="default-disabled-text-field"
+          label="Default disabled text field"
+        />
+        <SelectField
+          changeHandler={() => {}}
+          disabled
+          id="default-disabled-select-field"
+          label="Default disabled select field"
+          options={options}
+          value="apple"
+        />
+        <TextField
+          disabled
+          id="default-disabled-invalid-text-field"
+          label="Default disabled invalid text field"
+          validationState="invalid"
+        />
+        <Radio
+          changeHandler={() => {}}
+          disabled
+          id="default-disabled-radio"
+          label="Default disabled radio"
+          options={[
+            {
+              label: 'Apple',
+              value: 'apple',
+            },
+            {
+              label: 'Banana',
+              value: 'banana',
+            },
+            {
+              label: 'Grapefruit',
+              value: 'grapefruit',
+            },
+          ]}
+          value="apple"
+        />
+        <CheckboxField
+          changeHandler={() => {}}
+          checked
+          disabled
+          id="default-disabled-checkbox"
+          label="Default disabled checkbox"
+        />
+        <Toggle
+          changeHandler={() => {}}
+          checked
+          disabled
+          id="default-disabled-toggle"
+          label="Default disabled toggle"
+        />
+        <CheckboxField
+          changeHandler={() => {}}
+          disabled
+          id="default-disabled-warning-checkbox"
+          label="Default disabled warning checkbox"
+          validationState="warning"
+        />
+        <Toggle
+          changeHandler={() => {}}
+          checked
+          disabled
+          id="default-disabled-valid-toggle"
+          label="Default disabled valid toggle"
+          validationState="valid"
+        />
+        <div className="example example--themed-form-field-disabled-state mt-6">
+          <TextField
+            disabled
+            id="themed-disabled-text-field"
+            label="Themed disabled text field"
+          />
+          <SelectField
+            changeHandler={() => {}}
+            disabled
+            id="themed-disabled-select-field"
+            label="Themed disabled select field"
+            options={options}
+            value="apple"
+          />
+          <TextField
+            disabled
+            id="themed-disabled-invalid-text-field"
+            label="Themed disabled invalid text field"
+            validationState="invalid"
+          />
+          <Radio
+            changeHandler={() => {}}
+            disabled
+            id="themed-disabled-radio"
+            label="Themed disabled radio"
+            options={[
+              {
+                label: 'Apple',
+                value: 'apple',
+              },
+              {
+                label: 'Banana',
+                value: 'banana',
+              },
+              {
+                label: 'Grapefruit',
+                value: 'grapefruit',
+              },
+            ]}
+            value="apple"
+          />
+          <CheckboxField
+            changeHandler={() => {}}
+            checked
+            disabled
+            id="themed-disabled-checkbox"
+            label="Themed disabled checkbox"
+          />
+          <Toggle
+            changeHandler={() => {}}
+            checked
+            disabled
+            id="themed-disabled-toggle"
+            label="Themed disabled toggle"
+          />
+          <CheckboxField
+            changeHandler={() => {}}
+            disabled
+            id="themed-disabled-warning-checkbox"
+            label="Themed disabled warning checkbox"
+            validationState="warning"
+          />
+          <Toggle
+            changeHandler={() => {}}
+            checked
+            disabled
+            id="themed-disabled-valid-toggle"
+            label="Themed disabled valid toggle"
+            validationState="valid"
+          />
+        </div>
+      </>
+    )
+  }}
+</Playground>

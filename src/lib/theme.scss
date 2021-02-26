@@ -1,6 +1,7 @@
 // Default theme. Can be used as a starting point for your custom theme.
 
 @use 'styles/settings/breakpoints';
+@use 'styles/tools/svg';
 
 :root {
 
@@ -66,11 +67,18 @@
   --rui-color-note-darker: #{darken(#007bff, 8%)};
   --rui-color-on-note: #fff;
 
+  // Active color
+  --rui-color-active: var(--rui-color-note);
+  --rui-color-on-active: var(--rui-color-on-note);
+  --rui-color-active-hover: var(--rui-color-note-darker);
+  --rui-color-active-focus: #{transparentize(#007bff, 0.75)};
+
   //
   // Layout
   // ======
 
   // Breakpoints
+  //
   // Read-only, custom properties cannot be used within media queries as media query is not a property.
   // https://www.w3.org/TR/css-variables-1/#using-variables
   //
@@ -101,6 +109,9 @@
   --rui-border-width: 1px;
   --rui-border-radius: 0.25rem;
 
+  // Accessibility
+  --rui-focus-box-shadow: 0 0 0 0.2em var(--rui-color-active-focus);
+
   //
   // Elements
   // ========
@@ -110,9 +121,9 @@
   --rui-page-background: var(--rui-color-gray-50);
 
   // Links
-  --rui-link-color: #007bff;
+  --rui-link-color: var(--rui-color-active);
   --rui-link-decoration: none;
-  --rui-link-hover-color: #0056b3;
+  --rui-link-hover-color: var(--rui-color-active-hover);
   --rui-link-hover-decoration: underline;
 
   // Lists
@@ -422,8 +433,8 @@
   --rui-button-large-font-size: var(--rui-typography-size-1);
 
   //
-  // Button Group
-  // ============
+  // ButtonGroup
+  // ===========
 
   --rui-button-group-filled-separator-color: var(--rui-color-white);
 
@@ -458,13 +469,15 @@
   --rui-card-disabled-opacity: 0.6;
 
   //
-  // Forms Fields
-  // ============
+  // Form Fields
+  // ===========
   //
   // 1. Please note that `min-width` values under cca 150 px do not take effect due to default input
   //    width defined in browsers unless `width` (same or smaller) is also defined.
   //    https://stackoverflow.com/questions/36247140/why-dont-flex-items-shrink-past-content-size
+  //
   // 2. Append non-breaking space and asterisk to required filed labels.
+  //
   // 3. Avoid using `fit-content()` for label width, it behaves differently in Chrome vs. FF for
   //    inline grid.
 
@@ -476,73 +489,107 @@
   --rui-form-field-help-text-color: var(--rui-color-gray-500);
   --rui-form-field-required-sign: '\00a0*'; // 2.
   --rui-form-field-required-sign-color: var(--rui-color-gray-500);
-  --rui-form-field-disabled-cursor: not-allowed;
-  --rui-form-field-disabled-opacity: 0.5;
+
+  // Form fields: horizontal layout
   --rui-form-field-horizontal-label-alignment: left;
   --rui-form-field-horizontal-label-min-width: 0;
   --rui-form-field-horizontal-label-width: minmax(auto, 50%); // 3.
   --rui-form-field-horizontal-full-width-label-width: fit-content(50%);
 
-  // Form fields: text controls and select boxes
-  --rui-form-field-input-width: auto; // 1.
-  --rui-form-field-input-min-width: 240px; // 1.
-  --rui-form-field-border-width: var(--rui-border-width);
-  --rui-form-field-border-radius: var(--rui-border-radius);
-  --rui-form-field-placeholder-color: var(--rui-color-gray-500);
-
-  // Form fields: component specific
-  --rui-form-field-caret-border-style: none;
-  --rui-form-field-caret-background: transparent;
-  --rui-form-field-disabled-select-option-color: var(--rui-color-gray-300);
-
-  // Form fields: filled variant
-  --rui-form-field-filled-default-color: var(--rui-page-color);
-  --rui-form-field-filled-default-border-color: var(--rui-color-gray-200);
-  --rui-form-field-filled-default-background: var(--rui-color-gray-50);
-  --rui-form-field-filled-default-box-shadow: none;
-  --rui-form-field-filled-hover-border-color: var(--rui-color-gray-500);
-  --rui-form-field-filled-focus-border-color: var(--rui-color-primary);
-
-  // Form fields: outline variant
-  --rui-form-field-outline-default-color: var(--rui-page-color);
-  --rui-form-field-outline-default-border-color: var(--rui-color-gray-200);
-  --rui-form-field-outline-default-background: var(--rui-color-white);
-  --rui-form-field-outline-default-box-shadow: none;
-  --rui-form-field-outline-hover-border-color: var(--rui-color-gray-500);
-  --rui-form-field-outline-focus-border-color: var(--rui-color-primary);
+  // Forms fields: disabled state
+  --rui-form-field-disabled-cursor: not-allowed;
+  --rui-form-field-disabled-opacity: 0.5;
 
   // Form fields: validation states: invalid
   --rui-form-field-invalid-default-border-color: var(--rui-color-error);
   --rui-form-field-invalid-default-background: var(--rui-color-error-light);
+  --rui-form-field-invalid-default-check-background-color: var(--rui-form-field-invalid-default-background);
   --rui-form-field-invalid-default-surrounding-text-color: var(--rui-color-error);
+  --rui-form-field-invalid-checked-check-background-color: var(--rui-form-field-invalid-default-border-color);
 
   // Form fields: validation states: valid
   --rui-form-field-valid-default-border-color: var(--rui-color-success);
   --rui-form-field-valid-default-background: var(--rui-color-success-light);
+  --rui-form-field-valid-default-check-background-color: var(--rui-form-field-valid-default-background);
   --rui-form-field-valid-default-surrounding-text-color: var(--rui-color-success);
+  --rui-form-field-valid-checked-check-background-color: var(--rui-form-field-valid-default-border-color);
 
   // Form fields: validation states: warning
-  --rui-form-field-warning-default-border-color: var(--rui-color-warning-darker);
+  --rui-form-field-warning-default-border-color: var(--rui-color-warning-dark);
   --rui-form-field-warning-default-background: var(--rui-color-warning-light);
+  --rui-form-field-warning-default-check-background-color: var(--rui-form-field-warning-default-background);
   --rui-form-field-warning-default-surrounding-text-color: var(--rui-color-warning-darker);
+  --rui-form-field-warning-checked-check-background-color: var(--rui-form-field-warning-default-border-color);
 
-  // Form fields: sizes: small
-  --rui-form-field-small-height: 1.75rem;
-  --rui-form-field-small-padding-y: 0.0625rem;
-  --rui-form-field-small-padding-x: var(--rui-spacing-2);
-  --rui-form-field-small-font-size: var(--rui-typography-size-small);
+  // Form fields: box fields
+  --rui-form-field-box-input-width: auto; // 1.
+  --rui-form-field-box-input-min-width: 240px; // 1.
+  --rui-form-field-box-border-width: var(--rui-border-width);
+  --rui-form-field-box-border-radius: var(--rui-border-radius);
+  --rui-form-field-box-placeholder-color: var(--rui-color-gray-500);
+  --rui-form-field-box-select-caret-border-style: none;
+  --rui-form-field-box-select-caret-background: transparent;
+  --rui-form-field-box-select-option-disabled-color: var(--rui-color-gray-300);
 
-  // Form fields: sizes: medium
-  --rui-form-field-medium-height: 2.25rem;
-  --rui-form-field-medium-padding-y: 0.3125rem;
-  --rui-form-field-medium-padding-x: var(--rui-spacing-3);
-  --rui-form-field-medium-font-size: var(--rui-typography-size-0);
+  // Form fields: box field sizes: small
+  --rui-form-field-box-small-height: 1.75rem;
+  --rui-form-field-box-small-padding-y: 0.0625rem;
+  --rui-form-field-box-small-padding-x: var(--rui-spacing-2);
+  --rui-form-field-box-small-font-size: var(--rui-typography-size-small);
 
-  // Form fields: sizes: large
-  --rui-form-field-large-height: 2.75rem;
-  --rui-form-field-large-padding-y: 0.5625rem;
-  --rui-form-field-large-padding-x: var(--rui-spacing-4);
-  --rui-form-field-large-font-size: var(--rui-typography-size-1);
+  // Form fields: box field sizes: medium
+  --rui-form-field-box-medium-height: 2.25rem;
+  --rui-form-field-box-medium-padding-y: 0.3125rem;
+  --rui-form-field-box-medium-padding-x: var(--rui-spacing-3);
+  --rui-form-field-box-medium-font-size: var(--rui-typography-size-0);
+
+  // Form fields: box field sizes: large
+  --rui-form-field-box-large-height: 2.75rem;
+  --rui-form-field-box-large-padding-y: 0.5625rem;
+  --rui-form-field-box-large-padding-x: var(--rui-spacing-4);
+  --rui-form-field-box-large-font-size: var(--rui-typography-size-1);
+
+  // Form fields: box field variants: filled variant interaction states
+  --rui-form-field-box-filled-default-color: var(--rui-page-color);
+  --rui-form-field-box-filled-default-border-color: var(--rui-color-gray-200);
+  --rui-form-field-box-filled-default-background: var(--rui-color-gray-50);
+  --rui-form-field-box-filled-default-box-shadow: none;
+  --rui-form-field-box-filled-hover-border-color: var(--rui-color-gray-500);
+  --rui-form-field-box-filled-focus-border-color: var(--rui-color-primary);
+
+  // Form fields: box field variants: outline variant interaction states
+  --rui-form-field-box-outline-default-color: var(--rui-page-color);
+  --rui-form-field-box-outline-default-border-color: var(--rui-color-gray-200);
+  --rui-form-field-box-outline-default-background: var(--rui-color-white);
+  --rui-form-field-box-outline-default-box-shadow: none;
+  --rui-form-field-box-outline-hover-border-color: var(--rui-color-gray-500);
+  --rui-form-field-box-outline-focus-border-color: var(--rui-color-primary);
+
+  // Form fields: check fields
+  --rui-form-field-check-input-size: 1.125rem;
+  --rui-form-field-check-input-border-width: var(--rui-form-field-box-border-width);
+  --rui-form-field-check-input-focus-box-shadow: var(--rui-focus-box-shadow);
+
+  // Form fields: check fields, component specific
+  // stylelint-disable function-url-quotes
+  --rui-form-field-check-input-checkbox-border-radius: var(--rui-form-field-box-border-radius);
+  --rui-form-field-check-input-checkbox-checked-background-image: #{svg.escape(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/></svg>"))};
+  --rui-form-field-check-input-radio-border-radius: 50%;
+  --rui-form-field-check-input-radio-checked-background-image: #{svg.escape(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='#ffffff'/></svg>"))};
+  --rui-form-field-check-input-toggle-width: 2.25rem;
+  --rui-form-field-check-input-toggle-border-radius: 0.5625rem;
+  --rui-form-field-check-input-toggle-background-size: contain;
+  --rui-form-field-check-input-toggle-default-background-image: #{svg.escape(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#cccccc'/></svg>"))};
+  --rui-form-field-check-input-toggle-default-background-position: left center;
+  --rui-form-field-check-input-toggle-checked-background-image: #{svg.escape(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#ffffff'/></svg>"))};
+  --rui-form-field-check-input-toggle-checked-background-position: right center;
+  // stylelint-enable function-url-quotes
+
+  // Form fields: check fields interaction states
+  --rui-form-field-check-default-border-color: var(--rui-color-gray-200);
+  --rui-form-field-check-default-check-background-color: var(--rui-color-white);
+  --rui-form-field-check-checked-border-color: var(--rui-color-active);
+  --rui-form-field-check-checked-check-background-color: var(--rui-color-active);
 
   //
   // FormLayout

@@ -46,7 +46,7 @@
   $properties: map-get(settings.$themeable-priority-properties, $priority);
 
   // 2.
-  @if ($state == disabled) {
+  @if ($state == 'disabled') {
     @each $property in $properties {
       --rui-local-#{$property}:
         var(

@@ -1,14 +1,15 @@
-@use '../../../styles/tools/forms/foundation';
-@use '../../../styles/tools/forms/inline-field-layout';
-@use '../../../styles/tools/forms/relationships';
-@use '../../../styles/tools/forms/variants';
+@use '../../../styles/tools/form-fields/foundation';
+@use '../../../styles/tools/form-fields/inline-field-elements';
+@use '../../../styles/tools/form-fields/inline-field-layout';
+@use '../../../styles/tools/form-fields/relationships';
+@use '../../../styles/tools/form-fields/variants';
 @use '../../../styles/tools/accessibility';
 
 // Foundation
 .root {
   @include foundation.root();
   @include inline-field-layout.root();
-  @include variants.visual(neutral);
+  @include variants.visual(check);
   @include relationships.horizontal-neighbor();
 }
 
@@ -18,6 +19,10 @@
 
 .field {
   @include inline-field-layout.field();
+}
+
+.input {
+  @include inline-field-elements.check-input($type: checkbox);
 }
 
 .helpText,
@@ -31,15 +36,15 @@
 
 // States
 .isRootStateInvalid {
-  @include variants.feedback(invalid);
+  @include variants.validation(invalid);
 }
 
 .isRootStateValid {
-  @include variants.feedback(valid);
+  @include variants.validation(valid);
 }
 
 .isRootStateWarning {
-  @include variants.feedback(warning);
+  @include variants.validation(warning);
 }
 
 // Invisible label

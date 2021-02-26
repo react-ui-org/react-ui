@@ -1,0 +1,56 @@
+// Custom input styling inspired by Bootstrap 5.
+//
+// 1. Keep themed appearance for print.
+
+@use '../../theme/typography';
+@use '../../theme/form-fields' as theme;
+@use '../transition';
+
+@mixin check-input($type) {
+  @include transition.add((background-color, background-position, box-shadow));
+
+  width: theme.$check-input-size;
+  height: theme.$check-input-size;
+  margin-top: calc((#{typography.$line-height-base} - #{theme.$check-input-size}) / 2);
+  border: theme.$check-input-border-width solid var(--rui-local-border-color);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: var(--rui-local-check-background-color);
+  appearance: none;
+  color-adjust: exact; // 1.
+
+  &:focus,
+  &:checked:focus {
+    box-shadow: theme.$check-input-focus-box-shadow;
+  }
+
+  @if ($type == 'checkbox') {
+    border-radius: theme.$check-input-checkbox-border-radius;
+
+    &:checked {
+      background-image: theme.$check-input-checkbox-checked-background-image;
+    }
+  }
+
+  @if ($type == 'radio') {
+    border-radius: theme.$check-input-radio-border-radius;
+
+    &:checked {
+      background-image: theme.$check-input-radio-checked-background-image;
+    }
+  }
+
+  @if ($type == 'toggle') {
+    width: theme.$check-input-toggle-width;
+    border-radius: theme.$check-input-toggle-border-radius;
+    background-image: theme.$check-input-toggle-default-background-image;
+    background-position: theme.$check-input-toggle-default-background-position;
+    background-size: theme.$check-input-toggle-background-size;
+
+    &:checked {
+      background-image: theme.$check-input-toggle-checked-background-image;
+      background-position: theme.$check-input-toggle-checked-background-position;
+    }
+  }
+}

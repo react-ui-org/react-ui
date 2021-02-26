@@ -1,4 +1,4 @@
-@use '../../../styles/tools/forms/box-field-layout';
+@use '../../../styles/tools/form-fields/box-field-layout';
 
 .root {
   @include box-field-layout.in-form-layout();

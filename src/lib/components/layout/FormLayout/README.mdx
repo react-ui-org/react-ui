@@ -115,7 +115,7 @@ auto width, and limited width. For cases where an individual manual width works
 better, there is the **local custom width mode** which enables setting a width
 that is applied just for the current FormLayout.
 
-👉 All global label width options can be easily [customized](/customize/theming)
+👉 All global label width options can be easily [customized](/customize/theming/overview)
 with CSS custom properties.
 
 #### Label Width Options
@@ -268,115 +268,112 @@ the FormLayout component.
 This is a demo of all components supported by FormLayout.
 
 <Playground>
-  <FormLayout fieldLayout="horizontal" labelWidth="auto">
-    <>
-      <TextField
-        id="form-layout-horizontal-first-name"
-        changeHandler={() => {}}
-        label="First Name"
-      />
-      <TextField
-        id="form-layout-horizontal-last-name"
-        changeHandler={() => {}}
-        label="Last Name"
-      />
-    </>
-    <TextField
-      id="form-layout-horizontal-email"
-      changeHandler={() => {}}
-      helpText="Optional"
-      label="Email address"
-      type="email"
-    />
-    <>
-      <TextField
-        id="form-layout-horizontal-address-1"
-        changeHandler={() => {}}
-        label="Address"
-        placeholder="Address line 1"
-      />
-      <TextField
-        id="form-layout-horizontal-address-2"
-        changeHandler={() => {}}
-        isLabelVisible={false}
-        label="Address 2"
-        placeholder="Address line 2"
-      />
-      <TextField
-        id="form-layout-horizontal-zip"
-        changeHandler={() => {}}
-        label="ZIP"
-        inputSize={6}
-        validationState="invalid"
-        validationText="ZIP should be 5 to 6 digits long code."
-      />
-      <FormLayoutCustomField
-        id="form-layout-horizontal-country"
-        label="Country"
-      >
-        <span>Czech Republic</span>
-      </FormLayoutCustomField>
-      <CheckboxField
-        id="form-layout-horizontal-delivery"
-        changeHandler={() => {}}
-        label="This is my delivery address"
-      />
-    </>
-    <SelectField
-      id="form-layout-horizontal-fruit"
-      changeHandler={() => {}}
-      label="Your favourite fruit"
-      options={[
-        {
-          label: 'Apple',
-          value: 'apple',
-        },
-        {
-          label: 'Banana',
-          value: 'banana',
-        },
-        {
-          label: 'Grapefruit',
-          value: 'grapefruit',
-        },
-      ]}
-    />
-    <TextArea
-      id="form-layout-horizontal-message"
-      changeHandler={() => {}}
-      fullWidth
-      label="Message"
-      rows={3}
-    />
-    <Toggle
-      id="form-layout-horizontal-newsletter"
-      changeHandler={() => {}}
-      checked
-      helpText="Only once per week!"
-      label="Receive weekly newsletter"
-      required
-    />
-    <Radio
-      id="form-layout-horizontal-fruit-2"
-      changeHandler={() => {}}
-      label="And fruit again!"
-      options={[
-        {
-          label: 'Apple',
-          value: 'apple',
-        },
-        {
-          label: 'Banana',
-          value: 'banana',
-        },
-        {
-          label: 'Grapefruit',
-          value: 'grapefruit',
-        },
-      ]}
-      value="apple"
-    />
-  </FormLayout>
+  {() => {
+    const [fruit, setFruit] = React.useState('apple');
+    const [isDeliveryAddress, setIsDeliveryAddress] = React.useState(true);
+    const [receiveNewsletter, setReceiveNewsletter] = React.useState(true);
+    const options = [
+      {
+        label: 'Apple',
+        value: 'apple',
+      },
+      {
+        label: 'Banana',
+        value: 'banana',
+      },
+      {
+        label: 'Grapefruit',
+        value: 'grapefruit',
+      },
+    ];
+    return (
+      <FormLayout fieldLayout="horizontal" labelWidth="auto">
+        <>
+          <TextField
+            changeHandler={() => {}}
+            id="form-layout-horizontal-first-name"
+            label="First Name"
+          />
+          <TextField
+            changeHandler={() => {}}
+            id="form-layout-horizontal-last-name"
+            label="Last Name"
+          />
+        </>
+        <TextField
+          changeHandler={() => {}}
+          helpText="Optional"
+          id="form-layout-horizontal-email"
+          label="Email address"
+          type="email"
+        />
+        <>
+          <TextField
+            changeHandler={() => {}}
+            id="form-layout-horizontal-address-1"
+            label="Address"
+            placeholder="Address line 1"
+          />
+          <TextField
+            changeHandler={() => {}}
+            id="form-layout-horizontal-address-2"
+            isLabelVisible={false}
+            label="Address 2"
+            placeholder="Address line 2"
+          />
+          <TextField
+            changeHandler={() => {}}
+            id="form-layout-horizontal-zip"
+            inputSize={6}
+            label="ZIP"
+            validationState="invalid"
+            validationText="ZIP should be 5 to 6 digits long code."
+          />
+          <FormLayoutCustomField
+            id="form-layout-horizontal-country"
+            label="Country"
+          >
+            <span>Czech Republic</span>
+          </FormLayoutCustomField>
+          <CheckboxField
+            changeHandler={() => setIsDeliveryAddress(!isDeliveryAddress)}
+            checked={isDeliveryAddress}
+            id="form-layout-horizontal-delivery"
+            label="This is my delivery address"
+          />
+        </>
+        <SelectField
+          changeHandler={(e) => setFruit(e.target.value)}
+          id="form-layout-horizontal-fruit"
+          label="Your favourite fruit"
+          options={options}
+          value={fruit}
+        />
+        <TextArea
+          changeHandler={() => {}}
+          fullWidth
+          id="form-layout-horizontal-message"
+          label="Message"
+          rows={3}
+        />
+        <Toggle
+          changeHandler={() => setReceiveNewsletter(!receiveNewsletter)}
+          checked={receiveNewsletter}
+          helpText="Only once per week!"
+          id="form-layout-horizontal-newsletter"
+          label="Receive weekly newsletter"
+          required
+        />
+        <Radio
+          changeHandler={(e) => setFruit(e.target.value)}
+          id="form-layout-horizontal-fruit-2"
+          label="And fruit again!"
+          options={options}
+          value={fruit}
+        />
+      </FormLayout>
+    )
+  }}
 </Playground>
 
 ## API
