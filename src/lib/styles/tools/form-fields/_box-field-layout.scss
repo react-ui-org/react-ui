@@ -45,8 +45,9 @@
 // 13. Make fields just as wide as necessary. Fields should be interactive only where their visible
 //     content is.
 
-@use '../../settings/forms' as settings;
-@use '../../theme/forms' as theme;
+@use '../../settings/forms';
+@use '../../settings/form-fields' as settings;
+@use '../../theme/form-fields' as theme;
 @use '../breakpoint';
 
 @mixin vertical($has-list: false) {
@@ -75,24 +76,24 @@
 }
 
 @mixin horizontal() {
-  @include breakpoint.up(settings.$horizontal-breakpoint) {
+  @include breakpoint.up(forms.$horizontal-breakpoint) {
     display: inline-grid; // 2.
-    grid-template-columns: theme.$field-horizontal-label-width min-content; // 2.
+    grid-template-columns: theme.$horizontal-label-width min-content; // 2.
     grid-template-areas: 'label field';
     align-items: start;
 
     .label {
       grid-area: label;
-      min-width: theme.$field-horizontal-label-min-width;
+      min-width: theme.$horizontal-label-min-width;
       padding-top:
         calc(
-          #{theme.$field-border-width}
-          + var(--rui-local-padding-y, -1 * #{theme.$field-border-width})
+          #{theme.$box-border-width}
+          + var(--rui-local-padding-y, -1 * #{theme.$box-border-width})
         ); // 11.
 
       padding-right: settings.$horizontal-inner-gap; // 4.
       padding-bottom: 0; // 4.
-      text-align: theme.$field-horizontal-label-alignment;
+      text-align: theme.$horizontal-label-alignment;
     }
 
     .field {
@@ -103,7 +104,7 @@
 }
 
 @mixin horizontal-with-small-input() {
-  @include breakpoint.up(settings.$horizontal-breakpoint) {
+  @include breakpoint.up(forms.$horizontal-breakpoint) {
     grid-template-columns: min-content min-content; // 5.
     grid-template-areas:
       'label field'
@@ -143,10 +144,10 @@
     width: 100%;
   }
 
-  @include breakpoint.up(settings.$horizontal-breakpoint) {
+  @include breakpoint.up(forms.$horizontal-breakpoint) {
     &.rootLayoutHorizontal {
       display: grid;
-      grid-template-columns: theme.$field-horizontal-full-width-label-width 1fr; // 6.
+      grid-template-columns: theme.$horizontal-full-width-label-width 1fr; // 6.
     }
 
     &.rootLayoutHorizontal .field {
@@ -168,7 +169,7 @@
     margin-bottom: 0; // 8.
   }
 
-  @include breakpoint.up(settings.$horizontal-breakpoint) {
+  @include breakpoint.up(forms.$horizontal-breakpoint) {
     .optionLabel {
       width: auto; // 12.
     }

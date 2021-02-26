@@ -1,0 +1,80 @@
+// Variant specific theme options are obtained dynamically because there is way too many of them to
+// maintain manually. See `settings/_form-fields.scss` and `tools/form-fields/_variants.scss` for
+// details.
+
+// Forms fields: common properties
+$label-color: var(--rui-form-field-label-color);
+$label-font-size: var(--rui-form-field-label-font-size);
+$help-text-font-size: var(--rui-form-field-help-text-font-size);
+$help-text-font-style: var(--rui-form-field-help-text-font-style);
+$help-text-color: var(--rui-form-field-help-text-color);
+$required-sign: var(--rui-form-field-required-sign);
+$required-sign-color: var(--rui-form-field-required-sign-color);
+
+// Form fields: horizontal layout
+$horizontal-label-alignment: var(--rui-form-field-horizontal-label-alignment);
+$horizontal-label-min-width: var(--rui-form-field-horizontal-label-min-width);
+$horizontal-label-width: var(--rui-form-field-horizontal-label-width);
+$horizontal-full-width-label-width: var(--rui-form-field-horizontal-full-width-label-width);
+
+// Form fields: disabled state
+$disabled-cursor: var(--rui-form-field-disabled-cursor);
+$disabled-opacity: var(--rui-form-field-disabled-opacity);
+
+// Form fields: box fields
+$box-input-width: var(--rui-form-field-box-input-width);
+$box-input-min-width: var(--rui-form-field-box-input-min-width);
+$box-border-width: var(--rui-form-field-box-border-width);
+$box-border-radius: var(--rui-form-field-box-border-radius);
+$box-placeholder-color: var(--rui-form-field-box-placeholder-color);
+
+// Form fields: box fields, component specific
+$box-select-caret-border-style: var(--rui-form-field-box-select-caret-border-style);
+$box-select-caret-background: var(--rui-form-field-box-select-caret-background);
+$box-select-option-disabled-color: var(--rui-form-field-box-select-option-disabled-color);
+
+// Form fields: box field sizes
+$box-sizes: (
+  small: (
+    height: var(--rui-form-field-box-small-height),
+    padding-y: var(--rui-form-field-box-small-padding-y),
+    padding-x: var(--rui-form-field-box-small-padding-x),
+    font-size: var(--rui-form-field-box-small-font-size),
+  ),
+  medium: (
+    height: var(--rui-form-field-box-medium-height),
+    padding-y: var(--rui-form-field-box-medium-padding-y),
+    padding-x: var(--rui-form-field-box-medium-padding-x),
+    font-size: var(--rui-form-field-box-medium-font-size),
+  ),
+  large: (
+    height: var(--rui-form-field-box-large-height),
+    padding-y: var(--rui-form-field-box-large-padding-y),
+    padding-x: var(--rui-form-field-box-large-padding-x),
+    font-size: var(--rui-form-field-box-large-font-size),
+  ),
+);
+
+// Form fields: check fields
+$check-input-size: var(--rui-form-field-check-input-size);
+$check-input-border-width: var(--rui-form-field-check-input-border-width);
+$check-input-focus-box-shadow: var(--rui-form-field-check-input-focus-box-shadow);
+
+// Form fields: check fields, component specific
+$check-input-checkbox-border-radius: var(--rui-form-field-check-input-checkbox-border-radius);
+$check-input-checkbox-checked-background-image:
+  var(--rui-form-field-check-input-checkbox-checked-background-image);
+$check-input-radio-border-radius: var(--rui-form-field-check-input-radio-border-radius);
+$check-input-radio-checked-background-image:
+  var(--rui-form-field-check-input-radio-checked-background-image);
+$check-input-toggle-width: var(--rui-form-field-check-input-toggle-width);
+$check-input-toggle-border-radius: var(--rui-form-field-check-input-toggle-border-radius);
+$check-input-toggle-background-size: var(--rui-form-field-check-input-toggle-background-size);
+$check-input-toggle-default-background-image:
+  var(--rui-form-field-check-input-toggle-default-background-image);
+$check-input-toggle-default-background-position:
+  var(--rui-form-field-check-input-toggle-default-background-position);
+$check-input-toggle-checked-background-image:
+  var(--rui-form-field-check-input-toggle-checked-background-image);
+$check-input-toggle-checked-background-position:
+  var(--rui-form-field-check-input-toggle-checked-background-position);

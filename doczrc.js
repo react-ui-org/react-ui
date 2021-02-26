@@ -53,7 +53,12 @@ export default {
       name: 'CSS Helpers',
     },
     {
-      menu: [],
+      menu: [
+        'Theming Overview', // Theming submenu
+        'Forms Theming', // Theming submenu
+        'Global Props',
+        'Translations',
+      ],
       name: 'Customize',
     },
     {
@@ -61,9 +66,10 @@ export default {
       name: 'Contribute',
     },
   ],
+  // Use short menu items while keeping page title descriptive.
   menuDisplayName: {
-    Layouts: 'Layouts',
-    UI: 'UI Components',
+    'Forms Theming': 'Forms',
+    'Theming Overview': 'Overview',
   },
   public: '/public',
   themeConfig: {

@@ -1,9 +1,10 @@
-@use '../../../styles/tools/forms/box-field-elements';
-@use '../../../styles/tools/forms/box-field-layout';
-@use '../../../styles/tools/forms/foundation';
-@use '../../../styles/tools/forms/inline-field-layout';
-@use '../../../styles/tools/forms/relationships';
-@use '../../../styles/tools/forms/variants';
+@use '../../../styles/tools/form-fields/box-field-elements';
+@use '../../../styles/tools/form-fields/box-field-layout';
+@use '../../../styles/tools/form-fields/foundation';
+@use '../../../styles/tools/form-fields/inline-field-elements';
+@use '../../../styles/tools/form-fields/inline-field-layout';
+@use '../../../styles/tools/form-fields/relationships';
+@use '../../../styles/tools/form-fields/variants';
 @use '../../../styles/tools/accessibility';
 @use '../../../styles/tools/reset';
 @use '../../../styles/tools/spacing';
@@ -11,7 +12,7 @@
 // Foundation
 .root {
   @include foundation.root();
-  @include variants.visual(neutral);
+  @include variants.visual(check);
   @include relationships.horizontal-neighbor();
 }
 
@@ -28,6 +29,10 @@
   @include inline-field-layout.field();
 }
 
+.input {
+  @include inline-field-elements.check-input($type: radio);
+}
+
 .helpText,
 .validationText {
   @include foundation.help-text();
@@ -39,15 +44,15 @@
 
 // States
 .isRootStateInvalid {
-  @include variants.feedback(invalid);
+  @include variants.validation(invalid);
 }
 
 .isRootStateValid {
-  @include variants.feedback(valid);
+  @include variants.validation(valid);
 }
 
 .isRootStateWarning {
-  @include variants.feedback(warning);
+  @include variants.validation(warning);
 }
 
 // Invisible label

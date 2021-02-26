@@ -4,8 +4,8 @@
 // 3. Let inputs properly fit various layout scenarios.
 // 4. Leave out space for SelectField caret.
 
-@use '../../settings/forms' as settings;
-@use '../../theme/forms' as theme;
+@use '../../settings/form-fields' as settings;
+@use '../../theme/form-fields' as theme;
 @use '../../tools/caret';
 @use '../spacing';
 @use '../transition';
@@ -20,26 +20,26 @@
 @mixin input() {
   @include transition.add((opacity, color, border-color, background-color, box-shadow));
 
-  width: theme.$field-input-width;
-  min-width: theme.$field-input-min-width;
+  width: theme.$box-input-width;
+  min-width: theme.$box-input-min-width;
   max-width: 100%; // 3.
   height: var(--rui-local-height);
   padding: var(--rui-local-padding-y) var(--rui-local-padding-x);
-  font-weight: settings.$input-font-weight;
+  font-weight: settings.$box-input-font-weight;
   font-size: var(--rui-local-font-size);
-  line-height: settings.$input-line-height;
-  font-family: settings.$input-font-family;
+  line-height: settings.$box-input-line-height;
+  font-family: settings.$box-input-font-family;
   vertical-align: middle;
   color: var(--rui-local-color);
-  border: theme.$field-border-width solid var(--rui-local-border-color);
-  border-radius: theme.$field-border-radius;
+  border: theme.$box-border-width solid var(--rui-local-border-color);
+  border-radius: theme.$box-border-radius;
   background: var(--rui-local-background);
   box-shadow: var(--rui-local-box-shadow);
   appearance: none;
 
   &::placeholder {
     opacity: 1;
-    color: theme.$field-placeholder-color;
+    color: theme.$box-placeholder-color;
   }
 }
 
@@ -51,7 +51,7 @@
         1ch * var(--rui-custom-input-size)
         + var(--rui-local-arrows-width, 0)
         + 2 * var(--rui-local-padding-x)
-        + 2 * #{theme.$field-border-width}
+        + 2 * #{theme.$box-border-width}
       ); // 2.
 
     min-width: auto; // 2.
@@ -81,7 +81,7 @@
 
 @mixin input-select-option() {
   option:disabled {
-    color: theme.$field-disabled-select-option-color;
+    color: theme.$box-select-option-disabled-color;
   }
 }
 
@@ -89,15 +89,15 @@
   @include transition.add((border-color));
 
   position: absolute; // 1.
-  top: theme.$field-border-width;
-  right: theme.$field-border-width;
-  bottom: theme.$field-border-width;
+  top: theme.$box-border-width;
+  right: theme.$box-border-width;
+  bottom: theme.$box-border-width;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(#{settings.$box-field-caret-size} - 2 * #{theme.$field-border-width});
-  border-top-right-radius: theme.$field-border-radius;
-  border-bottom-right-radius: theme.$field-border-radius;
+  width: calc(#{settings.$box-field-caret-size} - 2 * #{theme.$box-border-width});
+  border-top-right-radius: theme.$box-border-radius;
+  border-bottom-right-radius: theme.$box-border-radius;
   pointer-events: none;
 }
 

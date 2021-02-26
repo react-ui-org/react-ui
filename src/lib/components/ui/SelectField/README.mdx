@@ -89,7 +89,7 @@ mobile devices by using the native select of the platform.
 
 To satisfy the design requirements of your project, all input fields in React UI
 come in two design variants to choose from: outline and filled. Both can be
-further [customized](/customize/theming) with CSS custom properties.
+further [customized](#theming) with CSS custom properties.
 
 <Playground>
   {() => {
@@ -639,4 +639,11 @@ This is useful mainly to improve component's accessibility.
 
 ## Theming
 
-Head to [Forms Theming](/customize/theming#forms).
+Head to [Forms Theming](/customize/theming/forms) to see shared form theming
+options. On top of that, the following options are available for SelectField.
+
+| Custom Property                                      | Description                                                  |
+|------------------------------------------------------|--------------------------------------------------------------|
+| `--rui-form-field-box-select-caret-border-style`     | SelectField arrow border style (eg. solid)                   |
+| `--rui-form-field-box-select-caret-background`       | SelectField arrow background                                 |
+| `--rui-form-field-box-select-option-disabled-color`  | Text color of disabled SelectField options                   |

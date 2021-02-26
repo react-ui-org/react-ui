@@ -1,7 +1,7 @@
 // 1. Increase spacing in horizontal layout to visually separate fields.
 // 2. Reset horizontal spacing for vertical neighbors.
 
-@use '../../settings/forms' as settings;
+@use '../../settings/form-fields' as settings;
 
 @mixin horizontal-neighbor() {
   &:not(:last-child) {

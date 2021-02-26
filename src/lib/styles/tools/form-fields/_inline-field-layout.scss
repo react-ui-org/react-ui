@@ -11,7 +11,8 @@
 // 4. Make fields just as wide as necessary. Fields should be interactive only where their visible
 //    content is.
 
-@use '../../settings/forms' as settings;
+@use '../../settings/forms';
+@use '../../settings/form-fields' as settings;
 @use '../../theme/typography';
 @use '../breakpoint';
 
@@ -67,7 +68,7 @@
     margin-bottom: 0; // 2.
   }
 
-  @include breakpoint.up(settings.$horizontal-breakpoint) {
+  @include breakpoint.up(forms.$horizontal-breakpoint) {
     grid-column-start: 2;
 
     .label,

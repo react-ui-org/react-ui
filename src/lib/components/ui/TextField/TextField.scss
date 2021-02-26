@@ -1,9 +1,9 @@
-@use '../../../styles/tools/forms/box-field-elements';
-@use '../../../styles/tools/forms/box-field-layout';
-@use '../../../styles/tools/forms/foundation';
-@use '../../../styles/tools/forms/relationships';
-@use '../../../styles/tools/forms/sizes';
-@use '../../../styles/tools/forms/variants';
+@use '../../../styles/tools/form-fields/box-field-elements';
+@use '../../../styles/tools/form-fields/box-field-layout';
+@use '../../../styles/tools/form-fields/box-field-sizes';
+@use '../../../styles/tools/form-fields/foundation';
+@use '../../../styles/tools/form-fields/relationships';
+@use '../../../styles/tools/form-fields/variants';
 @use '../../../styles/tools/accessibility';
 
 // Foundation
@@ -40,24 +40,24 @@
 
 // Variants
 .rootVariantFilled {
-  @include variants.visual(filled);
+  @include variants.visual(box, $variant: filled);
 }
 
 .rootVariantOutline {
-  @include variants.visual(outline);
+  @include variants.visual(box, $variant: outline);
 }
 
 // States
 .isRootStateInvalid {
-  @include variants.feedback(invalid);
+  @include variants.validation(invalid);
 }
 
 .isRootStateValid {
-  @include variants.feedback(valid);
+  @include variants.validation(valid);
 }
 
 .isRootStateWarning {
-  @include variants.feedback(warning);
+  @include variants.validation(warning);
 }
 
 // Invisible label
@@ -90,13 +90,13 @@
 
 // Sizes
 .rootSizeSmall {
-  @include sizes.size(small);
+  @include box-field-sizes.size(small);
 }
 
 .rootSizeMedium {
-  @include sizes.size(medium);
+  @include box-field-sizes.size(medium);
 }
 
 .rootSizeLarge {
-  @include sizes.size(large);
+  @include box-field-sizes.size(large);
 }
