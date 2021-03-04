@@ -34,3 +34,9 @@
     }
   }
 }
+
+@mixin focus-ring() {
+  &:focus-visible {
+    box-shadow: theme.$focus-box-shadow;
+  }
+}

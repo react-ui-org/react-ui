@@ -40,6 +40,7 @@ export {
   CardFooter,
 } from './components/ui/Card';
 export { default as CheckboxField } from './components/ui/CheckboxField';
+export { default as FileInputField } from './components/ui/FileInputField';
 export { default as Modal } from './components/ui/Modal';
 export { default as Radio } from './components/ui/Radio';
 export { default as ScrollView } from './components/ui/ScrollView';

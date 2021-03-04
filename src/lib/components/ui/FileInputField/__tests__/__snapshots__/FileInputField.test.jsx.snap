@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly mandatory props only 1`] = `
+<label
+  className="root   rootLayoutVertical   "
+  htmlFor="test"
+  id="test__label"
+>
+  <div
+    className="label "
+    id="test__labelText"
+  >
+    label
+  </div>
+  <div
+    className="field"
+  >
+    <div
+      className="inputContainer"
+    >
+      <input
+        className="input"
+        disabled={false}
+        id="test"
+        onChange={null}
+        required={false}
+        type="file"
+      />
+    </div>
+  </div>
+</label>
+`;
+
+exports[`rendering renders correctly with all props 1`] = `
+<label
+  className="root isRootFullWidth isRootInFormLayout rootLayoutHorizontal isRootDisabled isRootRequired isRootStateInvalid"
+  htmlFor="test"
+  id="test__label"
+>
+  <div
+    className="label isLabelHidden"
+    id="test__labelText"
+  >
+    All props
+  </div>
+  <div
+    className="field"
+  >
+    <div
+      className="inputContainer"
+    >
+      <input
+        className="input"
+        disabled={true}
+        id="test"
+        onChange={null}
+        required={true}
+        type="file"
+      />
+    </div>
+    <div
+      className="helpText"
+      id="test__helpText"
+    >
+      some help
+    </div>
+    <div
+      className="validationText"
+      id="test__validationText"
+    >
+      some error
+    </div>
+  </div>
+</label>
+`;
+
+exports[`rendering renders correctly with custom props 1`] = `
+<label
+  className="root   rootLayoutVertical   "
+  htmlFor="test"
+  id="test__label"
+>
+  <div
+    className="label "
+    id="test__labelText"
+  >
+    With custom props
+  </div>
+  <div
+    className="field"
+  >
+    <div
+      className="inputContainer"
+    >
+      <input
+        accept=".pdf,.jpg,.jpeg,.png"
+        className="input"
+        disabled={false}
+        id="test"
+        multiple={true}
+        onChange={null}
+        required={false}
+        type="file"
+      />
+    </div>
+  </div>
+</label>
+`;
+
+exports[`rendering renders correctly with hidden label 1`] = `
+<label
+  className="root   rootLayoutVertical   "
+  htmlFor="test"
+  id="test__label"
+>
+  <div
+    className="label isLabelHidden"
+    id="test__labelText"
+  >
+    With hidden label
+  </div>
+  <div
+    className="field"
+  >
+    <div
+      className="inputContainer"
+    >
+      <input
+        className="input"
+        disabled={false}
+        id="test"
+        onChange={null}
+        required={false}
+        type="file"
+      />
+    </div>
+  </div>
+</label>
+`;
