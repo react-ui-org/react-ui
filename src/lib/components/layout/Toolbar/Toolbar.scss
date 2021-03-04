@@ -1,3 +1,5 @@
+// 1. Get rid of unwanted spacing of inline elements by invocation of flex layout.
+
 @use 'theme';
 
 .toolbar,
@@ -11,7 +13,9 @@
 }
 
 .item {
+  display: flex; // 1.
   flex: none;
+  flex-direction: column; // 1.
   margin: theme.$spacing;
 }
 
