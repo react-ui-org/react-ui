@@ -110,6 +110,7 @@
   --rui-border-radius: 0.25rem;
 
   // Accessibility
+  --rui-tap-target-size: 10mm;
   --rui-focus-box-shadow: 0 0 0 0.2em var(--rui-color-active-focus);
 
   //
@@ -569,6 +570,7 @@
   --rui-form-field-check-input-size: 1.125rem;
   --rui-form-field-check-input-border-width: var(--rui-form-field-box-border-width);
   --rui-form-field-check-input-focus-box-shadow: var(--rui-focus-box-shadow);
+  --rui-form-field-check-tap-target-size: var(--rui-tap-target-size);
 
   // Form fields: check fields, component specific
   // stylelint-disable function-url-quotes

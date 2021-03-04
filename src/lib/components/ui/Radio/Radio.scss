@@ -27,6 +27,7 @@
 
 .option {
   @include inline-field-layout.field();
+  @include inline-field-elements.min-tap-target($type: radio);
 }
 
 .input {
@@ -67,7 +68,7 @@
 }
 
 .rootLayoutHorizontal {
-  @include box-field-layout.horizontal();
+  @include box-field-layout.horizontal($has-min-tap-target: true);
 }
 
 .isRootFullWidth {

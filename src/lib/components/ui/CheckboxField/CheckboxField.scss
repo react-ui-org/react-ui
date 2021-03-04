@@ -9,6 +9,7 @@
 .root {
   @include foundation.root();
   @include inline-field-layout.root();
+  @include inline-field-elements.min-tap-target($type: checkbox);
   @include variants.visual(check);
   @include relationships.horizontal-neighbor();
 }

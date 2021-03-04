@@ -1,4 +1,5 @@
 @use '../../../styles/theme/typography';
+@use '../../../styles/tools/accessibility';
 @use '../../../styles/tools/breakpoint';
 @use '../../../styles/tools/reset';
 @use '../../../styles/tools/spacing';
@@ -31,7 +32,7 @@
   flex: none;
   align-items: baseline;
   justify-content: space-between;
-  padding: settings.$padding-y spacing.of(3) settings.$padding-y settings.$padding-x;
+  padding: settings.$padding-y spacing.of(4) settings.$padding-y settings.$padding-x;
 }
 
 .headTitle {
@@ -41,8 +42,8 @@
 
 .close {
   @include reset.button();
+  @include accessibility.min-tap-target();
 
-  padding: spacing.of(1) spacing.of(2);
   font-size: map-get(typography.$size-values, 3);
   line-height: 1;
   color: inherit;
