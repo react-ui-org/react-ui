@@ -1,9 +1,15 @@
 // Custom input styling inspired by Bootstrap 5.
 //
 // 1. Keep themed appearance for print.
+//
+// 2. Make tap target of inline fields big enough to improve their accessibility on touch screens.
+//
+// 3. Reset extra space previously added to symmetrically pad the field in FormLayout context as
+//    there already is a sufficient row gap provided by FormLayout.
 
 @use '../../theme/typography';
 @use '../../theme/form-fields' as theme;
+@use '../../tools/accessibility';
 @use '../transition';
 
 @mixin check-input($type) {
@@ -51,6 +57,44 @@
     &:checked {
       background-image: theme.$check-input-toggle-checked-background-image;
       background-position: theme.$check-input-toggle-checked-background-position;
+    }
+  }
+}
+
+// 2.
+@mixin min-tap-target($type) {
+  $input-width: theme.$check-input-size;
+
+  @if ($type == 'toggle') {
+    $input-width: theme.$check-input-toggle-width;
+  }
+
+  $tap-target-offset: calc((#{$input-width} - #{theme.$check-tap-target-size}) / 2);
+
+  @include accessibility.min-tap-target($size: theme.$check-tap-target-size, $center: false);
+
+  min-height: theme.$check-tap-target-size;
+  padding-top: calc((#{theme.$check-tap-target-size} - #{typography.$line-height-base}) / 2);
+
+  &::before {
+    top: 0;
+    left: $tap-target-offset;
+  }
+
+  @if ($type == 'checkbox' or $type == 'toggle') {
+    &.hasRootLabelBefore::before {
+      right: $tap-target-offset;
+      left: auto;
+    }
+
+    // 3.
+    &.isRootInFormLayout {
+      min-height: 0;
+      padding-top: 0;
+
+      &::before {
+        top: calc((#{typography.$line-height-base} - #{theme.$check-tap-target-size}) / 2);
+      }
     }
   }
 }

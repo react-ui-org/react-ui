@@ -16,6 +16,7 @@
 // 5. Prevent undesired vertical scrolling that may occur with tables inside.
 // 6. Make `ScrollView` adjust to flexible layouts.
 
+@use '../../../styles/tools/accessibility';
 @use '../../../styles/tools/caret';
 @use '../../../styles/tools/reset';
 @use '../../../styles/tools/scrollbar';
@@ -75,6 +76,7 @@ $_arrow-outer-spacing: spacing.of(4);
 .arrowPrev,
 .arrowNext {
   @include reset.button();
+  @include accessibility.min-tap-target();
   @include transition.add((visibility, opacity, transform));
 
   position: absolute; // 3.

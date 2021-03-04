@@ -1,0 +1,59 @@
+---
+name: Accessibility
+menu: Foundation
+route: /foundation/accessibility
+---
+
+# Accessibility
+
+React UI bakes accessibility principles right into its core.
+
+## Touch Friendliness
+
+The active area of interactive elements should be properly sized so that the
+elements can be easily targeted on touch screens. Recommended dimensions may
+vary from platform to platform, however a commonly used size is 7–10 mm.
+
+Default tap target size in React UI is set to **10 mm** and is used by all
+potentially small interactive components like [Alert](/components/ui/alert)
+close button, [CheckboxField](/components/ui/checkbox-field), or
+[Toggle](/components/ui/toggle). Tap target size can be adjusted via the
+`--rui-tap-target-size` custom property (see
+[Theming](/customize/theming/overview) to learn how).
+
+📖 [Read more about touch targets at Norman Nielsen Group.](https://www.nngroup.com/articles/touch-target-size/)
+
+### Form Fields and Reserved Space
+
+Note that form fields with potentially small inputs (like
+[CheckboxField](/components/ui/checkbox-field) or
+[Toggle](/components/ui/toggle)) reserve vertical space corresponding to the
+minimum tap target size. In other words, form fields **box model is taller.**
+The reason behind this behaviour is that in many cases the minimum tap target
+size could overflow its component's box model and tap targets of neighboring
+components could collide. The extra added space prevents this.
+
+However, if placed inside [FormLayout](/components/layout/form-layout), form
+fields do not add any extra vertical space because it is already provided by
+`FormLayout` row gap. Remember to check that form fields in your `FormLayout`
+are properly spaced and interactive elements do not collide should you decide to
+make any changes to `--rui-tap-target-size`,
+`--rui-form-field-check-tap-target-size` or `--rui-form-layout-row-gap` options.
+
+Horizontal padding is never added to form fields box model so it does not make
+their horizontal alignment complicated.
+
+## Keyboard Friendliness
+
+Many people use keyboard to control their computer. Interactive elements in
+React UI are **highlighted on focus** so keyboard users can easily tab over
+them and see what control currently has focus.
+
+Check form fields like [CheckboxField](/components/ui/checkbox-field) or
+[Toggle](/components/ui/toggle) obtain a blue outline on focus (which is to be
+[spread over all interactive elements](https://github.com/react-ui-org/react-ui/issues/240)
+eventually). Appearance of focus highlight can be adjusted via the
+`--rui-focus-box-shadow` custom property (see [Theming](/customize/theming)
+to learn how).
+
+📖 [Read more about keyboard accessibility at MDN.](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Keyboard)
