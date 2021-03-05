@@ -124,16 +124,16 @@ export default {
         '& [data-testid="playground"]': {
           my: '1.5rem !important',
         },
-        '& [data-testid="playground"] > div:not(:only-of-type):last-of-type': { // Make code editor scrollable.
-          maxHeight: codeMaxHeight,
-          overflow: 'auto !important',
-        },
-        '& [data-testid="playground"] > span:last-child > div': { // Visually emphasize the resize bar.
+        '& [data-testid="playground"] > div:last-child > div': { // Visually emphasize the resize bar.
           '&:hover, &:active': {
             borderRightColor: 'var(--rui-color-note)',
           },
           borderRight: '3px solid transparent',
           transition: 'border-color 200ms ease-in-out',
+        },
+        '& [data-testid="playground"] > div[class$="NormalWrapper"]': { // Make code editor scrollable.
+          maxHeight: codeMaxHeight,
+          overflow: 'auto !important',
         },
         '& [data-testid="playground"] h3': { // Fix headings in modals.
           fontSize: 'var(--rui-typography-size-1)',
