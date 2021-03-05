@@ -6,6 +6,7 @@ on:
 
 jobs:
   process_pr_meta:
+    name: Process PR meta
     runs-on: ubuntu-18.04
     steps:
       - name: Assign to author
