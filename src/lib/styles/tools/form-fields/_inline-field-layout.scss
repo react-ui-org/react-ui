@@ -69,10 +69,12 @@
   }
 
   @include breakpoint.up(forms.$horizontal-breakpoint) {
-    grid-column-start: 2;
+    &.rootLayoutHorizontal {
+      grid-column-start: 2;
+    }
 
-    .label,
-    .optionLabel {
+    &.rootLayoutHorizontal .label,
+    &.rootLayoutHorizontal .optionLabel {
       width: auto; // 1.
     }
   }
