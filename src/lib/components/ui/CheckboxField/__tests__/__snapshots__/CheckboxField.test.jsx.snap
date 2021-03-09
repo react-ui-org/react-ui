@@ -2,7 +2,7 @@
 
 exports[`rendering renders correctly mandatory props only 1`] = `
 <label
-  className="root     "
+  className="root   rootLayoutVertical   "
   htmlFor="test"
   id="test__label"
 >
@@ -30,7 +30,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
 
 exports[`rendering renders correctly with all props 1`] = `
 <label
-  className="root isRootInFormLayout  isRootDisabled isRootRequired isRootStateWarning"
+  className="root isRootInFormLayout  rootLayoutHorizontal isRootDisabled isRootRequired isRootStateWarning"
   htmlFor="test"
   id="test__label"
 >

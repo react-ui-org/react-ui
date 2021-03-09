@@ -138,7 +138,7 @@ Radio.propTypes = {
    */
   label: PropTypes.string.isRequired,
   /**
-   * Layout of the field. It has impact only on Radio inside a FormLayout.
+   * Layout of the field.
    */
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
   /**

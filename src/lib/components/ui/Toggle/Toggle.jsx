@@ -29,6 +29,7 @@ export const Toggle = ({
       styles.root,
       inFormLayout ? styles.isRootInFormLayout : '',
       labelPosition === 'before' ? styles.hasRootLabelBefore : '',
+      layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
       disabled ? styles.isRootDisabled : '',
       required ? styles.isRootRequired : '',
       getRootValidationStateClassName(validationState, styles),
