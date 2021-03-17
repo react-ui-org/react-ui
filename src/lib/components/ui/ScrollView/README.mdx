@@ -99,6 +99,14 @@ See [API](#api) for all available options.
   area in your app scrollable based on viewport size, please use custom CSS
   with media queries instead.
 
+- ScrollView only supports **scrolling in single direction at a time.** It crops
+  content that could possibly overflow in the other direction because additional
+  scrollbars would be unreachable under scrolling shadows. If you need your
+  content to be ready for bi-directional scrolling, either consider using just
+  `overflow: auto` instead of ScrollView, or make your content scrollable before
+  putting it into ScrollView and make sure its scrollbars don't collide with
+  scrolling shadows.
+
 ## Arrows
 
 You can suppress the system scrollbar and display arrow controls instead.

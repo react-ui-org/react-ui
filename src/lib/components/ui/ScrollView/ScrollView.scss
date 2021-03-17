@@ -13,8 +13,13 @@
 //    **not** present at `.root`.
 //
 // 4. Make the `.content`'s bounding rectangle spread beyond the part visible through `.viewport`.
+//
 // 5. Prevent undesired vertical scrolling that may occur with tables inside.
+//
 // 6. Make `ScrollView` adjust to flexible layouts.
+//
+// 7. Hide content overflowing in the other direction because scrollbars would be unreachable under
+//    scrolling shadows.
 
 @use '../../../styles/tools/accessibility';
 @use '../../../styles/tools/caret';
@@ -100,6 +105,7 @@ $_arrow-outer-spacing: spacing.of(4);
 
 .isRootVertical .viewport {
   height: 100%;
+  overflow-x: hidden; // 7.
   overflow-y: auto; // 2.
 }
 
@@ -175,7 +181,7 @@ $_arrow-outer-spacing: spacing.of(4);
 
 .isRootHorizontal .viewport {
   overflow-x: auto; // 2.
-  overflow-y: hidden; // 5.
+  overflow-y: hidden; // 5., 7.
 }
 
 .isRootHorizontal .content {
