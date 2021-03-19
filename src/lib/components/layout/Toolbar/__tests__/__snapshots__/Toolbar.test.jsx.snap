@@ -23,11 +23,7 @@ exports[`rendering renders correctly with group and all props 1`] = `
   <ToolbarItem>
     item 3
   </ToolbarItem>
-  <ToolbarGroup
-    align="top"
-    dense={false}
-    nowrap={false}
-  >
+  <ToolbarGroup>
     <ToolbarItem>
       group item 1
     </ToolbarItem>
@@ -70,11 +66,7 @@ exports[`rendering renders correctly with multiple children and groups 1`] = `
   <ToolbarItem>
     item 3
   </ToolbarItem>
-  <ToolbarGroup
-    align="top"
-    dense={false}
-    nowrap={false}
-  >
+  <ToolbarGroup>
     <ToolbarItem>
       group item 1
     </ToolbarItem>
