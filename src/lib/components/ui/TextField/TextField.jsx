@@ -4,20 +4,136 @@ import getRootSizeClassName from '../../../helpers/getRootSizeClassName';
 import getRootValidationStateClassName from '../../../helpers/getRootValidationStateClassName';
 import { withProviderContext } from '../../../provider';
 import transferProps from '../../../utils/transferProps';
+import FormLayoutContext from '../../layout/FormLayout/FormLayoutContext';
 import withForwardedRef from '../withForwardedRef';
 import getCustomInputSizeByType from './helpers/getCustomInputSizeByType';
 import styles from './TextField.scss';
 
 const SMALL_INPUT_SIZE = 10;
 
-export const TextField = ({
+export const TextField = (props) => (
+  <FormLayoutContext.Consumer>
+    {(context) => (<InnerTextField {...props} context={context} layout={context.layout || props.layout} />)}
+  </FormLayoutContext.Consumer>
+);
+
+TextField.defaultProps = {
+  changeHandler: null,
+  disabled: false,
+  forwardedRef: undefined,
+  fullWidth: false,
+  helpText: null,
+  inputSize: null,
+  isLabelVisible: true,
+  layout: 'vertical',
+  max: null,
+  placeholder: null,
+  required: false,
+  size: 'medium',
+  type: 'text',
+  validationState: null,
+  validationText: null,
+  value: undefined,
+  variant: 'outline',
+};
+
+TextField.propTypes = {
+  /**
+   * Function to call when the input has changed.
+   */
+  changeHandler: PropTypes.func,
+  /**
+   * If `true`, the input will be disabled.
+   */
+  disabled: PropTypes.bool,
+  /**
+   * Reference forwarded to the `input` element.
+   */
+  forwardedRef: PropTypes.oneOfType([
+    PropTypes.func,
+    // eslint-disable-next-line react/forbid-prop-types
+    PropTypes.shape({ current: PropTypes.any }),
+  ]),
+  /**
+   * If `true`, the field will span the full width of its parent.
+   */
+  fullWidth: PropTypes.bool,
+  /**
+   * Optional help text.
+   */
+  helpText: PropTypes.node,
+  /**
+   * ID of the input HTML element. It also serves as a prefix for important inner elements:
+   * `<ID>__label`, `<ID>__labelText`, `<ID>__helpText`, and `<ID>__validationText`.
+   */
+  id: PropTypes.string.isRequired,
+  /**
+   * Width of the input field, translated as `size` attribute of the input.
+   */
+  inputSize: PropTypes.number,
+  /**
+   * If `false`, the label will be visually hidden (but remains accessible by assistive
+   * technologies).
+   */
+  isLabelVisible: PropTypes.bool,
+  /**
+   * Text field label.
+   */
+  label: PropTypes.string.isRequired,
+  /**
+   * Layout of the field. If the component is used in FormLayout
+   * the value is inherited and the value set via props is ignored.
+   */
+  layout: PropTypes.oneOf(['horizontal', 'vertical']),
+  /**
+   * The maximum value for number input types.
+   */
+  max: PropTypes.number,
+  /**
+   * Optional example value.
+   */
+  placeholder: PropTypes.string,
+  /**
+   * If `true`, the input will be required.
+   */
+  required: PropTypes.bool,
+  /**
+   * Size of the field.
+   */
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  /**
+   * HTML input type, translated as `type` attribute of the input.
+   */
+  type: PropTypes.oneOf(['email', 'number', 'password', 'tel', 'text']),
+  /**
+   * Alter the field to provide feedback based on validation result.
+   */
+  validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
+  /**
+   * Validation message to be displayed.
+   */
+  validationText: PropTypes.node,
+  /**
+   * Value of the input.
+   */
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
+  /**
+   * Design variant of the field, further customizable with CSS custom properties.
+   */
+  variant: PropTypes.oneOf(['filled', 'outline']),
+};
+
+export const InnerTextField = ({
   changeHandler,
+  context: { inFormLayout },
   disabled,
   forwardedRef,
   fullWidth,
   helpText,
   id,
-  inFormLayout,
   inputSize,
   isLabelVisible,
   label,
@@ -104,117 +220,14 @@ export const TextField = ({
   );
 };
 
-TextField.defaultProps = {
-  changeHandler: null,
-  disabled: false,
-  forwardedRef: undefined,
-  fullWidth: false,
-  helpText: null,
-  inFormLayout: false,
-  inputSize: null,
-  isLabelVisible: true,
-  layout: 'vertical',
-  max: null,
-  placeholder: null,
-  required: false,
-  size: 'medium',
-  type: 'text',
-  validationState: null,
-  validationText: null,
-  value: undefined,
-  variant: 'outline',
+InnerTextField.propTypes = {
+  ...TextField.propTypes,
+  context: PropTypes.shape({}),
 };
 
-TextField.propTypes = {
-  /**
-   * Function to call when the input has changed.
-   */
-  changeHandler: PropTypes.func,
-  /**
-   * If `true`, the input will be disabled.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * Reference forwarded to the `input` element.
-   */
-  forwardedRef: PropTypes.oneOfType([
-    PropTypes.func,
-    // eslint-disable-next-line react/forbid-prop-types
-    PropTypes.shape({ current: PropTypes.any }),
-  ]),
-  /**
-   * If `true`, the field will span the full width of its parent.
-   */
-  fullWidth: PropTypes.bool,
-  /**
-   * Optional help text.
-   */
-  helpText: PropTypes.node,
-  /**
-   * ID of the input HTML element. It also serves as a prefix for important inner elements:
-   * `<ID>__label`, `<ID>__labelText`, `<ID>__helpText`, and `<ID>__validationText`.
-   */
-  id: PropTypes.string.isRequired,
-  /**
-   * Treat the field differently when it's inside a FormLayout. Do not set manually!
-   */
-  inFormLayout: PropTypes.bool,
-  /**
-   * Width of the input field, translated as `size` attribute of the input.
-   */
-  inputSize: PropTypes.number,
-  /**
-   * If `false`, the label will be visually hidden (but remains accessible by assistive
-   * technologies).
-   */
-  isLabelVisible: PropTypes.bool,
-  /**
-   * Text field label.
-   */
-  label: PropTypes.string.isRequired,
-  /**
-   * Layout of the field.
-   */
-  layout: PropTypes.oneOf(['horizontal', 'vertical']),
-  /**
-   * The maximum value for number input types.
-   */
-  max: PropTypes.number,
-  /**
-   * Optional example value.
-   */
-  placeholder: PropTypes.string,
-  /**
-   * If `true`, the input will be required.
-   */
-  required: PropTypes.bool,
-  /**
-   * Size of the field.
-   */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
-  /**
-   * HTML input type, translated as `type` attribute of the input.
-   */
-  type: PropTypes.oneOf(['email', 'number', 'password', 'tel', 'text']),
-  /**
-   * Alter the field to provide feedback based on validation result.
-   */
-  validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
-  /**
-   * Validation message to be displayed.
-   */
-  validationText: PropTypes.node,
-  /**
-   * Value of the input.
-   */
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
-  /**
-   * Design variant of the field, further customizable with CSS custom properties.
-   */
-  variant: PropTypes.oneOf(['filled', 'outline']),
+InnerTextField.defaultProps = {
+  ...TextField.defaultProps,
+  context: {},
 };
 
 export const TextFieldWithContext = withForwardedRef(withProviderContext(TextField, 'TextField'));

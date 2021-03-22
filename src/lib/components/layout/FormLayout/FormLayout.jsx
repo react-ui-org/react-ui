@@ -1,8 +1,8 @@
-import flattenChildren from 'react-keyed-flatten-children';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../../provider';
 import styles from './FormLayout.scss';
+import FormLayoutContext from './FormLayoutContext';
 
 const PREDEFINED_LABEL_WIDTH_VALUES = ['auto', 'default', 'limited'];
 
@@ -56,20 +56,14 @@ export const FormLayout = (props) => {
       ].join(' ')}
       {...hasCustomLabelWidth ? { style: { '--rui-custom-label-width': labelWidth } } : {}}
     >
-      {/*
-        Flatten children to one-dimensional array so we get over React Fragments with the `map()`
-        function.
-      */}
-      {flattenChildren(children).map((child) => {
-        if (!React.isValidElement(child)) {
-          return null;
-        }
-
-        return React.cloneElement(child, {
+      <FormLayoutContext.Provider
+        value={{
           inFormLayout: true,
           layout: fieldLayout,
-        });
-      })}
+        }}
+      >
+        {children}
+      </FormLayoutContext.Provider>
     </div>
   );
 };

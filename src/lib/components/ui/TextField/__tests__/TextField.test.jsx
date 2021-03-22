@@ -5,7 +5,7 @@ import {
 } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
-import { TextField } from '../TextField';
+import { InnerTextField as TextField } from '../TextField';
 
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
@@ -73,7 +73,7 @@ describe('rendering', () => {
       fullWidth
       helpText="some help"
       id="test"
-      inFormLayout
+      context={{ inFormLayout: true }}
       inputSize={20}
       isLabelVisible={false}
       label="All props"
