@@ -1,106 +1,138 @@
 import React from 'react';
-import {
-  shallow,
-  mount,
-} from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
+import renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 import sinon from 'sinon';
-import { InnerTextField as TextField } from '../TextField';
+import { TextField } from '../TextField';
+import FormLayoutContext from '../../../layout/FormLayout/FormLayoutContext';
 
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
-    const tree = shallow(<TextField id="test" label="label" />);
+    const tree = renderer.create((
+      <TextField id="test" label="label" />
+    ));
 
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree.toJSON()).toMatchSnapshot();
   });
 
   it('renders correctly with hidden label', () => {
-    const tree = shallow(<TextField
-      id="test"
-      isLabelVisible={false}
-      label="With hidden label"
-    />);
+    const tree = renderer.create((
+      <TextField
+        id="test"
+        isLabelVisible={false}
+        label="With hidden label"
+      />
+    ));
 
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree.toJSON()).toMatchSnapshot();
   });
 
   it('renders correctly with small input', () => {
-    const tree = shallow(<TextField
-      id="test"
-      inputSize={5}
-      label="Small input"
-    />);
+    const tree = renderer.create((
+      <TextField
+        id="test"
+        inputSize={5}
+        label="Small input"
+      />
+    ));
 
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree.toJSON()).toMatchSnapshot();
   });
 
   it('renders correctly the number input type', () => {
-    const tree = shallow(<TextField
-      id="test"
-      label="Number input type"
-      max={(1000 * 1000 * 1000 * 1000)}
-      type="number"
-    />);
+    const tree = renderer.create((
+      <TextField
+        id="test"
+        label="Number input type"
+        max={(1000 * 1000 * 1000 * 1000)}
+        type="number"
+      />
+    ));
 
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree.toJSON()).toMatchSnapshot();
   });
 
   it('renders correctly the number input type with small input', () => {
-    const tree = shallow(<TextField
-      id="test"
-      label="Number input type"
-      max={3}
-      type="number"
-    />);
+    const tree = renderer.create((
+      <TextField
+        id="test"
+        label="Number input type"
+        max={3}
+        type="number"
+      />
+    ));
 
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree.toJSON()).toMatchSnapshot();
   });
 
   it('renders correctly with custom props', () => {
-    const tree = shallow(<TextField
-      autoCapitalize="off"
-      autoComplete="off"
-      id="test"
-      label="With custom props"
-    />);
+    const tree = renderer.create((
+      <TextField
+        autoCapitalize="off"
+        autoComplete="off"
+        id="test"
+        label="With custom props"
+      />
+    ));
 
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree.toJSON()).toMatchSnapshot();
   });
 
   it('renders correctly with all props', () => {
-    const tree = shallow(<TextField
-      disabled
-      fullWidth
-      helpText="some help"
-      id="test"
-      context={{ inFormLayout: true }}
-      inputSize={20}
-      isLabelVisible={false}
-      label="All props"
-      layout="horizontal"
-      max={30}
-      placeholder="placeholder"
-      required
-      size="large"
-      type="email"
-      validationState="invalid"
-      validationText="some error"
-      value="value"
-      variant="filled"
-    />);
+    const tree = renderer.create((
+      <TextField
+        disabled
+        fullWidth
+        helpText="some help"
+        id="test"
+        inputSize={20}
+        isLabelVisible={false}
+        label="All props"
+        layout="horizontal"
+        max={30}
+        placeholder="placeholder"
+        required
+        size="large"
+        type="email"
+        validationState="invalid"
+        validationText="some error"
+        value="value"
+        variant="filled"
+      />
+    ));
 
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(tree.toJSON()).toMatchSnapshot();
+  });
+
+  it('renders correctly with context', () => {
+    const tree = renderer.create((
+      <FormLayoutContext.Provider
+        value={{
+          inFormLayout: true,
+          layout: 'horizontal',
+        }}
+      >
+        <TextField
+          id="test"
+          label="All props"
+          layout="vertical"
+        />
+      </FormLayoutContext.Provider>
+    ));
+
+    expect(tree.toJSON()).toMatchSnapshot();
   });
 });
 
 describe('functionality', () => {
   it('calls changeHandler()', () => {
     const spy = sinon.spy();
-    const component = mount(<TextField
-      changeHandler={spy}
-      id="test"
-      label="label"
-    />);
+    const component = mount((
+      <TextField
+        changeHandler={spy}
+        id="test"
+        label="label"
+      />
+    ));
 
     component
       .find('input')

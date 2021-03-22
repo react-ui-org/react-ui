@@ -11,9 +11,100 @@ import styles from './TextField.scss';
 
 const SMALL_INPUT_SIZE = 10;
 
-export const TextField = (props) => (
+export const TextField = ({
+  changeHandler,
+  disabled,
+  forwardedRef,
+  fullWidth,
+  helpText,
+  id,
+  inputSize,
+  isLabelVisible,
+  label,
+  layout,
+  max,
+  placeholder,
+  required,
+  size,
+  type,
+  validationState,
+  validationText,
+  value,
+  variant,
+  ...restProps
+}) => (
   <FormLayoutContext.Consumer>
-    {(context) => (<InnerTextField {...props} context={context} layout={context.layout || props.layout} />)}
+    {(context) => {
+      const customInputSize = getCustomInputSizeByType(type, inputSize, max);
+      const hasSmallInput = (customInputSize !== null) && (customInputSize <= SMALL_INPUT_SIZE);
+
+      return (
+        <label
+          className={[
+            styles.root,
+            fullWidth ? styles.isRootFullWidth : '',
+            hasSmallInput ? styles.hasRootSmallInput : '',
+            context.inFormLayout ? styles.isRootInFormLayout : '',
+            (context.layout || layout) === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
+            disabled ? styles.isRootDisabled : '',
+            required ? styles.isRootRequired : '',
+            getRootSizeClassName(size, styles),
+            getRootValidationStateClassName(validationState, styles),
+            variant === 'filled' ? styles.rootVariantFilled : styles.rootVariantOutline,
+          ].join(' ')}
+          htmlFor={id}
+          id={`${id}__label`}
+          style={customInputSize ? { '--rui-custom-input-size': customInputSize } : {}}
+        >
+          <div
+            className={[
+              styles.label,
+              isLabelVisible ? '' : styles.isLabelHidden,
+            ].join(' ')}
+            id={`${id}__labelText`}
+          >
+            {label}
+          </div>
+          <div className={styles.field}>
+            <div className={styles.inputContainer}>
+              <input
+                {...transferProps(restProps)}
+                className={styles.input}
+                disabled={disabled}
+                id={id}
+                max={type === 'number' ? max : null}
+                onChange={changeHandler}
+                placeholder={placeholder}
+                ref={forwardedRef}
+                required={required}
+                size={type !== 'number' ? inputSize : null}
+                type={type}
+                value={value}
+              />
+              {variant === 'filled' && (
+                <div className={styles.bottomLine} />
+              )}
+            </div>
+            {helpText && (
+              <div
+                className={styles.helpText}
+                id={`${id}__helpText`}
+              >
+                {helpText}
+              </div>
+            )}
+            {validationText && (
+              <div
+                className={styles.validationText}
+                id={`${id}__validationText`}
+              >
+                {validationText}
+              </div>
+            )}
+          </div>
+        </label>
+      );
+    }}
   </FormLayoutContext.Consumer>
 );
 
@@ -124,110 +215,6 @@ TextField.propTypes = {
    * Design variant of the field, further customizable with CSS custom properties.
    */
   variant: PropTypes.oneOf(['filled', 'outline']),
-};
-
-export const InnerTextField = ({
-  changeHandler,
-  context: { inFormLayout },
-  disabled,
-  forwardedRef,
-  fullWidth,
-  helpText,
-  id,
-  inputSize,
-  isLabelVisible,
-  label,
-  layout,
-  max,
-  placeholder,
-  required,
-  size,
-  type,
-  validationState,
-  validationText,
-  value,
-  variant,
-  ...restProps
-}) => {
-  const customInputSize = getCustomInputSizeByType(type, inputSize, max);
-  const hasSmallInput = (customInputSize !== null) && (customInputSize <= SMALL_INPUT_SIZE);
-
-  return (
-    <label
-      className={[
-        styles.root,
-        fullWidth ? styles.isRootFullWidth : '',
-        hasSmallInput ? styles.hasRootSmallInput : '',
-        inFormLayout ? styles.isRootInFormLayout : '',
-        layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
-        disabled ? styles.isRootDisabled : '',
-        required ? styles.isRootRequired : '',
-        getRootSizeClassName(size, styles),
-        getRootValidationStateClassName(validationState, styles),
-        variant === 'filled' ? styles.rootVariantFilled : styles.rootVariantOutline,
-      ].join(' ')}
-      htmlFor={id}
-      id={`${id}__label`}
-      style={customInputSize ? { '--rui-custom-input-size': customInputSize } : {}}
-    >
-      <div
-        className={[
-          styles.label,
-          isLabelVisible ? '' : styles.isLabelHidden,
-        ].join(' ')}
-        id={`${id}__labelText`}
-      >
-        {label}
-      </div>
-      <div className={styles.field}>
-        <div className={styles.inputContainer}>
-          <input
-            {...transferProps(restProps)}
-            className={styles.input}
-            disabled={disabled}
-            id={id}
-            max={type === 'number' ? max : null}
-            onChange={changeHandler}
-            placeholder={placeholder}
-            ref={forwardedRef}
-            required={required}
-            size={type !== 'number' ? inputSize : null}
-            type={type}
-            value={value}
-          />
-          {variant === 'filled' && (
-            <div className={styles.bottomLine} />
-          )}
-        </div>
-        {helpText && (
-          <div
-            className={styles.helpText}
-            id={`${id}__helpText`}
-          >
-            {helpText}
-          </div>
-        )}
-        {validationText && (
-          <div
-            className={styles.validationText}
-            id={`${id}__validationText`}
-          >
-            {validationText}
-          </div>
-        )}
-      </div>
-    </label>
-  );
-};
-
-InnerTextField.propTypes = {
-  ...TextField.propTypes,
-  context: PropTypes.shape({}),
-};
-
-InnerTextField.defaultProps = {
-  ...TextField.defaultProps,
-  context: {},
 };
 
 export const TextFieldWithContext = withForwardedRef(withProviderContext(TextField, 'TextField'));
