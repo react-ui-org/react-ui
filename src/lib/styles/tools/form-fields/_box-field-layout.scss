@@ -25,24 +25,21 @@
 // 7.  Justify inputs to `start` in horizontal layouts to fix positioning issues with Select Fields.
 //     Reverted for full-width fields.
 //
-// 8.  When form field exists inside FormLayout, automatic margins are removed as the FormLayout
-//     takes care of proper spacing.
-//
-// 9.  Grid settings are inherited from horizontal FormLayout and applied using `subgrid`.
+// 8.  Grid settings are inherited from horizontal FormLayout and applied using `subgrid`.
 //     A fallback is supplied to browsers that don't support `subgrid` yet. See FormLayout styles
 //     for more.
 //     https://github.com/react-ui-org/react-ui/issues/232
 //
-// 10. Help texts and validation messages can take up full width of FormLayout. There is no reason
+// 9.  Help texts and validation messages can take up full width of FormLayout. There is no reason
 //     to make them wrap as they cannot break layout of FormLayout.
 //
-// 11. Align label to input baseline. Achieved with `padding-top` since `align-items: baseline`
+// 10. Align label to input baseline. Achieved with `padding-top` since `align-items: baseline`
 //     unfortunately doesn't work for blank text inputs in Safari. Default to zero when
 //     `--rui-local-padding-y` is not defined.
 //
-// 12. Reset `width` previously set by inline field layout (see `_inline-field-layout.scss`).
+// 11. Reset `width` previously set by inline field layout (see `_inline-field-layout.scss`).
 //
-// 13. Make fields just as wide as necessary. Fields should be interactive only where their visible
+// 12. Make fields just as wide as necessary. Fields should be interactive only where their visible
 //     content is.
 
 @use '../../settings/forms';
@@ -92,7 +89,7 @@
           calc(
             (#{theme.$check-tap-target-size} - #{typography.$line-height-base})
             / 2
-          ); // 11.
+          ); // 10.
       }
 
       @else {
@@ -100,7 +97,7 @@
           calc(
             #{theme.$box-border-width}
             + var(--rui-local-padding-y, -1 * #{theme.$box-border-width})
-          ); // 11.
+          ); // 10.
       }
 
       padding-right: settings.$horizontal-inner-gap; // 4.
@@ -169,36 +166,30 @@
 }
 
 @mixin in-form-layout() {
-  justify-self: start; // 13.
+  justify-self: start; // 12.
 
   .field {
-    width: auto; // 10.
-  }
-
-  &:not(:last-child),
-  &.rootLayoutHorizontal:not(:last-child) {
-    margin-right: 0; // 8.
-    margin-bottom: 0; // 8.
+    width: auto; // 9.
   }
 
   @include breakpoint.up(forms.$horizontal-breakpoint) {
     .optionLabel {
-      width: auto; // 12.
+      width: auto; // 11.
     }
 
     &.rootLayoutHorizontal,
     &.rootLayoutHorizontal.hasRootSmallInput {
-      grid: inherit; // 9.
-      grid-template-columns: subgrid; // 9.
-      grid-column: span 2; // 9.
+      grid: inherit; // 8.
+      grid-template-columns: subgrid; // 8.
+      grid-column: span 2; // 8.
 
       @supports not (grid-template-columns: subgrid) {
-        display: contents; // 9.
+        display: contents; // 8.
       }
     }
 
     &.rootLayoutHorizontal.isRootFullWidth {
-      grid-template-columns: subgrid; // 9.
+      grid-template-columns: subgrid; // 8.
     }
 
     &.rootLayoutHorizontal .label,
@@ -206,14 +197,14 @@
     &.rootLayoutHorizontal .inputContainer,
     &.rootLayoutHorizontal .helpText,
     &.rootLayoutHorizontal .validationText {
-      grid-area: unset; // 9.
+      grid-area: unset; // 8.
     }
 
     &.rootLayoutHorizontal .field,
     &.rootLayoutHorizontal .inputContainer,
     &.rootLayoutHorizontal .helpText,
     &.rootLayoutHorizontal .validationText {
-      grid-column-start: 2; // 9.
+      grid-column-start: 2; // 8.
     }
 
     &.rootLayoutHorizontal.hasRootSmallInput .field {

@@ -2,13 +2,10 @@
 //    do not wrap until forced by container of the field. Min and max limits make extra long words
 //    break if necessary.
 //
-// 2. When form field exists inside FormLayout, automatic margins are removed as the FormLayout
-//    takes care of proper spacing.
-//
-// 3. Retain multiline field layout and make the field fit parent layout using `inline-grid`
+// 2. Retain multiline field layout and make the field fit parent layout using `inline-grid`
 //    (`inline-flex` cannot do the job).
 //
-// 4. Make fields just as wide as necessary. Fields should be interactive only where their visible
+// 3. Make fields just as wide as necessary. Fields should be interactive only where their visible
 //    content is.
 
 @use '../../settings/forms';
@@ -59,14 +56,9 @@
 }
 
 @mixin in-form-layout() {
-  display: inline-grid; // 3.
-  width: auto; // 3., 4.
-  justify-self: start; // 4.
-
-  &:not(:last-child) {
-    margin-right: 0; // 2.
-    margin-bottom: 0; // 2.
-  }
+  display: inline-grid; // 2.
+  width: auto; // 2., 3.
+  justify-self: start; // 3.
 
   @include breakpoint.up(forms.$horizontal-breakpoint) {
     &.rootLayoutHorizontal {
