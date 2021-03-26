@@ -85,9 +85,23 @@
   top: calc(-1 * #{theme.$border-width});
   bottom: calc(-1 * #{theme.$border-width});
   left: calc(-1 * #{theme.$border-width});
-  border-left: theme.$border-width solid theme.$group-filled-separator-color;
+  z-index: map-get(settings.$group-z-indexes, separator);
+  border-left: var(--local-separator-width) solid var(--local-separator-color);
+  transform: translateX(calc(-0.5 * var(--local-gap) - 50%));
 }
 
-.priorityFlat.isRootGrouped:not(:first-child)::before {
-  border-left-color: currentColor;
+.priorityFilled.isRootGrouped:not(:first-child) {
+  --local-gap: #{theme.$group-filled-gap};
+  --local-separator-width: #{theme.$group-filled-separator-width};
+  --local-separator-color: #{theme.$group-filled-separator-color};
+}
+
+.priorityFlat.isRootGrouped:not(:first-child) {
+  --local-gap: #{theme.$group-flat-gap};
+  --local-separator-width: #{theme.$group-flat-separator-width};
+  --local-separator-color: #{theme.$group-flat-separator-color};
+}
+
+.priorityOutline.isRootGrouped:not(:first-child) {
+  --local-gap: #{theme.$group-outline-gap};
 }

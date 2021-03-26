@@ -70,8 +70,10 @@
 }
 
 .isRootGrouped {
+  z-index: map-get(settings.$group-z-indexes, button);
+
   &:not(:first-child) {
-    margin-left: calc(-1 * #{theme.$border-width});
+    margin-left: var(--local-gap);
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
@@ -80,6 +82,16 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
+
+  &:focus,
+  &:not(:disabled):hover {
+    z-index: map-get(settings.$group-z-indexes, button-hover);
+  }
+}
+
+.isRootGrouped .startCorner,
+.isRootGrouped .endCorner {
+  z-index: map-get(settings.$group-z-indexes, button-overflowing-elements);
 }
 
 .withLabelHidden .label,

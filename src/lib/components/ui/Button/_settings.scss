@@ -6,6 +6,13 @@ $line-height: typography.$line-height-base;
 $icon-spacing: spacing.of(2);
 $breakpoint: lg;
 
+$group-z-indexes: (
+  button: auto,
+  button-hover: 1,
+  separator: 2,
+  button-overflowing-elements: 3,
+);
+
 $themeable-variants: (primary, secondary, success, warning, danger, dark);
 $themeable-states: (default, hover, active, disabled);
 $themeable-priority-properties: (

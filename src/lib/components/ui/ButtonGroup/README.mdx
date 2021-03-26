@@ -49,6 +49,9 @@ See [API](#api) for all available options.
   the [SelectField](/components/ui/select-field) or
   [Radio](/components/ui/radio) components.
 
+- Be careful with using `startCorner` and `endCorner` options for grouped
+  buttons. Overflowing elements may cause undesired interaction problems.
+
 ### Shared Properties
 
 You can set the following properties directly on ButtonGroup to be shared for
@@ -205,3 +208,15 @@ and communicating the state of individual options.
 ## API
 
 <Props table of={ButtonGroup} />
+
+## Theming
+
+| Custom Property                                                    | Description                                    |
+|--------------------------------------------------------------------|------------------------------------------------|
+| `--rui-button-group-filled-gap`                                    | Gap between `filled` buttons                   |
+| `--rui-button-group-filled-separator-width`                        | Separator width for `filled` buttons           |
+| `--rui-button-group-filled-separator-color`                        | Separator color for `filled` buttons           |
+| `--rui-button-group-flat-gap`                                      | Gap between `flat` buttons                     |
+| `--rui-button-group-flat-separator-width`                          | Separator width for `flat` buttons             |
+| `--rui-button-group-flat-separator-color`                          | Separator color for `flat` buttons             |
+| `--rui-button-group-outline-gap`                                   | Gap between `outline` buttons                  |
