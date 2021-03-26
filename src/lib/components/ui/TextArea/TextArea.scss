@@ -2,14 +2,12 @@
 @use '../../../styles/tools/form-fields/box-field-layout';
 @use '../../../styles/tools/form-fields/box-field-sizes';
 @use '../../../styles/tools/form-fields/foundation';
-@use '../../../styles/tools/form-fields/relationships';
 @use '../../../styles/tools/form-fields/variants';
 @use '../../../styles/tools/accessibility';
 
 // Foundation
 .root {
   @include foundation.root();
-  @include relationships.horizontal-neighbor();
 }
 
 .label {
@@ -77,7 +75,6 @@
 
 .isRootFullWidth {
   @include box-field-layout.full-width();
-  @include relationships.vertical-neighbor();
 }
 
 .isRootInFormLayout {

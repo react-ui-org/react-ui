@@ -3,7 +3,6 @@
 @use '../../../styles/tools/form-fields/foundation';
 @use '../../../styles/tools/form-fields/inline-field-elements';
 @use '../../../styles/tools/form-fields/inline-field-layout';
-@use '../../../styles/tools/form-fields/relationships';
 @use '../../../styles/tools/form-fields/variants';
 @use '../../../styles/tools/accessibility';
 @use '../../../styles/tools/reset';
@@ -13,7 +12,6 @@
 .root {
   @include foundation.root();
   @include variants.visual(check);
-  @include relationships.horizontal-neighbor();
 }
 
 .label,
@@ -73,7 +71,6 @@
 
 .isRootFullWidth {
   @include box-field-layout.full-width();
-  @include relationships.vertical-neighbor();
 }
 
 .isRootInFormLayout {

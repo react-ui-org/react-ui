@@ -1,7 +1,6 @@
 @use '../../../styles/tools/form-fields/foundation';
 @use '../../../styles/tools/form-fields/inline-field-elements';
 @use '../../../styles/tools/form-fields/inline-field-layout';
-@use '../../../styles/tools/form-fields/relationships';
 @use '../../../styles/tools/form-fields/variants';
 @use '../../../styles/tools/accessibility';
 
@@ -11,7 +10,6 @@
   @include inline-field-layout.root();
   @include inline-field-elements.min-tap-target($type: checkbox);
   @include variants.visual(check);
-  @include relationships.horizontal-neighbor();
 }
 
 .label {
