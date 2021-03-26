@@ -9,7 +9,15 @@ $border-radius: var(--rui-button-border-radius);
 $disabled-opacity: var(--rui-button-disabled-opacity);
 $disabled-cursor: var(--rui-button-disabled-cursor);
 
+$group-filled-gap: var(--rui-button-group-filled-gap);
+$group-filled-separator-width: var(--rui-button-group-filled-separator-width);
 $group-filled-separator-color: var(--rui-button-group-filled-separator-color);
+
+$group-flat-gap: var(--rui-button-group-flat-gap);
+$group-flat-separator-width: var(--rui-button-group-flat-separator-width);
+$group-flat-separator-color: var(--rui-button-group-flat-separator-color);
+
+$group-outline-gap: var(--rui-button-group-outline-gap);
 
 $link-priority-properties: (
   default: (
