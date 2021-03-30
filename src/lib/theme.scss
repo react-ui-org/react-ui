@@ -113,6 +113,11 @@
   --rui-tap-target-size: 10mm;
   --rui-focus-box-shadow: 0 0 0 0.2em var(--rui-color-active-focus);
 
+  // Bottom spacings
+  --rui-spacing-bottom-default: var(--rui-spacing-5);
+  --rui-spacing-bottom-headings: var(--rui-spacing-5);
+  --rui-spacing-bottom-layouts: var(--rui-spacing-5);
+
   //
   // Elements
   // ========

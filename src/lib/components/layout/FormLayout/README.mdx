@@ -143,52 +143,50 @@ Try to resize the playground to see how individual options work.
     const [customLabelWidth, setCustomLabelWidth] = React.useState('20em');
     return (
       <div>
-        <div className="mb-6">
-          <Toolbar align="baseline">
+        <Toolbar align="baseline">
+          <ToolbarItem>
+            <span id="label-width-options-label">Label width:</span>
+          </ToolbarItem>
+          <ToolbarItem>
+            <ButtonGroup aria-labelledby="#label-width-options-label">
+              <Button
+                label="default"
+                clickHandler={() => setLabelWidth('default')}
+                variant={labelWidth === 'default' ? 'dark' : 'primary'}
+              />
+              <Button
+                label="auto"
+                clickHandler={() => setLabelWidth('auto')}
+                variant={labelWidth === 'auto' ? 'dark' : 'primary'}
+              />
+              <Button
+                label="limited"
+                clickHandler={() => setLabelWidth('limited')}
+                variant={labelWidth === 'limited' ? 'dark' : 'primary'}
+              />
+              <Button
+                label="custom"
+                clickHandler={() => setLabelWidth('custom')}
+                variant={labelWidth === 'custom' ? 'dark' : 'primary'}
+              />
+            </ButtonGroup>
+          </ToolbarItem>
+          {labelWidth === 'custom' && (
             <ToolbarItem>
-              <span id="label-width-options-label">Label width:</span>
+              <TextField
+                changeHandler={(e) => (
+                  setCustomLabelWidth(e.target.value)
+                )}
+                id="form-layout-custom-label-width"
+                inputSize={5}
+                isLabelVisible={false}
+                label="Custom label width"
+                layout="horizontal"
+                value={customLabelWidth}
+              />
             </ToolbarItem>
-            <ToolbarItem>
-              <ButtonGroup aria-labelledby="#label-width-options-label">
-                <Button
-                  label="default"
-                  clickHandler={() => setLabelWidth('default')}
-                  variant={labelWidth === 'default' ? 'dark' : 'primary'}
-                />
-                <Button
-                  label="auto"
-                  clickHandler={() => setLabelWidth('auto')}
-                  variant={labelWidth === 'auto' ? 'dark' : 'primary'}
-                />
-                <Button
-                  label="limited"
-                  clickHandler={() => setLabelWidth('limited')}
-                  variant={labelWidth === 'limited' ? 'dark' : 'primary'}
-                />
-                <Button
-                  label="custom"
-                  clickHandler={() => setLabelWidth('custom')}
-                  variant={labelWidth === 'custom' ? 'dark' : 'primary'}
-                />
-              </ButtonGroup>
-            </ToolbarItem>
-            {labelWidth === 'custom' && (
-              <ToolbarItem>
-                <TextField
-                  changeHandler={(e) => (
-                    setCustomLabelWidth(e.target.value)
-                  )}
-                  id="form-layout-custom-label-width"
-                  inputSize={5}
-                  isLabelVisible={false}
-                  label="Custom label width"
-                  layout="horizontal"
-                  value={customLabelWidth}
-                />
-              </ToolbarItem>
-            )}
-          </Toolbar>
-        </div>
+          )}
+        </Toolbar>
         <FormLayout
           fieldLayout="horizontal"
           labelWidth={labelWidth === 'custom' ? customLabelWidth : labelWidth}
@@ -289,21 +287,23 @@ This is a demo of all components supported by FormLayout.
       },
     ];
     return (
-      <>
-        <div className="mb-6">
-          <ButtonGroup>
-            <Button
-              clickHandler={() => setFieldLayout('vertical')}
-              label="Vertical layout"
-              variant={fieldLayout === 'vertical' ? 'dark' : 'primary'}
-            />
-            <Button
-              clickHandler={() => setFieldLayout('horizontal')}
-              label="Horizontal layout"
-              variant={fieldLayout === 'horizontal' ? 'dark' : 'primary'}
-            />
-          </ButtonGroup>
-        </div>
+      <div>
+        <Toolbar>
+          <ToolbarItem>
+            <ButtonGroup>
+              <Button
+                clickHandler={() => setFieldLayout('vertical')}
+                label="Vertical layout"
+                variant={fieldLayout === 'vertical' ? 'dark' : 'primary'}
+              />
+              <Button
+                clickHandler={() => setFieldLayout('horizontal')}
+                label="Horizontal layout"
+                variant={fieldLayout === 'horizontal' ? 'dark' : 'primary'}
+              />
+            </ButtonGroup>
+          </ToolbarItem>
+        </Toolbar>
         <FormLayout fieldLayout={fieldLayout} labelWidth="auto">
           <>
             <TextField
@@ -394,7 +394,7 @@ This is a demo of all components supported by FormLayout.
             value={fruit}
           />
         </FormLayout>
-      </>
+      </div>
     )
   }}
 </Playground>

@@ -1,8 +1,7 @@
-@use '../../../styles/settings/layouts';
 @use '../../../styles/tools/spacing';
 
 .root {
-  margin-bottom: layouts.$common-bottom-spacing;
+  @include spacing.bottom(layouts);
 }
 
 .list {

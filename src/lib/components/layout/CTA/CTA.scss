@@ -6,6 +6,8 @@ $_spacing: spacing.of(1);
 $_column-gap: spacing.of(3);
 
 .root {
+  @include spacing.bottom(layouts, $compensation: $_spacing);
+
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

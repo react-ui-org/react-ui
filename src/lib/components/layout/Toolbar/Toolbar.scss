@@ -1,5 +1,6 @@
 // 1. Get rid of unwanted spacing of inline elements by invocation of flex layout.
 
+@use '../../../styles/tools/spacing';
 @use 'theme';
 
 .toolbar,
@@ -9,6 +10,8 @@
 }
 
 .toolbar {
+  @include spacing.bottom(layouts, $compensation: theme.$spacing);
+
   margin: calc(-1 * #{theme.$spacing});
 }
 
@@ -69,6 +72,10 @@
 
 .isDense > .isDense {
   margin: 0;
+}
+
+.toolbar.isDense {
+  @include spacing.bottom(layouts, $compensation: theme.$spacing-dense);
 }
 
 .toolbar:not(.isDense) > .isDense,

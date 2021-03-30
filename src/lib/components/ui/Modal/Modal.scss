@@ -36,8 +36,11 @@
 }
 
 .headTitle {
-  margin-bottom: 0;
   font-size: settings.$head-title-font-size;
+
+  &:not(:last-child) {
+    margin-bottom: 0;
+  }
 }
 
 .close {
@@ -60,7 +63,7 @@
 }
 
 .content {
-  padding: settings.$padding-y settings.$padding-x;
+  padding: settings.$padding-y settings.$padding-x settings.$content-padding-bottom;
 }
 
 .footer {

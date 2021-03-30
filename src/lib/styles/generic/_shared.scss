@@ -2,12 +2,6 @@
 
 // Always declare margins in the same direction.
 address,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
 blockquote,
 p,
 pre,
@@ -18,5 +12,14 @@ figure,
 hr,
 table,
 fieldset {
-  margin-bottom: spacing.of(5);
+  @include spacing.bottom();
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include spacing.bottom(headings);
 }
