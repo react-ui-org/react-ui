@@ -75,56 +75,66 @@ of `right`.
     const [justification, setJustification] = React.useState('start');
     return (
       <div>
-        <div className="mb-2">
-          <span id="alignment-label" className="mr-3">Alignment:</span>
-          <ButtonGroup aria-labelledby="#alignment-label">
-            <Button
-              label="top"
-              clickHandler={() => setAlignment('top')}
-              variant={alignment === 'top' ? 'dark' : 'primary'}
-            />
-            <Button
-              label="middle"
-              clickHandler={() => setAlignment('middle')}
-              variant={alignment === 'middle' ? 'dark' : 'primary'}
-            />
-            <Button
-              label="bottom"
-              clickHandler={() => setAlignment('bottom')}
-              variant={alignment === 'bottom' ? 'dark' : 'primary'}
-            />
-            <Button
-              label="baseline"
-              clickHandler={() => setAlignment('baseline')}
-              variant={alignment === 'baseline' ? 'dark' : 'primary'}
-            />
-          </ButtonGroup>
-        </div>
-        <div className="mb-5">
-          <span id="justification-label" className="mr-3">Justification:</span>
-          <ButtonGroup aria-labelledby="#justification-label">
-            <Button
-              label="start"
-              clickHandler={() => setJustification('start')}
-              variant={justification === 'start' ? 'dark' : 'primary'}
-            />
-            <Button
-              label="center"
-              clickHandler={() => setJustification('center')}
-              variant={justification === 'center' ? 'dark' : 'primary'}
-            />
-            <Button
-              label="end"
-              clickHandler={() => setJustification('end')}
-              variant={justification === 'end' ? 'dark' : 'primary'}
-            />
-            <Button
-              label="space-between"
-              clickHandler={() => setJustification('space-between')}
-              variant={justification === 'space-between' ? 'dark' : 'primary'}
-            />
-          </ButtonGroup>
-        </div>
+        <Toolbar>
+          <ToolbarGroup align="baseline">
+            <ToolbarItem>
+              <span id="alignment-label">Alignment:</span>
+            </ToolbarItem>
+            <ToolbarItem>
+              <ButtonGroup aria-labelledby="#alignment-label">
+                <Button
+                  label="top"
+                  clickHandler={() => setAlignment('top')}
+                  variant={alignment === 'top' ? 'dark' : 'primary'}
+                />
+                <Button
+                  label="middle"
+                  clickHandler={() => setAlignment('middle')}
+                  variant={alignment === 'middle' ? 'dark' : 'primary'}
+                />
+                <Button
+                  label="bottom"
+                  clickHandler={() => setAlignment('bottom')}
+                  variant={alignment === 'bottom' ? 'dark' : 'primary'}
+                />
+                <Button
+                  label="baseline"
+                  clickHandler={() => setAlignment('baseline')}
+                  variant={alignment === 'baseline' ? 'dark' : 'primary'}
+                />
+              </ButtonGroup>
+            </ToolbarItem>
+          </ToolbarGroup>
+          <ToolbarGroup align="baseline">
+            <ToolbarItem>
+              <span id="justification-label">Justification:</span>
+            </ToolbarItem>
+            <ToolbarItem>
+              <ButtonGroup aria-labelledby="#justification-label">
+                <Button
+                  label="start"
+                  clickHandler={() => setJustification('start')}
+                  variant={justification === 'start' ? 'dark' : 'primary'}
+                />
+                <Button
+                  label="center"
+                  clickHandler={() => setJustification('center')}
+                  variant={justification === 'center' ? 'dark' : 'primary'}
+                />
+                <Button
+                  label="end"
+                  clickHandler={() => setJustification('end')}
+                  variant={justification === 'end' ? 'dark' : 'primary'}
+                />
+                <Button
+                  label="space-between"
+                  clickHandler={() => setJustification('space-between')}
+                  variant={justification === 'space-between' ? 'dark' : 'primary'}
+                />
+              </ButtonGroup>
+            </ToolbarItem>
+          </ToolbarGroup>
+        </Toolbar>
         <Toolbar align={alignment} justify={justification}>
           <ToolbarItem>
             <Placeholder bordered>First item</Placeholder>
@@ -187,20 +197,24 @@ toolbar groups, or on the entire toolbar.
     const [isToolbarDense, setIsToolbarDense] = React.useState(false);
     return (
       <div>
-        <div className="mb-5">
-          <CheckboxField
-            id="is-group-dense"
-            label="Dense ToolbarGroup"
-            changeHandler={(e) => setIsGroupDense(e.target.checked)}
-            checked={isGroupDense}
-          />
-          <CheckboxField
-            id="is-toolbar-dense"
-            label="Dense Toolbar"
-            changeHandler={(e) => setIsToolbarDense(e.target.checked)}
-            checked={isToolbarDense}
-          />
-        </div>
+        <Toolbar>
+          <ToolbarItem>
+            <CheckboxField
+              id="is-group-dense"
+              label="Dense ToolbarGroup"
+              changeHandler={(e) => setIsGroupDense(e.target.checked)}
+              checked={isGroupDense}
+            />
+          </ToolbarItem>
+          <ToolbarItem>
+            <CheckboxField
+              id="is-toolbar-dense"
+              label="Dense Toolbar"
+              changeHandler={(e) => setIsToolbarDense(e.target.checked)}
+              checked={isToolbarDense}
+            />
+          </ToolbarItem>
+        </Toolbar>
         <Toolbar dense={isToolbarDense}>
           <ToolbarGroup dense={isGroupDense}>
             <ToolbarItem>

@@ -22,7 +22,7 @@
 //
 // 3. Any valid auto-flow algorithm can be used. It's applied globally for all breakpoints.
 
-@use '../../../styles/settings/layouts';
+@use '../../../styles/tools/spacing';
 @use 'tools';
 
 .root {
@@ -38,6 +38,7 @@
   );
 
   @include tools.assign-responsive-custom-properties($properties); // 1.
+  @include spacing.bottom(layouts);
 
   display: grid;
   grid-template-columns: var(--rui-local-columns); // 2.
@@ -48,7 +49,6 @@
   align-items: var(--rui-local-align-items, var(--rui-grid-align-items)); // 2.
   justify-content: var(--rui-local-justify-content, var(--rui-grid-justify-content)); // 2.
   justify-items: var(--rui-local-justify-items, var(--rui-grid-justify-items)); // 2.
-  margin-bottom: layouts.$common-bottom-spacing;
 }
 
 .span {

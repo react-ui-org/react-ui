@@ -15,6 +15,8 @@ import {
 import { Placeholder } from '../../../../docs/_components/Placeholder/Placeholder'
 import Button from '../Button'
 import Radio from '../Radio'
+import { Toolbar } from '../../layout/Toolbar/Toolbar'
+import { ToolbarItem } from '../../layout/Toolbar/ToolbarItem'
 import {
   ScrollViewWithContext as ScrollView,
   ScrollView as ParsableScrollView,
@@ -213,49 +215,55 @@ property defined because it detects changes of these keys.
       generateRandomString(),
     );
     return (
-      <>
-        <div className="mb-5">
-          <Radio
-            changeHandler={(e) => setDirection(e.target.value)}
-            options={[
-              {
-                label: 'Vertical',
-                value: 'vertical',
-              },
-              {
-                label: 'Horizontal',
-                value: 'horizontal',
-              },
-            ]}
-            id="scroll-view-direction"
-            label="Direction:"
-            value={direction}
-          />
-          <Radio
-            changeHandler={(e) => setAutoScroll(e.target.value)}
-            options={[
-              {
-                label: 'Always',
-                value: 'always',
-              },
-              {
-                label: 'When end is detected',
-                value: 'detectEnd',
-              },
-            ]}
-            id="scroll-view-autoscroll"
-            label="Autoscroll:"
-            value={autoScroll}
-          />
-          <Button
-            label="Add text"
-            clickHandler={
-              () => setScrollViewContent(
-                `${scrollViewContent} ${generateRandomString()}`,
-              )
-            }
-          />
-        </div>
+      <div>
+        <Toolbar>
+          <ToolbarItem>
+            <Radio
+              changeHandler={(e) => setDirection(e.target.value)}
+              options={[
+                {
+                  label: 'Vertical',
+                  value: 'vertical',
+                },
+                {
+                  label: 'Horizontal',
+                  value: 'horizontal',
+                },
+              ]}
+              id="scroll-view-direction"
+              label="Direction:"
+              value={direction}
+            />
+          </ToolbarItem>
+          <ToolbarItem>
+            <Radio
+              changeHandler={(e) => setAutoScroll(e.target.value)}
+              options={[
+                {
+                  label: 'Always',
+                  value: 'always',
+                },
+                {
+                  label: 'When end is detected',
+                  value: 'detectEnd',
+                },
+              ]}
+              id="scroll-view-autoscroll"
+              label="Autoscroll:"
+              value={autoScroll}
+            />
+          </ToolbarItem>
+          <ToolbarItem>
+            <Button
+              label="Add text"
+              clickHandler={
+                () => setScrollViewContent(
+                  `${scrollViewContent} ${generateRandomString()}`,
+                )
+              }
+            />
+          </ToolbarItem>
+        </Toolbar>
         <Placeholder height={direction === 'vertical' ? '200px' : 'auto'}>
           <ScrollView arrows autoScroll={autoScroll} direction={direction}>
             <div
@@ -268,7 +276,7 @@ property defined because it detects changes of these keys.
             </div>
           </ScrollView>
         </Placeholder>
-      </>
+      </div>
     );
   }}
 </Playground>

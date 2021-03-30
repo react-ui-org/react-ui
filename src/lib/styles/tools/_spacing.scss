@@ -11,3 +11,20 @@
     }
   }
 }
+
+@mixin bottom($category: default, $compensation: null) {
+  @if (not map-has-key(spacing.$bottom, $category)) {
+    @error "Invalid spacing category specified! #{$category} doesn't exist. "
+      + "Choose one of #{map-keys(spacing.$bottom)}.";
+  }
+
+  &:not(:last-child) {
+    @if ($compensation != null) {
+      margin-bottom: calc(#{map-get(spacing.$bottom, $category)} - #{$compensation});
+    }
+
+    @else {
+      margin-bottom: map-get(spacing.$bottom, $category);
+    }
+  }
+}

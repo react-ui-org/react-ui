@@ -8,3 +8,9 @@ $values: (
   6: var(--rui-spacing-6),
   7: var(--rui-spacing-7),
 );
+
+$bottom: (
+  default: var(--rui-spacing-bottom-default),
+  headings: var(--rui-spacing-bottom-headings),
+  layouts: var(--rui-spacing-bottom-layouts),
+);

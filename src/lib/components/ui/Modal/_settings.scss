@@ -5,6 +5,7 @@
 
 $padding-x: spacing.of(5);
 $padding-y: spacing.of(3);
+$content-padding-bottom: spacing.of(6);
 $border-radius: borders.$radius;
 $head-title-font-size: map-get(typography.$size-values, 1);
 $z-index: z-indexes.$modal;

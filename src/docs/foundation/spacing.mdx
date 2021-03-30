@@ -24,3 +24,45 @@ help you keep your UI consistent.
 \* For the sake of brevity, usage in HTML only illustrates the top margin
 property. See [Spacing helpers](/css-helpers/spacing) for the full list of
 options.
+
+## Shared Spacings
+
+Commonly reused spacings. Bottom spacing is applied unless the element in
+question is a last child of its parent.
+
+| Category | Usage in CSS                    | Usage in SCSS              | Default value     | Shared by              |
+|----------|---------------------------------|----------------------------|-------------------|------------------------|
+| default  | `--rui-spacing-bottom-default`  | `spacing.bottom()`         | `--rui-spacing-5` | Paragraphs, lists etc. |
+| headings | `--rui-spacing-bottom-headings` | `spacing.bottom(headings)` | `--rui-spacing-5` | Heading elements       |
+| layouts  | `--rui-spacing-bottom-layouts`  | `spacing.bottom(layouts)`  | `--rui-spacing-5` | Layout components      |
+
+### Note on Live Playgrounds
+
+For demonstration purposes, all elements that are direct descendants of live
+playgrounds in these docs are given a standard margin on all sides which
+suppresses default spacing behavior described above:
+
+```jsx
+<Playground>
+  <p>This paragraph will have standard playground margin an all sides.</p>
+  <p>This paragraph will have it too.</p>
+</Playground>
+```
+
+Once wrapped in a `div`, all elements and components remain unaffected and have
+exactly the same margins as they would have in a real-world React UI project:
+
+```jsx
+<Playground>
+  <div>
+    <p>
+      This paragraph will have bottom margin of
+      <code>--rui-spacing-bottom-default</code>.
+    </p>
+    <p>
+      This paragraph is a last child of its parent and thus will have no bottom
+      margin.
+    </p>
+  </div>
+</Playground>
+```
