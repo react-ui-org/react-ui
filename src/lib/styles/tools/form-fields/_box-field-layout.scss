@@ -87,7 +87,7 @@
       @if ($has-min-tap-target) {
         padding-top:
           calc(
-            (#{theme.$check-tap-target-size} - #{typography.$line-height-base})
+            (#{theme.$check-tap-target-size} - 1rem * #{typography.$line-height-base})
             / 2
           ); // 10.
       }

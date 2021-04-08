@@ -17,7 +17,7 @@
 
   width: theme.$check-input-size;
   height: theme.$check-input-size;
-  margin-top: calc((#{typography.$line-height-base} - #{theme.$check-input-size}) / 2);
+  margin-top: calc((1rem * #{typography.$line-height-base} - #{theme.$check-input-size}) / 2);
   border: theme.$check-input-border-width solid var(--rui-local-border-color);
   background-position: center;
   background-size: contain;
@@ -74,7 +74,7 @@
   @include accessibility.min-tap-target($size: theme.$check-tap-target-size, $center: false);
 
   min-height: theme.$check-tap-target-size;
-  padding-top: calc((#{theme.$check-tap-target-size} - #{typography.$line-height-base}) / 2);
+  padding-top: calc((#{theme.$check-tap-target-size} - 1rem * #{typography.$line-height-base}) / 2);
 
   &::before {
     top: 0;
@@ -93,7 +93,7 @@
       padding-top: 0;
 
       &::before {
-        top: calc((#{typography.$line-height-base} - #{theme.$check-tap-target-size}) / 2);
+        top: calc((#{typography.$line-height-base} - 1rem * #{theme.$check-tap-target-size}) / 2);
       }
     }
   }
