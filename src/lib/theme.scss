@@ -508,9 +508,11 @@
   --rui-form-field-required-sign-color: var(--rui-color-gray-500);
 
   // Form fields: horizontal layout
-  --rui-form-field-horizontal-label-alignment: left;
+  --rui-form-field-horizontal-label-text-align: left;
   --rui-form-field-horizontal-label-min-width: 0;
   --rui-form-field-horizontal-label-width: minmax(auto, 50%); // 3.
+  --rui-form-field-horizontal-label-vertical-alignment: initial;
+  --rui-form-field-horizontal-field-vertical-alignment: initial;
   --rui-form-field-horizontal-full-width-label-width: fit-content(50%);
 
   // Forms fields: disabled state

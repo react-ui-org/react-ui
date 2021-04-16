@@ -12,9 +12,16 @@ $required-sign: var(--rui-form-field-required-sign);
 $required-sign-color: var(--rui-form-field-required-sign-color);
 
 // Form fields: horizontal layout
-$horizontal-label-alignment: var(--rui-form-field-horizontal-label-alignment);
+$horizontal-label-text-align: var(--rui-form-field-horizontal-label-text-align);
 $horizontal-label-min-width: var(--rui-form-field-horizontal-label-min-width);
 $horizontal-label-width: var(--rui-form-field-horizontal-label-width);
+$horizontal-label-padding-top:
+  var(
+    --rui-form-field-horizontal-label-padding-top,
+    calc(var(--rui-form-field-box-border-width) + var(--rui-local-padding-y))
+  );
+$horizontal-label-vertical-alignment: var(--rui-form-field-horizontal-label-vertical-alignment);
+$horizontal-field-vertical-alignment: var(--rui-form-field-horizontal-field-vertical-alignment);
 $horizontal-full-width-label-width: var(--rui-form-field-horizontal-full-width-label-width);
 
 // Form fields: disabled state
