@@ -2,8 +2,8 @@ const path = require('path');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const VisualizerPlugin = require('webpack-visualizer-plugin');
 
-const MAX_DEVELOPMENT_OUTPUT_SIZE = 2150000;
-const MAX_PRODUCTION_OUTPUT_SIZE = 255000;
+const MAX_DEVELOPMENT_OUTPUT_SIZE = 2300000;
+const MAX_PRODUCTION_OUTPUT_SIZE = 270000;
 
 module.exports = (env, argv) => ({
   devtool: argv.mode === 'production'
