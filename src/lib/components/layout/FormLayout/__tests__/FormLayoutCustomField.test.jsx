@@ -28,10 +28,14 @@ describe('rendering', () => {
   it('renders correctly with all props', () => {
     const tree = shallow((
       <FormLayoutCustomField
+        disabled
         fullWidth
         label="Label"
+        labelForId="target-id"
         id="my-custom-field"
+        innerFieldSize="small"
         layout="horizontal"
+        required
       >
         <span>Custom text in form 1</span>
         <span>Custom text in form 2</span>
