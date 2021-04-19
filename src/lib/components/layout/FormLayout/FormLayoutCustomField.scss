@@ -1,9 +1,36 @@
+@use '../../../styles/tools/form-fields/foundation';
 @use '../../../styles/tools/form-fields/box-field-layout';
+@use '../../../styles/tools/form-fields/box-field-sizes';
+@use '../../../styles/tools/form-fields/variants';
 
+// Foundation
 .root {
   @include box-field-layout.in-form-layout();
+  @include variants.visual(custom);
 }
 
+.label {
+  @include foundation.label();
+}
+
+.isRootRequired .label {
+  @include foundation.label-required();
+}
+
+// States
+.isRootStateInvalid {
+  @include variants.validation(invalid);
+}
+
+.isRootStateValid {
+  @include variants.validation(valid);
+}
+
+.isRootStateWarning {
+  @include variants.validation(warning);
+}
+
+// Layouts
 .rootLayoutVertical,
 .rootLayoutHorizontal {
   @include box-field-layout.vertical();
@@ -20,4 +47,17 @@
 
 .isRootFullWidth .field {
   justify-self: stretch;
+}
+
+// Sizes
+.rootSizeSmall {
+  @include box-field-sizes.size(small);
+}
+
+.rootSizeMedium {
+  @include box-field-sizes.size(medium);
+}
+
+.rootSizeLarge {
+  @include box-field-sizes.size(large);
 }
