@@ -1,6 +1,11 @@
 // Variant specific theme options are obtained dynamically because there is way too many of them to
 // maintain manually. See `settings/_form-fields.scss` and `tools/form-fields/_variants.scss` for
 // details.
+//
+// 1. Defaults to zero when neither `--rui-form-field-horizontal-label-padding-y` (optional) nor
+//    `--rui-local-padding-y` (handled by the `size()` mixin in case of box form fields, see
+//    `_box-field-sizes.scss`) is defined. This is useful because FormLayoutCustomField may have no
+//    size specified therefore its label should have no padding at the top.
 
 // Forms fields: common properties
 $label-color: var(--rui-form-field-label-color);
@@ -15,11 +20,11 @@ $required-sign-color: var(--rui-form-field-required-sign-color);
 $horizontal-label-text-align: var(--rui-form-field-horizontal-label-text-align);
 $horizontal-label-min-width: var(--rui-form-field-horizontal-label-min-width);
 $horizontal-label-width: var(--rui-form-field-horizontal-label-width);
-$horizontal-label-padding-top:
+$horizontal-label-padding-y:
   var(
-    --rui-form-field-horizontal-label-padding-top,
+    --rui-form-field-horizontal-label-padding-y,
     calc(var(--rui-form-field-box-border-width) + var(--rui-local-padding-y))
-  );
+  ); // 1.
 $horizontal-label-vertical-alignment: var(--rui-form-field-horizontal-label-vertical-alignment);
 $horizontal-field-vertical-alignment: var(--rui-form-field-horizontal-field-vertical-alignment);
 $horizontal-full-width-label-width: var(--rui-form-field-horizontal-full-width-label-width);
