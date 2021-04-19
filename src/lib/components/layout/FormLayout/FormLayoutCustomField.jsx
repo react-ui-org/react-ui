@@ -5,6 +5,33 @@ import getRootValidationStateClassName from '../../../helpers/getRootValidationS
 import { withProviderContext } from '../../../provider';
 import styles from './FormLayoutCustomField.scss';
 
+const renderLabel = (id, label, labelForId) => {
+  if (labelForId && label) {
+    return (
+      <label
+        htmlFor={labelForId}
+        id={id && `${id}__label`}
+        className={styles.label}
+      >
+        {label}
+      </label>
+    );
+  }
+
+  if (label) {
+    return (
+      <div
+        id={id && `${id}__label`}
+        className={styles.label}
+      >
+        {label}
+      </div>
+    );
+  }
+
+  return null;
+};
+
 export const FormLayoutCustomField = ({
   children,
   fullWidth,
@@ -16,57 +43,28 @@ export const FormLayoutCustomField = ({
   layout,
   required,
   validationState,
-}) => {
-  const renderLabel = () => {
-    if (labelForId && label) {
-      return (
-        <label
-          htmlFor={labelForId}
-          id={id && `${id}__label`}
-          className={styles.label}
-        >
-          {label}
-        </label>
-      );
-    }
-
-    if (label) {
-      return (
-        <div
-          id={id && `${id}__label`}
-          className={styles.label}
-        >
-          {label}
-        </div>
-      );
-    }
-
-    return null;
-  };
-
-  return (
+}) => (
+  <div
+    id={id}
+    className={[
+      styles.root,
+      fullWidth ? styles.isRootFullWidth : '',
+      layout === 'vertical' ? styles.rootLayoutVertical : styles.rootLayoutHorizontal,
+      disabled ? styles.isRootDisabled : '',
+      required ? styles.isRootRequired : '',
+      getRootSizeClassName(innerFieldSize, styles),
+      getRootValidationStateClassName(validationState, styles),
+    ].join(' ')}
+  >
+    {renderLabel(id, label, labelForId)}
     <div
-      id={id}
-      className={[
-        styles.root,
-        fullWidth ? styles.isRootFullWidth : '',
-        layout === 'vertical' ? styles.rootLayoutVertical : styles.rootLayoutHorizontal,
-        disabled ? styles.isRootDisabled : '',
-        required ? styles.isRootRequired : '',
-        getRootSizeClassName(innerFieldSize, styles),
-        getRootValidationStateClassName(validationState, styles),
-      ].join(' ')}
+      id={id && `${id}__field`}
+      className={styles.field}
     >
-      {renderLabel()}
-      <div
-        id={id && `${id}__field`}
-        className={styles.field}
-      >
-        {children}
-      </div>
+      {children}
     </div>
-  );
-};
+  </div>
+);
 
 FormLayoutCustomField.defaultProps = {
   children: null,

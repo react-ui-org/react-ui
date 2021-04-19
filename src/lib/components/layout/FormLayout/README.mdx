@@ -267,6 +267,37 @@ and its styles may affect contained form fields through CSS cascade, don't
 forget to mirror the aforementioned properties to the contained form fields too
 as API options as such are **not** inherited.
 
+### Label Alignment
+
+If you are in a situation with one or more box form fields inside your
+FormLayoutCustomField, you may want to have its label aligned with the fields
+inside. Since it's
+[not quite possible to do this automatically](https://github.com/react-ui-org/react-ui/issues/265)
+due to limited browser support, there is `innerFieldSize` option which accepts
+any of existing box field sizes (small, medium, or large) and is intended right
+for this task.
+
+<Playground>
+  <FormLayout fieldLayout="horizontal" labelWidth="auto">
+    <TextField id="my-text-field-custom-alignment-1" label="A form element" />
+    <FormLayoutCustomField
+      innerFieldSize="medium"
+      label="Custom field label aligned to inner text input"
+    >
+      <TextField
+        id="my-text-field-custom-alignment-2"
+        isLabelVisible={false}
+        label="A form element"
+        placeholder="Text field with invisible label"
+      />
+    </FormLayoutCustomField>
+    <TextField
+      id="my-text-field-custom-alignment-3"
+      label="Another form element"
+    />
+  </FormLayout>
+</Playground>
+
 ### Validation States
 
 Custom fields support the same validation states as regular form fields to

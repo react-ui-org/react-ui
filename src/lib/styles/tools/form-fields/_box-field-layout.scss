@@ -33,10 +33,16 @@
 // 9.  Help texts and validation messages can take up full width of FormLayout. There is no reason
 //     to make them wrap as they cannot break layout of FormLayout.
 //
-// 10. Align label to input baseline. Achieved with `padding-top` since `align-items: baseline`
-//     unfortunately doesn't work for blank text inputs in Safari. Default to zero when
-//     `--rui-local-padding-y` (handled by the `size()` mixin, see `_box-field-sizes.scss`) is not
-//     defined, eg. for FormLayoutCustomField with no size specified.
+// 10. Visually align label to input baseline. Achieved with `padding-top` and `padding-bottom` due
+//     to two reasons:
+//
+//     * `align-items: baseline` doesn't work for blank text inputs in Safari. See
+//        https://bugs.webkit.org/show_bug.cgi?id=142968 and
+//        https://github.com/react-ui-org/react-ui/issues/265.
+//
+//     * `align-items: baseline` doesn't allow subsequent vertical centering of tall inputs and/or
+//        multiline labels (see `theme.$horizontal-label-vertical-alignment` and
+//        `theme.$horizontal-field-vertical-alignment`).
 //
 // 11. Reset `width` previously set by inline field layout (see `_inline-field-layout.scss`).
 //
@@ -89,20 +95,27 @@
       align-self: theme.$horizontal-label-vertical-alignment; // 13.
       min-width: theme.$horizontal-label-min-width;
 
+      // 10.
       @if ($has-min-tap-target) {
         padding-top:
           calc(
             (#{theme.$check-tap-target-size} - 1rem * #{typography.$line-height-base})
             / 2
-          ); // 10.
+          );
+        padding-bottom:
+          calc(
+            (#{theme.$check-tap-target-size} - 1rem * #{typography.$line-height-base})
+            / 2
+          );
       }
 
+      // 10., 13.
       @else {
-        padding-top: #{theme.$horizontal-label-padding-top}; // 10., 13.
+        padding-top: #{theme.$horizontal-label-padding-y};
+        padding-bottom: #{theme.$horizontal-label-padding-y};
       }
 
       padding-right: settings.$horizontal-inner-gap; // 4.
-      padding-bottom: 0; // 4.
       text-align: theme.$horizontal-label-text-align;
     }
 
