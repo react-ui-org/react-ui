@@ -253,13 +253,90 @@ FormLayout elements. FormLayoutCustomFields are designed to work solely inside
 the FormLayout component.
 
 <Playground>
-  <FormLayout fieldLayout="horizontal">
+  <FormLayout fieldLayout="horizontal" labelWidth="auto">
     <TextField id="my-text-field-custom-1" label="A form element" />
-    <FormLayoutCustomField label="Optional label">
-      <Placeholder bordered>Custom content</Placeholder>
+    <FormLayoutCustomField label="Optional custom field label">
+      <Placeholder bordered>Custom field content</Placeholder>
     </FormLayoutCustomField>
     <TextField id="my-text-field-custom-2" label="Another form element" />
   </FormLayout>
+</Playground>
+
+👉 While you can set FormLayoutCustomField as `disabled`, `valid` or `required`
+and its styles may affect contained form fields through CSS cascade, don't
+forget to mirror the aforementioned properties to the contained form fields too
+as API options as such are **not** inherited.
+
+### Validation States
+
+Custom fields support the same validation states as regular form fields to
+provide labels with optional feedback style.
+
+<Playground>
+  <FormLayout fieldLayout="horizontal" labelWidth="auto">
+    <TextField id="my-text-field-custom-validation-1" label="A form element" />
+    <FormLayoutCustomField
+      label="Custom field label in valid state"
+      validationState="valid"
+    >
+      <Placeholder bordered>Custom field content</Placeholder>
+    </FormLayoutCustomField>
+    <TextField
+      id="my-text-field-custom-validation-2"
+      label="Another form element"
+    />
+  </FormLayout>
+</Playground>
+
+### Accessibility
+
+If possible, use the `labelForId` option to provide ID of contained form field
+so the field remains accessible via custom field label.
+
+You can also specify size of contained form field so custom field label is
+properly vertically aligned.
+
+<Playground>
+  {() => {
+    const [isChecked, setIsChecked] = React.useState(false);
+    return (
+      <FormLayout fieldLayout="horizontal" labelWidth="auto">
+        <TextField
+          id="my-text-field-custom-accessibility-1"
+          label="A form element"
+        />
+        <FormLayoutCustomField
+          fullWidth
+          label="Custom field label aligned with medium form field"
+          labelForId="my-text-field-custom-accessibility-2"
+          innerFieldSize="medium"
+        >
+          <Toolbar align="middle" dense>
+            <ToolbarItem>
+              <TextField
+                id="my-text-field-custom-accessibility-2"
+                isLabelVisible={false}
+                label="A form element"
+                placeholder="Text field with invisible label"
+              />
+            </ToolbarItem>
+            <ToolbarItem>
+              <CheckboxField
+                changeHandler={() => setIsChecked(!isChecked)}
+                checked={isChecked}
+                id="my-checkbox-field-custom-accessibility-1"
+                label="Another form field"
+              />
+            </ToolbarItem>
+          </Toolbar>
+        </FormLayoutCustomField>
+        <TextField
+          id="my-text-field-custom-accessibility-3"
+          label="Another form element"
+        />
+      </FormLayout>
+    )
+  }}
 </Playground>
 
 ## Full Example
@@ -403,7 +480,7 @@ This is a demo of all components supported by FormLayout.
 
 <Props table of={FormLayout} />
 
-### FormLayoutCustomField
+### FormLayoutCustomField API
 
 A place for custom content inside FormLayout.
 
@@ -417,3 +494,13 @@ A place for custom content inside FormLayout.
 | `--rui-form-layout-horizontal-label-limited-width`   | Label width in limited-width layout                          |
 | `--rui-form-layout-horizontal-label-default-width`   | Label width in the default layout                            |
 | `--rui-form-layout-row-gap`                          | Gap between individual rows                                  |
+
+### FormLayoutCustomField Theming
+
+FormLayoutCustomField can be styled using a small subset of
+[other form fields theming options](/customize/theming/forms).
+
+| Custom Property                                      | Description                                                  |
+|------------------------------------------------------|--------------------------------------------------------------|
+| `--rui-form-field-custom-default-surrounding-text-color` | Custom field label color in default state                |
+| `--rui-form-field-custom-disabled-surrounding-text-color` | Custom field label color in disabled-like state         |
