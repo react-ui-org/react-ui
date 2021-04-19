@@ -2,9 +2,7 @@
 
 exports[`rendering renders correctly with a single child 1`] = `
 <div
-  className="root
-      
-      rootLayoutVertical"
+  className="root  rootLayoutVertical    "
 >
   <div
     className="field"
@@ -18,17 +16,16 @@ exports[`rendering renders correctly with a single child 1`] = `
 
 exports[`rendering renders correctly with all props 1`] = `
 <div
-  className="root
-      isRootFullWidth
-      rootLayoutHorizontal"
+  className="root isRootFullWidth rootLayoutHorizontal isRootDisabled isRootRequired rootSizeSmall "
   id="my-custom-field"
 >
-  <div
+  <label
     className="label"
+    htmlFor="target-id"
     id="my-custom-field__label"
   >
     Label
-  </div>
+  </label>
   <div
     className="field"
     id="my-custom-field__field"
@@ -48,9 +45,7 @@ exports[`rendering renders correctly with all props 1`] = `
 
 exports[`rendering renders correctly with multiple children 1`] = `
 <div
-  className="root
-      
-      rootLayoutVertical"
+  className="root  rootLayoutVertical    "
 >
   <div
     className="field"
