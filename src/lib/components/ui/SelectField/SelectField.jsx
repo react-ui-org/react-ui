@@ -147,9 +147,16 @@ SelectField.propTypes = {
    */
   helpText: PropTypes.node,
   /**
-   * ID of the input HTML element. It also serves as a prefix for important inner elements:
-   * `<ID>__label`, `<ID>__labelText`, `<ID>__helpText`, `<ID>__validationText`, and all options:
-   * `<ID>__item__<VALUE>`.
+   * ID of the input HTML element.
+   *
+   * Also serves as a prefix for important inner elements:
+   * * `<ID>__label`
+   * * `<ID>__labelText`,
+   * * `<ID>__helpText`
+   * * `<ID>__validationText`
+   *
+   * and of individual options:
+   * * `<ID>__item__<VALUE>`
    */
   id: PropTypes.string,
   /**

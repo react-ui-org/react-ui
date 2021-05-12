@@ -47,9 +47,15 @@ CTA.propTypes = {
    */
   align: PropTypes.oneOf(['top', 'middle', 'bottom', 'baseline']),
   /**
-   * Slot for individual CTA elements: CTAStart, CTACenter, and CTAEnd.
+   * Nested elements. Supported types are:
+   * * `CTAStart`
+   * * `CTACenter`
+   * * `CTAEnd`
    */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+  ]).isRequired,
 };
 
 export const CTAWithContext = withProviderContext(CTA, 'CTA');

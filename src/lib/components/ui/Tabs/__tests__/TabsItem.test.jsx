@@ -1,52 +1,73 @@
 import React from 'react';
-import {
-  mount,
-  shallow,
-} from 'enzyme';
 import sinon from 'sinon';
+import {
+  render,
+  screen,
+  within,
+} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { labelPropTest } from '../../../../../../tests/propTests/labelPropTest';
 import { TabsItem } from '../TabsItem';
 
+const mandatoryProps = {
+  href: 'href',
+  label: 'label',
+};
+
 describe('rendering', () => {
-  it('renders correctly with mandatory props', () => {
-    const tree = shallow((
+  it.each([
+    [
+      { afterLabel: <div>after label</div> },
+      (rootElement) => expect(within(rootElement).getByText('after label')),
+    ],
+    [
+      { beforeLabel: <div>before label</div> },
+      (rootElement) => expect(within(rootElement).getByText('before label')),
+    ],
+    [
+      { href: 'href' },
+      (rootElement) => expect(rootElement).toContainHTML('href="href"'),
+    ],
+    [
+      { id: 'id' },
+      (rootElement) => {
+        expect(rootElement).toHaveAttribute('id', 'id');
+        expect(within(rootElement).getByText('label')).toHaveAttribute('id', 'id__label');
+        expect(within(rootElement).getByTestId('id__link')).toHaveAttribute('href', 'href');
+      },
+    ],
+    [
+      { isActive: true },
+      (rootElement) => expect(rootElement).toHaveClass('isRootActive'),
+    ],
+    [
+      { isActive: false },
+      (rootElement) => expect(rootElement).not.toHaveClass('isRootActive'),
+    ],
+    ...labelPropTest,
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
       <TabsItem
-        href="/tab-1"
-        label="Tab 1"
+        {...mandatoryProps}
+        {...testedProps}
       />
     ));
 
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with all props', () => {
-    const tree = shallow((
-      <TabsItem
-        afterLabel={(<span>after label</span>)}
-        beforeLabel={(<span>before label</span>)}
-        href="/tab-1"
-        id="my-tab"
-        isActive
-        label="Tab 1"
-        onClick={() => {}}
-      />
-    ));
-
-    expect(tree).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });
 
 describe('functionality', () => {
   it('calls onClick() on navigating', () => {
     const spy = sinon.spy();
-    const component = mount((
+    render((
       <TabsItem
-        href="/tab-1"
-        label="Tab 1"
+        {...mandatoryProps}
         onClick={spy}
       />
     ));
 
-    component.find('a').at(0).simulate('click');
+    userEvent.click(screen.getByText('label'));
     expect(spy.calledOnce).toEqual(true);
   });
 });

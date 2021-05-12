@@ -94,6 +94,10 @@ FormLayoutCustomField.propTypes = {
   fullWidth: PropTypes.bool,
   /**
    * ID of the root HTML element.
+   *
+   * Also serves as base for ids of nested elements:
+   * * `<ID>__field`
+   * * `<ID>__label`
    */
   id: PropTypes.string,
   /**
@@ -105,7 +109,7 @@ FormLayoutCustomField.propTypes = {
    */
   label: PropTypes.string,
   /**
-   * Optional ID of labelled field to keep accessibility features.
+   * Optional ID of labeled field to keep accessibility features. Only available if `label` is set.
    */
   labelForId: PropTypes.string,
   /**

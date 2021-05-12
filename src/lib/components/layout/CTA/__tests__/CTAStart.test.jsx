@@ -1,27 +1,23 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {
+  render,
+  within,
+} from '@testing-library/react';
 import { CTAStart } from '../CTAStart';
 
 describe('rendering', () => {
-  it('renders correctly with a single child', () => {
-    const tree = shallow((
-      <CTAStart>
-        <span>content</span>
-      </CTAStart>
+  it.each([
+    [
+      { children: <div>content text</div> },
+      (rootElement) => expect(within(rootElement).getByText('content text')),
+    ],
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
+      <CTAStart
+        {...testedProps}
+      />
     ));
 
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with multiple children', () => {
-    const tree = shallow((
-      <CTAStart>
-        <span>content 1</span>
-        <span>content 2</span>
-        <span>content 3</span>
-      </CTAStart>
-    ));
-
-    expect(tree).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });

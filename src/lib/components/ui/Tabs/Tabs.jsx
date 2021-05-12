@@ -24,12 +24,15 @@ Tabs.defaultProps = {
 
 Tabs.propTypes = {
   /**
-   * Individual `TabsItem`s.
+   * Nested `TabsItem` elements.
    */
-  children: PropTypes.node,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+  ]),
   /**
-   * ID of the root HTML element. It also serves as a prefix for inner list element:
-   * `<ID>__list`.
+   * ID of the root HTML element. It also serves as base for nested element:
+   * * `<ID>__list`
    */
   id: PropTypes.string,
 };

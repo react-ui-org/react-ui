@@ -123,20 +123,16 @@ Table.propTypes = {
     name: PropTypes.string.isRequired,
   })).isRequired,
   /**
-   * ID of the root HTML element. It also serves as a prefix for important inner elements:
-   * `<ID>__headerCell__<COLUMN_NAME>`, `<ID>__headerCell__<COLUMN_NAME>__sortButton`, and
-   * `<ID>__bodyCell__<COLUMN_NAME>__<ROW_ID>`.
+   * ID of the root HTML element. It also serves as base fo nested elements:
+   * * `<ID>__headerCell__<COLUMN_NAME>`
+   * * `<ID>__headerCell__<COLUMN_NAME>__sortButton`
+   * * `<ID>__bodyCell__<COLUMN_NAME>__<ROW_ID>`
    */
   id: PropTypes.string,
   /**
-   * Table data rows paired with columns through column IDs.
+   * Table data rows, each object key must match a column `name`
    */
-  rows: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string,
-    ]).isRequired,
-  })).isRequired,
+  rows: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   /**
    * Sorting configuration required to make columns sortable.
    */

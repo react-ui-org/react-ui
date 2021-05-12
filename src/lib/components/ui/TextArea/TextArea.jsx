@@ -142,9 +142,11 @@ TextArea.propTypes = {
    * Optional help text.
    */
   helpText: PropTypes.node,
-  /**
-   * ID of the input HTML element. It also serves as a prefix for important inner elements:
-   * `<ID>__label`, `<ID>__labelText`, and `<ID>__helpText`, and `<ID>__validationText`.
+  /** ID of the input HTML element. It also serves as a prefix for nested elements:
+   * * `<ID>__label`
+   * * `<ID>__labelText`
+   * * `<ID>__helpText`
+   * * `<ID>__validationText`
    */
   id: PropTypes.string,
   /**

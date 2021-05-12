@@ -1,89 +1,140 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {
+  render,
+  within,
+} from '@testing-library/react';
+import { idPropTest } from '../../../../../../tests/propTests/idPropTest';
 import { Grid } from '../Grid';
 
+/* eslint-disable sort-keys */
+const responsiveBreakpoints = {
+  xs: 'placeholder-xs',
+  sm: 'placeholder-sm',
+  md: 'placeholder-md',
+  lg: 'placeholder-lg',
+  xl: 'placeholder-xl',
+  xxl: 'placeholder-xxl',
+  xxxl: 'placeholder-xxxl',
+};
+/* eslint-enable sort-keys */
+
+const responsiveStyles = (infix) => ({
+  [`--rui-local-${infix}-xs`]: 'placeholder-xs',
+  [`--rui-local-${infix}-sm`]: 'placeholder-sm',
+  [`--rui-local-${infix}-md`]: 'placeholder-md',
+  [`--rui-local-${infix}-lg`]: 'placeholder-lg',
+  [`--rui-local-${infix}-xl`]: 'placeholder-xl',
+  [`--rui-local-${infix}-xxl`]: 'placeholder-xxl',
+  [`--rui-local-${infix}-xxxl`]: 'placeholder-xxxl',
+});
+
+const defaultProps = {
+  children: <div>content</div>,
+};
+
 describe('rendering', () => {
-  it('renders correctly with no children', () => {
-    const tree = shallow((
-      <Grid />
-    ));
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with a single child', () => {
-    const tree = shallow((
-      <Grid>
-        <div>content</div>
-      </Grid>
-    ));
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with multiple children', () => {
-    const tree = shallow((
-      <Grid>
-        <div>content 1</div>
-        <div>content 2</div>
-        <div>content 3</div>
-      </Grid>
-    ));
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with simple props', () => {
-    const tree = shallow((
+  it.each([
+    [
+      { alignContent: responsiveBreakpoints },
+      (rootElement) => expect(rootElement).toHaveStyle(responsiveStyles('align-content')),
+    ],
+    [
+      { alignContent: 'placeholder' },
+      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-align-content-xs': 'placeholder' }),
+    ],
+    [
+      { alignItems: responsiveBreakpoints },
+      (rootElement) => expect(rootElement).toHaveStyle(responsiveStyles('align-items')),
+    ],
+    [
+      { alignItems: 'placeholder' },
+      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-align-items-xs': 'placeholder' }),
+    ],
+    [
+      { autoFlow: 'row' },
+      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-auto-flow': 'row' }),
+    ],
+    [
+      { autoFlow: 'column' },
+      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-auto-flow': 'column' }),
+    ],
+    [
+      { autoFlow: 'dense' },
+      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-auto-flow': 'dense' }),
+    ],
+    [
+      { autoFlow: 'row dense' },
+      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-auto-flow': 'row dense' }),
+    ],
+    [
+      { autoFlow: 'column dense' },
+      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-auto-flow': 'column dense' }),
+    ],
+    [
+      { children: <div>content text</div> },
+      (rootElement) => expect(within(rootElement).getByText('content text')),
+    ],
+    [
+      { children: null },
+      (rootElement) => expect(rootElement).toBeNull(),
+    ],
+    [
+      { columnGap: responsiveBreakpoints },
+      (rootElement) => expect(rootElement).toHaveStyle(responsiveStyles('column-gap')),
+    ],
+    [
+      { columnGap: 'placeholder' },
+      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-column-gap-xs': 'placeholder' }),
+    ],
+    [
+      { columns: responsiveBreakpoints },
+      (rootElement) => expect(rootElement).toHaveStyle(responsiveStyles('columns')),
+    ],
+    [
+      { columns: 'placeholder' },
+      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-columns-xs': 'placeholder' }),
+    ],
+    ...idPropTest,
+    [
+      { justifyContent: responsiveBreakpoints },
+      (rootElement) => expect(rootElement).toHaveStyle(responsiveStyles('justify-content')),
+    ],
+    [
+      { justifyContent: 'placeholder' },
+      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-justify-content-xs': 'placeholder' }),
+    ],
+    [
+      { justifyItems: responsiveBreakpoints },
+      (rootElement) => expect(rootElement).toHaveStyle(responsiveStyles('justify-items')),
+    ],
+    [
+      { justifyItems: 'placeholder' },
+      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-justify-items-xs': 'placeholder' }),
+    ],
+    [
+      { rowGap: responsiveBreakpoints },
+      (rootElement) => expect(rootElement).toHaveStyle(responsiveStyles('row-gap')),
+    ],
+    [
+      { rowGap: 'placeholder' },
+      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-row-gap-xs': 'placeholder' }),
+    ],
+    [
+      { rows: responsiveBreakpoints },
+      (rootElement) => expect(rootElement).toHaveStyle(responsiveStyles('rows')),
+    ],
+    [
+      { rows: 'placeholder' },
+      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-rows-xs': 'placeholder' }),
+    ],
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
       <Grid
-        alignContent="center"
-        alignItems="center"
-        autoFlow="dense"
-        columns="1fr 1fr"
-        columnGap="1rem"
-        id="my-grid"
-        justifyContent="center"
-        justifyItems="center"
-        rows="auto"
-        rowGap="1rem"
-      >
-        <div>content</div>
-      </Grid>
+        {...defaultProps}
+        {...testedProps}
+      />
     ));
 
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with complex props', () => {
-    const tree = shallow((
-      <Grid
-        alignContent="center"
-        alignItems="center"
-        autoFlow="dense"
-        columns={{
-          md: '1fr 2fr',
-          xs: '1fr',
-        }}
-        columnGap={{
-          lg: 'var(--rui-spacing-4)',
-          md: 'var(--rui-spacing-2)',
-        }}
-        id="my-grid"
-        justifyContent="center"
-        justifyItems="center"
-        rows={{
-          md: 'auto 200px auto',
-          xs: 'auto auto 200px 200px',
-        }}
-        rowGap={{
-          md: 'var(--rui-spacing-4)',
-          xs: 'var(--rui-spacing-3)',
-        }}
-      >
-        <div>content</div>
-      </Grid>
-    ));
-
-    expect(tree).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });

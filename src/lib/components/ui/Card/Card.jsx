@@ -36,10 +36,15 @@ Card.defaultProps = {
 
 Card.propTypes = {
   /**
-   * Slot for individual card elements that build up the inner layout: CardBody, CardFooter, or
-   * ScrollView.
+   * Slot for individual card elements that build up the inner layout:
+   * * `CardBody`
+   * * `CardFooter`
+   * * `ScrollView`
    */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+  ]).isRequired,
   /**
    * [Color variant](/foundation/colors#component-colors) to clarify importance and meaning of the card.
    */

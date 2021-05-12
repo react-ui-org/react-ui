@@ -1,28 +1,37 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {
+  render,
+  within,
+} from '@testing-library/react';
 import { Media } from '../Media';
 import { MediaBody } from '../MediaBody';
 import { MediaObject } from '../MediaObject';
 
 describe('rendering', () => {
-  it('renders correctly with a single child', () => {
-    const tree = shallow((
-      <Media>
-        <MediaBody>body</MediaBody>
-      </Media>
+  it.each([
+    [
+      { children: <MediaBody>content text</MediaBody> },
+      (rootElement) => expect(within(rootElement).getByText('content text')),
+    ],
+    [
+      {
+        children: [
+          <MediaBody key="1">body content text</MediaBody>,
+          <MediaObject key="2">object content text</MediaObject>,
+        ],
+      },
+      (rootElement) => {
+        expect(within(rootElement).getByText('body content text'));
+        expect(within(rootElement).getByText('object content text'));
+      },
+    ],
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
+      <Media
+        {...testedProps}
+      />
     ));
 
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with multiple children', () => {
-    const tree = shallow((
-      <Media>
-        <MediaObject>object</MediaObject>
-        <MediaBody>body</MediaBody>
-      </Media>
-    ));
-
-    expect(tree).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });

@@ -1,48 +1,75 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {
+  render,
+  within,
+} from '@testing-library/react';
+import { fullWidthPropTest } from '../../../../../../tests/propTests/fullWidthPropTest';
+import { labelPropTest } from '../../../../../../tests/propTests/labelPropTest';
+import { layoutPropTest } from '../../../../../../tests/propTests/layoutPropTest';
+import { requiredPropTest } from '../../../../../../tests/propTests/requiredPropTest';
+import { validationStatePropTest } from '../../../../../../tests/propTests/validationStatePropTest';
 import { FormLayoutCustomField } from '../FormLayoutCustomField';
 
 describe('rendering', () => {
-  it('renders correctly with a single child', () => {
-    const tree = shallow((
-      <FormLayoutCustomField>
-        <span>Custom text in form</span>
-      </FormLayoutCustomField>
-    ));
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with multiple children', () => {
-    const tree = shallow((
-      <FormLayoutCustomField>
-        <span>Custom text in form 1</span>
-        <span>Custom text in form 2</span>
-        <span>Custom text in form 3</span>
-      </FormLayoutCustomField>
-    ));
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with all props', () => {
-    const tree = shallow((
+  it.each([
+    [
+      { children: <div>other content text</div> },
+      (rootElement) => expect(within(rootElement).getByText('other content text')),
+    ],
+    [
+      { children: null },
+      (rootElement) => expect(rootElement).toBeInTheDocument(),
+    ],
+    [
+      { disabled: true },
+      (rootElement) => expect(rootElement).toHaveClass('isRootDisabled'),
+    ],
+    [
+      { disabled: false },
+      (rootElement) => expect(rootElement).not.toHaveClass('isRootDisabled'),
+    ],
+    ...fullWidthPropTest,
+    [
+      {
+        id: 'id',
+        label: 'label',
+      },
+      (rootElement) => {
+        expect(rootElement).toHaveAttribute('id', 'id');
+        expect(within(rootElement).getByTestId('id__field'));
+        expect(within(rootElement).getByText('label')).toHaveAttribute('id', 'id__label');
+      },
+    ],
+    [
+      { innerFieldSize: 'small' },
+      (rootElement) => expect(rootElement).toHaveClass('rootSizeSmall'),
+    ],
+    [
+      { innerFieldSize: 'medium' },
+      (rootElement) => expect(rootElement).toHaveClass('rootSizeMedium'),
+    ],
+    [
+      { innerFieldSize: 'large' },
+      (rootElement) => expect(rootElement).toHaveClass('rootSizeLarge'),
+    ],
+    ...labelPropTest,
+    [
+      {
+        label: 'label',
+        labelForId: 'label-for-id',
+      },
+      (rootElement) => expect(within(rootElement).getByText('label')).toHaveAttribute('for', 'label-for-id'),
+    ],
+    ...layoutPropTest,
+    ...requiredPropTest,
+    ...validationStatePropTest,
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
       <FormLayoutCustomField
-        disabled
-        fullWidth
-        label="Label"
-        labelForId="target-id"
-        id="my-custom-field"
-        innerFieldSize="small"
-        layout="horizontal"
-        required
-      >
-        <span>Custom text in form 1</span>
-        <span>Custom text in form 2</span>
-        <span>Custom text in form 3</span>
-      </FormLayoutCustomField>
+        {...testedProps}
+      />
     ));
 
-    expect(tree).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });

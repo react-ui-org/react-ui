@@ -1,11 +1,23 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {
+  render,
+  within,
+} from '@testing-library/react';
 import { CardFooter } from '../CardFooter';
 
 describe('rendering', () => {
-  it('renders correctly', () => {
-    const tree = shallow(<CardFooter><p>Card footer content</p></CardFooter>);
+  it.each([
+    [
+      { children: <div>content text</div> },
+      (rootElement) => expect(within(rootElement).getByText('content text')),
+    ],
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
+      <CardFooter
+        {...testedProps}
+      />
+    ));
 
-    expect(tree).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });

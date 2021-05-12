@@ -1,115 +1,118 @@
 import React from 'react';
-import {
-  shallow,
-  mount,
-} from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
+import {
+  render,
+  screen,
+  within,
+} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { helpTextPropTest } from '../../../../../../tests/propTests/helpTextPropTest';
+import { inFormLayoutPropTest } from '../../../../../../tests/propTests/inFormLayoutPropTest';
+import { isLabelVisible } from '../../../../../../tests/propTests/isLabelVisible';
+import { labelPropTest } from '../../../../../../tests/propTests/labelPropTest';
+import { layoutPropTest } from '../../../../../../tests/propTests/layoutPropTest';
+import { requiredPropTest } from '../../../../../../tests/propTests/requiredPropTest';
+import { validationStatePropTest } from '../../../../../../tests/propTests/validationStatePropTest';
+import { validationTextPropTest } from '../../../../../../tests/propTests/validationTextPropTest';
 import { Radio } from '../Radio';
 
+const mandatoryProps = {
+  label: 'label',
+  options: [
+    {
+      label: 'option 1',
+      value: 1,
+    },
+    {
+      disabled: true,
+      label: 'option 2',
+      value: 'option2',
+    },
+  ],
+};
+
 describe('rendering', () => {
-  it('renders correctly mandatory props only', () => {
-    const tree = shallow(<Radio
-      label="label"
-      options={[
-        {
-          label: 'choice 1',
-          value: 'ch1',
-        },
-        {
-          label: 'choice 2',
-          value: 'ch2',
-        },
-      ]}
-    />);
+  it.each([
+    [
+      { disabled: true },
+      (rootElement) => {
+        expect(rootElement).toHaveClass('isRootDisabled');
+        expect(within(rootElement).getByLabelText('option 1')).toBeDisabled();
+      },
+    ],
+    [
+      { disabled: false },
+      (rootElement) => {
+        expect(rootElement).not.toHaveClass('isRootDisabled');
+        expect(within(rootElement).getByLabelText('option 1')).not.toBeDisabled();
+      },
+    ],
+    ...helpTextPropTest,
+    [
+      {
+        helpText: 'help text',
+        id: 'id',
+        validationText: 'validation text',
+      },
+      (rootElement) => {
+        expect(rootElement).toHaveAttribute('id', 'id');
+        expect(within(rootElement).getByText('help text')).toHaveAttribute('id', 'id__helpText');
+        expect(within(rootElement).getByText('label')).toHaveAttribute('id', 'id__labelText');
+        expect(within(rootElement).getByText('validation text')).toHaveAttribute('id', 'id__validationText');
+        expect(within(rootElement).getByTestId('id__item__1'));
+        expect(within(rootElement).getByTestId('id__item__1__label'));
+        expect(within(rootElement).getByText('option 1')).toHaveAttribute('id', 'id__item__1__labelText');
+      },
+    ],
+    ...inFormLayoutPropTest,
+    ...isLabelVisible,
+    ...labelPropTest,
+    ...layoutPropTest,
+    [
+      { options: mandatoryProps.options },
+      (rootElement) => {
+        expect(within(rootElement).getByLabelText('option 1')).not.toHaveAttribute('checked');
+        expect(within(rootElement).getByLabelText('option 2')).not.toHaveAttribute('checked');
+        expect(within(rootElement).getByLabelText('option 2')).toBeDisabled();
+      },
+    ],
+    ...requiredPropTest,
+    ...validationStatePropTest,
+    ...validationTextPropTest,
+    [
+      { value: 'option2' },
+      (rootElement) => expect(within(rootElement).getByLabelText('option 2')).toHaveAttribute('checked'),
+    ],
+    [
+      {
+        changeHandler: () => {},
+        value: 1,
+      },
+      (rootElement) => expect(within(rootElement).getByLabelText('option 1')).toHaveAttribute('checked'),
+    ],
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
+      <Radio
+        {...mandatoryProps}
+        {...testedProps}
+      />
+    ));
 
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly only one option', () => {
-    const tree = shallow(<Radio
-      label="label"
-      options={[
-        {
-          label: 'choice 1',
-          value: 'ch1',
-        },
-      ]}
-    />);
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly only one option and hidden label', () => {
-    const tree = shallow(<Radio
-      isLabelVisible={false}
-      label="label"
-      options={[
-        {
-          label: 'choice 1',
-          value: 'ch1',
-        },
-      ]}
-    />);
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly with all props', () => {
-    const tree = shallow(<Radio
-      disabled
-      helpText="some help"
-      id="test"
-      inFormLayout
-      label="label"
-      layout="horizontal"
-      options={[
-        {
-          disabled: true,
-          label: 'choice 1',
-          value: 'ch1',
-        },
-        {
-          label: 'choice 2',
-          value: 'ch2',
-        },
-      ]}
-      required
-      validationState="warning"
-      validationText="some error"
-      value="ch1"
-    />);
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });
 
 describe('functionality', () => {
-  it('calls changeHandler() on changing selected option', () => {
+  it('calls clickHandler()', () => {
     const spy = sinon.spy();
-    const component = mount(<Radio
-      changeHandler={spy}
-      label="label"
-      options={[
-        {
-          label: 'choice 1',
-          value: 'ch1',
-        },
-        {
-          label: 'choice 2',
-          value: 'ch2',
-        },
-      ]}
-      value="ch2"
-    />);
+    render((
+      <Radio
+        {...mandatoryProps}
+        changeHandler={spy}
+      />
+    ));
 
-    component
-      .find('input')
-      .first()
-      .simulate('change', {
-        preventDefault: () => {},
-        target: { value: 'ch1' },
-      });
+    userEvent.click(screen.getByText('option 1'));
     expect(spy.calledOnce).toEqual(true);
   });
 });
