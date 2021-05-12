@@ -13,10 +13,7 @@ module.exports = {
     '<rootDir>/tests/setupJest.js',
   ],
   setupFilesAfterEnv: [
-    '<rootDir>/tests/setupEnzyme.js',
-  ],
-  snapshotSerializers: [
-    'enzyme-to-json/serializer',
+    '<rootDir>/tests/setupTestingLibrary.js',
   ],
   testEnvironment: 'jsdom',
   verbose: true,

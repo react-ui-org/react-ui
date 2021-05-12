@@ -1,69 +1,79 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {
+  render,
+  within,
+} from '@testing-library/react';
+import { idPropTest } from '../../../../../../tests/propTests/idPropTest';
 import { GridSpan } from '../GridSpan';
 
+const mandatoryProps = {
+  children: <div>content</div>, // not mandatory, but without it nothing renders
+};
+
+/* eslint-disable sort-keys */
+const responsiveBreakpoints = {
+  xs: 1,
+  sm: 2,
+  md: 3,
+  lg: 4,
+  xl: 5,
+  xxl: 6,
+  xxxl: 7,
+};
+/* eslint-enable sort-keys */
+
+const responsiveStyles = (infix) => ({
+  [`--rui-local-${infix}-xs`]: 1,
+  [`--rui-local-${infix}-sm`]: 2,
+  [`--rui-local-${infix}-md`]: 3,
+  [`--rui-local-${infix}-lg`]: 4,
+  [`--rui-local-${infix}-xl`]: 5,
+  [`--rui-local-${infix}-xxl`]: 6,
+  [`--rui-local-${infix}-xxxl`]: 7,
+});
+
 describe('rendering', () => {
-  it('renders correctly with no children', () => {
-    const tree = shallow((
-      <GridSpan />
-    ));
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with a single child', () => {
-    const tree = shallow((
-      <GridSpan>
-        <div>content</div>
-      </GridSpan>
-    ));
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with multiple children', () => {
-    const tree = shallow((
-      <GridSpan>
-        <div>content 1</div>
-        <div>content 2</div>
-        <div>content 3</div>
-      </GridSpan>
-    ));
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with simple props', () => {
-    const tree = shallow((
+  it.each([
+    [
+      { children: <div>content text</div> },
+      (rootElement) => expect(within(rootElement).getByText('content text')),
+    ],
+    [
+      { children: null },
+      (rootElement) => expect(rootElement).toBeNull(),
+    ],
+    [
+      { columns: responsiveBreakpoints },
+      (rootElement) => {
+        // `toHaveStyle()` does not work well with numeric object values
+        const styles = responsiveStyles('column-span');
+        Object.keys(styles).forEach((key) => expect(rootElement).toHaveStyle(`${key}: ${styles[key]}`));
+      },
+    ],
+    [
+      { columns: 14 },
+      (rootElement) => expect(rootElement).toHaveStyle('--rui-local-column-span-xs: 14'),
+    ],
+    ...idPropTest,
+    [
+      { rows: responsiveBreakpoints },
+      (rootElement) => {
+        // `toHaveStyle()` does not work well with numeric object values
+        const styles = responsiveStyles('row-span');
+        Object.keys(styles).forEach((key) => expect(rootElement).toHaveStyle(`${key}: ${styles[key]}`));
+      },
+    ],
+    [
+      { rows: 14 },
+      (rootElement) => expect(rootElement).toHaveStyle('--rui-local-row-span-xs: 14'),
+    ],
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
       <GridSpan
-        columns={2}
-        id="my-grid-span"
-        rows={3}
-      >
-        <div>content</div>
-      </GridSpan>
+        {...mandatoryProps}
+        {...testedProps}
+      />
     ));
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with complex props', () => {
-    const tree = shallow((
-      <GridSpan
-        columns={{
-          md: 1,
-          xs: 2,
-        }}
-        id="my-grid-span"
-        rows={{
-          md: 4,
-          xs: 3,
-        }}
-      >
-        <div>content</div>
-      </GridSpan>
-    ));
-
-    expect(tree).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });

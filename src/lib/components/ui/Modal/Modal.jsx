@@ -271,9 +271,10 @@ Modal.propTypes = {
    */
   closeHandler: PropTypes.func,
   /**
-   * ID of the root HTML element. It also serves as a prefix for the element holding the content of
-   * the modal and for the close buttons: `<ID>__content`, `<ID>__closeModalHeaderButton`,
-   * `<ID>__closeModalFooterButton`.
+   * ID of the root HTML element. It also serves as a base for nested elements:
+   * * `<ID>__content`
+   * * `<ID>__closeModalHeaderButton`
+   * * `<ID>__closeModalFooterButton`
    */
   id: PropTypes.string,
   /**

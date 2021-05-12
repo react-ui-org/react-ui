@@ -1,48 +1,48 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {
+  render,
+  within,
+} from '@testing-library/react';
 import { List } from '../List';
-import { ListItem } from '../ListItem';
+
+const mandatoryProps = {
+  children: <div>content</div>, // not mandatory, but without it nothing renders
+};
 
 describe('rendering', () => {
-  it('renders correctly with no children', () => {
-    const tree = shallow((
-      <List />
+  it.each([
+    [
+      { align: 'start' },
+      (rootElement) => expect(within(rootElement).getByRole('list')).toHaveClass('alignStart'),
+    ],
+    [
+      { align: 'end' },
+      (rootElement) => expect(within(rootElement).getByRole('list')).toHaveClass('alignEnd'),
+    ],
+    [
+      { autoWidth: true },
+      (rootElement) => expect(rootElement).toHaveClass('isAutoWidth'),
+    ],
+    [
+      { autoWidth: false },
+      (rootElement) => expect(rootElement).not.toHaveClass('isAutoWidth'),
+    ],
+    [
+      { children: <div>content text</div> },
+      (rootElement) => expect(within(rootElement).getByText('content text')),
+    ],
+    [
+      { children: null },
+      (rootElement) => expect(rootElement).toBeNull(),
+    ],
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
+      <List
+        {...mandatoryProps}
+        {...testedProps}
+      />
     ));
 
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with a single child', () => {
-    const tree = shallow((
-      <List>
-        <ListItem>content</ListItem>
-      </List>
-    ));
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with multiple children', () => {
-    const tree = shallow((
-      <List>
-        <ListItem>content 1</ListItem>
-        <ListItem>content 2</ListItem>
-        <ListItem>content 3</ListItem>
-      </List>
-    ));
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with multiple children and all props', () => {
-    const tree = shallow((
-      <List align="end" autoWidth>
-        <ListItem>content 1</ListItem>
-        <ListItem>content 2</ListItem>
-        <ListItem>content 3</ListItem>
-      </List>
-    ));
-
-    expect(tree).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });

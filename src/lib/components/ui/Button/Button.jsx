@@ -120,7 +120,7 @@ Button.propTypes = {
    */
   beforeLabel: PropTypes.node,
   /**
-   * If `true`, the button will span the full width of its parent.
+   * If `true`, the button will span the full width of its parent. Only available if `priority` != `link`.
    */
   block: PropTypes.bool,
   /**
@@ -136,7 +136,7 @@ Button.propTypes = {
    */
   disabled: PropTypes.bool,
   /**
-   * Element to be displayed in the top right corner.
+   * Element to be displayed in the top right corner. Only available if `priority` != `link`.
    */
   endCorner: PropTypes.node,
   /**
@@ -153,6 +153,9 @@ Button.propTypes = {
   grouped: PropTypes.bool,
   /**
    * ID of the root HTML element.
+   *
+   * Also serves as base for ids of nested elements:
+   * * `<ID>__labelText`
    */
   id: PropTypes.string,
   /**
@@ -160,12 +163,12 @@ Button.propTypes = {
    */
   label: PropTypes.string.isRequired,
   /**
-   * Defines when the button label should be visible.
+   * Defines when the button label should be visible. Only available if `priority` != `link`.
    */
   labelVisibility: PropTypes.oneOf(['all', 'desktop', 'none']),
   /**
    * Element to be displayed as a loading icon. When defined, it implies the button is in the
-   * loading state.
+   * loading state. Only available if `priority` != `link`.
    */
   loadingIcon: PropTypes.node,
   /**
@@ -173,11 +176,11 @@ Button.propTypes = {
    */
   priority: PropTypes.oneOf(['filled', 'outline', 'flat', 'link']),
   /**
-   * Size of the button.
+   * Size of the button. Only available if `priority` != `link`.
    */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   /**
-   * Element to be displayed in the top left corner.
+   * Element to be displayed in the top left corner. Only available if `priority` != `link`.
    */
   startCorner: PropTypes.node,
   /**

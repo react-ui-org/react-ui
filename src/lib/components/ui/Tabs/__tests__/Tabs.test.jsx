@@ -1,26 +1,34 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {
+  render,
+  within,
+} from '@testing-library/react';
 import { Tabs } from '../Tabs';
-import { TabsItem } from '../TabsItem';
 
 describe('rendering', () => {
-  it('renders correctly without children', () => {
-    const tree = shallow(
-      <Tabs />,
-    );
+  it.each([
+    [
+      { children: <div>content text</div> },
+      (rootElement) => expect(within(rootElement).getByText('content text')),
+    ],
+    [
+      { children: null },
+      (rootElement) => expect(rootElement).toBeInTheDocument(),
+    ],
+    [
+      { id: 'id' },
+      (rootElement) => {
+        expect(rootElement).toHaveAttribute('id', 'id');
+        expect(within(rootElement).getByTestId('id__list'));
+      },
+    ],
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
+      <Tabs
+        {...testedProps}
+      />
+    ));
 
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with children', () => {
-    const tree = shallow(
-      <Tabs id="my-tabs">
-        <TabsItem label="item 1" href="/item-1" />
-        <TabsItem label="item 2" href="/item-2" />
-        <TabsItem label="item 3" href="/item-3" />
-      </Tabs>,
-    );
-
-    expect(tree).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });

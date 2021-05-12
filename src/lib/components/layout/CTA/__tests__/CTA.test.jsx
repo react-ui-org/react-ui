@@ -1,42 +1,30 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {
+  render,
+  within,
+} from '@testing-library/react';
 import { CTA } from '../CTA';
-import { CTACenter } from '../CTACenter';
-import { CTAEnd } from '../CTAEnd';
-import { CTAStart } from '../CTAStart';
+import { alignPropTest } from '../../../../../../tests/propTests/alignPropTest';
+
+const mandatoryProps = {
+  children: <div>content text</div>,
+};
 
 describe('rendering', () => {
-  it('renders correctly with a single child', () => {
-    const tree = shallow((
-      <CTA>
-        <CTACenter>content</CTACenter>
-      </CTA>
+  it.each([
+    ...alignPropTest,
+    [
+      { children: <div>other content text</div> },
+      (rootElement) => expect(within(rootElement).getByText('other content text')),
+    ],
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
+      <CTA
+        {...mandatoryProps}
+        {...testedProps}
+      />
     ));
 
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with multiple children', () => {
-    const tree = shallow((
-      <CTA>
-        <CTAStart>content 1</CTAStart>
-        <CTACenter>content 2</CTACenter>
-        <CTAEnd>content 3</CTAEnd>
-      </CTA>
-    ));
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with all props', () => {
-    const tree = shallow((
-      <CTA align="middle">
-        <CTAStart>content 1</CTAStart>
-        <CTACenter>content 2</CTACenter>
-        <CTAEnd>content 3</CTAEnd>
-      </CTA>
-    ));
-
-    expect(tree).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });

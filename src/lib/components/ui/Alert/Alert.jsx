@@ -75,8 +75,11 @@ Alert.propTypes = {
    */
   icon: PropTypes.node,
   /**
-   * ID of the root HTML element. It also serves as a prefix for alert body and and close button
-   * elements: `<ID>__content` and `<ID>__close`.
+   * ID of the root HTML element.
+   *
+   * Also serves as base for ids of nested elements:
+   * * `<ID>__close`
+   * * `<ID>__content`
    */
   id: PropTypes.string,
   /**

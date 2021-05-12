@@ -1,27 +1,44 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
+import {
+  render,
+  within,
+} from '@testing-library/react';
+import { colorPropTest } from '../../../../../../tests/propTests/colorPropTest';
+import { idPropTest } from '../../../../../../tests/propTests/idPropTest';
 import { Badge } from '../Badge';
 
+const mandatoryProps = {
+  label: 'label',
+};
+
 describe('rendering', () => {
-  it('renders correctly with label', () => {
-    const tree = shallow(
-      <Badge label="label" />,
-    );
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly with all props', () => {
-    const tree = shallow(
+  it.each([
+    ...colorPropTest,
+    ...idPropTest,
+    [
+      { label: 'label text' },
+      (rootElement) => expect(within(rootElement).getByText('label text')),
+    ],
+    [
+      { label: 111 },
+      (rootElement) => expect(within(rootElement).getByText('111')),
+    ],
+    [
+      { priority: 'filled' },
+      (rootElement) => expect(rootElement).not.toHaveClass('rootPriorityOutline'),
+    ],
+    [
+      { priority: 'outline' },
+      (rootElement) => expect(rootElement).toHaveClass('rootPriorityOutline'),
+    ],
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
       <Badge
-        color="warning"
-        id="custom-id"
-        label={3}
-        priority="outline"
-      />,
-    );
+        {...mandatoryProps}
+        {...testedProps}
+      />
+    ));
 
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });

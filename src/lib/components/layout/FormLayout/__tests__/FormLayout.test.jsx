@@ -1,56 +1,146 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {
+  render,
+  within,
+} from '@testing-library/react';
+import { idPropTest } from '../../../../../../tests/propTests/idPropTest';
+import CheckboxField from '../../../ui/CheckboxField';
+import Radio from '../../../ui/Radio';
+import SelectField from '../../../ui/SelectField';
+import TextArea from '../../../ui/TextArea';
 import TextField from '../../../ui/TextField';
+import Toggle from '../../../ui/Toggle';
 import { FormLayout } from '../FormLayout';
+import { FormLayoutCustomField } from '../FormLayoutCustomField';
+
+const mandatoryProps = {
+  children: <FormLayoutCustomField id="nested-id" />, // not mandatory, but without it nothing renders
+};
 
 describe('rendering', () => {
-  it('renders correctly with a single child', () => {
-    const tree = shallow((
-      <FormLayout>
-        <TextField id="test-id" label="Text field" />
-      </FormLayout>
+  it('renders with no children', () => {
+    const dom = render((
+      <FormLayout />
     ));
 
-    expect(tree).toMatchSnapshot();
+    expect(dom.container.firstChild).toBeNull();
   });
 
-  it('renders correctly with multiple children', () => {
-    const tree = shallow((
-      <FormLayout>
-        <TextField id="test-id-1" label="Text field 1" />
-        <TextField id="test-id-2" label="Text field 2" />
-        <TextField id="test-id-3" label="Text field 3" />
-      </FormLayout>
-    ));
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with auto label width', () => {
-    const tree = shallow((
+  it.each([
+    [
+      { autoWidth: true },
+      (rootElement) => expect(rootElement).toHaveClass('isRootAutoWidth'),
+    ],
+    [
+      { autoWidth: false },
+      (rootElement) => expect(rootElement).not.toHaveClass('isRootAutoWidth'),
+    ],
+    [
+      { children: null },
+      (rootElement) => expect(rootElement).toBeNull(),
+    ],
+    [
+      { children: <FormLayoutCustomField>other content text</FormLayoutCustomField> },
+      (rootElement) => expect(within(rootElement).getByText('other content text')),
+    ],
+    [
+      { children: <CheckboxField label="label" /> },
+      (rootElement) => expect(within(rootElement).getByRole('checkbox')),
+    ],
+    [
+      {
+        children: (
+          <Radio
+            label="label"
+            options={[{
+              label: 'label',
+              value: 'value',
+            }]}
+          />
+        ),
+      },
+      (rootElement) => expect(within(rootElement).getByRole('radio')),
+    ],
+    [
+      {
+        children: (
+          <SelectField
+            label="label"
+            options={[{
+              label: 'label',
+              value: 'value',
+            }]}
+          />
+        ),
+      },
+      (rootElement) => expect(within(rootElement).getByRole('combobox')),
+    ],
+    [
+      { children: <TextArea label="label" /> },
+      (rootElement) => expect(within(rootElement).getByRole('textbox')),
+    ],
+    [
+      { children: <TextField label="label" /> },
+      (rootElement) => expect(within(rootElement).getByRole('textbox')),
+    ],
+    [
+      { children: <Toggle label="label" /> },
+      (rootElement) => expect(within(rootElement).getByRole('checkbox')),
+    ],
+    [
+      { fieldLayout: 'horizontal' },
+      (rootElement) => {
+        expect(rootElement).toHaveClass('rootFieldLayoutHorizontal');
+        expect(within(rootElement).getByTestId('nested-id')).toHaveClass('rootLayoutHorizontal');
+      },
+    ],
+    [
+      { fieldLayout: 'vertical' },
+      (rootElement) => {
+        expect(rootElement).toHaveClass('rootFieldLayoutVertical');
+        expect(within(rootElement).getByTestId('nested-id')).toHaveClass('rootLayoutVertical');
+      },
+    ],
+    ...idPropTest,
+    [
+      {
+        fieldLayout: 'horizontal',
+        labelWidth: 'auto',
+      },
+      (rootElement) => expect(rootElement).toHaveClass('hasRootLabelWidthAuto'),
+    ],
+    [
+      {
+        fieldLayout: 'horizontal',
+        labelWidth: 'default',
+      },
+      (rootElement) => expect(rootElement).toHaveClass('hasRootLabelWidthDefault'),
+    ],
+    [
+      {
+        fieldLayout: 'horizontal',
+        labelWidth: 'limited',
+      },
+      (rootElement) => expect(rootElement).toHaveClass('hasRootLabelWidthLimited'),
+    ],
+    [
+      {
+        fieldLayout: 'horizontal',
+        labelWidth: '300px',
+      },
+      (rootElement) => {
+        expect(rootElement).toHaveStyle({ '--rui-custom-label-width': '300px' });
+        expect(rootElement).toHaveClass('hasRootLabelWidthCustom');
+      },
+    ],
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
       <FormLayout
-        fieldLayout="horizontal"
-        id="test-id"
-        labelWidth="auto"
-      >
-        <TextField id="test-id" label="Text field" />
-      </FormLayout>
+        {...mandatoryProps}
+        {...testedProps}
+      />
     ));
 
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with custom label width', () => {
-    const tree = shallow((
-      <FormLayout
-        fieldLayout="horizontal"
-        id="test-id"
-        labelWidth="300px"
-      >
-        <TextField id="test-id" label="Text field" />
-      </FormLayout>
-    ));
-
-    expect(tree).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });

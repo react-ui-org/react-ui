@@ -1,18 +1,20 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import { Center } from '../Center';
 
 describe('rendering', () => {
-  it('renders correctly', () => {
-    const tree = shallow(<Center />);
+  it.each([
+    [
+      { children: <div>content text</div> },
+      (rootElement) => expect(rootElement).not.toHaveClass('rootPriorityOutline'),
+    ],
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
+      <Center
+        {...testedProps}
+      />
+    ));
 
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly with children', () => {
-    const tree = shallow(<Center><div>test</div></Center>);
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });

@@ -1,21 +1,31 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {
+  render,
+  within,
+} from '@testing-library/react';
+import { idPropTest } from '../../../../../../tests/propTests/idPropTest';
+import { raisedPropTest } from '../../../../../../tests/propTests/raisedPropTest';
 import { Paper } from '../Paper';
 
 describe('rendering', () => {
-  it('renders correctly', () => {
-    const tree = shallow(<Paper><p>Paper content</p></Paper>);
+  it.each([
+    [
+      { children: <div>content text</div> },
+      (rootElement) => expect(within(rootElement).getByText('content text')),
+    ],
+    [
+      { children: null },
+      (rootElement) => expect(rootElement).toBeInTheDocument(),
+    ],
+    ...idPropTest,
+    ...raisedPropTest,
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
+      <Paper
+        {...testedProps}
+      />
+    ));
 
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with all props', () => {
-    const tree = shallow(
-      <Paper id="custom-id" raised>
-        <p>Paper content</p>
-      </Paper>,
-    );
-
-    expect(tree).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });

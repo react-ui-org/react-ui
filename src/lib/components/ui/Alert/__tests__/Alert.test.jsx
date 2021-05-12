@@ -1,52 +1,72 @@
 import React from 'react';
 import sinon from 'sinon';
-import { mount } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
+import {
+  render,
+  screen,
+  within,
+} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { colorPropTest } from '../../../../../../tests/propTests/colorPropTest';
 import defaultTranslations from '../../../../translations/en';
 import { Alert } from '../Alert';
 
+const mandatoryProps = {
+  children: 'content',
+  translations: defaultTranslations.Alert,
+};
+
 describe('rendering', () => {
-  it('renders correctly', () => {
-    const tree = mount(
-      <Alert translations={defaultTranslations.Alert}>
-        <div>Children</div>
-      </Alert>,
-    );
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly with all props', () => {
-    const tree = mount(
+  it.each([
+    [
+      { children: <div>content text</div> },
+      (rootElement) => expect(within(rootElement).getByText('content text')),
+    ],
+    ...colorPropTest,
+    [
+      { icon: (<div>icon</div>) },
+      (rootElement) => expect(within(rootElement).getByText('icon')),
+    ],
+    [
+      {
+        closeHandler: () => {},
+        id: 'id',
+      },
+      (rootElement) => {
+        expect(rootElement).toHaveAttribute('id', 'id');
+        expect(within(rootElement).getByText('content')).toHaveAttribute('id', 'id__content');
+        expect(within(rootElement).getByTitle('Close')).toHaveAttribute('id', 'id__close');
+      },
+    ],
+    [
+      {
+        closeHandler: () => {},
+        translations: { close: 'Custom Close' },
+      },
+      (rootElement) => expect(within(rootElement).getByTitle('Custom Close')),
+    ],
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
       <Alert
-        closeHandler={() => {}}
-        color="success"
-        icon={<span className="icon" />}
-        id="custom-id"
-        translations={defaultTranslations.Alert}
-      >
-        <div>Children</div>
-      </Alert>,
-    );
+        {...mandatoryProps}
+        {...testedProps}
+      />
+    ));
 
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });
 
 describe('functionality', () => {
   it('calls closeHandler() on Close button click', () => {
     const spy = sinon.spy();
-    const component = mount((
+    render((
       <Alert
+        {...mandatoryProps}
         closeHandler={spy}
-        color="success"
-        translations={defaultTranslations.Alert}
-      >
-        <div>Children</div>
-      </Alert>
+      />
     ));
 
-    component.find('button').at(0).simulate('click');
+    userEvent.click(screen.getByTitle('Close'));
     expect(spy.calledOnce).toEqual(true);
   });
 });

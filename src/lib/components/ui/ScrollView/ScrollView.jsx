@@ -350,8 +350,10 @@ ScrollView.propTypes = {
    */
   direction: PropTypes.oneOf(['horizontal', 'vertical']),
   /**
-   * ID of the root HTML element. It also serves as a prefix for important inner elements:
-   * `<ID>__content`, `<ID>__arrowPrevButton`, and `<ID>__arrowNextButton`.
+   * ID of the root HTML element. It also serves as base for nested elements:
+   * * `<ID>__content`
+   * * `<ID>__arrowPrevButton`
+   * * `<ID>__arrowNextButton`
    */
   id: PropTypes.string,
   /**

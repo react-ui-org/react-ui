@@ -1,54 +1,99 @@
 import React from 'react';
-import {
-  shallow,
-  mount,
-} from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
+import {
+  render,
+  screen,
+  within,
+} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { disabledPropTest } from '../../../../../../tests/propTests/disabledPropTest';
+import { forwardedRefPropTest } from '../../../../../../tests/propTests/forwardedRefPropTest';
+import { helpTextPropTest } from '../../../../../../tests/propTests/helpTextPropTest';
+import { inFormLayoutPropTest } from '../../../../../../tests/propTests/inFormLayoutPropTest';
+import { isLabelVisible } from '../../../../../../tests/propTests/isLabelVisible';
+import { labelPropTest } from '../../../../../../tests/propTests/labelPropTest';
+import { layoutPropTest } from '../../../../../../tests/propTests/layoutPropTest';
+import { requiredPropTest } from '../../../../../../tests/propTests/requiredPropTest';
+import { validationStatePropTest } from '../../../../../../tests/propTests/validationStatePropTest';
+import { validationTextPropTest } from '../../../../../../tests/propTests/validationTextPropTest';
 import { CheckboxField } from '../CheckboxField';
 
+const mandatoryProps = {
+  label: 'label',
+};
+
 describe('rendering', () => {
-  it('renders correctly mandatory props only', () => {
-    const tree = shallow(<CheckboxField label="label" />);
+  it.each([
+    [
+      {
+        changeHandler: () => {},
+        checked: true,
+      },
+      (rootElement) => expect(within(rootElement).getByLabelText('label')).toBeChecked(),
+    ],
+    [
+      {
+        changeHandler: () => {},
+        checked: false,
+      },
+      (rootElement) => expect(within(rootElement).getByLabelText('label')).not.toBeChecked(),
+    ],
+    ...disabledPropTest,
+    ...forwardedRefPropTest(React.createRef()),
+    ...helpTextPropTest,
+    [
+      {
+        helpText: 'help text',
+        id: 'id',
+        validationText: 'validation text',
+      },
+      (rootElement) => {
+        expect(rootElement).toHaveAttribute('id', 'id__label');
+        expect(within(rootElement).getByTestId('id'));
+        expect(within(rootElement).getByText('label')).toHaveAttribute('id', 'id__labelText');
+        expect(within(rootElement).getByText('help text')).toHaveAttribute('id', 'id__helpText');
+        expect(within(rootElement).getByText('validation text')).toHaveAttribute('id', 'id__validationText');
+      },
+    ],
+    ...inFormLayoutPropTest,
+    ...isLabelVisible,
+    ...labelPropTest,
+    ...layoutPropTest,
+    ...requiredPropTest,
+    ...validationStatePropTest,
+    ...validationTextPropTest,
+    [
+      { value: 'value' },
+      (rootElement) => expect(within(rootElement).getByLabelText('label')).toHaveAttribute('value', 'value'),
+    ],
+    [
+      { value: 1 },
+      (rootElement) => expect(within(rootElement).getByLabelText('label')).toHaveAttribute('value', '1'),
+    ],
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
+      <CheckboxField
+        {...mandatoryProps}
+        {...testedProps}
+      />
+    ));
 
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly with all props', () => {
-    const tree = shallow(<CheckboxField
-      checked
-      disabled
-      helpText="some help"
-      id="test"
-      inFormLayout
-      isLabelVisible
-      label="label"
-      labelPosition="after"
-      layout="horizontal"
-      required
-      value="value"
-      validationState="warning"
-      validationText="some error"
-    />);
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });
 
 describe('functionality', () => {
-  it('calls onChange() when checked', () => {
+  it('calls clickHandler()', () => {
     const spy = sinon.spy();
-    const component = mount(<CheckboxField
-      changeHandler={spy}
-      label="label"
-    />);
+    render((
+      <CheckboxField
+        {...mandatoryProps}
+        changeHandler={spy}
+      />
+    ));
 
-    component
-      .find('input')
-      .simulate('change', {
-        preventDefault: () => {},
-        target: { value: 'on' },
-      });
+    userEvent.click(screen.getByLabelText('label'));
     expect(spy.calledOnce).toEqual(true);
   });
 });
+

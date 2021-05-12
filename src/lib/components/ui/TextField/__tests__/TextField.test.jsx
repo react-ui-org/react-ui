@@ -1,105 +1,125 @@
 import React from 'react';
-import {
-  shallow,
-  mount,
-} from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
+import {
+  render,
+  screen,
+  within,
+} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { TextField } from '../TextField';
+import { disabledPropTest } from '../../../../../../tests/propTests/disabledPropTest';
+import { forwardedRefPropTest } from '../../../../../../tests/propTests/forwardedRefPropTest';
+import { fullWidthPropTest } from '../../../../../../tests/propTests/fullWidthPropTest';
+import { helpTextPropTest } from '../../../../../../tests/propTests/helpTextPropTest';
+import { inFormLayoutPropTest } from '../../../../../../tests/propTests/inFormLayoutPropTest';
+import { isLabelVisible } from '../../../../../../tests/propTests/isLabelVisible';
+import { labelPropTest } from '../../../../../../tests/propTests/labelPropTest';
+import { layoutPropTest } from '../../../../../../tests/propTests/layoutPropTest';
+import { requiredPropTest } from '../../../../../../tests/propTests/requiredPropTest';
+import { sizePropTest } from '../../../../../../tests/propTests/sizePropTest';
+import { validationStatePropTest } from '../../../../../../tests/propTests/validationStatePropTest';
+import { validationTextPropTest } from '../../../../../../tests/propTests/validationTextPropTest';
+import { variantPropTest } from '../../../../../../tests/propTests/variantPropTest';
+
+const mandatoryProps = {
+  label: 'label',
+};
 
 describe('rendering', () => {
-  it('renders correctly mandatory props only', () => {
-    const tree = shallow(<TextField label="label" />);
+  it.each([
+    ...disabledPropTest,
+    ...forwardedRefPropTest(React.createRef()),
+    ...fullWidthPropTest,
+    ...helpTextPropTest,
+    [
+      {
+        helpText: 'help text',
+        id: 'id',
+        validationText: 'validation text',
+      },
+      (rootElement) => {
+        expect(rootElement).toHaveAttribute('id', 'id__label');
+        expect(within(rootElement).getByTestId('id'));
+        expect(within(rootElement).getByText('label')).toHaveAttribute('id', 'id__labelText');
+        expect(within(rootElement).getByText('help text')).toHaveAttribute('id', 'id__helpText');
+        expect(within(rootElement).getByText('validation text')).toHaveAttribute('id', 'id__validationText');
+      },
+    ],
+    ...inFormLayoutPropTest,
+    [
+      { inputSize: 3 },
+      (rootElement) => expect(within(rootElement).getByRole('textbox')).toHaveAttribute('size', '3'),
+    ],
+    ...isLabelVisible,
+    ...labelPropTest,
+    ...layoutPropTest,
+    [
+      { placeholder: 'placeholder text' },
+      (rootElement) => expect(within(rootElement).getByPlaceholderText('placeholder text')),
+    ],
+    ...requiredPropTest,
+    ...sizePropTest,
+    [
+      { type: 'email' },
+      (rootElement) => expect(within(rootElement).getByRole('textbox')).toHaveAttribute('type', 'email'),
+    ],
+    [
+      { type: 'number' },
+      (rootElement) => expect(within(rootElement).getByLabelText('label')).toHaveAttribute('type', 'number'),
+    ],
+    [
+      { type: 'password' },
+      (rootElement) => expect(within(rootElement).getByLabelText('label')).toHaveAttribute('type', 'password'),
+    ],
+    [
+      { type: 'tel' },
+      (rootElement) => expect(within(rootElement).getByRole('textbox')).toHaveAttribute('type', 'tel'),
+    ],
+    [
+      { type: 'text' },
+      (rootElement) => expect(within(rootElement).getByRole('textbox')).toHaveAttribute('type', 'text'),
+    ],
+    ...validationStatePropTest,
+    ...validationTextPropTest,
+    [
+      {
+        changeHandler: () => {},
+        value: 'content text',
+      },
+      (rootElement) => expect(within(rootElement).getByRole('textbox')).toHaveDisplayValue('content text'),
+    ],
+    [
+      {
+        changeHandler: () => {},
+        value: 111,
+      },
+      (rootElement) => expect(within(rootElement).getByRole('textbox')).toHaveDisplayValue('111'),
+    ],
+    ...variantPropTest,
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
+      <TextField
+        {...mandatoryProps}
+        {...testedProps}
+      />
+    ));
 
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly with hidden label', () => {
-    const tree = shallow(<TextField
-      isLabelVisible={false}
-      label="With hidden label"
-    />);
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly with small input', () => {
-    const tree = shallow(<TextField
-      inputSize={5}
-      label="Small input"
-    />);
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly the number input type', () => {
-    const tree = shallow(<TextField
-      label="Number input type"
-      type="number"
-    />);
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly the number input type with small input', () => {
-    const tree = shallow(<TextField
-      label="Number input type"
-      inputSize={1}
-      type="number"
-    />);
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly with custom props', () => {
-    const tree = shallow(<TextField
-      autoCapitalize="off"
-      autoComplete="off"
-      label="With custom props"
-    />);
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly with all props', () => {
-    const tree = shallow(<TextField
-      disabled
-      fullWidth
-      helpText="some help"
-      id="test"
-      inFormLayout
-      inputSize={20}
-      isLabelVisible={false}
-      label="All props"
-      layout="horizontal"
-      placeholder="placeholder"
-      required
-      size="large"
-      type="email"
-      validationState="invalid"
-      validationText="some error"
-      value="value"
-      variant="filled"
-    />);
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });
 
 describe('functionality', () => {
-  it('calls changeHandler()', () => {
+  it('calls changeHandler() on changing selected option', () => {
     const spy = sinon.spy();
-    const component = mount(<TextField
-      changeHandler={spy}
-      label="label"
-    />);
+    render((
+      <TextField
+        {...mandatoryProps}
+        changeHandler={spy}
+        value="content-value"
+      />
+    ));
 
-    component
-      .find('input')
-      .simulate('change', {
-        preventDefault: () => {},
-        target: { value: 'test' },
-      });
-    expect(spy.calledOnce).toEqual(true);
+    userEvent.type(screen.getByRole('textbox'), 'content-value');
+    expect(spy.callCount).toEqual(13); // once per typed character
   });
 });

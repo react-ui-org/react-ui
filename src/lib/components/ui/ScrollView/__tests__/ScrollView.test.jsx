@@ -1,107 +1,129 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
-import sinon from 'sinon';
-import * as elementPositionService from '../../../../services/elementPositionService';
-import defaultTranslations from '../../../../translations/en';
+import {
+  render,
+  within,
+} from '@testing-library/react';
 import { ScrollView } from '../ScrollView';
 
+const mandatoryProps = {
+  children: <div>content text</div>,
+  translations: {
+    next: 'Next',
+    previous: 'Previous',
+  },
+};
+
 describe('rendering', () => {
-  const mockedPositionDifference = {
-    bottom: 0,
-    left: 0,
-    right: 0,
-    top: 0,
-  };
-  const stub = sinon
-    .stub(elementPositionService, 'getElementsPositionDifference')
-    .returns(mockedPositionDifference);
-
-  it('renders correctly with a single child', () => {
-    const tree = mount((
-      <ScrollView translations={defaultTranslations.ScrollView}>
-        <span>content</span>
-      </ScrollView>
-    ));
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly with multiple children', () => {
-    const tree = mount((
-      <ScrollView translations={defaultTranslations.ScrollView}>
-        <span>content 1</span>
-        <span>content 2</span>
-        <span>content 3</span>
-      </ScrollView>
-    ));
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly with scrollbar disabled', () => {
-    const tree = mount((
+  // The API of this component is not clean and is hard to test.
+  // Some tests are omitted as there are plans to change this API anyway
+  it.each([
+    [
+      { arrows: true },
+      (rootElement) => {
+        expect(within(rootElement).getByTitle('Next'));
+        expect(within(rootElement).getByTitle('Previous'));
+      },
+    ],
+    [
+      { arrows: false },
+      (rootElement) => {
+        expect(within(rootElement).queryByTitle('Next')).not.toBeInTheDocument();
+        expect(within(rootElement).queryByTitle('Previous')).not.toBeInTheDocument();
+      },
+    ],
+    [
+      { arrowsColor: 'some-color' },
+      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-arrow-color': 'some-color' }),
+    ],
+    // `arrowsScrollStep` untested
+    // `autoScroll` untested
+    [
+      { children: <div>content text</div> },
+      (rootElement) => expect(within(rootElement).getByText('content text')),
+    ],
+    [
+      {
+        customEndShadowStyle: {
+          background: 'style',
+          boxShadow: 'style',
+        },
+      },
+      (rootElement) => expect(rootElement).toHaveStyle({
+        '--rui-local-end-shadow-background': 'style',
+        '--rui-local-end-shadow-box-shadow': 'style',
+      }),
+    ],
+    [
+      {
+        arrows: true,
+        customNextArrow: <span>arrow</span>,
+      },
+      (rootElement) => expect(within(rootElement).getByText('arrow')),
+    ],
+    [
+      {
+        arrows: true,
+        customPrevArrow: <span>arrow</span>,
+      },
+      (rootElement) => expect(within(rootElement).getByText('arrow')),
+    ],
+    [
+      {
+        customStartShadowStyle: {
+          background: 'style',
+          boxShadow: 'style',
+        },
+      },
+      (rootElement) => expect(rootElement).toHaveStyle({
+        '--rui-local-start-shadow-background': 'style',
+        '--rui-local-start-shadow-box-shadow': 'style',
+      }),
+    ],
+    // `debounce` untested
+    // `direction` untested
+    [
+      {
+        arrows: true,
+        id: 'id',
+      },
+      (rootElement) => {
+        expect(rootElement).toHaveAttribute('id', 'id');
+        expect(within(rootElement).getByTestId('id__content'));
+        expect(within(rootElement).getByTitle('Next')).toHaveAttribute('id', 'id__arrowNextButton');
+        expect(within(rootElement).getByTitle('Previous')).toHaveAttribute('id', 'id__arrowPrevButton');
+      },
+    ],
+    [
+      { scrollbar: true },
+      (rootElement) => expect(rootElement).not.toHaveClass('hasRootScrollbarDisabled'),
+    ],
+    [
+      { scrollbar: false },
+      (rootElement) => expect(rootElement).toHaveClass('hasRootScrollbarDisabled'),
+    ],
+    // `shadowColor` untested
+    // `shadowSize` untested
+    [
+      {
+        arrows: true,
+        translations: {
+          next: 'Custom next',
+          previous: 'Custom previous',
+        },
+      },
+      (rootElement) => {
+        expect(within(rootElement).getByTitle('Custom next'));
+        expect(within(rootElement).getByTitle('Custom previous'));
+      },
+    ],
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
       <ScrollView
-        scrollbar={false}
-        translations={defaultTranslations.ScrollView}
-      >
-        <span>content</span>
-      </ScrollView>
+        {...mandatoryProps}
+        {...testedProps}
+      />
     ));
 
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
-
-  it('renders correctly with arrows', () => {
-    const tree = mount((
-      <ScrollView
-        arrows
-        arrowsColor="white"
-        arrowsScrollStep={200}
-        translations={defaultTranslations.ScrollView}
-      >
-        <span>content</span>
-      </ScrollView>
-    ));
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly with all props', () => {
-    const tree = mount((
-      <ScrollView
-        arrows
-        arrowsColor="blue"
-        arrowsScrollStep={300}
-        customEndShadow={{
-          boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
-        }}
-        customNextArrow={<span>→</span>}
-        customPrevArrow={<span>←</span>}
-        customStartShadow={{
-          background: 'none',
-        }}
-        debounce={100}
-        direction="horizontal"
-        id="my-scrollview"
-        scrollbar={false}
-        shadowColor={{
-          alpha: 0.5,
-          blue: 122,
-          green: 122,
-          red: 122,
-        }}
-        shadowSize="100px"
-        translations={defaultTranslations.ScrollView}
-      >
-        <span>content 1</span>
-        <span>content 2</span>
-        <span>content 3</span>
-      </ScrollView>
-    ));
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  stub.restore();
 });

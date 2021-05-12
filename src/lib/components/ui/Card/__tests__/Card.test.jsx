@@ -1,45 +1,65 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {
+  render,
+  within,
+} from '@testing-library/react';
+import { colorPropTest } from '../../../../../../tests/propTests/colorPropTest';
+import { idPropTest } from '../../../../../../tests/propTests/idPropTest';
+import { raisedPropTest } from '../../../../../../tests/propTests/raisedPropTest';
+import ScrollView from '../../ScrollView';
 import { Card } from '../Card';
+import { CardBody } from '../CardBody';
+import { CardFooter } from '../CardFooter';
+
+const mandatoryProps = {
+  children: <CardBody>card body content</CardBody>,
+};
 
 describe('rendering', () => {
-  it('renders correctly', () => {
-    const tree = shallow(<Card><p>Card content</p></Card>);
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly in danger color', () => {
-    const tree = shallow(<Card color="danger"><p>Card content</p></Card>);
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly disabled', () => {
-    const tree = shallow(<Card disabled><p>Card content</p></Card>);
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly raised', () => {
-    const tree = shallow(<Card raised><p>Card content</p></Card>);
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with all props', () => {
-    const tree = shallow(
+  it.each([
+    [
+      {
+        children: [
+          <CardBody key={1}>card body content</CardBody>,
+          <CardFooter key={2}>card footer content</CardFooter>,
+        ],
+      },
+      (rootElement) => {
+        expect(within(rootElement).getByText('card body content'));
+        expect(within(rootElement).getByText('card footer content'));
+      },
+    ],
+    [
+      { children: <ScrollView>scroll view content</ScrollView> },
+      (rootElement) => expect(within(rootElement).getByText('scroll view content')),
+    ],
+    ...colorPropTest,
+    [
+      { dense: true },
+      (rootElement) => expect(rootElement).toHaveClass('rootDense'),
+    ],
+    [
+      { dense: false },
+      (rootElement) => expect(rootElement).not.toHaveClass('rootDense'),
+    ],
+    [
+      { disabled: true },
+      (rootElement) => expect(rootElement).toHaveClass('isDisabled'),
+    ],
+    [
+      { disabled: false },
+      (rootElement) => expect(rootElement).not.toHaveClass('isDisabled'),
+    ],
+    ...idPropTest,
+    ...raisedPropTest,
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
       <Card
-        color="warning"
-        dense
-        disabled
-        id="custom-id"
-        raised
-      >
-        <p>Card content</p>
-      </Card>,
-    );
+        {...mandatoryProps}
+        {...testedProps}
+      />
+    ));
 
-    expect(tree).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });
