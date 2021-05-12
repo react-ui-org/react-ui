@@ -254,12 +254,12 @@ component.
 <Playground>
   {() => {
     const [modalOpen, setModalOpen] = React.useState(false);
-    const [modalScrollMode, setModalScrollMode] = React.useState('body');
+    const [modalScrollView, setModalScrollView] = React.useState(true);
     return (
       <>
         <Button
           clickHandler={() => {
-            setModalScrollMode('body');
+            setModalScrollView(true);
             setModalOpen(true);
           }}
           label="Launch modal with scrolling body"
@@ -267,7 +267,7 @@ component.
         />
         <Button
           clickHandler={() => {
-            setModalScrollMode('modal');
+            setModalScrollView(false);
             setModalOpen(true);
           }}
           label="Launch scrolling modal"
@@ -283,7 +283,7 @@ component.
               }]}
               autoFocus={false}
               closeHandler={() => setModalOpen(false)}
-              scrollMode={modalScrollMode}
+              scrollView={modalScrollView ? undefined : null}
               size="small"
             >
               <p>
