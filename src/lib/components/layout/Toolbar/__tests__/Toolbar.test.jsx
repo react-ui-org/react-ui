@@ -1,63 +1,50 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {
+  render,
+  within,
+} from '@testing-library/react';
+import { alignPropTest } from '../../../../../../tests/propTests/alignPropTest';
+import { densePropTest } from '../../../../../../tests/propTests/densePropTest';
+import { noWrapPropTest } from '../../../../../../tests/propTests/noWrapPropTest';
 import { Toolbar } from '../Toolbar';
-import { ToolbarGroup } from '../ToolbarGroup';
-import { ToolbarItem } from '../ToolbarItem';
+
+const defaultProps = {
+  children: <div>other content text</div>,
+};
 
 describe('rendering', () => {
-  it('renders correctly with a single child', () => {
-    const tree = shallow((
-      <Toolbar>
-        <ToolbarItem>item</ToolbarItem>
-      </Toolbar>
+  it.each([
+    ...alignPropTest,
+    [
+      { children: <div>other content text</div> },
+      (rootElement) => expect(within(rootElement).getByText('other content text')),
+    ],
+    ...densePropTest,
+    [
+      { justify: 'start' },
+      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToStart'),
+    ],
+    [
+      { justify: 'center' },
+      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToCenter'),
+    ],
+    [
+      { justify: 'end' },
+      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToEnd'),
+    ],
+    [
+      { justify: 'space-between' },
+      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToSpaceBetween'),
+    ],
+    ...noWrapPropTest,
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
+      <Toolbar
+        {...defaultProps}
+        {...testedProps}
+      />
     ));
 
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with multiple children', () => {
-    const tree = shallow((
-      <Toolbar>
-        <ToolbarItem>item 1</ToolbarItem>
-        <ToolbarItem>item 2</ToolbarItem>
-        <ToolbarItem>item 3</ToolbarItem>
-      </Toolbar>
-    ));
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with multiple children and groups', () => {
-    const tree = shallow((
-      <Toolbar>
-        <ToolbarItem>item 1</ToolbarItem>
-        <ToolbarItem>item 2</ToolbarItem>
-        <ToolbarItem>item 3</ToolbarItem>
-        <ToolbarGroup>
-          <ToolbarItem>group item 1</ToolbarItem>
-          <ToolbarItem>group item 2</ToolbarItem>
-          <ToolbarItem>group item 3</ToolbarItem>
-        </ToolbarGroup>
-      </Toolbar>
-    ));
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with group and all props', () => {
-    const tree = shallow((
-      <Toolbar align="middle" justify="space-between" dense nowrap>
-        <ToolbarItem>item 1</ToolbarItem>
-        <ToolbarItem>item 2</ToolbarItem>
-        <ToolbarItem>item 3</ToolbarItem>
-        <ToolbarGroup>
-          <ToolbarItem>group item 1</ToolbarItem>
-          <ToolbarItem>group item 2</ToolbarItem>
-          <ToolbarItem>group item 3</ToolbarItem>
-        </ToolbarGroup>
-      </Toolbar>
-    ));
-
-    expect(tree).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });

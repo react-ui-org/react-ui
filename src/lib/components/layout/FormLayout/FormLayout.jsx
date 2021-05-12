@@ -88,10 +88,16 @@ FormLayout.propTypes = {
    */
   autoWidth: PropTypes.bool,
   /**
-   * Supported form field components: CheckboxField, Radio, SelectField, TextArea, TextField,
-   * Toggle, and FormLayoutCustomField.
+   * Supported form field components:
+   * * `CheckboxField`
+   * * `FormLayoutCustomField`
+   * * `Radio`
+   * * `SelectField`
+   * * `TextArea`
+   * * `TextField`
+   * * `Toggle`
    */
-  children: PropTypes.node,
+  children: PropTypes.element,
   /**
    * Layout that is forced on children form fields.
    */

@@ -17,9 +17,14 @@ export const Media = (props) => {
 
 Media.propTypes = {
   /**
-   * Slot for MediaBody and MediaObject components.
+   * Nested elements. Supported types are:
+   * * `MediaBody`
+   * * `MediaObject`
    */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+  ]).isRequired,
 };
 
 export const MediaWithContext = withProviderContext(Media, 'Media');

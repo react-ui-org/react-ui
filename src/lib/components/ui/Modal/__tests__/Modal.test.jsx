@@ -1,229 +1,179 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon';
-import defaultTranslations from '../../../../translations/en';
-import Modal from '..';
+import {
+  render,
+  screen,
+  within,
+} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { Modal } from '../Modal';
+
+const mandatoryProps = {
+  children: <div>content text</div>,
+  title: 'title text',
+  translations: { close: 'Close' },
+};
 
 describe('rendering', () => {
-  it('renders correctly with mandatory props only', () => {
-    const tree = mount((
+  it('renders with "portalId" props', () => {
+    document.body.innerHTML = '<div id="portal-id" />';
+    render((
       <Modal
-        title="Modal title"
-        translations={defaultTranslations.Modal}
+        {...mandatoryProps}
+        id="id"
+        portalId="portal-id"
       >
-        Modal content
+        content
       </Modal>
     ));
 
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    expect(screen.getByTestId('portal-id').firstChild).toHaveAttribute('id', 'id');
+    document.body.innerHTML = '';
   });
 
-  it('renders correctly with all props except loading icon', () => {
-    const tree = mount((
+  it.each([
+    // `actions` not tested - the current implementation is likely to be replaced
+    // `autoFocus` not tested - implementation does not match docs and the current implementation will be replaced
+    [
+      { children: <div>content text</div> },
+      (rootElement) => expect(within(rootElement).getByText('content text')),
+    ],
+    [
+      {
+        closeHandler: () => {},
+        id: 'id',
+      },
+      (rootElement) => {
+        expect(rootElement).toHaveAttribute('id', 'id');
+        expect(within(rootElement).getByTestId('id__content'));
+        expect(within(rootElement).getAllByRole('button')[0]).toHaveAttribute('id', 'id__closeModalHeaderButton');
+        expect(within(rootElement).getAllByRole('button')[1]).toHaveAttribute('id', 'id__closeModalFooterButton');
+      },
+    ],
+    [
+      { position: 'top' },
+      (rootElement) => expect(within(rootElement).getByRole('presentation')).toHaveClass('isRootPositionTop'),
+    ],
+    [
+      { position: 'center' },
+      (rootElement) => expect(within(rootElement).getByRole('presentation')).toHaveClass('isRootPositionCenter'),
+    ],
+    // `scrollView` not tested - the API is being discussed
+    [
+      { size: 'small' },
+      (rootElement) => expect(within(rootElement).getByRole('presentation')).toHaveClass('isRootSizeSmall'),
+    ],
+    [
+      { size: 'medium' },
+      (rootElement) => expect(within(rootElement).getByRole('presentation')).toHaveClass('isRootSizeMedium'),
+    ],
+    [
+      { size: 'large' },
+      (rootElement) => expect(within(rootElement).getByRole('presentation')).toHaveClass('isRootSizeLarge'),
+    ],
+    [
+      { size: 'fullscreen' },
+      (rootElement) => expect(within(rootElement).getByRole('presentation')).toHaveClass('isRootSizeFullscreen'),
+    ],
+    [
+      { size: 'auto' },
+      (rootElement) => expect(within(rootElement).getByRole('presentation')).toHaveClass('isRootSizeAuto'),
+    ],
+    [
+      { title: 'other title text' },
+      (rootElement) => expect(within(rootElement).getByText('other title text')),
+    ],
+    [
+      {
+        closeHandler: () => {},
+        translations: { close: 'Zavřít' },
+      },
+      (rootElement) => expect(within(rootElement).getByTitle('Zavřít')),
+    ],
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
       <Modal
-        actions={[
-          {
-            clickHandler: () => {},
-            label: 'Action',
-            loadingIcon: <span className="icon" />,
-          },
-        ]}
-        closeHandler={() => {}}
-        id="custom-id"
-        size="small"
-        title="Modal title"
-        translations={defaultTranslations.Modal}
-      >
-        Modal content
-      </Modal>
+        {...mandatoryProps}
+        {...testedProps}
+      />
     ));
 
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly with translations', () => {
-    const tree = mount((
-      <Modal
-        closeHandler={() => {}}
-        title="Modal title"
-        translations={{ close: 'Zavřít' }}
-      >
-        Modal content
-      </Modal>
-    ));
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly with portal id', () => {
-    const modalRoot = global.document.createElement('div');
-    modalRoot.setAttribute('id', 'app-modal-portal');
-
-    const body = global.document.querySelector('body');
-    body.appendChild(modalRoot);
-
-    const tree = mount((
-      <Modal
-        portalId="app-modal-portal"
-        title="Modal title"
-        translations={defaultTranslations.Modal}
-      >
-        Modal content
-      </Modal>
-    ));
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });
 
 describe('functionality', () => {
-  it('call closeHandler() on Close button click', () => {
+  it.each([
+    () => userEvent.click(screen.getByText('Close')),
+    () => userEvent.keyboard('{esc}'),
+    () => userEvent.click(screen.getByTestId('id')),
+  ])('call closeHandler() (%#)', (action) => {
     const spy = sinon.spy();
-    const component = mount((
+    render((
       <Modal
+        {...mandatoryProps}
         closeHandler={spy}
-        title="Modal title"
-        translations={defaultTranslations.Modal}
+        id="id"
       >
         Modal content
       </Modal>
     ));
 
-    component.find('button').at(0).simulate('click');
-    component.find('Button').at(0).simulate('click');
-    expect(spy.calledTwice).toEqual(true);
-  });
-
-  it('call closeHandler() when Escape is pressed', () => {
-    const spy = sinon.spy();
-    mount((
-      <Modal
-        closeHandler={spy}
-        title="Modal title"
-        translations={defaultTranslations.Modal}
-      >
-        Modal content
-      </Modal>
-    ));
-
-    const event = new KeyboardEvent('keydown', { keyCode: 27 });
-    document.dispatchEvent(event);
-
+    action();
     expect(spy.calledOnce).toEqual(true);
   });
 
-  it('call submit action when Enter is pressed', () => {
-    const submitSpy = sinon.spy();
-
-    const component = mount((
+  it.each([
+    () => userEvent.click(screen.getByText('submit')),
+    () => userEvent.keyboard('{enter}'),
+  ])('call submit action (%#)', (action) => {
+    const spy = sinon.spy();
+    render((
       <Modal
+        {...mandatoryProps}
         actions={[
           {
-            clickHandler: submitSpy,
-            id: 'submitButton',
+            clickHandler: spy,
             label: 'submit',
             type: 'submit',
           },
+          {
+            clickHandler: spy,
+            label: 'action',
+            type: 'button',
+          },
         ]}
-        closeHandler={() => {}}
-        title="Modal title"
-        translations={defaultTranslations.Modal}
       >
-        Modal content
+        content
       </Modal>
     ));
 
-    component.find('button').at(1).simulate('click');
-
-    expect(submitSpy.calledOnce).toEqual(true);
+    action();
+    expect(spy.calledOnce).toEqual(true);
   });
 
-  it('call submit action when Enter is pressed', () => {
-    const submitSpy = sinon.spy();
-    const otherSpy = sinon.spy();
-
-    mount((
+  it.each([
+    () => userEvent.click(screen.getByText('submit')),
+    () => userEvent.keyboard('{enter}'),
+  ])('do not call submit action when button is disabled (%#)', (action) => {
+    const spy = sinon.spy();
+    render((
       <Modal
+        {...mandatoryProps}
         actions={[
           {
-            clickHandler: otherSpy,
-            id: 'otherButton',
-            label: 'other',
-          },
-          {
-            clickHandler: submitSpy,
-            id: 'submitButton',
-            label: 'submit',
-            type: 'submit',
-          },
-        ]}
-        closeHandler={() => {}}
-        title="Modal title"
-        translations={defaultTranslations.Modal}
-      >
-        Modal content
-      </Modal>
-    ));
-
-    const event = new KeyboardEvent('keydown', { keyCode: 13 });
-    document.dispatchEvent(event);
-
-    expect(submitSpy.calledOnce).toEqual(true);
-    expect(otherSpy.notCalled).toEqual(true);
-  });
-
-  it('do not call submit action when submit action is disabled and Enter is clicked', () => {
-    const submitSpy = sinon.spy();
-
-    mount((
-      <Modal
-        actions={[
-          {
-            clickHandler: submitSpy,
+            clickHandler: spy,
             disabled: true,
-            id: 'submitButton',
             label: 'submit',
             type: 'submit',
           },
         ]}
-        closeHandler={() => {}}
-        title="Modal title"
-        translations={defaultTranslations.Modal}
       >
-        Modal content
+        content
       </Modal>
     ));
 
-    const event = new KeyboardEvent('keydown', { keyCode: 13 });
-    document.dispatchEvent(event);
-
-    expect(submitSpy.notCalled).toEqual(true);
-  });
-
-  it('do not call submit action when submit action is not present and Enter is clicked', () => {
-    const otherSpy = sinon.spy();
-
-    mount((
-      <Modal
-        actions={[
-          {
-            clickHandler: otherSpy,
-            id: 'otherButton',
-            label: 'other',
-          },
-        ]}
-        closeHandler={() => {}}
-        title="Modal title"
-        translations={defaultTranslations.Modal}
-      >
-        Modal content
-      </Modal>
-    ));
-
-    const event = new KeyboardEvent('keydown', { keyCode: 13 });
-    document.dispatchEvent(event);
-
-    expect(otherSpy.notCalled).toEqual(true);
+    action();
+    expect(spy.called).toEqual(false);
   });
 });

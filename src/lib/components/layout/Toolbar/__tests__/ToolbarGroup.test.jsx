@@ -1,38 +1,34 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {
+  render,
+  within,
+} from '@testing-library/react';
+import { alignPropTest } from '../../../../../../tests/propTests/alignPropTest';
+import { densePropTest } from '../../../../../../tests/propTests/densePropTest';
+import { noWrapPropTest } from '../../../../../../tests/propTests/noWrapPropTest';
 import { ToolbarGroup } from '../ToolbarGroup';
-import { ToolbarItem } from '../ToolbarItem';
+
+const mandatoryProps = {
+  children: <div>other content text</div>,
+};
 
 describe('rendering', () => {
-  it('renders correctly with a single child', () => {
-    const tree = shallow((
-      <ToolbarGroup>
-        <ToolbarItem>item</ToolbarItem>
-      </ToolbarGroup>
+  it.each([
+    ...alignPropTest,
+    [
+      { children: <div>other content text</div> },
+      (rootElement) => expect(within(rootElement).getByText('other content text')),
+    ],
+    ...densePropTest,
+    ...noWrapPropTest,
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
+      <ToolbarGroup
+        {...mandatoryProps}
+        {...testedProps}
+      />
     ));
 
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with multiple children', () => {
-    const tree = shallow((
-      <ToolbarGroup>
-        <ToolbarItem>item 1</ToolbarItem>
-        <ToolbarItem>item 2</ToolbarItem>
-        <ToolbarItem>item 3</ToolbarItem>
-      </ToolbarGroup>
-    ));
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with all props', () => {
-    const tree = shallow((
-      <ToolbarGroup align="middle" dense nowrap>
-        <ToolbarItem>item</ToolbarItem>
-      </ToolbarGroup>
-    ));
-
-    expect(tree).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });

@@ -63,8 +63,9 @@ TabsItem.propTypes = {
    */
   href: PropTypes.string.isRequired,
   /**
-   * ID of the root HTML element. It also serves as a prefix for important inner elements:
-   * `<ID>__link`, `<ID>__label`.
+   * ID of the root HTML element. It also serves as base for nested elements:
+   * * `<ID>__link`
+   * * `<ID>__label`
    */
   id: PropTypes.string,
   /**

@@ -118,8 +118,13 @@ FileInputField.propTypes = {
    */
   helpText: PropTypes.node,
   /**
-   * ID of the input HTML element. It also serves as a prefix for important inner elements:
-   * `<ID>__label`, `<ID>__labelText`, `<ID>__helpText`, and `<ID>__validationText`.
+   * ID of the `<input>` HTML element.
+   *
+   * Also serves as base for ids of nested elements:
+   * * `<ID>__label`
+   * * `<ID>__labelText`
+   * * `<ID>__helpText`
+   * * `<ID>__validationText`
    */
   id: PropTypes.string,
   /**

@@ -1,137 +1,144 @@
 import React from 'react';
 import {
-  shallow,
-  mount,
-} from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
+  render,
+  screen,
+  within,
+} from '@testing-library/react';
 import sinon from 'sinon';
-import Badge from '../../Badge';
+import userEvent from '@testing-library/user-event';
+import { colorPropTest } from '../../../../../../tests/propTests/colorPropTest';
+import { forwardedRefPropTest } from '../../../../../../tests/propTests/forwardedRefPropTest';
+import { labelPropTest } from '../../../../../../tests/propTests/labelPropTest';
+import { sizePropTest } from '../../../../../../tests/propTests/sizePropTest';
 import { Button } from '../Button';
 
+const mandatoryProps = {
+  label: 'label',
+};
+
 describe('rendering', () => {
-  it('renders correctly mandatory props only', () => {
-    const tree = shallow(<Button
-      label="button"
-    />);
+  it.each([
+    [
+      { afterLabel: <div>after label</div> },
+      (rootElement) => expect(within(rootElement).getByText('after label')),
+    ],
+    [
+      { beforeLabel: <div>before label</div> },
+      (rootElement) => expect(within(rootElement).getByText('before label')),
+    ],
+    [
+      { block: true },
+      (rootElement) => expect(rootElement).toHaveClass('rootBlock'),
+    ],
+    [
+      { block: false },
+      (rootElement) => expect(rootElement).not.toHaveClass('rootBlock'),
+    ],
+    ...colorPropTest,
+    [
+      { disabled: true },
+      (rootElement) => expect(rootElement).toBeDisabled(),
+    ],
+    [
+      { disabled: false },
+      (rootElement) => expect(rootElement).not.toBeDisabled(),
+    ],
+    [
+      { endCorner: <div>corner text</div> },
+      (rootElement) => expect(within(rootElement).getByText('corner text')),
+    ],
+    ...forwardedRefPropTest(React.createRef()),
+    [
+      { grouped: true },
+      (rootElement) => expect(rootElement).toHaveClass('rootGrouped'),
+    ],
+    [
+      { grouped: false },
+      (rootElement) => expect(rootElement).not.toHaveClass('rootGrouped'),
+    ],
 
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
+    [
+      { id: 'id' },
+      (rootElement) => {
+        expect(rootElement).toHaveAttribute('id', 'id');
+        expect(within(rootElement).getByText('label')).toHaveAttribute('id', 'id__labelText');
+      },
+    ],
+    ...labelPropTest,
+    [
+      { labelVisibility: 'all' },
+      (rootElement) => {
+        expect(rootElement).not.toHaveClass('withLabelHiddenMobile');
+        expect(rootElement).not.toHaveClass('withLabelHidden');
+      },
+    ],
+    [
+      { labelVisibility: 'desktop' },
+      (rootElement) => expect(rootElement).toHaveClass('withLabelHiddenMobile'),
+    ],
+    [
+      { labelVisibility: 'none' },
+      (rootElement) => expect(rootElement).toHaveClass('withLabelHidden'),
+    ],
+    [
+      { loadingIcon: <div>loading icon</div> },
+      (rootElement) => {
+        expect(within(rootElement).getByText('loading icon'));
+        expect(rootElement).toBeDisabled();
+      },
+    ],
+    [
+      { priority: 'filled' },
+      (rootElement) => expect(rootElement).toHaveClass('rootPriorityFilled'),
+    ],
+    [
+      { priority: 'outline' },
+      (rootElement) => expect(rootElement).toHaveClass('rootPriorityOutline'),
+    ],
+    [
+      { priority: 'flat' },
+      (rootElement) => expect(rootElement).toHaveClass('rootPriorityFlat'),
+    ],
+    [
+      { priority: 'link' },
+      (rootElement) => expect(rootElement).toHaveClass('rootPriorityLink'),
+    ],
+    ...sizePropTest,
+    [
+      { startCorner: <div>corner text</div> },
+      (rootElement) => expect(within(rootElement).getByText('corner text')),
+    ],
+    [
+      { type: 'button' },
+      (rootElement) => expect(rootElement).toHaveAttribute('type', 'button'),
+    ],
+    [
+      { type: 'submit' },
+      (rootElement) => expect(rootElement).toHaveAttribute('type', 'submit'),
+    ],
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
+      <Button
+        {...mandatoryProps}
+        {...testedProps}
+      />
+    ));
 
-  it('renders correctly priority', () => {
-    const tree = shallow(<Button
-      label="button"
-      priority="outline"
-    />);
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly priority `link`', () => {
-    const tree = shallow(<Button
-      label="link"
-      priority="link"
-    />);
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly priority `link` with all props', () => {
-    const tree = shallow(<Button
-      priority="link"
-      color="success"
-      size="large"
-      label="link"
-      labelVisibility="desktop"
-      beforeLabel={<span className="icon" />}
-      afterLabel={<span className="icon" />}
-      startCorner={<Badge label={1} />}
-      endCorner={<Badge label={2} />}
-      loadingIcon={<span className="icon" />}
-      id="custom-id"
-      disabled
-      block
-      grouped
-    />);
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly flat', () => {
-    const tree = shallow(<Button
-      label="button"
-      priority="flat"
-    />);
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly color', () => {
-    const tree = shallow(<Button
-      label="button"
-      color="success"
-    />);
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly size', () => {
-    const tree = shallow(<Button
-      label="button"
-      size="large"
-    />);
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly with icon', () => {
-    const tree = shallow(<Button
-      label="button"
-      beforeLabel={<span className="icon" />}
-    />);
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly label visibility', () => {
-    const tree = shallow(<Button
-      label="button"
-      labelVisibility="none"
-    />);
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly with all props', () => {
-    const tree = shallow(<Button
-      priority="flat"
-      color="success"
-      size="large"
-      label="button"
-      labelVisibility="desktop"
-      beforeLabel={<span className="icon" />}
-      afterLabel={<span className="icon" />}
-      startCorner={<Badge label={1} />}
-      endCorner={<Badge label={2} />}
-      loadingIcon={<span className="icon" />}
-      id="custom-id"
-      disabled
-      block
-      grouped
-    />);
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });
 
 describe('functionality', () => {
-  it('calls clickHandler() on click', () => {
+  it('calls clickHandler()', () => {
     const spy = sinon.spy();
-    const component = mount(<Button
-      label="label"
-      clickHandler={spy}
-    />);
+    render((
+      <Button
+        {...mandatoryProps}
+        clickHandler={spy}
+      />
+    ));
 
-    component.simulate('click');
+    userEvent.click(screen.getByText('label'));
     expect(spy.calledOnce).toEqual(true);
   });
 });

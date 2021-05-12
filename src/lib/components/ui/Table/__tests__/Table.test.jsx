@@ -1,85 +1,133 @@
 import React from 'react';
 import sinon from 'sinon';
 import {
-  mount,
-  shallow,
-} from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
+  render,
+  screen,
+  within,
+} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Table } from '../Table';
 
-const columnsData = [
-  {
-    isSortable: true,
-    label: 'Id',
-    name: 'id',
-  },
-  {
-    isSortable: true,
-    label: 'Name',
-    name: 'name',
-  },
-  {
-    format: (row) => row.dateOfBirth.toDateString(),
-    label: 'Date of birth',
-    name: 'dateOfBirth',
-  },
-];
-
-const rowsData = [
-  {
-    dateOfBirth: new Date(2018, 1, 1),
-    id: 1,
-    name: 'Jan Novak',
-  },
-];
+const mandatoryProps = {
+  columns: [
+    {
+      label: 'ID',
+      name: 'id',
+    },
+    {
+      format: (row) => new Date(row.dateOfBirth).toJSON(),
+      isSortable: true,
+      label: 'Date of birth',
+      name: 'dateOfBirth',
+    },
+  ],
+  rows: [
+    {
+      dateOfBirth: '2018-01-31',
+      id: 'jan-novak',
+    },
+    {
+      dateOfBirth: '2018-02-14',
+      id: 111,
+    },
+  ],
+};
 
 describe('rendering', () => {
-  it('renders correctly mandatory props only', () => {
-    const tree = shallow(<Table
-      columns={columnsData}
-      rows={rowsData}
-    />);
+  it.each([
+    [
+      { columns: mandatoryProps.columns },
+      (rootElement) => {
+        expect(within(rootElement).getByText('ID'));
+        expect(within(rootElement).getByText('Date of birth'));
+      },
+    ],
+    [
+      {
+        id: 'id',
+        sort: {
+          ascendingIcon: <span>ascending icon</span>,
+          changeHandler: () => {},
+          column: 'name',
+          descendingIcon: <span>descending icon</span>,
+          direction: 'asc',
+        },
+      },
+      (rootElement) => {
+        expect(rootElement).toHaveAttribute('id', 'id');
+        expect(within(rootElement).getByTestId('id__headerCell__id'));
+        expect(within(rootElement).getByTestId('id__headerCell__dateOfBirth'));
+        expect(within(rootElement).getByRole('button')).toHaveAttribute('id', 'id__headerCell__dateOfBirth__sortButton');
+        expect(within(rootElement).getByTestId('id__headerCell__dateOfBirth'));
+        expect(within(rootElement).getByTestId('id__bodyCell__id__jan-novak'));
+        expect(within(rootElement).getByTestId('id__bodyCell__id__111'));
+        expect(within(rootElement).getByTestId('id__bodyCell__dateOfBirth__jan-novak'));
+        expect(within(rootElement).getByTestId('id__bodyCell__dateOfBirth__111'));
+      },
+    ],
+    [
+      { rows: mandatoryProps.rows },
+      (rootElement) => {
+        expect(within(rootElement).getByText('jan-novak'));
+        expect(within(rootElement).getByText('2018-01-31T00:00:00.000Z'));
+        expect(within(rootElement).getByText('111'));
+        expect(within(rootElement).getByText('2018-02-14T00:00:00.000Z'));
+      },
+    ],
+    [
+      {
+        sort: {
+          ascendingIcon: <span>ascending icon</span>,
+          changeHandler: () => {},
+          column: 'dateOfBirth',
+          descendingIcon: <span>descending icon</span>,
+          direction: 'asc',
+        },
+      },
+      (rootElement) => expect(within(rootElement).getByText('ascending icon')),
+    ],
+    [
+      {
+        sort: {
+          ascendingIcon: <span>ascending icon</span>,
+          changeHandler: () => {},
+          column: 'dateOfBirth',
+          descendingIcon: <span>descending icon</span>,
+          direction: 'desc',
+        },
+      },
+      (rootElement) => expect(within(rootElement).getByText('descending icon')),
+    ],
+  ])('renders with props: "%s"', (testedProps, assert) => {
+    const dom = render((
+      <Table
+        {...mandatoryProps}
+        {...testedProps}
+      />
+    ));
 
-    expect(shallowToJson(tree)).toMatchSnapshot();
-  });
-
-  it('renders correctly with all props', () => {
-    const tree = shallow(<Table
-      columns={columnsData}
-      id="custom-id"
-      rows={rowsData}
-      sort={{
-        ascendingIcon: <span className="icon" />,
-        changeHandler: () => {},
-        column: 'id',
-        descendingIcon: <span className="icon" />,
-        direction: 'asc',
-      }}
-    />);
-
-    expect(shallowToJson(tree)).toMatchSnapshot();
+    assert(dom.container.firstChild);
   });
 });
 
 describe('functionality', () => {
   it('calls changeHandler() on sorting button click', () => {
     const spy = sinon.spy();
-    const component = mount((
+    render((
       <Table
-        columns={columnsData}
-        rows={rowsData}
+        {...mandatoryProps}
         sort={{
-          ascendingIcon: <span className="icon" />,
+          ascendingIcon: <span>ascending icon</span>,
           changeHandler: spy,
-          column: 'id',
-          descendingIcon: <span className="icon" />,
+          column: 'dateOfBirth',
+          descendingIcon: <span>descending icon</span>,
           direction: 'asc',
         }}
       />
     ));
 
-    component.find('Button').first().simulate('click');
+    userEvent.click(screen.getByRole('button'));
     expect(spy.calledOnce).toEqual(true);
-    expect(spy.args).toEqual([['id', 'asc']]);
+    expect(spy.lastCall.args).toEqual(['dateOfBirth', 'asc']);
   });
 });

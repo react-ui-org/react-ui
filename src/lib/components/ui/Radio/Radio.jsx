@@ -30,6 +30,7 @@ export const Radio = ({
       required ? styles.isRootRequired : '',
       getRootValidationStateClassName(validationState, styles),
     ].join(' ')}
+    id={id}
   >
     <div
       className={[
@@ -53,7 +54,7 @@ export const Radio = ({
                 <input
                   {...transferProps(restProps)}
                   className={styles.input}
-                  checked={(value === option.value) || false}
+                  checked={(value === option.value) || undefined}
                   disabled={disabled || option.disabled}
                   id={id && `${id}__item__${option.value}`}
                   name={id}
@@ -120,9 +121,17 @@ Radio.propTypes = {
    */
   helpText: PropTypes.node,
   /**
-   * Prefix for ID of important inner elements: `<ID>__labelText`, `<ID>__helpText`,
-   * `<ID>__validationText`, and all options: `<ID>__item__<VALUE>` (individual inputs),
-   * `<ID>__item__<VALUE>__label`, and `<ID>__item__<VALUE>__labelText`.
+   * ID of the root HTML element.
+   *
+   * Also serves as base for ids of nested elements:
+   * * `<ID>__labelText`
+   * * `<ID>__helpText`
+   * * `<ID>__validationText`
+   *
+   * and of individual options (`<input>`):
+   * * `<ID>__item__<VALUE>`
+   * * `<ID>__item__<VALUE>__label`
+   * * `<ID>__item__<VALUE>__labelText`
    */
   id: PropTypes.string,
   /**
