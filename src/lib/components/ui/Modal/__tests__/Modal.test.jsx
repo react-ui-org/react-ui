@@ -30,11 +30,7 @@ describe('rendering', () => {
           },
         ]}
         closeHandler={() => {}}
-        disableBodyScrolling
         id="custom-id"
-        scrollViewEndShadow={{ background: 'none' }}
-        scrollViewShadowSize="30px"
-        scrollViewStartShadow={{ background: 'none' }}
         size="small"
         title="Modal title"
         translations={defaultTranslations.Modal}

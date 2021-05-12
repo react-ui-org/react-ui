@@ -77,10 +77,7 @@ export class Modal extends React.Component {
       closeHandler,
       id,
       position,
-      scrollMode,
-      scrollViewEndShadowStyle,
-      scrollViewShadowSize,
-      scrollViewStartShadowStyle,
+      scrollView,
       size,
       title,
       translations,
@@ -125,7 +122,7 @@ export class Modal extends React.Component {
         </div>
       );
 
-      if (scrollMode === 'body') {
+      if (scrollView) {
         return (
           <div
             className={[
@@ -133,13 +130,7 @@ export class Modal extends React.Component {
               styles.isBodyScrollable,
             ].join(' ')}
           >
-            <ScrollView
-              customStartShadowStyle={scrollViewStartShadowStyle}
-              customEndShadowStyle={scrollViewEndShadowStyle}
-              shadowSize={scrollViewShadowSize}
-            >
-              {content}
-            </ScrollView>
+            {React.cloneElement(scrollView, scrollView.props, content)}
           </div>
         );
       }
@@ -247,14 +238,11 @@ Modal.defaultProps = {
   id: undefined,
   portalId: null,
   position: 'center',
-  scrollMode: 'body',
-  scrollViewEndShadowStyle: {
-    background: 'radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)',
-  },
-  scrollViewShadowSize: '16px',
-  scrollViewStartShadowStyle: {
-    background: 'radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)',
-  },
+  scrollView: (<ScrollView
+    customEndShadowStyle={{ background: 'radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)' }}
+    customStartShadowStyle={{ background: 'radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)' }}
+    shadowSize="16px"
+  />),
   size: 'medium',
 };
 
@@ -297,29 +285,11 @@ Modal.propTypes = {
    */
   position: PropTypes.oneOf(['top', 'center']),
   /**
-   * How to treat the modal when its content is too long to fit the screen. The `body` option
-   * turns on scrolling just for the modal content, while the `modal` option enables scrolling of
-   * the entire modal, including the header and the footer.
+   * The `ScrollView` component to be used as a wrapper of the content to provide body scrolling functionality.
+   * If provided only the modal body will be scrollable.
+   * If set to `null` the entire modal including header and footer will be scrollable.
    */
-  scrollMode: PropTypes.oneOf(['body', 'modal']),
-  /**
-   * Custom CSS for the end scrolling shadow.
-   */
-  scrollViewEndShadowStyle: PropTypes.shape({
-    background: PropTypes.string,
-    boxShadow: PropTypes.string,
-  }),
-  /**
-   * Size of the scrolling shadows.
-   */
-  scrollViewShadowSize: PropTypes.string,
-  /**
-   * Custom CSS for the start scrolling shadow.
-   */
-  scrollViewStartShadowStyle: PropTypes.shape({
-    background: PropTypes.string,
-    boxShadow: PropTypes.string,
-  }),
+  scrollView: PropTypes.element,
   /**
    * Size of the modal.
    */

@@ -28,17 +28,20 @@ exports[`rendering renders component with default provider 1`] = `
       closeHandler={[Function]}
       portalId={null}
       position="center"
-      scrollMode="body"
-      scrollViewEndShadowStyle={
-        Object {
-          "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
-        }
-      }
-      scrollViewShadowSize="16px"
-      scrollViewStartShadowStyle={
-        Object {
-          "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
-        }
+      scrollView={
+        <WithProviderContextComponent
+          customEndShadowStyle={
+            Object {
+              "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+            }
+          }
+          customStartShadowStyle={
+            Object {
+              "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+            }
+          }
+          shadowSize="16px"
+        />
       }
       size="medium"
       title="Modal"
@@ -274,17 +277,20 @@ exports[`rendering renders component with provided both translations and global 
       closeHandler={[Function]}
       portalId={null}
       position="center"
-      scrollMode="body"
-      scrollViewEndShadowStyle={
-        Object {
-          "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
-        }
-      }
-      scrollViewShadowSize="16px"
-      scrollViewStartShadowStyle={
-        Object {
-          "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
-        }
+      scrollView={
+        <WithProviderContextComponent
+          customEndShadowStyle={
+            Object {
+              "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+            }
+          }
+          customStartShadowStyle={
+            Object {
+              "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+            }
+          }
+          shadowSize="16px"
+        />
       }
       size="fullscreen"
       title="Modal"
@@ -523,17 +529,20 @@ exports[`rendering renders component with provided global props 1`] = `
       closeHandler={[Function]}
       portalId={null}
       position="center"
-      scrollMode="body"
-      scrollViewEndShadowStyle={
-        Object {
-          "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
-        }
-      }
-      scrollViewShadowSize="16px"
-      scrollViewStartShadowStyle={
-        Object {
-          "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
-        }
+      scrollView={
+        <WithProviderContextComponent
+          customEndShadowStyle={
+            Object {
+              "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+            }
+          }
+          customStartShadowStyle={
+            Object {
+              "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+            }
+          }
+          shadowSize="16px"
+        />
       }
       size="fullscreen"
       title="Modal"
@@ -763,17 +772,20 @@ exports[`rendering renders component with provided translations 1`] = `
       closeHandler={[Function]}
       portalId={null}
       position="center"
-      scrollMode="body"
-      scrollViewEndShadowStyle={
-        Object {
-          "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
-        }
-      }
-      scrollViewShadowSize="16px"
-      scrollViewStartShadowStyle={
-        Object {
-          "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
-        }
+      scrollView={
+        <WithProviderContextComponent
+          customEndShadowStyle={
+            Object {
+              "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+            }
+          }
+          customStartShadowStyle={
+            Object {
+              "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+            }
+          }
+          shadowSize="16px"
+        />
       }
       size="medium"
       title="Modal"
@@ -989,17 +1001,20 @@ exports[`rendering renders component without provider 1`] = `
     closeHandler={[Function]}
     portalId={null}
     position="center"
-    scrollMode="body"
-    scrollViewEndShadowStyle={
-      Object {
-        "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
-      }
-    }
-    scrollViewShadowSize="16px"
-    scrollViewStartShadowStyle={
-      Object {
-        "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
-      }
+    scrollView={
+      <WithProviderContextComponent
+        customEndShadowStyle={
+          Object {
+            "background": "radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+          }
+        }
+        customStartShadowStyle={
+          Object {
+            "background": "radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)",
+          }
+        }
+        shadowSize="16px"
+      />
     }
     size="medium"
     title="Modal"
