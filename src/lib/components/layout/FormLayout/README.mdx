@@ -413,18 +413,16 @@ This is a demo of all components supported by FormLayout.
           </ToolbarItem>
         </Toolbar>
         <FormLayout fieldLayout={fieldLayout} labelWidth="auto">
-          <>
-            <TextField
-              changeHandler={() => {}}
-              id="form-layout-full-example-first-name"
-              label="First Name"
-            />
-            <TextField
-              changeHandler={() => {}}
-              id="form-layout-full-example-last-name"
-              label="Last Name"
-            />
-          </>
+          <TextField
+            changeHandler={() => {}}
+            id="form-layout-full-example-first-name"
+            label="First Name"
+          />
+          <TextField
+            changeHandler={() => {}}
+            id="form-layout-full-example-last-name"
+            label="Last Name"
+          />
           <TextField
             changeHandler={() => {}}
             helpText="Optional"
@@ -432,41 +430,39 @@ This is a demo of all components supported by FormLayout.
             label="Email address"
             type="email"
           />
-          <>
-            <TextField
-              changeHandler={() => {}}
-              id="form-layout-full-example-address-1"
-              label="Address"
-              placeholder="Address line 1"
-            />
-            <TextField
-              changeHandler={() => {}}
-              id="form-layout-full-example-address-2"
-              isLabelVisible={false}
-              label="Address 2"
-              placeholder="Address line 2"
-            />
-            <TextField
-              changeHandler={() => {}}
-              id="form-layout-full-example-zip"
-              inputSize={6}
-              label="ZIP"
-              validationState="invalid"
-              validationText="ZIP should be 5 to 6 digits long code."
-            />
-            <FormLayoutCustomField
-              id="form-layout-full-example-country"
-              label="Country"
-            >
-              <span>Czech Republic</span>
-            </FormLayoutCustomField>
-            <CheckboxField
-              changeHandler={() => setIsDeliveryAddress(!isDeliveryAddress)}
-              checked={isDeliveryAddress}
-              id="form-layout-full-example-delivery"
-              label="This is my delivery address"
-            />
-          </>
+          <TextField
+            changeHandler={() => {}}
+            id="form-layout-full-example-address-1"
+            label="Address"
+            placeholder="Address line 1"
+          />
+          <TextField
+            changeHandler={() => {}}
+            id="form-layout-full-example-address-2"
+            isLabelVisible={false}
+            label="Address 2"
+            placeholder="Address line 2"
+          />
+          <TextField
+            changeHandler={() => {}}
+            id="form-layout-full-example-zip"
+            inputSize={6}
+            label="ZIP"
+            validationState="invalid"
+            validationText="ZIP should be 5 to 6 digits long code."
+          />
+          <FormLayoutCustomField
+            id="form-layout-full-example-country"
+            label="Country"
+          >
+            <span>Czech Republic</span>
+          </FormLayoutCustomField>
+          <CheckboxField
+            changeHandler={() => setIsDeliveryAddress(!isDeliveryAddress)}
+            checked={isDeliveryAddress}
+            id="form-layout-full-example-delivery"
+            label="This is my delivery address"
+          />
           <SelectField
             changeHandler={(e) => setFruit(e.target.value)}
             id="form-layout-full-example-fruit"

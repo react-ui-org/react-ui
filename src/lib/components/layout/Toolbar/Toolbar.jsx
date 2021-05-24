@@ -1,6 +1,9 @@
+import AirBnbPropTypes from 'airbnb-prop-types';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../../provider';
+import { ToolbarItem } from './ToolbarItem';
+import { ToolbarGroup } from './ToolbarGroup';
 import styles from './Toolbar.scss';
 
 export const Toolbar = (props) => {
@@ -66,6 +69,11 @@ Toolbar.defaultProps = {
   nowrap: false,
 };
 
+const ChildrenPropTypes = [
+  AirBnbPropTypes.elementType(ToolbarGroup),
+  AirBnbPropTypes.elementType(ToolbarItem),
+];
+
 Toolbar.propTypes = {
   /**
    * Vertical alignment of toolbar items and groups.
@@ -74,7 +82,10 @@ Toolbar.propTypes = {
   /**
    * Individual ToolbarItems and ToolbarGroups.
    */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.oneOfType([
+    ...ChildrenPropTypes,
+    PropTypes.arrayOf(PropTypes.oneOfType([...ChildrenPropTypes])),
+  ]).isRequired,
   /**
    * If `true`, spacing of all toolbar items in the toolbar will be reduced.
    */

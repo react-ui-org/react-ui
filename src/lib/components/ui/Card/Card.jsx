@@ -1,6 +1,10 @@
+import AirBnbPropTypes from 'airbnb-prop-types';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../../provider';
+import ScrollView from '../ScrollView/ScrollView';
+import { CardBody } from './CardBody';
+import { CardFooter } from './CardFooter';
 import styles from './Card.scss';
 
 export const Card = (props) => {
@@ -79,12 +83,21 @@ Card.defaultProps = {
   variant: 'flat',
 };
 
+const ChildrenPropTypes = [
+  AirBnbPropTypes.elementType(CardBody),
+  AirBnbPropTypes.elementType(CardFooter),
+  AirBnbPropTypes.elementType(ScrollView),
+];
+
 Card.propTypes = {
   /**
    * Slot for individual Card elements that build up the inner layout: CardBody, CardFooter, or
    * ScrollView.
    */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.oneOfType([
+    ...ChildrenPropTypes,
+    PropTypes.arrayOf(PropTypes.oneOfType([...ChildrenPropTypes])),
+  ]).isRequired,
   /**
    * Make the card more compact.
    */

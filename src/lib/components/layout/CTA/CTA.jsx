@@ -1,7 +1,11 @@
+import AirBnbPropTypes from 'airbnb-prop-types';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../../provider';
 import styles from './CTA.scss';
+import { CTACenter } from './CTACenter';
+import { CTAEnd } from './CTAEnd';
+import { CTAStart } from './CTAStart';
 
 export const CTA = (props) => {
   const {
@@ -37,6 +41,12 @@ export const CTA = (props) => {
   );
 };
 
+const ChildrenPropTypes = [
+  AirBnbPropTypes.elementType(CTACenter),
+  AirBnbPropTypes.elementType(CTAEnd),
+  AirBnbPropTypes.elementType(CTAStart),
+];
+
 CTA.defaultProps = {
   align: 'baseline',
 };
@@ -49,7 +59,10 @@ CTA.propTypes = {
   /**
    * Slot for individual CTA elements: CTAStart, CTACenter, and CTAEnd.
    */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.oneOfType([
+    ...ChildrenPropTypes,
+    PropTypes.arrayOf(PropTypes.oneOfType([...ChildrenPropTypes])),
+  ]).isRequired,
 };
 
 export const CTAWithContext = withProviderContext(CTA, 'CTA');
