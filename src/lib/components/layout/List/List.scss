@@ -1,4 +1,5 @@
 @use '../../../styles/tools/spacing';
+@use 'theme';
 
 .root {
   @include spacing.bottom(layouts);
@@ -14,7 +15,7 @@
 
 .item {
   width: 100%;
-  margin-bottom: spacing.of(2);
+  margin-bottom: theme.$row-gap;
 
   &:last-child {
     margin-bottom: 0;

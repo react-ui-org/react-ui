@@ -7,23 +7,23 @@
 @use 'theme';
 
 .root {
-  --local-outer-offset: #{theme.$outer-offset-xs};
+  --local-outer-spacing: #{theme.$outer-spacing-xs};
 
   position: fixed;
   left: 50%;
   z-index: settings.$z-index;
   display: flex;
   flex-direction: column;
-  max-width: calc(100% - (2 * var(--local-outer-offset)));
-  max-height: calc(100% - (2 * var(--local-outer-offset)));
+  max-width: calc(100% - (2 * var(--local-outer-spacing)));
+  max-height: calc(100% - (2 * var(--local-outer-spacing)));
   overflow-y: auto;
   border-radius: settings.$border-radius;
-  background-color: theme.$background;
+  background: theme.$background;
   box-shadow: theme.$box-shadow;
   transform: translateX(-50%);
 
   @include breakpoint.up(sm) {
-    --local-outer-offset: #{theme.$outer-offset-sm};
+    --local-outer-spacing: #{theme.$outer-spacing-sm};
   }
 }
 
@@ -75,34 +75,34 @@
   padding: settings.$padding-y settings.$padding-x;
   border-bottom-right-radius: settings.$border-radius;
   border-bottom-left-radius: settings.$border-radius;
-  background-color: theme.$footer-background;
+  background: theme.$footer-background;
 }
 
-.overlay {
+.backdrop {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: settings.$overlay-z-index;
+  z-index: settings.$backdrop-z-index;
   width: 100vw;
   height: 100vh;
-  background-color: theme.$overlay-background;
+  background: theme.$backdrop-background;
 }
 
 .isRootSizeSmall {
-  width: theme.$size-small-width;
+  width: map-get(theme.$sizes, small, width);
 }
 
 .isRootSizeMedium {
-  width: theme.$size-medium-width;
+  width: map-get(theme.$sizes, medium, width);
 }
 
 .isRootSizeLarge {
-  width: theme.$size-large-width;
+  width: map-get(theme.$sizes, large, width);
 }
 
 .isRootSizeFullscreen {
-  width: theme.$size-fullscreen-width;
-  height: theme.$size-fullscreen-height;
+  width: map-get(theme.$sizes, fullscreen, width);
+  height: map-get(theme.$sizes, fullscreen, height);
 }
 
 .isRootSizeFullscreen .content {
@@ -111,8 +111,8 @@
 
 .isRootSizeAuto {
   width: auto;
-  min-width: theme.$size-auto-min-width;
-  max-width: theme.$size-auto-max-width;
+  min-width: map-get(theme.$sizes, auto, min-width);
+  max-width: map-get(theme.$sizes, auto, max-width);
 }
 
 .isRootPositionCenter {
@@ -121,5 +121,5 @@
 }
 
 .isRootPositionTop {
-  top: var(--local-outer-offset);
+  top: var(--local-outer-spacing);
 }

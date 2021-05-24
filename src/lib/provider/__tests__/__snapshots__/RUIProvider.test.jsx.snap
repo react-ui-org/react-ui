@@ -52,7 +52,7 @@ exports[`rendering renders component with default provider 1`] = `
       }
     >
       <div
-        className="overlay"
+        className="backdrop"
         onClick={[Function]}
         role="presentation"
       >
@@ -301,7 +301,7 @@ exports[`rendering renders component with provided both translations and global 
       }
     >
       <div
-        className="overlay"
+        className="backdrop"
         onClick={[Function]}
         role="presentation"
       >
@@ -553,7 +553,7 @@ exports[`rendering renders component with provided global props 1`] = `
       }
     >
       <div
-        className="overlay"
+        className="backdrop"
         onClick={[Function]}
         role="presentation"
       >
@@ -796,7 +796,7 @@ exports[`rendering renders component with provided translations 1`] = `
       }
     >
       <div
-        className="overlay"
+        className="backdrop"
         onClick={[Function]}
         role="presentation"
       >
@@ -1025,7 +1025,7 @@ exports[`rendering renders component without provider 1`] = `
     }
   >
     <div
-      className="overlay"
+      className="backdrop"
       onClick={[Function]}
       role="presentation"
     >

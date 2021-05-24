@@ -28,6 +28,9 @@ Actions), please follow these guidelines:
 - **One pull request per subject.** Don't combine unrelated changes in a single
   PR unless they are really subtle details such as fix of a typo.
 
+- **Only PRs into `master` branch are listed in changelog.** PRs into other
+  branches are not picked up by release automation.
+
 - **Name your branches according to nature of change.** Choose one of:
 
   - `bc/*` for breaking changes

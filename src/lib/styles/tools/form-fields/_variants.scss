@@ -38,7 +38,7 @@
   }
 
   @if ($type != 'validation' and $variant != 'default') {
-    $infix: #{$type}-#{$variant};
+    $infix: #{$type}--#{$variant};
   }
 
   @if ($state == 'checked-disabled') {
@@ -47,7 +47,7 @@
 
   @if ($state == 'default') {
     @each $property in $properties {
-      --rui-local-#{$property}: var(--rui-form-field-#{$infix}-#{$state}-#{$property});
+      --rui-local-#{$property}: var(--rui-FormField--#{$infix}--#{$state}__#{$property});
     }
   }
 
@@ -56,8 +56,8 @@
     @each $property in $properties {
       --rui-local-#{$property}:
         var(
-          --rui-form-field-#{$infix}-#{$state}-#{$property},
-          var(--rui-form-field-#{$infix}-#{$fallback-state}-#{$property})
+          --rui-FormField--#{$infix}--#{$state}__#{$property},
+          var(--rui-FormField--#{$infix}--#{$fallback-state}__#{$property})
         );
     }
   }
@@ -134,7 +134,7 @@
   @if ($type == 'box' and $variant == 'outline' and $has-caret) {
     .caret {
       border-left: theme.$box-border-width theme.$box-select-caret-border-style var(--rui-local-border-color);
-      background-color: theme.$box-select-caret-background;
+      background: theme.$box-select-caret-background;
     }
 
     &.isRootDisabled .caret {

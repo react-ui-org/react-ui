@@ -1,44 +1,44 @@
-$padding: var(--rui-card-padding);
-$dense-padding: var(--rui-card-dense-padding);
-$background-color: var(--rui-card-background-color);
-$border-width: var(--rui-card-border-width);
-$border-radius: var(--rui-card-border-radius);
+$padding: var(--rui-Card__padding);
+$border-width: var(--rui-Card__border-width);
+$border-radius: var(--rui-Card__border-radius);
+$background-color: var(--rui-Card__background-color);
+$dense-padding: var(--rui-Card--dense__padding);
 
 $types: (
   success: (
-    border-color: var(--rui-card-success-border-color),
+    border-color: var(--rui-Card--success__border-color),
   ),
   warning: (
-    border-color: var(--rui-card-warning-border-color),
+    border-color: var(--rui-Card--warning__border-color),
   ),
   error: (
-    border-color: var(--rui-card-error-border-color),
+    border-color: var(--rui-Card--error__border-color),
   ),
   help: (
-    border-color: var(--rui-card-help-border-color),
+    border-color: var(--rui-Card--help__border-color),
   ),
   info: (
-    border-color: var(--rui-card-info-border-color),
+    border-color: var(--rui-Card--info__border-color),
   ),
   note: (
-    border-color: var(--rui-card-note-border-color),
+    border-color: var(--rui-Card--note__border-color),
   ),
 );
 
 $variants: (
   flat: (
-    border-color: var(--rui-card-flat-border-color),
+    border-color: var(--rui-Card--flat__border-color),
   ),
   bordered: (
-    border-color: var(--rui-card-bordered-border-color),
+    border-color: var(--rui-Card--bordered__border-color),
   ),
 );
 
 $disabled: (
-  background-color: var(--rui-card-disabled-background-color),
-  opacity: var(--rui-card-disabled-opacity),
+  background-color: var(--rui-Card--disabled__background-color),
+  opacity: var(--rui-Card--disabled__opacity),
 );
 
 $raised: (
-  box-shadow: var(--rui-card-raised-box-shadow),
+  box-shadow: var(--rui-Card--raised__box-shadow),
 );

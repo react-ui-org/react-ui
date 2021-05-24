@@ -16,8 +16,9 @@ tweaking some of the hundreds theming options available.
 Why another UI library? Because we couldn't find any library that would meet
 these requirements:
 
-- **🎨 Full control over design.** Hundreds of CSS custom properties allow you
-  to customize the design of your app without touching any JS.
+- **🎨 Full control over design, from design tokens to components.** Hundreds of
+  CSS custom properties allow you to customize the design of your app without
+  touching JS.
 
 - **📦 Smart defaults, out of the box.** Create rapid prototypes that look great
   with no additional effort.

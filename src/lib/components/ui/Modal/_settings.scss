@@ -9,4 +9,4 @@ $content-padding-bottom: spacing.of(6);
 $border-radius: borders.$radius;
 $head-title-font-size: map-get(typography.$size-values, 1);
 $z-index: z-indexes.$modal;
-$overlay-z-index: z-indexes.$modal-overlay;
+$backdrop-z-index: z-indexes.$modal-backdrop;

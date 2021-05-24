@@ -1,23 +1,23 @@
 // Priority and variant specific theme options are obtained dynamically because there is way too
 // many of them to maintain manually. See `_tools.scss` for details.
 
-$font-weight: var(--rui-button-font-weight);
-$letter-spacing: var(--rui-button-letter-spacing);
-$text-transform: var(--rui-button-text-transform);
-$border-width: var(--rui-button-border-width);
-$border-radius: var(--rui-button-border-radius);
-$disabled-opacity: var(--rui-button-disabled-opacity);
-$disabled-cursor: var(--rui-button-disabled-cursor);
+$font-weight: var(--rui-Button__font-weight);
+$letter-spacing: var(--rui-Button__letter-spacing);
+$text-transform: var(--rui-Button__text-transform);
+$border-width: var(--rui-Button__border-width);
+$border-radius: var(--rui-Button__border-radius);
+$disabled-opacity: var(--rui-Button--disabled__opacity);
+$disabled-cursor: var(--rui-Button--disabled__cursor);
 
-$group-filled-gap: var(--rui-button-group-filled-gap);
-$group-filled-separator-width: var(--rui-button-group-filled-separator-width);
-$group-filled-separator-color: var(--rui-button-group-filled-separator-color);
+$group-filled-gap: var(--rui-ButtonGroup--filled__gap);
+$group-filled-separator-width: var(--rui-ButtonGroup--filled__separator__width);
+$group-filled-separator-color: var(--rui-ButtonGroup--filled__separator__color);
 
-$group-flat-gap: var(--rui-button-group-flat-gap);
-$group-flat-separator-width: var(--rui-button-group-flat-separator-width);
-$group-flat-separator-color: var(--rui-button-group-flat-separator-color);
+$group-flat-gap: var(--rui-ButtonGroup--flat__gap);
+$group-flat-separator-width: var(--rui-ButtonGroup--flat__separator__width);
+$group-flat-separator-color: var(--rui-ButtonGroup--flat__separator__color);
 
-$group-outline-gap: var(--rui-button-group-outline-gap);
+$group-outline-gap: var(--rui-ButtonGroup--outline__gap);
 
 $link-priority-properties: (
   default: (
@@ -32,18 +32,18 @@ $link-priority-properties: (
 
 $sizes: (
   small: (
-    height: var(--rui-button-small-height),
-    padding-x: var(--rui-button-small-padding-x),
-    font-size: var(--rui-button-small-font-size),
+    height: var(--rui-Button--small__height),
+    padding-x: var(--rui-Button--small__padding-x),
+    font-size: var(--rui-Button--small__font-size),
   ),
   medium: (
-    height: var(--rui-button-medium-height),
-    padding-x: var(--rui-button-medium-padding-x),
-    font-size: var(--rui-button-medium-font-size),
+    height: var(--rui-Button--medium__height),
+    padding-x: var(--rui-Button--medium__padding-x),
+    font-size: var(--rui-Button--medium__font-size),
   ),
   large: (
-    height: var(--rui-button-large-height),
-    padding-x: var(--rui-button-large-padding-x),
-    font-size: var(--rui-button-large-font-size),
+    height: var(--rui-Button--large__height),
+    padding-x: var(--rui-Button--large__padding-x),
+    font-size: var(--rui-Button--large__font-size),
   ),
 );

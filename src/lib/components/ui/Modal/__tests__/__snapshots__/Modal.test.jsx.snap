@@ -64,7 +64,7 @@ exports[`rendering renders correctly with all props except loading icon 1`] = `
     }
   >
     <div
-      className="overlay"
+      className="backdrop"
       id="custom-id"
       onClick={[Function]}
       role="presentation"
@@ -392,7 +392,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
     }
   >
     <div
-      className="overlay"
+      className="backdrop"
       onClick={[Function]}
       role="presentation"
     >
@@ -547,7 +547,7 @@ exports[`rendering renders correctly with portal id 1`] = `
           id="app-modal-portal"
         >
           <div
-            class="overlay"
+            class="backdrop"
             role="presentation"
           >
             <div
@@ -595,7 +595,7 @@ exports[`rendering renders correctly with portal id 1`] = `
       }
     >
       <div
-        className="overlay"
+        className="backdrop"
         onClick={[Function]}
         role="presentation"
       >
@@ -746,7 +746,7 @@ exports[`rendering renders correctly with translations 1`] = `
     }
   >
     <div
-      className="overlay"
+      className="backdrop"
       onClick={[Function]}
       role="presentation"
     >

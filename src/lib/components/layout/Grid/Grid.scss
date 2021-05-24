@@ -23,41 +23,31 @@
 // 3. Any valid auto-flow algorithm can be used. It's applied globally for all breakpoints.
 
 @use '../../../styles/tools/spacing';
+@use 'theme';
 @use 'tools';
 
 .root {
-  $properties: (
-    columns: var(--rui-grid-columns),
-    column-gap: var(--rui-grid-column-gap),
-    rows: var(--rui-grid-rows),
-    row-gap: var(--rui-grid-row-gap),
-    align-content: var(--rui-grid-align-content),
-    align-items: var(--rui-grid-align-items),
-    justify-content: var(--rui-grid-justify-content),
-    justify-items: var(--rui-grid-justify-items),
-  );
-
-  @include tools.assign-responsive-custom-properties($properties); // 1.
+  @include tools.assign-responsive-custom-properties(theme.$responsive-properties); // 1.
   @include spacing.bottom(layouts);
 
   display: grid;
   grid-template-columns: var(--rui-local-columns); // 2.
   grid-template-rows: var(--rui-local-rows); // 2.
   grid-gap: var(--rui-local-row-gap) var(--rui-local-column-gap); // 2.
-  grid-auto-flow: var(--rui-local-auto-flow, var(--rui-grid-auto-flow)); // 3.
-  align-content: var(--rui-local-align-content, var(--rui-grid-align-content)); // 2.
-  align-items: var(--rui-local-align-items, var(--rui-grid-align-items)); // 2.
-  justify-content: var(--rui-local-justify-content, var(--rui-grid-justify-content)); // 2.
-  justify-items: var(--rui-local-justify-items, var(--rui-grid-justify-items)); // 2.
+  grid-auto-flow: var(--rui-local-auto-flow, theme.$auto-flow); // 3.
+  align-content: var(--rui-local-align-content, #{map-get(theme.$responsive-properties, align-content)}); // 2.
+  align-items: var(--rui-local-align-items, #{map-get(theme.$responsive-properties, align-items)}); // 2.
+  justify-content: var(--rui-local-justify-content, #{map-get(theme.$responsive-properties, justify-content)}); // 2.
+  justify-items: var(--rui-local-justify-items, #{map-get(theme.$responsive-properties, justify-items)}); // 2.
 }
 
 .span {
-  $properties: (
+  $responsive-properties: (
     column-span: 1,
     row-span: 1,
   );
 
-  @include tools.assign-responsive-custom-properties($properties); // 1.
+  @include tools.assign-responsive-custom-properties($responsive-properties); // 1.
 
   grid-column: span var(--rui-local-column-span, 1); // 2.
   grid-row: span var(--rui-local-row-span, 1); // 2.

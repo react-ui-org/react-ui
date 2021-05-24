@@ -8,6 +8,10 @@ route: /foundation/accessibility
 
 React UI bakes accessibility principles right into its core.
 
+👉 You can adjust all custom properties on this page (and more) in your theme by
+overriding values in the
+[design tokens](/customize/theming/overview#design-tokens) section.
+
 ## Touch Friendliness
 
 The active area of interactive elements should be properly sized so that the
@@ -38,7 +42,7 @@ fields do not add any extra vertical space because it is already provided by
 `FormLayout` row gap. Remember to check that form fields in your `FormLayout`
 are properly spaced and interactive elements do not collide should you decide to
 make any changes to `--rui-tap-target-size`,
-`--rui-form-field-check-tap-target-size` or `--rui-form-layout-row-gap` options.
+`--rui-FormField--check__tap-target-size` or `--rui-FormLayout__row-gap` options.
 
 Horizontal padding is never added to form fields box model so it does not make
 their horizontal alignment complicated.

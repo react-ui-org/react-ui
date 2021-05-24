@@ -144,7 +144,7 @@ export class Modal extends React.Component {
 
     return (
       <div
-        className={styles.overlay}
+        className={styles.backdrop}
         id={id}
         onClick={(e) => {
           if (closeHandler) {
