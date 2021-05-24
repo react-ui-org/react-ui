@@ -22,4 +22,4 @@ package-lock.json
 postcss.config.js
 RELEASING.md
 stylelint.config.js
-webpack.config.lib.js
+webpack.config.js

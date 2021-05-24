@@ -166,3 +166,30 @@ click on the close button:
 ## API
 
 <Props table of={ParsableAlert} />
+
+## Theming
+
+### Common Theming Options
+
+| Custom Property                                      | Description                                                  |
+|------------------------------------------------------|--------------------------------------------------------------|
+| `--rui-Alert__padding`                               | Padding between border and message                           |
+| `--rui-Alert__font-weight`                           | Message font weight                                          |
+| `--rui-Alert__border-width`                          | Border width                                                 |
+| `--rui-Alert__border-radius`                         | Border radius                                                |
+| `--rui-Alert__emphasis__font-weight`                 | Font weight of text emphasised with `<strong>`               |
+| `--rui-Alert__stripe__width`                         | Width of the border at the start of the Alert                |
+
+### Theming Types
+
+It's possible to adjust the theme of specific alert type. Naming convention
+looks as follows:
+
+`--rui-Alert--<TYPE>__<PROPERTY>`
+
+Where:
+
+- `<TYPE>` is one of `success`, `warning`, `error`, `info`, `note`, or `help`
+  (see [alert types](#alert-types) and [API](#api))
+- `<PROPERTY>` is one of `foreground-color` (color of border, icon, links, and
+  emphasis), `background-color`, or `text-color`.

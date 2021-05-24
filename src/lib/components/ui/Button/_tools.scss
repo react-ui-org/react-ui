@@ -50,15 +50,15 @@
     @each $property in $properties {
       --rui-local-#{$property}:
         var(
-          --rui-button-#{$priority}-#{$variant}-#{$state}-#{$property},
-          var(--rui-button-#{$priority}-#{$variant}-default-#{$property})
+          --rui-Button--#{$priority}--#{$variant}--#{$state}__#{$property},
+          var(--rui-Button--#{$priority}--#{$variant}--default__#{$property})
         );
     }
   }
 
   @else {
     @each $property in $properties {
-      --rui-local-#{$property}: var(--rui-button-#{$priority}-#{$variant}-#{$state}-#{$property});
+      --rui-local-#{$property}: var(--rui-Button--#{$priority}--#{$variant}--#{$state}__#{$property});
     }
   }
 }
@@ -160,12 +160,12 @@
 @mixin button-link() {
   @include _unset-button-appearance(); // 5.
 
-  text-decoration: map-get(map-get(theme.$link-priority-properties, default), text-decoration);
-  color: map-get(map-get(theme.$link-priority-properties, default), color);
+  text-decoration: map-get(theme.$link-priority-properties, default, text-decoration);
+  color: map-get(theme.$link-priority-properties, default, color);
 
   &:not(:disabled):hover,
   &:not(:disabled):focus {
-    text-decoration: map-get(map-get(theme.$link-priority-properties, hover), text-decoration);
-    color: map-get(map-get(theme.$link-priority-properties, hover), color);
+    text-decoration: map-get(theme.$link-priority-properties, hover, text-decoration);
+    color: map-get(theme.$link-priority-properties, hover, color);
   }
 }

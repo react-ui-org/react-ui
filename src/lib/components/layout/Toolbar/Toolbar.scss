@@ -10,16 +10,16 @@
 }
 
 .toolbar {
-  @include spacing.bottom(layouts, $compensation: theme.$spacing);
+  @include spacing.bottom(layouts, $compensation: theme.$gap);
 
-  margin: calc(-1 * #{theme.$spacing});
+  margin: calc(-1 * #{theme.$gap});
 }
 
 .item {
   display: flex; // 1.
   flex: none;
   flex-direction: column; // 1.
-  margin: theme.$spacing;
+  margin: theme.$gap;
 }
 
 .isAlignedToTop {
@@ -63,11 +63,11 @@
 }
 
 .isDense {
-  margin: calc(-1 * #{theme.$spacing-dense});
+  margin: calc(-1 * #{theme.$gap-dense});
 }
 
 .isDense .item {
-  margin: theme.$spacing-dense;
+  margin: theme.$gap-dense;
 }
 
 .isDense > .isDense {
@@ -75,10 +75,10 @@
 }
 
 .toolbar.isDense {
-  @include spacing.bottom(layouts, $compensation: theme.$spacing-dense);
+  @include spacing.bottom(layouts, $compensation: theme.$gap-dense);
 }
 
 .toolbar:not(.isDense) > .isDense,
 .group:not(.isDense) > .isDense {
-  margin: theme.$spacing-dense;
+  margin: theme.$gap-dense;
 }

@@ -38,15 +38,15 @@
 }
 
 .hasRootLabelWidthDefault {
-  --rui-local-label-width: #{theme.$horizontal-label-default-width}; // 1., 2.
+  --rui-local-label-width: #{theme.$horizontal-label-width}; // 1., 2.
 }
 
 .hasRootLabelWidthAuto {
-  --rui-local-label-width: #{theme.$horizontal-label-auto-width}; // 4.
+  --rui-local-label-width: #{theme.$horizontal-label-width-auto}; // 4.
 }
 
 .hasRootLabelWidthLimited {
-  --rui-local-label-width: #{theme.$horizontal-label-limited-width}; // 4.
+  --rui-local-label-width: #{theme.$horizontal-label-width-limited}; // 4.
 }
 
 .hasRootLabelWidthCustom {

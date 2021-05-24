@@ -288,3 +288,32 @@ Separate your card actions with CardFooter. See
 [Card Composition](#card-composition) for all details.
 
 <Props table of={CardFooter} />
+
+## Theming
+
+### Common Theming Options
+
+| Custom Property                                      | Description                                                  |
+|------------------------------------------------------|--------------------------------------------------------------|
+| `--rui-Card__padding`                                | Padding shared by card header, body and footer               |
+| `--rui-Card__border-width`                           | Border width                                                 |
+| `--rui-Card__border-radius`                          | Corner radius                                                |
+| `--rui-Card__background-color`                       | Card background color                                        |
+| `--rui-Card--dense__padding`                         | Padding of dense card                                        |
+| `--rui-Card--flat__border-color`                     | Border color of flat card variant                            |
+| `--rui-Card--bordered__border-color`                 | Border color of bordered card variant                        |
+| `--rui-Card--raised__box-shadow`                     | Box shadow of raised card                                    |
+| `--rui-Card--disabled__background-color`             | Card background color in disabled state                      |
+| `--rui-Card--disabled__opacity`                      | Card opacity in disabled state                               |
+
+### Theming Types
+
+It's possible to adjust the theme of specific card type. Naming convention
+looks as follows:
+
+`--rui-Card--<TYPE>__border-color`
+
+Where:
+
+- `<TYPE>` is one of `success`, `warning`, `error`, `info`, `note`, or `help`
+  (see [card types](#card-types) and [API](#api))

@@ -307,20 +307,20 @@ This is useful mainly to improve component's accessibility.
 The following theme options are common to all priorities and variants
 **except** the `link` priority (see [below for more](#link-priority)):
 
-| Custom Property               | Description                                  |
-|-------------------------------|----------------------------------------------|
-| `--rui-button-font-weight`    | Font weight                                  |
-| `--rui-button-text-transform` | Text transform, eg. uppercase or small-caps  |
-| `--rui-button-letter-spacing` | Spacing between letters                      |
-| `--rui-button-border-width`   | Border width                                 |
-| `--rui-button-border-radius`  | Corner radius                                |
+| Custom Property                | Description                                 |
+|--------------------------------|---------------------------------------------|
+| `--rui-Button__font-weight`    | Font weight                                 |
+| `--rui-Button__text-transform` | Text transform, eg. uppercase or small-caps |
+| `--rui-Button__letter-spacing` | Spacing between letters                     |
+| `--rui-Button__border-width`   | Border width                                |
+| `--rui-Button__border-radius`  | Corner radius                               |
 
 ### Theming Priorities and Variants
 
 It's possible to adjust the theme for specific priority, variant, and state.
 Naming convention looks as follows:
 
-`--rui-button-<PRIORITY>-<VARIANT>-<INTERACTION STATE>-<PROPERTY>`
+`--rui-Button--<PRIORITY>--<VARIANT>--<INTERACTION STATE>__<PROPERTY>`
 
 Where:
 
@@ -340,7 +340,8 @@ Where:
 
 The `link` priority is treated a bit different because from the theming point of
 view it doesn't share anything with other priorities. However, it shares
-everything with common links and thus can be adjusted using their theme options:
+everything with common links and thus can be adjusted by editing corresponding
+design tokens:
 
 | Custom Property               | Description                                  |
 |-------------------------------|----------------------------------------------|
@@ -353,7 +354,7 @@ everything with common links and thus can be adjusted using their theme options:
 
 Available sizes can be adjusted as follows:
 
-`--rui-button-<SIZE>-<PROPERTY>`
+`--rui-Button--<SIZE>__<PROPERTY>`
 
 Where:
 
@@ -367,14 +368,14 @@ Where:
   <style type="text/css">
     {`
       .example--themed-buttons {
-        --rui-button-font-weight: bold;
-        --rui-button-letter-spacing: 0.05em;
-        --rui-button-text-transform: uppercase;
-        --rui-button-border-radius: 0;
-        --rui-button-filled-primary-default-box-shadow:
+        --rui-Button__font-weight: bold;
+        --rui-Button__letter-spacing: 0.05em;
+        --rui-Button__text-transform: uppercase;
+        --rui-Button__border-radius: 0;
+        --rui-Button--filled--primary--default__box-shadow:
           0.1em 0.1em 0.5em rgba(0, 0, 0, 0.3);
-        --rui-button-medium-height: 3rem;
-        --rui-button-medium-padding-x: 1.25rem;
+        --rui-Button--medium__height: 3rem;
+        --rui-Button--medium__padding-x: 1.25rem;
       }
     `}
   </style>
@@ -391,15 +392,15 @@ Where:
 The `disabled` state offers a bit more of design flexibility compared to other
 interaction states. Firstly, there are a few common options for this state:
 
-| Custom Property                 | Description                                 |
-|---------------------------------|---------------------------------------------|
-| `--rui-button-disabled-opacity` | Opacity of disabled buttons                 |
-| `--rui-button-disabled-cursor`  | Cursor to show on hovering disabled buttons |
+| Custom Property                   | Description                                 |
+|-----------------------------------|---------------------------------------------|
+| `--rui-Button--disabled__opacity` | Opacity of disabled buttons                 |
+| `--rui-Button--disabled__cursor`  | Cursor to show on hovering disabled buttons |
 
 Secondly, it can be further adjusted using priority and variant specific
 options for the disabled state:
 
- `--rui-button-<PRIORITY>-<VARIANT>-disabled-<PROPERTY>`
+ `--rui-Button--<PRIORITY>--<VARIANT>--disabled__<PROPERTY>`
 
 Undefined theming options are inherited from the `default` interaction state.
 
@@ -409,17 +410,17 @@ Example:
   <style type="text/css">
     {`
       .example--themed-disabled-buttons {
-        --rui-button-border-radius: 0;
-        --rui-button-disabled-opacity: 0.4;
-        --rui-button-disabled-cursor: default;
-        --rui-button-filled-primary-disabled-color: slate;
-        --rui-button-filled-primary-disabled-border-color: silver;
-        --rui-button-filled-primary-disabled-background: silver;
-        --rui-button-filled-success-disabled-color: slate;
-        --rui-button-filled-success-disabled-border-color: silver;
-        --rui-button-filled-success-disabled-background: silver;
-        --rui-button-outline-primary-disabled-color: slate;
-        --rui-button-outline-primary-disabled-border-color: silver;
+        --rui-Button__border-radius: 0;
+        --rui-Button--disabled__opacity: 0.4;
+        --rui-Button--disabled__cursor: default;
+        --rui-Button--filled--primary--disabled__color: slate;
+        --rui-Button--filled--primary--disabled__border-color: silver;
+        --rui-Button--filled--primary--disabled__background: silver;
+        --rui-Button--filled--success--disabled__color: slate;
+        --rui-Button--filled--success--disabled__border-color: silver;
+        --rui-Button--filled--success--disabled__background: silver;
+        --rui-Button--outline--primary--disabled__color: slate;
+        --rui-Button--outline--primary--disabled__border-color: silver;
       }
     `}
   </style>
