@@ -1,6 +1,8 @@
+import AirBnbPropTypes from 'airbnb-prop-types';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../../provider';
+import Button from '../Button';
 import styles from './ButtonGroup.scss';
 
 export const ButtonGroup = ({
@@ -50,7 +52,10 @@ ButtonGroup.propTypes = {
   /**
    * Buttons to be grouped.
    */
-  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  children: PropTypes.oneOfType([
+    AirBnbPropTypes.elementType(Button),
+    PropTypes.arrayOf(AirBnbPropTypes.elementType(Button)),
+  ]).isRequired,
   /**
    * If `true`, all buttons inside the group will be disabled.
    */

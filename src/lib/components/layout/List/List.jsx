@@ -1,6 +1,8 @@
+import AirBnbPropTypes from 'airbnb-prop-types';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../../provider';
+import { ListItem } from './ListItem';
 import styles from './List.scss';
 
 export const List = ({
@@ -63,7 +65,10 @@ List.propTypes = {
   /**
    * Individual ListItems.
    */
-  children: PropTypes.node,
+  children: PropTypes.oneOfType([
+    AirBnbPropTypes.elementType(ListItem),
+    PropTypes.arrayOf(AirBnbPropTypes.elementType(ListItem)),
+  ]),
 };
 
 export const ListWithContext = withProviderContext(List, 'List');

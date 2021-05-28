@@ -1,7 +1,16 @@
+import AirBnbPropTypes from 'airbnb-prop-types';
 import flattenChildren from 'react-keyed-flatten-children';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../../provider';
+import { CheckboxField } from '../../ui/CheckboxField/CheckboxField';
+import { FileInputField } from '../../ui/FileInputField/FileInputField';
+import { Radio } from '../../ui/Radio/Radio';
+import { SelectField } from '../../ui/SelectField/SelectField';
+import { TextArea } from '../../ui/TextArea/TextArea';
+import { TextField } from '../../ui/TextField/TextField';
+import { Toggle } from '../../ui/Toggle/Toggle';
+import { FormLayoutCustomField } from './FormLayoutCustomField';
 import styles from './FormLayout.scss';
 
 const PREDEFINED_LABEL_WIDTH_VALUES = ['auto', 'default', 'limited'];
@@ -82,6 +91,17 @@ FormLayout.defaultProps = {
   labelWidth: 'default',
 };
 
+const ChildrenPropTypes = [
+  AirBnbPropTypes.elementType(CheckboxField),
+  AirBnbPropTypes.elementType(FileInputField),
+  AirBnbPropTypes.elementType(Radio),
+  AirBnbPropTypes.elementType(SelectField),
+  AirBnbPropTypes.elementType(TextArea),
+  AirBnbPropTypes.elementType(TextField),
+  AirBnbPropTypes.elementType(Toggle),
+  AirBnbPropTypes.elementType(FormLayoutCustomField),
+];
+
 FormLayout.propTypes = {
   /**
    * If `true`, FormLayout will take up only as much horizontal space as necessary.
@@ -91,7 +111,10 @@ FormLayout.propTypes = {
    * Supported form field components: CheckboxField, Radio, SelectField, TextArea, TextField,
    * Toggle, and FormLayoutCustomField.
    */
-  children: PropTypes.node,
+  children: PropTypes.oneOfType([
+    ...ChildrenPropTypes,
+    PropTypes.arrayOf(PropTypes.oneOfType([...ChildrenPropTypes])),
+  ]),
   /**
    * Layout that is forced on children form fields.
    */

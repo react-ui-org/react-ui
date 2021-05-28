@@ -1,3 +1,4 @@
+import AirBnbPropTypes from 'airbnb-prop-types';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { createPortal } from 'react-dom';
@@ -289,7 +290,7 @@ Modal.propTypes = {
    * If provided only the modal body will be scrollable.
    * If set to `null` the entire modal including header and footer will be scrollable.
    */
-  scrollView: PropTypes.element,
+  scrollView: AirBnbPropTypes.elementType(ScrollView),
   /**
    * Size of the modal.
    */
