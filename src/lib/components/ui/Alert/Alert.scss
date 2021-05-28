@@ -10,9 +10,12 @@
   display: flex;
   align-items: flex-start;
   width: 100%;
+  color: var(--rui-local-color);
   border-width: theme.$border-width theme.$border-width theme.$border-width theme.$stripe-width;
   border-style: solid;
+  border-color: var(--rui-local-foreground-color);
   border-radius: theme.$border-radius;
+  background-color: var(--rui-local-background-color);
 }
 
 .icon,
@@ -23,6 +26,7 @@
 .close,
 .icon {
   height: settings.$min-height;
+  color: var(--rui-local-foreground-color);
 }
 
 .icon {
@@ -43,6 +47,7 @@
 .message a,
 .message strong {
   font-weight: theme.$emphasis-font-weight;
+  color: var(--rui-local-foreground-color);
 }
 
 .close {
@@ -59,26 +64,42 @@
   top: -0.1em;
 }
 
-.isRootSuccess {
-  @include tools.type(success);
+.rootColorPrimary {
+  @include tools.color(primary);
 }
 
-.isRootWarning {
-  @include tools.type(warning);
+.rootColorSecondary {
+  @include tools.color(secondary);
 }
 
-.isRootError {
-  @include tools.type(error);
+.rootColorSuccess {
+  @include tools.color(success);
 }
 
-.isRootInfo {
-  @include tools.type(info);
+.rootColorWarning {
+  @include tools.color(warning);
 }
 
-.isRootHelp {
-  @include tools.type(help);
+.rootColorDanger {
+  @include tools.color(danger);
 }
 
-.isRootNote {
-  @include tools.type(note);
+.rootColorHelp {
+  @include tools.color(help);
+}
+
+.rootColorInfo {
+  @include tools.color(info);
+}
+
+.rootColorNote {
+  @include tools.color(note);
+}
+
+.rootColorLight {
+  @include tools.color(light);
+}
+
+.rootColorDark {
+  @include tools.color(dark);
 }

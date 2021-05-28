@@ -1,13 +1,9 @@
 @use 'theme';
 
-@mixin card-type($type) {
-  $type-properties: map-get(theme.$types, $type);
+@mixin color($color) {
+  $color-variant-properties: map-get(theme.$colors, $color);
 
-  border-color: map-get($type-properties, border-color);
-}
-
-@mixin card-variant($variant) {
-  $variant-properties: map-get(theme.$variants, $variant);
-
-  border-color: map-get($variant-properties, border-color);
+  --rui-local-color: #{map-get($color-variant-properties, color)};
+  --rui-local-border-color: #{map-get($color-variant-properties, border-color)};
+  --rui-local-background-color: #{map-get($color-variant-properties, background-color)};
 }

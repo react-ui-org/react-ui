@@ -45,7 +45,7 @@ And use it:
               actions={[{
                 clickHandler: () => setModalOpen(false),
                 label: 'Delete',
-                variant: 'danger',
+                color: 'danger',
               }]}
               closeHandler={() => setModalOpen(false)}
             >
@@ -134,7 +134,7 @@ Modals of any size automatically shrink when they cannot fit the screen width.
               actions={[{
                 clickHandler: () => setModalOpen(false),
                 label: 'Delete',
-                variant: 'danger',
+                color: 'danger',
               }]}
               closeHandler={() => setModalOpen(false)}
               size={modalSize}
@@ -154,7 +154,7 @@ Modals of any size automatically shrink when they cannot fit the screen width.
 On top of that, the modal is able to adjust to the width of its content.
 
 👉 Please note the auto width may not function correctly in combination with
-other auto layout mechanisms, eg. the auto-width
+other auto layout mechanisms, e.g. the auto-width
 [FormLayout](/components/layout/form-layout#label-width). It's just too much
 magic that doesn't work together yet 🎩.
 
@@ -175,7 +175,7 @@ magic that doesn't work together yet 🎩.
               actions={[{
                 clickHandler: () => setModalOpen(false),
                 label: 'Delete',
-                variant: 'danger',
+                color: 'danger',
               }]}
               closeHandler={() => setModalOpen(false)}
               size="auto"
@@ -225,7 +225,7 @@ Modal can be aligned either to top or center of the screen.
               actions={[{
                 clickHandler: () => setModalOpen(false),
                 label: 'Delete',
-                variant: 'danger',
+                color: 'danger',
               }]}
               closeHandler={() => setModalOpen(false)}
               position={modalPosition}

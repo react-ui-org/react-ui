@@ -234,6 +234,7 @@ exports[`rendering renders correctly with all props except loading icon 1`] = `
                             beforeLabel={null}
                             block={false}
                             clickHandler={[Function]}
+                            color="primary"
                             disabled={false}
                             endCorner={null}
                             forwardedRef={null}
@@ -249,17 +250,9 @@ exports[`rendering renders correctly with all props except loading icon 1`] = `
                             size="medium"
                             startCorner={null}
                             type="button"
-                            variant="primary"
                           >
                             <button
-                              className="root
-        priorityFilled
-        sizeMedium
-        variantPrimary
-        
-        
-        
-        isRootLoading"
+                              className="root rootPriorityFilled rootColorPrimary rootSizeMedium    isRootLoading"
                               disabled={true}
                               onClick={[Function]}
                               type="button"
@@ -306,6 +299,7 @@ exports[`rendering renders correctly with all props except loading icon 1`] = `
                             beforeLabel={null}
                             block={false}
                             clickHandler={[Function]}
+                            color="primary"
                             disabled={false}
                             endCorner={null}
                             forwardedRef={null}
@@ -318,13 +312,9 @@ exports[`rendering renders correctly with all props except loading icon 1`] = `
                             size="medium"
                             startCorner={null}
                             type="button"
-                            variant="primary"
                           >
                             <button
-                              className="root
-        priorityFlat
-        sizeMedium
-        variantPrimary"
+                              className="root rootPriorityFlat rootColorPrimary rootSizeMedium    "
                               disabled={false}
                               id="custom-id__closeModalFooterButton"
                               onClick={[Function]}
@@ -895,6 +885,7 @@ exports[`rendering renders correctly with translations 1`] = `
                             beforeLabel={null}
                             block={false}
                             clickHandler={[Function]}
+                            color="primary"
                             disabled={false}
                             endCorner={null}
                             forwardedRef={null}
@@ -906,13 +897,9 @@ exports[`rendering renders correctly with translations 1`] = `
                             size="medium"
                             startCorner={null}
                             type="button"
-                            variant="primary"
                           >
                             <button
-                              className="root
-        priorityFlat
-        sizeMedium
-        variantPrimary"
+                              className="root rootPriorityFlat rootColorPrimary rootSizeMedium    "
                               disabled={false}
                               onClick={[Function]}
                               type="button"

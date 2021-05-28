@@ -15,10 +15,10 @@ describe('rendering', () => {
   it('renders correctly with all props', () => {
     const tree = shallow(
       <Badge
+        color="warning"
         id="custom-id"
         label={3}
         priority="outline"
-        type="warning"
       />,
     );
 

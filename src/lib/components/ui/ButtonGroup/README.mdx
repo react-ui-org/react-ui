@@ -173,17 +173,17 @@ a different button variant for the active item.
 
 <Playground>
   <ButtonGroup>
-    <Button variant="dark" label="Week" />
+    <Button color="dark" label="Week" />
     <Button label="Month" />
     <Button label="Year" />
   </ButtonGroup>
   <ButtonGroup priority="outline">
-    <Button variant="dark" label="Week" />
+    <Button color="dark" label="Week" />
     <Button label="Month" />
     <Button label="Year" />
   </ButtonGroup>
   <ButtonGroup priority="flat">
-    <Button variant="dark" label="Week" />
+    <Button color="dark" label="Week" />
     <Button label="Month" />
     <Button label="Year" />
   </ButtonGroup>
@@ -198,7 +198,7 @@ and communicating the state of individual options.
   <>
     <span id="period-label">Period:</span>
     <ButtonGroup aria-labelledby="#period-label">
-      <Button label="Week" aria-pressed variant="dark" />
+      <Button label="Week" aria-pressed color="dark" />
       <Button label="Month" aria-pressed={false} />
       <Button label="Year" aria-pressed={false} />
     </ButtonGroup>

@@ -28,14 +28,14 @@
 @use 'theme';
 
 // 1.
-@mixin _get-themeable-properties($priority, $variant, $state) {
+@mixin _get-themeable-properties($priority, $color, $state) {
   @if (not list.index(map-keys(settings.$themeable-priority-properties), $priority)) {
     @error "Invalid priority specified! #{$priority} doesn't exist. "
       + "Choose one of #{settings.$themeable-priority-properties}.";
   }
 
-  @if (not list.index(settings.$themeable-variants, $variant)) {
-    @error "Invalid variant specified! #{$variant} doesn't exist. "
+  @if (not list.index(settings.$themeable-variants, $color)) {
+    @error "Invalid variant specified! #{$color} doesn't exist. "
       + "Choose one of #{settings.$themeable-variants}.";
   }
 
@@ -51,15 +51,15 @@
     @each $property in $properties {
       --rui-local-#{$property}:
         var(
-          --rui-Button--#{$priority}--#{$variant}--#{$state}__#{$property},
-          var(--rui-Button--#{$priority}--#{$variant}--default__#{$property})
+          --rui-Button--#{$priority}--#{$color}--#{$state}__#{$property},
+          var(--rui-Button--#{$priority}--#{$color}--default__#{$property})
         );
     }
   }
 
   @else {
     @each $property in $properties {
-      --rui-local-#{$property}: var(--rui-Button--#{$priority}--#{$variant}--#{$state}__#{$property});
+      --rui-local-#{$property}: var(--rui-Button--#{$priority}--#{$color}--#{$state}__#{$property});
     }
   }
 }
@@ -141,20 +141,20 @@
   }
 }
 
-@mixin button-variant($priority, $variant) {
-  @include _get-themeable-properties($priority, $variant, default);
+@mixin button-color($priority, $color) {
+  @include _get-themeable-properties($priority, $color, default);
 
   &:disabled {
-    @include _get-themeable-properties($priority, $variant, disabled);
+    @include _get-themeable-properties($priority, $color, disabled);
   }
 
   &:not(:disabled):hover,
   &:not(:disabled):focus {
-    @include _get-themeable-properties($priority, $variant, hover);
+    @include _get-themeable-properties($priority, $color, hover);
   }
 
   &:not(:disabled):active {
-    @include _get-themeable-properties($priority, $variant, active);
+    @include _get-themeable-properties($priority, $color, active);
   }
 }
 

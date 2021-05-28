@@ -73,16 +73,16 @@ web developers because it looks like BEM (or SUIT CSS, more precisely):
 
 Where:
 
-* `<ComponentName>` stands for actual component name (eg. `Button`,
+- `<ComponentName>` stands for actual component name (e.g. `Button`,
   `FormField` etc.) with a reasonable exception to form fields whose settings
   are widely shared and therefore grouped as `FormField` options.
-* `<modifications(s)>` can be one or more modifiers, typically a variant (eg.
+- `<modifications(s)>` can be one or more modifiers, typically a variant (e.g.
   `primary`, `filled`, `box`) or interaction state (`default`, `hover`,
   `focus`, `active`, `disabled`).
-* `<element>` stands for a nested element of the component.
-* `<property>` is usually a CSS property (eg. `color`, `background`,
+- `<element>` stands for a nested element of the component.
+- `<property>` is usually a CSS property (e.g. `color`, `background`,
   `background-color`, `width`, `box-shadow`), or a brief property description
-  where a CSS property wouldn't tell enough (eg. `initial-offset`,
+  where a CSS property wouldn't tell enough (e.g. `initial-offset`,
   `check-background-color`, `tap-target-size`).
 
 Example component theming options:
@@ -99,6 +99,28 @@ Example component theming options:
   --rui-Button--filled--primary--hover__box-shadow: none;
 }
 ```
+
+### CSS, or SCSS?
+
+Colors, breakpoints, and SVG definitions used in `theme.scss` are preprocessed
+with SCSS first. This enables us to:
+
+- generate color palette programmatically,
+- keep actual breakpoint values in a single place in the code,
+- keep `theme.scss` uncluttered by inline SVG.
+
+It's entirely up to you what format you decide to use for storing the theme.
+Both `theme.scss` and `theme.css` will work equally well, it only matters if
+the custom properties make it from the theme file to browser.
+
+👉 Just remember everything in the
+[theme constants](https://github.com/react-ui-org/react-ui/blob/master/src/lib/styles/theme-constants)
+directory is intended only for usage within `theme.scss`. Otherwise, the theming
+system may not work as expected. We recommend calling custom properties from
+`theme.scss` either directly in your stylesheet, or through an intermediate,
+shareable layer like `MyComponent/_theme.scss` or
+`styles/shared-by-components/_my-sass-variables-referring-to-theme.scss`
+(latter of which is the approach we use).
 
 ## Best Practices
 

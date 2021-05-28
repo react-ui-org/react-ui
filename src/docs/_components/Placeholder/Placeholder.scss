@@ -9,6 +9,15 @@
   background-color: colors.$white;
 }
 
-.isRootBordered {
+.rootBordered {
   border: 2px dashed map-get(colors.$grays, gray-200);
+}
+
+.rootDark {
+  background-color: var(--rui-color-dark);
+}
+
+.rootInline {
+  display: inline-flex;
+  vertical-align: middle;
 }

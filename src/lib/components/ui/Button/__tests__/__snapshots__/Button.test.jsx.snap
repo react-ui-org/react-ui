@@ -1,11 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`rendering renders correctly color 1`] = `
+<button
+  className="root rootPriorityFilled rootColorSuccess rootSizeMedium    "
+  disabled={false}
+  onClick={null}
+  type="button"
+>
+  <span
+    className="label"
+  >
+    button
+  </span>
+</button>
+`;
+
 exports[`rendering renders correctly flat 1`] = `
 <button
-  className="root
-        priorityFlat
-        sizeMedium
-        variantPrimary"
+  className="root rootPriorityFlat rootColorPrimary rootSizeMedium    "
   disabled={false}
   onClick={null}
   type="button"
@@ -20,13 +32,7 @@ exports[`rendering renders correctly flat 1`] = `
 
 exports[`rendering renders correctly label visibility 1`] = `
 <button
-  className="root
-        priorityFilled
-        sizeMedium
-        variantPrimary
-        
-        
-        withLabelHidden"
+  className="root rootPriorityFilled rootColorPrimary rootSizeMedium withLabelHidden   "
   disabled={false}
   onClick={null}
   type="button"
@@ -41,10 +47,7 @@ exports[`rendering renders correctly label visibility 1`] = `
 
 exports[`rendering renders correctly mandatory props only 1`] = `
 <button
-  className="root
-        priorityFilled
-        sizeMedium
-        variantPrimary"
+  className="root rootPriorityFilled rootColorPrimary rootSizeMedium    "
   disabled={false}
   onClick={null}
   type="button"
@@ -59,8 +62,7 @@ exports[`rendering renders correctly mandatory props only 1`] = `
 
 exports[`rendering renders correctly priority \`link\` 1`] = `
 <button
-  className="root
-        priorityLink"
+  className="root rootPriorityLink"
   disabled={false}
   onClick={null}
   type="button"
@@ -75,8 +77,7 @@ exports[`rendering renders correctly priority \`link\` 1`] = `
 
 exports[`rendering renders correctly priority \`link\` with all props 1`] = `
 <button
-  className="root
-        priorityLink"
+  className="root rootPriorityLink"
   disabled={true}
   id="custom-id"
   onClick={null}
@@ -107,10 +108,7 @@ exports[`rendering renders correctly priority \`link\` with all props 1`] = `
 
 exports[`rendering renders correctly priority 1`] = `
 <button
-  className="root
-        priorityOutline
-        sizeMedium
-        variantPrimary"
+  className="root rootPriorityOutline rootColorPrimary rootSizeMedium    "
   disabled={false}
   onClick={null}
   type="button"
@@ -125,28 +123,7 @@ exports[`rendering renders correctly priority 1`] = `
 
 exports[`rendering renders correctly size 1`] = `
 <button
-  className="root
-        priorityFilled
-        sizeLarge
-        variantPrimary"
-  disabled={false}
-  onClick={null}
-  type="button"
->
-  <span
-    className="label"
-  >
-    button
-  </span>
-</button>
-`;
-
-exports[`rendering renders correctly variant 1`] = `
-<button
-  className="root
-        priorityFilled
-        sizeMedium
-        variantSuccess"
+  className="root rootPriorityFilled rootColorPrimary rootSizeLarge    "
   disabled={false}
   onClick={null}
   type="button"
@@ -161,14 +138,7 @@ exports[`rendering renders correctly variant 1`] = `
 
 exports[`rendering renders correctly with all props 1`] = `
 <button
-  className="root
-        priorityFlat
-        sizeLarge
-        variantSuccess
-        isRootBlock
-        isRootGrouped
-        withLabelHiddenMobile
-        isRootLoading"
+  className="root rootPriorityFlat rootColorSuccess rootSizeLarge withLabelHiddenMobile rootBlock rootGrouped isRootLoading"
   disabled={true}
   id="custom-id"
   onClick={null}
@@ -220,10 +190,7 @@ exports[`rendering renders correctly with all props 1`] = `
 
 exports[`rendering renders correctly with icon 1`] = `
 <button
-  className="root
-        priorityFilled
-        sizeMedium
-        variantPrimary"
+  className="root rootPriorityFilled rootColorPrimary rootSizeMedium    "
   disabled={false}
   onClick={null}
   type="button"

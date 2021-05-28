@@ -9,8 +9,8 @@ describe('rendering', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders correctly error', () => {
-    const tree = shallow(<Card type="error"><p>Card content</p></Card>);
+  it('renders correctly in danger color', () => {
+    const tree = shallow(<Card color="danger"><p>Card content</p></Card>);
 
     expect(tree).toMatchSnapshot();
   });
@@ -30,12 +30,11 @@ describe('rendering', () => {
   it('renders correctly with all props', () => {
     const tree = shallow(
       <Card
+        color="warning"
         dense
         disabled
         id="custom-id"
         raised
-        type="warning"
-        variant="flat"
       >
         <p>Card content</p>
       </Card>,

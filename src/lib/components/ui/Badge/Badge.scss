@@ -17,78 +17,109 @@ $_badge-size: 1.25rem;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
+  color: var(--rui-local-color);
   border-radius: math.div($_badge-size, 2);
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
+  background-color: var(--rui-local-background-color);
+  box-shadow: var(--rui-local-box-shadow, #{0 0 0 2px rgba(255, 255, 255, 0.8)});
 }
 
-.success {
-  color: map-get(colors.$ui, on-success);
-  background-color: map-get(colors.$ui, success);
+.rootColorPrimary {
+  --rui-local-color: #{map-get(colors.$brand, on-primary)};
+  --rui-local-background-color: #{map-get(colors.$brand, primary)};
 }
 
-.warning {
-  color: map-get(colors.$ui, on-warning);
-  background-color: map-get(colors.$ui, warning);
+.rootColorSecondary {
+  --rui-local-color: #{map-get(colors.$brand, on-secondary)};
+  --rui-local-background-color: #{map-get(colors.$brand, secondary)};
 }
 
-.error {
-  color: map-get(colors.$ui, on-error);
-  background-color: map-get(colors.$ui, error);
+.rootColorSuccess {
+  --rui-local-color: #{map-get(colors.$ui, on-success)};
+  --rui-local-background-color: #{map-get(colors.$ui, success)};
 }
 
-.info {
-  color: map-get(colors.$ui, on-info);
-  background-color: map-get(colors.$ui, info);
+.rootColorWarning {
+  --rui-local-color: #{map-get(colors.$ui, on-warning)};
+  --rui-local-background-color: #{map-get(colors.$ui, warning)};
 }
 
-.help {
-  color: map-get(colors.$ui, on-help);
-  background-color: map-get(colors.$ui, help);
+.rootColorDanger {
+  --rui-local-color: #{map-get(colors.$ui, on-danger)};
+  --rui-local-background-color: #{map-get(colors.$ui, danger)};
 }
 
-.note {
-  color: map-get(colors.$ui, on-note);
-  background-color: map-get(colors.$ui, note);
+.rootColorHelp {
+  --rui-local-color: #{map-get(colors.$ui, on-help)};
+  --rui-local-background-color: #{map-get(colors.$ui, help)};
 }
 
-.light {
-  color: colors.$black;
-  background-color: colors.$white;
-  box-shadow: none;
+.rootColorInfo {
+  --rui-local-color: #{map-get(colors.$ui, on-info)};
+  --rui-local-background-color: #{map-get(colors.$ui, info)};
 }
 
-.outline {
+.rootColorNote {
+  --rui-local-color: #{map-get(colors.$ui, on-note)};
+  --rui-local-background-color: #{map-get(colors.$ui, note)};
+}
+
+.rootColorLight {
+  --rui-local-color: #{colors.$dark};
+  --rui-local-background-color: #{colors.$light};
+  --rui-local-box-shadow: none;
+}
+
+.rootColorDark {
+  --rui-local-color: #{colors.$light};
+  --rui-local-background-color: #{colors.$dark};
+  --rui-local-box-shadow: none;
+}
+
+.rootPriorityOutline {
+  --rui-local-background-color: transparent;
+  --rui-local-box-shadow: none;
+
   padding-top: 0.1875rem;
   padding-bottom: 0.1875rem;
   border: borders.$width solid currentColor;
-  background: none;
-  box-shadow: none;
 }
 
-.outline.success {
-  color: map-get(colors.$ui, success);
+.rootPriorityOutline.rootColorPrimary {
+  --rui-local-color: #{map-get(colors.$brand, primary)};
 }
 
-.outline.warning {
-  color: map-get(colors.$ui, warning);
+.rootPriorityOutline.rootColorSecondary {
+  --rui-local-color: #{map-get(colors.$brand, secondary)};
 }
 
-.outline.error {
-  color: map-get(colors.$ui, error);
+.rootPriorityOutline.rootColorSuccess {
+  --rui-local-color: #{map-get(colors.$ui, success)};
 }
 
-.outline.info {
-  color: map-get(colors.$ui, info);
+.rootPriorityOutline.rootColorWarning {
+  --rui-local-color: #{map-get(colors.$ui, warning)};
 }
 
-.outline.help {
-  color: map-get(colors.$ui, help);
+.rootPriorityOutline.rootColorDanger {
+  --rui-local-color: #{map-get(colors.$ui, danger)};
 }
 
-.outline.note {
-  color: map-get(colors.$ui, note);
+.rootPriorityOutline.rootColorHelp {
+  --rui-local-color: #{map-get(colors.$ui, help)};
 }
 
-.outline.light {
-  color: colors.$white;
+.rootPriorityOutline.rootColorInfo {
+  --rui-local-color: #{map-get(colors.$ui, info)};
+}
+
+.rootPriorityOutline.rootColorNote {
+  --rui-local-color: #{map-get(colors.$ui, note)};
+}
+
+.rootPriorityOutline.rootColorLight {
+  --rui-local-color: #{colors.$light};
+}
+
+.rootPriorityOutline.rootColorDark {
+  --rui-local-color: #{colors.$dark};
 }

@@ -47,29 +47,29 @@
   margin-right: -0.35rem;
 }
 
-.sizeSmall {
+.rootSizeSmall {
   @include tools.button-size(small);
 }
 
-.sizeMedium {
+.rootSizeMedium {
   @include tools.button-size(medium);
 }
 
-.sizeLarge {
+.rootSizeLarge {
   @include tools.button-size(large);
 }
 
-.isRootBlock {
+.rootBlock {
   width: 100%;
 }
 
-.isRootBlock.withLabelHiddenMobile {
+.rootBlock.withLabelHiddenMobile {
   @include breakpoint.up(settings.$breakpoint) {
     width: 100%;
   }
 }
 
-.isRootGrouped {
+.rootGrouped {
   z-index: map-get(settings.$group-z-indexes, button);
 
   &:not(:first-child) {
@@ -89,8 +89,8 @@
   }
 }
 
-.isRootGrouped .startCorner,
-.isRootGrouped .endCorner {
+.rootGrouped .startCorner,
+.rootGrouped .endCorner {
   z-index: map-get(settings.$group-z-indexes, button-overflowing-elements);
 }
 

@@ -5,6 +5,8 @@
 ![Build and run tests](https://github.com/react-ui-org/react-ui/workflows/Build%20and%20run%20tests/badge.svg)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/@react-ui-org/react-ui)
 
+> React components for your design system.
+
 React UI is a themeable, performant, responsive UI library for React apps.
 Use it simply with no configuration or have full control over your design by
 tweaking some of the hundreds theming options available.

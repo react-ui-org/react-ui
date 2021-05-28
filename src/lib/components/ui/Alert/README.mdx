@@ -11,6 +11,7 @@ import {
   Props,
 } from 'docz'
 import Icon from '../../../../docs/_components/Icon'
+import Placeholder from '../../../../docs/_components/Placeholder'
 import Button from '../Button'
 import {
   AlertWithContext as Alert,
@@ -31,7 +32,7 @@ And use it:
 
 <Playground>
   <Alert>
-    Hello!
+    <strong>Hello!</strong> This is an alert.
   </Alert>
 </Playground>
 
@@ -46,19 +47,28 @@ See [API](#api) for all available options.
 - **Use icons** to improve the accessibility of alerts because color may not be
   enough for everyone. [See how](#alerts-with-icons).
 
-## Alert Types
+## Color Variants
 
-There are six types of alerts (matching all available
-[UI colors](/foundation/colors#ui-colors)) to cover all possible needs of your
-project: note, success, warning, error, help, and info.
+All [component colors](/foundation/colors#component-colors) are supported by
+alert to cover all possible needs of your project.
 
-### Note (default)
+### Primary
 
-When no type is specified, a neutral informative alert appears:
+Primary alert uses brand primary color.
 
 <Playground>
-  <Alert>
-    <strong>Note:</strong> This feature may not be available in all regions.
+  <Alert color="primary">
+    <strong>Primary:</strong> This is a primary alert.
+  </Alert>
+</Playground>
+
+### Secondary
+
+Secondary alert uses brand secondary color.
+
+<Playground>
+  <Alert color="secondary">
+    <strong>Secondary:</strong> This is a secondary alert.
   </Alert>
 </Playground>
 
@@ -67,7 +77,7 @@ When no type is specified, a neutral informative alert appears:
 Success alerts confirm that an operation has been processed successfully.
 
 <Playground>
-  <Alert type="success">
+  <Alert color="success">
     <strong>Success:</strong> Settings have been successfully saved.
   </Alert>
 </Playground>
@@ -78,21 +88,21 @@ Use warning alerts when a potentially unfavourable situation may occur. You may
 suggest an action to resolve the problem.
 
 <Playground>
-  <Alert type="warning">
+  <Alert color="warning">
     <strong>Warning:</strong> Your credit card is going to expire soon.
     {' '}
     <a href="/">Update my payment options</a>
   </Alert>
 </Playground>
 
-### Error
+### Danger
 
-Error alerts say there is something that block users from continuing that
+Danger alerts say there is something that block users from continuing that
 requires their immediate attention. The alert should offer a solution to the
 problem.
 
 <Playground>
-  <Alert type="error">
+  <Alert color="danger">
     <strong>Error:</strong> Cannot connect to the server. Is your internet
     connection working fine?
     {' '}
@@ -105,7 +115,7 @@ problem.
 This kind of alert can be used to display helpful information.
 
 <Playground>
-  <Alert type="help">
+  <Alert color="help">
     <strong>Help:</strong> You should choose a password you don&apos;t use
     anywhere else.
   </Alert>
@@ -116,8 +126,40 @@ This kind of alert can be used to display helpful information.
 Another common, informative alert.
 
 <Playground>
-  <Alert type="info">
+  <Alert color="info">
     <strong>Info:</strong> This feature depends on user&apos;s OS preferences.
+  </Alert>
+</Playground>
+
+### Note (Default)
+
+Neutral informative alert.
+
+<Playground>
+  <Alert>
+    <strong>Note:</strong> This feature may not be available in all regions.
+  </Alert>
+</Playground>
+
+### Light
+
+Light alert variant.
+
+<Playground>
+  <Placeholder dark>
+    <Alert color="light">
+      <strong>Light alert:</strong> Stands out on dark backgrounds.
+    </Alert>
+  </Placeholder>
+</Playground>
+
+### Dark
+
+Dark alert variant.
+
+<Playground>
+  <Alert color="dark">
+    <strong>Dark alert:</strong> Stands out on light backgrounds.
   </Alert>
 </Playground>
 
@@ -129,7 +171,7 @@ An icon can (and should) accompany the message.
 [Icons](/foundation/icons) to see how it works.
 
 <Playground>
-  <Alert type="success" icon={<Icon icon="success" />}>
+  <Alert color="success" icon={<Icon icon="success" />}>
     <strong>Success:</strong> Settings have been successfully saved.
   </Alert>
 </Playground>
@@ -146,7 +188,7 @@ click on the close button:
       <>
         {isAlertVisible ? (
           <Alert
-            type="success"
+            color="success"
             icon={<Icon icon="success" />}
             closeHandler={() => setIsAlertVisible(false)}
           >
@@ -176,20 +218,21 @@ click on the close button:
 | `--rui-Alert__padding`                               | Padding between border and message                           |
 | `--rui-Alert__font-weight`                           | Message font weight                                          |
 | `--rui-Alert__border-width`                          | Border width                                                 |
-| `--rui-Alert__border-radius`                         | Border radius                                                |
+| `--rui-Alert__border-radius`                         | Corner radius                                                |
 | `--rui-Alert__emphasis__font-weight`                 | Font weight of text emphasised with `<strong>`               |
 | `--rui-Alert__stripe__width`                         | Width of the border at the start of the Alert                |
 
-### Theming Types
+### Theming Variants
 
-It's possible to adjust the theme of specific alert type. Naming convention
-looks as follows:
+It's possible to adjust the theme of specific alert color variant. Naming
+convention looks as follows:
 
-`--rui-Alert--<TYPE>__<PROPERTY>`
+`--rui-Alert--<COLOR>__<PROPERTY>`
 
 Where:
 
-- `<TYPE>` is one of `success`, `warning`, `error`, `info`, `note`, or `help`
-  (see [alert types](#alert-types) and [API](#api))
-- `<PROPERTY>` is one of `foreground-color` (color of border, icon, links, and
-  emphasis), `background-color`, or `text-color`.
+- `<COLOR>` is one of supported
+  [component colors](/foundation/colors#component-colors)
+  (see alert [color variants](#color-variants) and [API](#api)),
+- `<PROPERTY>` is one of `color` (color of text), `foreground-color` (color of
+  border, icon, links, and emphasis), or `background-color`.

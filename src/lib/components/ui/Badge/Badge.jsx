@@ -1,60 +1,40 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import getRootColorClassName from '../../../helpers/getRootColorClassName';
 import { withProviderContext } from '../../../provider';
 import styles from './Badge.scss';
 
-export const Badge = (props) => {
-  const {
-    id,
-    label,
-    priority,
-    type,
-  } = props;
-
-  let rootTypeClass = styles.note;
-  let rootPriorityClass = '';
-
-  if (type) {
-    if (type === 'success') {
-      rootTypeClass = styles.success;
-    } else if (type === 'error') {
-      rootTypeClass = styles.error;
-    } else if (type === 'warning') {
-      rootTypeClass = styles.warning;
-    } else if (type === 'info') {
-      rootTypeClass = styles.info;
-    } else if (type === 'help') {
-      rootTypeClass = styles.help;
-    } else if (type === 'light') {
-      rootTypeClass = styles.light;
-    }
-  }
-
-  if (priority === 'outline') {
-    rootPriorityClass = styles.outline;
-  }
-
-  return (
-    <div
-      className={(`
-        ${styles.root}
-        ${rootPriorityClass}
-        ${rootTypeClass}
-      `).trim()}
-      id={id}
-    >
-      {label}
-    </div>
-  );
-};
+export const Badge = ({
+  color,
+  id,
+  label,
+  priority,
+}) => (
+  <div
+    className={[
+      styles.root,
+      priority === 'outline' ? styles.rootPriorityOutline : '',
+      getRootColorClassName(color, styles),
+    ].join(' ')}
+    id={id}
+  >
+    {label}
+  </div>
+);
 
 Badge.defaultProps = {
+  color: 'note',
   id: undefined,
   priority: 'filled',
-  type: 'note',
 };
 
 Badge.propTypes = {
+  /**
+   * [Color variant](/foundation/colors#component-colors) to clarify importance and meaning of the badge.
+   */
+  color: PropTypes.oneOf(
+    ['primary', 'secondary', 'success', 'warning', 'danger', 'help', 'info', 'note', 'light', 'dark'],
+  ),
   /**
    * ID of the root HTML element.
    */
@@ -70,10 +50,6 @@ Badge.propTypes = {
    * Visual priority to highlight or suppress the badge.
    */
   priority: PropTypes.oneOf(['filled', 'outline']),
-  /**
-   * Color variant to clarify importance and meaning of the badge.
-   */
-  type: PropTypes.oneOf(['error', 'help', 'info', 'note', 'success', 'warning', 'light']),
 };
 
 export const BadgeWithContext = withProviderContext(Badge, 'Badge');
