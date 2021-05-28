@@ -115,7 +115,7 @@ exports[`rendering renders correctly the number input type with small input 1`] 
 
 exports[`rendering renders correctly with all props 1`] = `
 <label
-  className="root isRootFullWidth  isRootInFormLayout rootLayoutHorizontal isRootDisabled isRootRequired rootSizeLarge isRootStateInvalid rootVariantFilled"
+  className="root isRootFullWidth   rootLayoutHorizontal isRootDisabled isRootRequired rootSizeLarge isRootStateInvalid rootVariantFilled"
   htmlFor="test"
   id="test__label"
   style={
@@ -163,6 +163,41 @@ exports[`rendering renders correctly with all props 1`] = `
       id="test__validationText"
     >
       some error
+    </div>
+  </div>
+</label>
+`;
+
+exports[`rendering renders correctly with context 1`] = `
+<label
+  className="root   isRootInFormLayout rootLayoutHorizontal   rootSizeMedium  rootVariantOutline"
+  htmlFor="test"
+  id="test__label"
+  style={Object {}}
+>
+  <div
+    className="label "
+    id="test__labelText"
+  >
+    All props
+  </div>
+  <div
+    className="field"
+  >
+    <div
+      className="inputContainer"
+    >
+      <input
+        className="input"
+        disabled={false}
+        id="test"
+        max={null}
+        onChange={null}
+        placeholder={null}
+        required={false}
+        size={null}
+        type="text"
+      />
     </div>
   </div>
 </label>

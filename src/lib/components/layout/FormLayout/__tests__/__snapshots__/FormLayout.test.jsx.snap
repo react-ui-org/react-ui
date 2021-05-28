@@ -4,12 +4,19 @@ exports[`rendering renders correctly with a single child 1`] = `
 <div
   className="root rootFieldLayoutVertical  "
 >
-  <ForwardRef(withForwardedRef(WithProviderContextComponent))
-    id="test-id"
-    inFormLayout={true}
-    label="Text field"
-    layout="vertical"
-  />
+  <ContextProvider
+    value={
+      Object {
+        "inFormLayout": true,
+        "layout": "vertical",
+      }
+    }
+  >
+    <ForwardRef(withForwardedRef(WithProviderContextComponent))
+      id="test-id"
+      label="Text field"
+    />
+  </ContextProvider>
 </div>
 `;
 
@@ -18,12 +25,19 @@ exports[`rendering renders correctly with auto label width 1`] = `
   className="root rootFieldLayoutHorizontal  hasRootLabelWidthAuto"
   id="test-id"
 >
-  <ForwardRef(withForwardedRef(WithProviderContextComponent))
-    id="test-id"
-    inFormLayout={true}
-    label="Text field"
-    layout="horizontal"
-  />
+  <ContextProvider
+    value={
+      Object {
+        "inFormLayout": true,
+        "layout": "horizontal",
+      }
+    }
+  >
+    <ForwardRef(withForwardedRef(WithProviderContextComponent))
+      id="test-id"
+      label="Text field"
+    />
+  </ContextProvider>
 </div>
 `;
 
@@ -37,12 +51,19 @@ exports[`rendering renders correctly with custom label width 1`] = `
     }
   }
 >
-  <ForwardRef(withForwardedRef(WithProviderContextComponent))
-    id="test-id"
-    inFormLayout={true}
-    label="Text field"
-    layout="horizontal"
-  />
+  <ContextProvider
+    value={
+      Object {
+        "inFormLayout": true,
+        "layout": "horizontal",
+      }
+    }
+  >
+    <ForwardRef(withForwardedRef(WithProviderContextComponent))
+      id="test-id"
+      label="Text field"
+    />
+  </ContextProvider>
 </div>
 `;
 
@@ -50,23 +71,26 @@ exports[`rendering renders correctly with multiple children 1`] = `
 <div
   className="root rootFieldLayoutVertical  "
 >
-  <ForwardRef(withForwardedRef(WithProviderContextComponent))
-    id="test-id-1"
-    inFormLayout={true}
-    label="Text field 1"
-    layout="vertical"
-  />
-  <ForwardRef(withForwardedRef(WithProviderContextComponent))
-    id="test-id-2"
-    inFormLayout={true}
-    label="Text field 2"
-    layout="vertical"
-  />
-  <ForwardRef(withForwardedRef(WithProviderContextComponent))
-    id="test-id-3"
-    inFormLayout={true}
-    label="Text field 3"
-    layout="vertical"
-  />
+  <ContextProvider
+    value={
+      Object {
+        "inFormLayout": true,
+        "layout": "vertical",
+      }
+    }
+  >
+    <ForwardRef(withForwardedRef(WithProviderContextComponent))
+      id="test-id-1"
+      label="Text field 1"
+    />
+    <ForwardRef(withForwardedRef(WithProviderContextComponent))
+      id="test-id-2"
+      label="Text field 2"
+    />
+    <ForwardRef(withForwardedRef(WithProviderContextComponent))
+      id="test-id-3"
+      label="Text field 3"
+    />
+  </ContextProvider>
 </div>
 `;
