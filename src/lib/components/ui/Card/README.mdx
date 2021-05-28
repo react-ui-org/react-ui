@@ -41,15 +41,15 @@ See [API](#api) for all available options.
 
 ## General Guidelines
 
-- The default (flat) card is **designed for a non-white background.** You may
-  want to either use a different [variant](#variants) or
-  [customize](/customize/theming/overview) the default appearance to make it stand
-  out on white surfaces.
+- Default card is **designed for non-white background.** You may want to either
+  use the [raised variant](#raised-card) or
+  [customize](/customize/theming/overview) the default appearance to make the
+  card stand out on white surfaces.
 
 - Use optional [CardBody](#cardbody) and [CardFooter](#cardfooter) components to
   provide your content with expected spacing.
 
-- Use **medium or low-emphasis buttons** when there are more cards, eg. in a
+- Use **medium or low-emphasis buttons** when there are more cards, e.g. in a
   grid. It will help you keep the UI clean and easy to scan.
 
 - **Card, or Paper?** Card is a versatile surface for displaying content.
@@ -94,29 +94,6 @@ Add optional shadow to lift the card above surface.
   <Card raised>
     <CardBody>
       Hello! I&apos;m raised card with footer.
-    </CardBody>
-    <CardFooter>
-      <Button label="Read more" priority="outline" />
-    </CardFooter>
-  </Card>
-</Playground>
-
-## Bordered Card
-
-Use a border when you need to visually separate the card from its background.
-
-<Playground>
-  <Card variant="bordered">
-    <CardBody>
-      Hello! I&apos;m card with border and footer.
-    </CardBody>
-    <CardFooter>
-      <Button label="Read more" priority="outline" />
-    </CardFooter>
-  </Card>
-  <Card variant="bordered" raised>
-    <CardBody>
-      Hello! I&apos;m raised card with border and footer.
     </CardBody>
     <CardFooter>
       <Button label="Read more" priority="outline" />
@@ -178,59 +155,91 @@ for card content.
   </div>
 </Playground>
 
-## Card Types
+## Color Variants
 
-All [UI colors](/foundation/colors#ui-colors) (success, warning, error, help,
-info, and note) are supported by cards to cover various needs of your app. The
-bordered card type is forced automatically to make sure the border is visible.
+Card supports all
+[component colors](/foundation/colors#component-colors) to cover different needs
+of your app.
 
 <Playground>
-  <Card type="success">
+  <Card color="primary">
+    <CardBody>
+      Hello! I&apos;m primary variant of card.
+    </CardBody>
+    <CardFooter>
+      <Button label="Read more" priority="outline" />
+    </CardFooter>
+  </Card>
+  <Card color="secondary">
+    <CardBody>
+      Hello! I&apos;m secondary variant of card.
+    </CardBody>
+    <CardFooter>
+      <Button label="Read more" priority="outline" color="secondary" />
+    </CardFooter>
+  </Card>
+  <Card color="success">
     <CardBody>
       Hello! I&apos;m success variant of card.
     </CardBody>
     <CardFooter>
-      <Button label="Read more" priority="outline" variant="success" />
+      <Button label="Read more" priority="outline" color="success" />
     </CardFooter>
   </Card>
-  <Card type="warning">
+  <Card color="warning">
     <CardBody>
       Hello! I&apos;m warning variant of card.
     </CardBody>
     <CardFooter>
-      <Button label="Read more" priority="outline" variant="warning" />
+      <Button label="Read more" priority="outline" color="warning" />
     </CardFooter>
   </Card>
-  <Card type="error">
+  <Card color="danger">
     <CardBody>
-      Hello! I&apos;m error variant of card.
+      Hello! I&apos;m danger variant of card.
     </CardBody>
     <CardFooter>
-      <Button label="Read more" priority="outline" variant="danger" />
+      <Button label="Read more" priority="outline" color="danger" />
     </CardFooter>
   </Card>
-  <Card type="help">
+  <Card color="help">
     <CardBody>
       Hello! I&apos;m help variant of card.
     </CardBody>
     <CardFooter>
-      <Button label="Read more" priority="outline" variant="dark" />
+      <Button label="Read more" priority="outline" color="help" />
     </CardFooter>
   </Card>
-  <Card type="info">
+  <Card color="info">
     <CardBody>
       Hello! I&apos;m info variant of card.
     </CardBody>
     <CardFooter>
-      <Button label="Read more" priority="outline" variant="dark" />
+      <Button label="Read more" priority="outline" color="info" />
     </CardFooter>
   </Card>
-  <Card type="note">
+  <Card color="note">
     <CardBody>
       Hello! I&apos;m note variant of card.
     </CardBody>
     <CardFooter>
-      <Button label="Read more" priority="outline" variant="dark" />
+      <Button label="Read more" priority="outline" color="note" />
+    </CardFooter>
+  </Card>
+  <Card>
+    <CardBody>
+      Hello! I&apos;m light (default) variant of card.
+    </CardBody>
+    <CardFooter>
+      <Button label="Read more" priority="outline" color="dark" />
+    </CardFooter>
+  </Card>
+  <Card color="dark">
+    <CardBody>
+      Hello! I&apos;m dark variant of card.
+    </CardBody>
+    <CardFooter>
+      <Button label="Read more" priority="outline" color="light" />
     </CardFooter>
   </Card>
 </Playground>
@@ -259,20 +268,12 @@ its interactive elements to disallow user's interaction.
       <Button label="Read more" priority="outline" disabled />
     </CardFooter>
   </Card>
-  <Card variant="bordered" disabled>
-    <CardBody>
-      Hello! I&apos;m a disabled bordered card.
-    </CardBody>
-    <CardFooter>
-      <Button label="Read more" priority="outline" disabled />
-    </CardFooter>
-  </Card>
-  <Card type="success" disabled>
+  <Card color="success" disabled>
     <CardBody>
       Hello! I&apos;m a disabled success variant of card.
     </CardBody>
     <CardFooter>
-      <Button label="Read more" priority="outline" variant="success" disabled />
+      <Button label="Read more" priority="outline" color="success" disabled />
     </CardFooter>
   </Card>
 </Playground>
@@ -304,22 +305,22 @@ Separate your card actions with CardFooter. See
 | `--rui-Card__padding`                                | Padding shared by card header, body and footer               |
 | `--rui-Card__border-width`                           | Border width                                                 |
 | `--rui-Card__border-radius`                          | Corner radius                                                |
-| `--rui-Card__background-color`                       | Card background color                                        |
 | `--rui-Card--dense__padding`                         | Padding of dense card                                        |
-| `--rui-Card--flat__border-color`                     | Border color of flat card variant                            |
-| `--rui-Card--bordered__border-color`                 | Border color of bordered card variant                        |
 | `--rui-Card--raised__box-shadow`                     | Box shadow of raised card                                    |
 | `--rui-Card--disabled__background-color`             | Card background color in disabled state                      |
 | `--rui-Card--disabled__opacity`                      | Card opacity in disabled state                               |
 
-### Theming Types
+### Theming Variants
 
-It's possible to adjust the theme of specific card type. Naming convention
+It's possible to adjust the theme of specific color variant. Naming convention
 looks as follows:
 
-`--rui-Card--<TYPE>__border-color`
+`--rui-Card--<COLOR>__<PROPERTY>`
 
 Where:
 
-- `<TYPE>` is one of `success`, `warning`, `error`, `info`, `note`, or `help`
-  (see [card types](#card-types) and [API](#api))
+- `<COLOR>` is one of supported
+  [component colors](/foundation/colors#component-colors)
+  (see [color variants](#color-variants) and [API](#api)),
+- `<PROPERTY>` is one of `color` (color of text), `border-color`, or
+  `background-color`.

@@ -2,84 +2,132 @@
 @use 'theme';
 @use 'tools';
 
-.priorityFilled.variantPrimary {
-  @include tools.button-variant(filled, primary);
+.rootPriorityFilled.rootColorPrimary {
+  @include tools.button-color(filled, primary);
 }
 
-.priorityFilled.variantSecondary {
-  @include tools.button-variant(filled, secondary);
+.rootPriorityFilled.rootColorSecondary {
+  @include tools.button-color(filled, secondary);
 }
 
-.priorityFilled.variantSuccess {
-  @include tools.button-variant(filled, success);
+.rootPriorityFilled.rootColorSuccess {
+  @include tools.button-color(filled, success);
 }
 
-.priorityFilled.variantWarning {
-  @include tools.button-variant(filled, warning);
+.rootPriorityFilled.rootColorWarning {
+  @include tools.button-color(filled, warning);
 }
 
-.priorityFilled.variantDanger {
-  @include tools.button-variant(filled, danger);
+.rootPriorityFilled.rootColorDanger {
+  @include tools.button-color(filled, danger);
 }
 
-.priorityFilled.variantDark {
-  @include tools.button-variant(filled, dark);
+.rootPriorityFilled.rootColorHelp {
+  @include tools.button-color(filled, help);
 }
 
-.priorityOutline.variantPrimary {
-  @include tools.button-variant(outline, primary);
+.rootPriorityFilled.rootColorInfo {
+  @include tools.button-color(filled, info);
 }
 
-.priorityOutline.variantSecondary {
-  @include tools.button-variant(outline, secondary);
+.rootPriorityFilled.rootColorNote {
+  @include tools.button-color(filled, note);
 }
 
-.priorityOutline.variantSuccess {
-  @include tools.button-variant(outline, success);
+.rootPriorityFilled.rootColorLight {
+  @include tools.button-color(filled, light);
 }
 
-.priorityOutline.variantWarning {
-  @include tools.button-variant(outline, warning);
+.rootPriorityFilled.rootColorDark {
+  @include tools.button-color(filled, dark);
 }
 
-.priorityOutline.variantDanger {
-  @include tools.button-variant(outline, danger);
+.rootPriorityOutline.rootColorPrimary {
+  @include tools.button-color(outline, primary);
 }
 
-.priorityOutline.variantDark {
-  @include tools.button-variant(outline, dark);
+.rootPriorityOutline.rootColorSecondary {
+  @include tools.button-color(outline, secondary);
 }
 
-.priorityFlat.variantPrimary {
-  @include tools.button-variant(flat, primary);
+.rootPriorityOutline.rootColorSuccess {
+  @include tools.button-color(outline, success);
 }
 
-.priorityFlat.variantSecondary {
-  @include tools.button-variant(flat, secondary);
+.rootPriorityOutline.rootColorWarning {
+  @include tools.button-color(outline, warning);
 }
 
-.priorityFlat.variantSuccess {
-  @include tools.button-variant(flat, success);
+.rootPriorityOutline.rootColorDanger {
+  @include tools.button-color(outline, danger);
 }
 
-.priorityFlat.variantWarning {
-  @include tools.button-variant(flat, warning);
+.rootPriorityOutline.rootColorHelp {
+  @include tools.button-color(outline, help);
 }
 
-.priorityFlat.variantDanger {
-  @include tools.button-variant(flat, danger);
+.rootPriorityOutline.rootColorInfo {
+  @include tools.button-color(outline, info);
 }
 
-.priorityFlat.variantDark {
-  @include tools.button-variant(flat, dark);
+.rootPriorityOutline.rootColorNote {
+  @include tools.button-color(outline, note);
 }
 
-.priorityLink {
+.rootPriorityOutline.rootColorLight {
+  @include tools.button-color(outline, light);
+}
+
+.rootPriorityOutline.rootColorDark {
+  @include tools.button-color(outline, dark);
+}
+
+.rootPriorityFlat.rootColorPrimary {
+  @include tools.button-color(flat, primary);
+}
+
+.rootPriorityFlat.rootColorSecondary {
+  @include tools.button-color(flat, secondary);
+}
+
+.rootPriorityFlat.rootColorSuccess {
+  @include tools.button-color(flat, success);
+}
+
+.rootPriorityFlat.rootColorWarning {
+  @include tools.button-color(flat, warning);
+}
+
+.rootPriorityFlat.rootColorDanger {
+  @include tools.button-color(flat, danger);
+}
+
+.rootPriorityFlat.rootColorHelp {
+  @include tools.button-color(flat, help);
+}
+
+.rootPriorityFlat.rootColorInfo {
+  @include tools.button-color(flat, info);
+}
+
+.rootPriorityFlat.rootColorNote {
+  @include tools.button-color(flat, note);
+}
+
+.rootPriorityFlat.rootColorLight {
+  @include tools.button-color(flat, light);
+}
+
+.rootPriorityFlat.rootColorDark {
+  @include tools.button-color(flat, dark);
+}
+
+.rootPriorityLink {
   @include tools.button-link();
 }
 
-.priorityFilled.isRootGrouped:not(:first-child)::before,
-.priorityFlat.isRootGrouped:not(:first-child)::before {
+.rootPriorityFilled.rootGrouped:not(:first-child)::before,
+.rootPriorityFlat.rootGrouped:not(:first-child)::before {
   content: '';
   position: absolute;
   top: calc(-1 * #{theme.$border-width});
@@ -90,18 +138,18 @@
   transform: translateX(calc(-0.5 * var(--local-gap) - 50%));
 }
 
-.priorityFilled.isRootGrouped:not(:first-child) {
+.rootPriorityFilled.rootGrouped:not(:first-child) {
   --local-gap: #{theme.$group-filled-gap};
   --local-separator-width: #{theme.$group-filled-separator-width};
   --local-separator-color: #{theme.$group-filled-separator-color};
 }
 
-.priorityFlat.isRootGrouped:not(:first-child) {
+.rootPriorityFlat.rootGrouped:not(:first-child) {
   --local-gap: #{theme.$group-flat-gap};
   --local-separator-width: #{theme.$group-flat-separator-width};
   --local-separator-color: #{theme.$group-flat-separator-color};
 }
 
-.priorityOutline.isRootGrouped:not(:first-child) {
+.rootPriorityOutline.rootGrouped:not(:first-child) {
   --local-gap: #{theme.$group-outline-gap};
 }

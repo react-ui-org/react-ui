@@ -1,8 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import getRootSizeClassName from '../../../helpers/getRootSizeClassName';
+import getRootColorClassName from '../../../helpers/getRootColorClassName';
 import { withProviderContext } from '../../../provider';
 import transferProps from '../../../utils/transferProps';
 import withForwardedRef from '../withForwardedRef';
+import getRootLabelVisibilityClassName from './helpers/getRootLabelVisibilityClassName';
+import getRootPriorityClassName from './helpers/getRootPriorityClassName';
 import styles from './Button.scss';
 
 export const Button = ({
@@ -22,131 +26,77 @@ export const Button = ({
   size,
   startCorner,
   type,
-  variant,
+  color,
   ...restProps
-}) => {
-  let priorityClass = '';
-  let sizeClass = '';
-  let variantClass = '';
-  let blockClass = '';
-  let groupedClass = '';
-  let labelVisibilityClass = '';
-  let loadingClass = '';
-
-  if (priority === 'filled') {
-    priorityClass = styles.priorityFilled;
-  } else if (priority === 'outline') {
-    priorityClass = styles.priorityOutline;
-  } else if (priority === 'flat') {
-    priorityClass = styles.priorityFlat;
-  } else if (priority === 'link') {
-    priorityClass = styles.priorityLink;
-  }
-
-  if (priority !== 'link') {
-    if (size === 'small') {
-      sizeClass = styles.sizeSmall;
-    } else if (size === 'medium') {
-      sizeClass = styles.sizeMedium;
-    } else if (size === 'large') {
-      sizeClass = styles.sizeLarge;
-    }
-
-    if (variant === 'primary') {
-      variantClass = styles.variantPrimary;
-    } else if (variant === 'secondary') {
-      variantClass = styles.variantSecondary;
-    } else if (variant === 'success') {
-      variantClass = styles.variantSuccess;
-    } else if (variant === 'warning') {
-      variantClass = styles.variantWarning;
-    } else if (variant === 'danger') {
-      variantClass = styles.variantDanger;
-    } else if (variant === 'dark') {
-      variantClass = styles.variantDark;
-    }
-
-    if (block) {
-      blockClass = styles.isRootBlock;
-    }
-
-    if (grouped) {
-      groupedClass = styles.isRootGrouped;
-    }
-
-    if (labelVisibility === 'desktop') {
-      labelVisibilityClass = styles.withLabelHiddenMobile;
-    } else if (labelVisibility === 'none') {
-      labelVisibilityClass = styles.withLabelHidden;
-    }
-
-    if (loadingIcon) {
-      loadingClass = styles.isRootLoading;
-    }
-  }
-
+}) => (
   /* No worries, `type` is always assigned correctly through props. */
   /* eslint-disable react/button-has-type */
-  return (
-    <button
-      {...transferProps(restProps)}
-      className={(`
-        ${styles.root}
-        ${priorityClass}
-        ${sizeClass}
-        ${variantClass}
-        ${blockClass}
-        ${groupedClass}
-        ${labelVisibilityClass}
-        ${loadingClass}
-      `).trim()}
-      disabled={disabled || !!loadingIcon}
-      id={id}
-      onClick={clickHandler}
-      ref={forwardedRef}
-      type={type}
-    >
-      {priority !== 'link' && startCorner && (
-        <span className={styles.startCorner}>
-          {startCorner}
-        </span>
-      )}
-      {beforeLabel && (
-        <span className={styles.beforeLabel}>
-          {beforeLabel}
-        </span>
-      )}
-      <span
-        className={styles.label}
-        {...(id && { id: `${id}__labelText` })}
-      >
-        {label}
+  <button
+    {...transferProps(restProps)}
+    className={
+      priority === 'link'
+        ? [
+          styles.root,
+          getRootPriorityClassName(priority, styles),
+        ].join(' ')
+        : [
+          styles.root,
+          getRootPriorityClassName(priority, styles),
+          getRootColorClassName(color, styles),
+          getRootSizeClassName(size, styles),
+          getRootLabelVisibilityClassName(labelVisibility, styles),
+          block ? styles.rootBlock : '',
+          grouped ? styles.rootGrouped : '',
+          loadingIcon ? styles.isRootLoading : '',
+        ].join(' ')
+    }
+    disabled={disabled || !!loadingIcon}
+    id={id}
+    onClick={clickHandler}
+    ref={forwardedRef}
+    type={type}
+  >
+    {priority !== 'link' && startCorner && (
+      <span className={styles.startCorner}>
+        {startCorner}
       </span>
-      {afterLabel && (
-        <span className={styles.afterLabel}>
-          {afterLabel}
-        </span>
-      )}
-      {priority !== 'link' && endCorner && (
-        <span className={styles.endCorner}>
-          {endCorner}
-        </span>
-      )}
-      {priority !== 'link' && loadingIcon && (
-        <span className={styles.loadingIcon}>
-          {loadingIcon}
-        </span>
-      )}
-    </button>
-  );
-};
-/* eslint-enable react/button-has-type */
+    )}
+    {beforeLabel && (
+      <span className={styles.beforeLabel}>
+        {beforeLabel}
+      </span>
+    )}
+    <span
+      className={styles.label}
+      {...(id && { id: `${id}__labelText` })}
+    >
+      {label}
+    </span>
+    {afterLabel && (
+      <span className={styles.afterLabel}>
+        {afterLabel}
+      </span>
+    )}
+    {priority !== 'link' && endCorner && (
+      <span className={styles.endCorner}>
+        {endCorner}
+      </span>
+    )}
+    {priority !== 'link' && loadingIcon && (
+      <span className={styles.loadingIcon}>
+        {loadingIcon}
+      </span>
+    )}
+  </button>
+  /* eslint-enable react/button-has-type */
+);
 
 Button.defaultProps = {
   afterLabel: null,
   beforeLabel: null,
   block: false,
   clickHandler: null,
+  color: 'primary',
   disabled: false,
   endCorner: null,
   forwardedRef: undefined,
@@ -158,7 +108,6 @@ Button.defaultProps = {
   size: 'medium',
   startCorner: null,
   type: 'button',
-  variant: 'primary',
 };
 
 Button.propTypes = {
@@ -178,6 +127,10 @@ Button.propTypes = {
    * Function to call when the button is clicked.
    */
   clickHandler: PropTypes.func,
+  /**
+   * [Color variant](/foundation/colors#component-colors) to clarify importance and meaning of the button.
+   */
+  color: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'danger', 'help', 'info', 'note', 'light', 'dark']),
   /**
    * If `true`, the button will be disabled.
    */
@@ -231,10 +184,6 @@ Button.propTypes = {
    * Set the HTML `type` attribute of the `button` element.
    */
   type: PropTypes.oneOf(['button', 'submit']),
-  /**
-   * Color variant to clarify importance and meaning of the button.
-   */
-  variant: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'danger', 'dark']),
 };
 
 export const ButtonWithContext = withForwardedRef(withProviderContext(Button, 'Button'));

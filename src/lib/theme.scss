@@ -1,7 +1,8 @@
 // Default theme. Can be used as a starting point for your custom theme.
 
-@use 'styles/settings/breakpoints';
-@use 'styles/tools/svg';
+@use 'styles/theme-constants/breakpoints';
+@use 'styles/theme-constants/colors';
+@use 'styles/theme-constants/svg';
 
 :root {
 
@@ -13,69 +14,76 @@
   // Colors
   // ======
 
-  // Grays
-  --rui-color-white: #fff;
-  --rui-color-black: #000;
-  --rui-color-gray-50: #{darken(#fff, 5%)};
-  --rui-color-gray-100: #{darken(#fff, 10%)};
-  --rui-color-gray-200: #{darken(#fff, 20%)};
-  --rui-color-gray-300: #{darken(#fff, 30%)};
-  --rui-color-gray-400: #{darken(#fff, 40%)};
-  --rui-color-gray-500: #{darken(#fff, 50%)};
-  --rui-color-gray-600: #{darken(#fff, 60%)};
-  --rui-color-gray-700: #{darken(#fff, 70%)};
-  --rui-color-gray-800: #{darken(#fff, 80%)};
-  --rui-color-gray-900: #{darken(#fff, 90%)};
+  // 👉 Actual color values are stored in separate SCSS so they can be generated programmatically.
 
   // Brand colors
-  --rui-color-primary: #00778b;
-  --rui-color-primary-light: #{lighten(#00778b, 70%)};
-  --rui-color-primary-dark: #{darken(#00778b, 4%)};
-  --rui-color-primary-darker: #{darken(#00778b, 8%)};
-  --rui-color-on-primary: #fff;
-  --rui-color-secondary: #fa4616;
-  --rui-color-secondary-light: #{lighten(#fa4616, 45%)};
-  --rui-color-secondary-dark: #{darken(#fa4616, 4%)};
-  --rui-color-secondary-darker: #{darken(#fa4616, 8%)};
-  --rui-color-on-secondary: #fff;
+  --rui-color-primary: #{colors.$primary};
+  --rui-color-primary-light: #{colors.$primary-light};
+  --rui-color-primary-dark: #{colors.$primary-dark};
+  --rui-color-primary-darker: #{colors.$primary-darker};
+  --rui-color-on-primary: #{colors.$on-primary};
+  --rui-color-secondary: #{colors.$secondary};
+  --rui-color-secondary-light: #{colors.$secondary-light};
+  --rui-color-secondary-dark: #{colors.$secondary-dark};
+  --rui-color-secondary-darker: #{colors.$secondary-darker};
+  --rui-color-on-secondary: #{colors.$on-secondary};
 
   // UI colors
-  --rui-color-success: #28a745;
-  --rui-color-success-light: #{lighten(#28a745, 55%)};
-  --rui-color-success-dark: #{darken(#28a745, 4%)};
-  --rui-color-success-darker: #{darken(#28a745, 8%)};
-  --rui-color-on-success: #fff;
-  --rui-color-warning: #ffc107;
-  --rui-color-warning-light: #{lighten(#ffc107, 45%)};
-  --rui-color-warning-dark: #{darken(#ffc107, 4%)};
-  --rui-color-warning-darker: #{darken(#ffc107, 8%)};
-  --rui-color-on-warning: #000;
-  --rui-color-error: #dc3545;
-  --rui-color-error-light: #{lighten(#dc3545, 45%)};
-  --rui-color-error-dark: #{darken(#dc3545, 4%)};
-  --rui-color-error-darker: #{darken(#dc3545, 8%)};
-  --rui-color-on-error: #fff;
-  --rui-color-help: #6610f2;
-  --rui-color-help-light: #{lighten(#6610f2, 45%)};
-  --rui-color-help-dark: #{darken(#6610f2, 4%)};
-  --rui-color-help-darker: #{darken(#6610f2, 8%)};
-  --rui-color-on-help: #fff;
-  --rui-color-info: #17a2b8;
-  --rui-color-info-light: #{lighten(#17a2b8, 45%)};
-  --rui-color-info-dark: #{darken(#17a2b8, 4%)};
-  --rui-color-info-darker: #{darken(#17a2b8, 8%)};
-  --rui-color-on-info: #fff;
-  --rui-color-note: #007bff;
-  --rui-color-note-light: #{lighten(#007bff, 45%)};
-  --rui-color-note-dark: #{darken(#007bff, 4%)};
-  --rui-color-note-darker: #{darken(#007bff, 8%)};
-  --rui-color-on-note: #fff;
+  --rui-color-success: #{colors.$success};
+  --rui-color-success-light: #{colors.$success-light};
+  --rui-color-success-dark: #{colors.$success-dark};
+  --rui-color-success-darker: #{colors.$success-darker};
+  --rui-color-on-success: #{colors.$on-success};
+  --rui-color-warning: #{colors.$warning};
+  --rui-color-warning-light: #{colors.$warning-light};
+  --rui-color-warning-dark: #{colors.$warning-dark};
+  --rui-color-warning-darker: #{colors.$warning-darker};
+  --rui-color-on-warning: #{colors.$on-warning};
+  --rui-color-danger: #{colors.$danger};
+  --rui-color-danger-light: #{colors.$danger-light};
+  --rui-color-danger-dark: #{colors.$danger-dark};
+  --rui-color-danger-darker: #{colors.$danger-darker};
+  --rui-color-on-danger: #{colors.$on-danger};
+  --rui-color-help: #{colors.$help};
+  --rui-color-help-light: #{colors.$help-light};
+  --rui-color-help-dark: #{colors.$help-dark};
+  --rui-color-help-darker: #{colors.$help-darker};
+  --rui-color-on-help: #{colors.$on-help};
+  --rui-color-info: #{colors.$info};
+  --rui-color-info-light: #{colors.$info-light};
+  --rui-color-info-dark: #{colors.$info-dark};
+  --rui-color-info-darker: #{colors.$info-darker};
+  --rui-color-on-info: #{colors.$on-info};
+  --rui-color-note: #{colors.$note};
+  --rui-color-note-light: #{colors.$note-light};
+  --rui-color-note-dark: #{colors.$note-dark};
+  --rui-color-note-darker: #{colors.$note-darker};
+  --rui-color-on-note: #{colors.$on-note};
+
+  // Grays
+  --rui-color-white: #{colors.$white};
+  --rui-color-gray-50: #{colors.$gray-50};
+  --rui-color-gray-100: #{colors.$gray-100};
+  --rui-color-gray-200: #{colors.$gray-200};
+  --rui-color-gray-300: #{colors.$gray-300};
+  --rui-color-gray-400: #{colors.$gray-400};
+  --rui-color-gray-500: #{colors.$gray-500};
+  --rui-color-gray-600: #{colors.$gray-600};
+  --rui-color-gray-700: #{colors.$gray-700};
+  --rui-color-gray-800: #{colors.$gray-800};
+  --rui-color-gray-900: #{colors.$gray-900};
+  --rui-color-black: #{colors.$black};
+
+  // Special grays
+  --rui-color-light: #{colors.$light};
+  --rui-color-dark: #{colors.$dark};
+  --rui-color-muted: #{colors.$muted};
 
   // Active color
-  --rui-color-active: var(--rui-color-note);
-  --rui-color-on-active: var(--rui-color-on-note);
-  --rui-color-active-hover: var(--rui-color-note-darker);
-  --rui-color-active-focus: #{transparentize(#007bff, 0.75)};
+  --rui-color-active: #{colors.$active};
+  --rui-color-on-active: #{colors.$on-active};
+  --rui-color-active-hover: #{colors.$active-hover};
+  --rui-color-active-focus: #{colors.$active-focus};
 
   //
   // Layout
@@ -83,17 +91,16 @@
 
   // Breakpoints
   //
-  // Read-only, custom properties cannot be used within media queries as media query is not a property.
+  // ⚠️ Breakpoints are read-only in CSS. Custom properties cannot be used within media queries
+  // since media query is not a property.
   // https://www.w3.org/TR/css-variables-1/#using-variables
-  //
-  // ⚠️ Keep in sync with `src/lib/styles/settings/_breakpoints.scss`.
-  --rui-breakpoint-xs: #{map-get(breakpoints.$values, xs)};
-  --rui-breakpoint-sm: #{map-get(breakpoints.$values, sm)};
-  --rui-breakpoint-md: #{map-get(breakpoints.$values, md)};
-  --rui-breakpoint-lg: #{map-get(breakpoints.$values, lg)};
-  --rui-breakpoint-xl: #{map-get(breakpoints.$values, xl)};
-  --rui-breakpoint-xxl: #{map-get(breakpoints.$values, xxl)};
-  --rui-breakpoint-xxxl: #{map-get(breakpoints.$values, xxxl)};
+  --rui-breakpoint-xs: #{breakpoints.$xs};
+  --rui-breakpoint-sm: #{breakpoints.$sm};
+  --rui-breakpoint-md: #{breakpoints.$md};
+  --rui-breakpoint-lg: #{breakpoints.$lg};
+  --rui-breakpoint-xl: #{breakpoints.$xl};
+  --rui-breakpoint-xxl: #{breakpoints.$xxl};
+  --rui-breakpoint-xxxl: #{breakpoints.$xxxl};
 
   // Spacing
   --rui-spacing-0: 0;
@@ -214,10 +221,10 @@
   // ============================================================================================ //
 
   //
-  // Alerts
-  // =======
+  // Alert
+  // =====
 
-  // Alerts: common properties
+  // Alert: common properties
   --rui-Alert__padding: var(--rui-spacing-3);
   --rui-Alert__font-weight: var(--rui-typography-font-weight-regular);
   --rui-Alert__border-width: var(--rui-border-width);
@@ -225,39 +232,59 @@
   --rui-Alert__emphasis__font-weight: var(--rui-typography-font-weight-bold);
   --rui-Alert__stripe__width: var(--rui-border-width);
 
-  // Alerts: type: success
+  // Alert: variant: primary
+  --rui-Alert--primary__color: var(--rui-page-color);
+  --rui-Alert--primary__foreground-color: var(--rui-color-primary);
+  --rui-Alert--primary__background-color: var(--rui-color-white);
+
+  // Alert: variant: secondary
+  --rui-Alert--secondary__color: var(--rui-page-color);
+  --rui-Alert--secondary__foreground-color: var(--rui-color-secondary);
+  --rui-Alert--secondary__background-color: var(--rui-color-white);
+
+  // Alert: variant: success
+  --rui-Alert--success__color: var(--rui-page-color);
   --rui-Alert--success__foreground-color: var(--rui-color-success);
   --rui-Alert--success__background-color: var(--rui-color-white);
-  --rui-Alert--success__text-color: var(--rui-page-color);
 
-  // Alerts: type: warning
+  // Alert: variant: warning
+  --rui-Alert--warning__color: var(--rui-page-color);
   --rui-Alert--warning__foreground-color: var(--rui-color-warning);
   --rui-Alert--warning__background-color: var(--rui-color-white);
-  --rui-Alert--warning__text-color: var(--rui-page-color);
 
-  // Alerts: type: error
-  --rui-Alert--error__foreground-color: var(--rui-color-error);
-  --rui-Alert--error__background-color: var(--rui-color-white);
-  --rui-Alert--error__text-color: var(--rui-page-color);
+  // Alert: variant: danger
+  --rui-Alert--danger__color: var(--rui-page-color);
+  --rui-Alert--danger__foreground-color: var(--rui-color-danger);
+  --rui-Alert--danger__background-color: var(--rui-color-white);
 
-  // Alerts: type: info
+  // Alert: variant: info
+  --rui-Alert--info__color: var(--rui-page-color);
   --rui-Alert--info__foreground-color: var(--rui-color-info);
   --rui-Alert--info__background-color: var(--rui-color-white);
-  --rui-Alert--info__text-color: var(--rui-page-color);
 
-  // Alerts: type: help
+  // Alert: variant: help
+  --rui-Alert--help__color: var(--rui-page-color);
   --rui-Alert--help__foreground-color: var(--rui-color-help);
   --rui-Alert--help__background-color: var(--rui-color-white);
-  --rui-Alert--help__text-color: var(--rui-page-color);
 
-  // Alerts: type: note
+  // Alert: variant: note
+  --rui-Alert--note__color: var(--rui-page-color);
   --rui-Alert--note__foreground-color: var(--rui-color-note);
   --rui-Alert--note__background-color: var(--rui-color-white);
-  --rui-Alert--note__text-color: var(--rui-page-color);
+
+  // Alert: variant: light
+  --rui-Alert--light__color: var(--rui-color-dark);
+  --rui-Alert--light__foreground-color: var(--rui-color-dark);
+  --rui-Alert--light__background-color: var(--rui-color-light);
+
+  // Alert: variant: dark
+  --rui-Alert--dark__color: var(--rui-color-light);
+  --rui-Alert--dark__foreground-color: var(--rui-color-light);
+  --rui-Alert--dark__background-color: var(--rui-color-dark);
 
   //
-  // Buttons
-  // =======
+  // Button
+  // ======
 
   // Buttons: common properties
   --rui-Button__font-weight: var(--rui-typography-font-weight-regular);
@@ -326,30 +353,86 @@
   --rui-Button--filled--warning--active__background: var(--rui-color-warning-darker);
   --rui-Button--filled--warning--active__box-shadow: none;
 
-  // Buttons: filled priority: danger variant (uses error color)
-  --rui-Button--filled--danger--default__color: var(--rui-color-on-error);
-  --rui-Button--filled--danger--default__border-color: var(--rui-color-error);
-  --rui-Button--filled--danger--default__background: var(--rui-color-error);
+  // Buttons: filled priority: danger variant
+  --rui-Button--filled--danger--default__color: var(--rui-color-on-danger);
+  --rui-Button--filled--danger--default__border-color: var(--rui-color-danger);
+  --rui-Button--filled--danger--default__background: var(--rui-color-danger);
   --rui-Button--filled--danger--default__box-shadow: none;
-  --rui-Button--filled--danger--hover__color: var(--rui-color-on-error);
-  --rui-Button--filled--danger--hover__border-color: var(--rui-color-error-dark);
-  --rui-Button--filled--danger--hover__background: var(--rui-color-error-dark);
+  --rui-Button--filled--danger--hover__color: var(--rui-color-on-danger);
+  --rui-Button--filled--danger--hover__border-color: var(--rui-color-danger-dark);
+  --rui-Button--filled--danger--hover__background: var(--rui-color-danger-dark);
   --rui-Button--filled--danger--hover__box-shadow: none;
-  --rui-Button--filled--danger--active__color: var(--rui-color-on-error);
-  --rui-Button--filled--danger--active__border-color: var(--rui-color-error-darker);
-  --rui-Button--filled--danger--active__background: var(--rui-color-error-darker);
+  --rui-Button--filled--danger--active__color: var(--rui-color-on-danger);
+  --rui-Button--filled--danger--active__border-color: var(--rui-color-danger-darker);
+  --rui-Button--filled--danger--active__background: var(--rui-color-danger-darker);
   --rui-Button--filled--danger--active__box-shadow: none;
 
+  // Buttons: filled priority: help variant
+  --rui-Button--filled--help--default__color: var(--rui-color-on-help);
+  --rui-Button--filled--help--default__border-color: var(--rui-color-help);
+  --rui-Button--filled--help--default__background: var(--rui-color-help);
+  --rui-Button--filled--help--default__box-shadow: none;
+  --rui-Button--filled--help--hover__color: var(--rui-color-on-help);
+  --rui-Button--filled--help--hover__border-color: var(--rui-color-help-dark);
+  --rui-Button--filled--help--hover__background: var(--rui-color-help-dark);
+  --rui-Button--filled--help--hover__box-shadow: none;
+  --rui-Button--filled--help--active__color: var(--rui-color-on-help);
+  --rui-Button--filled--help--active__border-color: var(--rui-color-help-darker);
+  --rui-Button--filled--help--active__background: var(--rui-color-help-darker);
+  --rui-Button--filled--help--active__box-shadow: none;
+
+  // Buttons: filled priority: info variant
+  --rui-Button--filled--info--default__color: var(--rui-color-on-info);
+  --rui-Button--filled--info--default__border-color: var(--rui-color-info);
+  --rui-Button--filled--info--default__background: var(--rui-color-info);
+  --rui-Button--filled--info--default__box-shadow: none;
+  --rui-Button--filled--info--hover__color: var(--rui-color-on-info);
+  --rui-Button--filled--info--hover__border-color: var(--rui-color-info-dark);
+  --rui-Button--filled--info--hover__background: var(--rui-color-info-dark);
+  --rui-Button--filled--info--hover__box-shadow: none;
+  --rui-Button--filled--info--active__color: var(--rui-color-on-info);
+  --rui-Button--filled--info--active__border-color: var(--rui-color-info-darker);
+  --rui-Button--filled--info--active__background: var(--rui-color-info-darker);
+  --rui-Button--filled--info--active__box-shadow: none;
+
+  // Buttons: filled priority: note variant
+  --rui-Button--filled--note--default__color: var(--rui-color-on-note);
+  --rui-Button--filled--note--default__border-color: var(--rui-color-note);
+  --rui-Button--filled--note--default__background: var(--rui-color-note);
+  --rui-Button--filled--note--default__box-shadow: none;
+  --rui-Button--filled--note--hover__color: var(--rui-color-on-note);
+  --rui-Button--filled--note--hover__border-color: var(--rui-color-note-dark);
+  --rui-Button--filled--note--hover__background: var(--rui-color-note-dark);
+  --rui-Button--filled--note--hover__box-shadow: none;
+  --rui-Button--filled--note--active__color: var(--rui-color-on-note);
+  --rui-Button--filled--note--active__border-color: var(--rui-color-note-darker);
+  --rui-Button--filled--note--active__background: var(--rui-color-note-darker);
+  --rui-Button--filled--note--active__box-shadow: none;
+
+  // Buttons: filled priority: light variant
+  --rui-Button--filled--light--default__color: var(--rui-color-dark);
+  --rui-Button--filled--light--default__border-color: var(--rui-color-light);
+  --rui-Button--filled--light--default__background: var(--rui-color-light);
+  --rui-Button--filled--light--default__box-shadow: none;
+  --rui-Button--filled--light--hover__color: var(--rui-color-dark);
+  --rui-Button--filled--light--hover__border-color: var(--rui-color-gray-50);
+  --rui-Button--filled--light--hover__background: var(--rui-color-gray-50);
+  --rui-Button--filled--light--hover__box-shadow: none;
+  --rui-Button--filled--light--active__color: var(--rui-color-dark);
+  --rui-Button--filled--light--active__border-color: var(--rui-color-gray-100);
+  --rui-Button--filled--light--active__background: var(--rui-color-gray-100);
+  --rui-Button--filled--light--active__box-shadow: none;
+
   // Buttons: filled priority: dark variant
-  --rui-Button--filled--dark--default__color: var(--rui-color-white);
-  --rui-Button--filled--dark--default__border-color: var(--rui-color-gray-700);
-  --rui-Button--filled--dark--default__background: var(--rui-color-gray-700);
+  --rui-Button--filled--dark--default__color: var(--rui-color-light);
+  --rui-Button--filled--dark--default__border-color: var(--rui-color-dark);
+  --rui-Button--filled--dark--default__background: var(--rui-color-dark);
   --rui-Button--filled--dark--default__box-shadow: none;
-  --rui-Button--filled--dark--hover__color: var(--rui-color-white);
+  --rui-Button--filled--dark--hover__color: var(--rui-color-light);
   --rui-Button--filled--dark--hover__border-color: var(--rui-color-gray-800);
   --rui-Button--filled--dark--hover__background: var(--rui-color-gray-800);
   --rui-Button--filled--dark--hover__box-shadow: none;
-  --rui-Button--filled--dark--active__color: var(--rui-color-white);
+  --rui-Button--filled--dark--active__color: var(--rui-color-light);
   --rui-Button--filled--dark--active__border-color: var(--rui-color-gray-900);
   --rui-Button--filled--dark--active__background: var(--rui-color-gray-900);
   --rui-Button--filled--dark--active__box-shadow: none;
@@ -400,25 +483,69 @@
   --rui-Button--outline--warning--active__border-color: var(--rui-color-warning-darker);
   --rui-Button--outline--warning--active__background: var(--rui-color-warning-darker);
 
-  // Buttons: outline priority: danger variant (uses error color)
-  --rui-Button--outline--danger--default__color: var(--rui-color-error);
-  --rui-Button--outline--danger--default__border-color: var(--rui-color-error);
+  // Buttons: outline priority: danger variant
+  --rui-Button--outline--danger--default__color: var(--rui-color-danger);
+  --rui-Button--outline--danger--default__border-color: var(--rui-color-danger);
   --rui-Button--outline--danger--default__background: transparent;
-  --rui-Button--outline--danger--hover__color: var(--rui-color-on-error);
-  --rui-Button--outline--danger--hover__border-color: var(--rui-color-error-dark);
-  --rui-Button--outline--danger--hover__background: var(--rui-color-error-dark);
-  --rui-Button--outline--danger--active__color: var(--rui-color-on-error);
-  --rui-Button--outline--danger--active__border-color: var(--rui-color-error-darker);
-  --rui-Button--outline--danger--active__background: var(--rui-color-error-darker);
+  --rui-Button--outline--danger--hover__color: var(--rui-color-on-danger);
+  --rui-Button--outline--danger--hover__border-color: var(--rui-color-danger-dark);
+  --rui-Button--outline--danger--hover__background: var(--rui-color-danger-dark);
+  --rui-Button--outline--danger--active__color: var(--rui-color-on-danger);
+  --rui-Button--outline--danger--active__border-color: var(--rui-color-danger-darker);
+  --rui-Button--outline--danger--active__background: var(--rui-color-danger-darker);
+
+  // Buttons: outline priority: help variant
+  --rui-Button--outline--help--default__color: var(--rui-color-help);
+  --rui-Button--outline--help--default__border-color: var(--rui-color-help);
+  --rui-Button--outline--help--default__background: transparent;
+  --rui-Button--outline--help--hover__color: var(--rui-color-on-help);
+  --rui-Button--outline--help--hover__border-color: var(--rui-color-help-dark);
+  --rui-Button--outline--help--hover__background: var(--rui-color-help-dark);
+  --rui-Button--outline--help--active__color: var(--rui-color-on-help);
+  --rui-Button--outline--help--active__border-color: var(--rui-color-help-darker);
+  --rui-Button--outline--help--active__background: var(--rui-color-help-darker);
+
+  // Buttons: outline priority: info variant
+  --rui-Button--outline--info--default__color: var(--rui-color-info);
+  --rui-Button--outline--info--default__border-color: var(--rui-color-info);
+  --rui-Button--outline--info--default__background: transparent;
+  --rui-Button--outline--info--hover__color: var(--rui-color-on-info);
+  --rui-Button--outline--info--hover__border-color: var(--rui-color-info-dark);
+  --rui-Button--outline--info--hover__background: var(--rui-color-info-dark);
+  --rui-Button--outline--info--active__color: var(--rui-color-on-info);
+  --rui-Button--outline--info--active__border-color: var(--rui-color-info-darker);
+  --rui-Button--outline--info--active__background: var(--rui-color-info-darker);
+
+  // Buttons: outline priority: note variant
+  --rui-Button--outline--note--default__color: var(--rui-color-note);
+  --rui-Button--outline--note--default__border-color: var(--rui-color-note);
+  --rui-Button--outline--note--default__background: transparent;
+  --rui-Button--outline--note--hover__color: var(--rui-color-on-note);
+  --rui-Button--outline--note--hover__border-color: var(--rui-color-note-dark);
+  --rui-Button--outline--note--hover__background: var(--rui-color-note-dark);
+  --rui-Button--outline--note--active__color: var(--rui-color-on-note);
+  --rui-Button--outline--note--active__border-color: var(--rui-color-note-darker);
+  --rui-Button--outline--note--active__background: var(--rui-color-note-darker);
+
+  // Buttons: outline priority: light variant
+  --rui-Button--outline--light--default__color: var(--rui-color-light);
+  --rui-Button--outline--light--default__border-color: var(--rui-color-light);
+  --rui-Button--outline--light--default__background: transparent;
+  --rui-Button--outline--light--hover__color: var(--rui-color-dark);
+  --rui-Button--outline--light--hover__border-color: var(--rui-color-gray-50);
+  --rui-Button--outline--light--hover__background: var(--rui-color-gray-50);
+  --rui-Button--outline--light--active__color: var(--rui-color-dark);
+  --rui-Button--outline--light--active__border-color: var(--rui-color-gray-100);
+  --rui-Button--outline--light--active__background: var(--rui-color-gray-100);
 
   // Buttons: outline priority: dark variant
-  --rui-Button--outline--dark--default__color: var(--rui-color-gray-700);
-  --rui-Button--outline--dark--default__border-color: var(--rui-color-gray-700);
+  --rui-Button--outline--dark--default__color: var(--rui-color-dark);
+  --rui-Button--outline--dark--default__border-color: var(--rui-color-dark);
   --rui-Button--outline--dark--default__background: transparent;
-  --rui-Button--outline--dark--hover__color: var(--rui-color-white);
+  --rui-Button--outline--dark--hover__color: var(--rui-color-light);
   --rui-Button--outline--dark--hover__border-color: var(--rui-color-gray-800);
   --rui-Button--outline--dark--hover__background: var(--rui-color-gray-800);
-  --rui-Button--outline--dark--active__color: var(--rui-color-white);
+  --rui-Button--outline--dark--active__color: var(--rui-color-light);
   --rui-Button--outline--dark--active__border-color: var(--rui-color-gray-900);
   --rui-Button--outline--dark--active__background: var(--rui-color-gray-900);
 
@@ -451,26 +578,58 @@
   // Buttons: flat priority: warning variant
   --rui-Button--flat--warning--default__color: var(--rui-color-warning);
   --rui-Button--flat--warning--default__background: transparent;
-  --rui-Button--flat--warning--hover__color: var(--rui-color-warning-darker);
+  --rui-Button--flat--warning--hover__color: var(--rui-color-warning-dark);
   --rui-Button--flat--warning--hover__background: var(--rui-color-warning-light);
   --rui-Button--flat--warning--active__color: var(--rui-color-warning-darker);
   --rui-Button--flat--warning--active__background: var(--rui-color-warning-light);
 
-  // Buttons: flat priority: danger variant (uses error color)
-  --rui-Button--flat--danger--default__color: var(--rui-color-error);
+  // Buttons: flat priority: danger variant
+  --rui-Button--flat--danger--default__color: var(--rui-color-danger);
   --rui-Button--flat--danger--default__background: transparent;
-  --rui-Button--flat--danger--hover__color: var(--rui-color-error-dark);
-  --rui-Button--flat--danger--hover__background: var(--rui-color-error-light);
-  --rui-Button--flat--danger--active__color: var(--rui-color-error-darker);
-  --rui-Button--flat--danger--active__background: var(--rui-color-error-light);
+  --rui-Button--flat--danger--hover__color: var(--rui-color-danger-dark);
+  --rui-Button--flat--danger--hover__background: var(--rui-color-danger-light);
+  --rui-Button--flat--danger--active__color: var(--rui-color-danger-darker);
+  --rui-Button--flat--danger--active__background: var(--rui-color-danger-light);
+
+  // Buttons: flat priority: help variant
+  --rui-Button--flat--help--default__color: var(--rui-color-help);
+  --rui-Button--flat--help--default__background: transparent;
+  --rui-Button--flat--help--hover__color: var(--rui-color-help-dark);
+  --rui-Button--flat--help--hover__background: var(--rui-color-help-light);
+  --rui-Button--flat--help--active__color: var(--rui-color-help-darker);
+  --rui-Button--flat--help--active__background: var(--rui-color-help-light);
+
+  // Buttons: flat priority: info variant
+  --rui-Button--flat--info--default__color: var(--rui-color-info);
+  --rui-Button--flat--info--default__background: transparent;
+  --rui-Button--flat--info--hover__color: var(--rui-color-info-dark);
+  --rui-Button--flat--info--hover__background: var(--rui-color-info-light);
+  --rui-Button--flat--info--active__color: var(--rui-color-info-darker);
+  --rui-Button--flat--info--active__background: var(--rui-color-info-light);
+
+  // Buttons: flat priority: note variant
+  --rui-Button--flat--note--default__color: var(--rui-color-note);
+  --rui-Button--flat--note--default__background: transparent;
+  --rui-Button--flat--note--hover__color: var(--rui-color-note-dark);
+  --rui-Button--flat--note--hover__background: var(--rui-color-note-light);
+  --rui-Button--flat--note--active__color: var(--rui-color-note-darker);
+  --rui-Button--flat--note--active__background: var(--rui-color-note-light);
+
+  // Buttons: flat priority: light variant
+  --rui-Button--flat--light--default__color: var(--rui-color-light);
+  --rui-Button--flat--light--default__background: transparent;
+  --rui-Button--flat--light--hover__color: var(--rui-color-light);
+  --rui-Button--flat--light--hover__background: var(--rui-color-gray-600);
+  --rui-Button--flat--light--active__color: var(--rui-color-gray-100);
+  --rui-Button--flat--light--active__background: var(--rui-color-gray-600);
 
   // Buttons: flat priority: dark variant
-  --rui-Button--flat--dark--default__color: var(--rui-color-gray-700);
+  --rui-Button--flat--dark--default__color: var(--rui-color-dark);
   --rui-Button--flat--dark--default__background: transparent;
-  --rui-Button--flat--dark--hover__color: var(--rui-color-gray-800);
-  --rui-Button--flat--dark--hover__background: var(--rui-color-gray-50);
-  --rui-Button--flat--dark--active__color: var(--rui-color-gray-900);
-  --rui-Button--flat--dark--active__background: var(--rui-color-gray-50);
+  --rui-Button--flat--dark--hover__color: var(--rui-color-dark);
+  --rui-Button--flat--dark--hover__background: var(--rui-color-gray-100);
+  --rui-Button--flat--dark--active__color: var(--rui-color-800);
+  --rui-Button--flat--dark--active__background: var(--rui-color-gray-100);
 
   // Buttons: sizes
 
@@ -507,34 +666,66 @@
   --rui-ButtonGroup--outline__gap: calc(-1 * var(--rui-Button__border-width));
 
   //
-  // Cards
-  // =====
+  // Card
+  // ====
 
-  // Cards: common properties
   --rui-Card__padding: var(--rui-spacing-4);
   --rui-Card__border-width: var(--rui-border-width);
   --rui-Card__border-radius: var(--rui-border-radius);
-  --rui-Card__background-color: var(--rui-color-white);
   --rui-Card--dense__padding: var(--rui-spacing-2);
-
-  // Cards: variants
-  --rui-Card--flat__border-color: transparent;
-  --rui-Card--bordered__border-color: var(--rui-color-gray-200);
-
-  // Cards: types
-  --rui-Card--success__border-color: var(--rui-color-success);
-  --rui-Card--warning__border-color: var(--rui-color-warning);
-  --rui-Card--error__border-color: var(--rui-color-error);
-  --rui-Card--help__border-color: var(--rui-color-help);
-  --rui-Card--info__border-color: var(--rui-color-info);
-  --rui-Card--note__border-color: var(--rui-color-note);
-
-  // Cards: raised
   --rui-Card--raised__box-shadow: var(--rui-elevation-1);
-
-  // Cards: disabled
   --rui-Card--disabled__background-color: var(--rui-color-gray-50);
   --rui-Card--disabled__opacity: 0.6;
+
+  // Card: variant: primary
+  --rui-Card--primary__color: var(--rui-page-color);
+  --rui-Card--primary__border-color: var(--rui-color-primary);
+  --rui-Card--primary__background-color: var(--rui-color-white);
+
+  // Card: variant: secondary
+  --rui-Card--secondary__color: var(--rui-page-color);
+  --rui-Card--secondary__border-color: var(--rui-color-secondary);
+  --rui-Card--secondary__background-color: var(--rui-color-white);
+
+  // Card: variant: success
+  --rui-Card--success__color: var(--rui-page-color);
+  --rui-Card--success__border-color: var(--rui-color-success);
+  --rui-Card--success__background-color: var(--rui-color-white);
+
+  // Card: variant: warning
+  --rui-Card--warning__color: var(--rui-page-color);
+  --rui-Card--warning__border-color: var(--rui-color-warning);
+  --rui-Card--warning__background-color: var(--rui-color-white);
+
+  // Card: variant: danger
+  --rui-Card--danger__color: var(--rui-page-color);
+  --rui-Card--danger__border-color: var(--rui-color-danger);
+  --rui-Card--danger__background-color: var(--rui-color-white);
+
+  // Card: variant: info
+  --rui-Card--info__color: var(--rui-page-color);
+  --rui-Card--info__border-color: var(--rui-color-info);
+  --rui-Card--info__background-color: var(--rui-color-white);
+
+  // Card: variant: help
+  --rui-Card--help__color: var(--rui-page-color);
+  --rui-Card--help__border-color: var(--rui-color-help);
+  --rui-Card--help__background-color: var(--rui-color-white);
+
+  // Card: variant: note
+  --rui-Card--note__color: var(--rui-page-color);
+  --rui-Card--note__border-color: var(--rui-color-note);
+  --rui-Card--note__background-color: var(--rui-color-white);
+
+  // Card: variant: light
+  --rui-Card--light__color: var(--rui-page-color);
+  --rui-Card--light__border-color: var(--rui-color-light);
+  --rui-Card--light__background-color: var(--rui-color-white);
+
+  // Card: variant: dark
+  --rui-Card--dark__color: var(--rui-color-light);
+  --rui-Card--dark__border-color: var(--rui-color-light);
+  --rui-Card--dark__background-color: var(--rui-color-dark);
 
   //
   // Form Fields
@@ -571,10 +762,10 @@
   --rui-FormField--disabled__opacity: 0.5;
 
   // Form fields: validation states: invalid
-  --rui-FormField--invalid--default__border-color: var(--rui-color-error);
-  --rui-FormField--invalid--default__background: var(--rui-color-error-light);
+  --rui-FormField--invalid--default__border-color: var(--rui-color-danger);
+  --rui-FormField--invalid--default__background: var(--rui-color-danger-light);
   --rui-FormField--invalid--default__check-background-color: var(--rui-FormField--invalid--default__background);
-  --rui-FormField--invalid--default__surrounding-text-color: var(--rui-color-error);
+  --rui-FormField--invalid--default__surrounding-text-color: var(--rui-color-danger);
   --rui-FormField--invalid--checked__check-background-color: var(--rui-FormField--invalid--default__border-color);
 
   // Form fields: validation states: valid
@@ -642,19 +833,17 @@
   --rui-FormField--check__tap-target-size: var(--rui-tap-target-size);
 
   // Form fields: check fields, component specific
-  // stylelint-disable function-url-quotes
   --rui-FormField--check__input--checkbox__border-radius: var(--rui-FormField--box__border-radius);
-  --rui-FormField--check__input--checkbox--checked__background-image: #{svg.escape(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/></svg>"))};
+  --rui-FormField--check__input--checkbox--checked__background-image: #{svg.$checkbox-checked};
   --rui-FormField--check__input--radio__border-radius: 50%;
-  --rui-FormField--check__input--radio--checked__background-image: #{svg.escape(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='#ffffff'/></svg>"))};
+  --rui-FormField--check__input--radio--checked__background-image: #{svg.$radio-checked};
   --rui-FormField--check__input--toggle__width: 2.25rem;
   --rui-FormField--check__input--toggle__border-radius: 0.5625rem;
   --rui-FormField--check__input--toggle__background-size: contain;
-  --rui-FormField--check__input--toggle--default__background-image: #{svg.escape(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#cccccc'/></svg>"))};
+  --rui-FormField--check__input--toggle--default__background-image: #{svg.$toggle};
   --rui-FormField--check__input--toggle--default__background-position: left center;
-  --rui-FormField--check__input--toggle--checked__background-image: #{svg.escape(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#ffffff'/></svg>"))};
+  --rui-FormField--check__input--toggle--checked__background-image: #{svg.$toggle-checked};
   --rui-FormField--check__input--toggle--checked__background-position: right center;
-  // stylelint-enable function-url-quotes
 
   // Form fields: check fields interaction states
   --rui-FormField--check--default__border-color: var(--rui-color-gray-200);

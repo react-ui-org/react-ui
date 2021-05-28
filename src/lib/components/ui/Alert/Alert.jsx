@@ -1,84 +1,57 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import getRootColorClassName from '../../../helpers/getRootColorClassName';
 import { withProviderContext } from '../../../provider';
 import styles from './Alert.scss';
 
-export const Alert = (props) => {
-  const {
-    children,
-    closeHandler,
-    icon,
-    id,
-    translations,
-    type,
-  } = props;
-
-  const rootTypeClass = (variant) => {
-    if (variant === 'success') {
-      return styles.isRootSuccess;
-    }
-
-    if (variant === 'error') {
-      return styles.isRootError;
-    }
-
-    if (variant === 'warning') {
-      return styles.isRootWarning;
-    }
-
-    if (variant === 'info') {
-      return styles.isRootInfo;
-    }
-
-    if (variant === 'help') {
-      return styles.isRootHelp;
-    }
-
-    return styles.isRootNote;
-  };
-
-  return (
-    <div
-      className={[
-        styles.root,
-        rootTypeClass(type),
-      ].join(' ')}
-      id={id}
-      role="alert"
-    >
-      {icon && (
-        <div className={styles.icon}>
-          {icon}
-        </div>
-      )}
-      <div
-        className={styles.message}
-        {...(id && { id: `${id}__content` })}
-      >
-        {children}
+export const Alert = ({
+  children,
+  closeHandler,
+  color,
+  icon,
+  id,
+  translations,
+}) => (
+  <div
+    className={[
+      styles.root,
+      getRootColorClassName(color, styles),
+    ].join(' ')}
+    id={id}
+    role="alert"
+  >
+    {icon && (
+      <div className={styles.icon}>
+        {icon}
       </div>
-      {closeHandler && (
-        <button
-          type="button"
-          {...(id && { id: `${id}__close` })}
-          className={styles.close}
-          onClick={() => closeHandler()}
-          onKeyPress={() => closeHandler()}
-          tabIndex="0"
-          title={translations.close}
-        >
-          <span className={styles.closeSign}>×</span>
-        </button>
-      )}
+    )}
+    <div
+      className={styles.message}
+      {...(id && { id: `${id}__content` })}
+    >
+      {children}
     </div>
-  );
-};
+    {closeHandler && (
+      <button
+        type="button"
+        {...(id && { id: `${id}__close` })}
+        className={styles.close}
+        onClick={() => closeHandler()}
+        onKeyPress={() => closeHandler()}
+        tabIndex="0"
+        title={translations.close}
+      >
+        <span className={styles.closeSign}>×</span>
+      </button>
+    )}
+  </div>
+);
 
 Alert.defaultProps = {
   closeHandler: null,
+  color: 'note',
   icon: null,
   id: undefined,
-  type: 'note',
 };
 
 Alert.propTypes = {
@@ -91,6 +64,12 @@ Alert.propTypes = {
    * hidden.
    */
   closeHandler: PropTypes.func,
+  /**
+   * [Color variant](/foundation/colors#component-colors) to clarify importance and meaning of the alert.
+   */
+  color: PropTypes.oneOf(
+    ['primary', 'secondary', 'success', 'warning', 'danger', 'help', 'info', 'note', 'light', 'dark'],
+  ),
   /**
    * Optional element to be displayed next to the alert body.
    */
@@ -106,10 +85,6 @@ Alert.propTypes = {
   translations: PropTypes.shape({
     close: PropTypes.string.isRequired,
   }).isRequired,
-  /**
-   * Color variant to clarify importance and meaning of the alert.
-   */
-  type: PropTypes.oneOf(['error', 'help', 'info', 'note', 'success', 'warning']),
 };
 
 export const AlertWithContext = withProviderContext(Alert, 'Alert');

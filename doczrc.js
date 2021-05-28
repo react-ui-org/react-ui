@@ -148,6 +148,9 @@ export default {
         '.prism-code': {
           my: '1.5rem !important',
         },
+        blockquote: {
+          fontStyle: 'normal',
+        },
         code: {
           bg: 'rgba(0, 0, 0, 0.05)',
         },

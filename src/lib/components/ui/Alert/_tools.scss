@@ -1,17 +1,9 @@
 @use 'theme';
 
-@mixin type($type) {
-  $type-properties: map-get(theme.$types, $type);
-  $foreground-color: map-get($type-properties, foreground-color);
+@mixin color($color) {
+  $color-variant-properties: map-get(theme.$colors, $color);
 
-  color: map-get($type-properties, text-color);
-  border-color: $foreground-color;
-  background-color: map-get($type-properties, background-color);
-
-  a,
-  strong,
-  .close,
-  .icon {
-    color: $foreground-color;
-  }
+  --rui-local-color: #{map-get($color-variant-properties, color)};
+  --rui-local-foreground-color: #{map-get($color-variant-properties, foreground-color)};
+  --rui-local-background-color: #{map-get($color-variant-properties, background-color)};
 }

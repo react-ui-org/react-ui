@@ -5,12 +5,16 @@ import styles from './Placeholder.scss';
 export const Placeholder = ({
   bordered,
   children,
+  dark,
   height,
+  inline,
 }) => (
   <div
     className={[
       styles.root,
-      bordered ? styles.isRootBordered : '',
+      bordered ? styles.rootBordered : '',
+      dark ? styles.rootDark : '',
+      inline ? styles.rootInline : '',
     ].join(' ')}
     style={height && { '--rui-local-height': height }}
   >
@@ -21,7 +25,9 @@ export const Placeholder = ({
 Placeholder.defaultProps = {
   bordered: false,
   children: null,
+  dark: false,
   height: null,
+  inline: false,
 };
 
 Placeholder.propTypes = {
@@ -30,7 +36,9 @@ Placeholder.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
+  dark: PropTypes.bool,
   height: PropTypes.string,
+  inline: PropTypes.bool,
 };
 
 export default Placeholder;

@@ -2,9 +2,7 @@
 
 exports[`rendering renders correctly 1`] = `
 <div
-  className="root
-        
-        isVariantFlat"
+  className="root rootColorLight   "
 >
   <p>
     Card content
@@ -14,11 +12,7 @@ exports[`rendering renders correctly 1`] = `
 
 exports[`rendering renders correctly disabled 1`] = `
 <div
-  className="root
-        
-        isVariantFlat
-        
-        isDisabled"
+  className="root rootColorLight   isDisabled"
 >
   <p>
     Card content
@@ -26,11 +20,9 @@ exports[`rendering renders correctly disabled 1`] = `
 </div>
 `;
 
-exports[`rendering renders correctly error 1`] = `
+exports[`rendering renders correctly in danger color 1`] = `
 <div
-  className="root
-        isTypeError
-        isVariantBordered"
+  className="root rootColorDanger   "
 >
   <p>
     Card content
@@ -40,12 +32,7 @@ exports[`rendering renders correctly error 1`] = `
 
 exports[`rendering renders correctly raised 1`] = `
 <div
-  className="root
-        
-        isVariantFlat
-        
-        
-        isRaised"
+  className="root rootColorLight  rootRaised "
 >
   <p>
     Card content
@@ -55,12 +42,7 @@ exports[`rendering renders correctly raised 1`] = `
 
 exports[`rendering renders correctly with all props 1`] = `
 <div
-  className="root
-        isTypeWarning
-        isVariantBordered
-        isDense
-        isDisabled
-        isRaised"
+  className="root rootColorWarning rootDense rootRaised isDisabled"
   id="custom-id"
 >
   <p>

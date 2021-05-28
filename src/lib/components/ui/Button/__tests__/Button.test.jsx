@@ -38,7 +38,7 @@ describe('rendering', () => {
   it('renders correctly priority `link` with all props', () => {
     const tree = shallow(<Button
       priority="link"
-      variant="success"
+      color="success"
       size="large"
       label="link"
       labelVisibility="desktop"
@@ -65,10 +65,10 @@ describe('rendering', () => {
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
 
-  it('renders correctly variant', () => {
+  it('renders correctly color', () => {
     const tree = shallow(<Button
       label="button"
-      variant="success"
+      color="success"
     />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
@@ -104,7 +104,7 @@ describe('rendering', () => {
   it('renders correctly with all props', () => {
     const tree = shallow(<Button
       priority="flat"
-      variant="success"
+      color="success"
       size="large"
       label="button"
       labelVisibility="desktop"

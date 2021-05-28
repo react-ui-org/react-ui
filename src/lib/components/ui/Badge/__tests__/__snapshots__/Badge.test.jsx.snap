@@ -2,9 +2,7 @@
 
 exports[`rendering renders correctly with all props 1`] = `
 <div
-  className="root
-        outline
-        warning"
+  className="root rootPriorityOutline rootColorWarning"
   id="custom-id"
 >
   3
@@ -13,9 +11,7 @@ exports[`rendering renders correctly with all props 1`] = `
 
 exports[`rendering renders correctly with label 1`] = `
 <div
-  className="root
-        
-        note"
+  className="root  rootColorNote"
 >
   label
 </div>

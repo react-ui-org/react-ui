@@ -3,16 +3,16 @@
 exports[`rendering renders correctly 1`] = `
 <Alert
   closeHandler={null}
+  color="note"
   icon={null}
   translations={
     Object {
       "close": "Close",
     }
   }
-  type="note"
 >
   <div
-    className="root isRootNote"
+    className="root rootColorNote"
     role="alert"
   >
     <div
@@ -29,6 +29,7 @@ exports[`rendering renders correctly 1`] = `
 exports[`rendering renders correctly with all props 1`] = `
 <Alert
   closeHandler={[Function]}
+  color="success"
   icon={
     <span
       className="icon"
@@ -40,10 +41,9 @@ exports[`rendering renders correctly with all props 1`] = `
       "close": "Close",
     }
   }
-  type="success"
 >
   <div
-    className="root isRootSuccess"
+    className="root rootColorSuccess"
     id="custom-id"
     role="alert"
   >

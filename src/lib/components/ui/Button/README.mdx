@@ -11,6 +11,7 @@ import {
   Props,
 } from 'docz'
 import Icon from '../../../../docs/_components/Icon'
+import Placeholder from '../../../../docs/_components/Placeholder'
 import Badge from '../Badge'
 import { Button } from './Button'
 
@@ -51,16 +52,11 @@ lowest:
 2. outline
 3. flat
 
-All priorities come in following **color variants**:
+All priorities come in supported
+[component colors](/foundation/colors#component-colors).
 
-- [brand colors](/foundation/colors#brand-colors): primary, secondary
-- selected [UI colors](/foundation/colors#ui-colors): success, warning, danger
-  (based on error color, uses a different name because error button doesn't make
-  much sense)
-- dark color
-
-To complete the list, there is also a link priority which is reserved for
-special cases.
+To complete the list, there is also a [link priority](#link)
+which is reserved for special cases.
 
 ### Filled
 
@@ -69,11 +65,17 @@ app. Use it sparingly but remember there should always be one on a screen.
 
 <Playground>
   <Button label="Primary" />
-  <Button label="Secondary" variant="secondary" />
-  <Button label="Success" variant="success" />
-  <Button label="Warning" variant="warning" />
-  <Button label="Danger" variant="danger" />
-  <Button label="Dark" variant="dark" />
+  <Button label="Secondary" color="secondary" />
+  <Button label="Success" color="success" />
+  <Button label="Warning" color="warning" />
+  <Button label="Danger" color="danger" />
+  <Button label="Help" color="help" />
+  <Button label="Info" color="info" />
+  <Button label="Note" color="note" />
+  <Placeholder dark inline>
+    <Button label="Light" color="light" />
+  </Placeholder>
+  <Button label="Dark" color="dark" />
 </Playground>
 
 Default, unconfigured button comes in **medium** size, **filled** visual
@@ -86,11 +88,17 @@ important but not primary in your app.
 
 <Playground>
   <Button priority="outline" label="Primary" />
-  <Button priority="outline" label="Secondary" variant="secondary" />
-  <Button priority="outline" label="Success" variant="success" />
-  <Button priority="outline" label="Warning" variant="warning" />
-  <Button priority="outline" label="Danger" variant="danger" />
-  <Button priority="outline" label="Dark" variant="dark" />
+  <Button priority="outline" label="Secondary" color="secondary" />
+  <Button priority="outline" label="Success" color="success" />
+  <Button priority="outline" label="Warning" color="warning" />
+  <Button priority="outline" label="Danger" color="danger" />
+  <Button priority="outline" label="Help" color="help" />
+  <Button priority="outline" label="Info" color="info" />
+  <Button priority="outline" label="Note" color="note" />
+  <Placeholder dark inline>
+    <Button priority="outline" label="Light" color="light" />
+  </Placeholder>
+  <Button priority="outline" label="Dark" color="dark" />
 </Playground>
 
 ### Flat
@@ -100,11 +108,17 @@ the content.
 
 <Playground>
   <Button priority="flat" label="Primary" />
-  <Button priority="flat" label="Secondary" variant="secondary" />
-  <Button priority="flat" label="Success" variant="success" />
-  <Button priority="flat" label="Warning" variant="warning" />
-  <Button priority="flat" label="Danger" variant="danger" />
-  <Button priority="flat" label="Dark" variant="dark" />
+  <Button priority="flat" label="Secondary" color="secondary" />
+  <Button priority="flat" label="Success" color="success" />
+  <Button priority="flat" label="Warning" color="warning" />
+  <Button priority="flat" label="Danger" color="danger" />
+  <Button priority="flat" label="Help" color="help" />
+  <Button priority="flat" label="Info" color="info" />
+  <Button priority="flat" label="Note" color="note" />
+  <Placeholder dark inline>
+    <Button priority="flat" label="Light" color="light" />
+  </Placeholder>
+  <Button priority="flat" label="Dark" color="dark" />
 </Playground>
 
 ### Link
@@ -145,7 +159,7 @@ To improve clarity or to draw attention to the action, icons can be added
 before or after the button's label.
 
 👉 Please note there are no icons pre-packed in React UI. Visit
-[Icons](/foundation/icons) to see how it works.
+[Icons](/foundation/icons) to see how to include them.
 
 <Playground>
   <Button
@@ -191,7 +205,7 @@ information or to draw user's attention.
 <Playground>
   <Button
     label="Badge before"
-    beforeLabel={<Badge label={3} type="light" priority="outline" />}
+    beforeLabel={<Badge label={3} priority="outline" color="light" />}
   />
   <Button
     label="Badge before, on top"
@@ -204,7 +218,7 @@ information or to draw user's attention.
   />
   <Button
     label="Badge after"
-    afterLabel={<Badge label="new" type="warning" />}
+    afterLabel={<Badge label="new" color="warning" />}
     priority="outline"
   />
 </Playground>
@@ -219,14 +233,14 @@ Badges play nicely with icon buttons, too:
     labelVisibility="none"
     priority="outline"
     beforeLabel={<Icon icon="warning-sign" />}
-    startCorner={<Badge label={3} type="warning" />}
+    startCorner={<Badge label={3} color="warning" />}
   />
   <Button
     label="Icon button with badge"
     labelVisibility="desktop"
     priority="outline"
     beforeLabel={<Icon icon="warning-sign" />}
-    startCorner={<Badge label={3} type="error" />}
+    startCorner={<Badge label={3} color="danger" />}
   />
 </Playground>
 
@@ -276,7 +290,7 @@ state are automatically made disabled to prevent unwanted interaction.
         <Icon icon="loading" />
       </span>
     )}
-    startCorner={<Badge label={3} type="error" />}
+    startCorner={<Badge label={3} color="danger" />}
   />
   <Button
     label="Icon after label, loading"
@@ -304,37 +318,38 @@ This is useful mainly to improve component's accessibility.
 
 ### Common Theming Options
 
-The following theme options are common to all priorities and variants
+The following theme options are common to all priorities and color variants
 **except** the `link` priority (see [below for more](#link-priority)):
 
-| Custom Property                | Description                                 |
-|--------------------------------|---------------------------------------------|
-| `--rui-Button__font-weight`    | Font weight                                 |
-| `--rui-Button__text-transform` | Text transform, eg. uppercase or small-caps |
-| `--rui-Button__letter-spacing` | Spacing between letters                     |
-| `--rui-Button__border-width`   | Border width                                |
-| `--rui-Button__border-radius`  | Corner radius                               |
+| Custom Property                | Description                                  |
+|--------------------------------|----------------------------------------------|
+| `--rui-Button__font-weight`    | Font weight                                  |
+| `--rui-Button__text-transform` | Text transform, e.g. uppercase or small-caps |
+| `--rui-Button__letter-spacing` | Spacing between letters                      |
+| `--rui-Button__border-width`   | Border width                                 |
+| `--rui-Button__border-radius`  | Corner radius                                |
 
-### Theming Priorities and Variants
+### Theming Priorities and Color Variants
 
-It's possible to adjust the theme for specific priority, variant, and state.
-Naming convention looks as follows:
+It's possible to adjust the theme for specific priority, color variant, and
+state. Naming convention looks as follows:
 
-`--rui-Button--<PRIORITY>--<VARIANT>--<INTERACTION STATE>__<PROPERTY>`
+`--rui-Button--<PRIORITY>--<COLOR>--<INTERACTION STATE>__<PROPERTY>`
 
 Where:
 
 - `<PRIORITY>` is one of `filled`, `outline`, or `flat` (see
-   [Priorities](#priorities) and [API](#api))
-- `<VARIANT>` is one of `primary`, `secondary`, `success`, `warning`, `danger`,
-   or `dark` (see variants of [each priority](#priorities) and [API](#api))
-- `<INTERATCION STATE>` is one of `default`, `hover`, `active`, or `disabled`
-  (the last one being optional)
+  [Priorities](#priorities) and [API](#api)),
+- `<COLOR>` is one of supported
+  [component colors](/foundation/colors#component-colors)
+  (see color variants of [each priority](#priorities) and [API](#api)),
+- `<INTERACTION STATE>` is one of `default`, `hover`, `active`, or `disabled`
+  (the last one being optional),
 - `<PROPERTY>` is one of:
   - `color`, `border-color`, `background`, or `box-shadow` for the `filled`
-    priority
-  - `color`, `border-color`, or `background` for the `outline` priority
-  - `color` or `background` for the `flat` priority
+    priority,
+  - `color`, `border-color`, or `background` for the `outline` priority,
+  - `color` or `background` for the `flat` priority.
 
 #### Theming Link Priority
 
@@ -346,7 +361,7 @@ design tokens:
 | Custom Property               | Description                                  |
 |-------------------------------|----------------------------------------------|
 | `--rui-link-color`            | Text color                                   |
-| `--rui-link-decoration`       | Text decoration, eg. underline               |
+| `--rui-link-decoration`       | Text decoration, e.g. underline              |
 | `--rui-link-hover-color`      | Text color on hover                          |
 | `--rui-link-hover-decoration` | Text decoration on hover                     |
 
@@ -397,10 +412,10 @@ interaction states. Firstly, there are a few common options for this state:
 | `--rui-Button--disabled__opacity` | Opacity of disabled buttons                 |
 | `--rui-Button--disabled__cursor`  | Cursor to show on hovering disabled buttons |
 
-Secondly, it can be further adjusted using priority and variant specific
+Secondly, it can be further adjusted using priority and color variant specific
 options for the disabled state:
 
- `--rui-Button--<PRIORITY>--<VARIANT>--disabled__<PROPERTY>`
+`--rui-Button--<PRIORITY>--<COLOR>--disabled__<PROPERTY>`
 
 Undefined theming options are inherited from the `default` interaction state.
 
@@ -430,7 +445,7 @@ Example:
   />
   <Button
     label="Default filled success button, disabled"
-    variant="success"
+    color="success"
     disabled
   />
   <Button
@@ -445,7 +460,7 @@ Example:
     />
     <Button
       label="Themed filled success button, disabled"
-      variant="success"
+      color="success"
       disabled
     />
     <Button

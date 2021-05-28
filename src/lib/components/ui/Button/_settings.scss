@@ -13,7 +13,7 @@ $group-z-indexes: (
   button-overflowing-elements: 3,
 );
 
-$themeable-variants: (primary, secondary, success, warning, danger, dark);
+$themeable-variants: (primary, secondary, success, warning, danger, help, info, note, light, dark);
 $themeable-states: (default, hover, active, disabled);
 $themeable-priority-properties: (
   filled: (color, border-color, background, box-shadow),

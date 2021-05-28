@@ -1,66 +1,77 @@
-@use 'tools';
+@use '../../../styles/theme/colors';
 @use 'theme';
+@use 'tools';
 
 .root {
+  --rui-local-padding: #{theme.$padding};
+
   display: flex;
   flex-direction: column;
   width: 100%;
-  border: theme.$border-width solid transparent;
+  color: var(--rui-local-color);
+  border: theme.$border-width solid var(--rui-local-border-color);
   border-radius: theme.$border-radius;
-  background-color: theme.$background-color;
+  background-color: var(--rui-local-background-color);
 }
 
 .body {
   flex: 1 0 auto;
-  padding: theme.$padding;
+  padding: var(--rui-local-padding);
 }
 
 .footer {
-  padding: theme.$padding;
+  padding: var(--rui-local-padding);
 }
 
-.isVariantFlat {
-  @include tools.card-variant(flat);
+.rootDense {
+  --rui-local-padding: #{theme.$dense-padding};
 }
 
-.isVariantBordered {
-  @include tools.card-variant(bordered);
+.rootRaised {
+  box-shadow: theme.$raised-box-shadow;
 }
 
-.isTypeSuccess {
-  @include tools.card-type(success);
+.rootColorPrimary {
+  @include tools.color(primary);
 }
 
-.isTypeWarning {
-  @include tools.card-type(warning);
+.rootColorSecondary {
+  @include tools.color(secondary);
 }
 
-.isTypeError {
-  @include tools.card-type(error);
+.rootColorSuccess {
+  @include tools.color(success);
 }
 
-.isTypeHelp {
-  @include tools.card-type(help);
+.rootColorWarning {
+  @include tools.color(warning);
 }
 
-.isTypeInfo {
-  @include tools.card-type(info);
+.rootColorDanger {
+  @include tools.color(danger);
 }
 
-.isTypeNote {
-  @include tools.card-type(note);
+.rootColorHelp {
+  @include tools.color(help);
+}
+
+.rootColorInfo {
+  @include tools.color(info);
+}
+
+.rootColorNote {
+  @include tools.color(note);
+}
+
+.rootColorLight {
+  @include tools.color(light);
+}
+
+.rootColorDark {
+  @include tools.color(dark);
 }
 
 .isDisabled {
-  background-color: map-get(theme.$disabled, background-color);
-  opacity: map-get(theme.$disabled, opacity);
-}
-
-.isRaised {
-  box-shadow: map-get(theme.$raised, box-shadow);
-}
-
-.isDense .body,
-.isDense .footer {
-  padding: theme.$dense-padding;
+  background-color: theme.$disabled-background-color;
+  opacity: theme.$disabled-opacity;
 }

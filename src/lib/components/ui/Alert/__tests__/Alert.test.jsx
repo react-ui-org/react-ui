@@ -20,10 +20,10 @@ describe('rendering', () => {
     const tree = mount(
       <Alert
         closeHandler={() => {}}
+        color="success"
         icon={<span className="icon" />}
         id="custom-id"
         translations={defaultTranslations.Alert}
-        type="success"
       >
         <div>Children</div>
       </Alert>,
@@ -39,8 +39,8 @@ describe('functionality', () => {
     const component = mount((
       <Alert
         closeHandler={spy}
+        color="success"
         translations={defaultTranslations.Alert}
-        type="success"
       >
         <div>Children</div>
       </Alert>

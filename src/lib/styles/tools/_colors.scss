@@ -1,0 +1,7 @@
+@function lighten-color($color, $weight) {
+  @return mix(white, $color, $weight);
+}
+
+@function darken-color($color, $weight) {
+  @return mix(black, $color, $weight);
+}

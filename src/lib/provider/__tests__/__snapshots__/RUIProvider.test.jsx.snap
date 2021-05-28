@@ -201,6 +201,7 @@ exports[`rendering renders component with default provider 1`] = `
                               beforeLabel={null}
                               block={false}
                               clickHandler={[Function]}
+                              color="primary"
                               disabled={false}
                               endCorner={null}
                               forwardedRef={null}
@@ -212,13 +213,9 @@ exports[`rendering renders component with default provider 1`] = `
                               size="medium"
                               startCorner={null}
                               type="button"
-                              variant="primary"
                             >
                               <button
-                                className="root
-        priorityFlat
-        sizeMedium
-        variantPrimary"
+                                className="root rootPriorityFlat rootColorPrimary rootSizeMedium    "
                                 disabled={false}
                                 onClick={[Function]}
                                 type="button"
@@ -450,6 +447,7 @@ exports[`rendering renders component with provided both translations and global 
                               beforeLabel={null}
                               block={false}
                               clickHandler={[Function]}
+                              color="primary"
                               disabled={false}
                               endCorner={null}
                               forwardedRef={null}
@@ -461,13 +459,9 @@ exports[`rendering renders component with provided both translations and global 
                               size="medium"
                               startCorner={null}
                               type="button"
-                              variant="primary"
                             >
                               <button
-                                className="root
-        priorityFlat
-        sizeMedium
-        variantPrimary"
+                                className="root rootPriorityFlat rootColorPrimary rootSizeMedium    "
                                 disabled={false}
                                 onClick={[Function]}
                                 type="button"
@@ -702,6 +696,7 @@ exports[`rendering renders component with provided global props 1`] = `
                               beforeLabel={null}
                               block={false}
                               clickHandler={[Function]}
+                              color="primary"
                               disabled={false}
                               endCorner={null}
                               forwardedRef={null}
@@ -713,13 +708,9 @@ exports[`rendering renders component with provided global props 1`] = `
                               size="medium"
                               startCorner={null}
                               type="button"
-                              variant="primary"
                             >
                               <button
-                                className="root
-        priorityFlat
-        sizeMedium
-        variantPrimary"
+                                className="root rootPriorityFlat rootColorPrimary rootSizeMedium    "
                                 disabled={false}
                                 onClick={[Function]}
                                 type="button"
@@ -945,6 +936,7 @@ exports[`rendering renders component with provided translations 1`] = `
                               beforeLabel={null}
                               block={false}
                               clickHandler={[Function]}
+                              color="primary"
                               disabled={false}
                               endCorner={null}
                               forwardedRef={null}
@@ -956,13 +948,9 @@ exports[`rendering renders component with provided translations 1`] = `
                               size="medium"
                               startCorner={null}
                               type="button"
-                              variant="primary"
                             >
                               <button
-                                className="root
-        priorityFlat
-        sizeMedium
-        variantPrimary"
+                                className="root rootPriorityFlat rootColorPrimary rootSizeMedium    "
                                 disabled={false}
                                 onClick={[Function]}
                                 type="button"
@@ -1174,6 +1162,7 @@ exports[`rendering renders component without provider 1`] = `
                             beforeLabel={null}
                             block={false}
                             clickHandler={[Function]}
+                            color="primary"
                             disabled={false}
                             endCorner={null}
                             forwardedRef={null}
@@ -1185,13 +1174,9 @@ exports[`rendering renders component without provider 1`] = `
                             size="medium"
                             startCorner={null}
                             type="button"
-                            variant="primary"
                           >
                             <button
-                              className="root
-        priorityFlat
-        sizeMedium
-        variantPrimary"
+                              className="root rootPriorityFlat rootColorPrimary rootSizeMedium    "
                               disabled={false}
                               onClick={[Function]}
                               type="button"

@@ -152,22 +152,22 @@ Try to resize the playground to see how individual options work.
               <Button
                 label="default"
                 clickHandler={() => setLabelWidth('default')}
-                variant={labelWidth === 'default' ? 'dark' : 'primary'}
+                color={labelWidth === 'default' ? 'dark' : 'primary'}
               />
               <Button
                 label="auto"
                 clickHandler={() => setLabelWidth('auto')}
-                variant={labelWidth === 'auto' ? 'dark' : 'primary'}
+                color={labelWidth === 'auto' ? 'dark' : 'primary'}
               />
               <Button
                 label="limited"
                 clickHandler={() => setLabelWidth('limited')}
-                variant={labelWidth === 'limited' ? 'dark' : 'primary'}
+                color={labelWidth === 'limited' ? 'dark' : 'primary'}
               />
               <Button
                 label="custom"
                 clickHandler={() => setLabelWidth('custom')}
-                variant={labelWidth === 'custom' ? 'dark' : 'primary'}
+                color={labelWidth === 'custom' ? 'dark' : 'primary'}
               />
             </ButtonGroup>
           </ToolbarItem>
@@ -383,14 +383,14 @@ This is a demo of all components supported by FormLayout.
           <ToolbarItem>
             <ButtonGroup>
               <Button
-                clickHandler={() => setFieldLayout('vertical')}
                 label="Vertical layout"
-                variant={fieldLayout === 'vertical' ? 'dark' : 'primary'}
+                clickHandler={() => setFieldLayout('vertical')}
+                color={fieldLayout === 'vertical' ? 'dark' : 'primary'}
               />
               <Button
-                clickHandler={() => setFieldLayout('horizontal')}
                 label="Horizontal layout"
-                variant={fieldLayout === 'horizontal' ? 'dark' : 'primary'}
+                clickHandler={() => setFieldLayout('horizontal')}
+                color={fieldLayout === 'horizontal' ? 'dark' : 'primary'}
               />
             </ButtonGroup>
           </ToolbarItem>

@@ -61,8 +61,8 @@ project.
 
 ## UI Colors
 
-UI colors are used to communicate a meaning: green means success, orange means
-warning, red means danger or error, etc.
+UI colors communicate a meaning: green means success, orange means warning, red
+means danger or error, etc.
 
 <div>
   <Swatch color="success" />
@@ -79,11 +79,11 @@ warning, red means danger or error, etc.
   <Swatch color="on-warning" />
 </div>
 <div>
-  <Swatch color="error" />
-  <Swatch color="error-dark" />
-  <Swatch color="error-darker" />
-  <Swatch color="error-light" />
-  <Swatch color="on-error" />
+  <Swatch color="danger" />
+  <Swatch color="danger-dark" />
+  <Swatch color="danger-darker" />
+  <Swatch color="danger-light" />
+  <Swatch color="on-danger" />
 </div>
 <div>
   <Swatch color="help" />
@@ -115,9 +115,6 @@ white color (`#fff`).
 
 <div>
   <Swatch color="white" />
-  <Swatch color="black" />
-</div>
-<div>
   <Swatch color="gray-50" />
   <Swatch color="gray-100" />
   <Swatch color="gray-200" />
@@ -128,4 +125,45 @@ white color (`#fff`).
   <Swatch color="gray-700" />
   <Swatch color="gray-800" />
   <Swatch color="gray-900" />
+  <Swatch color="black" />
 </div>
+<div>
+  <Swatch color="light" />
+  <Swatch color="dark" />
+  <Swatch color="muted" />
+</div>
+
+## Applying Colors
+
+Components can apply non-gray colors above using one of the following color
+palettes.
+
+### Component Colors
+
+Some components ([Alert](/components/ui/alert), [Badge](/components/ui/badge),
+and more) come in more color variants to help you better reflect their
+importance or nature of their content. Following colors are available in such
+cases:
+
+- basic shades of all **brand colors**: `primary` and `secondary`,
+- basic shades of all **UI colors**: `success`, `warning`, `danger`, `help`,
+  `info`, and `note`,
+- selected shades of **gray**: `light` (neutral shade to stand out on dark
+  surfaces) and `dark` (neutral shade to stand out on light surfaces).
+
+There is always a reasonable default for the component in question which can be
+changed to any of supported values above through the `color` prop.
+
+### Validation States
+
+All form field components that support validation states
+([CheckboxField](/components/ui/checkbox-field),
+[TextField](/components/ui/text-field), [Toggle](/components/ui/toggle) and
+more) apply selected [UI colors](#ui-colors) for individual states:
+
+- `success` UI color for **valid** state,
+- `warning` UI color for **warning** state,
+- `danger` UI color for **invalid** state.
+
+Validation state is always optional so default styling is applied for the
+component when its `validationState` prop is not specified.
