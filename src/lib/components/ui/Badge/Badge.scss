@@ -1,3 +1,4 @@
+@use 'sass:math';
 @use '../../../styles/theme/borders';
 @use '../../../styles/theme/colors';
 @use '../../../styles/theme/typography';
@@ -16,7 +17,7 @@ $_badge-size: 1.25rem;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  border-radius: $_badge-size / 2;
+  border-radius: math.div($_badge-size, 2);
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
 }
 
