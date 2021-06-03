@@ -5,7 +5,6 @@ exports[`rendering renders correctly mandatory props only 1`] = `
   className="root    rootLayoutVertical   rootSizeMedium  rootVariantOutline"
   htmlFor="test"
   id="test__label"
-  style={Object {}}
 >
   <div
     className="label "
@@ -23,7 +22,6 @@ exports[`rendering renders correctly mandatory props only 1`] = `
         className="input"
         disabled={false}
         id="test"
-        max={null}
         onChange={null}
         placeholder={null}
         required={false}
@@ -40,11 +38,6 @@ exports[`rendering renders correctly the number input type 1`] = `
   className="root    rootLayoutVertical   rootSizeMedium  rootVariantOutline"
   htmlFor="test"
   id="test__label"
-  style={
-    Object {
-      "--rui-custom-input-size": 13,
-    }
-  }
 >
   <div
     className="label "
@@ -62,7 +55,6 @@ exports[`rendering renders correctly the number input type 1`] = `
         className="input"
         disabled={false}
         id="test"
-        max={1000000000000}
         onChange={null}
         placeholder={null}
         required={false}
@@ -101,7 +93,6 @@ exports[`rendering renders correctly the number input type with small input 1`] 
         className="input"
         disabled={false}
         id="test"
-        max={3}
         onChange={null}
         placeholder={null}
         required={false}
@@ -140,7 +131,6 @@ exports[`rendering renders correctly with all props 1`] = `
         className="input"
         disabled={true}
         id="test"
-        max={null}
         onChange={null}
         placeholder="placeholder"
         required={true}
@@ -173,7 +163,6 @@ exports[`rendering renders correctly with custom props 1`] = `
   className="root    rootLayoutVertical   rootSizeMedium  rootVariantOutline"
   htmlFor="test"
   id="test__label"
-  style={Object {}}
 >
   <div
     className="label "
@@ -193,7 +182,6 @@ exports[`rendering renders correctly with custom props 1`] = `
         className="input"
         disabled={false}
         id="test"
-        max={null}
         onChange={null}
         placeholder={null}
         required={false}
@@ -210,7 +198,6 @@ exports[`rendering renders correctly with hidden label 1`] = `
   className="root    rootLayoutVertical   rootSizeMedium  rootVariantOutline"
   htmlFor="test"
   id="test__label"
-  style={Object {}}
 >
   <div
     className="label isLabelHidden"
@@ -228,7 +215,6 @@ exports[`rendering renders correctly with hidden label 1`] = `
         className="input"
         disabled={false}
         id="test"
-        max={null}
         onChange={null}
         placeholder={null}
         required={false}
@@ -267,7 +253,6 @@ exports[`rendering renders correctly with small input 1`] = `
         className="input"
         disabled={false}
         id="test"
-        max={null}
         onChange={null}
         placeholder={null}
         required={false}
