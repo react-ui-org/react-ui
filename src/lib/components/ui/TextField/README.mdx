@@ -206,11 +206,9 @@ normalize rendering across browsers.
 HTML attribute **does not limit on how many characters** the user can enter. Use
 the `maxlength` attribute to achieve that effect.
 
-👉 For compatibility with the HTML specification, the `inputSize` option (which
+👉 Note that according to the HTML specification, the `inputSize` option (which
 is translated as `size` attribute of the input element) is
 [not available for the `number` input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number#Controlling_input_size).
-However, you can use the `max` attribute to determine the desired width of the
-number input instead.
 
 <Playground>
   <TextField
@@ -223,21 +221,6 @@ number input instead.
     inputSize={3}
     label="Title"
     variant="filled"
-  />
-  <TextField
-    id="my-text-field-outline-input-size-number"
-    label="Age"
-    min={13}
-    max={120}
-    type="number"
-  />
-  <TextField
-    id="my-text-field-filled-input-size-number"
-    label="Age"
-    min={13}
-    max={120}
-    variant="filled"
-    type="number"
   />
 </Playground>
 

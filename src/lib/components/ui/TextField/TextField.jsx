@@ -5,7 +5,6 @@ import getRootValidationStateClassName from '../../../helpers/getRootValidationS
 import { withProviderContext } from '../../../provider';
 import transferProps from '../../../utils/transferProps';
 import withForwardedRef from '../withForwardedRef';
-import getCustomInputSizeByType from './helpers/getCustomInputSizeByType';
 import styles from './TextField.scss';
 
 const SMALL_INPUT_SIZE = 10;
@@ -22,7 +21,6 @@ export const TextField = ({
   isLabelVisible,
   label,
   layout,
-  max,
   placeholder,
   required,
   size,
@@ -33,8 +31,7 @@ export const TextField = ({
   variant,
   ...restProps
 }) => {
-  const customInputSize = getCustomInputSizeByType(type, inputSize, max);
-  const hasSmallInput = (customInputSize !== null) && (customInputSize <= SMALL_INPUT_SIZE);
+  const hasSmallInput = (inputSize !== null) && (inputSize <= SMALL_INPUT_SIZE);
 
   return (
     <label
@@ -52,7 +49,7 @@ export const TextField = ({
       ].join(' ')}
       htmlFor={id}
       id={`${id}__label`}
-      style={customInputSize ? { '--rui-custom-input-size': customInputSize } : {}}
+      {...(inputSize ? { style: { '--rui-custom-input-size': inputSize } } : {})}
     >
       <div
         className={[
@@ -70,7 +67,6 @@ export const TextField = ({
             className={styles.input}
             disabled={disabled}
             id={id}
-            max={type === 'number' ? max : null}
             onChange={changeHandler}
             placeholder={placeholder}
             ref={forwardedRef}
@@ -114,7 +110,6 @@ TextField.defaultProps = {
   inputSize: null,
   isLabelVisible: true,
   layout: 'vertical',
-  max: null,
   placeholder: null,
   required: false,
   size: 'medium',
@@ -176,10 +171,6 @@ TextField.propTypes = {
    * Layout of the field.
    */
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
-  /**
-   * The maximum value for number input types.
-   */
-  max: PropTypes.number,
   /**
    * Optional example value.
    */

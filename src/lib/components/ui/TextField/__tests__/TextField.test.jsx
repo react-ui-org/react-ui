@@ -38,7 +38,6 @@ describe('rendering', () => {
     const tree = shallow(<TextField
       id="test"
       label="Number input type"
-      max={(1000 * 1000 * 1000 * 1000)}
       type="number"
     />);
 
@@ -49,7 +48,7 @@ describe('rendering', () => {
     const tree = shallow(<TextField
       id="test"
       label="Number input type"
-      max={3}
+      inputSize={1}
       type="number"
     />);
 
@@ -78,7 +77,6 @@ describe('rendering', () => {
       isLabelVisible={false}
       label="All props"
       layout="horizontal"
-      max={30}
       placeholder="placeholder"
       required
       size="large"
