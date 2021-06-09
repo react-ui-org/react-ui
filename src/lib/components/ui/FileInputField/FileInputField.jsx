@@ -33,14 +33,14 @@ export const FileInputField = ({
       getRootValidationStateClassName(validationState, styles),
     ].join(' ')}
     htmlFor={id}
-    id={`${id}__label`}
+    id={id && `${id}__label`}
   >
     <div
       className={[
         styles.label,
         isLabelVisible ? '' : styles.isLabelHidden,
       ].join(' ')}
-      id={`${id}__labelText`}
+      id={id && `${id}__labelText`}
     >
       {label}
     </div>
@@ -60,7 +60,7 @@ export const FileInputField = ({
       {helpText && (
         <div
           className={styles.helpText}
-          id={`${id}__helpText`}
+          id={id && `${id}__helpText`}
         >
           {helpText}
         </div>
@@ -68,7 +68,7 @@ export const FileInputField = ({
       {validationText && (
         <div
           className={styles.validationText}
-          id={`${id}__validationText`}
+          id={id && `${id}__validationText`}
         >
           {validationText}
         </div>
@@ -83,6 +83,7 @@ FileInputField.defaultProps = {
   forwardedRef: undefined,
   fullWidth: false,
   helpText: null,
+  id: undefined,
   inFormLayout: false,
   isLabelVisible: true,
   layout: 'vertical',
@@ -120,7 +121,7 @@ FileInputField.propTypes = {
    * ID of the input HTML element. It also serves as a prefix for important inner elements:
    * `<ID>__label`, `<ID>__labelText`, `<ID>__helpText`, and `<ID>__validationText`.
    */
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   /**
    * Treat the field differently when it's inside a FormLayout. Do not set manually!
    */

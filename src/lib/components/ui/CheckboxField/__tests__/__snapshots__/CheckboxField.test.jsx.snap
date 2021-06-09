@@ -3,8 +3,6 @@
 exports[`rendering renders correctly mandatory props only 1`] = `
 <label
   className="root   rootLayoutVertical   "
-  htmlFor="test"
-  id="test__label"
 >
   <div
     className="field"
@@ -13,14 +11,12 @@ exports[`rendering renders correctly mandatory props only 1`] = `
       checked={false}
       className="input"
       disabled={false}
-      id="test"
       onChange={null}
       required={false}
       type="checkbox"
     />
     <div
       className="label "
-      id="test__labelText"
     >
       label
     </div>

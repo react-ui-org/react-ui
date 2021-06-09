@@ -10,7 +10,6 @@ import { Radio } from '../Radio';
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
     const tree = shallow(<Radio
-      id="test"
       label="label"
       options={[
         {
@@ -29,7 +28,6 @@ describe('rendering', () => {
 
   it('renders correctly only one option', () => {
     const tree = shallow(<Radio
-      id="test"
       label="label"
       options={[
         {
@@ -44,7 +42,6 @@ describe('rendering', () => {
 
   it('renders correctly only one option and hidden label', () => {
     const tree = shallow(<Radio
-      id="test"
       isLabelVisible={false}
       label="label"
       options={[
@@ -92,7 +89,6 @@ describe('functionality', () => {
     const spy = sinon.spy();
     const component = mount(<Radio
       changeHandler={spy}
-      id="id"
       label="label"
       options={[
         {

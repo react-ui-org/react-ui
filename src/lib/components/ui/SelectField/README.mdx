@@ -30,7 +30,6 @@ And use it:
     return (
       <SelectField
         changeHandler={(e) => setFruit(e.target.value)}
-        id="my-select-field"
         label="Your favourite fruit"
         options={[
           {
@@ -112,14 +111,12 @@ further [customized](#theming) with CSS custom properties.
       <>
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-select-field-outline"
           label="Your favourite fruit"
           options={options}
           value={fruit}
         />
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-select-field-filled"
           label="Your favourite fruit"
           options={options}
           variant="filled"
@@ -156,7 +153,6 @@ and large.
       <>
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-select-field-outline-small"
           label="Your favourite fruit"
           options={options}
           size="small"
@@ -164,14 +160,12 @@ and large.
         />
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-select-field-outline-medium"
           label="Your favourite fruit"
           options={options}
           value={fruit}
         />
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-select-field-outline-large"
           label="Your favourite fruit"
           options={options}
           size="large"
@@ -179,7 +173,6 @@ and large.
         />
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-select-field-filled-small"
           label="Your favourite fruit"
           options={options}
           size="small"
@@ -188,7 +181,6 @@ and large.
         />
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-select-field-filled-medium"
           label="Your favourite fruit"
           options={options}
           value={fruit}
@@ -196,7 +188,6 @@ and large.
         />
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-select-field-filled-large"
           label="Your favourite fruit"
           options={options}
           size="large"
@@ -232,7 +223,6 @@ Full-width fields span the full width of a parent:
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
           fullWidth
-          id="my-select-field-outline-full-width"
           label="Your favourite fruit"
           options={options}
           value={fruit}
@@ -240,7 +230,6 @@ Full-width fields span the full width of a parent:
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
           fullWidth
-          id="my-select-field-filled-full-width"
           label="Your favourite fruit"
           options={options}
           value={fruit}
@@ -279,7 +268,6 @@ the input.
       <>
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-select-field-outline-hidden-label"
           isLabelVisible={false}
           label="Your favourite fruit"
           options={options}
@@ -287,7 +275,6 @@ the input.
         />
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-select-field-filled-hidden-label"
           isLabelVisible={false}
           label="Your favourite fruit"
           options={options}
@@ -326,7 +313,6 @@ supports this kind of layout as well.
       <>
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-select-field-outline-horizontal"
           label="Your favourite fruit"
           layout="horizontal"
           options={options}
@@ -334,26 +320,6 @@ supports this kind of layout as well.
         />
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-select-field-filled-horizontal"
-          label="Your favourite fruit"
-          layout="horizontal"
-          options={options}
-          value={fruit}
-          variant="filled"
-        />
-        <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
-          fullWidth
-          id="my-select-field-outline-horizontal-full-width"
-          label="Your favourite fruit"
-          layout="horizontal"
-          options={options}
-          value={fruit}
-        />
-        <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
-          fullWidth
-          id="my-select-field-filled-horizontal-full-width"
           label="Your favourite fruit"
           layout="horizontal"
           options={options}
@@ -363,7 +329,23 @@ supports this kind of layout as well.
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
           fullWidth
-          id="my-select-field-outline-horizontal-full-width-invisible-label"
+          label="Your favourite fruit"
+          layout="horizontal"
+          options={options}
+          value={fruit}
+        />
+        <SelectField
+          changeHandler={(e) => setFruit(e.target.value)}
+          fullWidth
+          label="Your favourite fruit"
+          layout="horizontal"
+          options={options}
+          value={fruit}
+          variant="filled"
+        />
+        <SelectField
+          changeHandler={(e) => setFruit(e.target.value)}
+          fullWidth
           isLabelVisible={false}
           label="Your favourite fruit"
           layout="horizontal"
@@ -373,7 +355,6 @@ supports this kind of layout as well.
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
           fullWidth
-          id="my-select-field-filled-horizontal-full-width-invisible-label"
           isLabelVisible={false}
           label="Your favourite fruit"
           layout="horizontal"
@@ -413,7 +394,6 @@ filled.
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
           helpText="Choose one or more kinds of fruit to feel happy."
-          id="my-select-field-outline-help-text"
           label="Your favourite fruit"
           options={options}
           value={fruit}
@@ -421,7 +401,6 @@ filled.
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
           helpText="Choose one or more kinds of fruit to feel happy."
-          id="my-select-field-filled-help-text"
           label="Your favourite fruit"
           options={options}
           value={fruit}
@@ -430,7 +409,6 @@ filled.
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
           helpText="Choose one or more kinds of fruit to feel happy."
-          id="my-select-field-outline-help-text-horizontal"
           label="Your favourite fruit"
           layout="horizontal"
           options={options}
@@ -439,7 +417,6 @@ filled.
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
           helpText="Choose one or more kinds of fruit to feel happy."
-          id="my-select-field-filled-help-text-horizontal"
           label="Your favourite fruit"
           layout="horizontal"
           options={options}
@@ -450,7 +427,6 @@ filled.
           changeHandler={(e) => setFruit(e.target.value)}
           fullWidth
           helpText="Choose one or more kinds of fruit to feel happy."
-          id="my-select-field-outline-help-text-horizontal-full-width"
           label="Your favourite fruit"
           layout="horizontal"
           options={options}
@@ -460,7 +436,6 @@ filled.
           changeHandler={(e) => setFruit(e.target.value)}
           fullWidth
           helpText="Choose one or more kinds of fruit to feel happy."
-          id="my-select-field-filled-help-text-horizontal-full-width"
           label="Your favourite fruit"
           layout="horizontal"
           options={options}
@@ -502,7 +477,6 @@ have.
       <>
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-select-field-outline-success"
           label="Your favourite fruit"
           options={options}
           required
@@ -512,7 +486,6 @@ have.
         />
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-select-field-outline-warning"
           label="Your favourite fruit"
           options={options}
           required
@@ -522,7 +495,6 @@ have.
         />
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-select-field-outline-error"
           label="Your favourite fruit"
           options={options}
           required
@@ -532,7 +504,6 @@ have.
         />
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-select-field-filled-success"
           label="Your favourite fruit"
           options={options}
           required
@@ -543,7 +514,6 @@ have.
         />
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-select-field-filled-warning"
           label="Your favourite fruit"
           options={options}
           required
@@ -554,7 +524,6 @@ have.
         />
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-select-field-filled-error"
           label="Your favourite fruit"
           options={options}
           required
@@ -594,14 +563,12 @@ It's possible to disable just some options or the whole input.
       <>
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-select-field-outline-disabled-option"
           label="Your favourite fruit"
           options={options}
           value={fruit}
         />
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-select-field-filled-disabled-option"
           label="Your favourite fruit"
           options={options}
           value={fruit}
@@ -610,7 +577,6 @@ It's possible to disable just some options or the whole input.
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
           disabled
-          id="my-select-field-outline-disabled"
           label="Your favourite fruit"
           options={options}
           value="apple"
@@ -618,7 +584,6 @@ It's possible to disable just some options or the whole input.
         <SelectField
           changeHandler={(e) => setFruit(e.target.value)}
           disabled
-          id="my-select-field-filled-disabled"
           label="Your favourite fruit"
           options={options}
           value="apple"

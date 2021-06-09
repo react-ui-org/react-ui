@@ -36,7 +36,7 @@ export const Radio = ({
         styles.label,
         isLabelVisible ? '' : styles.isLabelHidden,
       ].join(' ')}
-      id={`${id}__labelText`}
+      id={id && `${id}__labelText`}
     >
       {label}
     </div>
@@ -47,15 +47,15 @@ export const Radio = ({
             <li key={option.value}>
               <label
                 className={styles.option}
-                htmlFor={`${id}__item__${option.value}`}
-                id={`${id}__item__${option.value}__label`}
+                htmlFor={id && `${id}__item__${option.value}`}
+                id={id && `${id}__item__${option.value}__label`}
               >
                 <input
                   {...transferProps(restProps)}
                   className={styles.input}
                   checked={(value === option.value) || false}
                   disabled={disabled || option.disabled}
-                  id={`${id}__item__${option.value}`}
+                  id={id && `${id}__item__${option.value}`}
                   name={id}
                   onChange={changeHandler}
                   type="radio"
@@ -63,7 +63,7 @@ export const Radio = ({
                 />
                 <span
                   className={styles.optionLabel}
-                  id={`${id}__item__${option.value}__labelText`}
+                  id={id && `${id}__item__${option.value}__labelText`}
                 >
                   { option.label }
                 </span>
@@ -75,7 +75,7 @@ export const Radio = ({
       {helpText && (
         <div
           className={styles.helpText}
-          id={`${id}__helpText`}
+          id={id && `${id}__helpText`}
         >
           {helpText}
         </div>
@@ -83,7 +83,7 @@ export const Radio = ({
       {validationText && (
         <div
           className={styles.validationText}
-          id={`${id}__validationText`}
+          id={id && `${id}__validationText`}
         >
           {validationText}
         </div>
@@ -96,6 +96,7 @@ Radio.defaultProps = {
   changeHandler: null,
   disabled: false,
   helpText: null,
+  id: undefined,
   inFormLayout: false,
   isLabelVisible: true,
   layout: 'vertical',
@@ -123,7 +124,7 @@ Radio.propTypes = {
    * `<ID>__validationText`, and all options: `<ID>__item__<VALUE>` (individual inputs),
    * `<ID>__item__<VALUE>__label`, and `<ID>__item__<VALUE>__labelText`.
    */
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   /**
    * Treat the field differently when it's inside a FormLayout. Do not set manually!
    */

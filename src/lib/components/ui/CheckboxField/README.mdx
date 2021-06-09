@@ -31,7 +31,6 @@ And use it:
       <CheckboxField
         changeHandler={() => setAgree(!agree)}
         checked={agree}
-        id="my-checkbox"
         label="I agree"
       />
     );
@@ -85,7 +84,6 @@ turning the checkbox on or off.
         changeHandler={() => setGetNewsletter(!getNewsletter)}
         checked={getNewsletter}
         helpText="We will not bother you more than once a month, we promise!"
-        id="my-checkbox-with-help-text"
         label="Send me newsletter"
       />
     );
@@ -104,7 +102,6 @@ label remains accessible to assistive technologies.
       <CheckboxField
         changeHandler={() => setChecked(!checked)}
         checked={checked}
-        id="my-checkbox-with-invisible-label"
         isLabelVisible={false}
         label="You cannot see this"
       />
@@ -121,7 +118,6 @@ It's also possible to display label before input:
       <CheckboxField
         changeHandler={() => setChecked(!checked)}
         checked={checked}
-        id="my-checkbox-with-label-before-input"
         label="Label precedes input"
         labelPosition="before"
       />
@@ -146,14 +142,12 @@ have.
         <CheckboxField
           changeHandler={() => setAgree(!agree)}
           checked={agree}
-          id="my-checkbox-valid"
           label="I have read and agree with terms and conditions"
           validationState="valid"
         />
         <CheckboxField
           changeHandler={() => setAgree(!agree)}
           checked={agree}
-          id="my-checkbox-warning"
           label="I have read and agree with terms and conditions"
           validationState="warning"
           validationText="Please wait 10 minutes until we verify your data."
@@ -161,7 +155,6 @@ have.
         <CheckboxField
           changeHandler={() => setAgree(!agree)}
           checked={agree}
-          id="my-checkbox-invalid"
           label="I have read and agree with terms and conditions"
           required
           validationState="invalid"
@@ -179,13 +172,11 @@ Disabled state makes the input unavailable.
 <Playground>
   <CheckboxField
     disabled
-    id="my-checkbox-disabled"
     label="Disabled checkbox"
   />
   <CheckboxField
     checked
     disabled
-    id="my-checkbox-checked-disabled"
     label="Disabled checkbox, checked"
   />
 </Playground>

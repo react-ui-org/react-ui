@@ -25,7 +25,7 @@ import { TextArea } from '@react-ui-org/react-ui';
 And use it:
 
 <Playground>
-  <TextArea id="my-text-area" label="Your feedback" />
+  <TextArea label="Your feedback" />
 </Playground>
 
 See [API](#api) for all available options.
@@ -61,11 +61,9 @@ further [customized](#theming) with CSS custom properties.
 
 <Playground>
   <TextArea
-    id="my-text-area-outline"
     label="Your feedback"
   />
   <TextArea
-    id="my-text-area-filled"
     label="Your feedback"
     variant="filled"
   />
@@ -78,32 +76,26 @@ and large.
 
 <Playground>
   <TextArea
-    id="my-text-area-outline-small"
     label="Your feedback"
     size="small"
   />
   <TextArea
-    id="my-text-area-outline-medium"
     label="Your feedback"
   />
   <TextArea
-    id="my-text-area-outline-large"
     label="Your feedback"
     size="large"
   />
   <TextArea
-    id="my-text-area-filled-small"
     label="Your feedback"
     size="small"
     variant="filled"
   />
   <TextArea
-    id="my-text-area-filled-medium"
     label="Your feedback"
     variant="filled"
   />
   <TextArea
-    id="my-text-area-filled-large"
     label="Your feedback"
     size="large"
     variant="filled"
@@ -114,12 +106,10 @@ Full-width fields span the full width of a parent:
 
 <Playground>
   <TextArea
-    id="my-text-area-outline-full-width"
     label="Your feedback"
     fullWidth
   />
   <TextArea
-    id="my-text-area-filled-full-width"
     label="Your feedback"
     variant="filled"
     fullWidth
@@ -140,13 +130,11 @@ to achieve that effect.
 
 <Playground>
   <TextArea
-    id="my-text-area-outline-input-size"
     label="Your feedback"
     cols={50}
     rows={6}
   />
   <TextArea
-    id="my-text-area-filled-input-size"
     label="Your feedback"
     variant="filled"
     cols={50}
@@ -162,14 +150,12 @@ interfere with [component's API](#api) are forwarded to the native HTML input.
 
 <Playground>
   <TextArea
-    id="my-text-area-outline-forwarding"
     label="Address"
     autoComplete="street-address"
     minLength={3}
     maxLength={80}
   />
   <TextArea
-    id="my-text-area-filled-forwarding"
     label="Address"
     variant="filled"
     autoComplete="street-address"
@@ -193,13 +179,11 @@ the input.
 
 <Playground>
   <TextArea
-    id="my-text-area-outline-hidden-label"
     label="Feedback"
     isLabelVisible={false}
     placeholder="Eg. What I liked the best was…"
   />
   <TextArea
-    id="my-text-area-filled-hidden-label"
     label="Feedback"
     isLabelVisible={false}
     variant="filled"
@@ -215,31 +199,26 @@ supports this kind of layout as well.
 
 <Playground>
   <TextArea
-    id="my-text-area-outline-horizontal"
     label="Your feedback"
     layout="horizontal"
   />
   <TextArea
-    id="my-text-area-filled-horizontal"
     label="Your feedback"
     layout="horizontal"
     variant="filled"
   />
   <TextArea
-    id="my-text-area-outline-horizontal-full-width"
     label="Your feedback"
     layout="horizontal"
     fullWidth
   />
   <TextArea
-    id="my-text-area-filled-horizontal-full-width"
     label="Your feedback"
     layout="horizontal"
     variant="filled"
     fullWidth
   />
   <TextArea
-    id="my-text-area-outline-horizontal-full-width-invisible-label"
     isLabelVisible={false}
     label="Your feedback"
     layout="horizontal"
@@ -247,7 +226,6 @@ supports this kind of layout as well.
     fullWidth
   />
   <TextArea
-    id="my-text-area-filled-horizontal-full-width-invisible-label"
     isLabelVisible={false}
     label="Your feedback"
     layout="horizontal"
@@ -264,38 +242,32 @@ filled.
 
 <Playground>
   <TextArea
-    id="my-text-area-outline-help-text"
     label="Your feedback"
     helpText="Why would you recommend us?"
   />
   <TextArea
-    id="my-text-area-filled-help-text"
     label="Your feedback"
     variant="filled"
     helpText="Why would you recommend us?"
   />
   <TextArea
-    id="my-text-area-outline-help-text-horizontal"
     label="Your feedback"
     layout="horizontal"
     helpText="Why would you recommend us?"
   />
   <TextArea
-    id="my-text-area-filled-help-text-horizontal"
     label="Your feedback"
     layout="horizontal"
     helpText="Why would you recommend us?"
     variant="filled"
   />
   <TextArea
-    id="my-text-area-outline-help-text-horizontal-full-width"
     label="Your feedback"
     layout="horizontal"
     helpText="Why would you recommend us?"
     fullWidth
   />
   <TextArea
-    id="my-text-area-filled-help-text-horizontal-full-width"
     label="Your feedback"
     layout="horizontal"
     variant="filled"
@@ -314,7 +286,6 @@ what happened and what action they should take or what options they have.
 
 <Playground>
   <TextArea
-    id="my-text-area-outline-success"
     label="Your feedback"
     validationState="valid"
     validationText="Looks good!"
@@ -322,7 +293,6 @@ what happened and what action they should take or what options they have.
     required
   />
   <TextArea
-    id="my-text-area-outline-warning"
     label="Your feedback"
     validationState="warning"
     validationText="The feedback should be at least 3 characters long."
@@ -330,14 +300,12 @@ what happened and what action they should take or what options they have.
     required
   />
   <TextArea
-    id="my-text-area-outline-error"
     label="Your feedback"
     validationState="invalid"
     validationText="Please share your feedback with us."
     required
   />
   <TextArea
-    id="my-text-area-filled-success"
     label="Your feedback"
     validationState="valid"
     validationText="Looks good!"
@@ -346,7 +314,6 @@ what happened and what action they should take or what options they have.
     required
   />
   <TextArea
-    id="my-text-area-filled-warning"
     label="Your feedback"
     validationState="warning"
     validationText="The feedback should be at least 3 characters long."
@@ -355,7 +322,6 @@ what happened and what action they should take or what options they have.
     required
   />
   <TextArea
-    id="my-text-area-filled-error"
     label="Your feedback"
     validationState="invalid"
     validationText="Please share your feedback with us."
@@ -370,12 +336,10 @@ It's possible to disable the whole input.
 
 <Playground>
   <TextArea
-    id="my-text-area-outline-disabled"
     label="Your feedback"
     disabled
   />
   <TextArea
-    id="my-text-area-filled-disabled"
     label="Your feedback"
     variant="filled"
     disabled

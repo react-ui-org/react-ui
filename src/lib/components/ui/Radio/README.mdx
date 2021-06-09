@@ -30,7 +30,6 @@ And use it:
     return (
       <Radio
         changeHandler={(e) => setFruit(e.target.value)}
-        id="my-radio"
         label="Your favourite fruit"
         options={[
           {
@@ -93,7 +92,6 @@ the input.
     return (
       <Radio
         changeHandler={(e) => setFrequency(e.target.value)}
-        id="my-radio-hidden-label"
         isLabelVisible={false}
         label="Newsletter frequency"
         options={[
@@ -128,7 +126,6 @@ supports this kind of layout as well.
     return (
       <Radio
         changeHandler={(e) => setFrequency(e.target.value)}
-        id="my-radio-horizontal"
         label="Newsletter frequency"
         layout="horizontal"
         options={[
@@ -163,7 +160,6 @@ filled.
       <Radio
         changeHandler={(e) => setFruit(e.target.value)}
         helpText="What do you prefer?"
-        id="my-radio-help-text"
         label="Your favourite fruit"
         options={[
           {
@@ -215,7 +211,6 @@ have.
       <>
         <Radio
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-radio-success"
           label="Your favourite fruit"
           options={options}
           required
@@ -225,7 +220,6 @@ have.
         />
         <Radio
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-radio-warning"
           label="Your favourite fruit"
           options={options}
           required
@@ -235,7 +229,6 @@ have.
         />
         <Radio
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-radio-error"
           label="Your favourite fruit"
           options={options}
           required
@@ -274,7 +267,6 @@ It's possible to disable just some options or the whole set.
       <>
         <Radio
           changeHandler={(e) => setFruit(e.target.value)}
-          id="my-radio-disabled-option"
           label="Your favourite fruit"
           options={options}
           value={fruit}
@@ -282,7 +274,6 @@ It's possible to disable just some options or the whole set.
         <Radio
           changeHandler={(e) => setFruit(e.target.value)}
           disabled
-          id="my-radio-disabled"
           label="Your favourite fruit"
           options={options}
           value="apple"

@@ -25,7 +25,7 @@ import { TextField } from '@react-ui-org/react-ui';
 And use it:
 
 <Playground>
-  <TextField id="my-text-field" label="First name" />
+  <TextField label="First name" />
 </Playground>
 
 See [API](#api) for all available options.
@@ -76,11 +76,9 @@ further [customized](#theming) with CSS custom properties.
 
 <Playground>
   <TextField
-    id="my-text-field-outline"
     label="First name"
   />
   <TextField
-    id="my-text-field-filled"
     label="First name"
     variant="filled"
   />
@@ -93,32 +91,26 @@ and large.
 
 <Playground>
   <TextField
-    id="my-text-field-outline-small"
     label="First name"
     size="small"
   />
   <TextField
-    id="my-text-field-outline-medium"
     label="First name"
   />
   <TextField
-    id="my-text-field-outline-large"
     label="First name"
     size="large"
   />
   <TextField
-    id="my-text-field-filled-small"
     label="First name"
     size="small"
     variant="filled"
   />
   <TextField
-    id="my-text-field-filled-medium"
     label="First name"
     variant="filled"
   />
   <TextField
-    id="my-text-field-filled-large"
     label="First name"
     size="large"
     variant="filled"
@@ -129,12 +121,10 @@ Full-width fields span the full width of a parent:
 
 <Playground>
   <TextField
-    id="my-text-field-outline-full-width"
     label="First name"
     fullWidth
   />
   <TextField
-    id="my-text-field-filled-full-width"
     label="First name"
     variant="filled"
     fullWidth
@@ -148,45 +138,37 @@ and `tel` types at your disposal.
 
 <Playground>
   <TextField
-    id="my-text-field-outline-input-type-email"
     label="Email"
     type="email"
   />
   <TextField
-    id="my-text-field-filled-input-type-email"
     label="Email"
     variant="filled"
     type="email"
   />
   <TextField
-    id="my-text-field-outline-input-type-number"
     label="Age"
     type="number"
   />
   <TextField
-    id="my-text-field-filled-input-type-number"
     label="Age"
     variant="filled"
     type="number"
   />
   <TextField
-    id="my-text-field-outline-input-type-password"
     label="Password"
     type="password"
   />
   <TextField
-    id="my-text-field-filled-input-type-password"
     label="Password"
     variant="filled"
     type="password"
   />
   <TextField
-    id="my-text-field-outline-input-type-tel"
     label="Phone"
     type="tel"
   />
   <TextField
-    id="my-text-field-filled-input-type-tel"
     label="Phone"
     variant="filled"
     type="tel"
@@ -212,12 +194,10 @@ is translated as `size` attribute of the input element) is
 
 <Playground>
   <TextField
-    id="my-text-field-outline-input-size"
     inputSize={3}
     label="Title"
   />
   <TextField
-    id="my-text-field-filled-input-size"
     inputSize={3}
     label="Title"
     variant="filled"
@@ -232,14 +212,12 @@ interfere with [component's API](#api) are forwarded to the native HTML input.
 
 <Playground>
   <TextField
-    id="my-text-field-outline-forwarding"
     label="Address"
     autoComplete="street-address"
     minLength={3}
     maxLength={80}
   />
   <TextField
-    id="my-text-field-filled-forwarding"
     label="Address"
     variant="filled"
     autoComplete="street-address"
@@ -268,13 +246,11 @@ the input.
 
 <Playground>
   <TextField
-    id="my-text-field-outline-hidden-label"
     label="User name"
     isLabelVisible={false}
     placeholder="Eg. john@example.com"
   />
   <TextField
-    id="my-text-field-filled-hidden-label"
     label="User name"
     isLabelVisible={false}
     variant="filled"
@@ -290,44 +266,37 @@ supports this kind of layout as well.
 
 <Playground>
   <TextField
-    id="my-text-field-outline-input-size-horizontal"
     inputSize={3}
     label="Title"
     layout="horizontal"
   />
   <TextField
-    id="my-text-field-filled-input-size-horizontal"
     inputSize={3}
     label="Title"
     layout="horizontal"
     variant="filled"
   />
   <TextField
-    id="my-text-field-outline-horizontal"
     label="First name"
     layout="horizontal"
   />
   <TextField
-    id="my-text-field-filled-horizontal"
     label="First name"
     layout="horizontal"
     variant="filled"
   />
   <TextField
-    id="my-text-field-outline-horizontal-full-width"
     label="First name"
     layout="horizontal"
     fullWidth
   />
   <TextField
-    id="my-text-field-filled-horizontal-full-width"
     label="First name"
     layout="horizontal"
     variant="filled"
     fullWidth
   />
   <TextField
-    id="my-text-field-outline-horizontal-full-width-invisible-label"
     isLabelVisible={false}
     label="First name"
     layout="horizontal"
@@ -335,7 +304,6 @@ supports this kind of layout as well.
     fullWidth
   />
   <TextField
-    id="my-text-field-filled-horizontal-full-width-invisible-label"
     isLabelVisible={false}
     label="First name"
     layout="horizontal"
@@ -352,38 +320,32 @@ filled.
 
 <Playground>
   <TextField
-    id="my-text-field-outline-help-text"
     label="First name"
     helpText="Choose one or more kinds of fruit to feel happy."
   />
   <TextField
-    id="my-text-field-filled-help-text"
     label="First name"
     variant="filled"
     helpText="Choose one or more kinds of fruit to feel happy."
   />
   <TextField
-    id="my-text-field-outline-help-text-horizontal"
     label="First name"
     layout="horizontal"
     helpText="Choose one or more kinds of fruit to feel happy."
   />
   <TextField
-    id="my-text-field-filled-help-text-horizontal"
     label="First name"
     layout="horizontal"
     helpText="Choose one or more kinds of fruit to feel happy."
     variant="filled"
   />
   <TextField
-    id="my-text-field-outline-help-text-horizontal-full-width"
     label="First name"
     layout="horizontal"
     helpText="Choose one or more kinds of fruit to feel happy."
     fullWidth
   />
   <TextField
-    id="my-text-field-filled-help-text-horizontal-full-width"
     label="First name"
     layout="horizontal"
     variant="filled"
@@ -399,14 +361,12 @@ the help text expands over the full field width when the desired input width
 
 <Playground>
   <TextField
-    id="my-text-field-outline-help-text-input-size-horizontal"
     inputSize={3}
     label="Title"
     layout="horizontal"
     helpText="What academic degree do you hold?"
   />
   <TextField
-    id="my-text-field-filled-help-text-input-size-horizontal"
     inputSize={3}
     label="Title"
     layout="horizontal"
@@ -414,7 +374,6 @@ the help text expands over the full field width when the desired input width
     helpText="What academic degree do you hold?"
   />
   <TextField
-    id="my-text-field-outline-help-text-input-size-number-horizontal"
     label="Age"
     layout="horizontal"
     min={13}
@@ -423,7 +382,6 @@ the help text expands over the full field width when the desired input width
     helpText="How old do you see yourself?"
   />
   <TextField
-    id="my-text-field-filled-help-text-input-size-number-horizontal"
     label="Age"
     layout="horizontal"
     min={13}
@@ -445,7 +403,6 @@ have.
 
 <Playground>
   <TextField
-    id="my-text-field-outline-success"
     label="User name"
     validationState="valid"
     validationText="Looks good!"
@@ -453,7 +410,6 @@ have.
     required
   />
   <TextField
-    id="my-text-field-outline-warning"
     label="User name"
     validationState="warning"
     validationText="Account with this name already exists, pick a different one."
@@ -461,14 +417,12 @@ have.
     required
   />
   <TextField
-    id="my-text-field-outline-error"
     label="User name"
     validationState="invalid"
     validationText="Please enter a user name of your choice."
     required
   />
   <TextField
-    id="my-text-field-filled-success"
     label="User name"
     validationState="valid"
     validationText="Looks good!"
@@ -477,7 +431,6 @@ have.
     required
   />
   <TextField
-    id="my-text-field-filled-warning"
     label="User name"
     validationState="warning"
     validationText="Account with this name already exists, pick a different one."
@@ -486,7 +439,6 @@ have.
     required
   />
   <TextField
-    id="my-text-field-filled-error"
     label="User name"
     validationState="invalid"
     validationText="Please enter a user name of your choice."
@@ -501,13 +453,11 @@ It's possible to disable the whole input.
 
 <Playground>
   <TextField
-    id="my-text-field-outline-disabled"
     label="First name"
     value="John"
     disabled
   />
   <TextField
-    id="my-text-field-filled-disabled"
     label="First name"
     variant="filled"
     value="John"
