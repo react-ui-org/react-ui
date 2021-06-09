@@ -9,14 +9,13 @@ import { FileInputField } from '../FileInputField';
 
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
-    const tree = shallow(<FileInputField id="test" label="label" />);
+    const tree = shallow(<FileInputField label="label" />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
 
   it('renders correctly with hidden label', () => {
     const tree = shallow(<FileInputField
-      id="test"
       isLabelVisible={false}
       label="With hidden label"
     />);
@@ -27,7 +26,6 @@ describe('rendering', () => {
   it('renders correctly with custom props', () => {
     const tree = shallow(<FileInputField
       accept=".pdf,.jpg,.jpeg,.png"
-      id="test"
       label="With custom props"
       multiple
     />);
@@ -59,7 +57,6 @@ describe('functionality', () => {
     const spy = sinon.spy();
     const component = mount(<FileInputField
       changeHandler={spy}
-      id="test"
       label="label"
     />);
 

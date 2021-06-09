@@ -31,7 +31,6 @@ And use it:
       <Toggle
         changeHandler={() => setStudioQuality(!studioQuality)}
         checked={studioQuality}
-        id="my-toggle"
         label="Listen in studio quality"
       />
     );
@@ -82,7 +81,6 @@ turning the toggle on or off.
           'Unrivaled audio quality. Uses the MQA audio format. '
           + 'Transfers a lot of data.'
         }
-        id="my-toggle-with-help-text"
         label="Listen in studio quality"
       />
     );
@@ -101,7 +99,6 @@ remains accessible to assistive technologies.
       <Toggle
         changeHandler={() => setStudioQuality(!studioQuality)}
         checked={studioQuality}
-        id="my-toggle-with-invisible-label"
         isLabelVisible={false}
         label="You cannot see this"
       />
@@ -118,7 +115,6 @@ It's also possible to display the label before the input:
       <Toggle
         changeHandler={() => setStudioQuality(!studioQuality)}
         checked={studioQuality}
-        id="my-toggle-with-label-before-input"
         label="Listen in studio quality"
         labelPosition="before"
       />
@@ -143,14 +139,12 @@ have.
         <Toggle
           changeHandler={() => setStudioQuality(!studioQuality)}
           checked={studioQuality}
-          id="my-toggle-valid"
           label="Listen in studio quality"
           validationState="valid"
         />
         <Toggle
           changeHandler={() => setStudioQuality(!studioQuality)}
           checked={studioQuality}
-          id="my-toggle-warning"
           label="Listen in studio quality"
           validationState="warning"
           validationText={
@@ -161,7 +155,6 @@ have.
         <Toggle
           changeHandler={() => setStudioQuality(!studioQuality)}
           checked={studioQuality}
-          id="my-toggle-invalid"
           label="Listen in studio quality"
           validationState="invalid"
           validationText="Please upgrade your plan to make this option available."
@@ -176,10 +169,9 @@ have.
 Disabled state makes the input unavailable.
 
 <Playground>
-  <Toggle label="Disabled toggle" id="my-toggle-disabled" disabled />
+  <Toggle label="Disabled toggle" disabled />
   <Toggle
     label="Disabled toggle, checked"
-    id="my-toggle-checked-disabled"
     disabled
     checked
   />

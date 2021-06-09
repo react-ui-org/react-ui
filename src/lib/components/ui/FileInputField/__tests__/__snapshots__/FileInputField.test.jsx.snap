@@ -3,12 +3,9 @@
 exports[`rendering renders correctly mandatory props only 1`] = `
 <label
   className="root   rootLayoutVertical   "
-  htmlFor="test"
-  id="test__label"
 >
   <div
     className="label "
-    id="test__labelText"
   >
     label
   </div>
@@ -21,7 +18,6 @@ exports[`rendering renders correctly mandatory props only 1`] = `
       <input
         className="input"
         disabled={false}
-        id="test"
         onChange={null}
         required={false}
         type="file"
@@ -77,12 +73,9 @@ exports[`rendering renders correctly with all props 1`] = `
 exports[`rendering renders correctly with custom props 1`] = `
 <label
   className="root   rootLayoutVertical   "
-  htmlFor="test"
-  id="test__label"
 >
   <div
     className="label "
-    id="test__labelText"
   >
     With custom props
   </div>
@@ -96,7 +89,6 @@ exports[`rendering renders correctly with custom props 1`] = `
         accept=".pdf,.jpg,.jpeg,.png"
         className="input"
         disabled={false}
-        id="test"
         multiple={true}
         onChange={null}
         required={false}
@@ -110,12 +102,9 @@ exports[`rendering renders correctly with custom props 1`] = `
 exports[`rendering renders correctly with hidden label 1`] = `
 <label
   className="root   rootLayoutVertical   "
-  htmlFor="test"
-  id="test__label"
 >
   <div
     className="label isLabelHidden"
-    id="test__labelText"
   >
     With hidden label
   </div>
@@ -128,7 +117,6 @@ exports[`rendering renders correctly with hidden label 1`] = `
       <input
         className="input"
         disabled={false}
-        id="test"
         onChange={null}
         required={false}
         type="file"

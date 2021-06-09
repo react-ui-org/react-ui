@@ -42,14 +42,14 @@ export const TextArea = ({
       variant === 'filled' ? styles.rootVariantFilled : styles.rootVariantOutline,
     ].join(' ')}
     htmlFor={id}
-    id={`${id}__label`}
+    id={id && `${id}__label`}
   >
     <div
       className={[
         styles.label,
         isLabelVisible ? '' : styles.isLabelHidden,
       ].join(' ')}
-      id={`${id}__labelText`}
+      id={id && `${id}__labelText`}
     >
       {label}
     </div>
@@ -75,7 +75,7 @@ export const TextArea = ({
       {helpText && (
         <div
           className={styles.helpText}
-          id={`${id}__helpText`}
+          id={id && `${id}__helpText`}
         >
           {helpText}
         </div>
@@ -83,7 +83,7 @@ export const TextArea = ({
       {validationText && (
         <div
           className={styles.validationText}
-          id={`${id}__validationText`}
+          id={id && `${id}__validationText`}
         >
           {validationText}
         </div>
@@ -99,6 +99,7 @@ TextArea.defaultProps = {
   forwardedRef: undefined,
   fullWidth: false,
   helpText: null,
+  id: undefined,
   inFormLayout: false,
   isLabelVisible: true,
   layout: 'vertical',
@@ -145,7 +146,7 @@ TextArea.propTypes = {
    * ID of the input HTML element. It also serves as a prefix for important inner elements:
    * `<ID>__label`, `<ID>__labelText`, and `<ID>__helpText`, and `<ID>__validationText`.
    */
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   /**
    * Treat the field differently when it's inside a FormLayout. Do not set manually!
    */

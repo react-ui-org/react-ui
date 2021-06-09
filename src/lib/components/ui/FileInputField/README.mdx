@@ -25,7 +25,7 @@ import { FileInputField } from '@react-ui-org/react-ui';
 And use it:
 
 <Playground>
-  <FileInputField id="my-file-input-field" label="Attachment" />
+  <FileInputField label="Attachment" />
 </Playground>
 
 See [API](#api) for all available options.
@@ -61,7 +61,6 @@ Full-width fields span the full width of a parent:
 
 <Playground>
   <FileInputField
-    id="my-file-input-field-full-width"
     fullWidth
     label="First name"
   />
@@ -80,7 +79,6 @@ interfere with [component's API](#api) are forwarded to the native HTML input.
       Choose up to 10 files. Allowed extensions are .pdf, .jpg, .jpeg, or .png.
       Size limit is 10 MB.
     `}
-    id="my-file-input-field-forwarding"
     label="Attachment"
     multiple
   />
@@ -101,7 +99,6 @@ dangerous to hide labels from users in most cases. Keep in mind you should
 
 <Playground>
   <FileInputField
-    id="my-file-input-field-hidden-label"
     isLabelVisible={false}
     label="Attachment"
   />
@@ -115,13 +112,11 @@ supports this kind of layout as well.
 
 <Playground>
   <FileInputField
-    id="my-file-input-field-horizontal"
     label="Attachment"
     layout="horizontal"
   />
   <FileInputField
     fullWidth
-    id="my-file-input-field-horizontal-full-width-invisible-label"
     isLabelVisible={false}
     label="Attachment"
     layout="horizontal"
@@ -136,19 +131,16 @@ filled.
 <Playground>
   <FileInputField
     helpText="Choose one or more files to upload."
-    id="my-file-input-field-help-text"
     label="Attachment"
   />
   <FileInputField
     helpText="Choose one or more files to upload."
-    id="my-file-input-field-help-text-horizontal"
     label="Attachment"
     layout="horizontal"
   />
   <FileInputField
     fullWidth
     helpText="Choose one or more files to upload."
-    id="my-file-input-field-help-text-horizontal-full-width"
     label="Attachment"
     layout="horizontal"
   />
@@ -165,19 +157,16 @@ have.
 
 <Playground>
   <FileInputField
-    id="my-file-input-field-success"
     label="Attachment"
     validationState="valid"
     validationText="Looks good!"
   />
   <FileInputField
-    id="my-file-input-field-error"
     label="Attachment"
     validationState="invalid"
     validationText="Your file is too big. Please select something smaller."
   />
   <FileInputField
-    id="my-file-input-field-filled-warning"
     label="Attachment"
     validationState="warning"
     validationText={`
@@ -194,7 +183,6 @@ It's possible to disable the whole input.
 <Playground>
   <FileInputField
     disabled
-    id="my-file-input-field-disabled"
     label="Attachment"
   />
 </Playground>

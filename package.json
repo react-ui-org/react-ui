@@ -51,7 +51,7 @@
     "@babel/preset-env": "^7.14.4",
     "@babel/preset-react": "^7.13.13",
     "@babel/register": "^7.13.16",
-    "@visionappscz/eslint-config-visionapps": "^1.4.0",
+    "@visionappscz/eslint-config-visionapps": "^1.5.0",
     "@visionappscz/stylelint-config-visionapps": "^1.1.0",
     "@visionappscz/stylelint-config-visionapps-order": "^1.1.0",
     "autoprefixer": "^10.2.6",

@@ -40,14 +40,14 @@ export const SelectField = ({
       variant === 'filled' ? styles.rootVariantFilled : styles.rootVariantOutline,
     ].join(' ')}
     htmlFor={id}
-    id={`${id}__label`}
+    id={id && `${id}__label`}
   >
     <div
       className={[
         styles.label,
         isLabelVisible ? '' : styles.isLabelHidden,
       ].join(' ')}
-      id={`${id}__labelText`}
+      id={id && `${id}__labelText`}
     >
       {label}
     </div>
@@ -67,7 +67,7 @@ export const SelectField = ({
             options.map((option) => (
               <option
                 disabled={option.disabled}
-                id={`${id}__item__${option.value}`}
+                id={id && `${id}__item__${option.value}`}
                 key={option.value}
                 value={option.value}
               >
@@ -86,7 +86,7 @@ export const SelectField = ({
       {helpText && (
         <div
           className={styles.helpText}
-          id={`${id}__helpText`}
+          id={id && `${id}__helpText`}
         >
           {helpText}
         </div>
@@ -94,7 +94,7 @@ export const SelectField = ({
       {validationText && (
         <div
           className={styles.validationText}
-          id={`${id}__validationText`}
+          id={id && `${id}__validationText`}
         >
           {validationText}
         </div>
@@ -109,6 +109,7 @@ SelectField.defaultProps = {
   forwardedRef: undefined,
   fullWidth: false,
   helpText: null,
+  id: undefined,
   inFormLayout: false,
   isLabelVisible: true,
   layout: 'vertical',
@@ -150,7 +151,7 @@ SelectField.propTypes = {
    * `<ID>__label`, `<ID>__labelText`, `<ID>__helpText`, `<ID>__validationText`, and all options:
    * `<ID>__item__<VALUE>`.
    */
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   /**
    * Treat the field differently when it's inside a FormLayout. Do not set manually!
    */

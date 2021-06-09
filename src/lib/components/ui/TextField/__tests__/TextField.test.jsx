@@ -9,14 +9,13 @@ import { TextField } from '../TextField';
 
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
-    const tree = shallow(<TextField id="test" label="label" />);
+    const tree = shallow(<TextField label="label" />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
 
   it('renders correctly with hidden label', () => {
     const tree = shallow(<TextField
-      id="test"
       isLabelVisible={false}
       label="With hidden label"
     />);
@@ -26,7 +25,6 @@ describe('rendering', () => {
 
   it('renders correctly with small input', () => {
     const tree = shallow(<TextField
-      id="test"
       inputSize={5}
       label="Small input"
     />);
@@ -36,7 +34,6 @@ describe('rendering', () => {
 
   it('renders correctly the number input type', () => {
     const tree = shallow(<TextField
-      id="test"
       label="Number input type"
       type="number"
     />);
@@ -46,7 +43,6 @@ describe('rendering', () => {
 
   it('renders correctly the number input type with small input', () => {
     const tree = shallow(<TextField
-      id="test"
       label="Number input type"
       inputSize={1}
       type="number"
@@ -59,7 +55,6 @@ describe('rendering', () => {
     const tree = shallow(<TextField
       autoCapitalize="off"
       autoComplete="off"
-      id="test"
       label="With custom props"
     />);
 
@@ -96,7 +91,6 @@ describe('functionality', () => {
     const spy = sinon.spy();
     const component = mount(<TextField
       changeHandler={spy}
-      id="test"
       label="label"
     />);
 

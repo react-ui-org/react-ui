@@ -9,14 +9,13 @@ import { TextArea } from '../TextArea';
 
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
-    const tree = shallow(<TextArea label="label" id="test" />);
+    const tree = shallow(<TextArea label="label" />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
 
   it('renders correctly with hidden label', () => {
     const tree = shallow(<TextArea
-      id="test"
       label="label"
       isLabelVisible={false}
     />);
@@ -54,7 +53,6 @@ describe('functionality', () => {
     const spy = sinon.spy();
     const component = mount(<TextArea
       changeHandler={spy}
-      id="test"
       label="label"
     />);
 

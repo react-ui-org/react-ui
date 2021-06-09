@@ -9,7 +9,7 @@ import { CheckboxField } from '../CheckboxField';
 
 describe('rendering', () => {
   it('renders correctly mandatory props only', () => {
-    const tree = shallow(<CheckboxField id="test" label="label" />);
+    const tree = shallow(<CheckboxField label="label" />);
 
     expect(shallowToJson(tree)).toMatchSnapshot();
   });
@@ -40,7 +40,6 @@ describe('functionality', () => {
     const spy = sinon.spy();
     const component = mount(<CheckboxField
       changeHandler={spy}
-      id="test"
       label="label"
     />);
 

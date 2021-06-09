@@ -3,12 +3,9 @@
 exports[`rendering renders correctly mandatory props only 1`] = `
 <label
   className="root   rootLayoutVertical   rootSizeMedium  rootVariantOutline"
-  htmlFor="test"
-  id="test__label"
 >
   <div
     className="label "
-    id="test__labelText"
   >
     label
   </div>
@@ -21,19 +18,16 @@ exports[`rendering renders correctly mandatory props only 1`] = `
       <select
         className="input"
         disabled={false}
-        id="test"
         onChange={null}
         required={false}
       >
         <option
-          id="test__item__ch1"
           key="ch1"
           value="ch1"
         >
           choice 1
         </option>
         <option
-          id="test__item__ch2"
           key="ch2"
           value="ch2"
         >
@@ -55,12 +49,9 @@ exports[`rendering renders correctly mandatory props only 1`] = `
 exports[`rendering renders correctly only one option 1`] = `
 <label
   className="root   rootLayoutVertical   rootSizeMedium  rootVariantOutline"
-  htmlFor="test"
-  id="test__label"
 >
   <div
     className="label "
-    id="test__labelText"
   >
     label
   </div>
@@ -73,12 +64,10 @@ exports[`rendering renders correctly only one option 1`] = `
       <select
         className="input"
         disabled={false}
-        id="test"
         onChange={null}
         required={false}
       >
         <option
-          id="test__item__ch1"
           key="ch1"
           value="ch1"
         >

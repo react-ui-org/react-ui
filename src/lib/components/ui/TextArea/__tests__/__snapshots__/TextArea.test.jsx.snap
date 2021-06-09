@@ -3,12 +3,9 @@
 exports[`rendering renders correctly mandatory props only 1`] = `
 <label
   className="root   rootLayoutVertical   rootSizeMedium  rootVariantOutline"
-  htmlFor="test"
-  id="test__label"
 >
   <div
     className="label "
-    id="test__labelText"
   >
     label
   </div>
@@ -22,7 +19,6 @@ exports[`rendering renders correctly mandatory props only 1`] = `
         className="input"
         cols={null}
         disabled={false}
-        id="test"
         onChange={null}
         placeholder={null}
         required={false}
@@ -85,12 +81,9 @@ exports[`rendering renders correctly with all props 1`] = `
 exports[`rendering renders correctly with hidden label 1`] = `
 <label
   className="root   rootLayoutVertical   rootSizeMedium  rootVariantOutline"
-  htmlFor="test"
-  id="test__label"
 >
   <div
     className="label isLabelHidden"
-    id="test__labelText"
   >
     label
   </div>
@@ -104,7 +97,6 @@ exports[`rendering renders correctly with hidden label 1`] = `
         className="input"
         cols={null}
         disabled={false}
-        id="test"
         onChange={null}
         placeholder={null}
         required={false}

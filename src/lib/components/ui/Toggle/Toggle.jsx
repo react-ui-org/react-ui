@@ -35,7 +35,7 @@ export const Toggle = ({
       getRootValidationStateClassName(validationState, styles),
     ].join(' ')}
     htmlFor={id}
-    id={`${id}__label`}
+    id={id && `${id}__label`}
   >
     <div className={styles.field}>
       <input
@@ -56,7 +56,7 @@ export const Toggle = ({
           styles.label,
           isLabelVisible ? '' : styles.isLabelHidden,
         ].join(' ')}
-        id={`${id}__labelText`}
+        id={id && `${id}__labelText`}
       >
         {label}
       </div>
@@ -64,7 +64,7 @@ export const Toggle = ({
     {helpText && (
       <div
         className={styles.helpText}
-        id={`${id}__helpText`}
+        id={id && `${id}__helpText`}
       >
         {helpText}
       </div>
@@ -72,7 +72,7 @@ export const Toggle = ({
     {validationText && (
       <div
         className={styles.validationText}
-        id={`${id}__validationText`}
+        id={id && `${id}__validationText`}
       >
         {validationText}
       </div>
@@ -86,6 +86,7 @@ Toggle.defaultProps = {
   disabled: false,
   forwardedRef: undefined,
   helpText: null,
+  id: undefined,
   inFormLayout: false,
   isLabelVisible: true,
   labelPosition: 'after',
@@ -125,7 +126,7 @@ Toggle.propTypes = {
    * ID of the input HTML element. It also serves as a prefix for important inner elements:
    * `<ID>__label`, `<ID>__labelText`, `<ID>__helpText`, and `<ID>__validationText`.
    */
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   /**
    * Treat the field differently when it's inside a FormLayout. Do not set manually!
    */

@@ -40,7 +40,7 @@ And use it:
 
 <Playground>
   <FormLayout>
-    <TextField id="my-text-field" label="A form element" />
+    <TextField label="A form element" />
   </FormLayout>
 </Playground>
 
@@ -87,9 +87,9 @@ simply wrap your form fields with the FormLayout component:
 
 <Playground>
   <FormLayout>
-    <TextField id="my-text-field-vertical-1" label="A form element" />
-    <TextField id="my-text-field-vertical-2" label="Another form element" />
-    <TextField id="my-text-field-vertical-3" label="Yet another one" />
+    <TextField label="A form element" />
+    <TextField label="Another form element" />
+    <TextField label="Yet another one" />
   </FormLayout>
 </Playground>
 
@@ -101,9 +101,9 @@ viewport size onward and it forces the horizontal layout on the fields.
 
 <Playground>
   <FormLayout fieldLayout="horizontal">
-    <TextField id="my-text-field-horizontal-1" label="A form element" />
-    <TextField id="my-text-field-horizontal-2" label="Another form element" />
-    <TextField id="my-text-field-horizontal-3" label="Yet another one" />
+    <TextField label="A form element" />
+    <TextField label="Another form element" />
+    <TextField label="Yet another one" />
   </FormLayout>
 </Playground>
 
@@ -177,7 +177,6 @@ Try to resize the playground to see how individual options work.
                 changeHandler={(e) => (
                   setCustomLabelWidth(e.target.value)
                 )}
-                id="form-layout-custom-label-width"
                 inputSize={5}
                 isLabelVisible={false}
                 label="Custom label width"
@@ -191,16 +190,15 @@ Try to resize the playground to see how individual options work.
           fieldLayout="horizontal"
           labelWidth={labelWidth === 'custom' ? customLabelWidth : labelWidth}
         >
-          <TextField id="my-text-field-label-width-1" label="A form element" />
+          <TextField label="A form element" />
           <TextField
-            id="my-text-field-label-width-2"
             label={'Another form element with a very long label that is so '
               + 'long that in the auto mode, it should make the label column '
               + 'grow until the inputs reach the end of the line, but it will '
               + 'not exceed 50 % of the FormLayout width in the limited label '
               + 'width mode'}
           />
-          <TextField id="my-text-field-label-width-3" label="Yet another one" />
+          <TextField label="Yet another one" />
         </FormLayout>
       </div>
     );
@@ -236,9 +234,9 @@ To align whole FormLayout to center of a container, simply wrap it with the
   <Placeholder bordered height="24rem">
     <Center>
       <FormLayout autoWidth>
-        <TextField id="my-text-field-auto-width-1" label="A form element" />
-        <TextField id="my-text-field-auto-width-2" label="Another form element" />
-        <TextField id="my-text-field-auto-width-3" label="Yet another one" />
+        <TextField label="A form element" />
+        <TextField label="Another form element" />
+        <TextField label="Yet another one" />
       </FormLayout>
     </Center>
   </Placeholder>
@@ -254,11 +252,11 @@ the FormLayout component.
 
 <Playground>
   <FormLayout fieldLayout="horizontal" labelWidth="auto">
-    <TextField id="my-text-field-custom-1" label="A form element" />
+    <TextField label="A form element" />
     <FormLayoutCustomField label="Optional custom field label">
       <Placeholder bordered>Custom field content</Placeholder>
     </FormLayoutCustomField>
-    <TextField id="my-text-field-custom-2" label="Another form element" />
+    <TextField label="Another form element" />
   </FormLayout>
 </Playground>
 
@@ -279,22 +277,18 @@ for this task.
 
 <Playground>
   <FormLayout fieldLayout="horizontal" labelWidth="auto">
-    <TextField id="my-text-field-custom-alignment-1" label="A form element" />
+    <TextField label="A form element" />
     <FormLayoutCustomField
       innerFieldSize="medium"
       label="Custom field label aligned to inner text input"
     >
       <TextField
-        id="my-text-field-custom-alignment-2"
         isLabelVisible={false}
         label="A form element"
         placeholder="Text field with invisible label"
       />
     </FormLayoutCustomField>
-    <TextField
-      id="my-text-field-custom-alignment-3"
-      label="Another form element"
-    />
+    <TextField label="Another form element" />
   </FormLayout>
 </Playground>
 
@@ -305,17 +299,14 @@ provide labels with optional feedback style.
 
 <Playground>
   <FormLayout fieldLayout="horizontal" labelWidth="auto">
-    <TextField id="my-text-field-custom-validation-1" label="A form element" />
+    <TextField label="A form element" />
     <FormLayoutCustomField
       label="Custom field label in valid state"
       validationState="valid"
     >
       <Placeholder bordered>Custom field content</Placeholder>
     </FormLayoutCustomField>
-    <TextField
-      id="my-text-field-custom-validation-2"
-      label="Another form element"
-    />
+    <TextField label="Another form element" />
   </FormLayout>
 </Playground>
 
@@ -332,10 +323,7 @@ properly vertically aligned.
     const [isChecked, setIsChecked] = React.useState(false);
     return (
       <FormLayout fieldLayout="horizontal" labelWidth="auto">
-        <TextField
-          id="my-text-field-custom-accessibility-1"
-          label="A form element"
-        />
+        <TextField label="A form element" />
         <FormLayoutCustomField
           fullWidth
           label="Custom field label aligned with medium form field"
@@ -345,7 +333,6 @@ properly vertically aligned.
           <Toolbar align="middle" dense>
             <ToolbarItem>
               <TextField
-                id="my-text-field-custom-accessibility-2"
                 isLabelVisible={false}
                 label="A form element"
                 placeholder="Text field with invisible label"
@@ -355,16 +342,12 @@ properly vertically aligned.
               <CheckboxField
                 changeHandler={() => setIsChecked(!isChecked)}
                 checked={isChecked}
-                id="my-checkbox-field-custom-accessibility-1"
                 label="Another form field"
               />
             </ToolbarItem>
           </Toolbar>
         </FormLayoutCustomField>
-        <TextField
-          id="my-text-field-custom-accessibility-3"
-          label="Another form element"
-        />
+        <TextField label="Another form element" />
       </FormLayout>
     )
   }}
@@ -416,60 +399,49 @@ This is a demo of all components supported by FormLayout.
           <>
             <TextField
               changeHandler={() => {}}
-              id="form-layout-full-example-first-name"
               label="First Name"
             />
             <TextField
               changeHandler={() => {}}
-              id="form-layout-full-example-last-name"
               label="Last Name"
             />
           </>
           <TextField
             changeHandler={() => {}}
             helpText="Optional"
-            id="form-layout-full-example-email"
             label="Email address"
             type="email"
           />
           <>
             <TextField
               changeHandler={() => {}}
-              id="form-layout-full-example-address-1"
               label="Address"
               placeholder="Address line 1"
             />
             <TextField
               changeHandler={() => {}}
-              id="form-layout-full-example-address-2"
               isLabelVisible={false}
               label="Address 2"
               placeholder="Address line 2"
             />
             <TextField
               changeHandler={() => {}}
-              id="form-layout-full-example-zip"
               inputSize={6}
               label="ZIP"
               validationState="invalid"
               validationText="ZIP should be 5 to 6 digits long code."
             />
-            <FormLayoutCustomField
-              id="form-layout-full-example-country"
-              label="Country"
-            >
+            <FormLayoutCustomField label="Country">
               <span>Czech Republic</span>
             </FormLayoutCustomField>
             <CheckboxField
               changeHandler={() => setIsDeliveryAddress(!isDeliveryAddress)}
               checked={isDeliveryAddress}
-              id="form-layout-full-example-delivery"
               label="This is my delivery address"
             />
           </>
           <SelectField
             changeHandler={(e) => setFruit(e.target.value)}
-            id="form-layout-full-example-fruit"
             label="Your favourite fruit"
             options={options}
             value={fruit}
@@ -477,26 +449,22 @@ This is a demo of all components supported by FormLayout.
           <TextArea
             changeHandler={() => {}}
             fullWidth
-            id="form-layout-full-example-message"
             label="Message"
             rows={3}
           />
           <FileInputField
             changeHandler={() => {}}
-            id="form-layout-full-attachment"
             label="Attachment"
           />
           <Toggle
             changeHandler={() => setReceiveNewsletter(!receiveNewsletter)}
             checked={receiveNewsletter}
             helpText="Only once per week!"
-            id="form-layout-full-example-newsletter"
             label="Receive weekly newsletter"
             required
           />
           <Radio
             changeHandler={(e) => setFruit(e.target.value)}
-            id="form-layout-full-example-fruit-2"
             label="And fruit again!"
             options={options}
             value={fruit}
