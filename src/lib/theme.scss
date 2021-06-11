@@ -136,6 +136,9 @@
   --rui-border-width: 1px;
   --rui-border-radius: 0.25rem;
 
+  // Elevations
+  --rui-elevation-1: 0 0.01rem 0.65rem -0.1rem #{rgba(0, 0, 0, 0.3)};
+
   // Accessibility
   --rui-tap-target-size: 10mm;
   --rui-focus-box-shadow: 0 0 0 0.2em var(--rui-color-active-focus);
@@ -527,7 +530,7 @@
   --rui-Card--note__border-color: var(--rui-color-note);
 
   // Cards: raised
-  --rui-Card--raised__box-shadow: 0 0.01rem 0.65rem -0.1rem #{rgba(0, 0, 0, 0.3)};
+  --rui-Card--raised__box-shadow: var(--rui-elevation-1);
 
   // Cards: disabled
   --rui-Card--disabled__background-color: var(--rui-color-gray-50);
@@ -676,6 +679,17 @@
   --rui-Modal--large__width: 60rem;
   --rui-Modal--fullscreen__width: 100%;
   --rui-Modal--fullscreen__height: 100%;
+
+  //
+  // Paper
+  // =====
+
+  --rui-Paper__padding: var(--rui-spacing-4);
+  --rui-Paper__border-width: 0;
+  --rui-Paper__border-color: transparent;
+  --rui-Paper__border-radius: var(--rui-border-radius);
+  --rui-Paper__background-color: var(--rui-color-white);
+  --rui-Paper--raised__box-shadow: var(--rui-elevation-1);
 
   //
   // ScrollView
