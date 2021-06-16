@@ -52,8 +52,8 @@
 }
 
 .isDisabled {
-  opacity: map-get(theme.$disabled, opacity);
   background-color: map-get(theme.$disabled, background-color);
+  opacity: map-get(theme.$disabled, opacity);
 }
 
 .isRaised {

@@ -93,8 +93,8 @@
   font: theme.$font-weight list.slash(var(--rui-local-font-size), settings.$line-height) settings.$font-family;
   letter-spacing: theme.$letter-spacing;
   text-align: center;
-  text-overflow: ellipsis;
   text-decoration: none;
+  text-overflow: ellipsis;
   text-transform: theme.$text-transform;
   vertical-align: middle;
   color: var(--rui-local-color);

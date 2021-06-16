@@ -20,6 +20,7 @@
 @mixin input() {
   @include transition.add((opacity, color, border-color, background-color, box-shadow));
 
+  appearance: none;
   width: theme.$box-input-width;
   min-width: theme.$box-input-min-width;
   max-width: 100%; // 3.
@@ -35,11 +36,10 @@
   border-radius: theme.$box-border-radius;
   background: var(--rui-local-background);
   box-shadow: var(--rui-local-box-shadow);
-  appearance: none;
 
   &::placeholder {
-    opacity: 1;
     color: theme.$box-placeholder-color;
+    opacity: 1;
   }
 }
 
@@ -71,8 +71,8 @@
 }
 
 @mixin input-select() {
-  padding-right: calc(#{settings.$box-field-caret-size} + #{spacing.of(2)}); // 4.
   appearance: none;
+  padding-right: calc(#{settings.$box-field-caret-size} + #{spacing.of(2)}); // 4.
 
   &::-ms-expand {
     display: none;
@@ -112,16 +112,16 @@
 
   position: absolute; // 1.
   bottom: 0;
-  opacity: 0;
   width: 100%;
   height: settings.$box-field-bottom-line-height;
+  opacity: 0;
   transform: scaleX(0);
   transform-origin: center center;
   pointer-events: none;
 
   .input:focus ~ & {
-    opacity: 1;
     background-color: var(--rui-local-border-color);
+    opacity: 1;
     transform: scaleX(1);
   }
 }

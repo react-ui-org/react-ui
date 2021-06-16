@@ -1,6 +1,9 @@
 @use '../../../styles/tools/transition';
 @use 'settings';
 
+// Ignore pascalCase values of `composes` property:
+// stylelint-disable value-keyword-case
+
 .table {
   width: 100%;
   border-collapse: collapse;
