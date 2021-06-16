@@ -15,6 +15,7 @@
 @mixin check-input($type) {
   @include transition.add((background-color, background-position, box-shadow));
 
+  appearance: none;
   width: theme.$check-input-size;
   height: theme.$check-input-size;
   margin-top: calc((1rem * #{typography.$line-height-base} - #{theme.$check-input-size}) / 2);
@@ -23,7 +24,6 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-color: var(--rui-local-check-background-color);
-  appearance: none;
   color-adjust: exact; // 1.
 
   &:focus,
