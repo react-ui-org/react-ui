@@ -9,6 +9,7 @@
 // 3. `.input:focus` is added just in case `:focus-within` doesn't work.
 
 @use 'sass:list';
+@use 'sass:map';
 @use '../../settings/form-fields' as settings;
 @use '../../theme/form-fields' as theme;
 
@@ -19,17 +20,17 @@
 
 // 1.
 @mixin _generate-custom-properties($type, $variant, $state) {
-  @if (not list.index(map-keys(map-get(settings.$themeable-variant-states, $type)), $variant)) {
+  @if (not list.index(map.keys(map.get(settings.$themeable-variant-states, $type)), $variant)) {
     @error "Invalid variant specified! #{$variant} doesn't exist. "
-      + "Choose one of #{map-keys(map-get(settings.$themeable-variant-states, $type))}.";
+      + "Choose one of #{map.keys(map.get(settings.$themeable-variant-states, $type))}.";
   }
 
-  @if (not list.index(map-keys(settings.$themeable-state-properties), $state)) {
+  @if (not list.index(map.keys(settings.$themeable-state-properties), $state)) {
     @error "Invalid state specified! #{$state} doesn't exist. "
-      + "Choose one of #{map-keys(settings.$themeable-state-properties)}.";
+      + "Choose one of #{map.keys(settings.$themeable-state-properties)}.";
   }
 
-  $properties: map-get(settings.$themeable-state-properties, $state);
+  $properties: map.get(settings.$themeable-state-properties, $state);
   $infix: $type;
   $fallback-state: 'default';
 
@@ -64,12 +65,12 @@
 }
 
 @mixin _get-theme($type, $variant) {
-  @if (not list.index(map-keys(settings.$themeable-variant-states), $type)) {
+  @if (not list.index(map.keys(settings.$themeable-variant-states), $type)) {
     @error "Invalid type specified! #{$type} doesn't exist. "
-      + "Choose one of #{map-keys(settings.$themeable-variant-states)}.";
+      + "Choose one of #{map.keys(settings.$themeable-variant-states)}.";
   }
 
-  $themeable-states: map-get(map-get(settings.$themeable-variant-states, $type), $variant);
+  $themeable-states: map.get(map.get(settings.$themeable-variant-states, $type), $variant);
 
   @if (list.index($themeable-states, 'hover')) {
     @include _generate-custom-properties($type, $variant, 'default');

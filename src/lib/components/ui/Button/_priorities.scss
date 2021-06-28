@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use 'settings';
 @use 'theme';
 @use 'tools';
@@ -133,7 +134,7 @@
   top: calc(-1 * #{theme.$border-width});
   bottom: calc(-1 * #{theme.$border-width});
   left: calc(-1 * #{theme.$border-width});
-  z-index: map-get(settings.$group-z-indexes, separator);
+  z-index: map.get(settings.$group-z-indexes, separator);
   border-left: var(--local-separator-width) solid var(--local-separator-color);
   transform: translateX(calc(-0.5 * var(--local-gap) - 50%));
 }

@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use 'sass:math';
 @use '../../../styles/theme/borders';
 @use '../../../styles/theme/colors';
@@ -11,7 +12,7 @@ $_badge-size: 1.25rem;
   height: $_badge-size;
   padding: 0.25rem 0.35rem;
   overflow: hidden;
-  font-weight: map-get(typography.$font-weight-values, bold);
+  font-weight: map.get(typography.$font-weight-values, bold);
   font-size: typography.$size-smaller;
   line-height: 1;
   text-align: center;
@@ -24,43 +25,43 @@ $_badge-size: 1.25rem;
 }
 
 .rootColorPrimary {
-  --rui-local-color: #{map-get(colors.$brand, on-primary)};
-  --rui-local-background-color: #{map-get(colors.$brand, primary)};
+  --rui-local-color: #{map.get(colors.$brand, on-primary)};
+  --rui-local-background-color: #{map.get(colors.$brand, primary)};
 }
 
 .rootColorSecondary {
-  --rui-local-color: #{map-get(colors.$brand, on-secondary)};
-  --rui-local-background-color: #{map-get(colors.$brand, secondary)};
+  --rui-local-color: #{map.get(colors.$brand, on-secondary)};
+  --rui-local-background-color: #{map.get(colors.$brand, secondary)};
 }
 
 .rootColorSuccess {
-  --rui-local-color: #{map-get(colors.$ui, on-success)};
-  --rui-local-background-color: #{map-get(colors.$ui, success)};
+  --rui-local-color: #{map.get(colors.$ui, on-success)};
+  --rui-local-background-color: #{map.get(colors.$ui, success)};
 }
 
 .rootColorWarning {
-  --rui-local-color: #{map-get(colors.$ui, on-warning)};
-  --rui-local-background-color: #{map-get(colors.$ui, warning)};
+  --rui-local-color: #{map.get(colors.$ui, on-warning)};
+  --rui-local-background-color: #{map.get(colors.$ui, warning)};
 }
 
 .rootColorDanger {
-  --rui-local-color: #{map-get(colors.$ui, on-danger)};
-  --rui-local-background-color: #{map-get(colors.$ui, danger)};
+  --rui-local-color: #{map.get(colors.$ui, on-danger)};
+  --rui-local-background-color: #{map.get(colors.$ui, danger)};
 }
 
 .rootColorHelp {
-  --rui-local-color: #{map-get(colors.$ui, on-help)};
-  --rui-local-background-color: #{map-get(colors.$ui, help)};
+  --rui-local-color: #{map.get(colors.$ui, on-help)};
+  --rui-local-background-color: #{map.get(colors.$ui, help)};
 }
 
 .rootColorInfo {
-  --rui-local-color: #{map-get(colors.$ui, on-info)};
-  --rui-local-background-color: #{map-get(colors.$ui, info)};
+  --rui-local-color: #{map.get(colors.$ui, on-info)};
+  --rui-local-background-color: #{map.get(colors.$ui, info)};
 }
 
 .rootColorNote {
-  --rui-local-color: #{map-get(colors.$ui, on-note)};
-  --rui-local-background-color: #{map-get(colors.$ui, note)};
+  --rui-local-color: #{map.get(colors.$ui, on-note)};
+  --rui-local-background-color: #{map.get(colors.$ui, note)};
 }
 
 .rootColorLight {
@@ -85,35 +86,35 @@ $_badge-size: 1.25rem;
 }
 
 .rootPriorityOutline.rootColorPrimary {
-  --rui-local-color: #{map-get(colors.$brand, primary)};
+  --rui-local-color: #{map.get(colors.$brand, primary)};
 }
 
 .rootPriorityOutline.rootColorSecondary {
-  --rui-local-color: #{map-get(colors.$brand, secondary)};
+  --rui-local-color: #{map.get(colors.$brand, secondary)};
 }
 
 .rootPriorityOutline.rootColorSuccess {
-  --rui-local-color: #{map-get(colors.$ui, success)};
+  --rui-local-color: #{map.get(colors.$ui, success)};
 }
 
 .rootPriorityOutline.rootColorWarning {
-  --rui-local-color: #{map-get(colors.$ui, warning)};
+  --rui-local-color: #{map.get(colors.$ui, warning)};
 }
 
 .rootPriorityOutline.rootColorDanger {
-  --rui-local-color: #{map-get(colors.$ui, danger)};
+  --rui-local-color: #{map.get(colors.$ui, danger)};
 }
 
 .rootPriorityOutline.rootColorHelp {
-  --rui-local-color: #{map-get(colors.$ui, help)};
+  --rui-local-color: #{map.get(colors.$ui, help)};
 }
 
 .rootPriorityOutline.rootColorInfo {
-  --rui-local-color: #{map-get(colors.$ui, info)};
+  --rui-local-color: #{map.get(colors.$ui, info)};
 }
 
 .rootPriorityOutline.rootColorNote {
-  --rui-local-color: #{map-get(colors.$ui, note)};
+  --rui-local-color: #{map.get(colors.$ui, note)};
 }
 
 .rootPriorityOutline.rootColorLight {

@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use '../../../lib/styles/theme/colors';
 @use '../../../lib/styles/tools/spacing';
 
@@ -10,7 +11,7 @@
 }
 
 .rootBordered {
-  border: 2px dashed map-get(colors.$grays, gray-200);
+  border: 2px dashed map.get(colors.$grays, gray-200);
 }
 
 .rootDark {

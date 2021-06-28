@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use '../../../styles/tools/accessibility';
 @use '../../../styles/tools/breakpoint';
 @use 'settings';
@@ -70,7 +71,7 @@
 }
 
 .rootGrouped {
-  z-index: map-get(settings.$group-z-indexes, button);
+  z-index: map.get(settings.$group-z-indexes, button);
 
   &:not(:first-child) {
     margin-left: var(--local-gap);
@@ -85,13 +86,13 @@
 
   &:focus,
   &:not(:disabled):hover {
-    z-index: map-get(settings.$group-z-indexes, button-hover);
+    z-index: map.get(settings.$group-z-indexes, button-hover);
   }
 }
 
 .rootGrouped .startCorner,
 .rootGrouped .endCorner {
-  z-index: map-get(settings.$group-z-indexes, button-overflowing-elements);
+  z-index: map.get(settings.$group-z-indexes, button-overflowing-elements);
 }
 
 .withLabelHidden .label,

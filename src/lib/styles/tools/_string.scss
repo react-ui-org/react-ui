@@ -1,12 +1,14 @@
 // Author: Hugo Giraudel
 
+@use 'sass:string';
+
 @function replace($string, $search, $replace: '') {
-  $index: str-index($string, $search);
+  $index: string.index($string, $search);
 
   @if $index {
-    @return str-slice($string, 1, $index - 1)
+    @return string.slice($string, 1, $index - 1)
       + $replace
-      + replace(str-slice($string, $index + str-length($search)), $search, $replace);
+      + replace(string.slice($string, $index + string.length($search)), $search, $replace);
   }
 
   @return $string;

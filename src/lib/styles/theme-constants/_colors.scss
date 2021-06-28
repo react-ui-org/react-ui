@@ -1,5 +1,6 @@
 // ⚠️ For `theme.scss` purposes only, do not use anywhere else.
 
+@use 'sass:color';
 @use '../tools/colors';
 
 $_gray-base-color: #fff;
@@ -79,4 +80,4 @@ $muted: $gray-500;
 $active: $note;
 $on-active: $on-note;
 $active-hover: $note-darker;
-$active-focus: transparentize($note, 0.75);
+$active-focus: color.adjust($note, $alpha: -0.75);
