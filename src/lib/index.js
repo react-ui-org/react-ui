@@ -47,6 +47,7 @@ export { default as Radio } from './components/ui/Radio';
 export { default as ScrollView } from './components/ui/ScrollView';
 export { default as SelectField } from './components/ui/SelectField';
 export { default as Table } from './components/ui/Table';
+export { default as Text } from './components/ui/Text';
 export { default as TextArea } from './components/ui/TextArea';
 export { default as TextField } from './components/ui/TextField';
 export { default as Toggle } from './components/ui/Toggle';

@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly as div 1`] = `
+<div>
+  test
+</div>
+`;
+
+exports[`rendering renders correctly with line clamp 1`] = `
+<span
+  className="rootClampLines  "
+  style={
+    Object {
+      "--rui-custom-lines": 2,
+    }
+  }
+>
+  test
+</span>
+`;
+
+exports[`rendering renders correctly with no props 1`] = `
+<span>
+  test
+</span>
+`;
+
+exports[`rendering renders correctly with word wrapping 1`] = `
+<span
+  className="  rootWordWrappingLongWords"
+>
+  test
+</span>
+`;

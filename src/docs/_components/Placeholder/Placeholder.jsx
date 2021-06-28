@@ -8,6 +8,7 @@ export const Placeholder = ({
   dark,
   height,
   inline,
+  width,
 }) => (
   <div
     className={[
@@ -16,7 +17,10 @@ export const Placeholder = ({
       dark ? styles.rootDark : '',
       inline ? styles.rootInline : '',
     ].join(' ')}
-    style={height && { '--rui-local-height': height }}
+    style={{
+      '--rui-local-height': height,
+      '--rui-local-width': width,
+    }}
   >
     {children}
   </div>
@@ -28,6 +32,7 @@ Placeholder.defaultProps = {
   dark: false,
   height: null,
   inline: false,
+  width: null,
 };
 
 Placeholder.propTypes = {
@@ -39,6 +44,7 @@ Placeholder.propTypes = {
   dark: PropTypes.bool,
   height: PropTypes.string,
   inline: PropTypes.bool,
+  width: PropTypes.string,
 };
 
 export default Placeholder;
