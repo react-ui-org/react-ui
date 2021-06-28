@@ -1,6 +1,7 @@
 // 1. Input `line-height` is specified in `rem` so inputs do not break when their font size gets
 //    changed later.
 
+@use 'sass:map';
 @use '../theme/typography';
 @use '../tools/spacing';
 
@@ -14,7 +15,7 @@ $horizontal-inner-gap: spacing.of(2);
 $horizontal-outer-spacing: spacing.of(2);
 
 $box-input-font-family: typography.$font-family-base;
-$box-input-font-weight: map-get(typography.$font-weight-values, regular);
+$box-input-font-weight: map.get(typography.$font-weight-values, regular);
 $box-input-line-height: 1.5rem; // 1.
 $box-field-caret-size: 2.25rem;
 $box-field-input-number-arrows-width: 1.25rem;

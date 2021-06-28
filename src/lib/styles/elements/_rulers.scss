@@ -1,8 +1,9 @@
+@use 'sass:map';
 @use '../theme/borders';
 @use '../theme/colors';
 
 hr {
   border: 0;
-  border-top: borders.$width solid map-get(colors.$grays, gray-200);
+  border-top: borders.$width solid map.get(colors.$grays, gray-200);
   background: none;
 }

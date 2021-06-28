@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use '../theme/colors';
 @use '../theme/spacing';
 @use '../theme/typography';
@@ -25,25 +26,25 @@ $map: (
     responsive: true,
     property: margin-top,
     class: mt,
-    values: map-merge(spacing.$values, (auto: auto)),
+    values: map.merge(spacing.$values, (auto: auto)),
   ),
   'margin-right': (
     responsive: true,
     property: margin-right,
     class: mr,
-    values: map-merge(spacing.$values, (auto: auto)),
+    values: map.merge(spacing.$values, (auto: auto)),
   ),
   'margin-bottom': (
     responsive: true,
     property: margin-bottom,
     class: mb,
-    values: map-merge(spacing.$values, (auto: auto)),
+    values: map.merge(spacing.$values, (auto: auto)),
   ),
   'margin-left': (
     responsive: true,
     property: margin-left,
     class: ml,
-    values: map-merge(spacing.$values, (auto: auto)),
+    values: map.merge(spacing.$values, (auto: auto)),
   ),
   'padding-top': (
     responsive: true,
@@ -86,14 +87,14 @@ $map: (
     property: color,
     class: text,
     values: (
-      primary: map-get(colors.$brand, primary),
-      secondary: map-get(colors.$brand, secondary),
-      success: map-get(colors.$ui, success),
-      warning: map-get(colors.$ui, warning),
-      danger: map-get(colors.$ui, danger),
-      help: map-get(colors.$ui, help),
-      info: map-get(colors.$ui, info),
-      note: map-get(colors.$ui, note),
+      primary: map.get(colors.$brand, primary),
+      secondary: map.get(colors.$brand, secondary),
+      success: map.get(colors.$ui, success),
+      warning: map.get(colors.$ui, warning),
+      danger: map.get(colors.$ui, danger),
+      help: map.get(colors.$ui, help),
+      info: map.get(colors.$ui, info),
+      note: map.get(colors.$ui, note),
       light: colors.$light,
       dark: colors.$dark,
       muted: colors.$muted,

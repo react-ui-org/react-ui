@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use '../../../styles/theme/typography';
 @use '../../../styles/tools/accessibility';
 @use '../../../styles/tools/breakpoint';
@@ -47,7 +48,7 @@
   @include reset.button();
   @include accessibility.min-tap-target();
 
-  font-size: map-get(typography.$size-values, 3);
+  font-size: map.get(typography.$size-values, 3);
   line-height: 1;
   color: inherit;
 }
@@ -89,20 +90,20 @@
 }
 
 .isRootSizeSmall {
-  width: map-get(theme.$sizes, small, width);
+  width: map.get(theme.$sizes, small, width);
 }
 
 .isRootSizeMedium {
-  width: map-get(theme.$sizes, medium, width);
+  width: map.get(theme.$sizes, medium, width);
 }
 
 .isRootSizeLarge {
-  width: map-get(theme.$sizes, large, width);
+  width: map.get(theme.$sizes, large, width);
 }
 
 .isRootSizeFullscreen {
-  width: map-get(theme.$sizes, fullscreen, width);
-  height: map-get(theme.$sizes, fullscreen, height);
+  width: map.get(theme.$sizes, fullscreen, width);
+  height: map.get(theme.$sizes, fullscreen, height);
 }
 
 .isRootSizeFullscreen .content {
@@ -111,8 +112,8 @@
 
 .isRootSizeAuto {
   width: auto;
-  min-width: map-get(theme.$sizes, auto, min-width);
-  max-width: map-get(theme.$sizes, auto, max-width);
+  min-width: map.get(theme.$sizes, auto, min-width);
+  max-width: map.get(theme.$sizes, auto, max-width);
 }
 
 .isRootPositionCenter {

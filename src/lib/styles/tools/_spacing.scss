@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use '../theme/spacing';
 
 @function of($value) {
@@ -6,25 +7,25 @@
   }
 
   @else {
-    @if (map-has-key(spacing.$values, $value)) {
-      @return map-get(spacing.$values, $value);
+    @if (map.has-key(spacing.$values, $value)) {
+      @return map.get(spacing.$values, $value);
     }
   }
 }
 
 @mixin bottom($category: default, $compensation: null) {
-  @if (not map-has-key(spacing.$bottom, $category)) {
+  @if (not map.has-key(spacing.$bottom, $category)) {
     @error "Invalid spacing category specified! #{$category} doesn't exist. "
-      + "Choose one of #{map-keys(spacing.$bottom)}.";
+      + "Choose one of #{map.keys(spacing.$bottom)}.";
   }
 
   &:not(:last-child) {
     @if ($compensation != null) {
-      margin-bottom: calc(#{map-get(spacing.$bottom, $category)} - #{$compensation});
+      margin-bottom: calc(#{map.get(spacing.$bottom, $category)} - #{$compensation});
     }
 
     @else {
-      margin-bottom: map-get(spacing.$bottom, $category);
+      margin-bottom: map.get(spacing.$bottom, $category);
     }
   }
 }

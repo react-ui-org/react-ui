@@ -20,8 +20,9 @@
 //    settings. It might be tempting to use something like `all: initial` or `all: inherit` but it
 //    actually causes more harm rather than a useful reset.
 
-@use 'sass:math';
 @use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
 @use '../../../styles/tools/breakpoint';
 @use '../../../styles/tools/transition';
 @use 'settings';
@@ -29,7 +30,7 @@
 
 // 1.
 @mixin _get-themeable-properties($priority, $color, $state) {
-  @if (not list.index(map-keys(settings.$themeable-priority-properties), $priority)) {
+  @if (not list.index(map.keys(settings.$themeable-priority-properties), $priority)) {
     @error "Invalid priority specified! #{$priority} doesn't exist. "
       + "Choose one of #{settings.$themeable-priority-properties}.";
   }
@@ -44,7 +45,7 @@
       + "Choose one of #{settings.$themeable-states}.";
   }
 
-  $properties: map-get(settings.$themeable-priority-properties, $priority);
+  $properties: map.get(settings.$themeable-priority-properties, $priority);
 
   // 2.
   @if ($state == 'disabled') {
@@ -121,21 +122,21 @@
 }
 
 @mixin button-size($size) {
-  $properties: map-get(theme.$sizes, $size);
+  $properties: map.get(theme.$sizes, $size);
 
-  --rui-local-height: #{map-get($properties, height)};
-  --rui-local-padding: 0 #{map-get($properties, padding-x)};
-  --rui-local-font-size: #{map-get($properties, font-size)};
+  --rui-local-height: #{map.get($properties, height)};
+  --rui-local-padding: 0 #{map.get($properties, padding-x)};
+  --rui-local-font-size: #{map.get($properties, font-size)};
 
   &.withLabelHidden,
   &.withLabelHiddenMobile {
     --rui-local-padding: 0;
-    --rui-local-width: #{map-get($properties, height)}; // 4.
+    --rui-local-width: #{map.get($properties, height)}; // 4.
   }
 
   &.withLabelHiddenMobile {
     @include breakpoint.up(settings.$breakpoint) {
-      --rui-local-padding: 0 #{map-get($properties, padding-x)};
+      --rui-local-padding: 0 #{map.get($properties, padding-x)};
       --rui-local-width: auto;
     }
   }
@@ -161,12 +162,12 @@
 @mixin button-link() {
   @include _unset-button-appearance(); // 5.
 
-  text-decoration: map-get(theme.$link-priority-properties, default, text-decoration);
-  color: map-get(theme.$link-priority-properties, default, color);
+  text-decoration: map.get(theme.$link-priority-properties, default, text-decoration);
+  color: map.get(theme.$link-priority-properties, default, color);
 
   &:not(:disabled):hover,
   &:not(:disabled):focus {
-    text-decoration: map-get(theme.$link-priority-properties, hover, text-decoration);
-    color: map-get(theme.$link-priority-properties, hover, color);
+    text-decoration: map.get(theme.$link-priority-properties, hover, text-decoration);
+    color: map.get(theme.$link-priority-properties, hover, color);
   }
 }
