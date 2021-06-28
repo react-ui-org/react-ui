@@ -3,9 +3,8 @@
 @use '../../../lib/styles/tools/spacing';
 
 .root {
-  --rui-local-height: auto;
-
-  height: var(--rui-local-height);
+  width: var(--rui-local-width, auto);
+  height: var(--rui-local-height, auto);
   padding: spacing.of(3);
   background-color: colors.$white;
 }
