@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly with children 1`] = `
+<nav
+  id="my-tabs"
+>
+  <ul
+    className="list"
+    id="my-tabs__list"
+  >
+    <TabsItem
+      href="/item-1"
+      label="item 1"
+    />
+    <TabsItem
+      href="/item-2"
+      label="item 2"
+    />
+    <TabsItem
+      href="/item-3"
+      label="item 3"
+    />
+  </ul>
+</nav>
+`;
+
+exports[`rendering renders correctly without children 1`] = `
+<nav>
+  <ul
+    className="list"
+  />
+</nav>
+`;

@@ -114,12 +114,12 @@ export default {
           fontSize: '1rem', // Set the font size in playground to override the docs theme default.
           p: 3,
         },
+        '& [data-testid="live-preview"] * ul': { // Reset lists in components.
+          ml: 0,
+        },
         '& [data-testid="live-preview"] > *:not(.example), & [data-testid="live-preview"] .example > *': {
           m: 1,
           maxWidth: ['-webkit-fill-available', '-moz-available'], // Fix overflowing full-width components in some browsers.
-        },
-        '& [data-testid="live-preview"] div ul': { // Reset lists in components.
-          ml: 0,
         },
         '& [data-testid="playground"]': {
           my: '1.5rem !important',

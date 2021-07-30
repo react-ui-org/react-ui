@@ -55,12 +55,16 @@ $_reduced-motion-disallowed-transitions: (transform);
   }
 
   @else {
+    $reduced-property-list: _reduce-motion-transitions($property-list);
+
     transition-property: $property-list;
     transition-duration: $duration;
     transition-timing-function: animations.$standard-timing-function;
 
-    @media (prefers-reduced-motion: reduce) {
-      transition-property: _reduce-motion-transitions($property-list);
+    @if (list.length($reduced-property-list) > 0) {
+      @media (prefers-reduced-motion: reduce) {
+        transition-property: $reduced-property-list;
+      }
     }
   }
 }
