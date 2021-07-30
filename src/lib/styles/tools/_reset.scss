@@ -12,6 +12,17 @@
   cursor: pointer;
 }
 
+@mixin link() {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    outline: none;
+  }
+}
+
 @mixin list() {
   padding-left: 0;
   margin-bottom: 0;
