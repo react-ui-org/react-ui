@@ -1,9 +1,6 @@
 @use 'theme';
 
 .root {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
   padding: theme.$padding;
   border: theme.$border-width solid theme.$border-color;
   border-radius: theme.$border-radius;
