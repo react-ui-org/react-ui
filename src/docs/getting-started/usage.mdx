@@ -34,13 +34,11 @@ performance).
 
 ## Foundation CSS
 
-React UI honors
-[ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/)
-principles to make sure that its CSS code base will work and perform well even
-in large scale. There are two global CSS layers:
+React UI honors [ITCSS][itcss] principles to make sure that its CSS code base
+will work and perform well even in large scale. There are two global CSS layers:
 
 - **Theme:** a collection of hundreds of CSS custom properties that define the
-  look of your app. See [Theming](/customize/theming/overview) for more.
+  look of your app. See [Theming][theming] for more.
 - **Foundation:** the ground-zero CSS for React UI components. Includes global
   resets and fixes rendering inconsistencies across browsers with
   `normalize.css`. Not to be confused with the Foundation CSS framework.
@@ -68,6 +66,11 @@ import { Button } from '@react-ui-org/react-ui';
 
 <Button label="My Button" />
 ```
+
+### Controlled vs. Uncontrolled
+
+While you may find out some components are working for you as uncontrolled, we
+currently support only [controlled components][controlled-components].
 
 ## Full Example
 
@@ -111,8 +114,7 @@ ReactDOM.render(<App />, document.querySelector('#app'));
 ## CSS Helpers
 
 CSS helpers are tiny CSS classes that can handle details like
-[typography](/css-helpers/typography), [spacing](/css-helpers/spacing),
-[colors](/css-helpers/colors), etc.
+[typography][typography], [spacing][spacing], [colors][colors], etc.
 
 To use CSS helper classes, just import them along the base CSS layers of
 React UI:
@@ -123,6 +125,13 @@ import '@react-ui-org/react-ui/src/lib/foundation.scss';
 import '@react-ui-org/react-ui/src/lib/helpers.scss';
 ```
 
-Class name notation is
-[inspired by Bootstrap](https://getbootstrap.com/docs/4.5/css-helpers/), so if you
+Class name notation is [inspired by Bootstrap][bootstrap-utilities], so if you
 are familiar with Bootstrap, you will feel at home here.
+
+[itcss]: https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/
+[theming]: /customize/theming/overview
+[controlled-components]: https://reactjs.org/docs/forms.html#controlled-components
+[typography]: /css-helpers/typography
+[spacing]: /css-helpers/spacing
+[colors]: /css-helpers/colors
+[bootstrap-utilities]: https://getbootstrap.com/docs/5.1/utilities/
