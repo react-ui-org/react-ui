@@ -20,7 +20,6 @@
 
 .input {
   @include box-field-elements.input();
-  @include box-field-elements.input-text();
 }
 
 .bottomLine {
@@ -30,6 +29,10 @@
 .helpText,
 .validationText {
   @include foundation.help-text();
+}
+
+.hasRootCustomInputSize .input {
+  @include box-field-elements.input-size();
 }
 
 .isRootRequired .label {
