@@ -43,21 +43,18 @@
   }
 }
 
-@mixin input-text() {
-  &[max],
-  &[size] {
-    width:
-      calc(
-        1ch * var(--rui-custom-input-size)
-        + var(--rui-local-arrows-width, 0)
-        + 2 * var(--rui-local-padding-x)
-        + 2 * #{theme.$box-border-width}
-      ); // 2.
+@mixin input-size() {
+  width:
+    calc(
+      1ch * var(--rui-custom-input-size)
+      + var(--rui-local-arrows-width, 0)
+      + 2 * var(--rui-local-padding-x)
+      + 2 * #{theme.$box-border-width}
+    ); // 2.
 
-    min-width: auto; // 2.
-  }
+  min-width: auto; // 2.
 
-  &[max] {
+  &[type="number"] {
     --rui-local-arrows-width: #{settings.$box-field-input-number-arrows-width};
   }
 }

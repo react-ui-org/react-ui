@@ -40,6 +40,7 @@ export const TextField = ({
         fullWidth ? styles.isRootFullWidth : '',
         hasSmallInput ? styles.hasRootSmallInput : '',
         inFormLayout ? styles.isRootInFormLayout : '',
+        inputSize ? styles.hasRootCustomInputSize : '',
         layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
         disabled ? styles.isRootDisabled : '',
         required ? styles.isRootRequired : '',
@@ -156,7 +157,7 @@ TextField.propTypes = {
    */
   inFormLayout: PropTypes.bool,
   /**
-   * Width of the input field, translated as `size` attribute of the input.
+   * Width of the input field. Translated as `size` attribute for input types other than `number`.
    */
   inputSize: PropTypes.number,
   /**

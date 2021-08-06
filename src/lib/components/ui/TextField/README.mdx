@@ -41,8 +41,7 @@ See [API](#api) for all available options.
 - **Beware of the `number` input type:** it may not be always what you want.
   Not all number-like values are actually numbers, e.g. phone numbers, credit
   card numbers, or business IDs. In such cases use the most appropriate input
-  type (probably `text` or `tel`) along with the
-  [`pattern` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern)
+  type (probably `text` or `tel`) along with the [`pattern` attribute][pattern]
   to improve the input experience for touch users.
 
 - Use **short and descriptive labels**, ideally nouns rather than seemingly
@@ -64,9 +63,8 @@ See [API](#api) for all available options.
   entered. Be positive and focus on solutions to make the error message helpful.
 
 - When asking users for their contact information or other personal information,
-  make use of the
-  [`autocomplete` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete)
-  to help them fill the form faster.
+  make use of the [`autocomplete` attribute][autocomplete] to help them fill the
+  form faster.
 
 ## Design Variants
 
@@ -183,14 +181,16 @@ individual text fields** using the `inputSize` property. It (obviously) sets the
 `size` attribute of the `input` element and is further picked up by CSS to
 normalize rendering across browsers.
 
-👉 Remember that the
-[`size`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text#size)
-HTML attribute **does not limit on how many characters** the user can enter. Use
-the `maxlength` attribute to achieve that effect.
+👉 Remember that the [`size`][size] and [`max`][max] HTML attributes **don't
+limit on how many characters** the user can enter. Use the `maxlength`
+attribute to achieve that effect (doesn't work for `number` input type though).
 
-👉 Note that according to the HTML specification, the `inputSize` option (which
-is translated as `size` attribute of the input element) is
-[not available for the `number` input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number#Controlling_input_size).
+👉 Note that according to the HTML specification, the `size` attribute (invoked
+by `inputSize` API option) is
+[not available for `number` input type][input-number-size]. TextField supports
+`inputSize` option for all types of inputs, so you can use it whenever you find
+it suitable. Just keep in mind the `size` attribute will not be present for
+numeric inputs.
 
 <Playground>
   <TextField
@@ -200,6 +200,17 @@ is translated as `size` attribute of the input element) is
   <TextField
     inputSize={3}
     label="Title"
+    variant="filled"
+  />
+  <TextField
+    inputSize={3}
+    label="Age"
+    type="number"
+  />
+  <TextField
+    inputSize={3}
+    label="Age"
+    type="number"
     variant="filled"
   />
 </Playground>
@@ -224,15 +235,26 @@ interfere with [component's API](#api) are forwarded to the native HTML input.
     minLength={3}
     maxLength={80}
   />
+  <TextField
+    inputSize={3}
+    min={13}
+    max={120}
+    label="Age"
+    type="number"
+  />
+  <TextField
+    inputSize={3}
+    min={13}
+    max={120}
+    label="Age"
+    type="number"
+    variant="filled"
+  />
 </Playground>
 
 👉 Refer to the MDN reference for the full list of supported attributes of the
-[text](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text),
-[email](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email),
-[number](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number),
-[tel](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/tel), and
-[password](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password)
-input types.
+[text][input-text], [email][input-email], [number][input-number],
+[tel][input-tel], and [password][input-password] input types.
 
 ## Invisible Label
 
@@ -355,9 +377,9 @@ filled.
 </Playground>
 
 Keep in mind that **long help texts don't play well with small input sizes,**
-especially in a vertical layout. To fix this at least for the horizontal layout,
-the help text expands over the full field width when the desired input width
-(based on `inputSize` and `max` options) is 10 characters or smaller.
+especially in vertical layout. To fix this at least for horizontal layout, help
+text expands over the full field width when the desired input width (based on
+`inputSize` option) is 10 characters or smaller.
 
 <Playground>
   <TextField
@@ -378,6 +400,7 @@ the help text expands over the full field width when the desired input width
     layout="horizontal"
     min={13}
     max={120}
+    inputSize={3}
     type="number"
     helpText="How old do you see yourself?"
   />
@@ -386,6 +409,7 @@ the help text expands over the full field width when the desired input width
     layout="horizontal"
     min={13}
     max={120}
+    inputSize={3}
     variant="filled"
     type="number"
     helpText="How old do you see yourself?"
@@ -476,5 +500,16 @@ This is useful mainly to improve component's
 
 ## Theming
 
-Head to [Forms Theming](/customize/theming/forms) to see shared form theming
-options.
+Head to [Forms Theming][theming-forms] to see shared form theming options.
+
+[pattern]: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern
+[autocomplete]: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
+[size]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text#size
+[max]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number#max
+[input-number-size]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number#Controlling_input_size
+[input-text]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text
+[input-email]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email
+[input-number]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number
+[input-tel]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/tel
+[input-password]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password
+[theming-forms]: /customize/theming/forms
