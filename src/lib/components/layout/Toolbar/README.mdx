@@ -49,15 +49,22 @@ See [API](#api) for all available options.
 
 ## General Guidelines
 
+- **Toolbar is great for flexible inline layouts.** For stacking your content
+  vertically, use the [List][list] layout. For two-dimensional layouts head to
+  the [Grid][grid] layout.
+
 - **Wrap your items** into the ToolbarItem component. This ensures your content
   is properly spaced and aligned with other Toolbar elements. Do **not** try to
   put any custom HTML or React components directly into the Toolbar layout
   without wrapping it with the ToolbarItem first.
 
-- Use the Toolbar layout **only for [inline elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elements)**
-  (which includes inline blocks). For [block-level element](https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elements)
-  layouts, consider using rather [spacing helpers](/css-helpers/spacing) or the
-  [List](/components/layout/list) layout.
+- **Be careful with using Toolbar with long or dynamic items in narrow
+  containers.** Toolbar intentionally prevents its items from shrinking using
+  `flex: none` which may cause overflow in case of lack of horizontal space.
+  Depending on your situation, consider turning on the `nowrap` option
+  (which allows shrinking of items but disables Toolbar from wrapping), using
+  the [Text][text] component to precisely control text wrapping, or switching to
+  the [Grid][grid] layout.
 
 ## Alignment
 
@@ -294,8 +301,8 @@ Try resizing the playground below to see how it works.
 </Playground>
 
 👉 Depending on your situation, you may need to further control wrapping of text
-content placed within Toolbar. The [Text](/components/ui/text) component is
-designed specifically for this kind of job.
+content placed within Toolbar. The [Text][text] component is designed
+specifically for this kind of job.
 
 ## API
 
@@ -319,3 +326,10 @@ A wrapper for individual toolbar items.
 |------------------------------------------------------|--------------------------------------------------------------|
 | `--rui-Toolbar__gap`                                 | Gap between toolbar items                                    |
 | `--rui-Toolbar__gap--dense`                          | Dense gap between toolbar items                              |
+
+[inline-elements]: https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elements
+[block-elements]: https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elements
+[grid]: /components/layout/grid
+[list]: /components/layout/list
+[spacing]: /css-helpers/spacing
+[text]: /components/ui/text
