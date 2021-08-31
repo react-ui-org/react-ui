@@ -41,20 +41,12 @@ See [API](#api) for all available options.
 
 ## General Guidelines
 
-- This component implements native
-  [CSS grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout),
-  the right CSS tool for two-dimensional layouts. You may use any value accepted
-  by
-  [grid-template-columns](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns),
-  [grid-template-rows](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows),
-  [grid-column-gap](https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap),
-  [grid-row-gap](https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap),
-  [grid-auto-flow](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow),
-  [align-content](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content),
-  [align-items](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items),
-  [justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content),
-  [justify-items](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items)
-  and CSS properties in corresponding API options of the component.
+- This component implements native [CSS grid layout][grid-layout], the right CSS
+  tool for two-dimensional layouts. You may use any value accepted by
+  [grid-template-columns], [grid-template-rows], [grid-column-gap],
+  [grid-row-gap], [grid-auto-flow], [align-content], [align-items],
+  [justify-content], [justify-items], and CSS properties in corresponding API
+  options of the component.
 
 - To align your items in the grid, **simply wrap** them with the Grid
   component. Unlike other grid frameworks and UI libraries, **no additional
@@ -84,9 +76,7 @@ Use `columns` and `rows` to specify your grid layout.
   </Grid>
 </Playground>
 
-You can use the
-[`repeat()`](https://developer.mozilla.org/en-US/docs/Web/CSS/repeat) function
-to specify a recurring pattern.
+You can use the [`repeat()`][repeat] function to specify a recurring pattern.
 
 <Playground>
   <Grid columns="repeat(3, 1fr)">
@@ -99,9 +89,8 @@ to specify a recurring pattern.
   </Grid>
 </Playground>
 
-Combine `repeat()` with `auto-fit` and
-[`minmax()`](https://developer.mozilla.org/en-US/docs/Web/CSS/minmax) to build
-automatic responsive layouts. Resize the playground to see it in action.
+Combine `repeat()` with `auto-fit` and [`minmax()`][minmax] to build automatic
+responsive layouts. Resize the playground to see it in action.
 
 <Playground>
   <Grid columns="repeat(auto-fit, minmax(200px, auto))">
@@ -198,7 +187,10 @@ responsive columns and rows.
 
 <Playground>
   <Grid
-    autoFlow="row dense"
+    autoFlow={{
+      xs: 'row dense',
+      sm: 'column',
+    }}
     columns={{
       xs: 'repeat(2, 1fr)',
       sm: 'repeat(4, 1fr)',
@@ -208,29 +200,28 @@ responsive columns and rows.
       sm: 'auto 100px auto auto',
     }}
   >
-    <Placeholder bordered>Grid item</Placeholder>
-    <Placeholder bordered>Grid item</Placeholder>
-    <Placeholder bordered>Grid item</Placeholder>
-    <Placeholder bordered>Grid item</Placeholder>
-    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item 1</Placeholder>
+    <Placeholder bordered>Grid item 2</Placeholder>
+    <Placeholder bordered>Grid item 3</Placeholder>
+    <Placeholder bordered>Grid item 4</Placeholder>
+    <Placeholder bordered>Grid item 5</Placeholder>
     <GridSpan columns={2} rows={2}>
       <Placeholder bordered height="100%">
         Grid item spanning over two lines and two rows
       </Placeholder>
     </GridSpan>
-    <Placeholder bordered>Grid item</Placeholder>
-    <Placeholder bordered>Grid item</Placeholder>
-    <Placeholder bordered>Grid item</Placeholder>
-    <Placeholder bordered>Grid item</Placeholder>
-    <Placeholder bordered>Grid item</Placeholder>
-    <Placeholder bordered>Grid item</Placeholder>
-    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item 6</Placeholder>
+    <Placeholder bordered>Grid item 7</Placeholder>
+    <Placeholder bordered>Grid item 8</Placeholder>
+    <Placeholder bordered>Grid item 9</Placeholder>
+    <Placeholder bordered>Grid item 10</Placeholder>
+    <Placeholder bordered>Grid item 11</Placeholder>
+    <Placeholder bordered>Grid item 12</Placeholder>
   </Grid>
 </Playground>
 
-👉 `autoFlow` implements the `grid-auto-flow` CSS property. See
-[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow) to fully
-understand available options.
+👉 `autoFlow` (used in the example above) implements the `grid-auto-flow` CSS
+property. Check [MDN][grid-auto-flow] to fully understand available options.
 
 ## API
 
@@ -255,3 +246,16 @@ Wrapper for content that should span multiple rows or columns.
 | `--rui-Grid__justify-content`                        | Default horizontal alignment of the layout                   |
 | `--rui-Grid__justify-items`                          | Default horizontal alignment of grid items                   |
 | `--rui-Grid__auto-flow`                              | Default auto-flow algorithm                                  |
+
+[grid-layout]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout
+[grid-template-columns]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
+[grid-template-rows]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows
+[grid-column-gap]: https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap
+[grid-row-gap]: https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap
+[grid-auto-flow]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow
+[aling-content]: https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
+[align-items]: https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
+[justify-content]: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
+[justify-items]: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items
+[repeat]: https://developer.mozilla.org/en-US/docs/Web/CSS/repeat
+[minmax]: https://developer.mozilla.org/en-US/docs/Web/CSS/minmax

@@ -193,11 +193,11 @@
   // Grid
   // ====
 
-  --rui-Grid__auto-flow: initial;
   --rui-Grid__columns: 1fr;
   --rui-Grid__column-gap: var(--rui-spacing-4);
   --rui-Grid__rows: auto;
   --rui-Grid__row-gap: var(--rui-spacing-4);
+  --rui-Grid__auto-flow: initial;
   --rui-Grid__align-content: initial;
   --rui-Grid__align-items: initial;
   --rui-Grid__justify-content: initial;

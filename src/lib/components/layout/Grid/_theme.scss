@@ -1,10 +1,9 @@
-$auto-flow: var(--rui-Grid__auto-flow);
-
 $responsive-properties: (
   columns: var(--rui-Grid__columns),
   column-gap: var(--rui-Grid__column-gap),
   rows: var(--rui-Grid__rows),
   row-gap: var(--rui-Grid__row-gap),
+  auto-flow: var(--rui-Grid__auto-flow),
   align-content: var(--rui-Grid__align-content),
   align-items: var(--rui-Grid__align-items),
   justify-content: var(--rui-Grid__justify-content),
