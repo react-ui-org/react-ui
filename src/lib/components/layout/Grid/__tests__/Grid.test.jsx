@@ -51,24 +51,12 @@ describe('rendering', () => {
       (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-align-items-xs': 'placeholder' }),
     ],
     [
-      { autoFlow: 'row' },
-      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-auto-flow': 'row' }),
-    ],
-    [
-      { autoFlow: 'column' },
-      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-auto-flow': 'column' }),
-    ],
-    [
-      { autoFlow: 'dense' },
-      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-auto-flow': 'dense' }),
+      { autoFlow: responsiveBreakpoints },
+      (rootElement) => expect(rootElement).toHaveStyle(responsiveStyles('auto-flow')),
     ],
     [
       { autoFlow: 'row dense' },
-      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-auto-flow': 'row dense' }),
-    ],
-    [
-      { autoFlow: 'column dense' },
-      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-auto-flow': 'column dense' }),
+      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-auto-flow-xs': 'row dense' }),
     ],
     [
       { children: <div>content text</div> },

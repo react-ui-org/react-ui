@@ -27,11 +27,11 @@ export const Grid = ({
       id={id}
       className={styles.root}
       style={{
-        ...(typeof autoFlow !== 'undefined' ? { '--rui-local-auto-flow': autoFlow } : {}),
         ...generateResponsiveCustomProperties(columns, 'columns'),
         ...generateResponsiveCustomProperties(columnGap, 'column-gap'),
         ...generateResponsiveCustomProperties(rows, 'rows'),
         ...generateResponsiveCustomProperties(rowGap, 'row-gap'),
+        ...generateResponsiveCustomProperties(autoFlow, 'auto-flow'),
         ...generateResponsiveCustomProperties(alignContent, 'align-content'),
         ...generateResponsiveCustomProperties(alignItems, 'align-items'),
         ...generateResponsiveCustomProperties(justifyContent, 'justify-content'),
@@ -98,7 +98,18 @@ Grid.propTypes = {
    * Grid auto-flow algorithm to be used. Accepts any valid value of `grid-auto-flow` CSS property.
    * See [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow) for more.
    */
-  autoFlow: PropTypes.oneOf(['row', 'column', 'dense', 'row dense', 'column dense']),
+  autoFlow: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape({
+      xs: PropTypes.string,
+      sm: PropTypes.string,
+      md: PropTypes.string,
+      lg: PropTypes.string,
+      xl: PropTypes.string,
+      xxl: PropTypes.string,
+      xxxl: PropTypes.string,
+    }),
+  ]),
   /**
    * Items to be aligned in the grid.
    */
