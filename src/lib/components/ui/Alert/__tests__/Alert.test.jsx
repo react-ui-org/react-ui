@@ -40,9 +40,9 @@ describe('rendering', () => {
     [
       {
         closeHandler: () => {},
-        translations: { close: 'Custom Close' },
+        translations: { close: 'Zavřít' },
       },
-      (rootElement) => expect(within(rootElement).getByTitle('Custom Close')),
+      (rootElement) => expect(within(rootElement).getByTitle('Zavřít')),
     ],
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((

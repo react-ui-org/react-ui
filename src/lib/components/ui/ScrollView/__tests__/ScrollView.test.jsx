@@ -107,13 +107,13 @@ describe('rendering', () => {
       {
         arrows: true,
         translations: {
-          next: 'Custom next',
-          previous: 'Custom previous',
+          next: 'Další',
+          previous: 'Zpět',
         },
       },
       (rootElement) => {
-        expect(within(rootElement).getByTitle('Custom next'));
-        expect(within(rootElement).getByTitle('Custom previous'));
+        expect(within(rootElement).getByTitle('Další'));
+        expect(within(rootElement).getByTitle('Zpět'));
       },
     ],
   ])('renders with props: "%s"', (testedProps, assert) => {
