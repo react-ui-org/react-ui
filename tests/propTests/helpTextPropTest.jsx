@@ -1,5 +1,5 @@
-import {within} from "@testing-library/react";
-import React from "react";
+import { within } from '@testing-library/react';
+import React from 'react';
 
 export const helpTextPropTest = [
   [

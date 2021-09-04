@@ -2,7 +2,7 @@ export const forwardedRefPropTest = (ref) => [
   [
     {
       forwardedRef: ref,
-      id: 'id'
+      id: 'id',
     },
     () => expect(ref.current).toHaveAttribute('id', 'id'),
   ],

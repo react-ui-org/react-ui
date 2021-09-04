@@ -108,7 +108,7 @@
     "docs:serve": "rimraf .docz && npm run docs:build && docz serve",
     "lib:build": "concurrently \"webpack --mode development --config webpack.config.js\" \"webpack --mode production --config webpack.config.js\"",
     "lib:jest": "jest",
-    "lib:test": "stylelint \"src/lib/**/*.scss\" --config stylelint.config.js && eslint src/lib --ext js,jsx && npm run lib:jest",
+    "lib:test": "stylelint \"src/lib/**/*.scss\" --config stylelint.config.js && eslint --ext js,jsx src/lib tests/propTests && npm run lib:jest",
     "markdown:lint": "markdownlint-cli2 \"**/*.md?(x)\" \"#.docz\" \"#dist\" \"#node_modules\" && eslint \"**/*.md?(x)\"",
     "markdown:watch": "nodemon --watch . --ext md,mdx --exec \"npm run markdown:lint\"",
     "prepublishOnly": "npm run lib:build",

@@ -1,5 +1,3 @@
-import {within} from "@testing-library/react";
-
 export const variantPropTest = [
   [
     { variant: 'filled' },

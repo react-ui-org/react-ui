@@ -1,4 +1,4 @@
-import {within} from "@testing-library/react";
+import { within } from '@testing-library/react';
 
 export const labelPropTest = [
   [
