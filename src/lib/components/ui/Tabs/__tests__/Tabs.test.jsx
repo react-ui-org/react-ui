@@ -4,12 +4,24 @@ import {
   within,
 } from '@testing-library/react';
 import { Tabs } from '../Tabs';
+import { TabsItem } from '../TabsItem';
+
+const tab = (
+  <TabsItem
+    href="href"
+    label="label"
+  />
+);
 
 describe('rendering', () => {
   it.each([
     [
-      { children: <div>content text</div> },
-      (rootElement) => expect(within(rootElement).getByText('content text')),
+      { children: tab },
+      (rootElement) => expect(within(rootElement).getByText('label')),
+    ],
+    [
+      { children: [tab] },
+      (rootElement) => expect(within(rootElement).getByText('label')),
     ],
     [
       { children: null },

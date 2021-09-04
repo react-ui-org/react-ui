@@ -17,6 +17,10 @@ describe('rendering', () => {
       (rootElement) => expect(within(rootElement).getByText('other content text')),
     ],
     [
+      { children: null },
+      (rootElement) => expect(rootElement).toBeInTheDocument(),
+    ],
+    [
       { disabled: true },
       (rootElement) => expect(rootElement).toHaveClass('isRootDisabled'),
     ],

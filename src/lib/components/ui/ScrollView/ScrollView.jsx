@@ -315,10 +315,7 @@ ScrollView.propTypes = {
   /**
    * Content to be scrollable.
    */
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
+  children: PropTypes.node.isRequired,
   /**
    * Custom CSS to replace the default end scrolling shadow.
    */
