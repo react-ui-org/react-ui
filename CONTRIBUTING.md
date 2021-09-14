@@ -1,5 +1,5 @@
 ---
-name: Guidelines
+name: General Guidelines
 route: /contribute/guidelines
 menu: Contribute
 ---
