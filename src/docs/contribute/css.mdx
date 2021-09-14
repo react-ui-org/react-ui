@@ -1,0 +1,143 @@
+---
+name: CSS Guidelines
+route: /contribute/css
+menu: Contribute
+---
+
+# CSS Guidelines
+
+Basic rules to follow when authoring React UI CSS.
+
+## Coding Style
+
+React UI uses [Stylelint] to avoid errors in CSS and enforce unified coding
+style in all stylesheets.
+
+Configurations used:
+
+- [`stylelint-config-visionapps`][stylelint-config-visionapps] — a more strict
+  extension of popular community preset
+  [`stylelint-config-standard`][stylelint-config-standard].
+
+- [`stylelint-config-visionapps-order`][stylelint-config-visionapps-order] —
+  an opinionated list of CSS properties order.
+
+## CSS Modules
+
+React UI uses [CSS modules] to take advantage of writing native CSS while
+keeping component class names short and unique by obfuscating them with random
+suffix.
+
+### Components
+
+For example, this JSX:
+
+```jsx
+// Button.jsx
+
+<button className={styles.root}>
+  <span className={styles.beforeLabel}>{beforeLabel}</span>
+  <span className={styles.label}>{label}</span>
+  <span className={styles.afterLabel}>{afterLabel}</span>
+</button>
+```
+
+… with this SCSS:
+
+```scss
+// Button.scss
+
+.root {
+ // …
+}
+
+.beforeLabel {
+ // …
+}
+
+.afterLabel {
+ // …
+}
+
+.label {
+  // …
+}
+```
+
+… produces following CSS class names:
+
+- `Button__root__2yVxr5IZ`
+- `Button__beforeLabel__1rrmrrWj`
+- `Button__afterLabel__38eMTilM`
+- `Button__label__23iTNlfS`
+
+Resulting CSS class names are both human-readable and unique at the same time
+which is convenient for development. Class names are further shortened and
+obfuscated for production environments.
+
+### Helpers and Utilities
+
+There are also global helper and utility classes (both documented as CSS Helpers
+for the sake of comprehensibility for non-CSS guys) that can be used by
+developers and thus remain unaltered by CSS modules. For example,
+`:global(.display-block)` SCSS selector produces `display-block` CSS class.
+
+## Class Name Rules
+
+Following rules make it clear both in JSX and CSS what is affected by a CSS
+class.
+
+1. **Class names must use pascalCase notation** to be usable in JavaScript
+   context.
+
+2. **Short, preferably single-word names should be chosen for all component
+   elements.** No naming convention like BEM or SUIT CSS needs to be applied
+   since class names are unique in the global scope thanks to CSS modules.
+
+3. **Component's top-level HTML element must have `root` class name.**
+   However, this rule has a few exceptions:
+
+   1. When the component is a subcomponent, it's usually better to use
+      subcomponent's name, e.g. `item` or `group`. This enables us to keep
+      related CSS of both the main component and its subcomponents in a single
+      file and see the big picture during development.
+
+   2. When no CSS on the root element is necessary and styling only takes place
+      once a visual modification is invoked by component props, `root` class
+      name can be omitted entirely.
+
+4. **Modifier class names related to the current HTML element must start with
+   `is`** and contain the name of the target element, e.g. `isRootLoading`
+   (modifies `root`) or `isLabelHidden` (modifies `label`). However, child
+   elements may be modified as well, e.g. by a CSS selector like
+   `.isRootRequired > .label` (root is marked as required but the label is what
+   needs to be visually modified).
+
+5. **Modifier class names related to child elements must start with `has`**
+    and refer to the element in question, e.g. `hasRootSmallInput` (applies on
+   `root` but relates to `input`).
+
+## Custom Properties
+
+React UI takes advantage of supporting [modern browsers] and uses
+[CSS custom properties] to make writing and maintaining CSS more efficient.
+
+There are three kinds of custom properties used:
+
+1. `--rui-custom-*` for any custom properties whose value comes from component's
+   API. May reuse other custom property types.
+
+2. `--rui-local-*` for internal (component-scoped) custom properties. May reuse
+   other custom property types.
+
+3. `--rui-*` (unscoped) for theme-related custom properties. Part of public API,
+   designed to be [customized]. Must not reuse other custom property types.
+
+[Stylelint]: https://stylelint.io
+[stylelint-config-visionapps]: https://github.com/visionappscz/stylelint-config-visionapps
+[stylelint-config-standard]: https://github.com/stylelint/stylelint-config-standard
+[stylelint-config-visionapps-order]: https://github.com/visionappscz/stylelint-config-visionapps-order
+[CSS modules]: https://github.com/css-modules/css-modules
+[modern browsers]: /getting-started/browsers-and-devices
+[CSS custom properties]: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
+[customized]: /customize/theming/overview

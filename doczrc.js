@@ -62,7 +62,12 @@ export default {
       name: 'Customize',
     },
     {
-      menu: [],
+      menu: [
+        'General Guidelines',
+        'Composition',
+        'CSS Guidelines',
+        'Releasing',
+      ],
       name: 'Contribute',
     },
   ],
