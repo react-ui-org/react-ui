@@ -41,8 +41,8 @@ export const TextArea = ({
       getRootValidationStateClassName(validationState, styles),
       variant === 'filled' ? styles.rootVariantFilled : styles.rootVariantOutline,
     ].join(' ')}
-    htmlFor={id}
-    id={id && `${id}__label`}
+    htmlFor={`${id}__element`}
+    id={id}
   >
     <div
       className={[
@@ -60,7 +60,7 @@ export const TextArea = ({
           className={styles.input}
           cols={cols}
           disabled={disabled}
-          id={id}
+          id={`${id}__element`}
           onChange={changeHandler}
           placeholder={placeholder}
           ref={forwardedRef}

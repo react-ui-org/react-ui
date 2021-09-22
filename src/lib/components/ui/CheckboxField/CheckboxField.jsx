@@ -34,8 +34,8 @@ export const CheckboxField = ({
       required ? styles.isRootRequired : '',
       getRootValidationStateClassName(validationState, styles),
     ].join(' ')}
-    htmlFor={id}
-    id={id && `${id}__label`}
+    htmlFor={`${id}__element`}
+    id={id}
   >
     <div className={styles.field}>
       <input
@@ -43,7 +43,7 @@ export const CheckboxField = ({
         checked={checked}
         className={styles.input}
         disabled={disabled}
-        id={id}
+        id={`${id}__element`}
         onChange={changeHandler}
         ref={forwardedRef}
         required={required}

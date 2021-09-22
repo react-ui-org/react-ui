@@ -48,8 +48,8 @@ export const TextField = ({
         getRootValidationStateClassName(validationState, styles),
         variant === 'filled' ? styles.rootVariantFilled : styles.rootVariantOutline,
       ].join(' ')}
-      htmlFor={id}
-      id={id && `${id}__label`}
+      htmlFor={`${id}__element`}
+      id={id}
       {...(inputSize ? { style: { '--rui-custom-input-size': inputSize } } : {})}
     >
       <div
@@ -67,7 +67,7 @@ export const TextField = ({
             {...transferProps(restProps)}
             className={styles.input}
             disabled={disabled}
-            id={id}
+            id={`${id}__element`}
             onChange={changeHandler}
             placeholder={placeholder}
             ref={forwardedRef}

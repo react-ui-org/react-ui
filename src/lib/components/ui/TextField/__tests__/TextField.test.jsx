@@ -38,8 +38,8 @@ describe('rendering', () => {
         validationText: 'validation text',
       },
       (rootElement) => {
-        expect(rootElement).toHaveAttribute('id', 'id__label');
-        expect(within(rootElement).getByTestId('id'));
+        expect(rootElement).toHaveAttribute('id', 'id');
+        expect(within(rootElement).getByRole('textbox')).toHaveAttribute('id', 'id__element');
         expect(within(rootElement).getByText('label')).toHaveAttribute('id', 'id__labelText');
         expect(within(rootElement).getByText('help text')).toHaveAttribute('id', 'id__helpText');
         expect(within(rootElement).getByText('validation text')).toHaveAttribute('id', 'id__validationText');
@@ -59,7 +59,7 @@ describe('rendering', () => {
         type: 'number',
       },
       (rootElement) => {
-        expect(within(rootElement).getByLabelText('label')).not.toHaveAttribute('size');
+        expect(within(rootElement).getByRole('spinbutton')).not.toHaveAttribute('size');
         expect(rootElement).toHaveStyle('--rui-custom-input-size: 3');
       },
     ],

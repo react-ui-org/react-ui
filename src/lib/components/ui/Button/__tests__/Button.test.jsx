@@ -7,7 +7,6 @@ import {
 import sinon from 'sinon';
 import userEvent from '@testing-library/user-event';
 import { colorPropTest } from '../../../../../../tests/propTests/colorPropTest';
-import { forwardedRefPropTest } from '../../../../../../tests/propTests/forwardedRefPropTest';
 import { labelPropTest } from '../../../../../../tests/propTests/labelPropTest';
 import { sizePropTest } from '../../../../../../tests/propTests/sizePropTest';
 import { Button } from '../Button';
@@ -15,6 +14,7 @@ import { Button } from '../Button';
 const mandatoryProps = {
   label: 'label',
 };
+const ref = React.createRef();
 
 describe('rendering', () => {
   it.each([
@@ -47,7 +47,13 @@ describe('rendering', () => {
       { endCorner: <div>corner text</div> },
       (rootElement) => expect(within(rootElement).getByText('corner text')),
     ],
-    ...forwardedRefPropTest(React.createRef()),
+    [
+      {
+        forwardedRef: ref,
+        id: 'id',
+      },
+      () => expect(ref.current).toHaveAttribute('id', 'id'),
+    ],
     [
       { grouped: true },
       (rootElement) => expect(rootElement).toHaveClass('rootGrouped'),

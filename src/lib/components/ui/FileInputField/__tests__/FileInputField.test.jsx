@@ -36,11 +36,11 @@ describe('rendering', () => {
         validationText: 'validation text',
       },
       (rootElement) => {
-        expect(within(rootElement).getByTestId('id'));
+        expect(rootElement).toHaveAttribute('id', 'id');
+        expect(within(rootElement).getByTestId('id__element'));
         expect(within(rootElement).getByText('label')).toHaveAttribute('id', 'id__labelText');
         expect(within(rootElement).getByText('help text')).toHaveAttribute('id', 'id__helpText');
         expect(within(rootElement).getByText('validation text')).toHaveAttribute('id', 'id__validationText');
-        expect(rootElement).toHaveAttribute('id', 'id__label');
       },
     ],
     ...inFormLayoutPropTest,

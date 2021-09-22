@@ -39,8 +39,8 @@ export const SelectField = ({
       getRootValidationStateClassName(validationState, styles),
       variant === 'filled' ? styles.rootVariantFilled : styles.rootVariantOutline,
     ].join(' ')}
-    htmlFor={id}
-    id={id && `${id}__label`}
+    htmlFor={`${id}__element`}
+    id={id}
   >
     <div
       className={[
@@ -57,7 +57,7 @@ export const SelectField = ({
           {...transferProps(restProps)}
           className={styles.input}
           disabled={disabled}
-          id={id}
+          id={`${id}__element`}
           onChange={changeHandler}
           ref={forwardedRef}
           required={required}
