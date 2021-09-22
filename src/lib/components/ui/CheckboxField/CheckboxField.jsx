@@ -3,6 +3,7 @@ import React from 'react';
 import getRootValidationStateClassName from '../../../helpers/getRootValidationStateClassName';
 import { withProviderContext } from '../../../provider';
 import transferProps from '../../../utils/transferProps';
+import { FormLayoutContext } from '../../layout/FormLayout';
 import withForwardedRef from '../withForwardedRef';
 import styles from './CheckboxField.scss';
 
@@ -13,70 +14,72 @@ export const CheckboxField = ({
   forwardedRef,
   helpText,
   id,
-  inFormLayout,
   isLabelVisible,
   label,
   labelPosition,
-  layout,
   required,
   validationState,
   validationText,
   value,
   ...restProps
 }) => (
-  <label
-    className={[
-      styles.root,
-      inFormLayout ? styles.isRootInFormLayout : '',
-      labelPosition === 'before' ? styles.hasRootLabelBefore : '',
-      layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
-      disabled ? styles.isRootDisabled : '',
-      required ? styles.isRootRequired : '',
-      getRootValidationStateClassName(validationState, styles),
-    ].join(' ')}
-    htmlFor={id}
-    id={id && `${id}__label`}
-  >
-    <div className={styles.field}>
-      <input
-        {...transferProps(restProps)}
-        checked={checked}
-        className={styles.input}
-        disabled={disabled}
-        id={id}
-        onChange={changeHandler}
-        ref={forwardedRef}
-        required={required}
-        type="checkbox"
-        value={value}
-      />
-      <div
+  <FormLayoutContext.Consumer>
+    {(context) => (
+      <label
         className={[
-          styles.label,
-          isLabelVisible ? '' : styles.isLabelHidden,
+          styles.root,
+          context.layout ? styles.isRootInFormLayout : '',
+          context.layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
+          labelPosition === 'before' ? styles.hasRootLabelBefore : '',
+          disabled ? styles.isRootDisabled : '',
+          required ? styles.isRootRequired : '',
+          getRootValidationStateClassName(validationState, styles),
         ].join(' ')}
-        id={id && `${id}__labelText`}
+        htmlFor={id}
+        id={id && `${id}__label`}
       >
-        {label}
-      </div>
-    </div>
-    {helpText && (
-      <div
-        className={styles.helpText}
-        id={id && `${id}__helpText`}
-      >
-        {helpText}
-      </div>
+        <div className={styles.field}>
+          <input
+            {...transferProps(restProps)}
+            checked={checked}
+            className={styles.input}
+            disabled={disabled}
+            id={id}
+            onChange={changeHandler}
+            ref={forwardedRef}
+            required={required}
+            type="checkbox"
+            value={value}
+          />
+          <div
+            className={[
+              styles.label,
+              isLabelVisible ? '' : styles.isLabelHidden,
+            ].join(' ')}
+            id={id && `${id}__labelText`}
+          >
+            {label}
+          </div>
+        </div>
+        {helpText && (
+          <div
+            className={styles.helpText}
+            id={id && `${id}__helpText`}
+          >
+            {helpText}
+          </div>
+        )}
+        {validationText && (
+          <div
+            className={styles.validationText}
+            id={id && `${id}__validationText`}
+          >
+            {validationText}
+          </div>
+        )}
+      </label>
     )}
-    {validationText && (
-      <div
-        className={styles.validationText}
-        id={id && `${id}__validationText`}
-      >
-        {validationText}
-      </div>
-    )}
-  </label>
+  </FormLayoutContext.Consumer>
 );
 
 CheckboxField.defaultProps = {
@@ -86,10 +89,8 @@ CheckboxField.defaultProps = {
   forwardedRef: undefined,
   helpText: null,
   id: undefined,
-  inFormLayout: false,
   isLabelVisible: true,
   labelPosition: 'after',
-  layout: 'vertical',
   required: false,
   validationState: null,
   validationText: null,
@@ -132,10 +133,6 @@ CheckboxField.propTypes = {
    */
   id: PropTypes.string,
   /**
-   * Treat the field differently when it's inside a FormLayout. Do not set manually!
-   */
-  inFormLayout: PropTypes.bool,
-  /**
    * If `false`, the label will be visually hidden (but remains accessible by assistive
    * technologies).
    */
@@ -148,10 +145,6 @@ CheckboxField.propTypes = {
    * Placement of the label relative to the input.
    */
   labelPosition: PropTypes.oneOf(['before', 'after']),
-  /**
-   * Layout of the field. It has impact only on CheckboxField inside a FormLayout.
-   */
-  layout: PropTypes.oneOf(['horizontal', 'vertical']),
   /**
    * If `true`, the input will be required.
    */

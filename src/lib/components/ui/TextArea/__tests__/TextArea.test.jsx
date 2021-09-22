@@ -10,7 +10,7 @@ import { disabledPropTest } from '../../../../../../tests/propTests/disabledProp
 import { forwardedRefPropTest } from '../../../../../../tests/propTests/forwardedRefPropTest';
 import { fullWidthPropTest } from '../../../../../../tests/propTests/fullWidthPropTest';
 import { helpTextPropTest } from '../../../../../../tests/propTests/helpTextPropTest';
-import { inFormLayoutPropTest } from '../../../../../../tests/propTests/inFormLayoutPropTest';
+import { inFormLayoutProviderTest } from '../../../../../../tests/providerTests/inFormLayoutProviderTest';
 import { isLabelVisible } from '../../../../../../tests/propTests/isLabelVisible';
 import { labelPropTest } from '../../../../../../tests/propTests/labelPropTest';
 import { layoutPropTest } from '../../../../../../tests/propTests/layoutPropTest';
@@ -26,6 +26,8 @@ const mandatoryProps = {
 };
 
 describe('rendering', () => {
+  inFormLayoutProviderTest(<TextArea {...mandatoryProps} />);
+
   it.each([
     [
       { cols: 2 },
@@ -49,7 +51,6 @@ describe('rendering', () => {
         expect(within(rootElement).getByText('validation text')).toHaveAttribute('id', 'id__validationText');
       },
     ],
-    ...inFormLayoutPropTest,
     ...isLabelVisible,
     ...labelPropTest,
     ...layoutPropTest,

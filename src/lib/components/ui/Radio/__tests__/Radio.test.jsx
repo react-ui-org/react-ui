@@ -7,7 +7,7 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { helpTextPropTest } from '../../../../../../tests/propTests/helpTextPropTest';
-import { inFormLayoutPropTest } from '../../../../../../tests/propTests/inFormLayoutPropTest';
+import { inFormLayoutProviderTest } from '../../../../../../tests/providerTests/inFormLayoutProviderTest';
 import { isLabelVisible } from '../../../../../../tests/propTests/isLabelVisible';
 import { labelPropTest } from '../../../../../../tests/propTests/labelPropTest';
 import { layoutPropTest } from '../../../../../../tests/propTests/layoutPropTest';
@@ -32,6 +32,8 @@ const mandatoryProps = {
 };
 
 describe('rendering', () => {
+  inFormLayoutProviderTest(<Radio {...mandatoryProps} />);
+
   it.each([
     [
       { disabled: true },
@@ -64,7 +66,6 @@ describe('rendering', () => {
         expect(within(rootElement).getByText('option 1')).toHaveAttribute('id', 'id__item__1__labelText');
       },
     ],
-    ...inFormLayoutPropTest,
     ...isLabelVisible,
     ...labelPropTest,
     ...layoutPropTest,
