@@ -4,6 +4,7 @@ import getRootSizeClassName from '../../../helpers/getRootSizeClassName';
 import getRootValidationStateClassName from '../../../helpers/getRootValidationStateClassName';
 import { withProviderContext } from '../../../provider';
 import transferProps from '../../../utils/transferProps';
+import { FormLayoutContext } from '../../layout/FormLayout';
 import withForwardedRef from '../withForwardedRef';
 import styles from './SelectField.scss';
 
@@ -14,7 +15,6 @@ export const SelectField = ({
   fullWidth,
   helpText,
   id,
-  inFormLayout,
   isLabelVisible,
   label,
   layout,
@@ -27,80 +27,84 @@ export const SelectField = ({
   variant,
   ...restProps
 }) => (
-  <label
-    className={[
-      styles.root,
-      fullWidth ? styles.isRootFullWidth : '',
-      inFormLayout ? styles.isRootInFormLayout : '',
-      layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
-      disabled ? styles.isRootDisabled : '',
-      required ? styles.isRootRequired : '',
-      getRootSizeClassName(size, styles),
-      getRootValidationStateClassName(validationState, styles),
-      variant === 'filled' ? styles.rootVariantFilled : styles.rootVariantOutline,
-    ].join(' ')}
-    htmlFor={id}
-    id={id && `${id}__label`}
-  >
-    <div
-      className={[
-        styles.label,
-        isLabelVisible ? '' : styles.isLabelHidden,
-      ].join(' ')}
-      id={id && `${id}__labelText`}
-    >
-      {label}
-    </div>
-    <div className={styles.field}>
-      <div className={styles.inputContainer}>
-        <select
-          {...transferProps(restProps)}
-          className={styles.input}
-          disabled={disabled}
-          id={id}
-          onChange={changeHandler}
-          ref={forwardedRef}
-          required={required}
-          value={value}
-        >
-          {
-            options.map((option) => (
-              <option
-                disabled={option.disabled}
-                id={id && `${id}__item__${option.value}`}
-                key={option.value}
-                value={option.value}
-              >
-                {option.label}
-              </option>
-            ))
-          }
-        </select>
-        <div className={styles.caret}>
-          <span className={styles.caretIcon} />
-        </div>
-        {variant === 'filled' && (
-          <div className={styles.bottomLine} />
-        )}
-      </div>
-      {helpText && (
+  <FormLayoutContext.Consumer>
+    {(context) => (
+      <label
+        className={[
+          styles.root,
+          fullWidth ? styles.isRootFullWidth : '',
+          context.layout ? styles.isRootInFormLayout : '',
+          (context.layout || layout) === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
+          disabled ? styles.isRootDisabled : '',
+          required ? styles.isRootRequired : '',
+          getRootSizeClassName(size, styles),
+          getRootValidationStateClassName(validationState, styles),
+          variant === 'filled' ? styles.rootVariantFilled : styles.rootVariantOutline,
+        ].join(' ')}
+        htmlFor={id}
+        id={id && `${id}__label`}
+      >
         <div
-          className={styles.helpText}
-          id={id && `${id}__helpText`}
+          className={[
+            styles.label,
+            isLabelVisible ? '' : styles.isLabelHidden,
+          ].join(' ')}
+          id={id && `${id}__labelText`}
         >
-          {helpText}
+          {label}
         </div>
-      )}
-      {validationText && (
-        <div
-          className={styles.validationText}
-          id={id && `${id}__validationText`}
-        >
-          {validationText}
+        <div className={styles.field}>
+          <div className={styles.inputContainer}>
+            <select
+              {...transferProps(restProps)}
+              className={styles.input}
+              disabled={disabled}
+              id={id}
+              onChange={changeHandler}
+              ref={forwardedRef}
+              required={required}
+              value={value}
+            >
+              {
+                options.map((option) => (
+                  <option
+                    disabled={option.disabled}
+                    id={id && `${id}__item__${option.value}`}
+                    key={option.value}
+                    value={option.value}
+                  >
+                    {option.label}
+                  </option>
+                ))
+              }
+            </select>
+            <div className={styles.caret}>
+              <span className={styles.caretIcon} />
+            </div>
+            {variant === 'filled' && (
+              <div className={styles.bottomLine} />
+            )}
+          </div>
+          {helpText && (
+            <div
+              className={styles.helpText}
+              id={id && `${id}__helpText`}
+            >
+              {helpText}
+            </div>
+          )}
+          {validationText && (
+            <div
+              className={styles.validationText}
+              id={id && `${id}__validationText`}
+            >
+              {validationText}
+            </div>
+          )}
         </div>
-      )}
-    </div>
-  </label>
+      </label>
+    )}
+  </FormLayoutContext.Consumer>
 );
 
 SelectField.defaultProps = {
@@ -110,7 +114,6 @@ SelectField.defaultProps = {
   fullWidth: false,
   helpText: null,
   id: undefined,
-  inFormLayout: false,
   isLabelVisible: true,
   layout: 'vertical',
   required: false,
@@ -160,10 +163,6 @@ SelectField.propTypes = {
    */
   id: PropTypes.string,
   /**
-   * Treat the field differently when it's inside a FormLayout. Do not set manually!
-   */
-  inFormLayout: PropTypes.bool,
-  /**
    * If `false`, the label will be visually hidden (but remains accessible by assistive
    * technologies).
    */
@@ -174,6 +173,9 @@ SelectField.propTypes = {
   label: PropTypes.string.isRequired,
   /**
    * Layout of the field.
+   *
+   * Ignored if the component is rendered within `FormLayout` component
+   * as the value is inherited in such case.
    */
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
   /**

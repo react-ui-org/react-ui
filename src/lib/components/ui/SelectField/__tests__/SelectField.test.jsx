@@ -11,7 +11,7 @@ import { disabledPropTest } from '../../../../../../tests/propTests/disabledProp
 import { forwardedRefPropTest } from '../../../../../../tests/propTests/forwardedRefPropTest';
 import { fullWidthPropTest } from '../../../../../../tests/propTests/fullWidthPropTest';
 import { helpTextPropTest } from '../../../../../../tests/propTests/helpTextPropTest';
-import { inFormLayoutPropTest } from '../../../../../../tests/propTests/inFormLayoutPropTest';
+import { inFormLayoutProviderTest } from '../../../../../../tests/providerTests/inFormLayoutProviderTest';
 import { isLabelVisible } from '../../../../../../tests/propTests/isLabelVisible';
 import { labelPropTest } from '../../../../../../tests/propTests/labelPropTest';
 import { layoutPropTest } from '../../../../../../tests/propTests/layoutPropTest';
@@ -37,6 +37,8 @@ const mandatoryProps = {
 };
 
 describe('rendering', () => {
+  inFormLayoutProviderTest(<SelectField {...mandatoryProps} />);
+
   it.each([
     ...disabledPropTest,
     ...forwardedRefPropTest(React.createRef()),
@@ -57,7 +59,6 @@ describe('rendering', () => {
         expect(within(rootElement).getByTestId('id__item__1'));
       },
     ],
-    ...inFormLayoutPropTest,
     ...isLabelVisible,
     ...labelPropTest,
     ...layoutPropTest,

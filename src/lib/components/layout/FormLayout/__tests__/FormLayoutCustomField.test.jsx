@@ -5,12 +5,31 @@ import {
 } from '@testing-library/react';
 import { fullWidthPropTest } from '../../../../../../tests/propTests/fullWidthPropTest';
 import { labelPropTest } from '../../../../../../tests/propTests/labelPropTest';
-import { layoutPropTest } from '../../../../../../tests/propTests/layoutPropTest';
 import { requiredPropTest } from '../../../../../../tests/propTests/requiredPropTest';
 import { validationStatePropTest } from '../../../../../../tests/propTests/validationStatePropTest';
 import { FormLayoutCustomField } from '../FormLayoutCustomField';
+import { FormLayoutProvider } from '..';
 
 describe('rendering', () => {
+  it.each([
+    [
+      { layout: 'vertical' },
+      (rootElement) => expect(rootElement).toHaveClass('rootLayoutVertical'),
+    ],
+    [
+      { layout: 'horizontal' },
+      (rootElement) => expect(rootElement).toHaveClass('rootLayoutHorizontal'),
+    ],
+  ])('renders with FormLayout props: "%s"', (testedProps, assert) => {
+    const dom = render((
+      <FormLayoutProvider {...testedProps}>
+        <FormLayoutCustomField />
+      </FormLayoutProvider>
+    ));
+
+    assert(dom.container.firstChild);
+  });
+
   it.each([
     [
       { children: <div>other content text</div> },
@@ -60,7 +79,6 @@ describe('rendering', () => {
       },
       (rootElement) => expect(within(rootElement).getByText('label')).toHaveAttribute('for', 'label-for-id'),
     ],
-    ...layoutPropTest,
     ...requiredPropTest,
     ...validationStatePropTest,
   ])('renders with props: "%s"', (testedProps, assert) => {

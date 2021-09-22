@@ -3,6 +3,7 @@ import React from 'react';
 import getRootValidationStateClassName from '../../../helpers/getRootValidationStateClassName';
 import { withProviderContext } from '../../../provider';
 import transferProps from '../../../utils/transferProps';
+import { FormLayoutContext } from '../../layout/FormLayout';
 import styles from './Radio.scss';
 
 export const Radio = ({
@@ -10,7 +11,6 @@ export const Radio = ({
   disabled,
   helpText,
   id,
-  inFormLayout,
   isLabelVisible,
   label,
   layout,
@@ -21,76 +21,80 @@ export const Radio = ({
   value,
   ...restProps
 }) => (
-  <div
-    className={[
-      styles.root,
-      inFormLayout ? styles.isRootInFormLayout : '',
-      layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
-      disabled ? styles.isRootDisabled : '',
-      required ? styles.isRootRequired : '',
-      getRootValidationStateClassName(validationState, styles),
-    ].join(' ')}
-    id={id}
-  >
-    <div
-      className={[
-        styles.label,
-        isLabelVisible ? '' : styles.isLabelHidden,
-      ].join(' ')}
-      id={id && `${id}__labelText`}
-    >
-      {label}
-    </div>
-    <div className={styles.field}>
-      <ul className={styles.list}>
-        {
-          options.map((option) => (
-            <li key={option.value}>
-              <label
-                className={styles.option}
-                htmlFor={id && `${id}__item__${option.value}`}
-                id={id && `${id}__item__${option.value}__label`}
-              >
-                <input
-                  {...transferProps(restProps)}
-                  className={styles.input}
-                  checked={(value === option.value) || undefined}
-                  disabled={disabled || option.disabled}
-                  id={id && `${id}__item__${option.value}`}
-                  name={id}
-                  onChange={changeHandler}
-                  type="radio"
-                  value={option.value}
-                />
-                <span
-                  className={styles.optionLabel}
-                  id={id && `${id}__item__${option.value}__labelText`}
-                >
-                  { option.label }
-                </span>
-              </label>
-            </li>
-          ))
-        }
-      </ul>
-      {helpText && (
+  <FormLayoutContext.Consumer>
+    {(context) => (
+      <div
+        className={[
+          styles.root,
+          context.layout ? styles.isRootInFormLayout : '',
+          (context.layout || layout) === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
+          disabled ? styles.isRootDisabled : '',
+          required ? styles.isRootRequired : '',
+          getRootValidationStateClassName(validationState, styles),
+        ].join(' ')}
+        id={id}
+      >
         <div
-          className={styles.helpText}
-          id={id && `${id}__helpText`}
+          className={[
+            styles.label,
+            isLabelVisible ? '' : styles.isLabelHidden,
+          ].join(' ')}
+          id={id && `${id}__labelText`}
         >
-          {helpText}
+          {label}
         </div>
-      )}
-      {validationText && (
-        <div
-          className={styles.validationText}
-          id={id && `${id}__validationText`}
-        >
-          {validationText}
+        <div className={styles.field}>
+          <ul className={styles.list}>
+            {
+              options.map((option) => (
+                <li key={option.value}>
+                  <label
+                    className={styles.option}
+                    htmlFor={id && `${id}__item__${option.value}`}
+                    id={id && `${id}__item__${option.value}__label`}
+                  >
+                    <input
+                      {...transferProps(restProps)}
+                      className={styles.input}
+                      checked={(value === option.value) || undefined}
+                      disabled={disabled || option.disabled}
+                      id={id && `${id}__item__${option.value}`}
+                      name={id}
+                      onChange={changeHandler}
+                      type="radio"
+                      value={option.value}
+                    />
+                    <span
+                      className={styles.optionLabel}
+                      id={id && `${id}__item__${option.value}__labelText`}
+                    >
+                      { option.label }
+                    </span>
+                  </label>
+                </li>
+              ))
+            }
+          </ul>
+          {helpText && (
+            <div
+              className={styles.helpText}
+              id={id && `${id}__helpText`}
+            >
+              {helpText}
+            </div>
+          )}
+          {validationText && (
+            <div
+              className={styles.validationText}
+              id={id && `${id}__validationText`}
+            >
+              {validationText}
+            </div>
+          )}
         </div>
-      )}
-    </div>
-  </div>
+      </div>
+    )}
+  </FormLayoutContext.Consumer>
 );
 
 Radio.defaultProps = {
@@ -98,7 +102,6 @@ Radio.defaultProps = {
   disabled: false,
   helpText: null,
   id: undefined,
-  inFormLayout: false,
   isLabelVisible: true,
   layout: 'vertical',
   required: false,
@@ -135,10 +138,6 @@ Radio.propTypes = {
    */
   id: PropTypes.string,
   /**
-   * Treat the field differently when it's inside a FormLayout. Do not set manually!
-   */
-  inFormLayout: PropTypes.bool,
-  /**
    * If `false`, the label will be visually hidden (but remains accessible by assistive
    * technologies).
    */
@@ -149,6 +148,9 @@ Radio.propTypes = {
   label: PropTypes.string.isRequired,
   /**
    * Layout of the field.
+   *
+   * Ignored if the component is rendered within `FormLayout` component
+   * as the value is inherited in such case.
    */
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
   /**

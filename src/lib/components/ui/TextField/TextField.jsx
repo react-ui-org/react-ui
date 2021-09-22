@@ -4,6 +4,7 @@ import getRootSizeClassName from '../../../helpers/getRootSizeClassName';
 import getRootValidationStateClassName from '../../../helpers/getRootValidationStateClassName';
 import { withProviderContext } from '../../../provider';
 import transferProps from '../../../utils/transferProps';
+import { FormLayoutContext } from '../../layout/FormLayout';
 import withForwardedRef from '../withForwardedRef';
 import styles from './TextField.scss';
 
@@ -16,7 +17,6 @@ export const TextField = ({
   fullWidth,
   helpText,
   id,
-  inFormLayout,
   inputSize,
   isLabelVisible,
   label,
@@ -30,76 +30,79 @@ export const TextField = ({
   value,
   variant,
   ...restProps
-}) => {
-  const hasSmallInput = (inputSize !== null) && (inputSize <= SMALL_INPUT_SIZE);
+}) => (
+  <FormLayoutContext.Consumer>
+    {(context) => {
+      const hasSmallInput = (inputSize !== null) && (inputSize <= SMALL_INPUT_SIZE);
 
-  return (
-    <label
-      className={[
-        styles.root,
-        fullWidth ? styles.isRootFullWidth : '',
-        hasSmallInput ? styles.hasRootSmallInput : '',
-        inFormLayout ? styles.isRootInFormLayout : '',
-        inputSize ? styles.hasRootCustomInputSize : '',
-        layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
-        disabled ? styles.isRootDisabled : '',
-        required ? styles.isRootRequired : '',
-        getRootSizeClassName(size, styles),
-        getRootValidationStateClassName(validationState, styles),
-        variant === 'filled' ? styles.rootVariantFilled : styles.rootVariantOutline,
-      ].join(' ')}
-      htmlFor={id}
-      id={id && `${id}__label`}
-      {...(inputSize ? { style: { '--rui-custom-input-size': inputSize } } : {})}
-    >
-      <div
-        className={[
-          styles.label,
-          isLabelVisible ? '' : styles.isLabelHidden,
-        ].join(' ')}
-        id={id && `${id}__labelText`}
-      >
-        {label}
-      </div>
-      <div className={styles.field}>
-        <div className={styles.inputContainer}>
-          <input
-            {...transferProps(restProps)}
-            className={styles.input}
-            disabled={disabled}
-            id={id}
-            onChange={changeHandler}
-            placeholder={placeholder}
-            ref={forwardedRef}
-            required={required}
-            size={type !== 'number' ? inputSize : null}
-            type={type}
-            value={value}
-          />
-          {variant === 'filled' && (
-            <div className={styles.bottomLine} />
-          )}
-        </div>
-        {helpText && (
+      return (
+        <label
+          className={[
+            styles.root,
+            fullWidth ? styles.isRootFullWidth : '',
+            hasSmallInput ? styles.hasRootSmallInput : '',
+            context.layout ? styles.isRootInFormLayout : '',
+            (context.layout || layout) === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
+            disabled ? styles.isRootDisabled : '',
+            required ? styles.isRootRequired : '',
+            getRootSizeClassName(size, styles),
+            getRootValidationStateClassName(validationState, styles),
+            variant === 'filled' ? styles.rootVariantFilled : styles.rootVariantOutline,
+          ].join(' ')}
+          htmlFor={id}
+          id={id && `${id}__label`}
+          {...(inputSize ? { style: { '--rui-custom-input-size': inputSize } } : {})}
+        >
           <div
-            className={styles.helpText}
-            id={id && `${id}__helpText`}
+            className={[
+              styles.label,
+              isLabelVisible ? '' : styles.isLabelHidden,
+            ].join(' ')}
+            id={id && `${id}__labelText`}
           >
-            {helpText}
+            {label}
           </div>
-        )}
-        {validationText && (
-          <div
-            className={styles.validationText}
-            id={id && `${id}__validationText`}
-          >
-            {validationText}
+          <div className={styles.field}>
+            <div className={styles.inputContainer}>
+              <input
+                {...transferProps(restProps)}
+                className={styles.input}
+                disabled={disabled}
+                id={id}
+                onChange={changeHandler}
+                placeholder={placeholder}
+                ref={forwardedRef}
+                required={required}
+                size={type !== 'number' ? inputSize : null}
+                type={type}
+                value={value}
+              />
+              {variant === 'filled' && (
+                <div className={styles.bottomLine} />
+              )}
+            </div>
+            {helpText && (
+              <div
+                className={styles.helpText}
+                id={id && `${id}__helpText`}
+              >
+                {helpText}
+              </div>
+            )}
+            {validationText && (
+              <div
+                className={styles.validationText}
+                id={id && `${id}__validationText`}
+              >
+                {validationText}
+              </div>
+            )}
           </div>
-        )}
-      </div>
-    </label>
-  );
-};
+        </label>
+      );
+    }}
+  </FormLayoutContext.Consumer>
+);
 
 TextField.defaultProps = {
   changeHandler: null,
@@ -108,7 +111,6 @@ TextField.defaultProps = {
   fullWidth: false,
   helpText: null,
   id: undefined,
-  inFormLayout: false,
   inputSize: null,
   isLabelVisible: true,
   layout: 'vertical',
@@ -158,10 +160,6 @@ TextField.propTypes = {
   /**
    * Treat the field differently when it's inside a FormLayout. Do not set manually!
    */
-  inFormLayout: PropTypes.bool,
-  /**
-   * Width of the input field. Translated as `size` attribute for input types other than `number`.
-   */
   inputSize: PropTypes.number,
   /**
    * If `false`, the label will be visually hidden (but remains accessible by assistive
@@ -174,6 +172,9 @@ TextField.propTypes = {
   label: PropTypes.string.isRequired,
   /**
    * Layout of the field.
+   *
+   * Ignored if the component is rendered within `FormLayout` component
+   * as the value is inherited in such case.
    */
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
   /**

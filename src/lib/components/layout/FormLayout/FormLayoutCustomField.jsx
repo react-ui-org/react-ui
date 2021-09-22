@@ -3,6 +3,7 @@ import React from 'react';
 import getRootSizeClassName from '../../../helpers/getRootSizeClassName';
 import getRootValidationStateClassName from '../../../helpers/getRootValidationStateClassName';
 import { withProviderContext } from '../../../provider';
+import FormLayoutContext from './FormLayoutContext';
 import styles from './FormLayoutCustomField.scss';
 
 const renderLabel = (id, label, labelForId) => {
@@ -40,30 +41,33 @@ export const FormLayoutCustomField = ({
   innerFieldSize,
   label,
   labelForId,
-  layout,
   required,
   validationState,
 }) => (
-  <div
-    id={id}
-    className={[
-      styles.root,
-      fullWidth ? styles.isRootFullWidth : '',
-      layout === 'vertical' ? styles.rootLayoutVertical : styles.rootLayoutHorizontal,
-      disabled ? styles.isRootDisabled : '',
-      required ? styles.isRootRequired : '',
-      getRootSizeClassName(innerFieldSize, styles),
-      getRootValidationStateClassName(validationState, styles),
-    ].join(' ')}
-  >
-    {renderLabel(id, label, labelForId)}
-    <div
-      id={id && `${id}__field`}
-      className={styles.field}
-    >
-      {children}
-    </div>
-  </div>
+  <FormLayoutContext.Consumer>
+    {(context) => (
+      <div
+        id={id}
+        className={[
+          styles.root,
+          fullWidth ? styles.isRootFullWidth : '',
+          context.layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
+          disabled ? styles.isRootDisabled : '',
+          required ? styles.isRootRequired : '',
+          getRootSizeClassName(innerFieldSize, styles),
+          getRootValidationStateClassName(validationState, styles),
+        ].join(' ')}
+      >
+        {renderLabel(id, label, labelForId)}
+        <div
+          id={id && `${id}__field`}
+          className={styles.field}
+        >
+          {children}
+        </div>
+      </div>
+    )}
+  </FormLayoutContext.Consumer>
 );
 
 FormLayoutCustomField.defaultProps = {
@@ -74,7 +78,6 @@ FormLayoutCustomField.defaultProps = {
   innerFieldSize: null,
   label: null,
   labelForId: undefined,
-  layout: 'vertical',
   required: false,
   validationState: null,
 };
@@ -112,10 +115,6 @@ FormLayoutCustomField.propTypes = {
    * Optional ID of labeled field to keep accessibility features. Only available if `label` is set.
    */
   labelForId: PropTypes.string,
-  /**
-   * Layout of the field, controlled by parent FormLayout.
-   */
-  layout: PropTypes.oneOf(['horizontal', 'vertical']),
   /**
    * If `true`, label will be styled as required.
    */

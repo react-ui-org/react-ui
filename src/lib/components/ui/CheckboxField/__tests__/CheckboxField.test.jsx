@@ -9,10 +9,9 @@ import userEvent from '@testing-library/user-event';
 import { disabledPropTest } from '../../../../../../tests/propTests/disabledPropTest';
 import { forwardedRefPropTest } from '../../../../../../tests/propTests/forwardedRefPropTest';
 import { helpTextPropTest } from '../../../../../../tests/propTests/helpTextPropTest';
-import { inFormLayoutPropTest } from '../../../../../../tests/propTests/inFormLayoutPropTest';
+import { inFormLayoutProviderTest } from '../../../../../../tests/providerTests/inFormLayoutProviderTest';
 import { isLabelVisible } from '../../../../../../tests/propTests/isLabelVisible';
 import { labelPropTest } from '../../../../../../tests/propTests/labelPropTest';
-import { layoutPropTest } from '../../../../../../tests/propTests/layoutPropTest';
 import { requiredPropTest } from '../../../../../../tests/propTests/requiredPropTest';
 import { validationStatePropTest } from '../../../../../../tests/propTests/validationStatePropTest';
 import { validationTextPropTest } from '../../../../../../tests/propTests/validationTextPropTest';
@@ -23,6 +22,8 @@ const mandatoryProps = {
 };
 
 describe('rendering', () => {
+  inFormLayoutProviderTest(<CheckboxField {...mandatoryProps} />);
+
   it.each([
     [
       {
@@ -55,10 +56,8 @@ describe('rendering', () => {
         expect(within(rootElement).getByText('validation text')).toHaveAttribute('id', 'id__validationText');
       },
     ],
-    ...inFormLayoutPropTest,
     ...isLabelVisible,
     ...labelPropTest,
-    ...layoutPropTest,
     ...requiredPropTest,
     ...validationStatePropTest,
     ...validationTextPropTest,
