@@ -1,11 +1,12 @@
 import React from 'react';
 
-export default (WrappedComponent) => {
-  const withForwardedRef = (props, ref) => (
+export default (WrappedComponent, componentName) => {
+  const withForwardedRef = React.forwardRef((props, ref) => (
     <WrappedComponent {...props} forwardedRef={ref} />
-  );
+  ));
 
-  withForwardedRef.displayName = `withForwardedRef(${WrappedComponent.name || WrappedComponent.name})`;
+  // Preserve component name while wrapping former component with higher-order component
+  withForwardedRef.displayName = componentName;
 
-  return React.forwardRef(withForwardedRef);
+  return withForwardedRef;
 };

@@ -1,6 +1,7 @@
 import flattenChildren from 'react-keyed-flatten-children';
 import PropTypes from 'prop-types';
 import React from 'react';
+import elementOfType from '../../../propTypes/elementOfType';
 import { withProviderContext } from '../../../provider';
 import styles from './FormLayout.scss';
 
@@ -97,7 +98,15 @@ FormLayout.propTypes = {
    * * `TextField`
    * * `Toggle`
    */
-  children: PropTypes.element,
+  children: elementOfType([
+    'CheckboxField',
+    'FormLayoutCustomField',
+    'Radio',
+    'SelectField',
+    'TextArea',
+    'TextField',
+    'Toggle',
+  ]),
   /**
    * Layout that is forced on children form fields.
    */

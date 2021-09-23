@@ -216,6 +216,9 @@ SelectField.propTypes = {
   variant: PropTypes.oneOf(['filled', 'outline']),
 };
 
-export const SelectFieldWithContext = withForwardedRef(withProviderContext(SelectField, 'SelectField'));
+export const SelectFieldWithContext = withForwardedRef(
+  withProviderContext(SelectField, 'SelectField'),
+  'SelectField',
+);
 
 export default SelectFieldWithContext;

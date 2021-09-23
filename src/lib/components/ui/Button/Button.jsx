@@ -189,6 +189,9 @@ Button.propTypes = {
   type: PropTypes.oneOf(['button', 'submit']),
 };
 
-export const ButtonWithContext = withForwardedRef(withProviderContext(Button, 'Button'));
+export const ButtonWithContext = withForwardedRef(
+  withProviderContext(Button, 'Button'),
+  'Button',
+);
 
 export default ButtonWithContext;

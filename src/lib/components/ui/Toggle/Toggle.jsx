@@ -172,6 +172,9 @@ Toggle.propTypes = {
   ]),
 };
 
-export const ToggleWithContext = withForwardedRef(withProviderContext(Toggle, 'Toggle'));
+export const ToggleWithContext = withForwardedRef(
+  withProviderContext(Toggle, 'Toggle'),
+  'Toggle',
+);
 
 export default ToggleWithContext;

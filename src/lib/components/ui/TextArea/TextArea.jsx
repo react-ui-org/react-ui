@@ -200,6 +200,9 @@ TextArea.propTypes = {
   variant: PropTypes.oneOf(['filled', 'outline']),
 };
 
-export const TextAreaWithContext = withForwardedRef(withProviderContext(TextArea, 'TextArea'));
+export const TextAreaWithContext = withForwardedRef(
+  withProviderContext(TextArea, 'TextArea'),
+  'TextArea',
+);
 
 export default TextAreaWithContext;

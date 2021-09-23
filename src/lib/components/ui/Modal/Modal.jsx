@@ -9,6 +9,7 @@ import {
 } from '../../layout/Toolbar';
 import Button from '../Button';
 import ScrollView from '../ScrollView';
+import elementOfType from '../../../propTypes/elementOfType';
 import styles from './Modal.scss';
 
 export class Modal extends React.Component {
@@ -290,7 +291,7 @@ Modal.propTypes = {
    * If provided only the modal body will be scrollable.
    * If set to `null` the entire modal including header and footer will be scrollable.
    */
-  scrollView: PropTypes.element,
+  scrollView: elementOfType(['ScrollView']),
   /**
    * Size of the modal.
    */

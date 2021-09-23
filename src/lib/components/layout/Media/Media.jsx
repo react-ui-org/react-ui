@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import elementOfType from '../../../propTypes/elementOfType';
 import { withProviderContext } from '../../../provider';
 import styles from './Media.scss';
 
@@ -21,10 +21,7 @@ Media.propTypes = {
    * * `MediaBody`
    * * `MediaObject`
    */
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element),
-  ]).isRequired,
+  children: elementOfType(['MediaBody', 'MediaObject']).isRequired,
 };
 
 export const MediaWithContext = withProviderContext(Media, 'Media');

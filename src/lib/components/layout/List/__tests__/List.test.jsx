@@ -4,9 +4,10 @@ import {
   within,
 } from '@testing-library/react';
 import { List } from '../List';
+import { ListItem } from '../ListItem';
 
 const defaultProps = {
-  children: <div>content</div>,
+  children: <ListItem>content</ListItem>,
 };
 
 describe('rendering', () => {
@@ -28,7 +29,7 @@ describe('rendering', () => {
       (rootElement) => expect(rootElement).not.toHaveClass('isAutoWidth'),
     ],
     [
-      { children: <div>content text</div> },
+      { children: <ListItem>content text</ListItem> },
       (rootElement) => expect(within(rootElement).getByText('content text')),
     ],
     [

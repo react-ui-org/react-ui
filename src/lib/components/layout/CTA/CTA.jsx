@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import elementOfType from '../../../propTypes/elementOfType';
 import { withProviderContext } from '../../../provider';
 import styles from './CTA.scss';
 
@@ -52,10 +53,7 @@ CTA.propTypes = {
    * * `CTACenter`
    * * `CTAEnd`
    */
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element),
-  ]).isRequired,
+  children: elementOfType(['CTAStart', 'CTACenter', 'CTAEnd']).isRequired,
 };
 
 export const CTAWithContext = withProviderContext(CTA, 'CTA');

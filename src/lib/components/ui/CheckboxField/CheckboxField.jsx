@@ -173,6 +173,9 @@ CheckboxField.propTypes = {
   ]),
 };
 
-export const CheckboxFieldWithContext = withForwardedRef(withProviderContext(CheckboxField, 'CheckboxField'));
+export const CheckboxFieldWithContext = withForwardedRef(
+  withProviderContext(CheckboxField, 'CheckboxField'),
+  'CheckboxField',
+);
 
 export default CheckboxFieldWithContext;

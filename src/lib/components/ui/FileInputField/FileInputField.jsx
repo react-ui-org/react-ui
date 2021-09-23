@@ -158,6 +158,9 @@ FileInputField.propTypes = {
   validationText: PropTypes.node,
 };
 
-export const FileInputFieldWithContext = withForwardedRef(withProviderContext(FileInputField, 'FileInputField'));
+export const FileInputFieldWithContext = withForwardedRef(
+  withProviderContext(FileInputField, 'FileInputField'),
+  'FileInputField',
+);
 
 export default FileInputFieldWithContext;

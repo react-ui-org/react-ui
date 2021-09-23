@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import elementOfType from '../../../propTypes/elementOfType';
 import { withProviderContext } from '../../../provider';
 import styles from './Toolbar.scss';
 
@@ -74,7 +75,7 @@ Toolbar.propTypes = {
   /**
    * Individual ToolbarItems and ToolbarGroups.
    */
-  children: PropTypes.node.isRequired,
+  children: elementOfType(['ToolbarGroup', 'ToolbarItem']).isRequired,
   /**
    * If `true`, spacing of all toolbar items in the toolbar will be reduced.
    */

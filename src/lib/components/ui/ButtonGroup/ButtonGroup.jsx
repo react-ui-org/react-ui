@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import elementOfType from '../../../propTypes/elementOfType';
 import { withProviderContext } from '../../../provider';
 import styles from './ButtonGroup.scss';
 
@@ -50,7 +51,7 @@ ButtonGroup.propTypes = {
   /**
    * Buttons to be grouped.
    */
-  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  children: elementOfType(['Button']).isRequired,
   /**
    * If `true`, all buttons inside the group will be disabled.
    */

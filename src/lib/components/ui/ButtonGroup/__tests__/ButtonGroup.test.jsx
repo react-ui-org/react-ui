@@ -25,10 +25,6 @@ describe('rendering', () => {
       (rootElement) => expect(within(rootElement).getByText('label text')),
     ],
     [
-      { children: [] },
-      (rootElement) => expect(rootElement).toBeInTheDocument(),
-    ],
-    [
       { disabled: true },
       (rootElement) => expect(within(rootElement).getByRole('button')).toBeDisabled(),
     ],

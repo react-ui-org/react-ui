@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import elementOfType from '../../../propTypes/elementOfType';
 import { withProviderContext } from '../../../provider';
 import styles from './Tabs.scss';
 
@@ -26,10 +27,7 @@ Tabs.propTypes = {
   /**
    * Nested `TabsItem` elements.
    */
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element),
-  ]),
+  children: elementOfType(['TabsItem']),
   /**
    * ID of the root HTML element. It also serves as base for nested element:
    * * `<ID>__list`

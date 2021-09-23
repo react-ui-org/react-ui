@@ -7,16 +7,17 @@ import { alignPropTest } from '../../../../../../tests/propTests/alignPropTest';
 import { densePropTest } from '../../../../../../tests/propTests/densePropTest';
 import { noWrapPropTest } from '../../../../../../tests/propTests/noWrapPropTest';
 import { Toolbar } from '../Toolbar';
+import { ToolbarItem } from '../ToolbarItem';
 
 const defaultProps = {
-  children: <div>other content text</div>,
+  children: <ToolbarItem>other content text</ToolbarItem>,
 };
 
 describe('rendering', () => {
   it.each([
     ...alignPropTest,
     [
-      { children: <div>other content text</div> },
+      { children: <ToolbarItem>other content text</ToolbarItem> },
       (rootElement) => expect(within(rootElement).getByText('other content text')),
     ],
     ...densePropTest,

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import getRootColorClassName from '../../../helpers/getRootColorClassName';
 import { withProviderContext } from '../../../provider';
+import elementOfType from '../../../propTypes/elementOfType';
 import styles from './Card.scss';
 
 export const Card = ({
@@ -41,10 +42,7 @@ Card.propTypes = {
    * * `CardFooter`
    * * `ScrollView`
    */
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element),
-  ]).isRequired,
+  children: elementOfType(['CardBody', 'CardFooter', 'ScrollView']).isRequired,
   /**
    * [Color variant](/foundation/colors#component-colors) to clarify importance and meaning of the card.
    */

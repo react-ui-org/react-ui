@@ -28,5 +28,8 @@ export default (Component, componentName) => {
     translations: PropTypes.shape({}),
   };
 
+  // Preserve component name while wrapping former component with higher-order component
+  WithProviderContextComponent.displayName = componentName;
+
   return WithProviderContextComponent;
 };
