@@ -25,30 +25,49 @@ To run the dev server:
 In order for the automation to work in the best possible way (we use GitHub
 Actions), please follow these guidelines:
 
-- **One pull request per subject.** Don't combine unrelated changes in a single
-  PR unless they are really subtle details such as fix of a typo.
+1. **One pull request per subject.** Don't combine unrelated changes in a single
+   PR unless they are really subtle details such as fix of a typo.
 
-- **Only PRs into `master` branch are listed in changelog.** PRs into other
-  branches are not picked up by release automation.
+2. **Only PRs into `master` branch are listed in changelog.** PRs into other
+   branches are not picked up by release automation.
 
-- **Name your branches according to nature of change.** Choose one of:
+3. **Name your branches according to nature of change.** Choose one of:
 
-  - `bc/*` for breaking changes
-  - `feature/*` for features
-  - `bugfix/*` for bugfixes
-  - `refactoring/*` for refactoring of the library
-  - `docs/*` or `documentation/*` for changes in docs
-  - `maintenance/*` for maintenance (builds, dependencies, automation, etc.)
-  - `release/*` for [releases](/contribute/releasing) (administrators only)
+   - `bc/*` for breaking changes
+   - `feature/*` for features
+   - `bugfix/*` for bugfixes
+   - `refactoring/*` for refactoring of the library
+   - `docs/*` or `documentation/*` for changes in docs
+   - `maintenance/*` for maintenance (builds, dependencies, automation, etc.)
+   - `release/*` for [releases](/contribute/releasing) (administrators only)
 
-- **Write clear PR names.** Use imperative and write in English, eg. _Create
-  `ScrollView` component_. Optionally use Markdown code blocks to emphasize.
-  **PR names are used in changelogs.**
+4. **Write clear, helpful and descriptive commit messages.**
 
-- **Write clear commit messages.** Also in imperative and in English. Append
-  issue number (if it exists) in parentheses to the end of the message, eg.
-  _Create `ScrollView` component (#53)_. Optionally use Markdown code blocks to
-  emphasize.
+   1. **Use imperative and write in English,** e.g. _Update dependencies_ or
+      _Claim support for controlled components only_.
+   2. **If an issue exists for your changes, append the issue number** in
+      parentheses to the end of the commit message, e.g. _Update dependencies
+      (#261)_.
+   3. Optionally use Markdown code blocks to emphasize, e.g.
+      _Create `ScrollView` component (#53)_.
+
+5. **Write clear, helpful and descriptive PR names.**
+
+   1. **All rules for commit messages apply** also for PR names.
+   2. **Always check that PR name meets the requirements** above because **PR
+      names are used in changelog**. GitHub automatically truncates long PR
+      names and picks up branch name for multi-commit PRs, so it's necessary to
+      make sure the PR name is what we want to have in the changelog.
+   3. **If an issue exists for your changes, append this text to PR
+      description** (the topmost comment in the PR) in order for the issue to be
+      closed automatically once the PR is merged: `Closes #<ISSUE NUMBER>`. You
+      will know the issue is linked correctly when it appears in the _Linked
+      issues_ section of the PR. (Having the issue mentioned in commit message
+      and/or PR name does _not_ have this effect.)
+   4. **If there is no issue for your changes, please add your PR to `The
+      Board`** GitHub project in the _Projects_ section of the PR. The correct
+      board column will be selected automatically. This helps us keep track of
+      what is in development.
 
 Pull requests are labelled automatically. You can add more labels to better
 qualify the nature of the change — in such case, it will be included in all
