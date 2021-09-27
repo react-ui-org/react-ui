@@ -39,7 +39,7 @@ describe('elementOfType', () => {
     expect(result).toBeNull();
   });
 
-  it('test valid component which requires children with single child', () => {
+  it('test valid component which requires single child', () => {
     const component = (
       <TestWrapper>
         <TestItem>Item</TestItem>
@@ -50,7 +50,7 @@ describe('elementOfType', () => {
     expect(result).toBeNull();
   });
 
-  it('test valid component which requires children with multiple children', () => {
+  it('test valid component which requires multiple children', () => {
     const component = (
       <TestWrapper>
         <TestItem>Item</TestItem>
@@ -63,7 +63,7 @@ describe('elementOfType', () => {
     expect(result).toBeNull();
   });
 
-  it('test valid component which requires children with single child wrapped in React.Fragment', () => {
+  it('test valid component which requires single child wrapped in React.Fragment', () => {
     const component = (
       <TestWrapper>
         <>
@@ -76,7 +76,7 @@ describe('elementOfType', () => {
     expect(result).toBeNull();
   });
 
-  it('test valid component which requires children with multiple children wrapped in React.Fragment', () => {
+  it('test valid component which requires multiple children wrapped in React.Fragment', () => {
     const component = (
       <TestWrapper>
         <>
@@ -93,7 +93,7 @@ describe('elementOfType', () => {
     expect(result).toBeNull();
   });
 
-  it('test invalid component which requires children but any are passed in', () => {
+  it('test invalid component which requires children but none are passed in', () => {
     const component = (
       <TestWrapper />
     );

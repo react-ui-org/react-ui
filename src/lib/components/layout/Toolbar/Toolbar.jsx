@@ -73,7 +73,9 @@ Toolbar.propTypes = {
    */
   align: PropTypes.oneOf(['top', 'middle', 'bottom', 'baseline']),
   /**
-   * Individual ToolbarItems and ToolbarGroups.
+   * Nested elements. Supported types are:
+   * * `ToolbarGroup`
+   * * `ToolbarItem`
    */
   children: elementOfType(['ToolbarGroup', 'ToolbarItem']).isRequired,
   /**

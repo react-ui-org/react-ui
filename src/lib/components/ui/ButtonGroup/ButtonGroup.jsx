@@ -49,7 +49,7 @@ ButtonGroup.propTypes = {
    */
   block: PropTypes.bool,
   /**
-   * Buttons to be grouped.
+   * Nested `Button` elements.
    */
   children: elementOfType(['Button']).isRequired,
   /**

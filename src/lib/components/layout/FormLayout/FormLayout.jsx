@@ -89,7 +89,7 @@ FormLayout.propTypes = {
    */
   autoWidth: PropTypes.bool,
   /**
-   * Supported form field components:
+   * Nested elements. Supported types are:
    * * `CheckboxField`
    * * `FormLayoutCustomField`
    * * `Radio`

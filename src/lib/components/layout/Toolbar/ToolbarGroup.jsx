@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import elementOfType from '../../../propTypes/elementOfType';
 import { withProviderContext } from '../../../provider';
 import styles from './Toolbar.scss';
 
@@ -53,9 +54,9 @@ ToolbarGroup.propTypes = {
    */
   align: PropTypes.oneOf(['top', 'middle', 'bottom', 'baseline']),
   /**
-   * Grouped ToolbarItems.
+   * Nested `ToolbarItem` elements.
    */
-  children: PropTypes.node.isRequired,
+  children: elementOfType(['ToolbarItem']).isRequired,
   /**
    * If `true`, spacing of toolbar items in the group will be reduced.
    */

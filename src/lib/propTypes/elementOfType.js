@@ -57,7 +57,7 @@ const validateChildren = (props, propName, componentName, allowedTypes, isRequir
 
 const elementOfType = (allowedTypes) => {
   if (!Array.isArray(allowedTypes) || allowedTypes.length === 0) {
-    throw new TypeError('Prop type validateChildren `elementOfType` requires at least 1 type.');
+    throw new TypeError('Prop type `elementOfType` requires at least 1 type.');
   }
 
   const elementOfTypeInternal = (

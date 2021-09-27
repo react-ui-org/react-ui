@@ -62,7 +62,7 @@ List.propTypes = {
    */
   autoWidth: PropTypes.bool,
   /**
-   * Individual ListItems.
+   * Nested `ListItem` elements.
    */
   children: elementOfType(['ListItem']),
 };
