@@ -39,6 +39,19 @@ describe('elementOfType', () => {
     expect(result).toBeNull();
   });
 
+  it('test valid component which does not require children with falsy condition', () => {
+    const component = (
+      <TestWrapper>
+        {false && (
+          <TestItem>Item</TestItem>
+        )}
+      </TestWrapper>
+    );
+
+    const result = executeOptionalElementOfType(component);
+    expect(result).toBeNull();
+  });
+
   it('test valid component which requires single child', () => {
     const component = (
       <TestWrapper>

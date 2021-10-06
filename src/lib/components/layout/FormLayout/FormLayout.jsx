@@ -1,7 +1,6 @@
 import flattenChildren from 'react-keyed-flatten-children';
 import PropTypes from 'prop-types';
 import React from 'react';
-import elementOfType from '../../../propTypes/elementOfType';
 import { withProviderContext } from '../../../provider';
 import styles from './FormLayout.scss';
 
@@ -97,16 +96,9 @@ FormLayout.propTypes = {
    * * `TextArea`
    * * `TextField`
    * * `Toggle`
+   * Those elements are not strictly checked as they can be wrapped in your application.
    */
-  children: elementOfType([
-    'CheckboxField',
-    'FormLayoutCustomField',
-    'Radio',
-    'SelectField',
-    'TextArea',
-    'TextField',
-    'Toggle',
-  ]),
+  children: PropTypes.node,
   /**
    * Layout that is forced on children form fields.
    */
