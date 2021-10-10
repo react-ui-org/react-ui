@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useContext } from 'react';
 import getRootSizeClassName from '../../../helpers/getRootSizeClassName';
 import getRootValidationStateClassName from '../../../helpers/getRootValidationStateClassName';
 import { withProviderContext } from '../../../provider';
@@ -28,73 +28,73 @@ export const TextArea = ({
   value,
   variant,
   ...restProps
-}) => (
-  <FormLayoutContext.Consumer>
-    {(context) => (
-      <label
+}) => {
+  const context = useContext(FormLayoutContext);
+
+  return (
+    <label
+      className={[
+        styles.root,
+        fullWidth ? styles.isRootFullWidth : '',
+        context.layout ? styles.isRootInFormLayout : '',
+        (context.layout || layout) === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
+        disabled ? styles.isRootDisabled : '',
+        required ? styles.isRootRequired : '',
+        getRootSizeClassName(size, styles),
+        getRootValidationStateClassName(validationState, styles),
+        variant === 'filled' ? styles.rootVariantFilled : styles.rootVariantOutline,
+      ].join(' ')}
+      htmlFor={id}
+      id={id && `${id}__label`}
+    >
+      <div
         className={[
-          styles.root,
-          fullWidth ? styles.isRootFullWidth : '',
-          context.layout ? styles.isRootInFormLayout : '',
-          (context.layout || layout) === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
-          disabled ? styles.isRootDisabled : '',
-          required ? styles.isRootRequired : '',
-          getRootSizeClassName(size, styles),
-          getRootValidationStateClassName(validationState, styles),
-          variant === 'filled' ? styles.rootVariantFilled : styles.rootVariantOutline,
+          styles.label,
+          isLabelVisible ? '' : styles.isLabelHidden,
         ].join(' ')}
-        htmlFor={id}
-        id={id && `${id}__label`}
+        id={id && `${id}__labelText`}
       >
-        <div
-          className={[
-            styles.label,
-            isLabelVisible ? '' : styles.isLabelHidden,
-          ].join(' ')}
-          id={id && `${id}__labelText`}
-        >
-          {label}
+        {label}
+      </div>
+      <div className={styles.field}>
+        <div className={styles.inputContainer}>
+          <textarea
+            {...transferProps(restProps)}
+            className={styles.input}
+            cols={cols}
+            disabled={disabled}
+            id={id}
+            onChange={changeHandler}
+            placeholder={placeholder}
+            ref={forwardedRef}
+            required={required}
+            rows={rows}
+            value={value}
+          />
+          {variant === 'filled' && (
+            <div className={styles.bottomLine} />
+          )}
         </div>
-        <div className={styles.field}>
-          <div className={styles.inputContainer}>
-            <textarea
-              {...transferProps(restProps)}
-              className={styles.input}
-              cols={cols}
-              disabled={disabled}
-              id={id}
-              onChange={changeHandler}
-              placeholder={placeholder}
-              ref={forwardedRef}
-              required={required}
-              rows={rows}
-              value={value}
-            />
-            {variant === 'filled' && (
-              <div className={styles.bottomLine} />
-            )}
+        {helpText && (
+          <div
+            className={styles.helpText}
+            id={id && `${id}__helpText`}
+          >
+            {helpText}
           </div>
-          {helpText && (
-            <div
-              className={styles.helpText}
-              id={id && `${id}__helpText`}
-            >
-              {helpText}
-            </div>
-          )}
-          {validationText && (
-            <div
-              className={styles.validationText}
-              id={id && `${id}__validationText`}
-            >
-              {validationText}
-            </div>
-          )}
-        </div>
-      </label>
-    )}
-  </FormLayoutContext.Consumer>
-);
+        )}
+        {validationText && (
+          <div
+            className={styles.validationText}
+            id={id && `${id}__validationText`}
+          >
+            {validationText}
+          </div>
+        )}
+      </div>
+    </label>
+  );
+};
 
 TextArea.defaultProps = {
   changeHandler: null,

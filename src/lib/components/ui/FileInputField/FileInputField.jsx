@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useContext } from 'react';
 import getRootValidationStateClassName from '../../../helpers/getRootValidationStateClassName';
 import { withProviderContext } from '../../../provider';
 import transferProps from '../../../utils/transferProps';
@@ -21,65 +21,65 @@ export const FileInputField = ({
   validationState,
   validationText,
   ...restProps
-}) => (
-  <FormLayoutContext.Consumer>
-    {(context) => (
-      <label
+}) => {
+  const context = useContext(FormLayoutContext);
+
+  return (
+    <label
+      className={[
+        styles.root,
+        fullWidth ? styles.isRootFullWidth : '',
+        context.layout ? styles.isRootInFormLayout : '',
+        (context.layout || layout) === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
+        disabled ? styles.isRootDisabled : '',
+        required ? styles.isRootRequired : '',
+        getRootValidationStateClassName(validationState, styles),
+      ].join(' ')}
+      htmlFor={id}
+      id={id && `${id}__label`}
+    >
+      <div
         className={[
-          styles.root,
-          fullWidth ? styles.isRootFullWidth : '',
-          context.layout ? styles.isRootInFormLayout : '',
-          (context.layout || layout) === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
-          disabled ? styles.isRootDisabled : '',
-          required ? styles.isRootRequired : '',
-          getRootValidationStateClassName(validationState, styles),
+          styles.label,
+          isLabelVisible ? '' : styles.isLabelHidden,
         ].join(' ')}
-        htmlFor={id}
-        id={id && `${id}__label`}
+        id={id && `${id}__labelText`}
       >
-        <div
-          className={[
-            styles.label,
-            isLabelVisible ? '' : styles.isLabelHidden,
-          ].join(' ')}
-          id={id && `${id}__labelText`}
-        >
-          {label}
+        {label}
+      </div>
+      <div className={styles.field}>
+        <div className={styles.inputContainer}>
+          <input
+            {...transferProps(restProps)}
+            className={styles.input}
+            disabled={disabled}
+            id={id}
+            onChange={changeHandler}
+            ref={forwardedRef}
+            required={required}
+            type="file"
+          />
         </div>
-        <div className={styles.field}>
-          <div className={styles.inputContainer}>
-            <input
-              {...transferProps(restProps)}
-              className={styles.input}
-              disabled={disabled}
-              id={id}
-              onChange={changeHandler}
-              ref={forwardedRef}
-              required={required}
-              type="file"
-            />
+        {helpText && (
+          <div
+            className={styles.helpText}
+            id={id && `${id}__helpText`}
+          >
+            {helpText}
           </div>
-          {helpText && (
-            <div
-              className={styles.helpText}
-              id={id && `${id}__helpText`}
-            >
-              {helpText}
-            </div>
-          )}
-          {validationText && (
-            <div
-              className={styles.validationText}
-              id={id && `${id}__validationText`}
-            >
-              {validationText}
-            </div>
-          )}
-        </div>
-      </label>
-    )}
-  </FormLayoutContext.Consumer>
-);
+        )}
+        {validationText && (
+          <div
+            className={styles.validationText}
+            id={id && `${id}__validationText`}
+          >
+            {validationText}
+          </div>
+        )}
+      </div>
+    </label>
+  );
+};
 
 FileInputField.defaultProps = {
   changeHandler: null,

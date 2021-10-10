@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useContext } from 'react';
 import getRootSizeClassName from '../../../helpers/getRootSizeClassName';
 import getRootValidationStateClassName from '../../../helpers/getRootValidationStateClassName';
 import { withProviderContext } from '../../../provider';
@@ -26,86 +26,86 @@ export const SelectField = ({
   value,
   variant,
   ...restProps
-}) => (
-  <FormLayoutContext.Consumer>
-    {(context) => (
-      <label
+}) => {
+  const context = useContext(FormLayoutContext);
+
+  return (
+    <label
+      className={[
+        styles.root,
+        fullWidth ? styles.isRootFullWidth : '',
+        context.layout ? styles.isRootInFormLayout : '',
+        (context.layout || layout) === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
+        disabled ? styles.isRootDisabled : '',
+        required ? styles.isRootRequired : '',
+        getRootSizeClassName(size, styles),
+        getRootValidationStateClassName(validationState, styles),
+        variant === 'filled' ? styles.rootVariantFilled : styles.rootVariantOutline,
+      ].join(' ')}
+      htmlFor={id}
+      id={id && `${id}__label`}
+    >
+      <div
         className={[
-          styles.root,
-          fullWidth ? styles.isRootFullWidth : '',
-          context.layout ? styles.isRootInFormLayout : '',
-          (context.layout || layout) === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
-          disabled ? styles.isRootDisabled : '',
-          required ? styles.isRootRequired : '',
-          getRootSizeClassName(size, styles),
-          getRootValidationStateClassName(validationState, styles),
-          variant === 'filled' ? styles.rootVariantFilled : styles.rootVariantOutline,
+          styles.label,
+          isLabelVisible ? '' : styles.isLabelHidden,
         ].join(' ')}
-        htmlFor={id}
-        id={id && `${id}__label`}
+        id={id && `${id}__labelText`}
       >
-        <div
-          className={[
-            styles.label,
-            isLabelVisible ? '' : styles.isLabelHidden,
-          ].join(' ')}
-          id={id && `${id}__labelText`}
-        >
-          {label}
-        </div>
-        <div className={styles.field}>
-          <div className={styles.inputContainer}>
-            <select
-              {...transferProps(restProps)}
-              className={styles.input}
-              disabled={disabled}
-              id={id}
-              onChange={changeHandler}
-              ref={forwardedRef}
-              required={required}
-              value={value}
-            >
-              {
-                options.map((option) => (
-                  <option
-                    disabled={option.disabled}
-                    id={id && `${id}__item__${option.value}`}
-                    key={option.value}
-                    value={option.value}
-                  >
-                    {option.label}
-                  </option>
-                ))
-              }
-            </select>
-            <div className={styles.caret}>
-              <span className={styles.caretIcon} />
-            </div>
-            {variant === 'filled' && (
-              <div className={styles.bottomLine} />
-            )}
+        {label}
+      </div>
+      <div className={styles.field}>
+        <div className={styles.inputContainer}>
+          <select
+            {...transferProps(restProps)}
+            className={styles.input}
+            disabled={disabled}
+            id={id}
+            onChange={changeHandler}
+            ref={forwardedRef}
+            required={required}
+            value={value}
+          >
+            {
+              options.map((option) => (
+                <option
+                  disabled={option.disabled}
+                  id={id && `${id}__item__${option.value}`}
+                  key={option.value}
+                  value={option.value}
+                >
+                  {option.label}
+                </option>
+              ))
+            }
+          </select>
+          <div className={styles.caret}>
+            <span className={styles.caretIcon} />
           </div>
-          {helpText && (
-            <div
-              className={styles.helpText}
-              id={id && `${id}__helpText`}
-            >
-              {helpText}
-            </div>
-          )}
-          {validationText && (
-            <div
-              className={styles.validationText}
-              id={id && `${id}__validationText`}
-            >
-              {validationText}
-            </div>
+          {variant === 'filled' && (
+            <div className={styles.bottomLine} />
           )}
         </div>
-      </label>
-    )}
-  </FormLayoutContext.Consumer>
-);
+        {helpText && (
+          <div
+            className={styles.helpText}
+            id={id && `${id}__helpText`}
+          >
+            {helpText}
+          </div>
+        )}
+        {validationText && (
+          <div
+            className={styles.validationText}
+            id={id && `${id}__validationText`}
+          >
+            {validationText}
+          </div>
+        )}
+      </div>
+    </label>
+  );
+};
 
 SelectField.defaultProps = {
   changeHandler: null,

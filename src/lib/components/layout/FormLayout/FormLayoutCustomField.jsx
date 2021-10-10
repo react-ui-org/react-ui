@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useContext } from 'react';
 import getRootSizeClassName from '../../../helpers/getRootSizeClassName';
 import getRootValidationStateClassName from '../../../helpers/getRootValidationStateClassName';
 import { withProviderContext } from '../../../provider';
@@ -43,32 +43,32 @@ export const FormLayoutCustomField = ({
   labelForId,
   required,
   validationState,
-}) => (
-  <FormLayoutContext.Consumer>
-    {(context) => (
+}) => {
+  const context = useContext(FormLayoutContext);
+
+  return (
+    <div
+      id={id}
+      className={[
+        styles.root,
+        fullWidth ? styles.isRootFullWidth : '',
+        context.layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
+        disabled ? styles.isRootDisabled : '',
+        required ? styles.isRootRequired : '',
+        getRootSizeClassName(innerFieldSize, styles),
+        getRootValidationStateClassName(validationState, styles),
+      ].join(' ')}
+    >
+      {renderLabel(id, label, labelForId)}
       <div
-        id={id}
-        className={[
-          styles.root,
-          fullWidth ? styles.isRootFullWidth : '',
-          context.layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
-          disabled ? styles.isRootDisabled : '',
-          required ? styles.isRootRequired : '',
-          getRootSizeClassName(innerFieldSize, styles),
-          getRootValidationStateClassName(validationState, styles),
-        ].join(' ')}
+        id={id && `${id}__field`}
+        className={styles.field}
       >
-        {renderLabel(id, label, labelForId)}
-        <div
-          id={id && `${id}__field`}
-          className={styles.field}
-        >
-          {children}
-        </div>
+        {children}
       </div>
-    )}
-  </FormLayoutContext.Consumer>
-);
+    </div>
+  );
+};
 
 FormLayoutCustomField.defaultProps = {
   children: null,
