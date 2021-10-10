@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useContext } from 'react';
 import getRootSizeClassName from '../../../helpers/getRootSizeClassName';
 import getRootValidationStateClassName from '../../../helpers/getRootValidationStateClassName';
 import { withProviderContext } from '../../../provider';
@@ -30,79 +30,76 @@ export const TextField = ({
   value,
   variant,
   ...restProps
-}) => (
-  <FormLayoutContext.Consumer>
-    {(context) => {
-      const hasSmallInput = (inputSize !== null) && (inputSize <= SMALL_INPUT_SIZE);
+}) => {
+  const context = useContext(FormLayoutContext);
+  const hasSmallInput = (inputSize !== null) && (inputSize <= SMALL_INPUT_SIZE);
 
-      return (
-        <label
-          className={[
-            styles.root,
-            fullWidth ? styles.isRootFullWidth : '',
-            hasSmallInput ? styles.hasRootSmallInput : '',
-            context.layout ? styles.isRootInFormLayout : '',
-            (context.layout || layout) === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
-            disabled ? styles.isRootDisabled : '',
-            required ? styles.isRootRequired : '',
-            getRootSizeClassName(size, styles),
-            getRootValidationStateClassName(validationState, styles),
-            variant === 'filled' ? styles.rootVariantFilled : styles.rootVariantOutline,
-          ].join(' ')}
-          htmlFor={id}
-          id={id && `${id}__label`}
-          {...(inputSize ? { style: { '--rui-custom-input-size': inputSize } } : {})}
-        >
+  return (
+    <label
+      className={[
+        styles.root,
+        fullWidth ? styles.isRootFullWidth : '',
+        hasSmallInput ? styles.hasRootSmallInput : '',
+        context.layout ? styles.isRootInFormLayout : '',
+        (context.layout || layout) === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
+        disabled ? styles.isRootDisabled : '',
+        required ? styles.isRootRequired : '',
+        getRootSizeClassName(size, styles),
+        getRootValidationStateClassName(validationState, styles),
+        variant === 'filled' ? styles.rootVariantFilled : styles.rootVariantOutline,
+      ].join(' ')}
+      htmlFor={id}
+      id={id && `${id}__label`}
+      {...(inputSize ? { style: { '--rui-custom-input-size': inputSize } } : {})}
+    >
+      <div
+        className={[
+          styles.label,
+          isLabelVisible ? '' : styles.isLabelHidden,
+        ].join(' ')}
+        id={id && `${id}__labelText`}
+      >
+        {label}
+      </div>
+      <div className={styles.field}>
+        <div className={styles.inputContainer}>
+          <input
+            {...transferProps(restProps)}
+            className={styles.input}
+            disabled={disabled}
+            id={id}
+            onChange={changeHandler}
+            placeholder={placeholder}
+            ref={forwardedRef}
+            required={required}
+            size={type !== 'number' ? inputSize : null}
+            type={type}
+            value={value}
+          />
+          {variant === 'filled' && (
+            <div className={styles.bottomLine} />
+          )}
+        </div>
+        {helpText && (
           <div
-            className={[
-              styles.label,
-              isLabelVisible ? '' : styles.isLabelHidden,
-            ].join(' ')}
-            id={id && `${id}__labelText`}
+            className={styles.helpText}
+            id={id && `${id}__helpText`}
           >
-            {label}
+            {helpText}
           </div>
-          <div className={styles.field}>
-            <div className={styles.inputContainer}>
-              <input
-                {...transferProps(restProps)}
-                className={styles.input}
-                disabled={disabled}
-                id={id}
-                onChange={changeHandler}
-                placeholder={placeholder}
-                ref={forwardedRef}
-                required={required}
-                size={type !== 'number' ? inputSize : null}
-                type={type}
-                value={value}
-              />
-              {variant === 'filled' && (
-                <div className={styles.bottomLine} />
-              )}
-            </div>
-            {helpText && (
-              <div
-                className={styles.helpText}
-                id={id && `${id}__helpText`}
-              >
-                {helpText}
-              </div>
-            )}
-            {validationText && (
-              <div
-                className={styles.validationText}
-                id={id && `${id}__validationText`}
-              >
-                {validationText}
-              </div>
-            )}
+        )}
+        {validationText && (
+          <div
+            className={styles.validationText}
+            id={id && `${id}__validationText`}
+          >
+            {validationText}
           </div>
-        </label>
-      );
-    }}
-  </FormLayoutContext.Consumer>
-);
+        )}
+      </div>
+    </label>
+  );
+};
 
 TextField.defaultProps = {
   changeHandler: null,

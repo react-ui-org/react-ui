@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useContext } from 'react';
 import getRootValidationStateClassName from '../../../helpers/getRootValidationStateClassName';
 import { withProviderContext } from '../../../provider';
 import transferProps from '../../../utils/transferProps';
@@ -22,66 +22,66 @@ export const Toggle = ({
   validationText,
   value,
   ...restProps
-}) => (
-  <FormLayoutContext.Consumer>
-    {(context) => (
-      <label
-        className={[
-          styles.root,
-          context.layout ? styles.isRootInFormLayout : '',
-          context.layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
-          labelPosition === 'before' ? styles.hasRootLabelBefore : '',
-          disabled ? styles.isRootDisabled : '',
-          required ? styles.isRootRequired : '',
-          getRootValidationStateClassName(validationState, styles),
-        ].join(' ')}
-        htmlFor={id}
-        id={id && `${id}__label`}
-      >
-        <div className={styles.field}>
-          <input
-            {...transferProps(restProps)}
-            checked={checked}
-            className={styles.input}
-            disabled={disabled}
-            id={id}
-            name={id}
-            onChange={changeHandler}
-            ref={forwardedRef}
-            required={required}
-            type="checkbox"
-            value={value}
-          />
-          <div
-            className={[
-              styles.label,
-              isLabelVisible ? '' : styles.isLabelHidden,
-            ].join(' ')}
-            id={id && `${id}__labelText`}
-          >
-            {label}
-          </div>
+}) => {
+  const context = useContext(FormLayoutContext);
+
+  return (
+    <label
+      className={[
+        styles.root,
+        context.layout ? styles.isRootInFormLayout : '',
+        context.layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
+        labelPosition === 'before' ? styles.hasRootLabelBefore : '',
+        disabled ? styles.isRootDisabled : '',
+        required ? styles.isRootRequired : '',
+        getRootValidationStateClassName(validationState, styles),
+      ].join(' ')}
+      htmlFor={id}
+      id={id && `${id}__label`}
+    >
+      <div className={styles.field}>
+        <input
+          {...transferProps(restProps)}
+          checked={checked}
+          className={styles.input}
+          disabled={disabled}
+          id={id}
+          name={id}
+          onChange={changeHandler}
+          ref={forwardedRef}
+          required={required}
+          type="checkbox"
+          value={value}
+        />
+        <div
+          className={[
+            styles.label,
+            isLabelVisible ? '' : styles.isLabelHidden,
+          ].join(' ')}
+          id={id && `${id}__labelText`}
+        >
+          {label}
         </div>
-        {helpText && (
-          <div
-            className={styles.helpText}
-            id={id && `${id}__helpText`}
-          >
-            {helpText}
-          </div>
-        )}
-        {validationText && (
-          <div
-            className={styles.validationText}
-            id={id && `${id}__validationText`}
-          >
-            {validationText}
-          </div>
-        )}
-      </label>
-    )}
-  </FormLayoutContext.Consumer>
-);
+      </div>
+      {helpText && (
+        <div
+          className={styles.helpText}
+          id={id && `${id}__helpText`}
+        >
+          {helpText}
+        </div>
+      )}
+      {validationText && (
+        <div
+          className={styles.validationText}
+          id={id && `${id}__validationText`}
+        >
+          {validationText}
+        </div>
+      )}
+    </label>
+  );
+};
 
 Toggle.defaultProps = {
   changeHandler: null,

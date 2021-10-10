@@ -81,6 +81,7 @@ FormLayout.propTypes = {
   /**
    * Supported form field components:
    * * `CheckboxField`
+   * * `FileInputField`
    * * `FormLayoutCustomField`
    * * `Radio`
    * * `SelectField`
