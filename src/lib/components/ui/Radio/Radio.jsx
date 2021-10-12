@@ -29,7 +29,7 @@ export const Radio = ({
       className={[
         styles.root,
         context ? styles.isRootInFormLayout : '',
-        resolveContextOrProp(context?.layout, layout) === 'horizontal'
+        resolveContextOrProp(context && context.layout, layout) === 'horizontal'
           ? styles.rootLayoutHorizontal
           : styles.rootLayoutVertical,
         disabled ? styles.isRootDisabled : '',

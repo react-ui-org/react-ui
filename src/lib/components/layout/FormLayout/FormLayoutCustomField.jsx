@@ -52,7 +52,7 @@ export const FormLayoutCustomField = ({
       className={[
         styles.root,
         fullWidth ? styles.isRootFullWidth : '',
-        context?.layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
+        context && context.layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
         disabled ? styles.isRootDisabled : '',
         required ? styles.isRootRequired : '',
         getRootSizeClassName(innerFieldSize, styles),
