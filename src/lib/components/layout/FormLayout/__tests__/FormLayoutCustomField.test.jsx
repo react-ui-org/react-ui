@@ -7,8 +7,8 @@ import { fullWidthPropTest } from '../../../../../../tests/propTests/fullWidthPr
 import { labelPropTest } from '../../../../../../tests/propTests/labelPropTest';
 import { requiredPropTest } from '../../../../../../tests/propTests/requiredPropTest';
 import { validationStatePropTest } from '../../../../../../tests/propTests/validationStatePropTest';
+import { FormLayoutContext } from '../FormLayoutContext';
 import { FormLayoutCustomField } from '../FormLayoutCustomField';
-import { FormLayoutProvider } from '..';
 
 describe('rendering', () => {
   it.each([
@@ -22,9 +22,11 @@ describe('rendering', () => {
     ],
   ])('renders with FormLayout props: "%s"', (testedProps, assert) => {
     const dom = render((
-      <FormLayoutProvider {...testedProps}>
+      <FormLayoutContext.Provider
+        value={{ ...testedProps }}
+      >
         <FormLayoutCustomField />
-      </FormLayoutProvider>
+      </FormLayoutContext.Provider>
     ));
 
     assert(dom.container.firstChild);

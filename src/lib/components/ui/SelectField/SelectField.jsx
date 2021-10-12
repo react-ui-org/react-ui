@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import getRootSizeClassName from '../../../helpers/getRootSizeClassName';
 import getRootValidationStateClassName from '../../../helpers/getRootValidationStateClassName';
+import { resolveContextOrProp } from '../../../helpers/resolveContextOrProp';
 import { withProviderContext } from '../../../provider';
 import transferProps from '../../../utils/transferProps';
 import { FormLayoutContext } from '../../layout/FormLayout';
@@ -34,8 +35,10 @@ export const SelectField = ({
       className={[
         styles.root,
         fullWidth ? styles.isRootFullWidth : '',
-        context.layout ? styles.isRootInFormLayout : '',
-        (context.layout || layout) === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
+        context ? styles.isRootInFormLayout : '',
+        resolveContextOrProp(context?.layout, layout) === 'horizontal'
+          ? styles.rootLayoutHorizontal
+          : styles.rootLayoutVertical,
         disabled ? styles.isRootDisabled : '',
         required ? styles.isRootRequired : '',
         getRootSizeClassName(size, styles),
