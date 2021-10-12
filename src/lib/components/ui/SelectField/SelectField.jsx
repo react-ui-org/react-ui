@@ -36,7 +36,7 @@ export const SelectField = ({
         styles.root,
         fullWidth ? styles.isRootFullWidth : '',
         context ? styles.isRootInFormLayout : '',
-        resolveContextOrProp(context?.layout, layout) === 'horizontal'
+        resolveContextOrProp(context && context.layout, layout) === 'horizontal'
           ? styles.rootLayoutHorizontal
           : styles.rootLayoutVertical,
         disabled ? styles.isRootDisabled : '',

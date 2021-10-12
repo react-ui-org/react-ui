@@ -46,21 +46,21 @@ export const Button = ({
           : [
             styles.root,
             getRootPriorityClassName(
-              resolveContextOrProp(context?.priority, priority),
+              resolveContextOrProp(context && context.priority, priority),
               styles,
             ),
             getRootColorClassName(color, styles),
             getRootSizeClassName(
-              resolveContextOrProp(context?.size, size),
+              resolveContextOrProp(context && context.size, size),
               styles,
             ),
             getRootLabelVisibilityClassName(labelVisibility, styles),
-            resolveContextOrProp(context?.block, block) ? styles.rootBlock : '',
+            resolveContextOrProp(context && context.block, block) ? styles.rootBlock : '',
             context ? styles.rootGrouped : '',
             loadingIcon ? styles.isRootLoading : '',
           ].join(' ')
       }
-      disabled={resolveContextOrProp(context?.disabled, disabled) || !!loadingIcon}
+      disabled={resolveContextOrProp(context && context.disabled, disabled) || !!loadingIcon}
       id={id}
       onClick={clickHandler}
       ref={forwardedRef}
