@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../../provider';
 import styles from './ButtonGroup.scss';
+import { ButtonGroupContext } from './ButtonGroupContext';
 
 export const ButtonGroup = ({
   block,
@@ -19,19 +20,16 @@ export const ButtonGroup = ({
     role="group"
     {...restProps}
   >
-    {React.Children.map(children, (child) => {
-      if (!React.isValidElement(child)) {
-        return null;
-      }
-
-      return React.cloneElement(child, {
+    <ButtonGroupContext.Provider
+      value={{
         block,
         disabled,
-        grouped: true,
         priority,
         size,
-      });
-    })}
+      }}
+    >
+      {children}
+    </ButtonGroupContext.Provider>
   </div>
 );
 
@@ -50,7 +48,7 @@ ButtonGroup.propTypes = {
   /**
    * Buttons to be grouped.
    */
-  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  children: PropTypes.node.isRequired,
   /**
    * If `true`, all buttons inside the group will be disabled.
    */

@@ -7,7 +7,7 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { helpTextPropTest } from '../../../../../../tests/propTests/helpTextPropTest';
-import { inFormLayoutProviderTest } from '../../../../../../tests/providerTests/inFormLayoutProviderTest';
+import { formLayoutProviderTest } from '../../../../../../tests/providerTests/formLayoutProviderTest';
 import { isLabelVisible } from '../../../../../../tests/propTests/isLabelVisible';
 import { labelPropTest } from '../../../../../../tests/propTests/labelPropTest';
 import { layoutPropTest } from '../../../../../../tests/propTests/layoutPropTest';
@@ -32,7 +32,7 @@ const mandatoryProps = {
 };
 
 describe('rendering', () => {
-  inFormLayoutProviderTest(<Radio {...mandatoryProps} />);
+  formLayoutProviderTest(<Radio {...mandatoryProps} />);
 
   it.each([
     [
@@ -81,7 +81,10 @@ describe('rendering', () => {
     ...validationStatePropTest,
     ...validationTextPropTest,
     [
-      { value: 'option2' },
+      {
+        changeHandler: () => {},
+        value: 'option2',
+      },
       (rootElement) => expect(within(rootElement).getByLabelText('option 2')).toHaveAttribute('checked'),
     ],
     [

@@ -7,7 +7,7 @@ import Button from '../../Button';
 import { ButtonGroup } from '../ButtonGroup';
 
 const mandatoryProps = {
-  children: [<Button label="label" />],
+  children: <Button label="label" />,
 };
 
 describe('rendering', () => {
@@ -21,7 +21,7 @@ describe('rendering', () => {
       (rootElement) => expect(rootElement).not.toHaveClass('isRootBlock'),
     ],
     [
-      { children: [<Button label="label text" />] },
+      { children: <Button label="label text" /> },
       (rootElement) => expect(within(rootElement).getByText('label text')),
     ],
     [
