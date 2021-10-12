@@ -11,7 +11,7 @@ import { disabledPropTest } from '../../../../../../tests/propTests/disabledProp
 import { forwardedRefPropTest } from '../../../../../../tests/propTests/forwardedRefPropTest';
 import { fullWidthPropTest } from '../../../../../../tests/propTests/fullWidthPropTest';
 import { helpTextPropTest } from '../../../../../../tests/propTests/helpTextPropTest';
-import { inFormLayoutProviderTest } from '../../../../../../tests/providerTests/inFormLayoutProviderTest';
+import { formLayoutProviderTest } from '../../../../../../tests/providerTests/formLayoutProviderTest';
 import { isLabelVisible } from '../../../../../../tests/propTests/isLabelVisible';
 import { labelPropTest } from '../../../../../../tests/propTests/labelPropTest';
 import { layoutPropTest } from '../../../../../../tests/propTests/layoutPropTest';
@@ -37,7 +37,7 @@ const mandatoryProps = {
 };
 
 describe('rendering', () => {
-  inFormLayoutProviderTest(<SelectField {...mandatoryProps} />);
+  formLayoutProviderTest(<SelectField {...mandatoryProps} />);
 
   it.each([
     ...disabledPropTest,

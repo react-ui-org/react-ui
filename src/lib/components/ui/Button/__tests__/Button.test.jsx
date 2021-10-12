@@ -10,6 +10,7 @@ import { colorPropTest } from '../../../../../../tests/propTests/colorPropTest';
 import { forwardedRefPropTest } from '../../../../../../tests/propTests/forwardedRefPropTest';
 import { labelPropTest } from '../../../../../../tests/propTests/labelPropTest';
 import { sizePropTest } from '../../../../../../tests/propTests/sizePropTest';
+import { ButtonGroupContext } from '../../ButtonGroup';
 import { Button } from '../Button';
 
 const mandatoryProps = {
@@ -17,6 +18,50 @@ const mandatoryProps = {
 };
 
 describe('rendering', () => {
+  it.each([
+    [
+      { block: true },
+      (rootElement) => expect(rootElement).toHaveClass('rootBlock'),
+    ],
+    [
+      { block: false },
+      (rootElement) => expect(rootElement).not.toHaveClass('rootBlock'),
+    ],
+    [
+      { disabled: true },
+      (rootElement) => expect(rootElement).toBeDisabled(),
+    ],
+    [
+      { disabled: false },
+      (rootElement) => expect(rootElement).not.toBeDisabled(),
+    ],
+    [
+      { priority: 'filled' },
+      (rootElement) => expect(rootElement).toHaveClass('rootPriorityFilled'),
+    ],
+    [
+      { priority: 'outline' },
+      (rootElement) => expect(rootElement).toHaveClass('rootPriorityOutline'),
+    ],
+    [
+      { priority: 'flat' },
+      (rootElement) => expect(rootElement).toHaveClass('rootPriorityFlat'),
+    ],
+    ...sizePropTest,
+  ])('renders with ButtonGroup props: "%s"', (testedProps, assert) => {
+    const dom = render((
+      <ButtonGroupContext.Provider
+        value={{ ...testedProps }}
+      >
+        <Button
+          {...mandatoryProps}
+        />
+      </ButtonGroupContext.Provider>
+    ));
+
+    assert(dom.container.firstChild);
+  });
+
   it.each([
     [
       { afterLabel: <div>after label</div> },
@@ -48,15 +93,6 @@ describe('rendering', () => {
       (rootElement) => expect(within(rootElement).getByText('corner text')),
     ],
     ...forwardedRefPropTest(React.createRef()),
-    [
-      { grouped: true },
-      (rootElement) => expect(rootElement).toHaveClass('rootGrouped'),
-    ],
-    [
-      { grouped: false },
-      (rootElement) => expect(rootElement).not.toHaveClass('rootGrouped'),
-    ],
-
     [
       { id: 'id' },
       (rootElement) => {

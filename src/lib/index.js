@@ -33,7 +33,7 @@ export {
 export { default as Alert } from './components/ui/Alert';
 export { default as Badge } from './components/ui/Badge';
 export { default as Button } from './components/ui/Button';
-export { default as ButtonGroup } from './components/ui/ButtonGroup';
+export { ButtonGroup } from './components/ui/ButtonGroup';
 export {
   Card,
   CardBody,

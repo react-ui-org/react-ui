@@ -10,7 +10,7 @@ import { Toggle } from '../Toggle';
 import { disabledPropTest } from '../../../../../../tests/propTests/disabledPropTest';
 import { forwardedRefPropTest } from '../../../../../../tests/propTests/forwardedRefPropTest';
 import { helpTextPropTest } from '../../../../../../tests/propTests/helpTextPropTest';
-import { inFormLayoutProviderTest } from '../../../../../../tests/providerTests/inFormLayoutProviderTest';
+import { formLayoutProviderTest } from '../../../../../../tests/providerTests/formLayoutProviderTest';
 import { isLabelVisible } from '../../../../../../tests/propTests/isLabelVisible';
 import { labelPropTest } from '../../../../../../tests/propTests/labelPropTest';
 import { requiredPropTest } from '../../../../../../tests/propTests/requiredPropTest';
@@ -22,7 +22,7 @@ const mandatoryProps = {
 };
 
 describe('rendering', () => {
-  inFormLayoutProviderTest(<Toggle {...mandatoryProps} />);
+  formLayoutProviderTest(<Toggle {...mandatoryProps} />);
 
   it.each([
     [
