@@ -3,8 +3,8 @@ import React, { useContext } from 'react';
 import getRootSizeClassName from '../../../helpers/getRootSizeClassName';
 import getRootValidationStateClassName from '../../../helpers/getRootValidationStateClassName';
 import { withProviderContext } from '../../../provider';
-import FormLayoutContext from './FormLayoutContext';
 import styles from './FormLayoutCustomField.scss';
+import { FormLayoutContext } from './FormLayoutContext';
 
 const renderLabel = (id, label, labelForId) => {
   if (labelForId && label) {
@@ -52,7 +52,7 @@ export const FormLayoutCustomField = ({
       className={[
         styles.root,
         fullWidth ? styles.isRootFullWidth : '',
-        context.layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
+        context?.layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
         disabled ? styles.isRootDisabled : '',
         required ? styles.isRootRequired : '',
         getRootSizeClassName(innerFieldSize, styles),

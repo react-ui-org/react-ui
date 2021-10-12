@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import React from 'react';
-import { FormLayoutProvider } from '../../src/lib/components/layout/FormLayout';
+import { FormLayoutContext } from '../../src/lib/components/layout/FormLayout'
 
 export const inFormLayoutProviderTest = (Component) => {
   it.each([
@@ -20,9 +20,11 @@ export const inFormLayoutProviderTest = (Component) => {
     ],
   ])('renders with FormLayout props: "%s"', (testedProps, assert) => {
     const dom = render((
-      <FormLayoutProvider {...testedProps}>
+      <FormLayoutContext.Provider
+        value={{ ...testedProps }}
+      >
         {Component}
-      </FormLayoutProvider>
+      </FormLayoutContext.Provider>
     ));
 
     assert(dom.container.firstChild);

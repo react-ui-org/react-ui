@@ -29,8 +29,8 @@ export const Toggle = ({
     <label
       className={[
         styles.root,
-        context.layout ? styles.isRootInFormLayout : '',
-        context.layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
+        context ? styles.isRootInFormLayout : '',
+        context?.layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
         labelPosition === 'before' ? styles.hasRootLabelBefore : '',
         disabled ? styles.isRootDisabled : '',
         required ? styles.isRootRequired : '',
