@@ -9,6 +9,7 @@ export const GridSpan = ({
   columns,
   id,
   rows,
+  tag: Tag,
   ...other
 }) => {
   if (!children) {
@@ -16,7 +17,7 @@ export const GridSpan = ({
   }
 
   return (
-    <div
+    <Tag
       id={id}
       className={styles.span}
       style={{
@@ -26,7 +27,7 @@ export const GridSpan = ({
       {...other}
     >
       {children}
-    </div>
+    </Tag>
   );
 };
 
@@ -38,6 +39,7 @@ GridSpan.defaultProps = {
   columns: undefined,
   id: undefined,
   rows: undefined,
+  tag: 'div',
 };
 
 GridSpan.propTypes = {
@@ -79,6 +81,11 @@ GridSpan.propTypes = {
       xxxl: PropTypes.number,
     }),
   ]),
+  /**
+   * HTML tag to render. Can be any valid HTML tag of your choice, usually a
+   * [block-level element](https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements).
+   */
+  tag: PropTypes.string,
 };
 
 export const GridSpanWithContext = withProviderContext(GridSpan, 'GridSpan');

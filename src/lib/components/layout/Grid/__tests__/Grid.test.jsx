@@ -4,6 +4,7 @@ import {
   within,
 } from '@testing-library/react';
 import { idPropTest } from '../../../../../../tests/propTests/idPropTest';
+import { tagPropTest } from '../../../../../../tests/propTests/tagPropTest';
 import { Grid } from '../Grid';
 
 /* eslint-disable sort-keys */
@@ -115,6 +116,7 @@ describe('rendering', () => {
       { rows: 'placeholder' },
       (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-rows-xs': 'placeholder' }),
     ],
+    ...tagPropTest,
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <Grid

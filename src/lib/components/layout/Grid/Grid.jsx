@@ -16,6 +16,7 @@ export const Grid = ({
   justifyItems,
   rowGap,
   rows,
+  tag: Tag,
   ...other
 }) => {
   if (!children) {
@@ -23,7 +24,7 @@ export const Grid = ({
   }
 
   return (
-    <div
+    <Tag
       id={id}
       className={styles.root}
       style={{
@@ -40,7 +41,7 @@ export const Grid = ({
       {...other}
     >
       {children}
-    </div>
+    </Tag>
   );
 };
 
@@ -59,6 +60,7 @@ Grid.defaultProps = {
   justifyItems: undefined,
   rowGap: undefined,
   rows: undefined,
+  tag: 'div',
 };
 
 Grid.propTypes = {
@@ -214,6 +216,11 @@ Grid.propTypes = {
       xxxl: PropTypes.string,
     }),
   ]),
+  /**
+   * HTML tag to render. Can be any valid HTML tag of your choice, usually a
+   * [block-level element](https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements).
+   */
+  tag: PropTypes.string,
 };
 
 export const GridWithContext = withProviderContext(Grid, 'Grid');
