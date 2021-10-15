@@ -4,6 +4,7 @@ import {
   within,
 } from '@testing-library/react';
 import { idPropTest } from '../../../../../../tests/propTests/idPropTest';
+import { tagPropTest } from '../../../../../../tests/propTests/tagPropTest';
 import { GridSpan } from '../GridSpan';
 
 const defaultProps = {
@@ -67,6 +68,7 @@ describe('rendering', () => {
       { rows: 14 },
       (rootElement) => expect(rootElement).toHaveStyle('--rui-local-row-span-xs: 14'),
     ],
+    ...tagPropTest,
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <GridSpan
