@@ -112,11 +112,9 @@ export default {
     showPlaygroundEditor: false,
     styles: {
       Container: {
-        '& > table': {
-          fontSize: 'smaller',
-        },
         '& [data-testid="live-preview"]': {
           fontSize: '1rem', // Set the font size in playground to override the docs theme default.
+          overflow: 'auto', // Make preview scrollable.
           p: 3,
         },
         '& [data-testid="live-preview"] * ul': { // Reset lists in components.
@@ -197,6 +195,25 @@ export default {
         },
         px: 4,
         py: 6,
+        table: {
+          fontSize: 'var(--rui-typography-size-0)',
+          minWidth: '0 !important',
+        },
+        'table tbody td:first-child': {
+          fontWeight: 'bold', // Emphasize prop names.
+        },
+        'table tbody td:first-child code': {
+          fontWeight: 'initial', // Revert previously set emphasize for custom property names.
+        },
+        'table tbody td:nth-child(2) code': {
+          whiteSpace: 'pre', // Preserve formatting for prop types.
+        },
+        'table td p:not(:last-child)': {
+          mb: 3,
+        },
+        'table ul, table ol': {
+          ml: 1,
+        },
         ul: {
           ml: 5,
         },
