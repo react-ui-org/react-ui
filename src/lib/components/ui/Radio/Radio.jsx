@@ -60,7 +60,9 @@ export const Radio = ({
                   <input
                     {...transferProps(restProps)}
                     className={styles.input}
-                    checked={(value === option.value) || undefined}
+                    checked={changeHandler
+                      ? (value === option.value) || false
+                      : undefined}
                     disabled={disabled || option.disabled}
                     id={id && `${id}__item__${option.value}`}
                     name={id}
