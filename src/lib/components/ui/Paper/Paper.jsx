@@ -6,11 +6,13 @@ import styles from './Paper.scss';
 export const Paper = ({
   children,
   id,
+  muted,
   raised,
 }) => (
   <div
     className={[
       styles.root,
+      muted ? styles.rootMuted : '',
       raised ? styles.rootRaised : '',
     ].join(' ')}
     id={id}
@@ -22,6 +24,7 @@ export const Paper = ({
 Paper.defaultProps = {
   children: null,
   id: undefined,
+  muted: false,
   raised: false,
 };
 
@@ -34,6 +37,10 @@ Paper.propTypes = {
    * ID of the root HTML element.
    */
   id: PropTypes.string,
+  /**
+   * Visually suppress Paper.
+   */
+  muted: PropTypes.bool,
   /**
    * Add shadow to pull the Paper above surface.
    */

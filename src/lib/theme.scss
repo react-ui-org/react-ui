@@ -155,6 +155,11 @@
   --rui-spacing-bottom-headings: var(--rui-spacing-5);
   --rui-spacing-bottom-layouts: var(--rui-spacing-5);
 
+  // Disabled state
+  --rui-disabled-background-color: var(--rui-color-gray-50);
+  --rui-disabled-opacity: 0.5;
+  --rui-disabled-cursor: not-allowed;
+
   //
   // Elements
   // ========
@@ -292,8 +297,8 @@
   --rui-Button__text-transform: none;
   --rui-Button__border-width: var(--rui-border-width);
   --rui-Button__border-radius: var(--rui-border-radius);
-  --rui-Button--disabled__opacity: 0.5;
-  --rui-Button--disabled__cursor: not-allowed;
+  --rui-Button--disabled__opacity: var(--rui-disabled-opacity);
+  --rui-Button--disabled__cursor: var(--rui-disabled-cursor);
 
   // Buttons: filled priority
 
@@ -674,8 +679,8 @@
   --rui-Card__border-radius: var(--rui-border-radius);
   --rui-Card--dense__padding: var(--rui-spacing-2);
   --rui-Card--raised__box-shadow: var(--rui-elevation-1);
-  --rui-Card--disabled__background-color: var(--rui-color-gray-50);
-  --rui-Card--disabled__opacity: 0.6;
+  --rui-Card--disabled__background-color: var(--rui-disabled-background-color);
+  --rui-Card--disabled__opacity: var(--rui-disabled-opacity);
 
   // Card: variant: primary
   --rui-Card--primary__color: var(--rui-page-color);
@@ -758,8 +763,8 @@
   --rui-FormField--horizontal--full-width__label__width: fit-content(50%);
 
   // Forms fields: disabled state
-  --rui-FormField--disabled__cursor: not-allowed;
-  --rui-FormField--disabled__opacity: 0.5;
+  --rui-FormField--disabled__cursor: var(--rui-disabled-cursor);
+  --rui-FormField--disabled__opacity: var(--rui-disabled-opacity);
 
   // Form fields: validation states: invalid
   --rui-FormField--invalid--default__border-color: var(--rui-color-danger);
@@ -878,6 +883,8 @@
   --rui-Paper__border-color: transparent;
   --rui-Paper__border-radius: var(--rui-border-radius);
   --rui-Paper__background-color: var(--rui-color-white);
+  --rui-Paper--muted__background-color: var(--rui-disabled-background-color);
+  --rui-Paper--muted__opacity: var(--rui-disabled-opacity);
   --rui-Paper--raised__box-shadow: var(--rui-elevation-1);
 
   //
