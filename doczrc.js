@@ -206,7 +206,7 @@ export default {
           fontWeight: 'initial', // Revert previously set emphasize for custom property names.
         },
         'table tbody td:nth-child(2) code': {
-          whiteSpace: 'pre', // Preserve formatting for prop types.
+          whiteSpace: 'pre-wrap', // Preserve formatting for prop types, wrap lines when necessary.
         },
         'table td p:not(:last-child)': {
           mb: 3,
