@@ -7,6 +7,11 @@
   background-color: theme.$background-color;
 }
 
+.rootMuted {
+  background-color: theme.$muted-background-color;
+  opacity: theme.$muted-opacity;
+}
+
 .rootRaised {
   box-shadow: theme.$raised-box-shadow;
 }

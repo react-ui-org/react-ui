@@ -18,6 +18,14 @@ describe('rendering', () => {
       (rootElement) => expect(rootElement).toBeInTheDocument(),
     ],
     ...idPropTest,
+    [
+      { muted: true },
+      (rootElement) => expect(rootElement).toHaveClass('rootMuted'),
+    ],
+    [
+      { muted: false },
+      (rootElement) => expect(rootElement).not.toHaveClass('rootMuted'),
+    ],
     ...raisedPropTest,
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
