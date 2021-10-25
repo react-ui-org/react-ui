@@ -135,10 +135,6 @@ describe('rendering', () => {
       { priority: 'flat' },
       (rootElement) => expect(rootElement).toHaveClass('rootPriorityFlat'),
     ],
-    [
-      { priority: 'link' },
-      (rootElement) => expect(rootElement).toHaveClass('rootPriorityLink'),
-    ],
     ...sizePropTest,
     [
       { startCorner: <div>corner text</div> },

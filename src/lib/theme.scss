@@ -857,6 +857,15 @@
   --rui-FormField--check--checked__check-background-color: var(--rui-color-active);
 
   //
+  // Link
+  // ====
+
+  --rui-Link__color: var(--rui-link-color);
+  --rui-Link__text-decoration: var(--rui-link-decoration);
+  --rui-Link--hover__color: var(--rui-link-hover-color);
+  --rui-Link--hover__text-decoration: var(--rui-link-hover-decoration);
+
+  //
   // Modal
   // =====
 
