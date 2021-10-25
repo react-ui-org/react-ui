@@ -19,17 +19,6 @@ $group-flat-separator-color: var(--rui-ButtonGroup--flat__separator__color);
 
 $group-outline-gap: var(--rui-ButtonGroup--outline__gap);
 
-$link-priority-properties: (
-  default: (
-    color: var(--rui-link-color),
-    text-decoration: var(--rui-link-decoration),
-  ),
-  hover: (
-    color: var(--rui-link-hover-color),
-    text-decoration: var(--rui-link-hover-decoration),
-  ),
-);
-
 $sizes: (
   small: (
     height: var(--rui-Button--small__height),

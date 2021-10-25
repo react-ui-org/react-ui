@@ -41,6 +41,7 @@ export {
 } from './components/ui/Card';
 export { default as CheckboxField } from './components/ui/CheckboxField';
 export { default as FileInputField } from './components/ui/FileInputField';
+export { default as Link } from './components/ui/Link';
 export { default as Modal } from './components/ui/Modal';
 export { default as Paper } from './components/ui/Paper';
 export { default as Radio } from './components/ui/Radio';

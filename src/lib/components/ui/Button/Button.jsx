@@ -37,36 +37,29 @@ export const Button = ({
     /* eslint-disable react/button-has-type */
     <button
       {...transferProps(restProps)}
-      className={
-        priority === 'link'
-          ? [
-            styles.root,
-            getRootPriorityClassName(priority, styles),
-          ].join(' ')
-          : [
-            styles.root,
-            getRootPriorityClassName(
-              resolveContextOrProp(context && context.priority, priority),
-              styles,
-            ),
-            getRootColorClassName(color, styles),
-            getRootSizeClassName(
-              resolveContextOrProp(context && context.size, size),
-              styles,
-            ),
-            getRootLabelVisibilityClassName(labelVisibility, styles),
-            resolveContextOrProp(context && context.block, block) ? styles.rootBlock : '',
-            context ? styles.rootGrouped : '',
-            loadingIcon ? styles.isRootLoading : '',
-          ].join(' ')
-      }
+      className={[
+        styles.root,
+        getRootPriorityClassName(
+          resolveContextOrProp(context && context.priority, priority),
+          styles,
+        ),
+        getRootColorClassName(color, styles),
+        getRootSizeClassName(
+          resolveContextOrProp(context && context.size, size),
+          styles,
+        ),
+        getRootLabelVisibilityClassName(labelVisibility, styles),
+        resolveContextOrProp(context && context.block, block) ? styles.rootBlock : '',
+        context ? styles.rootGrouped : '',
+        loadingIcon ? styles.isRootLoading : '',
+      ].join(' ')}
       disabled={resolveContextOrProp(context && context.disabled, disabled) || !!loadingIcon}
       id={id}
       onClick={clickHandler}
       ref={forwardedRef}
       type={type}
     >
-      {priority !== 'link' && startCorner && (
+      {startCorner && (
         <span className={styles.startCorner}>
           {startCorner}
         </span>
@@ -87,12 +80,12 @@ export const Button = ({
           {afterLabel}
         </span>
       )}
-      {priority !== 'link' && endCorner && (
+      {endCorner && (
         <span className={styles.endCorner}>
           {endCorner}
         </span>
       )}
-      {priority !== 'link' && loadingIcon && (
+      {loadingIcon && (
         <span className={styles.loadingIcon}>
           {loadingIcon}
         </span>
@@ -130,7 +123,7 @@ Button.propTypes = {
    */
   beforeLabel: PropTypes.node,
   /**
-   * If `true`, the button will span the full width of its parent. Only available if `priority` != `link`.
+   * If `true`, the button will span the full width of its parent.
    *
    * Ignored if the component is rendered within `ButtonGroup` component
    * as the value is inherited in such case.
@@ -152,7 +145,7 @@ Button.propTypes = {
    */
   disabled: PropTypes.bool,
   /**
-   * Element to be displayed in the top right corner. Only available if `priority` != `link`.
+   * Element to be displayed in the top right corner.
    */
   endCorner: PropTypes.node,
   /**
@@ -175,12 +168,12 @@ Button.propTypes = {
    */
   label: PropTypes.string.isRequired,
   /**
-   * Defines when the button label should be visible. Only available if `priority` != `link`.
+   * Defines when the button label should be visible.
    */
   labelVisibility: PropTypes.oneOf(['all', 'desktop', 'none']),
   /**
    * Element to be displayed as a loading icon. When defined, it implies the button is in the
-   * loading state. Only available if `priority` != `link`.
+   * loading state.
    */
   loadingIcon: PropTypes.node,
   /**
@@ -189,16 +182,16 @@ Button.propTypes = {
    * Ignored if the component is rendered within `ButtonGroup` component
    * as the value is inherited in such case.
    */
-  priority: PropTypes.oneOf(['filled', 'outline', 'flat', 'link']),
+  priority: PropTypes.oneOf(['filled', 'outline', 'flat']),
   /**
-   * Size of the button. Only available if `priority` != `link`.
+   * Size of the button.
    *
    * Ignored if the component is rendered within `ButtonGroup` component
    * as the value is inherited in such case.
    */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   /**
-   * Element to be displayed in the top left corner. Only available if `priority` != `link`.
+   * Element to be displayed in the top left corner.
    */
   startCorner: PropTypes.node,
   /**

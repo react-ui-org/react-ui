@@ -6,19 +6,12 @@
 //    - outline
 //    - flat
 //
-//    The “link” priority is treated separately as it doesn't share much of appearance with other
-//    variants listed above.
-//
 // 2. Disabled state theming is optional so `default` theme options are used if no `disabled`
 //    styling is provided for specific variant.
 //
 // 3. Get ready for position of corner elements and group separator.
 //
 // 4. Icon buttons should appear as squares, that's why width and height is equal here.
-//
-// 5. Unset undesired properties so the link button appears as link while it keeps some button
-//    settings. It might be tempting to use something like `all: initial` or `all: inherit` but it
-//    actually causes more harm rather than a useful reset.
 
 @use 'sass:list';
 @use 'sass:map';
@@ -63,22 +56,6 @@
       --rui-local-#{$property}: var(--rui-Button--#{$priority}--#{$color}--#{$state}__#{$property});
     }
   }
-}
-
-@mixin _unset-button-appearance() {
-  width: unset;
-  height: unset;
-  padding: unset;
-  font-weight: unset;
-  line-height: unset;
-  font-family: unset;
-  text-transform: unset;
-  vertical-align: unset;
-  border: unset;
-  border-radius: unset;
-  box-shadow: unset;
-  user-select: unset;
-  transition: unset;
 }
 
 @mixin button() {
@@ -156,18 +133,5 @@
 
   &:not(:disabled):active {
     @include _get-themeable-properties($priority, $color, active);
-  }
-}
-
-@mixin button-link() {
-  @include _unset-button-appearance(); // 5.
-
-  text-decoration: map.get(theme.$link-priority-properties, default, text-decoration);
-  color: map.get(theme.$link-priority-properties, default, color);
-
-  &:not(:disabled):hover,
-  &:not(:disabled):focus {
-    text-decoration: map.get(theme.$link-priority-properties, hover, text-decoration);
-    color: map.get(theme.$link-priority-properties, hover, color);
   }
 }

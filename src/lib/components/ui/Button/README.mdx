@@ -55,9 +55,6 @@ lowest:
 All priorities come in supported
 [component colors](/foundation/colors#component-colors).
 
-To complete the list, there is also a [link priority](#link)
-which is reserved for special cases.
-
 ### Filled
 
 The default, high-emphasis priority should be used for primary actions of your
@@ -121,21 +118,6 @@ the content.
   <Button priority="flat" label="Dark" color="dark" />
 </Playground>
 
-### Link
-
-Link button is more a workaround than a priority level. Use it for what needs
-to appear as navigation to users but where a button must be used due to
-technical reasons. Under normal circumstances, you should always use a link
-HTML element `<a href="…">` for navigation.
-
-⚠️ **Avoid using link buttons for actions**, choose flat or outline priority
-instead. This is because users expect navigation to happen when clicking on
-something what looks like a link.
-
-<Playground>
-  <Button label="Link that needs to be implemented as button" priority="link" />
-</Playground>
-
 ## Sizes
 
 Aside from the default (medium) size, two additional sizes are available: small
@@ -169,11 +151,6 @@ before or after the button's label.
   <Button
     label="Icon after label"
     afterLabel={<Icon icon="star" />}
-  />
-  <Button
-    label="Link button with icon"
-    beforeLabel={<Icon icon="star" />}
-    priority="link"
   />
 </Playground>
 
@@ -318,9 +295,6 @@ This is useful mainly to improve component's accessibility.
 
 ### Common Theming Options
 
-The following theme options are common to all priorities and color variants
-**except** the `link` priority (see [below for more](#link-priority)):
-
 | Custom Property                | Description                                  |
 |--------------------------------|----------------------------------------------|
 | `--rui-Button__font-weight`    | Font weight                                  |
@@ -350,20 +324,6 @@ Where:
     priority,
   - `color`, `border-color`, or `background` for the `outline` priority,
   - `color` or `background` for the `flat` priority.
-
-#### Theming Link Priority
-
-The `link` priority is treated a bit different because from the theming point of
-view it doesn't share anything with other priorities. However, it shares
-everything with common links and thus can be adjusted by editing corresponding
-design tokens:
-
-| Custom Property               | Description                                  |
-|-------------------------------|----------------------------------------------|
-| `--rui-link-color`            | Text color                                   |
-| `--rui-link-decoration`       | Text decoration, e.g. underline              |
-| `--rui-link-hover-color`      | Text color on hover                          |
-| `--rui-link-hover-decoration` | Text decoration on hover                     |
 
 ### Theming Sizes
 

@@ -123,10 +123,6 @@
   @include tools.button-color(flat, dark);
 }
 
-.rootPriorityLink {
-  @include tools.button-link();
-}
-
 .rootPriorityFilled.rootGrouped:not(:first-child)::before,
 .rootPriorityFlat.rootGrouped:not(:first-child)::before {
   content: '';

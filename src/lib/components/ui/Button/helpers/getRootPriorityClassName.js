@@ -11,9 +11,5 @@ export default (priority, styles) => {
     return styles.rootPriorityFlat;
   }
 
-  if (priority === 'link') {
-    return styles.rootPriorityLink;
-  }
-
   return null;
 };
