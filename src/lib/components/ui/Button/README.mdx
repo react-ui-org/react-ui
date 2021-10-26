@@ -233,46 +233,127 @@ Disabled state makes the action unavailable.
   <Button label="Disabled flat button" priority="flat" disabled />
 </Playground>
 
-### Loading State
+### Feedback State
 
-When an action triggers an asynchronous process on background, the button's
-loading state can be indicated by showing a loading icon. Buttons in loading
-state are automatically made disabled to prevent unwanted interaction.
+When user's action triggers an asynchronous process on background, the button's
+feedback state can be indicated by showing an icon. The icon replaces button's
+label while retaining original dimensions of the button. Buttons in feedback
+state are automatically disabled to prevent unwanted interaction.
+
+Filled buttons in feedback state:
 
 <Playground>
   <Button
-    label="Button in loading state"
-    loadingIcon={(
-      <span className="d-inline-flex animation-spin-counterclockwise">
-        <Icon icon="loading" />
-      </span>
-    )}
+    label="Success"
+    color="success"
+    feedbackIcon={<Icon icon="success" />}
   />
   <Button
-    label="Icon button in loading state"
+    label="Success"
     labelVisibility="none"
-    beforeLabel={<Icon icon="pencil" />}
-    loadingIcon={(
+    color="success"
+    feedbackIcon={<Icon icon="success" />}
+    endCorner={<Badge color="danger" label={3} />}
+  />
+  <Placeholder dark inline>
+    <Button
+      label="Light"
+      color="light"
+      feedbackIcon={<Icon icon="success" />}
+    />
+  </Placeholder>
+  <Button
+    label="Dark"
+    color="dark"
+    feedbackIcon={<Icon icon="success" />}
+  />
+  <Button
+    label="Primary"
+    feedbackIcon={(
       <span className="d-inline-flex animation-spin-counterclockwise">
         <Icon icon="loading" />
       </span>
     )}
   />
+</Playground>
+
+Outline buttons in feedback state:
+
+<Playground>
   <Button
-    label="Icon button with badge, loading"
-    labelVisibility="desktop"
-    beforeLabel={<Icon icon="pencil" />}
-    loadingIcon={(
+    label="Success"
+    priority="outline"
+    color="success"
+    feedbackIcon={<Icon icon="success" />}
+  />
+  <Button
+    label="Success"
+    labelVisibility="none"
+    priority="outline"
+    color="success"
+    feedbackIcon={<Icon icon="success" />}
+    endCorner={<Badge color="danger" label={3} />}
+  />
+  <Placeholder dark inline>
+    <Button
+      label="Light"
+      priority="outline"
+      color="light"
+      feedbackIcon={<Icon icon="success" />}
+    />
+  </Placeholder>
+  <Button
+    label="Dark"
+    priority="outline"
+    color="dark"
+    feedbackIcon={<Icon icon="success" />}
+  />
+  <Button
+    label="Primary"
+    priority="outline"
+    feedbackIcon={(
       <span className="d-inline-flex animation-spin-counterclockwise">
         <Icon icon="loading" />
       </span>
     )}
-    startCorner={<Badge label={3} color="danger" />}
+  />
+</Playground>
+
+Flat buttons in feedback state:
+
+<Playground>
+  <Button
+    label="Success"
+    priority="flat"
+    color="success"
+    feedbackIcon={<Icon icon="success" />}
   />
   <Button
-    label="Icon after label, loading"
-    afterLabel={<Icon icon="up" />}
-    loadingIcon={(
+    label="Success"
+    labelVisibility="none"
+    priority="flat"
+    color="success"
+    feedbackIcon={<Icon icon="success" />}
+    endCorner={<Badge color="danger" label={3} />}
+  />
+  <Placeholder dark inline>
+    <Button
+      label="Light"
+      priority="flat"
+      color="light"
+      feedbackIcon={<Icon icon="success" />}
+    />
+  </Placeholder>
+  <Button
+    label="Dark"
+    priority="flat"
+    color="dark"
+    feedbackIcon={<Icon icon="success" />}
+  />
+  <Button
+    label="Primary"
+    priority="flat"
+    feedbackIcon={(
       <span className="d-inline-flex animation-spin-counterclockwise">
         <Icon icon="loading" />
       </span>
@@ -430,3 +511,13 @@ Example:
     />
   </div>
 </Playground>
+
+### Theming Feedback State
+
+Similarly to disabled state, opacity and cursor can be set for buttons in
+feedback state.
+
+| Custom Property                   | Description                                          |
+|-----------------------------------|------------------------------------------------------|
+| `--rui-Button--feedback__opacity` | Opacity of buttons in feedback state                 |
+| `--rui-Button--feedback__cursor`  | Cursor to show on hovering buttons in feedback state |

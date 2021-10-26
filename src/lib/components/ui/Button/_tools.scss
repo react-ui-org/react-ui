@@ -63,6 +63,7 @@
 
   position: relative; // 3.
   display: inline-flex;
+  column-gap: settings.$icon-spacing;
   align-items: center;
   justify-content: center;
   width: var(--rui-local-width, auto);
