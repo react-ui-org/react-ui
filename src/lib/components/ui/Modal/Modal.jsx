@@ -194,9 +194,9 @@ export class Modal extends React.Component {
                       clickHandler={action.clickHandler}
                       color={action.color}
                       disabled={action.disabled}
+                      feedbackIcon={action.feedbackIcon}
                       id={action.id || undefined}
                       label={action.label}
-                      loadingIcon={action.loadingIcon}
                       forwardedRef={this.submitButtonRef}
                       type="button"
                     />
@@ -254,9 +254,9 @@ Modal.propTypes = {
     clickHandler: PropTypes.func.isRequired,
     color: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'danger', 'help', 'info', 'note', 'light', 'dark']),
     disabled: PropTypes.bool,
+    feedbackIcon: PropTypes.node,
     id: PropTypes.string,
     label: PropTypes.string.isRequired,
-    loadingIcon: PropTypes.node,
   })),
   /**
    * If `true`, focus the first action in the footer when the modal is opened.

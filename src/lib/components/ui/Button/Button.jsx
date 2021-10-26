@@ -18,11 +18,11 @@ export const Button = ({
   clickHandler,
   disabled,
   endCorner,
+  feedbackIcon,
   forwardedRef,
   id,
   label,
   labelVisibility,
-  loadingIcon,
   priority,
   size,
   startCorner,
@@ -51,9 +51,9 @@ export const Button = ({
         getRootLabelVisibilityClassName(labelVisibility, styles),
         resolveContextOrProp(context && context.block, block) ? styles.rootBlock : '',
         context ? styles.rootGrouped : '',
-        loadingIcon ? styles.isRootLoading : '',
+        feedbackIcon ? styles.hasRootFeedback : '',
       ].join(' ')}
-      disabled={resolveContextOrProp(context && context.disabled, disabled) || !!loadingIcon}
+      disabled={resolveContextOrProp(context && context.disabled, disabled) || !!feedbackIcon}
       id={id}
       onClick={clickHandler}
       ref={forwardedRef}
@@ -85,9 +85,9 @@ export const Button = ({
           {endCorner}
         </span>
       )}
-      {loadingIcon && (
-        <span className={styles.loadingIcon}>
-          {loadingIcon}
+      {feedbackIcon && (
+        <span className={styles.feedbackIcon}>
+          {feedbackIcon}
         </span>
       )}
     </button>
@@ -103,10 +103,10 @@ Button.defaultProps = {
   color: 'primary',
   disabled: false,
   endCorner: null,
+  feedbackIcon: null,
   forwardedRef: undefined,
   id: undefined,
   labelVisibility: 'all',
-  loadingIcon: null,
   priority: 'filled',
   size: 'medium',
   startCorner: null,
@@ -149,6 +149,11 @@ Button.propTypes = {
    */
   endCorner: PropTypes.node,
   /**
+   * Element to be displayed as a feedback icon on top of button label. When defined, it implies the
+   * button is in feedback state.
+   */
+  feedbackIcon: PropTypes.node,
+  /**
    * Reference forwarded to the `button` element.
    */
   forwardedRef: PropTypes.oneOfType([
@@ -171,11 +176,6 @@ Button.propTypes = {
    * Defines when the button label should be visible.
    */
   labelVisibility: PropTypes.oneOf(['all', 'desktop', 'none']),
-  /**
-   * Element to be displayed as a loading icon. When defined, it implies the button is in the
-   * loading state.
-   */
-  loadingIcon: PropTypes.node,
   /**
    * Visual priority to highlight or suppress the button.
    *

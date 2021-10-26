@@ -117,10 +117,11 @@ describe('rendering', () => {
       (rootElement) => expect(rootElement).toHaveClass('withLabelHidden'),
     ],
     [
-      { loadingIcon: <div>loading icon</div> },
+      { feedbackIcon: <div>feedback icon</div> },
       (rootElement) => {
-        expect(within(rootElement).getByText('loading icon'));
+        expect(within(rootElement).getByText('feedback icon'));
         expect(rootElement).toBeDisabled();
+        expect(rootElement).toHaveClass('hasRootFeedback');
       },
     ],
     [

@@ -6,8 +6,11 @@ $letter-spacing: var(--rui-Button__letter-spacing);
 $text-transform: var(--rui-Button__text-transform);
 $border-width: var(--rui-Button__border-width);
 $border-radius: var(--rui-Button__border-radius);
+
 $disabled-opacity: var(--rui-Button--disabled__opacity);
 $disabled-cursor: var(--rui-Button--disabled__cursor);
+$feedback-opacity: var(--rui-Button--feedback__opacity);
+$feedback-cursor: var(--rui-Button--feedback__cursor);
 
 $group-filled-gap: var(--rui-ButtonGroup--filled__gap);
 $group-filled-separator-width: var(--rui-ButtonGroup--filled__separator__width);

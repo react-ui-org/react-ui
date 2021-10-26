@@ -12,6 +12,7 @@ import {
   Playground,
   Props,
 } from 'docz'
+import Icon from '../../../../docs/_components/Icon'
 import Button from '../Button'
 import { ButtonGroup } from './ButtonGroup'
 
@@ -161,6 +162,29 @@ Disables all buttons inside the group.
   </ButtonGroup>
   <ButtonGroup priority="flat" disabled>
     <Button label="Week" />
+    <Button label="Month" />
+    <Button label="Year" />
+  </ButtonGroup>
+</Playground>
+
+### Feedback State
+
+When user's action triggers an asynchronous process on background, feedback
+state of individual buttons can be indicated by showing an icon.
+
+<Playground>
+  <ButtonGroup>
+    <Button label="Week" color="success" feedbackIcon={<Icon icon="success" />} />
+    <Button label="Month" />
+    <Button label="Year" />
+  </ButtonGroup>
+  <ButtonGroup priority="outline">
+    <Button label="Week" color="success" feedbackIcon={<Icon icon="success" />} />
+    <Button label="Month" />
+    <Button label="Year" />
+  </ButtonGroup>
+  <ButtonGroup priority="flat">
+    <Button label="Week" color="success" feedbackIcon={<Icon icon="success" />} />
     <Button label="Month" />
     <Button label="Year" />
   </ButtonGroup>
