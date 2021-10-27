@@ -10,7 +10,6 @@ import withForwardedRef from '../withForwardedRef';
 import styles from './SelectField.scss';
 
 export const SelectField = ({
-  changeHandler,
   disabled,
   forwardedRef,
   fullWidth,
@@ -64,7 +63,6 @@ export const SelectField = ({
             className={styles.input}
             disabled={disabled}
             id={id}
-            onChange={changeHandler}
             ref={forwardedRef}
             required={required}
             value={value}
@@ -111,7 +109,6 @@ export const SelectField = ({
 };
 
 SelectField.defaultProps = {
-  changeHandler: null,
   disabled: false,
   forwardedRef: undefined,
   fullWidth: false,
@@ -128,10 +125,6 @@ SelectField.defaultProps = {
 };
 
 SelectField.propTypes = {
-  /**
-   * Function to call when the input has changed.
-   */
-  changeHandler: PropTypes.func,
   /**
    * If `true`, the input will be disabled.
    */

@@ -9,7 +9,6 @@ import withForwardedRef from '../withForwardedRef';
 import styles from './FileInputField.scss';
 
 export const FileInputField = ({
-  changeHandler,
   disabled,
   forwardedRef,
   fullWidth,
@@ -57,7 +56,6 @@ export const FileInputField = ({
             className={styles.input}
             disabled={disabled}
             id={id}
-            onChange={changeHandler}
             ref={forwardedRef}
             required={required}
             type="file"
@@ -85,7 +83,6 @@ export const FileInputField = ({
 };
 
 FileInputField.defaultProps = {
-  changeHandler: null,
   disabled: false,
   forwardedRef: undefined,
   fullWidth: false,
@@ -99,10 +96,6 @@ FileInputField.defaultProps = {
 };
 
 FileInputField.propTypes = {
-  /**
-   * Function to call when the input has changed.
-   */
-  changeHandler: PropTypes.func,
   /**
    * If `true`, the input will be disabled.
    */

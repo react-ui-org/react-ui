@@ -8,7 +8,6 @@ import withForwardedRef from '../withForwardedRef';
 import styles from './CheckboxField.scss';
 
 export const CheckboxField = ({
-  changeHandler,
   checked,
   disabled,
   forwardedRef,
@@ -46,7 +45,6 @@ export const CheckboxField = ({
           className={styles.input}
           disabled={disabled}
           id={id}
-          onChange={changeHandler}
           ref={forwardedRef}
           required={required}
           type="checkbox"
@@ -83,7 +81,6 @@ export const CheckboxField = ({
 };
 
 CheckboxField.defaultProps = {
-  changeHandler: null,
   checked: undefined,
   disabled: false,
   forwardedRef: undefined,
@@ -98,10 +95,6 @@ CheckboxField.defaultProps = {
 };
 
 CheckboxField.propTypes = {
-  /**
-   * Function to call when the input is toggled.
-   */
-  changeHandler: PropTypes.func,
   /**
    * If `true`, the input will be checked.
    */

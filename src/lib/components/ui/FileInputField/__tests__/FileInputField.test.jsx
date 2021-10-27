@@ -64,12 +64,12 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls clickHandler()', () => {
+  it('calls synthetic event onChange()', () => {
     const spy = sinon.spy();
     render((
       <FileInputField
         {...mandatoryProps}
-        changeHandler={spy}
+        onChange={spy}
       />
     ));
 

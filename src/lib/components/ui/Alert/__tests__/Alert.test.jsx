@@ -28,8 +28,8 @@ describe('rendering', () => {
     ],
     [
       {
-        closeHandler: () => {},
         id: 'id',
+        onClose: () => {},
       },
       (rootElement) => {
         expect(rootElement).toHaveAttribute('id', 'id');
@@ -39,7 +39,7 @@ describe('rendering', () => {
     ],
     [
       {
-        closeHandler: () => {},
+        onClose: () => {},
         translations: { close: 'Zavřít' },
       },
       (rootElement) => expect(within(rootElement).getByTitle('Zavřít')),
@@ -57,12 +57,12 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls closeHandler() on Close button click', () => {
+  it('calls onClose() on Close button click', () => {
     const spy = sinon.spy();
     render((
       <Alert
         {...mandatoryProps}
-        closeHandler={spy}
+        onClose={spy}
       />
     ));
 

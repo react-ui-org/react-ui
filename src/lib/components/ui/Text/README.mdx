@@ -78,10 +78,10 @@ appended by an ellipsis (`…`).
         <Toolbar align="baseline">
           <ToolbarItem>
             <TextField
-              changeHandler={(e) => setLines(e.target.value)}
               label="Number of lines"
               min={1}
               max={100}
+              onChange={(e) => setLines(e.target.value)}
               type="number"
               value={lines}
             />
@@ -156,19 +156,19 @@ will override automatic break point selection in `auto` mode when present.
             <ToolbarItem>
               <ButtonGroup aria-labelledby="#word-wrapping-options-label">
                 <Button
-                  label="normal"
-                  clickHandler={() => setWordWrapping('normal')}
                   color={wordWrapping === 'normal' ? 'dark' : 'primary'}
+                  label="normal"
+                  onClick={() => setWordWrapping('normal')}
                 />
                 <Button
-                  label="long-words"
-                  clickHandler={() => setWordWrapping('long-words')}
                   color={wordWrapping === 'long-words' ? 'dark' : 'primary'}
+                  label="long-words"
+                  onClick={() => setWordWrapping('long-words')}
                 />
                 <Button
-                  label="anywhere"
-                  clickHandler={() => setWordWrapping('anywhere')}
                   color={wordWrapping === 'anywhere' ? 'dark' : 'primary'}
+                  label="anywhere"
+                  onClick={() => setWordWrapping('anywhere')}
                 />
               </ButtonGroup>
             </ToolbarItem>
@@ -180,19 +180,19 @@ will override automatic break point selection in `auto` mode when present.
             <ToolbarItem>
               <ButtonGroup aria-labelledby="#hyphens-options-label">
                 <Button
-                  label="none"
-                  clickHandler={() => setHyphens('none')}
                   color={hyphens === 'none' ? 'dark' : 'primary'}
+                  label="none"
+                  onClick={() => setHyphens('none')}
                 />
                 <Button
-                  label="auto"
-                  clickHandler={() => setHyphens('auto')}
                   color={hyphens === 'auto' ? 'dark' : 'primary'}
+                  label="auto"
+                  onClick={() => setHyphens('auto')}
                 />
                 <Button
-                  label="manual"
-                  clickHandler={() => setHyphens('manual')}
                   color={hyphens === 'manual' ? 'dark' : 'primary'}
+                  label="manual"
+                  onClick={() => setHyphens('manual')}
                 />
               </ButtonGroup>
             </ToolbarItem>

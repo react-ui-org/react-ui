@@ -47,10 +47,10 @@ describe('rendering', () => {
         id: 'id',
         sort: {
           ascendingIcon: <span>ascending icon</span>,
-          changeHandler: () => {},
           column: 'name',
           descendingIcon: <span>descending icon</span>,
           direction: 'asc',
+          onClick: () => {},
         },
       },
       (rootElement) => {
@@ -78,10 +78,10 @@ describe('rendering', () => {
       {
         sort: {
           ascendingIcon: <span>ascending icon</span>,
-          changeHandler: () => {},
           column: 'dateOfBirth',
           descendingIcon: <span>descending icon</span>,
           direction: 'asc',
+          onClick: () => {},
         },
       },
       (rootElement) => expect(within(rootElement).getByText('ascending icon')),
@@ -90,10 +90,10 @@ describe('rendering', () => {
       {
         sort: {
           ascendingIcon: <span>ascending icon</span>,
-          changeHandler: () => {},
           column: 'dateOfBirth',
           descendingIcon: <span>descending icon</span>,
           direction: 'desc',
+          onClick: () => {},
         },
       },
       (rootElement) => expect(within(rootElement).getByText('descending icon')),
@@ -111,17 +111,17 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls changeHandler() on sorting button click', () => {
+  it('calls onClick() on sorting button click', () => {
     const spy = sinon.spy();
     render((
       <Table
         {...mandatoryProps}
         sort={{
           ascendingIcon: <span>ascending icon</span>,
-          changeHandler: spy,
           column: 'dateOfBirth',
           descendingIcon: <span>descending icon</span>,
           direction: 'asc',
+          onClick: spy,
         }}
       />
     ));

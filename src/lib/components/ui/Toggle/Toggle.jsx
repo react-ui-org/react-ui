@@ -8,7 +8,6 @@ import withForwardedRef from '../withForwardedRef';
 import styles from './Toggle.scss';
 
 export const Toggle = ({
-  changeHandler,
   checked,
   disabled,
   forwardedRef,
@@ -47,7 +46,6 @@ export const Toggle = ({
           disabled={disabled}
           id={id}
           name={id}
-          onChange={changeHandler}
           ref={forwardedRef}
           required={required}
           type="checkbox"
@@ -84,7 +82,6 @@ export const Toggle = ({
 };
 
 Toggle.defaultProps = {
-  changeHandler: null,
   checked: undefined,
   disabled: false,
   forwardedRef: undefined,
@@ -99,10 +96,6 @@ Toggle.defaultProps = {
 };
 
 Toggle.propTypes = {
-  /**
-   * Function to call when the input is toggled.
-   */
-  changeHandler: PropTypes.func,
   /**
    * If `true`, the input will be checked.
    */

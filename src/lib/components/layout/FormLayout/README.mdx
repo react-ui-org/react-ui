@@ -150,37 +150,35 @@ with CSS custom properties.
           <ToolbarItem>
             <ButtonGroup aria-labelledby="#label-width-options-label">
               <Button
-                label="default"
-                clickHandler={() => setLabelWidth('default')}
                 color={labelWidth === 'default' ? 'dark' : 'primary'}
+                label="default"
+                onClick={() => setLabelWidth('default')}
               />
               <Button
-                label="auto"
-                clickHandler={() => setLabelWidth('auto')}
                 color={labelWidth === 'auto' ? 'dark' : 'primary'}
+                label="auto"
+                onClick={() => setLabelWidth('auto')}
               />
               <Button
-                label="limited"
-                clickHandler={() => setLabelWidth('limited')}
                 color={labelWidth === 'limited' ? 'dark' : 'primary'}
+                label="limited"
+                onClick={() => setLabelWidth('limited')}
               />
               <Button
-                label="custom"
-                clickHandler={() => setLabelWidth('custom')}
                 color={labelWidth === 'custom' ? 'dark' : 'primary'}
+                label="custom"
+                onClick={() => setLabelWidth('custom')}
               />
             </ButtonGroup>
           </ToolbarItem>
           {labelWidth === 'custom' && (
             <ToolbarItem>
               <TextField
-                changeHandler={(e) => (
-                  setCustomLabelWidth(e.target.value)
-                )}
                 inputSize={5}
                 isLabelVisible={false}
                 label="Custom label width"
                 layout="horizontal"
+                onChange={(e) => setCustomLabelWidth(e.target.value)}
                 value={customLabelWidth}
               />
             </ToolbarItem>
@@ -340,9 +338,9 @@ properly vertically aligned.
             </ToolbarItem>
             <ToolbarItem>
               <CheckboxField
-                changeHandler={() => setIsChecked(!isChecked)}
                 checked={isChecked}
                 label="Another form field"
+                onChange={() => setIsChecked(!isChecked)}
               />
             </ToolbarItem>
           </Toolbar>
@@ -383,14 +381,14 @@ This is a demo of all components supported by FormLayout.
           <ToolbarItem>
             <ButtonGroup>
               <Button
-                label="Vertical layout"
-                clickHandler={() => setFieldLayout('vertical')}
                 color={fieldLayout === 'vertical' ? 'dark' : 'primary'}
+                label="Vertical layout"
+                onClick={() => setFieldLayout('vertical')}
               />
               <Button
-                label="Horizontal layout"
-                clickHandler={() => setFieldLayout('horizontal')}
                 color={fieldLayout === 'horizontal' ? 'dark' : 'primary'}
+                label="Horizontal layout"
+                onClick={() => setFieldLayout('horizontal')}
               />
             </ButtonGroup>
           </ToolbarItem>
@@ -398,34 +396,28 @@ This is a demo of all components supported by FormLayout.
         <FormLayout fieldLayout={fieldLayout} labelWidth="auto">
           <>
             <TextField
-              changeHandler={() => {}}
               label="First Name"
             />
             <TextField
-              changeHandler={() => {}}
               label="Last Name"
             />
           </>
           <TextField
-            changeHandler={() => {}}
             helpText="Optional"
             label="Email address"
             type="email"
           />
           <>
             <TextField
-              changeHandler={() => {}}
               label="Address"
               placeholder="Address line 1"
             />
             <TextField
-              changeHandler={() => {}}
               isLabelVisible={false}
               label="Address 2"
               placeholder="Address line 2"
             />
             <TextField
-              changeHandler={() => {}}
               inputSize={6}
               label="ZIP"
               validationState="invalid"
@@ -435,37 +427,35 @@ This is a demo of all components supported by FormLayout.
               <span>Czech Republic</span>
             </FormLayoutCustomField>
             <CheckboxField
-              changeHandler={() => setIsDeliveryAddress(!isDeliveryAddress)}
               checked={isDeliveryAddress}
               label="This is my delivery address"
+              onChange={() => setIsDeliveryAddress(!isDeliveryAddress)}
             />
           </>
           <SelectField
-            changeHandler={(e) => setFruit(e.target.value)}
             label="Your favourite fruit"
+            onChange={(e) => setFruit(e.target.value)}
             options={options}
             value={fruit}
           />
           <TextArea
-            changeHandler={() => {}}
             fullWidth
             label="Message"
             rows={3}
           />
           <FileInputField
-            changeHandler={() => {}}
             label="Attachment"
           />
           <Toggle
-            changeHandler={() => setReceiveNewsletter(!receiveNewsletter)}
             checked={receiveNewsletter}
             helpText="Only once per week!"
             label="Receive weekly newsletter"
+            onChange={() => setReceiveNewsletter(!receiveNewsletter)}
             required
           />
           <Radio
-            changeHandler={(e) => setFruit(e.target.value)}
             label="And fruit again!"
+            onChange={(e) => setFruit(e.target.value)}
             options={options}
             value={fruit}
           />

@@ -219,7 +219,8 @@ property defined because it detects changes of these keys.
         <Toolbar>
           <ToolbarItem>
             <Radio
-              changeHandler={(e) => setDirection(e.target.value)}
+              label="Direction:"
+              onChange={(e) => setDirection(e.target.value)}
               options={[
                 {
                   label: 'Vertical',
@@ -230,13 +231,13 @@ property defined because it detects changes of these keys.
                   value: 'horizontal',
                 },
               ]}
-              label="Direction:"
               value={direction}
             />
           </ToolbarItem>
           <ToolbarItem>
             <Radio
-              changeHandler={(e) => setAutoScroll(e.target.value)}
+              label="Autoscroll:"
+              onChange={(e) => setAutoScroll(e.target.value)}
               options={[
                 {
                   label: 'Always',
@@ -247,14 +248,13 @@ property defined because it detects changes of these keys.
                   value: 'detectEnd',
                 },
               ]}
-              label="Autoscroll:"
               value={autoScroll}
             />
           </ToolbarItem>
           <ToolbarItem>
             <Button
               label="Add text"
-              clickHandler={
+              onClick={
                 () => setScrollViewContent(
                   `${scrollViewContent} ${generateRandomString()}`,
                 )

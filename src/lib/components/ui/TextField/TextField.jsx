@@ -12,7 +12,6 @@ import styles from './TextField.scss';
 const SMALL_INPUT_SIZE = 10;
 
 export const TextField = ({
-  changeHandler,
   disabled,
   forwardedRef,
   fullWidth,
@@ -71,7 +70,6 @@ export const TextField = ({
             className={styles.input}
             disabled={disabled}
             id={id}
-            onChange={changeHandler}
             placeholder={placeholder}
             ref={forwardedRef}
             required={required}
@@ -105,7 +103,6 @@ export const TextField = ({
 };
 
 TextField.defaultProps = {
-  changeHandler: null,
   disabled: false,
   forwardedRef: undefined,
   fullWidth: false,
@@ -125,10 +122,6 @@ TextField.defaultProps = {
 };
 
 TextField.propTypes = {
-  /**
-   * Function to call when the input has changed.
-   */
-  changeHandler: PropTypes.func,
   /**
    * If `true`, the input will be disabled.
    */

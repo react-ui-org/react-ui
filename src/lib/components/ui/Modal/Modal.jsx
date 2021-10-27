@@ -54,18 +54,18 @@ export class Modal extends React.Component {
   keyPressHandler(e) {
     const {
       actions,
-      closeHandler,
+      onClose,
     } = this.props;
 
-    if (e.keyCode === 27 && closeHandler) {
-      closeHandler();
+    if (e.keyCode === 27 && onClose) {
+      onClose();
     }
 
     if (e.keyCode === 13 && e.target.nodeName !== 'BUTTON') {
       const submitAction = actions.find((action) => action.type === 'submit');
 
       if (submitAction && !submitAction.disabled) {
-        submitAction.clickHandler(e);
+        submitAction.onClick(e);
       }
     }
   }
@@ -74,8 +74,8 @@ export class Modal extends React.Component {
     const {
       actions,
       children,
-      closeHandler,
       id,
+      onClose,
       position,
       scrollView,
       size,
@@ -147,8 +147,8 @@ export class Modal extends React.Component {
         className={styles.backdrop}
         id={id}
         onClick={(e) => {
-          if (closeHandler) {
-            closeHandler(e);
+          if (onClose) {
+            onClose(e);
           }
         }}
         role="presentation"
@@ -171,11 +171,11 @@ export class Modal extends React.Component {
             >
               {title}
             </h3>
-            {closeHandler && (
+            {onClose && (
               <button
                 type="button"
                 className={styles.close}
-                onClick={closeHandler}
+                onClick={onClose}
                 title={translations.close}
                 {...(id && { id: `${id}__closeModalHeaderButton` })}
               >
@@ -184,29 +184,29 @@ export class Modal extends React.Component {
             )}
           </div>
           {modalBody()}
-          {(actions.length || closeHandler) && (
+          {(actions.length || onClose) && (
             <div className={styles.footer}>
               <Toolbar justify="center" dense>
                 {actions.map((action) => (
                   <ToolbarItem key={action.label}>
                     <Button
                       {...transferProps(action)}
-                      clickHandler={action.clickHandler}
                       color={action.color}
                       disabled={action.disabled}
                       feedbackIcon={action.feedbackIcon}
+                      forwardedRef={this.submitButtonRef}
                       id={action.id || undefined}
                       label={action.label}
-                      forwardedRef={this.submitButtonRef}
+                      onClick={action.onClick}
                       type="button"
                     />
                   </ToolbarItem>
                 ))}
-                {closeHandler && (
+                {onClose && (
                   <ToolbarItem>
                     <Button
-                      clickHandler={closeHandler}
                       label={translations.close}
+                      onClick={onClose}
                       priority="flat"
                       {...(id && { id: `${id}__closeModalFooterButton` })}
                     />
@@ -234,8 +234,8 @@ export class Modal extends React.Component {
 Modal.defaultProps = {
   actions: [],
   autoFocus: true,
-  closeHandler: null,
   id: undefined,
+  onClose: null,
   portalId: null,
   position: 'center',
   scrollView: (<ScrollView
@@ -251,12 +251,12 @@ Modal.propTypes = {
    * Actions to be rendered in modal footer.
    */
   actions: PropTypes.arrayOf(PropTypes.shape({
-    clickHandler: PropTypes.func.isRequired,
     color: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'danger', 'help', 'info', 'note', 'light', 'dark']),
     disabled: PropTypes.bool,
     feedbackIcon: PropTypes.node,
     id: PropTypes.string,
     label: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
   })),
   /**
    * If `true`, focus the first action in the footer when the modal is opened.
@@ -267,16 +267,16 @@ Modal.propTypes = {
    */
   children: PropTypes.node.isRequired,
   /**
-   * If a function is provided, the close buttons will be displayed.
-   */
-  closeHandler: PropTypes.func,
-  /**
    * ID of the root HTML element. It also serves as a base for nested elements:
    * * `<ID>__content`
    * * `<ID>__closeModalHeaderButton`
    * * `<ID>__closeModalFooterButton`
    */
   id: PropTypes.string,
+  /**
+   * If a function is provided, the close buttons will be displayed.
+   */
+  onClose: PropTypes.func,
   /**
    * If set, the modal is rendered in the React Portal with that ID.
    */

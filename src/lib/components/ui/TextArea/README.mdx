@@ -348,10 +348,10 @@ It's possible to disable the whole input.
 
 ## API
 
-In addition to the options below, you can add any custom attributes that do not
-interfere with the API, and they will be passed to the `textarea` HTML element.
-This is useful mainly to improve component's
-[accessibility](#forwarding-html-attributes).
+In addition to the options below, you can specify [React synthetic events] or
+any custom HTML attributes that do not interfere with the API, and they will be
+passed to the `textarea` HTML element. This enables making the component
+interactive and helps improve its [accessibility](#forwarding-html-attributes).
 
 <Props table of={TextArea} />
 
@@ -359,3 +359,5 @@ This is useful mainly to improve component's
 
 Head to [Forms Theming](/customize/theming/forms) to see shared form theming
 options.
+
+[React synthetic events]: https://reactjs.org/docs/events.html

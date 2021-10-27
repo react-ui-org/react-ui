@@ -15,7 +15,6 @@ export const Button = ({
   afterLabel,
   beforeLabel,
   block,
-  clickHandler,
   disabled,
   endCorner,
   feedbackIcon,
@@ -55,7 +54,6 @@ export const Button = ({
       ].join(' ')}
       disabled={resolveContextOrProp(context && context.disabled, disabled) || !!feedbackIcon}
       id={id}
-      onClick={clickHandler}
       ref={forwardedRef}
       type={type}
     >
@@ -99,7 +97,6 @@ Button.defaultProps = {
   afterLabel: null,
   beforeLabel: null,
   block: false,
-  clickHandler: null,
   color: 'primary',
   disabled: false,
   endCorner: null,
@@ -129,10 +126,6 @@ Button.propTypes = {
    * as the value is inherited in such case.
    */
   block: PropTypes.bool,
-  /**
-   * Function to call when the button is clicked.
-   */
-  clickHandler: PropTypes.func,
   /**
    * [Color variant](/foundation/colors#component-colors) to clarify importance and meaning of the button.
    */

@@ -8,7 +8,6 @@ import { FormLayoutContext } from '../../layout/FormLayout';
 import styles from './Radio.scss';
 
 export const Radio = ({
-  changeHandler,
   disabled,
   helpText,
   id,
@@ -60,13 +59,12 @@ export const Radio = ({
                   <input
                     {...transferProps(restProps)}
                     className={styles.input}
-                    checked={changeHandler
+                    checked={restProps.onChange
                       ? (value === option.value) || false
                       : undefined}
                     disabled={disabled || option.disabled}
                     id={id && `${id}__item__${option.value}`}
                     name={id}
-                    onChange={changeHandler}
                     type="radio"
                     value={option.value}
                   />
@@ -103,7 +101,6 @@ export const Radio = ({
 };
 
 Radio.defaultProps = {
-  changeHandler: null,
   disabled: false,
   helpText: null,
   id: undefined,
@@ -116,10 +113,6 @@ Radio.defaultProps = {
 };
 
 Radio.propTypes = {
-  /**
-   * Function to call when the input has changed.
-   */
-  changeHandler: PropTypes.func,
   /**
    * If `true`, the input will be disabled.
    */

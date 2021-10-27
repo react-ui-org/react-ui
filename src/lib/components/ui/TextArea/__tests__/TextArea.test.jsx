@@ -68,7 +68,7 @@ describe('rendering', () => {
     ...validationTextPropTest,
     [
       {
-        changeHandler: () => {},
+        onChange: () => {},
         value: 'content text',
       },
       (rootElement) => expect(within(rootElement).getByText('content text')),
@@ -87,12 +87,12 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls changeHandler() on typing', () => {
+  it('calls synthetic event onChange() on typing', () => {
     const spy = sinon.spy();
     render((
       <TextArea
         {...mandatoryProps}
-        changeHandler={spy}
+        onChange={spy}
         value="content-value"
       />
     ));

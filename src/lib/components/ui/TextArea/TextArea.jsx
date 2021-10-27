@@ -10,7 +10,6 @@ import withForwardedRef from '../withForwardedRef';
 import styles from './TextArea.scss';
 
 export const TextArea = ({
-  changeHandler,
   cols,
   disabled,
   forwardedRef,
@@ -67,7 +66,6 @@ export const TextArea = ({
             cols={cols}
             disabled={disabled}
             id={id}
-            onChange={changeHandler}
             placeholder={placeholder}
             ref={forwardedRef}
             required={required}
@@ -100,7 +98,6 @@ export const TextArea = ({
 };
 
 TextArea.defaultProps = {
-  changeHandler: null,
   cols: null,
   disabled: false,
   forwardedRef: undefined,
@@ -120,10 +117,6 @@ TextArea.defaultProps = {
 };
 
 TextArea.propTypes = {
-  /**
-   * Function to call when the input has changed.
-   */
-  changeHandler: PropTypes.func,
   /**
    * The number of visible text columns for the control.
    */

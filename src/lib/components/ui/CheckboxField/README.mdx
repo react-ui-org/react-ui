@@ -29,9 +29,9 @@ And use it:
     const [agree, setAgree] = React.useState(true);
     return (
       <CheckboxField
-        changeHandler={() => setAgree(!agree)}
         checked={agree}
         label="I agree"
+        onChange={() => setAgree(!agree)}
       />
     );
   }}
@@ -81,10 +81,10 @@ turning the checkbox on or off.
     const [getNewsletter, setGetNewsletter] = React.useState(true);
     return (
       <CheckboxField
-        changeHandler={() => setGetNewsletter(!getNewsletter)}
         checked={getNewsletter}
         helpText="We will not bother you more than once a month, we promise!"
         label="Send me newsletter"
+        onChange={() => setGetNewsletter(!getNewsletter)}
       />
     );
   }}
@@ -100,10 +100,10 @@ label remains accessible to assistive technologies.
     const [checked, setChecked] = React.useState(true);
     return (
       <CheckboxField
-        changeHandler={() => setChecked(!checked)}
         checked={checked}
         isLabelVisible={false}
         label="You cannot see this"
+        onChange={() => setChecked(!checked)}
       />
     );
   }}
@@ -116,10 +116,10 @@ It's also possible to display label before input:
     const [checked, setChecked] = React.useState(true);
     return (
       <CheckboxField
-        changeHandler={() => setChecked(!checked)}
         checked={checked}
         label="Label precedes input"
         labelPosition="before"
+        onChange={() => setChecked(!checked)}
       />
     );
   }}
@@ -140,22 +140,22 @@ have.
     return (
       <>
         <CheckboxField
-          changeHandler={() => setAgree(!agree)}
           checked={agree}
           label="I have read and agree with terms and conditions"
+          onChange={() => setAgree(!agree)}
           validationState="valid"
         />
         <CheckboxField
-          changeHandler={() => setAgree(!agree)}
           checked={agree}
           label="I have read and agree with terms and conditions"
+          onChange={() => setAgree(!agree)}
           validationState="warning"
           validationText="Please wait 10 minutes until we verify your data."
         />
         <CheckboxField
-          changeHandler={() => setAgree(!agree)}
           checked={agree}
           label="I have read and agree with terms and conditions"
+          onChange={() => setAgree(!agree)}
           required
           validationState="invalid"
           validationText="You must agree to be able to proceed."
@@ -183,9 +183,10 @@ Disabled state makes the input unavailable.
 
 ## API
 
-In addition to the options below, you can add any custom attributes that do not
-interfere with the API, and they will be passed to the `input` HTML element.
-This is useful mainly to improve component's accessibility.
+In addition to the options below, you can specify [React synthetic events] or
+any custom HTML attributes that do not interfere with the API, and they will be
+passed to the `input` HTML element. This enables making the component
+interactive and helps improve its accessibility.
 
 <Props table of={CheckboxField} />
 
@@ -198,3 +199,5 @@ options. On top of that, the following options are available for CheckboxField.
 |----------------------------------------------------------------------|----------------------------------------------|
 | `--rui-FormField--check__input--checkbox__border-radius`             | Input corner radius                          |
 | `--rui-FormField--check__input--checkbox--checked__background-image` | Background image of checked input            |
+
+[React synthetic events]: https://reactjs.org/docs/events.html

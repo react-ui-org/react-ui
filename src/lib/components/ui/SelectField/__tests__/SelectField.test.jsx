@@ -76,14 +76,14 @@ describe('rendering', () => {
     ...validationTextPropTest,
     [
       {
-        changeHandler: () => {},
+        onChange: () => {},
         value: 'option2',
       },
       (rootElement) => expect(within(rootElement).getByDisplayValue('option 2')),
     ],
     [
       {
-        changeHandler: () => {},
+        onChange: () => {},
         value: 1,
       },
       (rootElement) => expect(within(rootElement).getByDisplayValue('option 1')),
@@ -102,12 +102,12 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls changeHandler() on changing selected option', () => {
+  it('calls synthetic event onChange() on changing selected option', () => {
     const spy = sinon.spy();
     render((
       <SelectField
         {...mandatoryProps}
-        changeHandler={spy}
+        onChange={spy}
         value="option2"
       />
     ));

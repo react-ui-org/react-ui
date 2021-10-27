@@ -175,12 +175,12 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls clickHandler()', () => {
+  it('calls synthetic event onClick()', () => {
     const spy = sinon.spy();
     render((
       <Button
         {...mandatoryProps}
-        clickHandler={spy}
+        onClick={spy}
       />
     ));
 
