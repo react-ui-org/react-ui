@@ -17,6 +17,15 @@
   border: 0;
 }
 
+@mixin unhide-text() {
+  position: unset;
+  width: unset;
+  height: unset;
+  overflow: unset;
+  clip: unset;
+  white-space: unset;
+}
+
 // 2.
 @mixin min-tap-target($size: theme.$tap-target-size, $center: true) {
   position: relative;

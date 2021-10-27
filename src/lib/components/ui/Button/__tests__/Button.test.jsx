@@ -102,15 +102,28 @@ describe('rendering', () => {
     ],
     ...labelPropTest,
     [
-      { labelVisibility: 'all' },
-      (rootElement) => {
-        expect(rootElement).not.toHaveClass('withLabelHiddenMobile');
-        expect(rootElement).not.toHaveClass('withLabelHidden');
-      },
+      { labelVisibility: 'sm' },
+      (rootElement) => expect(rootElement).toHaveClass('withLabelVisibleSm'),
     ],
     [
-      { labelVisibility: 'desktop' },
-      (rootElement) => expect(rootElement).toHaveClass('withLabelHiddenMobile'),
+      { labelVisibility: 'md' },
+      (rootElement) => expect(rootElement).toHaveClass('withLabelVisibleMd'),
+    ],
+    [
+      { labelVisibility: 'lg' },
+      (rootElement) => expect(rootElement).toHaveClass('withLabelVisibleLg'),
+    ],
+    [
+      { labelVisibility: 'xl' },
+      (rootElement) => expect(rootElement).toHaveClass('withLabelVisibleXl'),
+    ],
+    [
+      { labelVisibility: 'xxl' },
+      (rootElement) => expect(rootElement).toHaveClass('withLabelVisibleXxl'),
+    ],
+    [
+      { labelVisibility: 'xxxl' },
+      (rootElement) => expect(rootElement).toHaveClass('withLabelVisibleXxxl'),
     ],
     [
       { labelVisibility: 'none' },

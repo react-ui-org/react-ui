@@ -12,10 +12,13 @@
 // 3. Get ready for position of corner elements and group separator.
 //
 // 4. Icon buttons should appear as squares, that's why width and height is equal here.
+//
+// 5. Use original padding to restore square buttons back to their size.
 
 @use 'sass:list';
 @use 'sass:map';
 @use 'sass:math';
+@use '../../../styles/tools/accessibility';
 @use '../../../styles/tools/breakpoint';
 @use '../../../styles/tools/transition';
 @use 'settings';
@@ -58,6 +61,18 @@
   }
 }
 
+// 4.
+@mixin _button-square() {
+  --rui-local-padding: 0;
+  --rui-local-width: var(--rui-local-height);
+}
+
+// 5.
+@mixin _button-size-restore() {
+  --rui-local-padding: var(--rui-local-padding-original);
+  --rui-local-width: unset;
+}
+
 @mixin button() {
   @include transition.add((opacity, color, border-color, background-color, box-shadow));
 
@@ -73,7 +88,6 @@
   letter-spacing: theme.$letter-spacing;
   text-align: center;
   text-decoration: none;
-  text-overflow: ellipsis;
   text-transform: theme.$text-transform;
   vertical-align: middle;
   color: var(--rui-local-color);
@@ -104,20 +118,8 @@
 
   --rui-local-height: #{map.get($properties, height)};
   --rui-local-padding: 0 #{map.get($properties, padding-x)};
+  --rui-local-padding-original: 0 #{map.get($properties, padding-x)}; // 5.
   --rui-local-font-size: #{map.get($properties, font-size)};
-
-  &.withLabelHidden,
-  &.withLabelHiddenMobile {
-    --rui-local-padding: 0;
-    --rui-local-width: #{map.get($properties, height)}; // 4.
-  }
-
-  &.withLabelHiddenMobile {
-    @include breakpoint.up(settings.$breakpoint) {
-      --rui-local-padding: 0 #{map.get($properties, padding-x)};
-      --rui-local-width: auto;
-    }
-  }
 }
 
 @mixin button-color($priority, $color) {
@@ -134,5 +136,21 @@
 
   &:not(:disabled):active {
     @include _get-themeable-properties($priority, $color, active);
+  }
+}
+
+@mixin hide-label() {
+  @include _button-square();
+
+  .label {
+    @include accessibility.hide-text();
+  }
+}
+
+@mixin show-label() {
+  @include _button-size-restore();
+
+  .label {
+    @include accessibility.unhide-text();
   }
 }

@@ -1,5 +1,4 @@
 @use 'sass:map';
-@use '../../../styles/tools/accessibility';
 @use '../../../styles/tools/breakpoint';
 @use 'settings';
 @use 'theme';
@@ -66,12 +65,6 @@
   width: 100%;
 }
 
-.rootBlock.withLabelHiddenMobile {
-  @include breakpoint.up(settings.$breakpoint) {
-    width: 100%;
-  }
-}
-
 .hasRootFeedback:disabled {
   opacity: theme.$feedback-opacity;
   cursor: theme.$feedback-cursor;
@@ -108,29 +101,48 @@
   z-index: map.get(settings.$group-z-indexes, button-overflowing-elements);
 }
 
-.withLabelHidden .label,
-.withLabelHiddenMobile .label {
-  @include accessibility.hide-text();
+.withLabelHidden,
+.withLabelVisibleSm,
+.withLabelVisibleMd,
+.withLabelVisibleLg,
+.withLabelVisibleXl,
+.withLabelVisibleXxl,
+.withLabelVisibleXxxl {
+  @include tools.hide-label();
 }
 
-.withLabelHiddenMobile .label {
-  @include breakpoint.up(settings.$breakpoint) {
-    position: relative;
-    width: auto;
-    height: auto;
+.withLabelVisibleSm {
+  @include breakpoint.up(sm) {
+    @include tools.show-label();
   }
 }
 
-.withLabelHidden.isRootLoading .beforeLabel,
-.withLabelHidden.isRootLoading .afterLabel,
-.withLabelHiddenMobile.isRootLoading .beforeLabel,
-.withLabelHiddenMobile.isRootLoading .afterLabel {
-  display: none;
+.withLabelVisibleMd {
+  @include breakpoint.up(md) {
+    @include tools.show-label();
+  }
 }
 
-.withLabelHiddenMobile.isRootLoading .beforeLabel,
-.withLabelHiddenMobile.isRootLoading .afterLabel {
-  @include breakpoint.up(settings.$breakpoint) {
-    display: flex;
+.withLabelVisibleLg {
+  @include breakpoint.up(lg) {
+    @include tools.show-label();
+  }
+}
+
+.withLabelVisibleXl {
+  @include breakpoint.up(xl) {
+    @include tools.show-label();
+  }
+}
+
+.withLabelVisibleXxl {
+  @include breakpoint.up(xxl) {
+    @include tools.show-label();
+  }
+}
+
+.withLabelVisibleXxxl {
+  @include breakpoint.up(xxxl) {
+    @include tools.show-label();
   }
 }

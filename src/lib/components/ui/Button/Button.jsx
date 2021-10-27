@@ -106,7 +106,7 @@ Button.defaultProps = {
   feedbackIcon: null,
   forwardedRef: undefined,
   id: undefined,
-  labelVisibility: 'all',
+  labelVisibility: 'xs',
   priority: 'filled',
   size: 'medium',
   startCorner: null,
@@ -173,9 +173,9 @@ Button.propTypes = {
    */
   label: PropTypes.string.isRequired,
   /**
-   * Defines when the button label should be visible.
+   * Defines minimum breakpoint from which the button label will be visible.
    */
-  labelVisibility: PropTypes.oneOf(['all', 'desktop', 'none']),
+  labelVisibility: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'xxxl', 'none']),
   /**
    * Visual priority to highlight or suppress the button.
    *
