@@ -32,7 +32,6 @@ export class Table extends React.Component {
         {sort && column.isSortable && (
           <div className={styles.sortButton}>
             <Button
-              clickHandler={() => sort.changeHandler(column.name, sortDirection)}
               beforeLabel={
                 sortDirection === 'asc'
                   ? sort.ascendingIcon
@@ -40,6 +39,7 @@ export class Table extends React.Component {
               }
               label={sortDirection}
               labelVisibility="none"
+              onClick={() => sort.onClick(column.name, sortDirection)}
               priority="flat"
               {...(id && { id: `${id}__headerCell__${column.name}__sortButton` })}
             />
@@ -138,10 +138,10 @@ Table.propTypes = {
    */
   sort: PropTypes.shape({
     ascendingIcon: PropTypes.node.isRequired,
-    changeHandler: PropTypes.func.isRequired,
     column: PropTypes.string.isRequired,
     descendingIcon: PropTypes.node.isRequired,
     direction: PropTypes.oneOf(['asc', 'desc']).isRequired,
+    onClick: PropTypes.func.isRequired,
   }),
 };
 

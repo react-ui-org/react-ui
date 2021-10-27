@@ -34,20 +34,20 @@ And use it:
     return (
       <>
         <Button
-          clickHandler={() => setModalOpen(true)}
           label="Launch modal"
+          onClick={() => setModalOpen(true)}
           priority="outline"
         />
         <div>
           {modalOpen && (
             <Modal
-              title="Warning"
               actions={[{
-                clickHandler: () => setModalOpen(false),
-                label: 'Delete',
                 color: 'danger',
+                label: 'Delete',
+                onClick: () => setModalOpen(false),
               }]}
-              closeHandler={() => setModalOpen(false)}
+              onClose={() => setModalOpen(false)}
+              title="Warning"
             >
               <p>
                 Do you really want to delete the user <code>admin</code>?
@@ -96,48 +96,48 @@ Modals of any size automatically shrink when they cannot fit the screen width.
     return (
       <>
         <Button
-          clickHandler={() => {
+          label="Launch small modal"
+          onClick={() => {
             setModalSize('small');
             setModalOpen(true);
           }}
-          label="Launch small modal"
           priority="outline"
         />
         <Button
-          clickHandler={() => {
+          label="Launch medium modal"
+          onClick={() => {
             setModalSize('medium');
             setModalOpen(true);
           }}
-          label="Launch medium modal"
           priority="outline"
         />
         <Button
-          clickHandler={() => {
+          label="Launch large modal"
+          onClick={() => {
             setModalSize('large');
             setModalOpen(true);
           }}
-          label="Launch large modal"
           priority="outline"
         />
         <Button
-          clickHandler={() => {
+          label="Launch fullscreen modal"
+          onClick={() => {
             setModalSize('fullscreen');
             setModalOpen(true);
           }}
-          label="Launch fullscreen modal"
           priority="outline"
         />
         <div>
           {modalOpen && (
             <Modal
-              title="Delete the user?"
               actions={[{
-                clickHandler: () => setModalOpen(false),
-                label: 'Delete',
                 color: 'danger',
+                label: 'Delete',
+                onClick: () => setModalOpen(false),
               }]}
-              closeHandler={() => setModalOpen(false)}
+              onClose={() => setModalOpen(false)}
               size={modalSize}
+              title="Delete the user?"
             >
               <p>
                 Do you really want to delete the user <code>admin</code>?
@@ -164,21 +164,21 @@ magic that doesn't work together yet 🎩.
     return (
       <>
         <Button
-          clickHandler={() => setModalOpen(true)}
           label="Launch auto-width modal"
+          onClick={() => setModalOpen(true)}
           priority="outline"
         />
         <div>
           {modalOpen && (
             <Modal
-              title="Delete the user?"
               actions={[{
-                clickHandler: () => setModalOpen(false),
-                label: 'Delete',
                 color: 'danger',
+                label: 'Delete',
+                onClick: () => setModalOpen(false),
               }]}
-              closeHandler={() => setModalOpen(false)}
+              onClose={() => setModalOpen(false)}
               size="auto"
+              title="Delete the user?"
             >
               <p>
                 Do you really want to delete the user <code>admin</code>?
@@ -203,32 +203,32 @@ Modal can be aligned either to top or center of the screen.
     return (
       <>
         <Button
-          clickHandler={() => {
+          label="Launch modal at center"
+          onClick={() => {
             setModalPosition('center');
             setModalOpen(true);
           }}
-          label="Launch modal at center"
           priority="outline"
         />
         <Button
-          clickHandler={() => {
+          label="Launch modal at top"
+          onClick={() => {
             setModalPosition('top');
             setModalOpen(true);
           }}
-          label="Launch modal at top"
           priority="outline"
         />
         <div>
           {modalOpen && (
             <Modal
-              title="Delete the user?"
               actions={[{
-                clickHandler: () => setModalOpen(false),
+                onClick: () => setModalOpen(false),
                 label: 'Delete',
                 color: 'danger',
               }]}
-              closeHandler={() => setModalOpen(false)}
+              onClose={() => setModalOpen(false)}
               position={modalPosition}
+              title="Delete the user?"
             >
               <p>
                 Do you really want to delete the user <code>admin</code>?
@@ -258,33 +258,33 @@ component.
     return (
       <>
         <Button
-          clickHandler={() => {
+          label="Launch modal with scrolling body"
+          onClick={() => {
             setModalScrollView(true);
             setModalOpen(true);
           }}
-          label="Launch modal with scrolling body"
           priority="outline"
         />
         <Button
-          clickHandler={() => {
+          label="Launch scrolling modal"
+          onClick={() => {
             setModalScrollView(false);
             setModalOpen(true);
           }}
-          label="Launch scrolling modal"
           priority="outline"
         />
         <div>
           {modalOpen && (
             <Modal
-              title="Modal with long content"
               actions={[{
-                clickHandler: () => setModalOpen(false),
                 label: 'OK',
+                onClick: () => setModalOpen(false),
               }]}
               autoFocus={false}
-              closeHandler={() => setModalOpen(false)}
+              onClose={() => setModalOpen(false)}
               scrollView={modalScrollView ? undefined : null}
               size="small"
+              title="Modal with long content"
             >
               <p>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
@@ -380,8 +380,8 @@ to prevent interaction. That's where blocking modals may come handy.
     return (
       <>
         <Button
-          clickHandler={() => setModalOpen(true)}
           label="Launch blocking modal"
+          onClick={() => setModalOpen(true)}
           priority="outline"
         />
         <div>
@@ -393,8 +393,8 @@ to prevent interaction. That's where blocking modals may come handy.
                 Don&apos;t turn off the device!
               </p>
               <Button
-                clickHandler={() => setModalOpen(false)}
                 label="Close the demo"
+                onClick={() => setModalOpen(false)}
                 priority="flat"
               />
             </Modal>

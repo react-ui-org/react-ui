@@ -6,7 +6,6 @@ import styles from './Link.scss';
 
 export const Link = ({
   children,
-  clickHandler,
   href,
   id,
   ...restProps
@@ -16,7 +15,6 @@ export const Link = ({
     href={href}
     className={styles.root}
     id={id}
-    onClick={clickHandler}
   >
     {children}
   </a>
@@ -24,7 +22,6 @@ export const Link = ({
 
 Link.defaultProps = {
   children: null,
-  clickHandler: undefined,
   id: undefined,
 };
 
@@ -33,10 +30,6 @@ Link.propTypes = {
    * Content of the link.
    */
   children: PropTypes.node,
-  /**
-   * Function to call when the link is clicked.
-   */
-  clickHandler: PropTypes.func,
   /**
    * Link's `href` attribute.
    */

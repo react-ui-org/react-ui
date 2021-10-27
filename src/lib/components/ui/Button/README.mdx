@@ -397,9 +397,10 @@ animation is made.
 
 ## API
 
-In addition to the options below, you can add any custom attributes that do not
-interfere with the API, and they will be passed to the `button` HTML element.
-This is useful mainly to improve component's accessibility.
+In addition to the options below, you can specify [React synthetic events] or
+any custom HTML attributes that do not interfere with the API, and they will be
+passed to the `button` HTML element. This enables making the component
+interactive and helps improve its accessibility.
 
 <Props table of={Button} />
 
@@ -552,3 +553,5 @@ feedback state.
 |-----------------------------------|------------------------------------------------------|
 | `--rui-Button--feedback__opacity` | Opacity of buttons in feedback state                 |
 | `--rui-Button--feedback__cursor`  | Cursor to show on hovering buttons in feedback state |
+
+[React synthetic events]: https://reactjs.org/docs/events.html

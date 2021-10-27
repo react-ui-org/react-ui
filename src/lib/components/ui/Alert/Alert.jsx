@@ -6,10 +6,10 @@ import styles from './Alert.scss';
 
 export const Alert = ({
   children,
-  closeHandler,
   color,
   icon,
   id,
+  onClose,
   translations,
 }) => (
   <div
@@ -31,13 +31,13 @@ export const Alert = ({
     >
       {children}
     </div>
-    {closeHandler && (
+    {onClose && (
       <button
         type="button"
         {...(id && { id: `${id}__close` })}
         className={styles.close}
-        onClick={() => closeHandler()}
-        onKeyPress={() => closeHandler()}
+        onClick={() => onClose()}
+        onKeyPress={() => onClose()}
         tabIndex="0"
         title={translations.close}
       >
@@ -48,10 +48,10 @@ export const Alert = ({
 );
 
 Alert.defaultProps = {
-  closeHandler: null,
   color: 'note',
   icon: null,
   id: undefined,
+  onClose: null,
 };
 
 Alert.propTypes = {
@@ -59,11 +59,6 @@ Alert.propTypes = {
    * Alert body.
    */
   children: PropTypes.node.isRequired,
-  /**
-   * Function to call when the close button is clicked. If not provided, close buttons will be
-   * hidden.
-   */
-  closeHandler: PropTypes.func,
   /**
    * [Color variant](/foundation/colors#component-colors) to clarify importance and meaning of the alert.
    */
@@ -82,6 +77,11 @@ Alert.propTypes = {
    * * `<ID>__content`
    */
   id: PropTypes.string,
+  /**
+   * Function to call when the close button is clicked. If not provided, close buttons will be
+   * hidden.
+   */
+  onClose: PropTypes.func,
   /**
    * Translations required by the component.
    */

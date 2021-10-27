@@ -40,8 +40,8 @@ describe('rendering', () => {
     ],
     [
       {
-        closeHandler: () => {},
         id: 'id',
+        onClose: () => {},
       },
       (rootElement) => {
         expect(rootElement).toHaveAttribute('id', 'id');
@@ -85,7 +85,7 @@ describe('rendering', () => {
     ],
     [
       {
-        closeHandler: () => {},
+        onClose: () => {},
         translations: { close: 'Zavřít' },
       },
       (rootElement) => expect(within(rootElement).getByTitle('Zavřít')),
@@ -107,12 +107,12 @@ describe('functionality', () => {
     () => userEvent.click(screen.getByText('Close')),
     () => userEvent.keyboard('{esc}'),
     () => userEvent.click(screen.getByTestId('id')),
-  ])('call closeHandler() (%#)', (action) => {
+  ])('call onClose() (%#)', (action) => {
     const spy = sinon.spy();
     render((
       <Modal
         {...mandatoryProps}
-        closeHandler={spy}
+        onClose={spy}
         id="id"
       >
         Modal content
@@ -133,13 +133,13 @@ describe('functionality', () => {
         {...mandatoryProps}
         actions={[
           {
-            clickHandler: spy,
             label: 'submit',
+            onClick: spy,
             type: 'submit',
           },
           {
-            clickHandler: spy,
             label: 'action',
+            onClick: spy,
             type: 'button',
           },
         ]}
@@ -162,9 +162,9 @@ describe('functionality', () => {
         {...mandatoryProps}
         actions={[
           {
-            clickHandler: spy,
             disabled: true,
             label: 'submit',
+            onClick: spy,
             type: 'submit',
           },
         ]}

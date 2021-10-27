@@ -240,14 +240,14 @@ The following is an example of custom sorting function executed on the client.
         rows={rows}
         sort={{
           ascendingIcon: <Icon icon="up" />,
-          changeHandler: (column, direction) => {
+          column: tableSortColumn,
+          descendingIcon: <Icon icon="down" />,
+          direction: tableSortDirection,
+          onClick: (column, direction) => {
             setTableSortColumn(column);
             setTableSortDirection(direction === 'asc' ? 'desc' : 'asc');
             setRows(compare(rows, column, direction));
           },
-          column: tableSortColumn,
-          descendingIcon: <Icon icon="down" />,
-          direction: tableSortDirection,
         }}
       />
     );

@@ -109,9 +109,9 @@ Example:
           variant="filled"
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           id="default-outline-select-field"
           label="Default outline select field"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           value={fruit}
         />
@@ -126,9 +126,9 @@ Example:
             variant="filled"
           />
           <SelectField
-            changeHandler={(e) => setFruit(e.target.value)}
             id="themed-outline-select-field"
             label="Themed outline select field"
+            onChange={(e) => setFruit(e.target.value)}
             options={options}
             value={fruit}
           />
@@ -191,9 +191,9 @@ Example:
           label="Default outline text field"
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           id="default-outline-select-field"
           label="Default outline select field"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           value={fruit}
         />
@@ -203,9 +203,9 @@ Example:
             label="Themed outline text field"
           />
           <SelectField
-            changeHandler={(e) => setFruit(e.target.value)}
             id="themed-outline-select-field"
             label="Themed outline select field"
+            onChange={(e) => setFruit(e.target.value)}
             options={options}
             value={fruit}
           />
@@ -260,9 +260,9 @@ Example:
           label="Default medium text field"
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           id="default-medium-select-field"
           label="Default medium select field"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           value={fruit}
         />
@@ -272,9 +272,9 @@ Example:
             label="Themed medium text field"
           />
           <SelectField
-            changeHandler={(e) => setFruit(e.target.value)}
             id="themed-medium-select-field"
             label="Themed medium select field"
+            onChange={(e) => setFruit(e.target.value)}
             options={options}
             value={fruit}
           />
@@ -329,9 +329,9 @@ Example:
           `}
         </style>
         <Radio
-          changeHandler={(e) => setFruit(e.target.value)}
           id="default-radio"
           label="Default radio"
+          onChange={(e) => setFruit(e.target.value)}
           options={[
             {
               label: 'Apple',
@@ -349,22 +349,22 @@ Example:
           value={fruit}
         />
         <CheckboxField
-          changeHandler={() => setAgree(!agree)}
           checked={agree}
           id="default-checkbox"
           label="Default checkbox"
+          onChange={() => setAgree(!agree)}
         />
         <Toggle
-          changeHandler={() => setStudioQuality(!studioQuality)}
           checked={studioQuality}
           id="default-toggle"
           label="Default toggle"
+          onChange={() => setStudioQuality(!studioQuality)}
         />
         <div className="example example--themed-check-fields mt-6">
           <Radio
-            changeHandler={(e) => setFruit(e.target.value)}
             id="themed-radio"
             label="Themed radio"
+            onChange={(e) => setFruit(e.target.value)}
             options={[
               {
                 label: 'Apple',
@@ -382,16 +382,16 @@ Example:
             value={fruit}
           />
           <CheckboxField
-            changeHandler={() => setAgree(!agree)}
             checked={agree}
             id="themed-checkbox"
             label="Themed checkbox"
+            onChange={() => setAgree(!agree)}
           />
           <Toggle
-            changeHandler={() => setStudioQuality(!studioQuality)}
             checked={studioQuality}
             id="themed-toggle"
             label="Themed toggle"
+            onChange={() => setStudioQuality(!studioQuality)}
           />
         </div>
       </>
@@ -462,18 +462,18 @@ Example:
           validationText="This field is valid"
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           id="default-valid-select-field"
           label="Default valid select field"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           validationState="valid"
           validationText="This field is valid"
           value={fruit}
         />
         <Radio
-          changeHandler={(e) => setFruit(e.target.value)}
           id="default-valid-radio"
           label="Default valid radio"
+          onChange={(e) => setFruit(e.target.value)}
           options={[
             {
               label: 'Apple',
@@ -493,18 +493,18 @@ Example:
           value={fruit}
         />
         <CheckboxField
-          changeHandler={() => setAgree(!agree)}
           checked={agree}
           id="default-valid-checkbox"
           label="Default valid checkbox"
+          onChange={() => setAgree(!agree)}
           validationState="valid"
           validationText="This field is valid"
         />
         <Toggle
-          changeHandler={() => setStudioQuality(!studioQuality)}
           checked={studioQuality}
           id="default-valid-toggle"
           label="Default valid toggle"
+          onChange={() => setStudioQuality(!studioQuality)}
           validationState="valid"
           validationText="This field is valid"
         />
@@ -516,18 +516,18 @@ Example:
             validationText="This field is valid"
           />
           <SelectField
-            changeHandler={(e) => setFruit(e.target.value)}
             id="themed-valid-select-field"
             label="Themed valid select field"
+            onChange={(e) => setFruit(e.target.value)}
             options={options}
             validationState="valid"
             validationText="This field is valid"
             value={fruit}
           />
           <Radio
-            changeHandler={(e) => setFruit(e.target.value)}
             id="themed-valid-radio"
             label="Themed valid radio"
+            onChange={(e) => setFruit(e.target.value)}
             options={[
               {
                 label: 'Apple',
@@ -547,15 +547,15 @@ Example:
             value={fruit}
           />
           <CheckboxField
-            changeHandler={() => setAgree(!agree)}
             checked={agree}
             id="themed-valid-checkbox"
             label="Themed valid checkbox"
+            onChange={() => setAgree(!agree)}
             validationState="valid"
             validationText="This field is valid"
           />
           <Toggle
-            changeHandler={() => setStudioQuality(!studioQuality)}
+            onChange={() => setStudioQuality(!studioQuality)}
             checked={studioQuality}
             id="themed-valid-toggle"
             label="Themed valid toggle"
@@ -655,7 +655,6 @@ Example:
           label="Default disabled text field"
         />
         <SelectField
-          changeHandler={() => {}}
           disabled
           id="default-disabled-select-field"
           label="Default disabled select field"
@@ -669,7 +668,6 @@ Example:
           validationState="invalid"
         />
         <Radio
-          changeHandler={() => {}}
           disabled
           id="default-disabled-radio"
           label="Default disabled radio"
@@ -690,28 +688,24 @@ Example:
           value="apple"
         />
         <CheckboxField
-          changeHandler={() => {}}
           checked
           disabled
           id="default-disabled-checkbox"
           label="Default disabled checkbox"
         />
         <Toggle
-          changeHandler={() => {}}
           checked
           disabled
           id="default-disabled-toggle"
           label="Default disabled toggle"
         />
         <CheckboxField
-          changeHandler={() => {}}
           disabled
           id="default-disabled-warning-checkbox"
           label="Default disabled warning checkbox"
           validationState="warning"
         />
         <Toggle
-          changeHandler={() => {}}
           checked
           disabled
           id="default-disabled-valid-toggle"
@@ -725,7 +719,6 @@ Example:
             label="Themed disabled text field"
           />
           <SelectField
-            changeHandler={() => {}}
             disabled
             id="themed-disabled-select-field"
             label="Themed disabled select field"
@@ -739,7 +732,6 @@ Example:
             validationState="invalid"
           />
           <Radio
-            changeHandler={() => {}}
             disabled
             id="themed-disabled-radio"
             label="Themed disabled radio"
@@ -760,28 +752,24 @@ Example:
             value="apple"
           />
           <CheckboxField
-            changeHandler={() => {}}
             checked
             disabled
             id="themed-disabled-checkbox"
             label="Themed disabled checkbox"
           />
           <Toggle
-            changeHandler={() => {}}
             checked
             disabled
             id="themed-disabled-toggle"
             label="Themed disabled toggle"
           />
           <CheckboxField
-            changeHandler={() => {}}
             disabled
             id="themed-disabled-warning-checkbox"
             label="Themed disabled warning checkbox"
             validationState="warning"
           />
           <Toggle
-            changeHandler={() => {}}
             checked
             disabled
             id="themed-disabled-valid-toggle"

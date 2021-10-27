@@ -20,7 +20,7 @@ describe('rendering', () => {
     ],
     [
       {
-        children: <Alert closeHandler={() => {}}>alert text</Alert>,
+        children: <Alert onClose={() => {}}>alert text</Alert>,
         translations: {
           Alert: { close: 'Zavřít' },
         },

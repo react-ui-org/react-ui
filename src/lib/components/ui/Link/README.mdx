@@ -50,12 +50,12 @@ Besides text, link can contain block-level elements too.
 ## Custom Routing
 
 It's common to use custom function for routing within SPAs. Use the
-`clickHandler` option to provide such function.
+`onClick` option to provide such function.
 
 <Playground>
   <Link
     href="/contribute/guidelines"
-    clickHandler={(event) => {
+    onClick={(event) => {
       event.preventDefault();
       window.location = event.currentTarget.getAttribute('href');
     }}
@@ -66,9 +66,10 @@ It's common to use custom function for routing within SPAs. Use the
 
 ## API
 
-In addition to the options below, you can add any custom attributes that do not
-interfere with the API, and they will be passed to the `a` HTML element.
-This is useful mainly to improve component's accessibility.
+In addition to the options below, you can specify [React synthetic events] or
+any custom HTML attributes that do not interfere with the API, and they will be
+passed to the `a` HTML element. This enables making the component interactive
+and helps improve its accessibility.
 
 <Props table of={Link} />
 
@@ -80,3 +81,5 @@ This is useful mainly to improve component's accessibility.
 | `--rui-Link__text-decoration`        | Text decoration, e.g. underline              |
 | `--rui-Link--hover__color`           | Text color on hover                          |
 | `--rui-Link--hover__text-decoration` | Text decoration on hover                     |
+
+[React synthetic events]: https://reactjs.org/docs/events.html

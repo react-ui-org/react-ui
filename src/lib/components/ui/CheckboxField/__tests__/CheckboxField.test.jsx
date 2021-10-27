@@ -27,15 +27,15 @@ describe('rendering', () => {
   it.each([
     [
       {
-        changeHandler: () => {},
         checked: true,
+        onChange: () => {},
       },
       (rootElement) => expect(within(rootElement).getByRole('checkbox')).toBeChecked(),
     ],
     [
       {
-        changeHandler: () => {},
         checked: false,
+        onChange: () => {},
       },
       (rootElement) => expect(within(rootElement).getByRole('checkbox')).not.toBeChecked(),
     ],
@@ -82,12 +82,12 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls clickHandler()', () => {
+  it('calls synthetic event onChange()', () => {
     const spy = sinon.spy();
     render((
       <CheckboxField
         {...mandatoryProps}
-        changeHandler={spy}
+        onChange={spy}
       />
     ));
 

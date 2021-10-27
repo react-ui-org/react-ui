@@ -190,14 +190,14 @@ click on the close button:
           <Alert
             color="success"
             icon={<Icon icon="success" />}
-            closeHandler={() => setIsAlertVisible(false)}
+            onClose={() => setIsAlertVisible(false)}
           >
             <strong>Success:</strong> Settings have been successfully saved.
           </Alert>
         ) : (
           <Button
-            clickHandler={() => setIsAlertVisible(true)}
             label="Bring the alert back!"
+            onClick={() => setIsAlertVisible(true)}
           />
         )}
       </>

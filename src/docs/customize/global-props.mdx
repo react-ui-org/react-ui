@@ -66,9 +66,9 @@ See working example:
         <Toolbar align="bottom">
           <ToolbarItem>
             <SelectField
-              changeHandler={(e) => setVariant(e.target.value)}
               id="variant"
               label="Select variant of Select Field"
+              onChange={(e) => setVariant(e.target.value)}
               options={[
                 {
                   label: 'filled',
@@ -90,7 +90,6 @@ See working example:
           </ToolbarItem>
           <ToolbarItem>
             <Button
-              clickHandler={() => {}}
               id="my-button"
               label="Button"
             />

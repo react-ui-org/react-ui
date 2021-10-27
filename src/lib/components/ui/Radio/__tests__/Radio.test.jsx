@@ -82,14 +82,14 @@ describe('rendering', () => {
     ...validationTextPropTest,
     [
       {
-        changeHandler: () => {},
+        onChange: () => {},
         value: 'option2',
       },
       (rootElement) => expect(within(rootElement).getByLabelText('option 2')).toHaveAttribute('checked'),
     ],
     [
       {
-        changeHandler: () => {},
+        onChange: () => {},
         value: 1,
       },
       (rootElement) => expect(within(rootElement).getByLabelText('option 1')).toHaveAttribute('checked'),
@@ -107,12 +107,12 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls clickHandler()', () => {
+  it('calls synthetic event onChange()', () => {
     const spy = sinon.spy();
     render((
       <Radio
         {...mandatoryProps}
-        changeHandler={spy}
+        onChange={spy}
       />
     ));
 

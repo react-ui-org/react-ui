@@ -27,15 +27,15 @@ describe('rendering', () => {
   it.each([
     [
       {
-        changeHandler: () => {},
         checked: true,
+        onChange: () => {},
       },
       (rootElement) => expect(within(rootElement).getByRole('checkbox')).toBeChecked(),
     ],
     [
       {
-        changeHandler: () => {},
         checked: false,
+        onChange: () => {},
       },
       (rootElement) => expect(within(rootElement).getByRole('checkbox')).not.toBeChecked(),
     ],
@@ -90,12 +90,12 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls changeHandler() on toggling', () => {
+  it('calls synthetic event onChange() on toggling', () => {
     const spy = sinon.spy();
     render((
       <Toggle
         {...mandatoryProps}
-        changeHandler={spy}
+        onChange={spy}
       />
     ));
 

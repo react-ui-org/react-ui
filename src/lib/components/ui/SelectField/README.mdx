@@ -29,8 +29,8 @@ And use it:
     const [fruit, setFruit] = React.useState('apple');
     return (
       <SelectField
-        changeHandler={(e) => setFruit(e.target.value)}
         label="Your favourite fruit"
+        onChange={(e) => setFruit(e.target.value)}
         options={[
           {
             label: 'Apple',
@@ -110,14 +110,14 @@ further [customized](#theming) with CSS custom properties.
     return (
       <>
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           value={fruit}
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           variant="filled"
           value={fruit}
@@ -152,43 +152,43 @@ and large.
     return (
       <>
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           size="small"
           value={fruit}
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           value={fruit}
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           size="large"
           value={fruit}
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           size="small"
           value={fruit}
           variant="filled"
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           value={fruit}
           variant="filled"
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           size="large"
           value={fruit}
@@ -221,16 +221,16 @@ Full-width fields span the full width of a parent:
     return (
       <>
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           fullWidth
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           value={fruit}
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           fullWidth
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           value={fruit}
           variant="filled"
@@ -267,16 +267,16 @@ the input.
     return (
       <>
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           isLabelVisible={false}
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           value={fruit}
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           isLabelVisible={false}
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           value={fruit}
           variant="filled"
@@ -312,52 +312,52 @@ supports this kind of layout as well.
     return (
       <>
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           label="Your favourite fruit"
           layout="horizontal"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           value={fruit}
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           label="Your favourite fruit"
           layout="horizontal"
-          options={options}
-          value={fruit}
-          variant="filled"
-        />
-        <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
-          fullWidth
-          label="Your favourite fruit"
-          layout="horizontal"
-          options={options}
-          value={fruit}
-        />
-        <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
-          fullWidth
-          label="Your favourite fruit"
-          layout="horizontal"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           value={fruit}
           variant="filled"
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           fullWidth
-          isLabelVisible={false}
           label="Your favourite fruit"
           layout="horizontal"
-          value={fruit}
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
+          value={fruit}
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
+          fullWidth
+          label="Your favourite fruit"
+          layout="horizontal"
+          onChange={(e) => setFruit(e.target.value)}
+          options={options}
+          value={fruit}
+          variant="filled"
+        />
+        <SelectField
           fullWidth
           isLabelVisible={false}
           label="Your favourite fruit"
           layout="horizontal"
+          onChange={(e) => setFruit(e.target.value)}
+          options={options}
+          value={fruit}
+        />
+        <SelectField
+          fullWidth
+          isLabelVisible={false}
+          label="Your favourite fruit"
+          layout="horizontal"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           value={fruit}
           variant="filled"
@@ -392,52 +392,52 @@ filled.
     return (
       <>
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           helpText="Choose one or more kinds of fruit to feel happy."
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           value={fruit}
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           helpText="Choose one or more kinds of fruit to feel happy."
           label="Your favourite fruit"
-          options={options}
-          value={fruit}
-          variant="filled"
-        />
-        <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
-          helpText="Choose one or more kinds of fruit to feel happy."
-          label="Your favourite fruit"
-          layout="horizontal"
-          options={options}
-          value={fruit}
-        />
-        <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
-          helpText="Choose one or more kinds of fruit to feel happy."
-          label="Your favourite fruit"
-          layout="horizontal"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           value={fruit}
           variant="filled"
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
-          fullWidth
           helpText="Choose one or more kinds of fruit to feel happy."
           label="Your favourite fruit"
           layout="horizontal"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           value={fruit}
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
+          helpText="Choose one or more kinds of fruit to feel happy."
+          label="Your favourite fruit"
+          layout="horizontal"
+          onChange={(e) => setFruit(e.target.value)}
+          options={options}
+          value={fruit}
+          variant="filled"
+        />
+        <SelectField
           fullWidth
           helpText="Choose one or more kinds of fruit to feel happy."
           label="Your favourite fruit"
           layout="horizontal"
+          onChange={(e) => setFruit(e.target.value)}
+          options={options}
+          value={fruit}
+        />
+        <SelectField
+          fullWidth
+          helpText="Choose one or more kinds of fruit to feel happy."
+          label="Your favourite fruit"
+          layout="horizontal"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           value={fruit}
           variant="filled"
@@ -476,8 +476,8 @@ have.
     return (
       <>
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           required
           validationState="valid"
@@ -485,8 +485,8 @@ have.
           value={fruit}
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           required
           validationState="warning"
@@ -494,8 +494,8 @@ have.
           value={fruit}
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           required
           validationState="invalid"
@@ -503,8 +503,8 @@ have.
           value={fruit}
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           required
           validationState="valid"
@@ -513,8 +513,8 @@ have.
           variant="filled"
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           required
           validationState="warning"
@@ -523,8 +523,8 @@ have.
           variant="filled"
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           required
           value={fruit}
@@ -562,29 +562,29 @@ It's possible to disable just some options or the whole input.
     return (
       <>
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           value={fruit}
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           value={fruit}
           variant="filled"
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           disabled
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           value="apple"
         />
         <SelectField
-          changeHandler={(e) => setFruit(e.target.value)}
           disabled
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           value="apple"
           variant="filled"
@@ -596,9 +596,10 @@ It's possible to disable just some options or the whole input.
 
 ## API
 
-In addition to the options below, you can add any custom attributes that do not
-interfere with the API, and they will be passed to the `select` HTML element.
-This is useful mainly to improve component's accessibility.
+In addition to the options below, you can specify [React synthetic events] or
+any custom HTML attributes that do not interfere with the API, and they will be
+passed to the `select` HTML element. This enables making the component
+interactive and helps improve its accessibility.
 
 <Props table of={SelectField} />
 
@@ -612,3 +613,5 @@ options. On top of that, the following options are available for SelectField.
 | `--rui-FormField--box--select__caret__border-style`  | SelectField arrow border style (e.g. `solid`)                |
 | `--rui-FormField--box--select__caret__background`    | SelectField arrow background (including `url()` or gradient) |
 | `--rui-FormField--box--select__option--disabled__color` | Text color of disabled SelectField options                |
+
+[React synthetic events]: https://reactjs.org/docs/events.html

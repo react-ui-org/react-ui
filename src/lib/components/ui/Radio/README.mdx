@@ -29,8 +29,8 @@ And use it:
     const [fruit, setFruit] = React.useState('apple');
     return (
       <Radio
-        changeHandler={(e) => setFruit(e.target.value)}
         label="Your favourite fruit"
+        onChange={(e) => setFruit(e.target.value)}
         options={[
           {
             label: 'Apple',
@@ -91,9 +91,9 @@ the input.
     const [frequency, setFrequency] = React.useState('weekly');
     return (
       <Radio
-        changeHandler={(e) => setFrequency(e.target.value)}
         isLabelVisible={false}
         label="Newsletter frequency"
+        onChange={(e) => setFrequency(e.target.value)}
         options={[
           {
             label: 'I want to subscribe to the weekly newsletter',
@@ -125,9 +125,9 @@ supports this kind of layout as well.
     const [frequency, setFrequency] = React.useState('weekly');
     return (
       <Radio
-        changeHandler={(e) => setFrequency(e.target.value)}
         label="Newsletter frequency"
         layout="horizontal"
+        onChange={(e) => setFrequency(e.target.value)}
         options={[
           {
             label: 'I want to subscribe to the weekly newsletter',
@@ -158,9 +158,9 @@ filled.
     const [fruit, setFruit] = React.useState('apple');
     return (
       <Radio
-        changeHandler={(e) => setFruit(e.target.value)}
         helpText="What do you prefer?"
         label="Your favourite fruit"
+        onChange={(e) => setFruit(e.target.value)}
         options={[
           {
             label: 'Apple',
@@ -210,8 +210,8 @@ have.
     return (
       <>
         <Radio
-          changeHandler={(e) => setFruit(e.target.value)}
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           required
           validationState="valid"
@@ -219,8 +219,8 @@ have.
           value={fruit}
         />
         <Radio
-          changeHandler={(e) => setFruit(e.target.value)}
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           required
           validationState="warning"
@@ -228,8 +228,8 @@ have.
           value={fruit}
         />
         <Radio
-          changeHandler={(e) => setFruit(e.target.value)}
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           required
           validationState="invalid"
@@ -266,15 +266,15 @@ It's possible to disable just some options or the whole set.
     return (
       <>
         <Radio
-          changeHandler={(e) => setFruit(e.target.value)}
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           value={fruit}
         />
         <Radio
-          changeHandler={(e) => setFruit(e.target.value)}
           disabled
           label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
           options={options}
           value="apple"
         />
@@ -285,9 +285,10 @@ It's possible to disable just some options or the whole set.
 
 ## API
 
-In addition to the options below, you can add any custom attributes that do not
-interfere with the API, and they will be passed to the `input` HTML element.
-This is useful mainly to improve component's accessibility.
+In addition to the options below, you can specify [React synthetic events] or
+any custom HTML attributes that do not interfere with the API, and they will be
+passed to the `input` HTML element. This enables making the component
+interactive and helps improve its accessibility.
 
 <Props table of={Radio} />
 
@@ -300,3 +301,5 @@ options. On top of that, the following options are available for Radio.
 |--------------------------------------------------------------------|------------------------------------------------|
 | `--rui-FormField--check__input--radio__border-radius`              | Input corner radius                            |
 | `--rui-FormField--check__input--radio--checked__background-image` | Checked input background image (inline, URL, …) |
+
+[React synthetic events]: https://reactjs.org/docs/events.html

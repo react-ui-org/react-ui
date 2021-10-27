@@ -90,24 +90,24 @@ of `right`.
             <ToolbarItem>
               <ButtonGroup aria-labelledby="#alignment-label">
                 <Button
-                  label="top"
-                  clickHandler={() => setAlignment('top')}
                   color={alignment === 'top' ? 'dark' : 'primary'}
+                  label="top"
+                  onClick={() => setAlignment('top')}
                 />
                 <Button
-                  label="middle"
-                  clickHandler={() => setAlignment('middle')}
                   color={alignment === 'middle' ? 'dark' : 'primary'}
+                  label="middle"
+                  onClick={() => setAlignment('middle')}
                 />
                 <Button
-                  label="bottom"
-                  clickHandler={() => setAlignment('bottom')}
                   color={alignment === 'bottom' ? 'dark' : 'primary'}
+                  label="bottom"
+                  onClick={() => setAlignment('bottom')}
                 />
                 <Button
-                  label="baseline"
-                  clickHandler={() => setAlignment('baseline')}
                   color={alignment === 'baseline' ? 'dark' : 'primary'}
+                  label="baseline"
+                  onClick={() => setAlignment('baseline')}
                 />
               </ButtonGroup>
             </ToolbarItem>
@@ -119,24 +119,24 @@ of `right`.
             <ToolbarItem>
               <ButtonGroup aria-labelledby="#justification-label">
                 <Button
-                  label="start"
-                  clickHandler={() => setJustification('start')}
                   color={justification === 'start' ? 'dark' : 'primary'}
+                  label="start"
+                  onClick={() => setJustification('start')}
                 />
                 <Button
-                  label="center"
-                  clickHandler={() => setJustification('center')}
                   color={justification === 'center' ? 'dark' : 'primary'}
+                  label="center"
+                  onClick={() => setJustification('center')}
                 />
                 <Button
-                  label="end"
-                  clickHandler={() => setJustification('end')}
                   color={justification === 'end' ? 'dark' : 'primary'}
+                  label="end"
+                  onClick={() => setJustification('end')}
                 />
                 <Button
-                  label="space-between"
-                  clickHandler={() => setJustification('space-between')}
                   color={justification === 'space-between' ? 'dark' : 'primary'}
+                  label="space-between"
+                  onClick={() => setJustification('space-between')}
                 />
               </ButtonGroup>
             </ToolbarItem>
@@ -207,16 +207,16 @@ toolbar groups, or on the entire toolbar.
         <Toolbar>
           <ToolbarItem>
             <CheckboxField
-              label="Dense ToolbarGroup"
-              changeHandler={(e) => setIsGroupDense(e.target.checked)}
               checked={isGroupDense}
+              label="Dense ToolbarGroup"
+              onChange={(e) => setIsGroupDense(e.target.checked)}
             />
           </ToolbarItem>
           <ToolbarItem>
             <CheckboxField
-              label="Dense Toolbar"
-              changeHandler={(e) => setIsToolbarDense(e.target.checked)}
               checked={isToolbarDense}
+              label="Dense Toolbar"
+              onChange={(e) => setIsToolbarDense(e.target.checked)}
             />
           </ToolbarItem>
         </Toolbar>

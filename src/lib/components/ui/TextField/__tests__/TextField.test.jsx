@@ -97,14 +97,14 @@ describe('rendering', () => {
     ...validationTextPropTest,
     [
       {
-        changeHandler: () => {},
+        onChange: () => {},
         value: 'content text',
       },
       (rootElement) => expect(within(rootElement).getByRole('textbox')).toHaveDisplayValue('content text'),
     ],
     [
       {
-        changeHandler: () => {},
+        onChange: () => {},
         value: 111,
       },
       (rootElement) => expect(within(rootElement).getByRole('textbox')).toHaveDisplayValue('111'),
@@ -123,12 +123,12 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls changeHandler() on changing selected option', () => {
+  it('calls synthetic event onChange() on changing selected option', () => {
     const spy = sinon.spy();
     render((
       <TextField
         {...mandatoryProps}
-        changeHandler={spy}
+        onChange={spy}
         value="content-value"
       />
     ));
