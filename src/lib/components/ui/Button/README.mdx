@@ -157,19 +157,50 @@ before or after the button's label.
 ### Icon Buttons
 
 For clear and simple actions, buttons can visually consist just of an icon.
-Label remains mandatory to keep the button accessible. Icon buttons can
-optionally enhance on desktop and display the label once there is enough room
-for it.
+Label remains mandatory to keep the button accessible.
 
 <Playground>
   <Button
     label="Icon button"
     labelVisibility="none"
-    afterLabel={<Icon icon="pencil" />}
+    beforeLabel={<Icon icon="pencil" />}
+  />
+</Playground>
+
+Icon buttons can optionally enhance on a [breakpoint](/foundation/breakpoints)
+of your choice and display label once you know there is enough room for it.
+
+📐 Try resizing your browser to see how label visibility changes.
+
+<Playground>
+  <Button
+    label="Label visible from sm up"
+    labelVisibility="sm"
+    beforeLabel={<Icon icon="pencil" />}
   />
   <Button
-    label="Icon button with label visible on desktop"
-    labelVisibility="desktop"
+    label="Label visible from md up"
+    labelVisibility="md"
+    beforeLabel={<Icon icon="pencil" />}
+  />
+  <Button
+    label="Label visible from lg up"
+    labelVisibility="lg"
+    beforeLabel={<Icon icon="pencil" />}
+  />
+  <Button
+    label="Label visible from xl up"
+    labelVisibility="xl"
+    beforeLabel={<Icon icon="pencil" />}
+  />
+  <Button
+    label="Label visible from xxl up"
+    labelVisibility="xxl"
+    beforeLabel={<Icon icon="pencil" />}
+  />
+  <Button
+    label="Label visible from xxxl up"
+    labelVisibility="xxxl"
     beforeLabel={<Icon icon="pencil" />}
   />
 </Playground>
