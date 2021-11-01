@@ -1,0 +1,15 @@
+@use 'sass:map';
+@use '../../styles/theme/borders';
+@use '../../styles/theme/colors';
+@use '../../styles/theme/typography';
+@use '../../styles/tools/spacing';
+
+$cell-padding-x: spacing.of(3);
+$cell-padding-y: spacing.of(1);
+$border-width: borders.$width;
+$border-color: map.get(colors.$grays, gray-100);
+$background-color: colors.$white;
+$head-background-color: colors.$white;
+$head-font-weight: map.get(typography.$font-weight-values, bold);
+$hover-background-color: map.get(colors.$grays, gray-50);
+$sorted-background-color: map.get(colors.$grays, gray-50);

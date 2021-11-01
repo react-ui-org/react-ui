@@ -1,0 +1,58 @@
+// 1. Form field label width is defined using custom property. FormLayout variants are created just
+//    by adjusting this value, either through a particular modification class, or manually through
+//    a prop. Form fields then inherit the layout using the `subgrid` feature which makes it
+//    possible to turn on automatic size of grid column with labels (in supporting browsers, see 4).
+//
+// 2. By default, form field label width is set to a configurable global value.
+//
+// 3. Custom label width can be entered individually through a prop for each use of FormLayout.
+//
+// 4. FormLayout can also automatically adjust the width of column with labels according to the
+//    longest label (which is possible only with `subgrid`). However, this feature is currently
+//    supported only in Firefox so a fallback value is necessary for non-supporting browsers
+//    (a global default which can be customised per use).
+//    https://github.com/react-ui-org/react-ui/issues/232
+
+@use '../../styles/settings/forms';
+@use '../../styles/tools/breakpoint';
+@use '../../styles/tools/spacing';
+@use 'theme';
+
+.root {
+  --rui-local-field-width: 1fr;
+
+  @include spacing.bottom(layouts);
+}
+
+.rootFieldLayoutVertical,
+.rootFieldLayoutHorizontal {
+  display: grid;
+  grid-template-columns: var(--rui-local-field-width);
+  grid-row-gap: theme.$row-gap;
+}
+
+.rootFieldLayoutHorizontal {
+  @include breakpoint.up(forms.$horizontal-breakpoint) {
+    grid-template-columns: var(--rui-local-label-width) var(--rui-local-field-width); // 1.
+  }
+}
+
+.hasRootLabelWidthDefault {
+  --rui-local-label-width: #{theme.$horizontal-label-width}; // 1., 2.
+}
+
+.hasRootLabelWidthAuto {
+  --rui-local-label-width: #{theme.$horizontal-label-width-auto}; // 4.
+}
+
+.hasRootLabelWidthLimited {
+  --rui-local-label-width: #{theme.$horizontal-label-width-limited}; // 4.
+}
+
+.hasRootLabelWidthCustom {
+  --rui-local-label-width: var(--rui-custom-label-width); // 3.
+}
+
+.isRootAutoWidth {
+  --rui-local-field-width: min-content;
+}

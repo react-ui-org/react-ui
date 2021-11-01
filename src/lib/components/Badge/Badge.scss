@@ -1,0 +1,126 @@
+@use 'sass:map';
+@use 'sass:math';
+@use '../../styles/theme/borders';
+@use '../../styles/theme/colors';
+@use '../../styles/theme/typography';
+
+$_badge-size: 1.25rem;
+
+.root {
+  display: inline-block;
+  min-width: $_badge-size;
+  height: $_badge-size;
+  padding: 0.25rem 0.35rem;
+  overflow: hidden;
+  font-weight: map.get(typography.$font-weight-values, bold);
+  font-size: typography.$size-smaller;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  color: var(--rui-local-color);
+  border-radius: math.div($_badge-size, 2);
+  background-color: var(--rui-local-background-color);
+  box-shadow: var(--rui-local-box-shadow, #{0 0 0 2px rgba(255, 255, 255, 0.8)});
+}
+
+.rootColorPrimary {
+  --rui-local-color: #{map.get(colors.$brand, on-primary)};
+  --rui-local-background-color: #{map.get(colors.$brand, primary)};
+}
+
+.rootColorSecondary {
+  --rui-local-color: #{map.get(colors.$brand, on-secondary)};
+  --rui-local-background-color: #{map.get(colors.$brand, secondary)};
+}
+
+.rootColorSuccess {
+  --rui-local-color: #{map.get(colors.$ui, on-success)};
+  --rui-local-background-color: #{map.get(colors.$ui, success)};
+}
+
+.rootColorWarning {
+  --rui-local-color: #{map.get(colors.$ui, on-warning)};
+  --rui-local-background-color: #{map.get(colors.$ui, warning)};
+}
+
+.rootColorDanger {
+  --rui-local-color: #{map.get(colors.$ui, on-danger)};
+  --rui-local-background-color: #{map.get(colors.$ui, danger)};
+}
+
+.rootColorHelp {
+  --rui-local-color: #{map.get(colors.$ui, on-help)};
+  --rui-local-background-color: #{map.get(colors.$ui, help)};
+}
+
+.rootColorInfo {
+  --rui-local-color: #{map.get(colors.$ui, on-info)};
+  --rui-local-background-color: #{map.get(colors.$ui, info)};
+}
+
+.rootColorNote {
+  --rui-local-color: #{map.get(colors.$ui, on-note)};
+  --rui-local-background-color: #{map.get(colors.$ui, note)};
+}
+
+.rootColorLight {
+  --rui-local-color: #{colors.$dark};
+  --rui-local-background-color: #{colors.$light};
+  --rui-local-box-shadow: none;
+}
+
+.rootColorDark {
+  --rui-local-color: #{colors.$light};
+  --rui-local-background-color: #{colors.$dark};
+  --rui-local-box-shadow: none;
+}
+
+.rootPriorityOutline {
+  --rui-local-background-color: transparent;
+  --rui-local-box-shadow: none;
+
+  padding-top: 0.1875rem;
+  padding-bottom: 0.1875rem;
+  border: borders.$width solid currentColor;
+}
+
+.rootPriorityOutline.rootColorPrimary {
+  --rui-local-color: #{map.get(colors.$brand, primary)};
+}
+
+.rootPriorityOutline.rootColorSecondary {
+  --rui-local-color: #{map.get(colors.$brand, secondary)};
+}
+
+.rootPriorityOutline.rootColorSuccess {
+  --rui-local-color: #{map.get(colors.$ui, success)};
+}
+
+.rootPriorityOutline.rootColorWarning {
+  --rui-local-color: #{map.get(colors.$ui, warning)};
+}
+
+.rootPriorityOutline.rootColorDanger {
+  --rui-local-color: #{map.get(colors.$ui, danger)};
+}
+
+.rootPriorityOutline.rootColorHelp {
+  --rui-local-color: #{map.get(colors.$ui, help)};
+}
+
+.rootPriorityOutline.rootColorInfo {
+  --rui-local-color: #{map.get(colors.$ui, info)};
+}
+
+.rootPriorityOutline.rootColorNote {
+  --rui-local-color: #{map.get(colors.$ui, note)};
+}
+
+.rootPriorityOutline.rootColorLight {
+  --rui-local-color: #{colors.$light};
+}
+
+.rootPriorityOutline.rootColorDark {
+  --rui-local-color: #{colors.$dark};
+}

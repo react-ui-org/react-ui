@@ -1,7 +1,0 @@
-@use 'sass:map';
-@use '../../../styles/theme/typography';
-@use 'theme';
-
-$font-size: map.get(typography.$size-values, 0);
-$line-height: 1.5;
-$min-height: calc(#{$font-size} * #{$line-height} + 2 * #{theme.$padding});

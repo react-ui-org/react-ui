@@ -1,0 +1,119 @@
+---
+name: CTA
+menu: 'Layouts'
+route: /components/cta
+---
+
+# CTA
+
+The responsive CTA layout holds an action at the center and two additional
+elements on sides.
+
+import {
+  Playground,
+  Props,
+} from 'docz'
+import { Placeholder } from '../../../docs/_components/Placeholder/Placeholder'
+import { CTA } from './CTA'
+import { CTACenter } from './CTACenter'
+import { CTAEnd } from './CTAEnd'
+import { CTAStart } from './CTAStart'
+
+## Basic Usage
+
+To implement the CTA component, you need to import it first:
+
+```js
+import { CTA } from '@react-ui-org/react-ui';
+```
+
+And use it:
+
+<Playground>
+  <Placeholder bordered>
+    <CTA>
+      <CTAStart>
+        <Placeholder bordered>
+          Start
+        </Placeholder>
+      </CTAStart>
+      <CTACenter>
+        <Placeholder bordered>
+          Center
+        </Placeholder>
+      </CTACenter>
+      <CTAEnd>
+        <Placeholder bordered>
+          End
+        </Placeholder>
+      </CTAEnd>
+    </CTA>
+  </Placeholder>
+</Playground>
+
+See [API](#api) for all available options.
+
+## General Guidelines
+
+- The CTA (call to action) layout is designed for an **action placed at the
+  center** of its parent and two optional side elements. It works perfectly
+  especially in composition with a load-more button.
+
+- Place rather **a few smaller elements** into the layout, so they fit the
+  screen even at the smallest size. For complex layouts and a lot of actions,
+  consider using the [Toolbar](/components/layout/toolbar) layout.
+
+📐 On screen sizes smaller than 66 em (the `lg`
+[breakpoint](/foundation/breakpoints)), the start element expands over the full
+width of its parent. Please resize your browser rather than the playground to
+see this work.
+
+## Vertical Alignment
+
+There are four options of vertical alignment: baseline (default), top, middle,
+and bottom.
+
+<Playground>
+  <Placeholder bordered>
+    <CTA align="bottom">
+      <CTAStart>
+        <Placeholder bordered>
+          Start
+        </Placeholder>
+      </CTAStart>
+      <CTACenter>
+        <Placeholder bordered>
+          Center<br />
+          Element
+        </Placeholder>
+      </CTACenter>
+      <CTAEnd>
+        <Placeholder bordered>
+          End
+        </Placeholder>
+      </CTAEnd>
+    </CTA>
+  </Placeholder>
+</Playground>
+
+## API
+
+<Props table of={CTA} />
+
+### CTAStart
+
+The start element of the CTA layout.
+
+<Props table of={CTAStart} />
+
+### CTACenter
+
+The center element of the CTA layout.
+
+<Props table of={CTACenter} />
+
+### CTAEnd
+
+The end element of the CTA layout.
+
+<Props table of={CTAEnd} />
