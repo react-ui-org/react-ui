@@ -1,0 +1,81 @@
+---
+name: Paper
+menu: 'Miscellaneous'
+route: /components/paper
+---
+
+# Paper
+
+import {
+  Playground,
+  Props,
+} from 'docz'
+import { Paper } from './Paper'
+
+Paper is a basic surface to hold content.
+
+## Basic Usage
+
+To implement the Paper component, you need to import it first:
+
+```js
+import { Paper } from '@react-ui-org/react-ui';
+```
+
+And use it:
+
+<Playground>
+  <Paper>
+    Hello!
+  </Paper>
+</Playground>
+
+See [API](#api) for all available options.
+
+## General Guidelines
+
+- Paper is **designed for non-white background.** You may want to either use its
+  [raised variant](#raised-paper) or [customize](/customize/theming/overview)
+  the default appearance to make it stand out on white background.
+
+- **Paper, or Card?** Paper is a basic surface to put content on. However,
+  there is also the [Card](/components/ui/card) component. While Paper is
+  usually used to hold larger content areas like lists, grids, or forms, Card is
+  designed for displaying items. Card also supports more visual options.
+
+## Raised Paper
+
+Add optional shadow to lift the paper above background.
+
+<Playground>
+  <Paper raised>
+    Hello! I&apos;m paper and I&apos;m raised.
+  </Paper>
+</Playground>
+
+## Muted Paper
+
+Dim background and add transparency to visually suppress the Paper.
+
+<Playground>
+  <Paper muted>
+    Sssh! I&apos;m paper and I&apos;m muted.
+  </Paper>
+</Playground>
+
+## API
+
+<Props table of={Paper} />
+
+## Theming
+
+| Custom Property                                      | Description                                                  |
+|------------------------------------------------------|--------------------------------------------------------------|
+| `--rui-Paper__padding`                               | Padding of Paper                                             |
+| `--rui-Paper__border-width`                          | Border width                                                 |
+| `--rui-Paper__border-color`                          | Border color                                                 |
+| `--rui-Paper__border-radius`                         | Corner radius                                                |
+| `--rui-Paper__background-color`                      | Paper background color                                       |
+| `--rui-Paper--muted__background-color`               | Background color of muted paper                              |
+| `--rui-Paper--muted__opacity`                        | Opacity of muted paper                                       |
+| `--rui-Paper--raised__box-shadow`                    | Box shadow of raised paper                                   |

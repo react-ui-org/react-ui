@@ -1,0 +1,261 @@
+---
+name: Grid
+menu: 'Layouts'
+route: /components/grid
+---
+
+# Grid
+
+import {
+  Playground,
+  Props,
+} from 'docz'
+import { Placeholder } from '../../../docs/_components/Placeholder/Placeholder'
+import { Grid } from './Grid'
+import { GridSpan } from './GridSpan'
+
+The responsive Grid layout aligns content into an organized grid.
+
+## Basic Usage
+
+To implement the Grid component, you need to import it first:
+
+```js
+import { Grid } from '@react-ui-org/react-ui';
+```
+
+And use it:
+
+<Playground>
+  <Grid columns="1fr 1fr 1fr">
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+  </Grid>
+</Playground>
+
+See [API](#api) for all available options.
+
+## General Guidelines
+
+- This component implements native [CSS grid layout][grid-layout], the right CSS
+  tool for two-dimensional layouts. You may use any value accepted by
+  [grid-template-columns], [grid-template-rows], [grid-column-gap],
+  [grid-row-gap], [grid-auto-flow], [align-content], [align-items],
+  [justify-content], [justify-items], and CSS properties in corresponding API
+  options of the component.
+
+- To align your items in the grid, **simply wrap** them with the Grid
+  component. Unlike other grid frameworks and UI libraries, **no additional
+  markup** like GridItem or Cell is necessary for your items. But it's there
+  when you really need it—see [Advanced Layouts](#advanced-layouts).
+
+- The Grid component is so powerful that it enables you to build even very
+  advanced layouts **without** having to write **a single line of custom CSS.**
+  See [Advanced Layouts](#advanced-layouts) for more.
+
+👉 The default layout has one column, auto-sized rows and gaps of
+[size 4](/foundation/spacing). Defaults for all Grid API options can be
+[customized](/customize/theming/overview) with CSS custom properties.
+
+## Columns and Rows
+
+Use `columns` and `rows` to specify your grid layout.
+
+<Playground>
+  <Grid columns="1fr 2fr" rows="auto 200px auto">
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+  </Grid>
+</Playground>
+
+You can use the [`repeat()`][repeat] function to specify a recurring pattern.
+
+<Playground>
+  <Grid columns="repeat(3, 1fr)">
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+  </Grid>
+</Playground>
+
+Combine `repeat()` with `auto-fit` and [`minmax()`][minmax] to build automatic
+responsive layouts. Resize the playground to see it in action.
+
+<Playground>
+  <Grid columns="repeat(auto-fit, minmax(200px, auto))">
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+  </Grid>
+</Playground>
+
+👉 If you need your items to have **equal height** even with content of varying
+length, it may be necessary to set `height: 100%` on them.
+
+## Gaps
+
+Both column and row gaps can be customized.
+
+<Playground>
+  <Grid columns="repeat(3, 1fr)" columnGap="0.75rem" rowGap="2rem">
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+  </Grid>
+</Playground>
+
+## Alignment
+
+Individual items and the entire grid content can be aligned and along both axes.
+
+<Playground>
+  <Grid
+    columns="repeat(3, 10em)"
+    alignItems="center"
+    justifyItems="center"
+    justifyContent="center"
+  >
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item<br /> with two lines</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+  </Grid>
+</Playground>
+
+## Media Queries
+
+If you need to build more complicated layouts, you have full control over the
+grid definition. Just specify your grid layout for
+[breakpoints](/foundation/breakpoints) where a change of layout is needed.
+The Grid component is written with the mobile-first approach so values for small
+breakpoints are used until they're overriden by a bigger breakpoint. If `xs`
+settings are omitted, theme defaults are used. Resize your browser to see how it
+works.
+
+<Playground>
+  <Grid
+    columns={{
+      xs: '1fr',
+      md: '1fr 2fr',
+    }}
+    columnGap={{
+      md: 'var(--rui-spacing-2)',
+      lg: 'var(--rui-spacing-4)',
+    }}
+    rows={{
+      xs: 'auto auto 200px 200px',
+      md: 'auto 200px auto',
+    }}
+    rowGap={{
+      xs: 'var(--rui-spacing-3)',
+      md: 'var(--rui-spacing-4)',
+    }}
+  >
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+  </Grid>
+</Playground>
+
+## Advanced Layouts
+
+Wrap your content with GridSpan component to span it over multiple columns or
+rows. Use the `autoFlow` option to control the layout when combined with
+responsive columns and rows.
+
+<Playground>
+  <Grid
+    autoFlow={{
+      xs: 'row dense',
+      sm: 'column',
+    }}
+    columns={{
+      xs: 'repeat(2, 1fr)',
+      sm: 'repeat(4, 1fr)',
+    }}
+    rows={{
+      xs: 'repeat(8, 50px)',
+      sm: 'auto 100px auto auto',
+    }}
+  >
+    <Placeholder bordered>Grid item 1</Placeholder>
+    <Placeholder bordered>Grid item 2</Placeholder>
+    <Placeholder bordered>Grid item 3</Placeholder>
+    <Placeholder bordered>Grid item 4</Placeholder>
+    <Placeholder bordered>Grid item 5</Placeholder>
+    <GridSpan columns={2} rows={2}>
+      <Placeholder bordered height="100%">
+        Grid item spanning over two lines and two rows
+      </Placeholder>
+    </GridSpan>
+    <Placeholder bordered>Grid item 6</Placeholder>
+    <Placeholder bordered>Grid item 7</Placeholder>
+    <Placeholder bordered>Grid item 8</Placeholder>
+    <Placeholder bordered>Grid item 9</Placeholder>
+    <Placeholder bordered>Grid item 10</Placeholder>
+    <Placeholder bordered>Grid item 11</Placeholder>
+    <Placeholder bordered>Grid item 12</Placeholder>
+  </Grid>
+</Playground>
+
+👉 `autoFlow` (used in the example above) implements the `grid-auto-flow` CSS
+property. Check [MDN][grid-auto-flow] to fully understand available options.
+
+## API
+
+<Props table of={Grid} />
+
+### GridSpan API
+
+Wrapper for content that should span multiple rows or columns.
+
+<Props table of={GridSpan} />
+
+## Theming
+
+| Custom Property                                      | Description                                                  |
+|------------------------------------------------------|--------------------------------------------------------------|
+| `--rui-Grid__columns`                                | Default columns layout                                       |
+| `--rui-Grid__column-gap`                             | Default column gap                                           |
+| `--rui-Grid__rows`                                   | Default rows layout                                          |
+| `--rui-Grid__row-gap`                                | Default row gap                                              |
+| `--rui-Grid__align-content`                          | Default vertical alignment of the layout                     |
+| `--rui-Grid__align-items`                            | Default vertical alignment of grid items                     |
+| `--rui-Grid__justify-content`                        | Default horizontal alignment of the layout                   |
+| `--rui-Grid__justify-items`                          | Default horizontal alignment of grid items                   |
+| `--rui-Grid__auto-flow`                              | Default auto-flow algorithm                                  |
+
+[grid-layout]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout
+[grid-template-columns]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
+[grid-template-rows]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows
+[grid-column-gap]: https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap
+[grid-row-gap]: https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap
+[grid-auto-flow]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow
+[aling-content]: https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
+[align-items]: https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
+[justify-content]: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
+[justify-items]: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items
+[repeat]: https://developer.mozilla.org/en-US/docs/Web/CSS/repeat
+[minmax]: https://developer.mozilla.org/en-US/docs/Web/CSS/minmax

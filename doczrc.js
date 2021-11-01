@@ -12,8 +12,10 @@ export default {
       'Foundation',
     ],
     Components: [
-      'UI',
+      'Actions',
+      'Inputs',
       'Layouts',
+      'Miscellaneous',
     ],
     Helpers: [
       'CSS Helpers',
@@ -42,11 +44,19 @@ export default {
     },
     {
       menu: [],
-      name: 'UI',
+      name: 'Actions',
+    },
+    {
+      menu: [],
+      name: 'Inputs',
     },
     {
       menu: [],
       name: 'Layouts',
+    },
+    {
+      menu: [],
+      name: 'Miscellaneous',
     },
     {
       menu: [],

@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import React from 'react';
-import { FormLayoutContext } from '../../src/lib/components/layout/FormLayout'
+import { FormLayoutContext } from '../../src/lib/components/FormLayout'
 
 export const formLayoutProviderTest = (Component) => {
   it.each([

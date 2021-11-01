@@ -1,0 +1,516 @@
+---
+name: TextField
+menu: 'Inputs'
+route: /components/text-field
+---
+
+# TextField
+
+TextField allows users to input text information.
+
+import {
+  Playground,
+  Props,
+} from 'docz'
+import { TextField } from './TextField'
+
+## Basic Usage
+
+To implement the TextField component, you need to import it first:
+
+```js
+import { TextField } from '@react-ui-org/react-ui';
+```
+
+And use it:
+
+<Playground>
+  <TextField label="First name" />
+</Playground>
+
+See [API](#api) for all available options.
+
+## General Guidelines
+
+- Use the **most suitable input type** for current context: aside from the
+  common `text` type, there are also `email`, `number`, `password`, and `tel`
+  types at your disposal. A properly chosen input type is especially important
+  for touch users as it triggers an appropriate virtual keyboard, so it helps
+  speed up the completion of the field.
+
+- **Beware of the `number` input type:** it may not be always what you want.
+  Not all number-like values are actually numbers, e.g. phone numbers, credit
+  card numbers, or business IDs. In such cases use the most appropriate input
+  type (probably `text` or `tel`) along with the [`pattern` attribute][pattern]
+  to improve the input experience for touch users.
+
+- Use **short and descriptive labels**, ideally nouns rather than seemingly
+  polite phrases like _Please enter your first name_. Short labels will help
+  your users accomplish their task faster.
+
+- Only make the TextField's label invisible when there is **another visual
+  clue** to guide users through filling the input.
+
+- When a short label is not enough, use **help texts to guide users** before
+  they enter anything.
+
+- Optionally you can **pre-fill your text fields with a placeholder** to give
+  users an example of what they're expected to fill in. Just remember the
+  placeholder disappears once a value is entered so don't put anything important
+  there. Usually, en example value starting with “Eg.” works best.
+
+- Use **clear, calm error messages** when there's a problem with what they
+  entered. Be positive and focus on solutions to make the error message helpful.
+
+- When asking users for their contact information or other personal information,
+  make use of the [`autocomplete` attribute][autocomplete] to help them fill the
+  form faster.
+
+## Design Variants
+
+To satisfy the design requirements of your project, all input fields in React UI
+come in **two design variants** to choose from: outline and filled. Both can be
+further [customized](#theming) with CSS custom properties.
+
+<Playground>
+  <TextField
+    label="First name"
+  />
+  <TextField
+    label="First name"
+    variant="filled"
+  />
+</Playground>
+
+## Sizes
+
+Aside from the default (medium) size, two additional sizes are available: small
+and large.
+
+<Playground>
+  <TextField
+    label="First name"
+    size="small"
+  />
+  <TextField
+    label="First name"
+  />
+  <TextField
+    label="First name"
+    size="large"
+  />
+  <TextField
+    label="First name"
+    size="small"
+    variant="filled"
+  />
+  <TextField
+    label="First name"
+    variant="filled"
+  />
+  <TextField
+    label="First name"
+    size="large"
+    variant="filled"
+  />
+</Playground>
+
+Full-width fields span the full width of a parent:
+
+<Playground>
+  <TextField
+    label="First name"
+    fullWidth
+  />
+  <TextField
+    label="First name"
+    variant="filled"
+    fullWidth
+  />
+</Playground>
+
+## Input Types
+
+Aside from the common `text` type, there are also `email`, `number`, `password`,
+and `tel` types at your disposal.
+
+<Playground>
+  <TextField
+    label="Email"
+    type="email"
+  />
+  <TextField
+    label="Email"
+    variant="filled"
+    type="email"
+  />
+  <TextField
+    label="Age"
+    type="number"
+  />
+  <TextField
+    label="Age"
+    variant="filled"
+    type="number"
+  />
+  <TextField
+    label="Password"
+    type="password"
+  />
+  <TextField
+    label="Password"
+    variant="filled"
+    type="password"
+  />
+  <TextField
+    label="Phone"
+    type="tel"
+  />
+  <TextField
+    label="Phone"
+    variant="filled"
+    type="tel"
+  />
+</Playground>
+
+## Input Size
+
+The default width of all inputs is 240 px, and it can be [customized](#theming)
+with a CSS custom property. However, you can also **change the width of
+individual text fields** using the `inputSize` property. It (obviously) sets the
+`size` attribute of the `input` element and is further picked up by CSS to
+normalize rendering across browsers.
+
+👉 Remember that the [`size`][size] and [`max`][max] HTML attributes **don't
+limit on how many characters** the user can enter. Use the `maxlength`
+attribute to achieve that effect (doesn't work for `number` input type though).
+
+👉 Note that according to the HTML specification, the `size` attribute (invoked
+by `inputSize` API option) is
+[not available for `number` input type][input-number-size]. TextField supports
+`inputSize` option for all types of inputs, so you can use it whenever you find
+it suitable. Just keep in mind the `size` attribute will not be present for
+numeric inputs.
+
+<Playground>
+  <TextField
+    inputSize={3}
+    label="Title"
+  />
+  <TextField
+    inputSize={3}
+    label="Title"
+    variant="filled"
+  />
+  <TextField
+    inputSize={3}
+    label="Age"
+    type="number"
+  />
+  <TextField
+    inputSize={3}
+    label="Age"
+    type="number"
+    variant="filled"
+  />
+</Playground>
+
+## Forwarding HTML Attributes
+
+When you want to improve the accessibility of your text fields even further, you
+can **add whatever HTML attribute you like.** All attributes that don't
+interfere with [component's API](#api) are forwarded to the native HTML input.
+
+<Playground>
+  <TextField
+    label="Address"
+    autoComplete="street-address"
+    minLength={3}
+    maxLength={80}
+  />
+  <TextField
+    label="Address"
+    variant="filled"
+    autoComplete="street-address"
+    minLength={3}
+    maxLength={80}
+  />
+  <TextField
+    inputSize={3}
+    min={13}
+    max={120}
+    label="Age"
+    type="number"
+  />
+  <TextField
+    inputSize={3}
+    min={13}
+    max={120}
+    label="Age"
+    type="number"
+    variant="filled"
+  />
+</Playground>
+
+👉 Refer to the MDN reference for the full list of supported attributes of the
+[text][input-text], [email][input-email], [number][input-number],
+[tel][input-tel], and [password][input-password] input types.
+
+## Invisible Label
+
+In some cases, it may be convenient to visually hide the field label. The label
+remains accessible to assistive technologies.
+
+While it may be acceptable for login screens with just a few fields or for other
+simple forms, it's dangerous to hide labels from users in most cases. Keep in
+mind you should **provide another visual clue** so users know what to fill into
+the input.
+
+<Playground>
+  <TextField
+    label="User name"
+    isLabelVisible={false}
+    placeholder="Eg. john@example.com"
+  />
+  <TextField
+    label="User name"
+    isLabelVisible={false}
+    variant="filled"
+    placeholder="Eg. john@example.com"
+  />
+</Playground>
+
+## Horizontal Layout
+
+The default vertical layout is very easy to use and work with. However, there
+are situations where horizontal layout suits better — and that's why React UI
+supports this kind of layout as well.
+
+<Playground>
+  <TextField
+    inputSize={3}
+    label="Title"
+    layout="horizontal"
+  />
+  <TextField
+    inputSize={3}
+    label="Title"
+    layout="horizontal"
+    variant="filled"
+  />
+  <TextField
+    label="First name"
+    layout="horizontal"
+  />
+  <TextField
+    label="First name"
+    layout="horizontal"
+    variant="filled"
+  />
+  <TextField
+    label="First name"
+    layout="horizontal"
+    fullWidth
+  />
+  <TextField
+    label="First name"
+    layout="horizontal"
+    variant="filled"
+    fullWidth
+  />
+  <TextField
+    isLabelVisible={false}
+    label="First name"
+    layout="horizontal"
+    placeholder="First name"
+    fullWidth
+  />
+  <TextField
+    isLabelVisible={false}
+    label="First name"
+    layout="horizontal"
+    placeholder="First name"
+    variant="filled"
+    fullWidth
+  />
+</Playground>
+
+## Help Text
+
+You may provide an additional help text to clarify how the input should be
+filled.
+
+<Playground>
+  <TextField
+    label="First name"
+    helpText="Choose one or more kinds of fruit to feel happy."
+  />
+  <TextField
+    label="First name"
+    variant="filled"
+    helpText="Choose one or more kinds of fruit to feel happy."
+  />
+  <TextField
+    label="First name"
+    layout="horizontal"
+    helpText="Choose one or more kinds of fruit to feel happy."
+  />
+  <TextField
+    label="First name"
+    layout="horizontal"
+    helpText="Choose one or more kinds of fruit to feel happy."
+    variant="filled"
+  />
+  <TextField
+    label="First name"
+    layout="horizontal"
+    helpText="Choose one or more kinds of fruit to feel happy."
+    fullWidth
+  />
+  <TextField
+    label="First name"
+    layout="horizontal"
+    variant="filled"
+    helpText="Choose one or more kinds of fruit to feel happy."
+    fullWidth
+  />
+</Playground>
+
+Keep in mind that **long help texts don't play well with small input sizes,**
+especially in vertical layout. To fix this at least for horizontal layout, help
+text expands over the full field width when the desired input width (based on
+`inputSize` option) is 10 characters or smaller.
+
+<Playground>
+  <TextField
+    inputSize={3}
+    label="Title"
+    layout="horizontal"
+    helpText="What academic degree do you hold?"
+  />
+  <TextField
+    inputSize={3}
+    label="Title"
+    layout="horizontal"
+    variant="filled"
+    helpText="What academic degree do you hold?"
+  />
+  <TextField
+    label="Age"
+    layout="horizontal"
+    min={13}
+    max={120}
+    inputSize={3}
+    type="number"
+    helpText="How old do you see yourself?"
+  />
+  <TextField
+    label="Age"
+    layout="horizontal"
+    min={13}
+    max={120}
+    inputSize={3}
+    variant="filled"
+    type="number"
+    helpText="How old do you see yourself?"
+  />
+</Playground>
+
+## States
+
+### Validation States
+
+Validation states visually present the result of validation of the input. You
+should always **provide a validation message for states other than valid** so
+users know what happened and what action they should take or what options they
+have.
+
+<Playground>
+  <TextField
+    label="User name"
+    validationState="valid"
+    validationText="Looks good!"
+    value="johnny1986"
+    required
+  />
+  <TextField
+    label="User name"
+    validationState="warning"
+    validationText="Account with this name already exists, pick a different one."
+    value="joe"
+    required
+  />
+  <TextField
+    label="User name"
+    validationState="invalid"
+    validationText="Please enter a user name of your choice."
+    required
+  />
+  <TextField
+    label="User name"
+    validationState="valid"
+    validationText="Looks good!"
+    variant="filled"
+    value="johnny1986"
+    required
+  />
+  <TextField
+    label="User name"
+    validationState="warning"
+    validationText="Account with this name already exists, pick a different one."
+    variant="filled"
+    value="joe"
+    required
+  />
+  <TextField
+    label="User name"
+    validationState="invalid"
+    validationText="Please enter a user name of your choice."
+    variant="filled"
+    required
+  />
+</Playground>
+
+### Disabled State
+
+It's possible to disable the whole input.
+
+<Playground>
+  <TextField
+    label="First name"
+    value="John"
+    disabled
+  />
+  <TextField
+    label="First name"
+    variant="filled"
+    value="John"
+    disabled
+  />
+</Playground>
+
+## API
+
+In addition to the options below, you can specify [React synthetic events] or
+any custom HTML attributes that do not interfere with the API, and they will be
+passed to the `input` HTML element. This enables making the component
+interactive and helps improve its [accessibility](#forwarding-html-attributes).
+
+<Props table of={TextField} />
+
+## Theming
+
+Head to [Forms Theming][theming-forms] to see shared form theming options.
+
+[pattern]: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern
+[autocomplete]: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
+[size]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text#size
+[max]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number#max
+[input-number-size]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number#Controlling_input_size
+[input-text]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text
+[input-email]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email
+[input-number]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number
+[input-tel]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/tel
+[input-password]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password
+[theming-forms]: /customize/theming/forms
+[React synthetic events]: https://reactjs.org/docs/events.html

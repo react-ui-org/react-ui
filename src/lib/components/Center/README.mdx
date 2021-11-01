@@ -1,0 +1,52 @@
+---
+name: Center
+menu: 'Layouts'
+route: /components/center
+---
+
+# Center
+
+The Center layout aligns content both horizontally and vertically.
+
+import {
+  Playground,
+  Props,
+} from 'docz'
+import { Placeholder } from '../../../docs/_components/Placeholder/Placeholder'
+import { Center } from './Center'
+
+## Basic Usage
+
+To implement the Center component, you need to import it first:
+
+```js
+import { Center } from '@react-ui-org/react-ui';
+```
+
+And use it:
+
+<Playground>
+  <Placeholder height="200px" bordered>
+    <Center>
+      <Placeholder bordered>
+        Look, I&apos;m centered!
+      </Placeholder>
+    </Center>
+  </Placeholder>
+</Playground>
+
+See [API](#api) for all available options.
+
+## General Guidelines
+
+- The Center takes up all **available horizontal space and expands vertically**
+  according to the length of its content. Depending on your layout, you may need
+  to define the height of its parent to see the vertical alignment work.
+
+- The Center layout uses `flexbox` for alignment. You may need to define the
+  desired width of your centered content because it will be shrunk to the
+  smallest possible width by default.
+
+## API
+
+<Props table of={Center} />

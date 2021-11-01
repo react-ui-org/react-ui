@@ -1,0 +1,84 @@
+// 1. Get rid of unwanted spacing of inline elements by invocation of flex layout.
+
+@use '../../styles/tools/spacing';
+@use 'theme';
+
+.toolbar,
+.group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.toolbar {
+  @include spacing.bottom(layouts, $compensation: theme.$gap);
+
+  margin: calc(-1 * #{theme.$gap});
+}
+
+.item {
+  display: flex; // 1.
+  flex: none;
+  flex-direction: column; // 1.
+  margin: theme.$gap;
+}
+
+.isAlignedToTop {
+  align-items: flex-start;
+}
+
+.isAlignedToMiddle {
+  align-items: center;
+}
+
+.isAlignedToBottom {
+  align-items: flex-end;
+}
+
+.isAlignedToBaseline {
+  align-items: baseline;
+}
+
+.isJustifiedToStart {
+  justify-content: flex-start;
+}
+
+.isJustifiedToCenter {
+  justify-content: center;
+}
+
+.isJustifiedToEnd {
+  justify-content: flex-end;
+}
+
+.isJustifiedToSpaceBetween {
+  justify-content: space-between;
+}
+
+.isNowrap {
+  flex-wrap: nowrap;
+}
+
+.isNowrap > .item {
+  flex: 0 1 auto;
+}
+
+.isDense {
+  margin: calc(-1 * #{theme.$gap-dense});
+}
+
+.isDense .item {
+  margin: theme.$gap-dense;
+}
+
+.isDense > .isDense {
+  margin: 0;
+}
+
+.toolbar.isDense {
+  @include spacing.bottom(layouts, $compensation: theme.$gap-dense);
+}
+
+.toolbar:not(.isDense) > .isDense,
+.group:not(.isDense) > .isDense {
+  margin: theme.$gap-dense;
+}

@@ -1,0 +1,71 @@
+@use '../../styles/tools/breakpoint';
+@use '../../styles/tools/spacing';
+
+$_breakpoint: lg;
+$_spacing: spacing.of(1);
+$_column-gap: spacing.of(3);
+
+.root {
+  @include spacing.bottom(layouts, $compensation: $_spacing);
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: calc(-1 * #{$_spacing});
+
+  @include breakpoint.up($_breakpoint) {
+    display: grid;
+    grid-template: 'start center end' auto #{'/'} 1fr auto 1fr;
+    grid-column-gap: $_column-gap;
+    margin: 0;
+  }
+}
+
+.start,
+.center,
+.end {
+  margin: $_spacing;
+
+  @include breakpoint.up($_breakpoint) {
+    margin: 0;
+  }
+}
+
+.start {
+  flex-basis: 100%;
+
+  @include breakpoint.up($_breakpoint) {
+    grid-area: start;
+    justify-self: start;
+  }
+}
+
+.center {
+  @include breakpoint.up($_breakpoint) {
+    grid-area: center;
+    justify-self: center;
+  }
+}
+
+.end {
+  @include breakpoint.up($_breakpoint) {
+    grid-area: end;
+    justify-self: end;
+  }
+}
+
+.isAlignedToTop {
+  align-items: start;
+}
+
+.isAlignedToMiddle {
+  align-items: center;
+}
+
+.isAlignedToBottom {
+  align-items: end;
+}
+
+.isAlignedToBaseline {
+  align-items: baseline;
+}

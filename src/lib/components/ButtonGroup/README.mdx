@@ -1,0 +1,246 @@
+---
+name: ButtonGroup
+menu: 'Layouts'
+route: /components/button-group
+---
+
+# ButtonGroup
+
+ButtonGroup visually groups related buttons together.
+
+import {
+  Playground,
+  Props,
+} from 'docz'
+import Icon from '../../../docs/_components/Icon'
+import Button from '../Button'
+import { ButtonGroup } from './ButtonGroup'
+
+## Basic Usage
+
+To implement the ButtonGroup component, you need to import it first:
+
+```js
+import { ButtonGroup } from '@react-ui-org/react-ui';
+```
+
+And use it:
+
+<Playground>
+  <ButtonGroup>
+    <Button label="Week" />
+    <Button label="Month" />
+    <Button label="Year" />
+  </ButtonGroup>
+</Playground>
+
+See [API](#api) for all available options.
+
+## General Guidelines
+
+- Use button group to group **related actions** that a user can take. Buttons
+  should not be grouped just to save space on the screen.
+
+- Use **short labels or icons** so the buttons can fit small screens.
+
+- For toggling between on/off states, use rather the
+  [Toggle](/components/ui/toggle) component.
+
+- For switching between options in a form that needs to be submitted, use rather
+  the [SelectField](/components/ui/select-field) or
+  [Radio](/components/ui/radio) components.
+
+- Be careful with using `startCorner` and `endCorner` options for grouped
+  buttons. Overflowing elements may cause undesired interaction problems.
+
+### Shared Properties
+
+You can set the following properties directly on ButtonGroup to be shared for
+all buttons inside the group: size, priority, disabled state, and block width.
+These properties are then passed over to individual buttons. At the same time,
+they **cannot be overridden** on the buttons' level. While technically possible,
+from the design point of view it's undesirable to group buttons of totally
+different types or sizes.
+
+## Priorities
+
+There are three **visual priorities** of buttons which exactly copy the
+priorities of the [Button](/components/ui/button) component:
+
+1. filled
+2. outline
+3. flat
+
+### Filled
+
+The default, high-emphasis priority should be used for primary actions of your
+app.
+
+<Playground>
+  <ButtonGroup>
+    <Button label="Week" />
+    <Button label="Month" />
+    <Button label="Year" />
+  </ButtonGroup>
+</Playground>
+
+### Outline
+
+Medium-emphasis buttons to contain actions that are important but not primary
+in your app.
+
+<Playground>
+  <ButtonGroup priority="outline">
+    <Button label="Week" />
+    <Button label="Month" />
+    <Button label="Year" />
+  </ButtonGroup>
+</Playground>
+
+### Flat
+
+Flat buttons are designed for less pronounced actions to help maintain focus on
+the content.
+
+<Playground>
+  <ButtonGroup priority="flat">
+    <Button label="Week" />
+    <Button label="Month" />
+    <Button label="Year" />
+  </ButtonGroup>
+</Playground>
+
+## Sizes
+
+All existing button sizes are also available on the button group level: small,
+medium, and large.
+
+<Playground>
+  <ButtonGroup size="small">
+    <Button label="Week" />
+    <Button label="Month" />
+    <Button label="Year" />
+  </ButtonGroup>
+  <ButtonGroup>
+    <Button label="Week" />
+    <Button label="Month" />
+    <Button label="Year" />
+  </ButtonGroup>
+  <ButtonGroup size="large">
+    <Button label="Week" />
+    <Button label="Month" />
+    <Button label="Year" />
+  </ButtonGroup>
+</Playground>
+
+Block button groups span the full width of a parent:
+
+<Playground>
+  <ButtonGroup block>
+    <Button label="Week" />
+    <Button label="Month" />
+    <Button label="Year" />
+  </ButtonGroup>
+</Playground>
+
+## States
+
+### Disabled State
+
+Disables all buttons inside the group.
+
+<Playground>
+  <ButtonGroup disabled>
+    <Button label="Week" />
+    <Button label="Month" />
+    <Button label="Year" />
+  </ButtonGroup>
+  <ButtonGroup priority="outline" disabled>
+    <Button label="Week" />
+    <Button label="Month" />
+    <Button label="Year" />
+  </ButtonGroup>
+  <ButtonGroup priority="flat" disabled>
+    <Button label="Week" />
+    <Button label="Month" />
+    <Button label="Year" />
+  </ButtonGroup>
+</Playground>
+
+### Feedback State
+
+When user's action triggers an asynchronous process on background, feedback
+state of individual buttons can be indicated by showing an icon.
+
+<Playground>
+  <ButtonGroup>
+    <Button label="Week" color="success" feedbackIcon={<Icon icon="success" />} />
+    <Button label="Month" />
+    <Button label="Year" />
+  </ButtonGroup>
+  <ButtonGroup priority="outline">
+    <Button label="Week" color="success" feedbackIcon={<Icon icon="success" />} />
+    <Button label="Month" />
+    <Button label="Year" />
+  </ButtonGroup>
+  <ButtonGroup priority="flat">
+    <Button label="Week" color="success" feedbackIcon={<Icon icon="success" />} />
+    <Button label="Month" />
+    <Button label="Year" />
+  </ButtonGroup>
+</Playground>
+
+### Active State
+
+To highlight the selected option, the active state can be achieved by setting
+a different button variant for the active item.
+
+<Playground>
+  <ButtonGroup>
+    <Button color="dark" label="Week" />
+    <Button label="Month" />
+    <Button label="Year" />
+  </ButtonGroup>
+  <ButtonGroup priority="outline">
+    <Button color="dark" label="Week" />
+    <Button label="Month" />
+    <Button label="Year" />
+  </ButtonGroup>
+  <ButtonGroup priority="flat">
+    <Button color="dark" label="Week" />
+    <Button label="Month" />
+    <Button label="Year" />
+  </ButtonGroup>
+</Playground>
+
+## Accessibility
+
+You can improve the accessibility of your ButtonGroup by linking it to a label
+and communicating the state of individual options.
+
+<Playground>
+  <>
+    <span id="period-label">Period:</span>
+    <ButtonGroup aria-labelledby="#period-label">
+      <Button label="Week" aria-pressed color="dark" />
+      <Button label="Month" aria-pressed={false} />
+      <Button label="Year" aria-pressed={false} />
+    </ButtonGroup>
+  </>
+</Playground>
+
+## API
+
+<Props table of={ButtonGroup} />
+
+## Theming
+
+| Custom Property                                                    | Description                                    |
+|--------------------------------------------------------------------|------------------------------------------------|
+| `--rui-ButtonGroup--filled__gap`                                   | Gap between `filled` buttons                   |
+| `--rui-ButtonGroup--filled__separator__width`                      | Separator width for `filled` buttons           |
+| `--rui-ButtonGroup--filled__separator__color`                      | Separator color for `filled` buttons           |
+| `--rui-ButtonGroup--flat__gap`                                     | Gap between `flat` buttons                     |
+| `--rui-ButtonGroup--flat__separator__width`                        | Separator width for `flat` buttons             |
+| `--rui-ButtonGroup--flat__separator__color`                        | Separator color for `flat` buttons             |
+| `--rui-ButtonGroup--outline__gap`                                  | Gap between `outline` buttons                  |

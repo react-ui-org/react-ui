@@ -1,0 +1,238 @@
+---
+name: Alert
+menu: 'Miscellaneous'
+route: /components/alert
+---
+
+# Alert
+
+import {
+  Playground,
+  Props,
+} from 'docz'
+import Icon from '../../../docs/_components/Icon'
+import Placeholder from '../../../docs/_components/Placeholder'
+import Button from '../Button'
+import {
+  AlertWithContext as Alert,
+  Alert as ParsableAlert,
+} from './Alert'
+
+Alert presents feedback or important information to users.
+
+## Basic Usage
+
+To implement the Alert component, you need to import it first:
+
+```js
+import { Alert } from '@react-ui-org/react-ui';
+```
+
+And use it:
+
+<Playground>
+  <Alert>
+    <strong>Hello!</strong> This is an alert.
+  </Alert>
+</Playground>
+
+See [API](#api) for all available options.
+
+## General Guidelines
+
+- **Be simple and short** and explain to users why you are interrupting them
+  with an alert. Clearly say what happened or what is going to happen. Provide a
+  brief title when the message is too long.
+
+- **Use icons** to improve the accessibility of alerts because color may not be
+  enough for everyone. [See how](#alerts-with-icons).
+
+## Color Variants
+
+All [component colors](/foundation/colors#component-colors) are supported by
+alert to cover all possible needs of your project.
+
+### Primary
+
+Primary alert uses brand primary color.
+
+<Playground>
+  <Alert color="primary">
+    <strong>Primary:</strong> This is a primary alert.
+  </Alert>
+</Playground>
+
+### Secondary
+
+Secondary alert uses brand secondary color.
+
+<Playground>
+  <Alert color="secondary">
+    <strong>Secondary:</strong> This is a secondary alert.
+  </Alert>
+</Playground>
+
+### Success
+
+Success alerts confirm that an operation has been processed successfully.
+
+<Playground>
+  <Alert color="success">
+    <strong>Success:</strong> Settings have been successfully saved.
+  </Alert>
+</Playground>
+
+### Warning
+
+Use warning alerts when a potentially unfavourable situation may occur. You may
+suggest an action to resolve the problem.
+
+<Playground>
+  <Alert color="warning">
+    <strong>Warning:</strong> Your credit card is going to expire soon.
+    {' '}
+    <a href="/">Update my payment options</a>
+  </Alert>
+</Playground>
+
+### Danger
+
+Danger alerts say there is something that block users from continuing that
+requires their immediate attention. The alert should offer a solution to the
+problem.
+
+<Playground>
+  <Alert color="danger">
+    <strong>Error:</strong> Cannot connect to the server. Is your internet
+    connection working fine?
+    {' '}
+    <a href="/">Try again</a>
+  </Alert>
+</Playground>
+
+### Help
+
+This kind of alert can be used to display helpful information.
+
+<Playground>
+  <Alert color="help">
+    <strong>Help:</strong> You should choose a password you don&apos;t use
+    anywhere else.
+  </Alert>
+</Playground>
+
+### Info
+
+Another common, informative alert.
+
+<Playground>
+  <Alert color="info">
+    <strong>Info:</strong> This feature depends on user&apos;s OS preferences.
+  </Alert>
+</Playground>
+
+### Note (Default)
+
+Neutral informative alert.
+
+<Playground>
+  <Alert>
+    <strong>Note:</strong> This feature may not be available in all regions.
+  </Alert>
+</Playground>
+
+### Light
+
+Light alert variant.
+
+<Playground>
+  <Placeholder dark>
+    <Alert color="light">
+      <strong>Light alert:</strong> Stands out on dark backgrounds.
+    </Alert>
+  </Placeholder>
+</Playground>
+
+### Dark
+
+Dark alert variant.
+
+<Playground>
+  <Alert color="dark">
+    <strong>Dark alert:</strong> Stands out on light backgrounds.
+  </Alert>
+</Playground>
+
+## Alerts with Icons
+
+An icon can (and should) accompany the message.
+
+👉 Please note there are no icons pre-packed in React UI. Visit
+[Icons](/foundation/icons) to see how it works.
+
+<Playground>
+  <Alert color="success" icon={<Icon icon="success" />}>
+    <strong>Success:</strong> Settings have been successfully saved.
+  </Alert>
+</Playground>
+
+## Dismissible Alerts
+
+You can make an alert dismissible by providing a function that closes it on
+click on the close button:
+
+<Playground>
+  {() => {
+    const [isAlertVisible, setIsAlertVisible] = React.useState(true);
+    return (
+      <>
+        {isAlertVisible ? (
+          <Alert
+            color="success"
+            icon={<Icon icon="success" />}
+            onClose={() => setIsAlertVisible(false)}
+          >
+            <strong>Success:</strong> Settings have been successfully saved.
+          </Alert>
+        ) : (
+          <Button
+            label="Bring the alert back!"
+            onClick={() => setIsAlertVisible(true)}
+          />
+        )}
+      </>
+    );
+  }}
+</Playground>
+
+## API
+
+<Props table of={ParsableAlert} />
+
+## Theming
+
+### Common Theming Options
+
+| Custom Property                                      | Description                                                  |
+|------------------------------------------------------|--------------------------------------------------------------|
+| `--rui-Alert__padding`                               | Padding between border and message                           |
+| `--rui-Alert__font-weight`                           | Message font weight                                          |
+| `--rui-Alert__border-width`                          | Border width                                                 |
+| `--rui-Alert__border-radius`                         | Corner radius                                                |
+| `--rui-Alert__emphasis__font-weight`                 | Font weight of text emphasised with `<strong>`               |
+| `--rui-Alert__stripe__width`                         | Width of the border at the start of the Alert                |
+
+### Theming Variants
+
+It's possible to adjust the theme of specific alert color variant. Naming
+convention looks as follows:
+
+`--rui-Alert--<COLOR>__<PROPERTY>`
+
+Where:
+
+- `<COLOR>` is one of supported
+  [component colors](/foundation/colors#component-colors)
+  (see alert [color variants](#color-variants) and [API](#api)),
+- `<PROPERTY>` is one of `color` (color of text), `foreground-color` (color of
+  border, icon, links, and emphasis), or `background-color`.
