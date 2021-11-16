@@ -1,30 +1,22 @@
 {
   "extends" : [
-    "@visionappscz/eslint-config-visionapps",
-    "plugin:markdown/recommended",
-    "plugin:mdx/recommended"
+    "@visionappscz/eslint-config-visionapps"
   ],
   "env": {
     "browser": true,
     "jest": true
   },
-  "rules": {
-    "func-names": "off",
-    "import/prefer-default-export": "off",
-    "react/destructuring-assignment": "off",
-    "react/jsx-props-no-spreading": "off",
-    "react/jsx-one-expression-per-line": "off"
-  },
   "overrides": [
     {
-      "files": ["**/*.mdx"],
-      "rules": {
-        "react/jsx-filename-extension": [1, { "extensions": [".mdx"] }],
-        "react/jsx-indent": "off", // Gives false positives in MDX files.
-        "semi": "off", // We don't want to clutter our MDX with semicolons.
-        "sort-keys": "off", // This rule only needs to be turned off in a few places (eg. breakpoint lists), but weirdly enough, an inline comment alerts breaking of the `indent` rule.
-        "import/no-extraneous-dependencies": ["error", { "devDependencies": ["**/*.mdx"] }] // Allow importing docz React components in *.mdx files
-      }
+      "files": ["**/*.md", "**/*.mdx"],
+      "extends": [
+        "plugin:markdown/recommended",
+        "plugin:mdx/recommended"
+      ]
     }
-  ]
+  ],
+  "parser": "@babel/eslint-parser",
+  "rules": {
+    "import/prefer-default-export": "off"
+  }
 }
