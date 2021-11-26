@@ -52,10 +52,7 @@ CTA.propTypes = {
    * * `CTACenter`
    * * `CTAEnd`
    */
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element),
-  ]).isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export const CTAWithContext = withProviderContext(CTA, 'CTA');
