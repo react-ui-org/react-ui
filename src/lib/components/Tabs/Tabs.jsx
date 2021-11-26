@@ -26,10 +26,7 @@ Tabs.propTypes = {
   /**
    * Nested `TabsItem` elements.
    */
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element),
-  ]),
+  children: PropTypes.node,
   /**
    * ID of the root HTML element. It also serves as base for nested element:
    * * `<ID>__list`

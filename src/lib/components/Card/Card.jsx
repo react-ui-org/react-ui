@@ -41,10 +41,7 @@ Card.propTypes = {
    * * `CardFooter`
    * * `ScrollView`
    */
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element),
-  ]).isRequired,
+  children: PropTypes.node.isRequired,
   /**
    * [Color variant](/foundation/colors#component-colors) to clarify importance and meaning of the card.
    */

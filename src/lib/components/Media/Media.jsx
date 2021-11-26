@@ -21,10 +21,7 @@ Media.propTypes = {
    * * `MediaBody`
    * * `MediaObject`
    */
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element),
-  ]).isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export const MediaWithContext = withProviderContext(Media, 'Media');

@@ -89,10 +89,7 @@ FormLayout.propTypes = {
    * * `TextField`
    * * `Toggle`
    */
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element),
-  ]),
+  children: PropTypes.node,
   /**
    * Layout that is forced on children form fields.
    */
