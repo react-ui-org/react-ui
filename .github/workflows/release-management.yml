@@ -42,14 +42,14 @@ jobs:
 
       - name: Check package.json for version change
         id: check_package_version
-        uses: EndBug/version-check@v1.6.0
+        uses: EndBug/version-check@v2.0.1
 
       - name: Log when version changed
         if: steps.check_package_version.outputs.changed == 'true'
         run: 'echo "Version change found in commit ${{ steps.check_package_version.outputs.commit }}! New version: ${{ steps.check_package_version.outputs.version }} (${{ steps.check_package_version.outputs.type }})"'
 
       - name: Log when version unchanged
-        if: steps.check_package_version.outputs.changed != 'true'
+        if: steps.check_package_version.outputs.changed == 'false'
         run: 'echo "No version change"'
 
       - name: Upload artifacts
@@ -61,11 +61,11 @@ jobs:
   update_release_draft:
     name: Update release draft
     needs: [build_and_test]
-    if: needs.build_and_test.outputs.version_changed != 'true'
+    if: needs.build_and_test.outputs.version_changed == 'false'
     runs-on: ubuntu-18.04
     steps:
       - name: Draft release on GitHub
-        uses: release-drafter/release-drafter@v5.12.1
+        uses: release-drafter/release-drafter@v5.15.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -147,13 +147,11 @@ jobs:
           path: docs
 
       - name: Deploy docs to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@3.7.1
+        uses: JamesIves/github-pages-deploy-action@4.1.7
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          FOLDER: docs # Must match the name of the artifact used.
-          REPOSITORY_NAME: react-ui-org/react-ui-docs
-          ACCESS_TOKEN: ${{ secrets.DOCS_REPOSITORY_ACCESS_TOKEN }}
-          BRANCH: master
-          TARGET_FOLDER: docs
-          COMMIT_MESSAGE: Release new version
-          CLEAN: true
+          folder: docs # Must match the name of the artifact used.
+          repository-name: react-ui-org/react-ui-docs
+          token: ${{ secrets.DOCS_REPOSITORY_ACCESS_TOKEN }}
+          branch: master
+          target-folder: docs
+          commit-message: Release new version
