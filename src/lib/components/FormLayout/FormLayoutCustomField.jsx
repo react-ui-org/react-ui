@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
-import getRootSizeClassName from '../../helpers/getRootSizeClassName';
-import getRootValidationStateClassName from '../../helpers/getRootValidationStateClassName';
 import { withProviderContext } from '../../provider';
-import styles from './FormLayoutCustomField.scss';
+import { classNames } from '../../utils/classNames';
+import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
+import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { FormLayoutContext } from './FormLayoutContext';
+import styles from './FormLayoutCustomField.scss';
 
 const renderLabel = (id, label, labelForId) => {
   if (labelForId && label) {
@@ -49,15 +50,15 @@ export const FormLayoutCustomField = ({
   return (
     <div
       id={id}
-      className={[
+      className={classNames(
         styles.root,
-        fullWidth ? styles.isRootFullWidth : '',
+        fullWidth && styles.isRootFullWidth,
         context && context.layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
-        disabled ? styles.isRootDisabled : '',
-        required ? styles.isRootRequired : '',
+        disabled && styles.isRootDisabled,
+        required && styles.isRootRequired,
         getRootSizeClassName(innerFieldSize, styles),
         getRootValidationStateClassName(validationState, styles),
-      ].join(' ')}
+      )}
     >
       {renderLabel(id, label, labelForId)}
       <div

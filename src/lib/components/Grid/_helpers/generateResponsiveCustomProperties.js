@@ -12,5 +12,3 @@ export const generateResponsiveCustomProperties = (prop, infix) => {
     [`--rui-local-${infix}-${breakpoint}`]: prop[breakpoint],
   }), {});
 };
-
-export default generateResponsiveCustomProperties;

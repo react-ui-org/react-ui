@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../provider';
+import { classNames } from '../../utils/classNames';
 import styles from './TabsItem.scss';
 
 export const TabsItem = ({
@@ -13,10 +14,10 @@ export const TabsItem = ({
   onClick,
 }) => (
   <li
-    className={[
+    className={classNames(
       styles.root,
-      isActive ? styles.isRootActive : null,
-    ].join(' ')}
+      isActive && styles.isRootActive,
+    )}
     id={id}
     key={href}
   >

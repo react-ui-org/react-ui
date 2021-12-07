@@ -2,9 +2,9 @@ import {
   useLayoutEffect,
   useRef,
 } from 'react';
-import { getElementsPositionDifference } from '../services/elementPositionService';
+import { getElementsPositionDifference } from '../_helpers/getElementsPositionDifference';
 
-export const useLoadResize = (effect, dependencies, contentEl, viewportEl, wait) => {
+export const useScrollPosition = (effect, dependencies, contentEl, viewportEl, wait) => {
   const throttleTimeout = useRef(null);
 
   const callBack = (wasDelayed = false) => {
@@ -16,7 +16,9 @@ export const useLoadResize = (effect, dependencies, contentEl, viewportEl, wait)
   };
 
   useLayoutEffect(() => {
-    const handleLoadResize = () => {
+    const viewport = viewportEl.current;
+
+    const handleScroll = () => {
       if (wait) {
         if (throttleTimeout.current === null) {
           throttleTimeout.current = setTimeout(callBack, wait, true);
@@ -26,15 +28,13 @@ export const useLoadResize = (effect, dependencies, contentEl, viewportEl, wait)
       }
     };
 
-    window.addEventListener('load', handleLoadResize);
-    window.addEventListener('resize', handleLoadResize);
+    viewport.addEventListener('scroll', handleScroll);
 
     return () => {
       clearTimeout(throttleTimeout.current);
-      window.removeEventListener('load', handleLoadResize);
-      window.removeEventListener('resize', handleLoadResize);
+      viewport.removeEventListener('scroll', handleScroll);
     };
   }, dependencies); // eslint-disable-line react-hooks/exhaustive-deps
 };
 
-export default useLoadResize;
+export default useScrollPosition;

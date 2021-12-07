@@ -1,4 +1,4 @@
-export default (hyphens, styles) => {
+export const getRootHyphensClassName = (hyphens, styles) => {
   if (hyphens === 'auto') {
     return styles.rootHyphensAuto;
   }

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { classNames } from '../../../lib/utils/classNames';
 import styles from './Placeholder.scss';
 
 export const Placeholder = ({
@@ -11,12 +12,12 @@ export const Placeholder = ({
   width,
 }) => (
   <div
-    className={[
+    className={classNames(
       styles.root,
-      bordered ? styles.rootBordered : '',
-      dark ? styles.rootDark : '',
-      inline ? styles.rootInline : '',
-    ].join(' ')}
+      bordered && styles.rootBordered,
+      dark && styles.rootDark,
+      inline && styles.rootInline,
+    )}
     style={{
       '--rui-local-height': height,
       '--rui-local-width': width,

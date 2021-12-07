@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
-import getRootValidationStateClassName from '../../helpers/getRootValidationStateClassName';
-import { resolveContextOrProp } from '../../helpers/resolveContextOrProp';
 import { withProviderContext } from '../../provider';
-import transferProps from '../../utils/transferProps';
+import { classNames } from '../../utils/classNames';
+import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
+import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
+import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
 import withForwardedRef from '../withForwardedRef';
 import styles from './FileInputField.scss';
@@ -26,25 +27,25 @@ export const FileInputField = ({
 
   return (
     <label
-      className={[
+      className={classNames(
         styles.root,
-        fullWidth ? styles.isRootFullWidth : '',
-        context ? styles.isRootInFormLayout : '',
+        fullWidth && styles.isRootFullWidth,
+        context && styles.isRootInFormLayout,
         resolveContextOrProp(context && context.layout, layout) === 'horizontal'
           ? styles.rootLayoutHorizontal
           : styles.rootLayoutVertical,
-        disabled ? styles.isRootDisabled : '',
-        required ? styles.isRootRequired : '',
+        disabled && styles.isRootDisabled,
+        required && styles.isRootRequired,
         getRootValidationStateClassName(validationState, styles),
-      ].join(' ')}
+      )}
       htmlFor={id}
       id={id && `${id}__label`}
     >
       <div
-        className={[
+        className={classNames(
           styles.label,
-          isLabelVisible ? '' : styles.isLabelHidden,
-        ].join(' ')}
+          !isLabelVisible && styles.isLabelHidden,
+        )}
         id={id && `${id}__labelText`}
       >
         {label}

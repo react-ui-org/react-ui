@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../provider';
+import { classNames } from '../../utils/classNames';
 import styles from './ButtonGroup.scss';
 import { ButtonGroupContext } from './ButtonGroupContext';
 
@@ -13,10 +14,10 @@ export const ButtonGroup = ({
   ...restProps
 }) => (
   <div
-    className={[
+    className={classNames(
       styles.root,
-      block ? styles.isRootBlock : '',
-    ].join(' ')}
+      block && styles.isRootBlock,
+    )}
     role="group"
     {...restProps}
   >

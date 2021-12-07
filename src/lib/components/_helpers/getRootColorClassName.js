@@ -1,4 +1,4 @@
-export default (variant, styles) => {
+export const getRootColorClassName = (variant, styles) => {
   if (variant === 'primary') {
     return styles.rootColorPrimary;
   }

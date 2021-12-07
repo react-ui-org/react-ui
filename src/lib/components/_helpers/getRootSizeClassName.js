@@ -1,4 +1,4 @@
-export default (size, styles) => {
+export const getRootSizeClassName = (size, styles) => {
   if (size === 'small') {
     return styles.rootSizeSmall;
   }

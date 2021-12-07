@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../provider';
+import { classNames } from '../../utils/classNames';
 import styles from './List.scss';
 
 export const List = ({
@@ -12,7 +13,7 @@ export const List = ({
     return null;
   }
 
-  let alignClass = '';
+  let alignClass;
 
   if (align === 'start') {
     alignClass = styles.alignStart;
@@ -20,7 +21,7 @@ export const List = ({
     alignClass = styles.alignEnd;
   }
 
-  let autoWidthClass = '';
+  let autoWidthClass;
 
   if (autoWidth) {
     autoWidthClass = styles.isAutoWidth;
@@ -28,16 +29,16 @@ export const List = ({
 
   return (
     <div
-      className={`
-        ${styles.root}
-        ${autoWidthClass}
-      `.trim()}
+      className={classNames(
+        styles.root,
+        autoWidthClass,
+      )}
     >
       <ul
-        className={`
-          ${styles.list}
-          ${alignClass}
-        `.trim()}
+        className={classNames(
+          styles.list,
+          alignClass,
+        )}
       >
         {children}
       </ul>

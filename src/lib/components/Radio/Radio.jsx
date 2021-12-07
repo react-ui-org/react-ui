@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
-import getRootValidationStateClassName from '../../helpers/getRootValidationStateClassName';
-import { resolveContextOrProp } from '../../helpers/resolveContextOrProp';
 import { withProviderContext } from '../../provider';
-import transferProps from '../../utils/transferProps';
+import { classNames } from '../../utils/classNames';
+import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
+import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
+import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
 import styles from './Radio.scss';
 
@@ -25,23 +26,23 @@ export const Radio = ({
 
   return (
     <div
-      className={[
+      className={classNames(
         styles.root,
-        context ? styles.isRootInFormLayout : '',
+        context && styles.isRootInFormLayout,
         resolveContextOrProp(context && context.layout, layout) === 'horizontal'
           ? styles.rootLayoutHorizontal
           : styles.rootLayoutVertical,
-        disabled ? styles.isRootDisabled : '',
-        required ? styles.isRootRequired : '',
+        disabled && styles.isRootDisabled,
+        required && styles.isRootRequired,
         getRootValidationStateClassName(validationState, styles),
-      ].join(' ')}
+      )}
       id={id}
     >
       <div
-        className={[
+        className={classNames(
           styles.label,
-          isLabelVisible ? '' : styles.isLabelHidden,
-        ].join(' ')}
+          !isLabelVisible && styles.isLabelHidden,
+        )}
         id={id && `${id}__labelText`}
       >
         {label}

@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import getRootColorClassName from '../../helpers/getRootColorClassName';
 import { withProviderContext } from '../../provider';
+import { classNames } from '../../utils/classNames';
+import { getRootColorClassName } from '../_helpers/getRootColorClassName';
 import styles from './Card.scss';
 
 export const Card = ({
@@ -13,13 +14,13 @@ export const Card = ({
   color,
 }) => (
   <div
-    className={[
+    className={classNames(
       styles.root,
       getRootColorClassName(color, styles),
-      dense ? styles.rootDense : '',
-      raised ? styles.rootRaised : '',
-      disabled ? styles.isDisabled : '',
-    ].join(' ')}
+      dense && styles.rootDense,
+      raised && styles.rootRaised,
+      disabled && styles.isDisabled,
+    )}
     id={id}
   >
     {children}

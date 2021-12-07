@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../provider';
-import { generateResponsiveCustomProperties } from './helpers/generateResponsiveCustomProperties';
+import { generateResponsiveCustomProperties } from './_helpers/generateResponsiveCustomProperties';
 import styles from './Grid.scss';
 
 export const Grid = ({
