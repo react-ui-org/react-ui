@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../provider';
+import { classNames } from '../../utils/classNames';
 import { FormLayoutContext } from './FormLayoutContext';
 import styles from './FormLayout.scss';
 
@@ -48,12 +49,12 @@ export const FormLayout = (props) => {
   return (
     <div
       id={id}
-      className={[
+      className={classNames(
         styles.root,
         fieldLayoutClass(fieldLayout),
-        autoWidth ? styles.isRootAutoWidth : '',
-        fieldLayout === 'horizontal' ? labelWidthClass(labelWidth) : '',
-      ].join(' ')}
+        autoWidth && styles.isRootAutoWidth,
+        fieldLayout === 'horizontal' && labelWidthClass(labelWidth),
+      )}
       {...hasCustomLabelWidth ? { style: { '--rui-custom-label-width': labelWidth } } : {}}
     >
       <FormLayoutContext.Provider

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../provider';
+import { classNames } from '../../utils/classNames';
 import styles from './CTA.scss';
 
 export const CTA = (props) => {
@@ -27,10 +28,10 @@ export const CTA = (props) => {
 
   return (
     <div
-      className={[
+      className={classNames(
         styles.root,
         alignClass(align),
-      ].join(' ')}
+      )}
     >
       {children}
     </div>

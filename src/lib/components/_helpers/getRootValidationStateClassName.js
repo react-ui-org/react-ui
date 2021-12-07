@@ -1,4 +1,4 @@
-export default (validationState, styles) => {
+export const getRootValidationStateClassName = (validationState, styles) => {
   if (validationState === 'invalid') {
     return styles.isRootStateInvalid;
   }

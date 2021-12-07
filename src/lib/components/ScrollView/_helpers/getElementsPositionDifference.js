@@ -9,5 +9,3 @@ export const getElementsPositionDifference = (contentEl, viewportEl) => {
     top: contentPosition.top - viewportPosition.top,
   };
 };
-
-export default getElementsPositionDifference;

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import transferProps from '../../utils/transferProps';
 import { withProviderContext } from '../../provider';
+import { transferProps } from '../_helpers/transferProps';
 import styles from './Link.scss';
 
 export const Link = ({

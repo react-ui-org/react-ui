@@ -19,6 +19,7 @@ export default {
     ],
     Helpers: [
       'CSS Helpers',
+      'JS Helpers',
     ],
     // eslint-disable-next-line sort-keys
     Guides: [
@@ -61,6 +62,10 @@ export default {
     {
       menu: [],
       name: 'CSS Helpers',
+    },
+    {
+      menu: [],
+      name: 'JS Helpers',
     },
     {
       menu: [

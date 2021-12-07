@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { createPortal } from 'react-dom';
-import transferProps from '../../utils/transferProps';
 import { withProviderContext } from '../../provider';
+import { classNames } from '../../utils/classNames';
+import { transferProps } from '../_helpers/transferProps';
 import {
   Toolbar,
   ToolbarItem,
@@ -125,10 +126,10 @@ export class Modal extends React.Component {
       if (scrollView) {
         return (
           <div
-            className={[
+            className={classNames(
               styles.body,
               styles.isBodyScrollable,
-            ].join(' ')}
+            )}
           >
             {React.cloneElement(scrollView, scrollView.props, content)}
           </div>
@@ -154,11 +155,11 @@ export class Modal extends React.Component {
         role="presentation"
       >
         <div
-          className={[
+          className={classNames(
             styles.root,
             sizeClass(size),
             positionClass(position),
-          ].join(' ')}
+          )}
           onClick={(e) => {
             e.stopPropagation();
           }}

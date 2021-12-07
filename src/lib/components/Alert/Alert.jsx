@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import getRootColorClassName from '../../helpers/getRootColorClassName';
 import { withProviderContext } from '../../provider';
+import { classNames } from '../../utils/classNames';
+import { getRootColorClassName } from '../_helpers/getRootColorClassName';
 import styles from './Alert.scss';
 
 export const Alert = ({
@@ -13,10 +14,10 @@ export const Alert = ({
   translations,
 }) => (
   <div
-    className={[
+    className={classNames(
       styles.root,
       getRootColorClassName(color, styles),
-    ].join(' ')}
+    )}
     id={id}
     role="alert"
   >

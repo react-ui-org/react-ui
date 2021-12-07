@@ -5,10 +5,11 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { useLoadResize } from '../../hooks/useLoadResizeHook';
-import { useScrollPosition } from '../../hooks/useScrollPositionHook';
 import { withProviderContext } from '../../provider';
-import { getElementsPositionDifference } from '../../services/elementPositionService';
+import { classNames } from '../../utils/classNames';
+import { getElementsPositionDifference } from './_helpers/getElementsPositionDifference';
+import { useLoadResize } from './_hooks/useLoadResizeHook';
+import { useScrollPosition } from './_hooks/useScrollPositionHook';
 import styles from './ScrollView.scss';
 
 // Function `getElementsPositionDifference` sometimes returns floating point values that results
@@ -197,13 +198,13 @@ export const ScrollView = (props) => {
 
   return (
     <div
-      className={[
+      className={classNames(
         styles.root,
-        isScrolledAtStart ? styles.isRootScrolledAtStart : '',
-        isScrolledAtEnd ? styles.isRootScrolledAtEnd : '',
-        scrollbar ? '' : styles.hasRootScrollbarDisabled,
+        isScrolledAtStart && styles.isRootScrolledAtStart,
+        isScrolledAtEnd && styles.isRootScrolledAtEnd,
+        !scrollbar && styles.hasRootScrollbarDisabled,
         direction === 'horizontal' ? styles.isRootHorizontal : styles.isRootVertical,
-      ].join(' ')}
+      )}
       style={inlineStyle(
         direction,
         arrowsColor,

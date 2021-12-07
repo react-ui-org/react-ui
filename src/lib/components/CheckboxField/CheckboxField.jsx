@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
-import getRootValidationStateClassName from '../../helpers/getRootValidationStateClassName';
 import { withProviderContext } from '../../provider';
-import transferProps from '../../utils/transferProps';
+import { classNames } from '../../utils/classNames';
+import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
+import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
 import withForwardedRef from '../withForwardedRef';
 import styles from './CheckboxField.scss';
@@ -26,15 +27,15 @@ export const CheckboxField = ({
 
   return (
     <label
-      className={[
+      className={classNames(
         styles.root,
-        context ? styles.isRootInFormLayout : '',
+        context && styles.isRootInFormLayout,
         context && context.layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
-        labelPosition === 'before' ? styles.hasRootLabelBefore : '',
-        disabled ? styles.isRootDisabled : '',
-        required ? styles.isRootRequired : '',
+        labelPosition === 'before' && styles.hasRootLabelBefore,
+        disabled && styles.isRootDisabled,
+        required && styles.isRootRequired,
         getRootValidationStateClassName(validationState, styles),
-      ].join(' ')}
+      )}
       htmlFor={id}
       id={id && `${id}__label`}
     >
@@ -51,10 +52,10 @@ export const CheckboxField = ({
           value={value}
         />
         <div
-          className={[
+          className={classNames(
             styles.label,
-            isLabelVisible ? '' : styles.isLabelHidden,
-          ].join(' ')}
+            !isLabelVisible && styles.isLabelHidden,
+          )}
           id={id && `${id}__labelText`}
         >
           {label}

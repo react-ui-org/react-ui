@@ -57,3 +57,6 @@ export {
 
 // Provider
 export { RUIProvider } from './provider';
+
+// Utils
+export { classNames } from './utils/classNames';

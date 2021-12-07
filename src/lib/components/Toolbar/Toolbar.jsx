@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../provider';
+import { classNames } from '../../utils/classNames';
 import styles from './Toolbar.scss';
 
 export const Toolbar = (props) => {
@@ -46,13 +47,13 @@ export const Toolbar = (props) => {
 
   return (
     <div
-      className={[
+      className={classNames(
         styles.toolbar,
-        dense ? styles.isDense : null,
-        nowrap ? styles.isNowrap : null,
+        dense && styles.isDense,
+        nowrap && styles.isNowrap,
         alignClass(align),
         justifyClass(justify),
-      ].join(' ')}
+      )}
     >
       {children}
     </div>

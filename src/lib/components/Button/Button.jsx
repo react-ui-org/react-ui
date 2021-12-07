@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
-import getRootSizeClassName from '../../helpers/getRootSizeClassName';
-import getRootColorClassName from '../../helpers/getRootColorClassName';
-import { resolveContextOrProp } from '../../helpers/resolveContextOrProp';
 import { withProviderContext } from '../../provider';
-import transferProps from '../../utils/transferProps';
+import { classNames } from '../../utils/classNames';
+import { getRootColorClassName } from '../_helpers/getRootColorClassName';
+import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
+import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
+import { transferProps } from '../_helpers/transferProps';
 import withForwardedRef from '../withForwardedRef';
 import { ButtonGroupContext } from '../ButtonGroup';
 import getRootLabelVisibilityClassName from './helpers/getRootLabelVisibilityClassName';
@@ -36,7 +37,7 @@ export const Button = ({
     /* eslint-disable react/button-has-type */
     <button
       {...transferProps(restProps)}
-      className={[
+      className={classNames(
         styles.root,
         getRootPriorityClassName(
           resolveContextOrProp(context && context.priority, priority),
@@ -48,10 +49,10 @@ export const Button = ({
           styles,
         ),
         getRootLabelVisibilityClassName(labelVisibility, styles),
-        resolveContextOrProp(context && context.block, block) ? styles.rootBlock : '',
-        context ? styles.rootGrouped : '',
-        feedbackIcon ? styles.hasRootFeedback : '',
-      ].join(' ')}
+        resolveContextOrProp(context && context.block, block) && styles.rootBlock,
+        context && styles.rootGrouped,
+        feedbackIcon && styles.hasRootFeedback,
+      )}
       disabled={resolveContextOrProp(context && context.disabled, disabled) || !!feedbackIcon}
       id={id}
       ref={forwardedRef}

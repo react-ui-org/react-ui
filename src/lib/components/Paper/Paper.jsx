@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../provider';
+import { classNames } from '../../utils/classNames';
 import styles from './Paper.scss';
 
 export const Paper = ({
@@ -10,11 +11,11 @@ export const Paper = ({
   raised,
 }) => (
   <div
-    className={[
+    className={classNames(
       styles.root,
-      muted ? styles.rootMuted : '',
-      raised ? styles.rootRaised : '',
-    ].join(' ')}
+      muted && styles.rootMuted,
+      raised && styles.rootRaised,
+    )}
     id={id}
   >
     {children}

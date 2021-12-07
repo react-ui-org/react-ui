@@ -1,4 +1,4 @@
-export default (wordWrapping, styles) => {
+export const getRootWordWrappingClassName = (wordWrapping, styles) => {
   if (wordWrapping === 'anywhere') {
     return styles.rootWordWrappingAnywhere;
   }

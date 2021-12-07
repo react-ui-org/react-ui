@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../provider';
-import getRootHyphensClassName from './helpers/getRootHyphensClassName';
-import getRootWordWrappingClassName from './helpers/getRootWordWrappingClassName';
+import { classNames } from '../../utils/classNames';
+import { getRootHyphensClassName } from './_helpers/getRootHyphensClassName';
+import { getRootWordWrappingClassName } from './_helpers/getRootWordWrappingClassName';
 import styles from './Text.scss';
 
 export const Text = ({
@@ -18,11 +19,11 @@ export const Text = ({
   return (
     <HtmlElement
       className={(hyphens !== 'none' || lines > 0 || wordWrapping !== 'normal')
-        ? [
+        ? classNames(
           (lines > 0) ? styles.rootClampLines : '',
           getRootHyphensClassName(hyphens, styles),
           getRootWordWrappingClassName(wordWrapping, styles),
-        ].join(' ')
+        )
         : undefined}
       id={id}
       style={(lines > 0) ? { '--rui-custom-lines': lines } : undefined}
