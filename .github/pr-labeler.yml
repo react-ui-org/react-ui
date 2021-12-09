@@ -1,6 +1,6 @@
 BC: bc/*
 feature: feature/*
-bugfix: bugfix/*
+bug: bugfix/*
 refactoring: refactoring/*
 documentation: ['docs/*', 'documentation/*']
 maintenance: maintenance/*
