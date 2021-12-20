@@ -60,10 +60,10 @@ the job: the
   are supported!). All React UI form components are ready for this use case and
   don't need to be wrapped in any `div`s. Namely, the FormLayout supports the
   following React UI components:
-  [CheckboxField](/components/ui/checkbox-field),
-  [Radio](/components/ui/radio), [SelectField](/components/ui/select-field),
-  [TextArea](/components/ui/text-area), [TextField](/components/ui/text-field),
-  and [Toggle](/components/ui/toggle).
+  [CheckboxField](/components/checkbox-field),
+  [Radio](/components/radio), [SelectField](/components/select-field),
+  [TextArea](/components/text-area), [TextField](/components/text-field),
+  and [Toggle](/components/toggle).
 
 - Use the [FormLayoutCustomField](#custom-fields) component when you need to
   place any **custom content** inside the FormLayout. This layout helper ensures
@@ -80,7 +80,7 @@ in cases when there are longer validation messages or help texts.
 
 ## Vertical Layout
 
-Vertical FormLayout works similar to the [List](/components/layout/list) layout
+Vertical FormLayout works similar to the [List](/components/list) layout
 except that no equivalent of ListItems is needed. It stacks the form fields
 vertically while it forces the vertical layout mode on them. To use this layout,
 simply wrap your form fields with the FormLayout component:
@@ -209,7 +209,7 @@ with CSS custom properties.
 
 Please note the `auto` and `limited` label width options may not function
 correctly in combination with other auto layout mechanisms, e.g. the auto-width
-[Modal](/components/ui/modal). It's just too much of magic that doesn't quite
+[Modal](/components/modal). It's just too much of magic that doesn't quite
 work together yet 🎩.
 
 #### Inline Form Fields
@@ -226,7 +226,7 @@ is fully supported in
 ## Alignment
 
 To align whole FormLayout to center of a container, simply wrap it with the
-[Center](/components/layout/center) layout.
+[Center](/components/center) layout.
 
 <Playground>
   <Placeholder bordered height="24rem">
