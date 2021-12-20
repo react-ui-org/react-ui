@@ -1,0 +1,18 @@
+name: Broken links check
+on:
+  schedule:
+    - cron: '0 0 * * 0' # weekly
+
+jobs:
+  broken_link_check:
+    runs-on: ubuntu-latest
+    name: Check for broken links
+    steps:
+      - name: Check for broken links
+        id: link-report
+        uses: celinekurpershoek/link-checker@v1.0.1
+        with:
+          url: 'https://react-ui.io'
+
+      - name: Get the result
+        run: echo "${{steps.link-report.outputs.result}}"
