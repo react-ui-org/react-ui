@@ -40,6 +40,7 @@ export const TextField = ({
         styles.root,
         fullWidth ? styles.isRootFullWidth : '',
         hasSmallInput ? styles.hasRootSmallInput : '',
+        inputSize ? styles.hasRootCustomInputSize : '',
         context ? styles.isRootInFormLayout : '',
         resolveContextOrProp(context && context.layout, layout) === 'horizontal'
           ? styles.rootLayoutHorizontal

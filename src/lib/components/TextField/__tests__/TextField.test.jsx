@@ -61,6 +61,7 @@ describe('rendering', () => {
       },
       (rootElement) => {
         expect(within(rootElement).getByLabelText('label')).not.toHaveAttribute('size');
+        expect(rootElement).toHaveClass('hasRootCustomInputSize');
         expect(rootElement).toHaveStyle('--rui-custom-input-size: 3');
       },
     ],
