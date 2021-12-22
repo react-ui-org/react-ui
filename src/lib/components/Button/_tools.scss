@@ -15,28 +15,28 @@
 //
 // 5. Use original padding to restore square buttons back to their size.
 
-@use 'sass:list';
-@use 'sass:map';
-@use 'sass:math';
-@use '../../styles/tools/accessibility';
-@use '../../styles/tools/breakpoint';
-@use '../../styles/tools/transition';
-@use 'settings';
-@use 'theme';
+@use "sass:list";
+@use "sass:map";
+@use "sass:math";
+@use "../../styles/tools/accessibility";
+@use "../../styles/tools/breakpoint";
+@use "../../styles/tools/transition";
+@use "settings";
+@use "theme";
 
 // 1.
 @mixin _get-themeable-properties($priority, $color, $state) {
-    @if (not list.index(map.keys(settings.$themeable-priority-properties), $priority)) {
+    @if not list.index(map.keys(settings.$themeable-priority-properties), $priority) {
         @error "Invalid priority specified! #{$priority} doesn't exist. "
             + "Choose one of #{settings.$themeable-priority-properties}.";
     }
 
-    @if (not list.index(settings.$themeable-variants, $color)) {
+    @if not list.index(settings.$themeable-variants, $color) {
         @error "Invalid variant specified! #{$color} doesn't exist. "
             + "Choose one of #{settings.$themeable-variants}.";
     }
 
-    @if (not list.index(settings.$themeable-states, $state)) {
+    @if not list.index(settings.$themeable-states, $state) {
         @error "Invalid state specified! #{$state} doesn't exist. "
             + "Choose one of #{settings.$themeable-states}.";
     }
@@ -44,7 +44,7 @@
     $properties: map.get(settings.$themeable-priority-properties, $priority);
 
     // 2.
-    @if ($state == 'disabled') {
+    @if $state == "disabled" {
         @each $property in $properties {
             --rui-local-#{$property}:
                 var(
@@ -52,9 +52,7 @@
                     var(--rui-Button--#{$priority}--#{$color}--default__#{$property})
                 );
         }
-    }
-
-    @else {
+    } @else {
         @each $property in $properties {
             --rui-local-#{$property}: var(--rui-Button--#{$priority}--#{$color}--#{$state}__#{$property});
         }

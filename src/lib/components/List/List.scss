@@ -1,6 +1,6 @@
-@use '../../styles/tools/reset';
-@use '../../styles/tools/spacing';
-@use 'theme';
+@use "../../styles/tools/reset";
+@use "../../styles/tools/spacing";
+@use "theme";
 
 .root {
     @include spacing.bottom(layouts);

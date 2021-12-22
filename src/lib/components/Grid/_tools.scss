@@ -1,6 +1,6 @@
-@use 'sass:map';
-@use '../../styles/settings/breakpoints';
-@use '../../styles/tools/breakpoint';
+@use "sass:map";
+@use "../../styles/settings/breakpoints";
+@use "../../styles/tools/breakpoint";
 
 // Generate fallback cascade using `var()` function fallbacks.
 //

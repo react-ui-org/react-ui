@@ -1,8 +1,8 @@
 // Author: Hugo Giraudel
 
-@use 'sass:string';
+@use "sass:string";
 
-@function replace($string, $search, $replace: '') {
+@function replace($string, $search, $replace: "") {
     $index: string.index($string, $search);
 
     @if $index {

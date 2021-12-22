@@ -8,10 +8,10 @@
 //
 // 3. `.input:focus` is added just in case `:focus-within` doesn't work.
 
-@use 'sass:list';
-@use 'sass:map';
-@use '../../settings/form-fields' as settings;
-@use '../../theme/form-fields' as theme;
+@use "sass:list";
+@use "sass:map";
+@use "../../settings/form-fields" as settings;
+@use "../../theme/form-fields" as theme;
 
 @mixin _disabled-state() {
     opacity: theme.$disabled-opacity;
@@ -20,33 +20,33 @@
 
 // 1.
 @mixin _generate-custom-properties($type, $variant, $state) {
-    @if (not list.index(map.keys(map.get(settings.$themeable-variant-states, $type)), $variant)) {
+    @if not list.index(map.keys(map.get(settings.$themeable-variant-states, $type)), $variant) {
         @error "Invalid variant specified! #{$variant} doesn't exist. "
             + "Choose one of #{map.keys(map.get(settings.$themeable-variant-states, $type))}.";
     }
 
-    @if (not list.index(map.keys(settings.$themeable-state-properties), $state)) {
+    @if not list.index(map.keys(settings.$themeable-state-properties), $state) {
         @error "Invalid state specified! #{$state} doesn't exist. "
             + "Choose one of #{map.keys(settings.$themeable-state-properties)}.";
     }
 
     $properties: map.get(settings.$themeable-state-properties, $state);
     $infix: $type;
-    $fallback-state: 'default';
+    $fallback-state: "default";
 
-    @if ($type == 'validation') {
+    @if $type == "validation" {
         $infix: $variant;
     }
 
-    @if ($type != 'validation' and $variant != 'default') {
+    @if $type != "validation" and $variant != "default" {
         $infix: #{$type}--#{$variant};
     }
 
-    @if ($state == 'checked-disabled') {
-        $fallback-state: 'checked';
+    @if $state == "checked-disabled" {
+        $fallback-state: "checked";
     }
 
-    @if ($state == 'default') {
+    @if $state == "default" {
         @each $property in $properties {
             --rui-local-#{$property}: var(--rui-FormField--#{$infix}--#{$state}__#{$property});
         }
@@ -65,64 +65,62 @@
 }
 
 @mixin _get-theme($type, $variant) {
-    @if (not list.index(map.keys(settings.$themeable-variant-states), $type)) {
+    @if not list.index(map.keys(settings.$themeable-variant-states), $type) {
         @error "Invalid type specified! #{$type} doesn't exist. "
             + "Choose one of #{map.keys(settings.$themeable-variant-states)}.";
     }
 
     $themeable-states: map.get(map.get(settings.$themeable-variant-states, $type), $variant);
 
-    @if (list.index($themeable-states, 'hover')) {
-        @include _generate-custom-properties($type, $variant, 'default');
+    @if list.index($themeable-states, "hover") {
+        @include _generate-custom-properties($type, $variant, "default");
 
         &:hover {
-            @include _generate-custom-properties($type, $variant, 'hover');
+            @include _generate-custom-properties($type, $variant, "hover");
         }
-    }
-
-    @else {
+    } @else {
         &,
         &:hover {
-            @include _generate-custom-properties($type, $variant, 'default');
+            @include _generate-custom-properties($type, $variant, "default");
         }
     }
 
-    @if (list.index($themeable-states, 'focus')) {
+    @if list.index($themeable-states, "focus") {
         // 3.
         &:focus-within,
         &:focus-within:hover,
         .input:focus {
-            @include _generate-custom-properties($type, $variant, 'focus');
+            @include _generate-custom-properties($type, $variant, "focus");
         }
     }
 
-    @if (list.index($themeable-states, 'checked')) {
+    @if list.index($themeable-states, "checked") {
         .input:checked {
-            @include _generate-custom-properties($type, $variant, 'checked');
+            @include _generate-custom-properties($type, $variant, "checked");
         }
     }
 
-    @if (list.index($themeable-states, 'disabled')) {
+    @if list.index($themeable-states, "disabled") {
         &.isRootDisabled {
-            @include _generate-custom-properties($type, $variant, 'disabled');
+            @include _generate-custom-properties($type, $variant, "disabled");
         }
     }
 
-    @if (list.index($themeable-states, 'checked-disabled')) {
+    @if list.index($themeable-states, "checked-disabled") {
         .input:checked:disabled {
-            @include _generate-custom-properties($type, $variant, 'checked-disabled');
+            @include _generate-custom-properties($type, $variant, "checked-disabled");
         }
     }
 }
 
-@mixin visual($type, $variant: 'default', $has-caret: false) {
+@mixin visual($type, $variant: "default", $has-caret: false) {
     @include _get-theme($type, $variant);
 
     .input:disabled {
         @include _disabled-state();
     }
 
-    @if ($type == 'box' and $variant == 'filled') {
+    @if $type == "box" and $variant == "filled" {
         .input {
             border-top-color: transparent;
             border-right-color: transparent;
@@ -132,7 +130,7 @@
         }
     }
 
-    @if ($type == 'box' and $variant == 'outline' and $has-caret) {
+    @if $type == "box" and $variant == "outline" and $has-caret {
         .caret {
             border-left: theme.$box-border-width theme.$box-select-caret-border-style var(--rui-local-border-color);
             background: theme.$box-select-caret-background;

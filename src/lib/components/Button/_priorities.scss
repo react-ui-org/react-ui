@@ -1,7 +1,7 @@
-@use 'sass:map';
-@use 'settings';
-@use 'theme';
-@use 'tools';
+@use "sass:map";
+@use "settings";
+@use "theme";
+@use "tools";
 
 .rootPriorityFilled.rootColorPrimary {
     @include tools.button-color(filled, primary);
@@ -125,28 +125,28 @@
 
 .rootPriorityFilled.rootGrouped:not(:first-child)::before,
 .rootPriorityFlat.rootGrouped:not(:first-child)::before {
-    content: '';
+    content: "";
     position: absolute;
     top: calc(-1 * #{theme.$border-width});
     bottom: calc(-1 * #{theme.$border-width});
     left: calc(-1 * #{theme.$border-width});
     z-index: map.get(settings.$group-z-indexes, separator);
-    border-left: var(--local-separator-width) solid var(--local-separator-color);
-    transform: translateX(calc(-0.5 * var(--local-gap) - 50%));
+    border-left: var(--rui-local-separator-width) solid var(--rui-local-separator-color);
+    transform: translateX(calc(-0.5 * var(--rui-local-gap) - 50%));
 }
 
 .rootPriorityFilled.rootGrouped:not(:first-child) {
-    --local-gap: #{theme.$group-filled-gap};
-    --local-separator-width: #{theme.$group-filled-separator-width};
-    --local-separator-color: #{theme.$group-filled-separator-color};
+    --rui-local-gap: #{theme.$group-filled-gap};
+    --rui-local-separator-width: #{theme.$group-filled-separator-width};
+    --rui-local-separator-color: #{theme.$group-filled-separator-color};
 }
 
 .rootPriorityFlat.rootGrouped:not(:first-child) {
-    --local-gap: #{theme.$group-flat-gap};
-    --local-separator-width: #{theme.$group-flat-separator-width};
-    --local-separator-color: #{theme.$group-flat-separator-color};
+    --rui-local-gap: #{theme.$group-flat-gap};
+    --rui-local-separator-width: #{theme.$group-flat-separator-width};
+    --rui-local-separator-color: #{theme.$group-flat-separator-color};
 }
 
 .rootPriorityOutline.rootGrouped:not(:first-child) {
-    --local-gap: #{theme.$group-outline-gap};
+    --rui-local-gap: #{theme.$group-outline-gap};
 }

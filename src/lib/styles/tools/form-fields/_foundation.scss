@@ -1,7 +1,7 @@
 // 1. Don't let text alignment be affected by a parent.
 
-@use '../../settings/form-fields' as settings;
-@use '../../theme/form-fields' as theme;
+@use "../../settings/form-fields" as settings;
+@use "../../theme/form-fields" as theme;
 
 @mixin root() {
     text-align: left; // 1.

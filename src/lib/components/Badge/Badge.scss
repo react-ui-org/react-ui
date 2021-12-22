@@ -1,8 +1,8 @@
-@use 'sass:map';
-@use 'sass:math';
-@use '../../styles/theme/borders';
-@use '../../styles/theme/colors';
-@use '../../styles/theme/typography';
+@use "sass:map";
+@use "sass:math";
+@use "../../styles/theme/borders";
+@use "../../styles/theme/colors";
+@use "../../styles/theme/typography";
 
 $_badge-size: 1.25rem;
 
@@ -21,7 +21,7 @@ $_badge-size: 1.25rem;
     color: var(--rui-local-color);
     border-radius: math.div($_badge-size, 2);
     background-color: var(--rui-local-background-color);
-    box-shadow: var(--rui-local-box-shadow, #{0 0 0 2px rgba(255, 255, 255, 0.8)});
+    box-shadow: var(--rui-local-box-shadow, #{0 0 0 2px rgb(255 255 255 / 80%)});
 }
 
 .rootColorPrimary {

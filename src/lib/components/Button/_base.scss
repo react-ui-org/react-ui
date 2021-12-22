@@ -1,8 +1,8 @@
-@use 'sass:map';
-@use '../../styles/tools/breakpoint';
-@use 'settings';
-@use 'theme';
-@use 'tools';
+@use "sass:map";
+@use "../../styles/tools/breakpoint";
+@use "settings";
+@use "theme";
+@use "tools";
 
 .root {
     @include tools.button();
@@ -80,7 +80,7 @@
     z-index: map.get(settings.$group-z-indexes, button);
 
     &:not(:first-child) {
-        margin-left: var(--local-gap);
+        margin-left: var(--rui-local-gap);
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
     }

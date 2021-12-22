@@ -1,5 +1,5 @@
-@use 'sass:map';
-@use '../../theme/form-fields' as theme;
+@use "sass:map";
+@use "../../theme/form-fields" as theme;
 
 @mixin size($size, $is-multiline: false) {
     $size-properties: map.get(theme.$box-sizes, $size);
@@ -12,9 +12,7 @@
         @if $is-multiline {
             height: auto;
             min-height: map.get($size-properties, height);
-        }
-
-        @else {
+        } @else {
             --rui-local-height: #{map.get($size-properties, height)};
         }
     }

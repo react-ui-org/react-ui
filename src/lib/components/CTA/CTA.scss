@@ -1,5 +1,5 @@
-@use '../../styles/tools/breakpoint';
-@use '../../styles/tools/spacing';
+@use "../../styles/tools/breakpoint";
+@use "../../styles/tools/spacing";
 
 $_breakpoint: lg;
 $_spacing: spacing.of(1);
@@ -15,7 +15,7 @@ $_column-gap: spacing.of(3);
 
     @include breakpoint.up($_breakpoint) {
         display: grid;
-        grid-template: 'start center end' auto #{'/'} 1fr auto 1fr;
+        grid-template: "start center end" auto / 1fr auto 1fr;
         grid-column-gap: $_column-gap;
         margin: 0;
     }

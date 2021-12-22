@@ -3,7 +3,7 @@
 //
 // 2. Make tap target big enough to improve accessibility on touch screens.
 
-@use '../theme/accessibility' as theme;
+@use "../theme/accessibility" as theme;
 
 // 1.
 @mixin hide-text() {
@@ -31,12 +31,12 @@
     position: relative;
 
     &::before {
-        content: '';
+        content: "";
         position: absolute;
         width: $size;
         height: $size;
 
-        @if ($center) {
+        @if $center {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);

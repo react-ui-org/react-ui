@@ -13,10 +13,10 @@
 //    (a global default which can be customised per use).
 //    https://github.com/react-ui-org/react-ui/issues/232
 
-@use '../../styles/settings/forms';
-@use '../../styles/tools/breakpoint';
-@use '../../styles/tools/spacing';
-@use 'theme';
+@use "../../styles/settings/forms";
+@use "../../styles/tools/breakpoint";
+@use "../../styles/tools/spacing";
+@use "theme";
 
 .root {
     --rui-local-field-width: 1fr;

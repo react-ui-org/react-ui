@@ -8,10 +8,10 @@
 // 3. Make fields just as wide as necessary. Fields should be interactive only where their visible
 //    content is.
 
-@use '../../settings/forms';
-@use '../../settings/form-fields' as settings;
-@use '../../theme/typography';
-@use '../breakpoint';
+@use "../../settings/forms";
+@use "../../settings/form-fields" as settings;
+@use "../../theme/typography";
+@use "../breakpoint";
 
 @mixin root() {
     display: inline-flex; // 1.

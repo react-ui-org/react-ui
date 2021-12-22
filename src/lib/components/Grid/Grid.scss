@@ -6,7 +6,7 @@
 //
 //    Fallback for `xs` breakpoint: `<INITIAL FALLBACK>`
 //    Fallback for `sm` breakpoint: `var(--rui-local-<PROPERTY>-xs, <INITIAL FALLBACK>)`
-//    Fallback for `md` breakpoint: `var(--rui-local-<PROPERTY>-sm, var(--rui-local-<PROPERTY>-xs, <INITIAL FALLBACK>))`
+//    Fallback for `md` breakpoint: `var(--rui-local-<PROPERTY>-sm, var(--rui-local-<PROPERTY>-xs, <INIT. FALLBACK>))`
 //
 //    … etc, up to the largest breakpoint.
 //
@@ -20,10 +20,10 @@
 //
 // 2. Apply custom property value that is defined within current breakpoint, see 1.
 
-@use 'sass:map';
-@use '../../styles/tools/spacing';
-@use 'theme';
-@use 'tools';
+@use "sass:map";
+@use "../../styles/tools/spacing";
+@use "theme";
+@use "tools";
 
 .root {
     @include tools.assign-responsive-custom-properties(theme.$responsive-properties); // 1.
@@ -52,13 +52,11 @@
     grid-row: span var(--rui-local-row-span, 1); // 2.
 }
 
-/* stylelint-disable selector-no-qualifying-type */
-
+// stylelint-disable selector-no-qualifying-type
 dl.root,
 ol.root,
 ul.root {
     padding-left: 0;
     margin-left: 0;
 }
-
-/* stylelint-enable selector-no-qualifying-type */
+// stylelint-enable selector-no-qualifying-type
