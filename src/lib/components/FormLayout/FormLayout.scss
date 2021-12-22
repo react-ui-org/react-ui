@@ -19,40 +19,40 @@
 @use 'theme';
 
 .root {
-  --rui-local-field-width: 1fr;
+    --rui-local-field-width: 1fr;
 
-  @include spacing.bottom(layouts);
+    @include spacing.bottom(layouts);
 }
 
 .rootFieldLayoutVertical,
 .rootFieldLayoutHorizontal {
-  display: grid;
-  grid-template-columns: var(--rui-local-field-width);
-  grid-row-gap: theme.$row-gap;
+    display: grid;
+    grid-template-columns: var(--rui-local-field-width);
+    grid-row-gap: theme.$row-gap;
 }
 
 .rootFieldLayoutHorizontal {
-  @include breakpoint.up(forms.$horizontal-breakpoint) {
-    grid-template-columns: var(--rui-local-label-width) var(--rui-local-field-width); // 1.
-  }
+    @include breakpoint.up(forms.$horizontal-breakpoint) {
+        grid-template-columns: var(--rui-local-label-width) var(--rui-local-field-width); // 1.
+    }
 }
 
 .hasRootLabelWidthDefault {
-  --rui-local-label-width: #{theme.$horizontal-label-width}; // 1., 2.
+    --rui-local-label-width: #{theme.$horizontal-label-width}; // 1., 2.
 }
 
 .hasRootLabelWidthAuto {
-  --rui-local-label-width: #{theme.$horizontal-label-width-auto}; // 4.
+    --rui-local-label-width: #{theme.$horizontal-label-width-auto}; // 4.
 }
 
 .hasRootLabelWidthLimited {
-  --rui-local-label-width: #{theme.$horizontal-label-width-limited}; // 4.
+    --rui-local-label-width: #{theme.$horizontal-label-width-limited}; // 4.
 }
 
 .hasRootLabelWidthCustom {
-  --rui-local-label-width: var(--rui-custom-label-width); // 3.
+    --rui-local-label-width: var(--rui-custom-label-width); // 3.
 }
 
 .isRootAutoWidth {
-  --rui-local-field-width: min-content;
+    --rui-local-field-width: min-content;
 }

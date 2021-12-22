@@ -7,45 +7,45 @@
 
 // 1.
 @mixin hide-text() {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 @mixin unhide-text() {
-  position: unset;
-  width: unset;
-  height: unset;
-  overflow: unset;
-  clip: unset;
-  white-space: unset;
+    position: unset;
+    width: unset;
+    height: unset;
+    overflow: unset;
+    clip: unset;
+    white-space: unset;
 }
 
 // 2.
 @mixin min-tap-target($size: theme.$tap-target-size, $center: true) {
-  position: relative;
+    position: relative;
 
-  &::before {
-    content: '';
-    position: absolute;
-    width: $size;
-    height: $size;
+    &::before {
+        content: '';
+        position: absolute;
+        width: $size;
+        height: $size;
 
-    @if ($center) {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+        @if ($center) {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     }
-  }
 }
 
 @mixin focus-ring() {
-  &:focus-visible {
-    box-shadow: theme.$focus-box-shadow;
-  }
+    &:focus-visible {
+        box-shadow: theme.$focus-box-shadow;
+    }
 }

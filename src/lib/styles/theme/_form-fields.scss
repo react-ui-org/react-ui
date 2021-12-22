@@ -21,10 +21,10 @@ $horizontal-label-text-align: var(--rui-FormField--horizontal__label__text-align
 $horizontal-label-min-width: var(--rui-FormField--horizontal__label__min-width);
 $horizontal-label-width: var(--rui-FormField--horizontal__label__width);
 $horizontal-label-padding-y:
-  var(
-    --rui-FormField--horizontal__label__padding-y,
-    calc(var(--rui-FormField--box__border-width) + var(--rui-local-padding-y))
-  ); // 1.
+    var(
+        --rui-FormField--horizontal__label__padding-y,
+        calc(var(--rui-FormField--box__border-width) + var(--rui-local-padding-y))
+    ); // 1.
 $horizontal-label-vertical-alignment: var(--rui-FormField--horizontal__label__vertical-alignment);
 $horizontal-field-vertical-alignment: var(--rui-FormField--horizontal__field__vertical-alignment);
 $horizontal-full-width-label-width: var(--rui-FormField--horizontal--full-width__label__width);
@@ -47,24 +47,24 @@ $box-select-option-disabled-color: var(--rui-FormField--box--select__option--dis
 
 // Form fields: box field sizes
 $box-sizes: (
-  small: (
-    height: var(--rui-FormField--box--small__height),
-    padding-y: var(--rui-FormField--box--small__padding-y),
-    padding-x: var(--rui-FormField--box--small__padding-x),
-    font-size: var(--rui-FormField--box--small__font-size),
-  ),
-  medium: (
-    height: var(--rui-FormField--box--medium__height),
-    padding-y: var(--rui-FormField--box--medium__padding-y),
-    padding-x: var(--rui-FormField--box--medium__padding-x),
-    font-size: var(--rui-FormField--box--medium__font-size),
-  ),
-  large: (
-    height: var(--rui-FormField--box--large__height),
-    padding-y: var(--rui-FormField--box--large__padding-y),
-    padding-x: var(--rui-FormField--box--large__padding-x),
-    font-size: var(--rui-FormField--box--large__font-size),
-  ),
+    small: (
+        height: var(--rui-FormField--box--small__height),
+        padding-y: var(--rui-FormField--box--small__padding-y),
+        padding-x: var(--rui-FormField--box--small__padding-x),
+        font-size: var(--rui-FormField--box--small__font-size),
+    ),
+    medium: (
+        height: var(--rui-FormField--box--medium__height),
+        padding-y: var(--rui-FormField--box--medium__padding-y),
+        padding-x: var(--rui-FormField--box--medium__padding-x),
+        font-size: var(--rui-FormField--box--medium__font-size),
+    ),
+    large: (
+        height: var(--rui-FormField--box--large__height),
+        padding-y: var(--rui-FormField--box--large__padding-y),
+        padding-x: var(--rui-FormField--box--large__padding-x),
+        font-size: var(--rui-FormField--box--large__font-size),
+    ),
 );
 
 // Form fields: check fields

@@ -1,16 +1,16 @@
 @use '../../styles/tools/spacing';
 
 .media {
-  @include spacing.bottom(layouts);
+    @include spacing.bottom(layouts);
 
-  display: flex;
-  align-items: flex-start;
+    display: flex;
+    align-items: flex-start;
 }
 
 .object {
-  margin-right: spacing.of(3);
+    margin-right: spacing.of(3);
 }
 
 .body {
-  flex: 1;
+    flex: 1;
 }

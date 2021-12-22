@@ -2,30 +2,30 @@
 @use '../theme/spacing';
 
 @function of($value) {
-  @if ($value % 1 != 0) {
-    @error 'Only whole numbers can be used for spacing, #{$value} given.';
-  }
-
-  @else {
-    @if (map.has-key(spacing.$values, $value)) {
-      @return map.get(spacing.$values, $value);
-    }
-  }
-}
-
-@mixin bottom($category: default, $compensation: null) {
-  @if (not map.has-key(spacing.$bottom, $category)) {
-    @error "Invalid spacing category specified! #{$category} doesn't exist. "
-      + "Choose one of #{map.keys(spacing.$bottom)}.";
-  }
-
-  &:not(:last-child) {
-    @if ($compensation != null) {
-      margin-bottom: calc(#{map.get(spacing.$bottom, $category)} - #{$compensation});
+    @if ($value % 1 != 0) {
+        @error 'Only whole numbers can be used for spacing, #{$value} given.';
     }
 
     @else {
-      margin-bottom: map.get(spacing.$bottom, $category);
+        @if (map.has-key(spacing.$values, $value)) {
+            @return map.get(spacing.$values, $value);
+        }
     }
-  }
+}
+
+@mixin bottom($category: default, $compensation: null) {
+    @if (not map.has-key(spacing.$bottom, $category)) {
+        @error "Invalid spacing category specified! #{$category} doesn't exist. "
+            + "Choose one of #{map.keys(spacing.$bottom)}.";
+    }
+
+    &:not(:last-child) {
+        @if ($compensation != null) {
+            margin-bottom: calc(#{map.get(spacing.$bottom, $category)} - #{$compensation});
+        }
+
+        @else {
+            margin-bottom: map.get(spacing.$bottom, $category);
+        }
+    }
 }

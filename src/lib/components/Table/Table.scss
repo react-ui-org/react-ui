@@ -5,55 +5,55 @@
 // stylelint-disable value-keyword-case
 
 .table {
-  width: 100%;
-  border-collapse: collapse;
+    width: 100%;
+    border-collapse: collapse;
 }
 
 .tableRow {
-  @include transition.add((background-color));
+    @include transition.add((background-color));
 
-  background-color: settings.$background-color;
+    background-color: settings.$background-color;
 
-  &:hover {
-    background-color: settings.$hover-background-color;
-  }
+    &:hover {
+        background-color: settings.$hover-background-color;
+    }
 }
 
 .tableHeadRow {
-  composes: tableRow;
-  background-color: settings.$head-background-color;
-
-  &:hover {
+    composes: tableRow;
     background-color: settings.$head-background-color;
-  }
+
+    &:hover {
+        background-color: settings.$head-background-color;
+    }
 }
 
 .tableCell {
-  padding: settings.$cell-padding-y settings.$cell-padding-x;
-  text-align: left;
-  border-bottom: settings.$border-width solid settings.$border-color;
+    padding: settings.$cell-padding-y settings.$cell-padding-x;
+    text-align: left;
+    border-bottom: settings.$border-width solid settings.$border-color;
 }
 
 .tableHeadCell {
-  composes: tableCell;
-  font-weight: settings.$head-font-weight;
-  border-bottom-width: 2px;
+    composes: tableCell;
+    font-weight: settings.$head-font-weight;
+    border-bottom-width: 2px;
 }
 
 .isTableCellSortingActive,
 .isTableHeadCellSortingActive {
-  background-color: settings.$sorted-background-color;
+    background-color: settings.$sorted-background-color;
 }
 
 .isTableCellSortingActive {
-  composes: tableCell;
+    composes: tableCell;
 }
 
 .isTableHeadCellSortingActive {
-  composes: tableHeadCell;
+    composes: tableHeadCell;
 }
 
 .sortButton {
-  display: inline-block;
-  margin-right: settings.$cell-padding-x;
+    display: inline-block;
+    margin-right: settings.$cell-padding-x;
 }

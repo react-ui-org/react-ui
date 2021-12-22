@@ -1,16 +1,16 @@
 $values: (
-  0: var(--rui-spacing-0),
-  1: var(--rui-spacing-1),
-  2: var(--rui-spacing-2),
-  3: var(--rui-spacing-3),
-  4: var(--rui-spacing-4),
-  5: var(--rui-spacing-5),
-  6: var(--rui-spacing-6),
-  7: var(--rui-spacing-7),
+    0: var(--rui-spacing-0),
+    1: var(--rui-spacing-1),
+    2: var(--rui-spacing-2),
+    3: var(--rui-spacing-3),
+    4: var(--rui-spacing-4),
+    5: var(--rui-spacing-5),
+    6: var(--rui-spacing-6),
+    7: var(--rui-spacing-7),
 );
 
 $bottom: (
-  default: var(--rui-spacing-bottom-default),
-  headings: var(--rui-spacing-bottom-headings),
-  layouts: var(--rui-spacing-bottom-layouts),
+    default: var(--rui-spacing-bottom-default),
+    headings: var(--rui-spacing-bottom-headings),
+    layouts: var(--rui-spacing-bottom-layouts),
 );

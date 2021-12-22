@@ -4,149 +4,149 @@
 @use 'tools';
 
 .rootPriorityFilled.rootColorPrimary {
-  @include tools.button-color(filled, primary);
+    @include tools.button-color(filled, primary);
 }
 
 .rootPriorityFilled.rootColorSecondary {
-  @include tools.button-color(filled, secondary);
+    @include tools.button-color(filled, secondary);
 }
 
 .rootPriorityFilled.rootColorSuccess {
-  @include tools.button-color(filled, success);
+    @include tools.button-color(filled, success);
 }
 
 .rootPriorityFilled.rootColorWarning {
-  @include tools.button-color(filled, warning);
+    @include tools.button-color(filled, warning);
 }
 
 .rootPriorityFilled.rootColorDanger {
-  @include tools.button-color(filled, danger);
+    @include tools.button-color(filled, danger);
 }
 
 .rootPriorityFilled.rootColorHelp {
-  @include tools.button-color(filled, help);
+    @include tools.button-color(filled, help);
 }
 
 .rootPriorityFilled.rootColorInfo {
-  @include tools.button-color(filled, info);
+    @include tools.button-color(filled, info);
 }
 
 .rootPriorityFilled.rootColorNote {
-  @include tools.button-color(filled, note);
+    @include tools.button-color(filled, note);
 }
 
 .rootPriorityFilled.rootColorLight {
-  @include tools.button-color(filled, light);
+    @include tools.button-color(filled, light);
 }
 
 .rootPriorityFilled.rootColorDark {
-  @include tools.button-color(filled, dark);
+    @include tools.button-color(filled, dark);
 }
 
 .rootPriorityOutline.rootColorPrimary {
-  @include tools.button-color(outline, primary);
+    @include tools.button-color(outline, primary);
 }
 
 .rootPriorityOutline.rootColorSecondary {
-  @include tools.button-color(outline, secondary);
+    @include tools.button-color(outline, secondary);
 }
 
 .rootPriorityOutline.rootColorSuccess {
-  @include tools.button-color(outline, success);
+    @include tools.button-color(outline, success);
 }
 
 .rootPriorityOutline.rootColorWarning {
-  @include tools.button-color(outline, warning);
+    @include tools.button-color(outline, warning);
 }
 
 .rootPriorityOutline.rootColorDanger {
-  @include tools.button-color(outline, danger);
+    @include tools.button-color(outline, danger);
 }
 
 .rootPriorityOutline.rootColorHelp {
-  @include tools.button-color(outline, help);
+    @include tools.button-color(outline, help);
 }
 
 .rootPriorityOutline.rootColorInfo {
-  @include tools.button-color(outline, info);
+    @include tools.button-color(outline, info);
 }
 
 .rootPriorityOutline.rootColorNote {
-  @include tools.button-color(outline, note);
+    @include tools.button-color(outline, note);
 }
 
 .rootPriorityOutline.rootColorLight {
-  @include tools.button-color(outline, light);
+    @include tools.button-color(outline, light);
 }
 
 .rootPriorityOutline.rootColorDark {
-  @include tools.button-color(outline, dark);
+    @include tools.button-color(outline, dark);
 }
 
 .rootPriorityFlat.rootColorPrimary {
-  @include tools.button-color(flat, primary);
+    @include tools.button-color(flat, primary);
 }
 
 .rootPriorityFlat.rootColorSecondary {
-  @include tools.button-color(flat, secondary);
+    @include tools.button-color(flat, secondary);
 }
 
 .rootPriorityFlat.rootColorSuccess {
-  @include tools.button-color(flat, success);
+    @include tools.button-color(flat, success);
 }
 
 .rootPriorityFlat.rootColorWarning {
-  @include tools.button-color(flat, warning);
+    @include tools.button-color(flat, warning);
 }
 
 .rootPriorityFlat.rootColorDanger {
-  @include tools.button-color(flat, danger);
+    @include tools.button-color(flat, danger);
 }
 
 .rootPriorityFlat.rootColorHelp {
-  @include tools.button-color(flat, help);
+    @include tools.button-color(flat, help);
 }
 
 .rootPriorityFlat.rootColorInfo {
-  @include tools.button-color(flat, info);
+    @include tools.button-color(flat, info);
 }
 
 .rootPriorityFlat.rootColorNote {
-  @include tools.button-color(flat, note);
+    @include tools.button-color(flat, note);
 }
 
 .rootPriorityFlat.rootColorLight {
-  @include tools.button-color(flat, light);
+    @include tools.button-color(flat, light);
 }
 
 .rootPriorityFlat.rootColorDark {
-  @include tools.button-color(flat, dark);
+    @include tools.button-color(flat, dark);
 }
 
 .rootPriorityFilled.rootGrouped:not(:first-child)::before,
 .rootPriorityFlat.rootGrouped:not(:first-child)::before {
-  content: '';
-  position: absolute;
-  top: calc(-1 * #{theme.$border-width});
-  bottom: calc(-1 * #{theme.$border-width});
-  left: calc(-1 * #{theme.$border-width});
-  z-index: map.get(settings.$group-z-indexes, separator);
-  border-left: var(--local-separator-width) solid var(--local-separator-color);
-  transform: translateX(calc(-0.5 * var(--local-gap) - 50%));
+    content: '';
+    position: absolute;
+    top: calc(-1 * #{theme.$border-width});
+    bottom: calc(-1 * #{theme.$border-width});
+    left: calc(-1 * #{theme.$border-width});
+    z-index: map.get(settings.$group-z-indexes, separator);
+    border-left: var(--local-separator-width) solid var(--local-separator-color);
+    transform: translateX(calc(-0.5 * var(--local-gap) - 50%));
 }
 
 .rootPriorityFilled.rootGrouped:not(:first-child) {
-  --local-gap: #{theme.$group-filled-gap};
-  --local-separator-width: #{theme.$group-filled-separator-width};
-  --local-separator-color: #{theme.$group-filled-separator-color};
+    --local-gap: #{theme.$group-filled-gap};
+    --local-separator-width: #{theme.$group-filled-separator-width};
+    --local-separator-color: #{theme.$group-filled-separator-color};
 }
 
 .rootPriorityFlat.rootGrouped:not(:first-child) {
-  --local-gap: #{theme.$group-flat-gap};
-  --local-separator-width: #{theme.$group-flat-separator-width};
-  --local-separator-color: #{theme.$group-flat-separator-color};
+    --local-gap: #{theme.$group-flat-gap};
+    --local-separator-width: #{theme.$group-flat-separator-width};
+    --local-separator-color: #{theme.$group-flat-separator-color};
 }
 
 .rootPriorityOutline.rootGrouped:not(:first-child) {
-  --local-gap: #{theme.$group-outline-gap};
+    --local-gap: #{theme.$group-outline-gap};
 }

@@ -6,16 +6,16 @@ $line-height: typography.$line-height-small;
 $icon-spacing: spacing.of(2);
 
 $group-z-indexes: (
-  button: auto,
-  button-hover: 1,
-  separator: 2,
-  button-overflowing-elements: 3,
+    button: auto,
+    button-hover: 1,
+    separator: 2,
+    button-overflowing-elements: 3,
 );
 
 $themeable-variants: (primary, secondary, success, warning, danger, help, info, note, light, dark);
 $themeable-states: (default, hover, active, disabled);
 $themeable-priority-properties: (
-  filled: (color, border-color, background, box-shadow),
-  outline: (color, border-color, background),
-  flat: (color, background),
+    filled: (color, border-color, background, box-shadow),
+    outline: (color, border-color, background),
+    flat: (color, background),
 );

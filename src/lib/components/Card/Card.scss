@@ -5,75 +5,75 @@
 @use 'tools';
 
 .root {
-  --rui-local-padding: #{theme.$padding};
+    --rui-local-padding: #{theme.$padding};
 
-  display: flex;
-  flex-direction: column;
-  min-width: 0; // 1.
-  color: var(--rui-local-color);
-  border: theme.$border-width solid var(--rui-local-border-color);
-  border-radius: theme.$border-radius;
-  background-color: var(--rui-local-background-color);
+    display: flex;
+    flex-direction: column;
+    min-width: 0; // 1.
+    color: var(--rui-local-color);
+    border: theme.$border-width solid var(--rui-local-border-color);
+    border-radius: theme.$border-radius;
+    background-color: var(--rui-local-background-color);
 }
 
 .body {
-  flex: 1 0 auto;
-  padding: var(--rui-local-padding);
+    flex: 1 0 auto;
+    padding: var(--rui-local-padding);
 }
 
 .footer {
-  padding: var(--rui-local-padding);
+    padding: var(--rui-local-padding);
 }
 
 .rootDense {
-  --rui-local-padding: #{theme.$dense-padding};
+    --rui-local-padding: #{theme.$dense-padding};
 }
 
 .rootRaised {
-  box-shadow: theme.$raised-box-shadow;
+    box-shadow: theme.$raised-box-shadow;
 }
 
 .rootColorPrimary {
-  @include tools.color(primary);
+    @include tools.color(primary);
 }
 
 .rootColorSecondary {
-  @include tools.color(secondary);
+    @include tools.color(secondary);
 }
 
 .rootColorSuccess {
-  @include tools.color(success);
+    @include tools.color(success);
 }
 
 .rootColorWarning {
-  @include tools.color(warning);
+    @include tools.color(warning);
 }
 
 .rootColorDanger {
-  @include tools.color(danger);
+    @include tools.color(danger);
 }
 
 .rootColorHelp {
-  @include tools.color(help);
+    @include tools.color(help);
 }
 
 .rootColorInfo {
-  @include tools.color(info);
+    @include tools.color(info);
 }
 
 .rootColorNote {
-  @include tools.color(note);
+    @include tools.color(note);
 }
 
 .rootColorLight {
-  @include tools.color(light);
+    @include tools.color(light);
 }
 
 .rootColorDark {
-  @include tools.color(dark);
+    @include tools.color(dark);
 }
 
 .isDisabled {
-  background-color: theme.$disabled-background-color;
-  opacity: theme.$disabled-opacity;
+    background-color: theme.$disabled-background-color;
+    opacity: theme.$disabled-opacity;
 }

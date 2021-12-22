@@ -3,21 +3,21 @@
 @use '../../../lib/styles/tools/spacing';
 
 .root {
-  width: var(--rui-local-width, auto);
-  height: var(--rui-local-height, auto);
-  padding: spacing.of(3);
-  background-color: colors.$white;
+    width: var(--rui-local-width, auto);
+    height: var(--rui-local-height, auto);
+    padding: spacing.of(3);
+    background-color: colors.$white;
 }
 
 .rootBordered {
-  border: 2px dashed map.get(colors.$grays, gray-200);
+    border: 2px dashed map.get(colors.$grays, gray-200);
 }
 
 .rootDark {
-  background-color: var(--rui-color-dark);
+    background-color: var(--rui-color-dark);
 }
 
 .rootInline {
-  display: inline-flex;
-  vertical-align: middle;
+    display: inline-flex;
+    vertical-align: middle;
 }

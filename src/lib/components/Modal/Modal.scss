@@ -8,119 +8,119 @@
 @use 'theme';
 
 .root {
-  --local-outer-spacing: #{theme.$outer-spacing-xs};
+    --local-outer-spacing: #{theme.$outer-spacing-xs};
 
-  position: fixed;
-  left: 50%;
-  z-index: settings.$z-index;
-  display: flex;
-  flex-direction: column;
-  max-width: calc(100% - (2 * var(--local-outer-spacing)));
-  max-height: calc(100% - (2 * var(--local-outer-spacing)));
-  overflow-y: auto;
-  border-radius: settings.$border-radius;
-  background: theme.$background;
-  box-shadow: theme.$box-shadow;
-  transform: translateX(-50%);
+    position: fixed;
+    left: 50%;
+    z-index: settings.$z-index;
+    display: flex;
+    flex-direction: column;
+    max-width: calc(100% - (2 * var(--local-outer-spacing)));
+    max-height: calc(100% - (2 * var(--local-outer-spacing)));
+    overflow-y: auto;
+    border-radius: settings.$border-radius;
+    background: theme.$background;
+    box-shadow: theme.$box-shadow;
+    transform: translateX(-50%);
 
-  @include breakpoint.up(sm) {
-    --local-outer-spacing: #{theme.$outer-spacing-sm};
-  }
+    @include breakpoint.up(sm) {
+        --local-outer-spacing: #{theme.$outer-spacing-sm};
+    }
 }
 
 .head {
-  display: flex;
-  flex: none;
-  align-items: baseline;
-  justify-content: space-between;
-  padding: settings.$padding-y spacing.of(4) settings.$padding-y settings.$padding-x;
+    display: flex;
+    flex: none;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: settings.$padding-y spacing.of(4) settings.$padding-y settings.$padding-x;
 }
 
 .headTitle {
-  font-size: settings.$head-title-font-size;
+    font-size: settings.$head-title-font-size;
 
-  &:not(:last-child) {
-    margin-bottom: 0;
-  }
+    &:not(:last-child) {
+        margin-bottom: 0;
+    }
 }
 
 .close {
-  @include reset.button();
-  @include accessibility.min-tap-target();
+    @include reset.button();
+    @include accessibility.min-tap-target();
 
-  font-size: map.get(typography.$size-values, 3);
-  line-height: 1;
-  color: inherit;
+    font-size: map.get(typography.$size-values, 3);
+    line-height: 1;
+    color: inherit;
 }
 
 .body {
-  flex: 1 1 auto;
+    flex: 1 1 auto;
 }
 
 .isBodyScrollable {
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
 }
 
 .content {
-  padding: settings.$padding-y settings.$padding-x settings.$content-padding-bottom;
+    padding: settings.$padding-y settings.$padding-x settings.$content-padding-bottom;
 }
 
 .footer {
-  display: flex;
-  flex: none;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  padding: settings.$padding-y settings.$padding-x;
-  border-bottom-right-radius: settings.$border-radius;
-  border-bottom-left-radius: settings.$border-radius;
-  background: theme.$footer-background;
+    display: flex;
+    flex: none;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: settings.$padding-y settings.$padding-x;
+    border-bottom-right-radius: settings.$border-radius;
+    border-bottom-left-radius: settings.$border-radius;
+    background: theme.$footer-background;
 }
 
 .backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: settings.$backdrop-z-index;
-  width: 100vw;
-  height: 100vh;
-  background: theme.$backdrop-background;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: settings.$backdrop-z-index;
+    width: 100vw;
+    height: 100vh;
+    background: theme.$backdrop-background;
 }
 
 .isRootSizeSmall {
-  width: map.get(theme.$sizes, small, width);
+    width: map.get(theme.$sizes, small, width);
 }
 
 .isRootSizeMedium {
-  width: map.get(theme.$sizes, medium, width);
+    width: map.get(theme.$sizes, medium, width);
 }
 
 .isRootSizeLarge {
-  width: map.get(theme.$sizes, large, width);
+    width: map.get(theme.$sizes, large, width);
 }
 
 .isRootSizeFullscreen {
-  width: map.get(theme.$sizes, fullscreen, width);
-  height: map.get(theme.$sizes, fullscreen, height);
+    width: map.get(theme.$sizes, fullscreen, width);
+    height: map.get(theme.$sizes, fullscreen, height);
 }
 
 .isRootSizeFullscreen .content {
-  height: 100%;
+    height: 100%;
 }
 
 .isRootSizeAuto {
-  width: auto;
-  min-width: map.get(theme.$sizes, auto, min-width);
-  max-width: map.get(theme.$sizes, auto, max-width);
+    width: auto;
+    min-width: map.get(theme.$sizes, auto, min-width);
+    max-width: map.get(theme.$sizes, auto, max-width);
 }
 
 .isRootPositionCenter {
-  top: 50%;
-  transform: translate(-50%, -50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .isRootPositionTop {
-  top: var(--local-outer-spacing);
+    top: var(--local-outer-spacing);
 }

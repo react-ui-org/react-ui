@@ -13,88 +13,88 @@
 @use '../transition';
 
 @mixin check-input($type) {
-  @include transition.add((background-color, background-position, box-shadow));
+    @include transition.add((background-color, background-position, box-shadow));
 
-  appearance: none;
-  width: theme.$check-input-size;
-  height: theme.$check-input-size;
-  margin-top: calc((1rem * #{typography.$line-height-base} - #{theme.$check-input-size}) / 2);
-  border: theme.$check-input-border-width solid var(--rui-local-border-color);
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-color: var(--rui-local-check-background-color);
-  color-adjust: exact; // 1.
+    appearance: none;
+    width: theme.$check-input-size;
+    height: theme.$check-input-size;
+    margin-top: calc((1rem * #{typography.$line-height-base} - #{theme.$check-input-size}) / 2);
+    border: theme.$check-input-border-width solid var(--rui-local-border-color);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: var(--rui-local-check-background-color);
+    color-adjust: exact; // 1.
 
-  &:focus,
-  &:checked:focus {
-    box-shadow: theme.$check-input-focus-box-shadow;
-  }
-
-  @if ($type == 'checkbox') {
-    border-radius: theme.$check-input-checkbox-border-radius;
-
-    &:checked {
-      background-image: theme.$check-input-checkbox-checked-background-image;
+    &:focus,
+    &:checked:focus {
+        box-shadow: theme.$check-input-focus-box-shadow;
     }
-  }
 
-  @if ($type == 'radio') {
-    border-radius: theme.$check-input-radio-border-radius;
+    @if ($type == 'checkbox') {
+        border-radius: theme.$check-input-checkbox-border-radius;
 
-    &:checked {
-      background-image: theme.$check-input-radio-checked-background-image;
+        &:checked {
+            background-image: theme.$check-input-checkbox-checked-background-image;
+        }
     }
-  }
 
-  @if ($type == 'toggle') {
-    width: theme.$check-input-toggle-width;
-    border-radius: theme.$check-input-toggle-border-radius;
-    background-image: theme.$check-input-toggle-default-background-image;
-    background-position: theme.$check-input-toggle-default-background-position;
-    background-size: theme.$check-input-toggle-background-size;
+    @if ($type == 'radio') {
+        border-radius: theme.$check-input-radio-border-radius;
 
-    &:checked {
-      background-image: theme.$check-input-toggle-checked-background-image;
-      background-position: theme.$check-input-toggle-checked-background-position;
+        &:checked {
+            background-image: theme.$check-input-radio-checked-background-image;
+        }
     }
-  }
+
+    @if ($type == 'toggle') {
+        width: theme.$check-input-toggle-width;
+        border-radius: theme.$check-input-toggle-border-radius;
+        background-image: theme.$check-input-toggle-default-background-image;
+        background-position: theme.$check-input-toggle-default-background-position;
+        background-size: theme.$check-input-toggle-background-size;
+
+        &:checked {
+            background-image: theme.$check-input-toggle-checked-background-image;
+            background-position: theme.$check-input-toggle-checked-background-position;
+        }
+    }
 }
 
 // 2.
 @mixin min-tap-target($type) {
-  $input-width: theme.$check-input-size;
+    $input-width: theme.$check-input-size;
 
-  @if ($type == 'toggle') {
-    $input-width: theme.$check-input-toggle-width;
-  }
-
-  $tap-target-offset: calc((#{$input-width} - #{theme.$check-tap-target-size}) / 2);
-
-  @include accessibility.min-tap-target($size: theme.$check-tap-target-size, $center: false);
-
-  min-height: theme.$check-tap-target-size;
-  padding-top: calc((#{theme.$check-tap-target-size} - 1rem * #{typography.$line-height-base}) / 2);
-
-  &::before {
-    top: 0;
-    left: $tap-target-offset;
-  }
-
-  @if ($type == 'checkbox' or $type == 'toggle') {
-    &.hasRootLabelBefore::before {
-      right: $tap-target-offset;
-      left: auto;
+    @if ($type == 'toggle') {
+        $input-width: theme.$check-input-toggle-width;
     }
 
-    // 3.
-    &.isRootInFormLayout {
-      min-height: 0;
-      padding-top: 0;
+    $tap-target-offset: calc((#{$input-width} - #{theme.$check-tap-target-size}) / 2);
 
-      &::before {
-        top: calc((#{typography.$line-height-base} - 1rem * #{theme.$check-tap-target-size}) / 2);
-      }
+    @include accessibility.min-tap-target($size: theme.$check-tap-target-size, $center: false);
+
+    min-height: theme.$check-tap-target-size;
+    padding-top: calc((#{theme.$check-tap-target-size} - 1rem * #{typography.$line-height-base}) / 2);
+
+    &::before {
+        top: 0;
+        left: $tap-target-offset;
     }
-  }
+
+    @if ($type == 'checkbox' or $type == 'toggle') {
+        &.hasRootLabelBefore::before {
+            right: $tap-target-offset;
+            left: auto;
+        }
+
+        // 3.
+        &.isRootInFormLayout {
+            min-height: 0;
+            padding-top: 0;
+
+            &::before {
+                top: calc((#{typography.$line-height-base} - 1rem * #{theme.$check-tap-target-size}) / 2);
+            }
+        }
+    }
 }
