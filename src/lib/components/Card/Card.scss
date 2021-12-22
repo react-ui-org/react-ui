@@ -1,8 +1,8 @@
 // 1. Retain equal card widths in flex and grid layouts independently on their content.
 
-@use '../../styles/theme/colors';
-@use 'theme';
-@use 'tools';
+@use "../../styles/theme/colors";
+@use "theme";
+@use "tools";
 
 .root {
     --rui-local-padding: #{theme.$padding};

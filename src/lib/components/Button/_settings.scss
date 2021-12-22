@@ -1,5 +1,5 @@
-@use '../../styles/theme/typography';
-@use '../../styles/tools/spacing';
+@use "../../styles/theme/typography";
+@use "../../styles/tools/spacing";
 
 $font-family: typography.$font-family-base;
 $line-height: typography.$line-height-small;

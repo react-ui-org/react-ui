@@ -1,5 +1,5 @@
-@use 'sass:map';
-@use 'theme';
+@use "sass:map";
+@use "theme";
 
 @mixin color($color) {
     $color-variant-properties: map.get(theme.$colors, $color);

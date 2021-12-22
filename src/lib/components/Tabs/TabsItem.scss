@@ -1,9 +1,9 @@
 // 1. Keep inactive items under Tabs' decorative bottom border and pop active ones above it.
 
-@use '../../styles/tools/breakpoint';
-@use '../../styles/tools/reset';
-@use '../../styles/tools/transition';
-@use 'theme';
+@use "../../styles/tools/breakpoint";
+@use "../../styles/tools/reset";
+@use "../../styles/tools/transition";
+@use "theme";
 
 .root {
     @include transition.add(transform);

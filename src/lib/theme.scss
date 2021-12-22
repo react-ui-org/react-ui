@@ -1,11 +1,10 @@
 // Default theme. Can be used as a starting point for your custom theme.
 
-@use 'styles/theme-constants/breakpoints';
-@use 'styles/theme-constants/colors';
-@use 'styles/theme-constants/svg';
+@use "styles/theme-constants/breakpoints";
+@use "styles/theme-constants/colors";
+@use "styles/theme-constants/svg";
 
 :root {
-
     // ============================================================================================ //
     // 1. DESIGN TOKENS                                                                             //
     // ============================================================================================ //
@@ -118,7 +117,7 @@
 
     // Modular scale ratio: 1.125 / 8:9 / major second
 
-    --rui-typography-font-family-base: 'Titillium Web', helvetica, roboto, arial, sans-serif;
+    --rui-typography-font-family-base: "Titillium Web", helvetica, roboto, arial, sans-serif;
     --rui-typography-font-size-base: 100%;
     --rui-typography-line-height-base: 1.5;
     --rui-typography-line-height-small: 1.25;
@@ -179,8 +178,8 @@
     --rui-list-unordered-style: square;
 
     // Code
-    /* stylelint-disable-next-line max-line-length */
-    --rui-code-font-family: 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+    // stylelint-disable-next-line max-line-length
+    --rui-code-font-family: "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", monospace;
     --rui-code-font-size: 85%;
 
     // ============================================================================================ //
@@ -758,7 +757,7 @@
     --rui-FormField__help-text__font-size: var(--rui-typography-size-small);
     --rui-FormField__help-text__font-style: normal;
     --rui-FormField__help-text__color: var(--rui-color-gray-500);
-    --rui-FormField--required__sign: '\00a0*'; // 2.
+    --rui-FormField--required__sign: "\00a0*"; // 2.
     --rui-FormField--required__sign__color: var(--rui-color-gray-500);
 
     // Form fields: horizontal layout
@@ -881,7 +880,7 @@
     --rui-Modal__outer-spacing--xs: var(--rui-spacing-2);
     --rui-Modal__outer-spacing--sm: var(--rui-spacing-6);
     --rui-Modal__footer__background: var(--rui-color-gray-100);
-    --rui-Modal__backdrop__background: rgba(0, 0, 0, 0.5);
+    --rui-Modal__backdrop__background: rgb(0 0 0 / 50%);
     --rui-Modal--auto__min-width: 18rem;
     --rui-Modal--auto__max-width: 60rem;
     --rui-Modal--small__width: 20rem;

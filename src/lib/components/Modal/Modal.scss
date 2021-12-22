@@ -1,22 +1,22 @@
-@use 'sass:map';
-@use '../../styles/theme/typography';
-@use '../../styles/tools/accessibility';
-@use '../../styles/tools/breakpoint';
-@use '../../styles/tools/reset';
-@use '../../styles/tools/spacing';
-@use 'settings';
-@use 'theme';
+@use "sass:map";
+@use "../../styles/theme/typography";
+@use "../../styles/tools/accessibility";
+@use "../../styles/tools/breakpoint";
+@use "../../styles/tools/reset";
+@use "../../styles/tools/spacing";
+@use "settings";
+@use "theme";
 
 .root {
-    --local-outer-spacing: #{theme.$outer-spacing-xs};
+    --rui-local-outer-spacing: #{theme.$outer-spacing-xs};
 
     position: fixed;
     left: 50%;
     z-index: settings.$z-index;
     display: flex;
     flex-direction: column;
-    max-width: calc(100% - (2 * var(--local-outer-spacing)));
-    max-height: calc(100% - (2 * var(--local-outer-spacing)));
+    max-width: calc(100% - (2 * var(--rui-local-outer-spacing)));
+    max-height: calc(100% - (2 * var(--rui-local-outer-spacing)));
     overflow-y: auto;
     border-radius: settings.$border-radius;
     background: theme.$background;
@@ -24,7 +24,7 @@
     transform: translateX(-50%);
 
     @include breakpoint.up(sm) {
-        --local-outer-spacing: #{theme.$outer-spacing-sm};
+        --rui-local-outer-spacing: #{theme.$outer-spacing-sm};
     }
 }
 
@@ -122,5 +122,5 @@
 }
 
 .isRootPositionTop {
-    top: var(--local-outer-spacing);
+    top: var(--rui-local-outer-spacing);
 }

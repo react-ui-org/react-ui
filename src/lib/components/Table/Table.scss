@@ -1,17 +1,17 @@
-@use '../../styles/tools/transition';
-@use 'settings';
-
-// Ignore pascalCase values of `composes` property:
-// stylelint-disable value-keyword-case
+@use "../../styles/tools/transition";
+@use "settings";
 
 .table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.tableRow {
+.tableRow,
+.tableHeadRow {
     @include transition.add((background-color));
+}
 
+.tableRow {
     background-color: settings.$background-color;
 
     &:hover {
@@ -20,7 +20,6 @@
 }
 
 .tableHeadRow {
-    composes: tableRow;
     background-color: settings.$head-background-color;
 
     &:hover {
@@ -28,14 +27,16 @@
     }
 }
 
-.tableCell {
+.tableCell,
+.tableHeadCell,
+.isTableCellSortingActive,
+.isTableHeadCellSortingActive {
     padding: settings.$cell-padding-y settings.$cell-padding-x;
     text-align: left;
     border-bottom: settings.$border-width solid settings.$border-color;
 }
 
 .tableHeadCell {
-    composes: tableCell;
     font-weight: settings.$head-font-weight;
     border-bottom-width: 2px;
 }
@@ -43,14 +44,6 @@
 .isTableCellSortingActive,
 .isTableHeadCellSortingActive {
     background-color: settings.$sorted-background-color;
-}
-
-.isTableCellSortingActive {
-    composes: tableCell;
-}
-
-.isTableHeadCellSortingActive {
-    composes: tableHeadCell;
 }
 
 .sortButton {

@@ -2,7 +2,7 @@
 //     required for Safari.
 //     https://caniuse.com/mdn-css_properties_overflow-wrap_anywhere
 
-/* stylelint-disable property-no-vendor-prefix, value-no-vendor-prefix */
+// stylelint-disable property-no-vendor-prefix, value-no-vendor-prefix
 .rootClampLines {
     display: -webkit-box;
     -webkit-line-clamp: var(--rui-custom-lines);
@@ -10,7 +10,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
-/* stylelint-enable property-no-vendor-prefix, value-no-vendor-prefix */
+// stylelint-enable property-no-vendor-prefix, value-no-vendor-prefix
 
 .rootHyphensAuto {
     hyphens: auto;

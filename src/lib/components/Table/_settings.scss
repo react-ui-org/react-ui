@@ -1,8 +1,8 @@
-@use 'sass:map';
-@use '../../styles/theme/borders';
-@use '../../styles/theme/colors';
-@use '../../styles/theme/typography';
-@use '../../styles/tools/spacing';
+@use "sass:map";
+@use "../../styles/theme/borders";
+@use "../../styles/theme/colors";
+@use "../../styles/theme/typography";
+@use "../../styles/tools/spacing";
 
 $cell-padding-x: spacing.of(3);
 $cell-padding-y: spacing.of(1);

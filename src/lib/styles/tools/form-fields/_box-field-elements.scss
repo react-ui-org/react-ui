@@ -4,11 +4,11 @@
 // 3. Let inputs properly fit various layout scenarios.
 // 4. Leave out space for SelectField caret.
 
-@use '../../settings/form-fields' as settings;
-@use '../../theme/form-fields' as theme;
-@use '../../tools/caret';
-@use '../spacing';
-@use '../transition';
+@use "../../settings/form-fields" as settings;
+@use "../../theme/form-fields" as theme;
+@use "../../tools/caret";
+@use "../spacing";
+@use "../transition";
 
 @mixin input-container() {
     position: relative; // 1.

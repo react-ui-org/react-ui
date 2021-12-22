@@ -1,6 +1,6 @@
-@use 'sass:map';
-@use '../../../lib/styles/theme/colors';
-@use '../../../lib/styles/tools/spacing';
+@use "sass:map";
+@use "../../../lib/styles/theme/colors";
+@use "../../../lib/styles/tools/spacing";
 
 .root {
     width: var(--rui-local-width, auto);

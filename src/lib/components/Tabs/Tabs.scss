@@ -1,7 +1,7 @@
 // 1. Decorative bottom border.
 
-@use '../../styles/tools/reset';
-@use 'theme';
+@use "../../styles/tools/reset";
+@use "theme";
 
 .list {
     @include reset.list();
@@ -16,7 +16,7 @@
 
     // 1.
     &::after {
-        content: '';
+        content: "";
         position: absolute;
         right: 0;
         bottom: 0;

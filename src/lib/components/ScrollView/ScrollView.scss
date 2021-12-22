@@ -21,13 +21,13 @@
 // 7. Hide content overflowing in the other direction because scrollbars would be unreachable under
 //    scrolling shadows.
 
-@use '../../styles/tools/accessibility';
-@use '../../styles/tools/caret';
-@use '../../styles/tools/reset';
-@use '../../styles/tools/scrollbar';
-@use '../../styles/tools/spacing';
-@use '../../styles/tools/transition';
-@use 'theme';
+@use "../../styles/tools/accessibility";
+@use "../../styles/tools/caret";
+@use "../../styles/tools/reset";
+@use "../../styles/tools/scrollbar";
+@use "../../styles/tools/spacing";
+@use "../../styles/tools/transition";
+@use "theme";
 
 $_arrow-inner-spacing: spacing.of(2);
 $_arrow-outer-spacing: spacing.of(4);
@@ -50,7 +50,7 @@ $_arrow-outer-spacing: spacing.of(4);
     &::after {
         @include transition.add((visibility, opacity, transform));
 
-        content: '';
+        content: "";
         position: absolute;
         z-index: 2; // 2.
         display: block;

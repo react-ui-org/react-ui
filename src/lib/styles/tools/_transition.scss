@@ -1,7 +1,7 @@
-@use 'sass:list';
-@use 'sass:meta';
-@use 'sass:string';
-@use '../settings/animations';
+@use "sass:list";
+@use "sass:meta";
+@use "sass:string";
+@use "../settings/animations";
 
 $_allowed-transitions: (
     border-color,
@@ -44,7 +44,7 @@ $_reduced-motion-disallowed-transitions: (transform);
 @mixin add($properties, $duration: 150ms) {
     $property-list: ();
 
-    @if meta.type-of($properties) != 'string' and meta.type-of($properties) != 'list' {
+    @if meta.type-of($properties) != "string" and meta.type-of($properties) != "list" {
         @error "Transition properties must be a string or a Sass list, `#{$properties}` given.";
     }
 
@@ -52,16 +52,14 @@ $_reduced-motion-disallowed-transitions: (transform);
 
     @if not _validate-transitions($property-list) {
         @error "Only [#{$_allowed-transitions}] transitions are allowed, [#{$properties}] given.";
-    }
-
-    @else {
+    } @else {
         $reduced-property-list: _reduce-motion-transitions($property-list);
 
         transition-property: $property-list;
         transition-duration: $duration;
         transition-timing-function: animations.$standard-timing-function;
 
-        @if (list.length($reduced-property-list) > 0) {
+        @if list.length($reduced-property-list) > 0 {
             @media (prefers-reduced-motion: reduce) {
                 transition-property: $reduced-property-list;
             }

@@ -1,9 +1,9 @@
 // 1. Input `line-height` is specified in `rem` so inputs do not break when their font size gets
 //    changed later.
 
-@use 'sass:map';
-@use '../theme/typography';
-@use '../tools/spacing';
+@use "sass:map";
+@use "../theme/typography";
+@use "../tools/spacing";
 
 $help-text-line-height: 1.2rem;
 

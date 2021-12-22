@@ -1,4 +1,4 @@
-@use '../../styles/tools/spacing';
+@use "../../styles/tools/spacing";
 
 .media {
     @include spacing.bottom(layouts);

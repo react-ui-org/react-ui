@@ -1,7 +1,7 @@
 // 1. Get rid of unwanted spacing of inline elements by invocation of flex layout.
 
-@use '../../styles/tools/spacing';
-@use 'theme';
+@use "../../styles/tools/spacing";
+@use "theme";
 
 .toolbar,
 .group {

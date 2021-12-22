@@ -75,19 +75,19 @@ $check-tap-target-size: var(--rui-FormField--check__tap-target-size);
 
 // Form fields: check fields, component specific
 $check-input-checkbox-border-radius: var(--rui-FormField--check__input--checkbox__border-radius);
-$check-input-checkbox-checked-background-image:
-  var(--rui-FormField--check__input--checkbox--checked__background-image);
+$check-input-checkbox-checked-background-image: var(--rui-FormField--check__input--checkbox--checked__background-image);
 $check-input-radio-border-radius: var(--rui-FormField--check__input--radio__border-radius);
-$check-input-radio-checked-background-image:
-  var(--rui-FormField--check__input--radio--checked__background-image);
+$check-input-radio-checked-background-image: var(--rui-FormField--check__input--radio--checked__background-image);
 $check-input-toggle-width: var(--rui-FormField--check__input--toggle__width);
 $check-input-toggle-border-radius: var(--rui-FormField--check__input--toggle__border-radius);
 $check-input-toggle-background-size: var(--rui-FormField--check__input--toggle__background-size);
-$check-input-toggle-default-background-image:
-  var(--rui-FormField--check__input--toggle--default__background-image);
+$check-input-toggle-default-background-image: var(--rui-FormField--check__input--toggle--default__background-image);
 $check-input-toggle-default-background-position:
-  var(--rui-FormField--check__input--toggle--default__background-position);
-$check-input-toggle-checked-background-image:
-  var(--rui-FormField--check__input--toggle--checked__background-image);
+    var(
+        --rui-FormField--check__input--toggle--default__background-position
+    );
+$check-input-toggle-checked-background-image: var(--rui-FormField--check__input--toggle--checked__background-image);
 $check-input-toggle-checked-background-position:
-  var(--rui-FormField--check__input--toggle--checked__background-position);
+    var(
+        --rui-FormField--check__input--toggle--checked__background-position
+    );
