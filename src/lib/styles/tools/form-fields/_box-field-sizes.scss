@@ -2,20 +2,20 @@
 @use '../../theme/form-fields' as theme;
 
 @mixin size($size, $is-multiline: false) {
-  $size-properties: map.get(theme.$box-sizes, $size);
+    $size-properties: map.get(theme.$box-sizes, $size);
 
-  --rui-local-padding-y: #{map.get($size-properties, padding-y)};
-  --rui-local-padding-x: #{map.get($size-properties, padding-x)};
-  --rui-local-font-size: #{map.get($size-properties, font-size)};
+    --rui-local-padding-y: #{map.get($size-properties, padding-y)};
+    --rui-local-padding-x: #{map.get($size-properties, padding-x)};
+    --rui-local-font-size: #{map.get($size-properties, font-size)};
 
-  .input {
-    @if $is-multiline {
-      height: auto;
-      min-height: map.get($size-properties, height);
+    .input {
+        @if $is-multiline {
+            height: auto;
+            min-height: map.get($size-properties, height);
+        }
+
+        @else {
+            --rui-local-height: #{map.get($size-properties, height)};
+        }
     }
-
-    @else {
-      --rui-local-height: #{map.get($size-properties, height)};
-    }
-  }
 }

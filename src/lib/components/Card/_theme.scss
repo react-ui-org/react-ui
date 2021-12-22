@@ -9,54 +9,54 @@ $disabled-background-color: var(--rui-Card--disabled__background-color);
 $disabled-opacity: var(--rui-Card--disabled__opacity);
 
 $colors: (
-  primary: (
-    color: var(--rui-Card--primary__color),
-    border-color: var(--rui-Card--primary__border-color),
-    background-color: var(--rui-Card--primary__background-color),
-  ),
-  secondary: (
-    color: var(--rui-Card--secondary__color),
-    border-color: var(--rui-Card--secondary__border-color),
-    background-color: var(--rui-Card--secondary__background-color),
-  ),
-  success: (
-    color: var(--rui-Card--success__color),
-    border-color: var(--rui-Card--success__border-color),
-    background-color: var(--rui-Card--success__background-color),
-  ),
-  warning: (
-    color: var(--rui-Card--warning__color),
-    border-color: var(--rui-Card--warning__border-color),
-    background-color: var(--rui-Card--warning__background-color),
-  ),
-  danger: (
-    color: var(--rui-Card--danger__color),
-    border-color: var(--rui-Card--danger__border-color),
-    background-color: var(--rui-Card--danger__background-color),
-  ),
-  info: (
-    color: var(--rui-Card--info__color),
-    border-color: var(--rui-Card--info__border-color),
-    background-color: var(--rui-Card--info__background-color),
-  ),
-  help: (
-    color: var(--rui-Card--help__color),
-    border-color: var(--rui-Card--help__border-color),
-    background-color: var(--rui-Card--help__background-color),
-  ),
-  note: (
-    color: var(--rui-Card--note__color),
-    border-color: var(--rui-Card--note__border-color),
-    background-color: var(--rui-Card--note__background-color),
-  ),
-  light: (
-    color: var(--rui-Card--light__color),
-    border-color: var(--rui-Card--light__border-color),
-    background-color: var(--rui-Card--light__background-color),
-  ),
-  dark: (
-    color: var(--rui-Card--dark__color),
-    border-color: var(--rui-Card--dark__border-color),
-    background-color: var(--rui-Card--dark__background-color),
-  ),
+    primary: (
+        color: var(--rui-Card--primary__color),
+        border-color: var(--rui-Card--primary__border-color),
+        background-color: var(--rui-Card--primary__background-color),
+    ),
+    secondary: (
+        color: var(--rui-Card--secondary__color),
+        border-color: var(--rui-Card--secondary__border-color),
+        background-color: var(--rui-Card--secondary__background-color),
+    ),
+    success: (
+        color: var(--rui-Card--success__color),
+        border-color: var(--rui-Card--success__border-color),
+        background-color: var(--rui-Card--success__background-color),
+    ),
+    warning: (
+        color: var(--rui-Card--warning__color),
+        border-color: var(--rui-Card--warning__border-color),
+        background-color: var(--rui-Card--warning__background-color),
+    ),
+    danger: (
+        color: var(--rui-Card--danger__color),
+        border-color: var(--rui-Card--danger__border-color),
+        background-color: var(--rui-Card--danger__background-color),
+    ),
+    info: (
+        color: var(--rui-Card--info__color),
+        border-color: var(--rui-Card--info__border-color),
+        background-color: var(--rui-Card--info__background-color),
+    ),
+    help: (
+        color: var(--rui-Card--help__color),
+        border-color: var(--rui-Card--help__border-color),
+        background-color: var(--rui-Card--help__background-color),
+    ),
+    note: (
+        color: var(--rui-Card--note__color),
+        border-color: var(--rui-Card--note__border-color),
+        background-color: var(--rui-Card--note__background-color),
+    ),
+    light: (
+        color: var(--rui-Card--light__color),
+        border-color: var(--rui-Card--light__border-color),
+        background-color: var(--rui-Card--light__background-color),
+    ),
+    dark: (
+        color: var(--rui-Card--dark__color),
+        border-color: var(--rui-Card--dark__border-color),
+        background-color: var(--rui-Card--dark__background-color),
+    ),
 );

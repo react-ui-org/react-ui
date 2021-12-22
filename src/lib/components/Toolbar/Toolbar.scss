@@ -5,80 +5,80 @@
 
 .toolbar,
 .group {
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .toolbar {
-  @include spacing.bottom(layouts, $compensation: theme.$gap);
+    @include spacing.bottom(layouts, $compensation: theme.$gap);
 
-  margin: calc(-1 * #{theme.$gap});
+    margin: calc(-1 * #{theme.$gap});
 }
 
 .item {
-  display: flex; // 1.
-  flex: none;
-  flex-direction: column; // 1.
-  margin: theme.$gap;
+    display: flex; // 1.
+    flex: none;
+    flex-direction: column; // 1.
+    margin: theme.$gap;
 }
 
 .isAlignedToTop {
-  align-items: flex-start;
+    align-items: flex-start;
 }
 
 .isAlignedToMiddle {
-  align-items: center;
+    align-items: center;
 }
 
 .isAlignedToBottom {
-  align-items: flex-end;
+    align-items: flex-end;
 }
 
 .isAlignedToBaseline {
-  align-items: baseline;
+    align-items: baseline;
 }
 
 .isJustifiedToStart {
-  justify-content: flex-start;
+    justify-content: flex-start;
 }
 
 .isJustifiedToCenter {
-  justify-content: center;
+    justify-content: center;
 }
 
 .isJustifiedToEnd {
-  justify-content: flex-end;
+    justify-content: flex-end;
 }
 
 .isJustifiedToSpaceBetween {
-  justify-content: space-between;
+    justify-content: space-between;
 }
 
 .isNowrap {
-  flex-wrap: nowrap;
+    flex-wrap: nowrap;
 }
 
 .isNowrap > .item {
-  flex: 0 1 auto;
+    flex: 0 1 auto;
 }
 
 .isDense {
-  margin: calc(-1 * #{theme.$gap-dense});
+    margin: calc(-1 * #{theme.$gap-dense});
 }
 
 .isDense .item {
-  margin: theme.$gap-dense;
+    margin: theme.$gap-dense;
 }
 
 .isDense > .isDense {
-  margin: 0;
+    margin: 0;
 }
 
 .toolbar.isDense {
-  @include spacing.bottom(layouts, $compensation: theme.$gap-dense);
+    @include spacing.bottom(layouts, $compensation: theme.$gap-dense);
 }
 
 .toolbar:not(.isDense) > .isDense,
 .group:not(.isDense) > .isDense {
-  margin: theme.$gap-dense;
+    margin: theme.$gap-dense;
 }

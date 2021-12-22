@@ -3,7 +3,7 @@
 @use '../theme/colors';
 
 hr {
-  border: 0;
-  border-top: borders.$width solid map.get(colors.$grays, gray-200);
-  background: none;
+    border: 0;
+    border-top: borders.$width solid map.get(colors.$grays, gray-200);
+    background: none;
 }

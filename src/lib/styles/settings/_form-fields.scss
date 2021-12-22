@@ -24,28 +24,28 @@ $box-field-bottom-line-height: 2px;
 $inline-field-inner-gap: spacing.of(2);
 
 $themeable-variant-states: (
-  box: (
-    filled: (default, hover, focus, disabled),
-    outline: (default, hover, focus, disabled),
-  ),
-  check: (
-    default: (default, checked, disabled, checked-disabled),
-  ),
-  custom: (
-    default: (default, disabled),
-  ),
-  validation: (
-    invalid: (default, checked, disabled, checked-disabled),
-    valid: (default, checked, disabled, checked-disabled),
-    warning: (default, checked, disabled, checked-disabled),
-  ),
+    box: (
+        filled: (default, hover, focus, disabled),
+        outline: (default, hover, focus, disabled),
+    ),
+    check: (
+        default: (default, checked, disabled, checked-disabled),
+    ),
+    custom: (
+        default: (default, disabled),
+    ),
+    validation: (
+        invalid: (default, checked, disabled, checked-disabled),
+        valid: (default, checked, disabled, checked-disabled),
+        warning: (default, checked, disabled, checked-disabled),
+    ),
 );
 
 $themeable-state-properties: (
-  default: (color, border-color, background, check-background-color, box-shadow, surrounding-text-color),
-  hover: (color, border-color, background, box-shadow),
-  focus: (color, border-color, background, check-background-color, box-shadow),
-  checked: (border-color, check-background-color),
-  disabled: (color, border-color, background, check-background-color, box-shadow, surrounding-text-color),
-  checked-disabled: (border-color, check-background-color),
+    default: (color, border-color, background, check-background-color, box-shadow, surrounding-text-color),
+    hover: (color, border-color, background, box-shadow),
+    focus: (color, border-color, background, check-background-color, box-shadow),
+    checked: (border-color, check-background-color),
+    disabled: (color, border-color, background, check-background-color, box-shadow, surrounding-text-color),
+    checked-disabled: (border-color, check-background-color),
 );

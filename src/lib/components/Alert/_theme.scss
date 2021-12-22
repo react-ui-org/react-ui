@@ -6,54 +6,54 @@ $emphasis-font-weight: var(--rui-Alert__emphasis__font-weight);
 $stripe-width: var(--rui-Alert__stripe__width);
 
 $colors: (
-  primary: (
-    color: var(--rui-Alert--primary__color),
-    foreground-color: var(--rui-Alert--primary__foreground-color),
-    background-color: var(--rui-Alert--primary__background-color),
-  ),
-  secondary: (
-    color: var(--rui-Alert--secondary__color),
-    foreground-color: var(--rui-Alert--secondary__foreground-color),
-    background-color: var(--rui-Alert--secondary__background-color),
-  ),
-  success: (
-    color: var(--rui-Alert--success__color),
-    foreground-color: var(--rui-Alert--success__foreground-color),
-    background-color: var(--rui-Alert--success__background-color),
-  ),
-  warning: (
-    color: var(--rui-Alert--warning__color),
-    foreground-color: var(--rui-Alert--warning__foreground-color),
-    background-color: var(--rui-Alert--warning__background-color),
-  ),
-  danger: (
-    color: var(--rui-Alert--danger__color),
-    foreground-color: var(--rui-Alert--danger__foreground-color),
-    background-color: var(--rui-Alert--danger__background-color),
-  ),
-  info: (
-    color: var(--rui-Alert--info__color),
-    foreground-color: var(--rui-Alert--info__foreground-color),
-    background-color: var(--rui-Alert--info__background-color),
-  ),
-  help: (
-    color: var(--rui-Alert--help__color),
-    foreground-color: var(--rui-Alert--help__foreground-color),
-    background-color: var(--rui-Alert--help__background-color),
-  ),
-  note: (
-    color: var(--rui-Alert--note__color),
-    foreground-color: var(--rui-Alert--note__foreground-color),
-    background-color: var(--rui-Alert--note__background-color),
-  ),
-  light: (
-    color: var(--rui-Alert--light__color),
-    foreground-color: var(--rui-Alert--light__foreground-color),
-    background-color: var(--rui-Alert--light__background-color),
-  ),
-  dark: (
-    color: var(--rui-Alert--dark__color),
-    foreground-color: var(--rui-Alert--dark__foreground-color),
-    background-color: var(--rui-Alert--dark__background-color),
-  ),
+    primary: (
+        color: var(--rui-Alert--primary__color),
+        foreground-color: var(--rui-Alert--primary__foreground-color),
+        background-color: var(--rui-Alert--primary__background-color),
+    ),
+    secondary: (
+        color: var(--rui-Alert--secondary__color),
+        foreground-color: var(--rui-Alert--secondary__foreground-color),
+        background-color: var(--rui-Alert--secondary__background-color),
+    ),
+    success: (
+        color: var(--rui-Alert--success__color),
+        foreground-color: var(--rui-Alert--success__foreground-color),
+        background-color: var(--rui-Alert--success__background-color),
+    ),
+    warning: (
+        color: var(--rui-Alert--warning__color),
+        foreground-color: var(--rui-Alert--warning__foreground-color),
+        background-color: var(--rui-Alert--warning__background-color),
+    ),
+    danger: (
+        color: var(--rui-Alert--danger__color),
+        foreground-color: var(--rui-Alert--danger__foreground-color),
+        background-color: var(--rui-Alert--danger__background-color),
+    ),
+    info: (
+        color: var(--rui-Alert--info__color),
+        foreground-color: var(--rui-Alert--info__foreground-color),
+        background-color: var(--rui-Alert--info__background-color),
+    ),
+    help: (
+        color: var(--rui-Alert--help__color),
+        foreground-color: var(--rui-Alert--help__foreground-color),
+        background-color: var(--rui-Alert--help__background-color),
+    ),
+    note: (
+        color: var(--rui-Alert--note__color),
+        foreground-color: var(--rui-Alert--note__foreground-color),
+        background-color: var(--rui-Alert--note__background-color),
+    ),
+    light: (
+        color: var(--rui-Alert--light__color),
+        foreground-color: var(--rui-Alert--light__foreground-color),
+        background-color: var(--rui-Alert--light__background-color),
+    ),
+    dark: (
+        color: var(--rui-Alert--dark__color),
+        foreground-color: var(--rui-Alert--dark__foreground-color),
+        background-color: var(--rui-Alert--dark__background-color),
+    ),
 );

@@ -4,27 +4,27 @@
 
 /* stylelint-disable property-no-vendor-prefix, value-no-vendor-prefix */
 .rootClampLines {
-  display: -webkit-box;
-  -webkit-line-clamp: var(--rui-custom-lines);
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: var(--rui-custom-lines);
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 /* stylelint-enable property-no-vendor-prefix, value-no-vendor-prefix */
 
 .rootHyphensAuto {
-  hyphens: auto;
+    hyphens: auto;
 }
 
 .rootHyphensManual {
-  hyphens: manual;
+    hyphens: manual;
 }
 
 .rootWordWrappingAnywhere {
-  word-break: break-all;
+    word-break: break-all;
 }
 
 .rootWordWrappingLongWords {
-  word-break: break-word; // 1.
-  overflow-wrap: anywhere;
+    word-break: break-word; // 1.
+    overflow-wrap: anywhere;
 }

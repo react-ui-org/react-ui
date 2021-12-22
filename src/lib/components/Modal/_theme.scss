@@ -6,21 +6,21 @@ $outer-spacing-xs: var(--rui-Modal__outer-spacing--xs);
 $outer-spacing-sm: var(--rui-Modal__outer-spacing--sm);
 
 $sizes: (
-  auto: (
-    min-width: var(--rui-Modal--auto__min-width),
-    max-width: var(--rui-Modal--auto__max-width),
-  ),
-  small: (
-    width: var(--rui-Modal--small__width),
-  ),
-  medium: (
-    width: var(--rui-Modal--medium__width),
-  ),
-  large: (
-    width: var(--rui-Modal--large__width),
-  ),
-  fullscreen: (
-    width: var(--rui-Modal--fullscreen__width),
-    height: var(--rui-Modal--fullscreen__height),
-  ),
+    auto: (
+        min-width: var(--rui-Modal--auto__min-width),
+        max-width: var(--rui-Modal--auto__max-width),
+    ),
+    small: (
+        width: var(--rui-Modal--small__width),
+    ),
+    medium: (
+        width: var(--rui-Modal--medium__width),
+    ),
+    large: (
+        width: var(--rui-Modal--large__width),
+    ),
+    fullscreen: (
+        width: var(--rui-Modal--fullscreen__width),
+        height: var(--rui-Modal--fullscreen__height),
+    ),
 );

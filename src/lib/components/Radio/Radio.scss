@@ -10,69 +10,69 @@
 
 // Foundation
 .root {
-  @include foundation.root();
-  @include variants.visual(check);
+    @include foundation.root();
+    @include variants.visual(check);
 }
 
 .label,
 .optionLabel {
-  @include foundation.label();
+    @include foundation.label();
 }
 
 .list {
-  @include reset.list();
+    @include reset.list();
 }
 
 .option {
-  @include inline-field-layout.field();
-  @include inline-field-elements.min-tap-target($type: radio);
+    @include inline-field-layout.field();
+    @include inline-field-elements.min-tap-target($type: radio);
 }
 
 .input {
-  @include inline-field-elements.check-input($type: radio);
+    @include inline-field-elements.check-input($type: radio);
 }
 
 .helpText,
 .validationText {
-  @include foundation.help-text();
+    @include foundation.help-text();
 }
 
 .isRootRequired .label {
-  @include foundation.label-required();
+    @include foundation.label-required();
 }
 
 // States
 .isRootStateInvalid {
-  @include variants.validation(invalid);
+    @include variants.validation(invalid);
 }
 
 .isRootStateValid {
-  @include variants.validation(valid);
+    @include variants.validation(valid);
 }
 
 .isRootStateWarning {
-  @include variants.validation(warning);
+    @include variants.validation(warning);
 }
 
 // Invisible label
 .isLabelHidden {
-  @include accessibility.hide-text();
+    @include accessibility.hide-text();
 }
 
 // Layouts
 .rootLayoutVertical,
 .rootLayoutHorizontal {
-  @include box-field-layout.vertical($has-list: true);
+    @include box-field-layout.vertical($has-list: true);
 }
 
 .rootLayoutHorizontal {
-  @include box-field-layout.horizontal($has-min-tap-target: true);
+    @include box-field-layout.horizontal($has-min-tap-target: true);
 }
 
 .isRootFullWidth {
-  @include box-field-layout.full-width();
+    @include box-field-layout.full-width();
 }
 
 .isRootInFormLayout {
-  @include box-field-layout.in-form-layout();
+    @include box-field-layout.in-form-layout();
 }

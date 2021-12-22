@@ -1,17 +1,17 @@
 @use 'theme';
 
 .root {
-  padding: theme.$padding;
-  border: theme.$border-width solid theme.$border-color;
-  border-radius: theme.$border-radius;
-  background-color: theme.$background-color;
+    padding: theme.$padding;
+    border: theme.$border-width solid theme.$border-color;
+    border-radius: theme.$border-radius;
+    background-color: theme.$background-color;
 }
 
 .rootMuted {
-  background-color: theme.$muted-background-color;
-  opacity: theme.$muted-opacity;
+    background-color: theme.$muted-background-color;
+    opacity: theme.$muted-opacity;
 }
 
 .rootRaised {
-  box-shadow: theme.$raised-box-shadow;
+    box-shadow: theme.$raised-box-shadow;
 }

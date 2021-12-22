@@ -26,30 +26,30 @@
 @use 'tools';
 
 .root {
-  @include tools.assign-responsive-custom-properties(theme.$responsive-properties); // 1.
-  @include spacing.bottom(layouts);
+    @include tools.assign-responsive-custom-properties(theme.$responsive-properties); // 1.
+    @include spacing.bottom(layouts);
 
-  display: grid;
-  grid-template-columns: var(--rui-local-columns); // 2.
-  grid-template-rows: var(--rui-local-rows); // 2.
-  grid-auto-flow: var(--rui-local-auto-flow, #{map.get(theme.$responsive-properties, auto-flow)}); // 2.
-  grid-gap: var(--rui-local-row-gap) var(--rui-local-column-gap); // 2.
-  align-content: var(--rui-local-align-content, #{map.get(theme.$responsive-properties, align-content)}); // 2.
-  align-items: var(--rui-local-align-items, #{map.get(theme.$responsive-properties, align-items)}); // 2.
-  justify-content: var(--rui-local-justify-content, #{map.get(theme.$responsive-properties, justify-content)}); // 2.
-  justify-items: var(--rui-local-justify-items, #{map.get(theme.$responsive-properties, justify-items)}); // 2.
+    display: grid;
+    grid-template-columns: var(--rui-local-columns); // 2.
+    grid-template-rows: var(--rui-local-rows); // 2.
+    grid-auto-flow: var(--rui-local-auto-flow, #{map.get(theme.$responsive-properties, auto-flow)}); // 2.
+    grid-gap: var(--rui-local-row-gap) var(--rui-local-column-gap); // 2.
+    align-content: var(--rui-local-align-content, #{map.get(theme.$responsive-properties, align-content)}); // 2.
+    align-items: var(--rui-local-align-items, #{map.get(theme.$responsive-properties, align-items)}); // 2.
+    justify-content: var(--rui-local-justify-content, #{map.get(theme.$responsive-properties, justify-content)}); // 2.
+    justify-items: var(--rui-local-justify-items, #{map.get(theme.$responsive-properties, justify-items)}); // 2.
 }
 
 .span {
-  $responsive-properties: (
-    column-span: 1,
-    row-span: 1,
-  );
+    $responsive-properties: (
+        column-span: 1,
+        row-span: 1,
+    );
 
-  @include tools.assign-responsive-custom-properties($responsive-properties); // 1.
+    @include tools.assign-responsive-custom-properties($responsive-properties); // 1.
 
-  grid-column: span var(--rui-local-column-span, 1); // 2.
-  grid-row: span var(--rui-local-row-span, 1); // 2.
+    grid-column: span var(--rui-local-column-span, 1); // 2.
+    grid-row: span var(--rui-local-row-span, 1); // 2.
 }
 
 /* stylelint-disable selector-no-qualifying-type */
@@ -57,8 +57,8 @@
 dl.root,
 ol.root,
 ul.root {
-  padding-left: 0;
-  margin-left: 0;
+    padding-left: 0;
+    margin-left: 0;
 }
 
 /* stylelint-enable selector-no-qualifying-type */

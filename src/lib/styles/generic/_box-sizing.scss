@@ -2,12 +2,12 @@
 // https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
 
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 // stylelint-disable selector-max-universal
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+    box-sizing: inherit;
 }

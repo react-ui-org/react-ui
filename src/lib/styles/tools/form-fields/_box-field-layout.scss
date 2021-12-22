@@ -59,171 +59,171 @@
 @use '../breakpoint';
 
 @mixin vertical($has-list: false) {
-  @if ($has-list) {
-    --rui-local-vertical-gap: #{settings.$vertical-inner-gap-large};
-  }
+    @if ($has-list) {
+        --rui-local-vertical-gap: #{settings.$vertical-inner-gap-large};
+    }
 
-  display: inline-flex; // 1.
-  flex-direction: column;
-  min-width: 0; // 1.
-  max-width: 100%; // 1.
+    display: inline-flex; // 1.
+    flex-direction: column;
+    min-width: 0; // 1.
+    max-width: 100%; // 1.
 
-  .label {
-    padding-bottom: var(--rui-local-vertical-gap, #{settings.$vertical-inner-gap});
-  }
+    .label {
+        padding-bottom: var(--rui-local-vertical-gap, #{settings.$vertical-inner-gap});
+    }
 
-  .helpText,
-  .validationText {
-    padding-top: var(--rui-local-vertical-gap, #{settings.$vertical-inner-gap});
-  }
+    .helpText,
+    .validationText {
+        padding-top: var(--rui-local-vertical-gap, #{settings.$vertical-inner-gap});
+    }
 
-  .field {
-    width: min-content; // 3.
-    max-width: 100%; // 3.
-  }
+    .field {
+        width: min-content; // 3.
+        max-width: 100%; // 3.
+    }
 }
 
 @mixin horizontal($has-min-tap-target: false) {
-  @include breakpoint.up(forms.$horizontal-breakpoint) {
-    display: inline-grid; // 2.
-    grid-template-columns: theme.$horizontal-label-width min-content; // 2.
-    grid-template-areas: 'label field';
-    align-items: start; // 10., 13.
+    @include breakpoint.up(forms.$horizontal-breakpoint) {
+        display: inline-grid; // 2.
+        grid-template-columns: theme.$horizontal-label-width min-content; // 2.
+        grid-template-areas: 'label field';
+        align-items: start; // 10., 13.
 
-    .label {
-      grid-area: label;
-      align-self: theme.$horizontal-label-vertical-alignment; // 13.
-      min-width: theme.$horizontal-label-min-width;
+        .label {
+            grid-area: label;
+            align-self: theme.$horizontal-label-vertical-alignment; // 13.
+            min-width: theme.$horizontal-label-min-width;
 
-      // 10.
-      @if ($has-min-tap-target) {
-        padding-top:
-          calc(
-            (#{theme.$check-tap-target-size} - 1rem * #{typography.$line-height-base})
-            / 2
-          );
-        padding-bottom:
-          calc(
-            (#{theme.$check-tap-target-size} - 1rem * #{typography.$line-height-base})
-            / 2
-          );
-      }
+            // 10.
+            @if ($has-min-tap-target) {
+                padding-top:
+                    calc(
+                        (#{theme.$check-tap-target-size} - 1rem * #{typography.$line-height-base})
+                        / 2
+                    );
+                padding-bottom:
+                    calc(
+                        (#{theme.$check-tap-target-size} - 1rem * #{typography.$line-height-base})
+                        / 2
+                    );
+            }
 
-      // 10., 13.
-      @else {
-        padding-top: #{theme.$horizontal-label-padding-y};
-        padding-bottom: #{theme.$horizontal-label-padding-y};
-      }
+            // 10., 13.
+            @else {
+                padding-top: #{theme.$horizontal-label-padding-y};
+                padding-bottom: #{theme.$horizontal-label-padding-y};
+            }
 
-      padding-right: settings.$horizontal-inner-gap; // 4.
-      text-align: theme.$horizontal-label-text-align;
+            padding-right: settings.$horizontal-inner-gap; // 4.
+            text-align: theme.$horizontal-label-text-align;
+        }
+
+        .field {
+            grid-area: field;
+            align-self: theme.$horizontal-field-vertical-alignment; // 13.
+            justify-self: start; // 7.
+        }
     }
-
-    .field {
-      grid-area: field;
-      align-self: theme.$horizontal-field-vertical-alignment; // 13.
-      justify-self: start; // 7.
-    }
-  }
 }
 
 @mixin horizontal-with-small-input() {
-  @include breakpoint.up(forms.$horizontal-breakpoint) {
-    grid-template-columns: min-content min-content; // 5.
-    grid-template-areas:
-      'label field'
-      'helptext helptext'
-      'validationtext validationtext'; // 5.
+    @include breakpoint.up(forms.$horizontal-breakpoint) {
+        grid-template-columns: min-content min-content; // 5.
+        grid-template-areas:
+            'label field'
+            'helptext helptext'
+            'validationtext validationtext'; // 5.
 
-    .label {
-      white-space: nowrap; // 5.
-    }
+        .label {
+            white-space: nowrap; // 5.
+        }
 
-    .field {
-      display: contents; // 5.
-    }
+        .field {
+            display: contents; // 5.
+        }
 
-    .inputContainer {
-      grid-area: field; // 5.
-    }
+        .inputContainer {
+            grid-area: field; // 5.
+        }
 
-    .helpText {
-      grid-area: helptext; // 5.
-    }
+        .helpText {
+            grid-area: helptext; // 5.
+        }
 
-    .validationText {
-      grid-area: validationtext; // 5.
+        .validationText {
+            grid-area: validationtext; // 5.
+        }
     }
-  }
 }
 
 @mixin full-width() {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-
-  .field,
-  .inputContainer,
-  .input {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-  }
 
-  @include breakpoint.up(forms.$horizontal-breakpoint) {
-    &.rootLayoutHorizontal {
-      display: grid;
-      grid-template-columns: theme.$horizontal-full-width-label-width 1fr; // 6.
+    .field,
+    .inputContainer,
+    .input {
+        width: 100%;
     }
 
-    &.rootLayoutHorizontal .field {
-      justify-self: stretch; // 7.
+    @include breakpoint.up(forms.$horizontal-breakpoint) {
+        &.rootLayoutHorizontal {
+            display: grid;
+            grid-template-columns: theme.$horizontal-full-width-label-width 1fr; // 6.
+        }
+
+        &.rootLayoutHorizontal .field {
+            justify-self: stretch; // 7.
+        }
     }
-  }
 }
 
 @mixin in-form-layout() {
-  justify-self: start; // 12.
+    justify-self: start; // 12.
 
-  .field {
-    width: auto; // 9.
-  }
-
-  @include breakpoint.up(forms.$horizontal-breakpoint) {
-    .optionLabel {
-      width: auto; // 11.
+    .field {
+        width: auto; // 9.
     }
 
-    &.rootLayoutHorizontal,
-    &.rootLayoutHorizontal.hasRootSmallInput {
-      grid: inherit; // 8.
-      grid-template-columns: subgrid; // 8.
-      grid-column: span 2; // 8.
+    @include breakpoint.up(forms.$horizontal-breakpoint) {
+        .optionLabel {
+            width: auto; // 11.
+        }
 
-      @supports not (grid-template-columns: subgrid) {
-        display: contents; // 8.
-      }
-    }
+        &.rootLayoutHorizontal,
+        &.rootLayoutHorizontal.hasRootSmallInput {
+            grid: inherit; // 8.
+            grid-template-columns: subgrid; // 8.
+            grid-column: span 2; // 8.
 
-    &.rootLayoutHorizontal.isRootFullWidth {
-      grid-template-columns: subgrid; // 8.
-    }
+            @supports not (grid-template-columns: subgrid) {
+                display: contents; // 8.
+            }
+        }
 
-    &.rootLayoutHorizontal .label,
-    &.rootLayoutHorizontal .field,
-    &.rootLayoutHorizontal .inputContainer,
-    &.rootLayoutHorizontal .helpText,
-    &.rootLayoutHorizontal .validationText {
-      grid-area: unset; // 8.
-    }
+        &.rootLayoutHorizontal.isRootFullWidth {
+            grid-template-columns: subgrid; // 8.
+        }
 
-    &.rootLayoutHorizontal .field,
-    &.rootLayoutHorizontal .inputContainer,
-    &.rootLayoutHorizontal .helpText,
-    &.rootLayoutHorizontal .validationText {
-      grid-column-start: 2; // 8.
-    }
+        &.rootLayoutHorizontal .label,
+        &.rootLayoutHorizontal .field,
+        &.rootLayoutHorizontal .inputContainer,
+        &.rootLayoutHorizontal .helpText,
+        &.rootLayoutHorizontal .validationText {
+            grid-area: unset; // 8.
+        }
 
-    &.rootLayoutHorizontal.hasRootSmallInput .field {
-      display: block; // 5.
+        &.rootLayoutHorizontal .field,
+        &.rootLayoutHorizontal .inputContainer,
+        &.rootLayoutHorizontal .helpText,
+        &.rootLayoutHorizontal .validationText {
+            grid-column-start: 2; // 8.
+        }
+
+        &.rootLayoutHorizontal.hasRootSmallInput .field {
+            display: block; // 5.
+        }
     }
-  }
 }

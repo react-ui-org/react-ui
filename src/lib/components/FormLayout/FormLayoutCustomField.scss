@@ -5,59 +5,59 @@
 
 // Foundation
 .root {
-  @include box-field-layout.in-form-layout();
-  @include variants.visual(custom);
+    @include box-field-layout.in-form-layout();
+    @include variants.visual(custom);
 }
 
 .label {
-  @include foundation.label();
+    @include foundation.label();
 }
 
 .isRootRequired .label {
-  @include foundation.label-required();
+    @include foundation.label-required();
 }
 
 // States
 .isRootStateInvalid {
-  @include variants.validation(invalid);
+    @include variants.validation(invalid);
 }
 
 .isRootStateValid {
-  @include variants.validation(valid);
+    @include variants.validation(valid);
 }
 
 .isRootStateWarning {
-  @include variants.validation(warning);
+    @include variants.validation(warning);
 }
 
 // Layouts
 .rootLayoutVertical,
 .rootLayoutHorizontal {
-  @include box-field-layout.vertical();
+    @include box-field-layout.vertical();
 }
 
 .rootLayoutHorizontal {
-  @include box-field-layout.horizontal();
+    @include box-field-layout.horizontal();
 }
 
 .rootLayoutVertical .field,
 .rootLayoutHorizontal .field {
-  width: auto;
+    width: auto;
 }
 
 .isRootFullWidth .field {
-  justify-self: stretch;
+    justify-self: stretch;
 }
 
 // Sizes
 .rootSizeSmall {
-  @include box-field-sizes.size(small);
+    @include box-field-sizes.size(small);
 }
 
 .rootSizeMedium {
-  @include box-field-sizes.size(medium);
+    @include box-field-sizes.size(medium);
 }
 
 .rootSizeLarge {
-  @include box-field-sizes.size(large);
+    @include box-field-sizes.size(large);
 }

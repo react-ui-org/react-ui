@@ -7,96 +7,96 @@
 
 // Foundation
 .root {
-  @include foundation.root();
+    @include foundation.root();
 }
 
 .label {
-  @include foundation.label();
+    @include foundation.label();
 }
 
 .inputContainer {
-  @include box-field-elements.input-container();
+    @include box-field-elements.input-container();
 }
 
 .input {
-  @include box-field-elements.input();
+    @include box-field-elements.input();
 }
 
 .bottomLine {
-  @include box-field-elements.bottom-line();
+    @include box-field-elements.bottom-line();
 }
 
 .helpText,
 .validationText {
-  @include foundation.help-text();
+    @include foundation.help-text();
 }
 
 .hasRootCustomInputSize .input {
-  @include box-field-elements.input-size();
+    @include box-field-elements.input-size();
 }
 
 .isRootRequired .label {
-  @include foundation.label-required();
+    @include foundation.label-required();
 }
 
 // Variants
 .rootVariantFilled {
-  @include variants.visual(box, $variant: filled);
+    @include variants.visual(box, $variant: filled);
 }
 
 .rootVariantOutline {
-  @include variants.visual(box, $variant: outline);
+    @include variants.visual(box, $variant: outline);
 }
 
 // States
 .isRootStateInvalid {
-  @include variants.validation(invalid);
+    @include variants.validation(invalid);
 }
 
 .isRootStateValid {
-  @include variants.validation(valid);
+    @include variants.validation(valid);
 }
 
 .isRootStateWarning {
-  @include variants.validation(warning);
+    @include variants.validation(warning);
 }
 
 // Invisible label
 .isLabelHidden {
-  @include accessibility.hide-text();
+    @include accessibility.hide-text();
 }
 
 // Layouts
 .rootLayoutVertical,
 .rootLayoutHorizontal {
-  @include box-field-layout.vertical();
+    @include box-field-layout.vertical();
 }
 
 .rootLayoutHorizontal {
-  @include box-field-layout.horizontal();
+    @include box-field-layout.horizontal();
 }
 
 .isRootFullWidth {
-  @include box-field-layout.full-width();
+    @include box-field-layout.full-width();
 }
 
 .isRootInFormLayout {
-  @include box-field-layout.in-form-layout();
+    @include box-field-layout.in-form-layout();
 }
 
 .hasRootSmallInput.rootLayoutHorizontal {
-  @include box-field-layout.horizontal-with-small-input();
+    @include box-field-layout.horizontal-with-small-input();
 }
 
 // Sizes
 .rootSizeSmall {
-  @include box-field-sizes.size(small);
+    @include box-field-sizes.size(small);
 }
 
 .rootSizeMedium {
-  @include box-field-sizes.size(medium);
+    @include box-field-sizes.size(medium);
 }
 
 .rootSizeLarge {
-  @include box-field-sizes.size(large);
+    @include box-field-sizes.size(large);
 }
