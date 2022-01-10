@@ -804,19 +804,19 @@
   --rui-FormField--box--select__option--disabled__color: var(--rui-color-gray-300);
 
   // Form fields: box field sizes: small
-  --rui-FormField--box--small__height: 1.75rem;
+  --rui-FormField--box--small__height: var(--rui-Button--small__height);
   --rui-FormField--box--small__padding-y: 0.0625rem;
   --rui-FormField--box--small__padding-x: var(--rui-spacing-2);
   --rui-FormField--box--small__font-size: var(--rui-typography-size-small);
 
   // Form fields: box field sizes: medium
-  --rui-FormField--box--medium__height: 2.25rem;
+  --rui-FormField--box--medium__height: var(--rui-Button--medium__height);
   --rui-FormField--box--medium__padding-y: 0.3125rem;
   --rui-FormField--box--medium__padding-x: var(--rui-spacing-3);
   --rui-FormField--box--medium__font-size: var(--rui-typography-size-0);
 
   // Form fields: box field sizes: large
-  --rui-FormField--box--large__height: 2.75rem;
+  --rui-FormField--box--large__height: var(--rui-Button--large__height);
   --rui-FormField--box--large__padding-y: 0.5625rem;
   --rui-FormField--box--large__padding-x: var(--rui-spacing-4);
   --rui-FormField--box--large__font-size: var(--rui-typography-size-1);
