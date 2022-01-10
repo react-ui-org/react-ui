@@ -3,5 +3,5 @@
 @use 'theme';
 
 $font-size: map.get(typography.$size-values, 0);
-$line-height: 1.5;
+$line-height: typography.$line-height-base;
 $min-height: calc(#{$font-size} * #{$line-height} + 2 * #{theme.$padding});

@@ -121,6 +121,7 @@
   --rui-typography-font-family-base: 'Titillium Web', helvetica, roboto, arial, sans-serif;
   --rui-typography-font-size-base: 100%;
   --rui-typography-line-height-base: 1.5;
+  --rui-typography-line-height-small: 1.25;
   --rui-typography-size-0: 1rem;
   --rui-typography-size-1: 1.125rem;
   --rui-typography-size-2: 1.266rem;
@@ -642,16 +643,19 @@
 
   // Buttons: sizes: small
   --rui-Button--small__height: 1.75rem;
+  --rui-Button--small__padding-y: var(--rui-spacing-1);
   --rui-Button--small__padding-x: var(--rui-spacing-3);
   --rui-Button--small__font-size: var(--rui-typography-size-small);
 
   // Buttons: sizes: medium
   --rui-Button--medium__height: 2.25rem;
+  --rui-Button--medium__padding-y: var(--rui-spacing-1);
   --rui-Button--medium__padding-x: var(--rui-spacing-4);
   --rui-Button--medium__font-size: var(--rui-typography-size-0);
 
   // Buttons: sizes: large
   --rui-Button--large__height: 2.75rem;
+  --rui-Button--large__padding-y: var(--rui-spacing-2);
   --rui-Button--large__padding-x: var(--rui-spacing-5);
   --rui-Button--large__font-size: var(--rui-typography-size-1);
 
