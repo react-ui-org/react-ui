@@ -2,7 +2,7 @@
 @use '../../styles/tools/spacing';
 
 $font-family: typography.$font-family-base;
-$line-height: typography.$line-height-base;
+$line-height: typography.$line-height-small;
 $icon-spacing: spacing.of(2);
 
 $group-z-indexes: (

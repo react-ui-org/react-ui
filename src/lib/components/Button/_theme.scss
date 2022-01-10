@@ -26,16 +26,19 @@ $sizes: (
   small: (
     height: var(--rui-Button--small__height),
     padding-x: var(--rui-Button--small__padding-x),
+    padding-y: var(--rui-Button--small__padding-y),
     font-size: var(--rui-Button--small__font-size),
   ),
   medium: (
     height: var(--rui-Button--medium__height),
     padding-x: var(--rui-Button--medium__padding-x),
+    padding-y: var(--rui-Button--medium__padding-y),
     font-size: var(--rui-Button--medium__font-size),
   ),
   large: (
     height: var(--rui-Button--large__height),
     padding-x: var(--rui-Button--large__padding-x),
+    padding-y: var(--rui-Button--large__padding-y),
     font-size: var(--rui-Button--large__font-size),
   ),
 );

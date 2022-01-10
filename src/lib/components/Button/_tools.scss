@@ -82,7 +82,7 @@
   align-items: center;
   justify-content: center;
   width: var(--rui-local-width, auto);
-  height: var(--rui-local-height, auto);
+  min-height: var(--rui-local-height, auto);
   padding: var(--rui-local-padding);
   font: theme.$font-weight list.slash(var(--rui-local-font-size), settings.$line-height) settings.$font-family;
   letter-spacing: theme.$letter-spacing;
@@ -117,8 +117,8 @@
   $properties: map.get(theme.$sizes, $size);
 
   --rui-local-height: #{map.get($properties, height)};
-  --rui-local-padding: 0 #{map.get($properties, padding-x)};
-  --rui-local-padding-original: 0 #{map.get($properties, padding-x)}; // 5.
+  --rui-local-padding: #{map.get($properties, padding-y)} #{map.get($properties, padding-x)};
+  --rui-local-padding-original: #{map.get($properties, padding-y)} #{map.get($properties, padding-x)}; // 5.
   --rui-local-font-size: #{map.get($properties, font-size)};
 }
 
