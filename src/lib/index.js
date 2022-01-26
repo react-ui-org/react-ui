@@ -8,14 +8,7 @@ export {
   CardBody,
   CardFooter,
 } from './components/Card';
-export { default as Center } from './components/Center';
 export { default as CheckboxField } from './components/CheckboxField';
-export {
-  CTA,
-  CTACenter,
-  CTAEnd,
-  CTAStart,
-} from './components/CTA';
 export { default as FileInputField } from './components/FileInputField';
 export {
   FormLayout,
