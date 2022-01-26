@@ -18,10 +18,7 @@ elsewhere.
 👉 If you need to quickly create a flex container, there is the
 [`.d-flex`](/css-helpers/display) helper class at your disposal.
 
-📖 Read more about
-[flexbox](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox)
-and [grid](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids)
-layout concepts.
+📖 Read more about [flexbox] and [grid] layout concepts.
 
 ## Naming System
 
@@ -32,31 +29,42 @@ The classes are named using the format `[alignment]-[value]` for `xs` and
 Where `alignment` is one of:
 
 - `align-items`
+- `align-self`
 - `justify-content`
+- `justify-self`
 
-For `align-items` the value can be:
+For `align-items` and `align-self` the value can be:
 
+- `center`
 - `start`
 - `flex-start`
-- `center`
-- `baseline`
 - `end`
 - `flex-end`
+- `baseline`
+- `stretch`
 
 For `justify-content` the value can be:
 
+- `center`
 - `start`
 - `flex-start`
-- `center`
 - `end`
 - `flex-end`
 - `space-between`
 
+For `justify-self` the value can be:
+
+- `center`
+- `start`
+- `end`
+- `baseline`
+- `stretch`
+
 👉 The difference between `start`/`flex-start` and `end`/`flex-end` is that the
 prefixed variants are intended for flexbox while the versions without prefix
-only work inside a grid layout.
+only work inside grid layout.
 
-📖 [Read more about CSS Box Alignment concepts.](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Alignment)
+📖 [Read more about CSS Box Alignment concepts.][box-alignment]
 
 ## Horizontal (Main-Axis) Alignment (Justification)
 
@@ -93,8 +101,8 @@ flexbox), `center`, `end` (`flex-end` for flexbox), and `space-between`.
 
 ## Vertical (Cross-Axis) Alignment
 
-There are 6 options of alignment on the cross axis: `start` (`flex-start` for
-flexbox), `center`, `end` (`flex-end` for flexbox), and `baseline`.
+There are 7 options of alignment on the cross axis: `start` (`flex-start` for
+flexbox), `center`, `end` (`flex-end` for flexbox), `baseline`, and `stretch`.
 
 <Playground>
   <>
@@ -126,6 +134,13 @@ flexbox), `center`, `end` (`flex-end` for flexbox), and `baseline`.
         </Placeholder>
         <Placeholder bordered>
           <code style={{ lineHeight: 4 }}>.align-items-baseline</code>
+        </Placeholder>
+      </div>
+    </Placeholder>
+    <Placeholder bordered>
+      <div className="d-flex align-items-stretch" style={{ height: '6rem' }}>
+        <Placeholder bordered>
+          <code>.align-items-stretch</code>
         </Placeholder>
       </div>
     </Placeholder>
@@ -164,3 +179,7 @@ From `sm` up you can set the desired box alignment for individual
     </div>
   </>
 </Playground>
+
+[flexbox]: https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox
+[grid]: https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids
+[box-alignment]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Alignment

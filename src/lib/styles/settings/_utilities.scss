@@ -14,13 +14,25 @@ $map: (
         responsive: true,
         property: align-items,
         class: align-items,
-        values: (baseline, center, flex-start, flex-end),
+        values: (center, start, flex-start, end, flex-end, baseline, stretch),
+    ),
+    "align-self": (
+        responsive: true,
+        property: align-self,
+        class: align-self,
+        values: (center, start, flex-start, end, flex-end, baseline, stretch),
     ),
     "justify-content": (
         responsive: true,
         property: justify-content,
         class: justify-content,
-        values: (start, flex-start, end, flex-end, center, space-between),
+        values: (center, start, flex-start, end, flex-end, space-between),
+    ),
+    "justify-self": (
+        responsive: true,
+        property: justify-self,
+        class: justify-self,
+        values: (center, start, end, baseline, stretch),
     ),
     "margin-top": (
         responsive: true,
