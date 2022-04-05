@@ -20,10 +20,6 @@ describe('rendering', () => {
       (rootElement) => expect(within(rootElement).getByText('label text')),
     ],
     [
-      { label: 111 },
-      (rootElement) => expect(within(rootElement).getByText('111')),
-    ],
-    [
       { priority: 'filled' },
       (rootElement) => expect(rootElement).not.toHaveClass('rootPriorityOutline'),
     ],
