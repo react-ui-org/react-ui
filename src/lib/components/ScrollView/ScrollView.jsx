@@ -272,6 +272,7 @@ ScrollView.defaultProps = {
   arrowsColor: undefined,
   arrowsScrollStep: 200,
   autoScroll: 'off',
+  children: null,
   customEndShadowStyle: {},
   customNextArrow: null,
   customPrevArrow: null,
@@ -316,7 +317,7 @@ ScrollView.propTypes = {
   /**
    * Content to be scrollable.
    */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   /**
    * Custom CSS to replace the default end scrolling shadow.
    */

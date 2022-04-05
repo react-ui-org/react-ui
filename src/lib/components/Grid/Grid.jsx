@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../provider';
+import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { generateResponsiveCustomProperties } from './_helpers/generateResponsiveCustomProperties';
 import styles from './Grid.scss';
 
@@ -19,7 +20,7 @@ export const Grid = ({
   tag: Tag,
   ...other
 }) => {
-  if (!children) {
+  if (isChildrenEmpty(children)) {
     return null;
   }
 
@@ -113,7 +114,7 @@ Grid.propTypes = {
     }),
   ]),
   /**
-   * Items to be aligned in the grid.
+   * Items to be aligned in the grid. If none are provided nothing is rendered.
    */
   children: PropTypes.node,
   /**

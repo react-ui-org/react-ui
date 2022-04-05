@@ -3,6 +3,7 @@ import {
   render,
   within,
 } from '@testing-library/react';
+import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
 import Button from '../../Button';
 import { ButtonGroup } from '../ButtonGroup';
 
@@ -20,13 +21,10 @@ describe('rendering', () => {
       { block: false },
       (rootElement) => expect(rootElement).not.toHaveClass('isRootBlock'),
     ],
+    ...childrenEmptyPropTest,
     [
       { children: <Button label="label text" /> },
       (rootElement) => expect(within(rootElement).getByText('label text')),
-    ],
-    [
-      { children: [] },
-      (rootElement) => expect(rootElement).toBeInTheDocument(),
     ],
     [
       { disabled: true },

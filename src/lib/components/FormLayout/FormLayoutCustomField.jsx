@@ -4,6 +4,7 @@ import { withProviderContext } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
+import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { FormLayoutContext } from './FormLayoutContext';
 import styles from './FormLayoutCustomField.scss';
 
@@ -47,6 +48,10 @@ export const FormLayoutCustomField = ({
 }) => {
   const context = useContext(FormLayoutContext);
 
+  if (isChildrenEmpty(children)) {
+    return null;
+  }
+
   return (
     <div
       id={id}
@@ -85,7 +90,7 @@ FormLayoutCustomField.defaultProps = {
 
 FormLayoutCustomField.propTypes = {
   /**
-   * Custom HTML or React component(s).
+   * Custom HTML or React component(s). If none are provided nothing is rendered.
    */
   children: PropTypes.node,
   /**

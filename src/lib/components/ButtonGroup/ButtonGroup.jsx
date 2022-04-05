@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../provider';
 import { classNames } from '../../utils/classNames';
+import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import styles from './ButtonGroup.scss';
 import { ButtonGroupContext } from './ButtonGroupContext';
 
@@ -12,30 +13,37 @@ export const ButtonGroup = ({
   priority,
   size,
   ...restProps
-}) => (
-  <div
-    className={classNames(
-      styles.root,
-      block && styles.isRootBlock,
-    )}
-    role="group"
-    {...restProps}
-  >
-    <ButtonGroupContext.Provider
-      value={{
-        block,
-        disabled,
-        priority,
-        size,
-      }}
+}) => {
+  if (isChildrenEmpty(children)) {
+    return null;
+  }
+
+  return (
+    <div
+      className={classNames(
+        styles.root,
+        block && styles.isRootBlock,
+      )}
+      role="group"
+      {...restProps}
     >
-      {children}
-    </ButtonGroupContext.Provider>
-  </div>
-);
+      <ButtonGroupContext.Provider
+        value={{
+          block,
+          disabled,
+          priority,
+          size,
+        }}
+      >
+        {children}
+      </ButtonGroupContext.Provider>
+    </div>
+  );
+};
 
 ButtonGroup.defaultProps = {
   block: false,
+  children: null,
   disabled: false,
   priority: 'filled',
   size: 'medium',
@@ -47,9 +55,9 @@ ButtonGroup.propTypes = {
    */
   block: PropTypes.bool,
   /**
-   * Buttons to be grouped.
+   * Buttons to be grouped. If none are provided nothing is rendered.
    */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   /**
    * If `true`, all buttons inside the group will be disabled.
    */

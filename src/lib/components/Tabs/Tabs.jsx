@@ -18,7 +18,6 @@ export const Tabs = ({
 );
 
 Tabs.defaultProps = {
-  children: null,
   id: undefined,
 };
 
@@ -26,7 +25,7 @@ Tabs.propTypes = {
   /**
    * Nested `TabsItem` elements.
    */
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   /**
    * ID of the root HTML element. It also serves as base for nested element:
    * * `<ID>__list`

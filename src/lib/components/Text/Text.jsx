@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../provider';
 import { classNames } from '../../utils/classNames';
+import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { getRootClampClassName } from './_helpers/getRootClampClassName';
 import { getRootHyphensClassName } from './_helpers/getRootHyphensClassName';
 import { getRootWordWrappingClassName } from './_helpers/getRootWordWrappingClassName';
@@ -15,6 +16,10 @@ export const Text = ({
   lines,
   wordWrapping,
 }) => {
+  if (isChildrenEmpty(children)) {
+    return null;
+  }
+
   const HtmlElement = blockLevel ? 'div' : 'span';
 
   return (

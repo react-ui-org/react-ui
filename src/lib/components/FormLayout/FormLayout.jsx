@@ -2,21 +2,20 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../provider';
 import { classNames } from '../../utils/classNames';
+import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { FormLayoutContext } from './FormLayoutContext';
 import styles from './FormLayout.scss';
 
 const PREDEFINED_LABEL_WIDTH_VALUES = ['auto', 'default', 'limited'];
 
-export const FormLayout = (props) => {
-  const {
-    autoWidth,
-    children,
-    fieldLayout,
-    id,
-    labelWidth,
-  } = props;
-
-  if (!children) {
+export const FormLayout = ({
+  autoWidth,
+  children,
+  fieldLayout,
+  id,
+  labelWidth,
+}) => {
+  if (isChildrenEmpty(children)) {
     return null;
   }
 
@@ -89,6 +88,8 @@ FormLayout.propTypes = {
    * * `TextArea`
    * * `TextField`
    * * `Toggle`
+   *
+   * If none are provided nothing is rendered.
    */
   children: PropTypes.node,
   /**

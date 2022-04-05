@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../provider';
 import { classNames } from '../../utils/classNames';
+import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import styles from './List.scss';
 
 export const List = ({
@@ -9,7 +10,7 @@ export const List = ({
   autoWidth,
   children,
 }) => {
-  if (!children) {
+  if (isChildrenEmpty(children)) {
     return null;
   }
 
@@ -62,7 +63,7 @@ List.propTypes = {
    */
   autoWidth: PropTypes.bool,
   /**
-   * Individual ListItems.
+   * Individual ListItems. If none are provided nothing is rendered.
    */
   children: PropTypes.node,
 };

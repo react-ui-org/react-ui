@@ -2,16 +2,19 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../provider';
 import { classNames } from '../../utils/classNames';
+import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import styles from './Toolbar.scss';
 
-export const Toolbar = (props) => {
-  const {
-    align,
-    children,
-    dense,
-    justify,
-    nowrap,
-  } = props;
+export const Toolbar = ({
+  align,
+  children,
+  dense,
+  justify,
+  nowrap,
+}) => {
+  if (isChildrenEmpty(children)) {
+    return null;
+  }
 
   const alignClass = (value) => {
     if (value === 'top') {
@@ -62,6 +65,7 @@ export const Toolbar = (props) => {
 
 Toolbar.defaultProps = {
   align: 'top',
+  children: null,
   dense: false,
   justify: 'start',
   nowrap: false,
@@ -73,9 +77,13 @@ Toolbar.propTypes = {
    */
   align: PropTypes.oneOf(['top', 'middle', 'bottom', 'baseline']),
   /**
-   * Individual ToolbarItems and ToolbarGroups.
+   * Nested elements. Supported types are:
+   * * `ToolbarItems`
+   * * `ToolbarGroups`
+   *
+   * If none are provided nothing is rendered.
    */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   /**
    * If `true`, spacing of all toolbar items in the toolbar will be reduced.
    */

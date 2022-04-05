@@ -235,6 +235,7 @@ export class Modal extends React.Component {
 Modal.defaultProps = {
   actions: [],
   autoFocus: true,
+  children: null,
   id: undefined,
   onClose: null,
   portalId: null,
@@ -266,7 +267,7 @@ Modal.propTypes = {
   /**
    * Content of the modal.
    */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   /**
    * ID of the root HTML element. It also serves as a base for nested elements:
    * * `<ID>__content`

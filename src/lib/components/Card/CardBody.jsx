@@ -3,17 +3,11 @@ import React from 'react';
 import { withProviderContext } from '../../provider';
 import styles from './Card.scss';
 
-export const CardBody = (props) => {
-  const {
-    children,
-  } = props;
-
-  return (
-    <div className={styles.body}>
-      {children}
-    </div>
-  );
-};
+export const CardBody = ({ children }) => (
+  <div className={styles.body}>
+    {children}
+  </div>
+);
 
 CardBody.propTypes = {
   /**
