@@ -73,6 +73,13 @@ describe('rendering', () => {
       },
       (rootElement) => expect(within(rootElement).getByText('content text')),
     ],
+    [
+      {
+        onChange: () => {},
+        value: 111,
+      },
+      (rootElement) => expect(within(rootElement).getByText('111')),
+    ],
     ...variantPropTest,
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((

@@ -192,7 +192,10 @@ TextArea.propTypes = {
   /**
    * Value of the input.
    */
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   /**
    * Design variant of the field, further customizable with CSS custom properties.
    */

@@ -43,10 +43,7 @@ Badge.propTypes = {
   /**
    * Text to be displayed.
    */
-  label: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]).isRequired,
+  label: PropTypes.string.isRequired,
   /**
    * Visual priority to highlight or suppress the badge.
    */
