@@ -3,12 +3,17 @@ import {
   render,
   within,
 } from '@testing-library/react';
+import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
 import { fullWidthPropTest } from '../../../../../tests/propTests/fullWidthPropTest';
 import { labelPropTest } from '../../../../../tests/propTests/labelPropTest';
 import { requiredPropTest } from '../../../../../tests/propTests/requiredPropTest';
 import { validationStatePropTest } from '../../../../../tests/propTests/validationStatePropTest';
 import { FormLayoutContext } from '../FormLayoutContext';
 import { FormLayoutCustomField } from '../FormLayoutCustomField';
+
+const defaultProps = {
+  children: 'content',
+};
 
 describe('rendering', () => {
   it.each([
@@ -25,7 +30,7 @@ describe('rendering', () => {
       <FormLayoutContext.Provider
         value={{ ...testedProps }}
       >
-        <FormLayoutCustomField />
+        <FormLayoutCustomField>content</FormLayoutCustomField>
       </FormLayoutContext.Provider>
     ));
 
@@ -33,13 +38,10 @@ describe('rendering', () => {
   });
 
   it.each([
+    ...childrenEmptyPropTest,
     [
       { children: <div>other content text</div> },
       (rootElement) => expect(within(rootElement).getByText('other content text')),
-    ],
-    [
-      { children: null },
-      (rootElement) => expect(rootElement).toBeInTheDocument(),
     ],
     [
       { disabled: true },
@@ -86,6 +88,7 @@ describe('rendering', () => {
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <FormLayoutCustomField
+        {...defaultProps}
         {...testedProps}
       />
     ));

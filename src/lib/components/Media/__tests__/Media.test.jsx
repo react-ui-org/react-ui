@@ -3,12 +3,14 @@ import {
   render,
   within,
 } from '@testing-library/react';
+import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
 import { Media } from '../Media';
 import { MediaBody } from '../MediaBody';
 import { MediaObject } from '../MediaObject';
 
 describe('rendering', () => {
   it.each([
+    ...childrenEmptyPropTest,
     [
       { children: <MediaBody>content text</MediaBody> },
       (rootElement) => expect(within(rootElement).getByText('content text')),

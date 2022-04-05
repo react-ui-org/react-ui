@@ -2,13 +2,16 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { classNames } from '../../utils/classNames';
 import { withProviderContext } from '../../provider';
+import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import styles from './Toolbar.scss';
 
-export const ToolbarItem = (props) => {
-  const {
-    children,
-    flexible,
-  } = props;
+export const ToolbarItem = ({
+  children,
+  flexible,
+}) => {
+  if (isChildrenEmpty(children)) {
+    return null;
+  }
 
   return (
     <div
@@ -23,14 +26,15 @@ export const ToolbarItem = (props) => {
 };
 
 ToolbarItem.defaultProps = {
+  children: null,
   flexible: false,
 };
 
 ToolbarItem.propTypes = {
   /**
-   * Content of the toolbar item.
+   * Content of the toolbar item. If none are provided nothing is rendered.
    */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   /**
    * Allow item to grow and shrink if needed.
    */

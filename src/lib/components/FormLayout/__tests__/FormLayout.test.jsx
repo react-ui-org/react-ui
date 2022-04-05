@@ -3,6 +3,7 @@ import {
   render,
   within,
 } from '@testing-library/react';
+import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
 import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 import CheckboxField from '../../CheckboxField';
 import Radio from '../../Radio';
@@ -14,7 +15,7 @@ import { FormLayout } from '../FormLayout';
 import { FormLayoutCustomField } from '../FormLayoutCustomField';
 
 const defaultProps = {
-  children: <FormLayoutCustomField id="nested-id" />,
+  children: <FormLayoutCustomField id="nested-id">content</FormLayoutCustomField>,
 };
 
 describe('rendering', () => {
@@ -35,10 +36,7 @@ describe('rendering', () => {
       { autoWidth: false },
       (rootElement) => expect(rootElement).not.toHaveClass('isRootAutoWidth'),
     ],
-    [
-      { children: null },
-      (rootElement) => expect(rootElement).toBeNull(),
-    ],
+    ...childrenEmptyPropTest,
     [
       { children: <FormLayoutCustomField>other content text</FormLayoutCustomField> },
       (rootElement) => expect(within(rootElement).getByText('other content text')),

@@ -99,6 +99,13 @@ module.exports = {
 };
 ```
 
+## General Guidelines
+
+To keep React UI consistent and predictable the following guidelines should be observed:
+
+1. If component accepts the `children` prop it should be either required or the element
+   should return `null` when no children are provided.
+
 ## Documenting
 
 We use [Docz](https://docz.site) (powered by [Gatsby](https://www.gatsbyjs.com))

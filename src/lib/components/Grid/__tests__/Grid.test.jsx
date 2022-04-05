@@ -3,6 +3,7 @@ import {
   render,
   within,
 } from '@testing-library/react';
+import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
 import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 import { tagPropTest } from '../../../../../tests/propTests/tagPropTest';
 import { Grid } from '../Grid';
@@ -59,13 +60,10 @@ describe('rendering', () => {
       { autoFlow: 'row dense' },
       (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-auto-flow-xs': 'row dense' }),
     ],
+    ...childrenEmptyPropTest,
     [
       { children: <div>content text</div> },
       (rootElement) => expect(within(rootElement).getByText('content text')),
-    ],
-    [
-      { children: null },
-      (rootElement) => expect(rootElement).toBeNull(),
     ],
     [
       { columnGap: responsiveBreakpoints },

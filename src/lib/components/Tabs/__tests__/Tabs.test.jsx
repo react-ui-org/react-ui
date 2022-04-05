@@ -13,6 +13,10 @@ const tab = (
   />
 );
 
+const defaultProps = {
+  children: 'sample text',
+};
+
 describe('rendering', () => {
   it.each([
     [
@@ -24,10 +28,6 @@ describe('rendering', () => {
       (rootElement) => expect(within(rootElement).getByText('label')),
     ],
     [
-      { children: null },
-      (rootElement) => expect(rootElement).toBeInTheDocument(),
-    ],
-    [
       { id: 'id' },
       (rootElement) => {
         expect(rootElement).toHaveAttribute('id', 'id');
@@ -37,6 +37,7 @@ describe('rendering', () => {
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <Tabs
+        {...defaultProps}
         {...testedProps}
       />
     ));

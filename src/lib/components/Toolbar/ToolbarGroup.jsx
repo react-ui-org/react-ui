@@ -2,15 +2,18 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../provider';
 import { classNames } from '../../utils/classNames';
+import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import styles from './Toolbar.scss';
 
-export const ToolbarGroup = (props) => {
-  const {
-    align,
-    children,
-    dense,
-    nowrap,
-  } = props;
+export const ToolbarGroup = ({
+  align,
+  children,
+  dense,
+  nowrap,
+}) => {
+  if (isChildrenEmpty(children)) {
+    return null;
+  }
 
   const alignClass = (value) => {
     if (value === 'top') {
@@ -44,6 +47,7 @@ export const ToolbarGroup = (props) => {
 
 ToolbarGroup.defaultProps = {
   align: 'top',
+  children: null,
   dense: false,
   nowrap: false,
 };
@@ -54,9 +58,9 @@ ToolbarGroup.propTypes = {
    */
   align: PropTypes.oneOf(['top', 'middle', 'bottom', 'baseline']),
   /**
-   * Grouped ToolbarItems.
+   * Grouped ToolbarItems. If none are provided nothing is rendered.
    */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   /**
    * If `true`, spacing of toolbar items in the group will be reduced.
    */

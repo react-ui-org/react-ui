@@ -7,15 +7,15 @@ import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 import { raisedPropTest } from '../../../../../tests/propTests/raisedPropTest';
 import { Paper } from '../Paper';
 
+const defaultProps = {
+  children: 'sample text',
+};
+
 describe('rendering', () => {
   it.each([
     [
       { children: <div>content text</div> },
       (rootElement) => expect(within(rootElement).getByText('content text')),
-    ],
-    [
-      { children: null },
-      (rootElement) => expect(rootElement).toBeInTheDocument(),
     ],
     ...idPropTest,
     [
@@ -30,6 +30,7 @@ describe('rendering', () => {
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <Paper
+        {...defaultProps}
         {...testedProps}
       />
     ));

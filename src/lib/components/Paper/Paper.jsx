@@ -23,7 +23,6 @@ export const Paper = ({
 );
 
 Paper.defaultProps = {
-  children: null,
   id: undefined,
   muted: false,
   raised: false,
@@ -33,7 +32,7 @@ Paper.propTypes = {
   /**
    * Content to be placed onto Paper.
    */
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   /**
    * ID of the root HTML element.
    */

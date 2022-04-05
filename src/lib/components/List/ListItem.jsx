@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../provider';
+import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import styles from './List.scss';
 
 export const ListItem = ({ children }) => {
-  if (!children) {
+  if (isChildrenEmpty(children)) {
     return null;
   }
 
@@ -21,7 +22,7 @@ ListItem.defaultProps = {
 
 ListItem.propTypes = {
   /**
-   * Content of the list item.
+   * Content of the list item. If none are provided nothing is rendered.
    */
   children: PropTypes.node,
 };

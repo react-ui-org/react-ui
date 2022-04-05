@@ -6,23 +6,27 @@ import {
 import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 import { Text } from '../Text';
 
+const defaultProps = {
+  children: 'sample text',
+};
+
 describe('rendering', () => {
   it.each([
     [
       { blockLevel: true },
-      (rootElement) => expect(rootElement).toContainHTML('<div />'),
+      (rootElement) => expect(rootElement).toContainHTML('<div>sample text</div>'),
     ],
     [
       { blockLevel: false },
-      (rootElement) => expect(rootElement).toContainHTML('<span />'),
+      (rootElement) => expect(rootElement).toContainHTML('<span>sample text</span>'),
     ],
     [
       { children: 'content text' },
       (rootElement) => expect(within(rootElement).getByText('content text')),
     ],
     [
-      { children: null },
-      (rootElement) => expect(rootElement).toBeInTheDocument(),
+      { children: undefined },
+      (rootElement) => expect(rootElement).not.toBeInTheDocument(),
     ],
     [
       { hyphens: 'none' },
@@ -70,6 +74,7 @@ describe('rendering', () => {
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <Text
+        {...defaultProps}
         {...testedProps}
       />
     ));
