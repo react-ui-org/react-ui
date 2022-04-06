@@ -1,0 +1,11 @@
+@use "theme";
+
+.root {
+    text-decoration: theme.$text-decoration;
+    color: theme.$color;
+
+    &:hover {
+        text-decoration: theme.$hover-text-decoration;
+        color: theme.$hover-color;
+    }
+}

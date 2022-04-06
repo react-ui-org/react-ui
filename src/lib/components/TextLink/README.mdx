@@ -1,0 +1,77 @@
+---
+name: TextLink
+menu: 'Actions'
+route: /components/text-link
+---
+
+# TextLink
+
+import {
+  Playground,
+  Props,
+} from 'docz'
+import { TextLink } from './TextLink'
+
+TextLink allows users to follow navigation.
+
+## Basic Usage
+
+To implement the TextLink component, you need to import it first:
+
+```js
+import { TextLink } from '@react-ui-org/react-ui';
+```
+
+And use it:
+
+<Playground>
+  <TextLink
+    href="/contribute/guidelines"
+    label="How can I contribute to React UI?"
+  />
+</Playground>
+
+See [API](#api) for all available options.
+
+## General Guidelines
+
+**Avoid using links for actions**, use a [Button](/components/button)
+instead. This is because users expect navigation to happen when clicking on
+something what looks like a link.
+
+## Custom Routing
+
+It's common to use custom function for routing within SPAs. Use the
+`onClick` option to provide such function.
+
+<Playground>
+  <TextLink
+    href="/contribute/guidelines"
+    label="This link is controlled by custom function"
+    onClick={(event) => {
+      event.preventDefault();
+      alert('You will be redirected.')
+      window.location = event.currentTarget.getAttribute('href');
+    }}
+  />
+</Playground>
+
+## API
+
+In addition to the options below, you can specify [React synthetic events] or
+any custom HTML attributes that do not interfere with the API, and they will be
+passed to the `<a>` HTML element. This enables making the component interactive
+and helps improve its accessibility.
+
+<Props table of={TextLink} />
+
+## Theming
+
+| Custom Property                          | Description                       |
+|------------------------------------------|-----------------------------------|
+| `--rui-TextLink__color`                  | Text color                        |
+| `--rui-TextLink__text-decoration`        | Text decoration, e.g. underline   |
+| `--rui-TextLink--hover__color`           | Text color on hover               |
+| `--rui-TextLink--hover__text-decoration` | Text decoration on hover          |
+
+[React synthetic events]: https://reactjs.org/docs/events.html

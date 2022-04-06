@@ -6,10 +6,11 @@ import {
 import sinon from 'sinon';
 import userEvent from '@testing-library/user-event';
 import { idPropTest } from '../../../../../tests/propTests/idPropTest';
-import { Link } from '../Link';
+import { TextLink } from '../TextLink';
 
 const mandatoryProps = {
   href: '/test/uri',
+  label: 'link text',
 };
 
 describe('rendering', () => {
@@ -19,18 +20,16 @@ describe('rendering', () => {
       (rootElement) => expect(rootElement).toHaveAttribute('href', '/test/uri'),
     ],
     [
-      { children: 'link text' },
-      (rootElement) => expect(rootElement).toHaveTextContent('link text'),
+      { label: 'other text' },
+      (rootElement) => expect(rootElement).toHaveTextContent('other text'),
     ],
     ...idPropTest,
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
-      <Link
+      <TextLink
         {...mandatoryProps}
         {...testedProps}
-      >
-        link text
-      </Link>
+      />
     ));
 
     assert(dom.container.firstChild);
@@ -41,12 +40,10 @@ describe('functionality', () => {
   it('calls synthetic event onClick()', () => {
     const spy = sinon.spy();
     render((
-      <Link
+      <TextLink
         {...mandatoryProps}
         onClick={spy}
-      >
-        link text
-      </Link>
+      />
     ));
 
     userEvent.click(screen.getByText('link text'));
