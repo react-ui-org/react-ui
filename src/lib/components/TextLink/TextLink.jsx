@@ -2,12 +2,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../provider';
 import { transferProps } from '../_helpers/transferProps';
-import styles from './Link.scss';
+import styles from './TextLink.scss';
 
-export const Link = ({
-  children,
+export const TextLink = ({
   href,
   id,
+  label,
   ...restProps
 }) => (
   <a
@@ -16,20 +16,15 @@ export const Link = ({
     className={styles.root}
     id={id}
   >
-    {children}
+    {label}
   </a>
 );
 
-Link.defaultProps = {
-  children: null,
+TextLink.defaultProps = {
   id: undefined,
 };
 
-Link.propTypes = {
-  /**
-   * Content of the link.
-   */
-  children: PropTypes.node,
+TextLink.propTypes = {
   /**
    * Link's `href` attribute.
    */
@@ -38,8 +33,12 @@ Link.propTypes = {
    * ID of the root HTML element.
    */
   id: PropTypes.string,
+  /**
+   * Link label.
+   */
+  label: PropTypes.string.isRequired,
 };
 
-export const LinkWithContext = withProviderContext(Link, 'Link');
+export const LinkWithContext = withProviderContext(TextLink, 'Link');
 
 export default LinkWithContext;

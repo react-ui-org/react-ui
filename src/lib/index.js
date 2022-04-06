@@ -18,7 +18,6 @@ export {
   Grid,
   GridSpan,
 } from './components/Grid';
-export { default as Link } from './components/Link';
 export {
   List,
   ListItem,
@@ -41,6 +40,7 @@ export { default as Table } from './components/Table';
 export { default as Text } from './components/Text';
 export { default as TextArea } from './components/TextArea';
 export { default as TextField } from './components/TextField';
+export { default as TextLink } from './components/TextLink';
 export { default as Toggle } from './components/Toggle';
 export {
   Toolbar,
