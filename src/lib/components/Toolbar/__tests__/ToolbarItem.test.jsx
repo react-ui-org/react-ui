@@ -11,6 +11,13 @@ describe('rendering', () => {
       { children: <div>content text</div> },
       (rootElement) => expect(within(rootElement).getByText('content text')),
     ],
+    [
+      {
+        children: <div>content text</div>,
+        flexible: true,
+      },
+      (rootElement) => expect(rootElement).toHaveClass('isItemFlexible'),
+    ],
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <ToolbarItem

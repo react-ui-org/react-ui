@@ -304,6 +304,22 @@ Toolbar.
 content placed within Toolbar. The [Text][text] component is designed
 specifically for this kind of job.
 
+## Flexible Items
+
+Toolbar items can be made flexible to grow and shrink according to the available
+space. This is useful e.g. when you need to combine text with an action.
+
+<Playground>
+  <Toolbar>
+    <ToolbarItem flexible>
+      <Placeholder bordered>My Headline</Placeholder>
+    </ToolbarItem>
+    <ToolbarItem>
+      <Placeholder bordered>Action</Placeholder>
+    </ToolbarItem>
+  </Toolbar>
+</Playground>
+
 ## API
 
 <Props table of={Toolbar} />
