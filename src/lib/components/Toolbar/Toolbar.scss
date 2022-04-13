@@ -22,6 +22,11 @@
     margin: theme.$gap;
 }
 
+.isItemFlexible {
+    flex: 1;
+    min-width: 0;
+}
+
 .isAlignedToTop {
     align-items: flex-start;
 }
@@ -54,14 +59,6 @@
     justify-content: space-between;
 }
 
-.isNowrap {
-    flex-wrap: nowrap;
-}
-
-.isNowrap > .item {
-    flex: 0 1 auto;
-}
-
 .isDense {
     margin: calc(-1 * #{theme.$gap-dense});
 }
@@ -72,6 +69,14 @@
 
 .isDense > .isDense {
     margin: 0;
+}
+
+.isNowrap {
+    flex-wrap: nowrap;
+}
+
+.isNowrap > .item:not(.isItemFlexible) {
+    flex: 0 1 auto;
 }
 
 .toolbar.isDense {
