@@ -46,7 +46,11 @@ describe('rendering', () => {
     ],
     [
       { lines: 1 },
-      (rootElement) => expect(rootElement).toHaveClass('rootClampLines'),
+      (rootElement) => expect(rootElement).toHaveClass('rootClampSingleLine'),
+    ],
+    [
+      { lines: 2 },
+      (rootElement) => expect(rootElement).toHaveClass('rootClampMultiLine'),
     ],
     [
       { wordWrapping: 'normal' },
