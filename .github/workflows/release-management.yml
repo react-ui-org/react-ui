@@ -2,7 +2,7 @@ name: Release Management
 
 on:
   push:
-    branches: [master]
+    branches: [ master ]
 
 jobs:
   build_and_test:
@@ -12,7 +12,7 @@ jobs:
       version_changed: ${{ steps.check_package_version.outputs.changed }}
     steps:
       - name: Clone repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -31,7 +31,7 @@ jobs:
 
       - name: Check package.json for version change
         id: check_package_version
-        uses: EndBug/version-check@v2.0.1
+        uses: EndBug/version-check@v2.1.0
 
       - name: Log when version changed
         if: steps.check_package_version.outputs.changed == 'true'
@@ -42,7 +42,7 @@ jobs:
         run: 'echo "No version change"'
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: docs
           path: docs
@@ -54,7 +54,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Draft release on GitHub
-        uses: release-drafter/release-drafter@v5.15.0
+        uses: release-drafter/release-drafter@v5.19.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -65,7 +65,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Clone repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # An existing release draft is published only if there is a version bump in `package.json`.
       # Throws an error and breaks the job if called regardless. We check for version changes in the
@@ -90,25 +90,14 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Clone repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 16
+          cache: npm
           registry-url: https://registry.npmjs.org/
-
-      - name: Cache node modules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
 
       - name: Install
         run: npm ci
@@ -125,18 +114,18 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Clone repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           persist-credentials: false
 
       - name: Download artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: docs
           path: docs
 
       - name: Deploy docs to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.7
+        uses: JamesIves/github-pages-deploy-action@4.3.3
         with:
           folder: docs # Must match the name of the artifact used.
           repository-name: react-ui-org/react-ui-docs
