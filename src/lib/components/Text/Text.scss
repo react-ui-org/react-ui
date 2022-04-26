@@ -1,10 +1,20 @@
 // 1. `word-break: break-word` is deprecated in favour of `overflow-wrap: anywhere`, but it's still
 //     required for Safari.
 //     https://caniuse.com/mdn-css_properties_overflow-wrap_anywhere
+//
+// 2. Different approaches are used for single and multiline texts because the latter approach
+//    doesn't always work for single-line texts.
+
+.rootClampSingleLine {
+    display: block; // 2.
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 // stylelint-disable property-no-vendor-prefix, value-no-vendor-prefix
-.rootClampLines {
-    display: -webkit-box;
+.rootClampMultiLine {
+    display: -webkit-box; // 2.
     -webkit-line-clamp: var(--rui-custom-lines);
     -webkit-box-orient: vertical;
     overflow: hidden;

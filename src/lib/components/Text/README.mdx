@@ -81,7 +81,7 @@ appended by an ellipsis (`…`).
               label="Number of lines"
               min={1}
               max={100}
-              onChange={(e) => setLines(e.target.value)}
+              onChange={(e) => setLines(Number(e.target.value))}
               type="number"
               value={lines}
             />

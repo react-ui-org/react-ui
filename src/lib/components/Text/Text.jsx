@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withProviderContext } from '../../provider';
 import { classNames } from '../../utils/classNames';
+import { getRootClampClassName } from './_helpers/getRootClampClassName';
 import { getRootHyphensClassName } from './_helpers/getRootHyphensClassName';
 import { getRootWordWrappingClassName } from './_helpers/getRootWordWrappingClassName';
 import styles from './Text.scss';
@@ -20,13 +21,13 @@ export const Text = ({
     <HtmlElement
       className={(hyphens !== 'none' || lines > 0 || wordWrapping !== 'normal')
         ? classNames(
-          (lines > 0) ? styles.rootClampLines : '',
+          getRootClampClassName(lines, styles),
           getRootHyphensClassName(hyphens, styles),
           getRootWordWrappingClassName(wordWrapping, styles),
         )
         : undefined}
       id={id}
-      style={(lines > 0) ? { '--rui-custom-lines': lines } : undefined}
+      style={(lines > 1) ? { '--rui-custom-lines': lines } : undefined}
     >
       {children}
     </HtmlElement>
