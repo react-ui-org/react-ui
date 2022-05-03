@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import styles from './Card.scss';
 
 export const CardBody = ({ children }) => (
@@ -16,6 +16,6 @@ CardBody.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const CardBodyWithContext = withProviderContext(CardBody, 'CardBody');
+export const CardBodyWithGlobalProps = withGlobalProps(CardBody, 'CardBody');
 
-export default CardBodyWithContext;
+export default CardBodyWithGlobalProps;

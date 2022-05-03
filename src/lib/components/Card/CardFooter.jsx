@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import styles from './Card.scss';
 
@@ -27,6 +27,6 @@ CardFooter.propTypes = {
   children: PropTypes.node,
 };
 
-export const CardFooterWithContext = withProviderContext(CardFooter, 'CardFooter');
+export const CardFooterWithGlobalProps = withGlobalProps(CardFooter, 'CardFooter');
 
-export default CardFooterWithContext;
+export default CardFooterWithGlobalProps;

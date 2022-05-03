@@ -37,13 +37,6 @@ describe('rendering', () => {
         expect(within(rootElement).getByTitle('Close')).toHaveAttribute('id', 'id__close');
       },
     ],
-    [
-      {
-        onClose: () => {},
-        translations: { close: 'Zavřít' },
-      },
-      (rootElement) => expect(within(rootElement).getByTitle('Zavřít')),
-    ],
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <Alert

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
@@ -184,6 +184,6 @@ Radio.propTypes = {
   ]),
 };
 
-export const RadioWithContext = withProviderContext(Radio, 'Radio');
+export const RadioWithGlobalProps = withGlobalProps(Radio, 'Radio');
 
-export default RadioWithContext;
+export default RadioWithGlobalProps;

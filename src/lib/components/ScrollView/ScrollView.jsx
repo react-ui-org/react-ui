@@ -1,11 +1,15 @@
 import PropTypes from 'prop-types';
 import React, {
+  useContext,
   useEffect,
   useLayoutEffect,
   useRef,
   useState,
 } from 'react';
-import { withProviderContext } from '../../provider';
+import {
+  RUIContext,
+  withGlobalProps,
+} from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { getElementsPositionDifference } from './_helpers/getElementsPositionDifference';
 import { useLoadResize } from './_hooks/useLoadResizeHook';
@@ -34,8 +38,9 @@ export const ScrollView = (props) => {
     scrollbar,
     shadowColor,
     shadowSize,
-    translations,
   } = props;
+
+  const { translations } = useContext(RUIContext);
 
   const [isAutoScrollInProgress, setIsAutoScrollInProgress] = useState(false);
   const [isScrolledAtStart, setIsScrolledAtStart] = useState(false);
@@ -237,7 +242,7 @@ export const ScrollView = (props) => {
               'prev',
               arrowsScrollStep,
             )}
-            title={translations.previous}
+            title={translations.ScrollView.previous}
             id={id && `${id}__arrowPrevButton`}
           >
             {customPrevArrow || (
@@ -254,7 +259,7 @@ export const ScrollView = (props) => {
               'next',
               arrowsScrollStep,
             )}
-            title={translations.next}
+            title={translations.ScrollView.next}
             id={id && `${id}__arrowNextButton`}
           >
             {customNextArrow || (
@@ -374,15 +379,8 @@ ScrollView.propTypes = {
    * mode.
    */
   shadowSize: PropTypes.string,
-  /**
-   * Translations required by the component.
-   */
-  translations: PropTypes.shape({
-    next: PropTypes.string.isRequired,
-    previous: PropTypes.string.isRequired,
-  }).isRequired,
 };
 
-export const ScrollViewWithContext = withProviderContext(ScrollView, 'ScrollView');
+export const ScrollViewWithGlobalProps = withGlobalProps(ScrollView, 'ScrollView');
 
-export default ScrollViewWithContext;
+export default ScrollViewWithGlobalProps;

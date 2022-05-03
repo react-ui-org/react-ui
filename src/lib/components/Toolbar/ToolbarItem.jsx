@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { classNames } from '../../utils/classNames';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import styles from './Toolbar.scss';
 
@@ -41,6 +41,6 @@ ToolbarItem.propTypes = {
   flexible: PropTypes.bool,
 };
 
-export const ToolbarItemWithContext = withProviderContext(ToolbarItem, 'ToolbarItem');
+export const ToolbarItemWithGlobalProps = withGlobalProps(ToolbarItem, 'ToolbarItem');
 
-export default ToolbarItemWithContext;
+export default ToolbarItemWithGlobalProps;

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import styles from './Media.scss';
 
@@ -31,6 +31,6 @@ Media.propTypes = {
   children: PropTypes.node,
 };
 
-export const MediaWithContext = withProviderContext(Media, 'Media');
+export const MediaWithGlobalProps = withGlobalProps(Media, 'Media');
 
-export default MediaWithContext;
+export default MediaWithGlobalProps;

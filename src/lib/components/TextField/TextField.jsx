@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
@@ -209,6 +209,6 @@ TextField.propTypes = {
   variant: PropTypes.oneOf(['filled', 'outline']),
 };
 
-export const TextFieldWithContext = withForwardedRef(withProviderContext(TextField, 'TextField'));
+export const TextFieldWithGlobalProps = withForwardedRef(withGlobalProps(TextField, 'TextField'));
 
-export default TextFieldWithContext;
+export default TextFieldWithGlobalProps;

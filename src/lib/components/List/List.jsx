@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import styles from './List.scss';
@@ -68,6 +68,6 @@ List.propTypes = {
   children: PropTypes.node,
 };
 
-export const ListWithContext = withProviderContext(List, 'List');
+export const ListWithGlobalProps = withGlobalProps(List, 'List');
 
-export default ListWithContext;
+export default ListWithGlobalProps;

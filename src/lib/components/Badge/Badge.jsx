@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { getRootColorClassName } from '../_helpers/getRootColorClassName';
 import styles from './Badge.scss';
@@ -50,6 +50,6 @@ Badge.propTypes = {
   priority: PropTypes.oneOf(['filled', 'outline']),
 };
 
-export const BadgeWithContext = withProviderContext(Badge, 'Badge');
+export const BadgeWithGlobalProps = withGlobalProps(Badge, 'Badge');
 
-export default BadgeWithContext;
+export default BadgeWithGlobalProps;

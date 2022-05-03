@@ -103,19 +103,6 @@ describe('rendering', () => {
     ],
     // `shadowColor` untested
     // `shadowSize` untested
-    [
-      {
-        arrows: true,
-        translations: {
-          next: 'Další',
-          previous: 'Zpět',
-        },
-      },
-      (rootElement) => {
-        expect(within(rootElement).getByTitle('Další'));
-        expect(within(rootElement).getByTitle('Zpět'));
-      },
-    ],
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <ScrollView

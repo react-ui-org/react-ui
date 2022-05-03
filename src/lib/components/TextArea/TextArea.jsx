@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
@@ -202,6 +202,6 @@ TextArea.propTypes = {
   variant: PropTypes.oneOf(['filled', 'outline']),
 };
 
-export const TextAreaWithContext = withForwardedRef(withProviderContext(TextArea, 'TextArea'));
+export const TextAreaWithGlobalProps = withForwardedRef(withGlobalProps(TextArea, 'TextArea'));
 
-export default TextAreaWithContext;
+export default TextAreaWithGlobalProps;

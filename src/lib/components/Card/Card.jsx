@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { getRootColorClassName } from '../_helpers/getRootColorClassName';
 import styles from './Card.scss';
@@ -67,6 +67,6 @@ Card.propTypes = {
   raised: PropTypes.bool,
 };
 
-export const CardWithContext = withProviderContext(Card, 'Card');
+export const CardWithGlobalProps = withGlobalProps(Card, 'Card');
 
-export default CardWithContext;
+export default CardWithGlobalProps;

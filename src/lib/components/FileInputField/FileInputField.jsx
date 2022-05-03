@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
@@ -158,6 +158,6 @@ FileInputField.propTypes = {
   validationText: PropTypes.node,
 };
 
-export const FileInputFieldWithContext = withForwardedRef(withProviderContext(FileInputField, 'FileInputField'));
+export const FileInputFieldWithGlobalProps = withForwardedRef(withGlobalProps(FileInputField, 'FileInputField'));
 
-export default FileInputFieldWithContext;
+export default FileInputFieldWithGlobalProps;

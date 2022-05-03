@@ -9,41 +9,9 @@ route: /customize/translations
 Some components may contain texts which improve components' accessibility.
 All texts are in English by default and can be translated to other languages.
 
-## Translation Approaches
+Structure of translations can be found in the file `src/lib/translations/en.json`.
 
-Structure of translations can be found in file
-`src/lib/translations/en.json` or in a documentation of props of components
-that support translations.
-
-1. You can use `RUIProvider` component and pass translated structure
-   from this file into `RUIProvider` as `translations` prop to
-   overwrite default translations. You have to define all translations for all
-   components, otherwise it will not work.
-2. Other option is to overwrite translations locally using `translations` prop
-   of specific component. You have to define all translations as well.
-
-### Local Translations
-
-If component supports translations, `translations` prop and its structure is
-present in props documentation for a specific component.
-
-To define translations locally, you need to import component first (e.g. Modal):
-
-```js
-import { Modal } from '@react-ui-org/react-ui';
-```
-
-Then pass `translations` prop object:
-
-```jsx
-<Modal translations={{ close: 'Close' }}>
-  // ...
-</Modal>
-```
-
-### Global Translations
-
-To define translations globally, you need to import `RUIProvider` first:
+To use custom translations, you need to import `RUIProvider` first:
 
 ```js
 import { RUIProvider } from '@react-ui-org/react-ui';

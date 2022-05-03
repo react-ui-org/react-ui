@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import Button from '../Button';
 import styles from './Table.scss';
 
@@ -145,6 +145,6 @@ Table.propTypes = {
   }),
 };
 
-export const TableWithContext = withProviderContext(Table, 'Table');
+export const TableWithGlobalProps = withGlobalProps(Table, 'Table');
 
-export default TableWithContext;
+export default TableWithGlobalProps;

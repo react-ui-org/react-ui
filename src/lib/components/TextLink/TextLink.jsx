@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import { transferProps } from '../_helpers/transferProps';
 import styles from './TextLink.scss';
 
@@ -39,6 +39,6 @@ TextLink.propTypes = {
   label: PropTypes.string.isRequired,
 };
 
-export const LinkWithContext = withProviderContext(TextLink, 'Link');
+export const LinkWithGlobalProps = withGlobalProps(TextLink, 'TextLink');
 
-export default LinkWithContext;
+export default LinkWithGlobalProps;
