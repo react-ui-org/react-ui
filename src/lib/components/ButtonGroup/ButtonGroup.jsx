@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import styles from './ButtonGroup.scss';
@@ -72,6 +72,6 @@ ButtonGroup.propTypes = {
   size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
-export const ButtonGroupWithContext = withProviderContext(ButtonGroup, 'ButtonGroup');
+export const ButtonGroupWithGlobalProps = withGlobalProps(ButtonGroup, 'ButtonGroup');
 
-export default ButtonGroupWithContext;
+export default ButtonGroupWithGlobalProps;

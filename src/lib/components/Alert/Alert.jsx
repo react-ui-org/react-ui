@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
-import React from 'react';
-import { withProviderContext } from '../../provider';
+import React, { useContext } from 'react';
+import {
+  RUIContext,
+  withGlobalProps,
+} from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { getRootColorClassName } from '../_helpers/getRootColorClassName';
 import styles from './Alert.scss';
@@ -11,42 +14,45 @@ export const Alert = ({
   icon,
   id,
   onClose,
-  translations,
-}) => (
-  <div
-    className={classNames(
-      styles.root,
-      getRootColorClassName(color, styles),
-    )}
-    id={id}
-    role="alert"
-  >
-    {icon && (
-      <div className={styles.icon}>
-        {icon}
-      </div>
-    )}
+}) => {
+  const { translations } = useContext(RUIContext);
+
+  return (
     <div
-      className={styles.message}
-      {...(id && { id: `${id}__content` })}
+      className={classNames(
+        styles.root,
+        getRootColorClassName(color, styles),
+      )}
+      id={id}
+      role="alert"
     >
-      {children}
-    </div>
-    {onClose && (
-      <button
-        type="button"
-        {...(id && { id: `${id}__close` })}
-        className={styles.close}
-        onClick={() => onClose()}
-        onKeyPress={() => onClose()}
-        tabIndex="0"
-        title={translations.close}
+      {icon && (
+        <div className={styles.icon}>
+          {icon}
+        </div>
+      )}
+      <div
+        className={styles.message}
+        {...(id && { id: `${id}__content` })}
       >
-        <span className={styles.closeSign}>×</span>
-      </button>
-    )}
-  </div>
-);
+        {children}
+      </div>
+      {onClose && (
+        <button
+          type="button"
+          {...(id && { id: `${id}__close` })}
+          className={styles.close}
+          onClick={() => onClose()}
+          onKeyPress={() => onClose()}
+          tabIndex="0"
+          title={translations.Alert.close}
+        >
+          <span className={styles.closeSign}>×</span>
+        </button>
+      )}
+    </div>
+  );
+};
 
 Alert.defaultProps = {
   color: 'note',
@@ -83,14 +89,8 @@ Alert.propTypes = {
    * hidden.
    */
   onClose: PropTypes.func,
-  /**
-   * Translations required by the component.
-   */
-  translations: PropTypes.shape({
-    close: PropTypes.string.isRequired,
-  }).isRequired,
 };
 
-export const AlertWithContext = withProviderContext(Alert, 'Alert');
+export const AlertWithGlobalProps = withGlobalProps(Alert, 'Alert');
 
-export default AlertWithContext;
+export default AlertWithGlobalProps;

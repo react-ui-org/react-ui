@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { transferProps } from '../_helpers/transferProps';
@@ -159,6 +159,6 @@ Toggle.propTypes = {
   ]),
 };
 
-export const ToggleWithContext = withForwardedRef(withProviderContext(Toggle, 'Toggle'));
+export const ToggleWithGlobalProps = withForwardedRef(withGlobalProps(Toggle, 'Toggle'));
 
-export default ToggleWithContext;
+export default ToggleWithGlobalProps;

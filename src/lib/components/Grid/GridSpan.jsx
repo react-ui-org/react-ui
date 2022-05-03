@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { generateResponsiveCustomProperties } from './_helpers/generateResponsiveCustomProperties';
 import styles from './Grid.scss';
@@ -89,6 +89,6 @@ GridSpan.propTypes = {
   tag: PropTypes.string,
 };
 
-export const GridSpanWithContext = withProviderContext(GridSpan, 'GridSpan');
+export const GridSpanWithGlobalProps = withGlobalProps(GridSpan, 'GridSpan');
 
-export default GridSpanWithContext;
+export default GridSpanWithGlobalProps;

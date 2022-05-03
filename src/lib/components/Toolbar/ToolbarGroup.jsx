@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import styles from './Toolbar.scss';
@@ -71,6 +71,6 @@ ToolbarGroup.propTypes = {
   nowrap: PropTypes.bool,
 };
 
-export const ToolbarGroupWithContext = withProviderContext(ToolbarGroup, 'ToolbarGroup');
+export const ToolbarGroupWithGlobalProps = withGlobalProps(ToolbarGroup, 'ToolbarGroup');
 
-export default ToolbarGroupWithContext;
+export default ToolbarGroupWithGlobalProps;

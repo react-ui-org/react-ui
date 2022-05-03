@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import styles from './TabsItem.scss';
 
@@ -83,6 +83,6 @@ TabsItem.propTypes = {
   onClick: PropTypes.func,
 };
 
-export const TabsItemWithContext = withProviderContext(TabsItem, 'TabsItem');
+export const TabsItemWithGlobalProps = withGlobalProps(TabsItem, 'TabsItem');
 
-export default TabsItemWithContext;
+export default TabsItemWithGlobalProps;

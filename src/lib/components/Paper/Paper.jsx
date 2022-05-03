@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import styles from './Paper.scss';
 
@@ -47,6 +47,6 @@ Paper.propTypes = {
   raised: PropTypes.bool,
 };
 
-export const PaperWithContext = withProviderContext(Paper, 'Paper');
+export const PaperWithGlobalProps = withGlobalProps(Paper, 'Paper');
 
-export default PaperWithContext;
+export default PaperWithGlobalProps;

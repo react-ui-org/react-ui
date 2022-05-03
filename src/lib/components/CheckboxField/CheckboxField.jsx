@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { transferProps } from '../_helpers/transferProps';
@@ -160,6 +160,6 @@ CheckboxField.propTypes = {
   ]),
 };
 
-export const CheckboxFieldWithContext = withForwardedRef(withProviderContext(CheckboxField, 'CheckboxField'));
+export const CheckboxFieldWithGlobalProps = withForwardedRef(withGlobalProps(CheckboxField, 'CheckboxField'));
 
-export default CheckboxFieldWithContext;
+export default CheckboxFieldWithGlobalProps;

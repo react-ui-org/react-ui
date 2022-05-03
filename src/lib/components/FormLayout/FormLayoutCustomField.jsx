@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
@@ -131,6 +131,6 @@ FormLayoutCustomField.propTypes = {
   validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
 };
 
-export const FormLayoutCustomFieldWithContext = withProviderContext(FormLayoutCustomField, 'FormLayoutCustomField');
+export const FormLayoutCustomFieldWithGlobalProps = withGlobalProps(FormLayoutCustomField, 'FormLayoutCustomField');
 
-export default FormLayoutCustomFieldWithContext;
+export default FormLayoutCustomFieldWithGlobalProps;

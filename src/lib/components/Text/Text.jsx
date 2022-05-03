@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { getRootClampClassName } from './_helpers/getRootClampClassName';
@@ -75,6 +75,6 @@ Text.propTypes = {
   wordWrapping: PropTypes.oneOf(['normal', 'long-words', 'anywhere']),
 };
 
-export const TextWithContext = withProviderContext(Text, 'Text');
+export const TextWithGlobalProps = withGlobalProps(Text, 'Text');
 
-export default TextWithContext;
+export default TextWithGlobalProps;

@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { createPortal } from 'react-dom';
-import { withProviderContext } from '../../provider';
+import {
+  RUIContext,
+  withGlobalProps,
+} from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { transferProps } from '../_helpers/transferProps';
 import {
@@ -81,7 +84,6 @@ export class Modal extends React.Component {
       scrollView,
       size,
       title,
-      translations,
     } = this.props;
 
     const sizeClass = (modalSize) => {
@@ -173,15 +175,19 @@ export class Modal extends React.Component {
               {title}
             </h3>
             {onClose && (
-              <button
-                type="button"
-                className={styles.close}
-                onClick={onClose}
-                title={translations.close}
-                {...(id && { id: `${id}__closeModalHeaderButton` })}
-              >
-                ×
-              </button>
+              <RUIContext.Consumer>
+                {({ translations }) => (
+                  <button
+                    type="button"
+                    className={styles.close}
+                    onClick={onClose}
+                    title={translations.Modal.close}
+                    {...(id && { id: `${id}__closeModalHeaderButton` })}
+                  >
+                    ×
+                  </button>
+                )}
+              </RUIContext.Consumer>
             )}
           </div>
           {modalBody()}
@@ -205,12 +211,16 @@ export class Modal extends React.Component {
                 ))}
                 {onClose && (
                   <ToolbarItem>
-                    <Button
-                      label={translations.close}
-                      onClick={onClose}
-                      priority="flat"
-                      {...(id && { id: `${id}__closeModalFooterButton` })}
-                    />
+                    <RUIContext.Consumer>
+                      {({ translations }) => (
+                        <Button
+                          label={translations.Modal.close}
+                          onClick={onClose}
+                          priority="flat"
+                          {...(id && { id: `${id}__closeModalFooterButton` })}
+                        />
+                      )}
+                    </RUIContext.Consumer>
                   </ToolbarItem>
                 )}
               </Toolbar>
@@ -301,14 +311,8 @@ Modal.propTypes = {
    * Title displayed in modal header.
    */
   title: PropTypes.string.isRequired,
-  /**
-   * Translations required by the component.
-   */
-  translations: PropTypes.shape({
-    close: PropTypes.string.isRequired,
-  }).isRequired,
 };
 
-export const ModalWithContext = withProviderContext(Modal, 'Modal');
+export const ModalWithGlobalProps = withGlobalProps(Modal, 'Modal');
 
-export default ModalWithContext;
+export default ModalWithGlobalProps;

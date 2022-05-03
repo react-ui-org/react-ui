@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { FormLayoutContext } from './FormLayoutContext';
@@ -110,6 +110,6 @@ FormLayout.propTypes = {
   ]),
 };
 
-export const FormLayoutWithContext = withProviderContext(FormLayout, 'FormLayout');
+export const FormLayoutWithGlobalProps = withGlobalProps(FormLayout, 'FormLayout');
 
-export default FormLayoutWithContext;
+export default FormLayoutWithGlobalProps;

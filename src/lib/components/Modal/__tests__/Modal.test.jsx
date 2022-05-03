@@ -83,13 +83,6 @@ describe('rendering', () => {
       { title: 'other title text' },
       (rootElement) => expect(within(rootElement).getByText('other title text')),
     ],
-    [
-      {
-        onClose: () => {},
-        translations: { close: 'Zavřít' },
-      },
-      (rootElement) => expect(within(rootElement).getByTitle('Zavřít')),
-    ],
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <Modal

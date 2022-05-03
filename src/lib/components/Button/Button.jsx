@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { getRootColorClassName } from '../_helpers/getRootColorClassName';
 import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
@@ -194,6 +194,6 @@ Button.propTypes = {
   type: PropTypes.oneOf(['button', 'submit']),
 };
 
-export const ButtonWithContext = withForwardedRef(withProviderContext(Button, 'Button'));
+export const ButtonWithGlobalProps = withForwardedRef(withGlobalProps(Button, 'Button'));
 
-export default ButtonWithContext;
+export default ButtonWithGlobalProps;

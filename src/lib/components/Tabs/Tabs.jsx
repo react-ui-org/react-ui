@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withProviderContext } from '../../provider';
+import { withGlobalProps } from '../../provider';
 import styles from './Tabs.scss';
 
 export const Tabs = ({
@@ -33,6 +33,6 @@ Tabs.propTypes = {
   id: PropTypes.string,
 };
 
-export const TabsWithContext = withProviderContext(Tabs, 'Tabs');
+export const TabsWithGlobalProps = withGlobalProps(Tabs, 'Tabs');
 
-export default TabsWithContext;
+export default TabsWithGlobalProps;
