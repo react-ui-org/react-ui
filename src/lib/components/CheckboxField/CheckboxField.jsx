@@ -40,6 +40,15 @@ export const CheckboxField = ({
       id={id && `${id}__label`}
     >
       <div className={styles.field}>
+        <div
+          className={classNames(
+            styles.label,
+            !isLabelVisible && styles.isLabelHidden,
+          )}
+          id={id && `${id}__labelText`}
+        >
+          {label}
+        </div>
         <input
           {...transferProps(restProps)}
           checked={checked}
@@ -51,15 +60,6 @@ export const CheckboxField = ({
           type="checkbox"
           value={value}
         />
-        <div
-          className={classNames(
-            styles.label,
-            !isLabelVisible && styles.isLabelHidden,
-          )}
-          id={id && `${id}__labelText`}
-        >
-          {label}
-        </div>
       </div>
       {helpText && (
         <div

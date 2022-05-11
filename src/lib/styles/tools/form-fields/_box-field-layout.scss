@@ -5,9 +5,9 @@
 // 2.  Form fields in horizontal layout also take up only as much space as they need. Labels do not
 //     wrap until label width limit is reached (50 % of available horizontal space by default).
 //
-// 3. Help texts and validation messages are aligned below input and wrapped. Their width is always
-//    limited to the width of the input field so they don't shift adjacent elements when they show
-//    up. This applies unless the field is inside FormLayout (see 10).
+// 3.  Help texts and validation messages are aligned below input and wrapped. Their width is always
+//     limited to the width of the input field so they don't shift adjacent elements when they show
+//     up. This applies unless the field is inside FormLayout (see 10).
 //
 // 4.  Define grid spacing as padding of child elements because grid areas make row and column gaps
 //     show up even when not necessary.

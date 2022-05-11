@@ -24,7 +24,7 @@
 }
 
 .option {
-    @include inline-field-layout.field();
+    @include inline-field-layout.field($type: radio);
     @include inline-field-elements.min-tap-target($type: radio);
 }
 
