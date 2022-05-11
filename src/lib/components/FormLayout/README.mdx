@@ -200,20 +200,17 @@ with CSS custom properties.
 
 ### Limitations
 
+#### Label Position
+
+Label position of inline form fields (CheckboxField, Toggle) is ignored in
+horizontal FormLayout.
+
 #### Modals
 
 Please note the `auto` and `limited` label width options may not function
 correctly in combination with other auto layout mechanisms, e.g. the auto-width
-[Modal](/components/modal). It's just too much of magic that doesn't quite
+[Modal](/components/modal). It's just too much of magic that does not quite
 work together yet 🎩.
-
-#### Inline Form Fields
-
-CheckboxField and Toggle always display their labels after inputs inside
-FormLayout. In other words, their labels never appear in a column with other
-fields' labels even when they have `labelPosition` set to `before`. This feature
-[will be implemented][rui-232] once [CSS subgrid][subgrid] is fully supported in
-[browsers that we support](/getting-started/browsers-and-devices).
 
 ## Custom Fields
 
@@ -402,6 +399,7 @@ This is a demo of all components supported by FormLayout.
             </FormLayoutCustomField>
             <CheckboxField
               checked={isDeliveryAddress}
+              helpText="Uncheck if you wish to deliver to a different address."
               label="This is my delivery address"
               onChange={() => setIsDeliveryAddress(!isDeliveryAddress)}
             />

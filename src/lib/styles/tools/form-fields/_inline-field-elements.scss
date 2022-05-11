@@ -6,6 +6,8 @@
 //
 // 3. Reset extra space previously added to symmetrically pad the field in FormLayout context as
 //    there already is a sufficient row gap provided by FormLayout.
+//
+// 4. Destroy tap target when subgrid is not supported.
 
 @use "../../theme/typography";
 @use "../../theme/form-fields" as theme;
@@ -93,7 +95,16 @@
             padding-top: 0;
 
             &::before {
-                top: calc((#{typography.$line-height-base} - 1rem * #{theme.$check-tap-target-size}) / 2);
+                top: calc((1rem * #{typography.$line-height-base} - #{theme.$check-tap-target-size}) / 2);
+            }
+        }
+
+        &.isRootInFormLayout.rootLayoutHorizontal::before {
+            grid-column-start: 2;
+
+            // 4.
+            @supports not (grid-template-columns: subgrid) {
+                display: none;
             }
         }
     }

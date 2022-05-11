@@ -17,7 +17,7 @@
 }
 
 .field {
-    @include inline-field-layout.field();
+    @include inline-field-layout.field($type: toggle);
 }
 
 .input {
