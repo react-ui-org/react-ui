@@ -1,7 +1,6 @@
 # React UI
 
 ![npm](https://img.shields.io/npm/v/@react-ui-org/react-ui)
-![David](https://img.shields.io/david/react-ui-org/react-ui)
 ![Build and run tests](https://github.com/react-ui-org/react-ui/workflows/Build%20and%20run%20tests/badge.svg)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/@react-ui-org/react-ui)
 
@@ -26,6 +25,21 @@ these requirements:
   with no additional effort.
 
 - **🚀 Small bundle size.** Because performance matters.
+
+## Sponsors
+
+<p>
+    <br />
+    <a href="https://www.racom.eu">
+      <img src="public/racom.svg" width="190" height="30" alt="RACOM" />
+    </a>
+    <br />
+    <br />
+</p>
+
+> Development of React UI is largely supported by
+> [RACOM](https://www.racom.eu)—one of the leading global players in wireless
+> Critical Infrastructure.
 
 ## Quick Start Guide
 
@@ -95,21 +109,6 @@ module.exports = (env, argv) => ({
 ```
 
 Then run webpack with the `--mode=production` or `--mode=development` flag.
-
-## Sponsors
-
-<p>
-    <br />
-    <a href="https://www.racom.eu">
-      <img src="public/racom.svg" width="190" height="30" alt="RACOM" />
-    </a>
-    <br />
-    <br />
-</p>
-
-> Development of React UI is largely supported by
-> [RACOM](https://www.racom.eu)—one of the leading global players in wireless
-> Critical Infrastructure.
 
 ## Contributing
 
