@@ -19,8 +19,8 @@ const responsiveBreakpoints = {
   md: 3,
   lg: 4,
   xl: 5,
-  xxl: 6,
-  xxxl: 7,
+  x2l: 6,
+  x3l: 7,
 };
 /* eslint-enable sort-keys */
 
@@ -30,8 +30,8 @@ const responsiveStyles = (infix) => ({
   [`--rui-local-${infix}-md`]: 3,
   [`--rui-local-${infix}-lg`]: 4,
   [`--rui-local-${infix}-xl`]: 5,
-  [`--rui-local-${infix}-xxl`]: 6,
-  [`--rui-local-${infix}-xxxl`]: 7,
+  [`--rui-local-${infix}-x2l`]: 6,
+  [`--rui-local-${infix}-x3l`]: 7,
 });
 
 describe('rendering', () => {

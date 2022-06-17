@@ -118,12 +118,12 @@ describe('rendering', () => {
       (rootElement) => expect(rootElement).toHaveClass('withLabelVisibleXl'),
     ],
     [
-      { labelVisibility: 'xxl' },
-      (rootElement) => expect(rootElement).toHaveClass('withLabelVisibleXxl'),
+      { labelVisibility: 'x2l' },
+      (rootElement) => expect(rootElement).toHaveClass('withLabelVisibleX2l'),
     ],
     [
-      { labelVisibility: 'xxxl' },
-      (rootElement) => expect(rootElement).toHaveClass('withLabelVisibleXxxl'),
+      { labelVisibility: 'x3l' },
+      (rootElement) => expect(rootElement).toHaveClass('withLabelVisibleX3l'),
     ],
     [
       { labelVisibility: 'none' },
