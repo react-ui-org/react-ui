@@ -290,7 +290,7 @@ Modal.propTypes = {
    */
   onClose: PropTypes.func,
   /**
-   * If set, the modal is rendered in the React Portal with that ID.
+   * If set, modal is rendered in the React Portal with that ID.
    */
   portalId: PropTypes.string,
   /**
