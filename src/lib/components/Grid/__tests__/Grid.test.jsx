@@ -15,8 +15,8 @@ const responsiveBreakpoints = {
   md: 'placeholder-md',
   lg: 'placeholder-lg',
   xl: 'placeholder-xl',
-  xxl: 'placeholder-xxl',
-  xxxl: 'placeholder-xxxl',
+  x2l: 'placeholder-x2l',
+  x3l: 'placeholder-x3l',
 };
 /* eslint-enable sort-keys */
 
@@ -26,8 +26,8 @@ const responsiveStyles = (infix) => ({
   [`--rui-local-${infix}-md`]: 'placeholder-md',
   [`--rui-local-${infix}-lg`]: 'placeholder-lg',
   [`--rui-local-${infix}-xl`]: 'placeholder-xl',
-  [`--rui-local-${infix}-xxl`]: 'placeholder-xxl',
-  [`--rui-local-${infix}-xxxl`]: 'placeholder-xxxl',
+  [`--rui-local-${infix}-x2l`]: 'placeholder-x2l',
+  [`--rui-local-${infix}-x3l`]: 'placeholder-x3l',
 });
 
 const defaultProps = {

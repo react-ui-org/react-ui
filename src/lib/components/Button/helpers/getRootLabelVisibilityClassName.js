@@ -17,12 +17,12 @@ export default (labelVisibility, styles) => {
     return styles.withLabelVisibleXl;
   }
 
-  if (labelVisibility === 'xxl') {
-    return styles.withLabelVisibleXxl;
+  if (labelVisibility === 'x2l') {
+    return styles.withLabelVisibleX2l;
   }
 
-  if (labelVisibility === 'xxxl') {
-    return styles.withLabelVisibleXxxl;
+  if (labelVisibility === 'x3l') {
+    return styles.withLabelVisibleX3l;
   }
 
   if (labelVisibility === 'none') {

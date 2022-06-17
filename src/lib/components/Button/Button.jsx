@@ -169,7 +169,7 @@ Button.propTypes = {
   /**
    * Defines minimum breakpoint from which the button label will be visible.
    */
-  labelVisibility: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'xxxl', 'none']),
+  labelVisibility: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl', 'x2l', 'x3l', 'none']),
   /**
    * Visual priority to highlight or suppress the button.
    *

@@ -106,8 +106,8 @@
 .withLabelVisibleMd,
 .withLabelVisibleLg,
 .withLabelVisibleXl,
-.withLabelVisibleXxl,
-.withLabelVisibleXxxl {
+.withLabelVisibleX2l,
+.withLabelVisibleX3l {
     @include tools.hide-label();
 }
 
@@ -135,14 +135,14 @@
     }
 }
 
-.withLabelVisibleXxl {
-    @include breakpoint.up(xxl) {
+.withLabelVisibleX2l {
+    @include breakpoint.up(x2l) {
         @include tools.show-label();
     }
 }
 
-.withLabelVisibleXxxl {
-    @include breakpoint.up(xxxl) {
+.withLabelVisibleX3l {
+    @include breakpoint.up(x3l) {
         @include tools.show-label();
     }
 }

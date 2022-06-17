@@ -59,8 +59,8 @@ GridSpan.propTypes = {
       md: PropTypes.number,
       lg: PropTypes.number,
       xl: PropTypes.number,
-      xxl: PropTypes.number,
-      xxxl: PropTypes.number,
+      x2l: PropTypes.number,
+      x3l: PropTypes.number,
     }),
   ]),
   /**
@@ -78,8 +78,8 @@ GridSpan.propTypes = {
       md: PropTypes.number,
       lg: PropTypes.number,
       xl: PropTypes.number,
-      xxl: PropTypes.number,
-      xxxl: PropTypes.number,
+      x2l: PropTypes.number,
+      x3l: PropTypes.number,
     }),
   ]),
   /**
