@@ -7,19 +7,17 @@
 .group {
     display: flex;
     flex-wrap: wrap;
+    gap: theme.$gap;
 }
 
 .toolbar {
-    @include spacing.bottom(layouts, $compensation: theme.$gap);
-
-    margin: calc(-1 * #{theme.$gap});
+    @include spacing.bottom(layouts);
 }
 
 .item {
     display: flex; // 1.
     flex: none;
     flex-direction: column; // 1.
-    margin: theme.$gap;
 }
 
 .isItemFlexible {
@@ -59,16 +57,9 @@
     justify-content: space-between;
 }
 
-.isDense {
-    margin: calc(-1 * #{theme.$gap-dense});
-}
-
-.isDense .item {
-    margin: theme.$gap-dense;
-}
-
-.isDense > .isDense {
-    margin: 0;
+.isDense,
+.isDense .group {
+    gap: theme.$gap-dense;
 }
 
 .isNowrap {
@@ -77,13 +68,4 @@
 
 .isNowrap > .item:not(.isItemFlexible) {
     flex: 0 1 auto;
-}
-
-.toolbar.isDense {
-    @include spacing.bottom(layouts, $compensation: theme.$gap-dense);
-}
-
-.toolbar:not(.isDense) > .isDense,
-.group:not(.isDense) > .isDense {
-    margin: theme.$gap-dense;
 }
