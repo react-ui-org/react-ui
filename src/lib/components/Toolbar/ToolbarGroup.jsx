@@ -9,6 +9,7 @@ export const ToolbarGroup = ({
   align,
   children,
   dense,
+  id,
   nowrap,
 }) => {
   if (isChildrenEmpty(children)) {
@@ -39,6 +40,7 @@ export const ToolbarGroup = ({
         nowrap && styles.isNowrap,
         alignClass(align),
       )}
+      id={id}
     >
       {children}
     </div>
@@ -49,6 +51,7 @@ ToolbarGroup.defaultProps = {
   align: 'top',
   children: null,
   dense: false,
+  id: undefined,
   nowrap: false,
 };
 
@@ -65,6 +68,10 @@ ToolbarGroup.propTypes = {
    * If `true`, spacing of toolbar items in the group will be reduced.
    */
   dense: PropTypes.bool,
+  /**
+   * ID of the root HTML element.
+   */
+  id: PropTypes.string,
   /**
    * If set, the toolbar group will not wrap.
    */

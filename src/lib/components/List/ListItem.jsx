@@ -4,13 +4,16 @@ import { withGlobalProps } from '../../provider';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import styles from './List.scss';
 
-export const ListItem = ({ children }) => {
+export const ListItem = ({
+  children,
+  id,
+}) => {
   if (isChildrenEmpty(children)) {
     return null;
   }
 
   return (
-    <li className={styles.item}>
+    <li className={styles.item} id={id}>
       {children}
     </li>
   );
@@ -18,6 +21,7 @@ export const ListItem = ({ children }) => {
 
 ListItem.defaultProps = {
   children: null,
+  id: undefined,
 };
 
 ListItem.propTypes = {
@@ -25,6 +29,10 @@ ListItem.propTypes = {
    * Content of the list item. If none are provided nothing is rendered.
    */
   children: PropTypes.node,
+  /**
+   * ID of the root HTML element.
+   */
+  id: PropTypes.string,
 };
 
 export const ListItemWithGlobalProps = withGlobalProps(ListItem, 'ListItem');

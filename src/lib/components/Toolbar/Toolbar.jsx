@@ -9,6 +9,7 @@ export const Toolbar = ({
   align,
   children,
   dense,
+  id,
   justify,
   nowrap,
 }) => {
@@ -57,6 +58,7 @@ export const Toolbar = ({
         alignClass(align),
         justifyClass(justify),
       )}
+      id={id}
     >
       {children}
     </div>
@@ -67,6 +69,7 @@ Toolbar.defaultProps = {
   align: 'top',
   children: null,
   dense: false,
+  id: undefined,
   justify: 'start',
   nowrap: false,
 };
@@ -88,6 +91,10 @@ Toolbar.propTypes = {
    * If `true`, spacing of all toolbar items in the toolbar will be reduced.
    */
   dense: PropTypes.bool,
+  /**
+   * ID of the root HTML element.
+   */
+  id: PropTypes.string,
   /**
    * Horizontal alignment (distribution) of toolbar items and groups.
    */

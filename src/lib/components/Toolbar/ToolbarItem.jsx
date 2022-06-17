@@ -8,6 +8,7 @@ import styles from './Toolbar.scss';
 export const ToolbarItem = ({
   children,
   flexible,
+  id,
 }) => {
   if (isChildrenEmpty(children)) {
     return null;
@@ -19,6 +20,7 @@ export const ToolbarItem = ({
         styles.item,
         flexible && styles.isItemFlexible,
       )}
+      id={id}
     >
       {children}
     </div>
@@ -28,6 +30,7 @@ export const ToolbarItem = ({
 ToolbarItem.defaultProps = {
   children: null,
   flexible: false,
+  id: undefined,
 };
 
 ToolbarItem.propTypes = {
@@ -39,6 +42,10 @@ ToolbarItem.propTypes = {
    * Allow item to grow and shrink if needed.
    */
   flexible: PropTypes.bool,
+  /**
+   * ID of the root HTML element.
+   */
+  id: PropTypes.string,
 };
 
 export const ToolbarItemWithGlobalProps = withGlobalProps(ToolbarItem, 'ToolbarItem');
