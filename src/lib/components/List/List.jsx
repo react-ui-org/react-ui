@@ -9,6 +9,7 @@ export const List = ({
   align,
   autoWidth,
   children,
+  id,
 }) => {
   if (isChildrenEmpty(children)) {
     return null;
@@ -34,6 +35,7 @@ export const List = ({
         styles.root,
         autoWidthClass,
       )}
+      id={id}
     >
       <ul
         className={classNames(
@@ -51,6 +53,7 @@ List.defaultProps = {
   align: 'start',
   autoWidth: false,
   children: null,
+  id: undefined,
 };
 
 List.propTypes = {
@@ -66,6 +69,10 @@ List.propTypes = {
    * Individual ListItems. If none are provided nothing is rendered.
    */
   children: PropTypes.node,
+  /**
+   * ID of the root HTML element.
+   */
+  id: PropTypes.string,
 };
 
 export const ListWithGlobalProps = withGlobalProps(List, 'List');

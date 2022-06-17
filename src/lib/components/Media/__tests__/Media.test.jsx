@@ -4,9 +4,14 @@ import {
   within,
 } from '@testing-library/react';
 import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
+import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 import { Media } from '../Media';
 import { MediaBody } from '../MediaBody';
 import { MediaObject } from '../MediaObject';
+
+const defaultProps = {
+  children: 'content',
+};
 
 describe('rendering', () => {
   it.each([
@@ -27,9 +32,11 @@ describe('rendering', () => {
         expect(within(rootElement).getByText('object content text'));
       },
     ],
+    ...idPropTest,
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <Media
+        {...defaultProps}
         {...testedProps}
       />
     ));

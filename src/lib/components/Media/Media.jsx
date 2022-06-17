@@ -4,13 +4,16 @@ import { withGlobalProps } from '../../provider';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import styles from './Media.scss';
 
-export const Media = ({ children }) => {
+export const Media = ({
+  children,
+  id,
+}) => {
   if (isChildrenEmpty(children)) {
     return null;
   }
 
   return (
-    <div className={styles.media}>
+    <div className={styles.media} id={id}>
       {children}
     </div>
   );
@@ -18,6 +21,7 @@ export const Media = ({ children }) => {
 
 Media.defaultProps = {
   children: null,
+  id: undefined,
 };
 
 Media.propTypes = {
@@ -29,6 +33,10 @@ Media.propTypes = {
    * If none are provided nothing is rendered.
    */
   children: PropTypes.node,
+  /**
+   * ID of the root HTML element.
+   */
+  id: PropTypes.string,
 };
 
 export const MediaWithGlobalProps = withGlobalProps(Media, 'Media');
