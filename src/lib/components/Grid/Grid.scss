@@ -40,6 +40,11 @@
     justify-items: var(--rui-local-justify-items, #{map.get(theme.$responsive-properties, justify-items)}); // 2.
 }
 
+// stylelint-disable-next-line selector-max-universal -- Reset any previously added margins.
+.root > * {
+    margin-block: 0;
+}
+
 .span {
     $responsive-properties: (
         column-span: 1,
@@ -58,5 +63,6 @@ ol.root,
 ul.root {
     padding-left: 0;
     margin-left: 0;
+    list-style: none;
 }
 // stylelint-enable selector-no-qualifying-type

@@ -19,10 +19,6 @@ export {
   GridSpan,
 } from './components/Grid';
 export {
-  List,
-  ListItem,
-} from './components/List';
-export {
   Media,
   MediaBody,
   MediaObject,

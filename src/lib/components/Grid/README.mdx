@@ -27,10 +27,7 @@ import { Grid } from '@react-ui-org/react-ui';
 And use it:
 
 <Playground>
-  <Grid columns="1fr 1fr 1fr">
-    <Placeholder bordered>Grid item</Placeholder>
-    <Placeholder bordered>Grid item</Placeholder>
-    <Placeholder bordered>Grid item</Placeholder>
+  <Grid>
     <Placeholder bordered>Grid item</Placeholder>
     <Placeholder bordered>Grid item</Placeholder>
     <Placeholder bordered>Grid item</Placeholder>
@@ -41,7 +38,7 @@ See [API](#api) for all available options.
 
 ## General Guidelines
 
-- This component implements native [CSS grid layout][grid-layout], the right CSS
+- This component implements native [CSS grid layout][grid-layout], a powerful
   tool for two-dimensional layouts. You may use any value accepted by
   [grid-template-columns], [grid-template-rows], [grid-column-gap],
   [grid-row-gap], [grid-auto-flow], [align-content], [align-items],
@@ -53,20 +50,22 @@ See [API](#api) for all available options.
   markup** like GridItem or Cell is necessary for your items. But it's there
   when you really need it—see [Advanced Layouts](#advanced-layouts).
 
+- For forms, use rather the [FormLayout](/components/form-layout) component
+  which is designed specifically for that purpose.
+
 - The Grid component is so powerful that it enables you to build even very
   advanced layouts **without** having to write **a single line of custom CSS.**
   See [Advanced Layouts](#advanced-layouts) for more.
 
-👉 The default layout has one column, auto-sized rows and gaps of
-[size 4](/foundation/spacing). Defaults for all Grid API options can be
-[customized](/customize/theming/overview) with CSS custom properties.
+👉 Vertical margin of items inside Grid is reset to zero.
 
-## Columns and Rows
+## Columns
 
-Use `columns` and `rows` to specify your grid layout.
+Unless the defaults are modified, stack is the default outcome of Grid. Use the
+`columns` option to organize your items into grid.
 
 <Playground>
-  <Grid columns="1fr 2fr" rows="auto 200px auto">
+  <Grid columns="1fr 1fr 1fr">
     <Placeholder bordered>Grid item</Placeholder>
     <Placeholder bordered>Grid item</Placeholder>
     <Placeholder bordered>Grid item</Placeholder>
@@ -106,6 +105,21 @@ responsive layouts. Resize the playground to see it in action.
 👉 If you need your items to have **equal height** even with content of varying
 length, it may be necessary to set `height: 100%` on them.
 
+## Rows
+
+Use `columns` and `rows` to specify a more complicated grid layout.
+
+<Playground>
+  <Grid columns="1fr 2fr" rows="auto 200px auto">
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+    <Placeholder bordered>Grid item</Placeholder>
+  </Grid>
+</Playground>
+
 ## Gaps
 
 Both column and row gaps can be customized.
@@ -138,6 +152,25 @@ Individual items and the entire grid content can be aligned and along both axes.
     <Placeholder bordered>Grid item</Placeholder>
     <Placeholder bordered>Grid item</Placeholder>
     <Placeholder bordered>Grid item</Placeholder>
+  </Grid>
+</Playground>
+
+## Custom HTML Tag
+
+To render as list for example, just change the output `tag` to `ul` or `ol` and
+wrap your items with `<li>`.
+
+<Playground>
+  <Grid tag="ul">
+    <li>
+      <Placeholder bordered>List item</Placeholder>
+    </li>
+    <li>
+      <Placeholder bordered>List item</Placeholder>
+    </li>
+    <li>
+      <Placeholder bordered>List item</Placeholder>
+    </li>
   </Grid>
 </Playground>
 
@@ -253,7 +286,7 @@ Wrapper for content that should span multiple rows or columns.
 [grid-column-gap]: https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap
 [grid-row-gap]: https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap
 [grid-auto-flow]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow
-[aling-content]: https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
+[align-content]: https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
 [align-items]: https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
 [justify-content]: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
 [justify-items]: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items
