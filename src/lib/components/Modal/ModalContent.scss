@@ -1,0 +1,5 @@
+@use "settings";
+
+.root {
+    padding: settings.$padding-y settings.$padding-x settings.$content-padding-bottom;
+}

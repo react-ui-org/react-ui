@@ -6,20 +6,17 @@ import {
   within,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Button } from '../../..';
 import { Modal } from '../Modal';
-
-const mandatoryProps = {
-  children: <div>content text</div>,
-  title: 'title text',
-  translations: { close: 'Close' },
-};
+import { ModalBody } from '../ModalBody';
+import { ModalHead } from '../ModalHead';
+import { ModalFooter } from '../ModalFooter';
 
 describe('rendering', () => {
   it('renders with "portalId" props', () => {
     document.body.innerHTML = '<div id="portal-id" />';
     render((
       <Modal
-        {...mandatoryProps}
         id="id"
         portalId="portal-id"
       >
@@ -32,8 +29,6 @@ describe('rendering', () => {
   });
 
   it.each([
-    // `actions` not tested - the current implementation is likely to be replaced
-    // `autoFocus` not tested - implementation does not match docs and the current implementation will be replaced
     [
       { children: <div>content text</div> },
       (rootElement) => expect(within(rootElement).getByText('content text')),
@@ -45,9 +40,6 @@ describe('rendering', () => {
       },
       (rootElement) => {
         expect(rootElement).toHaveAttribute('id', 'id');
-        expect(within(rootElement).getByTestId('id__content'));
-        expect(within(rootElement).getAllByRole('button')[0]).toHaveAttribute('id', 'id__closeModalHeaderButton');
-        expect(within(rootElement).getAllByRole('button')[1]).toHaveAttribute('id', 'id__closeModalFooterButton');
       },
     ],
     [
@@ -58,7 +50,6 @@ describe('rendering', () => {
       { position: 'center' },
       (rootElement) => expect(within(rootElement).getByRole('presentation')).toHaveClass('isRootPositionCenter'),
     ],
-    // `scrollView` not tested - the API is being discussed
     [
       { size: 'small' },
       (rootElement) => expect(within(rootElement).getByRole('presentation')).toHaveClass('isRootSizeSmall'),
@@ -79,14 +70,9 @@ describe('rendering', () => {
       { size: 'auto' },
       (rootElement) => expect(within(rootElement).getByRole('presentation')).toHaveClass('isRootSizeAuto'),
     ],
-    [
-      { title: 'other title text' },
-      (rootElement) => expect(within(rootElement).getByText('other title text')),
-    ],
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <Modal
-        {...mandatoryProps}
         {...testedProps}
       />
     ));
@@ -97,18 +83,24 @@ describe('rendering', () => {
 
 describe('functionality', () => {
   it.each([
-    () => userEvent.click(screen.getByText('Close')),
     () => userEvent.keyboard('{esc}'),
     () => userEvent.click(screen.getByTestId('id')),
-  ])('call onClose() (%#)', (action) => {
+  ])('call close modal using `closeButtonRef` (%#)', (action) => {
     const spy = sinon.spy();
+    const ref = React.createRef();
     render((
       <Modal
-        {...mandatoryProps}
-        onClose={spy}
+        closeButtonRef={ref}
         id="id"
       >
-        Modal content
+        <ModalFooter>
+          <Button
+            label="Close"
+            onClick={spy}
+            ref={ref}
+            type="button"
+          />
+        </ModalFooter>
       </Modal>
     ));
 
@@ -117,56 +109,175 @@ describe('functionality', () => {
   });
 
   it.each([
-    () => userEvent.click(screen.getByText('submit')),
-    () => userEvent.keyboard('{enter}'),
-  ])('call submit action (%#)', (action) => {
+    () => userEvent.keyboard('{esc}'),
+    () => userEvent.click(screen.getByTestId('id')),
+  ])('do not call close modal using `closeButtonRef` (%#)', (action) => {
     const spy = sinon.spy();
+    const ref = React.createRef();
     render((
       <Modal
-        {...mandatoryProps}
-        actions={[
-          {
-            label: 'submit',
-            onClick: spy,
-            type: 'submit',
-          },
-          {
-            label: 'action',
-            onClick: spy,
-            type: 'button',
-          },
-        ]}
+        closeButtonRef={ref}
+        id="id"
       >
-        content
-      </Modal>
-    ));
-
-    action();
-    expect(spy.calledOnce).toEqual(true);
-  });
-
-  it.each([
-    () => userEvent.click(screen.getByText('submit')),
-    () => userEvent.keyboard('{enter}'),
-  ])('do not call submit action when button is disabled (%#)', (action) => {
-    const spy = sinon.spy();
-    render((
-      <Modal
-        {...mandatoryProps}
-        actions={[
-          {
-            disabled: true,
-            label: 'submit',
-            onClick: spy,
-            type: 'submit',
-          },
-        ]}
-      >
-        content
+        <ModalFooter>
+          <Button
+            disabled
+            label="Close"
+            onClick={spy}
+            ref={ref}
+            type="button"
+          />
+        </ModalFooter>
       </Modal>
     ));
 
     action();
     expect(spy.called).toEqual(false);
+  });
+
+  it.each([
+    () => userEvent.keyboard('{esc}'),
+    () => userEvent.click(screen.getByTestId('id')),
+  ])('call close modal using `closeButtonRef` and `ModalHead` (%#)', (action) => {
+    const spy = sinon.spy();
+    const ref = React.createRef();
+    render((
+      <Modal
+        closeButtonRef={ref}
+        id="id"
+      >
+        <ModalHead
+          title="title text"
+          closeButtonRef={ref}
+          onClose={spy}
+        />
+      </Modal>
+    ));
+
+    action();
+    expect(spy.calledOnce).toEqual(true);
+  });
+
+  it.each([
+    () => userEvent.keyboard('{esc}'),
+    () => userEvent.click(screen.getByTestId('id')),
+  ])('do not call close modal using `closeButtonRef` and `ModalHead` (%#)', (action) => {
+    const spy = sinon.spy();
+    const ref = React.createRef();
+    render((
+      <Modal
+        closeButtonRef={ref}
+        id="id"
+      >
+        <ModalHead
+          title="title text"
+          closeButtonDisabled
+          closeButtonRef={ref}
+          onClose={spy}
+        />
+      </Modal>
+    ));
+
+    action();
+    expect(spy.called).toEqual(false);
+  });
+
+  it('call primary action using `primaryButtonRef`', () => {
+    const spy = sinon.spy();
+    const ref = React.createRef();
+    render((
+      <Modal
+        primaryButtonRef={ref}
+        id="id"
+      >
+        <ModalFooter>
+          <Button
+            label="Submit"
+            onClick={spy}
+            ref={ref}
+            type="button"
+          />
+        </ModalFooter>
+      </Modal>
+    ));
+
+    userEvent.keyboard('{enter}');
+    expect(spy.calledOnce).toEqual(true);
+  });
+
+  it('do not call primary action using `primaryButtonRef ', () => {
+    const spy = sinon.spy();
+    const ref = React.createRef();
+    render((
+      <Modal
+        primaryButtonRef={ref}
+        id="id"
+      >
+        <ModalFooter>
+          <Button
+            disabled
+            label="Submit"
+            onClick={spy}
+            ref={ref}
+            type="button"
+          />
+        </ModalFooter>
+      </Modal>
+    ));
+
+    userEvent.keyboard('{enter}');
+    expect(spy.called).toEqual(false);
+  });
+
+  it.each([
+    [
+      <input />,
+      (rootElement) => {
+        expect(document.activeElement).toEqual(within(rootElement).getByRole('textbox'));
+      },
+    ],
+    [
+      <textarea />,
+      (rootElement) => {
+        expect(document.activeElement).toEqual(within(rootElement).getByRole('textbox'));
+      },
+    ],
+    [
+      (
+        <select>
+          <option>Option</option>
+        </select>
+      ),
+      (rootElement) => {
+        expect(document.activeElement).toEqual(within(rootElement).getByRole('combobox'));
+      },
+    ],
+  ])('autofocuses element (%#)', (child, assert) => {
+    const dom = render((
+      <Modal>
+        <ModalBody>
+          {child}
+        </ModalBody>
+      </Modal>
+    ));
+
+    assert(dom.container.firstChild);
+  });
+
+  it('autofocuses primary button if no input is present', () => {
+    const ref = React.createRef();
+    const { container } = render((
+      <Modal primaryButtonRef={ref}>
+        <ModalFooter>
+          <Button
+            label="Submit"
+            onClick={() => {}}
+            ref={ref}
+          />
+        </ModalFooter>
+      </Modal>
+    ));
+
+    expect(document.activeElement).toEqual(within(container.firstChild).getByRole('button'));
   });
 });

@@ -27,7 +27,13 @@ export {
   MediaBody,
   MediaObject,
 } from './components/Media';
-export { default as Modal } from './components/Modal';
+export {
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHead,
+} from './components/Modal';
 export { default as Paper } from './components/Paper';
 export { default as Radio } from './components/Radio';
 export { default as ScrollView } from './components/ScrollView';

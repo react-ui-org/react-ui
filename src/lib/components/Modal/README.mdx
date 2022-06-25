@@ -12,15 +12,31 @@ import {
   Playground,
   Props,
 } from 'docz'
-import Button from '../Button'
-import { Modal } from './Modal'
+import {
+  Button,
+  FormLayout,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHead,
+  ScrollView,
+  TextField,
+} from '../..'
+import Icon from '../../../docs/_components/Icon'
 
 ## Basic Usage
 
 To implement the Modal component, you need to import it first:
 
 ```js
-import { Modal } from '@react-ui-org/react-ui';
+import {
+  Modal,
+  ModalHead,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+} from '@react-ui-org/react-ui';
 ```
 
 And use it:
@@ -28,6 +44,8 @@ And use it:
 <Playground>
   {() => {
     const [modalOpen, setModalOpen] = React.useState(false);
+    const modalPrimaryButtonRef = React.useRef();
+    const modalCloseButtonRef = React.useRef();
     return (
       <>
         <Button
@@ -38,18 +56,35 @@ And use it:
         <div>
           {modalOpen && (
             <Modal
-              actions={[{
-                color: 'danger',
-                label: 'Delete',
-                onClick: () => setModalOpen(false),
-              }]}
-              onClose={() => setModalOpen(false)}
-              title="Warning"
+              closeButtonRef={modalCloseButtonRef}
+              primaryButtonRef={modalPrimaryButtonRef}
             >
-              <p>
-                Do you really want to delete the user <code>admin</code>?
-                This cannot be undone.
-              </p>
+              <ModalHead
+                onClose={() => setModalOpen(false)}
+                title="Delete the user?"
+              />
+              <ModalBody>
+                <ModalContent>
+                  <p>
+                    Do you really want to delete the user <code>admin</code>?
+                    This cannot be undone.
+                  </p>
+                </ModalContent>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  color="danger"
+                  label="Delete"
+                  onClick={() => setModalOpen(false)}
+                  ref={modalPrimaryButtonRef}
+                />
+                <Button
+                  label="Close"
+                  onClick={() => setModalOpen(false)}
+                  priority="outline"
+                  ref={modalCloseButtonRef}
+                />
+              </ModalFooter>
             </Modal>
           )}
         </div>
@@ -74,12 +109,166 @@ See [API](#api) for all available options.
   tells better what happens rather than “OK”.
 
 - Modal **automatically focuses the first form field** by default which allows
-  users to confirm the modal by hitting enter key (requires an action of type
-  `submit`). When no field is found then the first button in footer is focused.
-  To turn this feature off, set the `autofocus` prop to `false`.
+  users to confirm the modal by hitting enter key. When no field is found then
+  the primary button (in footer) is focused. To turn this feature off, set the
+  `autofocus` prop to `false`.
 
 - **Avoid stacking** of modals. While it may technically work, the modal is just
   not designed for that.
+
+## Composition
+
+Modal is decomposed into following components:
+
+- `Modal`
+  - `ModalHead`
+  - `ModalBody`
+    - `ModalContent` (may be wrapped with [ScrollView](/components/scroll-view))
+  - `ModalFooter`
+
+Following rules must be applied when composing modal:
+
+- `Modal` is root component which can contain `ModalHead`, `ModalBody` and
+`ModalFooter`.
+- `Modal` must always contain at least `ModalBody`.
+- `ModalBody` can contain `ModalContent` or `ModalContent` wrapped
+with `ScrollView`.
+- `ModalContent` contains desired content.
+- `ModalFooter` contains one or more `Button` components representing modal actions.
+
+Using different combinations, you can compose different kind of modals, e.g.
+dialog modal, blocking modal, scrollable modal etc.
+
+<Playground>
+  {() => {
+    const [modalOpen, setModalOpen] = React.useState(null);
+    const modalPrimaryButtonRef = React.useRef();
+    const modalCloseButtonRef = React.useRef();
+    return (
+      <>
+        <Button
+          label="Launch blocking modal without title"
+          onClick={() => {
+            setModalOpen(1);
+            setTimeout(() => setModalOpen(null), 2500);
+          }}
+          priority="outline"
+        />
+        <Button
+          label="Launch blocking modal with title"
+          onClick={() => {
+            setModalOpen(2);
+            setTimeout(() => setModalOpen(null), 3500);
+          }}
+          priority="outline"
+        />
+        <Button
+          label="Launch modal as dialog"
+          onClick={() => setModalOpen(3)}
+          priority="outline"
+        />
+        <Button
+          label="Launch modal as form"
+          onClick={() => setModalOpen(4)}
+          priority="outline"
+        />
+        <div>
+          {modalOpen === 1 && (
+            <Modal>
+              <ModalBody>
+                <ModalContent>
+                  <p className="mt-4 text-center">
+                    Application is being loaded.
+                    <span className="d-inline-flex align-items-center animation-spin-counterclockwise">
+                      <Icon icon="loading" />
+                    </span>
+                  </p>
+                </ModalContent>
+              </ModalBody>
+            </Modal>
+          )}
+          {modalOpen === 2 && (
+            <Modal>
+              <ModalHead title="Action finished" />
+              <ModalBody>
+                <ModalContent>
+                  <p>
+                    Action has been successfully finished. You will be redirected within a few seconds.
+                  </p>
+                </ModalContent>
+              </ModalBody>
+            </Modal>
+          )}
+          {modalOpen === 3 && (
+            <Modal
+              closeButtonRef={modalCloseButtonRef}
+              primaryButtonRef={modalPrimaryButtonRef}
+            >
+              <ModalHead
+                onClose={() => setModalOpen(false)}
+                title="Delete the user?"
+              />
+              <ModalBody>
+                <ModalContent>
+                  <p>
+                    Do you really want to delete the user <code>admin</code>?
+                    This cannot be undone.
+                  </p>
+                </ModalContent>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  color="danger"
+                  label="Delete"
+                  onClick={() => setModalOpen(false)}
+                  ref={modalPrimaryButtonRef}
+                />
+                <Button
+                  label="Close"
+                  onClick={() => setModalOpen(false)}
+                  priority="outline"
+                  ref={modalCloseButtonRef}
+                />
+              </ModalFooter>
+            </Modal>
+          )}
+          {modalOpen === 4 && (
+            <Modal
+              closeButtonRef={modalCloseButtonRef}
+              primaryButtonRef={modalPrimaryButtonRef}
+            >
+              <ModalHead
+                onClose={() => setModalOpen(false)}
+                title="Add new user"
+              />
+              <ModalBody>
+                <ModalContent>
+                  <FormLayout fieldLayout="horizontal">
+                    <TextField label="Username" />
+                    <TextField label="Password" type="password" />
+                  </FormLayout>
+                </ModalContent>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  label="Save"
+                  onClick={() => setModalOpen(false)}
+                  ref={modalPrimaryButtonRef}
+                />
+                <Button
+                  label="Close"
+                  onClick={() => setModalOpen(false)}
+                  priority="outline"
+                  ref={modalCloseButtonRef}
+                />
+              </ModalFooter>
+            </Modal>
+          )}
+        </div>
+      </>
+    );
+  }}
+</Playground>
 
 ## Sizes
 
@@ -90,6 +279,8 @@ Modals of any size automatically shrink when they cannot fit the screen width.
   {() => {
     const [modalOpen, setModalOpen] = React.useState(false);
     const [modalSize, setModalSize] = React.useState('small');
+    const modalPrimaryButtonRef = React.useRef();
+    const modalCloseButtonRef = React.useRef();
     return (
       <>
         <Button
@@ -127,19 +318,36 @@ Modals of any size automatically shrink when they cannot fit the screen width.
         <div>
           {modalOpen && (
             <Modal
-              actions={[{
-                color: 'danger',
-                label: 'Delete',
-                onClick: () => setModalOpen(false),
-              }]}
-              onClose={() => setModalOpen(false)}
+              closeButtonRef={modalCloseButtonRef}
+              primaryButtonRef={modalPrimaryButtonRef}
               size={modalSize}
-              title="Delete the user?"
             >
-              <p>
-                Do you really want to delete the user <code>admin</code>?
-                This cannot be undone.
-              </p>
+              <ModalHead
+                onClose={() => setModalOpen(false)}
+                title="Delete the user?"
+              />
+              <ModalBody>
+                <ModalContent>
+                  <p>
+                    Do you really want to delete the user <code>admin</code>?
+                    This cannot be undone.
+                  </p>
+                </ModalContent>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  color="danger"
+                  label="Delete"
+                  onClick={() => setModalOpen(false)}
+                  ref={modalPrimaryButtonRef}
+                />
+                <Button
+                  label="Close"
+                  onClick={() => setModalOpen(false)}
+                  priority="outline"
+                  ref={modalCloseButtonRef}
+                />
+              </ModalFooter>
             </Modal>
           )}
         </div>
@@ -158,6 +366,8 @@ magic that doesn't work together yet 🎩.
 <Playground>
   {() => {
     const [modalOpen, setModalOpen] = React.useState(false);
+    const modalPrimaryButtonRef = React.useRef();
+    const modalCloseButtonRef = React.useRef();
     return (
       <>
         <Button
@@ -168,19 +378,36 @@ magic that doesn't work together yet 🎩.
         <div>
           {modalOpen && (
             <Modal
-              actions={[{
-                color: 'danger',
-                label: 'Delete',
-                onClick: () => setModalOpen(false),
-              }]}
-              onClose={() => setModalOpen(false)}
+              closeButtonRef={modalCloseButtonRef}
+              primaryButtonRef={modalPrimaryButtonRef}
               size="auto"
-              title="Delete the user?"
             >
-              <p>
-                Do you really want to delete the user <code>admin</code>?
-                This cannot be undone.
-              </p>
+              <ModalHead
+                onClose={() => setModalOpen(false)}
+                title="Delete the user?"
+              />
+              <ModalBody>
+                <ModalContent>
+                  <p>
+                    Do you really want to delete the user <code>admin</code>?
+                    This cannot be undone.
+                  </p>
+                </ModalContent>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  color="danger"
+                  label="Delete"
+                  onClick={() => setModalOpen(false)}
+                  ref={modalPrimaryButtonRef}
+                />
+                <Button
+                  label="Close"
+                  onClick={() => setModalOpen(false)}
+                  priority="outline"
+                  ref={modalCloseButtonRef}
+                />
+              </ModalFooter>
             </Modal>
           )}
         </div>
@@ -197,6 +424,8 @@ Modal can be aligned either to top or center of the screen.
   {() => {
     const [modalOpen, setModalOpen] = React.useState(false);
     const [modalPosition, setModalPosition] = React.useState('center');
+    const modalPrimaryButtonRef = React.useRef();
+    const modalCloseButtonRef = React.useRef();
     return (
       <>
         <Button
@@ -218,19 +447,36 @@ Modal can be aligned either to top or center of the screen.
         <div>
           {modalOpen && (
             <Modal
-              actions={[{
-                onClick: () => setModalOpen(false),
-                label: 'Delete',
-                color: 'danger',
-              }]}
-              onClose={() => setModalOpen(false)}
+              closeButtonRef={modalCloseButtonRef}
               position={modalPosition}
-              title="Delete the user?"
+              primaryButtonRef={modalPrimaryButtonRef}
             >
-              <p>
-                Do you really want to delete the user <code>admin</code>?
-                This cannot be undone.
-              </p>
+              <ModalHead
+                onClose={() => setModalOpen(false)}
+                title="Delete the user?"
+              />
+              <ModalBody>
+                <ModalContent>
+                  <p>
+                    Do you really want to delete the user <code>admin</code>?
+                    This cannot be undone.
+                  </p>
+                </ModalContent>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  color="danger"
+                  label="Delete"
+                  onClick={() => setModalOpen(false)}
+                  ref={modalPrimaryButtonRef}
+                />
+                <Button
+                  label="Close"
+                  onClick={() => setModalOpen(false)}
+                  priority="outline"
+                  ref={modalCloseButtonRef}
+                />
+              </ModalFooter>
             </Modal>
           )}
         </div>
@@ -239,19 +485,119 @@ Modal can be aligned either to top or center of the screen.
   }}
 </Playground>
 
+## Key Control
+
+Modal can be controlled either by mouse or keyboard. To enhance user
+experience, primary action can be fired by pressing `Enter` key and modal
+can be closed by pressing `Escape` key.
+
+To enable it, you just need to pass reference to the buttons using
+`primaryButtonRef` and `modalCloseButtonRef` props on `Modal`. Advantage
+of passing reference to the button is that if the button is disabled,
+key press will not fire the event.
+
+👉 We strongly recommend using this feature together with Autofocus for
+better user experience.
+
+## Autofocus
+
+Autofucus is implemented to enhance user experience by automatically
+focussing an element within the modal.
+
+How does it work? It tries to find `input`, `textarea` and `select` element
+inside of `Modal` and focuses the first found. If none is found and
+`primaryButtonRef` prop on `Modal` is set, then the primary button is focused.
+
+Autofocus is enabled by default, so if you want to control focus of
+elements manually, set `autoFocus` prop on `Modal` to `false`.
+
 ## Scrolling Long Content
 
-When modals become too long for the user's viewport or device, they scroll
-independent of the page itself.
-
-The inner implementation of body scrolling uses a partially
-[customizable](#api) instance of the [ScrollView](/components/scroll-view)
-component.
+When modals become too long for the user's viewport or device, we recommend
+wrapping `ModalContent` into [ScrollView](/components/scroll-view) to make
+its content scrollable independently of the page itself. In this case,
+`isScrollViewCompatible` must be set to `true` on `ModalBody`.
 
 <Playground>
   {() => {
     const [modalOpen, setModalOpen] = React.useState(false);
     const [modalScrollView, setModalScrollView] = React.useState(true);
+    const modalCloseButtonRef = React.useRef();
+    const modalPrimaryButtonRef = React.useRef();
+    const modalContent = (
+      <ModalContent>
+        <p>
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+          commodo ligula eget dolor. Aenean massa.
+        </p>
+        <p>
+          Cum sociis natoque penatibus et magnis dis parturient montes,
+          nascetur ridiculus mus. Donec quam felis, ultricies nec,
+          pellentesque eu, pretium quis, sem.
+        </p>
+        <p>
+          Nulla consequat massa quis enim. Donec pede justo, fringilla
+          vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus
+          ut, imperdiet a, venenatis vitae, justo.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+          commodo ligula eget dolor. Aenean massa.
+        </p>
+        <p>
+          Cum sociis natoque penatibus et magnis dis parturient montes,
+          nascetur ridiculus mus. Donec quam felis, ultricies nec,
+          pellentesque eu, pretium quis, sem.
+        </p>
+        <p>
+          Nulla consequat massa quis enim. Donec pede justo, fringilla
+          vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus
+          ut, imperdiet a, venenatis vitae, justo.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+          commodo ligula eget dolor. Aenean massa.
+        </p>
+        <p>
+          Cum sociis natoque penatibus et magnis dis parturient montes,
+          nascetur ridiculus mus. Donec quam felis, ultricies nec,
+          pellentesque eu, pretium quis, sem.
+        </p>
+        <p>
+          Nulla consequat massa quis enim. Donec pede justo, fringilla
+          vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus
+          ut, imperdiet a, venenatis vitae, justo.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+          commodo ligula eget dolor. Aenean massa.
+        </p>
+        <p>
+          Cum sociis natoque penatibus et magnis dis parturient montes,
+          nascetur ridiculus mus. Donec quam felis, ultricies nec,
+          pellentesque eu, pretium quis, sem.
+        </p>
+        <p>
+          Nulla consequat massa quis enim. Donec pede justo, fringilla
+          vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus
+          ut, imperdiet a, venenatis vitae, justo.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+          commodo ligula eget dolor. Aenean massa.
+        </p>
+        <p>
+          Cum sociis natoque penatibus et magnis dis parturient montes,
+          nascetur ridiculus mus. Donec quam felis, ultricies nec,
+          pellentesque eu, pretium quis, sem.
+        </p>
+        <p>
+          Nulla consequat massa quis enim. Donec pede justo, fringilla
+          vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus
+          ut, imperdiet a, venenatis vitae, justo.
+        </p>
+      </ModalContent>
+    )
     return (
       <>
         <Button
@@ -273,86 +619,48 @@ component.
         <div>
           {modalOpen && (
             <Modal
-              actions={[{
-                label: 'OK',
-                onClick: () => setModalOpen(false),
-              }]}
               autoFocus={false}
-              onClose={() => setModalOpen(false)}
-              scrollView={modalScrollView ? undefined : null}
+              closeButtonRef={modalCloseButtonRef}
+              primaryButtonRef={modalPrimaryButtonRef}
               size="small"
               title="Modal with long content"
             >
-              <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                commodo ligula eget dolor. Aenean massa.
-              </p>
-              <p>
-                Cum sociis natoque penatibus et magnis dis parturient montes,
-                nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                pellentesque eu, pretium quis, sem.
-              </p>
-              <p>
-                Nulla consequat massa quis enim. Donec pede justo, fringilla
-                vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus
-                ut, imperdiet a, venenatis vitae, justo.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                commodo ligula eget dolor. Aenean massa.
-              </p>
-              <p>
-                Cum sociis natoque penatibus et magnis dis parturient montes,
-                nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                pellentesque eu, pretium quis, sem.
-              </p>
-              <p>
-                Nulla consequat massa quis enim. Donec pede justo, fringilla
-                vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus
-                ut, imperdiet a, venenatis vitae, justo.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                commodo ligula eget dolor. Aenean massa.
-              </p>
-              <p>
-                Cum sociis natoque penatibus et magnis dis parturient montes,
-                nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                pellentesque eu, pretium quis, sem.
-              </p>
-              <p>
-                Nulla consequat massa quis enim. Donec pede justo, fringilla
-                vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus
-                ut, imperdiet a, venenatis vitae, justo.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                commodo ligula eget dolor. Aenean massa.
-              </p>
-              <p>
-                Cum sociis natoque penatibus et magnis dis parturient montes,
-                nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                pellentesque eu, pretium quis, sem.
-              </p>
-              <p>
-                Nulla consequat massa quis enim. Donec pede justo, fringilla
-                vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus
-                ut, imperdiet a, venenatis vitae, justo.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                commodo ligula eget dolor. Aenean massa.
-              </p>
-              <p>
-                Cum sociis natoque penatibus et magnis dis parturient montes,
-                nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                pellentesque eu, pretium quis, sem.
-              </p>
-              <p>
-                Nulla consequat massa quis enim. Donec pede justo, fringilla
-                vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus
-                ut, imperdiet a, venenatis vitae, justo.
-              </p>
+              <ModalHead
+                onClose={() => setModalOpen(false)}
+                title="Delete the user?"
+              />
+              <ModalBody isScrollViewCompatible={modalScrollView}>
+                {
+                  modalScrollView
+                    ? (
+                      <ScrollView
+                        customEndShadowStyle={{
+                          background: 'radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)'
+                        }}
+                        customStartShadowStyle={{
+                          background: 'radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)'
+                        }}
+                        shadowSize="16px"
+                      >
+                        {modalContent}
+                      </ScrollView>
+                    )
+                    : modalContent
+                }
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  label="OK"
+                  onClick={() => setModalOpen(false)}
+                  ref={modalPrimaryButtonRef}
+                />
+                <Button
+                  label="Close"
+                  onClick={() => setModalOpen(false)}
+                  priority="outline"
+                  ref={modalCloseButtonRef}
+                />
+              </ModalFooter>
             </Modal>
           )}
         </div>
@@ -363,48 +671,29 @@ component.
 
 ### Long Content and Autofocus
 
-👉 If you set the `scrollMode` to `modal`, you may want to turn `autoFocus` off
-to prevent the modal from scrolling to the end immediately after being opened.
-
-## Blocking Modals
-
-There are situations when you need to interrupt user's flow and lock entire UI
-to prevent interaction. That's where blocking modals may come handy.
-
-<Playground>
-  {() => {
-    const [modalOpen, setModalOpen] = React.useState(false);
-    return (
-      <>
-        <Button
-          label="Launch blocking modal"
-          onClick={() => setModalOpen(true)}
-          priority="outline"
-        />
-        <div>
-          {modalOpen && (
-            <Modal title="Update is in progress" size="auto">
-              <p>
-                <span role="img" aria-label="Warning">⚠️</span>
-                Please wait a few seconds until the firmware update is finished.
-                Don&apos;t turn off the device!
-              </p>
-              <Button
-                label="Close the demo"
-                onClick={() => setModalOpen(false)}
-                priority="flat"
-              />
-            </Modal>
-          )}
-        </div>
-      </>
-    );
-  }}
-</Playground>
+👉 If you wrap ModalContent with ScrollView, you may want to turn `autoFocus`
+off to prevent the modal from scrolling to the end immediately after being
+opened.
 
 ## API
 
 <Props table of={Modal} />
+
+### ModalHead
+
+<Props table of={ModalHead} />
+
+### ModalBody
+
+<Props table of={ModalBody} />
+
+### ModalContent
+
+<Props table of={ModalContent} />
+
+### ModalFooter
+
+<Props table of={ModalFooter} />
 
 ## Theming
 

@@ -2,7 +2,7 @@ export default {
   Alert: {
     close: 'Close',
   },
-  Modal: {
+  ModalHead: {
     close: 'Close',
   },
   ScrollView: {

@@ -1,0 +1,14 @@
+@use "settings";
+@use "theme";
+
+.root {
+    display: flex;
+    flex: none;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: settings.$padding-y settings.$padding-x;
+    border-bottom-right-radius: settings.$border-radius;
+    border-bottom-left-radius: settings.$border-radius;
+    background: theme.$footer-background;
+}
