@@ -4,6 +4,10 @@
 
 @use "theme";
 
+.wrapper {
+    position: relative;
+}
+
 .root {
     position: absolute;
     width: theme.$width;

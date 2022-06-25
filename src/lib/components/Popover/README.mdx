@@ -22,6 +22,7 @@ import { SelectField } from '../SelectField/SelectField'
 import { Toolbar } from '../Toolbar/Toolbar'
 import { ToolbarItem } from '../Toolbar/ToolbarItem'
 import { Popover } from './Popover'
+import { PopoverWrapper } from './PopoverWrapper'
 
 Popover displays additional information without interrupting user flow.
 
@@ -30,7 +31,7 @@ Popover displays additional information without interrupting user flow.
 To implement the Popover component, you need to import it first:
 
 ```js
-import { Popover } from '@react-ui-org/react-ui';
+import { Popover, PopoverWrapper } from '@react-ui-org/react-ui';
 ```
 
 And use it:
@@ -48,7 +49,7 @@ And use it:
         minHeight: '10rem',
       }}
     >
-      <div style={{position: 'relative'}}>
+      <PopoverWrapper>
         <Button
           aria-describedby={isPopoverOpen ? 'my-popover' : undefined}
           label="Want to see a popover? Click me!"
@@ -59,7 +60,7 @@ And use it:
             Hello there!
           </Popover>
         )}
-      </div>
+      </PopoverWrapper>
     </div>
   );
 }}
@@ -69,12 +70,10 @@ See [API](#api) for all available options.
 
 ## Placement
 
-By default, Popover is placed relative to the closest parent element with
-`position: relative` or `position: absolute`. Available placements are: top,
-right, bottom, and left. Additionally, all basic placements can be aligned to
-the center (default, no suffix), start (e.g. `top-start`), or end (e.g.
-`bottom-end`). Check Popover [API](#api) for the complete list of accepted
-values.
+Available placements are: top, right, bottom, and left. Additionally, all basic
+placements can be aligned to the center (default, no suffix), start (e.g.
+`top-start`), or end (e.g. `bottom-end`). Check Popover [API](#api) for the
+complete list of accepted values.
 
 <Playground>
 {() => {
@@ -114,7 +113,7 @@ values.
           minHeight: '15rem',
         }}
       >
-        <div style={{ position: 'relative' }}>
+        <PopoverWrapper>
           <Placeholder bordered aria-describedby="my-popover-top">
             Popovers
             <br />
@@ -132,12 +131,49 @@ values.
           <Popover id="my-popover-left" placement={`left${align}`}>
             Left side
           </Popover>
-        </div>
+        </PopoverWrapper>
       </div>
     </>
   );
 }}
 </Playground>
+
+## PopoverWrapper
+
+PopoverWrapper is an optional wrapper to make positioning of Popover even
+easier.
+
+By default, Popover is placed relative to the closest parent element with
+`position: relative` or `position: absolute`. Maybe you already have one of
+these in your CSS. PopoverWrapper is here for situations when you don't.
+
+```jsx
+<PopoverWrapper>
+  <Button
+    aria-describedby={isPopoverOpen ? 'my-popover' : undefined}
+    label="Want to see a popover? Click me!"
+    onClick={() => setIsPopoverOpen(!isPopoverOpen)}
+  />
+  {isPopoverOpen && <Popover id="my-popover">Hello there!</Popover>}
+</PopoverWrapper>
+```
+
+How do you know you may need PopoverWrapper?
+
+- You are **not** rendering Popover in a React portal.
+- You are using Popover in a complex layout and it does not pop up where you
+  need it.
+- You are using Floating UI with `absolute` positioning strategy (see
+  [Advanced Positioning](#advanced-positioning) below) and your Popover keeps to
+  be misplaced.
+- You have no idea what CSS `position` is and just want to get it working.
+
+To sum it up, usually you will need either PopoverWrapper around your content or
+`position: [ relative | absolute ]` somewhere in your CSS (but you never need
+both!). Nevertheless, in the simplest situations, like in a single-column page
+layout, you may not need either of these at all.
+
+Head to PopoverWrapper [API](#popoverwrapper-api) for all available options.
 
 ## Advanced Positioning
 
@@ -276,6 +312,10 @@ get an idea of all possible cases you may need to cover.
 ## API
 
 <Props table of={Popover} />
+
+### PopoverWrapper API
+
+<Props table of={PopoverWrapper} />
 
 ## Theming
 
