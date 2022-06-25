@@ -1,18 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { createPortal } from 'react-dom';
-import {
-  RUIContext,
-  withGlobalProps,
-} from '../../provider';
+import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
-import { transferProps } from '../_helpers/transferProps';
-import {
-  Toolbar,
-  ToolbarItem,
-} from '../Toolbar';
-import Button from '../Button';
-import ScrollView from '../ScrollView';
 import styles from './Modal.scss';
 
 export class Modal extends React.Component {
@@ -20,33 +10,37 @@ export class Modal extends React.Component {
     super(props);
 
     this.childrenWrapperRef = React.createRef();
-    this.submitButtonRef = React.createRef();
 
     this.keyPressHandler = this.keyPressHandler.bind(this);
   }
 
   componentDidMount() {
-    const { autoFocus } = this.props;
+    const {
+      autoFocus,
+      primaryButtonRef,
+    } = this.props;
 
     window.document.addEventListener('keydown', this.keyPressHandler, false);
 
     // If `autoFocus` is set to `true`, following code finds first form field element
-    // (input, textarea or select) or submit button and auto focuses it. This is necessary
+    // (input, textarea or select) or primary button and auto focuses it. This is necessary
     // to have focus on one of those elements to be able to submit form by pressing Enter key.
-    if (autoFocus && this.childrenWrapperRef && this.childrenWrapperRef.current) {
-      const childrenWrapperElement = this.childrenWrapperRef.current;
-      const childrenElements = childrenWrapperElement.querySelectorAll('*');
-      const formFieldEl = Array.from(childrenElements).find(
-        (element) => ['INPUT', 'TEXTAREA', 'SELECT'].includes(element.nodeName),
-      );
+    if (autoFocus) {
+      if (this.childrenWrapperRef?.current != null) {
+        const childrenWrapperElement = this.childrenWrapperRef.current;
+        const childrenElements = childrenWrapperElement.querySelectorAll('*');
+        const formFieldEl = Array.from(childrenElements).find(
+          (element) => ['INPUT', 'TEXTAREA', 'SELECT'].includes(element.nodeName),
+        );
 
-      if (formFieldEl) {
-        formFieldEl.focus();
-        return;
+        if (formFieldEl) {
+          formFieldEl.focus();
+          return;
+        }
       }
 
-      if (this.submitButtonRef && this.submitButtonRef.current) {
-        this.submitButtonRef.current.focus();
+      if (primaryButtonRef?.current != null) {
+        primaryButtonRef.current.focus();
       }
     }
   }
@@ -57,33 +51,26 @@ export class Modal extends React.Component {
 
   keyPressHandler(e) {
     const {
-      actions,
-      onClose,
+      closeButtonRef,
+      primaryButtonRef,
     } = this.props;
 
-    if (e.keyCode === 27 && onClose) {
-      onClose();
+    if (e.keyCode === 27 && closeButtonRef?.current != null) {
+      closeButtonRef.current.click();
     }
 
-    if (e.keyCode === 13 && e.target.nodeName !== 'BUTTON') {
-      const submitAction = actions.find((action) => action.type === 'submit');
-
-      if (submitAction && !submitAction.disabled) {
-        submitAction.onClick(e);
-      }
+    if (e.keyCode === 13 && e.target.nodeName !== 'BUTTON' && primaryButtonRef?.current != null) {
+      primaryButtonRef.current.click();
     }
   }
 
   preRender() {
     const {
-      actions,
       children,
       id,
-      onClose,
+      closeButtonRef,
       position,
-      scrollView,
       size,
-      title,
     } = this.props;
 
     const sizeClass = (modalSize) => {
@@ -114,44 +101,13 @@ export class Modal extends React.Component {
       return styles.isRootPositionCenter;
     };
 
-    const modalBody = () => {
-      const content = (
-        <div
-          ref={this.childrenWrapperRef}
-          className={styles.content}
-          {...(id && { id: `${id}__content` })}
-        >
-          {children}
-        </div>
-      );
-
-      if (scrollView) {
-        return (
-          <div
-            className={classNames(
-              styles.body,
-              styles.isBodyScrollable,
-            )}
-          >
-            {React.cloneElement(scrollView, scrollView.props, content)}
-          </div>
-        );
-      }
-
-      return (
-        <div className={styles.body}>
-          {content}
-        </div>
-      );
-    };
-
     return (
       <div
         className={styles.backdrop}
         id={id}
-        onClick={(e) => {
-          if (onClose) {
-            onClose(e);
+        onClick={() => {
+          if (closeButtonRef?.current != null) {
+            closeButtonRef.current.click();
           }
         }}
         role="presentation"
@@ -166,66 +122,9 @@ export class Modal extends React.Component {
             e.stopPropagation();
           }}
           role="presentation"
+          ref={this.childrenWrapperRef}
         >
-          <div className={styles.head}>
-            <h3
-              className={styles.headTitle}
-              {...(id && { id: `${id}__title` })}
-            >
-              {title}
-            </h3>
-            {onClose && (
-              <RUIContext.Consumer>
-                {({ translations }) => (
-                  <button
-                    type="button"
-                    className={styles.close}
-                    onClick={onClose}
-                    title={translations.Modal.close}
-                    {...(id && { id: `${id}__closeModalHeaderButton` })}
-                  >
-                    ×
-                  </button>
-                )}
-              </RUIContext.Consumer>
-            )}
-          </div>
-          {modalBody()}
-          {(actions.length || onClose) && (
-            <div className={styles.footer}>
-              <Toolbar justify="center" dense>
-                {actions.map((action) => (
-                  <ToolbarItem key={action.label}>
-                    <Button
-                      {...transferProps(action)}
-                      color={action.color}
-                      disabled={action.disabled}
-                      feedbackIcon={action.feedbackIcon}
-                      forwardedRef={this.submitButtonRef}
-                      id={action.id || undefined}
-                      label={action.label}
-                      onClick={action.onClick}
-                      type="button"
-                    />
-                  </ToolbarItem>
-                ))}
-                {onClose && (
-                  <ToolbarItem>
-                    <RUIContext.Consumer>
-                      {({ translations }) => (
-                        <Button
-                          label={translations.Modal.close}
-                          onClick={onClose}
-                          priority="flat"
-                          {...(id && { id: `${id}__closeModalFooterButton` })}
-                        />
-                      )}
-                    </RUIContext.Consumer>
-                  </ToolbarItem>
-                )}
-              </Toolbar>
-            </div>
-          )}
+          {children}
         </div>
       </div>
     );
@@ -243,52 +142,43 @@ export class Modal extends React.Component {
 }
 
 Modal.defaultProps = {
-  actions: [],
   autoFocus: true,
   children: null,
+  closeButtonRef: null,
   id: undefined,
-  onClose: null,
   portalId: null,
   position: 'center',
-  scrollView: (<ScrollView
-    customEndShadowStyle={{ background: 'radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)' }}
-    customStartShadowStyle={{ background: 'radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)' }}
-    shadowSize="16px"
-  />),
+  primaryButtonRef: null,
   size: 'medium',
 };
 
 Modal.propTypes = {
   /**
-   * Actions to be rendered in modal footer.
-   */
-  actions: PropTypes.arrayOf(PropTypes.shape({
-    color: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'danger', 'help', 'info', 'note', 'light', 'dark']),
-    disabled: PropTypes.bool,
-    feedbackIcon: PropTypes.node,
-    id: PropTypes.string,
-    label: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
-  })),
-  /**
-   * If `true`, focus the first action in the footer when the modal is opened.
+   * If `true`, focus the first input element in the modal or primary button (referenced by the `primaryButtonRef` prop)
+   * when the modal is opened.
    */
   autoFocus: PropTypes.bool,
   /**
-   * Content of the modal.
+   * Nested elements. Supported types are:
+   *
+   * * `ModalHead`
+   * * `ModalBody`
+   * * `ModalFooter`
+   *
+   * At least `ModalBody` is required.
    */
   children: PropTypes.node,
   /**
-   * ID of the root HTML element. It also serves as a base for nested elements:
-   * * `<ID>__content`
-   * * `<ID>__closeModalHeaderButton`
-   * * `<ID>__closeModalFooterButton`
+   * Reference to close button element. It is used to close modal when Escape key is pressed.
+   */
+  closeButtonRef: PropTypes.shape({
+    // eslint-disable-next-line react/forbid-prop-types
+    current: PropTypes.any,
+  }),
+  /**
+   * ID of the root HTML element.
    */
   id: PropTypes.string,
-  /**
-   * If a function is provided, the close buttons will be displayed.
-   */
-  onClose: PropTypes.func,
   /**
    * If set, modal is rendered in the React Portal with that ID.
    */
@@ -298,19 +188,17 @@ Modal.propTypes = {
    */
   position: PropTypes.oneOf(['top', 'center']),
   /**
-   * The `ScrollView` component to be used as a wrapper of the content to provide body scrolling functionality.
-   * If provided only the modal body will be scrollable.
-   * If set to `null` the entire modal including header and footer will be scrollable.
+   * Reference to primary button element. It is used to submit modal when Enter key is pressed and as fallback
+   * when `autoFocus` functionality does not find any input element to be focused.
    */
-  scrollView: PropTypes.element,
+  primaryButtonRef: PropTypes.shape({
+    // eslint-disable-next-line react/forbid-prop-types
+    current: PropTypes.any,
+  }),
   /**
    * Size of the modal.
    */
   size: PropTypes.oneOf(['small', 'medium', 'large', 'fullscreen', 'auto']),
-  /**
-   * Title displayed in modal header.
-   */
-  title: PropTypes.string.isRequired,
 };
 
 export const ModalWithGlobalProps = withGlobalProps(Modal, 'Modal');

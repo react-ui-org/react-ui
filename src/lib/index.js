@@ -18,7 +18,14 @@ export {
   Grid,
   GridSpan,
 } from './components/Grid';
-export { default as Modal } from './components/Modal';
+export {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHead,
+} from './components/Modal';
 export { default as Paper } from './components/Paper';
 export {
   Popover,

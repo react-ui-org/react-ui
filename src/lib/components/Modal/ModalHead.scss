@@ -1,0 +1,38 @@
+@use "sass:map";
+@use "../../styles/tools/spacing";
+@use "settings";
+@use "theme";
+
+.root {
+    display: flex;
+    flex: none;
+    gap: theme.$head-gap;
+    align-items: baseline;
+    padding: settings.$padding-y spacing.of(4) settings.$padding-y settings.$padding-x;
+}
+
+.root h1,
+.root h2,
+.root h3,
+.root h4,
+.root h5,
+.root h6 {
+    /* stylelint-disable declaration-no-important */
+    // TODO: Solve this !!!!!!
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    font-size: settings.$head-title-font-size !important;
+    /* stylelint-enable declaration-no-important */
+}
+
+.isJustifiedToCenter {
+    justify-content: center;
+}
+
+.isJustifiedToSpaceBetween {
+    justify-content: space-between;
+}
+
+.isJustifiedToStretch {
+    display: block;
+}
