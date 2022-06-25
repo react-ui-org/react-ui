@@ -29,7 +29,10 @@ export {
 } from './components/Media';
 export { default as Modal } from './components/Modal';
 export { default as Paper } from './components/Paper';
-export { default as Popover } from './components/Popover';
+export {
+  Popover,
+  PopoverWrapper,
+} from './components/Popover';
 export { default as Radio } from './components/Radio';
 export { default as ScrollView } from './components/ScrollView';
 export { default as SelectField } from './components/SelectField';
