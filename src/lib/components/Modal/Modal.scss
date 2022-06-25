@@ -28,57 +28,6 @@
     }
 }
 
-.head {
-    display: flex;
-    flex: none;
-    align-items: baseline;
-    justify-content: space-between;
-    padding: settings.$padding-y spacing.of(4) settings.$padding-y settings.$padding-x;
-}
-
-.headTitle {
-    font-size: settings.$head-title-font-size;
-
-    &:not(:last-child) {
-        margin-bottom: 0;
-    }
-}
-
-.close {
-    @include reset.button();
-    @include accessibility.min-tap-target();
-
-    font-size: map.get(typography.$size-values, 3);
-    line-height: 1;
-    color: inherit;
-}
-
-.body {
-    flex: 1 1 auto;
-}
-
-.isBodyScrollable {
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
-}
-
-.content {
-    padding: settings.$padding-y settings.$padding-x settings.$content-padding-bottom;
-}
-
-.footer {
-    display: flex;
-    flex: none;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    padding: settings.$padding-y settings.$padding-x;
-    border-bottom-right-radius: settings.$border-radius;
-    border-bottom-left-radius: settings.$border-radius;
-    background: theme.$footer-background;
-}
-
 .backdrop {
     position: fixed;
     top: 0;
