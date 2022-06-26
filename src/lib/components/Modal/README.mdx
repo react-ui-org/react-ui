@@ -120,24 +120,26 @@ See [API](#api) for all available options.
 
 Modal is decomposed into following components:
 
-- `Modal`
-  - `ModalHead`
-  - `ModalBody`
-    - `ModalContent` (may be wrapped with [ScrollView](/components/scroll-view))
-  - `ModalFooter`
+- [Modal](#api)
+  - [ModalHead](#modalhead)
+  - [ModalBody](#modalbody)
+    - [ModalContent](#modalcontent)
+    (may be wrapped with [ScrollView](/components/scroll-view))
+  - [ModalFooter](#modalfooter)
 
 Following rules must be applied when composing modal:
 
-- `Modal` is root component which can contain `ModalHead`, `ModalBody` and
-`ModalFooter`.
-- `Modal` must always contain at least `ModalBody`.
-- `ModalBody` can contain `ModalContent` or `ModalContent` wrapped
-with `ScrollView`.
-- `ModalContent` contains desired content.
-- `ModalFooter` contains one or more `Button` components representing modal actions.
+- Modal is root component which can contain ModalHead, ModalBody
+and ModalFooter.
+- Modal must always contain at least ModalBody.
+- ModalBody can contain ModalContent or ModalContent wrapped
+with ScrollView.
+- ModalContent contains desired content.
+- ModalFooter contains one or more Button components representing
+modal actions.
 
-Using different combinations, you can compose different kind of modals, e.g.
-dialog modal, blocking modal, scrollable modal etc.
+Using different combinations, you can compose different kinds of modals,
+e.g. dialog modal, blocking modal, scrollable modal etc.
 
 <Playground>
   {() => {
@@ -193,7 +195,8 @@ dialog modal, blocking modal, scrollable modal etc.
               <ModalBody>
                 <ModalContent>
                   <p>
-                    Action has been successfully finished. You will be redirected within a few seconds.
+                    Action has been successfully finished.
+                    You will be redirected within a few seconds.
                   </p>
                 </ModalContent>
               </ModalBody>
@@ -492,7 +495,7 @@ experience, primary action can be fired by pressing `Enter` key and modal
 can be closed by pressing `Escape` key.
 
 To enable it, you just need to pass reference to the buttons using
-`primaryButtonRef` and `modalCloseButtonRef` props on `Modal`. Advantage
+`primaryButtonRef` and `modalCloseButtonRef` props on Modal. Advantage
 of passing reference to the button is that if the button is disabled,
 key press will not fire the event.
 
@@ -505,18 +508,18 @@ Autofucus is implemented to enhance user experience by automatically
 focussing an element within the modal.
 
 How does it work? It tries to find `input`, `textarea` and `select` element
-inside of `Modal` and focuses the first found. If none is found and
-`primaryButtonRef` prop on `Modal` is set, then the primary button is focused.
+inside of Modal and focuses the first found. If none is found and
+`primaryButtonRef` prop on Modal is set, then the primary button is focused.
 
 Autofocus is enabled by default, so if you want to control focus of
-elements manually, set `autoFocus` prop on `Modal` to `false`.
+elements manually, set `autoFocus` prop on Modal to `false`.
 
 ## Scrolling Long Content
 
 When modals become too long for the user's viewport or device, we recommend
-wrapping `ModalContent` into [ScrollView](/components/scroll-view) to make
+wrapping ModalContent into [ScrollView](/components/scroll-view) to make
 its content scrollable independently of the page itself. In this case,
-`isScrollViewCompatible` must be set to `true` on `ModalBody`.
+`withScrollView` must be set to `true` on ModalBody.
 
 <Playground>
   {() => {
@@ -629,7 +632,7 @@ its content scrollable independently of the page itself. In this case,
                 onClose={() => setModalOpen(false)}
                 title="Delete the user?"
               />
-              <ModalBody isScrollViewCompatible={modalScrollView}>
+              <ModalBody withScrollView={modalScrollView}>
                 {
                   modalScrollView
                     ? (

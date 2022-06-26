@@ -4,6 +4,7 @@ import {
   within,
 } from '@testing-library/react';
 import { ModalFooter } from '../ModalFooter';
+import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 
 const mandatoryProps = {
   children: <div>content text</div>,
@@ -25,14 +26,7 @@ describe('rendering', () => {
         expect(within(items[1]).getByText('content text 2'));
       },
     ],
-    [
-      {
-        id: 'id',
-      },
-      (rootElement) => {
-        expect(rootElement).toHaveAttribute('id', 'id');
-      },
-    ],
+    ...idPropTest,
     [
       { justify: 'start' },
       (rootElement) => expect(rootElement.firstChild).toHaveClass('isJustifiedToStart'),

@@ -55,7 +55,23 @@ describe('functionality', () => {
       </ModalHead>
     ));
 
-    userEvent.click(screen.getByText('×'));
+    userEvent.click(screen.getByRole('button'));
     expect(spy.calledOnce).toEqual(true);
+  });
+
+  it('does not call onClose() when button is disaabled', () => {
+    const spy = sinon.spy();
+    render((
+      <ModalHead
+        {...mandatoryProps}
+        closeButtonDisabled
+        onClose={spy}
+      >
+        Modal content
+      </ModalHead>
+    ));
+
+    userEvent.click(screen.getByRole('button'));
+    expect(spy.called).toEqual(false);
   });
 });

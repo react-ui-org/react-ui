@@ -11,6 +11,7 @@ import { Modal } from '../Modal';
 import { ModalBody } from '../ModalBody';
 import { ModalHead } from '../ModalHead';
 import { ModalFooter } from '../ModalFooter';
+import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 
 describe('rendering', () => {
   it('renders with "portalId" props', () => {
@@ -33,15 +34,7 @@ describe('rendering', () => {
       { children: <div>content text</div> },
       (rootElement) => expect(within(rootElement).getByText('content text')),
     ],
-    [
-      {
-        id: 'id',
-        onClose: () => {},
-      },
-      (rootElement) => {
-        expect(rootElement).toHaveAttribute('id', 'id');
-      },
-    ],
+    ...idPropTest,
     [
       { position: 'top' },
       (rootElement) => expect(within(rootElement).getByRole('presentation')).toHaveClass('isRootPositionTop'),
@@ -252,7 +245,7 @@ describe('functionality', () => {
         expect(document.activeElement).toEqual(within(rootElement).getByRole('combobox'));
       },
     ],
-  ])('autofocuses element (%#)', (child, assert) => {
+  ])('autofocuses form field element (%#)', (child, assert) => {
     const dom = render((
       <Modal>
         <ModalBody>
@@ -264,7 +257,7 @@ describe('functionality', () => {
     assert(dom.container.firstChild);
   });
 
-  it('autofocuses primary button if no input is present', () => {
+  it('autofocuses primary button if no form field is present', () => {
     const ref = React.createRef();
     const { container } = render((
       <Modal primaryButtonRef={ref}>

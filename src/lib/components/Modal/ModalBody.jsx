@@ -8,7 +8,7 @@ import styles from './ModalBody.scss';
 export const ModalBody = ({
   children,
   id,
-  isScrollViewCompatible,
+  withScrollView,
 }) => {
   if (isChildrenEmpty(children)) {
     return null;
@@ -18,7 +18,7 @@ export const ModalBody = ({
     <div
       className={classNames(
         styles.root,
-        isScrollViewCompatible && styles.isRootScrollable,
+        withScrollView && styles.isRootScrollable,
       )}
       id={id}
     >
@@ -30,7 +30,7 @@ export const ModalBody = ({
 ModalBody.defaultProps = {
   children: null,
   id: undefined,
-  isScrollViewCompatible: false,
+  withScrollView: false,
 };
 
 ModalBody.propTypes = {
@@ -38,7 +38,7 @@ ModalBody.propTypes = {
    * Nested elements. Supported types are:
    *
    * * `ModalContent`
-   * * `ScrollView` (`isScrollViewCompatible: true` must be set)
+   * * `ScrollView` (`withScrollView: true` must be set)
    *
    * At most one nested element is allowed. If none are provided nothing is rendered.
    */
@@ -50,7 +50,7 @@ ModalBody.propTypes = {
   /**
    * If `true`, body is scroll-compatible and its child must be instance of `ScrollView`.
    */
-  isScrollViewCompatible: PropTypes.bool,
+  withScrollView: PropTypes.bool,
 };
 
 export const ModalBodyWithGlobalProps = withGlobalProps(ModalBody, 'ModalBody');

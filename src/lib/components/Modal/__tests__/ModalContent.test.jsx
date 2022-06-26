@@ -3,6 +3,7 @@ import {
   render, within,
 } from '@testing-library/react';
 import { ModalContent } from '../ModalContent';
+import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 
 const mandatoryProps = {
   children: <div>content text</div>,
@@ -24,14 +25,7 @@ describe('rendering', () => {
         expect(within(rootElement).getByText('content text 2'));
       },
     ],
-    [
-      {
-        id: 'id',
-      },
-      (rootElement) => {
-        expect(rootElement).toHaveAttribute('id', 'id');
-      },
-    ],
+    ...idPropTest,
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <ModalContent
