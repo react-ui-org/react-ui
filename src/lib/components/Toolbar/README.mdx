@@ -307,7 +307,7 @@ specifically for this kind of job.
 ## Flexible Items
 
 Toolbar items can be made flexible to grow and shrink according to the available
-space. This is useful e.g. when you need to combine text with an action.
+space. This is useful e.g. when you need to combine text with an action:
 
 <Playground>
   <Toolbar>
@@ -316,6 +316,19 @@ space. This is useful e.g. when you need to combine text with an action.
     </ToolbarItem>
     <ToolbarItem>
       <Placeholder bordered>Action</Placeholder>
+    </ToolbarItem>
+  </Toolbar>
+</Playground>
+
+Or to build a classic media layout with image on the left and text on the right:
+
+<Playground>
+  <Toolbar>
+    <ToolbarItem>
+      <Placeholder bordered>Media object</Placeholder>
+    </ToolbarItem>
+    <ToolbarItem flexible>
+      <Placeholder bordered>Media body</Placeholder>
     </ToolbarItem>
   </Toolbar>
 </Playground>

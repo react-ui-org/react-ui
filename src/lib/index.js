@@ -18,11 +18,6 @@ export {
   Grid,
   GridSpan,
 } from './components/Grid';
-export {
-  Media,
-  MediaBody,
-  MediaObject,
-} from './components/Media';
 export { default as Modal } from './components/Modal';
 export { default as Paper } from './components/Paper';
 export {
