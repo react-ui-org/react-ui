@@ -47,8 +47,7 @@
     line-height: 1;
     text-decoration: none;
     color: theme.$item-color;
-    border-width: theme.$item-border-width;
-    border-style: solid;
+    border: theme.$item-border-width solid;
     border-color: theme.$item-border-color;
     border-top-left-radius: theme.$item-border-radius;
     border-top-right-radius: theme.$item-border-radius;
