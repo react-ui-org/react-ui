@@ -154,7 +154,8 @@ Modal.defaultProps = {
 
 Modal.propTypes = {
   /**
-   * If `true`, focus the first input element in the modal or primary button when the modal is opened.
+   * If `true`, focus the first input element in the modal or primary button (referenced by the `primaryButtonRef` prop)
+   * when the modal is opened.
    */
   autoFocus: PropTypes.bool,
   /**
