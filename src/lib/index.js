@@ -30,6 +30,7 @@ export {
 export {
   Modal,
   ModalBody,
+  ModalCloseButton,
   ModalContent,
   ModalFooter,
   ModalHead,

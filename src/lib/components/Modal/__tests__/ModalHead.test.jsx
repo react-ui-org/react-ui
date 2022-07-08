@@ -1,15 +1,13 @@
 import React from 'react';
-import sinon from 'sinon';
 import {
   render,
-  screen,
   within,
 } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { ModalHead } from '../ModalHead';
+import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 
 const mandatoryProps = {
-  title: 'title text',
+  children: <div>content text</div>,
 };
 
 describe('rendering', () => {
@@ -17,19 +15,21 @@ describe('rendering', () => {
     [
       {},
       (rootElement) => {
-        expect(within(rootElement).getByRole('heading')).toHaveTextContent('title text');
+        expect(within(rootElement).getByText('content text'));
       },
     ],
+    ...idPropTest,
     [
-      {
-        id: 'id',
-        onClose: () => {},
-      },
-      (rootElement) => {
-        expect(rootElement).toHaveAttribute('id', 'id');
-        expect(within(rootElement).getByRole('heading')).toHaveAttribute('id', 'id__title');
-        expect(within(rootElement).getByRole('button')).toHaveAttribute('id', 'id__closeButton');
-      },
+      { justify: 'center' },
+      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToCenter'),
+    ],
+    [
+      { justify: 'space-between' },
+      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToSpaceBetween'),
+    ],
+    [
+      { justify: 'stretch' },
+      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToStretch'),
     ],
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
@@ -40,38 +40,5 @@ describe('rendering', () => {
     ));
 
     assert(dom.container.firstChild);
-  });
-});
-
-describe('functionality', () => {
-  it('call onClose()', () => {
-    const spy = sinon.spy();
-    render((
-      <ModalHead
-        {...mandatoryProps}
-        onClose={spy}
-      >
-        Modal content
-      </ModalHead>
-    ));
-
-    userEvent.click(screen.getByRole('button'));
-    expect(spy.calledOnce).toEqual(true);
-  });
-
-  it('does not call onClose() when button is disaabled', () => {
-    const spy = sinon.spy();
-    render((
-      <ModalHead
-        {...mandatoryProps}
-        closeButtonDisabled
-        onClose={spy}
-      >
-        Modal content
-      </ModalHead>
-    ));
-
-    userEvent.click(screen.getByRole('button'));
-    expect(spy.called).toEqual(false);
   });
 });

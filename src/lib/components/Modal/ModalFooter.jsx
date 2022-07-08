@@ -1,33 +1,46 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
-import {
-  Toolbar,
-  ToolbarItem,
-} from '../Toolbar';
+import { classNames } from '../../utils/classNames';
 import styles from './ModalFooter.scss';
 
 export const ModalFooter = ({
   children,
   id,
   justify,
-}) => (
-  <div
-    className={styles.root}
-    id={id}
-  >
-    <Toolbar
-      dense
-      justify={justify}
+}) => {
+  const justifyClass = (value) => {
+    if (value === 'start') {
+      return styles.isJustifiedToStart;
+    }
+
+    if (value === 'center') {
+      return styles.isJustifiedToCenter;
+    }
+
+    if (value === 'end') {
+      return styles.isJustifiedToEnd;
+    }
+
+    if (value === 'space-between') {
+      return styles.isJustifiedToSpaceBetween;
+    }
+
+    return styles.isJustifiedToStretch;
+  };
+
+  return (
+    <div
+      className={classNames(
+        styles.root,
+        justifyClass(justify),
+      )}
+      id={id}
     >
-      {React.Children.map(children, (child) => (
-        <ToolbarItem>
-          {child}
-        </ToolbarItem>
-      ))}
-    </Toolbar>
-  </div>
-);
+      {children}
+    </div>
+  );
+};
 
 ModalFooter.defaultProps = {
   id: undefined,
@@ -36,7 +49,7 @@ ModalFooter.defaultProps = {
 
 ModalFooter.propTypes = {
   /**
-   * Nested `Button` elements.
+   * Content of the footer (preferably nested `Button` elements).
    */
   children: PropTypes.node.isRequired,
   /**
@@ -46,7 +59,7 @@ ModalFooter.propTypes = {
   /**
    * Horizontal alignment (distribution) of individual buttons.
    */
-  justify: PropTypes.oneOf(['start', 'center', 'end', 'space-between']),
+  justify: PropTypes.oneOf(['start', 'center', 'end', 'space-between', 'stretch']),
 };
 
 export const ModalFooterWithGlobalProps = withGlobalProps(ModalFooter, 'ModalFooter');

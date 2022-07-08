@@ -14,34 +14,38 @@ describe('rendering', () => {
   it.each([
     [
       {
-        children: [
-          <div>content text 1</div>,
-          <div>content text 2</div>,
-        ],
+        children: (
+          <>
+            <div>content text 1</div>
+            <div>content text 2</div>
+          </>
+        ),
       },
       (rootElement) => {
-        const items = rootElement.getElementsByClassName('item');
-        expect(items).toHaveLength(2);
-        expect(within(items[0]).getByText('content text 1'));
-        expect(within(items[1]).getByText('content text 2'));
+        expect(within(rootElement).getByText('content text 1'));
+        expect(within(rootElement).getByText('content text 2'));
       },
     ],
     ...idPropTest,
     [
       { justify: 'start' },
-      (rootElement) => expect(rootElement.firstChild).toHaveClass('isJustifiedToStart'),
+      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToStart'),
     ],
     [
       { justify: 'center' },
-      (rootElement) => expect(rootElement.firstChild).toHaveClass('isJustifiedToCenter'),
+      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToCenter'),
     ],
     [
       { justify: 'end' },
-      (rootElement) => expect(rootElement.firstChild).toHaveClass('isJustifiedToEnd'),
+      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToEnd'),
     ],
     [
       { justify: 'space-between' },
-      (rootElement) => expect(rootElement.firstChild).toHaveClass('isJustifiedToSpaceBetween'),
+      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToSpaceBetween'),
+    ],
+    [
+      { justify: 'stretch' },
+      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToStretch'),
     ],
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((

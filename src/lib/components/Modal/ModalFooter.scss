@@ -5,10 +5,30 @@
     display: flex;
     flex: none;
     flex-wrap: wrap;
+    gap: theme.$footer-gap;
     align-items: center;
-    justify-content: center;
     padding: settings.$padding-y settings.$padding-x;
     border-bottom-right-radius: settings.$border-radius;
     border-bottom-left-radius: settings.$border-radius;
     background: theme.$footer-background;
+}
+
+.isJustifiedToStart {
+    justify-content: flex-start;
+}
+
+.isJustifiedToCenter {
+    justify-content: center;
+}
+
+.isJustifiedToEnd {
+    justify-content: flex-end;
+}
+
+.isJustifiedToSpaceBetween {
+    justify-content: space-between;
+}
+
+.isJustifiedToStretch {
+    display: block;
 }

@@ -1,7 +1,4 @@
 @use "sass:map";
-@use "../../styles/theme/typography";
-@use "../../styles/tools/accessibility";
-@use "../../styles/tools/reset";
 @use "../../styles/tools/spacing";
 @use "settings";
 @use "theme";
@@ -9,28 +6,33 @@
 .root {
     display: flex;
     flex: none;
+    gap: theme.$head-gap;
     align-items: baseline;
-    justify-content: space-between;
     padding: settings.$padding-y spacing.of(4) settings.$padding-y settings.$padding-x;
 }
 
-.title {
-    font-size: settings.$head-title-font-size;
-
-    &:not(:last-child) {
-        margin-bottom: 0;
-    }
+.root h1,
+.root h2,
+.root h3,
+.root h4,
+.root h5,
+.root h6 {
+    /* stylelint-disable declaration-no-important */
+    // TODO: Solve this !!!!!!
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    font-size: settings.$head-title-font-size !important;
+    /* stylelint-enable declaration-no-important */
 }
 
-.close {
-    @include reset.button();
-    @include accessibility.min-tap-target();
+.isJustifiedToCenter {
+    justify-content: center;
+}
 
-    font-size: map.get(typography.$size-values, 3);
-    line-height: 1;
-    color: inherit;
+.isJustifiedToSpaceBetween {
+    justify-content: space-between;
+}
 
-    &:disabled {
-        cursor: var(--rui-disabled-cursor);
-    }
+.isJustifiedToStretch {
+    display: block;
 }

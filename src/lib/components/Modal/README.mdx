@@ -17,11 +17,15 @@ import {
   FormLayout,
   Modal,
   ModalBody,
+  ModalCloseButton,
   ModalContent,
   ModalFooter,
   ModalHead,
   ScrollView,
   TextField,
+  Toolbar,
+  ToolbarGroup,
+  ToolbarItem,
 } from '../..'
 import Icon from '../../../docs/_components/Icon'
 
@@ -34,6 +38,7 @@ import {
   Modal,
   ModalHead,
   ModalBody,
+  ModalCloseButton,
   ModalContent,
   ModalFooter,
 } from '@react-ui-org/react-ui';
@@ -59,10 +64,10 @@ And use it:
               closeButtonRef={modalCloseButtonRef}
               primaryButtonRef={modalPrimaryButtonRef}
             >
-              <ModalHead
-                onClose={() => setModalOpen(false)}
-                title="Delete the user?"
-              />
+              <ModalHead>
+                <h2>Delete the user?</h2>
+                <ModalCloseButton onClick={() => setModalOpen(false)} />
+              </ModalHead>
               <ModalBody>
                 <ModalContent>
                   <p>
@@ -121,22 +126,12 @@ See [API](#api) for all available options.
 Modal is decomposed into following components:
 
 - [Modal](#api)
-  - [ModalHead](#modalhead)
-  - [ModalBody](#modalbody)
+  - [ModalHead](#modalhead-1)
+    - [ModalCloseButton](#modalclosebutton)
+  - [ModalBody](#modalbody-1)
     - [ModalContent](#modalcontent)
     (may be wrapped with [ScrollView](/components/scroll-view))
-  - [ModalFooter](#modalfooter)
-
-Following rules must be applied when composing modal:
-
-- Modal is root component which can contain ModalHead, ModalBody
-and ModalFooter.
-- Modal must always contain at least ModalBody.
-- ModalBody can contain ModalContent or ModalContent wrapped
-with ScrollView.
-- ModalContent contains desired content.
-- ModalFooter contains one or more Button components representing
-modal actions.
+  - [ModalFooter](#modalfooter-1)
 
 Using different combinations, you can compose different kinds of modals,
 e.g. dialog modal, blocking modal, scrollable modal etc.
@@ -191,7 +186,9 @@ e.g. dialog modal, blocking modal, scrollable modal etc.
           )}
           {modalOpen === 2 && (
             <Modal>
-              <ModalHead title="Action finished" />
+              <ModalHead>
+                <h2>Action finished</h2>
+              </ModalHead>
               <ModalBody>
                 <ModalContent>
                   <p>
@@ -207,10 +204,10 @@ e.g. dialog modal, blocking modal, scrollable modal etc.
               closeButtonRef={modalCloseButtonRef}
               primaryButtonRef={modalPrimaryButtonRef}
             >
-              <ModalHead
-                onClose={() => setModalOpen(false)}
-                title="Delete the user?"
-              />
+              <ModalHead>
+                <h2>Delete the user?</h2>
+                <ModalCloseButton onClick={() => setModalOpen(false)} />
+              </ModalHead>
               <ModalBody>
                 <ModalContent>
                   <p>
@@ -240,10 +237,10 @@ e.g. dialog modal, blocking modal, scrollable modal etc.
               closeButtonRef={modalCloseButtonRef}
               primaryButtonRef={modalPrimaryButtonRef}
             >
-              <ModalHead
-                onClose={() => setModalOpen(false)}
-                title="Add new user"
-              />
+              <ModalHead>
+                <h2>Add new user</h2>
+                <ModalCloseButton onClick={() => setModalOpen(false)} />
+              </ModalHead>
               <ModalBody>
                 <ModalContent>
                   <FormLayout fieldLayout="horizontal">
@@ -264,6 +261,277 @@ e.g. dialog modal, blocking modal, scrollable modal etc.
                   priority="outline"
                   ref={modalCloseButtonRef}
                 />
+              </ModalFooter>
+            </Modal>
+          )}
+        </div>
+      </>
+    );
+  }}
+</Playground>
+
+### ModalHead
+
+ModalHead is optional part of the Modal which allows you to display
+the title of the modal and its close button.
+
+It is recommended to compose ModalHead from following elements. For title, use
+heading element `h1` or `h2` (see [W3C recommendation][w3c-dialog-heading]).
+For close button, use ModalCloseButton, whereas it could be omitted
+if the close button is a part of ModalFooter.
+
+There are two ways how to position elements within the ModalHead:
+
+1. You can use provided positioning. Place previously mentioned elements into
+the ModalHead and use `justify` prop to set up positioning of those elements.
+2. You can customize positioning using other component (e.g. Toolbar).
+In that case, set `justify` to `stretch` and position elements on your own.
+
+<Playground>
+  {() => {
+    const [modalOpen, setModalOpen] = React.useState(false);
+    const [variant, setVariant] = React.useState(null);
+    const modalPrimaryButtonRef = React.useRef();
+    const modalCloseButtonRef = React.useRef();
+    return (
+      <>
+        <Button
+          label="Launch with close button"
+          onClick={() => {
+            setModalOpen(true);
+            setVariant(1);
+          }}
+          priority="outline"
+        />
+        <Button
+          label="Launch without close button"
+          onClick={() => {
+            setModalOpen(true);
+            setVariant(2);
+          }}
+          priority="outline"
+        />
+        <Button
+          label="Launch without close button and centered title"
+          onClick={() => {
+            setModalOpen(true);
+            setVariant(3);
+          }}
+          priority="outline"
+        />
+        <Button
+          label="Launch with custom layout"
+          onClick={() => {
+            setModalOpen(true);
+            setVariant(4);
+          }}
+          priority="outline"
+        />
+        <div>
+          {modalOpen && (
+            <Modal
+              closeButtonRef={modalCloseButtonRef}
+              primaryButtonRef={modalPrimaryButtonRef}
+            >
+              {variant === 1 && (
+                <ModalHead>
+                  <h2>Delete the user?</h2>
+                  <ModalCloseButton onClick={() => setModalOpen(false)} />
+                </ModalHead>
+              )}
+              {variant === 2 && (
+                <ModalHead>
+                  <h2>Delete the user?</h2>
+                </ModalHead>
+              )}
+              {variant === 3 && (
+                <ModalHead justify="center">
+                  <h2>Delete the user?</h2>
+                </ModalHead>
+              )}
+              {variant === 4 && (
+                <ModalHead justify="stretch">
+                  <Toolbar justify="space-between">
+                    <ToolbarItem>
+                      {''}
+                    </ToolbarItem>
+                    <ToolbarItem>
+                      <h2>Delete the user?</h2>
+                    </ToolbarItem>
+                    <ToolbarItem>
+                      <ModalCloseButton onClick={() => setModalOpen(false)} />
+                    </ToolbarItem>
+                  </Toolbar>
+                </ModalHead>
+              )}
+              <ModalBody>
+                <ModalContent>
+                  <p>
+                    Do you really want to delete the user <code>admin</code>?
+                    This cannot be undone.
+                  </p>
+                </ModalContent>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  color="danger"
+                  label="Delete"
+                  onClick={() => setModalOpen(false)}
+                  ref={modalPrimaryButtonRef}
+                />
+                <Button
+                  label="Close"
+                  onClick={() => setModalOpen(false)}
+                  priority="outline"
+                  ref={modalCloseButtonRef}
+                />
+              </ModalFooter>
+            </Modal>
+          )}
+        </div>
+      </>
+    );
+  }}
+</Playground>
+
+### ModalBody
+
+ModalBody is mandatory part of the Modal which allows you to display
+content of the Modal.
+
+Although the ModalBody allows you to display arbitrary content, you should not
+place content directly into the ModalBody, but wrap it with ModalContent.
+
+In case your content is expected to be long, consider wrapping ModalContent
+with ScrollView. Check [Scrolling Long Content](#scrolling-long-content).
+
+### ModalFooter
+
+ModalFooter is optional part of the Modal which allows you to display
+user actions.
+
+There are two ways how to position buttons within the ModalFooter:
+
+1. You can use provided positioning. Place Button component (or any arbitrary
+element) and use `justify` prop to set up positioning of those elements.
+2. You can customize positioning using other component (e.g. Toolbar).
+In that case, set `justify` to `stretch` and position elements on your own.
+
+<Playground>
+  {() => {
+    const [modalOpen, setModalOpen] = React.useState(false);
+    const [modalJustify, setModalJustify] = React.useState('center');
+    const modalPrimaryButtonRef = React.useRef();
+    const modalCloseButtonRef = React.useRef();
+    return (
+      <>
+        <Button
+          label="Launch with footer justified to start"
+          onClick={() => {
+            setModalOpen(true);
+            setModalJustify('start');
+          }}
+          priority="outline"
+        />
+        <Button
+          label="Launch with footer justified to center"
+          onClick={() => {
+            setModalOpen(true);
+            setModalJustify('center');
+          }}
+          priority="outline"
+        />
+        <Button
+          label="Launch with footer justified to end"
+          onClick={() => {
+            setModalOpen(true);
+            setModalJustify('end');
+          }}
+          priority="outline"
+        />
+        <Button
+          label="Launch with footer justified with space between"
+          onClick={() => {
+            setModalOpen(true);
+            setModalJustify('space-between');
+          }}
+          priority="outline"
+        />
+        <Button
+          label="Launch with footer with custom layout"
+          onClick={() => {
+            setModalOpen(true);
+            setModalJustify('stretch');
+          }}
+          priority="outline"
+        />
+        <div>
+          {modalOpen && (
+            <Modal
+              closeButtonRef={modalCloseButtonRef}
+              primaryButtonRef={modalPrimaryButtonRef}
+            >
+              <ModalHead>
+                <h2>Delete the user?</h2>
+                <ModalCloseButton onClick={() => setModalOpen(false)} />
+              </ModalHead>
+              <ModalBody>
+                <ModalContent>
+                  <p>
+                    Do you really want to delete the user <code>admin</code>?
+                    This cannot be undone.
+                  </p>
+                </ModalContent>
+              </ModalBody>
+              <ModalFooter justify={modalJustify}>
+                {
+                  modalJustify === 'stretch'
+                    ? (
+                      <Toolbar justify="space-between">
+                          <ToolbarGroup>
+                            <ToolbarItem>
+                              <Button
+                                color="danger"
+                                label="Delete"
+                                onClick={() => setModalOpen(false)}
+                                ref={modalPrimaryButtonRef}
+                              />
+                            </ToolbarItem>
+                            <ToolbarItem>
+                              <Button
+                                color="warning"
+                                label="Archive"
+                                onClick={() => setModalOpen(false)}
+                                ref={modalPrimaryButtonRef}
+                              />
+                            </ToolbarItem>
+                          </ToolbarGroup>
+                        <ToolbarItem>
+                          <Button
+                            label="Close"
+                            onClick={() => setModalOpen(false)}
+                            priority="outline"
+                            ref={modalCloseButtonRef}
+                          />
+                        </ToolbarItem>
+                      </Toolbar>
+                    ) : (
+                      <>
+                        <Button
+                          color="danger"
+                          label="Delete"
+                          onClick={() => setModalOpen(false)}
+                          ref={modalPrimaryButtonRef}
+                        />
+                        <Button
+                          label="Close"
+                          onClick={() => setModalOpen(false)}
+                          priority="outline"
+                          ref={modalCloseButtonRef}
+                        />
+                      </>
+                    )
+                }
               </ModalFooter>
             </Modal>
           )}
@@ -325,10 +593,10 @@ Modals of any size automatically shrink when they cannot fit the screen width.
               primaryButtonRef={modalPrimaryButtonRef}
               size={modalSize}
             >
-              <ModalHead
-                onClose={() => setModalOpen(false)}
-                title="Delete the user?"
-              />
+              <ModalHead>
+                <h2>Delete the user?</h2>
+                <ModalCloseButton onClick={() => setModalOpen(false)} />
+              </ModalHead>
               <ModalBody>
                 <ModalContent>
                   <p>
@@ -385,10 +653,10 @@ magic that doesn't work together yet 🎩.
               primaryButtonRef={modalPrimaryButtonRef}
               size="auto"
             >
-              <ModalHead
-                onClose={() => setModalOpen(false)}
-                title="Delete the user?"
-              />
+              <ModalHead>
+                <h2>Delete the user?</h2>
+                <ModalCloseButton onClick={() => setModalOpen(false)} />
+              </ModalHead>
               <ModalBody>
                 <ModalContent>
                   <p>
@@ -454,10 +722,10 @@ Modal can be aligned either to top or center of the screen.
               position={modalPosition}
               primaryButtonRef={modalPrimaryButtonRef}
             >
-              <ModalHead
-                onClose={() => setModalOpen(false)}
-                title="Delete the user?"
-              />
+              <ModalHead>
+                <h2>Delete the user?</h2>
+                <ModalCloseButton onClick={() => setModalOpen(false)} />
+              </ModalHead>
               <ModalBody>
                 <ModalContent>
                   <p>
@@ -495,7 +763,7 @@ experience, primary action can be fired by pressing `Enter` key and modal
 can be closed by pressing `Escape` key.
 
 To enable it, you just need to pass reference to the buttons using
-`primaryButtonRef` and `modalCloseButtonRef` props on Modal. Advantage
+`primaryButtonRef` and `closeButtonRef` props on Modal. Advantage
 of passing reference to the button is that if the button is disabled,
 key press will not fire the event.
 
@@ -628,23 +896,15 @@ its content scrollable independently of the page itself. In this case,
               size="small"
               title="Modal with long content"
             >
-              <ModalHead
-                onClose={() => setModalOpen(false)}
-                title="Delete the user?"
-              />
+              <ModalHead>
+                <h2>Delete the user?</h2>
+                <ModalCloseButton onClick={() => setModalOpen(false)} />
+              </ModalHead>
               <ModalBody withScrollView={modalScrollView}>
                 {
                   modalScrollView
                     ? (
-                      <ScrollView
-                        customEndShadowStyle={{
-                          background: 'radial-gradient(farthest-side at center bottom, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 40%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)'
-                        }}
-                        customStartShadowStyle={{
-                          background: 'radial-gradient(farthest-side at center top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.02) 85%, rgba(0, 0, 0, 0) 100%)'
-                        }}
-                        shadowSize="16px"
-                      >
+                      <ScrollView>
                         {modalContent}
                       </ScrollView>
                     )
@@ -678,6 +938,8 @@ its content scrollable independently of the page itself. In this case,
 off to prevent the modal from scrolling to the end immediately after being
 opened.
 
+<!-- markdownlint-disable MD024 -->
+
 ## API
 
 <Props table of={Modal} />
@@ -685,6 +947,10 @@ opened.
 ### ModalHead
 
 <Props table of={ModalHead} />
+
+### ModalCloseButton
+
+<Props table of={ModalCloseButton} />
 
 ### ModalBody
 
@@ -704,9 +970,11 @@ opened.
 |------------------------------------------------------|--------------------------------------------------------------|
 | `--rui-Modal__background`                            | Modal background (including `url()` or gradient)             |
 | `--rui-Modal__box-shadow`                            | Modal box shadow                                             |
+| `--rui-Modal__head__gap`                             | Modal head gap between children                              |
 | `--rui-Modal__outer-spacing-xs`                      | Spacing around modal, `xs` screen size                       |
 | `--rui-Modal__outer-spacing-sm`                      | Spacing around modal, `sm` screen size and bigger            |
 | `--rui-Modal__footer__background`                    | Modal footer background (including `url()` or gradient)      |
+| `--rui-Modal__footer__gap`                           | Modal footer gap between children                            |
 | `--rui-Modal__backdrop__background`                  | Modal backdrop background (including `url()` or gradient)    |
 | `--rui-Modal--auto__min-width`                       | Minimum width of auto-sized modal                            |
 | `--rui-Modal--auto__max-width`                       | Maximum width of auto-sized modal                            |
@@ -715,3 +983,5 @@ opened.
 | `--rui-Modal--large__width`                          | Width of large modal                                         |
 | `--rui-Modal--fullscreen__width`                     | Width of fullscreen modal                                    |
 | `--rui-Modal--fullscreen__height`                    | Height of fullscreen modal                                   |
+
+[w3c-dialog-heading]: https://github.com/w3c/aria-practices/issues/551#issuecomment-365134527

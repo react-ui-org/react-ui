@@ -1,81 +1,59 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {
-  RUIContext,
   withGlobalProps,
 } from '../../provider';
+import { classNames } from '../../utils/classNames';
 import styles from './ModalHead.scss';
 
 export const ModalHead = ({
-  closeButtonDisabled,
-  closeButtonRef,
+  children,
   id,
-  onClose,
-  title,
-}) => (
-  <div
-    className={styles.root}
-    id={id}
-  >
-    <h3
-      className={styles.title}
-      {...(id && { id: `${id}__title` })}
+  justify,
+}) => {
+  const justifyClass = (value) => {
+    if (value === 'center') {
+      return styles.isJustifiedToCenter;
+    }
+
+    if (value === 'space-between') {
+      return styles.isJustifiedToSpaceBetween;
+    }
+
+    return styles.isJustifiedToStretch;
+  };
+
+  return (
+    <div
+      className={classNames(
+        styles.root,
+        justifyClass(justify),
+      )}
+      id={id}
     >
-      {title}
-    </h3>
-    {onClose && (
-      <RUIContext.Consumer>
-        {({ translations }) => (
-          <button
-            type="button"
-            className={styles.close}
-            disabled={closeButtonDisabled}
-            onClick={onClose}
-            ref={closeButtonRef}
-            title={translations.ModalHead.close}
-            {...(id && { id: `${id}__closeButton` })}
-          >
-            ×
-          </button>
-        )}
-      </RUIContext.Consumer>
-    )}
-  </div>
-);
+      {children}
+    </div>
+  );
+};
 
 ModalHead.defaultProps = {
-  closeButtonDisabled: false,
-  closeButtonRef: null,
   id: undefined,
-  onClose: undefined,
+  justify: 'space-between',
 };
 
 ModalHead.propTypes = {
   /**
-   * If `true`, close button will be disabled.
+   * Content of the head (preferably heading element with ModalCloseButton element).
    */
-  closeButtonDisabled: PropTypes.bool,
+  children: PropTypes.node.isRequired,
   /**
-   * Reference to close button element.
-   */
-  closeButtonRef: PropTypes.shape({
-    // eslint-disable-next-line react/forbid-prop-types
-    current: PropTypes.any,
-  }),
-  /**
-   * ID of the root HTML element. It also serves as a base for nested elements:
-   * * `<ID>__title`
-   * * `<ID>__closeButton`
+   * ID of the root HTML element.
    */
   id: PropTypes.string,
   /**
-   * Close handler of the modal. If not provided, close button will be hidden.
+   * Horizontal alignment (distribution) of individual buttons.
    */
-  onClose: PropTypes.func,
-  /**
-   * Title of the modal.
-   */
-  title: PropTypes.string.isRequired,
+  justify: PropTypes.oneOf(['center', 'space-between', 'stretch']),
 };
 
 export const ModalHeadWithGlobalProps = withGlobalProps(ModalHead, 'ModalHead');

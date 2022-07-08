@@ -9,6 +9,8 @@ import userEvent from '@testing-library/user-event';
 import { Button } from '../../..';
 import { Modal } from '../Modal';
 import { ModalBody } from '../ModalBody';
+// eslint-disable-next-line import/no-named-default
+import { default as ModalCloseButton } from '../ModalCloseButton';
 import { ModalHead } from '../ModalHead';
 import { ModalFooter } from '../ModalFooter';
 import { idPropTest } from '../../../../../tests/propTests/idPropTest';
@@ -131,7 +133,7 @@ describe('functionality', () => {
   it.each([
     () => userEvent.keyboard('{esc}'),
     () => userEvent.click(screen.getByTestId('id')),
-  ])('call close modal using `closeButtonRef` and `ModalHead` (%#)', (action) => {
+  ])('call close modal using `closeButtonRef` and `ModalCloseButton` (%#)', (action) => {
     const spy = sinon.spy();
     const ref = React.createRef();
     render((
@@ -139,11 +141,12 @@ describe('functionality', () => {
         closeButtonRef={ref}
         id="id"
       >
-        <ModalHead
-          title="title text"
-          closeButtonRef={ref}
-          onClose={spy}
-        />
+        <ModalHead>
+          <ModalCloseButton
+            ref={ref}
+            onClick={spy}
+          />
+        </ModalHead>
       </Modal>
     ));
 
@@ -162,12 +165,13 @@ describe('functionality', () => {
         closeButtonRef={ref}
         id="id"
       >
-        <ModalHead
-          title="title text"
-          closeButtonDisabled
-          closeButtonRef={ref}
-          onClose={spy}
-        />
+        <ModalHead>
+          <ModalCloseButton
+            disabled
+            ref={ref}
+            onClick={spy}
+          />
+        </ModalHead>
       </Modal>
     ));
 
