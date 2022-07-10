@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
 import withForwardedRef from '../withForwardedRef';
-import styles from './Popover.scss';
+import styles from './PopoverWrapper.scss';
 
 export const PopoverWrapper = ({
   children,
@@ -11,7 +11,7 @@ export const PopoverWrapper = ({
   ...restProps
 }) => (
   <Tag
-    className={styles.wrapper}
+    className={styles.root}
     id={id}
     {...restProps}
   >

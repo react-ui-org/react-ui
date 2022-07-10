@@ -2,7 +2,7 @@
 
 @use "sass:math";
 
-$width: var(--rui-Popover__width);
+$max-width: var(--rui-Popover__max-width);
 $padding: var(--rui-Popover__padding);
 $border-width: var(--rui-Popover__border-width);
 $border-color: var(--rui-Popover__border-color);

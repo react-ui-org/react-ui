@@ -4,14 +4,15 @@
 
 @use "theme";
 
-.wrapper {
-    position: relative;
-}
-
 .root {
     position: absolute;
-    width: theme.$width;
+    width: max-content;
+    max-width: theme.$max-width;
     padding: theme.$padding;
+    text-align: left;
+    white-space: normal;
+    word-break: normal;
+    word-wrap: break-word;
     color: theme.$color;
     border: theme.$border-width solid theme.$border-color;
     border-radius: theme.$border-radius;
@@ -205,7 +206,7 @@
     transform: translate(0, -100%) rotateZ(90deg);
 }
 
-// Controlled
+// Controlled placement
 .isRootControlled.isRootAtTop,
 .isRootControlled.isRootAtBottom,
 .isRootControlled.isRootAtLeft,
