@@ -3,8 +3,9 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { ModalContent } from '../ModalContent';
+import { ModalHeader } from '../ModalHeader';
 import { idPropTest } from '../../../../../tests/propTests/idPropTest';
+import { justifyPropTest } from '../../../../../tests/propTests/justifyPropTest';
 
 const mandatoryProps = {
   children: <div>content text</div>,
@@ -13,23 +14,16 @@ const mandatoryProps = {
 describe('rendering', () => {
   it.each([
     [
-      {
-        children: (
-          <>
-            <div>content text 1</div>
-            <div>content text 2</div>
-          </>
-        ),
-      },
+      {},
       (rootElement) => {
-        expect(within(rootElement).getByText('content text 1'));
-        expect(within(rootElement).getByText('content text 2'));
+        expect(within(rootElement).getByText('content text'));
       },
     ],
     ...idPropTest,
+    ...justifyPropTest,
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
-      <ModalContent
+      <ModalHeader
         {...mandatoryProps}
         {...testedProps}
       />

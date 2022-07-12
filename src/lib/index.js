@@ -24,7 +24,8 @@ export {
   ModalCloseButton,
   ModalContent,
   ModalFooter,
-  ModalHead,
+  ModalHeader,
+  ModalTitle,
 } from './components/Modal';
 export { default as Paper } from './components/Paper';
 export {

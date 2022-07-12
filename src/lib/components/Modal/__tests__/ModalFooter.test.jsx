@@ -5,6 +5,7 @@ import {
 } from '@testing-library/react';
 import { ModalFooter } from '../ModalFooter';
 import { idPropTest } from '../../../../../tests/propTests/idPropTest';
+import { justifyPropTest } from '../../../../../tests/propTests/justifyPropTest';
 
 const mandatoryProps = {
   children: <div>content text</div>,
@@ -27,26 +28,7 @@ describe('rendering', () => {
       },
     ],
     ...idPropTest,
-    [
-      { justify: 'start' },
-      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToStart'),
-    ],
-    [
-      { justify: 'center' },
-      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToCenter'),
-    ],
-    [
-      { justify: 'end' },
-      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToEnd'),
-    ],
-    [
-      { justify: 'space-between' },
-      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToSpaceBetween'),
-    ],
-    [
-      { justify: 'stretch' },
-      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToStretch'),
-    ],
+    ...justifyPropTest,
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <ModalFooter

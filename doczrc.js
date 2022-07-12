@@ -127,6 +127,28 @@ export default {
     showPlaygroundEditor: false,
     styles: {
       Container: {
+        '& > div > div > div > :is(ul, ol)': {
+          ml: 5,
+        },
+        '& > div > div > div > h1': {
+          fontFamily: defaultFontFamily,
+          mb: 4,
+        },
+        '& > div > div > div > h2': {
+          fontSize: 5,
+          mb: 3,
+          mt: 5,
+        },
+        '& > div > div > div > h3': {
+          fontSize: 4,
+          mb: 2,
+          mt: 4,
+        },
+        '& > div > div > div > h4': {
+          fontSize: 3,
+          mb: 1,
+          mt: 2,
+        },
         '& [data-testid="live-preview"]': {
           fontSize: '1rem', // Set the font size in playground to override the docs theme default.
           overflow: 'auto', // Make preview scrollable.
@@ -153,10 +175,6 @@ export default {
           maxHeight: codeMaxHeight,
           overflow: 'auto !important',
         },
-        '& [data-testid="playground"] h3': { // Fix headings in modals.
-          fontSize: 'var(--rui-typography-size-1)',
-          m: 0,
-        },
         '& [data-testid="playground"] pre': {
           maxHeight: 'none',
         },
@@ -175,35 +193,13 @@ export default {
         'code, pre': {
           fontSize: '80%', // Adjust code font size to work better with 20px body text size.
         },
-        h1: {
-          fontFamily: defaultFontFamily,
-          mb: 4,
-        },
         'h1 + p': {
           fontSize: 4,
-        },
-        h2: {
-          fontSize: 5,
-          mb: 3,
-          mt: 5,
-        },
-        h3: {
-          fontSize: 4,
-          mb: 2,
-          mt: 4,
-        },
-        h4: {
-          fontSize: 3,
-          mb: 1,
-          mt: 2,
         },
         hr: {
           my: 6,
         },
         maxWidth: 1150,
-        ol: {
-          ml: 5,
-        },
         p: null,
         pre: {
           maxHeight: codeMaxHeight,
@@ -228,9 +224,6 @@ export default {
         },
         'table ul, table ol': {
           ml: 1,
-        },
-        ul: {
-          ml: 5,
         },
       },
       Header: {

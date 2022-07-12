@@ -20,7 +20,8 @@ import {
   ModalCloseButton,
   ModalContent,
   ModalFooter,
-  ModalHead,
+  ModalHeader,
+  ModalTitle,
   ScrollView,
   TextField,
   Toolbar,
@@ -36,11 +37,12 @@ To implement the Modal component, you need to import it first:
 ```js
 import {
   Modal,
-  ModalHead,
+  ModalHeader,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalFooter,
+  ModalTitle,
 } from '@react-ui-org/react-ui';
 ```
 
@@ -64,10 +66,10 @@ And use it:
               closeButtonRef={modalCloseButtonRef}
               primaryButtonRef={modalPrimaryButtonRef}
             >
-              <ModalHead>
-                <h2>Delete the user?</h2>
+              <ModalHeader>
+                <ModalTitle>Delete the user?</ModalTitle>
                 <ModalCloseButton onClick={() => setModalOpen(false)} />
-              </ModalHead>
+              </ModalHeader>
               <ModalBody>
                 <ModalContent>
                   <p>
@@ -126,7 +128,8 @@ See [API](#api) for all available options.
 Modal is decomposed into the following components:
 
 - [Modal](#api)
-  - [ModalHead](#modalhead-1)
+  - [ModalHeader](#modalhead-1)
+    - [ModalTitle](#modaltitle)
     - [ModalCloseButton](#modalclosebutton)
   - [ModalBody](#modalbody-1)
     - [ModalContent](#modalcontent)
@@ -186,9 +189,9 @@ e.g. dialog modal, blocking modal, scrollable modal, etc.
           )}
           {modalOpen === 2 && (
             <Modal>
-              <ModalHead>
-                <h2>Action finished</h2>
-              </ModalHead>
+              <ModalHeader>
+                <ModalTitle>Action finished</ModalTitle>
+              </ModalHeader>
               <ModalBody>
                 <ModalContent>
                   <p>
@@ -204,10 +207,10 @@ e.g. dialog modal, blocking modal, scrollable modal, etc.
               closeButtonRef={modalCloseButtonRef}
               primaryButtonRef={modalPrimaryButtonRef}
             >
-              <ModalHead>
-                <h2>Delete the user?</h2>
+              <ModalHeader>
+                <ModalTitle>Delete the user?</ModalTitle>
                 <ModalCloseButton onClick={() => setModalOpen(false)} />
-              </ModalHead>
+              </ModalHeader>
               <ModalBody>
                 <ModalContent>
                   <p>
@@ -237,10 +240,10 @@ e.g. dialog modal, blocking modal, scrollable modal, etc.
               closeButtonRef={modalCloseButtonRef}
               primaryButtonRef={modalPrimaryButtonRef}
             >
-              <ModalHead>
-                <h2>Add new user</h2>
+              <ModalHeader>
+                <ModalTitle>Add new user</ModalTitle>
                 <ModalCloseButton onClick={() => setModalOpen(false)} />
-              </ModalHead>
+              </ModalHeader>
               <ModalBody>
                 <ModalContent>
                   <FormLayout fieldLayout="horizontal">
@@ -270,20 +273,19 @@ e.g. dialog modal, blocking modal, scrollable modal, etc.
   }}
 </Playground>
 
-### ModalHead
+### ModalHeader
 
-ModalHead is an optional part of the Modal which allows you to display the title
+ModalHeader is an optional part of the Modal which allows you to display the title
 of the modal and its close button.
 
-It is recommended to compose ModalHead from the following elements. For title,
-use heading element `h1` or `h2` (see [W3C recommendation][w3c-dialog-heading]).
-For the close button, use ModalCloseButton, whereas it could be omitted if the
-close button is a part of ModalFooter.
+It is recommended to compose ModalHeader from the following elements. For title,
+use ModalTitle. For the close button, use ModalCloseButton, however it can
+be omitted if a close button is part of ModalFooter.
 
-There are two ways how to position elements within the ModalHead:
+There are two ways how to position elements within the ModalHeader:
 
 1. You can use provided positioning. Place previously mentioned elements into
-   the ModalHead and use `justify` prop to set up the positioning of those
+   the ModalHeader and use `justify` prop to set up the positioning of those
    elements.
 2. You can customize positioning using another component (e.g.
    [Toolbar](/components/toolbar)). In that case, set `justify` to `stretch` and
@@ -314,7 +316,7 @@ There are two ways how to position elements within the ModalHead:
           priority="outline"
         />
         <Button
-          label="Launch without close button and centered title"
+          label="Launch without close button and with centered title"
           onClick={() => {
             setModalOpen(true);
             setVariant(3);
@@ -336,35 +338,35 @@ There are two ways how to position elements within the ModalHead:
               primaryButtonRef={modalPrimaryButtonRef}
             >
               {variant === 1 && (
-                <ModalHead>
-                  <h2>Delete the user?</h2>
+                <ModalHeader>
+                  <ModalTitle>Delete the user?</ModalTitle>
                   <ModalCloseButton onClick={() => setModalOpen(false)} />
-                </ModalHead>
+                </ModalHeader>
               )}
               {variant === 2 && (
-                <ModalHead>
-                  <h2>Delete the user?</h2>
-                </ModalHead>
+                <ModalHeader>
+                  <ModalTitle>Delete the user?</ModalTitle>
+                </ModalHeader>
               )}
               {variant === 3 && (
-                <ModalHead justify="center">
-                  <h2>Delete the user?</h2>
-                </ModalHead>
+                <ModalHeader justify="center">
+                  <ModalTitle>Delete the user?</ModalTitle>
+                </ModalHeader>
               )}
               {variant === 4 && (
-                <ModalHead justify="stretch">
+                <ModalHeader justify="stretch">
                   <Toolbar justify="space-between">
                     <ToolbarItem>
                       {''}
                     </ToolbarItem>
                     <ToolbarItem>
-                      <h2>Delete the user?</h2>
+                      <ModalTitle>Delete the user?</ModalTitle>
                     </ToolbarItem>
                     <ToolbarItem>
                       <ModalCloseButton onClick={() => setModalOpen(false)} />
                     </ToolbarItem>
                   </Toolbar>
-                </ModalHead>
+                </ModalHeader>
               )}
               <ModalBody>
                 <ModalContent>
@@ -475,10 +477,10 @@ There are two ways to position buttons within the ModalFooter:
               closeButtonRef={modalCloseButtonRef}
               primaryButtonRef={modalPrimaryButtonRef}
             >
-              <ModalHead>
-                <h2>Delete the user?</h2>
+              <ModalHeader>
+                <ModalTitle>Delete the user?</ModalTitle>
                 <ModalCloseButton onClick={() => setModalOpen(false)} />
-              </ModalHead>
+              </ModalHeader>
               <ModalBody>
                 <ModalContent>
                   <p>
@@ -597,10 +599,10 @@ Modals of any size automatically shrink when they cannot fit the screen width.
               primaryButtonRef={modalPrimaryButtonRef}
               size={modalSize}
             >
-              <ModalHead>
-                <h2>Delete the user?</h2>
+              <ModalHeader>
+                <ModalTitle>Delete the user?</ModalTitle>
                 <ModalCloseButton onClick={() => setModalOpen(false)} />
-              </ModalHead>
+              </ModalHeader>
               <ModalBody>
                 <ModalContent>
                   <p>
@@ -657,10 +659,10 @@ magic that doesn't work together yet 🎩.
               primaryButtonRef={modalPrimaryButtonRef}
               size="auto"
             >
-              <ModalHead>
-                <h2>Delete the user?</h2>
+              <ModalHeader>
+                <ModalTitle>Delete the user?</ModalTitle>
                 <ModalCloseButton onClick={() => setModalOpen(false)} />
-              </ModalHead>
+              </ModalHeader>
               <ModalBody>
                 <ModalContent>
                   <p>
@@ -726,10 +728,10 @@ Modal can be aligned either to the top or center of the screen.
               position={modalPosition}
               primaryButtonRef={modalPrimaryButtonRef}
             >
-              <ModalHead>
-                <h2>Delete the user?</h2>
+              <ModalHeader>
+                <ModalTitle>Delete the user?</ModalTitle>
                 <ModalCloseButton onClick={() => setModalOpen(false)} />
-              </ModalHead>
+              </ModalHeader>
               <ModalBody>
                 <ModalContent>
                   <p>
@@ -912,10 +914,10 @@ independent of the page itself. This can be done in three ways using the
               primaryButtonRef={modalPrimaryButtonRef}
               size="small"
             >
-              <ModalHead>
-                <h2>Modal with long content</h2>
+              <ModalHeader>
+                <ModalTitle>Modal with long content</ModalTitle>
                 <ModalCloseButton onClick={() => setModalOpen(false)} />
-              </ModalHead>
+              </ModalHeader>
               <ModalBody scrolling={modalScrolling}>
                 {
                   modalScrolling === 'custom'
@@ -960,9 +962,13 @@ opened.
 
 <Props table of={Modal} />
 
-### ModalHead
+### ModalHeader
 
-<Props table of={ModalHead} />
+<Props table of={ModalHeader} />
+
+### ModalTitle
+
+<Props table of={ModalTitle} />
 
 ### ModalCloseButton
 
@@ -988,9 +994,9 @@ opened.
 | `--rui-Modal__padding-y`                             | Block padding of individual modal components                 |
 | `--rui-Modal__background`                            | Modal background (including `url()` or gradient)             |
 | `--rui-Modal__box-shadow`                            | Modal box shadow                                             |
-| `--rui-Modal__separator__width`                      | Width of separator between modal head, body, and footer      |
-| `--rui-Modal__separator__color`                      | Color of separator between modal head, body, and footer      |
-| `--rui-Modal__head__gap`                             | Modal head gap between children                              |
+| `--rui-Modal__separator__width`                      | Width of separator between modal header, body, and footer    |
+| `--rui-Modal__separator__color`                      | Color of separator between modal header, body, and footer    |
+| `--rui-Modal__header__gap`                           | Modal header gap between children                            |
 | `--rui-Modal__outer-spacing-xs`                      | Spacing around modal, `xs` screen size                       |
 | `--rui-Modal__outer-spacing-sm`                      | Spacing around modal, `sm` screen size and bigger            |
 | `--rui-Modal__footer__background`                    | Modal footer background (including `url()` or gradient)      |
@@ -1003,5 +1009,3 @@ opened.
 | `--rui-Modal--large__width`                          | Width of large modal                                         |
 | `--rui-Modal--fullscreen__width`                     | Width of fullscreen modal                                    |
 | `--rui-Modal--fullscreen__height`                    | Height of fullscreen modal                                   |
-
-[w3c-dialog-heading]: https://github.com/w3c/aria-practices/issues/551#issuecomment-365134527
