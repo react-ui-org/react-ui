@@ -6,7 +6,7 @@ route: /components/modal
 
 # Modal
 
-Modal allows to prompt users to take or complete an action.
+Modal allows prompting users to take or complete an action.
 
 import {
   Playground,
@@ -102,28 +102,28 @@ See [API](#api) for all available options.
 
 ## General Guidelines
 
-- Use modals to **confirm an action,** display a **blocking alert**, or to
-  reveal **contextual options or settings** that cannot be displayed inline
-  with the parent content.
+- Use modals to **confirm an action,** display a **blocking alert**, or reveal
+  **contextual options or settings** that cannot be displayed in line with the
+  parent content.
 
 - **The title** should communicate the **purpose of the modal** rather than a
   generic text. Eg. “Delete the user?” tells more than “Are you sure?” or
   “Warning”.
 
-- **Modal actions** should correspond to the modal purpose, too. Eg. “Delete”
+- **Modal actions** should correspond to the modal purpose, too. E.g. “Delete”
   tells better what happens rather than “OK”.
 
 - Modal **automatically focuses the first form field** by default which allows
-  users to confirm the modal by hitting enter key. When no field is found then
-  the primary button (in footer) is focused. To turn this feature off, set the
-  `autofocus` prop to `false`.
+  users to confirm the modal by hitting the enter key. When no field is found
+  then the primary button (in the footer) is focused. To turn this feature off,
+  set the `autofocus` prop to `false`.
 
 - **Avoid stacking** of modals. While it may technically work, the modal is just
   not designed for that.
 
 ## Composition
 
-Modal is decomposed into following components:
+Modal is decomposed into the following components:
 
 - [Modal](#api)
   - [ModalHead](#modalhead-1)
@@ -134,7 +134,7 @@ Modal is decomposed into following components:
   - [ModalFooter](#modalfooter-1)
 
 Using different combinations, you can compose different kinds of modals,
-e.g. dialog modal, blocking modal, scrollable modal etc.
+e.g. dialog modal, blocking modal, scrollable modal, etc.
 
 <Playground>
   {() => {
@@ -272,20 +272,22 @@ e.g. dialog modal, blocking modal, scrollable modal etc.
 
 ### ModalHead
 
-ModalHead is optional part of the Modal which allows you to display
-the title of the modal and its close button.
+ModalHead is an optional part of the Modal which allows you to display the title
+of the modal and its close button.
 
-It is recommended to compose ModalHead from following elements. For title, use
-heading element `h1` or `h2` (see [W3C recommendation][w3c-dialog-heading]).
-For close button, use ModalCloseButton, whereas it could be omitted
-if the close button is a part of ModalFooter.
+It is recommended to compose ModalHead from the following elements. For title,
+use heading element `h1` or `h2` (see [W3C recommendation][w3c-dialog-heading]).
+For the close button, use ModalCloseButton, whereas it could be omitted if the
+close button is a part of ModalFooter.
 
 There are two ways how to position elements within the ModalHead:
 
 1. You can use provided positioning. Place previously mentioned elements into
-the ModalHead and use `justify` prop to set up positioning of those elements.
-2. You can customize positioning using other component (e.g. Toolbar).
-In that case, set `justify` to `stretch` and position elements on your own.
+   the ModalHead and use `justify` prop to set up the positioning of those
+   elements.
+2. You can customize positioning using another component (e.g.
+   [Toolbar](/components/toolbar)). In that case, set `justify` to `stretch` and
+   position elements on your own.
 
 <Playground>
   {() => {
@@ -396,26 +398,28 @@ In that case, set `justify` to `stretch` and position elements on your own.
 
 ### ModalBody
 
-ModalBody is mandatory part of the Modal which allows you to display
+ModalBody is a mandatory part of the Modal which allows you to display the
 content of the Modal.
 
 Although the ModalBody allows you to display arbitrary content, you should not
-place content directly into the ModalBody, but wrap it with ModalContent.
+place content directly into the ModalBody, but wrap it with ModalContent first.
 
 In case your content is expected to be long, consider wrapping ModalContent
-with ScrollView. Check [Scrolling Long Content](#scrolling-long-content).
+with ScrollView. Check [Scrolling Long Content](#scrolling-long-content) section
+below.
 
 ### ModalFooter
 
-ModalFooter is optional part of the Modal which allows you to display
+ModalFooter is an optional part of the Modal which allows you to display
 user actions.
 
-There are two ways how to position buttons within the ModalFooter:
+There are two ways to position buttons within the ModalFooter:
 
 1. You can use provided positioning. Place Button component (or any arbitrary
-element) and use `justify` prop to set up positioning of those elements.
-2. You can customize positioning using other component (e.g. Toolbar).
-In that case, set `justify` to `stretch` and position elements on your own.
+   element) and use `justify` prop to set up the positioning of those elements.
+2. You can customize positioning using another component (e.g.
+   [Toolbar](/components/toolbar)). In that case, set `justify` to `stretch`
+   and position elements on your own.
 
 <Playground>
   {() => {
@@ -627,10 +631,10 @@ Modals of any size automatically shrink when they cannot fit the screen width.
   }}
 </Playground>
 
-On top of that, the modal is able to adjust to the width of its content.
+On top of that, the modal can adjust to the width of its content.
 
 👉 Please note the auto width may not function correctly in combination with
-other auto layout mechanisms, e.g. the auto-width
+other auto-layout mechanisms, e.g. the auto-width
 [FormLayout](/components/form-layout#label-width). It's just too much
 magic that doesn't work together yet 🎩.
 
@@ -689,7 +693,7 @@ magic that doesn't work together yet 🎩.
 
 ## Position
 
-Modal can be aligned either to top or center of the screen.
+Modal can be aligned either to the top or center of the screen.
 
 <Playground>
   {() => {
@@ -756,37 +760,37 @@ Modal can be aligned either to top or center of the screen.
   }}
 </Playground>
 
-## Key Control
+## Keyboard Control
 
 Modal can be controlled either by mouse or keyboard. To enhance user
-experience, primary action can be fired by pressing `Enter` key and modal
-can be closed by pressing `Escape` key.
+experience, primary action can be fired by pressing `Enter` key and the modal
+can be closed by pressing the `Escape` key.
 
-To enable it, you just need to pass reference to the buttons using
-`primaryButtonRef` and `closeButtonRef` props on Modal. Advantage
-of passing reference to the button is that if the button is disabled,
-key press will not fire the event.
+To enable it, you just need to pass a reference to the buttons using
+`primaryButtonRef` and `closeButtonRef` props on Modal. The advantage of passing
+a reference to the button is that if the button is disabled, the key press will
+not fire the event.
 
-👉 We strongly recommend using this feature together with Autofocus for
-better user experience.
+👉 We strongly recommend using this feature together with Autofocus for a better
+user experience.
 
 ## Autofocus
 
-Autofucus is implemented to enhance user experience by automatically
+Autofocus is implemented to enhance the user experience by automatically
 focussing an element within the modal.
 
-How does it work? It tries to find `input`, `textarea` and `select` element
-inside of Modal and focuses the first found. If none is found and
+How does it work? It tries to find `input`, `textarea`, and `select` elements
+inside of Modal and moves focus into the first found. If none is found and the
 `primaryButtonRef` prop on Modal is set, then the primary button is focused.
 
-Autofocus is enabled by default, so if you want to control focus of
-elements manually, set `autoFocus` prop on Modal to `false`.
+Autofocus is enabled by default, so if you want to control the focus of
+elements manually, set the `autoFocus` prop on Modal to `false`.
 
 ## Scrolling Long Content
 
 When modals become too long for the user's viewport or device, we recommend
-wrapping ModalContent into [ScrollView](/components/scroll-view) to make
-its content scrollable independently of the page itself. In this case,
+wrapping ModalContent into [ScrollView](/components/scroll-view) to make the
+content scrollable independently of the page itself. In this case,
 `withScrollView` must be set to `true` on ModalBody.
 
 <Playground>
