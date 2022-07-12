@@ -3,12 +3,13 @@ import React from 'react';
 import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
+import { getScrollingClassName } from './_helpers/getScrollingClassName';
 import styles from './ModalBody.scss';
 
 export const ModalBody = ({
   children,
   id,
-  withScrollView,
+  scrolling,
 }) => {
   if (isChildrenEmpty(children)) {
     return null;
@@ -18,7 +19,7 @@ export const ModalBody = ({
     <div
       className={classNames(
         styles.root,
-        withScrollView && styles.isRootScrollable,
+        getScrollingClassName(scrolling, styles),
       )}
       id={id}
     >
@@ -30,7 +31,7 @@ export const ModalBody = ({
 ModalBody.defaultProps = {
   children: null,
   id: undefined,
-  withScrollView: false,
+  scrolling: 'auto',
 };
 
 ModalBody.propTypes = {
@@ -38,8 +39,9 @@ ModalBody.propTypes = {
    * Nested elements. Supported types are:
    *
    * * `ModalContent`
-   * * `ScrollView` (`withScrollView: true` must be set)
+   * * `ScrollView` (`scrolling: 'custom'` must be set)
    *
+   * You can also provide a custom component responsible for scrolling and displaying content correctly.
    * At most one nested element is allowed. If none are provided nothing is rendered.
    */
   children: PropTypes.node,
@@ -48,9 +50,13 @@ ModalBody.propTypes = {
    */
   id: PropTypes.string,
   /**
-   * If `true`, body is scroll-compatible and its child must be instance of `ScrollView`.
+   * Scrolling mode:
+   *
+   * - `auto`: scrolling is enabled on ModalBody.
+   * - `custom`: use if providing a custom scrolling component, e.g. an instance of `ScrollView`.
+   * - `none`: scrolling is disabled on ModalBody and the entire Modal is scrollable instead.
    */
-  withScrollView: PropTypes.bool,
+  scrolling: PropTypes.oneOf(['auto', 'custom', 'none']),
 };
 
 export const ModalBodyWithGlobalProps = withGlobalProps(ModalBody, 'ModalBody');

@@ -1,15 +1,18 @@
-@use "settings";
-
 .root {
     flex: 1 1 auto;
 }
 
-.isRootScrollable {
-    display: flex;
-    flex-direction: column;
+.isRootScrollingAuto,
+.isRootScrollingCustom {
     min-height: 0;
 }
 
-.root:first-child:not(.isRootScrollable) {
-    padding-top: settings.$padding-y;
+.isRootScrollingAuto {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.isRootScrollingCustom {
+    display: flex;
+    flex-direction: column;
 }

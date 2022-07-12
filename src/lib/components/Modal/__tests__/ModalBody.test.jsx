@@ -28,10 +28,27 @@ describe('rendering', () => {
     ...idPropTest,
     [
       {
-        withScrollView: true,
+        scrolling: 'auto',
       },
       (rootElement) => {
-        expect(rootElement).toHaveClass('isRootScrollable');
+        expect(rootElement).toHaveClass('isRootScrollingAuto');
+      },
+    ],
+    [
+      {
+        scrolling: 'custom',
+      },
+      (rootElement) => {
+        expect(rootElement).toHaveClass('isRootScrollingCustom');
+      },
+    ],
+    [
+      {
+        scrolling: 'none',
+      },
+      (rootElement) => {
+        expect(rootElement).not.toHaveClass('isRootScrollingAuto');
+        expect(rootElement).not.toHaveClass('isRootScrollingCustom');
       },
     ],
   ])('renders with props: "%s"', (testedProps, assert) => {
