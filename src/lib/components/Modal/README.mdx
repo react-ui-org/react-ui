@@ -788,15 +788,20 @@ elements manually, set the `autoFocus` prop on Modal to `false`.
 
 ## Scrolling Long Content
 
-When modals become too long for the user's viewport or device, we recommend
-wrapping ModalContent into [ScrollView](/components/scroll-view) to make the
-content scrollable independently of the page itself. In this case,
-`withScrollView` must be set to `true` on ModalBody.
+When modals become too long for the user's viewport or device, they scroll
+independent of the page itself. This can be done in three ways using the
+`scrolling` option of the ModalBody component:
+
+- `auto` (default) — ModalBody is responsible for scrolling,
+- `custom` — you must provide a custom component to handle scrolling,
+   typically an instance of [ScrollView](/components/scroll-view) wrapping
+   ModalContent,
+- `none` — entire Modal is responsible for scrolling.
 
 <Playground>
   {() => {
     const [modalOpen, setModalOpen] = React.useState(false);
-    const [modalScrollView, setModalScrollView] = React.useState(true);
+    const [modalScrolling, setModalScrolling] = React.useState('auto');
     const modalCloseButtonRef = React.useRef();
     const modalPrimaryButtonRef = React.useRef();
     const modalContent = (
@@ -878,15 +883,23 @@ content scrollable independently of the page itself. In this case,
         <Button
           label="Launch modal with scrolling body"
           onClick={() => {
-            setModalScrollView(true);
+            setModalScrolling('auto');
             setModalOpen(true);
           }}
           priority="outline"
         />
         <Button
-          label="Launch scrolling modal"
+          label="Launch modal with ScrollView"
           onClick={() => {
-            setModalScrollView(false);
+            setModalScrolling('custom');
+            setModalOpen(true);
+          }}
+          priority="outline"
+        />
+        <Button
+          label="Launch modal with non-scrolling body"
+          onClick={() => {
+            setModalScrolling('none');
             setModalOpen(true);
           }}
           priority="outline"
@@ -898,15 +911,14 @@ content scrollable independently of the page itself. In this case,
               closeButtonRef={modalCloseButtonRef}
               primaryButtonRef={modalPrimaryButtonRef}
               size="small"
-              title="Modal with long content"
             >
               <ModalHead>
-                <h2>Delete the user?</h2>
+                <h2>Modal with long content</h2>
                 <ModalCloseButton onClick={() => setModalOpen(false)} />
               </ModalHead>
-              <ModalBody withScrollView={modalScrollView}>
+              <ModalBody scrolling={modalScrolling}>
                 {
-                  modalScrollView
+                  modalScrolling === 'custom'
                     ? (
                       <ScrollView>
                         {modalContent}

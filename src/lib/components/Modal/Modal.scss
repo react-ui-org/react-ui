@@ -18,6 +18,7 @@
     max-width: calc(100% - (2 * var(--rui-local-outer-spacing)));
     max-height: calc(100% - (2 * var(--rui-local-outer-spacing)));
     overflow-y: auto;
+    overscroll-behavior: contain;
     border-radius: settings.$border-radius;
     background: theme.$background;
     box-shadow: theme.$box-shadow;
