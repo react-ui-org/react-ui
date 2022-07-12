@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withGlobalProps } from '../../provider';
+import {
+  withGlobalProps,
+} from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { getJustifyClassName } from './_helpers/getJustifyClassName';
-import styles from './ModalFooter.scss';
+import styles from './ModalHeader.scss';
 
-export const ModalFooter = ({
+export const ModalHeader = ({
   children,
   id,
   justify,
@@ -21,14 +23,14 @@ export const ModalFooter = ({
   </div>
 );
 
-ModalFooter.defaultProps = {
+ModalHeader.defaultProps = {
   id: undefined,
-  justify: 'center',
+  justify: 'space-between',
 };
 
-ModalFooter.propTypes = {
+ModalHeader.propTypes = {
   /**
-   * Content of the footer (preferably nested `Button` elements).
+   * Content of the header (preferably ModalTitle and ModalCloseButton).
    */
   children: PropTypes.node.isRequired,
   /**
@@ -41,6 +43,6 @@ ModalFooter.propTypes = {
   justify: PropTypes.oneOf(['start', 'center', 'end', 'space-between', 'stretch']),
 };
 
-export const ModalFooterWithGlobalProps = withGlobalProps(ModalFooter, 'ModalFooter');
+export const ModalHeadWithGlobalProps = withGlobalProps(ModalHeader, 'ModalHeader');
 
-export default ModalFooterWithGlobalProps;
+export default ModalHeadWithGlobalProps;

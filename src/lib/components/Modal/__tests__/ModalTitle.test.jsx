@@ -3,7 +3,7 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { ModalHead } from '../ModalHead';
+import { ModalTitle } from '../ModalTitle';
 import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 
 const mandatoryProps = {
@@ -13,27 +13,31 @@ const mandatoryProps = {
 describe('rendering', () => {
   it.each([
     [
-      {},
+      {
+        children: (
+          <>
+            <div>content text 1</div>
+            <div>content text 2</div>
+          </>
+        ),
+      },
       (rootElement) => {
-        expect(within(rootElement).getByText('content text'));
+        expect(within(rootElement).getByText('content text 1'));
+        expect(within(rootElement).getByText('content text 2'));
       },
     ],
     ...idPropTest,
     [
-      { justify: 'center' },
-      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToCenter'),
-    ],
-    [
-      { justify: 'space-between' },
-      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToSpaceBetween'),
-    ],
-    [
-      { justify: 'stretch' },
-      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToStretch'),
+      {
+        level: 1,
+      },
+      (rootElement) => {
+        expect(rootElement).toContainHTML('<h1');
+      },
     ],
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
-      <ModalHead
+      <ModalTitle
         {...mandatoryProps}
         {...testedProps}
       />

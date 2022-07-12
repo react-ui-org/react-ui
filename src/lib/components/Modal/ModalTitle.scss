@@ -1,0 +1,10 @@
+@use "settings";
+
+.root {
+    margin-block: 0;
+    font-size: settings.$title-font-size;
+
+    &:not(:last-child) {
+        margin-bottom: 0;
+    }
+}

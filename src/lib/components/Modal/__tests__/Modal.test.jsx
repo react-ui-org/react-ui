@@ -11,7 +11,7 @@ import { Modal } from '../Modal';
 import { ModalBody } from '../ModalBody';
 // eslint-disable-next-line import/no-named-default
 import { default as ModalCloseButton } from '../ModalCloseButton';
-import { ModalHead } from '../ModalHead';
+import { ModalHeader } from '../ModalHeader';
 import { ModalFooter } from '../ModalFooter';
 import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 
@@ -106,7 +106,7 @@ describe('functionality', () => {
   it.each([
     () => userEvent.keyboard('{esc}'),
     () => userEvent.click(screen.getByTestId('id')),
-  ])('do not call close modal using `closeButtonRef` (%#)', (action) => {
+  ])('do not call close modal using `closeButtonRef` when button is disabled (%#)', (action) => {
     const spy = sinon.spy();
     const ref = React.createRef();
     render((
@@ -141,12 +141,12 @@ describe('functionality', () => {
         closeButtonRef={ref}
         id="id"
       >
-        <ModalHead>
+        <ModalHeader>
           <ModalCloseButton
             ref={ref}
             onClick={spy}
           />
-        </ModalHead>
+        </ModalHeader>
       </Modal>
     ));
 
@@ -157,7 +157,7 @@ describe('functionality', () => {
   it.each([
     () => userEvent.keyboard('{esc}'),
     () => userEvent.click(screen.getByTestId('id')),
-  ])('do not call close modal using `closeButtonRef` and `ModalHead` (%#)', (action) => {
+  ])('do not call close modal using `closeButtonRef` and `ModalCloseButton` when button is disabled (%#)', (action) => {
     const spy = sinon.spy();
     const ref = React.createRef();
     render((
@@ -165,13 +165,13 @@ describe('functionality', () => {
         closeButtonRef={ref}
         id="id"
       >
-        <ModalHead>
+        <ModalHeader>
           <ModalCloseButton
             disabled
             ref={ref}
             onClick={spy}
           />
-        </ModalHead>
+        </ModalHeader>
       </Modal>
     ));
 
@@ -202,7 +202,7 @@ describe('functionality', () => {
     expect(spy.calledOnce).toEqual(true);
   });
 
-  it('do not call primary action using `primaryButtonRef ', () => {
+  it('do not call primary action using `primaryButtonRef when button is disabled', () => {
     const spy = sinon.spy();
     const ref = React.createRef();
     render((
@@ -250,11 +250,21 @@ describe('functionality', () => {
       },
     ],
   ])('autofocuses form field element (%#)', (child, assert) => {
+    const ref = React.createRef();
     const dom = render((
-      <Modal>
+      <Modal primaryButtonRef={ref}>
         <ModalBody>
           {child}
         </ModalBody>
+        <ModalFooter>
+          <Button
+            disabled
+            label="Submit"
+            onClick={() => {}}
+            ref={ref}
+            type="button"
+          />
+        </ModalFooter>
       </Modal>
     ));
 

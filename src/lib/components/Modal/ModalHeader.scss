@@ -1,6 +1,3 @@
-@use "sass:map";
-@use "../../styles/tools/spacing";
-@use "settings";
 @use "theme";
 
 .root {
@@ -12,22 +9,16 @@
     border-bottom: theme.$separator-width solid theme.$separator-color;
 }
 
-.root h1,
-.root h2,
-.root h3,
-.root h4,
-.root h5,
-.root h6 {
-    /* stylelint-disable declaration-no-important */
-    // TODO: Solve this !!!!!!
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    font-size: settings.$head-title-font-size !important;
-    /* stylelint-enable declaration-no-important */
+.isJustifiedToStart {
+    justify-content: flex-start;
 }
 
 .isJustifiedToCenter {
     justify-content: center;
+}
+
+.isJustifiedToEnd {
+    justify-content: flex-end;
 }
 
 .isJustifiedToSpaceBetween {
