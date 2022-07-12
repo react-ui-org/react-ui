@@ -7,7 +7,8 @@
     flex-wrap: wrap;
     gap: theme.$footer-gap;
     align-items: center;
-    padding: settings.$padding-y settings.$padding-x;
+    padding: theme.$padding-y theme.$padding-x;
+    border-top: theme.$separator-width solid theme.$separator-color;
     border-bottom-right-radius: settings.$border-radius;
     border-bottom-left-radius: settings.$border-radius;
     background: theme.$footer-background;
