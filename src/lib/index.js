@@ -34,6 +34,7 @@ export {
   ModalContent,
   ModalFooter,
   ModalHead,
+  ModalTitle,
 } from './components/Modal';
 export { default as Paper } from './components/Paper';
 export { default as Radio } from './components/Radio';

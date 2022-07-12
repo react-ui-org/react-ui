@@ -43,7 +43,7 @@ ModalHead.defaultProps = {
 
 ModalHead.propTypes = {
   /**
-   * Content of the head (preferably heading element with ModalCloseButton element).
+   * Content of the header (preferably ModalTitle and ModalCloseButton).
    */
   children: PropTypes.node.isRequired,
   /**

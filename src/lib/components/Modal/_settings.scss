@@ -2,10 +2,8 @@
 @use "../../styles/settings/z-indexes";
 @use "../../styles/theme/borders";
 @use "../../styles/theme/typography";
-@use "../../styles/tools/spacing";
 
-$content-padding-bottom: spacing.of(6);
 $border-radius: borders.$radius;
-$head-title-font-size: map.get(typography.$size-values, 1);
 $z-index: z-indexes.$modal;
 $backdrop-z-index: z-indexes.$modal-backdrop;
+$title-font-size: map.get(typography.$size-values, 1);

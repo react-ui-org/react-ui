@@ -3,7 +3,7 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { ModalContent } from '../ModalContent';
+import { ModalTitle } from '../ModalTitle';
 import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 
 const mandatoryProps = {
@@ -27,9 +27,17 @@ describe('rendering', () => {
       },
     ],
     ...idPropTest,
+    [
+      {
+        level: 1,
+      },
+      (rootElement) => {
+        expect(rootElement).toContainHTML('<h1');
+      },
+    ],
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
-      <ModalContent
+      <ModalTitle
         {...mandatoryProps}
         {...testedProps}
       />
