@@ -8,7 +8,8 @@
     flex: none;
     gap: theme.$head-gap;
     align-items: baseline;
-    padding: settings.$padding-y spacing.of(4) settings.$padding-y settings.$padding-x;
+    padding: theme.$padding-y theme.$padding-x;
+    border-bottom: theme.$separator-width solid theme.$separator-color;
 }
 
 .root h1,

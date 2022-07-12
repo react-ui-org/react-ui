@@ -863,8 +863,12 @@
     // Modal
     // =====
 
+    --rui-Modal__padding-x: var(--rui-spacing-4);
+    --rui-Modal__padding-y: var(--rui-spacing-4);
     --rui-Modal__background: var(--rui-color-white);
-    --rui-Modal__box-shadow: var(--rui-elevation-2);
+    --rui-Modal__box-shadow: none;
+    --rui-Modal__separator__width: var(--rui-border-width);
+    --rui-Modal__separator__color: var(--rui-color-gray-100);
     --rui-Modal__head__gap: var(--rui-spacing-2);
     --rui-Modal__outer-spacing--xs: var(--rui-spacing-2);
     --rui-Modal__outer-spacing--sm: var(--rui-spacing-6);
