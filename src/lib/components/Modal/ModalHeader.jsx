@@ -43,6 +43,6 @@ ModalHeader.propTypes = {
   justify: PropTypes.oneOf(['start', 'center', 'end', 'space-between', 'stretch']),
 };
 
-export const ModalHeadWithGlobalProps = withGlobalProps(ModalHeader, 'ModalHeader');
+export const ModalHeaderWithGlobalProps = withGlobalProps(ModalHeader, 'ModalHeader');
 
-export default ModalHeadWithGlobalProps;
+export default ModalHeaderWithGlobalProps;

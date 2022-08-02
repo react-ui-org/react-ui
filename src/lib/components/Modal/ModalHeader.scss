@@ -3,7 +3,7 @@
 .root {
     display: flex;
     flex: none;
-    gap: theme.$head-gap;
+    gap: theme.$header-gap;
     align-items: baseline;
     padding: theme.$padding-y theme.$padding-x;
     border-bottom: theme.$separator-width solid theme.$separator-color;
