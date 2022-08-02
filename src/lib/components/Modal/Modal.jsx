@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, {
-  useEffect, useRef,
+  useEffect,
+  useRef,
 } from 'react';
 import { createPortal } from 'react-dom';
 import { withGlobalProps } from '../../provider';
@@ -85,17 +86,20 @@ export const Modal = ({
   const childrenWrapperRef = useRef();
 
   const keyPressHandler = (e) => {
-    if (e.keyCode === 27 && closeButtonRef?.current != null) {
+    if (e.key === 'Escape' && closeButtonRef?.current != null) {
       closeButtonRef.current.click();
     }
 
-    if (e.keyCode === 13 && e.target.nodeName !== 'BUTTON' && primaryButtonRef?.current != null) {
+    if (e.key === 'Enter' && e.target.nodeName !== 'BUTTON' && primaryButtonRef?.current != null) {
       primaryButtonRef.current.click();
     }
   };
 
   useEffect(() => {
     window.document.addEventListener('keydown', keyPressHandler, false);
+    const removeKeyPressHandler = () => {
+      window.document.removeEventListener('keydown', keyPressHandler, false);
+    };
 
     // If `autoFocus` is set to `true`, following code finds first form field element
     // (input, textarea or select) or primary button and auto focuses it. This is necessary
@@ -110,7 +114,7 @@ export const Modal = ({
 
         if (formFieldEl) {
           formFieldEl.focus();
-          return () => {};
+          return removeKeyPressHandler;
         }
       }
 
@@ -119,9 +123,7 @@ export const Modal = ({
       }
     }
 
-    return () => {
-      window.document.removeEventListener('keydown', keyPressHandler, false);
-    };
+    return removeKeyPressHandler;
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (portalId === null) {
