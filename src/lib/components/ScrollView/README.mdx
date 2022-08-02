@@ -9,7 +9,7 @@ route: /components/scroll-view
 ScrollView makes long content scrollable.
 
 👉 Please note that HTML is rendered even when no children are provided.
-This is needed to allow the autoscroll feature to work.
+This is needed to allow the auto-scroll feature to work.
 
 import {
   Playground,
@@ -89,9 +89,9 @@ See [API](#api) for all available options.
   to restrict the height of its parent to activate scrolling.
 
 - While arrow controls are optional in the vertical mode, you should always
-  **enable arrows in the horizontal mode when scrollbar is disabled.** Because
-  if you don't, users without horizontal-scrolling-enabled devices (like an
-  old-school mouse) might not be able to access your content.
+  **enable arrows in the horizontal mode when the scrollbar is disabled.**
+  Because if you don't, users without horizontal-scrolling-enabled devices
+  (like an old-school mouse) might not be able to access your content.
 
 - For dynamic content such as chat window or console output, consider using the
   **auto-scroll feature**. This will ensure the newest content is always
@@ -101,13 +101,13 @@ See [API](#api) for all available options.
   area in your app scrollable based on viewport size, please use custom CSS
   with media queries instead.
 
-- ScrollView only supports **scrolling in single direction at a time.** It crops
-  content that could possibly overflow in the other direction because additional
-  scrollbars would be unreachable under scrolling shadows. If you need your
-  content to be ready for bi-directional scrolling, either consider using just
-  `overflow: auto` instead of ScrollView, or make your content scrollable before
-  putting it into ScrollView and make sure its scrollbars don't collide with
-  scrolling shadows.
+- ScrollView only supports **scrolling in a single direction at a time.** It
+  crops content that would possibly overflow in the other direction because
+  additional scrollbars would be unreachable under scrolling shadows. If you
+  need your content to be ready for bi-directional scrolling, either consider
+  using just `overflow: auto` instead of ScrollView, or make your content
+  scrollable before putting it into ScrollView and make sure its scrollbars
+  don't collide with scrolling shadows.
 
 ## Arrows
 
@@ -168,7 +168,7 @@ horizontal content and you need to make sure it remains accessible on all
 viewport sizes.
 
 <Playground>
-  <ScrollView direction="horizontal">
+  <ScrollView direction="horizontal" arrows>
     <Placeholder>
       <div style={{ whiteSpace: 'nowrap' }}>
         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
@@ -284,60 +284,20 @@ property defined because it detects changes of these keys.
 It's possible to entirely customize the arrow controls, including the scroll
 step, and the scrolling shadows.
 
-### Custom Arrows and Shadow Color
+### Custom Arrows
 
-You can pass any HTML element or even custom React component to be used as the
-arrow control.
-
-The color of arrows and scrolling shadows can be simply adjusted, too. While the
-`arrowsColor` accepts
-[color in any valid CSS format](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value),
-the `shadowColor` is broken down to individual color channels so we can easily
-derive the transparent version from the value without having to parse it.
-
-Furthermore, you can change the scroll step if you need to scroll by smaller or
-bigger portions.
+You can pass any HTML element or even a custom React component to be used as the
+arrow control. Furthermore, you can change the scroll step if you need to scroll
+by smaller or bigger portions.
 
 <Playground>
   <ScrollView
     arrows
-    arrowsColor="white"
     arrowsScrollStep={300}
-    customNextArrow={(
-      <span
-        style={{
-          fontSize: '1.5rem',
-          fontWeight: 'bold',
-          position: 'relative',
-          textShadow: '0 0 0.4em black',
-          top: '-0.05em',
-        }}
-      >
-        →
-      </span>
-    )}
-    customPrevArrow={(
-      <span
-        style={{
-          fontSize: '1.5rem',
-          fontWeight: 'bold',
-          position: 'relative',
-          textShadow: '0 0 0.4em black',
-          top: '-0.05em',
-        }}
-      >
-        ←
-      </span>
-    )}
     direction="horizontal"
+    nextArrowElement={(<span class="typography-size-3">➡️</span>)}
+    prevArrowElement={(<span class="typography-size-3">⬅️</span>)}
     scrollbar={false}
-    shadowColor={{
-      alpha: 0.75,
-      blue: 0,
-      green: 0,
-      red: 0,
-    }}
-    shadowSize="5rem"
   >
     <Placeholder>
       <div style={{ whiteSpace: 'nowrap' }}>
@@ -352,33 +312,34 @@ bigger portions.
   </ScrollView>
 </Playground>
 
-### Custom Scrolling Shadows
+### Scrolling Shadows
 
-Aside from setting a custom shadow color and size, you can entirely customize
-the scrolling shadows with `background` or `box-shadow` CSS properties.
+You can customize the start and end scrolling shadows using `startShadow*` and
+`endShadow*` properties.
 
 <Playground>
   <Placeholder height="200px">
     <ScrollView
-      customStartShadowStyle={{
-        background: 'radial-gradient('
+      startShadowBackground={'radial-gradient('
           + 'farthest-side at center top, '
           + 'rgba(0, 0, 0, 0.15) 0%, '
           + 'rgba(0, 0, 0, 0.05) 60%, '
           + 'rgba(0, 0, 0, 0.02) 85%, '
           + 'rgba(0, 0, 0, 0) 100%'
-        + ')',
-      }}
-      customEndShadowStyle={{
-        background: 'radial-gradient('
+        + ')'
+      }
+      startShadowInitialOffset="-5px"
+      startShadowSize="40px"
+      endShadowBackground={'radial-gradient('
           + 'farthest-side at center bottom, '
           + 'rgba(0, 0, 0, 0.15) 0%, '
           + 'rgba(0, 0, 0, 0.05) 60%, '
           + 'rgba(0, 0, 0, 0.02) 85%, '
           + 'rgba(0, 0, 0, 0) 100%'
-        + ')',
-      }}
-      shadowSize="40px"
+        + ')'
+      }
+      endShadowInitialOffset="-5px"
+      endShadowSize="40px"
     >
       <div>
         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
@@ -425,13 +386,115 @@ the scrolling shadows with `background` or `box-shadow` CSS properties.
   </Placeholder>
 </Playground>
 
+#### Linear Gradients
+
+For easier CSS definition of [linear gradients] for both vertical and horizontal
+directions at the same time, there are `--rui-local-start-shadow-direction` and
+`--rui-local-end-shadow-direction` custom properties that can be used inside
+`startShadowBackground` and `endShadowBackground` definitions. The value of the
+custom properties then reacts to the `direction` option:
+
+| Custom property                      | Vertical direction | Horizontal direction |
+|--------------------------------------|--------------------|----------------------|
+| `--rui-local-start-shadow-direction` | `to bottom`        | `to right`           |
+| `--rui-local-end-shadow-direction`   | `to top`           | `to left`            |
+
+This is useful if you want to create a single definition of linear gradients for
+scrolling shadows in both directions via
+[global props](/customize/global-props).
+
+<Playground>
+  {() => {
+    const START_SHADOW_BACKGROUND = `linear-gradient(
+        var(--rui-local-start-shadow-direction),
+        rgba(0 0 0 / 0.5),
+        rgba(0 0 0 / 0)
+      )`;
+    const END_SHADOW_BACKGROUND = `linear-gradient(
+        var(--rui-local-end-shadow-direction),
+        rgba(0 0 0 / 0.5),
+        rgba(0 0 0 / 0)
+      )`
+    const [direction, setDirection] = React.useState('vertical');
+    return(
+      <>
+        <Radio
+          label="Direction:"
+          onChange={(e) => setDirection(e.target.value)}
+          options={[
+            {
+              label: 'Vertical',
+              value: 'vertical',
+            },
+            {
+              label: 'Horizontal',
+              value: 'horizontal',
+            },
+          ]}
+          value={direction}
+        />
+        <Placeholder height="200px">
+          <ScrollView
+            direction={direction}
+            endShadowBackground={END_SHADOW_BACKGROUND}
+            startShadowBackground={START_SHADOW_BACKGROUND}
+          >
+            <div
+              style={{
+                width: (direction === 'horizontal' ? '3000px' : 'auto'),
+              }}
+            >
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+              commodo ligula eget dolor. Aenean massa. Cum sociis natoque
+              penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+              Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
+              sem. Nulla consequat massa quis enim. Donec pede justo, fringilla
+              vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,
+              imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede
+              mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum
+              semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,
+              porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem
+              ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus
+              viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean
+              imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper
+              ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus,
+              tellus eget condimentum rhoncus, sem quam semper libero, sit amet
+              adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus
+              pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt
+              tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam
+              quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis
+              leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis
+              magna. Sed consequat, leo eget bibendum sodales, augue velit
+              cursus nunc. Aenean massa. Cum sociis natoque penatibus et magnis
+              dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+              ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat
+              massa quis enim. Donec pede justo, fringilla vel, aliquet nec,
+              vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a,
+              venenatis vitae, justo. Nullam dictum felis eu pede mollis
+              pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper
+              nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,
+              porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem
+              ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus
+              viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean
+              imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper
+              ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus,
+              tellus eget condimentum rhoncus, sem quam semper libero, sit amet
+              adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus
+              pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt
+              tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam
+              quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis
+              leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis
+              magna. Sed consequat, leo eget bibendum sodales, augue velit
+              cursus nunc.
+            </div>
+          </ScrollView>
+        </Placeholder>
+      </>
+    )}}
+</Playground>
+
 ## API
 
 <Props table of={ScrollView} />
 
-## Theming
-
-| Custom Property                                      | Description                                                  |
-|------------------------------------------------------|--------------------------------------------------------------|
-| `--rui-ScrollView__arrow__initial-offset`            | Initial offset of scrolling arrows (transitioned)            |
-| `--rui-ScrollView__shadow__initial-offset`           | Initial offset of scrolling shadows (transitioned)           |
+[linear gradients]: https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient

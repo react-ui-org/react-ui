@@ -24,20 +24,26 @@ const EDGE_DETECTION_INACCURACY_PX = 1;
 export const ScrollView = (props) => {
   const {
     arrows,
-    arrowsColor,
     arrowsScrollStep,
     autoScroll,
     children,
-    customEndShadowStyle,
-    customNextArrow,
-    customPrevArrow,
-    customStartShadowStyle,
+    endShadowBackground,
+    endShadowInitialOffset,
+    endShadowSize,
     id,
     debounce,
     direction,
+    nextArrowColor,
+    nextArrowElement,
+    nextArrowInitialOffset,
+    prevArrowColor,
+    prevArrowElement,
+    prevArrowInitialOffset,
     scrollbar,
-    shadowColor,
-    shadowSize,
+    shadows,
+    startShadowBackground,
+    startShadowInitialOffset,
+    startShadowSize,
   } = props;
 
   const { translations } = useContext(RUIContext);
@@ -84,7 +90,7 @@ export const ScrollView = (props) => {
 
   /**
    * If autoScroll is enabled, it automatically scrolls viewport element to the end of the
-   * the viewport when content is changed. It is performed only when viewport element is
+   * viewport when content is changed. It is performed only when viewport element is
    * scrolled to the end of the viewport or when viewport element is in any position but
    * autoScroll triggered by previous change is still in progress.
    */
@@ -156,43 +162,6 @@ export const ScrollView = (props) => {
     [autoScroll, autoScrollChildrenKeys, autoScrollChildrenLength],
   );
 
-  const setAlpha = (rgba, alpha) => ({
-    ...rgba,
-    alpha,
-  });
-
-  const rgbaToString = (rgba) => (
-    `rgba(${rgba.red}, ${rgba.green}, ${rgba.blue}, ${rgba.alpha})`
-  );
-
-  const inlineStyle = (
-    scrollDirection,
-    customArrowsColor,
-    customShadowColor,
-    customShadowSize,
-    startShadowStyle,
-    endShadowStyle,
-  ) => {
-    const shadowStartColor = rgbaToString(customShadowColor);
-    const shadowEndColor = rgbaToString(setAlpha(customShadowColor, 0));
-
-    /* eslint-disable sort-keys */
-    return {
-      '--rui-local-arrow-color': customArrowsColor || 'inherit',
-      '--rui-local-shadow-width': scrollDirection === 'horizontal' ? shadowSize : 'auto',
-      '--rui-local-shadow-height': scrollDirection === 'horizontal' ? 'auto' : shadowSize,
-      '--rui-local-start-shadow-background':
-        startShadowStyle.background
-        || `linear-gradient(${direction === 'horizontal' ? 'to right' : 'to bottom'}, ${shadowStartColor}, ${shadowEndColor})`,
-      '--rui-local-start-shadow-box-shadow': startShadowStyle.boxShadow || 'none',
-      '--rui-local-end-shadow-background':
-        endShadowStyle.background
-        || `linear-gradient(${direction === 'horizontal' ? 'to left' : 'to top'}, ${shadowStartColor}, ${shadowEndColor})`,
-      '--rui-local-end-shadow-box-shadow': endShadowStyle.boxShadow || 'none',
-    };
-    /* eslint-enable sort-keys */
-  };
-
   const arrowHandler = (contentEl, viewportEl, scrollViewDirection, shiftDirection, step) => {
     const offset = shiftDirection === 'next' ? step : -1 * step;
     const differenceX = scrollViewDirection === 'horizontal' ? offset : 0;
@@ -210,31 +179,39 @@ export const ScrollView = (props) => {
         !scrollbar && styles.hasRootScrollbarDisabled,
         direction === 'horizontal' ? styles.isRootHorizontal : styles.isRootVertical,
       )}
-      style={inlineStyle(
-        direction,
-        arrowsColor,
-        shadowColor,
-        shadowSize,
-        customStartShadowStyle,
-        customEndShadowStyle,
-      )}
       id={id}
+      style={{
+        '--rui-local-end-shadow-background': endShadowBackground,
+        '--rui-local-end-shadow-direction': direction === 'horizontal' ? 'to left' : 'to top',
+        '--rui-local-end-shadow-initial-offset': endShadowInitialOffset,
+        '--rui-local-end-shadow-size': endShadowSize,
+        '--rui-local-next-arrow-color': nextArrowColor,
+        '--rui-local-next-arrow-initial-offset': nextArrowInitialOffset,
+        '--rui-local-prev-arrow-color': prevArrowColor,
+        '--rui-local-prev-arrow-initial-offset': prevArrowInitialOffset,
+        '--rui-local-start-shadow-background': startShadowBackground,
+        '--rui-local-start-shadow-direction': direction === 'horizontal' ? 'to right' : 'to bottom',
+        '--rui-local-start-shadow-initial-offset': startShadowInitialOffset,
+        '--rui-local-start-shadow-size': startShadowSize,
+      }}
     >
       <div className={styles.viewport} ref={scrollViewViewportEl}>
         <div
           className={styles.content}
-          ref={scrollViewContentEl}
           id={id && `${id}__content`}
+          ref={scrollViewContentEl}
         >
           {children}
         </div>
       </div>
-      <div className={styles.scrollingShadows} aria-hidden />
+      {shadows && (
+        <div className={styles.scrollingShadows} aria-hidden />
+      )}
       {arrows && (
         <>
           <button
-            type="button"
             className={styles.arrowPrev}
+            id={id && `${id}__arrowPrevButton`}
             onClick={() => arrowHandler(
               scrollViewContentEl,
               scrollViewViewportEl,
@@ -243,15 +220,15 @@ export const ScrollView = (props) => {
               arrowsScrollStep,
             )}
             title={translations.ScrollView.previous}
-            id={id && `${id}__arrowPrevButton`}
+            type="button"
           >
-            {customPrevArrow || (
+            {prevArrowElement || (
               <span className={styles.arrowIcon} aria-hidden />
             )}
           </button>
           <button
-            type="button"
             className={styles.arrowNext}
+            id={id && `${id}__arrowNextButton`}
             onClick={() => arrowHandler(
               scrollViewContentEl,
               scrollViewViewportEl,
@@ -260,9 +237,9 @@ export const ScrollView = (props) => {
               arrowsScrollStep,
             )}
             title={translations.ScrollView.next}
-            id={id && `${id}__arrowNextButton`}
+            type="button"
           >
-            {customNextArrow || (
+            {nextArrowElement || (
               <span className={styles.arrowIcon} aria-hidden />
             )}
           </button>
@@ -274,25 +251,26 @@ export const ScrollView = (props) => {
 
 ScrollView.defaultProps = {
   arrows: false,
-  arrowsColor: undefined,
   arrowsScrollStep: 200,
   autoScroll: 'off',
   children: null,
-  customEndShadowStyle: {},
-  customNextArrow: null,
-  customPrevArrow: null,
-  customStartShadowStyle: {},
   debounce: 50,
   direction: 'vertical',
+  endShadowBackground: 'linear-gradient(var(--rui-local-end-shadow-direction), rgba(255 255 255 / 1), rgba(255 255 255 / 0))',
+  endShadowInitialOffset: '-1rem',
+  endShadowSize: '2em',
   id: undefined,
+  nextArrowColor: undefined,
+  nextArrowElement: null,
+  nextArrowInitialOffset: '-0.5rem',
+  prevArrowColor: undefined,
+  prevArrowElement: null,
+  prevArrowInitialOffset: '-0.5rem',
   scrollbar: true,
-  shadowColor: {
-    alpha: 1,
-    blue: 255,
-    green: 255,
-    red: 255,
-  },
-  shadowSize: '2em',
+  shadows: true,
+  startShadowBackground: 'linear-gradient(var(--rui-local-start-shadow-direction), rgba(255 255 255 / 1), rgba(255 255 255 / 0))',
+  startShadowInitialOffset: '-1rem',
+  startShadowSize: '2em',
 };
 
 ScrollView.propTypes = {
@@ -301,20 +279,16 @@ ScrollView.propTypes = {
    */
   arrows: PropTypes.bool,
   /**
-   * Text color of the arrow controls. Accepts any valid CSS color value.
-   */
-  arrowsColor: PropTypes.string,
-  /**
    * Portion to scroll by when the arrows are clicked, in px.
    */
   arrowsScrollStep: PropTypes.number,
   /**
-   * Auto scroll mechanism requires to have the `key` prop set for every child present in `children`
-   * prop because it detects changes of these keys. Without the keys, it will not work.
+   * The auto-scroll mechanism requires having the `key` prop set for every child present in `children`
+   * because it detects changes of those keys. Without the keys, the auto-scroll will not work.
    *
-   * Option `always` means that auto scroll scrolls to the end every time the content changes.
-   * Option `detectEnd` means that auto scroll scrolls to the end only when the content is changed
-   * and the user scrolled at the end of the viewport at the moment of the change.
+   * Option `always` means the auto-scroll scrolls to the end every time the content changes.
+   * Option `detectEnd` means the auto-scroll scrolls to the end only when the content is changed
+   * and the user has scrolled at the end of the viewport at the moment of the change.
    *
    * See https://reactjs.org/docs/lists-and-keys.html#keys
    */
@@ -324,28 +298,6 @@ ScrollView.propTypes = {
    */
   children: PropTypes.node,
   /**
-   * Custom CSS to replace the default end scrolling shadow.
-   */
-  customEndShadowStyle: PropTypes.shape({
-    background: PropTypes.string,
-    boxShadow: PropTypes.string,
-  }),
-  /**
-   * Custom HTML or React Component to replace the default next-arrow control.
-   */
-  customNextArrow: PropTypes.node,
-  /**
-   * Custom HTML or React Component to replace the default prev-arrow control.
-   */
-  customPrevArrow: PropTypes.node,
-  /**
-   * Custom CSS to replace the default start scrolling shadow.
-   */
-  customStartShadowStyle: PropTypes.shape({
-    background: PropTypes.string,
-    boxShadow: PropTypes.string,
-  }),
-  /**
    * Delay in ms before the display of arrows and scrolling shadows is evaluated during interaction.
    */
   debounce: PropTypes.number,
@@ -354,6 +306,19 @@ ScrollView.propTypes = {
    */
   direction: PropTypes.oneOf(['horizontal', 'vertical']),
   /**
+   * Custom background of the end scrolling shadow. Can be a CSS gradient or an image `url()`.
+   */
+  endShadowBackground: PropTypes.string,
+  /**
+   * Initial offset of the end scrolling shadow (transitioned). If set, the end scrolling shadow slides in
+   * by this distance.
+   */
+  endShadowInitialOffset: PropTypes.string,
+  /**
+   * Size of the end scrolling shadow. Accepts any valid CSS length value.
+   */
+  endShadowSize: PropTypes.string,
+  /**
    * ID of the root HTML element. It also serves as base for nested elements:
    * * `<ID>__content`
    * * `<ID>__arrowPrevButton`
@@ -361,24 +326,50 @@ ScrollView.propTypes = {
    */
   id: PropTypes.string,
   /**
+   * Text color of the end arrow control. Accepts any valid CSS color value.
+   */
+  nextArrowColor: PropTypes.string,
+  /**
+   * Custom HTML or React Component to replace the default next-arrow control.
+   */
+  nextArrowElement: PropTypes.node,
+  /**
+   * Initial offset of the end arrow control (transitioned). If set, the next arrow slides in by this distance.
+   */
+  nextArrowInitialOffset: PropTypes.string,
+  /**
+   * Text color of the start arrow control. Accepts any valid CSS color value.
+   */
+  prevArrowColor: PropTypes.string,
+  /**
+   * Custom HTML or React Component to replace the default prev-arrow control.
+   */
+  prevArrowElement: PropTypes.node,
+  /**
+   * Initial offset of the start arrow control (transitioned). If set, the prev arrow slides in by this distance.
+   */
+  prevArrowInitialOffset: PropTypes.string,
+  /**
    * If `false`, the system scrollbar will be hidden.
    */
   scrollbar: PropTypes.bool,
   /**
-   * Color of the default scrolling shadows in the RGBA format. It doesn't have effect on custom
-   * scrolling shadows.
+   * If `true`, display scrolling shadows.
    */
-  shadowColor: PropTypes.shape({
-    alpha: PropTypes.number.isRequired,
-    blue: PropTypes.number.isRequired,
-    green: PropTypes.number.isRequired,
-    red: PropTypes.number.isRequired,
-  }),
+  shadows: PropTypes.bool,
   /**
-   * Size of scrolling shadows. Works as height in the vertical mode and as width in the horizontal
-   * mode.
+   * Custom background of the start scrolling shadow. Can be a CSS gradient or an image `url()`.
    */
-  shadowSize: PropTypes.string,
+  startShadowBackground: PropTypes.string,
+  /**
+   * Initial offset of the start scrolling shadow (transitioned). If set, the start scrolling shadow slides in
+   * by this distance.
+   */
+  startShadowInitialOffset: PropTypes.string,
+  /**
+   * Size of the start scrolling shadow. Accepts any valid CSS length value.
+   */
+  startShadowSize: PropTypes.string,
 };
 
 export const ScrollViewWithGlobalProps = withGlobalProps(ScrollView, 'ScrollView');

@@ -1,7 +1,7 @@
 // 1. Scrolling shadows are implemented as pseudo elements. This way we can customise them only
 //    with custom properties.
 //
-// 2. Stack scrolling shadows  over viewport content while keeping the content interactive.
+// 2. Stack scrolling shadows over viewport content while keeping the content interactive.
 //
 //    - `.scrollingShadows` is positioned absolutely over the `.root`, with auto `z-index` (this is
 //      important!), and with `overflow: hidden` to clip the shadows (ie. its pseudo elements).
@@ -27,7 +27,6 @@
 @use "../../styles/tools/scrollbar";
 @use "../../styles/tools/spacing";
 @use "../../styles/tools/transition";
-@use "theme";
 
 $_arrow-inner-spacing: spacing.of(2);
 $_arrow-outer-spacing: spacing.of(4);
@@ -45,6 +44,7 @@ $_arrow-outer-spacing: spacing.of(4);
     width: 100%; // 2.
     height: 100%; // 2.
     overflow: hidden; // 2.
+    pointer-events: none; // 2.
 
     &::before,
     &::after {
@@ -54,20 +54,16 @@ $_arrow-outer-spacing: spacing.of(4);
         position: absolute;
         z-index: 2; // 2.
         display: block;
-        width: var(--rui-local-shadow-width);
-        height: var(--rui-local-shadow-height);
         visibility: hidden;
         opacity: 0;
     }
 
     &::before {
         background: var(--rui-local-start-shadow-background);
-        box-shadow: var(--rui-local-start-shadow-box-shadow);
     }
 
     &::after {
         background: var(--rui-local-end-shadow-background);
-        box-shadow: var(--rui-local-end-shadow-box-shadow);
     }
 }
 
@@ -88,7 +84,6 @@ $_arrow-outer-spacing: spacing.of(4);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--rui-local-arrow-color);
     visibility: hidden;
     opacity: 0;
 }
@@ -115,7 +110,8 @@ $_arrow-outer-spacing: spacing.of(4);
     width: 100%;
     padding-top: $_arrow-outer-spacing;
     padding-bottom: $_arrow-inner-spacing;
-    transform: translateY(theme.$arrow-initial-offset);
+    color: var(--rui-local-prev-arrow-color);
+    transform: translateY(var(--rui-local-prev-arrow-initial-offset));
 }
 
 .isRootVertical .arrowPrev .arrowIcon {
@@ -129,7 +125,8 @@ $_arrow-outer-spacing: spacing.of(4);
     width: 100%;
     padding-top: $_arrow-inner-spacing;
     padding-bottom: $_arrow-outer-spacing;
-    transform: translateY(calc(-1 * #{theme.$arrow-initial-offset}));
+    color: var(--rui-local-next-arrow-color);
+    transform: translateY(calc(-1 * var(--rui-local-next-arrow-initial-offset)));
 }
 
 .isRootHorizontal {
@@ -142,7 +139,7 @@ $_arrow-outer-spacing: spacing.of(4);
     left: 0;
     padding-right: $_arrow-inner-spacing;
     padding-left: $_arrow-outer-spacing;
-    transform: translateX(theme.$arrow-initial-offset);
+    transform: translateX(var(--rui-local-prev-arrow-initial-offset));
 }
 
 .isRootHorizontal .arrowPrev .arrowIcon {
@@ -155,7 +152,7 @@ $_arrow-outer-spacing: spacing.of(4);
     bottom: 0;
     padding-right: $_arrow-outer-spacing;
     padding-left: $_arrow-inner-spacing;
-    transform: translateX(calc(-1 * #{theme.$arrow-initial-offset}));
+    transform: translateX(calc(-1 * var(--rui-local-next-arrow-initial-offset)));
 }
 
 .isRootHorizontal .arrowNext .arrowIcon {
@@ -166,16 +163,19 @@ $_arrow-outer-spacing: spacing.of(4);
 .isRootVertical .scrollingShadows::after {
     right: 0;
     left: 0;
+    width: auto;
 }
 
 .isRootVertical .scrollingShadows::before {
     top: 0;
-    transform: translateY(theme.$shadow-initial-offset);
+    height: var(--rui-local-start-shadow-size);
+    transform: translateY(var(--rui-local-start-shadow-initial-offset));
 }
 
 .isRootVertical .scrollingShadows::after {
     bottom: 0;
-    transform: translateY(calc(-1 * #{theme.$shadow-initial-offset}));
+    height: var(--rui-local-end-shadow-size);
+    transform: translateY(calc(-1 * var(--rui-local-end-shadow-initial-offset)));
 }
 
 .isRootHorizontal .viewport {
@@ -192,16 +192,19 @@ $_arrow-outer-spacing: spacing.of(4);
 .isRootHorizontal .scrollingShadows::after {
     top: 0;
     bottom: 0;
+    height: auto;
 }
 
 .isRootHorizontal .scrollingShadows::before {
     left: 0;
-    transform: translateX(theme.$shadow-initial-offset);
+    width: var(--rui-local-start-shadow-size);
+    transform: translateX(var(--rui-local-start-shadow-initial-offset));
 }
 
 .isRootHorizontal .scrollingShadows::after {
     right: 0;
-    transform: translateX(calc(-1 * #{theme.$shadow-initial-offset}));
+    width: var(--rui-local-end-shadow-size);
+    transform: translateX(calc(-1 * var(--rui-local-end-shadow-initial-offset)));
 }
 
 .isRootScrolledAtStart .scrollingShadows::before,
