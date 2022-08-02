@@ -7,15 +7,9 @@ import { ScrollView } from '../ScrollView';
 
 const mandatoryProps = {
   children: <div>content text</div>,
-  translations: {
-    next: 'Next',
-    previous: 'Previous',
-  },
 };
 
 describe('rendering', () => {
-  // The API of this component is not clean and is hard to test.
-  // Some tests are omitted as there are plans to change this API anyway
   it.each([
     [
       { arrows: true },
@@ -32,56 +26,6 @@ describe('rendering', () => {
       },
     ],
     [
-      { arrowsColor: 'some-color' },
-      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-arrow-color': 'some-color' }),
-    ],
-    // `arrowsScrollStep` untested
-    // `autoScroll` untested - I have no idea how to do it - is it even possible?
-    [
-      { children: <div>content text</div> },
-      (rootElement) => expect(within(rootElement).getByText('content text')),
-    ],
-    [
-      {
-        customEndShadowStyle: {
-          background: 'style',
-          boxShadow: 'style',
-        },
-      },
-      (rootElement) => expect(rootElement).toHaveStyle({
-        '--rui-local-end-shadow-background': 'style',
-        '--rui-local-end-shadow-box-shadow': 'style',
-      }),
-    ],
-    [
-      {
-        arrows: true,
-        customNextArrow: <span>arrow</span>,
-      },
-      (rootElement) => expect(within(rootElement).getByText('arrow')),
-    ],
-    [
-      {
-        arrows: true,
-        customPrevArrow: <span>arrow</span>,
-      },
-      (rootElement) => expect(within(rootElement).getByText('arrow')),
-    ],
-    [
-      {
-        customStartShadowStyle: {
-          background: 'style',
-          boxShadow: 'style',
-        },
-      },
-      (rootElement) => expect(rootElement).toHaveStyle({
-        '--rui-local-start-shadow-background': 'style',
-        '--rui-local-start-shadow-box-shadow': 'style',
-      }),
-    ],
-    // `debounce` untested
-    // `direction` untested - interaction with other props will change significantly in #303
-    [
       {
         arrows: true,
         id: 'id',
@@ -94,6 +38,75 @@ describe('rendering', () => {
       },
     ],
     [
+      {
+        arrows: true,
+        nextArrowColor: 'color',
+        nextArrowElement: <span>next arrow</span>,
+        nextArrowInitialOffset: 'offset',
+      },
+      (rootElement) => {
+        expect(within(rootElement).getByText('next arrow'));
+        expect(rootElement).toHaveStyle({
+          '--rui-local-next-arrow-color': 'color',
+          '--rui-local-next-arrow-initial-offset': 'offset',
+        });
+      },
+    ],
+    [
+      {
+        arrows: true,
+        prevArrowColor: 'color',
+        prevArrowElement: <span>prev arrow</span>,
+        prevArrowInitialOffset: 'offset',
+      },
+      (rootElement) => {
+        expect(within(rootElement).getByText('prev arrow'));
+        expect(rootElement).toHaveStyle({
+          '--rui-local-prev-arrow-color': 'color',
+          '--rui-local-prev-arrow-initial-offset': 'offset',
+        });
+      },
+    ],
+    // `arrowsScrollStep` untested
+    // `autoScroll` untested
+    [
+      { children: <div>content text</div> },
+      (rootElement) => expect(within(rootElement).getByText('content text')),
+    ],
+    // `debounce` untested
+    [
+      { direction: 'vertical' },
+      (rootElement) => {
+        expect(rootElement).toHaveClass('isRootVertical');
+        expect(rootElement).toHaveStyle({
+          '--rui-local-end-shadow-direction': 'to top',
+          '--rui-local-start-shadow-direction': 'to bottom',
+        });
+      },
+    ],
+    [
+      { direction: 'horizontal' },
+      (rootElement) => {
+        expect(rootElement).toHaveClass('isRootHorizontal');
+        expect(rootElement).toHaveStyle({
+          '--rui-local-end-shadow-direction': 'to left',
+          '--rui-local-start-shadow-direction': 'to right',
+        });
+      },
+    ],
+    [
+      {
+        endShadowBackground: 'background',
+        endShadowInitialOffset: 'offset',
+        endShadowSize: 'size',
+      },
+      (rootElement) => expect(rootElement).toHaveStyle({
+        '--rui-local-end-shadow-background': 'background',
+        '--rui-local-end-shadow-initial-offset': 'offset',
+        '--rui-local-end-shadow-size': 'size',
+      }),
+    ],
+    [
       { scrollbar: true },
       (rootElement) => expect(rootElement).not.toHaveClass('hasRootScrollbarDisabled'),
     ],
@@ -101,8 +114,20 @@ describe('rendering', () => {
       { scrollbar: false },
       (rootElement) => expect(rootElement).toHaveClass('hasRootScrollbarDisabled'),
     ],
-    // `shadowColor` untested
-    // `shadowSize` untested
+    [
+      {
+        startShadowBackground: 'background',
+        startShadowInitialOffset: 'offset',
+        startShadowSize: 'size',
+      },
+      (rootElement) => expect(rootElement).toHaveStyle({
+        '--rui-local-start-shadow-background': 'background',
+        '--rui-local-start-shadow-direction': 'to bottom',
+        '--rui-local-start-shadow-initial-offset': 'offset',
+        '--rui-local-start-shadow-size': 'size',
+      }),
+    ],
+    // `shadows` untested
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <ScrollView
