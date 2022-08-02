@@ -1,60 +1,90 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {
+  useEffect, useRef,
+} from 'react';
 import { createPortal } from 'react-dom';
 import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import styles from './Modal.scss';
 
-export class Modal extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.childrenWrapperRef = React.createRef();
-
-    this.keyPressHandler = this.keyPressHandler.bind(this);
-  }
-
-  componentDidMount() {
-    const {
-      autoFocus,
-      primaryButtonRef,
-    } = this.props;
-
-    window.document.addEventListener('keydown', this.keyPressHandler, false);
-
-    // If `autoFocus` is set to `true`, following code finds first form field element
-    // (input, textarea or select) or primary button and auto focuses it. This is necessary
-    // to have focus on one of those elements to be able to submit form by pressing Enter key.
-    if (autoFocus) {
-      if (this.childrenWrapperRef?.current != null) {
-        const childrenWrapperElement = this.childrenWrapperRef.current;
-        const childrenElements = childrenWrapperElement.querySelectorAll('*');
-        const formFieldEl = Array.from(childrenElements).find(
-          (element) => ['INPUT', 'TEXTAREA', 'SELECT'].includes(element.nodeName),
-        );
-
-        if (formFieldEl) {
-          formFieldEl.focus();
-          return;
-        }
-      }
-
-      if (primaryButtonRef?.current != null) {
-        primaryButtonRef.current.focus();
-      }
+const preRender = (
+  children,
+  childrenWrapperRef,
+  id,
+  closeButtonRef,
+  position,
+  size,
+) => {
+  const sizeClass = (modalSize) => {
+    if (modalSize === 'small') {
+      return styles.isRootSizeSmall;
     }
-  }
 
-  componentWillUnmount() {
-    window.document.removeEventListener('keydown', this.keyPressHandler, false);
-  }
+    if (modalSize === 'medium') {
+      return styles.isRootSizeMedium;
+    }
 
-  keyPressHandler(e) {
-    const {
-      closeButtonRef,
-      primaryButtonRef,
-    } = this.props;
+    if (modalSize === 'large') {
+      return styles.isRootSizeLarge;
+    }
 
+    if (modalSize === 'fullscreen') {
+      return styles.isRootSizeFullscreen;
+    }
+
+    return styles.isRootSizeAuto;
+  };
+
+  const positionClass = (modalPosition) => {
+    if (modalPosition === 'top') {
+      return styles.isRootPositionTop;
+    }
+
+    return styles.isRootPositionCenter;
+  };
+
+  return (
+    <div
+      className={styles.backdrop}
+      id={id}
+      onClick={() => {
+        if (closeButtonRef?.current != null) {
+          closeButtonRef.current.click();
+        }
+      }}
+      role="presentation"
+    >
+      <div
+        className={classNames(
+          styles.root,
+          sizeClass(size),
+          positionClass(position),
+        )}
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+        role="presentation"
+        ref={childrenWrapperRef}
+      >
+        {children}
+      </div>
+    </div>
+  );
+};
+
+export const Modal = ({
+  autoFocus,
+  children,
+  closeButtonRef,
+  id,
+  portalId,
+  position,
+  primaryButtonRef,
+  size,
+}) => {
+  const childrenWrapperRef = useRef();
+
+  const keyPressHandler = (e) => {
     if (e.keyCode === 27 && closeButtonRef?.current != null) {
       closeButtonRef.current.click();
     }
@@ -62,84 +92,61 @@ export class Modal extends React.Component {
     if (e.keyCode === 13 && e.target.nodeName !== 'BUTTON' && primaryButtonRef?.current != null) {
       primaryButtonRef.current.click();
     }
-  }
+  };
 
-  preRender() {
-    const {
+  useEffect(() => {
+    window.document.addEventListener('keydown', keyPressHandler, false);
+
+    // If `autoFocus` is set to `true`, following code finds first form field element
+    // (input, textarea or select) or primary button and auto focuses it. This is necessary
+    // to have focus on one of those elements to be able to submit form by pressing Enter key.
+    if (autoFocus) {
+      if (childrenWrapperRef?.current != null) {
+        const childrenWrapperElement = childrenWrapperRef.current;
+        const childrenElements = childrenWrapperElement.querySelectorAll('*');
+        const formFieldEl = Array.from(childrenElements).find(
+          (element) => ['INPUT', 'TEXTAREA', 'SELECT'].includes(element.nodeName),
+        );
+
+        if (formFieldEl) {
+          formFieldEl.focus();
+          return () => {};
+        }
+      }
+
+      if (primaryButtonRef?.current != null) {
+        primaryButtonRef.current.focus();
+      }
+    }
+
+    return () => {
+      window.document.removeEventListener('keydown', keyPressHandler, false);
+    };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  if (portalId === null) {
+    return preRender(
       children,
+      childrenWrapperRef,
       id,
       closeButtonRef,
       position,
       size,
-    } = this.props;
-
-    const sizeClass = (modalSize) => {
-      if (modalSize === 'small') {
-        return styles.isRootSizeSmall;
-      }
-
-      if (modalSize === 'medium') {
-        return styles.isRootSizeMedium;
-      }
-
-      if (modalSize === 'large') {
-        return styles.isRootSizeLarge;
-      }
-
-      if (modalSize === 'fullscreen') {
-        return styles.isRootSizeFullscreen;
-      }
-
-      return styles.isRootSizeAuto;
-    };
-
-    const positionClass = (modalPosition) => {
-      if (modalPosition === 'top') {
-        return styles.isRootPositionTop;
-      }
-
-      return styles.isRootPositionCenter;
-    };
-
-    return (
-      <div
-        className={styles.backdrop}
-        id={id}
-        onClick={() => {
-          if (closeButtonRef?.current != null) {
-            closeButtonRef.current.click();
-          }
-        }}
-        role="presentation"
-      >
-        <div
-          className={classNames(
-            styles.root,
-            sizeClass(size),
-            positionClass(position),
-          )}
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-          role="presentation"
-          ref={this.childrenWrapperRef}
-        >
-          {children}
-        </div>
-      </div>
     );
   }
 
-  render() {
-    const { portalId } = this.props;
-
-    if (portalId === null) {
-      return this.preRender();
-    }
-
-    return createPortal(this.preRender(), document.getElementById(portalId));
-  }
-}
+  return createPortal(
+    preRender(
+      children,
+      childrenWrapperRef,
+      id,
+      closeButtonRef,
+      position,
+      size,
+    ),
+    document.getElementById(portalId),
+  );
+};
 
 Modal.defaultProps = {
   autoFocus: true,
