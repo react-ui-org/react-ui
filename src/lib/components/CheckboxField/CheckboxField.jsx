@@ -5,24 +5,23 @@ import { classNames } from '../../utils/classNames';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
-import withForwardedRef from '../withForwardedRef';
 import styles from './CheckboxField.scss';
 
-export const CheckboxField = ({
-  checked,
-  disabled,
-  forwardedRef,
-  helpText,
-  id,
-  isLabelVisible,
-  label,
-  labelPosition,
-  required,
-  validationState,
-  validationText,
-  value,
-  ...restProps
-}) => {
+export const CheckboxField = React.forwardRef((props, ref) => {
+  const {
+    checked,
+    disabled,
+    helpText,
+    id,
+    isLabelVisible,
+    label,
+    labelPosition,
+    required,
+    validationState,
+    validationText,
+    value,
+    ...restProps
+  } = props;
   const context = useContext(FormLayoutContext);
 
   return (
@@ -55,7 +54,7 @@ export const CheckboxField = ({
           className={styles.input}
           disabled={disabled}
           id={id}
-          ref={forwardedRef}
+          ref={ref}
           required={required}
           type="checkbox"
           value={value}
@@ -79,16 +78,16 @@ export const CheckboxField = ({
       )}
     </label>
   );
-};
+});
 
 CheckboxField.defaultProps = {
   checked: undefined,
   disabled: false,
-  forwardedRef: undefined,
   helpText: null,
   id: undefined,
   isLabelVisible: true,
   labelPosition: 'after',
+  ref: undefined,
   required: false,
   validationState: null,
   validationText: null,
@@ -104,14 +103,6 @@ CheckboxField.propTypes = {
    * If `true`, the input will be disabled.
    */
   disabled: PropTypes.bool,
-  /**
-   * Reference forwarded to the `input` element.
-   */
-  forwardedRef: PropTypes.oneOfType([
-    PropTypes.func,
-    // eslint-disable-next-line react/forbid-prop-types
-    PropTypes.shape({ current: PropTypes.any }),
-  ]),
   /**
    * Optional help text.
    */
@@ -140,6 +131,14 @@ CheckboxField.propTypes = {
    */
   labelPosition: PropTypes.oneOf(['before', 'after']),
   /**
+   * Reference forwarded to the `input` element.
+   */
+  ref: PropTypes.oneOfType([
+    PropTypes.func,
+    // eslint-disable-next-line react/forbid-prop-types
+    PropTypes.shape({ current: PropTypes.any }),
+  ]),
+  /**
    * If `true`, the input will be required.
    */
   required: PropTypes.bool,
@@ -160,6 +159,6 @@ CheckboxField.propTypes = {
   ]),
 };
 
-export const CheckboxFieldWithGlobalProps = withForwardedRef(withGlobalProps(CheckboxField, 'CheckboxField'));
+export const CheckboxFieldWithGlobalProps = withGlobalProps(CheckboxField, 'CheckboxField');
 
 export default CheckboxFieldWithGlobalProps;

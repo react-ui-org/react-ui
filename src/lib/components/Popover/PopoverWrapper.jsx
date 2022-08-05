@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
-import withForwardedRef from '../withForwardedRef';
+import { transferProps } from '../_helpers/transferProps';
 import styles from './PopoverWrapper.scss';
 
 export const PopoverWrapper = ({
@@ -11,9 +11,9 @@ export const PopoverWrapper = ({
   ...restProps
 }) => (
   <Tag
+    {...transferProps(restProps)}
     className={styles.root}
     id={id}
-    {...restProps}
   >
     {children}
   </Tag>
@@ -40,7 +40,7 @@ PopoverWrapper.propTypes = {
   tag: PropTypes.string,
 };
 
-export const PopoverWrapperWithContext = withForwardedRef(withGlobalProps(PopoverWrapper, 'PopoverWrapper'));
+export const PopoverWrapperWithContext = withGlobalProps(PopoverWrapper, 'PopoverWrapper');
 
 export default PopoverWrapperWithContext;
 

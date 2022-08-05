@@ -3,6 +3,7 @@ import React from 'react';
 import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
+import { transferProps } from '../_helpers/transferProps';
 import styles from './ButtonGroup.scss';
 import { ButtonGroupContext } from './ButtonGroupContext';
 
@@ -21,13 +22,13 @@ export const ButtonGroup = ({
 
   return (
     <div
+      {...transferProps(restProps)}
       className={classNames(
         styles.root,
         block && styles.isRootBlock,
       )}
       id={id}
       role="group"
-      {...restProps}
     >
       <ButtonGroupContext.Provider
         value={{

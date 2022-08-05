@@ -16,7 +16,7 @@ describe('transferProps', () => {
     const props = {
       children: 'value',
       className: 'value',
-      forwardedRef: 'value',
+      ref: 'value',
       staticContext: 'value',
     };
     const expectedProps = {};

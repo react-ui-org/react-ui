@@ -7,27 +7,27 @@ import { getRootValidationStateClassName } from '../_helpers/getRootValidationSt
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
-import withForwardedRef from '../withForwardedRef';
 import styles from './SelectField.scss';
 
-export const SelectField = ({
-  disabled,
-  forwardedRef,
-  fullWidth,
-  helpText,
-  id,
-  isLabelVisible,
-  label,
-  layout,
-  options,
-  required,
-  size,
-  validationState,
-  validationText,
-  value,
-  variant,
-  ...restProps
-}) => {
+export const SelectField = React.forwardRef((props, ref) => {
+  const {
+    disabled,
+    fullWidth,
+    helpText,
+    id,
+    isLabelVisible,
+    label,
+    layout,
+    options,
+    required,
+    size,
+    validationState,
+    validationText,
+    value,
+    variant,
+    ...restProps
+  } = props;
+
   const context = useContext(FormLayoutContext);
 
   return (
@@ -64,7 +64,7 @@ export const SelectField = ({
             className={styles.input}
             disabled={disabled}
             id={id}
-            ref={forwardedRef}
+            ref={ref}
             required={required}
             value={value}
           >
@@ -107,16 +107,16 @@ export const SelectField = ({
       </div>
     </label>
   );
-};
+});
 
 SelectField.defaultProps = {
   disabled: false,
-  forwardedRef: undefined,
   fullWidth: false,
   helpText: null,
   id: undefined,
   isLabelVisible: true,
   layout: 'vertical',
+  ref: undefined,
   required: false,
   size: 'medium',
   validationState: null,
@@ -130,14 +130,6 @@ SelectField.propTypes = {
    * If `true`, the input will be disabled.
    */
   disabled: PropTypes.bool,
-  /**
-   * Reference forwarded to the `select` element.
-   */
-  forwardedRef: PropTypes.oneOfType([
-    PropTypes.func,
-    // eslint-disable-next-line react/forbid-prop-types
-    PropTypes.shape({ current: PropTypes.any }),
-  ]),
   /**
    * If `true`, the field will span the full width of its parent.
    */
@@ -187,6 +179,14 @@ SelectField.propTypes = {
     ]),
   })).isRequired,
   /**
+   * Reference forwarded to the `select` element.
+   */
+  ref: PropTypes.oneOfType([
+    PropTypes.func,
+    // eslint-disable-next-line react/forbid-prop-types
+    PropTypes.shape({ current: PropTypes.any }),
+  ]),
+  /**
    * If `true`, the input will be required.
    */
   required: PropTypes.bool,
@@ -215,6 +215,6 @@ SelectField.propTypes = {
   variant: PropTypes.oneOf(['filled', 'outline']),
 };
 
-export const SelectFieldWithGlobalProps = withForwardedRef(withGlobalProps(SelectField, 'SelectField'));
+export const SelectFieldWithGlobalProps = withGlobalProps(SelectField, 'SelectField');
 
 export default SelectFieldWithGlobalProps;

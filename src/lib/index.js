@@ -1,15 +1,15 @@
 // Components
-export { default as Alert } from './components/Alert';
-export { default as Badge } from './components/Badge';
-export { default as Button } from './components/Button';
+export { Alert } from './components/Alert';
+export { Badge } from './components/Badge';
+export { Button } from './components/Button';
 export { ButtonGroup } from './components/ButtonGroup';
 export {
   Card,
   CardBody,
   CardFooter,
 } from './components/Card';
-export { default as CheckboxField } from './components/CheckboxField';
-export { default as FileInputField } from './components/FileInputField';
+export { CheckboxField } from './components/CheckboxField';
+export { FileInputField } from './components/FileInputField';
 export {
   FormLayout,
   FormLayoutCustomField,
@@ -27,24 +27,24 @@ export {
   ModalHeader,
   ModalTitle,
 } from './components/Modal';
-export { default as Paper } from './components/Paper';
+export { Paper } from './components/Paper';
 export {
   Popover,
   PopoverWrapper,
 } from './components/Popover';
-export { default as Radio } from './components/Radio';
-export { default as ScrollView } from './components/ScrollView';
-export { default as SelectField } from './components/SelectField';
+export { Radio } from './components/Radio';
+export { ScrollView } from './components/ScrollView';
+export { SelectField } from './components/SelectField';
 export {
   Tabs,
   TabsItem,
 } from './components/Tabs';
-export { default as Table } from './components/Table';
-export { default as Text } from './components/Text';
-export { default as TextArea } from './components/TextArea';
-export { default as TextField } from './components/TextField';
-export { default as TextLink } from './components/TextLink';
-export { default as Toggle } from './components/Toggle';
+export { Table } from './components/Table';
+export { Text } from './components/Text';
+export { TextArea } from './components/TextArea';
+export { TextField } from './components/TextField';
+export { TextLink } from './components/TextLink';
+export { Toggle } from './components/Toggle';
 export {
   Toolbar,
   ToolbarGroup,

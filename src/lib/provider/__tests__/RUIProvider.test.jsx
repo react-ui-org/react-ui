@@ -3,8 +3,8 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import Badge from '../../components/Badge';
-import Alert from '../../components/Alert';
+import { Badge } from '../../components/Badge';
+import { Alert } from '../../components/Alert';
 import RUIProvider from '../RUIProvider';
 
 describe('rendering', () => {

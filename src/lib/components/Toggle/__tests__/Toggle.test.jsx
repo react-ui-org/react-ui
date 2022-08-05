@@ -8,7 +8,7 @@ import {
 import userEvent from '@testing-library/user-event';
 import { Toggle } from '../Toggle';
 import { disabledPropTest } from '../../../../../tests/propTests/disabledPropTest';
-import { forwardedRefPropTest } from '../../../../../tests/propTests/forwardedRefPropTest';
+import { refPropTest } from '../../../../../tests/propTests/refPropTest';
 import { helpTextPropTest } from '../../../../../tests/propTests/helpTextPropTest';
 import { formLayoutProviderTest } from '../../../../../tests/providerTests/formLayoutProviderTest';
 import { isLabelVisible } from '../../../../../tests/propTests/isLabelVisible';
@@ -40,7 +40,7 @@ describe('rendering', () => {
       (rootElement) => expect(within(rootElement).getByRole('checkbox')).not.toBeChecked(),
     ],
     ...disabledPropTest,
-    ...forwardedRefPropTest(React.createRef()),
+    ...refPropTest(React.createRef()),
     ...helpTextPropTest,
     [
       {

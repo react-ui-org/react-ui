@@ -5,24 +5,24 @@ import { classNames } from '../../utils/classNames';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
-import withForwardedRef from '../withForwardedRef';
 import styles from './Toggle.scss';
 
-export const Toggle = ({
-  checked,
-  disabled,
-  forwardedRef,
-  helpText,
-  id,
-  isLabelVisible,
-  label,
-  labelPosition,
-  required,
-  validationState,
-  validationText,
-  value,
-  ...restProps
-}) => {
+export const Toggle = React.forwardRef((props, ref) => {
+  const {
+    checked,
+    disabled,
+    helpText,
+    id,
+    isLabelVisible,
+    label,
+    labelPosition,
+    required,
+    validationState,
+    validationText,
+    value,
+    ...restProps
+  } = props;
+
   const context = useContext(FormLayoutContext);
 
   return (
@@ -56,7 +56,7 @@ export const Toggle = ({
           disabled={disabled}
           id={id}
           name={id}
-          ref={forwardedRef}
+          ref={ref}
           required={required}
           type="checkbox"
           value={value}
@@ -80,16 +80,16 @@ export const Toggle = ({
       )}
     </label>
   );
-};
+});
 
 Toggle.defaultProps = {
   checked: undefined,
   disabled: false,
-  forwardedRef: undefined,
   helpText: null,
   id: undefined,
   isLabelVisible: true,
   labelPosition: 'after',
+  ref: undefined,
   required: false,
   validationState: null,
   validationText: null,
@@ -105,14 +105,6 @@ Toggle.propTypes = {
    * If `true`, the input will be disabled.
    */
   disabled: PropTypes.bool,
-  /**
-   * Reference forwarded to the `input` element.
-   */
-  forwardedRef: PropTypes.oneOfType([
-    PropTypes.func,
-    // eslint-disable-next-line react/forbid-prop-types
-    PropTypes.shape({ current: PropTypes.any }),
-  ]),
   /**
    * Optional help text.
    */
@@ -139,6 +131,14 @@ Toggle.propTypes = {
    */
   labelPosition: PropTypes.oneOf(['before', 'after']),
   /**
+   * Reference forwarded to the `input` element.
+   */
+  ref: PropTypes.oneOfType([
+    PropTypes.func,
+    // eslint-disable-next-line react/forbid-prop-types
+    PropTypes.shape({ current: PropTypes.any }),
+  ]),
+  /**
    * If `true`, the input will be required.
    */
   required: PropTypes.bool,
@@ -159,6 +159,6 @@ Toggle.propTypes = {
   ]),
 };
 
-export const ToggleWithGlobalProps = withForwardedRef(withGlobalProps(Toggle, 'Toggle'));
+export const ToggleWithGlobalProps = withGlobalProps(Toggle, 'Toggle');
 
 export default ToggleWithGlobalProps;

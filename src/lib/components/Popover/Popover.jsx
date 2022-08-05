@@ -4,30 +4,30 @@ import { createPortal } from 'react-dom';
 import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { transferProps } from '../_helpers/transferProps';
-import withForwardedRef from '../withForwardedRef';
 import getRootSideClassName from './_helpers/getRootSideClassName';
 import getRootAlignmentClassName from './_helpers/getRootAlignmentClassName';
 import styles from './Popover.scss';
 
-export const Popover = ({
-  forwardedRef,
-  placement,
-  children,
-  id,
-  portalId,
-  ...restProps
-}) => {
+export const Popover = React.forwardRef((props, ref) => {
+  const {
+    placement,
+    children,
+    id,
+    portalId,
+    ...restProps
+  } = props;
+
   const PopoverEl = (
     <div
+      {...transferProps(restProps)}
       className={classNames(
         styles.root,
-        forwardedRef && styles.isRootControlled,
+        ref && styles.isRootControlled,
         getRootSideClassName(placement, styles),
         getRootAlignmentClassName(placement, styles),
       )}
       id={id}
-      ref={forwardedRef}
-      {...transferProps(restProps)}
+      ref={ref}
     >
       {children}
       <span className={styles.arrow} />
@@ -39,13 +39,13 @@ export const Popover = ({
   }
 
   return createPortal(PopoverEl, document.getElementById(portalId));
-};
+});
 
 Popover.defaultProps = {
-  forwardedRef: undefined,
   id: undefined,
   placement: 'bottom',
   portalId: null,
+  ref: undefined,
 };
 
 Popover.propTypes = {
@@ -53,14 +53,6 @@ Popover.propTypes = {
    * Popover content.
    */
   children: PropTypes.node.isRequired,
-  /**
-   * Reference forwarded to the root `div` element.
-   */
-  forwardedRef: PropTypes.oneOfType([
-    PropTypes.func,
-    // eslint-disable-next-line react/forbid-prop-types
-    PropTypes.shape({ current: PropTypes.any }),
-  ]),
   /**
    * ID of the root HTML element.
    */
@@ -87,8 +79,16 @@ Popover.propTypes = {
    * If set, popover is rendered in the React Portal with that ID.
    */
   portalId: PropTypes.string,
+  /**
+   * Reference forwarded to the root `div` element.
+   */
+  ref: PropTypes.oneOfType([
+    PropTypes.func,
+    // eslint-disable-next-line react/forbid-prop-types
+    PropTypes.shape({ current: PropTypes.any }),
+  ]),
 };
 
-export const PopoverWithContext = withForwardedRef(withGlobalProps(Popover, 'Popover'));
+export const PopoverWithGlobalProps = withGlobalProps(Popover, 'Popover');
 
-export default PopoverWithContext;
+export default PopoverWithGlobalProps;

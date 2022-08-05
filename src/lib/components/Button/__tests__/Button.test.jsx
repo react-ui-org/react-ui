@@ -7,7 +7,7 @@ import {
 import sinon from 'sinon';
 import userEvent from '@testing-library/user-event';
 import { colorPropTest } from '../../../../../tests/propTests/colorPropTest';
-import { forwardedRefPropTest } from '../../../../../tests/propTests/forwardedRefPropTest';
+import { refPropTest } from '../../../../../tests/propTests/refPropTest';
 import { labelPropTest } from '../../../../../tests/propTests/labelPropTest';
 import { sizePropTest } from '../../../../../tests/propTests/sizePropTest';
 import { ButtonGroupContext } from '../../ButtonGroup';
@@ -92,7 +92,7 @@ describe('rendering', () => {
       { endCorner: <div>corner text</div> },
       (rootElement) => expect(within(rootElement).getByText('corner text')),
     ],
-    ...forwardedRefPropTest(React.createRef()),
+    ...refPropTest(React.createRef()),
     [
       { id: 'id' },
       (rootElement) => {

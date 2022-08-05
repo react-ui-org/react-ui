@@ -6,7 +6,7 @@ import {
 import { colorPropTest } from '../../../../../tests/propTests/colorPropTest';
 import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 import { raisedPropTest } from '../../../../../tests/propTests/raisedPropTest';
-import ScrollView from '../../ScrollView';
+import { ScrollView } from '../../ScrollView';
 import { Card } from '../Card';
 import { CardBody } from '../CardBody';
 import { CardFooter } from '../CardFooter';

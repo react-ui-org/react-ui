@@ -5,7 +5,7 @@ import {
   within,
 } from '@testing-library/react';
 import { idPropTest } from '../../../../../tests/propTests/idPropTest';
-import { forwardedRefPropTest } from '../../../../../tests/propTests/forwardedRefPropTest';
+import { refPropTest } from '../../../../../tests/propTests/refPropTest';
 import { Popover } from '../Popover';
 
 const mandatoryProps = {
@@ -30,14 +30,14 @@ describe('rendering', () => {
   });
 
   it.each([
-    ...forwardedRefPropTest(React.createRef()),
+    ...refPropTest(React.createRef()),
     ...idPropTest,
     [
       { children: <div>content text</div> },
       (rootElement) => expect(within(rootElement).getByText('content text')),
     ],
     [
-      { forwardedRef: React.createRef() },
+      { ref: React.createRef() },
       (rootElement) => expect(rootElement).toHaveClass('isRootControlled'),
     ],
     [

@@ -7,31 +7,30 @@ import { getRootValidationStateClassName } from '../_helpers/getRootValidationSt
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
-import withForwardedRef from '../withForwardedRef';
 import styles from './TextField.scss';
 
 const SMALL_INPUT_SIZE = 10;
 
-export const TextField = ({
-  disabled,
-  forwardedRef,
-  fullWidth,
-  helpText,
-  id,
-  inputSize,
-  isLabelVisible,
-  label,
-  layout,
-  placeholder,
-  required,
-  size,
-  type,
-  validationState,
-  validationText,
-  value,
-  variant,
-  ...restProps
-}) => {
+export const TextField = React.forwardRef((props, ref) => {
+  const {
+    disabled,
+    fullWidth,
+    helpText,
+    id,
+    inputSize,
+    isLabelVisible,
+    label,
+    layout,
+    placeholder,
+    required,
+    size,
+    type,
+    validationState,
+    validationText,
+    value,
+    variant,
+    ...restProps
+  } = props;
   const context = useContext(FormLayoutContext);
   const hasSmallInput = (inputSize !== null) && (inputSize <= SMALL_INPUT_SIZE);
 
@@ -73,7 +72,7 @@ export const TextField = ({
             disabled={disabled}
             id={id}
             placeholder={placeholder}
-            ref={forwardedRef}
+            ref={ref}
             required={required}
             size={type !== 'number' ? inputSize : null}
             type={type}
@@ -102,11 +101,10 @@ export const TextField = ({
       </div>
     </label>
   );
-};
+});
 
 TextField.defaultProps = {
   disabled: false,
-  forwardedRef: undefined,
   fullWidth: false,
   helpText: null,
   id: undefined,
@@ -114,6 +112,7 @@ TextField.defaultProps = {
   isLabelVisible: true,
   layout: 'vertical',
   placeholder: null,
+  ref: undefined,
   required: false,
   size: 'medium',
   type: 'text',
@@ -128,14 +127,6 @@ TextField.propTypes = {
    * If `true`, the input will be disabled.
    */
   disabled: PropTypes.bool,
-  /**
-   * Reference forwarded to the `input` element.
-   */
-  forwardedRef: PropTypes.oneOfType([
-    PropTypes.func,
-    // eslint-disable-next-line react/forbid-prop-types
-    PropTypes.shape({ current: PropTypes.any }),
-  ]),
   /**
    * If `true`, the field will span the full width of its parent.
    */
@@ -177,6 +168,14 @@ TextField.propTypes = {
    */
   placeholder: PropTypes.string,
   /**
+   * Reference forwarded to the `input` element.
+   */
+  ref: PropTypes.oneOfType([
+    PropTypes.func,
+    // eslint-disable-next-line react/forbid-prop-types
+    PropTypes.shape({ current: PropTypes.any }),
+  ]),
+  /**
    * If `true`, the input will be required.
    */
   required: PropTypes.bool,
@@ -209,6 +208,6 @@ TextField.propTypes = {
   variant: PropTypes.oneOf(['filled', 'outline']),
 };
 
-export const TextFieldWithGlobalProps = withForwardedRef(withGlobalProps(TextField, 'TextField'));
+export const TextFieldWithGlobalProps = withGlobalProps(TextField, 'TextField');
 
 export default TextFieldWithGlobalProps;
