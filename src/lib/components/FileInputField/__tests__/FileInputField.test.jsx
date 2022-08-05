@@ -7,7 +7,7 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { disabledPropTest } from '../../../../../tests/propTests/disabledPropTest';
-import { forwardedRefPropTest } from '../../../../../tests/propTests/forwardedRefPropTest';
+import { refPropTest } from '../../../../../tests/propTests/refPropTest';
 import { fullWidthPropTest } from '../../../../../tests/propTests/fullWidthPropTest';
 import { helpTextPropTest } from '../../../../../tests/propTests/helpTextPropTest';
 import { formLayoutProviderTest } from '../../../../../tests/providerTests/formLayoutProviderTest';
@@ -28,7 +28,7 @@ describe('rendering', () => {
 
   it.each([
     ...disabledPropTest,
-    ...forwardedRefPropTest(React.createRef()),
+    ...refPropTest(React.createRef()),
     ...fullWidthPropTest,
     ...helpTextPropTest,
     [

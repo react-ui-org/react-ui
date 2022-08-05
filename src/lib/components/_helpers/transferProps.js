@@ -1,7 +1,7 @@
 export const transferProps = ({
   children,
   className,
-  forwardedRef,
+  ref,
   staticContext,
   ...restProps
 }) => restProps;

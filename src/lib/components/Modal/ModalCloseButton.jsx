@@ -4,16 +4,16 @@ import {
   RUIContext,
   withGlobalProps,
 } from '../../provider';
-import withForwardedRef from '../withForwardedRef';
 import { transferProps } from '../_helpers/transferProps';
 import styles from './ModalCloseButton.scss';
 
-export const ModalCloseButton = ({
-  disabled,
-  forwardedRef,
-  id,
-  ...restProps
-}) => {
+export const ModalCloseButton = React.forwardRef((props, ref) => {
+  const {
+    disabled,
+    id,
+    ...restProps
+  } = props;
+
   const { translations } = useContext(RUIContext);
 
   return (
@@ -23,18 +23,18 @@ export const ModalCloseButton = ({
       className={styles.root}
       disabled={disabled}
       id={id}
-      ref={forwardedRef}
+      ref={ref}
       title={translations.ModalCloseButton.close}
     >
       ×
     </button>
   );
-};
+});
 
 ModalCloseButton.defaultProps = {
   disabled: false,
-  forwardedRef: undefined,
   id: undefined,
+  ref: undefined,
 };
 
 ModalCloseButton.propTypes = {
@@ -43,19 +43,19 @@ ModalCloseButton.propTypes = {
    */
   disabled: PropTypes.bool,
   /**
+   * ID of the root HTML element.
+   */
+  id: PropTypes.string,
+  /**
    * Reference forwarded to the `button` element.
    */
-  forwardedRef: PropTypes.oneOfType([
+  ref: PropTypes.oneOfType([
     PropTypes.func,
     // eslint-disable-next-line react/forbid-prop-types
     PropTypes.shape({ current: PropTypes.any }),
   ]),
-  /**
-   * ID of the root HTML element.
-   */
-  id: PropTypes.string,
 };
 
-export const ModalCloseButtonWithGlobalProps = withForwardedRef(withGlobalProps(ModalCloseButton, 'ModalCloseButton'));
+export const ModalCloseButtonWithGlobalProps = withGlobalProps(ModalCloseButton, 'ModalCloseButton');
 
 export default ModalCloseButtonWithGlobalProps;

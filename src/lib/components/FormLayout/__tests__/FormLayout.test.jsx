@@ -5,12 +5,12 @@ import {
 } from '@testing-library/react';
 import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
 import { idPropTest } from '../../../../../tests/propTests/idPropTest';
-import CheckboxField from '../../CheckboxField';
-import Radio from '../../Radio';
-import SelectField from '../../SelectField';
-import TextArea from '../../TextArea';
-import TextField from '../../TextField';
-import Toggle from '../../Toggle';
+import { CheckboxField } from '../../CheckboxField';
+import { Radio } from '../../Radio';
+import { SelectField } from '../../SelectField';
+import { TextArea } from '../../TextArea';
+import { TextField } from '../../TextField';
+import { Toggle } from '../../Toggle';
 import { FormLayout } from '../FormLayout';
 import { FormLayoutCustomField } from '../FormLayoutCustomField';
 

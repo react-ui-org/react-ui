@@ -6,23 +6,23 @@ import { getRootValidationStateClassName } from '../_helpers/getRootValidationSt
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
-import withForwardedRef from '../withForwardedRef';
 import styles from './FileInputField.scss';
 
-export const FileInputField = ({
-  disabled,
-  forwardedRef,
-  fullWidth,
-  helpText,
-  id,
-  isLabelVisible,
-  label,
-  layout,
-  required,
-  validationState,
-  validationText,
-  ...restProps
-}) => {
+export const FileInputField = React.forwardRef((props, ref) => {
+  const {
+    disabled,
+    fullWidth,
+    helpText,
+    id,
+    isLabelVisible,
+    label,
+    layout,
+    required,
+    validationState,
+    validationText,
+    ...restProps
+  } = props;
+
   const context = useContext(FormLayoutContext);
 
   return (
@@ -57,7 +57,7 @@ export const FileInputField = ({
             className={styles.input}
             disabled={disabled}
             id={id}
-            ref={forwardedRef}
+            ref={ref}
             required={required}
             type="file"
           />
@@ -81,16 +81,16 @@ export const FileInputField = ({
       </div>
     </label>
   );
-};
+});
 
 FileInputField.defaultProps = {
   disabled: false,
-  forwardedRef: undefined,
   fullWidth: false,
   helpText: null,
   id: undefined,
   isLabelVisible: true,
   layout: 'vertical',
+  ref: undefined,
   required: false,
   validationState: null,
   validationText: null,
@@ -101,14 +101,6 @@ FileInputField.propTypes = {
    * If `true`, the input will be disabled.
    */
   disabled: PropTypes.bool,
-  /**
-   * Reference forwarded to the `input` element.
-   */
-  forwardedRef: PropTypes.oneOfType([
-    PropTypes.func,
-    // eslint-disable-next-line react/forbid-prop-types
-    PropTypes.shape({ current: PropTypes.any }),
-  ]),
   /**
    * If `true`, the field will span the full width of its parent.
    */
@@ -145,6 +137,14 @@ FileInputField.propTypes = {
    */
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
   /**
+   * Reference forwarded to the `input` element.
+   */
+  ref: PropTypes.oneOfType([
+    PropTypes.func,
+    // eslint-disable-next-line react/forbid-prop-types
+    PropTypes.shape({ current: PropTypes.any }),
+  ]),
+  /**
    * If `true`, the input will be required.
    */
   required: PropTypes.bool,
@@ -158,6 +158,6 @@ FileInputField.propTypes = {
   validationText: PropTypes.node,
 };
 
-export const FileInputFieldWithGlobalProps = withForwardedRef(withGlobalProps(FileInputField, 'FileInputField'));
+export const FileInputFieldWithGlobalProps = withGlobalProps(FileInputField, 'FileInputField');
 
 export default FileInputFieldWithGlobalProps;

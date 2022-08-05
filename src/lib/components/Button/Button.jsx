@@ -6,30 +6,30 @@ import { getRootColorClassName } from '../_helpers/getRootColorClassName';
 import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { transferProps } from '../_helpers/transferProps';
-import withForwardedRef from '../withForwardedRef';
 import { ButtonGroupContext } from '../ButtonGroup';
 import getRootLabelVisibilityClassName from './helpers/getRootLabelVisibilityClassName';
 import getRootPriorityClassName from './helpers/getRootPriorityClassName';
 import styles from './Button.scss';
 
-export const Button = ({
-  afterLabel,
-  beforeLabel,
-  block,
-  disabled,
-  endCorner,
-  feedbackIcon,
-  forwardedRef,
-  id,
-  label,
-  labelVisibility,
-  priority,
-  size,
-  startCorner,
-  type,
-  color,
-  ...restProps
-}) => {
+export const Button = React.forwardRef((props, ref) => {
+  const {
+    afterLabel,
+    beforeLabel,
+    block,
+    disabled,
+    endCorner,
+    feedbackIcon,
+    id,
+    label,
+    labelVisibility,
+    priority,
+    size,
+    startCorner,
+    type,
+    color,
+    ...restProps
+  } = props;
+
   const context = useContext(ButtonGroupContext);
 
   return (
@@ -55,7 +55,7 @@ export const Button = ({
       )}
       disabled={resolveContextOrProp(context && context.disabled, disabled) || !!feedbackIcon}
       id={id}
-      ref={forwardedRef}
+      ref={ref}
       type={type}
     >
       {startCorner && (
@@ -92,7 +92,7 @@ export const Button = ({
     </button>
     /* eslint-enable react/button-has-type */
   );
-};
+});
 
 Button.defaultProps = {
   afterLabel: null,
@@ -102,10 +102,10 @@ Button.defaultProps = {
   disabled: false,
   endCorner: null,
   feedbackIcon: null,
-  forwardedRef: undefined,
   id: undefined,
   labelVisibility: 'xs',
   priority: 'filled',
+  ref: undefined,
   size: 'medium',
   startCorner: null,
   type: 'button',
@@ -148,14 +148,6 @@ Button.propTypes = {
    */
   feedbackIcon: PropTypes.node,
   /**
-   * Reference forwarded to the `button` element.
-   */
-  forwardedRef: PropTypes.oneOfType([
-    PropTypes.func,
-    // eslint-disable-next-line react/forbid-prop-types
-    PropTypes.shape({ current: PropTypes.any }),
-  ]),
-  /**
    * ID of the root HTML element.
    *
    * Also serves as base for ids of nested elements:
@@ -178,6 +170,14 @@ Button.propTypes = {
    */
   priority: PropTypes.oneOf(['filled', 'outline', 'flat']),
   /**
+   * Reference forwarded to the `button` element.
+   */
+  ref: PropTypes.oneOfType([
+    PropTypes.func,
+    // eslint-disable-next-line react/forbid-prop-types
+    PropTypes.shape({ current: PropTypes.any }),
+  ]),
+  /**
    * Size of the button.
    *
    * Ignored if the component is rendered within `ButtonGroup` component
@@ -194,6 +194,6 @@ Button.propTypes = {
   type: PropTypes.oneOf(['button', 'submit']),
 };
 
-export const ButtonWithGlobalProps = withForwardedRef(withGlobalProps(Button, 'Button'));
+export const ButtonWithGlobalProps = withGlobalProps(Button, 'Button');
 
 export default ButtonWithGlobalProps;

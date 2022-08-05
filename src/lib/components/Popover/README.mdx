@@ -16,13 +16,15 @@ import {
   Props,
 } from 'docz'
 import { Placeholder } from '../../../docs/_components/Placeholder/Placeholder'
-import { Button } from '../Button/Button'
-import { ButtonGroup } from '../ButtonGroup/ButtonGroup'
-import { SelectField } from '../SelectField/SelectField'
-import { Toolbar } from '../Toolbar/Toolbar'
-import { ToolbarItem } from '../Toolbar/ToolbarItem'
-import { Popover } from './Popover'
-import { PopoverWrapper } from './PopoverWrapper'
+import {
+  Button,
+  Popover,
+  ButtonGroup,
+  SelectField,
+  Toolbar,
+  ToolbarItem,
+  PopoverWrapper,
+} from '../..'
 
 Popover displays additional information without interrupting user flow.
 
@@ -205,8 +207,8 @@ As opposed to the [basic setup](#placement), Popover will be placed according to
 its triggering component (`reference`), but still recognizing the closest parent
 element with `position: relative` or `position: absolute` if there is any.
 
-Popover reacts on the `forwardedRef` option, necessary for advanced positioning:
-when `forwardedRef` is set, Popover resets its built-in positioning and relies
+Popover reacts on the `ref` option, necessary for advanced positioning:
+when `ref` is set, Popover resets its built-in positioning and relies
 on provided `style`.
 
 👉 Please consult [Floating UI] documentation to understand how it works and to
@@ -284,13 +286,12 @@ get an idea of all possible cases you may need to cover.
           >
             <Button
               aria-describedby={isPopoverOpen ? 'my-advanced-popover' : undefined}
-              forwardedRef={reference}
               label="Trigger Popover"
               onClick={() => setIsPopoverOpen(!isPopoverOpen)}
+              ref={reference}
             />
             {isPopoverOpen && (
               <Popover
-                forwardedRef={floating}
                 id="my-advanced-popover"
                 placement={finalPlacement}
                 style={{
@@ -298,6 +299,7 @@ get an idea of all possible cases you may need to cover.
                   top: y ? y : '',
                   left: x ? x : '',
                 }}
+                ref={floating}
               >
                 Auto-flipping Popover
               </Popover>

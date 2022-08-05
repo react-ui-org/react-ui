@@ -7,7 +7,7 @@ import {
 import userEvent from '@testing-library/user-event';
 import { ModalCloseButton } from '../ModalCloseButton';
 import { idPropTest } from '../../../../../tests/propTests/idPropTest';
-import { forwardedRefPropTest } from '../../../../../tests/propTests/forwardedRefPropTest';
+import { refPropTest } from '../../../../../tests/propTests/refPropTest';
 
 describe('rendering', () => {
   it.each([
@@ -15,7 +15,7 @@ describe('rendering', () => {
       { disabled: true },
       (rootElement) => expect(rootElement).toBeDisabled(),
     ],
-    ...forwardedRefPropTest(React.createRef()),
+    ...refPropTest(React.createRef()),
     ...idPropTest,
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((

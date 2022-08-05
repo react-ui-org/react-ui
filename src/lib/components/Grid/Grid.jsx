@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
+import { transferProps } from '../_helpers/transferProps';
 import { generateResponsiveCustomProperties } from './_helpers/generateResponsiveCustomProperties';
 import styles from './Grid.scss';
 
@@ -18,7 +19,7 @@ export const Grid = ({
   rowGap,
   rows,
   tag: Tag,
-  ...other
+  ...restProps
 }) => {
   if (isChildrenEmpty(children)) {
     return null;
@@ -26,6 +27,7 @@ export const Grid = ({
 
   return (
     <Tag
+      {...transferProps(restProps)}
       id={id}
       className={styles.root}
       style={{
@@ -39,7 +41,6 @@ export const Grid = ({
         ...generateResponsiveCustomProperties(justifyContent, 'justify-content'),
         ...generateResponsiveCustomProperties(justifyItems, 'justify-items'),
       }}
-      {...other}
     >
       {children}
     </Tag>

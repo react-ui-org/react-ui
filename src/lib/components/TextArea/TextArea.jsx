@@ -7,29 +7,29 @@ import { getRootValidationStateClassName } from '../_helpers/getRootValidationSt
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
-import withForwardedRef from '../withForwardedRef';
 import styles from './TextArea.scss';
 
-export const TextArea = ({
-  cols,
-  disabled,
-  forwardedRef,
-  fullWidth,
-  helpText,
-  id,
-  isLabelVisible,
-  label,
-  layout,
-  placeholder,
-  required,
-  rows,
-  size,
-  validationState,
-  validationText,
-  value,
-  variant,
-  ...restProps
-}) => {
+export const TextArea = React.forwardRef((props, ref) => {
+  const {
+    cols,
+    disabled,
+    fullWidth,
+    helpText,
+    id,
+    isLabelVisible,
+    label,
+    layout,
+    placeholder,
+    required,
+    rows,
+    size,
+    validationState,
+    validationText,
+    value,
+    variant,
+    ...restProps
+  } = props;
+
   const context = useContext(FormLayoutContext);
 
   return (
@@ -68,7 +68,7 @@ export const TextArea = ({
             disabled={disabled}
             id={id}
             placeholder={placeholder}
-            ref={forwardedRef}
+            ref={ref}
             required={required}
             rows={rows}
             value={value}
@@ -96,18 +96,18 @@ export const TextArea = ({
       </div>
     </label>
   );
-};
+});
 
 TextArea.defaultProps = {
   cols: null,
   disabled: false,
-  forwardedRef: undefined,
   fullWidth: false,
   helpText: null,
   id: undefined,
   isLabelVisible: true,
   layout: 'vertical',
   placeholder: null,
+  ref: undefined,
   required: false,
   rows: 3,
   size: 'medium',
@@ -126,14 +126,6 @@ TextArea.propTypes = {
    * If `true`, the input will be disabled.
    */
   disabled: PropTypes.bool,
-  /**
-   * Reference forwarded to the `textarea` element.
-   */
-  forwardedRef: PropTypes.oneOfType([
-    PropTypes.func,
-    // eslint-disable-next-line react/forbid-prop-types
-    PropTypes.shape({ current: PropTypes.any }),
-  ]),
   /**
    * If `true`, the field will span the full width of its parent.
    */
@@ -172,6 +164,14 @@ TextArea.propTypes = {
   /**
    * If `true`, the input will be required.
    */
+  /**
+   * Reference forwarded to the `textarea` element.
+   */
+  ref: PropTypes.oneOfType([
+    PropTypes.func,
+    // eslint-disable-next-line react/forbid-prop-types
+    PropTypes.shape({ current: PropTypes.any }),
+  ]),
   required: PropTypes.bool,
   /**
    * The number of visible text lines for the control.
@@ -202,6 +202,6 @@ TextArea.propTypes = {
   variant: PropTypes.oneOf(['filled', 'outline']),
 };
 
-export const TextAreaWithGlobalProps = withForwardedRef(withGlobalProps(TextArea, 'TextArea'));
+export const TextAreaWithGlobalProps = withGlobalProps(TextArea, 'TextArea');
 
 export default TextAreaWithGlobalProps;

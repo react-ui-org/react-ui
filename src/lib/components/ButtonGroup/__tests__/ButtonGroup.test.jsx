@@ -5,7 +5,7 @@ import {
 } from '@testing-library/react';
 import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
 import { idPropTest } from '../../../../../tests/propTests/idPropTest';
-import Button from '../../Button';
+import { Button } from '../../Button';
 import { ButtonGroup } from '../ButtonGroup';
 
 const mandatoryProps = {
