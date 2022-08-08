@@ -7,6 +7,7 @@ import { getRootValidationStateClassName } from '../_helpers/getRootValidationSt
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
+import { Option } from './_components/Option';
 import styles from './SelectField.scss';
 
 export const SelectField = React.forwardRef((props, ref) => {
@@ -69,16 +70,28 @@ export const SelectField = React.forwardRef((props, ref) => {
             value={value}
           >
             {
-              options.map((option) => (
-                <option
-                  disabled={option.disabled}
-                  id={id && `${id}__item__${option.value}`}
-                  key={option.value}
-                  value={option.value}
-                >
-                  {option.label}
-                </option>
-              ))
+              options.map((option) => {
+                if ('options' in option) {
+                  return (
+                    <optgroup label={option.label} key={option.label}>
+                      {option.options.map((optgroupOption) => (
+                        <Option
+                          key={optgroupOption.label}
+                          {...optgroupOption}
+                          {...(id && { id: `${id}__item__${optgroupOption.value}` })}
+                        />
+                      ))}
+                    </optgroup>
+                  );
+                }
+                return (
+                  <Option
+                    key={option.label}
+                    {...option}
+                    {...(id && { id: `${id}__item__${option.value}` })}
+                  />
+                );
+              })
             }
           </select>
           <div className={styles.caret}>
@@ -169,15 +182,32 @@ SelectField.propTypes = {
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
   /**
    * Set of options to be chosen from.
+   *
+   * Either set of individual or grouped options is acceptable.
    */
-  options: PropTypes.arrayOf(PropTypes.shape({
-    disabled: PropTypes.bool,
-    label: PropTypes.string.isRequired,
-    value: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-    ]),
-  })).isRequired,
+  options: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        options: PropTypes.arrayOf(PropTypes.shape({
+          disabled: PropTypes.bool,
+          label: PropTypes.string.isRequired,
+          value: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number,
+          ]),
+        })),
+      }),
+    ),
+    PropTypes.arrayOf(PropTypes.shape({
+      disabled: PropTypes.bool,
+      label: PropTypes.string.isRequired,
+      value: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+      ]),
+    })),
+  ]).isRequired,
   /**
    * Reference forwarded to the `select` element.
    */

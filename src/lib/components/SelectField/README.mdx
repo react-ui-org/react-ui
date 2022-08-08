@@ -78,9 +78,6 @@ See [API](#api) for all available options.
 - Use **clear, calm error messages** when there's a problem with what they
   entered.
 
-- In case of a large amount of options, consider **grouping related items
-  together** by nesting them (implements the `optgroup` HTML element).
-
 👉 We use the **native `select`** HTML element to improve user experience on
 mobile devices by using the native select of the platform.
 
@@ -233,6 +230,70 @@ Full-width fields span the full width of a parent:
           onChange={(e) => setFruit(e.target.value)}
           options={options}
           value={fruit}
+          variant="filled"
+        />
+      </>
+    );
+  }}
+</Playground>
+
+## Grouping Related Options
+
+In case of a large amount of options, consider **grouping related items
+together** by nesting them (implements the `optgroup` HTML element).
+
+<Playground>
+  {() => {
+    const [crop, setCrop] = React.useState('apple');
+    const options = [
+      {
+        label: 'Fruits',
+        options: [
+          {
+            label: 'Apple',
+            value: 'apple',
+          },
+          {
+            label: 'Banana',
+            value: 'banana',
+          },
+          {
+            label: 'Grapefruit',
+            value: 'grapefruit',
+          },
+        ],
+      },
+      {
+        label: 'Vegetables',
+        options: [
+          {
+            label: 'Beetroot',
+            value: 'beetroot',
+          },
+          {
+            label: 'Carrot',
+            value: 'carrot',
+          },
+          {
+            label: 'Tomato',
+            value: 'tomato',
+          },
+        ],
+      },
+    ];
+    return (
+      <>
+        <SelectField
+          label="Your favourite crop"
+          onChange={(e) => setCrop(e.target.value)}
+          options={options}
+          value={crop}
+        />
+        <SelectField
+          label="Your favourite crop"
+          onChange={(e) => setCrop(e.target.value)}
+          options={options}
+          value={crop}
           variant="filled"
         />
       </>
