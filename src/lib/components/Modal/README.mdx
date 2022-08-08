@@ -635,11 +635,6 @@ Modals of any size automatically shrink when they cannot fit the screen width.
 
 On top of that, the modal can adjust to the width of its content.
 
-👉 Please note the auto width may not function correctly in combination with
-other auto-layout mechanisms, e.g. the auto-width
-[FormLayout](/components/form-layout#label-width). It's just too much
-magic that doesn't work together yet 🎩.
-
 <Playground>
   {() => {
     const [modalOpen, setModalOpen] = React.useState(false);
@@ -680,6 +675,70 @@ magic that doesn't work together yet 🎩.
                 />
                 <Button
                   label="Close"
+                  onClick={() => setModalOpen(false)}
+                  priority="outline"
+                  ref={modalCloseButtonRef}
+                />
+              </ModalFooter>
+            </Modal>
+          )}
+        </div>
+      </>
+    );
+  }}
+</Playground>
+
+👉 Please note the auto width may not function correctly in combination with
+other auto-layout mechanisms, e.g. the auto-width
+[FormLayout](/components/form-layout#label-width). It's just too much
+magic that doesn't work together (yet?) 🎩.
+
+👉 Beware of horizontal FormLayout inside `small` modals. While automatic
+overflow handling comes to the rescue in this kind of scenario, you will be
+better off with the combination of auto-sized modal and horizontal FormLayout
+with a fixed label width (i.e. any other than `auto`, see the previous note).
+
+<Playground>
+  {() => {
+    const [modalOpen, setModalOpen] = React.useState(false);
+    const modalPrimaryButtonRef = React.useRef();
+    const modalCloseButtonRef = React.useRef();
+    return (
+      <>
+        <Button
+          label="Launch auto-with modal with a form"
+          onClick={() => setModalOpen(true)}
+          priority="outline"
+        />
+        <div>
+          {modalOpen && (
+            <Modal
+              closeButtonRef={modalCloseButtonRef}
+              primaryButtonRef={modalPrimaryButtonRef}
+              size="auto"
+            >
+              <ModalHeader>
+                <ModalTitle>Form inside modal</ModalTitle>
+                <ModalCloseButton onClick={() => setModalOpen(false)} />
+              </ModalHeader>
+              <ModalBody>
+                <ModalContent>
+                  <FormLayout fieldLayout="horizontal">
+                    <TextField label="A form element" />
+                    <TextField label="Another form element" />
+                    <TextField label="Yet another one" />
+                  </FormLayout>
+                </ModalContent>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  color="primary"
+                  label="Save"
+                  onClick={() => setModalOpen(false)}
+                  ref={modalPrimaryButtonRef}
+                />
+                <Button
+                  label="Cancel"
                   onClick={() => setModalOpen(false)}
                   priority="outline"
                   ref={modalCloseButtonRef}
