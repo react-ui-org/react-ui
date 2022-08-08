@@ -9,14 +9,16 @@
 
 .root {
     --rui-local-outer-spacing: #{theme.$outer-spacing-xs};
+    --rui-local-max-width: calc(100% - (2 * var(--rui-local-outer-spacing)));
+    --rui-local-max-height: calc(100% - (2 * var(--rui-local-outer-spacing)));
 
     position: fixed;
     left: 50%;
     z-index: settings.$z-index;
     display: flex;
     flex-direction: column;
-    max-width: calc(100% - (2 * var(--rui-local-outer-spacing)));
-    max-height: calc(100% - (2 * var(--rui-local-outer-spacing)));
+    max-width: var(--rui-local-max-width);
+    max-height: var(--rui-local-max-height);
     overflow-y: auto;
     overscroll-behavior: contain;
     border-radius: settings.$border-radius;
@@ -62,8 +64,8 @@
 
 .isRootSizeAuto {
     width: auto;
-    min-width: map.get(theme.$sizes, auto, min-width);
-    max-width: map.get(theme.$sizes, auto, max-width);
+    min-width: min(var(--rui-local-max-width), #{map.get(theme.$sizes, auto, min-width)});
+    max-width: min(var(--rui-local-max-width), #{map.get(theme.$sizes, auto, max-width)});
 }
 
 .isRootPositionCenter {
