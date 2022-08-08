@@ -36,6 +36,23 @@ const mandatoryProps = {
   ],
 };
 
+const optgroupOptions = [
+  {
+    label: 'optgroup',
+    options: [
+      {
+        label: 'option 3',
+        value: 3,
+      },
+      {
+        disabled: true,
+        label: 'option 4',
+        value: 'option4',
+      },
+    ],
+  },
+];
+
 describe('rendering', () => {
   formLayoutProviderTest(<SelectField {...mandatoryProps} />);
 
@@ -68,6 +85,14 @@ describe('rendering', () => {
         expect(within(rootElement).getByText('option 1')).not.toHaveAttribute('checked');
         expect(within(rootElement).getByText('option 2')).not.toHaveAttribute('checked');
         expect(within(rootElement).getByText('option 2')).toBeDisabled();
+      },
+    ],
+    [
+      { options: optgroupOptions },
+      (rootElement) => {
+        expect(within(rootElement).getByText('option 3')).not.toHaveAttribute('checked');
+        expect(within(rootElement).getByText('option 4')).not.toHaveAttribute('checked');
+        expect(within(rootElement).getByText('option 4')).toBeDisabled();
       },
     ],
     ...requiredPropTest,
