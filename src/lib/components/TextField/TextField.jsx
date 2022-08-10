@@ -153,7 +153,7 @@ TextField.propTypes = {
    */
   id: PropTypes.string,
   /**
-   * Treat the field differently when it's inside a FormLayout. Do not set manually!
+   * Width of the input field. Translated as `size` attribute for input types other than `number`.
    */
   inputSize: PropTypes.number,
   /**
