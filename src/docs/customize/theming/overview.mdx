@@ -31,9 +31,8 @@ describe:
 2. layout components,
 3. UI components.
 
-You can adjust any of these options in your styles. See the
-[default theme](https://github.com/react-ui-org/react-ui/blob/master/src/lib/theme.scss)
-for the full list of available settings.
+You can adjust any of these options in your styles. See the [default theme] for
+the full list of available settings.
 
 ### Design Tokens
 
@@ -57,9 +56,8 @@ and hyphenated:
 ```
 
 ️👉 Please note that **breakpoint values are exported as read-only** since CSS
-custom properties
-[cannot be used within media queries](https://www.w3.org/TR/css-variables-1/#using-variables)
-(because media query is not a CSS property).
+custom properties [cannot be used within media queries][w3c-custom-properties]
+(because a media query is not a CSS property).
 
 ### Components
 
@@ -113,12 +111,11 @@ It's entirely up to you what format you decide to use for storing the theme.
 Both `theme.scss` and `theme.css` will work equally well, it only matters if
 the custom properties make it from the theme file to browser.
 
-👉 Just remember everything in the
-[theme constants](https://github.com/react-ui-org/react-ui/blob/master/src/lib/styles/theme-constants)
-directory is intended only for usage within `theme.scss`. Otherwise, the theming
-system may not work as expected. We recommend calling custom properties from
-`theme.scss` either directly in your stylesheet, or through an intermediate,
-shareable layer like `MyComponent/_theme.scss` or
+👉 Just remember everything in the [theme constants] directory is intended only
+for usage within `theme.scss`. Otherwise, the theming system may not work as
+expected. We recommend calling custom properties from `theme.scss` either
+directly in your stylesheet, or through an intermediate, shareable layer like
+`MyComponent/_theme.scss` or
 `styles/shared-by-components/_my-sass-variables-referring-to-theme.scss`
 (latter of which is the approach we use).
 
@@ -135,3 +132,7 @@ ensure that your UI is consistent and works as a system.
 
 For the same reason, if you have any custom components in your UI, you should
 **reuse design tokens in your own CSS** too.
+
+[default theme]: https://github.com/react-ui-org/react-ui/blob/master/src/lib/theme.scss
+[theme constants]: https://github.com/react-ui-org/react-ui/blob/master/src/lib/styles/theme-constants
+[w3c-custom-properties]: https://www.w3.org/TR/css-variables-1/#using-variables

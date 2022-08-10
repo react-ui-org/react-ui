@@ -54,13 +54,13 @@ Grid.defaultProps = {
   alignItems: undefined,
   autoFlow: undefined,
   children: null,
-  columnGap: undefined,
-  columns: undefined,
+  columnGap: 'var(--rui-spacing-4)',
+  columns: '1fr',
   id: undefined,
   justifyContent: undefined,
   justifyItems: undefined,
-  rowGap: undefined,
-  rows: undefined,
+  rowGap: 'var(--rui-spacing-4)',
+  rows: 'auto',
   tag: 'div',
 };
 

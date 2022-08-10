@@ -37,9 +37,9 @@ export const GridSpan = ({
 
 GridSpan.defaultProps = {
   children: null,
-  columns: undefined,
+  columns: 1,
   id: undefined,
-  rows: undefined,
+  rows: 1,
   tag: 'div',
 };
 

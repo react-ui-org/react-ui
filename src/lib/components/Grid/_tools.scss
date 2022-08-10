@@ -1,14 +1,14 @@
 @use "sass:map";
 @use "../../styles/settings/breakpoints";
 @use "../../styles/tools/breakpoint";
+@use "settings";
 
 // Generate fallback cascade using `var()` function fallbacks.
 //
 // $property-name: <string> Custom property name
-// $initial-fallback: <string> Initial fallback value
 // $current-breakpoint: <one of $breakpoint-values> Generate cascade for breakpoints smaller than this one
-@function _generate-custom-property-fallback-cascade($property-name, $initial-fallback, $current-breakpoint) {
-    $fallback-cascade: $initial-fallback;
+@function _generate-custom-property-fallback-cascade($property-name, $current-breakpoint) {
+    $fallback-cascade: settings.$initial-fallback-value;
 
     @each $breakpoint in map.keys(breakpoints.$values) {
         @if $breakpoint == $current-breakpoint {
@@ -26,11 +26,11 @@
 @mixin assign-responsive-custom-properties($properties) {
     @each $breakpoint in map.keys(breakpoints.$values) {
         @include breakpoint.up($breakpoint) {
-            @each $property-name, $initial-fallback in $properties {
+            @each $property-name in $properties {
                 --rui-local-#{$property-name}:
                     var(
                         --rui-local-#{$property-name}-#{$breakpoint},
-                        #{_generate-custom-property-fallback-cascade($property-name, $initial-fallback, $breakpoint)}
+                        #{_generate-custom-property-fallback-cascade($property-name, $breakpoint)}
                     );
             }
         }
