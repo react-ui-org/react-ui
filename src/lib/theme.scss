@@ -197,13 +197,6 @@
     --rui-FormLayout--horizontal__label__width--limited: fit-content(50%);
 
     //
-    // Grid
-    // ====
-
-    --rui-Grid__column-gap: var(--rui-spacing-4);
-    --rui-Grid__row-gap: var(--rui-spacing-4);
-
-    //
     // Toolbar
     // =======
 
@@ -851,15 +844,6 @@
     --rui-FormField--check--checked__check-background-color: var(--rui-color-active);
 
     //
-    // TextLink
-    // ========
-
-    --rui-TextLink__color: var(--rui-link-color);
-    --rui-TextLink__text-decoration: var(--rui-link-decoration);
-    --rui-TextLink--hover__color: var(--rui-link-hover-color);
-    --rui-TextLink--hover__text-decoration: var(--rui-link-hover-decoration);
-
-    //
     // Modal
     // =====
 
@@ -960,4 +944,13 @@
     --rui-Tabs__item--active__box-shadow: var(--rui-Tabs__item__box-shadow);
     --rui-Tabs__item--active__shift-y: -0.25em;
     --rui-Tabs__item--active__label__shift-y: 0;
+
+    //
+    // TextLink
+    // ========
+
+    --rui-TextLink__color: var(--rui-link-color);
+    --rui-TextLink__text-decoration: var(--rui-link-decoration);
+    --rui-TextLink--hover__color: var(--rui-link-hover-color);
+    --rui-TextLink--hover__text-decoration: var(--rui-link-hover-decoration);
 }

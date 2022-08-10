@@ -38,8 +38,8 @@ See [API](#api) for all available options.
 
 ## General Guidelines
 
-- This component implements native [CSS grid layout][grid-layout], a powerful
-  tool for two-dimensional layouts. You may use any value accepted by
+- This component implements the native [CSS grid layout][grid-layout], a
+  powerful tool for two-dimensional layouts. You may use any value accepted by
   [grid-template-columns], [grid-template-rows], [grid-column-gap],
   [grid-row-gap], [grid-auto-flow], [align-content], [align-items],
   [justify-content], [justify-items], and CSS properties in corresponding API
@@ -62,7 +62,7 @@ See [API](#api) for all available options.
 ## Columns
 
 Stack is the default outcome of Grid. Use the `columns` option to organize your
-items into grid.
+items into a grid.
 
 <Playground>
   <Grid columns="1fr 1fr 1fr">
@@ -89,7 +89,9 @@ You can use the [`repeat()`][repeat] function to specify a recurring pattern.
 </Playground>
 
 Combine `repeat()` with `auto-fit` and [`minmax()`][minmax] to build automatic
-responsive layouts. Resize the playground to see it in action.
+responsive layouts.
+
+📐 Try resizing the playground to see it in action.
 
 <Playground>
   <Grid columns="repeat(auto-fit, minmax(200px, auto))">
@@ -102,8 +104,8 @@ responsive layouts. Resize the playground to see it in action.
   </Grid>
 </Playground>
 
-👉 If you need your items to have **equal height** even with content of varying
-length, it may be necessary to set `height: 100%` on them.
+👉 If you need your items to have **equal height** even with the content of
+varying lengths, it may be necessary to set `height: 100%` on them.
 
 ## Rows
 
@@ -137,7 +139,7 @@ Both column and row gaps can be customized.
 
 ## Alignment
 
-Individual items and the entire grid content can be aligned and along both axes.
+Individual items and the entire grid content can be aligned along both axes.
 
 <Playground>
   <Grid
@@ -157,8 +159,8 @@ Individual items and the entire grid content can be aligned and along both axes.
 
 ## Custom HTML Tag
 
-To render as list for example, just change the output `tag` to `ul` or `ol` and
-wrap your items with `<li>`.
+To render as a list, for example, just change the output `tag` to `ul` or `ol`
+and wrap your items with `<li>`.
 
 <Playground>
   <Grid tag="ul">
@@ -180,9 +182,11 @@ If you need to build more complicated layouts, you have full control over the
 grid definition. Just specify your grid layout for
 [breakpoints](/foundation/breakpoints) where a change of layout is needed.
 The Grid component is written with the mobile-first approach so values for small
-breakpoints are used until they're overridden by a bigger breakpoint. If `xs`
-settings are omitted, theme defaults are used. Resize your browser to see how it
-works.
+breakpoints are used until they're overridden by a bigger breakpoint.
+
+👉 With this syntax there are no defaults for individual breakpoints.
+
+📐 Try resizing your browser to see how it works.
 
 <Playground>
   <Grid
@@ -191,6 +195,7 @@ works.
       md: '1fr 2fr',
     }}
     columnGap={{
+      xs: 'var(--rui-spacing-4)',
       md: 'var(--rui-spacing-2)',
       lg: 'var(--rui-spacing-4)',
     }}
@@ -214,9 +219,9 @@ works.
 
 ## Advanced Layouts
 
-Wrap your content with GridSpan component to span it over multiple columns or
-rows. Use the `autoFlow` option to control the layout when combined with
-responsive columns and rows.
+Wrap your content with the GridSpan component to span it over multiple
+columns or rows. Use the `autoFlow` option to control the layout when combined
+with responsive columns and rows.
 
 <Playground>
   <Grid
@@ -265,13 +270,6 @@ property. Check [MDN][grid-auto-flow] to fully understand available options.
 Wrapper for content that should span multiple rows or columns.
 
 <Props table of={GridSpan} />
-
-## Theming
-
-| Custom Property                                      | Description                                                  |
-|------------------------------------------------------|--------------------------------------------------------------|
-| `--rui-Grid__column-gap`                             | Default column gap                                           |
-| `--rui-Grid__row-gap`                                | Default row gap                                              |
 
 [grid-layout]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout
 [grid-template-columns]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns

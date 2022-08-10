@@ -79,6 +79,7 @@ export default {
     {
       menu: [
         'General Guidelines',
+        'API Guidelines',
         'Composition',
         'CSS Guidelines',
         'Releasing',
