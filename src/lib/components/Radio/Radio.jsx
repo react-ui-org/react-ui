@@ -50,34 +50,37 @@ export const Radio = ({
       <div className={styles.field}>
         <ul className={styles.list}>
           {
-            options.map((option) => (
-              <li key={option.value}>
-                <label
-                  className={styles.option}
-                  htmlFor={id && `${id}__item__${option.value}`}
-                  id={id && `${id}__item__${option.value}__label`}
-                >
-                  <input
-                    {...transferProps(restProps)}
-                    className={styles.input}
-                    checked={restProps.onChange
-                      ? (value === option.value) || false
-                      : undefined}
-                    disabled={disabled || option.disabled}
-                    id={id && `${id}__item__${option.value}`}
-                    name={id}
-                    type="radio"
-                    value={option.value}
-                  />
-                  <span
-                    className={styles.optionLabel}
-                    id={id && `${id}__item__${option.value}__labelText`}
+            options.map((option) => {
+              const key = option.key ?? option.value;
+              return (
+                <li key={key}>
+                  <label
+                    className={styles.option}
+                    htmlFor={id && `${id}__item__${key}`}
+                    id={id && `${id}__item__${key}__label`}
                   >
-                    { option.label }
-                  </span>
-                </label>
-              </li>
-            ))
+                    <input
+                      {...transferProps(restProps)}
+                      className={styles.input}
+                      checked={restProps.onChange
+                        ? (value === option.value) || false
+                        : undefined}
+                      disabled={disabled || option.disabled}
+                      id={id && `${id}__item__${key}`}
+                      name={id}
+                      type="radio"
+                      value={option.value}
+                    />
+                    <span
+                      className={styles.optionLabel}
+                      id={id && `${id}__item__${key}__labelText`}
+                    >
+                      { option.label }
+                    </span>
+                  </label>
+                </li>
+              );
+            })
           }
         </ul>
         {helpText && (
@@ -134,6 +137,9 @@ Radio.propTypes = {
    * * `<ID>__item__<VALUE>`
    * * `<ID>__item__<VALUE>__label`
    * * `<ID>__item__<VALUE>__labelText`
+   *
+   * If `key` in the option definition object is set,
+   * then `option.key` is used instead of `option.value` in place of `<VALUE>`.
    */
   id: PropTypes.string,
   /**
@@ -154,9 +160,13 @@ Radio.propTypes = {
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
   /**
    * Set of options to be chosen from.
+   *
+   * For generating unique IDs the `option.value` is normally used. For cases when this is not practical or
+   * the `option.value` values are not unique the `option.key` attribute can be set manually.
    */
   options: PropTypes.arrayOf(PropTypes.shape({
     disabled: PropTypes.bool,
+    key: PropTypes.string,
     label: PropTypes.string.isRequired,
     value: PropTypes.oneOfType([
       PropTypes.string,

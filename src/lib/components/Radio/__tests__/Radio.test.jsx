@@ -25,6 +25,7 @@ const mandatoryProps = {
     },
     {
       disabled: true,
+      key: 'custom_key',
       label: 'option 2',
       value: 'option2',
     },
@@ -62,8 +63,11 @@ describe('rendering', () => {
         expect(within(rootElement).getByText('label')).toHaveAttribute('id', 'id__labelText');
         expect(within(rootElement).getByText('validation text')).toHaveAttribute('id', 'id__validationText');
         expect(within(rootElement).getByTestId('id__item__1'));
+        expect(within(rootElement).getByTestId('id__item__custom_key'));
         expect(within(rootElement).getByTestId('id__item__1__label'));
+        expect(within(rootElement).getByTestId('id__item__custom_key__label'));
         expect(within(rootElement).getByText('option 1')).toHaveAttribute('id', 'id__item__1__labelText');
+        expect(within(rootElement).getByText('option 2')).toHaveAttribute('id', 'id__item__custom_key__labelText');
       },
     ],
     ...isLabelVisible,

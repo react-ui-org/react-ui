@@ -30,6 +30,7 @@ const mandatoryProps = {
     },
     {
       disabled: true,
+      key: 'key',
       label: 'option 2',
       value: 'option2',
     },
@@ -38,6 +39,7 @@ const mandatoryProps = {
 
 const optgroupOptions = [
   {
+    key: 'optgroup_key',
     label: 'optgroup',
     options: [
       {
@@ -46,6 +48,7 @@ const optgroupOptions = [
       },
       {
         disabled: true,
+        key: 'key',
         label: 'option 4',
         value: 'option4',
       },
@@ -80,19 +83,29 @@ describe('rendering', () => {
     ...labelPropTest,
     ...layoutPropTest,
     [
-      { options: mandatoryProps.options },
+      {
+        id: 'id',
+        options: mandatoryProps.options,
+      },
       (rootElement) => {
         expect(within(rootElement).getByText('option 1')).not.toHaveAttribute('checked');
         expect(within(rootElement).getByText('option 2')).not.toHaveAttribute('checked');
         expect(within(rootElement).getByText('option 2')).toBeDisabled();
+        expect(within(rootElement).getByText('option 1')).toHaveAttribute('id', 'id__item__1');
+        expect(within(rootElement).getByText('option 2')).toHaveAttribute('id', 'id__item__key');
       },
     ],
     [
-      { options: optgroupOptions },
+      {
+        id: 'id',
+        options: optgroupOptions,
+      },
       (rootElement) => {
         expect(within(rootElement).getByText('option 3')).not.toHaveAttribute('checked');
         expect(within(rootElement).getByText('option 4')).not.toHaveAttribute('checked');
         expect(within(rootElement).getByText('option 4')).toBeDisabled();
+        expect(within(rootElement).getByText('option 3')).toHaveAttribute('id', 'id__item__3');
+        expect(within(rootElement).getByText('option 4')).toHaveAttribute('id', 'id__item__key');
       },
     ],
     ...requiredPropTest,

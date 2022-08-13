@@ -73,12 +73,15 @@ export const SelectField = React.forwardRef((props, ref) => {
               options.map((option) => {
                 if ('options' in option) {
                   return (
-                    <optgroup label={option.label} key={option.label}>
+                    <optgroup
+                      key={option.key ?? option.label}
+                      label={option.label}
+                    >
                       {option.options.map((optgroupOption) => (
                         <Option
-                          key={optgroupOption.label}
+                          key={optgroupOption.key ?? optgroupOption.value}
                           {...optgroupOption}
-                          {...(id && { id: `${id}__item__${optgroupOption.value}` })}
+                          {...(id && { id: `${id}__item__${optgroupOption.key ?? optgroupOption.value}` })}
                         />
                       ))}
                     </optgroup>
@@ -86,9 +89,9 @@ export const SelectField = React.forwardRef((props, ref) => {
                 }
                 return (
                   <Option
-                    key={option.label}
+                    key={option.key ?? option.value}
                     {...option}
-                    {...(id && { id: `${id}__item__${option.value}` })}
+                    {...(id && { id: `${id}__item__${option.key ?? option.value}` })}
                   />
                 );
               })
@@ -162,6 +165,9 @@ SelectField.propTypes = {
    *
    * and of individual options:
    * * `<ID>__item__<VALUE>`
+   *
+   * If `key` in the option definition object is set,
+   * then `option.key` is used instead of `option.value` in place of `<VALUE>`.
    */
   id: PropTypes.string,
   /**
@@ -184,13 +190,20 @@ SelectField.propTypes = {
    * Set of options to be chosen from.
    *
    * Either set of individual or grouped options is acceptable.
+   *
+   * For generating unique IDs the `option.value` is normally used. For cases when this is not practical or
+   * the `option.value` values are not unique the `option.key` attribute can be set manually.
+   * The same applies for the `label` value of grouped options which is supposed to be unique.
+   * To ensure uniqueness `key` attribute can be set manually.
    */
   options: PropTypes.oneOfType([
     PropTypes.arrayOf(
       PropTypes.shape({
+        key: PropTypes.string,
         label: PropTypes.string.isRequired,
         options: PropTypes.arrayOf(PropTypes.shape({
           disabled: PropTypes.bool,
+          key: PropTypes.string,
           label: PropTypes.string.isRequired,
           value: PropTypes.oneOfType([
             PropTypes.string,
@@ -201,6 +214,7 @@ SelectField.propTypes = {
     ),
     PropTypes.arrayOf(PropTypes.shape({
       disabled: PropTypes.bool,
+      key: PropTypes.string,
       label: PropTypes.string.isRequired,
       value: PropTypes.oneOfType([
         PropTypes.string,
