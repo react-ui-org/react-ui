@@ -6,6 +6,8 @@ import { transferProps } from '../_helpers/transferProps';
 import { generateResponsiveCustomProperties } from './_helpers/generateResponsiveCustomProperties';
 import styles from './Grid.scss';
 
+const SPACING_VALUES = [0, 1, 2, 3, 4, 5, 6, 7];
+
 export const Grid = ({
   alignContent,
   alignItems,
@@ -32,9 +34,9 @@ export const Grid = ({
       className={styles.root}
       style={{
         ...generateResponsiveCustomProperties(columns, 'columns'),
-        ...generateResponsiveCustomProperties(columnGap, 'column-gap'),
+        ...generateResponsiveCustomProperties(columnGap, 'column-gap', 'spacing'),
         ...generateResponsiveCustomProperties(rows, 'rows'),
-        ...generateResponsiveCustomProperties(rowGap, 'row-gap'),
+        ...generateResponsiveCustomProperties(rowGap, 'row-gap', 'spacing'),
         ...generateResponsiveCustomProperties(autoFlow, 'auto-flow'),
         ...generateResponsiveCustomProperties(alignContent, 'align-content'),
         ...generateResponsiveCustomProperties(alignItems, 'align-items'),
@@ -55,12 +57,12 @@ Grid.defaultProps = {
   alignItems: undefined,
   autoFlow: undefined,
   children: null,
-  columnGap: 'var(--rui-spacing-4)',
+  columnGap: 4,
   columns: '1fr',
   id: undefined,
   justifyContent: undefined,
   justifyItems: undefined,
-  rowGap: 'var(--rui-spacing-4)',
+  rowGap: 4,
   rows: 'auto',
   tag: 'div',
 };
@@ -119,19 +121,19 @@ Grid.propTypes = {
    */
   children: PropTypes.node,
   /**
-   * Gap between columns. Accepts any valid value of `grid-column-gap` CSS property.
-   * See [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap) for more.
+   * Gap between columns. Accepts any of [spacing values](/foundation/spacing-values) as number.
+   * See [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap) for more about `column-gap`.
    */
   columnGap: PropTypes.oneOfType([
-    PropTypes.string,
+    PropTypes.oneOf(SPACING_VALUES),
     PropTypes.shape({
-      xs: PropTypes.string,
-      sm: PropTypes.string,
-      md: PropTypes.string,
-      lg: PropTypes.string,
-      xl: PropTypes.string,
-      x2l: PropTypes.string,
-      x3l: PropTypes.string,
+      xs: PropTypes.oneOf(SPACING_VALUES),
+      sm: PropTypes.oneOf(SPACING_VALUES),
+      md: PropTypes.oneOf(SPACING_VALUES),
+      lg: PropTypes.oneOf(SPACING_VALUES),
+      xl: PropTypes.oneOf(SPACING_VALUES),
+      x2l: PropTypes.oneOf(SPACING_VALUES),
+      x3l: PropTypes.oneOf(SPACING_VALUES),
     }),
   ]),
   /**
@@ -187,19 +189,19 @@ Grid.propTypes = {
     }),
   ]),
   /**
-   * Gap between rows. Accepts any valid value of `grid-row-gap` CSS property.
-   * See [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap) for more.
+   * Gap between rows. Accepts any of [spacing values](/foundation/spacing-values) as number.
+   * See [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap) for more about `row-gap`.
    */
   rowGap: PropTypes.oneOfType([
-    PropTypes.string,
+    PropTypes.oneOf(SPACING_VALUES),
     PropTypes.shape({
-      xs: PropTypes.string,
-      sm: PropTypes.string,
-      md: PropTypes.string,
-      lg: PropTypes.string,
-      xl: PropTypes.string,
-      x2l: PropTypes.string,
-      x3l: PropTypes.string,
+      xs: PropTypes.oneOf(SPACING_VALUES),
+      sm: PropTypes.oneOf(SPACING_VALUES),
+      md: PropTypes.oneOf(SPACING_VALUES),
+      lg: PropTypes.oneOf(SPACING_VALUES),
+      xl: PropTypes.oneOf(SPACING_VALUES),
+      x2l: PropTypes.oneOf(SPACING_VALUES),
+      x3l: PropTypes.oneOf(SPACING_VALUES),
     }),
   ]),
   /**

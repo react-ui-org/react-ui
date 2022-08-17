@@ -42,10 +42,9 @@ See [API](#api) for all available options.
 
 - This component implements the native [CSS grid layout][grid-layout], a
   powerful tool for two-dimensional layouts. You may use any value accepted by
-  [grid-template-columns], [grid-template-rows], [grid-column-gap],
-  [grid-row-gap], [grid-auto-flow], [align-content], [align-items],
-  [justify-content], [justify-items], and CSS properties in corresponding API
-  options of the component.
+  [grid-template-columns], [grid-template-rows], [grid-auto-flow],
+  [align-content], [align-items], [justify-content], [justify-items], and CSS
+  properties in corresponding API options of the component.
 
 - To align your items in the grid, **simply wrap** them with the Grid
   component. Unlike other grid frameworks and UI libraries, **no additional
@@ -126,10 +125,11 @@ Use `columns` and `rows` to specify a more complicated grid layout.
 
 ## Gaps
 
-Both column and row gaps can be customized.
+Both column and row gaps can be customized. The value must correspond to any of
+[available spacings](/foundation/spacing).
 
 <Playground>
-  <Grid columns="repeat(3, 1fr)" columnGap="0.75rem" rowGap="2rem">
+  <Grid columns="repeat(3, 1fr)" columnGap={2} rowGap={6}>
     <Placeholder bordered>Grid item</Placeholder>
     <Placeholder bordered>Grid item</Placeholder>
     <Placeholder bordered>Grid item</Placeholder>
@@ -197,17 +197,17 @@ breakpoints are used until they're overridden by a bigger breakpoint.
       md: '1fr 2fr',
     }}
     columnGap={{
-      xs: 'var(--rui-spacing-4)',
-      md: 'var(--rui-spacing-2)',
-      lg: 'var(--rui-spacing-4)',
+      xs: 4,
+      md: 2,
+      lg: 4,
     }}
     rows={{
       xs: 'auto auto 200px 200px',
       md: 'auto 200px auto',
     }}
     rowGap={{
-      xs: 'var(--rui-spacing-3)',
-      md: 'var(--rui-spacing-4)',
+      xs: 3,
+      md: 4,
     }}
   >
     <Placeholder bordered>Grid item</Placeholder>
@@ -276,8 +276,6 @@ Wrapper for content that should span multiple rows or columns.
 [grid-layout]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout
 [grid-template-columns]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
 [grid-template-rows]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows
-[grid-column-gap]: https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap
-[grid-row-gap]: https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap
 [grid-auto-flow]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow
 [align-content]: https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
 [align-items]: https://developer.mozilla.org/en-US/docs/Web/CSS/align-items

@@ -18,6 +18,16 @@ const responsiveBreakpoints = {
   x2l: 'placeholder-x2l',
   x3l: 'placeholder-x3l',
 };
+
+const responsiveSpacingBreakpoints = {
+  xs: 1,
+  sm: 2,
+  md: 3,
+  lg: 4,
+  xl: 5,
+  x2l: 6,
+  x3l: 7,
+};
 /* eslint-enable sort-keys */
 
 const responsiveStyles = (infix) => ({
@@ -28,6 +38,16 @@ const responsiveStyles = (infix) => ({
   [`--rui-local-${infix}-xl`]: 'placeholder-xl',
   [`--rui-local-${infix}-x2l`]: 'placeholder-x2l',
   [`--rui-local-${infix}-x3l`]: 'placeholder-x3l',
+});
+
+const responsiveSpacingStyles = (infix) => ({
+  [`--rui-local-${infix}-xs`]: 'var(--rui-spacing-1)',
+  [`--rui-local-${infix}-sm`]: 'var(--rui-spacing-2)',
+  [`--rui-local-${infix}-md`]: 'var(--rui-spacing-3)',
+  [`--rui-local-${infix}-lg`]: 'var(--rui-spacing-4)',
+  [`--rui-local-${infix}-xl`]: 'var(--rui-spacing-5)',
+  [`--rui-local-${infix}-x2l`]: 'var(--rui-spacing-6)',
+  [`--rui-local-${infix}-x3l`]: 'var(--rui-spacing-7)',
 });
 
 const defaultProps = {
@@ -66,12 +86,12 @@ describe('rendering', () => {
       (rootElement) => expect(within(rootElement).getByText('content text')),
     ],
     [
-      { columnGap: responsiveBreakpoints },
-      (rootElement) => expect(rootElement).toHaveStyle(responsiveStyles('column-gap')),
+      { columnGap: responsiveSpacingBreakpoints },
+      (rootElement) => expect(rootElement).toHaveStyle(responsiveSpacingStyles('column-gap')),
     ],
     [
-      { columnGap: 'placeholder' },
-      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-column-gap-xs': 'placeholder' }),
+      { columnGap: 0 },
+      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-column-gap-xs': 'var(--rui-spacing-0)' }),
     ],
     [
       { columns: responsiveBreakpoints },
@@ -99,12 +119,12 @@ describe('rendering', () => {
       (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-justify-items-xs': 'placeholder' }),
     ],
     [
-      { rowGap: responsiveBreakpoints },
-      (rootElement) => expect(rootElement).toHaveStyle(responsiveStyles('row-gap')),
+      { rowGap: responsiveSpacingBreakpoints },
+      (rootElement) => expect(rootElement).toHaveStyle(responsiveSpacingStyles('row-gap')),
     ],
     [
-      { rowGap: 'placeholder' },
-      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-row-gap-xs': 'placeholder' }),
+      { rowGap: 0 },
+      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-row-gap-xs': 'var(--rui-spacing-0)' }),
     ],
     [
       { rows: responsiveBreakpoints },
