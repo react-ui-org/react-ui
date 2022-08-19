@@ -11,6 +11,7 @@ import {
   withGlobalProps,
 } from '../../provider';
 import { classNames } from '../../utils/classNames';
+import { transferProps } from '../_helpers/transferProps';
 import { getElementsPositionDifference } from './_helpers/getElementsPositionDifference';
 import { useLoadResize } from './_hooks/useLoadResizeHook';
 import { useScrollPosition } from './_hooks/useScrollPositionHook';
@@ -21,7 +22,7 @@ import styles from './ScrollView.scss';
 // every value less or equal to 1px as start/end.
 const EDGE_DETECTION_INACCURACY_PX = 1;
 
-export const ScrollView = (props) => {
+export const ScrollView = React.forwardRef((props, ref) => {
   const {
     arrows,
     arrowsScrollStep,
@@ -44,6 +45,7 @@ export const ScrollView = (props) => {
     startShadowBackground,
     startShadowInitialOffset,
     startShadowSize,
+    ...restProps
   } = props;
 
   const { translations } = useContext(RUIContext);
@@ -55,7 +57,8 @@ export const ScrollView = (props) => {
   const scrollPositionStart = direction === 'horizontal' ? 'left' : 'top';
   const scrollPositionEnd = direction === 'horizontal' ? 'right' : 'bottom';
   const scrollViewContentEl = useRef(null);
-  const scrollViewViewportEl = useRef(null);
+  const blankRef = useRef(null);
+  const scrollViewViewportEl = ref ?? blankRef;
 
   const handleScrollViewState = (currentPosition) => {
     const isScrolledAtStartActive = currentPosition[scrollPositionStart]
@@ -172,6 +175,7 @@ export const ScrollView = (props) => {
 
   return (
     <div
+      {...transferProps(restProps)}
       className={classNames(
         styles.root,
         isScrolledAtStart && styles.isRootScrolledAtStart,
@@ -195,7 +199,10 @@ export const ScrollView = (props) => {
         '--rui-local-start-shadow-size': startShadowSize,
       }}
     >
-      <div className={styles.viewport} ref={scrollViewViewportEl}>
+      <div
+        className={styles.viewport}
+        ref={scrollViewViewportEl}
+      >
         <div
           className={styles.content}
           id={id && `${id}__content`}
@@ -247,7 +254,7 @@ export const ScrollView = (props) => {
       )}
     </div>
   );
-};
+});
 
 ScrollView.defaultProps = {
   arrows: false,
@@ -266,6 +273,7 @@ ScrollView.defaultProps = {
   prevArrowColor: undefined,
   prevArrowElement: null,
   prevArrowInitialOffset: '-0.5rem',
+  ref: undefined,
   scrollbar: true,
   shadows: true,
   startShadowBackground: 'linear-gradient(var(--rui-local-start-shadow-direction), rgba(255 255 255 / 1), rgba(255 255 255 / 0))',
@@ -349,6 +357,14 @@ ScrollView.propTypes = {
    * Initial offset of the start arrow control (transitioned). If set, the prev arrow slides in by this distance.
    */
   prevArrowInitialOffset: PropTypes.string,
+  /**
+   * Reference forwarded to the scrolling viewport `div` element.
+   */
+  ref: PropTypes.oneOfType([
+    PropTypes.func,
+    // eslint-disable-next-line react/forbid-prop-types
+    PropTypes.shape({ current: PropTypes.any }),
+  ]),
   /**
    * If `false`, the system scrollbar will be hidden.
    */
