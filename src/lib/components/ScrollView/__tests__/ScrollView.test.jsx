@@ -9,8 +9,19 @@ const mandatoryProps = {
   children: <div>content text</div>,
 };
 
+const scrollViewRefPropTest = (ref) => [
+  [
+    {
+      id: 'id',
+      ref,
+    },
+    () => expect(ref.current.parentNode).toHaveAttribute('id', 'id'),
+  ],
+];
+
 describe('rendering', () => {
   it.each([
+    ...scrollViewRefPropTest(React.createRef()),
     [
       { arrows: true },
       (rootElement) => {
