@@ -9,7 +9,6 @@ import styles from './CheckboxField.scss';
 
 export const CheckboxField = React.forwardRef((props, ref) => {
   const {
-    checked,
     disabled,
     helpText,
     id,
@@ -19,7 +18,6 @@ export const CheckboxField = React.forwardRef((props, ref) => {
     required,
     validationState,
     validationText,
-    value,
     ...restProps
   } = props;
   const context = useContext(FormLayoutContext);
@@ -50,14 +48,12 @@ export const CheckboxField = React.forwardRef((props, ref) => {
         </div>
         <input
           {...transferProps(restProps)}
-          checked={checked}
           className={styles.input}
           disabled={disabled}
           id={id}
           ref={ref}
           required={required}
           type="checkbox"
-          value={value}
         />
       </div>
       {helpText && (
@@ -81,7 +77,6 @@ export const CheckboxField = React.forwardRef((props, ref) => {
 });
 
 CheckboxField.defaultProps = {
-  checked: undefined,
   disabled: false,
   helpText: null,
   id: undefined,
@@ -91,14 +86,9 @@ CheckboxField.defaultProps = {
   required: false,
   validationState: null,
   validationText: null,
-  value: undefined,
 };
 
 CheckboxField.propTypes = {
-  /**
-   * If `true`, the input will be checked.
-   */
-  checked: PropTypes.bool,
   /**
    * If `true`, the input will be disabled.
    */
@@ -150,13 +140,6 @@ CheckboxField.propTypes = {
    * Validation message to be displayed.
    */
   validationText: PropTypes.node,
-  /**
-   * Value of the input.
-   */
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
 };
 
 export const CheckboxFieldWithGlobalProps = withGlobalProps(CheckboxField, 'CheckboxField');

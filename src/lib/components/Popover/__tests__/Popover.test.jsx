@@ -4,7 +4,6 @@ import {
   screen,
   within,
 } from '@testing-library/react';
-import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 import { refPropTest } from '../../../../../tests/propTests/refPropTest';
 import { Popover } from '../Popover';
 
@@ -31,7 +30,6 @@ describe('rendering', () => {
 
   it.each([
     ...refPropTest(React.createRef()),
-    ...idPropTest,
     [
       { children: <div>content text</div> },
       (rootElement) => expect(within(rootElement).getByText('content text')),

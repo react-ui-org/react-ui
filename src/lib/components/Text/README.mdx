@@ -214,6 +214,22 @@ will override automatic break point selection in `auto` mode when present.
   }}
 </Playground>
 
+## Forwarding HTML Attributes
+
+In addition to the options below in the [component's API](#api) section, you
+can specify [React synthetic events] or **any HTML attribute you like.** All
+attributes that don't interfere with the API are forwarded either to the
+`<span>` or to the `<div>` HTML element in case that `blockLevel` is set to
+`true`. This enables making the component interactive and helps to improve its
+accessibility.
+
+👉 Refer to the MDN reference for the full list of supported attributes of the
+[span] and [div] element.
+
 ## API
 
 <Props table of={Text} />
+
+[React synthetic events]: https://reactjs.org/docs/events.html
+[span]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span#attributes
+[div]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes

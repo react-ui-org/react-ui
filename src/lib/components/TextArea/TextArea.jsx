@@ -11,7 +11,6 @@ import styles from './TextArea.scss';
 
 export const TextArea = React.forwardRef((props, ref) => {
   const {
-    cols,
     disabled,
     fullWidth,
     helpText,
@@ -19,13 +18,10 @@ export const TextArea = React.forwardRef((props, ref) => {
     isLabelVisible,
     label,
     layout,
-    placeholder,
     required,
-    rows,
     size,
     validationState,
     validationText,
-    value,
     variant,
     ...restProps
   } = props;
@@ -64,14 +60,10 @@ export const TextArea = React.forwardRef((props, ref) => {
           <textarea
             {...transferProps(restProps)}
             className={styles.input}
-            cols={cols}
             disabled={disabled}
             id={id}
-            placeholder={placeholder}
             ref={ref}
             required={required}
-            rows={rows}
-            value={value}
           />
           {variant === 'filled' && (
             <div className={styles.bottomLine} />
@@ -99,29 +91,21 @@ export const TextArea = React.forwardRef((props, ref) => {
 });
 
 TextArea.defaultProps = {
-  cols: null,
   disabled: false,
   fullWidth: false,
   helpText: null,
   id: undefined,
   isLabelVisible: true,
   layout: 'vertical',
-  placeholder: null,
   ref: undefined,
   required: false,
-  rows: 3,
   size: 'medium',
   validationState: null,
   validationText: null,
-  value: undefined,
   variant: 'outline',
 };
 
 TextArea.propTypes = {
-  /**
-   * The number of visible text columns for the control.
-   */
-  cols: PropTypes.number,
   /**
    * If `true`, the input will be disabled.
    */
@@ -158,10 +142,6 @@ TextArea.propTypes = {
    */
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
   /**
-   * Optional example value.
-   */
-  placeholder: PropTypes.string,
-  /**
    * If `true`, the input will be required.
    */
   /**
@@ -174,10 +154,6 @@ TextArea.propTypes = {
   ]),
   required: PropTypes.bool,
   /**
-   * The number of visible text lines for the control.
-   */
-  rows: PropTypes.number,
-  /**
    * Size of the field.
    */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
@@ -189,13 +165,6 @@ TextArea.propTypes = {
    * Validation message to be displayed.
    */
   validationText: PropTypes.node,
-  /**
-   * Value of the input.
-   */
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
   /**
    * Design variant of the field, further customizable with CSS custom properties.
    */

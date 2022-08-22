@@ -3,7 +3,6 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 import { Text } from '../Text';
 
 const defaultProps = {
@@ -43,7 +42,6 @@ describe('rendering', () => {
       { hyphens: 'manual' },
       (rootElement) => expect(rootElement).toHaveClass('rootHyphensManual'),
     ],
-    ...idPropTest,
     [
       { lines: 0 },
       (rootElement) => expect(rootElement).not.toHaveClass('rootClampLines'),

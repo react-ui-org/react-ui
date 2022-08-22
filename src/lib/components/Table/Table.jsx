@@ -1,110 +1,52 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
-import { Button } from '../..';
+import { transferProps } from '../_helpers/transferProps';
+import { TableHeaderCell } from './_components/TableHeaderCell';
+import { TableBodyCell } from './_components/TableBodyCell';
 import styles from './Table.scss';
 
-export class Table extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.renderHeaderCell = this.renderHeaderCell.bind(this);
-
-    this.sortCellStyle = {
-      backgroundColor: 'lightgray',
-    };
-  }
-
-  renderHeaderCell(column) {
-    const {
-      id,
-      sort,
-    } = this.props;
-    const sortDirection = sort && column.name === sort.column ? sort.direction : 'asc';
-    const isSortingActive = sort && column.name === sort.column;
-
-    return (
-      <th
-        className={isSortingActive ? styles.isTableHeadCellSortingActive : styles.tableHeadCell}
-        key={column.name}
-        {...(id && { id: `${id}__headerCell__${column.name}` })}
-      >
-        {sort && column.isSortable && (
-          <div className={styles.sortButton}>
-            <Button
-              beforeLabel={
-                sortDirection === 'asc'
-                  ? sort.ascendingIcon
-                  : sort.descendingIcon
-              }
-              label={sortDirection}
-              labelVisibility="none"
-              onClick={() => sort.onClick(column.name, sortDirection)}
-              priority="flat"
-              {...(id && { id: `${id}__headerCell__${column.name}__sortButton` })}
+export const Table = ({
+  columns,
+  id,
+  rows,
+  sort,
+  ...restProps
+}) => (
+  <table
+    {...transferProps(restProps)}
+    className={styles.table}
+    id={id}
+  >
+    <thead>
+      <tr className={styles.tableHeadRow}>
+        {columns.map((column) => (
+          <TableHeaderCell
+            column={column}
+            key={column.name}
+            sort={sort}
+            {...(id && { id: `${id}__headerCell__${column.name}` })}
+          />
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr key={row.id} className={styles.tableRow}>
+          {columns.map((column) => (
+            <TableBodyCell
+              format={column.format}
+              isSortingActive={sort && column.name === sort.column}
+              key={`${row.id}-${column.name}`}
+              value={row[column.name]}
+              {...(id && { id: `${id}__bodyCell__${column.name}__${row.id}` })}
             />
-          </div>
-        )}
-        {column.label}
-      </th>
-    );
-  }
-
-  renderBodyCell(column, row) {
-    const {
-      id,
-      sort,
-    } = this.props;
-    const isSortingActive = sort && column.name === sort.column;
-
-    if (column.format) {
-      return (
-        <td
-          className={isSortingActive ? styles.isTableCellSortingActive : styles.tableCell}
-          key={`${row.id}-${column.name}`}
-          {...(id && { id: `${id}__bodyCell__${column.name}__${row.id}` })}
-        >
-          {column.format(row)}
-        </td>
-      );
-    }
-
-    return (
-      <td
-        className={isSortingActive ? styles.isTableCellSortingActive : styles.tableCell}
-        key={`${row.id}-${column.name}`}
-        {...(id && { id: `${id}__bodyCell__${column.name}__${row.id}` })}
-      >
-        {row[column.name]}
-      </td>
-    );
-  }
-
-  render() {
-    const {
-      columns,
-      id,
-      rows,
-    } = this.props;
-
-    return (
-      <table id={id} className={styles.table}>
-        <thead>
-          <tr className={styles.tableHeadRow}>
-            {columns.map(this.renderHeaderCell)}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row) => (
-            <tr key={row.id} className={styles.tableRow}>
-              {columns.map((column) => this.renderBodyCell(column, row))}
-            </tr>
           ))}
-        </tbody>
-      </table>
-    );
-  }
-}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+);
 
 Table.defaultProps = {
   id: undefined,
@@ -123,7 +65,7 @@ Table.propTypes = {
     name: PropTypes.string.isRequired,
   })).isRequired,
   /**
-   * ID of the root HTML element. It also serves as base fo nested elements:
+   * ID of the root HTML element. It also serves as base for nested elements:
    * * `<ID>__headerCell__<COLUMN_NAME>`
    * * `<ID>__headerCell__<COLUMN_NAME>__sortButton`
    * * `<ID>__bodyCell__<COLUMN_NAME>__<ROW_ID>`

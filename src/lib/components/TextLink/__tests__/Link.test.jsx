@@ -5,7 +5,6 @@ import {
 } from '@testing-library/react';
 import sinon from 'sinon';
 import userEvent from '@testing-library/user-event';
-import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 import { TextLink } from '../TextLink';
 
 const mandatoryProps = {
@@ -23,7 +22,6 @@ describe('rendering', () => {
       { label: 'other text' },
       (rootElement) => expect(rootElement).toHaveTextContent('other text'),
     ],
-    ...idPropTest,
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <TextLink

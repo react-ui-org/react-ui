@@ -3,7 +3,6 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
 import { CardFooter } from '../CardFooter';
 
@@ -18,7 +17,6 @@ describe('rendering', () => {
       (rootElement) => expect(within(rootElement).getByText('content text')),
     ],
     ...childrenEmptyPropTest,
-    ...idPropTest,
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <CardFooter

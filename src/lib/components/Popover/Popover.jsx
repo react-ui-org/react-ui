@@ -12,7 +12,6 @@ export const Popover = React.forwardRef((props, ref) => {
   const {
     placement,
     children,
-    id,
     portalId,
     ...restProps
   } = props;
@@ -26,7 +25,6 @@ export const Popover = React.forwardRef((props, ref) => {
         getRootSideClassName(placement, styles),
         getRootAlignmentClassName(placement, styles),
       )}
-      id={id}
       ref={ref}
     >
       {children}
@@ -42,7 +40,6 @@ export const Popover = React.forwardRef((props, ref) => {
 });
 
 Popover.defaultProps = {
-  id: undefined,
   placement: 'bottom',
   portalId: null,
   ref: undefined,
@@ -53,10 +50,6 @@ Popover.propTypes = {
    * Popover content.
    */
   children: PropTypes.node.isRequired,
-  /**
-   * ID of the root HTML element.
-   */
-  id: PropTypes.string,
   /**
    * Popover placement affects position of the arrow.
    * Compatible with [Floating UI API](https://floating-ui.com/docs/computePosition#placement).

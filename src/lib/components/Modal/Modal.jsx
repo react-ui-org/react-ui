@@ -5,15 +5,16 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 import { withGlobalProps } from '../../provider';
+import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import styles from './Modal.scss';
 
 const preRender = (
   children,
   childrenWrapperRef,
-  id,
   closeButtonRef,
   position,
+  restProps,
   size,
 ) => {
   const sizeClass = (modalSize) => {
@@ -47,7 +48,6 @@ const preRender = (
   return (
     <div
       className={styles.backdrop}
-      id={id}
       onClick={() => {
         if (closeButtonRef?.current != null) {
           closeButtonRef.current.click();
@@ -56,6 +56,7 @@ const preRender = (
       role="presentation"
     >
       <div
+        {...transferProps(restProps)}
         className={classNames(
           styles.root,
           sizeClass(size),
@@ -77,11 +78,11 @@ export const Modal = ({
   autoFocus,
   children,
   closeButtonRef,
-  id,
   portalId,
   position,
   primaryButtonRef,
   size,
+  ...restProps
 }) => {
   const childrenWrapperRef = useRef();
 
@@ -130,9 +131,9 @@ export const Modal = ({
     return preRender(
       children,
       childrenWrapperRef,
-      id,
       closeButtonRef,
       position,
+      restProps,
       size,
     );
   }
@@ -141,9 +142,9 @@ export const Modal = ({
     preRender(
       children,
       childrenWrapperRef,
-      id,
       closeButtonRef,
       position,
+      restProps,
       size,
     ),
     document.getElementById(portalId),
@@ -154,7 +155,6 @@ Modal.defaultProps = {
   autoFocus: true,
   children: null,
   closeButtonRef: null,
-  id: undefined,
   portalId: null,
   position: 'center',
   primaryButtonRef: null,
@@ -184,10 +184,6 @@ Modal.propTypes = {
     // eslint-disable-next-line react/forbid-prop-types
     current: PropTypes.any,
   }),
-  /**
-   * ID of the root HTML element.
-   */
-  id: PropTypes.string,
   /**
    * If set, modal is rendered in the React Portal with that ID.
    */

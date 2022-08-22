@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
+import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { FormLayoutContext } from './FormLayoutContext';
@@ -12,8 +13,8 @@ export const FormLayout = ({
   autoWidth,
   children,
   fieldLayout,
-  id,
   labelWidth,
+  ...restProps
 }) => {
   if (isChildrenEmpty(children)) {
     return null;
@@ -47,7 +48,7 @@ export const FormLayout = ({
 
   return (
     <div
-      id={id}
+      {...transferProps(restProps)}
       className={classNames(
         styles.root,
         fieldLayoutClass(fieldLayout),
@@ -69,7 +70,6 @@ FormLayout.defaultProps = {
   autoWidth: false,
   children: null,
   fieldLayout: 'vertical',
-  id: undefined,
   labelWidth: 'default',
 };
 
@@ -96,10 +96,6 @@ FormLayout.propTypes = {
    * Layout that is forced on children form fields.
    */
   fieldLayout: PropTypes.oneOf(['horizontal', 'vertical']),
-  /**
-   * ID of the root HTML element.
-   */
-  id: PropTypes.string,
   /**
    * Width of the column with form field labels. Only available if the `fieldLayout` is set to
    * `horizontal`.

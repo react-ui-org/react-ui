@@ -2,11 +2,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
+import { transferProps } from '../_helpers/transferProps';
 import styles from './ModalContent.scss';
 
 export const ModalContent = ({
   children,
-  id,
+  ...restProps
 }) => {
   if (isChildrenEmpty(children)) {
     return null;
@@ -14,8 +15,8 @@ export const ModalContent = ({
 
   return (
     <div
+      {...transferProps(restProps)}
       className={styles.root}
-      id={id}
     >
       {children}
     </div>
@@ -24,7 +25,6 @@ export const ModalContent = ({
 
 ModalContent.defaultProps = {
   children: null,
-  id: undefined,
 };
 
 ModalContent.propTypes = {
@@ -32,10 +32,6 @@ ModalContent.propTypes = {
    * Content of the modal.
    */
   children: PropTypes.node,
-  /**
-   * ID of the root HTML element.
-   */
-  id: PropTypes.string,
 };
 
 export const ModalContentWithGlobalProps = withGlobalProps(ModalContent, 'ModalContent');

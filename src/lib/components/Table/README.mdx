@@ -40,7 +40,7 @@ And use it:
         name: 'name',
       },
       {
-        format: (row) => row.dateOfBirth.toLocaleDateString('en-GB'),
+        format: (date) => date.toLocaleDateString('en-GB'),
         label: 'Date of birth',
         name: 'dateOfBirth',
       },
@@ -99,21 +99,21 @@ The easiest way to make tables responsive is to wrap them with the
           name: 'id',
         },
         {
-          format: (row) => (
-            <span style={{ whiteSpace: 'nowrap' }}>{row.name}</span>
+          format: (name) => (
+            <span style={{ whiteSpace: 'nowrap' }}>{name}</span>
           ),
           label: 'Name',
           name: 'name',
         },
         {
-          format: (row) => (
-            <span style={{ whiteSpace: 'nowrap' }}>{row.note}</span>
+          format: (note) => (
+            <span style={{ whiteSpace: 'nowrap' }}>{note}</span>
           ),
           label: 'Note',
           name: 'note',
         },
         {
-          format: (row) => row.dateOfBirth.toLocaleDateString('en-GB'),
+          format: (date) => date.toLocaleDateString('en-GB'),
           label: 'Date of birth',
           name: 'dateOfBirth',
         },
@@ -230,7 +230,7 @@ The following is an example of custom sorting function executed on the client.
         name: 'name',
       },
       {
-        format: (row) => row.dateOfBirth.toISOString(),
+        format: (date) => date.toISOString(),
         isSortable: true,
         label: 'Date of birth',
         name: 'dateOfBirth',
@@ -256,6 +256,20 @@ The following is an example of custom sorting function executed on the client.
   }}
 </Playground>
 
+## Forwarding HTML Attributes
+
+In addition to the options below in the [component's API](#api) section, you
+can specify [React synthetic events] or **any HTML attribute you like.** All
+attributes that don't interfere with the API are forwarded to the `<table>` HTML
+element. This enables making the component interactive and helps to improve its
+accessibility.
+
+👉 Refer to the MDN reference for the full list of supported attributes of the
+[table] element.
+
 ## API
 
 <Props table of={Table} />
+
+[React synthetic events]: https://reactjs.org/docs/events.html
+[table]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#attributes

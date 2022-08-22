@@ -438,6 +438,17 @@ This is a demo of all components supported by FormLayout.
   }}
 </Playground>
 
+## Forwarding HTML Attributes
+
+In addition to the options below in the [component's API](#api) section, you
+can specify [React synthetic events] or **any HTML attribute you like.** All
+attributes that don't interfere with the API are forwarded to the root `<div>`
+HTML element. This enables making the component interactive and helps to improve
+its accessibility.
+
+👉 Refer to the MDN reference for the full list of supported attributes of the
+[div] element.
+
 ## API
 
 <Props table of={FormLayout} />
@@ -472,3 +483,5 @@ FormLayoutCustomField can be styled using a small subset of
 [fragments]: https://reactjs.org/docs/fragments.html
 [rui-232]: https://github.com/react-ui-org/react-ui/issues/232
 [rui-265]: https://github.com/react-ui-org/react-ui/issues/265
+[React synthetic events]: https://reactjs.org/docs/events.html
+[div]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes

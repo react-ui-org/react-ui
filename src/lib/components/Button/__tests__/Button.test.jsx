@@ -154,14 +154,6 @@ describe('rendering', () => {
       { startCorner: <div>corner text</div> },
       (rootElement) => expect(within(rootElement).getByText('corner text')),
     ],
-    [
-      { type: 'button' },
-      (rootElement) => expect(rootElement).toHaveAttribute('type', 'button'),
-    ],
-    [
-      { type: 'submit' },
-      (rootElement) => expect(rootElement).toHaveAttribute('type', 'submit'),
-    ],
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <Button

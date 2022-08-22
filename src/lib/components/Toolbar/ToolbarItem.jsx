@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import { withGlobalProps } from '../../provider';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
@@ -8,7 +9,7 @@ import styles from './Toolbar.scss';
 export const ToolbarItem = ({
   children,
   flexible,
-  id,
+  ...restProps
 }) => {
   if (isChildrenEmpty(children)) {
     return null;
@@ -16,11 +17,11 @@ export const ToolbarItem = ({
 
   return (
     <div
+      {...transferProps(restProps)}
       className={classNames(
         styles.item,
         flexible && styles.isItemFlexible,
       )}
-      id={id}
     >
       {children}
     </div>
@@ -30,7 +31,6 @@ export const ToolbarItem = ({
 ToolbarItem.defaultProps = {
   children: null,
   flexible: false,
-  id: undefined,
 };
 
 ToolbarItem.propTypes = {
@@ -42,10 +42,6 @@ ToolbarItem.propTypes = {
    * Allow item to grow and shrink if needed.
    */
   flexible: PropTypes.bool,
-  /**
-   * ID of the root HTML element.
-   */
-  id: PropTypes.string,
 };
 
 export const ToolbarItemWithGlobalProps = withGlobalProps(ToolbarItem, 'ToolbarItem');

@@ -11,7 +11,6 @@ export const ButtonGroup = ({
   block,
   disabled,
   children,
-  id,
   priority,
   size,
   ...restProps
@@ -27,7 +26,6 @@ export const ButtonGroup = ({
         styles.root,
         block && styles.isRootBlock,
       )}
-      id={id}
       role="group"
     >
       <ButtonGroupContext.Provider
@@ -48,7 +46,6 @@ ButtonGroup.defaultProps = {
   block: false,
   children: null,
   disabled: false,
-  id: undefined,
   priority: 'filled',
   size: 'medium',
 };
@@ -66,10 +63,6 @@ ButtonGroup.propTypes = {
    * If `true`, all buttons inside the group will be disabled.
    */
   disabled: PropTypes.bool,
-  /**
-   * ID of the root HTML element.
-   */
-  id: PropTypes.string,
   /**
    * Visual priority to highlight or suppress the buttons.
    */

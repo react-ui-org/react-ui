@@ -6,7 +6,6 @@ import styles from './TextLink.scss';
 
 export const TextLink = ({
   href,
-  id,
   label,
   ...restProps
 }) => (
@@ -14,25 +13,16 @@ export const TextLink = ({
     {...transferProps(restProps)}
     href={href}
     className={styles.root}
-    id={id}
   >
     {label}
   </a>
 );
-
-TextLink.defaultProps = {
-  id: undefined,
-};
 
 TextLink.propTypes = {
   /**
    * Link's `href` attribute.
    */
   href: PropTypes.string.isRequired,
-  /**
-   * ID of the root HTML element.
-   */
-  id: PropTypes.string,
   /**
    * Link label.
    */

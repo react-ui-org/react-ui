@@ -112,20 +112,6 @@ describe('rendering', () => {
     ...sizePropTest,
     ...validationStatePropTest,
     ...validationTextPropTest,
-    [
-      {
-        onChange: () => {},
-        value: 'option2',
-      },
-      (rootElement) => expect(within(rootElement).getByDisplayValue('option 2')),
-    ],
-    [
-      {
-        onChange: () => {},
-        value: 1,
-      },
-      (rootElement) => expect(within(rootElement).getByDisplayValue('option 1')),
-    ],
     ...variantPropTest,
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((

@@ -9,7 +9,6 @@ import styles from './Toggle.scss';
 
 export const Toggle = React.forwardRef((props, ref) => {
   const {
-    checked,
     disabled,
     helpText,
     id,
@@ -19,7 +18,6 @@ export const Toggle = React.forwardRef((props, ref) => {
     required,
     validationState,
     validationText,
-    value,
     ...restProps
   } = props;
 
@@ -51,7 +49,6 @@ export const Toggle = React.forwardRef((props, ref) => {
         </div>
         <input
           {...transferProps(restProps)}
-          checked={checked}
           className={styles.input}
           disabled={disabled}
           id={id}
@@ -59,7 +56,6 @@ export const Toggle = React.forwardRef((props, ref) => {
           ref={ref}
           required={required}
           type="checkbox"
-          value={value}
         />
       </div>
       {helpText && (
@@ -83,7 +79,6 @@ export const Toggle = React.forwardRef((props, ref) => {
 });
 
 Toggle.defaultProps = {
-  checked: undefined,
   disabled: false,
   helpText: null,
   id: undefined,
@@ -93,14 +88,9 @@ Toggle.defaultProps = {
   required: false,
   validationState: null,
   validationText: null,
-  value: undefined,
 };
 
 Toggle.propTypes = {
-  /**
-   * If `true`, the input will be checked.
-   */
-  checked: PropTypes.bool,
   /**
    * If `true`, the input will be disabled.
    */
@@ -150,13 +140,6 @@ Toggle.propTypes = {
    * Validation message to be displayed.
    */
   validationText: PropTypes.node,
-  /**
-   * Value of the input.
-   */
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
 };
 
 export const ToggleWithGlobalProps = withGlobalProps(Toggle, 'Toggle');

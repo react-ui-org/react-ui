@@ -1,30 +1,26 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
+import { transferProps } from '../_helpers/transferProps';
 import styles from './Card.scss';
 
 export const CardBody = ({
   children,
-  id,
+  ...restProps
 }) => (
-  <div className={styles.body} id={id}>
+  <div
+    {...transferProps(restProps)}
+    className={styles.body}
+  >
     {children}
   </div>
 );
-
-CardBody.defaultProps = {
-  id: undefined,
-};
 
 CardBody.propTypes = {
   /**
    * Content of the card.
    */
   children: PropTypes.node.isRequired,
-  /**
-   * ID of the root HTML element.
-   */
-  id: PropTypes.string,
 };
 
 export const CardBodyWithGlobalProps = withGlobalProps(CardBody, 'CardBody');

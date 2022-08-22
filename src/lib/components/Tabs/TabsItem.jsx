@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
+import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import styles from './TabsItem.scss';
 
@@ -12,8 +13,10 @@ export const TabsItem = ({
   isActive,
   label,
   onClick,
+  ...restProps
 }) => (
   <li
+    {...transferProps(restProps)}
     className={classNames(
       styles.root,
       isActive && styles.isRootActive,

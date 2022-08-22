@@ -181,12 +181,18 @@ Disabled state makes the input unavailable.
   />
 </Playground>
 
-## API
+## Forwarding HTML Attributes
 
-In addition to the options below, you can specify [React synthetic events] or
-any custom HTML attributes that do not interfere with the API, and they will be
-passed to the `<input>` HTML element. This enables making the component
-interactive and helps improve its accessibility.
+In addition to the options below in the [component's API](#api) section, you
+can specify [React synthetic events] or you can **add whatever HTML attribute
+you like.** All attributes that don't interfere with the API are forwarded to
+the native HTML `<input>`. This enables making the component interactive and
+helps to improve its accessibility.
+
+👉 Refer to the MDN reference for the full list of supported attributes of the
+[checkbox] input type.
+
+## API
 
 <Props table of={CheckboxField} />
 
@@ -201,3 +207,4 @@ options. On top of that, the following options are available for CheckboxField.
 | `--rui-FormField--check__input--checkbox--checked__background-image` | Background image of checked input            |
 
 [React synthetic events]: https://reactjs.org/docs/events.html
+[checkbox]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#additional_attributes

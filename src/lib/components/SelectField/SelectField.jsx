@@ -24,7 +24,6 @@ export const SelectField = React.forwardRef((props, ref) => {
     size,
     validationState,
     validationText,
-    value,
     variant,
     ...restProps
   } = props;
@@ -67,7 +66,6 @@ export const SelectField = React.forwardRef((props, ref) => {
             id={id}
             ref={ref}
             required={required}
-            value={value}
           >
             {
               options.map((option) => {
@@ -137,7 +135,6 @@ SelectField.defaultProps = {
   size: 'medium',
   validationState: null,
   validationText: null,
-  value: undefined,
   variant: 'outline',
 };
 
@@ -246,13 +243,6 @@ SelectField.propTypes = {
    * Validation message to be displayed.
    */
   validationText: PropTypes.node,
-  /**
-   * Value of the input.
-   */
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
   /**
    * Design variant of the field, further customizable with CSS custom properties.
    */

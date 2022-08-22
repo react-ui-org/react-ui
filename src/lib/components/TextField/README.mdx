@@ -215,47 +215,6 @@ DOM for numeric inputs.
   />
 </Playground>
 
-## Forwarding HTML Attributes
-
-When you want to improve the accessibility of your text fields even further, you
-can **add whatever HTML attribute you like.** All attributes that don't
-interfere with [component's API](#api) are forwarded to the native HTML input.
-
-<Playground>
-  <TextField
-    label="Address"
-    autoComplete="street-address"
-    minLength={3}
-    maxLength={80}
-  />
-  <TextField
-    label="Address"
-    variant="filled"
-    autoComplete="street-address"
-    minLength={3}
-    maxLength={80}
-  />
-  <TextField
-    inputSize={3}
-    min={13}
-    max={120}
-    label="Age"
-    type="number"
-  />
-  <TextField
-    inputSize={3}
-    min={13}
-    max={120}
-    label="Age"
-    type="number"
-    variant="filled"
-  />
-</Playground>
-
-👉 Refer to the MDN reference for the full list of supported attributes of the
-[text][input-text], [email][input-email], [number][input-number],
-[tel][input-tel], and [password][input-password] input types.
-
 ## Invisible Label
 
 In some cases, it may be convenient to visually hide the field label. The label
@@ -489,12 +448,50 @@ It's possible to disable the whole input.
   />
 </Playground>
 
-## API
+## Forwarding HTML Attributes
 
-In addition to the options below, you can specify [React synthetic events] or
-any custom HTML attributes that do not interfere with the API, and they will be
-passed to the `<input>` HTML element. This enables making the component
-interactive and helps improve its [accessibility](#forwarding-html-attributes).
+In addition to the options below in the [component's API](#api) section, you
+can specify [React synthetic events] or you can **add whatever HTML attribute
+you like.** All attributes that don't interfere with the API are forwarded to
+the native HTML `<input>`. This enables making the component interactive and
+helps to improve its accessibility.
+
+<Playground>
+  <TextField
+    label="Address"
+    autoComplete="street-address"
+    minLength={3}
+    maxLength={80}
+  />
+  <TextField
+    label="Address"
+    variant="filled"
+    autoComplete="street-address"
+    minLength={3}
+    maxLength={80}
+  />
+  <TextField
+    inputSize={3}
+    min={13}
+    max={120}
+    label="Age"
+    type="number"
+  />
+  <TextField
+    inputSize={3}
+    min={13}
+    max={120}
+    label="Age"
+    type="number"
+    variant="filled"
+  />
+</Playground>
+
+👉 Refer to the MDN reference for the full list of supported attributes of the
+[text][input-text], [email][input-email], [number][input-number],
+[tel][input-tel], and [password][input-password] input types.
+
+## API
 
 <Props table of={TextField} />
 
@@ -507,10 +504,10 @@ Head to [Forms Theming][theming-forms] to see shared form theming options.
 [size]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text#size
 [max]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number#max
 [input-number-size]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number#Controlling_input_size
-[input-text]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text
-[input-email]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email
-[input-number]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number
-[input-tel]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/tel
-[input-password]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password
+[input-text]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text#additional_attributes
+[input-email]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email#additional_attributes
+[input-number]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number#additional_attributes
+[input-tel]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/tel#additional_attributes
+[input-password]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password#additional_attributes
 [theming-forms]: /customize/theming/forms
 [React synthetic events]: https://reactjs.org/docs/events.html

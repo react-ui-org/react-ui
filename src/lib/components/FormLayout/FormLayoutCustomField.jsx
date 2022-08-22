@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { withGlobalProps } from '../../provider';
+import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
@@ -45,6 +46,7 @@ export const FormLayoutCustomField = ({
   labelForId,
   required,
   validationState,
+  ...restProps
 }) => {
   const context = useContext(FormLayoutContext);
 
@@ -54,6 +56,7 @@ export const FormLayoutCustomField = ({
 
   return (
     <div
+      {...transferProps(restProps)}
       id={id}
       className={classNames(
         styles.root,

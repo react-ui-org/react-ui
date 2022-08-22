@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
+import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import styles from './Toolbar.scss';
@@ -9,9 +10,9 @@ export const Toolbar = ({
   align,
   children,
   dense,
-  id,
   justify,
   nowrap,
+  ...restProps
 }) => {
   if (isChildrenEmpty(children)) {
     return null;
@@ -51,6 +52,7 @@ export const Toolbar = ({
 
   return (
     <div
+      {...transferProps(restProps)}
       className={classNames(
         styles.toolbar,
         dense && styles.isDense,
@@ -58,7 +60,6 @@ export const Toolbar = ({
         alignClass(align),
         justifyClass(justify),
       )}
-      id={id}
     >
       {children}
     </div>
@@ -69,7 +70,6 @@ Toolbar.defaultProps = {
   align: 'top',
   children: null,
   dense: false,
-  id: undefined,
   justify: 'start',
   nowrap: false,
 };
@@ -91,10 +91,6 @@ Toolbar.propTypes = {
    * If `true`, spacing of all toolbar items in the toolbar will be reduced.
    */
   dense: PropTypes.bool,
-  /**
-   * ID of the root HTML element.
-   */
-  id: PropTypes.string,
   /**
    * Horizontal alignment (distribution) of toolbar items and groups.
    */

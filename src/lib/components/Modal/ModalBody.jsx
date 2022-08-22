@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
+import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { getScrollingClassName } from './_helpers/getScrollingClassName';
@@ -8,8 +9,8 @@ import styles from './ModalBody.scss';
 
 export const ModalBody = ({
   children,
-  id,
   scrolling,
+  ...restProps
 }) => {
   if (isChildrenEmpty(children)) {
     return null;
@@ -17,11 +18,11 @@ export const ModalBody = ({
 
   return (
     <div
+      {...transferProps(restProps)}
       className={classNames(
         styles.root,
         getScrollingClassName(scrolling, styles),
       )}
-      id={id}
     >
       {children}
     </div>
@@ -30,7 +31,6 @@ export const ModalBody = ({
 
 ModalBody.defaultProps = {
   children: null,
-  id: undefined,
   scrolling: 'auto',
 };
 
@@ -45,10 +45,6 @@ ModalBody.propTypes = {
    * At most one nested element is allowed. If none are provided nothing is rendered.
    */
   children: PropTypes.node,
-  /**
-   * ID of the root HTML element.
-   */
-  id: PropTypes.string,
   /**
    * Scrolling mode:
    *

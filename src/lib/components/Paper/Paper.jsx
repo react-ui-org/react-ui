@@ -2,28 +2,28 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
+import { transferProps } from '../_helpers/transferProps';
 import styles from './Paper.scss';
 
 export const Paper = ({
   children,
-  id,
   muted,
   raised,
+  ...restProps
 }) => (
   <div
+    {...transferProps(restProps)}
     className={classNames(
       styles.root,
       muted && styles.rootMuted,
       raised && styles.rootRaised,
     )}
-    id={id}
   >
     {children}
   </div>
 );
 
 Paper.defaultProps = {
-  id: undefined,
   muted: false,
   raised: false,
 };
@@ -33,10 +33,6 @@ Paper.propTypes = {
    * Content to be placed onto Paper.
    */
   children: PropTypes.node.isRequired,
-  /**
-   * ID of the root HTML element.
-   */
-  id: PropTypes.string,
   /**
    * Visually suppress Paper.
    */

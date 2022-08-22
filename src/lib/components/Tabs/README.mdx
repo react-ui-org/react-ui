@@ -171,6 +171,18 @@ accessible no matter the space they have around. Wrap Tabs into
   }}
 </Playground>
 
+## Forwarding HTML Attributes
+
+In addition to the options below in the [component's API](#api) section, you
+can specify [React synthetic events] or **any HTML attribute you like.** All
+attributes that don't interfere with the API are forwarded to the `<nav>` HTML
+element in case of `Tabs` component and to the `<li>` HTML element in
+case of `TabsItem`. This enables making the component interactive and helps
+to improve its accessibility.
+
+👉 Refer to the MDN reference for the full list of supported attributes of the
+[nav] and [li] element.
+
 ## API
 
 <Props table of={Tabs} />
@@ -220,3 +232,7 @@ Where:
 - `<PROPERTY>` is one of `font-weight`, `color`, `border-width`, `border-color`,
   `background-color`, `box-shadow`, `shift-y` (shifts vertically the whole
   item), or `label__shift-y` (tweaks vertical position of tab label).
+
+[React synthetic events]: https://reactjs.org/docs/events.html
+[nav]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav#attributes
+[li]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li#attributes

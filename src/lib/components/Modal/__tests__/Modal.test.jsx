@@ -13,7 +13,6 @@ import { ModalBody } from '../ModalBody';
 import { default as ModalCloseButton } from '../ModalCloseButton';
 import { ModalHeader } from '../ModalHeader';
 import { ModalFooter } from '../ModalFooter';
-import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 
 describe('rendering', () => {
   it('renders with "portalId" props', () => {
@@ -27,7 +26,7 @@ describe('rendering', () => {
       </Modal>
     ));
 
-    expect(screen.getByTestId('portal-id').firstChild).toHaveAttribute('id', 'id');
+    expect(screen.getByTestId('portal-id').firstChild.firstChild).toHaveAttribute('id', 'id');
     document.body.innerHTML = '';
   });
 
@@ -36,7 +35,6 @@ describe('rendering', () => {
       { children: <div>content text</div> },
       (rootElement) => expect(within(rootElement).getByText('content text')),
     ],
-    ...idPropTest,
     [
       { position: 'top' },
       (rootElement) => expect(within(rootElement).getByRole('presentation')).toHaveClass('isRootPositionTop'),
@@ -79,7 +77,7 @@ describe('rendering', () => {
 describe('functionality', () => {
   it.each([
     () => userEvent.keyboard('{esc}'),
-    () => userEvent.click(screen.getByTestId('id')),
+    () => userEvent.click(screen.getByTestId('id').parentNode),
   ])('call close modal using `closeButtonRef` (%#)', (action) => {
     const spy = sinon.spy();
     const ref = React.createRef();
@@ -105,7 +103,7 @@ describe('functionality', () => {
 
   it.each([
     () => userEvent.keyboard('{esc}'),
-    () => userEvent.click(screen.getByTestId('id')),
+    () => userEvent.click(screen.getByTestId('id').parentNode),
   ])('do not call close modal using `closeButtonRef` when button is disabled (%#)', (action) => {
     const spy = sinon.spy();
     const ref = React.createRef();
@@ -132,7 +130,7 @@ describe('functionality', () => {
 
   it.each([
     () => userEvent.keyboard('{esc}'),
-    () => userEvent.click(screen.getByTestId('id')),
+    () => userEvent.click(screen.getByTestId('id').parentNode),
   ])('call close modal using `closeButtonRef` and `ModalCloseButton` (%#)', (action) => {
     const spy = sinon.spy();
     const ref = React.createRef();
@@ -156,7 +154,7 @@ describe('functionality', () => {
 
   it.each([
     () => userEvent.keyboard('{esc}'),
-    () => userEvent.click(screen.getByTestId('id')),
+    () => userEvent.click(screen.getByTestId('id').parentNode),
   ])('do not call close modal using `closeButtonRef` and `ModalCloseButton` when button is disabled (%#)', (action) => {
     const spy = sinon.spy();
     const ref = React.createRef();
