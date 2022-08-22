@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
+import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import styles from './Toolbar.scss';
@@ -9,8 +10,8 @@ export const ToolbarGroup = ({
   align,
   children,
   dense,
-  id,
   nowrap,
+  ...restProps
 }) => {
   if (isChildrenEmpty(children)) {
     return null;
@@ -34,13 +35,13 @@ export const ToolbarGroup = ({
 
   return (
     <div
+      {...transferProps(restProps)}
       className={classNames(
         styles.group,
         dense && styles.isDense,
         nowrap && styles.isNowrap,
         alignClass(align),
       )}
-      id={id}
     >
       {children}
     </div>
@@ -51,7 +52,6 @@ ToolbarGroup.defaultProps = {
   align: 'top',
   children: null,
   dense: false,
-  id: undefined,
   nowrap: false,
 };
 
@@ -68,10 +68,6 @@ ToolbarGroup.propTypes = {
    * If `true`, spacing of toolbar items in the group will be reduced.
    */
   dense: PropTypes.bool,
-  /**
-   * ID of the root HTML element.
-   */
-  id: PropTypes.string,
   /**
    * If set, the toolbar group will not wrap.
    */

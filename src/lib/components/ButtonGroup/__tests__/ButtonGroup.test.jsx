@@ -4,7 +4,6 @@ import {
   within,
 } from '@testing-library/react';
 import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
-import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 import { Button } from '../../Button';
 import { ButtonGroup } from '../ButtonGroup';
 
@@ -35,7 +34,6 @@ describe('rendering', () => {
       { disabled: false },
       (rootElement) => expect(within(rootElement).getByRole('button')).not.toBeDisabled(),
     ],
-    ...idPropTest,
     [
       { priority: 'filled' },
       (rootElement) => expect(within(rootElement).getByRole('button')).toHaveClass('rootPriorityFilled'),

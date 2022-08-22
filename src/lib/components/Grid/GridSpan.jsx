@@ -9,7 +9,6 @@ import styles from './Grid.scss';
 export const GridSpan = ({
   children,
   columns,
-  id,
   rows,
   tag: Tag,
   ...restProps
@@ -21,7 +20,6 @@ export const GridSpan = ({
   return (
     <Tag
       {...transferProps(restProps)}
-      id={id}
       className={styles.span}
       style={{
         ...generateResponsiveCustomProperties(columns, 'column-span'),
@@ -39,7 +37,6 @@ export const GridSpan = ({
 GridSpan.defaultProps = {
   children: null,
   columns: 1,
-  id: undefined,
   rows: 1,
   tag: 'div',
 };
@@ -64,10 +61,6 @@ GridSpan.propTypes = {
       x3l: PropTypes.number,
     }),
   ]),
-  /**
-   * ID of the root HTML element.
-   */
-  id: PropTypes.string,
   /**
    * Number of rows to span.
    */

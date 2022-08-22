@@ -3,7 +3,6 @@ import {
   render, within,
 } from '@testing-library/react';
 import { ModalBody } from '../index';
-import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 
 const mandatoryProps = {
   children: <div>content text</div>,
@@ -25,7 +24,6 @@ describe('rendering', () => {
         expect(within(rootElement).getByText('content text 2'));
       },
     ],
-    ...idPropTest,
     [
       {
         scrolling: 'auto',

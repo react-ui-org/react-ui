@@ -1,13 +1,18 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
+import { transferProps } from '../_helpers/transferProps';
 import styles from './Tabs.scss';
 
 export const Tabs = ({
   children,
   id,
+  ...restProps
 }) => (
-  <nav id={id}>
+  <nav
+    {...transferProps(restProps)}
+    id={id}
+  >
     <ul
       className={styles.list}
       id={id && `${id}__list`}

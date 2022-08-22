@@ -10,7 +10,6 @@ import styles from './ModalCloseButton.scss';
 export const ModalCloseButton = React.forwardRef((props, ref) => {
   const {
     disabled,
-    id,
     ...restProps
   } = props;
 
@@ -22,7 +21,6 @@ export const ModalCloseButton = React.forwardRef((props, ref) => {
       type="button"
       className={styles.root}
       disabled={disabled}
-      id={id}
       ref={ref}
       title={translations.ModalCloseButton.close}
     >
@@ -33,7 +31,6 @@ export const ModalCloseButton = React.forwardRef((props, ref) => {
 
 ModalCloseButton.defaultProps = {
   disabled: false,
-  id: undefined,
   ref: undefined,
 };
 
@@ -42,10 +39,6 @@ ModalCloseButton.propTypes = {
    * If `true`, close button will be disabled.
    */
   disabled: PropTypes.bool,
-  /**
-   * ID of the root HTML element.
-   */
-  id: PropTypes.string,
   /**
    * Reference forwarded to the `button` element.
    */

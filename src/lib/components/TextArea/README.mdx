@@ -142,31 +142,6 @@ to achieve that effect.
   />
 </Playground>
 
-## Forwarding HTML Attributes
-
-When you want to improve the accessibility of your text fields even further, you
-can **add whatever HTML attribute you like.** All attributes that don't
-interfere with [component's API](#api) are forwarded to the native HTML input.
-
-<Playground>
-  <TextArea
-    label="Address"
-    autoComplete="street-address"
-    minLength={3}
-    maxLength={80}
-  />
-  <TextArea
-    label="Address"
-    variant="filled"
-    autoComplete="street-address"
-    minLength={3}
-    maxLength={80}
-  />
-</Playground>
-
-👉 Refer to the MDN reference for the full list of
-[supported attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#Attributes).
-
 ## Invisible Label
 
 In some cases, it may be convenient to visually hide the field label. The label
@@ -346,12 +321,34 @@ It's possible to disable the whole input.
   />
 </Playground>
 
-## API
+## Forwarding HTML Attributes
 
-In addition to the options below, you can specify [React synthetic events] or
-any custom HTML attributes that do not interfere with the API, and they will be
-passed to the `<textarea>` HTML element. This enables making the component
-interactive and helps improve its [accessibility](#forwarding-html-attributes).
+In addition to the options below in the [component's API](#api) section, you
+can specify [React synthetic events] or you can **add whatever HTML attribute
+you like.** All attributes that don't interfere with the API are forwarded to
+the native HTML `<textarea>`. This enables making the component interactive and
+to helps to improve its accessibility.
+
+<Playground>
+  <TextArea
+    label="Address"
+    autoComplete="street-address"
+    minLength={3}
+    maxLength={80}
+  />
+  <TextArea
+    label="Address"
+    variant="filled"
+    autoComplete="street-address"
+    minLength={3}
+    maxLength={80}
+  />
+</Playground>
+
+👉 Refer to the MDN reference for the full list of supported attributes of the
+[textarea] element.
+
+## API
 
 <Props table of={TextArea} />
 
@@ -361,3 +358,4 @@ Head to [Forms Theming](/customize/theming/forms) to see shared form theming
 options.
 
 [React synthetic events]: https://reactjs.org/docs/events.html
+[textarea]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attributes

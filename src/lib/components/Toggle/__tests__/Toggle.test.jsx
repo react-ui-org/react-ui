@@ -25,20 +25,6 @@ describe('rendering', () => {
   formLayoutProviderTest(<Toggle {...mandatoryProps} />);
 
   it.each([
-    [
-      {
-        checked: true,
-        onChange: () => {},
-      },
-      (rootElement) => expect(within(rootElement).getByRole('checkbox')).toBeChecked(),
-    ],
-    [
-      {
-        checked: false,
-        onChange: () => {},
-      },
-      (rootElement) => expect(within(rootElement).getByRole('checkbox')).not.toBeChecked(),
-    ],
     ...disabledPropTest,
     ...refPropTest(React.createRef()),
     ...helpTextPropTest,
@@ -69,14 +55,6 @@ describe('rendering', () => {
     ...requiredPropTest,
     ...validationStatePropTest,
     ...validationTextPropTest,
-    [
-      { value: 'value' },
-      (rootElement) => expect(within(rootElement).getByLabelText('label')).toHaveAttribute('value', 'value'),
-    ],
-    [
-      { value: 1 },
-      (rootElement) => expect(within(rootElement).getByLabelText('label')).toHaveAttribute('value', '1'),
-    ],
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <Toggle

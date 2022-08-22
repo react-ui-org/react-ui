@@ -15,7 +15,7 @@ const mandatoryProps = {
       name: 'id',
     },
     {
-      format: (row) => new Date(row.dateOfBirth).toJSON(),
+      format: (date) => new Date(date).toJSON(),
       isSortable: true,
       label: 'Date of birth',
       name: 'dateOfBirth',

@@ -1,23 +1,24 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
+import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import { getRootColorClassName } from '../_helpers/getRootColorClassName';
 import styles from './Badge.scss';
 
 export const Badge = ({
   color,
-  id,
   label,
   priority,
+  ...restProps
 }) => (
   <div
+    {...transferProps(restProps)}
     className={classNames(
       styles.root,
       priority === 'outline' && styles.rootPriorityOutline,
       getRootColorClassName(color, styles),
     )}
-    id={id}
   >
     {label}
   </div>
@@ -25,7 +26,6 @@ export const Badge = ({
 
 Badge.defaultProps = {
   color: 'note',
-  id: undefined,
   priority: 'filled',
 };
 
@@ -36,10 +36,6 @@ Badge.propTypes = {
   color: PropTypes.oneOf(
     ['primary', 'secondary', 'success', 'warning', 'danger', 'help', 'info', 'note', 'light', 'dark'],
   ),
-  /**
-   * ID of the root HTML element.
-   */
-  id: PropTypes.string,
   /**
    * Text to be displayed.
    */

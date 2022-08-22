@@ -4,6 +4,7 @@ import {
   RUIContext,
   withGlobalProps,
 } from '../../provider';
+import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import { getRootColorClassName } from '../_helpers/getRootColorClassName';
 import styles from './Alert.scss';
@@ -14,11 +15,13 @@ export const Alert = ({
   icon,
   id,
   onClose,
+  ...restProps
 }) => {
   const { translations } = useContext(RUIContext);
 
   return (
     <div
+      {...transferProps(restProps)}
       className={classNames(
         styles.root,
         getRootColorClassName(color, styles),

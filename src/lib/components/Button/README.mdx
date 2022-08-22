@@ -397,12 +397,18 @@ Flat buttons in feedback state:
 👉 Visit the [CSS Helpers](/css-helpers/animation) section to see how the icon
 animation is made.
 
-## API
+## Forwarding HTML Attributes
 
-In addition to the options below, you can specify [React synthetic events] or
-any custom HTML attributes that do not interfere with the API, and they will be
-passed to the `<button>` HTML element. This enables making the component
-interactive and helps improve its accessibility.
+In addition to the options below in the [component's API](#api) section, you
+can specify [React synthetic events] or **any HTML attribute you like.** All
+attributes that don't interfere with the API are forwarded to the native HTML
+`<button>`. This enables making the component interactive and helps to improve
+its accessibility.
+
+👉 Refer to the MDN reference for the full list of supported attributes of the
+[button] element.
+
+## API
 
 <Props table of={Button} />
 
@@ -562,3 +568,4 @@ feedback state.
 | `--rui-Button--feedback__cursor`  | Cursor to show on hovering buttons in feedback state |
 
 [React synthetic events]: https://reactjs.org/docs/events.html
+[button]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes

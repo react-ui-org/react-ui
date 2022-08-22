@@ -4,7 +4,6 @@ import {
   within,
 } from '@testing-library/react';
 import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
-import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 import { tagPropTest } from '../../../../../tests/propTests/tagPropTest';
 import { Grid } from '../Grid';
 
@@ -101,7 +100,6 @@ describe('rendering', () => {
       { columns: 'placeholder' },
       (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-columns-xs': 'placeholder' }),
     ],
-    ...idPropTest,
     [
       { justifyContent: responsiveBreakpoints },
       (rootElement) => expect(rootElement).toHaveStyle(responsiveStyles('justify-content')),

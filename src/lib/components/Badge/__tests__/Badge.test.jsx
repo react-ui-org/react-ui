@@ -4,7 +4,6 @@ import {
   within,
 } from '@testing-library/react';
 import { colorPropTest } from '../../../../../tests/propTests/colorPropTest';
-import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 import { Badge } from '../Badge';
 
 const mandatoryProps = {
@@ -14,7 +13,6 @@ const mandatoryProps = {
 describe('rendering', () => {
   it.each([
     ...colorPropTest,
-    ...idPropTest,
     [
       { label: 'label text' },
       (rootElement) => expect(within(rootElement).getByText('label text')),

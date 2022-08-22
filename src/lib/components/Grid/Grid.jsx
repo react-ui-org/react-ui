@@ -15,7 +15,6 @@ export const Grid = ({
   children,
   columnGap,
   columns,
-  id,
   justifyContent,
   justifyItems,
   rowGap,
@@ -30,7 +29,6 @@ export const Grid = ({
   return (
     <Tag
       {...transferProps(restProps)}
-      id={id}
       className={styles.root}
       style={{
         ...generateResponsiveCustomProperties(columns, 'columns'),
@@ -59,7 +57,6 @@ Grid.defaultProps = {
   children: null,
   columnGap: 4,
   columns: '1fr',
-  id: undefined,
   justifyContent: undefined,
   justifyItems: undefined,
   rowGap: 4,
@@ -152,10 +149,6 @@ Grid.propTypes = {
       x3l: PropTypes.string,
     }),
   ]),
-  /**
-   * ID of the root HTML element.
-   */
-  id: PropTypes.string,
   /**
    * Content justification. Accepts any valid value of `justify-content` CSS property.
    * See [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content) for more.

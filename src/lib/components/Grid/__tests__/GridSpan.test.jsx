@@ -4,7 +4,6 @@ import {
   within,
 } from '@testing-library/react';
 import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
-import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 import { tagPropTest } from '../../../../../tests/propTests/tagPropTest';
 import { GridSpan } from '../GridSpan';
 
@@ -53,7 +52,6 @@ describe('rendering', () => {
       { columns: 14 },
       (rootElement) => expect(rootElement).toHaveStyle('--rui-local-column-span-xs: 14'),
     ],
-    ...idPropTest,
     [
       { rows: responsiveBreakpoints },
       (rootElement) => {

@@ -66,28 +66,6 @@ Full-width fields span the full width of a parent:
   />
 </Playground>
 
-## Forwarding HTML Attributes
-
-When you want to refine your file input fields even further, you
-can **add whatever HTML attribute you like.** All attributes that don't
-interfere with [component's API](#api) are forwarded to the native HTML input.
-
-<Playground>
-  <FileInputField
-    accept=".pdf,.jpg,.jpeg,.png"
-    helpText={`
-      Choose up to 10 files. Allowed extensions are .pdf, .jpg, .jpeg, or .png.
-      Size limit is 10 MB.
-    `}
-    label="Attachment"
-    multiple
-  />
-</Playground>
-
-👉 Refer to the MDN reference for the full list of supported attributes of the
-[file input](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file)
-type.
-
 ## Invisible Label
 
 In some cases, it may be convenient to visually hide the field label. The label
@@ -187,12 +165,30 @@ It's possible to disable the whole input.
   />
 </Playground>
 
-## API
+## Forwarding HTML Attributes
 
-In addition to the options below, you can specify [React synthetic events] or
-any custom HTML attributes that do not interfere with the API, and they will be
-passed to the `<input>` HTML element. This enables making the component
-interactive and helps improve its [accessibility](#forwarding-html-attributes).
+In addition to the options below in the [component's API](#api) section, you
+can specify [React synthetic events] or you can **add whatever HTML attribute
+you like.** All attributes that don't interfere with the API are forwarded to
+the native HTML `<input>`. This enables making the component interactive and
+helps to improve its accessibility.
+
+<Playground>
+  <FileInputField
+    accept=".pdf,.jpg,.jpeg,.png"
+    helpText={`
+      Choose up to 10 files. Allowed extensions are .pdf, .jpg, .jpeg, or .png.
+      Size limit is 10 MB.
+    `}
+    label="Attachment"
+    multiple
+  />
+</Playground>
+
+👉 Refer to the MDN reference for the full list of supported attributes of the
+[file] input type.
+
+## API
 
 <Props table of={FileInputField} />
 
@@ -202,3 +198,4 @@ Head to [Forms Theming](/customize/theming/forms) to see shared form theming
 options.
 
 [React synthetic events]: https://reactjs.org/docs/events.html
+[file]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#additional_attributes

@@ -1,0 +1,25 @@
+@use "../settings";
+
+.tableCell,
+.tableHeadCell,
+.isTableCellSortingActive,
+.isTableHeadCellSortingActive {
+    padding: settings.$cell-padding-y settings.$cell-padding-x;
+    text-align: left;
+    border-bottom: settings.$border-width solid settings.$border-color;
+}
+
+.tableHeadCell {
+    font-weight: settings.$head-font-weight;
+    border-bottom-width: 2px;
+}
+
+.isTableCellSortingActive,
+.isTableHeadCellSortingActive {
+    background-color: settings.$sorted-background-color;
+}
+
+.sortButton {
+    display: inline-block;
+    margin-right: settings.$cell-padding-x;
+}

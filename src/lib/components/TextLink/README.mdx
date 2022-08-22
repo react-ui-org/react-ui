@@ -56,12 +56,18 @@ It's common to use custom function for routing within SPAs. Use the
   />
 </Playground>
 
-## API
+## Forwarding HTML Attributes
 
-In addition to the options below, you can specify [React synthetic events] or
-any custom HTML attributes that do not interfere with the API, and they will be
-passed to the `<a>` HTML element. This enables making the component interactive
-and helps improve its accessibility.
+In addition to the options below in the [component's API](#api) section, you
+can specify [React synthetic events] or **any HTML attribute you like.** All
+attributes that don't interfere with the API are forwarded to the `<a>` HTML
+element. This enables making the component interactive and helps to improve its
+accessibility.
+
+👉 Refer to the MDN reference for the full list of supported attributes of the
+[a] element.
+
+## API
 
 <Props table of={TextLink} />
 
@@ -75,3 +81,4 @@ and helps improve its accessibility.
 | `--rui-TextLink--hover__text-decoration` | Text decoration on hover          |
 
 [React synthetic events]: https://reactjs.org/docs/events.html
+[a]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#attributes

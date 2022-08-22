@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
+import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { getRootClampClassName } from './_helpers/getRootClampClassName';
@@ -12,9 +13,9 @@ export const Text = ({
   blockLevel,
   children,
   hyphens,
-  id,
   lines,
   wordWrapping,
+  ...restProps
 }) => {
   if (isChildrenEmpty(children)) {
     return null;
@@ -24,6 +25,7 @@ export const Text = ({
 
   return (
     <HtmlElement
+      {...transferProps(restProps)}
       className={(hyphens !== 'none' || lines > 0 || wordWrapping !== 'normal')
         ? classNames(
           getRootClampClassName(lines, styles),
@@ -31,7 +33,6 @@ export const Text = ({
           getRootWordWrappingClassName(wordWrapping, styles),
         )
         : undefined}
-      id={id}
       style={(lines > 1) ? { '--rui-custom-lines': lines } : undefined}
     >
       {children}
@@ -43,7 +44,6 @@ Text.defaultProps = {
   blockLevel: false,
   children: null,
   hyphens: 'none',
-  id: undefined,
   lines: undefined,
   wordWrapping: 'normal',
 };
@@ -61,10 +61,6 @@ Text.propTypes = {
    * Turn on hyphenation. Head to [Hyphens](#hyphens) to learn more.
    */
   hyphens: PropTypes.oneOf(['none', 'auto', 'manual']),
-  /**
-   * Optional ID of the root HTML element.
-   */
-  id: PropTypes.string,
   /**
    * Optional number of lines. If exceeded, the content is truncated and appended by an ellipsis (`…`).
    */

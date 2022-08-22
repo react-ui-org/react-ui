@@ -4,7 +4,6 @@ import {
   within,
 } from '@testing-library/react';
 import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
-import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 import { ToolbarItem } from '../ToolbarItem';
 
 const defaultProps = {
@@ -25,7 +24,6 @@ describe('rendering', () => {
       },
       (rootElement) => expect(rootElement).toHaveClass('isItemFlexible'),
     ],
-    ...idPropTest,
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <ToolbarItem

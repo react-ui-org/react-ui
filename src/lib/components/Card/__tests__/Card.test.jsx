@@ -4,7 +4,6 @@ import {
   within,
 } from '@testing-library/react';
 import { colorPropTest } from '../../../../../tests/propTests/colorPropTest';
-import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 import { raisedPropTest } from '../../../../../tests/propTests/raisedPropTest';
 import { ScrollView } from '../../ScrollView';
 import { Card } from '../Card';
@@ -50,7 +49,6 @@ describe('rendering', () => {
       { disabled: false },
       (rootElement) => expect(rootElement).not.toHaveClass('isDisabled'),
     ],
-    ...idPropTest,
     ...raisedPropTest,
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((

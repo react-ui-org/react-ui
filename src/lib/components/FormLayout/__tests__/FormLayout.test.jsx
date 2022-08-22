@@ -4,7 +4,6 @@ import {
   within,
 } from '@testing-library/react';
 import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
-import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 import { CheckboxField } from '../../CheckboxField';
 import { Radio } from '../../Radio';
 import { SelectField } from '../../SelectField';
@@ -99,7 +98,6 @@ describe('rendering', () => {
         expect(within(rootElement).getByTestId('nested-id')).toHaveClass('rootLayoutVertical');
       },
     ],
-    ...idPropTest,
     [
       {
         fieldLayout: 'horizontal',

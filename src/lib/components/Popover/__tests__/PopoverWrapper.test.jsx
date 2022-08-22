@@ -3,7 +3,6 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 import { tagPropTest } from '../../../../../tests/propTests/tagPropTest';
 import { PopoverWrapper } from '../PopoverWrapper';
 
@@ -17,7 +16,6 @@ describe('rendering', () => {
       { children: <div>content text</div> },
       (rootElement) => expect(within(rootElement).getByText('content text')),
     ],
-    ...idPropTest,
     ...tagPropTest,
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((

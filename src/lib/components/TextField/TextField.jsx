@@ -21,13 +21,11 @@ export const TextField = React.forwardRef((props, ref) => {
     isLabelVisible,
     label,
     layout,
-    placeholder,
     required,
     size,
     type,
     validationState,
     validationText,
-    value,
     variant,
     ...restProps
   } = props;
@@ -71,12 +69,10 @@ export const TextField = React.forwardRef((props, ref) => {
             className={styles.input}
             disabled={disabled}
             id={id}
-            placeholder={placeholder}
             ref={ref}
             required={required}
             size={type !== 'number' ? inputSize : null}
             type={type}
-            value={value}
           />
           {variant === 'filled' && (
             <div className={styles.bottomLine} />
@@ -111,14 +107,12 @@ TextField.defaultProps = {
   inputSize: null,
   isLabelVisible: true,
   layout: 'vertical',
-  placeholder: null,
   ref: undefined,
   required: false,
   size: 'medium',
   type: 'text',
   validationState: null,
   validationText: null,
-  value: undefined,
   variant: 'outline',
 };
 
@@ -164,10 +158,6 @@ TextField.propTypes = {
    */
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
   /**
-   * Optional example value.
-   */
-  placeholder: PropTypes.string,
-  /**
    * Reference forwarded to the `input` element.
    */
   ref: PropTypes.oneOfType([
@@ -195,13 +185,6 @@ TextField.propTypes = {
    * Validation message to be displayed.
    */
   validationText: PropTypes.node,
-  /**
-   * Value of the input.
-   */
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
   /**
    * Design variant of the field, further customizable with CSS custom properties.
    */

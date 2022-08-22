@@ -68,10 +68,6 @@ describe('rendering', () => {
     ...isLabelVisible,
     ...labelPropTest,
     ...layoutPropTest,
-    [
-      { placeholder: 'placeholder text' },
-      (rootElement) => expect(within(rootElement).getByPlaceholderText('placeholder text')),
-    ],
     ...requiredPropTest,
     ...sizePropTest,
     [
@@ -96,20 +92,6 @@ describe('rendering', () => {
     ],
     ...validationStatePropTest,
     ...validationTextPropTest,
-    [
-      {
-        onChange: () => {},
-        value: 'content text',
-      },
-      (rootElement) => expect(within(rootElement).getByRole('textbox')).toHaveDisplayValue('content text'),
-    ],
-    [
-      {
-        onChange: () => {},
-        value: 111,
-      },
-      (rootElement) => expect(within(rootElement).getByRole('textbox')).toHaveDisplayValue('111'),
-    ],
     ...variantPropTest,
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((

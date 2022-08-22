@@ -25,7 +25,6 @@ export const Button = React.forwardRef((props, ref) => {
     priority,
     size,
     startCorner,
-    type,
     color,
     ...restProps
   } = props;
@@ -56,7 +55,6 @@ export const Button = React.forwardRef((props, ref) => {
       disabled={resolveContextOrProp(context && context.disabled, disabled) || !!feedbackIcon}
       id={id}
       ref={ref}
-      type={type}
     >
       {startCorner && (
         <span className={styles.startCorner}>

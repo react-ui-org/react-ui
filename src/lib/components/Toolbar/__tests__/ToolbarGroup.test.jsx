@@ -6,7 +6,6 @@ import {
 import { alignPropTest } from '../../../../../tests/propTests/alignPropTest';
 import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
 import { densePropTest } from '../../../../../tests/propTests/densePropTest';
-import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 import { noWrapPropTest } from '../../../../../tests/propTests/noWrapPropTest';
 import { ToolbarGroup } from '../ToolbarGroup';
 
@@ -23,7 +22,6 @@ describe('rendering', () => {
       (rootElement) => expect(within(rootElement).getByText('other content text')),
     ],
     ...densePropTest,
-    ...idPropTest,
     ...noWrapPropTest,
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
