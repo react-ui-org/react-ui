@@ -31,17 +31,17 @@
 }
 
 // Layouts
-.rootLayoutVertical,
-.rootLayoutHorizontal {
+.isRootLayoutVertical,
+.isRootLayoutHorizontal {
     @include box-field-layout.vertical();
 }
 
-.rootLayoutHorizontal {
+.isRootLayoutHorizontal {
     @include box-field-layout.horizontal();
 }
 
-.rootLayoutVertical .field,
-.rootLayoutHorizontal .field {
+.isRootLayoutVertical .field,
+.isRootLayoutHorizontal .field {
     width: auto;
 }
 
@@ -50,14 +50,14 @@
 }
 
 // Sizes
-.rootSizeSmall {
+.isRootSizeSmall {
     @include box-field-sizes.size(small);
 }
 
-.rootSizeMedium {
+.isRootSizeMedium {
     @include box-field-sizes.size(medium);
 }
 
-.rootSizeLarge {
+.isRootSizeLarge {
     @include box-field-sizes.size(large);
 }

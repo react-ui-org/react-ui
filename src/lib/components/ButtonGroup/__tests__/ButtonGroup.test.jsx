@@ -3,6 +3,7 @@ import {
   render,
   within,
 } from '@testing-library/react';
+import { blockPropTest } from '../../../../../tests/propTests/blockPropTest';
 import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
 import { Button } from '../../Button';
 import { ButtonGroup } from '../ButtonGroup';
@@ -13,14 +14,7 @@ const mandatoryProps = {
 
 describe('rendering', () => {
   it.each([
-    [
-      { block: true },
-      (rootElement) => expect(rootElement).toHaveClass('isRootBlock'),
-    ],
-    [
-      { block: false },
-      (rootElement) => expect(rootElement).not.toHaveClass('isRootBlock'),
-    ],
+    ...blockPropTest,
     ...childrenEmptyPropTest,
     [
       { children: <Button label="label text" /> },
@@ -36,27 +30,27 @@ describe('rendering', () => {
     ],
     [
       { priority: 'filled' },
-      (rootElement) => expect(within(rootElement).getByRole('button')).toHaveClass('rootPriorityFilled'),
+      (rootElement) => expect(within(rootElement).getByRole('button')).toHaveClass('isRootPriorityFilled'),
     ],
     [
       { priority: 'outline' },
-      (rootElement) => expect(within(rootElement).getByRole('button')).toHaveClass('rootPriorityOutline'),
+      (rootElement) => expect(within(rootElement).getByRole('button')).toHaveClass('isRootPriorityOutline'),
     ],
     [
       { priority: 'flat' },
-      (rootElement) => expect(within(rootElement).getByRole('button')).toHaveClass('rootPriorityFlat'),
+      (rootElement) => expect(within(rootElement).getByRole('button')).toHaveClass('isRootPriorityFlat'),
     ],
     [
       { size: 'small' },
-      (rootElement) => expect(within(rootElement).getByRole('button')).toHaveClass('rootSizeSmall'),
+      (rootElement) => expect(within(rootElement).getByRole('button')).toHaveClass('isRootSizeSmall'),
     ],
     [
       { size: 'medium' },
-      (rootElement) => expect(within(rootElement).getByRole('button')).toHaveClass('rootSizeMedium'),
+      (rootElement) => expect(within(rootElement).getByRole('button')).toHaveClass('isRootSizeMedium'),
     ],
     [
       { size: 'large' },
-      (rootElement) => expect(within(rootElement).getByRole('button')).toHaveClass('rootSizeLarge'),
+      (rootElement) => expect(within(rootElement).getByRole('button')).toHaveClass('isRootSizeLarge'),
     ],
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((

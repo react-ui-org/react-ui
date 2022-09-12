@@ -37,11 +37,11 @@
 }
 
 // Visual variants
-.rootVariantFilled {
+.isRootVariantFilled {
     @include variants.visual(box, $variant: filled);
 }
 
-.rootVariantOutline {
+.isRootVariantOutline {
     @include variants.visual(box, $variant: outline);
 }
 
@@ -64,12 +64,12 @@
 }
 
 // Layouts
-.rootLayoutVertical,
-.rootLayoutHorizontal {
+.isRootLayoutVertical,
+.isRootLayoutHorizontal {
     @include box-field-layout.vertical();
 }
 
-.rootLayoutHorizontal {
+.isRootLayoutHorizontal {
     @include box-field-layout.horizontal();
 }
 
@@ -82,14 +82,14 @@
 }
 
 // Sizes
-.rootSizeSmall {
+.isRootSizeSmall {
     @include box-field-sizes.size(small, $is-multiline: true);
 }
 
-.rootSizeMedium {
+.isRootSizeMedium {
     @include box-field-sizes.size(medium, $is-multiline: true);
 }
 
-.rootSizeLarge {
+.isRootSizeLarge {
     @include box-field-sizes.size(large, $is-multiline: true);
 }

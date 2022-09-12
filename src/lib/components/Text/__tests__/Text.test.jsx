@@ -30,44 +30,44 @@ describe('rendering', () => {
     [
       { hyphens: 'none' },
       (rootElement) => {
-        expect(rootElement).not.toHaveClass('rootHyphensAuto');
-        expect(rootElement).not.toHaveClass('rootHyphensManual');
+        expect(rootElement).not.toHaveClass('isRootHyphensAuto');
+        expect(rootElement).not.toHaveClass('isRootHyphensManual');
       },
     ],
     [
       { hyphens: 'auto' },
-      (rootElement) => expect(rootElement).toHaveClass('rootHyphensAuto'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootHyphensAuto'),
     ],
     [
       { hyphens: 'manual' },
-      (rootElement) => expect(rootElement).toHaveClass('rootHyphensManual'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootHyphensManual'),
     ],
     [
       { lines: 0 },
-      (rootElement) => expect(rootElement).not.toHaveClass('rootClampLines'),
+      (rootElement) => expect(rootElement).not.toHaveClass('isRootClampLines'),
     ],
     [
       { lines: 1 },
-      (rootElement) => expect(rootElement).toHaveClass('rootClampSingleLine'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootClampSingleLine'),
     ],
     [
       { lines: 2 },
-      (rootElement) => expect(rootElement).toHaveClass('rootClampMultiLine'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootClampMultiLine'),
     ],
     [
       { wordWrapping: 'normal' },
       (rootElement) => {
-        expect(rootElement).not.toHaveClass('rootWordWrappingAnywhere');
-        expect(rootElement).not.toHaveClass('rootWordWrappingLongWords');
+        expect(rootElement).not.toHaveClass('isRootWordWrappingAnywhere');
+        expect(rootElement).not.toHaveClass('isRootWordWrappingLongWords');
       },
     ],
     [
       { wordWrapping: 'long-words' },
-      (rootElement) => expect(rootElement).toHaveClass('rootWordWrappingLongWords'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootWordWrappingLongWords'),
     ],
     [
       { wordWrapping: 'anywhere' },
-      (rootElement) => expect(rootElement).toHaveClass('rootWordWrappingAnywhere'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootWordWrappingAnywhere'),
     ],
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((

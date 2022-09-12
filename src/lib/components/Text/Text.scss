@@ -5,7 +5,7 @@
 // 2. Different approaches are used for single and multiline texts because the latter approach
 //    doesn't always work for single-line texts.
 
-.rootClampSingleLine {
+.isRootClampSingleLine {
     display: block; // 2.
     overflow: hidden;
     text-overflow: ellipsis;
@@ -13,7 +13,7 @@
 }
 
 // stylelint-disable property-no-vendor-prefix, value-no-vendor-prefix
-.rootClampMultiLine {
+.isRootClampMultiLine {
     display: -webkit-box; // 2.
     -webkit-line-clamp: var(--rui-custom-lines);
     -webkit-box-orient: vertical;
@@ -22,19 +22,19 @@
 }
 // stylelint-enable property-no-vendor-prefix, value-no-vendor-prefix
 
-.rootHyphensAuto {
+.isRootHyphensAuto {
     hyphens: auto;
 }
 
-.rootHyphensManual {
+.isRootHyphensManual {
     hyphens: manual;
 }
 
-.rootWordWrappingAnywhere {
+.isRootWordWrappingAnywhere {
     word-break: break-all;
 }
 
-.rootWordWrappingLongWords {
+.isRootWordWrappingLongWords {
     word-break: break-word; // 1.
     overflow-wrap: anywhere;
 }

@@ -1,42 +1,42 @@
 export const colorPropTest = [
   [
     { color: 'dark' },
-    (rootElement) => expect(rootElement).toHaveClass('rootColorDark'),
+    (rootElement) => expect(rootElement).toHaveClass('isRootColorDark'),
   ],
   [
     { color: 'danger' },
-    (rootElement) => expect(rootElement).toHaveClass('rootColorDanger'),
+    (rootElement) => expect(rootElement).toHaveClass('isRootColorDanger'),
   ],
   [
     { color: 'help' },
-    (rootElement) => expect(rootElement).toHaveClass('rootColorHelp'),
+    (rootElement) => expect(rootElement).toHaveClass('isRootColorHelp'),
   ],
   [
     { color: 'info' },
-    (rootElement) => expect(rootElement).toHaveClass('rootColorInfo'),
+    (rootElement) => expect(rootElement).toHaveClass('isRootColorInfo'),
   ],
   [
     { color: 'light' },
-    (rootElement) => expect(rootElement).toHaveClass('rootColorLight'),
+    (rootElement) => expect(rootElement).toHaveClass('isRootColorLight'),
   ],
   [
     { color: 'note' },
-    (rootElement) => expect(rootElement).toHaveClass('rootColorNote'),
+    (rootElement) => expect(rootElement).toHaveClass('isRootColorNote'),
   ],
   [
     { color: 'primary' },
-    (rootElement) => expect(rootElement).toHaveClass('rootColorPrimary'),
+    (rootElement) => expect(rootElement).toHaveClass('isRootColorPrimary'),
   ],
   [
     { color: 'secondary' },
-    (rootElement) => expect(rootElement).toHaveClass('rootColorSecondary'),
+    (rootElement) => expect(rootElement).toHaveClass('isRootColorSecondary'),
   ],
   [
     { color: 'success' },
-    (rootElement) => expect(rootElement).toHaveClass('rootColorSuccess'),
+    (rootElement) => expect(rootElement).toHaveClass('isRootColorSuccess'),
   ],
   [
     { color: 'warning' },
-    (rootElement) => expect(rootElement).toHaveClass('rootColorWarning'),
+    (rootElement) => expect(rootElement).toHaveClass('isRootColorWarning'),
   ],
 ];

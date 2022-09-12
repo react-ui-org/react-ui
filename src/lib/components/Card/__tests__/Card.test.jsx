@@ -9,6 +9,7 @@ import { ScrollView } from '../../ScrollView';
 import { Card } from '../Card';
 import { CardBody } from '../CardBody';
 import { CardFooter } from '../CardFooter';
+import { densePropTest } from '../../../../../tests/propTests/densePropTest';
 
 const mandatoryProps = {
   children: <CardBody>card body content</CardBody>,
@@ -33,21 +34,14 @@ describe('rendering', () => {
       (rootElement) => expect(within(rootElement).getByText('scroll view content')),
     ],
     ...colorPropTest,
-    [
-      { dense: true },
-      (rootElement) => expect(rootElement).toHaveClass('rootDense'),
-    ],
-    [
-      { dense: false },
-      (rootElement) => expect(rootElement).not.toHaveClass('rootDense'),
-    ],
+    ...densePropTest('Root'),
     [
       { disabled: true },
-      (rootElement) => expect(rootElement).toHaveClass('isDisabled'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootDisabled'),
     ],
     [
       { disabled: false },
-      (rootElement) => expect(rootElement).not.toHaveClass('isDisabled'),
+      (rootElement) => expect(rootElement).not.toHaveClass('isRootDisabled'),
     ],
     ...raisedPropTest,
   ])('renders with props: "%s"', (testedProps, assert) => {

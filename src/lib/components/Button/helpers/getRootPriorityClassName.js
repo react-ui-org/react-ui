@@ -1,14 +1,14 @@
 export default (priority, styles) => {
   if (priority === 'filled') {
-    return styles.rootPriorityFilled;
+    return styles.isRootPriorityFilled;
   }
 
   if (priority === 'outline') {
-    return styles.rootPriorityOutline;
+    return styles.isRootPriorityOutline;
   }
 
   if (priority === 'flat') {
-    return styles.rootPriorityFlat;
+    return styles.isRootPriorityFlat;
   }
 
   return null;

@@ -1,10 +1,10 @@
 export const getRootWordWrappingClassName = (wordWrapping, styles) => {
   if (wordWrapping === 'anywhere') {
-    return styles.rootWordWrappingAnywhere;
+    return styles.isRootWordWrappingAnywhere;
   }
 
   if (wordWrapping === 'long-words') {
-    return styles.rootWordWrappingLongWords;
+    return styles.isRootWordWrappingLongWords;
   }
 
   return null;

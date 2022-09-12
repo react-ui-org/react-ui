@@ -169,12 +169,12 @@
     }
 
     @include breakpoint.up(forms.$horizontal-breakpoint) {
-        &.rootLayoutHorizontal {
+        &.isRootLayoutHorizontal {
             display: grid;
             grid-template-columns: theme.$horizontal-full-width-label-width 1fr; // 6.
         }
 
-        &.rootLayoutHorizontal .field {
+        &.isRootLayoutHorizontal .field {
             justify-self: stretch; // 7.
         }
     }
@@ -192,8 +192,8 @@
             width: auto; // 11.
         }
 
-        &.rootLayoutHorizontal,
-        &.rootLayoutHorizontal.hasRootSmallInput {
+        &.isRootLayoutHorizontal,
+        &.isRootLayoutHorizontal.hasRootSmallInput {
             grid: inherit; // 8.
             grid-template-columns: subgrid; // 8.
             grid-column: span 2; // 8.
@@ -203,26 +203,26 @@
             }
         }
 
-        &.rootLayoutHorizontal.isRootFullWidth {
+        &.isRootLayoutHorizontal.isRootFullWidth {
             grid-template-columns: subgrid; // 8.
         }
 
-        &.rootLayoutHorizontal .label,
-        &.rootLayoutHorizontal .field,
-        &.rootLayoutHorizontal .inputContainer,
-        &.rootLayoutHorizontal .helpText,
-        &.rootLayoutHorizontal .validationText {
+        &.isRootLayoutHorizontal .label,
+        &.isRootLayoutHorizontal .field,
+        &.isRootLayoutHorizontal .inputContainer,
+        &.isRootLayoutHorizontal .helpText,
+        &.isRootLayoutHorizontal .validationText {
             grid-area: unset; // 8.
         }
 
-        &.rootLayoutHorizontal .field,
-        &.rootLayoutHorizontal .inputContainer,
-        &.rootLayoutHorizontal .helpText,
-        &.rootLayoutHorizontal .validationText {
+        &.isRootLayoutHorizontal .field,
+        &.isRootLayoutHorizontal .inputContainer,
+        &.isRootLayoutHorizontal .helpText,
+        &.isRootLayoutHorizontal .validationText {
             grid-column-start: 2; // 8.
         }
 
-        &.rootLayoutHorizontal.hasRootSmallInput .field {
+        &.isRootLayoutHorizontal.hasRootSmallInput .field {
             display: block; // 5.
         }
     }

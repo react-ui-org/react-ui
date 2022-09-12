@@ -26,7 +26,7 @@ describe('rendering', () => {
         expect(within(rootElement).getByText('content text 2'));
       },
     ],
-    ...justifyPropTest,
+    ...justifyPropTest('Root'),
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <ModalFooter

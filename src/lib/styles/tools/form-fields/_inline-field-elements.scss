@@ -99,7 +99,7 @@
             }
         }
 
-        &.isRootInFormLayout.rootLayoutHorizontal::before {
+        &.isRootInFormLayout.isRootLayoutHorizontal::before {
             grid-column-start: 2;
 
             // 4.

@@ -24,14 +24,14 @@
     @include spacing.bottom(layouts);
 }
 
-.rootFieldLayoutVertical,
-.rootFieldLayoutHorizontal {
+.isRootFieldLayoutVertical,
+.isRootFieldLayoutHorizontal {
     display: grid;
     grid-template-columns: var(--rui-local-field-width);
     grid-row-gap: theme.$row-gap;
 }
 
-.rootFieldLayoutHorizontal {
+.isRootFieldLayoutHorizontal {
     @include breakpoint.up(forms.$horizontal-breakpoint) {
         grid-template-columns: var(--rui-local-label-width) var(--rui-local-field-width); // 1.
     }

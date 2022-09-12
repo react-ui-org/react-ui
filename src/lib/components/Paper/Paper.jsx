@@ -15,8 +15,8 @@ export const Paper = ({
     {...transferProps(restProps)}
     className={classNames(
       styles.root,
-      muted && styles.rootMuted,
-      raised && styles.rootRaised,
+      muted && styles.isRootMuted,
+      raised && styles.isRootRaised,
     )}
   >
     {children}

@@ -1,14 +1,14 @@
 export const getRootSizeClassName = (size, styles) => {
   if (size === 'small') {
-    return styles.rootSizeSmall;
+    return styles.isRootSizeSmall;
   }
 
   if (size === 'medium') {
-    return styles.rootSizeMedium;
+    return styles.isRootSizeMedium;
   }
 
   if (size === 'large') {
-    return styles.rootSizeLarge;
+    return styles.isRootSizeLarge;
   }
 
   return null;

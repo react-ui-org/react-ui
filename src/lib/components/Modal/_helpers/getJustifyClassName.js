@@ -1,19 +1,19 @@
 export const getJustifyClassName = (value, styles) => {
   if (value === 'start') {
-    return styles.isJustifiedToStart;
+    return styles.isRootJustifiedToStart;
   }
 
   if (value === 'center') {
-    return styles.isJustifiedToCenter;
+    return styles.isRootJustifiedToCenter;
   }
 
   if (value === 'end') {
-    return styles.isJustifiedToEnd;
+    return styles.isRootJustifiedToEnd;
   }
 
   if (value === 'space-between') {
-    return styles.isJustifiedToSpaceBetween;
+    return styles.isRootJustifiedToSpaceBetween;
   }
 
-  return styles.isJustifiedToStretch;
+  return styles.isRootJustifiedToStretch;
 };

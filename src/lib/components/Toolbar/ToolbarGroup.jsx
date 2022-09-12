@@ -4,6 +4,7 @@ import { withGlobalProps } from '../../provider';
 import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
+import { getAlignClassName } from './_helpers/getAlignClassName';
 import styles from './Toolbar.scss';
 
 export const ToolbarGroup = ({
@@ -17,30 +18,14 @@ export const ToolbarGroup = ({
     return null;
   }
 
-  const alignClass = (value) => {
-    if (value === 'top') {
-      return styles.isAlignedToTop;
-    }
-
-    if (value === 'middle') {
-      return styles.isAlignedToMiddle;
-    }
-
-    if (value === 'bottom') {
-      return styles.isAlignedToBottom;
-    }
-
-    return styles.isAlignedToBaseline;
-  };
-
   return (
     <div
       {...transferProps(restProps)}
       className={classNames(
         styles.group,
-        dense && styles.isDense,
-        nowrap && styles.isNowrap,
-        alignClass(align),
+        dense && styles.isGroupDense,
+        nowrap && styles.isGroupNowrap,
+        getAlignClassName(align, styles, 'group'),
       )}
     >
       {children}

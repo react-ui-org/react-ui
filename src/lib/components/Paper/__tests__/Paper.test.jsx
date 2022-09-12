@@ -18,11 +18,11 @@ describe('rendering', () => {
     ],
     [
       { muted: true },
-      (rootElement) => expect(rootElement).toHaveClass('rootMuted'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootMuted'),
     ],
     [
       { muted: false },
-      (rootElement) => expect(rootElement).not.toHaveClass('rootMuted'),
+      (rootElement) => expect(rootElement).not.toHaveClass('isRootMuted'),
     ],
     ...raisedPropTest,
   ])('renders with props: "%s"', (testedProps, assert) => {

@@ -49,12 +49,12 @@
 }
 
 // Layouts
-.rootLayoutVertical,
-.rootLayoutHorizontal {
+.isRootLayoutVertical,
+.isRootLayoutHorizontal {
     @include box-field-layout.vertical();
 }
 
-.rootLayoutHorizontal {
+.isRootLayoutHorizontal {
     @include box-field-layout.horizontal();
 }
 

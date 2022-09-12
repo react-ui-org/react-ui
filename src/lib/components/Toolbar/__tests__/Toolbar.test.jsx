@@ -7,6 +7,7 @@ import { alignPropTest } from '../../../../../tests/propTests/alignPropTest';
 import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
 import { densePropTest } from '../../../../../tests/propTests/densePropTest';
 import { noWrapPropTest } from '../../../../../tests/propTests/noWrapPropTest';
+import { justifyPropTest } from '../../../../../tests/propTests/justifyPropTest';
 import { Toolbar } from '../Toolbar';
 
 const defaultProps = {
@@ -15,30 +16,15 @@ const defaultProps = {
 
 describe('rendering', () => {
   it.each([
-    ...alignPropTest,
+    ...alignPropTest('Toolbar'),
     ...childrenEmptyPropTest,
     [
       { children: <div>other content text</div> },
       (rootElement) => expect(within(rootElement).getByText('other content text')),
     ],
-    ...densePropTest,
-    [
-      { justify: 'start' },
-      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToStart'),
-    ],
-    [
-      { justify: 'center' },
-      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToCenter'),
-    ],
-    [
-      { justify: 'end' },
-      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToEnd'),
-    ],
-    [
-      { justify: 'space-between' },
-      (rootElement) => expect(rootElement).toHaveClass('isJustifiedToSpaceBetween'),
-    ],
-    ...noWrapPropTest,
+    ...densePropTest('Toolbar'),
+    ...justifyPropTest('Toolbar'),
+    ...noWrapPropTest('Toolbar'),
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <Toolbar

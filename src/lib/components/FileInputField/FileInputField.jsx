@@ -32,8 +32,8 @@ export const FileInputField = React.forwardRef((props, ref) => {
         fullWidth && styles.isRootFullWidth,
         context && styles.isRootInFormLayout,
         resolveContextOrProp(context && context.layout, layout) === 'horizontal'
-          ? styles.rootLayoutHorizontal
-          : styles.rootLayoutVertical,
+          ? styles.isRootLayoutHorizontal
+          : styles.isRootLayoutVertical,
         disabled && styles.isRootDisabled,
         required && styles.isRootRequired,
         getRootValidationStateClassName(validationState, styles),

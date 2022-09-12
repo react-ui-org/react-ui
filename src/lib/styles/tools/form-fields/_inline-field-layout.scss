@@ -69,7 +69,7 @@
     width: auto; // 2., 3.
 
     @include breakpoint.up(forms.$horizontal-breakpoint) {
-        &.rootLayoutHorizontal {
+        &.isRootLayoutHorizontal {
             grid: inherit;
             grid-template-columns: subgrid;
             grid-column: span 2;
@@ -79,11 +79,11 @@
             }
         }
 
-        &.rootLayoutHorizontal .field {
+        &.isRootLayoutHorizontal .field {
             display: contents;
         }
 
-        &.rootLayoutHorizontal .label {
+        &.isRootLayoutHorizontal .label {
             grid-column-start: 1;
             width: auto;
             padding-right: settings.$horizontal-inner-gap;
@@ -91,14 +91,14 @@
             text-align: theme.$horizontal-label-text-align;
         }
 
-        &.rootLayoutHorizontal .input,
-        &.rootLayoutHorizontal .helpText,
-        &.rootLayoutHorizontal .validationText {
+        &.isRootLayoutHorizontal .input,
+        &.isRootLayoutHorizontal .helpText,
+        &.isRootLayoutHorizontal .validationText {
             grid-column-start: 2;
         }
 
-        &.rootLayoutHorizontal .helpText,
-        &.rootLayoutHorizontal .validationText {
+        &.isRootLayoutHorizontal .helpText,
+        &.isRootLayoutHorizontal .validationText {
             width: auto;
             max-width: 100%;
 
@@ -107,7 +107,7 @@
             }
         }
 
-        &.rootLayoutHorizontal.hasRootLabelBefore .label {
+        &.isRootLayoutHorizontal.hasRootLabelBefore .label {
             margin-right: 0;
         }
     }
