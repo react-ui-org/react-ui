@@ -60,12 +60,12 @@
 }
 
 // Layouts
-.rootLayoutVertical,
-.rootLayoutHorizontal {
+.isRootLayoutVertical,
+.isRootLayoutHorizontal {
     @include box-field-layout.vertical($has-list: true);
 }
 
-.rootLayoutHorizontal {
+.isRootLayoutHorizontal {
     @include box-field-layout.horizontal($has-min-tap-target: true);
 }
 

@@ -27,7 +27,7 @@ export const CheckboxField = React.forwardRef((props, ref) => {
       className={classNames(
         styles.root,
         context && styles.isRootInFormLayout,
-        context && context.layout === 'horizontal' ? styles.rootLayoutHorizontal : styles.rootLayoutVertical,
+        context && context.layout === 'horizontal' ? styles.isRootLayoutHorizontal : styles.isRootLayoutVertical,
         labelPosition === 'before' && styles.hasRootLabelBefore,
         disabled && styles.isRootDisabled,
         required && styles.isRootRequired,

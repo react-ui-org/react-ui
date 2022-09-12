@@ -6,6 +6,7 @@ import {
 } from '@testing-library/react';
 import sinon from 'sinon';
 import userEvent from '@testing-library/user-event';
+import { blockPropTest } from '../../../../../tests/propTests/blockPropTest';
 import { colorPropTest } from '../../../../../tests/propTests/colorPropTest';
 import { refPropTest } from '../../../../../tests/propTests/refPropTest';
 import { labelPropTest } from '../../../../../tests/propTests/labelPropTest';
@@ -19,14 +20,7 @@ const mandatoryProps = {
 
 describe('rendering', () => {
   it.each([
-    [
-      { block: true },
-      (rootElement) => expect(rootElement).toHaveClass('rootBlock'),
-    ],
-    [
-      { block: false },
-      (rootElement) => expect(rootElement).not.toHaveClass('rootBlock'),
-    ],
+    ...blockPropTest,
     [
       { disabled: true },
       (rootElement) => expect(rootElement).toBeDisabled(),
@@ -37,15 +31,15 @@ describe('rendering', () => {
     ],
     [
       { priority: 'filled' },
-      (rootElement) => expect(rootElement).toHaveClass('rootPriorityFilled'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootPriorityFilled'),
     ],
     [
       { priority: 'outline' },
-      (rootElement) => expect(rootElement).toHaveClass('rootPriorityOutline'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootPriorityOutline'),
     ],
     [
       { priority: 'flat' },
-      (rootElement) => expect(rootElement).toHaveClass('rootPriorityFlat'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootPriorityFlat'),
     ],
     ...sizePropTest,
   ])('renders with ButtonGroup props: "%s"', (testedProps, assert) => {
@@ -71,14 +65,7 @@ describe('rendering', () => {
       { beforeLabel: <div>before label</div> },
       (rootElement) => expect(within(rootElement).getByText('before label')),
     ],
-    [
-      { block: true },
-      (rootElement) => expect(rootElement).toHaveClass('rootBlock'),
-    ],
-    [
-      { block: false },
-      (rootElement) => expect(rootElement).not.toHaveClass('rootBlock'),
-    ],
+    ...blockPropTest,
     ...colorPropTest,
     [
       { disabled: true },
@@ -103,31 +90,31 @@ describe('rendering', () => {
     ...labelPropTest,
     [
       { labelVisibility: 'sm' },
-      (rootElement) => expect(rootElement).toHaveClass('withLabelVisibleSm'),
+      (rootElement) => expect(rootElement).toHaveClass('hasLabelVisibleSm'),
     ],
     [
       { labelVisibility: 'md' },
-      (rootElement) => expect(rootElement).toHaveClass('withLabelVisibleMd'),
+      (rootElement) => expect(rootElement).toHaveClass('hasLabelVisibleMd'),
     ],
     [
       { labelVisibility: 'lg' },
-      (rootElement) => expect(rootElement).toHaveClass('withLabelVisibleLg'),
+      (rootElement) => expect(rootElement).toHaveClass('hasLabelVisibleLg'),
     ],
     [
       { labelVisibility: 'xl' },
-      (rootElement) => expect(rootElement).toHaveClass('withLabelVisibleXl'),
+      (rootElement) => expect(rootElement).toHaveClass('hasLabelVisibleXl'),
     ],
     [
       { labelVisibility: 'x2l' },
-      (rootElement) => expect(rootElement).toHaveClass('withLabelVisibleX2l'),
+      (rootElement) => expect(rootElement).toHaveClass('hasLabelVisibleX2l'),
     ],
     [
       { labelVisibility: 'x3l' },
-      (rootElement) => expect(rootElement).toHaveClass('withLabelVisibleX3l'),
+      (rootElement) => expect(rootElement).toHaveClass('hasLabelVisibleX3l'),
     ],
     [
       { labelVisibility: 'none' },
-      (rootElement) => expect(rootElement).toHaveClass('withLabelHidden'),
+      (rootElement) => expect(rootElement).toHaveClass('hasLabelHidden'),
     ],
     [
       { feedbackIcon: <div>feedback icon</div> },
@@ -139,15 +126,15 @@ describe('rendering', () => {
     ],
     [
       { priority: 'filled' },
-      (rootElement) => expect(rootElement).toHaveClass('rootPriorityFilled'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootPriorityFilled'),
     ],
     [
       { priority: 'outline' },
-      (rootElement) => expect(rootElement).toHaveClass('rootPriorityOutline'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootPriorityOutline'),
     ],
     [
       { priority: 'flat' },
-      (rootElement) => expect(rootElement).toHaveClass('rootPriorityFlat'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootPriorityFlat'),
     ],
     ...sizePropTest,
     [

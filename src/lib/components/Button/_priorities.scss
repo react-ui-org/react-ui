@@ -3,128 +3,128 @@
 @use "theme";
 @use "tools";
 
-.rootPriorityFilled.rootColorPrimary {
+.isRootPriorityFilled.isRootColorPrimary {
     @include tools.button-color(filled, primary);
 }
 
-.rootPriorityFilled.rootColorSecondary {
+.isRootPriorityFilled.isRootColorSecondary {
     @include tools.button-color(filled, secondary);
 }
 
-.rootPriorityFilled.rootColorSuccess {
+.isRootPriorityFilled.isRootColorSuccess {
     @include tools.button-color(filled, success);
 }
 
-.rootPriorityFilled.rootColorWarning {
+.isRootPriorityFilled.isRootColorWarning {
     @include tools.button-color(filled, warning);
 }
 
-.rootPriorityFilled.rootColorDanger {
+.isRootPriorityFilled.isRootColorDanger {
     @include tools.button-color(filled, danger);
 }
 
-.rootPriorityFilled.rootColorHelp {
+.isRootPriorityFilled.isRootColorHelp {
     @include tools.button-color(filled, help);
 }
 
-.rootPriorityFilled.rootColorInfo {
+.isRootPriorityFilled.isRootColorInfo {
     @include tools.button-color(filled, info);
 }
 
-.rootPriorityFilled.rootColorNote {
+.isRootPriorityFilled.isRootColorNote {
     @include tools.button-color(filled, note);
 }
 
-.rootPriorityFilled.rootColorLight {
+.isRootPriorityFilled.isRootColorLight {
     @include tools.button-color(filled, light);
 }
 
-.rootPriorityFilled.rootColorDark {
+.isRootPriorityFilled.isRootColorDark {
     @include tools.button-color(filled, dark);
 }
 
-.rootPriorityOutline.rootColorPrimary {
+.isRootPriorityOutline.isRootColorPrimary {
     @include tools.button-color(outline, primary);
 }
 
-.rootPriorityOutline.rootColorSecondary {
+.isRootPriorityOutline.isRootColorSecondary {
     @include tools.button-color(outline, secondary);
 }
 
-.rootPriorityOutline.rootColorSuccess {
+.isRootPriorityOutline.isRootColorSuccess {
     @include tools.button-color(outline, success);
 }
 
-.rootPriorityOutline.rootColorWarning {
+.isRootPriorityOutline.isRootColorWarning {
     @include tools.button-color(outline, warning);
 }
 
-.rootPriorityOutline.rootColorDanger {
+.isRootPriorityOutline.isRootColorDanger {
     @include tools.button-color(outline, danger);
 }
 
-.rootPriorityOutline.rootColorHelp {
+.isRootPriorityOutline.isRootColorHelp {
     @include tools.button-color(outline, help);
 }
 
-.rootPriorityOutline.rootColorInfo {
+.isRootPriorityOutline.isRootColorInfo {
     @include tools.button-color(outline, info);
 }
 
-.rootPriorityOutline.rootColorNote {
+.isRootPriorityOutline.isRootColorNote {
     @include tools.button-color(outline, note);
 }
 
-.rootPriorityOutline.rootColorLight {
+.isRootPriorityOutline.isRootColorLight {
     @include tools.button-color(outline, light);
 }
 
-.rootPriorityOutline.rootColorDark {
+.isRootPriorityOutline.isRootColorDark {
     @include tools.button-color(outline, dark);
 }
 
-.rootPriorityFlat.rootColorPrimary {
+.isRootPriorityFlat.isRootColorPrimary {
     @include tools.button-color(flat, primary);
 }
 
-.rootPriorityFlat.rootColorSecondary {
+.isRootPriorityFlat.isRootColorSecondary {
     @include tools.button-color(flat, secondary);
 }
 
-.rootPriorityFlat.rootColorSuccess {
+.isRootPriorityFlat.isRootColorSuccess {
     @include tools.button-color(flat, success);
 }
 
-.rootPriorityFlat.rootColorWarning {
+.isRootPriorityFlat.isRootColorWarning {
     @include tools.button-color(flat, warning);
 }
 
-.rootPriorityFlat.rootColorDanger {
+.isRootPriorityFlat.isRootColorDanger {
     @include tools.button-color(flat, danger);
 }
 
-.rootPriorityFlat.rootColorHelp {
+.isRootPriorityFlat.isRootColorHelp {
     @include tools.button-color(flat, help);
 }
 
-.rootPriorityFlat.rootColorInfo {
+.isRootPriorityFlat.isRootColorInfo {
     @include tools.button-color(flat, info);
 }
 
-.rootPriorityFlat.rootColorNote {
+.isRootPriorityFlat.isRootColorNote {
     @include tools.button-color(flat, note);
 }
 
-.rootPriorityFlat.rootColorLight {
+.isRootPriorityFlat.isRootColorLight {
     @include tools.button-color(flat, light);
 }
 
-.rootPriorityFlat.rootColorDark {
+.isRootPriorityFlat.isRootColorDark {
     @include tools.button-color(flat, dark);
 }
 
-.rootPriorityFilled.rootGrouped:not(:first-child)::before,
-.rootPriorityFlat.rootGrouped:not(:first-child)::before {
+.isRootPriorityFilled.isRootGrouped:not(:first-child)::before,
+.isRootPriorityFlat.isRootGrouped:not(:first-child)::before {
     content: "";
     position: absolute;
     top: calc(-1 * #{theme.$border-width});
@@ -135,18 +135,18 @@
     transform: translateX(calc(-0.5 * var(--rui-local-gap) - 50%));
 }
 
-.rootPriorityFilled.rootGrouped:not(:first-child) {
+.isRootPriorityFilled.isRootGrouped:not(:first-child) {
     --rui-local-gap: #{theme.$group-filled-gap};
     --rui-local-separator-width: #{theme.$group-filled-separator-width};
     --rui-local-separator-color: #{theme.$group-filled-separator-color};
 }
 
-.rootPriorityFlat.rootGrouped:not(:first-child) {
+.isRootPriorityFlat.isRootGrouped:not(:first-child) {
     --rui-local-gap: #{theme.$group-flat-gap};
     --rui-local-separator-width: #{theme.$group-flat-separator-width};
     --rui-local-separator-color: #{theme.$group-flat-separator-color};
 }
 
-.rootPriorityOutline.rootGrouped:not(:first-child) {
+.isRootPriorityOutline.isRootGrouped:not(:first-child) {
     --rui-local-gap: #{theme.$group-outline-gap};
 }

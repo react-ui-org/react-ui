@@ -1,42 +1,42 @@
 export const getRootColorClassName = (variant, styles) => {
   if (variant === 'primary') {
-    return styles.rootColorPrimary;
+    return styles.isRootColorPrimary;
   }
 
   if (variant === 'secondary') {
-    return styles.rootColorSecondary;
+    return styles.isRootColorSecondary;
   }
 
   if (variant === 'success') {
-    return styles.rootColorSuccess;
+    return styles.isRootColorSuccess;
   }
 
   if (variant === 'warning') {
-    return styles.rootColorWarning;
+    return styles.isRootColorWarning;
   }
 
   if (variant === 'danger') {
-    return styles.rootColorDanger;
+    return styles.isRootColorDanger;
   }
 
   if (variant === 'help') {
-    return styles.rootColorHelp;
+    return styles.isRootColorHelp;
   }
 
   if (variant === 'info') {
-    return styles.rootColorInfo;
+    return styles.isRootColorInfo;
   }
 
   if (variant === 'note') {
-    return styles.rootColorNote;
+    return styles.isRootColorNote;
   }
 
   if (variant === 'light') {
-    return styles.rootColorLight;
+    return styles.isRootColorLight;
   }
 
   if (variant === 'dark') {
-    return styles.rootColorDark;
+    return styles.isRootColorDark;
   }
 
   return null;

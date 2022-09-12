@@ -2,31 +2,31 @@ export default (labelVisibility, styles) => {
   // Intentionally omitting `xs` which means label is visible on all screen sizes.
 
   if (labelVisibility === 'sm') {
-    return styles.withLabelVisibleSm;
+    return styles.hasLabelVisibleSm;
   }
 
   if (labelVisibility === 'md') {
-    return styles.withLabelVisibleMd;
+    return styles.hasLabelVisibleMd;
   }
 
   if (labelVisibility === 'lg') {
-    return styles.withLabelVisibleLg;
+    return styles.hasLabelVisibleLg;
   }
 
   if (labelVisibility === 'xl') {
-    return styles.withLabelVisibleXl;
+    return styles.hasLabelVisibleXl;
   }
 
   if (labelVisibility === 'x2l') {
-    return styles.withLabelVisibleX2l;
+    return styles.hasLabelVisibleX2l;
   }
 
   if (labelVisibility === 'x3l') {
-    return styles.withLabelVisibleX3l;
+    return styles.hasLabelVisibleX3l;
   }
 
   if (labelVisibility === 'none') {
-    return styles.withLabelHidden;
+    return styles.hasLabelHidden;
   }
 
   return null;

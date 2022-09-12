@@ -19,11 +19,11 @@ describe('rendering', () => {
   it.each([
     [
       { layout: 'vertical' },
-      (rootElement) => expect(rootElement).toHaveClass('rootLayoutVertical'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootLayoutVertical'),
     ],
     [
       { layout: 'horizontal' },
-      (rootElement) => expect(rootElement).toHaveClass('rootLayoutHorizontal'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootLayoutHorizontal'),
     ],
   ])('renders with FormLayout props: "%s"', (testedProps, assert) => {
     const dom = render((
@@ -65,15 +65,15 @@ describe('rendering', () => {
     ],
     [
       { innerFieldSize: 'small' },
-      (rootElement) => expect(rootElement).toHaveClass('rootSizeSmall'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootSizeSmall'),
     ],
     [
       { innerFieldSize: 'medium' },
-      (rootElement) => expect(rootElement).toHaveClass('rootSizeMedium'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootSizeMedium'),
     ],
     [
       { innerFieldSize: 'large' },
-      (rootElement) => expect(rootElement).toHaveClass('rootSizeLarge'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootSizeLarge'),
     ],
     ...labelPropTest,
     [

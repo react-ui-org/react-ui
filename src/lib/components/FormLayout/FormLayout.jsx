@@ -24,10 +24,10 @@ export const FormLayout = ({
 
   const fieldLayoutClass = (layout) => {
     if (layout === 'horizontal') {
-      return styles.rootFieldLayoutHorizontal;
+      return styles.isRootFieldLayoutHorizontal;
     }
 
-    return styles.rootFieldLayoutVertical;
+    return styles.isRootFieldLayoutVertical;
   };
 
   const labelWidthClass = (width) => {

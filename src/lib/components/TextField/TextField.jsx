@@ -41,13 +41,13 @@ export const TextField = React.forwardRef((props, ref) => {
         inputSize && styles.hasRootCustomInputSize,
         context && styles.isRootInFormLayout,
         resolveContextOrProp(context && context.layout, layout) === 'horizontal'
-          ? styles.rootLayoutHorizontal
-          : styles.rootLayoutVertical,
+          ? styles.isRootLayoutHorizontal
+          : styles.isRootLayoutVertical,
         disabled && styles.isRootDisabled,
         required && styles.isRootRequired,
         getRootSizeClassName(size, styles),
         getRootValidationStateClassName(validationState, styles),
-        variant === 'filled' ? styles.rootVariantFilled : styles.rootVariantOutline,
+        variant === 'filled' ? styles.isRootVariantFilled : styles.isRootVariantOutline,
       )}
       htmlFor={id}
       id={id && `${id}__label`}

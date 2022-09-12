@@ -19,9 +19,9 @@ export const Card = ({
     className={classNames(
       styles.root,
       getRootColorClassName(color, styles),
-      dense && styles.rootDense,
-      raised && styles.rootRaised,
-      disabled && styles.isDisabled,
+      dense && styles.isRootDense,
+      raised && styles.isRootRaised,
+      disabled && styles.isRootDisabled,
     )}
   >
     {children}

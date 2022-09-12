@@ -16,7 +16,7 @@ export const Badge = ({
     {...transferProps(restProps)}
     className={classNames(
       styles.root,
-      priority === 'outline' && styles.rootPriorityOutline,
+      priority === 'outline' && styles.isRootPriorityOutline,
       getRootColorClassName(color, styles),
     )}
   >

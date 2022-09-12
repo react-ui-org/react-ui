@@ -87,15 +87,15 @@ describe('rendering', () => {
     [
       { fieldLayout: 'horizontal' },
       (rootElement) => {
-        expect(rootElement).toHaveClass('rootFieldLayoutHorizontal');
-        expect(within(rootElement).getByTestId('nested-id')).toHaveClass('rootLayoutHorizontal');
+        expect(rootElement).toHaveClass('isRootFieldLayoutHorizontal');
+        expect(within(rootElement).getByTestId('nested-id')).toHaveClass('isRootLayoutHorizontal');
       },
     ],
     [
       { fieldLayout: 'vertical' },
       (rootElement) => {
-        expect(rootElement).toHaveClass('rootFieldLayoutVertical');
-        expect(within(rootElement).getByTestId('nested-id')).toHaveClass('rootLayoutVertical');
+        expect(rootElement).toHaveClass('isRootFieldLayoutVertical');
+        expect(within(rootElement).getByTestId('nested-id')).toHaveClass('isRootLayoutVertical');
       },
     ],
     [

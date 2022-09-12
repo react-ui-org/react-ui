@@ -1,15 +1,15 @@
 export const sizePropTest = [
   [
     { size: 'small' },
-    (rootElement) => expect(rootElement).toHaveClass('rootSizeSmall'),
+    (rootElement) => expect(rootElement).toHaveClass('isRootSizeSmall'),
   ],
   [
     { size: 'medium' },
-    (rootElement) => expect(rootElement).toHaveClass('rootSizeMedium'),
+    (rootElement) => expect(rootElement).toHaveClass('isRootSizeMedium'),
   ],
   [
     { size: 'large' },
-    (rootElement) => expect(rootElement).toHaveClass('rootSizeLarge'),
+    (rootElement) => expect(rootElement).toHaveClass('isRootSizeLarge'),
   ],
 
 ];

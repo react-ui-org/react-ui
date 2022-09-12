@@ -1,10 +1,10 @@
 export const getRootClampClassName = (lines, styles) => {
   if (lines === 1) {
-    return styles.rootClampSingleLine;
+    return styles.isRootClampSingleLine;
   }
 
   if (lines > 1) {
-    return styles.rootClampMultiLine;
+    return styles.isRootClampMultiLine;
   }
 
   return null;

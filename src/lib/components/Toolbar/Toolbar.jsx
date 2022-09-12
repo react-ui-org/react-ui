@@ -4,6 +4,8 @@ import { withGlobalProps } from '../../provider';
 import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
+import { getAlignClassName } from './_helpers/getAlignClassName';
+import { getJustifyClassName } from './_helpers/getJustifyClassName';
 import styles from './Toolbar.scss';
 
 export const Toolbar = ({
@@ -18,47 +20,15 @@ export const Toolbar = ({
     return null;
   }
 
-  const alignClass = (value) => {
-    if (value === 'top') {
-      return styles.isAlignedToTop;
-    }
-
-    if (value === 'middle') {
-      return styles.isAlignedToMiddle;
-    }
-
-    if (value === 'bottom') {
-      return styles.isAlignedToBottom;
-    }
-
-    return styles.isAlignedToBaseline;
-  };
-
-  const justifyClass = (value) => {
-    if (value === 'start') {
-      return styles.isJustifiedToStart;
-    }
-
-    if (value === 'center') {
-      return styles.isJustifiedToCenter;
-    }
-
-    if (value === 'end') {
-      return styles.isJustifiedToEnd;
-    }
-
-    return styles.isJustifiedToSpaceBetween;
-  };
-
   return (
     <div
       {...transferProps(restProps)}
       className={classNames(
         styles.toolbar,
-        dense && styles.isDense,
-        nowrap && styles.isNowrap,
-        alignClass(align),
-        justifyClass(justify),
+        dense && styles.isToolbarDense,
+        nowrap && styles.isToolbarNowrap,
+        getAlignClassName(align, styles, 'toolbar'),
+        getJustifyClassName(justify, styles),
       )}
     >
       {children}

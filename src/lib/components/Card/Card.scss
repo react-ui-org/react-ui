@@ -25,55 +25,55 @@
     padding: var(--rui-local-padding);
 }
 
-.rootDense {
+.isRootDense {
     --rui-local-padding: #{theme.$dense-padding};
 }
 
-.rootRaised {
+.isRootRaised {
     box-shadow: theme.$raised-box-shadow;
 }
 
-.rootColorPrimary {
+.isRootColorPrimary {
     @include tools.color(primary);
 }
 
-.rootColorSecondary {
+.isRootColorSecondary {
     @include tools.color(secondary);
 }
 
-.rootColorSuccess {
+.isRootColorSuccess {
     @include tools.color(success);
 }
 
-.rootColorWarning {
+.isRootColorWarning {
     @include tools.color(warning);
 }
 
-.rootColorDanger {
+.isRootColorDanger {
     @include tools.color(danger);
 }
 
-.rootColorHelp {
+.isRootColorHelp {
     @include tools.color(help);
 }
 
-.rootColorInfo {
+.isRootColorInfo {
     @include tools.color(info);
 }
 
-.rootColorNote {
+.isRootColorNote {
     @include tools.color(note);
 }
 
-.rootColorLight {
+.isRootColorLight {
     @include tools.color(light);
 }
 
-.rootColorDark {
+.isRootColorDark {
     @include tools.color(dark);
 }
 
-.isDisabled {
+.isRootDisabled {
     background-color: theme.$disabled-background-color;
     opacity: theme.$disabled-opacity;
 }

@@ -19,11 +19,11 @@ describe('rendering', () => {
     ],
     [
       { priority: 'filled' },
-      (rootElement) => expect(rootElement).not.toHaveClass('rootPriorityOutline'),
+      (rootElement) => expect(rootElement).not.toHaveClass('isRootPriorityOutline'),
     ],
     [
       { priority: 'outline' },
-      (rootElement) => expect(rootElement).toHaveClass('rootPriorityOutline'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootPriorityOutline'),
     ],
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((

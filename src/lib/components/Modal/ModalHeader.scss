@@ -9,22 +9,22 @@
     border-bottom: theme.$separator-width solid theme.$separator-color;
 }
 
-.isJustifiedToStart {
+.isRootJustifiedToStart {
     justify-content: flex-start;
 }
 
-.isJustifiedToCenter {
+.isRootJustifiedToCenter {
     justify-content: center;
 }
 
-.isJustifiedToEnd {
+.isRootJustifiedToEnd {
     justify-content: flex-end;
 }
 
-.isJustifiedToSpaceBetween {
+.isRootJustifiedToSpaceBetween {
     justify-content: space-between;
 }
 
-.isJustifiedToStretch {
+.isRootJustifiedToStretch {
     display: block;
 }

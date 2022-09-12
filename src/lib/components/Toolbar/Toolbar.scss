@@ -25,47 +25,59 @@
     min-width: 0;
 }
 
-.isAlignedToTop {
+.isToolbarAlignedToTop,
+.isGroupAlignedToTop {
     align-items: flex-start;
 }
 
-.isAlignedToMiddle {
+.isToolbarAlignedToMiddle,
+.isGroupAlignedToMiddle {
     align-items: center;
 }
 
-.isAlignedToBottom {
+.isToolbarAlignedToBottom,
+.isGroupAlignedToBottom {
     align-items: flex-end;
 }
 
-.isAlignedToBaseline {
+.isToolbarAlignedToBaseline,
+.isGroupAlignedToBaseline {
     align-items: baseline;
 }
 
-.isJustifiedToStart {
+.isToolbarJustifiedToStart,
+.isGroupJustifiedToStart {
     justify-content: flex-start;
 }
 
-.isJustifiedToCenter {
+.isToolbarJustifiedToCenter,
+.isGroupJustifiedToCenter {
     justify-content: center;
 }
 
-.isJustifiedToEnd {
+.isToolbarJustifiedToEnd,
+.isGroupJustifiedToEnd {
     justify-content: flex-end;
 }
 
-.isJustifiedToSpaceBetween {
+.isToolbarJustifiedToSpaceBetween,
+.isGroupJustifiedToSpaceBetween {
     justify-content: space-between;
 }
 
-.isDense,
-.isDense .group {
+.isToolbarDense,
+.isGroupDense,
+.isToolbarDense .group,
+.isGroupDense .group {
     gap: theme.$gap-dense;
 }
 
-.isNowrap {
+.isToolbarNowrap,
+.isGroupNowrap {
     flex-wrap: nowrap;
 }
 
-.isNowrap > .item:not(.isItemFlexible) {
+.isToolbarNowrap > .item:not(.isItemFlexible),
+.isGroupNowrap > .item:not(.isItemFlexible) {
     flex: 0 1 auto;
 }

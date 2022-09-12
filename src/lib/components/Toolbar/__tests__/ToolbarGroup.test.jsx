@@ -15,14 +15,14 @@ const defaultProps = {
 
 describe('rendering', () => {
   it.each([
-    ...alignPropTest,
+    ...alignPropTest('Group'),
     ...childrenEmptyPropTest,
     [
       { children: <div>other content text</div> },
       (rootElement) => expect(within(rootElement).getByText('other content text')),
     ],
-    ...densePropTest,
-    ...noWrapPropTest,
+    ...densePropTest('Group'),
+    ...noWrapPropTest('Group'),
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <ToolbarGroup

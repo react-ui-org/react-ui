@@ -49,19 +49,19 @@
     align-items: center;
 }
 
-.rootSizeSmall {
+.isRootSizeSmall {
     @include tools.button-size(small);
 }
 
-.rootSizeMedium {
+.isRootSizeMedium {
     @include tools.button-size(medium);
 }
 
-.rootSizeLarge {
+.isRootSizeLarge {
     @include tools.button-size(large);
 }
 
-.rootBlock {
+.isRootBlock {
     width: 100%;
 }
 
@@ -76,7 +76,7 @@
     color: transparent;
 }
 
-.rootGrouped {
+.isRootGrouped {
     z-index: map.get(settings.$group-z-indexes, button);
 
     &:not(:first-child) {
@@ -96,52 +96,52 @@
     }
 }
 
-.rootGrouped .startCorner,
-.rootGrouped .endCorner {
+.isRootGrouped .startCorner,
+.isRootGrouped .endCorner {
     z-index: map.get(settings.$group-z-indexes, button-overflowing-elements);
 }
 
-.withLabelHidden,
-.withLabelVisibleSm,
-.withLabelVisibleMd,
-.withLabelVisibleLg,
-.withLabelVisibleXl,
-.withLabelVisibleX2l,
-.withLabelVisibleX3l {
+.hasLabelHidden,
+.hasLabelVisibleSm,
+.hasLabelVisibleMd,
+.hasLabelVisibleLg,
+.hasLabelVisibleXl,
+.hasLabelVisibleX2l,
+.hasLabelVisibleX3l {
     @include tools.hide-label();
 }
 
-.withLabelVisibleSm {
+.hasLabelVisibleSm {
     @include breakpoint.up(sm) {
         @include tools.show-label();
     }
 }
 
-.withLabelVisibleMd {
+.hasLabelVisibleMd {
     @include breakpoint.up(md) {
         @include tools.show-label();
     }
 }
 
-.withLabelVisibleLg {
+.hasLabelVisibleLg {
     @include breakpoint.up(lg) {
         @include tools.show-label();
     }
 }
 
-.withLabelVisibleXl {
+.hasLabelVisibleXl {
     @include breakpoint.up(xl) {
         @include tools.show-label();
     }
 }
 
-.withLabelVisibleX2l {
+.hasLabelVisibleX2l {
     @include breakpoint.up(x2l) {
         @include tools.show-label();
     }
 }
 
-.withLabelVisibleX3l {
+.hasLabelVisibleX3l {
     @include breakpoint.up(x3l) {
         @include tools.show-label();
     }

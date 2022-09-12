@@ -1,10 +1,10 @@
 export const variantPropTest = [
   [
     { variant: 'filled' },
-    (rootElement) => expect(rootElement).toHaveClass('rootVariantFilled'),
+    (rootElement) => expect(rootElement).toHaveClass('isRootVariantFilled'),
   ],
   [
     { variant: 'outline' },
-    (rootElement) => expect(rootElement).toHaveClass('rootVariantOutline'),
+    (rootElement) => expect(rootElement).toHaveClass('isRootVariantOutline'),
   ],
 ];

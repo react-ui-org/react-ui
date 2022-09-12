@@ -48,8 +48,8 @@ export const Button = React.forwardRef((props, ref) => {
           styles,
         ),
         getRootLabelVisibilityClassName(labelVisibility, styles),
-        resolveContextOrProp(context && context.block, block) && styles.rootBlock,
-        context && styles.rootGrouped,
+        resolveContextOrProp(context && context.block, block) && styles.isRootBlock,
+        context && styles.isRootGrouped,
         feedbackIcon && styles.hasRootFeedback,
       )}
       disabled={resolveContextOrProp(context && context.disabled, disabled) || !!feedbackIcon}
