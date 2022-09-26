@@ -31,7 +31,6 @@ export const ModalCloseButton = React.forwardRef((props, ref) => {
 
 ModalCloseButton.defaultProps = {
   disabled: false,
-  ref: undefined,
 };
 
 ModalCloseButton.propTypes = {
@@ -39,14 +38,6 @@ ModalCloseButton.propTypes = {
    * If `true`, close button will be disabled.
    */
   disabled: PropTypes.bool,
-  /**
-   * Reference forwarded to the `button` element.
-   */
-  ref: PropTypes.oneOfType([
-    PropTypes.func,
-    // eslint-disable-next-line react/forbid-prop-types
-    PropTypes.shape({ current: PropTypes.any }),
-  ]),
 };
 
 export const ModalCloseButtonWithGlobalProps = withGlobalProps(ModalCloseButton, 'ModalCloseButton');

@@ -103,7 +103,6 @@ Button.defaultProps = {
   id: undefined,
   labelVisibility: 'xs',
   priority: 'filled',
-  ref: undefined,
   size: 'medium',
   startCorner: null,
   type: 'button',
@@ -167,14 +166,6 @@ Button.propTypes = {
    * as the value is inherited in such case.
    */
   priority: PropTypes.oneOf(['filled', 'outline', 'flat']),
-  /**
-   * Reference forwarded to the `button` element.
-   */
-  ref: PropTypes.oneOfType([
-    PropTypes.func,
-    // eslint-disable-next-line react/forbid-prop-types
-    PropTypes.shape({ current: PropTypes.any }),
-  ]),
   /**
    * Size of the button.
    *

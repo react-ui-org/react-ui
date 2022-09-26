@@ -130,7 +130,6 @@ SelectField.defaultProps = {
   id: undefined,
   isLabelVisible: true,
   layout: 'vertical',
-  ref: undefined,
   required: false,
   size: 'medium',
   validationState: null,
@@ -219,14 +218,6 @@ SelectField.propTypes = {
       ]),
     })),
   ]).isRequired,
-  /**
-   * Reference forwarded to the `select` element.
-   */
-  ref: PropTypes.oneOfType([
-    PropTypes.func,
-    // eslint-disable-next-line react/forbid-prop-types
-    PropTypes.shape({ current: PropTypes.any }),
-  ]),
   /**
    * If `true`, the input will be required.
    */

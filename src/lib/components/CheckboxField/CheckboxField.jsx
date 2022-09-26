@@ -82,7 +82,6 @@ CheckboxField.defaultProps = {
   id: undefined,
   isLabelVisible: true,
   labelPosition: 'after',
-  ref: undefined,
   required: false,
   validationState: null,
   validationText: null,
@@ -120,14 +119,6 @@ CheckboxField.propTypes = {
    * Placement of the label relative to the input.
    */
   labelPosition: PropTypes.oneOf(['before', 'after']),
-  /**
-   * Reference forwarded to the `input` element.
-   */
-  ref: PropTypes.oneOfType([
-    PropTypes.func,
-    // eslint-disable-next-line react/forbid-prop-types
-    PropTypes.shape({ current: PropTypes.any }),
-  ]),
   /**
    * If `true`, the input will be required.
    */

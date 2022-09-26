@@ -273,7 +273,6 @@ ScrollView.defaultProps = {
   prevArrowColor: undefined,
   prevArrowElement: null,
   prevArrowInitialOffset: '-0.5rem',
-  ref: undefined,
   scrollbar: true,
   shadows: true,
   startShadowBackground: 'linear-gradient(var(--rui-local-start-shadow-direction), rgba(255 255 255 / 1), rgba(255 255 255 / 0))',
@@ -357,14 +356,6 @@ ScrollView.propTypes = {
    * Initial offset of the start arrow control (transitioned). If set, the prev arrow slides in by this distance.
    */
   prevArrowInitialOffset: PropTypes.string,
-  /**
-   * Reference forwarded to the scrolling viewport `div` element.
-   */
-  ref: PropTypes.oneOfType([
-    PropTypes.func,
-    // eslint-disable-next-line react/forbid-prop-types
-    PropTypes.shape({ current: PropTypes.any }),
-  ]),
   /**
    * If `false`, the system scrollbar will be hidden.
    */

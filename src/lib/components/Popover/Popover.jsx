@@ -42,7 +42,6 @@ export const Popover = React.forwardRef((props, ref) => {
 Popover.defaultProps = {
   placement: 'bottom',
   portalId: null,
-  ref: undefined,
 };
 
 Popover.propTypes = {
@@ -72,14 +71,6 @@ Popover.propTypes = {
    * If set, popover is rendered in the React Portal with that ID.
    */
   portalId: PropTypes.string,
-  /**
-   * Reference forwarded to the root `div` element.
-   */
-  ref: PropTypes.oneOfType([
-    PropTypes.func,
-    // eslint-disable-next-line react/forbid-prop-types
-    PropTypes.shape({ current: PropTypes.any }),
-  ]),
 };
 
 export const PopoverWithGlobalProps = withGlobalProps(Popover, 'Popover');
