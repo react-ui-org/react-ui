@@ -90,7 +90,6 @@ FileInputField.defaultProps = {
   id: undefined,
   isLabelVisible: true,
   layout: 'vertical',
-  ref: undefined,
   required: false,
   validationState: null,
   validationText: null,
@@ -136,14 +135,6 @@ FileInputField.propTypes = {
    *
    */
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
-  /**
-   * Reference forwarded to the `input` element.
-   */
-  ref: PropTypes.oneOfType([
-    PropTypes.func,
-    // eslint-disable-next-line react/forbid-prop-types
-    PropTypes.shape({ current: PropTypes.any }),
-  ]),
   /**
    * If `true`, the input will be required.
    */

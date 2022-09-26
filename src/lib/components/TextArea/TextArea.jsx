@@ -97,7 +97,6 @@ TextArea.defaultProps = {
   id: undefined,
   isLabelVisible: true,
   layout: 'vertical',
-  ref: undefined,
   required: false,
   size: 'medium',
   validationState: null,
@@ -144,14 +143,6 @@ TextArea.propTypes = {
   /**
    * If `true`, the input will be required.
    */
-  /**
-   * Reference forwarded to the `textarea` element.
-   */
-  ref: PropTypes.oneOfType([
-    PropTypes.func,
-    // eslint-disable-next-line react/forbid-prop-types
-    PropTypes.shape({ current: PropTypes.any }),
-  ]),
   required: PropTypes.bool,
   /**
    * Size of the field.

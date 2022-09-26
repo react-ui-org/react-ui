@@ -107,7 +107,6 @@ TextField.defaultProps = {
   inputSize: null,
   isLabelVisible: true,
   layout: 'vertical',
-  ref: undefined,
   required: false,
   size: 'medium',
   type: 'text',
@@ -157,14 +156,6 @@ TextField.propTypes = {
    * as the value is inherited in such case.
    */
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
-  /**
-   * Reference forwarded to the `input` element.
-   */
-  ref: PropTypes.oneOfType([
-    PropTypes.func,
-    // eslint-disable-next-line react/forbid-prop-types
-    PropTypes.shape({ current: PropTypes.any }),
-  ]),
   /**
    * If `true`, the input will be required.
    */
