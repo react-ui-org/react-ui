@@ -11,7 +11,7 @@
     }
 }
 
-@mixin bottom($category: default) {
+@mixin bottom($category: base) {
     @if not map.has-key(spacing.$bottom, $category) {
         @error "Invalid spacing category specified! #{$category} doesn't exist. "
             + "Choose one of #{map.keys(spacing.$bottom)}.";

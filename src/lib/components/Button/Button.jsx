@@ -127,7 +127,9 @@ Button.propTypes = {
   /**
    * [Color variant](/foundation/colors#component-colors) to clarify importance and meaning of the button.
    */
-  color: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'danger', 'help', 'info', 'note', 'light', 'dark']),
+  color: PropTypes.oneOf(
+    ['primary', 'secondary', 'selected', 'success', 'warning', 'danger', 'help', 'info', 'note', 'light', 'dark'],
+  ),
   /**
    * If `true`, the button will be disabled.
    *

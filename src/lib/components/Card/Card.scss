@@ -1,6 +1,5 @@
 // 1. Retain equal card widths in flex and grid layouts independently on their content.
 
-@use "../../styles/theme/colors";
 @use "theme";
 @use "tools";
 
@@ -31,14 +30,6 @@
 
 .isRootRaised {
     box-shadow: theme.$raised-box-shadow;
-}
-
-.isRootColorPrimary {
-    @include tools.color(primary);
-}
-
-.isRootColorSecondary {
-    @include tools.color(secondary);
 }
 
 .isRootColorSuccess {

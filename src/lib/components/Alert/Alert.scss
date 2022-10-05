@@ -56,21 +56,13 @@
     @include accessibility.min-tap-target();
 
     padding: theme.$padding;
-    font-size: map.get(typography.$size-values, 3);
+    font-size: map.get(typography.$size-values, 4);
     line-height: 1;
 }
 
 .closeSign {
     position: relative;
     top: -0.1em;
-}
-
-.isRootColorPrimary {
-    @include tools.color(primary);
-}
-
-.isRootColorSecondary {
-    @include tools.color(secondary);
 }
 
 .isRootColorSuccess {

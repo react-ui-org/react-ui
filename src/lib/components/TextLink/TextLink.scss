@@ -8,4 +8,9 @@
         text-decoration: theme.$hover-text-decoration;
         color: theme.$hover-color;
     }
+
+    &:active {
+        text-decoration: theme.$active-text-decoration;
+        color: theme.$active-color;
+    }
 }

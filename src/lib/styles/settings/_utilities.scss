@@ -1,5 +1,4 @@
 @use "sass:map";
-@use "../theme/colors";
 @use "../theme/spacing";
 @use "../theme/typography";
 
@@ -99,17 +98,21 @@ $map: (
         property: color,
         class: text,
         values: (
-            primary: map.get(colors.$brand, primary),
-            secondary: map.get(colors.$brand, secondary),
-            success: map.get(colors.$ui, success),
-            warning: map.get(colors.$ui, warning),
-            danger: map.get(colors.$ui, danger),
-            help: map.get(colors.$ui, help),
-            info: map.get(colors.$ui, info),
-            note: map.get(colors.$ui, note),
-            light: colors.$light,
-            dark: colors.$dark,
-            muted: colors.$muted,
+            // Text colors
+            primary: var(--rui-color-text-primary),
+            primary-disabled: var(--rui-color-text-primary-disabled),
+            secondary: var(--rui-color-text-secondary),
+            secondary-disabled: var(--rui-color-text-secondary-disabled),
+            // Feedback colors
+            success: var(--rui-color-feedback-success),
+            warning: var(--rui-color-feedback-warning),
+            danger: var(--rui-color-feedback-danger),
+            help: var(--rui-color-feedback-help),
+            info: var(--rui-color-feedback-info),
+            note: var(--rui-color-feedback-note),
+            // Neutral colors
+            light: var(--rui-color-neutral-light),
+            dark: var(--rui-color-neutral-dark),
         ),
     ),
 );

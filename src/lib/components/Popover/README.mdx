@@ -90,17 +90,17 @@ complete list of accepted values.
         <ToolbarItem>
           <ButtonGroup aria-labelledby="alignment-options-label">
             <Button
-              color={align === '-start' ? 'dark' : 'primary'}
+              color={align === '-start' ? 'selected' : 'primary'}
               label="start"
               onClick={() => setAlign('-start')}
             />
             <Button
-              color={align === '' ? 'dark' : 'primary'}
+              color={align === '' ? 'selected' : 'primary'}
               label="center"
               onClick={() => setAlign('')}
             />
             <Button
-              color={align === '-end' ? 'dark' : 'primary'}
+              color={align === '-end' ? 'selected' : 'primary'}
               label="end"
               onClick={() => setAlign('-end')}
             />

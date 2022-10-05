@@ -1,6 +1,4 @@
-@use "sass:map";
 @use "../theme/code";
-@use "../theme/colors";
 
 code,
 pre {
@@ -10,5 +8,5 @@ pre {
 
 code {
     padding: 0.15em 0.5em;
-    background-color: map.get(colors.$grays, gray-100);
+    background-color: var(--rui-color-background-light);
 }

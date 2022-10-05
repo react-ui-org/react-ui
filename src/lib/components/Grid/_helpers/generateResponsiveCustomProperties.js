@@ -1,6 +1,6 @@
 const prepareValueByType = (value, type) => {
   if (type === 'spacing') {
-    return `var(--rui-spacing-${value})`;
+    return `var(--rui-dimension-space-${value})`;
   }
 
   return value;

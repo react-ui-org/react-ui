@@ -6,16 +6,6 @@ $emphasis-font-weight: var(--rui-Alert__emphasis__font-weight);
 $stripe-width: var(--rui-Alert__stripe__width);
 
 $colors: (
-    primary: (
-        color: var(--rui-Alert--primary__color),
-        foreground-color: var(--rui-Alert--primary__foreground-color),
-        background-color: var(--rui-Alert--primary__background-color),
-    ),
-    secondary: (
-        color: var(--rui-Alert--secondary__color),
-        foreground-color: var(--rui-Alert--secondary__foreground-color),
-        background-color: var(--rui-Alert--secondary__background-color),
-    ),
     success: (
         color: var(--rui-Alert--success__color),
         foreground-color: var(--rui-Alert--success__foreground-color),

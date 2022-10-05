@@ -40,7 +40,17 @@ export default {
       name: 'Getting Started',
     },
     {
-      menu: [],
+      menu: [
+        'Design Tokens',
+        'Colors',
+        'Typography',
+        'Spacing',
+        'Borders',
+        'Shadows',
+        'Breakpoints',
+        'Accessibility',
+        'Icons',
+      ],
       name: 'Foundation',
     },
     {
@@ -105,7 +115,7 @@ export default {
       fontSize: 1,
     },
     fonts: {
-      monospace: 'var(--rui-code-font-family)',
+      monospace: 'var(--rui-font-family-monospace)',
     },
     footer: {
       navigation: true,
@@ -167,7 +177,7 @@ export default {
         },
         '& [data-testid="playground"] > div:last-child > div': { // Visually emphasize the resize bar.
           '&:hover, &:active': {
-            borderRightColor: 'var(--rui-color-note)',
+            borderRightColor: 'var(--rui-color-action-selected)',
           },
           borderRight: '3px solid transparent',
           transition: 'border-color 200ms ease-in-out',
@@ -208,7 +218,7 @@ export default {
         px: 4,
         py: 6,
         table: {
-          fontSize: 'var(--rui-typography-size-0)',
+          fontSize: 'var(--rui-font-size-1)',
           minWidth: '0 !important',
         },
         'table tbody td:first-child': {
@@ -233,12 +243,16 @@ export default {
         },
       },
       a: {
-        '&:hover': {
-          color: 'var(--rui-link-hover-color)',
-          textDecoration: 'var(--rui-link-hover-decoration)',
+        '&:active': {
+          color: 'var(--rui-color-action-link-active)',
+          textDecoration: 'var(--rui-text-decoration-link-active)',
         },
-        color: 'var(--rui-link-color)',
-        textDecoration: 'var(--rui-link-decoration)',
+        '&:hover': {
+          color: 'var(--rui-color-action-link-hover)',
+          textDecoration: 'var(--rui-text-decoration-link-hover)',
+        },
+        color: 'var(--rui-color-action-link)',
+        textDecoration: 'var(--rui-text-decoration-link)',
       },
       root: {
         '--theme-ui-colors-playground-bg': 'rgba(179, 179, 179, 0.1)', // Make components with white background stand out.
