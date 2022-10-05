@@ -20,38 +20,51 @@ for two main reasons:
 
 ## Theming Options
 
-CSS custom properties are used to define common visual properties like colors,
-fonts, borders, shadows, or spacing. They come prefixed with `rui-` so they
-don't get in way of other custom properties in your project.
+[Design tokens](/foundation/design-tokens) are used to define common visual
+properties like colors, fonts, borders, shadows, or spacing. CSS custom
+properties are the technical representation of the design tokens in React UI.
 
-Theming options come grouped into three sections according to what they
-describe:
+All CSS custom properties in React UI come prefixed with `rui-` so they don't
+get in way of other custom properties in your project.
 
-1. design tokens,
-2. layout components,
-3. UI components.
+Just like the design tokens, the custom properties come grouped according to
+their type:
 
-You can adjust any of these options in your styles. See the [default theme] for
-the full list of available settings.
+1. alias design tokens,
+2. component-specific tokens.
 
-### Design Tokens
+You can adjust any of the properties in your styles. See the [default theme] for
+the full list of available custom properties.
 
-Design tokens are special variables that define the smallest pieces of a design
-language, especially colors, typography, or spacing.
+### Alias Design Tokens
 
-Design token names shouldn't be complex nor long so they are simply lowercase
-and hyphenated:
+The alias token names are not complex nor long, so they are simply lowercase and
+hyphenated.
+
+The alias token names are written in the following format:
+
+`--rui-<type>-[<group>]-<name>-[<state>]`
+
+Where:
+
+- `<type>` is one of: `color`, `dimension`, `font-family`, `font-weight`,
+  `shadow`, as suggested by the [Design Tokens Format][dtf] proposal. However,
+  additional custom types like `font-size`, `line-height`, or `text-decoration`
+  are also used as they prove necessary.
+- `<group>` optionally groups multiple related values, e.g. `text`,
+  `background`, `action`, etc.
+- `<name>` is the name of the token, e.g. `primary`, `base`, or `light`. Scales
+  can be presented as numbered sequences, e.g. `space-[0-7]`, `size-[1-6]`, etc.
+- `<state>` describes additional interaction variants of the token: `hover`,
+  `active`, `disabled`.
+
+Example alias design tokens represented by CSS custom properties:
 
 ```css
 :root {
-  --rui-spacing-0: 0;
-  --rui-spacing-1: 0.25rem;
-  --rui-spacing-2: 0.5rem;
-  --rui-spacing-3: 0.75rem;
-  --rui-spacing-4: 1rem;
-  --rui-spacing-5: 1.5rem;
-  --rui-spacing-6: 2rem;
-  --rui-spacing-7: 3rem;
+  --rui-color-text-primary: #000;
+  --rui-dimension-space-3: 0.75rem;
+  --rui-font-family-base: "Titillium Web", helvetica, roboto, arial, sans-serif;
 }
 ```
 
@@ -59,13 +72,14 @@ and hyphenated:
 custom properties [cannot be used within media queries][w3c-custom-properties]
 (because a media query is not a CSS property).
 
-### Components
+### Component-Specific Tokens
 
 It is also possible to adjust some properties on individual components level,
-preferably by reusing design tokens.
+preferably by reusing (inheriting) the alias design tokens.
 
-Component names use naming convention that is familiar to many
-web developers because it looks like BEM (or SUIT CSS, more precisely):
+Due to higher complexity, component-specific tokens use a naming convention that
+many web developers will find familiar because it works like [BEM] (with
+prefixes and component name syntax taken from [SUIT CSS], to be precise):
 
 `--rui-<ComponentName>--[<modification(s)>]__[<element>]--[<modification(s)>]__<property>--[<modification>]`
 
@@ -83,17 +97,17 @@ Where:
   where a CSS property wouldn't tell enough (e.g. `initial-offset`,
   `check-background-color`, `tap-target-size`).
 
-Example component theming options:
+Example component-specific custom properties:
 
 ```css
 :root {
-  --rui-Button--filled--primary--default__color: var(--rui-color-on-primary);
-  --rui-Button--filled--primary--default__border-color: var(--rui-color-primary);
-  --rui-Button--filled--primary--default__background: var(--rui-color-primary);
+  --rui-Button--filled--primary--default__color: var(--rui-color-action-on-primary);
+  --rui-Button--filled--primary--default__border-color: var(--rui-color-action-primary);
+  --rui-Button--filled--primary--default__background: var(--rui-color-action-primary);
   --rui-Button--filled--primary--default__box-shadow: none;
-  --rui-Button--filled--primary--hover__color: var(--rui-color-on-primary);
-  --rui-Button--filled--primary--hover__border-color: var(--rui-color-primary-dark);
-  --rui-Button--filled--primary--hover__background: var(--rui-color-primary-dark);
+  --rui-Button--filled--primary--hover__color: var(--rui-color-action-on-primary);
+  --rui-Button--filled--primary--hover__border-color: var(--rui-color-action-primary-hover);
+  --rui-Button--filled--primary--hover__background: var(--rui-color-action-primary-hover);
   --rui-Button--filled--primary--hover__box-shadow: none;
 }
 ```
@@ -103,13 +117,13 @@ Example component theming options:
 Colors, breakpoints, and SVG definitions used in `theme.scss` are preprocessed
 with SCSS first. This enables us to:
 
-- generate color palette programmatically,
+- generate our internal color palette programmatically,
 - keep actual breakpoint values in a single place in the code,
 - keep `theme.scss` uncluttered by inline SVG.
 
 It's entirely up to you what format you decide to use for storing the theme.
-Both `theme.scss` and `theme.css` will work equally well, it only matters if
-the custom properties make it from the theme file to browser.
+Both `theme.scss` and `theme.css` will work equally well. It only matters if the
+custom properties make it from the theme file to browser.
 
 👉 Just remember everything in the [theme constants] directory is intended only
 for usage within `theme.scss`. Otherwise, the theming system may not work as
@@ -121,18 +135,21 @@ directly in your stylesheet, or through an intermediate, shareable layer like
 
 ## Best Practices
 
-It's a good idea to start with changing **design tokens first**. Widely reused
-settings such as colors, typography, borders, or spacing values should be
-adjusted first because they define basic appearance of all components.
+It's a good idea to start with changing the **alias design tokens first**.
+Widely reused settings such as colors, typography, borders, or spacing values
+should be adjusted first because they define basic appearance of all components.
 
 Having finished the customization at the global level, you can **then proceed to
 customizing the appearance of individual components** — if necessary at all.
-Even then you should also reuse existing design tokens as much as possible to
-ensure that your UI is consistent and works as a system.
+Even then you should also reuse existing alias design tokens as much as
+possible to ensure that your UI is consistent and works as a system.
 
 For the same reason, if you have any custom components in your UI, you should
-**reuse design tokens in your own CSS** too.
+**reuse the alias design tokens in your own CSS** too.
 
 [default theme]: https://github.com/react-ui-org/react-ui/blob/master/src/lib/theme.scss
+[dtf]: https://design-tokens.github.io/community-group/format/
 [theme constants]: https://github.com/react-ui-org/react-ui/blob/master/src/lib/styles/theme-constants
 [w3c-custom-properties]: https://www.w3.org/TR/css-variables-1/#using-variables
+[BEM]: https://getbem.com
+[SUIT CSS]: https://suitcss.github.io

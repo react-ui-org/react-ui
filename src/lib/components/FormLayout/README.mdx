@@ -146,22 +146,22 @@ with CSS custom properties.
           <ToolbarItem>
             <ButtonGroup aria-labelledby="label-width-options-label">
               <Button
-                color={labelWidth === 'default' ? 'dark' : 'primary'}
+                color={labelWidth === 'default' ? 'selected' : 'primary'}
                 label="default"
                 onClick={() => setLabelWidth('default')}
               />
               <Button
-                color={labelWidth === 'auto' ? 'dark' : 'primary'}
+                color={labelWidth === 'auto' ? 'selected' : 'primary'}
                 label="auto"
                 onClick={() => setLabelWidth('auto')}
               />
               <Button
-                color={labelWidth === 'limited' ? 'dark' : 'primary'}
+                color={labelWidth === 'limited' ? 'selected' : 'primary'}
                 label="limited"
                 onClick={() => setLabelWidth('limited')}
               />
               <Button
-                color={labelWidth === 'custom' ? 'dark' : 'primary'}
+                color={labelWidth === 'custom' ? 'selected' : 'primary'}
                 label="custom"
                 onClick={() => setLabelWidth('custom')}
               />
@@ -353,12 +353,12 @@ This is a demo of all components supported by FormLayout.
           <ToolbarItem>
             <ButtonGroup>
               <Button
-                color={fieldLayout === 'vertical' ? 'dark' : 'primary'}
+                color={fieldLayout === 'vertical' ? 'selected' : 'primary'}
                 label="Vertical layout"
                 onClick={() => setFieldLayout('vertical')}
               />
               <Button
-                color={fieldLayout === 'horizontal' ? 'dark' : 'primary'}
+                color={fieldLayout === 'horizontal' ? 'selected' : 'primary'}
                 label="Horizontal layout"
                 onClick={() => setFieldLayout('horizontal')}
               />

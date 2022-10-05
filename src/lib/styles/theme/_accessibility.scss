@@ -1,7 +1,7 @@
 // 1. Make it possible to keep the original box shadow of the component: if `--rui-focus-box-shadow` is set to
 //    `initial`, `revert` or `unset`, `--rui-local-box-shadow` is used.
 
-$tap-target-size: var(--rui-tap-target-size);
-$focus-outline: var(--rui-focus-outline);
-$focus-outline-offset: var(--rui-focus-outline-offset);
-$focus-box-shadow: var(--rui-focus-box-shadow, var(--rui-local-box-shadow, initial)); // 1.
+$tap-target-size: var(--rui-dimension-tap-target-size);
+$focus-outline: var(--rui-border-focus-ring);
+$focus-outline-offset: var(--rui-dimension-focus-ring-offset);
+$focus-box-shadow: var(--rui-shadow-focus-ring, var(--rui-local-box-shadow, initial)); // 1.

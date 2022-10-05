@@ -11,6 +11,10 @@
     @include tools.button-color(filled, secondary);
 }
 
+.isRootPriorityFilled.isRootColorSelected {
+    @include tools.button-color(filled, selected);
+}
+
 .isRootPriorityFilled.isRootColorSuccess {
     @include tools.button-color(filled, success);
 }
@@ -51,6 +55,10 @@
     @include tools.button-color(outline, secondary);
 }
 
+.isRootPriorityOutline.isRootColorSelected {
+    @include tools.button-color(outline, selected);
+}
+
 .isRootPriorityOutline.isRootColorSuccess {
     @include tools.button-color(outline, success);
 }
@@ -89,6 +97,10 @@
 
 .isRootPriorityFlat.isRootColorSecondary {
     @include tools.button-color(flat, secondary);
+}
+
+.isRootPriorityFlat.isRootColorSelected {
+    @include tools.button-color(flat, selected);
 }
 
 .isRootPriorityFlat.isRootColorSuccess {

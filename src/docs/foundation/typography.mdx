@@ -11,19 +11,19 @@ import { Playground } from 'docz'
 Typography is the basic means to present information to users. It also serves to
 communicate the hierarchy of a page.
 
-👉 You can adjust all custom properties on this page (and more) in your theme by
-overriding values in the
-[design tokens](/customize/theming/overview#design-tokens) section.
+👉 All values on this page can be changed by
+[overriding](/customize/theming/overview) values in your
+[design tokens](/foundation/design-tokens).
 
 Basic typography showcase:
 
 <Playground>
-  <h4 className="typography-size-0">Font size 0 (base font size)</h4>
-  <h4 className="typography-size-1">Font size 1</h4>
+  <h4 className="typography-size-1">Font size 1 (base font size)</h4>
   <h4 className="typography-size-2">Font size 2</h4>
   <h4 className="typography-size-3">Font size 3</h4>
   <h4 className="typography-size-4">Font size 4</h4>
   <h4 className="typography-size-5">Font size 5</h4>
+  <h4 className="typography-size-6">Font size 6</h4>
   <p>
     Curabitur sagittis hendrerit ante. Integer pellentesque quam vel velit. Sed
     vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem.
@@ -58,37 +58,43 @@ Basic typography showcase:
   </ol>
 </Playground>
 
-React UI is designed with
-[Titillium Web](https://fonts.google.com/specimen/Titillium+Web) font,
-a geometric sans with a wide variety of weights and styles. You can change it to
-a custom font by [overriding](/customize/theming/overview) the
-`--rui-typography-font-family-base` CSS custom property:
+React UI is designed with [Titillium Web] font, a geometric sans with a wide
+variety of weights and styles. You can change it to a custom font by
+[overriding](/customize/theming/overview) the `--rui-font-family-base` CSS
+custom property:
 
 ```css
 :root {
-  --rui-typography-font-family-base: 'Titillium Web', helvetica, roboto, arial, sans-serif;
+  --rui-font-family-base: 'Titillium Web', helvetica, roboto, arial, sans-serif;
 }
 ```
 
-Font size and weight values can be customised as well:
+Font size, font weight, and line height values can be customised as well:
 
 ```css
 :root {
-  --rui-typography-font-size-base: 100%;
-  --rui-typography-line-height-base: 1.5;
-  --rui-typography-line-height-small: 1.25;
-  --rui-typography-size-0: 1rem;
-  --rui-typography-size-1: 1.125rem;
-  --rui-typography-size-2: 1.266rem;
-  --rui-typography-size-3: 1.424rem;
-  --rui-typography-size-4: 1.602rem;
-  --rui-typography-size-5: 1.802rem;
-  --rui-typography-size-small: 0.889rem;
-  --rui-typography-size-smaller: 0.75rem;
-  --rui-typography-font-weight-thin: 100;
-  --rui-typography-font-weight-light: 300;
-  --rui-typography-font-weight-regular: 400;
-  --rui-typography-font-weight-medium: 500;
-  --rui-typography-font-weight-bold: 700;
+  /* Font sizes */
+  --rui-font-size-base: 100%;
+  --rui-font-size-small: 0.889rem;
+  --rui-font-size-smaller: 0.75rem;
+  --rui-font-size-code: 85%;
+
+  --rui-font-size-1: 1rem;
+  --rui-font-size-2: 1.125rem;
+  --rui-font-size-3: 1.266rem;
+  --rui-font-size-4: 1.424rem;
+  --rui-font-size-5: 1.602rem;
+  --rui-font-size-6: 1.802rem;
+
+  /* Line heights */
+  --rui-line-height-base: 1.5;
+  --rui-line-height-small: 1.25;
+
+  /* Font weights */
+  --rui-font-weight-base: 400;
+  --rui-font-weight-light: 300;
+  --rui-font-weight-bold: 700;
 }
 ```
+
+[Titillium Web]: https://fonts.google.com/specimen/Titillium+Web

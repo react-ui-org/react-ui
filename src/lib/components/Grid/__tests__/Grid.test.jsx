@@ -40,13 +40,13 @@ const responsiveStyles = (infix) => ({
 });
 
 const responsiveSpacingStyles = (infix) => ({
-  [`--rui-local-${infix}-xs`]: 'var(--rui-spacing-1)',
-  [`--rui-local-${infix}-sm`]: 'var(--rui-spacing-2)',
-  [`--rui-local-${infix}-md`]: 'var(--rui-spacing-3)',
-  [`--rui-local-${infix}-lg`]: 'var(--rui-spacing-4)',
-  [`--rui-local-${infix}-xl`]: 'var(--rui-spacing-5)',
-  [`--rui-local-${infix}-x2l`]: 'var(--rui-spacing-6)',
-  [`--rui-local-${infix}-x3l`]: 'var(--rui-spacing-7)',
+  [`--rui-local-${infix}-xs`]: 'var(--rui-dimension-space-1)',
+  [`--rui-local-${infix}-sm`]: 'var(--rui-dimension-space-2)',
+  [`--rui-local-${infix}-md`]: 'var(--rui-dimension-space-3)',
+  [`--rui-local-${infix}-lg`]: 'var(--rui-dimension-space-4)',
+  [`--rui-local-${infix}-xl`]: 'var(--rui-dimension-space-5)',
+  [`--rui-local-${infix}-x2l`]: 'var(--rui-dimension-space-6)',
+  [`--rui-local-${infix}-x3l`]: 'var(--rui-dimension-space-7)',
 });
 
 const defaultProps = {
@@ -90,7 +90,7 @@ describe('rendering', () => {
     ],
     [
       { columnGap: 0 },
-      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-column-gap-xs': 'var(--rui-spacing-0)' }),
+      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-column-gap-xs': 'var(--rui-dimension-space-0)' }),
     ],
     [
       { columns: responsiveBreakpoints },
@@ -122,7 +122,7 @@ describe('rendering', () => {
     ],
     [
       { rowGap: 0 },
-      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-row-gap-xs': 'var(--rui-spacing-0)' }),
+      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-row-gap-xs': 'var(--rui-dimension-space-0)' }),
     ],
     [
       { rows: responsiveBreakpoints },

@@ -1,20 +1,18 @@
-@use "sass:map";
-@use "../../../lib/styles/theme/colors";
 @use "../../../lib/styles/tools/spacing";
 
 .root {
     width: var(--rui-local-width, auto);
     height: var(--rui-local-height, auto);
     padding: spacing.of(3);
-    background-color: colors.$white;
+    background-color: var(--rui-color-background-layer-1);
 }
 
 .rootBordered {
-    border: 2px dashed map.get(colors.$grays, gray-200);
+    border: 2px dashed var(--rui-color-border-secondary);
 }
 
 .rootDark {
-    background-color: var(--rui-color-dark);
+    background-color: var(--rui-color-neutral-dark);
 }
 
 .rootInline {

@@ -192,24 +192,24 @@ state of individual buttons can be indicated by showing an icon.
   </ButtonGroup>
 </Playground>
 
-### Active State
+### Selected State
 
-To highlight the selected option, the active state can be achieved by setting
-a different button variant for the active item.
+To highlight the selected option, just apply the selected color variant for
+the desired item.
 
 <Playground>
   <ButtonGroup>
-    <Button color="dark" label="Week" />
+    <Button color="selected" label="Week" />
     <Button label="Month" />
     <Button label="Year" />
   </ButtonGroup>
   <ButtonGroup priority="outline">
-    <Button color="dark" label="Week" />
+    <Button color="selected" label="Week" />
     <Button label="Month" />
     <Button label="Year" />
   </ButtonGroup>
   <ButtonGroup priority="flat">
-    <Button color="dark" label="Week" />
+    <Button color="selected" label="Week" />
     <Button label="Month" />
     <Button label="Year" />
   </ButtonGroup>
@@ -224,7 +224,7 @@ and communicating the state of individual options.
   <>
     <span id="period-label">Period:</span>
     <ButtonGroup aria-labelledby="period-label">
-      <Button label="Week" aria-pressed color="dark" />
+      <Button label="Week" aria-pressed color="selected" />
       <Button label="Month" aria-pressed={false} />
       <Button label="Year" aria-pressed={false} />
     </ButtonGroup>

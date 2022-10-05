@@ -158,17 +158,17 @@ will override automatic break point selection in `auto` mode when present.
             <ToolbarItem>
               <ButtonGroup aria-labelledby="word-wrapping-options-label">
                 <Button
-                  color={wordWrapping === 'normal' ? 'dark' : 'primary'}
+                  color={wordWrapping === 'normal' ? 'selected' : 'primary'}
                   label="normal"
                   onClick={() => setWordWrapping('normal')}
                 />
                 <Button
-                  color={wordWrapping === 'long-words' ? 'dark' : 'primary'}
+                  color={wordWrapping === 'long-words' ? 'selected' : 'primary'}
                   label="long-words"
                   onClick={() => setWordWrapping('long-words')}
                 />
                 <Button
-                  color={wordWrapping === 'anywhere' ? 'dark' : 'primary'}
+                  color={wordWrapping === 'anywhere' ? 'selected' : 'primary'}
                   label="anywhere"
                   onClick={() => setWordWrapping('anywhere')}
                 />
@@ -182,17 +182,17 @@ will override automatic break point selection in `auto` mode when present.
             <ToolbarItem>
               <ButtonGroup aria-labelledby="hyphens-options-label">
                 <Button
-                  color={hyphens === 'none' ? 'dark' : 'primary'}
+                  color={hyphens === 'none' ? 'selected' : 'primary'}
                   label="none"
                   onClick={() => setHyphens('none')}
                 />
                 <Button
-                  color={hyphens === 'auto' ? 'dark' : 'primary'}
+                  color={hyphens === 'auto' ? 'selected' : 'primary'}
                   label="auto"
                   onClick={() => setHyphens('auto')}
                 />
                 <Button
-                  color={hyphens === 'manual' ? 'dark' : 'primary'}
+                  color={hyphens === 'manual' ? 'selected' : 'primary'}
                   label="manual"
                   onClick={() => setHyphens('manual')}
                 />

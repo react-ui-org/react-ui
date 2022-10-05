@@ -46,9 +46,7 @@ Card.propTypes = {
   /**
    * [Color variant](/foundation/colors#component-colors) to clarify importance and meaning of the card.
    */
-  color: PropTypes.oneOf(
-    ['primary', 'secondary', 'success', 'warning', 'danger', 'help', 'info', 'note', 'light', 'dark'],
-  ),
+  color: PropTypes.oneOf(['success', 'warning', 'danger', 'help', 'info', 'note', 'light', 'dark']),
   /**
    * Make the card more compact.
    */

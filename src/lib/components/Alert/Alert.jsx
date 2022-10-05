@@ -72,9 +72,7 @@ Alert.propTypes = {
   /**
    * [Color variant](/foundation/colors#component-colors) to clarify importance and meaning of the alert.
    */
-  color: PropTypes.oneOf(
-    ['primary', 'secondary', 'success', 'warning', 'danger', 'help', 'info', 'note', 'light', 'dark'],
-  ),
+  color: PropTypes.oneOf(['success', 'warning', 'danger', 'help', 'info', 'note', 'light', 'dark']),
   /**
    * Optional element to be displayed next to the alert body.
    */

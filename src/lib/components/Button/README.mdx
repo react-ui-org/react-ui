@@ -65,6 +65,7 @@ app. Use it sparingly but remember there should always be one on a screen.
 <Playground>
   <Button label="Primary" />
   <Button label="Secondary" color="secondary" />
+  <Button label="Selected" color="selected" />
   <Button label="Success" color="success" />
   <Button label="Warning" color="warning" />
   <Button label="Danger" color="danger" />
@@ -88,6 +89,7 @@ important but not primary in your app.
 <Playground>
   <Button priority="outline" label="Primary" />
   <Button priority="outline" label="Secondary" color="secondary" />
+  <Button priority="outline" label="Selected" color="selected" />
   <Button priority="outline" label="Success" color="success" />
   <Button priority="outline" label="Warning" color="warning" />
   <Button priority="outline" label="Danger" color="danger" />
@@ -108,6 +110,7 @@ the content.
 <Playground>
   <Button priority="flat" label="Primary" />
   <Button priority="flat" label="Secondary" color="secondary" />
+  <Button priority="flat" label="Selected" color="selected" />
   <Button priority="flat" label="Success" color="success" />
   <Button priority="flat" label="Warning" color="warning" />
   <Button priority="flat" label="Danger" color="danger" />
@@ -269,9 +272,11 @@ Disabled state makes the action unavailable.
 ### Feedback State
 
 When user's action triggers an asynchronous process on background, the button's
-feedback state can be indicated by showing an icon. The icon replaces button's
-label while retaining original dimensions of the button. Buttons in feedback
-state are automatically disabled to prevent unwanted interaction.
+feedback state (not to be mistaken with
+[feedback colors](/foundation/colors#component-colors)) can be indicated by
+showing an icon. The icon replaces button's label while retaining original
+dimensions of the button. Buttons in feedback state are automatically disabled
+to prevent unwanted interaction.
 
 Filled buttons in feedback state:
 

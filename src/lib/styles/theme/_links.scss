@@ -1,4 +1,6 @@
-$color: var(--rui-link-color);
-$decoration: var(--rui-link-decoration);
-$hover-color: var(--rui-link-hover-color);
-$hover-decoration: var(--rui-link-hover-decoration);
+$color: var(--rui-color-action-link);
+$decoration: var(--rui-text-decoration-link);
+$hover-color: var(--rui-color-action-link-hover);
+$hover-decoration: var(--rui-text-decoration-link-hover);
+$active-color: var(--rui-color-action-link-active);
+$active-decoration: var(--rui-text-decoration-link-active);

@@ -6,6 +6,7 @@ import {
 } from '@testing-library/react';
 import sinon from 'sinon';
 import userEvent from '@testing-library/user-event';
+import { actionColorPropTest } from '../../../../../tests/propTests/actionColorPropTest';
 import { blockPropTest } from '../../../../../tests/propTests/blockPropTest';
 import { colorPropTest } from '../../../../../tests/propTests/colorPropTest';
 import { refPropTest } from '../../../../../tests/propTests/refPropTest';
@@ -65,6 +66,7 @@ describe('rendering', () => {
       { beforeLabel: <div>before label</div> },
       (rootElement) => expect(within(rootElement).getByText('before label')),
     ],
+    ...actionColorPropTest,
     ...blockPropTest,
     ...colorPropTest,
     [

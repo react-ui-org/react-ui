@@ -8,11 +8,11 @@
     @include reset.button();
     @include accessibility.min-tap-target();
 
-    font-size: map.get(typography.$size-values, 3);
+    font-size: map.get(typography.$size-values, 4);
     line-height: 1;
     color: inherit;
 
     &:disabled {
-        cursor: var(--rui-disabled-cursor);
+        cursor: var(--rui-cursor-disabled);
     }
 }

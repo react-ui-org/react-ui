@@ -18,7 +18,8 @@ export const Swatch = ({ color }) => {
         style={{ backgroundColor: `var(${colorCustomProperty})` }}
       />
       <div className={styles.title}>
-        <strong>{color}</strong><br />
+        <strong>{color}</strong>
+        <br />
         {/* {colorValue.toUpperCase()}<br /> */}
         <code>{colorCustomProperty}</code>
       </div>

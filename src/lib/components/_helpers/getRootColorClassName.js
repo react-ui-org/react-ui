@@ -7,6 +7,10 @@ export const getRootColorClassName = (variant, styles) => {
     return styles.isRootColorSecondary;
   }
 
+  if (variant === 'selected') {
+    return styles.isRootColorSelected;
+  }
+
   if (variant === 'success') {
     return styles.isRootColorSuccess;
   }

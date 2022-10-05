@@ -10,7 +10,7 @@ describe('generateResponsiveCustomProperties', () => {
   test('with prop that is a spacing value', () => {
     expect(
       generateResponsiveCustomProperties(3, 'columns', 'spacing'),
-    ).toEqual({ '--rui-local-columns-xs': 'var(--rui-spacing-3)' });
+    ).toEqual({ '--rui-local-columns-xs': 'var(--rui-dimension-space-3)' });
   });
 
   test('with prop that is not an object', () => {

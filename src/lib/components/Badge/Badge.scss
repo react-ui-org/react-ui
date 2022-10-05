@@ -1,7 +1,6 @@
 @use "sass:map";
 @use "sass:math";
 @use "../../styles/theme/borders";
-@use "../../styles/theme/colors";
 @use "../../styles/theme/typography";
 
 $_badge-size: 1.25rem;
@@ -24,55 +23,45 @@ $_badge-size: 1.25rem;
     box-shadow: var(--rui-local-box-shadow, #{0 0 0 2px rgb(255 255 255 / 80%)});
 }
 
-.isRootColorPrimary {
-    --rui-local-color: #{map.get(colors.$brand, on-primary)};
-    --rui-local-background-color: #{map.get(colors.$brand, primary)};
-}
-
-.isRootColorSecondary {
-    --rui-local-color: #{map.get(colors.$brand, on-secondary)};
-    --rui-local-background-color: #{map.get(colors.$brand, secondary)};
-}
-
 .isRootColorSuccess {
-    --rui-local-color: #{map.get(colors.$ui, on-success)};
-    --rui-local-background-color: #{map.get(colors.$ui, success)};
+    --rui-local-color: var(--rui-color-feedback-on-success);
+    --rui-local-background-color: var(--rui-color-feedback-success);
 }
 
 .isRootColorWarning {
-    --rui-local-color: #{map.get(colors.$ui, on-warning)};
-    --rui-local-background-color: #{map.get(colors.$ui, warning)};
+    --rui-local-color: var(--rui-color-feedback-on-warning);
+    --rui-local-background-color: var(--rui-color-feedback-warning);
 }
 
 .isRootColorDanger {
-    --rui-local-color: #{map.get(colors.$ui, on-danger)};
-    --rui-local-background-color: #{map.get(colors.$ui, danger)};
+    --rui-local-color: var(--rui-color-feedback-on-danger);
+    --rui-local-background-color: var(--rui-color-feedback-danger);
 }
 
 .isRootColorHelp {
-    --rui-local-color: #{map.get(colors.$ui, on-help)};
-    --rui-local-background-color: #{map.get(colors.$ui, help)};
+    --rui-local-color: var(--rui-color-feedback-on-help);
+    --rui-local-background-color: var(--rui-color-feedback-help);
 }
 
 .isRootColorInfo {
-    --rui-local-color: #{map.get(colors.$ui, on-info)};
-    --rui-local-background-color: #{map.get(colors.$ui, info)};
+    --rui-local-color: var(--rui-color-feedback-on-info);
+    --rui-local-background-color: var(--rui-color-feedback-info);
 }
 
 .isRootColorNote {
-    --rui-local-color: #{map.get(colors.$ui, on-note)};
-    --rui-local-background-color: #{map.get(colors.$ui, note)};
+    --rui-local-color: var(--rui-color-feedback-on-note);
+    --rui-local-background-color: var(--rui-color-feedback-note);
 }
 
 .isRootColorLight {
-    --rui-local-color: #{colors.$dark};
-    --rui-local-background-color: #{colors.$light};
+    --rui-local-color: var(--rui-color-neutral-on-light);
+    --rui-local-background-color: var(--rui-color-neutral-light);
     --rui-local-box-shadow: none;
 }
 
 .isRootColorDark {
-    --rui-local-color: #{colors.$light};
-    --rui-local-background-color: #{colors.$dark};
+    --rui-local-color: var(--rui-color-neutral-on-dark);
+    --rui-local-background-color: var(--rui-color-neutral-dark);
     --rui-local-box-shadow: none;
 }
 
@@ -85,42 +74,34 @@ $_badge-size: 1.25rem;
     border: borders.$width solid currentColor;
 }
 
-.isRootPriorityOutline.isRootColorPrimary {
-    --rui-local-color: #{map.get(colors.$brand, primary)};
-}
-
-.isRootPriorityOutline.isRootColorSecondary {
-    --rui-local-color: #{map.get(colors.$brand, secondary)};
-}
-
 .isRootPriorityOutline.isRootColorSuccess {
-    --rui-local-color: #{map.get(colors.$ui, success)};
+    --rui-local-color: var(--rui-color-feedback-success);
 }
 
 .isRootPriorityOutline.isRootColorWarning {
-    --rui-local-color: #{map.get(colors.$ui, warning)};
+    --rui-local-color: var(--rui-color-feedback-warning);
 }
 
 .isRootPriorityOutline.isRootColorDanger {
-    --rui-local-color: #{map.get(colors.$ui, danger)};
+    --rui-local-color: var(--rui-color-feedback-danger);
 }
 
 .isRootPriorityOutline.isRootColorHelp {
-    --rui-local-color: #{map.get(colors.$ui, help)};
+    --rui-local-color: var(--rui-color-feedback-help);
 }
 
 .isRootPriorityOutline.isRootColorInfo {
-    --rui-local-color: #{map.get(colors.$ui, info)};
+    --rui-local-color: var(--rui-color-feedback-info);
 }
 
 .isRootPriorityOutline.isRootColorNote {
-    --rui-local-color: #{map.get(colors.$ui, note)};
+    --rui-local-color: var(--rui-color-feedback-note);
 }
 
 .isRootPriorityOutline.isRootColorLight {
-    --rui-local-color: #{colors.$light};
+    --rui-local-color: var(--rui-color-neutral-light);
 }
 
 .isRootPriorityOutline.isRootColorDark {
-    --rui-local-color: #{colors.$dark};
+    --rui-local-color: var(--rui-color-neutral-dark);
 }
