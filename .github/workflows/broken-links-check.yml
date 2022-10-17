@@ -13,6 +13,7 @@ jobs:
         uses: celinekurpershoek/link-checker@v1.0.1
         with:
           url: 'https://react-ui.io'
+          honorRobotExclusions: false
 
       - name: Get the result
         run: echo "${{steps.link-report.outputs.result}}"
