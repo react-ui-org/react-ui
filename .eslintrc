@@ -6,12 +6,12 @@
     "browser": true,
     "jest": true
   },
+  "ignorePatterns": ["src/docs/_assets/generated"],
   "overrides": [
     {
-      "files": ["**/*.md", "**/*.mdx"],
+      "files": ["**/*.md"],
       "extends": [
-        "plugin:markdown/recommended",
-        "plugin:mdx/recommended"
+        "plugin:markdown/recommended"
       ]
     }
   ],

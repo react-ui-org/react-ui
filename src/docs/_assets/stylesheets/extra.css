@@ -1,0 +1,410 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
+
+:root {
+  /* Visual configuration of the `<docoff-react-preview>` and `<docoff-react-base>` code */
+  /* The Prism theme CSS file, for options see: https://unpkg.com/browse/prismjs/themes/ */
+  --docoff-code-prism-css: https://unpkg.com/prismjs@1.29.0/themes/prism-twilight.min.css;
+  --docoff-code-font-size: 1rem;
+  --docoff-code-line-height: 1.5;
+  --docoff-code-font-family: "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", monospace;
+
+  /* Visual configuration of the `<docoff-react-preview>` live preview */
+  --docoff-preview-border-color: rgb(206, 212, 222);
+  --docoff-preview-border-radius: 0.35em;
+  /* To simplify multiple component presentation we add margin to all top level elements*/
+  --docoff-preview-children-margin: 0.25em;
+  /* To improve component presentation we add padding inside the shadow DOM */
+  --docoff-preview-padding: 1em;
+  /*Custom preview CSS file, typically this would be the CSS of your component */
+  --docoff-preview-css: /docs/_assets/generated/reactui.css;
+
+  /* Visual configuration of the `<docoff-placeholder>` element */
+  --docoff-placeholder-background-dark: #4d4d4d;
+  --docoff-placeholder-background-light: #fff;
+  --docoff-placeholder-border-color: #ccc;
+  --docoff-placeholder-border-width: 2px;
+}
+
+/* Color schemes */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #00778b;
+  --md-primary-fg-color--light: #fff;
+  --md-primary-fg-color--dark:  #006b7d;
+  --md-accent-fg-color: #007bff;
+  --md-typeset-a-color: #007bff;
+  --md-typeset-a-hover-color: #006fe6;
+  --md-default-bg-color: #fff;
+  --md-typeset-color: #2d3747;
+  --md-code-bg-color: rgb(242, 242, 242);
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #1a1a1a;
+  --md-primary-fg-color--light: #fff;
+  --md-primary-fg-color--dark:  #005f6f;
+  --md-accent-fg-color: #007bff;
+  --md-typeset-a-color: #007bff;
+  --md-typeset-a-hover-color: #ffede8;
+  --md-default-bg-color: #1a1a1a;
+  --md-typeset-color: #f2f2f2;
+  --md-code-bg-color: #000;
+}
+
+/* Document */
+html {
+  font-size: 100%;
+  scroll-margin-top: 4rem;
+  scroll-padding-top: 3.2rem;
+}
+
+body {
+  font-size: 1rem;
+  background-color: var(--md-default-bg-color);
+}
+
+/* Typography */
+code, kbd, pre {
+  font-family: var(--docoff-code-font-family);
+}
+
+.md-nav--primary .md-nav__item,
+.md-nav--primary .md-nav__title,
+.md-skip,
+.md-footer__direction,
+.md-typeset .md-input,
+.md-search__input,
+.md-search-result .md-typeset,
+.md-search-result .md-typeset :is(h1, h2),
+.md-search-result__meta,
+.md-search-result__more summary,
+.md-search-result__title,
+.md-search-result__teaser,
+.md-search-result__terms,
+.md-source,
+.md-top {
+  font-size: 1rem;
+}
+
+.md-nav,
+.md-copyright,
+.md-source__facts,
+.md-tag,
+.md-tooltip__inner,
+.md-typeset .footnote,
+.md-typeset .footnote-ref,
+.md-typeset .tabbed-labels > label {
+  font-size: 0.85rem;
+}
+
+.md-typeset {
+  font-size: 1.125rem;
+}
+
+.md-typeset a {
+  color: var(--md-typeset-a-color);
+  text-decoration: none;
+  text-underline-offset: 0.1875em;
+}
+
+.md-typeset a:hover {
+  color: var(--md-typeset-a-hover-color);
+  text-decoration: underline;
+}
+
+.md-typeset :is(h1, h2, h3, h4, h5, h6) {
+  font-weight: 700;
+}
+
+.md-typeset h1 {
+  margin-top: 0.8rem;
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  color: inherit;
+}
+
+.md-content .md-typeset h1 + p {
+  font-size: 1.5rem;
+}
+
+.md-typeset h2 {
+  margin-top: 3.2rem;
+  margin-bottom: 0.8rem;
+  font-size: 2rem;
+}
+
+.md-typeset h3 {
+  margin-top: 2.4rem;
+  margin-bottom: 0.8rem;
+  font-size: 1.75rem;
+}
+
+.md-typeset h4 {
+  margin-top: 1.6rem;
+  margin-bottom: 0.4rem;
+  font-size: 1.5rem;
+}
+.md-typeset h5,
+.md-typeset h6 {
+  margin-top: 1.6rem;
+  margin-bottom: 0.4rem;
+  font-size: 1.25rem;
+}
+
+.md-typeset blockquote {
+  margin-block: 2.4rem;
+  padding: 1.6rem 2rem;
+  background-color: var(--md-default-fg-color--lightest);
+}
+
+[dir="ltr"] .md-typeset blockquote {
+  padding-left: 2rem;
+}
+
+.md-typeset blockquote p {
+  font-size: 1.25rem;
+}
+
+.md-typeset blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.md-typeset ul {
+  list-style-type: square;
+}
+
+.md-typeset :is(ol, ul) li {
+  margin-bottom: 0.25rem;
+}
+
+.md-typeset ol li blockquote,
+.md-typeset ol li p,
+.md-typeset ul li blockquote,
+.md-typeset ul li p {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+}
+
+.md-typeset hr {
+  margin-block: 3.2rem;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  table-layout: auto;
+  display: table !important;
+}
+
+.md-typeset__table {
+  min-width: 100%;
+}
+
+.md-typeset table:not([class]) {
+  font-size: 1rem;
+  border: none;
+}
+
+.md-typeset table:not([class]) :is(th, td) {
+  padding: 0.75rem 0.5rem;
+  vertical-align: middle;
+  border-style: none none solid;
+  border-width: 1px;
+  border-color: var(--md-typeset-table-color);
+}
+
+/* Layout */
+.md-header {
+  height: 4rem;
+}
+
+.md-header__inner {
+  height: 100%;
+  padding: 0 0.5rem;
+}
+
+.md-header__title {
+  font-size: 1.5rem;
+}
+
+.md-header__button {
+  margin-inline: 0.75rem;
+}
+
+.md-main__inner {
+  margin-top: 0;
+}
+
+.md-tabs__link,
+.md-source {
+  color: var(--md-primary-fg-color--light);
+}
+
+.md-tabs__link {
+  font-size: 1.25rem;
+  text-transform: uppercase;
+}
+
+.md-header,
+.md-tabs {
+  background-color: var(--md-primary-fg-color--dark);
+}
+
+.md-nav {
+  line-height: 1.5;
+}
+
+.md-nav__link--active {
+  font-weight: 700;
+}
+
+.md-content__inner {
+  max-width: 50rem;
+  min-width: 0;
+  margin: 3.2rem 3rem 6.4rem;
+  padding-top: 0;
+}
+
+.md-sidebar {
+  padding-block: 1.6rem;
+}
+
+@media screen and (min-width: 76.25em) {
+  .md-grid {
+    max-width: 96%;
+  }
+
+  .md-content {
+    display: grid;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 59.9375em) {
+  .md-content__inner {
+    margin-inline: 8vw;
+  }
+}
+
+@media screen and (max-width: 76.1875em) {
+  .md-nav--primary .md-nav__title .md-nav__icon {
+    top: 1rem;
+  }
+}
+
+@media screen and (min-width: 76.25em) {
+
+  [dir="ltr"] .md-sidebar--secondary:not([hidden]) ~ .md-content > .md-content__inner,
+  [dir="rtl"] .md-sidebar--primary:not([hidden]) ~ .md-content > .md-content__inner {
+    margin-right: 3rem;
+  }
+
+  [dir="ltr"] .md-sidebar--primary:not([hidden]) ~ .md-content > .md-content__inner {
+    margin-left: 3rem;
+  }
+}
+
+@media screen and (max-width: 59.9375em) {
+  .md-nav__source {
+    padding-block: 0.8rem;
+  }
+}
+
+/* Search */
+.md-search-result__meta {
+  padding-block: 0.8rem;
+}
+
+.md-search-result__more > summary > div {
+  font-size: 0.85rem;
+}
+
+@media screen and (min-width: 60em) {
+  .md-search {
+    padding: 0;
+  }
+
+  .md-search__form {
+    height: 2.4rem;
+  }
+
+  .md-search__icon[for="__search"],
+  .md-search__options {
+    top: 0.6rem;
+  }
+
+  .md-search__output {
+    top: calc(100% - 2px);
+  }
+
+  .md-search-result__meta {
+    padding-block: 0.8rem;
+  }
+}
+
+/* Clipboard */
+.md-clipboard,
+.md-clipboard:is(:focus, :hover) {
+  color: white;
+}
+
+.md-clipboard::after {
+  color: var(--md-typeset-a-color);
+}
+
+:hover > .md-clipboard {
+  color: white;
+}
+
+/* Code */
+.md-typeset code {
+  padding: 0.15rem 0.25rem;
+  border-radius: 0.1875rem;
+}
+
+.md-typeset table pre > code {
+  display: inline;
+  padding: 0.15rem 0.25rem;
+  white-space: pre-wrap;
+}
+
+.md-typeset pre > code {
+  padding: 0;
+}
+
+pre[class*="language-"] {
+  background: rgb(40, 40, 40);
+  border-radius: 0.35em;
+  border: none;
+  overflow: hidden;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: var(--docoff-code-font-family) !important;
+  font-weight: 400;
+  font-size: 1rem;
+  text-shadow: none;
+}
+
+pre[class*="language-"],
+.docoff-Root,
+.md-typeset :is(p, ul, ol, dl) {
+  margin-top: 0;
+  margin-bottom: 1.6rem;
+}
+
+/* API */
+docoff-react-props {
+  display: block;
+  overflow-x: auto;
+}
+
+@media screen and (max-width: 44.9375em) {
+  docoff-react-props,
+  .docoff-Root,
+  .md-content__inner > .highlight {
+    margin-top: 0;
+    margin-bottom: 1.6rem;
+    margin-inline: -1rem;
+  }
+}

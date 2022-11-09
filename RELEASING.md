@@ -1,9 +1,3 @@
----
-name: Releasing
-route: /contribute/releasing
-menu: Contribute
----
-
 # Releasing
 
 The release process is fully automated so you can release a new version just
@@ -11,14 +5,14 @@ by bumping version number in `package.json`. However, there are several chances
 to adjust both version and changelog if you wish to do so for a reason.
 
 In order for the automation to work properly, contributors must follow the
-[contributing guidelines](/contribute/guidelines).
+[contributing guidelines][gh-contributing].
 
 ## How It Works
 
 1. Pull requests are automatically labelled by branch name. Labels are then used
    for:
 
-   1. resolving next [semantic version number](https://semver.org)
+   1. resolving next [semantic version number][semver]
       (BREAKING.FEATURE.PATCH),
    2. grouping changes in changelog.
 
@@ -31,11 +25,11 @@ See the source of `.github/workflows` for details.
 ## Release Process
 
 1. **As you go:** make sure all contributions follow the contributing
-   guidelines, especially the
-   [Git workflow](/contribute/guidelines#git-workflow) (correct PR names and
-   branch names). Check out the release draft on
-   [GitHub releases page](https://github.com/react-ui-org/react-ui/releases) to
-   see what the changelog looks like and what will be the next version number.
+   guidelines, especially the [Git workflow][gh-contributing-git] (correct
+   PR names and branch names). Check out the release draft on
+   [GitHub releases page][gh-releases] to see what the changelog looks like and
+   what will be the next version number.
+
    **Don't edit manually until you are ready to publish the release.** Release
    draft is automatically overwritten everytime a change is merged to `master`.
 
@@ -68,3 +62,8 @@ See the source of `.github/workflows` for details.
 
 **Note:** prefix version number with `v` everywhere except in `package.json` and
 `package-lock.json`.
+
+[semver]: https://semver.org
+[gh-contributing]: https://github.com/react-ui-org/react-ui/blob/master/CONTRIBUTING.md
+[gh-contributing-git]: https://github.com/react-ui-org/react-ui/blob/master/CONTRIBUTING.md#git-workflow
+[gh-releases]: https://github.com/react-ui-org/react-ui/releases

@@ -5,10 +5,8 @@ module.exports = {
   ],
   moduleNameMapper: {
     '\\.scss$': 'identity-obj-proxy',
+    '\\.svg$': '<rootDir>/tests/mocks/svgrMock.jsx',
   },
-  modulePathIgnorePatterns: [
-    '<rootDir>/.docz/',
-  ],
   setupFiles: [
     '<rootDir>/tests/setupJest.js',
   ],
@@ -17,4 +15,7 @@ module.exports = {
   ],
   testEnvironment: 'jsdom',
   verbose: true,
+  transformIgnorePatterns: [
+    'node_modules/(?!(@react-ui-org))'
+  ],
 };

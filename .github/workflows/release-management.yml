@@ -24,7 +24,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build
+        run: docker compose run --rm node_build_site && docker compose run --rm mkdocs_build_site
 
       - name: Test
         run: npm test
@@ -45,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: docs
-          path: docs
+          path: site
 
   update_release_draft:
     name: Update release draft

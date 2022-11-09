@@ -1,0 +1,125 @@
+# Project information
+site_name: 'React UI'
+site_description: 'React components for your design system'
+
+# Repository
+repo_url: 'https://github.com/react-ui-org/react-ui'
+repo_name: 'react-ui'
+edit_uri: 'blob/master/src'
+
+docs_dir: 'src'
+
+markdown_extensions:
+  - admonition
+  - def_list
+  - pymdownx.highlight:
+      use_pygments: false
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - attr_list
+  - md_in_html
+
+# Configuration
+theme:
+  name: material
+  language: 'en'
+  favicon: 'favicon.ico'
+  custom_dir: 'src/docs/_overrides'
+  font:
+    text: 'Titillium Web'
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.footer
+
+extra_css:
+  # CSS Tweaks
+  - docs/_assets/stylesheets/extra.css
+
+# Must be open to external connections since MkDocs run in a docker container
+dev_addr: '0.0.0.0:8000'
+
+nav:
+  - Introduction:
+      - Introduction: 'index.md'
+  - Basics:
+      - Getting Started:
+          - Installation: 'docs/getting-started/installation.md'
+          - Usage: 'docs/getting-started/usage.md'
+          - 'Browsers & Devices': 'docs/getting-started/browsers-and-devices.md'
+      - Foundation:
+          - 'Design Tokens': 'docs/foundation/design-tokens.md'
+          - 'Colors': 'docs/foundation/colors.md'
+          - 'Typography': 'docs/foundation/typography.md'
+          - 'Spacing': 'docs/foundation/spacing.md'
+          - 'Borders': 'docs/foundation/borders.md'
+          - 'Shadows': 'docs/foundation/shadows.md'
+          - 'Breakpoints': 'docs/foundation/breakpoints.md'
+          - 'Accessibility': 'docs/foundation/accessibility.md'
+          - 'Icons': 'docs/foundation/icons.md'
+  - Components:
+      - Actions:
+          - Button: 'components/Button/README.md'
+          - TextLink: 'components/TextLink/README.md'
+      - Inputs:
+          - CheckBoxField: 'components/CheckboxField/README.md'
+          - FileInputField: 'components/FileInputField/README.md'
+          - Radio: 'components/Radio/README.md'
+          - SelectField: 'components/SelectField/README.md'
+          - TextArea: 'components/TextArea/README.md'
+          - TextField: 'components/TextField/README.md'
+          - Toggle: 'components/Toggle/README.md'
+      - Layouts:
+          - ButtonGroup: 'components/ButtonGroup/README.md'
+          - FormLayout: 'components/FormLayout/README.md'
+          - Grid: 'components/Grid/README.md'
+          - InputGroup: 'components/InputGroup/README.md'
+          - Toolbar: 'components/Toolbar/README.md'
+      - Miscellaneous:
+          - Alert: 'components/Alert/README.md'
+          - Badge: 'components/Badge/README.md'
+          - Card: 'components/Card/README.md'
+          - Modal: 'components/Modal/README.md'
+          - Paper: 'components/Paper/README.md'
+          - Popover: 'components/Popover/README.md'
+          - ScrollView: 'components/ScrollView/README.md'
+          - Table: 'components/Table/README.md'
+          - Tabs: 'components/Tabs/README.md'
+          - Text: 'components/Text/README.md'
+  - Helpers:
+      - CSS Helpers:
+          - Animation: 'docs/css-helpers/animation.md'
+          - Box Alignment: 'docs/css-helpers/box-alignment.md'
+          - Colors: 'docs/css-helpers/colors.md'
+          - Display: 'docs/css-helpers/display.md'
+          - Spacing: 'docs/css-helpers/spacing.md'
+          - Typography: 'docs/css-helpers/typography.md'
+      - JS Helpers:
+          - Classnames: 'docs/js-helpers/classnames.md'
+  - Guides:
+      - Customize:
+          - Theming:
+              - Overview: 'docs/customize/theming/overview.md'
+              - Forms: 'docs/customize/theming/forms.md'
+          - Global Props: 'docs/customize/global-props.md'
+          - Translations: 'docs/customize/translations.md'
+      - Contribute:
+          - General Guidelines: 'docs/contribute/general-guidelines.md'
+          - API Guidelines: 'docs/contribute/api.md'
+          - Composition: 'docs/contribute/composition.md'
+          - CSS Guidelines: 'docs/contribute/css.md'
+          - Releasing: 'docs/contribute/releasing.md'
+
