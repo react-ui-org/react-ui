@@ -1,0 +1,107 @@
+@use "sass:map";
+@use "sass:math";
+@use "../../styles/theme/borders";
+@use "../../styles/theme/typography";
+
+$_badge-size: 1.25rem;
+
+.root {
+    display: inline-block;
+    min-width: $_badge-size;
+    height: $_badge-size;
+    padding: 0.25rem 0.35rem;
+    overflow: hidden;
+    font-weight: map.get(typography.$font-weight-values, bold);
+    font-size: typography.$font-size-smaller;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    color: var(--rui-local-color);
+    border-radius: math.div($_badge-size, 2);
+    background-color: var(--rui-local-background-color);
+    box-shadow: var(--rui-local-box-shadow, #{0 0 0 2px rgb(255 255 255 / 80%)});
+}
+
+.isRootColorSuccess {
+    --rui-local-color: var(--rui-color-feedback-on-success);
+    --rui-local-background-color: var(--rui-color-feedback-success);
+}
+
+.isRootColorWarning {
+    --rui-local-color: var(--rui-color-feedback-on-warning);
+    --rui-local-background-color: var(--rui-color-feedback-warning);
+}
+
+.isRootColorDanger {
+    --rui-local-color: var(--rui-color-feedback-on-danger);
+    --rui-local-background-color: var(--rui-color-feedback-danger);
+}
+
+.isRootColorHelp {
+    --rui-local-color: var(--rui-color-feedback-on-help);
+    --rui-local-background-color: var(--rui-color-feedback-help);
+}
+
+.isRootColorInfo {
+    --rui-local-color: var(--rui-color-feedback-on-info);
+    --rui-local-background-color: var(--rui-color-feedback-info);
+}
+
+.isRootColorNote {
+    --rui-local-color: var(--rui-color-feedback-on-note);
+    --rui-local-background-color: var(--rui-color-feedback-note);
+}
+
+.isRootColorLight {
+    --rui-local-color: var(--rui-color-neutral-on-light);
+    --rui-local-background-color: var(--rui-color-neutral-light);
+    --rui-local-box-shadow: none;
+}
+
+.isRootColorDark {
+    --rui-local-color: var(--rui-color-neutral-on-dark);
+    --rui-local-background-color: var(--rui-color-neutral-dark);
+    --rui-local-box-shadow: none;
+}
+
+.isRootPriorityOutline {
+    --rui-local-background-color: transparent;
+    --rui-local-box-shadow: none;
+
+    padding-top: 0.1875rem;
+    padding-bottom: 0.1875rem;
+    border: borders.$width solid currentcolor;
+}
+
+.isRootPriorityOutline.isRootColorSuccess {
+    --rui-local-color: var(--rui-color-feedback-success);
+}
+
+.isRootPriorityOutline.isRootColorWarning {
+    --rui-local-color: var(--rui-color-feedback-warning);
+}
+
+.isRootPriorityOutline.isRootColorDanger {
+    --rui-local-color: var(--rui-color-feedback-danger);
+}
+
+.isRootPriorityOutline.isRootColorHelp {
+    --rui-local-color: var(--rui-color-feedback-help);
+}
+
+.isRootPriorityOutline.isRootColorInfo {
+    --rui-local-color: var(--rui-color-feedback-info);
+}
+
+.isRootPriorityOutline.isRootColorNote {
+    --rui-local-color: var(--rui-color-feedback-note);
+}
+
+.isRootPriorityOutline.isRootColorLight {
+    --rui-local-color: var(--rui-color-neutral-light);
+}
+
+.isRootPriorityOutline.isRootColorDark {
+    --rui-local-color: var(--rui-color-neutral-dark);
+}

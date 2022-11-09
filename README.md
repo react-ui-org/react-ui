@@ -10,7 +10,7 @@ React UI is a themeable, performant, responsive UI library for React apps.
 Use it simply with no configuration or have full control over your design by
 tweaking some of the hundreds theming options available.
 
-**[Explore React UI docs →](https://react-ui.io)**
+**[Explore React UI docs →][rui-docs]**
 
 ## Key Concepts
 
@@ -38,7 +38,7 @@ these requirements:
 </p>
 
 > Development of React UI is largely supported by
-> [RACOM](https://www.racom.eu)—one of the leading global players in wireless
+> [RACOM]—one of the leading global players in wireless
 > Critical Infrastructure.
 
 ## Quick Start Guide
@@ -81,8 +81,7 @@ To install React UI in your app:
    <Button label="My Button" />
    ```
 
-Head to [the docs](https://react-ui.io) to see how to use, customize, and
-extend React UI.
+Head to [the docs][rui-docs] to see how to use, customize, and extend React UI.
 
 ### Development Mode
 
@@ -114,6 +113,9 @@ Then run webpack with the `--mode=production` or `--mode=development` flag.
 
 We appreciate any contributions you might make. 🙏
 
-Please check out our
-[Contributing Guide](https://react-ui.io/contribute/guidelines). It includes
+Please check out our [Contributing Guide][gh-contributing]. It includes
 contribution guidelines and information on how to run and develop the project.
+
+[rui-docs]: https://react-ui.io
+[RACOM]: https://www.racom.eu
+[gh-contributing]: https://github.com/react-ui-org/react-ui/blob/master/CONTRIBUTING.md

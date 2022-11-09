@@ -1,24 +1,83 @@
----
-name: General Guidelines
-route: /contribute/guidelines
-menu: Contribute
----
-
 # Contributing
 
 In the first place, thank you for your interest in contributing! 🙏
 
 ## Development
 
-To build the project:
+Working on the site requires:
 
-1. Install local npm packages: `npm install`
-2. Run the build: `npm run build`
+* [Docker]
+* [Docker Compose]
 
-To run the dev server:
+This allows running the documentation site which serves as a development platform.
 
-1. Install local npm packages: `npm install`
-2. Run the dev server (usually on `http://localhost:3000`): `npm start`
+### Configure Docker Compose
+
+Review the default env variable values in the `docker-compose.yml` file.
+The defaults should work for most systems, but can be changed if needed.
+
+To change them:
+
+1. Create a `.env` file from the template:
+
+    ```bash
+    cp .env.dist .env
+    ```
+
+2. Edit the new `.env` file as needed
+
+### Use Docker Compose
+
+#### Node shell
+
+All npm commands such as `npm ci`, `npm test`, `npm run eslint` and others you
+need to run them within the `node_shell` docker container.
+
+To log into the container, run:
+
+```bash
+docker compose run --rm node_shell
+```
+
+#### Run the Dev Server
+
+1. Install dependencies (run within `node_shell`):
+
+    ```bash
+    npm ci
+    ```
+
+2. Run development server (run on host):
+
+    ```bash
+    docker compose up node_dev_server mkdocs_dev_server
+    ```
+
+#### Build the Project
+
+1. Make sure the dev server is not running (run on host):
+
+    ```bash
+    docker compose down
+    ```
+
+2. Install dependencies (run within `node_shell`):
+
+    ```bash
+    npm ci
+    ```
+
+3. Build JS (run on host):
+
+    ```bash
+    docker compose run --rm node_build_site
+    ```
+
+4. Build mkDocs (run on host):
+
+    ```bash
+    docker compose run --rm mkdocs_build_site
+    ```
 
 ## Git Workflow
 
@@ -33,41 +92,42 @@ Actions), please follow these guidelines:
 
 3. **Name your branches according to nature of change.** Choose one of:
 
-   - `bc/*` for breaking changes
-   - `feature/*` for features
-   - `bugfix/*` for bugfixes
-   - `refactoring/*` for refactoring of the library
-   - `docs/*` or `documentation/*` for changes in docs
-   - `maintenance/*` for maintenance (builds, dependencies, automation, etc.)
-   - `release/*` for [releases](/contribute/releasing) (administrators only)
+    * `bc/*` for breaking changes
+    * `feature/*` for features
+    * `bugfix/*` for bugfixes
+    * `refactoring/*` for refactoring of the library
+    * `docs/*` or `documentation/*` for changes in docs
+    * `maintenance/*` for maintenance (builds, dependencies, automation, etc.)
+    * `release/*` for releases (administrators only)
 
 4. **Write clear, helpful and descriptive commit messages.**
 
-   1. **Use imperative and write in English,** e.g. _Update dependencies_ or
-      _Claim support for controlled components only_.
-   2. **If an issue exists for your changes, append the issue number** in
-      parentheses to the end of the commit message, e.g. _Update dependencies
-      (#261)_.
-   3. Optionally use Markdown code blocks to emphasize, e.g.
-      _Create `ScrollView` component (#53)_.
+    1. **Use imperative and write in English,** e.g. _Update dependencies_ or
+       _Claim support for controlled components only_.
+    2. **If an issue exists for your changes, append the issue number** in
+       parentheses to the end of the commit message, e.g. _Update dependencies
+       (#261)_.
+    3. Optionally use Markdown code blocks to emphasize, e.g.
+       _Create `ScrollView` component (#53)_.
 
 5. **Write clear, helpful and descriptive PR names.**
 
-   1. **All rules for commit messages apply** also for PR names.
-   2. **Always check that PR name meets the requirements** above because **PR
-      names are used in changelog**. GitHub automatically truncates long PR
-      names and picks up branch name for multi-commit PRs, so it's necessary to
-      make sure the PR name is what we want to have in the changelog.
-   3. **If an issue exists for your changes, append this text to PR
-      description** (the topmost comment in the PR) in order for the issue to be
-      closed automatically once the PR is merged: `Closes #<ISSUE NUMBER>`. You
-      will know the issue is linked correctly when it appears in the _Linked
-      issues_ section of the PR. (Having the issue mentioned in commit message
-      and/or PR name does _not_ have this effect.)
-   4. **If there is no issue for your changes, please add your PR to `The
-      Board`** GitHub project in the _Projects_ section of the PR. The correct
-      board column will be selected automatically. This helps us keep track of
-      what is in development.
+    1. **All rules for commit messages apply** also for PR names.
+    2. **Always check that PR name meets the requirements** above because **PR
+       names are used in changelog**. GitHub automatically truncates long PR
+       names and picks up branch name for multi-commit PRs, so it's necessary to
+       make sure the PR name is what we want to have in the changelog.
+    3. **If an issue exists for your changes, append this text to PR
+       description** (the topmost comment in the PR) in order for the issue
+       to be
+       closed automatically once the PR is merged: `Closes #<ISSUE NUMBER>`. You
+       will know the issue is linked correctly when it appears in the _Linked
+       issues_ section of the PR. (Having the issue mentioned in commit message
+       and/or PR name does _not_ have this effect.)
+    4. **If there is no issue for your changes, please add your PR to `The
+       Board`** GitHub project in the _Projects_ section of the PR. The correct
+       board column will be selected automatically. This helps us keep track of
+       what is in development.
 
 Pull requests are labelled automatically. You can add more labels to better
 qualify the nature of the change — in such case, it will be included in all
@@ -82,9 +142,8 @@ application with `npm link` so you can see it in action.
 1. In React UI repository, run `npm link`
 2. In your application, run `npm link @react-ui-org/react-ui`
 
-To prevent
-[Invalid Hook Call Warning](https://reactjs.org/warnings/invalid-hook-call-warning.html#duplicate-react)
-when React UI is linked, add the following code to your app's Webpack config:
+To prevent [Invalid Hook Call Warning][react-invalid-hook] when React UI is
+linked, add the following code to your app's Webpack config:
 
 ```js
 const path = require('path');
@@ -108,30 +167,13 @@ To keep React UI consistent and predictable the following guidelines should be o
 
 ## Documenting
 
-We use [Docz](https://docz.site) (powered by [Gatsby](https://www.gatsbyjs.com))
-as the documentation platform. The documentation itself is written in
-[MDX](https://mdxjs.com) format — a human-readable blend of the popular Markdown
-and JSX syntax.
+We use combination of [Material for MkDocs][mkdocs-material] and [Docoff] as
+the documentation platform.
 
-Run `npm start` to run the docs in development mode, and open
-`http://localhost:3000` in your browser to see the docs in live-reload mode.
+Do see their respective documentation for details.
 
-A few things to note:
-
-- In order to get component props parsed and rendered by Docz, it's crucial to
-  **import the component into an MDX file right from its source file** — parsing
-  a re-exported component (typically via `index.js`) isn't currently supported.
-
-- If you don't want Gatsby to collect **anonymous statistics**, you may want to
-  disable [Gatsby telemetry](https://www.gatsbyjs.com/docs/telemetry/) by
-  running `npx gatsby telemetry --disable`.
-
-- If you see the Not found page after having **changed the configuration of Docz
-  or Gatsby in the live-reload mode,** you may either restart the Docz
-  development server (`ctrl + c` and `npm start`), or try to edit an MDX file
-  which makes the Docz rebuild, too.
-
-- To **make your authoring experience better,** we recommend to make sure your
-  IDE understands the MDX syntax and is able to help you wrap lines in MD and
-  MDX files automatically (Jetbrains IDE's and VSCode support both features
-  out-of-the-box or through a plugin).
+[Docker]: https://www.docker.com
+[Docker Compose]: https://docs.docker.com/compose/
+[react-invalid-hook]: https://reactjs.org/warnings/invalid-hook-call-warning.html#duplicate-react
+[mkdocs-material]: https://squidfunk.github.io/mkdocs-material/
+[Docoff]: https://github.com/react-ui-org/docoff

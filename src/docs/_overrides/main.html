@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block libs %}
+  <!-- We need to load this to make them accessible on the document root (outside shadowDOM) to preview colors etc. -->
+  <link rel="stylesheet" href="/docs/_assets/generated/cssCustomProperties.css" />
+
+  <!-- We load Prism by hand to match style used by Docoff -->
+  <link rel="stylesheet" href="https://unpkg.com/prismjs@1.29.0/themes/prism-twilight.min.css" />
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <!-- First load dependencies -->
+  <script crossorigin src="https://unpkg.com/@babel/standalone@7.20.15/babel.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/@floating-ui/core@1.0.0/dist/floating-ui.core.umd.min.js"></script>
+  <script crossorigin src="https://unpkg.com/@floating-ui/dom@1.0.0/dist/floating-ui.dom.umd.min.js"></script>
+  <script crossorigin src="https://unpkg.com/@floating-ui/react-dom@1.0.0/dist/floating-ui.react-dom.umd.min.js"></script>
+  <script src="/docs/_assets/generated/reactui.js" type="application/javascript"></script>
+  <script src="/docs/_assets/js/ruiIcon.js" type="application/javascript"></script>
+  <script src="/docs/_assets/js/ruiSwatch.js" type="application/javascript"></script>
+
+  <!-- Then we load and init Docoff -->
+  <script crossorigin src="https://unpkg.com/@react-ui-org/docoff@0.5.3/public/generated/bundle.js"></script>
+
+  <!-- Then we load non-Docoff code highlighiting -->
+  <script src="https://unpkg.com/prismjs@1.29.0/components/prism-core.min.js"></script>
+  <script src="https://unpkg.com/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+{% endblock %}

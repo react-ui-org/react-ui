@@ -1,0 +1,33 @@
+services:
+  # Base services - do not run directly
+  mkdocs:
+    build: docker/mkdocs
+    user: ${COMPOSE_UID-1000}:${COMPOSE_GID-1000}
+    volumes:
+      - .:/workspace:z
+  node:
+    build: docker/node
+    user: ${COMPOSE_UID-1000}:${COMPOSE_GID-1000}
+    volumes:
+      - .:/workspace:z
+
+  # Dev services
+  mkdocs_dev_server:
+    extends: mkdocs
+    entrypoint: mkdocs serve
+    ports:
+      - ${COMPOSE_START_PORT-8000}:8000
+  node_dev_server:
+    extends: node
+    entrypoint: npm start
+  node_shell:
+    extends: node
+    entrypoint: bash
+
+  # Build services
+  mkdocs_build_site:
+    extends: mkdocs
+    entrypoint: mkdocs build
+  node_build_site:
+    extends: node
+    entrypoint: npm run build

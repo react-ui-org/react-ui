@@ -2,9 +2,11 @@
 
 {
   "default": true,
+  "MD033": false, // Allow inline JSX.
+  "MD024": false, // Allow duplicate headings
   "line-length": {
     "code_block_line_length": 120,
-    "tables": false
-  },
-  "no-inline-html": false // Allow inline JSX.
+    "tables": false,
+    "code_blocks": false
+  }
 }

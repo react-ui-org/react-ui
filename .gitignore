@@ -1,6 +1,7 @@
-/.docz
 /dist
-/docs
 /node_modules
-lib-stats.development.html
-lib-stats.html
+/site
+/src/docs/_assets/generated/*
+.env
+statistics.html
+!.gitkeep
