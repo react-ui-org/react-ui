@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
-import React, {
-  useEffect,
-  useRef,
-} from 'react';
+import React, { useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { withGlobalProps } from '../../provider';
 import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
+import { getPositionClassName } from './_helpers/getPositionClassName';
+import { getSizeClassName } from './_helpers/getSizeClassName';
+import { useModalFocus } from './_hooks/useModalFocus';
+import { useModalScrollPrevention } from './_hooks/useModalScrollPrevention';
 import styles from './Modal.scss';
 
 const preRender = (
@@ -16,63 +17,34 @@ const preRender = (
   position,
   restProps,
   size,
-) => {
-  const sizeClass = (modalSize) => {
-    if (modalSize === 'small') {
-      return styles.isRootSizeSmall;
-    }
-
-    if (modalSize === 'medium') {
-      return styles.isRootSizeMedium;
-    }
-
-    if (modalSize === 'large') {
-      return styles.isRootSizeLarge;
-    }
-
-    if (modalSize === 'fullscreen') {
-      return styles.isRootSizeFullscreen;
-    }
-
-    return styles.isRootSizeAuto;
-  };
-
-  const positionClass = (modalPosition) => {
-    if (modalPosition === 'top') {
-      return styles.isRootPositionTop;
-    }
-
-    return styles.isRootPositionCenter;
-  };
-
-  return (
+) => (
+  <div
+    className={styles.backdrop}
+    onClick={(e) => {
+      e.preventDefault();
+      if (closeButtonRef?.current != null) {
+        closeButtonRef.current.click();
+      }
+    }}
+    role="presentation"
+  >
     <div
-      className={styles.backdrop}
-      onClick={() => {
-        if (closeButtonRef?.current != null) {
-          closeButtonRef.current.click();
-        }
+      {...transferProps(restProps)}
+      className={classNames(
+        styles.root,
+        getSizeClassName(size, styles),
+        getPositionClassName(position, styles),
+      )}
+      onClick={(e) => {
+        e.stopPropagation();
       }}
       role="presentation"
+      ref={childrenWrapperRef}
     >
-      <div
-        {...transferProps(restProps)}
-        className={classNames(
-          styles.root,
-          sizeClass(size),
-          positionClass(position),
-        )}
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-        role="presentation"
-        ref={childrenWrapperRef}
-      >
-        {children}
-      </div>
+      {children}
     </div>
-  );
-};
+  </div>
+);
 
 export const Modal = ({
   autoFocus,
@@ -80,52 +52,21 @@ export const Modal = ({
   closeButtonRef,
   portalId,
   position,
+  preventScrollUnderneath,
   primaryButtonRef,
   size,
   ...restProps
 }) => {
   const childrenWrapperRef = useRef();
 
-  const keyPressHandler = (e) => {
-    if (e.key === 'Escape' && closeButtonRef?.current != null) {
-      closeButtonRef.current.click();
-    }
+  useModalFocus(
+    autoFocus,
+    childrenWrapperRef,
+    primaryButtonRef,
+    closeButtonRef,
+  );
 
-    if (e.key === 'Enter' && e.target.nodeName !== 'BUTTON' && primaryButtonRef?.current != null) {
-      primaryButtonRef.current.click();
-    }
-  };
-
-  useEffect(() => {
-    window.document.addEventListener('keydown', keyPressHandler, false);
-    const removeKeyPressHandler = () => {
-      window.document.removeEventListener('keydown', keyPressHandler, false);
-    };
-
-    // If `autoFocus` is set to `true`, following code finds first form field element
-    // (input, textarea or select) or primary button and auto focuses it. This is necessary
-    // to have focus on one of those elements to be able to submit form by pressing Enter key.
-    if (autoFocus) {
-      if (childrenWrapperRef?.current != null) {
-        const childrenWrapperElement = childrenWrapperRef.current;
-        const childrenElements = childrenWrapperElement.querySelectorAll('*');
-        const formFieldEl = Array.from(childrenElements).find(
-          (element) => ['INPUT', 'TEXTAREA', 'SELECT'].includes(element.nodeName) && !element.disabled,
-        );
-
-        if (formFieldEl) {
-          formFieldEl.focus();
-          return removeKeyPressHandler;
-        }
-      }
-
-      if (primaryButtonRef?.current != null) {
-        primaryButtonRef.current.focus();
-      }
-    }
-
-    return removeKeyPressHandler;
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  useModalScrollPrevention(preventScrollUnderneath);
 
   if (portalId === null) {
     return preRender(
@@ -157,14 +98,16 @@ Modal.defaultProps = {
   closeButtonRef: null,
   portalId: null,
   position: 'center',
+  preventScrollUnderneath: 'default',
   primaryButtonRef: null,
   size: 'medium',
 };
 
 Modal.propTypes = {
   /**
-   * If `true`, focus the first input element in the modal or primary button (referenced by the `primaryButtonRef` prop)
-   * when the modal is opened.
+   * If `true`, focus the first input element in the `Modal`, or primary button (referenced by the `primaryButtonRef`
+   * prop), or other focusable element when the `Modal` is opened. If there are none or `autoFocus` is set to `false`,
+   * focus the Modal itself.
    */
   autoFocus: PropTypes.bool,
   /**
@@ -192,6 +135,24 @@ Modal.propTypes = {
    * Vertical position of the modal inside browser window.
    */
   position: PropTypes.oneOf(['top', 'center']),
+  /**
+   * Mode in which Modal prevents scroll of elements bellow:
+   * * `default` - Modal prevents scroll on the `body` element
+   * * `off` - Modal does not prevent any scroll
+   * * object
+   * * * `reset` - method called on Modal's unmount to reset scroll prevention
+   * * * `start` - method called on Modal's mount to custom scroll prevention
+   */
+  preventScrollUnderneath: PropTypes.oneOfType([
+    PropTypes.oneOf([
+      'default',
+      'off',
+    ]),
+    PropTypes.shape({
+      reset: PropTypes.func,
+      start: PropTypes.func,
+    }),
+  ]),
   /**
    * Reference to primary button element. It is used to submit modal when Enter key is pressed and as fallback
    * when `autoFocus` functionality does not find any input element to be focused.

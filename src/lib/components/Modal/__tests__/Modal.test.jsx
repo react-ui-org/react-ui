@@ -9,10 +9,10 @@ import userEvent from '@testing-library/user-event';
 import { Button } from '../../..';
 import { Modal } from '../Modal';
 import { ModalBody } from '../ModalBody';
-// eslint-disable-next-line import/no-named-default
-import { default as ModalCloseButton } from '../ModalCloseButton';
+import { ModalCloseButton } from '../ModalCloseButton';
 import { ModalHeader } from '../ModalHeader';
 import { ModalFooter } from '../ModalFooter';
+import { ModalContent } from '../ModalContent';
 
 describe('rendering', () => {
   it('renders with "portalId" props', () => {
@@ -224,17 +224,23 @@ describe('functionality', () => {
     expect(spy.called).toEqual(false);
   });
 
+  const assertFocus = (element, shouldHaveFocus) => (
+    shouldHaveFocus ? expect(element).toHaveFocus() : expect(element).not.toHaveFocus()
+  );
+
   it.each([
     [
       <input />,
       (rootElement) => {
-        expect(document.activeElement).toEqual(within(rootElement).getByRole('textbox'));
+        const el = within(rootElement).getByRole('textbox');
+        assertFocus(el, true);
       },
     ],
     [
       <textarea />,
       (rootElement) => {
-        expect(document.activeElement).toEqual(within(rootElement).getByRole('textbox'));
+        const el = within(rootElement).getByRole('textbox');
+        assertFocus(el, true);
       },
     ],
     [
@@ -244,7 +250,20 @@ describe('functionality', () => {
         </select>
       ),
       (rootElement) => {
-        expect(document.activeElement).toEqual(within(rootElement).getByRole('combobox'));
+        const el = within(rootElement).getByRole('combobox');
+        assertFocus(el, true);
+      },
+    ],
+    [
+      (
+        <>
+          <input id="first" disabled />
+          <input id="second" />
+        </>
+      ),
+      (rootElement) => {
+        const el = within(rootElement).getByTestId('second');
+        assertFocus(el, true);
       },
     ],
   ])('autofocuses form field element (%#)', (child, assert) => {
@@ -283,6 +302,145 @@ describe('functionality', () => {
       </Modal>
     ));
 
-    expect(document.activeElement).toEqual(within(container.firstChild).getByRole('button'));
+    const el = within(container.firstChild).getByRole('button');
+    assertFocus(el, true);
+  });
+
+  it('autofocuses other focusable element if no input or primary button is present', () => {
+    const ref = React.createRef();
+    const { container } = render((
+      <Modal closeButtonRef={ref}>
+        <ModalBody>
+          <a href="/" id="link">Link</a>
+        </ModalBody>
+        <ModalFooter>
+          <Button
+            label="button"
+            ref={ref}
+          />
+        </ModalFooter>
+      </Modal>
+    ));
+
+    const el = within(container.firstChild).getByRole('link');
+    assertFocus(el, true);
+  });
+
+  it('focuses Modal itself if non focusable elements found', () => {
+    const { container } = render((
+      <>
+        <Button label="button" id="button" />
+        <Modal id="modal" />
+      </>
+    ));
+
+    const el = within(container).getByTestId('modal');
+    assertFocus(el, true);
+  });
+
+  it('focuses Modal itself if autoFocus is disabled', () => {
+    const ref = React.createRef();
+
+    const { container } = render((
+      <Modal
+        autoFocus={false}
+        id="modal"
+        primaryButtonRef={ref}
+      >
+        <ModalBody>
+          <ModalContent>
+            <input id="first" />
+          </ModalContent>
+        </ModalBody>
+        <ModalFooter>
+          <Button
+            label="button"
+            ref={ref}
+          />
+        </ModalFooter>
+      </Modal>
+    ));
+
+    const el = within(container).getByTestId('modal');
+    assertFocus(el, true);
+  });
+
+  it('traps focus', () => {
+    const { container } = render((
+      <Modal>
+        <ModalBody>
+          <ModalContent>
+            <input id="first" />
+            <input id="second" />
+          </ModalContent>
+        </ModalBody>
+      </Modal>
+    ));
+
+    const firstEl = within(container).getByTestId('first');
+    const secondEl = within(container).getByTestId('second');
+
+    assertFocus(firstEl, true);
+    userEvent.tab();
+    assertFocus(secondEl, true);
+    userEvent.tab();
+    assertFocus(firstEl, true);
+    userEvent.tab({ shift: true });
+    assertFocus(secondEl, true);
+  });
+
+  it('prevents body from scrolling by default', () => {
+    render((
+      <Modal />
+    ));
+
+    expect(document.body).toHaveStyle('overflow: hidden');
+  });
+
+  it('does not prevent body from scrolling if disabled', () => {
+    render((
+      <Modal preventScrollUnderneath="off" />
+    ));
+
+    expect(document.body).not.toHaveStyle('overflow: hidden');
+  });
+
+  it('prevents scroll using custom function', async () => {
+    const TestWrapper = () => {
+      const [isModalOpened, setIsModalOpened] = React.useState(false);
+
+      const customScrollPrevention = {
+        reset: () => {
+          document.getElementById('layout').style.overflow = 'auto';
+        },
+        start: () => {
+          document.getElementById('layout').style.overflow = 'hidden';
+        },
+      };
+
+      return (
+        <div
+          id="layout"
+          style={{
+            overflow: 'auto',
+          }}
+        >
+          <Button label="button" id="button" onClick={() => setIsModalOpened(!isModalOpened)} />
+          { isModalOpened && <Modal preventScrollUnderneath={customScrollPrevention} /> }
+        </div>
+      );
+    };
+
+    const { container } = render((
+      <TestWrapper />
+    ));
+
+    const button = within(container).getByTestId('button');
+
+    button.click();
+    expect(within(container).getByTestId('layout')).toHaveStyle('overflow: hidden');
+
+    button.click();
+    expect(within(container).getByTestId('layout')).toHaveStyle('overflow: auto');
   });
 });

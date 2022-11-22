@@ -25,6 +25,7 @@ import {
   ModalTitle,
   Radio,
   ScrollView,
+  TextArea,
   TextField,
   Toolbar,
   ToolbarGroup,
@@ -116,8 +117,9 @@ See [API](#api) for all available options.
 
 - Modal **automatically focuses the first non-disabled form field** by default
   which allows users to confirm the modal by hitting the enter key. When no
-  field is found then the primary button (in the footer) is focused. To turn
-  this feature off, set the `autofocus` prop to `false`.
+  field is found then the primary button (in the footer) is focused. If there
+  are neither, it tries to focus any other focusable elements. In case there
+  are none, or [autoFocus](#autoFocus) is disabled, Modal itself is focused.
 
 - **Avoid stacking** of modals. While it may technically work, the modal is just
   not designed for that.
@@ -824,24 +826,147 @@ can be closed by pressing the `Escape` key.
 
 To enable it, you just need to pass a reference to the buttons using
 `primaryButtonRef` and `closeButtonRef` props on Modal. The advantage of passing
-a reference to the button is that if the button is disabled, the key press will
-not fire the event.
-
-👉 We strongly recommend using this feature together with
-[Autofocus](#autofocus) for a better user experience.
+the reference to the button is that if the button is disabled, the key press
+will not fire the event.
 
 ## Autofocus
 
 Autofocus is implemented to enhance the user experience by automatically
-focussing an element within the modal.
+focusing an element within the Modal.
 
 How does it work? It tries to find `input`, `textarea`, and `select` elements
 inside of Modal and moves focus onto the first non-disabled one. If none is
 found and the `primaryButtonRef` prop on Modal is set, then the primary button
-is focused.
+is focused. If there are neither, it tries to focus any other focusable elements.
+In case there are none or `autoFocus` is disabled, Modal itself is focused.
 
-Autofocus is enabled by default, so if you want to control the focus of
-elements manually, set the `autoFocus` prop on Modal to `false`.
+<Playground>
+  {() => {
+    const [modalOpen, setModalOpen] = React.useState(null);
+    const modalPrimaryButtonRef = React.useRef();
+    const modalCloseButtonRef = React.useRef();
+    return (
+      <>
+        <Button
+          label="Launch modal with autofocus and form"
+          onClick={() => setModalOpen(1)}
+        />
+        <Button
+          label="Launch modal with autofocus"
+          onClick={() => setModalOpen(2)}
+        />
+        <Button
+          label="Launch modal with autofocus disabled"
+          onClick={() => setModalOpen(3)}
+        />
+        <div>
+          {modalOpen === 1 && (
+            <Modal
+              closeButtonRef={modalCloseButtonRef}
+              primaryButtonRef={modalPrimaryButtonRef}
+            >
+              <ModalHeader>
+                <ModalTitle>Modal with autoFocus and form</ModalTitle>
+                <ModalCloseButton onClick={() => setModalOpen(null)} />
+              </ModalHeader>
+              <ModalBody>
+                <ModalContent>
+                  <FormLayout autoWidth fieldLayout="horizontal">
+                    <TextField
+                      disabled
+                      label="A form element"
+                    />
+                    <TextField label="Another form element" />
+                    <TextArea label="Yet another one" />
+                  </FormLayout>
+                </ModalContent>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  label="Submit"
+                  onClick={() => setModalOpen(null)}
+                  ref={modalPrimaryButtonRef}
+                />
+                <Button
+                  color="secondary"
+                  label="Close"
+                  onClick={() => setModalOpen(null)}
+                  priority="outline"
+                  ref={modalCloseButtonRef}
+                />
+              </ModalFooter>
+            </Modal>
+          )}
+          {modalOpen === 2 && (
+            <Modal
+              closeButtonRef={modalCloseButtonRef}
+              primaryButtonRef={modalPrimaryButtonRef}
+            >
+              <ModalHeader>
+                <ModalTitle>Modal with autoFocus enabled with no form</ModalTitle>
+                <ModalCloseButton onClick={() => setModalOpen(null)} />
+              </ModalHeader>
+              <ModalBody>
+                <ModalContent>
+                  <p>
+                    This Modal autofocuses the primary button or any other
+                    focusable element.
+                  </p>
+                </ModalContent>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  label="Acknowledge"
+                  onClick={() => setModalOpen(null)}
+                  ref={modalPrimaryButtonRef}
+                />
+                <Button
+                  color="secondary"
+                  label="Close"
+                  onClick={() => setModalOpen(null)}
+                  priority="outline"
+                  ref={modalCloseButtonRef}
+                />
+              </ModalFooter>
+            </Modal>
+          )}
+          {modalOpen === 3 && (
+            <Modal
+              autoFocus={false}
+              closeButtonRef={modalCloseButtonRef}
+              primaryButtonRef={modalPrimaryButtonRef}
+            >
+              <ModalHeader>
+                <ModalTitle>Modal with autoFocus disabled</ModalTitle>
+              </ModalHeader>
+              <ModalBody>
+                <ModalContent>
+                  <p>
+                    This Modal focuses the Modal element itself.
+                  </p>
+                </ModalContent>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  label="Acknowledge"
+                  onClick={() => setModalOpen(null)}
+                  ref={modalPrimaryButtonRef}
+                />
+                <Button
+                  color="secondary"
+                  label="Close"
+                  onClick={() => setModalOpen(null)}
+                  priority="outline"
+                  ref={modalCloseButtonRef}
+                />
+              </ModalFooter>
+            </Modal>
+          )}
+        </div>
+      </>
+    );
+  }}
+</Playground>
 
 ## Scrolling Long Content
 
@@ -961,7 +1086,7 @@ independent of the page itself. This can be done in three ways using the
         <div>
           {modalOpen && (
             <Modal
-              autoFocus={false}
+              autoFocus={modalScrolling !== 'none'}
               closeButtonRef={modalCloseButtonRef}
               primaryButtonRef={modalPrimaryButtonRef}
               size="small"
@@ -1005,9 +1130,154 @@ independent of the page itself. This can be done in three ways using the
 
 ### Long Content and Autofocus
 
-👉 If you wrap ModalContent with ScrollView, you may want to turn `autoFocus`
-off to prevent the modal from scrolling to the end immediately after being
-opened.
+👉 If you have a Modal with `scrolling` set to `none`, you may want to disable
+`autoFocus` to prevent the modal from scrolling to the end immediately after
+being opened.
+
+## Prevent Scrolling Underneath the Modal
+
+You can choose the mode in which Modal prevents the scroll of the page underneath.
+Default mode prevents scrolling on `<body>` element and accounts for the scrollbar
+width. If you choose `off`, there will be no scroll prevention. If you need more
+flexibility, define your methods `start` (called on Modal's mount) and `reset`
+(called on Modal unmount) wrapped by an object and handle scroll prevention
+yourself.
+
+<Playground>
+  {() => {
+    const [modalOpen, setModalOpen] = React.useState(null);
+    const modalPrimaryButtonRef = React.useRef();
+    const modalCloseButtonRef = React.useRef();
+    const customScrollPreventionObject = {
+      start: () => {
+        // YOUR CUSTOM SCROLL PREVENTING LOGIC GOES HERE
+        window.document.body.style.overflowY = 'hidden'
+      },
+      reset: () => {
+        // YOUR CUSTOM SCROLL RE-ENABLING LOGIC GOES HERE
+        window.document.body.style.overflowY = 'auto'
+      },
+    };
+    return (
+      <>
+        <Button
+          label="Launch modal with default scroll prevention"
+          onClick={() => setModalOpen(1)}
+        />
+        <Button
+          label="Launch modal with no scroll prevention"
+          onClick={() => setModalOpen(2)}
+        />
+        <Button
+          label="Launch modal with custom scroll prevention"
+          onClick={() => setModalOpen(3)}
+        />
+        <div>
+          {modalOpen === 1 && (
+            <Modal
+              closeButtonRef={modalCloseButtonRef}
+              primaryButtonRef={modalPrimaryButtonRef}
+            >
+              <ModalHeader>
+                <ModalTitle>Modal with default scroll prevention</ModalTitle>
+                <ModalCloseButton onClick={() => setModalOpen(null)} />
+              </ModalHeader>
+              <ModalBody>
+                <ModalContent>
+                  <p>
+                    This Modal uses default scroll prevention on the document's
+                    <code>body</code> element.
+                  </p>
+                </ModalContent>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  label="Acknowledge"
+                  onClick={() => setModalOpen(null)}
+                  ref={modalPrimaryButtonRef}
+                />
+                <Button
+                  color="secondary"
+                  label="Close"
+                  onClick={() => setModalOpen(null)}
+                  priority="outline"
+                  ref={modalCloseButtonRef}
+                />
+              </ModalFooter>
+            </Modal>
+          )}
+          {modalOpen === 2 && (
+            <Modal
+              closeButtonRef={modalCloseButtonRef}
+              preventScrollUnderneath="off"
+              primaryButtonRef={modalPrimaryButtonRef}
+            >
+              <ModalHeader>
+                <ModalTitle>Modal with no scroll prevention</ModalTitle>
+                <ModalCloseButton onClick={() => setModalOpen(null)} />
+              </ModalHeader>
+              <ModalBody>
+                <ModalContent>
+                  <p>
+                    This Modal does not prevent scrolling.
+                  </p>
+                </ModalContent>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  label="Acknowledge"
+                  onClick={() => setModalOpen(null)}
+                  ref={modalPrimaryButtonRef}
+                />
+                <Button
+                  color="secondary"
+                  label="Close"
+                  onClick={() => setModalOpen(null)}
+                  priority="outline"
+                  ref={modalCloseButtonRef}
+                />
+              </ModalFooter>
+            </Modal>
+          )}
+          {modalOpen === 3 && (
+            <Modal
+              closeButtonRef={modalCloseButtonRef}
+              preventScrollUnderneath={customScrollPreventionObject}
+              primaryButtonRef={modalPrimaryButtonRef}
+            >
+              <ModalHeader>
+                <ModalTitle>Modal with custom scroll prevention</ModalTitle>
+                <ModalCloseButton onClick={() => setModalOpen(null)} />
+              </ModalHeader>
+              <ModalBody>
+                <ModalContent>
+                  <p>
+                    This Modal uses provided custom functions to prevent scrolling
+                    and reset it on unmount.
+                  </p>
+                </ModalContent>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  label="Acknowledge"
+                  onClick={() => setModalOpen(null)}
+                  ref={modalPrimaryButtonRef}
+                />
+                <Button
+                  color="secondary"
+                  label="Close"
+                  onClick={() => setModalOpen(null)}
+                  priority="outline"
+                  ref={modalCloseButtonRef}
+                />
+              </ModalFooter>
+            </Modal>
+          )}
+        </div>
+      </>
+    );
+  }}
+</Playground>
 
 <!-- markdownlint-disable MD024 -->
 
