@@ -115,10 +115,10 @@ See [API](#api) for all available options.
 - **Modal actions** should correspond to the modal purpose, too. E.g. “Delete”
   tells better what happens rather than “OK”.
 
-- Modal **automatically focuses the first form field** by default which allows
-  users to confirm the modal by hitting the enter key. When no field is found
-  then the primary button (in the footer) is focused. To turn this feature off,
-  set the `autofocus` prop to `false`.
+- Modal **automatically focuses the first non-disabled form field** by default
+  which allows users to confirm the modal by hitting the enter key. When no
+  field is found then the primary button (in the footer) is focused. To turn
+  this feature off, set the `autofocus` prop to `false`.
 
 - **Avoid stacking** of modals. While it may technically work, the modal is just
   not designed for that.
@@ -841,8 +841,9 @@ Autofocus is implemented to enhance the user experience by automatically
 focussing an element within the modal.
 
 How does it work? It tries to find `input`, `textarea`, and `select` elements
-inside of Modal and moves focus into the first found. If none is found and the
-`primaryButtonRef` prop on Modal is set, then the primary button is focused.
+inside of Modal and moves focus onto the first non-disabled one. If none is
+found and the `primaryButtonRef` prop on Modal is set, then the primary button
+is focused.
 
 Autofocus is enabled by default, so if you want to control the focus of
 elements manually, set the `autoFocus` prop on Modal to `false`.

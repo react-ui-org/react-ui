@@ -110,7 +110,7 @@ export const Modal = ({
         const childrenWrapperElement = childrenWrapperRef.current;
         const childrenElements = childrenWrapperElement.querySelectorAll('*');
         const formFieldEl = Array.from(childrenElements).find(
-          (element) => ['INPUT', 'TEXTAREA', 'SELECT'].includes(element.nodeName),
+          (element) => ['INPUT', 'TEXTAREA', 'SELECT'].includes(element.nodeName) && !element.disabled,
         );
 
         if (formFieldEl) {
