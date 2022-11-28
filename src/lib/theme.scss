@@ -738,6 +738,7 @@
     --rui-FormField__help-text__font-size: var(--rui-typography-size-small);
     --rui-FormField__help-text__font-style: normal;
     --rui-FormField__help-text__color: var(--rui-color-gray-500);
+    --rui-FormField--required__label__color: inherit;
     --rui-FormField--required__sign: "\00a0*"; // 2.
     --rui-FormField--required__sign__color: var(--rui-color-gray-500);
 

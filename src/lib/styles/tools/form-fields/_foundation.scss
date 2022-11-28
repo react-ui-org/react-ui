@@ -12,6 +12,8 @@
 }
 
 @mixin label-required() {
+    color: var(--rui-local-surrounding-text-color, #{theme.$required-label-color});
+
     &::after {
         content: theme.$required-sign;
         color: theme.$required-sign-color;
