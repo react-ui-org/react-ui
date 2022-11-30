@@ -149,7 +149,9 @@
 
     // Accessibility
     --rui-tap-target-size: 10mm;
-    --rui-focus-box-shadow: 0 0 0 0.2em var(--rui-color-active-focus);
+    --rui-focus-outline: 0.2em solid var(--rui-color-active-focus);
+    --rui-focus-outline-offset: 1px;
+    --rui-focus-box-shadow: none;
 
     // Bottom spacings
     --rui-spacing-bottom-default: var(--rui-spacing-5);

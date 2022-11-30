@@ -54,7 +54,6 @@ export const FileInputField = React.forwardRef((props, ref) => {
         <div className={styles.inputContainer}>
           <input
             {...transferProps(restProps)}
-            className={styles.input}
             disabled={disabled}
             id={id}
             ref={ref}

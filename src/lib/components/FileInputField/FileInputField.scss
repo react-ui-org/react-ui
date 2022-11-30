@@ -17,10 +17,6 @@
     @include box-field-elements.input-container();
 }
 
-.input {
-    @include accessibility.focus-ring();
-}
-
 .helpText,
 .validationText {
     @include foundation.help-text();

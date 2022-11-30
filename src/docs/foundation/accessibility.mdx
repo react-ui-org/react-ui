@@ -53,11 +53,12 @@ Many people use keyboard to control their computer. Interactive elements in
 React UI are **highlighted on focus** so keyboard users can easily tab over
 them and see what control currently has focus.
 
-Check form fields like [CheckboxField](/components/checkbox-field) or
-[Toggle](/components/toggle) obtain a blue outline on focus (which is to be
-[spread over all interactive elements](https://github.com/react-ui-org/react-ui/issues/240)
-eventually). Appearance of focus highlight can be adjusted via the
-`--rui-focus-box-shadow` custom property (see
-[Theming](/customize/theming/overview) to learn how).
+All interactive elements obtain a blue outline on focus. Appearance of the focus
+highlight can be [adjusted](/customize/theming/overview) with the following
+custom properties:
+
+- `--rui-focus-outline`,
+- `--rui-focus-outline-offset`,
+- `--rui-focus-box-shadow`.
 
 📖 [Read more about keyboard accessibility at MDN.](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Keyboard)
