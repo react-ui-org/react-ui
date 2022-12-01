@@ -105,10 +105,6 @@
         opacity: theme.$disabled-opacity;
         cursor: theme.$disabled-cursor;
     }
-
-    &:-moz-focusring {
-        outline: 0;
-    }
 }
 
 @mixin button-size($size) {
