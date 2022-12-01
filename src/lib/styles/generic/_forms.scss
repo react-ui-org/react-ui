@@ -1,15 +1,3 @@
-@use "../tools/accessibility";
-
-// Remove focus outline as we implement custom appearance of focus state. Increase specificity where necessary to
-// override normalize.css.
-:where(button, input, select, textarea):focus {
-    outline: none;
-}
-
-:is(a, button, input, select, textarea, [type="button"], [type="submit"]) {
-    @include accessibility.focus-ring();
-}
-
 // Reset Chrome and Firefox behaviour which sets a `min-width: min-content;` on fieldsets.
 fieldset {
     min-width: 0;
