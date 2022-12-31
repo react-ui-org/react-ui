@@ -115,4 +115,33 @@ $map: (
             dark: var(--rui-color-neutral-dark),
         ),
     ),
+    "background-color": (
+        responsive: false,
+        property: background-color,
+        class: bg,
+        values: (
+            // Content layers
+            base: var(--rui-color-background-base),
+            layer-1: var(--rui-color-background-layer-1),
+            layer-2: var(--rui-color-background-layer-2),
+            // Component backgrounds
+            basic: var(--rui-color-background-basic),
+            disabled: var(--rui-color-background-disabled),
+            // Interactive backgrounds: intentionally not generated to utilities, CSS use only.
+            // Action backgrounds
+            primary: var(--rui-color-background-primary),
+            secondary: var(--rui-color-background-secondary),
+            selected: var(--rui-color-background-selected),
+            // Feedback backgrounds
+            success: var(--rui-color-background-success),
+            warning: var(--rui-color-background-warning),
+            danger: var(--rui-color-background-danger),
+            help: var(--rui-color-background-help),
+            info: var(--rui-color-background-info),
+            note: var(--rui-color-background-note),
+            // Neutral backgrounds
+            light: var(--rui-color-background-light),
+            dark: var(--rui-color-background-dark),
+        ),
+    ),
 );
