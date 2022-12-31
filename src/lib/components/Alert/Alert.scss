@@ -56,7 +56,7 @@
     @include accessibility.min-tap-target();
 
     padding: theme.$padding;
-    font-size: map.get(typography.$size-values, 4);
+    font-size: map.get(typography.$font-size-values, 4);
     line-height: 1;
 }
 

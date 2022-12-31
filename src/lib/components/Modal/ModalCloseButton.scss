@@ -8,7 +8,7 @@
     @include reset.button();
     @include accessibility.min-tap-target();
 
-    font-size: map.get(typography.$size-values, 4);
+    font-size: map.get(typography.$font-size-values, 4);
     line-height: 1;
     color: inherit;
 

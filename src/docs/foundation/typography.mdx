@@ -15,15 +15,22 @@ communicate the hierarchy of a page.
 [overriding](/customize/theming/overview) values in your
 [design tokens](/foundation/design-tokens).
 
-Basic typography showcase:
+## Showcase
+
+Font sizes:
 
 <Playground>
-  <h4 className="typography-size-1">Font size 1 (base font size)</h4>
-  <h4 className="typography-size-2">Font size 2</h4>
-  <h4 className="typography-size-3">Font size 3</h4>
-  <h4 className="typography-size-4">Font size 4</h4>
-  <h4 className="typography-size-5">Font size 5</h4>
-  <h4 className="typography-size-6">Font size 6</h4>
+  <p className="font-size-1">Font size 1 (base font size)</p>
+  <p className="font-size-2">Font size 2</p>
+  <p className="font-size-3">Font size 3</p>
+  <p className="font-size-4">Font size 4</p>
+  <p className="font-size-5">Font size 5</p>
+  <p className="font-size-6">Font size 6</p>
+</Playground>
+
+Styling of basic HTML elements:
+
+<Playground>
   <p>
     Curabitur sagittis hendrerit ante. Integer pellentesque quam vel velit. Sed
     vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem.
@@ -58,6 +65,8 @@ Basic typography showcase:
   </ol>
 </Playground>
 
+## Font
+
 React UI is designed with [Titillium Web] font, a geometric sans with a wide
 variety of weights and styles. You can change it to a custom font by
 [overriding](/customize/theming/overview) the `--rui-font-family-base` CSS
@@ -69,7 +78,10 @@ custom property:
 }
 ```
 
-Font size, font weight, and line height values can be customised as well:
+## Customization
+
+Font size, font weight, and line height values can be
+[customised](/customize/theming/overview) as well:
 
 ```css
 :root {
