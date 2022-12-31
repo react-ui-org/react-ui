@@ -2,6 +2,6 @@
 @use "../../styles/theme/typography";
 @use "theme";
 
-$font-size: map.get(typography.$size-values, 1);
+$font-size: map.get(typography.$font-size-values, 1);
 $line-height: typography.$line-height-base;
 $min-height: calc(#{$font-size} * #{$line-height} + 2 * #{theme.$padding});

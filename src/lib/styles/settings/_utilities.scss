@@ -84,8 +84,8 @@ $map: (
     "font-size": (
         responsive: false,
         property: font-size,
-        class: typography-size,
-        values: typography.$size-values,
+        class: font-size,
+        values: typography.$font-size-values,
     ),
     "text-align": (
         responsive: true,

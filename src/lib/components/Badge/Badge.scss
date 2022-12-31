@@ -12,7 +12,7 @@ $_badge-size: 1.25rem;
     padding: 0.25rem 0.35rem;
     overflow: hidden;
     font-weight: map.get(typography.$font-weight-values, bold);
-    font-size: typography.$size-smaller;
+    font-size: typography.$font-size-smaller;
     line-height: 1;
     text-align: center;
     white-space: nowrap;
