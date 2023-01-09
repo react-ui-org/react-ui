@@ -186,6 +186,7 @@ $_arrow-outer-spacing: spacing.of(4);
 .isRootHorizontal .content {
     display: inline-flex; // 4.
     min-width: 100%;
+    vertical-align: top;
 }
 
 .isRootHorizontal .scrollingShadows::before,
