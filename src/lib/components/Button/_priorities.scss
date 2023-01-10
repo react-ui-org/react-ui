@@ -135,8 +135,8 @@
     @include tools.button-color(flat, dark);
 }
 
-.isRootPriorityFilled.isRootGrouped:not(:first-child)::before,
-.isRootPriorityFlat.isRootGrouped:not(:first-child)::before {
+.isRootPriorityFilled.isRootInButtonGroup:not(:first-child)::before,
+.isRootPriorityFlat.isRootInButtonGroup:not(:first-child)::before {
     content: "";
     position: absolute;
     top: calc(-1 * #{theme.$border-width});
@@ -147,18 +147,18 @@
     transform: translateX(calc(-0.5 * var(--rui-local-gap) - 50%));
 }
 
-.isRootPriorityFilled.isRootGrouped:not(:first-child) {
+.isRootPriorityFilled.isRootInButtonGroup:not(:first-child) {
     --rui-local-gap: #{theme.$group-filled-gap};
     --rui-local-separator-width: #{theme.$group-filled-separator-width};
     --rui-local-separator-color: #{theme.$group-filled-separator-color};
 }
 
-.isRootPriorityFlat.isRootGrouped:not(:first-child) {
+.isRootPriorityFlat.isRootInButtonGroup:not(:first-child) {
     --rui-local-gap: #{theme.$group-flat-gap};
     --rui-local-separator-width: #{theme.$group-flat-separator-width};
     --rui-local-separator-color: #{theme.$group-flat-separator-color};
 }
 
-.isRootPriorityOutline.isRootGrouped:not(:first-child) {
+.isRootPriorityOutline.isRootInButtonGroup:not(:first-child) {
     --rui-local-gap: #{theme.$group-outline-gap};
 }

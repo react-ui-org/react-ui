@@ -27,6 +27,7 @@ import {
   ToolbarItem,
   FormLayout,
   FormLayoutCustomField,
+  InputGroup,
 } from '../..'
 
 ## Basic Usage
@@ -441,6 +442,10 @@ This is a demo of all components supported by FormLayout.
             options={options}
             value={fruit}
           />
+          <InputGroup label="Promo code">
+            <TextField label="Promo code" />
+            <Button label="Submit" />
+          </InputGroup>
         </FormLayout>
       </div>
     )

@@ -51,6 +51,11 @@
 //
 // 13. Label and field are vertically aligned to top (start) by default (see 10.). Vertical
 //     alignment of each block can be changed by theme configuration.
+//
+// 14. Inner corners of TextField and SelectField components inside the InputGroup component are sharp
+//     (their radius is set to 0).
+//
+// 15. Use a block-level display mode to prevent extra white space below grouped inputs in Safari.
 
 @use "../../settings/forms";
 @use "../../settings/form-fields" as settings;
@@ -225,5 +230,22 @@
         &.isRootLayoutHorizontal.hasRootSmallInput .field {
             display: block; // 5.
         }
+    }
+}
+
+@mixin in-group-layout() {
+    .inputContainer {
+        display: block; // 15.
+    }
+
+    &:not(:first-child) .input {
+        margin-left: var(--rui-local-gap);
+        border-top-left-radius: 0; // 14.
+        border-bottom-left-radius: 0; // 14.
+    }
+
+    &:not(:last-child) .input {
+        border-top-right-radius: 0; // 14.
+        border-bottom-right-radius: 0; // 14.
     }
 }

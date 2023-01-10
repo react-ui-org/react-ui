@@ -76,7 +76,8 @@
     color: transparent;
 }
 
-.isRootGrouped {
+.isRootInButtonGroup,
+.isRootInInputGroup {
     z-index: map.get(settings.$group-z-indexes, button);
 
     &:not(:first-child) {
@@ -96,8 +97,10 @@
     }
 }
 
-.isRootGrouped .startCorner,
-.isRootGrouped .endCorner {
+.isRootInButtonGroup .startCorner,
+.isRootInInputGroup .startCorner,
+.isRootInButtonGroup .endCorner,
+.isRootInInputGroup .endCorner {
     z-index: map.get(settings.$group-z-indexes, button-overflowing-elements);
 }
 
