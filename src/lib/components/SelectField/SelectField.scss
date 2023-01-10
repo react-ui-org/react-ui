@@ -102,3 +102,17 @@
 .isRootSizeLarge {
     @include box-field-sizes.size(large);
 }
+
+// Groups
+.isRootGrouped {
+    &:not(:first-child) .input {
+        margin-left: var(--rui-local-gap);
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    &:not(:last-child) .input {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+}

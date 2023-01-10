@@ -7,6 +7,7 @@ import { getRootValidationStateClassName } from '../_helpers/getRootValidationSt
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
+import { InputGroupContext } from '../InputGroup/InputGroupContext';
 import styles from './TextField.scss';
 
 const SMALL_INPUT_SIZE = 10;
@@ -29,7 +30,8 @@ export const TextField = React.forwardRef((props, ref) => {
     variant,
     ...restProps
   } = props;
-  const context = useContext(FormLayoutContext);
+  const formLayoutContext = useContext(FormLayoutContext);
+  const inputGroupContext = useContext(InputGroupContext);
   const hasSmallInput = (inputSize !== null) && (inputSize <= SMALL_INPUT_SIZE);
 
   return (
@@ -39,13 +41,17 @@ export const TextField = React.forwardRef((props, ref) => {
         fullWidth && styles.isRootFullWidth,
         hasSmallInput && styles.hasRootSmallInput,
         inputSize && styles.hasRootCustomInputSize,
-        context && styles.isRootInFormLayout,
-        resolveContextOrProp(context && context.layout, layout) === 'horizontal'
+        formLayoutContext && styles.isRootInFormLayout,
+        resolveContextOrProp(formLayoutContext && formLayoutContext.layout, layout) === 'horizontal'
           ? styles.isRootLayoutHorizontal
           : styles.isRootLayoutVertical,
         disabled && styles.isRootDisabled,
+        inputGroupContext && styles.isRootGrouped,
         required && styles.isRootRequired,
-        getRootSizeClassName(size, styles),
+        getRootSizeClassName(
+          resolveContextOrProp(inputGroupContext && inputGroupContext.size, size),
+          styles,
+        ),
         getRootValidationStateClassName(validationState, styles),
         variant === 'filled' ? styles.isRootVariantFilled : styles.isRootVariantOutline,
       )}
@@ -56,7 +62,7 @@ export const TextField = React.forwardRef((props, ref) => {
       <div
         className={classNames(
           styles.label,
-          !isLabelVisible && styles.isLabelHidden,
+          (!isLabelVisible || inputGroupContext) && styles.isLabelHidden,
         )}
         id={id && `${id}__labelText`}
       >
@@ -86,7 +92,7 @@ export const TextField = React.forwardRef((props, ref) => {
             {helpText}
           </div>
         )}
-        {validationText && (
+        {(validationText && !inputGroupContext) && (
           <div
             className={styles.validationText}
             id={id && `${id}__validationText`}

@@ -18,6 +18,7 @@ export {
   Grid,
   GridSpan,
 } from './components/Grid';
+export { InputGroup } from './components/InputGroup';
 export {
   Modal,
   ModalBody,

@@ -7,6 +7,7 @@ import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { transferProps } from '../_helpers/transferProps';
 import { ButtonGroupContext } from '../ButtonGroup';
+import { InputGroupContext } from '../InputGroup/InputGroupContext';
 import getRootLabelVisibilityClassName from './helpers/getRootLabelVisibilityClassName';
 import getRootPriorityClassName from './helpers/getRootPriorityClassName';
 import styles from './Button.scss';
@@ -28,8 +29,9 @@ export const Button = React.forwardRef((props, ref) => {
     color,
     ...restProps
   } = props;
-
-  const context = useContext(ButtonGroupContext);
+  const inputGroupContext = useContext(InputGroupContext);
+  const buttonGroupContext = useContext(ButtonGroupContext);
+  const primaryContext = buttonGroupContext ?? inputGroupContext;
 
   return (
     /* No worries, `type` is always assigned correctly through props. */
@@ -39,20 +41,20 @@ export const Button = React.forwardRef((props, ref) => {
       className={classNames(
         styles.root,
         getRootPriorityClassName(
-          resolveContextOrProp(context && context.priority, priority),
+          resolveContextOrProp(buttonGroupContext && buttonGroupContext.priority, priority),
           styles,
         ),
         getRootColorClassName(color, styles),
         getRootSizeClassName(
-          resolveContextOrProp(context && context.size, size),
+          resolveContextOrProp(primaryContext && primaryContext.size, size),
           styles,
         ),
         getRootLabelVisibilityClassName(labelVisibility, styles),
-        resolveContextOrProp(context && context.block, block) && styles.isRootBlock,
-        context && styles.isRootGrouped,
+        resolveContextOrProp(buttonGroupContext && buttonGroupContext.block, block) && styles.isRootBlock,
+        primaryContext && styles.isRootGrouped,
         feedbackIcon && styles.hasRootFeedback,
       )}
-      disabled={resolveContextOrProp(context && context.disabled, disabled) || !!feedbackIcon}
+      disabled={resolveContextOrProp(buttonGroupContext && buttonGroupContext.disabled, disabled) || !!feedbackIcon}
       id={id}
       ref={ref}
     >

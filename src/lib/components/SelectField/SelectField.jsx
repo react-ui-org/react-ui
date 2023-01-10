@@ -7,6 +7,7 @@ import { getRootValidationStateClassName } from '../_helpers/getRootValidationSt
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
+import { InputGroupContext } from '../InputGroup/InputGroupContext';
 import { Option } from './_components/Option';
 import styles from './SelectField.scss';
 
@@ -28,20 +29,25 @@ export const SelectField = React.forwardRef((props, ref) => {
     ...restProps
   } = props;
 
-  const context = useContext(FormLayoutContext);
+  const formLayoutContext = useContext(FormLayoutContext);
+  const inputGroupContext = useContext(InputGroupContext);
 
   return (
     <label
       className={classNames(
         styles.root,
         fullWidth && styles.isRootFullWidth,
-        context && styles.isRootInFormLayout,
-        resolveContextOrProp(context && context.layout, layout) === 'horizontal'
+        formLayoutContext && styles.isRootInFormLayout,
+        resolveContextOrProp(formLayoutContext && formLayoutContext.layout, layout) === 'horizontal'
           ? styles.isRootLayoutHorizontal
           : styles.isRootLayoutVertical,
         disabled && styles.isRootDisabled,
+        inputGroupContext && styles.isRootGrouped,
         required && styles.isRootRequired,
-        getRootSizeClassName(size, styles),
+        getRootSizeClassName(
+          resolveContextOrProp(inputGroupContext && inputGroupContext.size, size),
+          styles,
+        ),
         getRootValidationStateClassName(validationState, styles),
         variant === 'filled' ? styles.isRootVariantFilled : styles.isRootVariantOutline,
       )}
@@ -51,7 +57,7 @@ export const SelectField = React.forwardRef((props, ref) => {
       <div
         className={classNames(
           styles.label,
-          !isLabelVisible && styles.isLabelHidden,
+          (!isLabelVisible || inputGroupContext) && styles.isLabelHidden,
         )}
         id={id && `${id}__labelText`}
       >
@@ -110,7 +116,7 @@ export const SelectField = React.forwardRef((props, ref) => {
             {helpText}
           </div>
         )}
-        {validationText && (
+        {(validationText && !inputGroupContext) && (
           <div
             className={styles.validationText}
             id={id && `${id}__validationText`}

@@ -1,0 +1,71 @@
+@use "../../styles/tools/form-fields/box-field-elements";
+@use "../../styles/tools/form-fields/box-field-layout";
+@use "../../styles/tools/form-fields/box-field-sizes";
+@use "../../styles/tools/form-fields/foundation";
+@use "../../styles/tools/form-fields/variants";
+@use "../../styles/tools/accessibility";
+@use "theme";
+
+.root {
+    @include box-field-elements.input-container();
+}
+
+.label {
+    @include foundation.label();
+}
+
+.inputGroup {
+    @include box-field-elements.input-container();
+
+    gap: theme.$gap;
+    max-width: none;
+}
+
+.validationTexts {
+    @include foundation.help-text();
+}
+
+// States
+.isRootStateInvalid {
+    @include variants.validation(invalid);
+}
+
+.isRootStateValid {
+    @include variants.validation(valid);
+}
+
+.isRootStateWarning {
+    @include variants.validation(warning);
+}
+
+// Invisible label
+.isLabelHidden {
+    @include accessibility.hide-text();
+}
+
+// Layouts
+.isRootLayoutVertical,
+.isRootLayoutHorizontal {
+    @include box-field-layout.vertical();
+}
+
+.isRootLayoutHorizontal {
+    @include box-field-layout.horizontal($has-min-tap-target: true);
+}
+
+.isRootLayoutHorizontal .label {
+    width: max-content;
+}
+
+// Sizes
+.isRootSizeSmall {
+    @include box-field-sizes.size(small);
+}
+
+.isRootSizeMedium {
+    @include box-field-sizes.size(medium);
+}
+
+.isRootSizeLarge {
+    @include box-field-sizes.size(large);
+}
