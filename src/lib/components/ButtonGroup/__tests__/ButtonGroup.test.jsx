@@ -5,6 +5,7 @@ import {
 } from '@testing-library/react';
 import { blockPropTest } from '../../../../../tests/propTests/blockPropTest';
 import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
+import { idPropTest } from '../../../../../tests/propTests/idPropTest';
 import { Button } from '../../Button';
 import { ButtonGroup } from '../ButtonGroup';
 
@@ -16,6 +17,11 @@ describe('rendering', () => {
   it.each([
     ...blockPropTest,
     ...childrenEmptyPropTest,
+    ...idPropTest,
+    [
+      {},
+      (rootElement) => expect(within(rootElement).getByRole('button')).toHaveClass('isRootInButtonGroup'),
+    ],
     [
       { children: <Button label="label text" /> },
       (rootElement) => expect(within(rootElement).getByText('label text')),

@@ -90,6 +90,10 @@
     @include box-field-layout.in-form-layout();
 }
 
+.isRootGrouped {
+    @include box-field-layout.in-group-layout();
+}
+
 // Sizes
 .isRootSizeSmall {
     @include box-field-sizes.size(small);

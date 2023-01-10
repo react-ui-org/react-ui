@@ -4,7 +4,10 @@ import {
   within,
 } from '@testing-library/react';
 import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
+import { idPropTest } from '../../../../../tests/propTests/idPropTest';
+import { Button } from '../../Button';
 import { CheckboxField } from '../../CheckboxField';
+import { InputGroup } from '../../InputGroup';
 import { Radio } from '../../Radio';
 import { SelectField } from '../../SelectField';
 import { TextArea } from '../../TextArea';
@@ -14,7 +17,7 @@ import { FormLayout } from '../FormLayout';
 import { FormLayoutCustomField } from '../FormLayoutCustomField';
 
 const defaultProps = {
-  children: <FormLayoutCustomField id="nested-id">content</FormLayoutCustomField>,
+  children: <FormLayoutCustomField id="custom-field-id">content</FormLayoutCustomField>,
 };
 
 describe('rendering', () => {
@@ -36,18 +39,31 @@ describe('rendering', () => {
       (rootElement) => expect(rootElement).not.toHaveClass('isRootAutoWidth'),
     ],
     ...childrenEmptyPropTest,
+    ...idPropTest,
     [
       { children: <FormLayoutCustomField>other content text</FormLayoutCustomField> },
       (rootElement) => expect(within(rootElement).getByText('other content text')),
     ],
     [
       { children: <CheckboxField label="label" /> },
-      (rootElement) => expect(within(rootElement).getByRole('checkbox')),
+      (rootElement) => expect(within(rootElement).getByRole('checkbox').closest('label')).toHaveClass('isRootInFormLayout'),
+    ],
+    [
+      {
+        children: (
+          <InputGroup id="input-group-id" label="input group">
+            <TextField key="text field" label="text field" />
+            <Button key="button" label="button" />
+          </InputGroup>
+        ),
+      },
+      (rootElement) => expect(within(rootElement).getByTestId('input-group-id')).toHaveClass('isRootInFormLayout'),
     ],
     [
       {
         children: (
           <Radio
+            id="radio-id"
             label="label"
             options={[{
               label: 'label',
@@ -56,7 +72,7 @@ describe('rendering', () => {
           />
         ),
       },
-      (rootElement) => expect(within(rootElement).getByRole('radio')),
+      (rootElement) => expect(within(rootElement).getByTestId('radio-id')).toHaveClass('isRootInFormLayout'),
     ],
     [
       {
@@ -70,32 +86,32 @@ describe('rendering', () => {
           />
         ),
       },
-      (rootElement) => expect(within(rootElement).getByRole('combobox')),
+      (rootElement) => expect(within(rootElement).getByRole('combobox').closest('label')).toHaveClass('isRootInFormLayout'),
     ],
     [
       { children: <TextArea label="label" /> },
-      (rootElement) => expect(within(rootElement).getByRole('textbox')),
+      (rootElement) => expect(within(rootElement).getByRole('textbox').closest('label')).toHaveClass('isRootInFormLayout'),
     ],
     [
       { children: <TextField label="label" /> },
-      (rootElement) => expect(within(rootElement).getByRole('textbox')),
+      (rootElement) => expect(within(rootElement).getByRole('textbox').closest('label')).toHaveClass('isRootInFormLayout'),
     ],
     [
       { children: <Toggle label="label" /> },
-      (rootElement) => expect(within(rootElement).getByRole('checkbox')),
+      (rootElement) => expect(within(rootElement).getByRole('checkbox').closest('label')).toHaveClass('isRootInFormLayout'),
     ],
     [
       { fieldLayout: 'horizontal' },
       (rootElement) => {
         expect(rootElement).toHaveClass('isRootFieldLayoutHorizontal');
-        expect(within(rootElement).getByTestId('nested-id')).toHaveClass('isRootLayoutHorizontal');
+        expect(within(rootElement).getByTestId('custom-field-id')).toHaveClass('isRootLayoutHorizontal');
       },
     ],
     [
       { fieldLayout: 'vertical' },
       (rootElement) => {
         expect(rootElement).toHaveClass('isRootFieldLayoutVertical');
-        expect(within(rootElement).getByTestId('nested-id')).toHaveClass('isRootLayoutVertical');
+        expect(within(rootElement).getByTestId('custom-field-id')).toHaveClass('isRootLayoutVertical');
       },
     ],
     [

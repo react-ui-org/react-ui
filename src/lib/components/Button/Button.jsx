@@ -7,6 +7,7 @@ import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { transferProps } from '../_helpers/transferProps';
 import { ButtonGroupContext } from '../ButtonGroup';
+import { InputGroupContext } from '../InputGroup/InputGroupContext';
 import getRootLabelVisibilityClassName from './helpers/getRootLabelVisibilityClassName';
 import getRootPriorityClassName from './helpers/getRootPriorityClassName';
 import styles from './Button.scss';
@@ -28,8 +29,14 @@ export const Button = React.forwardRef((props, ref) => {
     color,
     ...restProps
   } = props;
+  const buttonGroupContext = useContext(ButtonGroupContext);
+  const inputGroupContext = useContext(InputGroupContext);
 
-  const context = useContext(ButtonGroupContext);
+  if (buttonGroupContext && inputGroupContext) {
+    throw new Error('Button cannot be placed both in `ButtonGroup` and `InputGroup`.');
+  }
+
+  const primaryContext = buttonGroupContext ?? inputGroupContext;
 
   return (
     /* No worries, `type` is always assigned correctly through props. */
@@ -39,20 +46,21 @@ export const Button = React.forwardRef((props, ref) => {
       className={classNames(
         styles.root,
         getRootPriorityClassName(
-          resolveContextOrProp(context && context.priority, priority),
+          resolveContextOrProp(buttonGroupContext && buttonGroupContext.priority, priority),
           styles,
         ),
         getRootColorClassName(color, styles),
         getRootSizeClassName(
-          resolveContextOrProp(context && context.size, size),
+          resolveContextOrProp(primaryContext && primaryContext.size, size),
           styles,
         ),
         getRootLabelVisibilityClassName(labelVisibility, styles),
-        resolveContextOrProp(context && context.block, block) && styles.isRootBlock,
-        context && styles.isRootGrouped,
+        resolveContextOrProp(buttonGroupContext && buttonGroupContext.block, block) && styles.isRootBlock,
+        buttonGroupContext && styles.isRootInButtonGroup,
+        inputGroupContext && styles.isRootInInputGroup,
         feedbackIcon && styles.hasRootFeedback,
       )}
-      disabled={resolveContextOrProp(context && context.disabled, disabled) || !!feedbackIcon}
+      disabled={resolveContextOrProp(buttonGroupContext && buttonGroupContext.disabled, disabled) || !!feedbackIcon}
       id={id}
       ref={ref}
     >
@@ -171,8 +179,8 @@ Button.propTypes = {
   /**
    * Size of the button.
    *
-   * Ignored if the component is rendered within `ButtonGroup` component
-   * as the value is inherited in such case.
+   * Ignored if the component is rendered within `ButtonGroup` or `InputGroup` component as the value is inherited in
+   * such case.
    */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   /**
