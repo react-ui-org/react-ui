@@ -158,46 +158,71 @@ Validation states visually present the result of validation of the grouped
 inputs. Input group's validation state is taken from its child inputs. You
 should always **provide validation messages for states other than valid**
 directly through `validationTexts` prop so users know what happened and what
-action they should take or what options they have. Validation messages passed
-to input elements' `validationText` prop will be ignored.
+action they should take or what options they have. These messages are not
+semantically tied to the `children` elements, the connection should be expressed
+in textual form in the actual message. The individual `children` elements must
+not show any `validationText`, they only show their respective `validationState`.
+Validation messages passed to input elements' `validationText` prop will be
+ignored.
 
 <Playground>
   <InputGroup
-    label="Password"
+    label="First and last name"
     layout="vertical"
-    validationTexts={["Password must include at least 1 special character."]}
+    validationTexts={[
+      "First name must be filled in.",
+      "Last name must be filled in.",
+    ]}
   >
     <TextField
-      label="Password"
-      type="password"
+      label="First name"
+      placeholder="Eg. John"
       validationState="invalid"
-      defaultValue="SecretPassword"
+      value=""
+    />
+    <TextField
+      label="Last name"
+      placeholder="Eg. Doe"
+      validationState="invalid"
+      value=""
     />
     <Button label="Submit" />
   </InputGroup>
   <InputGroup
-    label="Password"
+    label="First and last name"
     layout="vertical"
-    validationTexts={["Your password is not strong enough."]}
+    validationTexts={[
+      "Last name should not include any digits.",
+    ]}
   >
     <TextField
-      label="Password"
-      type="password"
+      label="First name"
+      placeholder="Eg. John"
+      value="John"
+    />
+    <TextField
+      label="Last name"
+      placeholder="Eg. Doe"
       validationState="warning"
-      defaultValue="Secret."
+      value="123Doe"
     />
     <Button label="Submit" />
   </InputGroup>
   <InputGroup
-    label="Password"
+    label="First and last name"
     layout="vertical"
-    validationTexts={["Your password is strong."]}
   >
     <TextField
-      label="Password"
-      type="password"
+      label="First name"
+      placeholder="Eg. John"
       validationState="valid"
-      defaultValue="SecretPassword007!"
+      value="John"
+    />
+    <TextField
+      label="Last name"
+      placeholder="Eg. Doe"
+      validationState="valid"
+      value="Doe"
     />
     <Button label="Submit" />
   </InputGroup>

@@ -29,8 +29,13 @@ export const Button = React.forwardRef((props, ref) => {
     color,
     ...restProps
   } = props;
-  const inputGroupContext = useContext(InputGroupContext);
   const buttonGroupContext = useContext(ButtonGroupContext);
+  const inputGroupContext = useContext(InputGroupContext);
+
+  if (buttonGroupContext && inputGroupContext) {
+    throw new Error('Button cannot be placed both in `ButtonGroup` and `InputGroup`.');
+  }
+
   const primaryContext = buttonGroupContext ?? inputGroupContext;
 
   return (

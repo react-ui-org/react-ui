@@ -7,22 +7,24 @@ import { Button } from '../../Button';
 import { SelectField } from '../../SelectField';
 import { TextField } from '../../TextField';
 import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
+import { isLabelVisible } from '../../../../../tests/propTests/isLabelVisible';
+import { layoutPropTest } from '../../../../../tests/propTests/layoutPropTest';
 import { InputGroup } from '../InputGroup';
 
 const mandatoryProps = {
   children: [
-    <TextField key="Text field" label="Text field" />,
+    <TextField key="text field" label="text field" />,
     <SelectField
-      key="Select field"
-      label="Select field"
+      key="select field"
+      label="select field"
       options={[{
-        label: 'label',
-        value: 'value',
+        label: 'option 1',
+        value: 1,
       }]}
     />,
-    <Button key="Button" label="Button" />,
+    <Button key="button" label="button" />,
   ],
-  label: 'Input group label',
+  label: 'label',
 };
 
 describe('rendering', () => {
@@ -31,46 +33,47 @@ describe('rendering', () => {
     [
       {},
       (rootElement) => {
-        expect(within(rootElement).getByText('Input group label'));
-        expect(within(rootElement).getByText('Text field'));
-        expect(within(rootElement).getByText('Select field'));
-        expect(within(rootElement).getByText('Button'));
+        expect(within(rootElement).getByText('text field'));
+        expect(within(rootElement).getByText('select field'));
+        expect(within(rootElement).getByText('button'));
       },
     ],
-    [
-      { isLabelVisible: false },
-      (rootElement) => expect(within(rootElement).getByText('Input group label')).toHaveClass('isLabelHidden'),
-    ],
-    [
-      {},
-      (rootElement) => expect(within(rootElement).getByText('Input group label').closest('label')).toHaveClass('isRootLayoutHorizontal'),
-    ],
-    [
-      { layout: 'vertical' },
-      (rootElement) => expect(within(rootElement).getByText('Input group label').closest('label')).toHaveClass('isRootLayoutVertical'),
-    ],
+    ...isLabelVisible,
+    ...layoutPropTest,
     [
       { size: 'small' },
       (rootElement) => {
-        expect(within(rootElement).getByText('Text field').closest('label')).toHaveClass('isRootSizeSmall');
-        expect(within(rootElement).getByText('Select field').closest('label')).toHaveClass('isRootSizeSmall');
+        expect(within(rootElement).getByText('text field').closest('label')).toHaveClass('isRootSizeSmall');
+        expect(within(rootElement).getByText('select field').closest('label')).toHaveClass('isRootSizeSmall');
         expect(within(rootElement).getByRole('button')).toHaveClass('isRootSizeSmall');
       },
     ],
     [
       { size: 'medium' },
       (rootElement) => {
-        expect(within(rootElement).getByText('Text field').closest('label')).toHaveClass('isRootSizeMedium');
-        expect(within(rootElement).getByText('Select field').closest('label')).toHaveClass('isRootSizeMedium');
+        expect(within(rootElement).getByText('text field').closest('label')).toHaveClass('isRootSizeMedium');
+        expect(within(rootElement).getByText('select field').closest('label')).toHaveClass('isRootSizeMedium');
         expect(within(rootElement).getByRole('button')).toHaveClass('isRootSizeMedium');
       },
     ],
     [
       { size: 'large' },
       (rootElement) => {
-        expect(within(rootElement).getByText('Text field').closest('label')).toHaveClass('isRootSizeLarge');
-        expect(within(rootElement).getByText('Select field').closest('label')).toHaveClass('isRootSizeLarge');
+        expect(within(rootElement).getByText('text field').closest('label')).toHaveClass('isRootSizeLarge');
+        expect(within(rootElement).getByText('select field').closest('label')).toHaveClass('isRootSizeLarge');
         expect(within(rootElement).getByRole('button')).toHaveClass('isRootSizeLarge');
+      },
+    ],
+    [
+      {
+        validationTexts: [
+          'validation text 1',
+          'validation text 2',
+        ],
+      },
+      (rootElement) => {
+        expect(within(rootElement).getByText('validation text 1'));
+        expect(within(rootElement).getByText('validation text 2'));
       },
     ],
   ])('renders with props: "%s"', (testedProps, assert) => {
