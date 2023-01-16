@@ -50,7 +50,7 @@
 }
 
 .isRootLayoutHorizontal {
-    @include box-field-layout.horizontal($has-min-tap-target: true);
+    @include box-field-layout.horizontal();
 }
 
 .isRootLayoutHorizontal .label {

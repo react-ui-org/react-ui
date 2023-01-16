@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { Text } from '../Text';
 import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
+import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
@@ -43,6 +44,7 @@ export const InputGroup = ({
         resolveContextOrProp(formLayoutContext && formLayoutContext.layout, layout) === 'horizontal'
           ? styles.isRootLayoutHorizontal
           : styles.isRootLayoutVertical,
+        getRootSizeClassName(size, styles),
         getRootValidationStateClassName(validationState, styles),
       )}
     >
