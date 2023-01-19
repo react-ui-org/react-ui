@@ -138,6 +138,8 @@
     //
     // Shared Settings
     // ===============
+    //
+    // 1. Use `initial`, `revert` or `unset` to keep the original box shadow of the component.
 
     // Borders
     --rui-border-width: 1px;
@@ -151,7 +153,7 @@
     --rui-tap-target-size: 10mm;
     --rui-focus-outline: 0.2em solid var(--rui-color-active-focus);
     --rui-focus-outline-offset: 1px;
-    --rui-focus-box-shadow: none;
+    --rui-focus-box-shadow: initial; // 1.
 
     // Bottom spacings
     --rui-spacing-bottom-default: var(--rui-spacing-5);
