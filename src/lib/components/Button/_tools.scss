@@ -123,8 +123,7 @@
         @include _get-themeable-properties($priority, $color, disabled);
     }
 
-    &:not(:disabled):hover,
-    &:not(:disabled):focus {
+    &:not(:disabled):hover {
         @include _get-themeable-properties($priority, $color, hover);
     }
 
