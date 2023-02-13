@@ -4,17 +4,23 @@ on:
   pull_request:
     types: [ opened ]
 
+permissions:
+  contents: read
+
 jobs:
   process_pr_meta:
     name: Process PR meta
     runs-on: ubuntu-20.04
+    permissions:
+      contents: read # for TimonVS/pr-labeler-action to read config file
+      pull-requests: write # for TimonVS/pr-labeler-action to add labels in PR
     steps:
       - name: Assign to author
-        uses: samspills/assign-pr-to-author@v1.0
+        uses: samspills/assign-pr-to-author@v1.0 # specify also the minor version because v1 does not exist
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
 
       - name: Add labels
-        uses: TimonVS/pr-labeler-action@v3.1.0
+        uses: TimonVS/pr-labeler-action@v4
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}

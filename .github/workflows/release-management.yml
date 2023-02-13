@@ -31,7 +31,7 @@ jobs:
 
       - name: Check package.json for version change
         id: check_package_version
-        uses: EndBug/version-check@v2.1.0
+        uses: EndBug/version-check@v2
 
       - name: Log when version changed
         if: steps.check_package_version.outputs.changed == 'true'
@@ -54,7 +54,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Draft release on GitHub
-        uses: release-drafter/release-drafter@v5.19.0
+        uses: release-drafter/release-drafter@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -72,7 +72,7 @@ jobs:
       # `build_and_test` job first so this job is skipped rather than exited with an error.
       - name: Publish matching GitHub release draft
         id: github_release
-        uses: JamesMGreene/node-draft-releaser@v1.1.2
+        uses: JamesMGreene/node-draft-releaser@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -125,7 +125,7 @@ jobs:
           path: docs
 
       - name: Deploy docs to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: docs # Must match the name of the artifact used.
           repository-name: react-ui-org/react-ui-docs
