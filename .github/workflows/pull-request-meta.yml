@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Assign to author
-        uses: samspills/assign-pr-to-author@v1.0
+        uses: samspills/assign-pr-to-author@v1.0 # specify also the minor version because v1 does not exist
         with:
-          repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Add labels
-        uses: TimonVS/pr-labeler-action@v3.1.0
+        uses: TimonVS/pr-labeler-action@v4
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
