@@ -9,6 +9,6 @@ jobs:
 
     steps:
       - name: Block merge with autosquash commits
-        uses: xt0rted/block-autosquash-commits-action@v2.0.0
+        uses: xt0rted/block-autosquash-commits-action@v2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
