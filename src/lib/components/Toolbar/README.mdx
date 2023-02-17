@@ -90,24 +90,28 @@ of `right`.
               <span id="alignment-label">Alignment:</span>
             </ToolbarItem>
             <ToolbarItem>
-              <ButtonGroup aria-labelledby="alignment-label">
+              <ButtonGroup aria-labelledby="alignment-label" priority="outline">
                 <Button
-                  color={alignment === 'top' ? 'selected' : 'primary'}
+                  aria-pressed={alignment === 'top'}
+                  color={alignment === 'top' ? 'selected' : 'secondary'}
                   label="top"
                   onClick={() => setAlignment('top')}
                 />
                 <Button
-                  color={alignment === 'middle' ? 'selected' : 'primary'}
+                  aria-pressed={alignment === 'middle'}
+                  color={alignment === 'middle' ? 'selected' : 'secondary'}
                   label="middle"
                   onClick={() => setAlignment('middle')}
                 />
                 <Button
-                  color={alignment === 'bottom' ? 'selected' : 'primary'}
+                  aria-pressed={alignment === 'bottom'}
+                  color={alignment === 'bottom' ? 'selected' : 'secondary'}
                   label="bottom"
                   onClick={() => setAlignment('bottom')}
                 />
                 <Button
-                  color={alignment === 'baseline' ? 'selected' : 'primary'}
+                  aria-pressed={alignment === 'baseline'}
+                  color={alignment === 'baseline' ? 'selected' : 'secondary'}
                   label="baseline"
                   onClick={() => setAlignment('baseline')}
                 />
@@ -119,24 +123,28 @@ of `right`.
               <span id="justification-label">Justification:</span>
             </ToolbarItem>
             <ToolbarItem>
-              <ButtonGroup aria-labelledby="justification-label">
+              <ButtonGroup aria-labelledby="justification-label" priority="outline">
                 <Button
-                  color={justification === 'start' ? 'selected' : 'primary'}
+                  aria-pressed={justification === 'start'}
+                  color={justification === 'start' ? 'selected' : 'secondary'}
                   label="start"
                   onClick={() => setJustification('start')}
                 />
                 <Button
-                  color={justification === 'center' ? 'selected' : 'primary'}
+                  aria-pressed={justification === 'center'}
+                  color={justification === 'center' ? 'selected' : 'secondary'}
                   label="center"
                   onClick={() => setJustification('center')}
                 />
                 <Button
-                  color={justification === 'end' ? 'selected' : 'primary'}
+                  aria-pressed={justification === 'end'}
+                  color={justification === 'end' ? 'selected' : 'secondary'}
                   label="end"
                   onClick={() => setJustification('end')}
                 />
                 <Button
-                  color={justification === 'space-between' ? 'selected' : 'primary'}
+                  aria-pressed={justification === 'space-between'}
+                  color={justification === 'space-between' ? 'selected' : 'secondary'}
                   label="space-between"
                   onClick={() => setJustification('space-between')}
                 />
@@ -202,7 +210,7 @@ toolbar groups, or on the entire toolbar.
 
 <Playground>
   {() => {
-    const [isGroupDense, setIsGroupDense] = React.useState(true);
+    const [isGroupDense, setIsGroupDense] = React.useState(false);
     const [isToolbarDense, setIsToolbarDense] = React.useState(false);
     return (
       <div>

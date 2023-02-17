@@ -88,19 +88,22 @@ complete list of accepted values.
           <span id="alignment-options-label">Alignment:</span>
         </ToolbarItem>
         <ToolbarItem>
-          <ButtonGroup aria-labelledby="alignment-options-label">
+          <ButtonGroup aria-labelledby="alignment-options-label" priority="outline">
             <Button
-              color={align === '-start' ? 'selected' : 'primary'}
+              aria-pressed={align === '-start'}
+              color={align === '-start' ? 'selected' : 'secondary'}
               label="start"
               onClick={() => setAlign('-start')}
             />
             <Button
-              color={align === '' ? 'selected' : 'primary'}
+              aria-pressed={align === ''}
+              color={align === '' ? 'selected' : 'secondary'}
               label="center"
               onClick={() => setAlign('')}
             />
             <Button
-              color={align === '-end' ? 'selected' : 'primary'}
+              aria-pressed={align === '-end'}
+              color={align === '-end' ? 'selected' : 'secondary'}
               label="end"
               onClick={() => setAlign('-end')}
             />

@@ -144,24 +144,31 @@ with CSS custom properties.
             <span id="label-width-options-label">Label width:</span>
           </ToolbarItem>
           <ToolbarItem>
-            <ButtonGroup aria-labelledby="label-width-options-label">
+            <ButtonGroup
+              aria-labelledby="label-width-options-label"
+              priority="outline"
+            >
               <Button
-                color={labelWidth === 'default' ? 'selected' : 'primary'}
+                aria-pressed={labelWidth === 'default'}
+                color={labelWidth === 'default' ? 'selected' : 'secondary'}
                 label="default"
                 onClick={() => setLabelWidth('default')}
               />
               <Button
-                color={labelWidth === 'auto' ? 'selected' : 'primary'}
+                aria-pressed={labelWidth === 'auto'}
+                color={labelWidth === 'auto' ? 'selected' : 'secondary'}
                 label="auto"
                 onClick={() => setLabelWidth('auto')}
               />
               <Button
-                color={labelWidth === 'limited' ? 'selected' : 'primary'}
+                aria-pressed={labelWidth === 'limited'}
+                color={labelWidth === 'limited' ? 'selected' : 'secondary'}
                 label="limited"
                 onClick={() => setLabelWidth('limited')}
               />
               <Button
-                color={labelWidth === 'custom' ? 'selected' : 'primary'}
+                aria-pressed={labelWidth === 'custom'}
+                color={labelWidth === 'custom' ? 'selected' : 'secondary'}
                 label="custom"
                 onClick={() => setLabelWidth('custom')}
               />
@@ -351,14 +358,16 @@ This is a demo of all components supported by FormLayout.
       <div>
         <Toolbar>
           <ToolbarItem>
-            <ButtonGroup>
+            <ButtonGroup priority="outline">
               <Button
-                color={fieldLayout === 'vertical' ? 'selected' : 'primary'}
+                aria-pressed={fieldLayout === 'vertical'}
+                color={fieldLayout === 'vertical' ? 'selected' : 'secondary'}
                 label="Vertical layout"
                 onClick={() => setFieldLayout('vertical')}
               />
               <Button
-                color={fieldLayout === 'horizontal' ? 'selected' : 'primary'}
+                aria-pressed={fieldLayout === 'horizontal'}
+                color={fieldLayout === 'horizontal' ? 'selected' : 'secondary'}
                 label="Horizontal layout"
                 onClick={() => setFieldLayout('horizontal')}
               />

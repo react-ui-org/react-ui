@@ -477,7 +477,7 @@
     // Buttons: outline priority: selected variant
     --rui-Button--outline--selected--default__color: var(--rui-color-action-selected);
     --rui-Button--outline--selected--default__border-color: var(--rui-color-action-selected);
-    --rui-Button--outline--selected--default__background: transparent;
+    --rui-Button--outline--selected--default__background: var(--rui-color-background-selected);
     --rui-Button--outline--selected--hover__color: var(--rui-color-action-on-selected);
     --rui-Button--outline--selected--hover__border-color: var(--rui-color-action-selected-hover);
     --rui-Button--outline--selected--hover__background: var(--rui-color-action-selected-hover);
@@ -593,7 +593,7 @@
 
     // Buttons: flat priority: selected variant
     --rui-Button--flat--selected--default__color: var(--rui-color-action-selected);
-    --rui-Button--flat--selected--default__background: transparent;
+    --rui-Button--flat--selected--default__background: var(--rui-color-background-selected);
     --rui-Button--flat--selected--hover__color: var(--rui-color-action-selected-hover);
     --rui-Button--flat--selected--hover__background: var(--rui-color-background-selected);
     --rui-Button--flat--selected--active__color: var(--rui-color-action-selected-active);

@@ -20,7 +20,7 @@ $gray-800: colors.darken-color($_gray-base-color, 80%);
 $gray-900: colors.darken-color($_gray-base-color, 90%);
 
 $primary: #00778b;
-$secondary: #fa4616;
+$secondary: $gray-500;
 $selected: #007bff;
 
 $focus: color.scale($selected, $alpha: -50%);
