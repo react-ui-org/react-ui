@@ -22,6 +22,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalTitle,
+  Radio,
   ScrollView,
   TextField,
   Toolbar,
@@ -55,11 +56,7 @@ And use it:
     const modalCloseButtonRef = React.useRef();
     return (
       <>
-        <Button
-          label="Launch modal"
-          onClick={() => setModalOpen(true)}
-          priority="outline"
-        />
+        <Button label="Launch modal" onClick={() => setModalOpen(true)} />
         <div>
           {modalOpen && (
             <Modal
@@ -86,6 +83,7 @@ And use it:
                   ref={modalPrimaryButtonRef}
                 />
                 <Button
+                  color="secondary"
                   label="Close"
                   onClick={() => setModalOpen(false)}
                   priority="outline"
@@ -152,7 +150,6 @@ e.g. dialog modal, blocking modal, scrollable modal, etc.
             setModalOpen(1);
             setTimeout(() => setModalOpen(null), 2500);
           }}
-          priority="outline"
         />
         <Button
           label="Launch blocking modal with title"
@@ -160,17 +157,14 @@ e.g. dialog modal, blocking modal, scrollable modal, etc.
             setModalOpen(2);
             setTimeout(() => setModalOpen(null), 3500);
           }}
-          priority="outline"
         />
         <Button
           label="Launch modal as dialog"
           onClick={() => setModalOpen(3)}
-          priority="outline"
         />
         <Button
           label="Launch modal as form"
           onClick={() => setModalOpen(4)}
-          priority="outline"
         />
         <div>
           {modalOpen === 1 && (
@@ -227,6 +221,7 @@ e.g. dialog modal, blocking modal, scrollable modal, etc.
                   ref={modalPrimaryButtonRef}
                 />
                 <Button
+                  color="secondary"
                   label="Close"
                   onClick={() => setModalOpen(false)}
                   priority="outline"
@@ -259,6 +254,7 @@ e.g. dialog modal, blocking modal, scrollable modal, etc.
                   ref={modalPrimaryButtonRef}
                 />
                 <Button
+                  color="secondary"
                   label="Close"
                   onClick={() => setModalOpen(false)}
                   priority="outline"
@@ -305,7 +301,6 @@ There are two ways how to position elements within the ModalHeader:
             setModalOpen(true);
             setVariant(1);
           }}
-          priority="outline"
         />
         <Button
           label="Launch without close button"
@@ -313,7 +308,6 @@ There are two ways how to position elements within the ModalHeader:
             setModalOpen(true);
             setVariant(2);
           }}
-          priority="outline"
         />
         <Button
           label="Launch without close button and with centered title"
@@ -321,7 +315,6 @@ There are two ways how to position elements within the ModalHeader:
             setModalOpen(true);
             setVariant(3);
           }}
-          priority="outline"
         />
         <Button
           label="Launch with custom layout"
@@ -329,7 +322,6 @@ There are two ways how to position elements within the ModalHeader:
             setModalOpen(true);
             setVariant(4);
           }}
-          priority="outline"
         />
         <div>
           {modalOpen && (
@@ -384,6 +376,7 @@ There are two ways how to position elements within the ModalHeader:
                   ref={modalPrimaryButtonRef}
                 />
                 <Button
+                  color="secondary"
                   label="Close"
                   onClick={() => setModalOpen(false)}
                   priority="outline"
@@ -432,44 +425,8 @@ There are two ways to position buttons within the ModalFooter:
     return (
       <>
         <Button
-          label="Launch with footer justified to start"
-          onClick={() => {
-            setModalOpen(true);
-            setModalJustify('start');
-          }}
-          priority="outline"
-        />
-        <Button
-          label="Launch with footer justified to center"
-          onClick={() => {
-            setModalOpen(true);
-            setModalJustify('center');
-          }}
-          priority="outline"
-        />
-        <Button
-          label="Launch with footer justified to end"
-          onClick={() => {
-            setModalOpen(true);
-            setModalJustify('end');
-          }}
-          priority="outline"
-        />
-        <Button
-          label="Launch with footer justified with space between"
-          onClick={() => {
-            setModalOpen(true);
-            setModalJustify('space-between');
-          }}
-          priority="outline"
-        />
-        <Button
-          label="Launch with footer with custom layout"
-          onClick={() => {
-            setModalOpen(true);
-            setModalJustify('stretch');
-          }}
-          priority="outline"
+          label="Launch modal with footer variants"
+          onClick={() => setModalOpen(true)}
         />
         <div>
           {modalOpen && (
@@ -478,15 +435,38 @@ There are two ways to position buttons within the ModalFooter:
               primaryButtonRef={modalPrimaryButtonRef}
             >
               <ModalHeader>
-                <ModalTitle>Delete the user?</ModalTitle>
+                <ModalTitle>Footer justification</ModalTitle>
                 <ModalCloseButton onClick={() => setModalOpen(false)} />
               </ModalHeader>
               <ModalBody>
                 <ModalContent>
-                  <p>
-                    Do you really want to delete the user <code>admin</code>?
-                    This cannot be undone.
-                  </p>
+                  <Radio
+                    label="Footer justification"
+                    onChange={(e) => setModalJustify(e.target.value)}
+                    options={[
+                      {
+                        label: 'start',
+                        value: 'start',
+                      },
+                      {
+                        label: 'center',
+                        value: 'center',
+                      },
+                      {
+                        label: 'end',
+                        value: 'end',
+                      },
+                      {
+                        label: 'space-between',
+                        value: 'space-between',
+                      },
+                      {
+                        label: 'stretch (with a custom layout)',
+                        value: 'stretch',
+                      },
+                    ]}
+                    value={modalJustify}
+                  />
                 </ModalContent>
               </ModalBody>
               <ModalFooter justify={modalJustify}>
@@ -514,6 +494,7 @@ There are two ways to position buttons within the ModalFooter:
                           </ToolbarGroup>
                         <ToolbarItem>
                           <Button
+                            color="secondary"
                             label="Close"
                             onClick={() => setModalOpen(false)}
                             priority="outline"
@@ -524,12 +505,12 @@ There are two ways to position buttons within the ModalFooter:
                     ) : (
                       <>
                         <Button
-                          color="danger"
-                          label="Delete"
+                          label="OK"
                           onClick={() => setModalOpen(false)}
                           ref={modalPrimaryButtonRef}
                         />
                         <Button
+                          color="secondary"
                           label="Close"
                           onClick={() => setModalOpen(false)}
                           priority="outline"
@@ -566,7 +547,6 @@ Modals of any size automatically shrink when they cannot fit the screen width.
             setModalSize('small');
             setModalOpen(true);
           }}
-          priority="outline"
         />
         <Button
           label="Launch medium modal"
@@ -574,7 +554,6 @@ Modals of any size automatically shrink when they cannot fit the screen width.
             setModalSize('medium');
             setModalOpen(true);
           }}
-          priority="outline"
         />
         <Button
           label="Launch large modal"
@@ -582,7 +561,6 @@ Modals of any size automatically shrink when they cannot fit the screen width.
             setModalSize('large');
             setModalOpen(true);
           }}
-          priority="outline"
         />
         <Button
           label="Launch fullscreen modal"
@@ -590,7 +568,6 @@ Modals of any size automatically shrink when they cannot fit the screen width.
             setModalSize('fullscreen');
             setModalOpen(true);
           }}
-          priority="outline"
         />
         <div>
           {modalOpen && (
@@ -619,6 +596,7 @@ Modals of any size automatically shrink when they cannot fit the screen width.
                   ref={modalPrimaryButtonRef}
                 />
                 <Button
+                  color="secondary"
                   label="Close"
                   onClick={() => setModalOpen(false)}
                   priority="outline"
@@ -645,7 +623,6 @@ On top of that, the modal can adjust to the width of its content.
         <Button
           label="Launch auto-width modal"
           onClick={() => setModalOpen(true)}
-          priority="outline"
         />
         <div>
           {modalOpen && (
@@ -674,6 +651,7 @@ On top of that, the modal can adjust to the width of its content.
                   ref={modalPrimaryButtonRef}
                 />
                 <Button
+                  color="secondary"
                   label="Close"
                   onClick={() => setModalOpen(false)}
                   priority="outline"
@@ -708,7 +686,6 @@ with a fixed label width (i.e. any other than `auto`, see the previous note).
         <Button
           label="Launch auto-with modal with a form"
           onClick={() => setModalOpen(true)}
-          priority="outline"
         />
         <div>
           {modalOpen && (
@@ -738,6 +715,7 @@ with a fixed label width (i.e. any other than `auto`, see the previous note).
                   ref={modalPrimaryButtonRef}
                 />
                 <Button
+                  color="secondary"
                   label="Cancel"
                   onClick={() => setModalOpen(false)}
                   priority="outline"
@@ -770,7 +748,6 @@ Modal can be aligned either to the top or center of the screen.
             setModalPosition('center');
             setModalOpen(true);
           }}
-          priority="outline"
         />
         <Button
           label="Launch modal at top"
@@ -778,7 +755,6 @@ Modal can be aligned either to the top or center of the screen.
             setModalPosition('top');
             setModalOpen(true);
           }}
-          priority="outline"
         />
         <div>
           {modalOpen && (
@@ -807,6 +783,7 @@ Modal can be aligned either to the top or center of the screen.
                   ref={modalPrimaryButtonRef}
                 />
                 <Button
+                  color="secondary"
                   label="Close"
                   onClick={() => setModalOpen(false)}
                   priority="outline"
@@ -948,7 +925,6 @@ independent of the page itself. This can be done in three ways using the
             setModalScrolling('auto');
             setModalOpen(true);
           }}
-          priority="outline"
         />
         <Button
           label="Launch modal with ScrollView"
@@ -956,7 +932,6 @@ independent of the page itself. This can be done in three ways using the
             setModalScrolling('custom');
             setModalOpen(true);
           }}
-          priority="outline"
         />
         <Button
           label="Launch modal with non-scrolling body"
@@ -964,7 +939,6 @@ independent of the page itself. This can be done in three ways using the
             setModalScrolling('none');
             setModalOpen(true);
           }}
-          priority="outline"
         />
         <div>
           {modalOpen && (
@@ -996,6 +970,7 @@ independent of the page itself. This can be done in three ways using the
                   ref={modalPrimaryButtonRef}
                 />
                 <Button
+                  color="secondary"
                   label="Close"
                   onClick={() => setModalOpen(false)}
                   priority="outline"

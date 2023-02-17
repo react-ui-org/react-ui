@@ -156,19 +156,22 @@ will override automatic break point selection in `auto` mode when present.
               <span id="word-wrapping-options-label">Word wrapping:</span>
             </ToolbarItem>
             <ToolbarItem>
-              <ButtonGroup aria-labelledby="word-wrapping-options-label">
+              <ButtonGroup aria-labelledby="word-wrapping-options-label" priority="outline">
                 <Button
-                  color={wordWrapping === 'normal' ? 'selected' : 'primary'}
+                  aria-pressed={wordWrapping === 'normal'}
+                  color={wordWrapping === 'normal' ? 'selected' : 'secondary'}
                   label="normal"
                   onClick={() => setWordWrapping('normal')}
                 />
                 <Button
-                  color={wordWrapping === 'long-words' ? 'selected' : 'primary'}
+                  aria-pressed={wordWrapping === 'long-words'}
+                  color={wordWrapping === 'long-words' ? 'selected' : 'secondary'}
                   label="long-words"
                   onClick={() => setWordWrapping('long-words')}
                 />
                 <Button
-                  color={wordWrapping === 'anywhere' ? 'selected' : 'primary'}
+                  aria-pressed={wordWrapping === 'anywhere'}
+                  color={wordWrapping === 'anywhere' ? 'selected' : 'secondary'}
                   label="anywhere"
                   onClick={() => setWordWrapping('anywhere')}
                 />
@@ -180,19 +183,22 @@ will override automatic break point selection in `auto` mode when present.
               <span id="hyphens-options-label">Hyphens:</span>
             </ToolbarItem>
             <ToolbarItem>
-              <ButtonGroup aria-labelledby="hyphens-options-label">
+              <ButtonGroup aria-labelledby="hyphens-options-label" priority="outline">
                 <Button
-                  color={hyphens === 'none' ? 'selected' : 'primary'}
+                  aria-pressed={hyphens === 'none'}
+                  color={hyphens === 'none' ? 'selected' : 'secondary'}
                   label="none"
                   onClick={() => setHyphens('none')}
                 />
                 <Button
-                  color={hyphens === 'auto' ? 'selected' : 'primary'}
+                  aria-pressed={hyphens === 'auto'}
+                  color={hyphens === 'auto' ? 'selected' : 'secondary'}
                   label="auto"
                   onClick={() => setHyphens('auto')}
                 />
                 <Button
-                  color={hyphens === 'manual' ? 'selected' : 'primary'}
+                  aria-pressed={hyphens === 'manual'}
+                  color={hyphens === 'manual' ? 'selected' : 'secondary'}
                   label="manual"
                   onClick={() => setHyphens('manual')}
                 />

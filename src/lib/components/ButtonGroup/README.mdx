@@ -43,6 +43,13 @@ See [API](#api) for all available options.
 - Use button group to group **related actions** that a user can take. Buttons
   should not be grouped just to save space on the screen.
 
+- **Mixing multiple button priorities** and some other properties within a
+  button group is [not allowed](#shared-properties). The priority can only be
+  set for all buttons in the group at once.
+
+- In most use cases, **secondary action color** is probably the best option for
+  buttons in a group as it works good with the colors of the selected state.
+
 - Use **short labels or icons** so the buttons can fit small screens.
 
 - For toggling between on/off states, use rather the
@@ -58,11 +65,17 @@ See [API](#api) for all available options.
 ### Shared Properties
 
 You can set the following properties directly on ButtonGroup to be shared for
-all buttons inside the group: size, priority, disabled state, and block width.
+all buttons inside the group:
+
+- `size`,
+- `priority`,
+- `disabled` state,
+- and `block` width.
+
 These properties are then passed over to individual buttons. At the same time,
-they **cannot be overridden** on the buttons' level. While technically possible,
-from the design point of view it's undesirable to group buttons of totally
-different types or sizes.
+they **cannot be overridden** on the buttons' level. While (in theory)
+technically possible, from the design point of view it's undesirable to group
+buttons of totally different types or sizes.
 
 ## Priorities
 
@@ -73,6 +86,9 @@ priorities of the [Button](/components/button) component:
 2. outline
 3. flat
 
+👉 To avoid undesired combinations, the visual priority of the button group
+**cannot be overridden** on the Button level.
+
 ### Filled
 
 The default, high-emphasis priority should be used for primary actions of your
@@ -80,9 +96,9 @@ app.
 
 <Playground>
   <ButtonGroup>
-    <Button label="Week" />
-    <Button label="Month" />
-    <Button label="Year" />
+    <Button color="secondary" label="Week" />
+    <Button color="secondary" label="Month" />
+    <Button color="secondary" label="Year" />
   </ButtonGroup>
 </Playground>
 
@@ -93,9 +109,9 @@ in your app.
 
 <Playground>
   <ButtonGroup priority="outline">
-    <Button label="Week" />
-    <Button label="Month" />
-    <Button label="Year" />
+    <Button color="secondary" label="Week" />
+    <Button color="secondary" label="Month" />
+    <Button color="secondary" label="Year" />
   </ButtonGroup>
 </Playground>
 
@@ -106,9 +122,9 @@ the content.
 
 <Playground>
   <ButtonGroup priority="flat">
-    <Button label="Week" />
-    <Button label="Month" />
-    <Button label="Year" />
+    <Button color="secondary" label="Week" />
+    <Button color="secondary" label="Month" />
+    <Button color="secondary" label="Year" />
   </ButtonGroup>
 </Playground>
 
@@ -119,19 +135,19 @@ medium, and large.
 
 <Playground>
   <ButtonGroup size="small">
-    <Button label="Week" />
-    <Button label="Month" />
-    <Button label="Year" />
+    <Button color="secondary" label="Week" />
+    <Button color="secondary" label="Month" />
+    <Button color="secondary" label="Year" />
   </ButtonGroup>
   <ButtonGroup>
-    <Button label="Week" />
-    <Button label="Month" />
-    <Button label="Year" />
+    <Button color="secondary" label="Week" />
+    <Button color="secondary" label="Month" />
+    <Button color="secondary" label="Year" />
   </ButtonGroup>
   <ButtonGroup size="large">
-    <Button label="Week" />
-    <Button label="Month" />
-    <Button label="Year" />
+    <Button color="secondary" label="Week" />
+    <Button color="secondary" label="Month" />
+    <Button color="secondary" label="Year" />
   </ButtonGroup>
 </Playground>
 
@@ -139,9 +155,9 @@ Block button groups span the full width of a parent:
 
 <Playground>
   <ButtonGroup block>
-    <Button label="Week" />
-    <Button label="Month" />
-    <Button label="Year" />
+    <Button color="secondary" label="Week" />
+    <Button color="secondary" label="Month" />
+    <Button color="secondary" label="Year" />
   </ButtonGroup>
 </Playground>
 
@@ -153,19 +169,19 @@ Disables all buttons inside the group.
 
 <Playground>
   <ButtonGroup disabled>
-    <Button label="Week" />
-    <Button label="Month" />
-    <Button label="Year" />
+    <Button color="secondary" label="Week" />
+    <Button color="secondary" label="Month" />
+    <Button color="secondary" label="Year" />
   </ButtonGroup>
   <ButtonGroup priority="outline" disabled>
-    <Button label="Week" />
-    <Button label="Month" />
-    <Button label="Year" />
+    <Button color="secondary" label="Week" />
+    <Button color="secondary" label="Month" />
+    <Button color="secondary" label="Year" />
   </ButtonGroup>
   <ButtonGroup priority="flat" disabled>
-    <Button label="Week" />
-    <Button label="Month" />
-    <Button label="Year" />
+    <Button color="secondary" label="Week" />
+    <Button color="secondary" label="Month" />
+    <Button color="secondary" label="Year" />
   </ButtonGroup>
 </Playground>
 
@@ -176,19 +192,19 @@ state of individual buttons can be indicated by showing an icon.
 
 <Playground>
   <ButtonGroup>
-    <Button label="Week" color="success" feedbackIcon={<Icon icon="success" />} />
-    <Button label="Month" />
-    <Button label="Year" />
+    <Button color="success" label="Week" feedbackIcon={<Icon icon="success" />} />
+    <Button color="secondary" label="Month" />
+    <Button color="secondary" label="Year" />
   </ButtonGroup>
   <ButtonGroup priority="outline">
-    <Button label="Week" color="success" feedbackIcon={<Icon icon="success" />} />
-    <Button label="Month" />
-    <Button label="Year" />
+    <Button color="success" label="Week" feedbackIcon={<Icon icon="success" />} />
+    <Button color="secondary" label="Month" />
+    <Button color="secondary" label="Year" />
   </ButtonGroup>
   <ButtonGroup priority="flat">
-    <Button label="Week" color="success" feedbackIcon={<Icon icon="success" />} />
-    <Button label="Month" />
-    <Button label="Year" />
+    <Button color="success" label="Week" feedbackIcon={<Icon icon="success" />} />
+    <Button color="secondary" label="Month" />
+    <Button color="secondary" label="Year" />
   </ButtonGroup>
 </Playground>
 
@@ -200,18 +216,18 @@ the desired item.
 <Playground>
   <ButtonGroup>
     <Button color="selected" label="Week" />
-    <Button label="Month" />
-    <Button label="Year" />
+    <Button color="secondary" label="Month" />
+    <Button color="secondary" label="Year" />
   </ButtonGroup>
   <ButtonGroup priority="outline">
     <Button color="selected" label="Week" />
-    <Button label="Month" />
-    <Button label="Year" />
+    <Button color="secondary" label="Month" />
+    <Button color="secondary" label="Year" />
   </ButtonGroup>
   <ButtonGroup priority="flat">
     <Button color="selected" label="Week" />
-    <Button label="Month" />
-    <Button label="Year" />
+    <Button color="secondary" label="Month" />
+    <Button color="secondary" label="Year" />
   </ButtonGroup>
 </Playground>
 
@@ -224,9 +240,9 @@ and communicating the state of individual options.
   <>
     <span id="period-label">Period:</span>
     <ButtonGroup aria-labelledby="period-label">
-      <Button label="Week" aria-pressed color="selected" />
-      <Button label="Month" aria-pressed={false} />
-      <Button label="Year" aria-pressed={false} />
+      <Button color="selected" label="Week" aria-pressed />
+      <Button color="secondary" label="Month" aria-pressed={false} />
+      <Button color="secondary" label="Year" aria-pressed={false} />
     </ButtonGroup>
   </>
 </Playground>
