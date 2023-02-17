@@ -16,23 +16,26 @@ export const TableHeaderCell = ({
       className={isSortingActive ? styles.isTableHeadCellSortingActive : styles.tableHeadCell}
       id={id}
     >
-      {sort && column.isSortable && (
-        <div className={styles.sortButton}>
+      <span className={styles.tableHeadCellLayout}>
+        {sort && column.isSortable && (
           <Button
+            aria-pressed={isSortingActive}
             beforeLabel={
               sortDirection === 'asc'
                 ? sort.ascendingIcon
                 : sort.descendingIcon
             }
+            color={isSortingActive ? 'selected' : 'secondary'}
             id={id && `${id}__sortButton`}
             label={sortDirection}
             labelVisibility="none"
             onClick={() => sort.onClick(column.name, sortDirection)}
             priority="flat"
+            size="small"
           />
-        </div>
-      )}
-      {column.label}
+        )}
+        {column.label}
+      </span>
     </th>
   );
 };
