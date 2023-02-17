@@ -1,6 +1,6 @@
 export default {
   plain: {
-    fontFamily: 'var(--rui-code-font-family)',
+    fontFamily: 'var(--rui-font-family-monospace)',
     fontSize: '1rem',
     lineHeight: 1.45,
     color: '#393A34',
