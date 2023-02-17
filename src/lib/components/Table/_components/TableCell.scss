@@ -14,12 +14,13 @@
     border-bottom-width: 2px;
 }
 
+.tableHeadCellLayout {
+    display: flex;
+    gap: settings.$cell-padding-x;
+    align-items: center;
+}
+
 .isTableCellSortingActive,
 .isTableHeadCellSortingActive {
     background-color: settings.$sorted-background-color;
-}
-
-.sortButton {
-    display: inline-block;
-    margin-right: settings.$cell-padding-x;
 }
