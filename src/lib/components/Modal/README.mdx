@@ -14,6 +14,7 @@ import {
 } from 'docz'
 import {
   Button,
+  CheckboxField,
   FormLayout,
   Modal,
   ModalBody,
@@ -666,70 +667,6 @@ On top of that, the modal can adjust to the width of its content.
   }}
 </Playground>
 
-👉 Please note the auto width may not function correctly in combination with
-other auto-layout mechanisms, e.g. the auto-width
-[FormLayout](/components/form-layout#label-width). It's just too much
-magic that doesn't work together (yet?) 🎩.
-
-👉 Beware of horizontal FormLayout inside `small` modals. While automatic
-overflow handling comes to the rescue in this kind of scenario, you will be
-better off with the combination of auto-sized modal and horizontal FormLayout
-with a fixed label width (i.e. any other than `auto`, see the previous note).
-
-<Playground>
-  {() => {
-    const [modalOpen, setModalOpen] = React.useState(false);
-    const modalPrimaryButtonRef = React.useRef();
-    const modalCloseButtonRef = React.useRef();
-    return (
-      <>
-        <Button
-          label="Launch auto-with modal with a form"
-          onClick={() => setModalOpen(true)}
-        />
-        <div>
-          {modalOpen && (
-            <Modal
-              closeButtonRef={modalCloseButtonRef}
-              primaryButtonRef={modalPrimaryButtonRef}
-              size="auto"
-            >
-              <ModalHeader>
-                <ModalTitle>Form inside modal</ModalTitle>
-                <ModalCloseButton onClick={() => setModalOpen(false)} />
-              </ModalHeader>
-              <ModalBody>
-                <ModalContent>
-                  <FormLayout fieldLayout="horizontal">
-                    <TextField label="A form element" />
-                    <TextField label="Another form element" />
-                    <TextField label="Yet another one" />
-                  </FormLayout>
-                </ModalContent>
-              </ModalBody>
-              <ModalFooter>
-                <Button
-                  color="primary"
-                  label="Save"
-                  onClick={() => setModalOpen(false)}
-                  ref={modalPrimaryButtonRef}
-                />
-                <Button
-                  color="secondary"
-                  label="Cancel"
-                  onClick={() => setModalOpen(false)}
-                  priority="outline"
-                  ref={modalCloseButtonRef}
-                />
-              </ModalFooter>
-            </Modal>
-          )}
-        </div>
-      </>
-    );
-  }}
-</Playground>
-
 ## Position
 
 Modal can be aligned either to the top or center of the screen.
@@ -798,6 +735,85 @@ Modal can be aligned either to the top or center of the screen.
   }}
 </Playground>
 
+## Forms in Modals
+
+You can safely place a FormLayout into a Modal of any size, including the
+auto-width Modal.
+
+<Playground>
+  {() => {
+    const [modalOpen, setModalOpen] = React.useState(false);
+    const [agree, setAgree] = React.useState(true);
+    const modalPrimaryButtonRef = React.useRef();
+    const modalCloseButtonRef = React.useRef();
+    return (
+      <>
+        <Button
+          label="Launch auto-width modal with auto-width form"
+          onClick={() => setModalOpen(true)}
+        />
+        <div>
+          {modalOpen && (
+            <Modal
+              closeButtonRef={modalCloseButtonRef}
+              primaryButtonRef={modalPrimaryButtonRef}
+              size="auto"
+            >
+              <ModalHeader>
+                <ModalTitle>Auto-width form inside auto-width modal</ModalTitle>
+                <ModalCloseButton onClick={() => setModalOpen(false)} />
+              </ModalHeader>
+              <ModalBody>
+                <ModalContent>
+                  <FormLayout autoWidth fieldLayout="horizontal">
+                    <TextField
+                      label="A form element"
+                      validationState="warning"
+                      validationText={`Account with this name already exists,
+                       pick a different one.`
+                      }
+                    />
+                    <TextField label="Another form element" />
+                    <TextField label="Yet another one" />
+                    <CheckboxField
+                      checked={agree}
+                      label="I agree"
+                      onChange={() => setAgree(!agree)}
+                    />
+                  </FormLayout>
+                </ModalContent>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  color="primary"
+                  label="Save"
+                  onClick={() => setModalOpen(false)}
+                  ref={modalPrimaryButtonRef}
+                />
+                <Button
+                  color="secondary"
+                  label="Cancel"
+                  onClick={() => setModalOpen(false)}
+                  priority="outline"
+                  ref={modalCloseButtonRef}
+                />
+              </ModalFooter>
+            </Modal>
+          )}
+        </div>
+      </>
+    );
+  }}
+</Playground>
+
+👉 Inside Modal, we recommend using the `autoWidth` option of FormLayout. This
+prevents the Modal from unwanted horizontal expansion when a long validation
+text pops up during user's interaction with the form.
+
+👉 Beware of horizontal FormLayout inside `small` modals. While automatic
+overflow handling comes to the rescue in this kind of scenario, you will be
+better off with the combination of auto-sized modal and horizontal FormLayout.
+
 ## Keyboard Control
 
 Modal can be controlled either by mouse or keyboard. To enhance user
@@ -809,8 +825,8 @@ To enable it, you just need to pass a reference to the buttons using
 a reference to the button is that if the button is disabled, the key press will
 not fire the event.
 
-👉 We strongly recommend using this feature together with Autofocus for a better
-user experience.
+👉 We strongly recommend using this feature together with
+[Autofocus](#autofocus) for a better user experience.
 
 ## Autofocus
 
