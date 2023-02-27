@@ -38,7 +38,7 @@ export const InputGroup = ({
   );
 
   return (
-    <label
+    <div
       className={classNames(
         styles.root,
         resolveContextOrProp(formLayoutContext && formLayoutContext.layout, layout) === 'horizontal'
@@ -71,9 +71,7 @@ export const InputGroup = ({
           </InputGroupContext.Provider>
         </div>
         {validationTexts && (
-          <div
-            className={styles.validationTexts}
-          >
+          <div className={styles.validationTexts}>
             {validationTexts.map((validationText) => (
               <Text blockLevel key={validationText}>
                 {validationText}
@@ -82,7 +80,7 @@ export const InputGroup = ({
           </div>
         )}
       </div>
-    </label>
+    </div>
   );
 };
 
