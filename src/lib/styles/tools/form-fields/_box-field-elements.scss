@@ -3,6 +3,7 @@
 //    result width across browsers.
 // 3. Let inputs properly fit various layout scenarios.
 // 4. Leave out space for SelectField caret.
+// 5. Use a block-level display mode to prevent extra white space below grouped inputs in Safari.
 
 @use "../../settings/form-fields" as settings;
 @use "../../theme/form-fields" as theme;
@@ -93,8 +94,8 @@
     align-items: center;
     justify-content: center;
     width: calc(#{settings.$box-field-caret-size} - 2 * #{theme.$box-border-width});
-    border-top-right-radius: theme.$box-border-radius;
-    border-bottom-right-radius: theme.$box-border-radius;
+    border-start-end-radius: theme.$box-border-radius;
+    border-end-end-radius: theme.$box-border-radius;
     pointer-events: none;
 }
 
@@ -120,5 +121,21 @@
         background-color: var(--rui-local-border-color);
         opacity: 1;
         transform: scaleX(1);
+    }
+}
+
+@mixin in-group-layout() {
+    .inputContainer {
+        display: block; // 5.
+    }
+
+    &:not(:first-child) .input {
+        border-start-start-radius: var(--rui-local-inner-border-radius);
+        border-end-start-radius: var(--rui-local-inner-border-radius);
+    }
+
+    &:not(:last-child) .input {
+        border-start-end-radius: var(--rui-local-inner-border-radius);
+        border-end-end-radius: var(--rui-local-inner-border-radius);
     }
 }

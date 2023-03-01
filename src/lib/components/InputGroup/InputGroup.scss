@@ -4,7 +4,6 @@
 
 @use "../../styles/tools/form-fields/box-field-elements";
 @use "../../styles/tools/form-fields/box-field-layout";
-@use "../../styles/tools/form-fields/box-field-sizes";
 @use "../../styles/tools/form-fields/foundation";
 @use "../../styles/tools/form-fields/variants";
 @use "../../styles/tools/accessibility";
@@ -19,6 +18,8 @@
 }
 
 .inputGroup {
+    --rui-local-inner-border-radius: #{theme.$inner-border-radius};
+
     display: flex; // 2.
     gap: theme.$gap;
 }

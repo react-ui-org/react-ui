@@ -88,10 +88,6 @@
     @include box-field-layout.horizontal-with-small-input();
 }
 
-.isRootGrouped {
-    @include box-field-layout.in-group-layout();
-}
-
 // Sizes
 .isRootSizeSmall {
     @include box-field-sizes.size(small);
@@ -103,4 +99,9 @@
 
 .isRootSizeLarge {
     @include box-field-sizes.size(large);
+}
+
+// Groups
+.isRootGrouped {
+    @include box-field-elements.in-group-layout();
 }
