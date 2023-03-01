@@ -30,7 +30,8 @@
     --rui-dimension-breakpoint-x3l: #{breakpoints.$x3l};
 
     // Radii
-    --rui-dimension-radius-1: 0.25rem;
+    --rui-dimension-radius-1: 0.125rem;
+    --rui-dimension-radius-2: 0.25rem;
 
     // Spacing
     --rui-dimension-space-0: 0;
@@ -259,7 +260,7 @@
     --rui-Alert__padding: var(--rui-dimension-space-3);
     --rui-Alert__font-weight: var(--rui-font-weight-base);
     --rui-Alert__border-width: var(--rui-dimension-border-width-1);
-    --rui-Alert__border-radius: var(--rui-dimension-radius-1);
+    --rui-Alert__border-radius: var(--rui-dimension-radius-2);
     --rui-Alert__emphasis__font-weight: var(--rui-font-weight-bold);
     --rui-Alert__stripe__width: var(--rui-dimension-border-width-1);
 
@@ -312,7 +313,7 @@
     --rui-Button__letter-spacing: 0;
     --rui-Button__text-transform: none;
     --rui-Button__border-width: var(--rui-dimension-border-width-1);
-    --rui-Button__border-radius: var(--rui-dimension-radius-1);
+    --rui-Button__border-radius: var(--rui-dimension-radius-2);
     --rui-Button--disabled__opacity: var(--rui-ratio-disabled-opacity);
     --rui-Button--disabled__cursor: var(--rui-cursor-not-allowed);
     --rui-Button--feedback__opacity: 1;
@@ -730,7 +731,7 @@
 
     --rui-Card__padding: var(--rui-dimension-space-4);
     --rui-Card__border-width: var(--rui-dimension-border-width-1);
-    --rui-Card__border-radius: var(--rui-dimension-radius-1);
+    --rui-Card__border-radius: var(--rui-dimension-radius-2);
     --rui-Card--dense__padding: var(--rui-dimension-space-2);
     --rui-Card--raised__box-shadow: var(--rui-shadow-layer-1);
     --rui-Card--disabled__background-color: var(--rui-color-background-disabled);
@@ -834,7 +835,7 @@
 
     // Form fields: box fields
     --rui-FormField--box__border-width: var(--rui-dimension-border-width-1);
-    --rui-FormField--box__border-radius: var(--rui-dimension-radius-1);
+    --rui-FormField--box__border-radius: var(--rui-dimension-radius-2);
     --rui-FormField--box__input__width: auto; // 1.
     --rui-FormField--box__input__min-width: 240px; // 1.
     --rui-FormField--box__placeholder__color: var(--rui-color-text-secondary);
@@ -915,6 +916,7 @@
     // =======
 
     --rui-InputGroup__gap: var(--rui-dimension-space-1);
+    --rui-InputGroup__inner-border-radius: var(--rui-dimension-radius-1);
 
     //
     // Modal
@@ -947,7 +949,7 @@
     --rui-Paper__padding: var(--rui-dimension-space-4);
     --rui-Paper__border-width: 0;
     --rui-Paper__border-color: transparent;
-    --rui-Paper__border-radius: var(--rui-dimension-radius-1);
+    --rui-Paper__border-radius: var(--rui-dimension-radius-2);
     --rui-Paper__background-color: var(--rui-color-background-layer-1);
     --rui-Paper--muted__background-color: var(--rui-color-background-disabled);
     --rui-Paper--muted__opacity: var(--rui-ratio-disabled-opacity);
@@ -961,7 +963,7 @@
     --rui-Popover__padding: var(--rui-dimension-space-3);
     --rui-Popover__border-width: 0;
     --rui-Popover__border-color: transparent;
-    --rui-Popover__border-radius: var(--rui-dimension-radius-1);
+    --rui-Popover__border-radius: var(--rui-dimension-radius-2);
     --rui-Popover__color: var(--rui-color-text-primary);
     --rui-Popover__background-color: var(--rui-color-background-layer-2);
     --rui-Popover__box-shadow: var(--rui-shadow-layer-2);
@@ -989,7 +991,7 @@
         var(--rui-color-border-secondary)
         transparent
         var(--rui-color-border-secondary);
-    --rui-Tabs__item__border-radius: var(--rui-dimension-radius-1);
+    --rui-Tabs__item__border-radius: var(--rui-dimension-radius-2);
     --rui-Tabs__item__background-color: var(--rui-color-background-layer-1);
     --rui-Tabs__item__box-shadow: none;
     --rui-Tabs__item__icon__gap: var(--rui-dimension-space-2);

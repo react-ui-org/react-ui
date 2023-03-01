@@ -3,7 +3,7 @@
 @use "../../styles/theme/borders";
 @use "../../styles/theme/typography";
 
-$border-radius: borders.$radius;
+$border-radius: borders.$radius-2;
 $z-index: z-indexes.$modal;
 $backdrop-z-index: z-indexes.$modal-backdrop;
 $title-font-size: map.get(typography.$font-size-values, 2);
