@@ -688,6 +688,8 @@
     // ButtonGroup
     // ===========
 
+    --rui-ButtonGroup__inner-border-radius: 0;
+
     // ButtonGroup: filled buttons
     --rui-ButtonGroup--filled__gap: calc(-1 * var(--rui-Button__border-width));
     --rui-ButtonGroup--filled__separator__width: var(--rui-Button__border-width);
