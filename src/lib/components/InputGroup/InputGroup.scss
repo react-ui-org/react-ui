@@ -17,6 +17,8 @@
 .inputGroup {
     @include box-field-elements.input-container();
 
+    --rui-local-inner-border-radius: #{theme.$inner-border-radius};
+
     gap: theme.$gap;
     max-width: none;
 }
