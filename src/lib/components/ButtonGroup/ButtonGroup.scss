@@ -1,5 +1,28 @@
+// 1. ButtonGroup gap is implemented using the `margin` property on buttons so the buttons can overlap and reduce
+//    duplicate borders.
+
+@use "theme";
+
 .root {
-    display: inline-flex;
+    --rui-local-inner-border-radius: #{theme.$inner-border-radius};
+
+    display: inline-flex; // 1.
+}
+
+.isRootPriorityFilled {
+    --rui-local-gap: #{theme.$filled-gap};
+    --rui-local-separator-width: #{theme.$filled-separator-width};
+    --rui-local-separator-color: #{theme.$filled-separator-color};
+}
+
+.isRootPriorityFlat {
+    --rui-local-gap: #{theme.$flat-gap};
+    --rui-local-separator-width: #{theme.$flat-separator-width};
+    --rui-local-separator-color: #{theme.$flat-separator-color};
+}
+
+.isRootPriorityOutline {
+    --rui-local-gap: #{theme.$outline-gap};
 }
 
 .isRootBlock {

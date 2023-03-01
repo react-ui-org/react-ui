@@ -1,3 +1,6 @@
+// 1. ButtonGroup gap is implemented using the `margin` property so the buttons can overlap and reduce duplicate
+//    borders.
+
 @use "sass:map";
 @use "../../styles/tools/breakpoint";
 @use "settings";
@@ -81,20 +84,23 @@
     z-index: map.get(settings.$group-z-indexes, button);
 
     &:not(:first-child) {
-        margin-left: var(--rui-local-gap);
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
+        border-start-start-radius: var(--rui-local-inner-border-radius);
+        border-end-start-radius: var(--rui-local-inner-border-radius);
     }
 
     &:not(:last-child) {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
+        border-start-end-radius: var(--rui-local-inner-border-radius);
+        border-end-end-radius: var(--rui-local-inner-border-radius);
     }
+}
 
-    &:focus,
-    &:not(:disabled):hover {
-        z-index: map.get(settings.$group-z-indexes, button-hover);
-    }
+.isRootInButtonGroup:not(:first-child) {
+    margin-inline-start: var(--rui-local-gap); // 1.
+}
+
+.isRootInButtonGroup:focus,
+.isRootInButtonGroup:not(:disabled):hover {
+    z-index: map.get(settings.$group-z-indexes, button-hover);
 }
 
 .isRootInButtonGroup .startCorner,
