@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
+import getRootPriorityClassName from '../_helpers/getRootPriorityClassName';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { transferProps } from '../_helpers/transferProps';
 import styles from './ButtonGroup.scss';
@@ -25,6 +26,7 @@ export const ButtonGroup = ({
       className={classNames(
         styles.root,
         block && styles.isRootBlock,
+        getRootPriorityClassName(priority, styles),
       )}
       role="group"
     >

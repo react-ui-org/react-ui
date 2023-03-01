@@ -12,16 +12,6 @@ $disabled-cursor: var(--rui-Button--disabled__cursor);
 $feedback-opacity: var(--rui-Button--feedback__opacity);
 $feedback-cursor: var(--rui-Button--feedback__cursor);
 
-$group-filled-gap: var(--rui-ButtonGroup--filled__gap);
-$group-filled-separator-width: var(--rui-ButtonGroup--filled__separator__width);
-$group-filled-separator-color: var(--rui-ButtonGroup--filled__separator__color);
-
-$group-flat-gap: var(--rui-ButtonGroup--flat__gap);
-$group-flat-separator-width: var(--rui-ButtonGroup--flat__separator__width);
-$group-flat-separator-color: var(--rui-ButtonGroup--flat__separator__color);
-
-$group-outline-gap: var(--rui-ButtonGroup--outline__gap);
-
 $sizes: (
     small: (
         height: var(--rui-Button--small__height),

@@ -8,8 +8,8 @@ import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { transferProps } from '../_helpers/transferProps';
 import { ButtonGroupContext } from '../ButtonGroup';
 import { InputGroupContext } from '../InputGroup/InputGroupContext';
+import getRootPriorityClassName from '../_helpers/getRootPriorityClassName';
 import getRootLabelVisibilityClassName from './helpers/getRootLabelVisibilityClassName';
-import getRootPriorityClassName from './helpers/getRootPriorityClassName';
 import styles from './Button.scss';
 
 export const Button = React.forwardRef((props, ref) => {
