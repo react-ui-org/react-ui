@@ -1,4 +1,4 @@
-// ⚠️ For `theme.scss` purposes only, do not use anywhere else.
+// ⚠️ FOR `theme.scss` PURPOSES ONLY. DO NOT USE AS A BASE FOR YOUR COLOR PALETTES OR ANYWHERE ELSE THAN IN THE THEME.
 
 @use "sass:color";
 @use "../tools/colors";
@@ -24,6 +24,8 @@ $secondary: $gray-500;
 $selected: #007bff;
 
 $focus: color.scale($selected, $alpha: -50%);
+
+$transparent: transparent;
 
 $success: #28a745;
 $warning: #ffc107;

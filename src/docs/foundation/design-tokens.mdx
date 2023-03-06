@@ -9,22 +9,20 @@ route: /foundation/design-tokens
 Design tokens are a [methodology] for **expressing design decisions** in a
 platform-agnostic way so that they can be shared across different disciplines,
 tools, and technologies. They help establish a common vocabulary across
-organisations.
+organizations.
 
-React UI features dozens of design tokens, represented by
-[CSS custom properties](/customize/theming/overview), to help you customize the
-system according your design needs.
+👉 Design tokens are your starting point for
+[customization](/customize/theming/overview) of React UI to make it fit your
+design system needs. React UI uses CSS custom properties as a primary storage
+format for design tokens.
 
 ## Design Token Types
 
 ### Global Tokens
 
-Global tokens represent the basic, context-agnostic decisions in your design
+Global tokens represent the basic, context-agnostic values in your design
 language. They define color palettes, typography scales, or spacing values,
 without binding them to any semantic meaning.
-
-💡 **Global tokens are not part of React UI—they are part of your design
-system.**
 
 ```css
 :root {
@@ -32,14 +30,11 @@ system.**
 }
 ```
 
-### Alias Tokens
+### Semantic Tokens
 
-Alias tokens are special variables that define the smallest
-pieces of a design language, especially colors, typography, or spacing, for a
-specific context.
-
-👉 **Alias tokens are your starting point for
-[customization](/customize/theming/overview) of React UI.**
+Semantic tokens define roles and decisions that give the design system its
+character. They communicate the intended purpose of a global token and are often
+reused by component tokens.
 
 ```css
 :root {
@@ -47,12 +42,11 @@ specific context.
 }
 ```
 
-### Component-specific Tokens
+### Component Tokens
 
-Representation of values associated with a component. They often inherit from
-alias tokens. Once you are done with the
-[customization](/customize/theming/overview) of the alias tokens, you can
-further fine-tune the components by adjusting the component-specific tokens.
+Component tokens represent the values associated with a component. They often
+inherit from semantic tokens, but are named in a way that narrows down their
+reusability to the context of the specific component.
 
 ```css
 :root {
