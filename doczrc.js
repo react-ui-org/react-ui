@@ -244,14 +244,14 @@ export default {
       },
       a: {
         '&:active': {
-          color: 'var(--rui-color-action-link-active)',
+          color: 'var(--rui-color-text-link-active)',
           textDecoration: 'var(--rui-text-decoration-link-active)',
         },
         '&:hover': {
-          color: 'var(--rui-color-action-link-hover)',
+          color: 'var(--rui-color-text-link-hover)',
           textDecoration: 'var(--rui-text-decoration-link-hover)',
         },
-        color: 'var(--rui-color-action-link)',
+        color: 'var(--rui-color-text-link)',
         textDecoration: 'var(--rui-text-decoration-link)',
       },
       root: {

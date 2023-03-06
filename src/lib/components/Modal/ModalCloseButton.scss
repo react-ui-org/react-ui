@@ -13,6 +13,6 @@
     color: inherit;
 
     &:disabled {
-        cursor: var(--rui-cursor-disabled);
+        cursor: var(--rui-cursor-not-allowed);
     }
 }

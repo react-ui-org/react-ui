@@ -10,7 +10,7 @@ import Swatch from '../_components/Swatch'
 
 Colors help you communicate the structure of your UI, emphasize any important
 information, or signal different states of the UI. **Use colors intentionally**
-— they are not a decoration, they should always serve a purpose.
+— they are not decoration and should always serve a purpose.
 
 👉 All colors on this page can be changed by
 [overriding](/customize/theming/overview) values in your
@@ -18,25 +18,32 @@ information, or signal different states of the UI. **Use colors intentionally**
 
 ## General Guidelines
 
-- **All colors in React UI are strictly semantic: they always target a specific
-  use case. You are encouraged to apply any color palettes you want and map them
-  onto the semantic colors of React UI.**
-- In general, all colors in React UI are for either **static** (text colors and
-  most of the background colors) or **interactive** use cases (action colors,
-  feedback colors). However, some colors are designed to be either of them:
-  neutral colors can be used for both static and interactive parts, similarly to
-  primary border color.
+- **Most colors in React UI are semantic: they bear a meaning and target a
+  specific use case.** The only non-semantic exception is the
+  [neutral colors](#neutral-colors) that are included in React UI due to their
+  frequent usage in UI designs.
+- **React UI does not try to suggest any global color palettes.** Instead, you
+  are encouraged to pick any color palettes you want and map them onto the
+  semantic colors of React UI.
+- In general, colors in React UI can be used for either **static**
+  (most of the [text colors](#text-colors) and most of the
+  [background colors](#background-colors)) or **interactive** use cases
+  ([action colors](#action-colors), [feedback colors](#feedback-colors)).
+  However, some colors are designed to be either:
+  [neutral colors](#neutral-colors) can be used for static and interactive parts
+  similarly to the primary [border color](#border-colors).
 - Interactive color variants always define **hover** and **active** (pressed)
   states.
-- Many colors suggest **what color should be used for text** placed on them. You
-  don't have to think if black or white is better — just use `on-primary` for
-  text on primary color background or `on-success` for success color background,
-  and you should be safe.
+- Action, feedback, and neutral colors suggest **what color should be used** for
+  the text placed on them. You don't have to think if black or white makes a
+  better contrast — just use `on-primary` for text on primary color background
+  or `on-success` for success color background, and you should be safe.
 
 ## Text Colors
 
-Colors reserved for text. The text can have primary or secondary priority. Both
-priorities can be suppressed with the `disabled` variants.
+Colors reserved for text. Base text can have primary or secondary priority,
+while both priorities can be suppressed with the `disabled` variants. Last but
+not least, the text colors define the color of links.
 
 <div>
   <Swatch color="text-primary" />
@@ -44,13 +51,17 @@ priorities can be suppressed with the `disabled` variants.
   <Swatch color="text-secondary" />
   <Swatch color="text-secondary-disabled" />
 </div>
+<div>
+  <Swatch color="text-link" />
+  <Swatch color="text-link-hover" />
+  <Swatch color="text-link-active" />
+</div>
 
 ## Action Colors
 
 Action colors communicate the **importance** of an action which can be primary
-or secondary. Using the `selected` color, you can also mark an action as the one
-currently selected. Last but not least, the action colors define the color of
-links, too.
+or secondary. Using the _selected_ color, you can also mark an action as the
+currently selected.
 
 <div>
   <Swatch color="action-primary" />
@@ -70,17 +81,12 @@ links, too.
   <Swatch color="action-selected-active" />
   <Swatch color="action-on-selected" />
 </div>
-<div>
-  <Swatch color="action-link" />
-  <Swatch color="action-link-hover" />
-  <Swatch color="action-link-active" />
-</div>
 
 ## Feedback Colors
 
-Feedback colors help communicate a **meaning**: green means success, orange
-means warning, and red means danger or error. On top of that, there are a few
-more feedback colors to fit various situations.
+Feedback colors help communicate a meaning: green means success, orange means
+warning, and red means danger or error. On top of that, there are a few more
+feedback colors to fit various design situations.
 
 <div>
   <Swatch color="feedback-success" />
@@ -144,7 +150,7 @@ Colors reserved for backgrounds.
 
 ### Content Layers
 
-Backgrounds for the fundamental UI areas and layered content.
+Backgrounds for the fundamental UI areas and content layering.
 
 👉 Content layers can be separated from background using their
 [shadow counterparts](/foundation/shadows): `background-layer-1` +
@@ -173,8 +179,8 @@ the _basic_ background is the default go-to background for components.
 
 Backgrounds to highlight interactive areas on hover and during interaction.
 
-💡 Please note the default interactive background is always transparent so it
-does not get in the way of the underlying component background.
+💡 Please note the default interactive background is always transparent, so it
+does not stand in the way of the underlying component background.
 
 <div>
   <Swatch color="background-interactive" />
@@ -229,15 +235,14 @@ primary border.
 
 ## Applying Colors
 
-Components can apply colors above using one or more of the following color
-palettes.
+Components can apply colors above using one or more following color groups.
 
 ### Component Colors
 
 Some components ([Alert](/components/alert), [Badge](/components/badge),
 [Button](/components/button), and more) come in more color variants to help you
-better reflect their importance or nature of their content. Following colors
-are available in such cases:
+better reflect their place in content hierarchy or the meaning of their content.
+Following colors are available in such cases:
 
 - **action colors (actionable components only):** `primary`, `secondary`, and
   `selected`,
@@ -245,7 +250,7 @@ are available in such cases:
   `note`,
 - **neutral colors:** `light` and `dark`.
 
-There is always a reasonable default for the component in question which can be
+There is always a reasonable default for the component in question that can be
 changed to any of supported values above through the `color` prop.
 
 ### Validation States
@@ -259,5 +264,5 @@ apply selected [feedback colors](#feedback-colors) for individual states:
 - `warning` feedback color for **warning** state,
 - `danger` feedback color for **invalid** state.
 
-Validation state is always optional so default styling is applied for the
+Validation state is always optional. Default styling is applied for the given
 component when its `validationState` prop is not specified.

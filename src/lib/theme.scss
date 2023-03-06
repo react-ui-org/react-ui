@@ -6,14 +6,125 @@
 
 :root {
     // ============================================================================================ //
-    // DESIGN TOKENS: SEMANTIC ALIASES                                                              //
+    // GLOBAL TOKENS                                                                                //
+    // ============================================================================================ //
+
+    //
+    // Dimensions
+    // ==========
+
+    // Borders
+    --rui-dimension-border-width-1: 1px;
+
+    // Breakpoints
+    //
+    // ⚠️ Breakpoints are read-only in CSS. Custom properties cannot be used within media queries
+    // since media query is not a property.
+    // https://www.w3.org/TR/css-variables-1/#using-variables
+    --rui-dimension-breakpoint-xs: #{breakpoints.$xs};
+    --rui-dimension-breakpoint-sm: #{breakpoints.$sm};
+    --rui-dimension-breakpoint-md: #{breakpoints.$md};
+    --rui-dimension-breakpoint-lg: #{breakpoints.$lg};
+    --rui-dimension-breakpoint-xl: #{breakpoints.$xl};
+    --rui-dimension-breakpoint-x2l: #{breakpoints.$x2l};
+    --rui-dimension-breakpoint-x3l: #{breakpoints.$x3l};
+
+    // Radii
+    --rui-dimension-radius-1: 0.25rem;
+
+    // Spacing
+    --rui-dimension-space-0: 0;
+    --rui-dimension-space-1: 0.25rem;
+    --rui-dimension-space-2: 0.5rem;
+    --rui-dimension-space-3: 0.75rem;
+    --rui-dimension-space-4: 1rem;
+    --rui-dimension-space-5: 1.5rem;
+    --rui-dimension-space-6: 2rem;
+    --rui-dimension-space-7: 2.5rem;
+
+    //
+    // Font Families
+    // =============
+
+    --rui-font-family-base: "Titillium Web", helvetica, roboto, arial, sans-serif;
+    --rui-font-family-monospace:
+        "SFMono-Regular",
+        "Menlo",
+        "Monaco",
+        "Consolas",
+        "Liberation Mono",
+        "Courier New",
+        monospace;
+
+    //
+    // Font Weights
+    // ============
+
+    --rui-font-weight-base: 400;
+    --rui-font-weight-light: 300;
+    --rui-font-weight-bold: 700;
+
+    //
+    // Ratios
+    // ======
+
+    --rui-ratio-opacity-medium: 0.5;
+
+    //
+    // Shadows
+    // =======
+
+    --rui-shadow-1: 0 0.01rem 0.65rem -0.1rem rgb(0 0 0 / 30%);
+    --rui-shadow-2: 0.2rem 0.25rem 1.2rem -0.1rem rgb(0 0 0 / 15%);
+
+    //
+    // Other
+    // =====
+
+    // ⚠️ Non-standard token types!
+    // The DTF specification is still in the draft status, and the following token types have proven necessary.
+    //
+    // To be honest, some of these tokens are NOT context agnostic as required by the global tokens category.
+    // These will be probably superseded by semantic typography styles in the future.
+
+    // Font sizes
+    --rui-font-size-base: 100%;
+    --rui-font-size-small: 0.889rem;
+    --rui-font-size-smaller: 0.75rem;
+    --rui-font-size-code: 85%;
+
+    // Modular scale ratio: 1.125 / 8:9 / major second
+    --rui-font-size-1: 1rem;
+    --rui-font-size-2: 1.125rem;
+    --rui-font-size-3: 1.266rem;
+    --rui-font-size-4: 1.424rem;
+    --rui-font-size-5: 1.602rem;
+    --rui-font-size-6: 1.802rem;
+
+    // Line heights
+    --rui-line-height-base: 1.5;
+    --rui-line-height-small: 1.25;
+
+    // Text decorations
+    --rui-text-decoration-link: none;
+    --rui-text-decoration-link-hover: underline;
+    --rui-text-decoration-link-active: underline;
+
+    // List styles
+    --rui-list-style-unordered: square;
+
+    // Cursors
+    --rui-cursor-not-allowed: not-allowed;
+
+    // ============================================================================================ //
+    // SEMANTIC TOKENS                                                                              //
     // ============================================================================================ //
 
     //
     // Borders
     // =======
 
-    --rui-border-focus-ring: 0.2em solid #{colors.$focus};
+    --rui-border-focus-ring: var(--rui-dimension-space-1) solid #{colors.$focus};
 
     //
     // Colors
@@ -26,6 +137,9 @@
     --rui-color-text-primary-disabled: #{colors.$gray-300};
     --rui-color-text-secondary: #{colors.$gray-500};
     --rui-color-text-secondary-disabled: #{colors.$gray-300};
+    --rui-color-text-link: #{colors.$note};
+    --rui-color-text-link-hover: #{colors.$note-dark};
+    --rui-color-text-link-active: #{colors.$note-darker};
 
     // Action colors
     --rui-color-action-primary: #{colors.$primary};
@@ -40,9 +154,6 @@
     --rui-color-action-selected-hover: #{colors.$selected-dark};
     --rui-color-action-selected-active: #{colors.$selected-darker};
     --rui-color-action-on-selected: #{colors.$on-selected};
-    --rui-color-action-link: #{colors.$note};
-    --rui-color-action-link-hover: #{colors.$note-dark};
-    --rui-color-action-link-active: #{colors.$note-darker};
 
     // Feedback colors
     --rui-color-feedback-success: #{colors.$success};
@@ -86,7 +197,7 @@
     --rui-color-background-layer-2: #{colors.$white};
     --rui-color-background-basic: #{colors.$white};
     --rui-color-background-disabled: #{colors.$gray-50};
-    --rui-color-background-interactive: transparent;
+    --rui-color-background-interactive: #{colors.$transparent};
     --rui-color-background-interactive-hover: #{colors.$gray-50};
     --rui-color-background-interactive-active: #{colors.$gray-100};
     --rui-color-background-primary: #{colors.$primary-light};
@@ -111,71 +222,20 @@
     // Dimensions
     // ==========
 
-    // Borders
-    --rui-dimension-border-width-1: 1px;
-
-    // Breakpoints
-    //
-    // ⚠️ Breakpoints are read-only in CSS. Custom properties cannot be used within media queries
-    // since media query is not a property.
-    // https://www.w3.org/TR/css-variables-1/#using-variables
-    --rui-dimension-breakpoint-xs: #{breakpoints.$xs};
-    --rui-dimension-breakpoint-sm: #{breakpoints.$sm};
-    --rui-dimension-breakpoint-md: #{breakpoints.$md};
-    --rui-dimension-breakpoint-lg: #{breakpoints.$lg};
-    --rui-dimension-breakpoint-xl: #{breakpoints.$xl};
-    --rui-dimension-breakpoint-x2l: #{breakpoints.$x2l};
-    --rui-dimension-breakpoint-x3l: #{breakpoints.$x3l};
-
-    // Radii
-    --rui-dimension-radius-1: 0.25rem;
-
-    // Spacing
-    --rui-dimension-space-0: 0;
-    --rui-dimension-space-1: 0.25rem;
-    --rui-dimension-space-2: 0.5rem;
-    --rui-dimension-space-3: 0.75rem;
-    --rui-dimension-space-4: 1rem;
-    --rui-dimension-space-5: 1.5rem;
-    --rui-dimension-space-6: 2rem;
-    --rui-dimension-space-7: 3rem;
+    // Accessibility
+    --rui-dimension-focus-ring-offset: var(--rui-dimension-border-width-1);
+    --rui-dimension-tap-target-size: var(--rui-dimension-space-7);
 
     // Shared bottom spacings
     --rui-dimension-space-bottom-base: var(--rui-dimension-space-5);
     --rui-dimension-space-bottom-headings: var(--rui-dimension-space-5);
     --rui-dimension-space-bottom-layouts: var(--rui-dimension-space-5);
 
-    // Accessibility
-    --rui-dimension-focus-ring-offset: 1px;
-    --rui-dimension-tap-target-size: 10mm;
-
-    //
-    // Font Families
-    // =============
-
-    --rui-font-family-base: "Titillium Web", helvetica, roboto, arial, sans-serif;
-    --rui-font-family-monospace:
-        "SFMono-Regular",
-        "Menlo",
-        "Monaco",
-        "Consolas",
-        "Liberation Mono",
-        "Courier New",
-        monospace;
-
-    //
-    // Font Weights
-    // ============
-
-    --rui-font-weight-base: 400;
-    --rui-font-weight-light: 300;
-    --rui-font-weight-bold: 700;
-
     //
     // Ratios
     // ======
 
-    --rui-ratio-disabled-opacity: 0.5;
+    --rui-ratio-disabled-opacity: var(--rui-ratio-opacity-medium);
 
     //
     // Shadows
@@ -183,48 +243,12 @@
 
     // 1. Use `initial`, `revert` or `unset` to keep the original box shadow of the component.
 
-    --rui-shadow-layer-1: 0 0.01rem 0.65rem -0.1rem rgb(0 0 0 / 30%);
-    --rui-shadow-layer-2: 0.2rem 0.25rem 1.2rem -0.1rem rgb(0 0 0 / 15%);
+    --rui-shadow-layer-1: var(--rui-shadow-1);
+    --rui-shadow-layer-2: var(--rui-shadow-2);
     --rui-shadow-focus-ring: initial; // 1.
 
-    //
-    // Other
-    // =====
-
-    // ⚠️ Non-standard token types!
-    // The DTF specification is still in the draft status and the following token types have proven necessary.
-
-    // Font sizes
-    --rui-font-size-base: 100%;
-    --rui-font-size-small: 0.889rem;
-    --rui-font-size-smaller: 0.75rem;
-    --rui-font-size-code: 85%;
-
-    // Modular scale ratio: 1.125 / 8:9 / major second
-    --rui-font-size-1: 1rem;
-    --rui-font-size-2: 1.125rem;
-    --rui-font-size-3: 1.266rem;
-    --rui-font-size-4: 1.424rem;
-    --rui-font-size-5: 1.602rem;
-    --rui-font-size-6: 1.802rem;
-
-    // Line heights
-    --rui-line-height-base: 1.5;
-    --rui-line-height-small: 1.25;
-
-    // Text decorations
-    --rui-text-decoration-link: none;
-    --rui-text-decoration-link-hover: underline;
-    --rui-text-decoration-link-active: underline;
-
-    // List styles
-    --rui-list-style-unordered: square;
-
-    // Cursors
-    --rui-cursor-disabled: not-allowed;
-
     // ============================================================================================ //
-    // COMPONENTS                                                                                   //
+    // COMPONENT TOKENS                                                                             //
     // ============================================================================================ //
 
     //
@@ -290,9 +314,9 @@
     --rui-Button__border-width: var(--rui-dimension-border-width-1);
     --rui-Button__border-radius: var(--rui-dimension-radius-1);
     --rui-Button--disabled__opacity: var(--rui-ratio-disabled-opacity);
-    --rui-Button--disabled__cursor: var(--rui-cursor-disabled);
+    --rui-Button--disabled__cursor: var(--rui-cursor-not-allowed);
     --rui-Button--feedback__opacity: 1;
-    --rui-Button--feedback__cursor: var(--rui-cursor-disabled);
+    --rui-Button--feedback__cursor: var(--rui-cursor-not-allowed);
 
     // Buttons: filled priority
 
@@ -784,7 +808,7 @@
     --rui-FormField--horizontal--full-width__label__width: fit-content(50%);
 
     // Forms fields: disabled state
-    --rui-FormField--disabled__cursor: var(--rui-cursor-disabled);
+    --rui-FormField--disabled__cursor: var(--rui-cursor-not-allowed);
     --rui-FormField--disabled__opacity: var(--rui-ratio-disabled-opacity);
 
     // Form fields: validation states: invalid
@@ -992,11 +1016,11 @@
     // TextLink
     // ========
 
-    --rui-TextLink__color: var(--rui-color-action-link);
+    --rui-TextLink__color: var(--rui-color-text-link);
     --rui-TextLink__text-decoration: var(--rui-text-decoration-link);
-    --rui-TextLink--hover__color: var(--rui-color-action-link-hover);
+    --rui-TextLink--hover__color: var(--rui-color-text-link-hover);
     --rui-TextLink--hover__text-decoration: var(--rui-text-decoration-link-hover);
-    --rui-TextLink--active__color: var(--rui-color-action-link-active);
+    --rui-TextLink--active__color: var(--rui-color-text-link-active);
     --rui-TextLink--active__text-decoration: var(--rui-text-decoration-link-active);
 
     //
