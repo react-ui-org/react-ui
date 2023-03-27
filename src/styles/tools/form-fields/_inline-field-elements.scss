@@ -26,7 +26,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-color: var(--rui-local-check-background-color);
-    color-adjust: exact; // 1.
+    print-color-adjust: exact; // 1.
 
     &:focus,
     &:checked:focus {
