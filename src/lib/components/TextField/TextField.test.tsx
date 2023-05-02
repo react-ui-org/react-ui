@@ -6,7 +6,7 @@ import {
   within,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { TextField } from '../TextField';
+import { TextField } from './TextField';
 import { disabledPropTest } from '../../../../../tests/propTests/disabledPropTest';
 import { refPropTest } from '../../../../../tests/propTests/refPropTest';
 import { fullWidthPropTest } from '../../../../../tests/propTests/fullWidthPropTest';
