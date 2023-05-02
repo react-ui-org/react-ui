@@ -3,22 +3,22 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { ModalHeader } from '../ModalHeader';
-import { justifyPropTest } from '../../../../../tests/propTests/justifyPropTest';
+import { justifyPropTest } from '../../../../tests/propTests/justifyPropTest';
+import { ModalHeader } from './ModalHeader';
 
 const mandatoryProps = {
   children: <div>content text</div>,
 };
 
 describe('rendering', () => {
-  it.each([
+  it.each<TestingProps>([
     [
       {},
       (rootElement) => {
         expect(within(rootElement).getByText('content text'));
       },
     ],
-    ...justifyPropTest('Root'),
+    ...(justifyPropTest('Root') as unknown as TestingProps[]),
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <ModalHeader
@@ -27,6 +27,6 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });

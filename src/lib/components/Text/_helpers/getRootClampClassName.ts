@@ -1,4 +1,9 @@
-export const getRootClampClassName = (lines, styles) => {
+interface ExtendedStyles extends React.CSSProperties {
+  isRootClampMultiLine: string;
+  isRootClampSingleLine: string;
+}
+
+export const getRootClampClassName = (lines: number, styles: ExtendedStyles) => {
   if (lines === 1) {
     return styles.isRootClampSingleLine;
   }

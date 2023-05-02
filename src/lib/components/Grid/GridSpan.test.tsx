@@ -3,9 +3,9 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
-import { tagPropTest } from '../../../../../tests/propTests/tagPropTest';
-import { GridSpan } from '../GridSpan';
+import { childrenEmptyPropTest } from '../../../../tests/propTests/childrenEmptyPropTest';
+import { tagPropTest } from '../../../../tests/propTests/tagPropTest';
+import { GridSpan } from './GridSpan';
 
 const defaultProps = {
   children: <div>content</div>,
@@ -23,7 +23,7 @@ const responsiveBreakpoints = {
 };
 /* eslint-enable sort-keys */
 
-const responsiveStyles = (infix) => ({
+const responsiveStyles = (infix: string) => ({
   [`--rui-local-${infix}-xs`]: 1,
   [`--rui-local-${infix}-sm`]: 2,
   [`--rui-local-${infix}-md`]: 3,
@@ -34,8 +34,8 @@ const responsiveStyles = (infix) => ({
 });
 
 describe('rendering', () => {
-  it.each([
-    ...childrenEmptyPropTest,
+  it.each<TestingProps>([
+    ...(childrenEmptyPropTest as unknown as TestingProps[]),
     [
       { children: <div>content text</div> },
       (rootElement) => expect(within(rootElement).getByText('content text')),
@@ -64,7 +64,7 @@ describe('rendering', () => {
       { rows: 14 },
       (rootElement) => expect(rootElement).toHaveStyle('--rui-local-row-span-xs: 14'),
     ],
-    ...tagPropTest,
+    ...(tagPropTest as unknown as TestingProps[]),
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <GridSpan
@@ -72,6 +72,6 @@ describe('rendering', () => {
         {...testedProps}
       />
     ));
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });

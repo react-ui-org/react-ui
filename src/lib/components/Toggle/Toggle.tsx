@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
@@ -6,21 +5,20 @@ import { getRootValidationStateClassName } from '../_helpers/getRootValidationSt
 import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
 import styles from './Toggle.scss';
+import { ToggleProps } from './Toggle.types';
 
-export const Toggle = React.forwardRef((props, ref) => {
-  const {
-    disabled,
-    helpText,
-    id,
-    isLabelVisible,
-    label,
-    labelPosition,
-    required,
-    validationState,
-    validationText,
-    ...restProps
-  } = props;
-
+export const Toggle: React.FunctionComponent<ToggleProps> = React.forwardRef<HTMLInputElement, ToggleProps>(({
+  disabled = false,
+  helpText,
+  id,
+  isLabelVisible = true,
+  label,
+  labelPosition = 'after',
+  required = false,
+  validationState,
+  validationText,
+  ...restProps
+}, ref) => {
   const context = useContext(FormLayoutContext);
 
   return (
@@ -77,61 +75,6 @@ export const Toggle = React.forwardRef((props, ref) => {
     </label>
   );
 });
-
-Toggle.defaultProps = {
-  disabled: false,
-  helpText: null,
-  id: undefined,
-  isLabelVisible: true,
-  labelPosition: 'after',
-  required: false,
-  validationState: null,
-  validationText: null,
-};
-
-Toggle.propTypes = {
-  /**
-   * If `true`, the input will be disabled.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * Optional help text.
-   */
-  helpText: PropTypes.node,
-  /**
-    * ID of the input HTML element. It also serves as a prefix for nested elements:
-    * * `<ID>__label`
-    * * `<ID>__labelText`
-    * * `<ID>__helpText`
-    * * `<ID>__validationText`
-    */
-  id: PropTypes.string,
-  /**
-   * If `false`, the label will be visually hidden (but remains accessible by assistive
-   * technologies).
-   */
-  isLabelVisible: PropTypes.bool,
-  /**
-   * Toggle label.
-   */
-  label: PropTypes.string.isRequired,
-  /**
-   * Placement of the label relative to the input.
-   */
-  labelPosition: PropTypes.oneOf(['before', 'after']),
-  /**
-   * If `true`, the input will be required.
-   */
-  required: PropTypes.bool,
-  /**
-   * Alter the field to provide feedback based on validation result.
-   */
-  validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
-  /**
-   * Validation message to be displayed.
-   */
-  validationText: PropTypes.node,
-};
 
 export const ToggleWithGlobalProps = withGlobalProps(Toggle, 'Toggle');
 

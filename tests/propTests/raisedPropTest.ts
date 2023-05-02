@@ -1,10 +1,10 @@
 export const raisedPropTest = [
   [
     { raised: true },
-    (rootElement) => expect(rootElement).toHaveClass('isRootRaised'),
+    (rootElement: HTMLElement) => expect(rootElement).toHaveClass('isRootRaised'),
   ],
   [
     { raised: false },
-    (rootElement) => expect(rootElement).not.toHaveClass('isRootRaised'),
+    (rootElement: HTMLElement) => expect(rootElement).not.toHaveClass('isRootRaised'),
   ],
 ];

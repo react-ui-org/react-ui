@@ -11,7 +11,7 @@ module.exports = (env, argv) => ({
     : 'eval-cheap-module-source-map',
   entry: {
     lib: [
-      path.join(__dirname, 'src/lib/index.js'),
+      path.join(__dirname, 'src/lib/index.ts'),
     ],
   },
   externals: {
@@ -36,6 +36,11 @@ module.exports = (env, argv) => ({
         include: path.join(__dirname, 'src/lib'),
         test: /\.(js|jsx)$/,
         use: [{ loader: 'babel-loader' }],
+      },
+      {
+        include: path.join(__dirname, 'src/lib'),
+        test: /\.(ts|tsx)$/,
+        use: [{ loader: 'ts-loader' }],
       },
       {
         test: /\.scss$/,
@@ -69,7 +74,7 @@ module.exports = (env, argv) => ({
       ? '[name].js'
       : '[name].development.js',
     libraryTarget: 'umd',
-    path: path.join(__dirname, 'dist'),
+     path: path.join(__dirname, 'dist'),
     publicPath: '/dist/',
   },
   performance: {
@@ -93,7 +98,7 @@ module.exports = (env, argv) => ({
     }),
   ],
   resolve: {
-    extensions: ['.js', '.jsx', '.scss'],
+    extensions: ['.ts', '.tsx', '.js', '.scss'],
     modules: ['src/lib', 'node_modules'],
   },
 });

@@ -1,12 +1,12 @@
-export const noWrapPropTest = (itemType) => (
+export const noWrapPropTest = (itemType: string) => (
   [
     [
       { nowrap: true },
-      (rootElement) => expect(rootElement).toHaveClass(`is${itemType}Nowrap`),
+      (rootElement: HTMLElement) => expect(rootElement).toHaveClass(`is${itemType}Nowrap`),
     ],
     [
       { nowrap: false },
-      (rootElement) => expect(rootElement).not.toHaveClass(`is${itemType}Nowrap`),
+      (rootElement: HTMLElement) => expect(rootElement).not.toHaveClass(`is${itemType}Nowrap`),
     ],
   ]
 );

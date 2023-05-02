@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { withGlobalProps } from '../../provider';
 import { transferProps } from '../_helpers/transferProps';
@@ -8,14 +7,15 @@ import { getRootValidationStateClassName } from '../_helpers/getRootValidationSt
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { FormLayoutContext } from './FormLayoutContext';
 import styles from './FormLayoutCustomField.scss';
+import { FormLayoutCustomFieldProps } from './FormLayout.types';
 
-const renderLabel = (id, label, labelForId) => {
+const renderLabel = (id: FormLayoutCustomFieldProps['id'], label: FormLayoutCustomFieldProps['label'], labelForId: FormLayoutCustomFieldProps['labelForId']) => {
   if (labelForId && label) {
     return (
       <label
+        className={styles.label}
         htmlFor={labelForId}
         id={id && `${id}__label`}
-        className={styles.label}
       >
         {label}
       </label>
@@ -25,8 +25,8 @@ const renderLabel = (id, label, labelForId) => {
   if (label) {
     return (
       <div
-        id={id && `${id}__label`}
         className={styles.label}
+        id={id && `${id}__label`}
       >
         {label}
       </div>
@@ -36,15 +36,15 @@ const renderLabel = (id, label, labelForId) => {
   return null;
 };
 
-export const FormLayoutCustomField = ({
+export const FormLayoutCustomField: React.FunctionComponent<FormLayoutCustomFieldProps> = ({
   children,
-  fullWidth,
+  disabled = false,
+  fullWidth = false,
   id,
-  disabled,
   innerFieldSize,
   label,
   labelForId,
-  required,
+  required = false,
   validationState,
   ...restProps
 }) => {
@@ -57,7 +57,6 @@ export const FormLayoutCustomField = ({
   return (
     <div
       {...transferProps(restProps)}
-      id={id}
       className={classNames(
         styles.root,
         fullWidth && styles.isRootFullWidth,
@@ -67,71 +66,17 @@ export const FormLayoutCustomField = ({
         getRootSizeClassName(innerFieldSize, styles),
         getRootValidationStateClassName(validationState, styles),
       )}
+      id={id}
     >
       {renderLabel(id, label, labelForId)}
       <div
-        id={id && `${id}__field`}
         className={styles.field}
+        id={id && `${id}__field`}
       >
         {children}
       </div>
     </div>
   );
-};
-
-FormLayoutCustomField.defaultProps = {
-  children: null,
-  disabled: false,
-  fullWidth: false,
-  id: undefined,
-  innerFieldSize: null,
-  label: null,
-  labelForId: undefined,
-  required: false,
-  validationState: null,
-};
-
-FormLayoutCustomField.propTypes = {
-  /**
-   * Custom HTML or React component(s). If none are provided nothing is rendered.
-   */
-  children: PropTypes.node,
-  /**
-   * If `true`, label will be shown as disabled.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * If `true`, the field will span the full width of its parent.
-   */
-  fullWidth: PropTypes.bool,
-  /**
-   * ID of the root HTML element.
-   *
-   * Also serves as base for ids of nested elements:
-   * * `<ID>__field`
-   * * `<ID>__label`
-   */
-  id: PropTypes.string,
-  /**
-   * Size of contained form field used to properly align label.
-   */
-  innerFieldSize: PropTypes.oneOf(['small', 'medium', 'large']),
-  /**
-   * Optional label of the field.
-   */
-  label: PropTypes.string,
-  /**
-   * Optional ID of labeled field to keep accessibility features. Only available if `label` is set.
-   */
-  labelForId: PropTypes.string,
-  /**
-   * If `true`, label will be styled as required.
-   */
-  required: PropTypes.bool,
-  /**
-   * Alter the field to provide feedback based on validation result.
-   */
-  validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
 };
 
 export const FormLayoutCustomFieldWithGlobalProps = withGlobalProps(FormLayoutCustomField, 'FormLayoutCustomField');

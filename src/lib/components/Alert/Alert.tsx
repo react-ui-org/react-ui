@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import {
   RUIContext,
@@ -8,10 +7,11 @@ import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import { getRootColorClassName } from '../_helpers/getRootColorClassName';
 import styles from './Alert.scss';
+import { AlertProps } from './Alert.types';
 
-export const Alert = ({
+export const Alert: React.FunctionComponent<AlertProps> = ({
   children,
-  color,
+  color = 'note',
   icon,
   id,
   onClose,
@@ -30,9 +30,9 @@ export const Alert = ({
       role="alert"
     >
       {icon && (
-        <div className={styles.icon}>
-          {icon}
-        </div>
+      <div className={styles.icon}>
+        {icon}
+      </div>
       )}
       <div
         className={styles.message}
@@ -41,57 +41,23 @@ export const Alert = ({
         {children}
       </div>
       {onClose && (
-        <button
-          type="button"
-          {...(id && { id: `${id}__close` })}
-          className={styles.close}
-          onClick={() => onClose()}
-          onKeyPress={() => onClose()}
-          tabIndex="0"
-          title={translations.Alert.close}
-        >
-          <span className={styles.closeSign}>×</span>
-        </button>
+      <button
+        type="button"
+        {...(id && { id: `${id}__close` })}
+        className={styles.close}
+        onClick={() => onClose()}
+        onKeyPress={() => onClose()}
+        tabIndex={0}
+        title={translations?.Alert.close}
+      >
+        <span className={styles.closeSign}>×</span>
+      </button>
       )}
     </div>
   );
 };
 
-Alert.defaultProps = {
-  color: 'note',
-  icon: null,
-  id: undefined,
-  onClose: null,
-};
-
-Alert.propTypes = {
-  /**
-   * Alert body.
-   */
-  children: PropTypes.node.isRequired,
-  /**
-   * [Color variant](/foundation/colors#component-colors) to clarify importance and meaning of the alert.
-   */
-  color: PropTypes.oneOf(['success', 'warning', 'danger', 'help', 'info', 'note', 'light', 'dark']),
-  /**
-   * Optional element to be displayed next to the alert body.
-   */
-  icon: PropTypes.node,
-  /**
-   * ID of the root HTML element.
-   *
-   * Also serves as base for ids of nested elements:
-   * * `<ID>__close`
-   * * `<ID>__content`
-   */
-  id: PropTypes.string,
-  /**
-   * Function to call when the close button is clicked. If not provided, close buttons will be
-   * hidden.
-   */
-  onClose: PropTypes.func,
-};
-
 export const AlertWithGlobalProps = withGlobalProps(Alert, 'Alert');
 
 export default AlertWithGlobalProps;
+

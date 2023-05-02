@@ -1,4 +1,18 @@
-export const getRootColorClassName = (variant, styles) => {
+interface ExtendedStyles extends React.CSSProperties {
+  isRootColorDanger: string;
+  isRootColorDark: string;
+  isRootColorHelp: string;
+  isRootColorInfo: string;
+  isRootColorLight: string;
+  isRootColorNote: string;
+  isRootColorPrimary: string;
+  isRootColorSecondary: string;
+  isRootColorSelected: string;
+  isRootColorSuccess: string;
+  isRootColorWarning: string;
+}
+
+export const getRootColorClassName = (variant: Color, styles: ExtendedStyles) => {
   if (variant === 'primary') {
     return styles.isRootColorPrimary;
   }

@@ -1,20 +1,15 @@
 module.exports = {
-  moduleFileExtensions: [
-    'js',
-    'jsx',
-  ],
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
   moduleNameMapper: {
     '\\.scss$': 'identity-obj-proxy',
   },
-  modulePathIgnorePatterns: [
-    '<rootDir>/.docz/',
-  ],
-  setupFiles: [
-    '<rootDir>/tests/setupJest.js',
-  ],
-  setupFilesAfterEnv: [
-    '<rootDir>/tests/setupTestingLibrary.js',
-  ],
+  modulePathIgnorePatterns: ['<rootDir>/.docz/'],
+  preset: 'ts-jest',
+  setupFiles: ['<rootDir>/tests/setupJest.ts'],
+  setupFilesAfterEnv: ['<rootDir>/tests/setupTestingLibrary.ts'],
   testEnvironment: 'jsdom',
+  transform: {
+    '^.+\\.(t|j)sx?$': 'ts-jest',
+  },
   verbose: true,
 };

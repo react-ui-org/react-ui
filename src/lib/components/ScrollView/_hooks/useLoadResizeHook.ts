@@ -3,9 +3,16 @@ import {
   useRef,
 } from 'react';
 import { getElementsPositionDifference } from '../_helpers/getElementsPositionDifference';
+import { PositionDifference } from '../ScrollView.types';
 
-export const useLoadResize = (effect, dependencies, contentEl, viewportEl, wait) => {
-  const throttleTimeout = useRef(null);
+export const useLoadResize = (
+  effect: (positionDifference: PositionDifference) => void,
+  dependencies: boolean[],
+  contentEl: React.RefObject<HTMLDivElement>,
+  viewportEl: React.RefObject<HTMLDivElement>,
+  wait: number,
+) => {
+  const throttleTimeout: React.MutableRefObject<NodeJS.Timeout | null> = useRef(null);
 
   const callBack = (wasDelayed = false) => {
     effect(getElementsPositionDifference(contentEl, viewportEl));
@@ -30,7 +37,9 @@ export const useLoadResize = (effect, dependencies, contentEl, viewportEl, wait)
     window.addEventListener('resize', handleLoadResize);
 
     return () => {
-      clearTimeout(throttleTimeout.current);
+      if (throttleTimeout.current) {
+        clearTimeout(throttleTimeout.current);
+      }
       window.removeEventListener('load', handleLoadResize);
       window.removeEventListener('resize', handleLoadResize);
     };

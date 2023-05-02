@@ -1,38 +1,27 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import { WithGlobalPropsComponentProps } from './provider.types';
 import RUIContext from './RUIContext';
 
-export default (Component, componentName) => {
-  const WithGlobalPropsComponent = ({
+export default function withGlobalProps<P>(
+  Component: React.FC<P>,
+  componentName: string,
+): React.ForwardRefExoticComponent<React.PropsWithoutRef<P> & React.RefAttributes<unknown>> {
+  const WithGlobalPropsComponent: React.FC<WithGlobalPropsComponentProps> = ({
     forwardedRef,
     ...rest
   }) => (
     <RUIContext.Consumer>
       {({ globalProps }) => {
-        const contextGlobalProps = globalProps ? globalProps[componentName] : null;
+        const contextGlobalProps = globalProps ? globalProps[componentName] : {};
 
         return (
-          <Component
-            {...contextGlobalProps}
-            {...rest}
-            ref={forwardedRef}
-          />
+          <Component {...(contextGlobalProps as object)} {...(rest as P)} ref={forwardedRef} />
         );
       }}
     </RUIContext.Consumer>
   );
 
-  WithGlobalPropsComponent.defaultProps = {
-    forwardedRef: undefined,
-  };
-
-  WithGlobalPropsComponent.propTypes = {
-    forwardedRef: PropTypes.oneOfType([
-      PropTypes.func,
-      // eslint-disable-next-line react/forbid-prop-types
-      PropTypes.shape({ current: PropTypes.any }),
-    ]),
-  };
-
-  return React.forwardRef((props, ref) => (<WithGlobalPropsComponent {...props} forwardedRef={ref} />));
-};
+  return React.forwardRef<unknown, P>((props, ref) => (
+    <WithGlobalPropsComponent {...props} forwardedRef={ref} />
+  ));
+}

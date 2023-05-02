@@ -3,16 +3,16 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { colorPropTest } from '../../../../../tests/propTests/colorPropTest';
-import { Badge } from '../Badge';
+import { colorPropTest } from '../../../../tests/propTests/colorPropTest';
+import { Badge } from './Badge';
 
 const mandatoryProps = {
   label: 'label',
 };
 
 describe('rendering', () => {
-  it.each([
-    ...colorPropTest,
+  it.each<TestingProps>([
+    ...(colorPropTest as unknown as TestingProps[]),
     [
       { label: 'label text' },
       (rootElement) => expect(within(rootElement).getByText('label text')),
@@ -33,6 +33,6 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });

@@ -1,4 +1,11 @@
-export const getJustifyClassName = (value, styles) => {
+interface ExtendedStyles extends React.CSSProperties {
+  isToolbarJustifiedToCenter: string;
+  isToolbarJustifiedToEnd: string;
+  isToolbarJustifiedToSpaceBetween: string;
+  isToolbarJustifiedToStart: string;
+}
+
+export const getJustifyClassName = (value: Justify, styles: ExtendedStyles) => {
   if (value === 'start') {
     return styles.isToolbarJustifiedToStart;
   }

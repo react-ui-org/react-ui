@@ -3,20 +3,20 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
-import { fullWidthPropTest } from '../../../../../tests/propTests/fullWidthPropTest';
-import { labelPropTest } from '../../../../../tests/propTests/labelPropTest';
-import { requiredPropTest } from '../../../../../tests/propTests/requiredPropTest';
-import { validationStatePropTest } from '../../../../../tests/propTests/validationStatePropTest';
-import { FormLayoutContext } from '../FormLayoutContext';
-import { FormLayoutCustomField } from '../FormLayoutCustomField';
+import { childrenEmptyPropTest } from '../../../../tests/propTests/childrenEmptyPropTest';
+import { fullWidthPropTest } from '../../../../tests/propTests/fullWidthPropTest';
+import { labelPropTest } from '../../../../tests/propTests/labelPropTest';
+import { requiredPropTest } from '../../../../tests/propTests/requiredPropTest';
+import { validationStatePropTest } from '../../../../tests/propTests/validationStatePropTest';
+import { FormLayoutCustomField } from './FormLayoutCustomField';
+import { FormLayoutContext } from './FormLayoutContext';
 
 const defaultProps = {
   children: 'content',
 };
 
 describe('rendering', () => {
-  it.each([
+  it.each<TestingProps>([
     [
       { layout: 'vertical' },
       (rootElement) => expect(rootElement).toHaveClass('isRootLayoutVertical'),
@@ -34,11 +34,11 @@ describe('rendering', () => {
       </FormLayoutContext.Provider>
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 
-  it.each([
-    ...childrenEmptyPropTest,
+  it.each<TestingProps>([
+    ...(childrenEmptyPropTest as unknown as TestingProps[]),
     [
       { children: <div>other content text</div> },
       (rootElement) => expect(within(rootElement).getByText('other content text')),
@@ -51,7 +51,7 @@ describe('rendering', () => {
       { disabled: false },
       (rootElement) => expect(rootElement).not.toHaveClass('isRootDisabled'),
     ],
-    ...fullWidthPropTest,
+    ...(fullWidthPropTest as unknown as TestingProps[]),
     [
       {
         id: 'id',
@@ -75,7 +75,7 @@ describe('rendering', () => {
       { innerFieldSize: 'large' },
       (rootElement) => expect(rootElement).toHaveClass('isRootSizeLarge'),
     ],
-    ...labelPropTest,
+    ...(labelPropTest as unknown as TestingProps[]),
     [
       {
         label: 'label',
@@ -83,8 +83,8 @@ describe('rendering', () => {
       },
       (rootElement) => expect(within(rootElement).getByText('label')).toHaveAttribute('for', 'label-for-id'),
     ],
-    ...requiredPropTest,
-    ...validationStatePropTest,
+    ...(requiredPropTest as unknown as TestingProps[]),
+    ...(validationStatePropTest as unknown as TestingProps[]),
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <FormLayoutCustomField
@@ -93,6 +93,6 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });

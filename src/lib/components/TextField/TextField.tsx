@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-import React, { useContext } from 'react';
+import React from 'react';
 import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
@@ -8,29 +7,29 @@ import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
 import styles from './TextField.scss';
+import { TextFieldProps } from './TextField.types';
 
 const SMALL_INPUT_SIZE = 10;
 
-export const TextField = React.forwardRef((props, ref) => {
-  const {
-    disabled,
-    fullWidth,
-    helpText,
-    id,
-    inputSize,
-    isLabelVisible,
-    label,
-    layout,
-    required,
-    size,
-    type,
-    validationState,
-    validationText,
-    variant,
-    ...restProps
-  } = props;
-  const context = useContext(FormLayoutContext);
-  const hasSmallInput = (inputSize !== null) && (inputSize <= SMALL_INPUT_SIZE);
+export const TextField: React.FunctionComponent<TextFieldProps> = React.forwardRef<HTMLInputElement, TextFieldProps>(({
+  disabled = false,
+  fullWidth = false,
+  helpText,
+  id,
+  inputSize,
+  isLabelVisible = true,
+  label,
+  layout = 'vertical',
+  required = false,
+  size = 'medium',
+  type = 'text',
+  validationState,
+  validationText,
+  variant = 'outline',
+  ...restProps
+}, ref) => {
+  const context = React.useContext(FormLayoutContext);
+  const hasSmallInput = inputSize && (inputSize <= SMALL_INPUT_SIZE);
 
   return (
     <label
@@ -51,7 +50,7 @@ export const TextField = React.forwardRef((props, ref) => {
       )}
       htmlFor={id}
       id={id && `${id}__label`}
-      {...(inputSize ? { style: { '--rui-custom-input-size': inputSize } } : {})}
+      {...(inputSize ? { style: { '--rui-custom-input-size': inputSize } as React.CSSProperties } : {})}
     >
       <div
         className={classNames(
@@ -71,7 +70,7 @@ export const TextField = React.forwardRef((props, ref) => {
             id={id}
             ref={ref}
             required={required}
-            size={type !== 'number' ? inputSize : null}
+            size={type !== 'number' ? inputSize : undefined}
             type={type}
           />
           {variant === 'filled' && (
@@ -98,89 +97,6 @@ export const TextField = React.forwardRef((props, ref) => {
     </label>
   );
 });
-
-TextField.defaultProps = {
-  disabled: false,
-  fullWidth: false,
-  helpText: null,
-  id: undefined,
-  inputSize: null,
-  isLabelVisible: true,
-  layout: 'vertical',
-  required: false,
-  size: 'medium',
-  type: 'text',
-  validationState: null,
-  validationText: null,
-  variant: 'outline',
-};
-
-TextField.propTypes = {
-  /**
-   * If `true`, the input will be disabled.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * If `true`, the field will span the full width of its parent.
-   */
-  fullWidth: PropTypes.bool,
-  /**
-   * Optional help text.
-   */
-  helpText: PropTypes.node,
-  /**
-   * ID of the input HTML element. It also serves as a prefix for nested elements:
-   * * `<ID>__label`
-   * * `<ID>__labelText`
-   * * `<ID>__helpText`
-   * * `<ID>__validationText`
-   */
-  id: PropTypes.string,
-  /**
-   * Width of the input field. Translated as `size` attribute for input types other than `number`.
-   */
-  inputSize: PropTypes.number,
-  /**
-   * If `false`, the label will be visually hidden (but remains accessible by assistive
-   * technologies).
-   */
-  isLabelVisible: PropTypes.bool,
-  /**
-   * Text field label.
-   */
-  label: PropTypes.string.isRequired,
-  /**
-   * Layout of the field.
-   *
-   * Ignored if the component is rendered within `FormLayout` component
-   * as the value is inherited in such case.
-   */
-  layout: PropTypes.oneOf(['horizontal', 'vertical']),
-  /**
-   * If `true`, the input will be required.
-   */
-  required: PropTypes.bool,
-  /**
-   * Size of the field.
-   */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
-  /**
-   * HTML input type, translated as `type` attribute of the input.
-   */
-  type: PropTypes.oneOf(['email', 'number', 'password', 'tel', 'text']),
-  /**
-   * Alter the field to provide feedback based on validation result.
-   */
-  validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
-  /**
-   * Validation message to be displayed.
-   */
-  validationText: PropTypes.node,
-  /**
-   * Design variant of the field, further customizable with CSS custom properties.
-   */
-  variant: PropTypes.oneOf(['filled', 'outline']),
-};
 
 export const TextFieldWithGlobalProps = withGlobalProps(TextField, 'TextField');
 

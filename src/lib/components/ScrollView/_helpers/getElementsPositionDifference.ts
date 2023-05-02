@@ -1,4 +1,10 @@
-export const getElementsPositionDifference = (contentEl, viewportEl) => {
+export const getElementsPositionDifference = (
+  contentEl: React.RefObject<HTMLDivElement>,
+  viewportEl: React.RefObject<HTMLDivElement>,
+) => {
+  if (!contentEl.current || !viewportEl.current) {
+    return null;
+  }
   const contentPosition = contentEl.current.getBoundingClientRect();
   const viewportPosition = viewportEl.current.getBoundingClientRect();
 

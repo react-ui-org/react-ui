@@ -1,4 +1,10 @@
-export default (priority, styles) => {
+interface ExtendedStyles extends React.CSSProperties {
+  isRootPriorityFilled: string;
+  isRootPriorityFlat: string;
+  isRootPriorityOutline: string;
+}
+
+export default (priority: Priority, styles: ExtendedStyles) => {
   if (priority === 'filled') {
     return styles.isRootPriorityFilled;
   }

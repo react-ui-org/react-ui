@@ -6,7 +6,7 @@ import {
   within,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Table } from '../Table';
+import { Table } from './Table';
 
 const mandatoryProps = {
   columns: [
@@ -15,7 +15,7 @@ const mandatoryProps = {
       name: 'id',
     },
     {
-      format: (date) => new Date(date).toJSON(),
+      format: (date: string | number | Date) => new Date(date).toJSON(),
       isSortable: true,
       label: 'Date of birth',
       name: 'dateOfBirth',
@@ -34,7 +34,7 @@ const mandatoryProps = {
 };
 
 describe('rendering', () => {
-  it.each([
+  it.each<TestingProps>([
     [
       { columns: mandatoryProps.columns },
       (rootElement) => {
@@ -50,7 +50,7 @@ describe('rendering', () => {
           column: 'name',
           descendingIcon: <span>descending icon</span>,
           direction: 'asc',
-          onClick: () => {},
+          onClick: () => { },
         },
       },
       (rootElement) => {
@@ -81,7 +81,7 @@ describe('rendering', () => {
           column: 'dateOfBirth',
           descendingIcon: <span>descending icon</span>,
           direction: 'asc',
-          onClick: () => {},
+          onClick: () => { },
         },
       },
       (rootElement) => expect(within(rootElement).getByText('ascending icon')),
@@ -93,7 +93,7 @@ describe('rendering', () => {
           column: 'dateOfBirth',
           descendingIcon: <span>descending icon</span>,
           direction: 'desc',
-          onClick: () => {},
+          onClick: () => { },
         },
       },
       (rootElement) => expect(within(rootElement).getByText('descending icon')),
@@ -106,7 +106,7 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });
 

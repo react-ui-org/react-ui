@@ -3,19 +3,19 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { blockPropTest } from '../../../../../tests/propTests/blockPropTest';
-import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
-import { Button } from '../../Button';
-import { ButtonGroup } from '../ButtonGroup';
+import { blockPropTest } from '../../../../tests/propTests/blockPropTest';
+import { childrenEmptyPropTest } from '../../../../tests/propTests/childrenEmptyPropTest';
+import { Button } from '../Button';
+import { ButtonGroup } from '.';
 
 const mandatoryProps = {
-  children: <Button label="label" />,
+  children: <Button label="ijdjf" />,
 };
 
 describe('rendering', () => {
-  it.each([
-    ...blockPropTest,
-    ...childrenEmptyPropTest,
+  it.each<TestingProps>([
+    ...(blockPropTest as unknown as TestingProps[]),
+    ...(childrenEmptyPropTest as unknown as TestingProps[]),
     [
       { children: <Button label="label text" /> },
       (rootElement) => expect(within(rootElement).getByText('label text')),
@@ -60,6 +60,6 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });

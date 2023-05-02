@@ -3,25 +3,29 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { ScrollView } from '../ScrollView';
+import { ScrollView } from './ScrollView';
 
 const mandatoryProps = {
   children: <div>content text</div>,
 };
+const ref = React.createRef() as React.RefObject<HTMLElement>;
 
-const scrollViewRefPropTest = (ref) => [
+const scrollViewRefPropTest = (inputRef: React.RefObject<HTMLElement>) => [
   [
     {
       id: 'id',
-      ref,
+      ref: inputRef,
     },
-    () => expect(ref.current.parentNode).toHaveAttribute('id', 'id'),
+    () => {
+      expect(inputRef.current).not.toBeNull();
+      expect(inputRef.current?.parentNode).toHaveAttribute('id', 'id');
+    },
   ],
 ];
 
 describe('rendering', () => {
-  it.each([
-    ...scrollViewRefPropTest(React.createRef()),
+  it.each<TestingProps>([
+    ...(scrollViewRefPropTest(ref) as unknown as TestingProps),
     [
       { arrows: true },
       (rootElement) => {
@@ -82,7 +86,7 @@ describe('rendering', () => {
     // `autoScroll` untested
     [
       { children: <div>content text</div> },
-      (rootElement) => expect(within(rootElement).getByText('content text')),
+      (rootElement: HTMLElement) => expect(within(rootElement).getByText('content text')),
     ],
     // `debounce` untested
     [
@@ -119,11 +123,11 @@ describe('rendering', () => {
     ],
     [
       { scrollbar: true },
-      (rootElement) => expect(rootElement).not.toHaveClass('hasRootScrollbarDisabled'),
+      (rootElement: HTMLElement) => expect(rootElement).not.toHaveClass('hasRootScrollbarDisabled'),
     ],
     [
       { scrollbar: false },
-      (rootElement) => expect(rootElement).toHaveClass('hasRootScrollbarDisabled'),
+      (rootElement: HTMLElement) => expect(rootElement).toHaveClass('hasRootScrollbarDisabled'),
     ],
     [
       {
@@ -131,7 +135,7 @@ describe('rendering', () => {
         startShadowInitialOffset: 'offset',
         startShadowSize: 'size',
       },
-      (rootElement) => expect(rootElement).toHaveStyle({
+      (rootElement: HTMLElement) => expect(rootElement).toHaveStyle({
         '--rui-local-start-shadow-background': 'background',
         '--rui-local-start-shadow-direction': 'to bottom',
         '--rui-local-start-shadow-initial-offset': 'offset',
@@ -139,6 +143,7 @@ describe('rendering', () => {
       }),
     ],
     // `shadows` untested
+
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <ScrollView
@@ -147,6 +152,6 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });

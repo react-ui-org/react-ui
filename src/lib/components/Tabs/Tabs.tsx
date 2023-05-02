@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
 import { transferProps } from '../_helpers/transferProps';
 import styles from './Tabs.scss';
+import { TabsProps } from './Tabs.types';
 
-export const Tabs = ({
+export const Tabs : React.FunctionComponent<TabsProps> = ({
   children,
   id,
   ...restProps
@@ -22,22 +22,5 @@ export const Tabs = ({
   </nav>
 );
 
-Tabs.defaultProps = {
-  id: undefined,
-};
-
-Tabs.propTypes = {
-  /**
-   * Nested `TabsItem` elements.
-   */
-  children: PropTypes.node.isRequired,
-  /**
-   * ID of the root HTML element. It also serves as base for nested element:
-   * * `<ID>__list`
-   */
-  id: PropTypes.string,
-};
-
 export const TabsWithGlobalProps = withGlobalProps(Tabs, 'Tabs');
-
 export default TabsWithGlobalProps;

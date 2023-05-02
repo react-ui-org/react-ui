@@ -3,14 +3,14 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { CardBody } from '../CardBody';
+import { CardBody } from './CardBody';
 
 const defaultProps = {
   children: 'content',
 };
 
 describe('rendering', () => {
-  it.each([
+  it.each<TestingProps>([
     [
       { children: <div>content text</div> },
       (rootElement) => expect(within(rootElement).getByText('content text')),
@@ -23,6 +23,6 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });

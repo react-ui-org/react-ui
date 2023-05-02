@@ -1,17 +1,17 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
 import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import { getRootColorClassName } from '../_helpers/getRootColorClassName';
 import styles from './Card.scss';
+import { CardProps } from './Card.types';
 
-export const Card = ({
+export const Card: React.FunctionComponent<CardProps> = ({
   children,
-  dense,
-  disabled,
-  raised,
-  color,
+  dense = false,
+  disabled = false,
+  raised = false,
+  color = 'light',
   ...restProps
 }) => (
   <div
@@ -27,39 +27,6 @@ export const Card = ({
     {children}
   </div>
 );
-
-Card.defaultProps = {
-  color: 'light',
-  dense: false,
-  disabled: false,
-  raised: false,
-};
-
-Card.propTypes = {
-  /**
-   * Slot for individual card elements that build up the inner layout:
-   * * `CardBody`
-   * * `CardFooter`
-   * * `ScrollView`
-   */
-  children: PropTypes.node.isRequired,
-  /**
-   * [Color variant](/foundation/colors#component-colors) to clarify importance and meaning of the card.
-   */
-  color: PropTypes.oneOf(['success', 'warning', 'danger', 'help', 'info', 'note', 'light', 'dark']),
-  /**
-   * Make the card more compact.
-   */
-  dense: PropTypes.bool,
-  /**
-   * If `true`, the card will be disabled.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * Add shadow to pull the card above surface.
-   */
-  raised: PropTypes.bool,
-};
 
 export const CardWithGlobalProps = withGlobalProps(Card, 'Card');
 

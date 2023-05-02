@@ -1,10 +1,10 @@
 export const layoutPropTest = [
   [
     { layout: 'vertical' },
-    (rootElement) => expect(rootElement).toHaveClass('isRootLayoutVertical'),
+    (rootElement: HTMLElement) => expect(rootElement).toHaveClass('isRootLayoutVertical'),
   ],
   [
     { layout: 'horizontal' },
-    (rootElement) => expect(rootElement).toHaveClass('isRootLayoutHorizontal'),
+    (rootElement: HTMLElement) => expect(rootElement).toHaveClass('isRootLayoutHorizontal'),
   ],
 ];

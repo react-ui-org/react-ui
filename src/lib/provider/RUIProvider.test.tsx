@@ -3,12 +3,12 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { Badge } from '../../components/Badge';
-import { Alert } from '../../components/Alert';
-import RUIProvider from '../RUIProvider';
+import { Badge } from '../components/Badge';
+import { Alert } from '../components/Alert';
+import RUIProvider from './RUIProvider';
 
 describe('rendering', () => {
-  it.each([
+  it.each<TestingProps>([
     [
       {
         children: <Badge />,
@@ -34,6 +34,6 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });

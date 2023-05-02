@@ -3,12 +3,21 @@ import {
   useRef,
 } from 'react';
 import { getElementsPositionDifference } from '../_helpers/getElementsPositionDifference';
+import { PositionDifference } from '../ScrollView.types';
 
-export const useScrollPosition = (effect, dependencies, contentEl, viewportEl, wait) => {
-  const throttleTimeout = useRef(null);
+export const useScrollPosition = (
+  effect: (currentPosition: PositionDifference) => void,
+  dependencies: boolean[],
+  contentEl: React.RefObject<HTMLDivElement>, // Change the parameter type here
+  viewportEl: React.RefObject<HTMLDivElement>, // Change the parameter type here
+  wait: number,
+) => {
+  const throttleTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const callBack = (wasDelayed = false) => {
-    effect(getElementsPositionDifference(contentEl, viewportEl));
+    if (contentEl.current && viewportEl.current) {
+      effect(getElementsPositionDifference(contentEl, viewportEl));
+    }
 
     if (wasDelayed) {
       throttleTimeout.current = null;
@@ -16,12 +25,14 @@ export const useScrollPosition = (effect, dependencies, contentEl, viewportEl, w
   };
 
   useLayoutEffect(() => {
+    if (!viewportEl.current) { return undefined; }
+
     const viewport = viewportEl.current;
 
     const handleScroll = () => {
       if (wait) {
         if (throttleTimeout.current === null) {
-          throttleTimeout.current = setTimeout(callBack, wait, true);
+          throttleTimeout.current = setTimeout(() => callBack(true), wait);
         }
       } else {
         callBack();
@@ -31,7 +42,9 @@ export const useScrollPosition = (effect, dependencies, contentEl, viewportEl, w
     viewport.addEventListener('scroll', handleScroll);
 
     return () => {
-      clearTimeout(throttleTimeout.current);
+      if (throttleTimeout.current) {
+        clearTimeout(throttleTimeout.current);
+      }
       viewport.removeEventListener('scroll', handleScroll);
     };
   }, dependencies); // eslint-disable-line react-hooks/exhaustive-deps

@@ -3,7 +3,12 @@ import pkg from '../../../../package.json';
 
 export const Version = () => (
   <>
-    Currently <strong>v{pkg.version}</strong>
+    Currently
+    {' '}
+    <strong>
+      v
+      {pkg.version}
+    </strong>
   </>
 );
 

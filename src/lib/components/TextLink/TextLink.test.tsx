@@ -5,7 +5,7 @@ import {
 } from '@testing-library/react';
 import sinon from 'sinon';
 import userEvent from '@testing-library/user-event';
-import { TextLink } from '../TextLink';
+import { TextLink } from './TextLink';
 
 const mandatoryProps = {
   href: '/test/uri',
@@ -13,7 +13,7 @@ const mandatoryProps = {
 };
 
 describe('rendering', () => {
-  it.each([
+  it.each<TestingProps>([
     [
       {},
       (rootElement) => expect(rootElement).toHaveAttribute('href', '/test/uri'),
@@ -30,7 +30,7 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });
 

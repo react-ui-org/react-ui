@@ -1,3 +1,2 @@
-export const isChildrenEmpty = (children) => children == null
-  || children === false
-  || (Array.isArray(children) && children.length === 0);
+export const isChildrenEmpty = (children: React.ReactNode) => !children
+    || (Array.isArray(children) && children.length === 0);

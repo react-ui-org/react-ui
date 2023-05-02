@@ -6,9 +6,9 @@ import {
   within,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { colorPropTest } from '../../../../../tests/propTests/colorPropTest';
-import defaultTranslations from '../../../translations/en';
-import { Alert } from '../Alert';
+import { colorPropTest } from '../../../../tests/propTests/colorPropTest';
+import defaultTranslations from '../../translations/en';
+import { Alert } from './Alert';
 
 const mandatoryProps = {
   children: 'content',
@@ -16,12 +16,12 @@ const mandatoryProps = {
 };
 
 describe('rendering', () => {
-  it.each([
+  it.each<TestingProps>([
     [
       { children: <div>content text</div> },
       (rootElement) => expect(within(rootElement).getByText('content text')),
     ],
-    ...colorPropTest,
+    ...(colorPropTest as unknown as TestingProps[]),
     [
       { icon: (<div>icon</div>) },
       (rootElement) => expect(within(rootElement).getByText('icon')),
@@ -29,7 +29,7 @@ describe('rendering', () => {
     [
       {
         id: 'id',
-        onClose: () => {},
+        onClose: () => { },
       },
       (rootElement) => {
         expect(rootElement).toHaveAttribute('id', 'id');
@@ -45,7 +45,7 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });
 

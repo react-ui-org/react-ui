@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { createPortal } from 'react-dom';
 import { withGlobalProps } from '../../provider';
@@ -7,15 +6,17 @@ import { transferProps } from '../_helpers/transferProps';
 import getRootSideClassName from './_helpers/getRootSideClassName';
 import getRootAlignmentClassName from './_helpers/getRootAlignmentClassName';
 import styles from './Popover.scss';
+import { PopoverProps } from './Popover.types';
 
-export const Popover = React.forwardRef((props, ref) => {
-  const {
-    placement,
+export const Popover: React.FunctionComponent<PopoverProps> = React.forwardRef<HTMLDivElement, PopoverProps>((
+  {
+    placement = 'bottom',
     children,
     portalId,
     ...restProps
-  } = props;
-
+  },
+  ref,
+) => {
   const PopoverEl = (
     <div
       {...transferProps(restProps)}
@@ -32,46 +33,12 @@ export const Popover = React.forwardRef((props, ref) => {
     </div>
   );
 
-  if (portalId === null) {
-    return PopoverEl;
+  if (portalId && document.getElementById(portalId)) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return createPortal(PopoverEl, document.getElementById(portalId)!);
   }
-
-  return createPortal(PopoverEl, document.getElementById(portalId));
+  return PopoverEl;
 });
-
-Popover.defaultProps = {
-  placement: 'bottom',
-  portalId: null,
-};
-
-Popover.propTypes = {
-  /**
-   * Popover content.
-   */
-  children: PropTypes.node.isRequired,
-  /**
-   * Popover placement affects position of the arrow.
-   * Compatible with [Floating UI API](https://floating-ui.com/docs/computePosition#placement).
-   */
-  placement: PropTypes.oneOf([
-    'top',
-    'top-start',
-    'top-end',
-    'right',
-    'right-start',
-    'right-end',
-    'bottom',
-    'bottom-start',
-    'bottom-end',
-    'left',
-    'left-start',
-    'left-end',
-  ]),
-  /**
-   * If set, popover is rendered in the React Portal with that ID.
-   */
-  portalId: PropTypes.string,
-};
 
 export const PopoverWithGlobalProps = withGlobalProps(Popover, 'Popover');
 

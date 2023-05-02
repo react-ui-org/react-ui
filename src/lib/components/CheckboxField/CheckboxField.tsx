@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
@@ -6,20 +5,21 @@ import { getRootValidationStateClassName } from '../_helpers/getRootValidationSt
 import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
 import styles from './CheckboxField.scss';
+import { CheckboxFieldProps } from './CheckboxField.types';
 
-export const CheckboxField = React.forwardRef((props, ref) => {
-  const {
-    disabled,
-    helpText,
-    id,
-    isLabelVisible,
-    label,
-    labelPosition,
-    required,
-    validationState,
-    validationText,
-    ...restProps
-  } = props;
+export const CheckboxField: React.FunctionComponent<CheckboxFieldProps> = React.forwardRef<HTMLInputElement,
+CheckboxFieldProps>(({
+  disabled = false,
+  helpText,
+  id,
+  isLabelVisible = true,
+  label,
+  labelPosition = 'after',
+  required = false,
+  validationState,
+  validationText,
+  ...restProps
+}, ref) => {
   const context = useContext(FormLayoutContext);
 
   return (
@@ -75,63 +75,6 @@ export const CheckboxField = React.forwardRef((props, ref) => {
     </label>
   );
 });
-
-CheckboxField.defaultProps = {
-  disabled: false,
-  helpText: null,
-  id: undefined,
-  isLabelVisible: true,
-  labelPosition: 'after',
-  required: false,
-  validationState: null,
-  validationText: null,
-};
-
-CheckboxField.propTypes = {
-  /**
-   * If `true`, the input will be disabled.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * Optional help text.
-   */
-  helpText: PropTypes.node,
-  /**
-   * ID of the `<input>` HTML element.
-   *
-   * Also serves as base for ids of nested elements:
-   * * `<ID>__label`
-   * * `<ID>__labelText`
-   * * `<ID>__helpText`
-   * * `<ID>__validationText`
-   */
-  id: PropTypes.string,
-  /**
-   * If `false`, the label will be visually hidden (but remains accessible by assistive
-   * technologies).
-   */
-  isLabelVisible: PropTypes.bool,
-  /**
-   * Checkbox field label.
-   */
-  label: PropTypes.string.isRequired,
-  /**
-   * Placement of the label relative to the input.
-   */
-  labelPosition: PropTypes.oneOf(['before', 'after']),
-  /**
-   * If `true`, the input will be required.
-   */
-  required: PropTypes.bool,
-  /**
-   * Alter the field to provide feedback based on validation result.
-   */
-  validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
-  /**
-   * Validation message to be displayed.
-   */
-  validationText: PropTypes.node,
-};
 
 export const CheckboxFieldWithGlobalProps = withGlobalProps(CheckboxField, 'CheckboxField');
 

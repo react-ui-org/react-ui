@@ -2,14 +2,14 @@ import React from 'react';
 import {
   render, within,
 } from '@testing-library/react';
-import { ModalBody } from '../index';
+import { ModalBody } from './ModalBody';
 
 const mandatoryProps = {
   children: <div>content text</div>,
 };
 
 describe('rendering', () => {
-  it.each([
+  it.each<TestingProps>([
     [
       {
         children: (
@@ -57,6 +57,6 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });

@@ -1,4 +1,9 @@
-export const getScrollingClassName = (type, styles) => {
+interface ExtendedStyles extends React.CSSProperties {
+  isRootScrollingAuto: string;
+  isRootScrollingCustom: string;
+}
+
+export const getScrollingClassName = (type: Scrolling, styles: ExtendedStyles) => {
   if (type === 'auto') {
     return styles.isRootScrollingAuto;
   }

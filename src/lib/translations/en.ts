@@ -1,3 +1,5 @@
+import { Translation } from './translations.types';
+
 export default {
   Alert: {
     close: 'Close',
@@ -9,4 +11,4 @@ export default {
     next: 'Next',
     previous: 'Previous',
   },
-};
+} as Translation;

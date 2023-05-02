@@ -1,20 +1,20 @@
-export const alignPropTest = (itemType) => (
+export const alignPropTest = (itemType: string) => (
   [
     [
       { align: 'top' },
-      (rootElement) => expect(rootElement).toHaveClass(`is${itemType}AlignedToTop`),
+      (rootElement: HTMLElement) => expect(rootElement).toHaveClass(`is${itemType}AlignedToTop`),
     ],
     [
       { align: 'middle' },
-      (rootElement) => expect(rootElement).toHaveClass(`is${itemType}AlignedToMiddle`),
+      (rootElement: HTMLElement) => expect(rootElement).toHaveClass(`is${itemType}AlignedToMiddle`),
     ],
     [
       { align: 'bottom' },
-      (rootElement) => expect(rootElement).toHaveClass(`is${itemType}AlignedToBottom`),
+      (rootElement: HTMLElement) => expect(rootElement).toHaveClass(`is${itemType}AlignedToBottom`),
     ],
     [
       { align: 'baseline' },
-      (rootElement) => expect(rootElement).toHaveClass(`is${itemType}AlignedToBaseline`),
+      (rootElement: HTMLElement) => expect(rootElement).toHaveClass(`is${itemType}AlignedToBaseline`),
     ],
   ]
 );

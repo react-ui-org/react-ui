@@ -6,17 +6,18 @@ import {
   within,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Button } from '../../..';
-import { Modal } from '../Modal';
-import { ModalBody } from '../ModalBody';
+import { Button } from '../..';
+import { Modal } from './Modal';
+import { ModalBody } from './ModalBody';
 // eslint-disable-next-line import/no-named-default
-import { default as ModalCloseButton } from '../ModalCloseButton';
-import { ModalHeader } from '../ModalHeader';
-import { ModalFooter } from '../ModalFooter';
+import { default as ModalCloseButton } from './ModalCloseButton';
+import { ModalHeader } from './ModalHeader';
+import { ModalFooter } from './ModalFooter';
 
 describe('rendering', () => {
   it('renders with "portalId" props', () => {
     document.body.innerHTML = '<div id="portal-id" />';
+
     render((
       <Modal
         id="id"
@@ -26,11 +27,11 @@ describe('rendering', () => {
       </Modal>
     ));
 
-    expect(screen.getByTestId('portal-id').firstChild.firstChild).toHaveAttribute('id', 'id');
+    expect(screen.getByTestId('portal-id').firstChild?.firstChild).toHaveAttribute('id', 'id');
     document.body.innerHTML = '';
   });
 
-  it.each([
+  it.each<TestingProps>([
     [
       { children: <div>content text</div> },
       (rootElement) => expect(within(rootElement).getByText('content text')),
@@ -70,17 +71,17 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });
 
 describe('functionality', () => {
   it.each([
     () => userEvent.keyboard('{esc}'),
-    () => userEvent.click(screen.getByTestId('id').parentNode),
+    () => userEvent.click(screen.getByTestId('id').parentNode as HTMLElement),
   ])('call close modal using `closeButtonRef` (%#)', (action) => {
     const spy = sinon.spy();
-    const ref = React.createRef();
+    const ref = React.createRef() as React.RefObject<HTMLButtonElement>;
     render((
       <Modal
         closeButtonRef={ref}
@@ -103,13 +104,13 @@ describe('functionality', () => {
 
   it.each([
     () => userEvent.keyboard('{esc}'),
-    () => userEvent.click(screen.getByTestId('id').parentNode),
+    () => userEvent.click(screen.getByTestId('id').parentNode as HTMLElement),
   ])('do not call close modal using `closeButtonRef` when button is disabled (%#)', (action) => {
     const spy = sinon.spy();
     const ref = React.createRef();
     render((
       <Modal
-        closeButtonRef={ref}
+        closeButtonRef={ref as React.RefObject<HTMLButtonElement>}
         id="id"
       >
         <ModalFooter>
@@ -130,10 +131,10 @@ describe('functionality', () => {
 
   it.each([
     () => userEvent.keyboard('{esc}'),
-    () => userEvent.click(screen.getByTestId('id').parentNode),
+    () => userEvent.click(screen.getByTestId('id').parentNode as HTMLElement),
   ])('call close modal using `closeButtonRef` and `ModalCloseButton` (%#)', (action) => {
     const spy = sinon.spy();
-    const ref = React.createRef();
+    const ref = React.createRef() as React.RefObject<HTMLButtonElement>;
     render((
       <Modal
         closeButtonRef={ref}
@@ -141,8 +142,8 @@ describe('functionality', () => {
       >
         <ModalHeader>
           <ModalCloseButton
-            ref={ref}
             onClick={spy}
+            ref={ref as React.RefObject<HTMLButtonElement>}
           />
         </ModalHeader>
       </Modal>
@@ -154,10 +155,10 @@ describe('functionality', () => {
 
   it.each([
     () => userEvent.keyboard('{esc}'),
-    () => userEvent.click(screen.getByTestId('id').parentNode),
+    () => userEvent.click(screen.getByTestId('id').parentNode as HTMLElement),
   ])('do not call close modal using `closeButtonRef` and `ModalCloseButton` when button is disabled (%#)', (action) => {
     const spy = sinon.spy();
-    const ref = React.createRef();
+    const ref = React.createRef() as React.RefObject<HTMLButtonElement>;
     render((
       <Modal
         closeButtonRef={ref}
@@ -166,8 +167,8 @@ describe('functionality', () => {
         <ModalHeader>
           <ModalCloseButton
             disabled
-            ref={ref}
             onClick={spy}
+            ref={ref}
           />
         </ModalHeader>
       </Modal>
@@ -179,11 +180,11 @@ describe('functionality', () => {
 
   it('call primary action using `primaryButtonRef`', () => {
     const spy = sinon.spy();
-    const ref = React.createRef();
+    const ref = React.createRef() as React.RefObject<HTMLButtonElement>;
     render((
       <Modal
-        primaryButtonRef={ref}
         id="id"
+        primaryButtonRef={ref}
       >
         <ModalFooter>
           <Button
@@ -202,11 +203,11 @@ describe('functionality', () => {
 
   it('do not call primary action using `primaryButtonRef when button is disabled', () => {
     const spy = sinon.spy();
-    const ref = React.createRef();
+    const ref = React.createRef() as React.RefObject<HTMLButtonElement>;
     render((
       <Modal
-        primaryButtonRef={ref}
         id="id"
+        primaryButtonRef={ref}
       >
         <ModalFooter>
           <Button
@@ -224,7 +225,7 @@ describe('functionality', () => {
     expect(spy.called).toEqual(false);
   });
 
-  it.each([
+  it.each<TestingProps>([
     [
       <input />,
       (rootElement) => {
@@ -248,7 +249,7 @@ describe('functionality', () => {
       },
     ],
   ])('autofocuses form field element (%#)', (child, assert) => {
-    const ref = React.createRef();
+    const ref = React.createRef() as React.RefObject<HTMLButtonElement>;
     const dom = render((
       <Modal primaryButtonRef={ref}>
         <ModalBody>
@@ -266,11 +267,11 @@ describe('functionality', () => {
       </Modal>
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 
   it('autofocuses primary button if no form field is present', () => {
-    const ref = React.createRef();
+    const ref = React.createRef() as React.RefObject<HTMLButtonElement>;
     const { container } = render((
       <Modal primaryButtonRef={ref}>
         <ModalFooter>
@@ -283,6 +284,6 @@ describe('functionality', () => {
       </Modal>
     ));
 
-    expect(document.activeElement).toEqual(within(container.firstChild).getByRole('button'));
+    expect(document.activeElement).toEqual(within(container.firstChild as HTMLElement).getByRole('button'));
   });
 });

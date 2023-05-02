@@ -1,28 +1,33 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { withGlobalProps } from '../../provider';
 import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { FormLayoutContext } from './FormLayoutContext';
 import styles from './FormLayout.scss';
+import { FormLayoutProps } from './FormLayout.types';
 
-const PREDEFINED_LABEL_WIDTH_VALUES = ['auto', 'default', 'limited'];
-
-export const FormLayout = ({
+export const FormLayout: React.FunctionComponent<FormLayoutProps> = ({
   autoWidth,
   children,
   fieldLayout,
   labelWidth,
   ...restProps
 }) => {
+  const contextValue = useMemo(() => ({
+    layout: fieldLayout,
+  }), [fieldLayout]);
+
   if (isChildrenEmpty(children)) {
     return null;
   }
 
-  const hasCustomLabelWidth = !PREDEFINED_LABEL_WIDTH_VALUES.includes(labelWidth);
+  const PREDEFINED_LABEL_WIDTH_VALUES = ['auto', 'default', 'limited'];
 
-  const fieldLayoutClass = (layout) => {
+  const hasCustomLabelWidth = !labelWidth
+    || !PREDEFINED_LABEL_WIDTH_VALUES.includes(labelWidth);
+
+  const fieldLayoutClass = (layout: FormLayoutProps['fieldLayout']) => {
     if (layout === 'horizontal') {
       return styles.isRootFieldLayoutHorizontal;
     }
@@ -30,7 +35,7 @@ export const FormLayout = ({
     return styles.isRootFieldLayoutVertical;
   };
 
-  const labelWidthClass = (width) => {
+  const labelWidthClass = (width: FormLayoutProps['labelWidth']) => {
     if (hasCustomLabelWidth) {
       return styles.hasRootLabelWidthCustom;
     }
@@ -55,55 +60,15 @@ export const FormLayout = ({
         autoWidth && styles.isRootAutoWidth,
         fieldLayout === 'horizontal' && labelWidthClass(labelWidth),
       )}
-      {...hasCustomLabelWidth ? { style: { '--rui-custom-label-width': labelWidth } } : {}}
+      {...hasCustomLabelWidth ? { style: { '--rui-custom-label-width': labelWidth } as React.CSSProperties } : {}}
     >
       <FormLayoutContext.Provider
-        value={{ layout: fieldLayout }}
+        value={contextValue}
       >
         {children}
       </FormLayoutContext.Provider>
     </div>
   );
-};
-
-FormLayout.defaultProps = {
-  autoWidth: false,
-  children: null,
-  fieldLayout: 'vertical',
-  labelWidth: 'default',
-};
-
-FormLayout.propTypes = {
-  /**
-   * If `true`, FormLayout will take up only as much horizontal space as necessary.
-   */
-  autoWidth: PropTypes.bool,
-  /**
-   * Supported form field components:
-   * * `CheckboxField`
-   * * `FileInputField`
-   * * `FormLayoutCustomField`
-   * * `Radio`
-   * * `SelectField`
-   * * `TextArea`
-   * * `TextField`
-   * * `Toggle`
-   *
-   * If none are provided nothing is rendered.
-   */
-  children: PropTypes.node,
-  /**
-   * Layout that is forced on children form fields.
-   */
-  fieldLayout: PropTypes.oneOf(['horizontal', 'vertical']),
-  /**
-   * Width of the column with form field labels. Only available if the `fieldLayout` is set to
-   * `horizontal`.
-   */
-  labelWidth: PropTypes.oneOfType([
-    PropTypes.oneOf(PREDEFINED_LABEL_WIDTH_VALUES),
-    PropTypes.string,
-  ]),
 };
 
 export const FormLayoutWithGlobalProps = withGlobalProps(FormLayout, 'FormLayout');

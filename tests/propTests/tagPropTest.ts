@@ -1,6 +1,6 @@
 export const tagPropTest = [
   [
     { tag: 'section' },
-    (rootElement) => expect(rootElement).toContainHTML('<section'),
+    (rootElement: HTMLElement) => expect(rootElement).toContainHTML('<section'),
   ],
 ];

@@ -3,15 +3,15 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
-import { CheckboxField } from '../../CheckboxField';
-import { Radio } from '../../Radio';
-import { SelectField } from '../../SelectField';
-import { TextArea } from '../../TextArea';
-import { TextField } from '../../TextField';
-import { Toggle } from '../../Toggle';
-import { FormLayout } from '../FormLayout';
-import { FormLayoutCustomField } from '../FormLayoutCustomField';
+import { childrenEmptyPropTest } from '../../../../tests/propTests/childrenEmptyPropTest';
+import { CheckboxField } from '../CheckboxField/CheckboxField';
+import { Radio } from '../Radio/Radio';
+import { SelectField } from '../SelectField/SelectField';
+import { TextArea } from '../TextArea/TextArea';
+import { TextField } from '../TextField/TextField';
+import { Toggle } from '../Toggle/Toggle';
+import { FormLayout } from './FormLayout';
+import { FormLayoutCustomField } from './FormLayoutCustomField';
 
 const defaultProps = {
   children: <FormLayoutCustomField id="nested-id">content</FormLayoutCustomField>,
@@ -26,7 +26,7 @@ describe('rendering', () => {
     expect(dom.container.firstChild).toBeNull();
   });
 
-  it.each([
+  it.each<TestingProps>([
     [
       { autoWidth: true },
       (rootElement) => expect(rootElement).toHaveClass('isRootAutoWidth'),
@@ -35,7 +35,7 @@ describe('rendering', () => {
       { autoWidth: false },
       (rootElement) => expect(rootElement).not.toHaveClass('isRootAutoWidth'),
     ],
-    ...childrenEmptyPropTest,
+    ...(childrenEmptyPropTest as unknown as TestingProps[]),
     [
       { children: <FormLayoutCustomField>other content text</FormLayoutCustomField> },
       (rootElement) => expect(within(rootElement).getByText('other content text')),
@@ -137,6 +137,6 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });

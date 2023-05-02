@@ -3,20 +3,20 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
-import { CardFooter } from '../CardFooter';
+import { childrenEmptyPropTest } from '../../../../tests/propTests/childrenEmptyPropTest';
+import { CardFooter } from './CardFooter';
 
 const defaultProps = {
   children: 'content',
 };
 
 describe('rendering', () => {
-  it.each([
+  it.each<TestingProps>([
     [
       { children: <div>content text</div> },
       (rootElement) => expect(within(rootElement).getByText('content text')),
     ],
-    ...childrenEmptyPropTest,
+    ...(childrenEmptyPropTest as unknown as TestingProps[]),
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <CardFooter
@@ -25,6 +25,6 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });

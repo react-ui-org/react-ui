@@ -2,18 +2,18 @@ import { render } from '@testing-library/react';
 import React from 'react';
 import { FormLayoutContext } from '../../src/lib/components/FormLayout';
 
-export const formLayoutProviderTest = (Component) => {
+export const formLayoutProviderTest = (Component: React.ReactElement<unknown>) => {
   it.each([
     [
       { layout: 'vertical' },
-      (rootElement) => {
+      (rootElement: HTMLElement) => {
         expect(rootElement).toHaveClass('isRootInFormLayout');
         expect(rootElement).toHaveClass('isRootLayoutVertical');
       },
     ],
     [
       { layout: 'horizontal' },
-      (rootElement) => {
+      (rootElement: HTMLElement) => {
         expect(rootElement).toHaveClass('isRootInFormLayout');
         expect(rootElement).toHaveClass('isRootLayoutHorizontal');
       },
@@ -21,13 +21,13 @@ export const formLayoutProviderTest = (Component) => {
   ])('renders with FormLayout props: "%s"', (testedProps, assert) => {
     const dom = render((
       <FormLayoutContext.Provider
-        value={{ ...testedProps }}
+        value={{ ...testedProps as unknown as { layout?: Layout } }}
       >
         {Component}
       </FormLayoutContext.Provider>
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 
   it('renders without FormLayout', () => {

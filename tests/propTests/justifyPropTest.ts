@@ -1,26 +1,26 @@
-export const justifyPropTest = (itemType) => {
+export const justifyPropTest = (itemType: string) => {
   const tests = [
     [
       { justify: 'start' },
-      (rootElement) => expect(rootElement).toHaveClass(`is${itemType}JustifiedToStart`),
+      (rootElement: HTMLElement) => expect(rootElement).toHaveClass(`is${itemType}JustifiedToStart`),
     ],
     [
       { justify: 'center' },
-      (rootElement) => expect(rootElement).toHaveClass(`is${itemType}JustifiedToCenter`),
+      (rootElement: HTMLElement) => expect(rootElement).toHaveClass(`is${itemType}JustifiedToCenter`),
     ],
     [
       { justify: 'end' },
-      (rootElement) => expect(rootElement).toHaveClass(`is${itemType}JustifiedToEnd`),
+      (rootElement: HTMLElement) => expect(rootElement).toHaveClass(`is${itemType}JustifiedToEnd`),
     ],
     [
       { justify: 'space-between' },
-      (rootElement) => expect(rootElement).toHaveClass(`is${itemType}JustifiedToSpaceBetween`),
+      (rootElement: HTMLElement) => expect(rootElement).toHaveClass(`is${itemType}JustifiedToSpaceBetween`),
     ],
   ];
   if (itemType === 'Root') {
     tests.push([
       { justify: 'stretch' },
-      (rootElement) => expect(rootElement).toHaveClass(`is${itemType}JustifiedToStretch`),
+      (rootElement: HTMLElement) => expect(rootElement).toHaveClass(`is${itemType}JustifiedToStretch`),
     ]);
   }
 

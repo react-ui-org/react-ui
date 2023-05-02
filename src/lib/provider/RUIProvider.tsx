@@ -1,33 +1,23 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useMemo } from 'react';
 import defaultTranslations from '../translations/en';
 import RUIContext from './RUIContext';
+import RUIProviderProps from './provider.types';
 
 const RUIProvider = ({
-  children,
-  globalProps,
-  translations,
-}) => (
-  <RUIContext.Provider
-    value={{
-      globalProps,
-      translations,
-    }}
-  >
-    {children}
-  </RUIContext.Provider>
-);
+  children = null,
+  globalProps = {},
+  translations = defaultTranslations,
+}: RUIProviderProps) => {
+  const providerValue = useMemo(() => ({
+    globalProps,
+    translations,
+  }), [globalProps, translations]);
 
-RUIProvider.defaultProps = {
-  children: null,
-  globalProps: null,
-  translations: defaultTranslations,
-};
-
-RUIProvider.propTypes = {
-  children: PropTypes.node,
-  globalProps: PropTypes.shape({}),
-  translations: PropTypes.shape({}),
+  return (
+    <RUIContext.Provider value={providerValue}>
+      {children}
+    </RUIContext.Provider>
+  );
 };
 
 export default RUIProvider;

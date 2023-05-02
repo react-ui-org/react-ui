@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
@@ -7,27 +6,29 @@ import { getRootValidationStateClassName } from '../_helpers/getRootValidationSt
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
-import { Option } from './_components/Option';
 import styles from './SelectField.scss';
+import {
+  SelectFieldProps, OptionOfOption, OptionType,
+} from './SelectField.types';
+import { Option } from './_components/Option';
 
-export const SelectField = React.forwardRef((props, ref) => {
-  const {
-    disabled,
-    fullWidth,
-    helpText,
-    id,
-    isLabelVisible,
-    label,
-    layout,
-    options,
-    required,
-    size,
-    validationState,
-    validationText,
-    variant,
-    ...restProps
-  } = props;
-
+export const SelectField: React.FunctionComponent<SelectFieldProps> = React.forwardRef<HTMLSelectElement,
+SelectFieldProps>(({
+  disabled = false,
+  fullWidth = false,
+  helpText,
+  id,
+  isLabelVisible = true,
+  label,
+  layout = 'vertical',
+  options,
+  required = false,
+  size = 'medium',
+  validationState,
+  validationText,
+  variant = 'outline',
+  ...restProps
+}: SelectFieldProps, ref) => {
   const context = useContext(FormLayoutContext);
 
   return (
@@ -68,32 +69,38 @@ export const SelectField = React.forwardRef((props, ref) => {
             required={required}
           >
             {
-              options.map((option) => {
+              options.map((option: OptionType | OptionOfOption) => {
                 if ('options' in option) {
                   return (
                     <optgroup
                       key={option.key ?? option.label}
                       label={option.label}
                     >
-                      {option.options.map((optgroupOption) => (
-                        <Option
-                          key={optgroupOption.key ?? optgroupOption.value}
-                          {...optgroupOption}
-                          {...(id && { id: `${id}__item__${optgroupOption.key ?? optgroupOption.value}` })}
-                        />
-                      ))}
+                      {option.options?.map(
+                        (optgroupOption: OptionOfOption) => (
+                          <Option
+                            key={optgroupOption.key ?? optgroupOption.value} // TODO: find wheter it can be replaced by optgroupOption.key ?? optgroupOption.value ///// ${index}option
+                            {...optgroupOption}
+                            {...(id && { id: `${id}__item__${optgroupOption.key ?? optgroupOption.value}` })}
+                          />
+                        ),
+                      )}
                     </optgroup>
                   );
                 }
-                return (
-                  <Option
-                    key={option.key ?? option.value}
-                    {...option}
-                    {...(id && { id: `${id}__item__${option.key ?? option.value}` })}
-                  />
-                );
+                if ('value' in option) {
+                  return (
+                    <Option
+                      key={option.key ?? option.value}
+                      {...option}
+                      {...(id && { id: `${id}__item__${option.key ?? option.value}` })}
+                    />
+                  );
+                }
+
+                return null;
               })
-            }
+      }
           </select>
           <div className={styles.caret}>
             <span className={styles.caretIcon} />
@@ -122,123 +129,6 @@ export const SelectField = React.forwardRef((props, ref) => {
     </label>
   );
 });
-
-SelectField.defaultProps = {
-  disabled: false,
-  fullWidth: false,
-  helpText: null,
-  id: undefined,
-  isLabelVisible: true,
-  layout: 'vertical',
-  required: false,
-  size: 'medium',
-  validationState: null,
-  validationText: null,
-  variant: 'outline',
-};
-
-SelectField.propTypes = {
-  /**
-   * If `true`, the input will be disabled.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * If `true`, the field will span the full width of its parent.
-   */
-  fullWidth: PropTypes.bool,
-  /**
-   * Optional help text.
-   */
-  helpText: PropTypes.node,
-  /**
-   * ID of the input HTML element.
-   *
-   * Also serves as a prefix for important inner elements:
-   * * `<ID>__label`
-   * * `<ID>__labelText`,
-   * * `<ID>__helpText`
-   * * `<ID>__validationText`
-   *
-   * and of individual options:
-   * * `<ID>__item__<VALUE>`
-   *
-   * If `key` in the option definition object is set,
-   * then `option.key` is used instead of `option.value` in place of `<VALUE>`.
-   */
-  id: PropTypes.string,
-  /**
-   * If `false`, the label will be visually hidden (but remains accessible by assistive
-   * technologies).
-   */
-  isLabelVisible: PropTypes.bool,
-  /**
-   * Select field label.
-   */
-  label: PropTypes.string.isRequired,
-  /**
-   * Layout of the field.
-   *
-   * Ignored if the component is rendered within `FormLayout` component
-   * as the value is inherited in such case.
-   */
-  layout: PropTypes.oneOf(['horizontal', 'vertical']),
-  /**
-   * Set of options to be chosen from.
-   *
-   * Either set of individual or grouped options is acceptable.
-   *
-   * For generating unique IDs the `option.value` is normally used. For cases when this is not practical or
-   * the `option.value` values are not unique the `option.key` attribute can be set manually.
-   * The same applies for the `label` value of grouped options which is supposed to be unique.
-   * To ensure uniqueness `key` attribute can be set manually.
-   */
-  options: PropTypes.oneOfType([
-    PropTypes.arrayOf(
-      PropTypes.shape({
-        key: PropTypes.string,
-        label: PropTypes.string.isRequired,
-        options: PropTypes.arrayOf(PropTypes.shape({
-          disabled: PropTypes.bool,
-          key: PropTypes.string,
-          label: PropTypes.string.isRequired,
-          value: PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.number,
-          ]),
-        })),
-      }),
-    ),
-    PropTypes.arrayOf(PropTypes.shape({
-      disabled: PropTypes.bool,
-      key: PropTypes.string,
-      label: PropTypes.string.isRequired,
-      value: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-      ]),
-    })),
-  ]).isRequired,
-  /**
-   * If `true`, the input will be required.
-   */
-  required: PropTypes.bool,
-  /**
-   * Size of the field.
-   */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
-  /**
-   * Alter the field to provide feedback based on validation result.
-   */
-  validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
-  /**
-   * Validation message to be displayed.
-   */
-  validationText: PropTypes.node,
-  /**
-   * Design variant of the field, further customizable with CSS custom properties.
-   */
-  variant: PropTypes.oneOf(['filled', 'outline']),
-};
 
 export const SelectFieldWithGlobalProps = withGlobalProps(SelectField, 'SelectField');
 

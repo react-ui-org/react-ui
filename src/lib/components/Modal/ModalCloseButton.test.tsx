@@ -5,16 +5,16 @@ import {
   screen,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { ModalCloseButton } from '../ModalCloseButton';
-import { refPropTest } from '../../../../../tests/propTests/refPropTest';
+import { refPropTest } from '../../../../tests/propTests/refPropTest';
+import { ModalCloseButton } from './ModalCloseButton';
 
 describe('rendering', () => {
-  it.each([
+  it.each<TestingProps>([
     [
       { disabled: true },
       (rootElement) => expect(rootElement).toBeDisabled(),
     ],
-    ...refPropTest(React.createRef()),
+    ...(refPropTest(React.createRef()) as unknown as TestingProps[]),
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <ModalCloseButton
@@ -22,7 +22,7 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });
 

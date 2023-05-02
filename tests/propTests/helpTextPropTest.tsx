@@ -4,6 +4,6 @@ import React from 'react';
 export const helpTextPropTest = [
   [
     { helpText: <div>help text</div> },
-    (rootElement) => expect(within(rootElement).getByText('help text')).toBeInTheDocument(),
+    (rootElement: HTMLElement) => expect(within(rootElement).getByText('help text')).toBeInTheDocument(),
   ],
 ];

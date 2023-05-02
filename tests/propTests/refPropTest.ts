@@ -1,4 +1,4 @@
-export const refPropTest = (ref) => [
+export const refPropTest = (ref: React.RefObject<HTMLElement>) => [
   [
     {
       id: 'id',

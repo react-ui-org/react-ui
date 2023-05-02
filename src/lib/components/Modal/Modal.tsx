@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, {
   useEffect,
   useRef,
@@ -8,16 +7,20 @@ import { withGlobalProps } from '../../provider';
 import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import styles from './Modal.scss';
+import ModalProps, {
+  ChildrenWrapperRef, PreRenderProps,
+} from './Modal.types';
 
-const preRender = (
+const preRender = ({
   children,
   childrenWrapperRef,
   closeButtonRef,
   position,
-  restProps,
   size,
-) => {
-  const sizeClass = (modalSize) => {
+  ...restProps
+}
+: PreRenderProps) => {
+  const sizeClass = (modalSize: PreRenderProps['size']) => {
     if (modalSize === 'small') {
       return styles.isRootSizeSmall;
     }
@@ -37,7 +40,7 @@ const preRender = (
     return styles.isRootSizeAuto;
   };
 
-  const positionClass = (modalPosition) => {
+  const positionClass = (modalPosition: PreRenderProps['position']) => {
     if (modalPosition === 'top') {
       return styles.isRootPositionTop;
     }
@@ -65,8 +68,8 @@ const preRender = (
         onClick={(e) => {
           e.stopPropagation();
         }}
-        role="presentation"
         ref={childrenWrapperRef}
+        role="presentation"
       >
         {children}
       </div>
@@ -74,24 +77,24 @@ const preRender = (
   );
 };
 
-export const Modal = ({
-  autoFocus,
+export const Modal: React.FunctionComponent<ModalProps> = ({
+  autoFocus = true,
   children,
   closeButtonRef,
   portalId,
-  position,
+  position = 'center',
   primaryButtonRef,
-  size,
+  size = 'medium',
   ...restProps
 }) => {
-  const childrenWrapperRef = useRef();
+  const childrenWrapperRef: ChildrenWrapperRef = useRef(null);
 
-  const keyPressHandler = (e) => {
+  const keyPressHandler = (e: KeyboardEvent) => {
     if (e.key === 'Escape' && closeButtonRef?.current != null) {
       closeButtonRef.current.click();
     }
 
-    if (e.key === 'Enter' && e.target.nodeName !== 'BUTTON' && primaryButtonRef?.current != null) {
+    if (e.key === 'Enter' && (e.target as HTMLElement).nodeName !== 'BUTTON' && primaryButtonRef?.current != null) {
       primaryButtonRef.current.click();
     }
   };
@@ -106,12 +109,12 @@ export const Modal = ({
     // (input, textarea or select) or primary button and auto focuses it. This is necessary
     // to have focus on one of those elements to be able to submit form by pressing Enter key.
     if (autoFocus) {
-      if (childrenWrapperRef?.current != null) {
+      if (childrenWrapperRef.current != null) {
         const childrenWrapperElement = childrenWrapperRef.current;
-        const childrenElements = childrenWrapperElement.querySelectorAll('*');
+        const childrenElements = childrenWrapperElement.querySelectorAll<HTMLElement>('*');
         const formFieldEl = Array.from(childrenElements).find(
-          (element) => ['INPUT', 'TEXTAREA', 'SELECT'].includes(element.nodeName) && !element.disabled,
-        );
+          (element) => ['INPUT', 'TEXTAREA', 'SELECT'].includes(element.nodeName) && !(element as HTMLButtonElement).disabled,
+        ) as HTMLElement;
 
         if (formFieldEl) {
           formFieldEl.focus();
@@ -127,83 +130,29 @@ export const Modal = ({
     return removeKeyPressHandler;
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (portalId === null) {
-    return preRender(
+  if (portalId === undefined) {
+    return preRender({
       children,
       childrenWrapperRef,
       closeButtonRef,
       position,
-      restProps,
       size,
-    );
+      ...restProps,
+    });
   }
 
   return createPortal(
-    preRender(
+    preRender({
       children,
       childrenWrapperRef,
       closeButtonRef,
       position,
-      restProps,
       size,
-    ),
-    document.getElementById(portalId),
+      ...restProps,
+    }),
+    // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
+    document.getElementById(portalId)!,
   );
-};
-
-Modal.defaultProps = {
-  autoFocus: true,
-  children: null,
-  closeButtonRef: null,
-  portalId: null,
-  position: 'center',
-  primaryButtonRef: null,
-  size: 'medium',
-};
-
-Modal.propTypes = {
-  /**
-   * If `true`, focus the first input element in the modal or primary button (referenced by the `primaryButtonRef` prop)
-   * when the modal is opened.
-   */
-  autoFocus: PropTypes.bool,
-  /**
-   * Nested elements. Supported types are:
-   *
-   * * `ModalHeader`
-   * * `ModalBody`
-   * * `ModalFooter`
-   *
-   * At least `ModalBody` is required.
-   */
-  children: PropTypes.node,
-  /**
-   * Reference to close button element. It is used to close modal when Escape key is pressed or the backdrop is clicked.
-   */
-  closeButtonRef: PropTypes.shape({
-    // eslint-disable-next-line react/forbid-prop-types
-    current: PropTypes.any,
-  }),
-  /**
-   * If set, modal is rendered in the React Portal with that ID.
-   */
-  portalId: PropTypes.string,
-  /**
-   * Vertical position of the modal inside browser window.
-   */
-  position: PropTypes.oneOf(['top', 'center']),
-  /**
-   * Reference to primary button element. It is used to submit modal when Enter key is pressed and as fallback
-   * when `autoFocus` functionality does not find any input element to be focused.
-   */
-  primaryButtonRef: PropTypes.shape({
-    // eslint-disable-next-line react/forbid-prop-types
-    current: PropTypes.any,
-  }),
-  /**
-   * Size of the modal.
-   */
-  size: PropTypes.oneOf(['small', 'medium', 'large', 'fullscreen', 'auto']),
 };
 
 export const ModalWithGlobalProps = withGlobalProps(Modal, 'Modal');

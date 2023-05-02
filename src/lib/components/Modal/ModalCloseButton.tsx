@@ -1,44 +1,34 @@
-import PropTypes from 'prop-types';
-import React, { useContext } from 'react';
+import React, {
+  useContext,
+} from 'react';
 import {
   RUIContext,
   withGlobalProps,
 } from '../../provider';
 import { transferProps } from '../_helpers/transferProps';
 import styles from './ModalCloseButton.scss';
+import { ModalCloseButtonProps } from './Modal.types';
 
-export const ModalCloseButton = React.forwardRef((props, ref) => {
-  const {
-    disabled,
-    ...restProps
-  } = props;
-
+export const ModalCloseButton:
+React.FunctionComponent<ModalCloseButtonProps> = React.forwardRef<HTMLButtonElement, ModalCloseButtonProps>(({
+  disabled = false,
+  ...restProps
+}, ref) => {
   const { translations } = useContext(RUIContext);
 
   return (
     <button
       {...transferProps(restProps)}
-      type="button"
       className={styles.root}
       disabled={disabled}
       ref={ref}
-      title={translations.ModalCloseButton.close}
+      title={translations?.ModalCloseButton.close}
+      type="button"
     >
       ×
     </button>
   );
 });
-
-ModalCloseButton.defaultProps = {
-  disabled: false,
-};
-
-ModalCloseButton.propTypes = {
-  /**
-   * If `true`, close button will be disabled.
-   */
-  disabled: PropTypes.bool,
-};
 
 export const ModalCloseButtonWithGlobalProps = withGlobalProps(ModalCloseButton, 'ModalCloseButton');
 

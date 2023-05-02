@@ -1,4 +1,12 @@
-export const getJustifyClassName = (value, styles) => {
+interface ExtendedStyles extends React.CSSProperties {
+  isRootJustifiedToCenter: string;
+  isRootJustifiedToEnd: string;
+  isRootJustifiedToSpaceBetween: string;
+  isRootJustifiedToStart: string;
+  isRootJustifiedToStretch: string;
+}
+
+export const getJustifyClassName = (value: Justify, styles: ExtendedStyles) => {
   if (value === 'start') {
     return styles.isRootJustifiedToStart;
   }

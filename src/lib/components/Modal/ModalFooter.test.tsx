@@ -3,15 +3,15 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { ModalFooter } from '../ModalFooter';
-import { justifyPropTest } from '../../../../../tests/propTests/justifyPropTest';
+import { justifyPropTest } from '../../../../tests/propTests/justifyPropTest';
+import { ModalFooter } from './ModalFooter';
 
 const mandatoryProps = {
   children: <div>content text</div>,
 };
 
 describe('rendering', () => {
-  it.each([
+  it.each<TestingProps>([
     [
       {
         children: (
@@ -26,7 +26,7 @@ describe('rendering', () => {
         expect(within(rootElement).getByText('content text 2'));
       },
     ],
-    ...justifyPropTest('Root'),
+    ...(justifyPropTest('Root') as unknown as TestingProps[]),
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <ModalFooter
@@ -35,6 +35,6 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });

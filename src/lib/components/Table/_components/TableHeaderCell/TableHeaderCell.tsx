@@ -1,13 +1,13 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import { Button } from '../../../..';
+import { Button } from '../../../Button/Button';
 import styles from '../TableCell.scss';
+import { TableHeaderCellProps } from '../../Table.types';
 
 export const TableHeaderCell = ({
   column,
   id,
   sort,
-}) => {
+}: TableHeaderCellProps) => {
   const sortDirection = sort && column.name === sort.column ? sort.direction : 'asc';
   const isSortingActive = sort && column.name === sort.column;
 
@@ -38,37 +38,6 @@ export const TableHeaderCell = ({
       </span>
     </th>
   );
-};
-
-TableHeaderCell.defaultProps = {
-  id: undefined,
-  sort: null,
-};
-
-TableHeaderCell.propTypes = {
-  /**
-   * Table data column, optionally sortable. The `format` function can be used to process the
-   * column data before displaying them.
-   */
-  column: PropTypes.shape({
-    isSortable: PropTypes.bool,
-    label: PropTypes.string,
-    name: PropTypes.string.isRequired,
-  }).isRequired,
-  /**
-   * ID of the HTML <th> element and nested button for sorting.
-   */
-  id: PropTypes.string,
-  /**
-   * Sorting configuration required to make columns sortable.
-   */
-  sort: PropTypes.shape({
-    ascendingIcon: PropTypes.node.isRequired,
-    column: PropTypes.string.isRequired,
-    descendingIcon: PropTypes.node.isRequired,
-    direction: PropTypes.oneOf(['asc', 'desc']).isRequired,
-    onClick: PropTypes.func.isRequired,
-  }),
 };
 
 export default TableHeaderCell;

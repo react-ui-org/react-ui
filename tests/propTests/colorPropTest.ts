@@ -1,34 +1,34 @@
 export const colorPropTest = [
   [
     { color: 'dark' },
-    (rootElement) => expect(rootElement).toHaveClass('isRootColorDark'),
+    (rootElement: HTMLElement) => expect(rootElement).toHaveClass('isRootColorDark'),
   ],
   [
     { color: 'danger' },
-    (rootElement) => expect(rootElement).toHaveClass('isRootColorDanger'),
+    (rootElement: HTMLElement) => expect(rootElement).toHaveClass('isRootColorDanger'),
   ],
   [
     { color: 'help' },
-    (rootElement) => expect(rootElement).toHaveClass('isRootColorHelp'),
+    (rootElement: HTMLElement) => expect(rootElement).toHaveClass('isRootColorHelp'),
   ],
   [
     { color: 'info' },
-    (rootElement) => expect(rootElement).toHaveClass('isRootColorInfo'),
+    (rootElement: HTMLElement) => expect(rootElement).toHaveClass('isRootColorInfo'),
   ],
   [
     { color: 'light' },
-    (rootElement) => expect(rootElement).toHaveClass('isRootColorLight'),
+    (rootElement: HTMLElement) => expect(rootElement).toHaveClass('isRootColorLight'),
   ],
   [
     { color: 'note' },
-    (rootElement) => expect(rootElement).toHaveClass('isRootColorNote'),
+    (rootElement: HTMLElement) => expect(rootElement).toHaveClass('isRootColorNote'),
   ],
   [
     { color: 'success' },
-    (rootElement) => expect(rootElement).toHaveClass('isRootColorSuccess'),
+    (rootElement: HTMLElement) => expect(rootElement).toHaveClass('isRootColorSuccess'),
   ],
   [
     { color: 'warning' },
-    (rootElement) => expect(rootElement).toHaveClass('isRootColorWarning'),
+    (rootElement: HTMLElement) => expect(rootElement).toHaveClass('isRootColorWarning'),
   ],
 ];

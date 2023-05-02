@@ -3,16 +3,16 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
-import { ToolbarItem } from '../ToolbarItem';
+import { childrenEmptyPropTest } from '../../../../tests/propTests/childrenEmptyPropTest';
+import { ToolbarItem } from './ToolbarItem';
 
 const defaultProps = {
   children: 'content',
 };
 
 describe('rendering', () => {
-  it.each([
-    ...childrenEmptyPropTest,
+  it.each<TestingProps>([
+    ...(childrenEmptyPropTest as unknown as TestingProps[]),
     [
       { children: <div>content text</div> },
       (rootElement) => expect(within(rootElement).getByText('content text')),
@@ -32,6 +32,6 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });

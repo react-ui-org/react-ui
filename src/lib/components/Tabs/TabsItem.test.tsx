@@ -6,8 +6,8 @@ import {
   within,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { labelPropTest } from '../../../../../tests/propTests/labelPropTest';
-import { TabsItem } from '../TabsItem';
+import { labelPropTest } from '../../../../tests/propTests/labelPropTest';
+import { TabsItem } from './TabsItem';
 
 const mandatoryProps = {
   href: 'href',
@@ -15,7 +15,7 @@ const mandatoryProps = {
 };
 
 describe('rendering', () => {
-  it.each([
+  it.each<TestingProps>([
     [
       { afterLabel: <div>after label</div> },
       (rootElement) => expect(within(rootElement).getByText('after label')),
@@ -44,7 +44,7 @@ describe('rendering', () => {
       { isActive: false },
       (rootElement) => expect(rootElement).not.toHaveClass('isRootActive'),
     ],
-    ...labelPropTest,
+    ...(labelPropTest as unknown as TestingProps[]),
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <TabsItem
@@ -53,7 +53,7 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });
 

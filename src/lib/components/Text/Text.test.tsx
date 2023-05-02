@@ -3,14 +3,14 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { Text } from '../Text';
+import { Text } from './Text';
 
 const defaultProps = {
   children: 'sample text',
 };
 
 describe('rendering', () => {
-  it.each([
+  it.each<TestingProps>([
     [
       { blockLevel: true },
       (rootElement) => expect(rootElement).toContainHTML('<div>sample text</div>'),
@@ -77,6 +77,6 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });

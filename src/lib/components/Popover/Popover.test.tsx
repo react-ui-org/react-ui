@@ -4,8 +4,8 @@ import {
   screen,
   within,
 } from '@testing-library/react';
-import { refPropTest } from '../../../../../tests/propTests/refPropTest';
-import { Popover } from '../Popover';
+import { refPropTest } from '../../../../tests/propTests/refPropTest';
+import { Popover } from './Popover';
 
 const mandatoryProps = {
   children: <div>content text</div>,
@@ -28,8 +28,8 @@ describe('rendering', () => {
     document.body.innerHTML = '';
   });
 
-  it.each([
-    ...refPropTest(React.createRef()),
+  it.each<TestingProps>([
+    ...(refPropTest(React.createRef()) as unknown as TestingProps[]),
     [
       { children: <div>content text</div> },
       (rootElement) => expect(within(rootElement).getByText('content text')),
@@ -94,6 +94,6 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });

@@ -1,6 +1,9 @@
-import { transferProps } from '../transferProps';
+import React from 'react';
+import { transferProps } from './transferProps';
 
 describe('transferProps', () => {
+  const ref = React.createRef();
+
   it('returns all props when always blacklisted props are not present', () => {
     const props = {
       propA: 'value',
@@ -16,7 +19,7 @@ describe('transferProps', () => {
     const props = {
       children: 'value',
       className: 'value',
-      ref: 'value',
+      ref,
       staticContext: 'value',
     };
     const expectedProps = {};

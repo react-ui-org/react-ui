@@ -1,4 +1,11 @@
-export default (placement, styles) => {
+interface ExtendedStyles extends React.CSSProperties {
+  isRootAtBottom: string;
+  isRootAtLeft: string;
+  isRootAtRight: string;
+  isRootAtTop: string;
+}
+
+export default (placement: Placement, styles: ExtendedStyles) => {
   const side = placement.split('-')[0];
 
   if (side === 'top') {

@@ -1,51 +1,34 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { classNames } from '../../../lib/utils/classNames';
 import styles from './Placeholder.scss';
+import {
+  PlaceholderProps, CustomCSSProperties,
+} from './Placeholder.types';
 
 export const Placeholder = ({
-  bordered,
+  bordered = false,
   children,
-  dark,
+  dark = false,
   height,
-  inline,
+  inline = false,
   width,
-}) => (
-  <div
-    className={classNames(
-      styles.root,
-      bordered && styles.rootBordered,
-      dark && styles.rootDark,
-      inline && styles.rootInline,
-    )}
-    style={{
-      '--rui-local-height': height,
-      '--rui-local-width': width,
-    }}
-  >
-    {children}
-  </div>
-);
-
-Placeholder.defaultProps = {
-  bordered: false,
-  children: null,
-  dark: false,
-  height: null,
-  inline: false,
-  width: null,
+}: PlaceholderProps) => {
+  const style: CustomCSSProperties = {
+    '--rui-local-height': height,
+    '--rui-local-width': width,
+  };
+  return (
+    <div
+      className={classNames(
+        styles.root,
+        bordered && styles.rootBordered,
+        dark && styles.rootDark,
+        inline && styles.rootInline,
+      )}
+      style={style}
+    >
+      {children}
+    </div>
+  );
 };
-
-Placeholder.propTypes = {
-  bordered: PropTypes.bool,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
-  dark: PropTypes.bool,
-  height: PropTypes.string,
-  inline: PropTypes.bool,
-  width: PropTypes.string,
-};
-
 export default Placeholder;

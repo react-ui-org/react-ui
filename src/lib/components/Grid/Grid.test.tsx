@@ -3,9 +3,9 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
-import { tagPropTest } from '../../../../../tests/propTests/tagPropTest';
-import { Grid } from '../Grid';
+import { childrenEmptyPropTest } from '../../../../tests/propTests/childrenEmptyPropTest';
+import { tagPropTest } from '../../../../tests/propTests/tagPropTest';
+import { Grid } from './Grid';
 
 /* eslint-disable sort-keys */
 const responsiveBreakpoints = {
@@ -29,7 +29,7 @@ const responsiveSpacingBreakpoints = {
 };
 /* eslint-enable sort-keys */
 
-const responsiveStyles = (infix) => ({
+const responsiveStyles = (infix: string) => ({
   [`--rui-local-${infix}-xs`]: 'placeholder-xs',
   [`--rui-local-${infix}-sm`]: 'placeholder-sm',
   [`--rui-local-${infix}-md`]: 'placeholder-md',
@@ -39,7 +39,7 @@ const responsiveStyles = (infix) => ({
   [`--rui-local-${infix}-x3l`]: 'placeholder-x3l',
 });
 
-const responsiveSpacingStyles = (infix) => ({
+const responsiveSpacingStyles = (infix: string) => ({
   [`--rui-local-${infix}-xs`]: 'var(--rui-dimension-space-1)',
   [`--rui-local-${infix}-sm`]: 'var(--rui-dimension-space-2)',
   [`--rui-local-${infix}-md`]: 'var(--rui-dimension-space-3)',
@@ -54,7 +54,7 @@ const defaultProps = {
 };
 
 describe('rendering', () => {
-  it.each([
+  it.each<TestingProps>([
     [
       { alignContent: responsiveBreakpoints },
       (rootElement) => expect(rootElement).toHaveStyle(responsiveStyles('align-content')),
@@ -79,7 +79,7 @@ describe('rendering', () => {
       { autoFlow: 'row dense' },
       (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-auto-flow-xs': 'row dense' }),
     ],
-    ...childrenEmptyPropTest,
+    ...(childrenEmptyPropTest as unknown as TestingProps[]),
     [
       { children: <div>content text</div> },
       (rootElement) => expect(within(rootElement).getByText('content text')),
@@ -132,7 +132,7 @@ describe('rendering', () => {
       { rows: 'placeholder' },
       (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-rows-xs': 'placeholder' }),
     ],
-    ...tagPropTest,
+    ...(tagPropTest as unknown as TestingProps[]),
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <Grid
@@ -141,6 +141,6 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });

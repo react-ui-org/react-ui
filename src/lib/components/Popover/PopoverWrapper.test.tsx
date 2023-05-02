@@ -3,20 +3,20 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { tagPropTest } from '../../../../../tests/propTests/tagPropTest';
-import { PopoverWrapper } from '../PopoverWrapper';
+import { tagPropTest } from '../../../../tests/propTests/tagPropTest';
+import { PopoverWrapper } from './PopoverWrapper';
 
 const mandatoryProps = {
   children: <div>content text</div>,
 };
 
 describe('rendering', () => {
-  it.each([
+  it.each<TestingProps>([
     [
       { children: <div>content text</div> },
       (rootElement) => expect(within(rootElement).getByText('content text')),
     ],
-    ...tagPropTest,
+    ...(tagPropTest as unknown as TestingProps[]),
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <PopoverWrapper
@@ -25,6 +25,6 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });

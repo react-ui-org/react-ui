@@ -1,4 +1,15 @@
-export default (labelVisibility, styles) => {
+
+interface ExtendedStyles extends React.CSSProperties {
+  hasLabelHidden: string;
+  hasLabelVisibleLg: string;
+  hasLabelVisibleMd: string;
+  hasLabelVisibleSm: string;
+  hasLabelVisibleX2l: string;
+  hasLabelVisibleX3l: string;
+  hasLabelVisibleXl: string;
+}
+
+const getLabelVisibilityClass = (labelVisibility: Breakpoint, styles: ExtendedStyles): string | null => {
   // Intentionally omitting `xs` which means label is visible on all screen sizes.
 
   if (labelVisibility === 'sm') {
@@ -31,3 +42,5 @@ export default (labelVisibility, styles) => {
 
   return null;
 };
+
+export default getLabelVisibilityClass;

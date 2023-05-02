@@ -1,14 +1,14 @@
 export const validationStatePropTest = [
   [
     { validationState: 'invalid' },
-    (rootElement) => expect(rootElement).toHaveClass('isRootStateInvalid'),
+    (rootElement: HTMLElement) => expect(rootElement).toHaveClass('isRootStateInvalid'),
   ],
   [
     { validationState: 'valid' },
-    (rootElement) => expect(rootElement).toHaveClass('isRootStateValid'),
+    (rootElement: HTMLElement) => expect(rootElement).toHaveClass('isRootStateValid'),
   ],
   [
     { validationState: 'warning' },
-    (rootElement) => expect(rootElement).toHaveClass('isRootStateWarning'),
+    (rootElement: HTMLElement) => expect(rootElement).toHaveClass('isRootStateWarning'),
   ],
 ];

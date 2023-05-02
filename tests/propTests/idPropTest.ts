@@ -1,6 +1,6 @@
 export const idPropTest = [
   [
     { id: 'id' },
-    (rootElement) => expect(rootElement).toHaveAttribute('id', 'id'),
+    (rootElement: HTMLElement) => expect(rootElement).toHaveAttribute('id', 'id'),
   ],
 ];

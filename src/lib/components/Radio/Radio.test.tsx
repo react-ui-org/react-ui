@@ -6,15 +6,15 @@ import {
   within,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { helpTextPropTest } from '../../../../../tests/propTests/helpTextPropTest';
-import { formLayoutProviderTest } from '../../../../../tests/providerTests/formLayoutProviderTest';
-import { isLabelVisible } from '../../../../../tests/propTests/isLabelVisible';
-import { labelPropTest } from '../../../../../tests/propTests/labelPropTest';
-import { layoutPropTest } from '../../../../../tests/propTests/layoutPropTest';
-import { requiredPropTest } from '../../../../../tests/propTests/requiredPropTest';
-import { validationStatePropTest } from '../../../../../tests/propTests/validationStatePropTest';
-import { validationTextPropTest } from '../../../../../tests/propTests/validationTextPropTest';
-import { Radio } from '../Radio';
+import { helpTextPropTest } from '../../../../tests/propTests/helpTextPropTest';
+import { formLayoutProviderTest } from '../../../../tests/providerTests/formLayoutProviderTest';
+import { isLabelVisible } from '../../../../tests/propTests/isLabelVisible';
+import { labelPropTest } from '../../../../tests/propTests/labelPropTest';
+import { layoutPropTest } from '../../../../tests/propTests/layoutPropTest';
+import { requiredPropTest } from '../../../../tests/propTests/requiredPropTest';
+import { validationStatePropTest } from '../../../../tests/propTests/validationStatePropTest';
+import { validationTextPropTest } from '../../../../tests/propTests/validationTextPropTest';
+import { Radio } from './Radio';
 
 const mandatoryProps = {
   label: 'label',
@@ -35,7 +35,7 @@ const mandatoryProps = {
 describe('rendering', () => {
   formLayoutProviderTest(<Radio {...mandatoryProps} />);
 
-  it.each([
+  it.each<TestingProps>([
     [
       { disabled: true },
       (rootElement) => {
@@ -50,7 +50,7 @@ describe('rendering', () => {
         expect(within(rootElement).getByLabelText('option 1')).not.toBeDisabled();
       },
     ],
-    ...helpTextPropTest,
+    ...(helpTextPropTest as unknown as TestingProps[]),
     [
       {
         helpText: 'help text',
@@ -70,9 +70,9 @@ describe('rendering', () => {
         expect(within(rootElement).getByText('option 2')).toHaveAttribute('id', 'id__item__custom_key__labelText');
       },
     ],
-    ...isLabelVisible,
-    ...labelPropTest,
-    ...layoutPropTest,
+    ...(isLabelVisible as unknown as TestingProps[]),
+    ...(labelPropTest as unknown as TestingProps[]),
+    ...(layoutPropTest as unknown as TestingProps[]),
     [
       { options: mandatoryProps.options },
       (rootElement) => {
@@ -81,19 +81,19 @@ describe('rendering', () => {
         expect(within(rootElement).getByLabelText('option 2')).toBeDisabled();
       },
     ],
-    ...requiredPropTest,
-    ...validationStatePropTest,
-    ...validationTextPropTest,
+    ...(requiredPropTest as unknown as TestingProps[]),
+    ...(validationStatePropTest as unknown as TestingProps[]),
+    ...(validationTextPropTest as unknown as TestingProps[]),
     [
       {
-        onChange: () => {},
+        onChange: () => { },
         value: 'option2',
       },
       (rootElement) => expect(within(rootElement).getByLabelText('option 2')).toHaveAttribute('checked'),
     ],
     [
       {
-        onChange: () => {},
+        onChange: () => { },
         value: 1,
       },
       (rootElement) => expect(within(rootElement).getByLabelText('option 1')).toHaveAttribute('checked'),
@@ -106,7 +106,7 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });
 

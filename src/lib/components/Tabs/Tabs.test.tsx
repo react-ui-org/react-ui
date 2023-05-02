@@ -3,8 +3,8 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { Tabs } from '../Tabs';
-import { TabsItem } from '../TabsItem';
+import { Tabs } from './Tabs';
+import { TabsItem } from './TabsItem';
 
 const tab = (
   <TabsItem
@@ -18,7 +18,7 @@ const defaultProps = {
 };
 
 describe('rendering', () => {
-  it.each([
+  it.each<TestingProps>([
     [
       { children: tab },
       (rootElement) => expect(within(rootElement).getByText('label')),
@@ -42,6 +42,6 @@ describe('rendering', () => {
       />
     ));
 
-    assert(dom.container.firstChild);
+    assert(dom.container.firstChild as HTMLElement);
   });
 });

@@ -1,4 +1,10 @@
-export const getRootSizeClassName = (size, styles) => {
+interface ExtendedStyles extends React.CSSProperties {
+  isRootSizeLarge: string;
+  isRootSizeMedium: string;
+  isRootSizeSmall: string;
+}
+
+export const getRootSizeClassName = (size: Size | undefined, styles: ExtendedStyles) => {
   if (size === 'small') {
     return styles.isRootSizeSmall;
   }

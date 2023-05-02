@@ -1,3 +1,3 @@
 import React from 'react';
 
-export const FormLayoutContext = React.createContext(null);
+export const FormLayoutContext = React.createContext<undefined | { layout?: Layout }>(undefined);

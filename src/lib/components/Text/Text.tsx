@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { withGlobalProps } from '../../provider';
 import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
@@ -8,13 +7,14 @@ import { getRootClampClassName } from './_helpers/getRootClampClassName';
 import { getRootHyphensClassName } from './_helpers/getRootHyphensClassName';
 import { getRootWordWrappingClassName } from './_helpers/getRootWordWrappingClassName';
 import styles from './Text.scss';
+import { TextProps } from './Text.types';
 
-export const Text = ({
-  blockLevel,
-  children,
-  hyphens,
+export const Text: React.FunctionComponent<TextProps> = ({
+  blockLevel = false,
+  children = null,
+  hyphens = 'none',
   lines,
-  wordWrapping,
+  wordWrapping = 'normal',
   ...restProps
 }) => {
   if (isChildrenEmpty(children)) {
@@ -26,49 +26,19 @@ export const Text = ({
   return (
     <HtmlElement
       {...transferProps(restProps)}
-      className={(hyphens !== 'none' || lines > 0 || wordWrapping !== 'normal')
+      className={(hyphens !== 'none' || (lines && lines > 0) || wordWrapping !== 'normal')
         ? classNames(
-          getRootClampClassName(lines, styles),
+          // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
+          getRootClampClassName(lines!, styles),
           getRootHyphensClassName(hyphens, styles),
           getRootWordWrappingClassName(wordWrapping, styles),
         )
         : undefined}
-      style={(lines > 1) ? { '--rui-custom-lines': lines } : undefined}
+      style={(lines && lines > 1) ? { '--rui-custom-lines': lines } as CSSProperties : undefined}
     >
       {children}
     </HtmlElement>
   );
-};
-
-Text.defaultProps = {
-  blockLevel: false,
-  children: null,
-  hyphens: 'none',
-  lines: undefined,
-  wordWrapping: 'normal',
-};
-
-Text.propTypes = {
-  /**
-   * If true, the root HTML element renders as `<div>` instead of `<span>`.
-   */
-  blockLevel: PropTypes.bool,
-  /**
-   * Text content to be sanitized. Can contain HTML.
-   */
-  children: PropTypes.node,
-  /**
-   * Turn on hyphenation. Head to [Hyphens](#hyphens) to learn more.
-   */
-  hyphens: PropTypes.oneOf(['none', 'auto', 'manual']),
-  /**
-   * Optional number of lines. If exceeded, the content is truncated and appended by an ellipsis (`…`).
-   */
-  lines: PropTypes.number,
-  /**
-   * How to deal with long words. Head to [Word Wrapping](#word-wrapping) for detailed explanation.
-   */
-  wordWrapping: PropTypes.oneOf(['normal', 'long-words', 'anywhere']),
 };
 
 export const TextWithGlobalProps = withGlobalProps(Text, 'Text');
