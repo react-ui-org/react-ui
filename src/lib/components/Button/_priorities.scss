@@ -135,8 +135,7 @@
     @include tools.button-color(flat, dark);
 }
 
-.isRootPriorityFilled.isRootInButtonGroup:not(:first-child)::before,
-.isRootPriorityFlat.isRootInButtonGroup:not(:first-child)::before {
+.isRootInButtonGroup:not(:first-child)::before {
     content: "";
     position: absolute;
     top: calc(-1 * #{theme.$border-width});

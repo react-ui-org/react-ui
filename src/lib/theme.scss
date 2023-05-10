@@ -719,13 +719,15 @@
     --rui-ButtonGroup--filled__separator__width: var(--rui-Button__border-width);
     --rui-ButtonGroup--filled__separator__color: currentColor;
 
+    // ButtonGroup: outline buttons
+    --rui-ButtonGroup--outline__gap: calc(-1 * var(--rui-Button__border-width));
+    --rui-ButtonGroup--outline__separator__width: 0;
+    --rui-ButtonGroup--outline__separator__color: transparent;
+
     // ButtonGroup: flat buttons
     --rui-ButtonGroup--flat__gap: var(--rui-Button__border-width);
     --rui-ButtonGroup--flat__separator__width: var(--rui-ButtonGroup--flat__gap);
     --rui-ButtonGroup--flat__separator__color: currentColor;
-
-    // ButtonGroup: outline buttons
-    --rui-ButtonGroup--outline__gap: calc(-1 * var(--rui-Button__border-width));
 
     //
     // Card

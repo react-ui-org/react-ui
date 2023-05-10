@@ -15,14 +15,16 @@
     --rui-local-separator-color: #{theme.$filled-separator-color};
 }
 
+.isRootPriorityOutline {
+    --rui-local-gap: #{theme.$outline-gap};
+    --rui-local-separator-width: #{theme.$outline-separator-width};
+    --rui-local-separator-color: #{theme.$outline-separator-color};
+}
+
 .isRootPriorityFlat {
     --rui-local-gap: #{theme.$flat-gap};
     --rui-local-separator-width: #{theme.$flat-separator-width};
     --rui-local-separator-color: #{theme.$flat-separator-color};
-}
-
-.isRootPriorityOutline {
-    --rui-local-gap: #{theme.$outline-gap};
 }
 
 .isRootBlock {
