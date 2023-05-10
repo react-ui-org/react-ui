@@ -4,6 +4,7 @@
 
 @use "../../styles/tools/form-fields/box-field-elements";
 @use "../../styles/tools/form-fields/box-field-layout";
+@use "../../styles/tools/form-fields/box-field-sizes";
 @use "../../styles/tools/form-fields/foundation";
 @use "../../styles/tools/form-fields/variants";
 @use "../../styles/tools/accessibility";
@@ -64,4 +65,17 @@
 
 .isRootInFormLayout {
     @include box-field-layout.in-form-layout();
+}
+
+// Sizes
+.isRootSizeSmall {
+    @include box-field-sizes.size(small, $has-input: false);
+}
+
+.isRootSizeMedium {
+    @include box-field-sizes.size(medium, $has-input: false);
+}
+
+.isRootSizeLarge {
+    @include box-field-sizes.size(large, $has-input: false);
 }
