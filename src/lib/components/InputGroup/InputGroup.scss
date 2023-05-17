@@ -1,6 +1,8 @@
 // 1. The class name is intentionally singular because it's targeted by other mixins too.
 // 2. Use a block-level display mode to prevent extra white space below grouped inputs in Safari.
 // 3. Prevent individual inputs from overlapping inside narrow containers.
+// 4. Legends are tricky to style, let's use a `div` instead.
+//    https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#styling_with_css
 
 @use "../../styles/tools/form-fields/box-field-elements";
 @use "../../styles/tools/form-fields/box-field-layout";
@@ -8,12 +10,20 @@
 @use "../../styles/tools/form-fields/foundation";
 @use "../../styles/tools/form-fields/variants";
 @use "../../styles/tools/accessibility";
+@use "../../styles/tools/reset";
 @use "theme";
 
 .root {
-    @include box-field-elements.input-container();
+    @include foundation.root();
+    @include foundation.fieldset();
 }
 
+// 4.
+.legend {
+    @include accessibility.hide-text();
+}
+
+// 4.
 .label {
     @include foundation.label();
 }
@@ -27,6 +37,7 @@
 
 // 1.
 .validationText {
+    @include reset.list();
     @include foundation.help-text();
 }
 

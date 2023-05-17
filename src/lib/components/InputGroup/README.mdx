@@ -77,6 +77,11 @@ See [API](#api) for all available options.
   InputGroup is currently **not responsive: the inputs do not shrink nor wrap**.
   Make sure your inputs fit their container, especially on small screens.
 
+- In the background, InputGroup uses the [`fieldset`][fieldset] element. Not
+  only it improves the [accessibility] of the group, it also allows you to make
+  use of its built-in features like disabling all nested inputs or pairing the
+  group with a form outside. Consult [the MDN docs][fieldset] to learn more.
+
 - InputGroup currently **supports grouping of**
   [TextField](/components/text-field), [SelectField](/components/select-field),
   and [Button](/components/button) components.
@@ -164,6 +169,17 @@ supports this kind of layout as well.
 </Playground>
 
 ## States
+
+### Disabled State
+
+Disables all fields and buttons inside the group.
+
+<Playground>
+  <InputGroup disabled label="Disabled group">
+    <TextField label="Label" />
+    <Button label="Submit" />
+  </InputGroup>
+</Playground>
 
 ### Validation States
 
@@ -256,5 +272,7 @@ interactive and helps to improve its accessibility.
 | `--rui-InputGroup__gap`                                            | Gap between elements                           |
 | `--rui-InputGroup__inner-border-radius`                            | Inner border radius of elements                |
 
+[fieldset]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset
+[accessibility]: https://www.w3.org/WAI/tutorials/forms/grouping/
 [React synthetic events]: https://reactjs.org/docs/events.html
 [div]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes

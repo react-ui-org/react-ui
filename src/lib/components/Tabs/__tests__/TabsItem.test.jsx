@@ -44,7 +44,7 @@ describe('rendering', () => {
       { isActive: false },
       (rootElement) => expect(rootElement).not.toHaveClass('isRootActive'),
     ],
-    ...labelPropTest,
+    ...labelPropTest(),
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <TabsItem

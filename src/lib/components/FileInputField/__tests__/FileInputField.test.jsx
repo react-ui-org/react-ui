@@ -11,7 +11,7 @@ import { refPropTest } from '../../../../../tests/propTests/refPropTest';
 import { fullWidthPropTest } from '../../../../../tests/propTests/fullWidthPropTest';
 import { helpTextPropTest } from '../../../../../tests/propTests/helpTextPropTest';
 import { formLayoutProviderTest } from '../../../../../tests/providerTests/formLayoutProviderTest';
-import { isLabelVisible } from '../../../../../tests/propTests/isLabelVisible';
+import { isLabelVisibleTest } from '../../../../../tests/propTests/isLabelVisibleTest';
 import { labelPropTest } from '../../../../../tests/propTests/labelPropTest';
 import { layoutPropTest } from '../../../../../tests/propTests/layoutPropTest';
 import { requiredPropTest } from '../../../../../tests/propTests/requiredPropTest';
@@ -45,8 +45,8 @@ describe('rendering', () => {
         expect(rootElement).toHaveAttribute('id', 'id__label');
       },
     ],
-    ...isLabelVisible,
-    ...labelPropTest,
+    ...isLabelVisibleTest(),
+    ...labelPropTest(),
     ...layoutPropTest,
     ...requiredPropTest,
     ...validationStatePropTest,

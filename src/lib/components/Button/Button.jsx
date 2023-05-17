@@ -60,7 +60,7 @@ export const Button = React.forwardRef((props, ref) => {
         inputGroupContext && styles.isRootInInputGroup,
         feedbackIcon && styles.hasRootFeedback,
       )}
-      disabled={resolveContextOrProp(buttonGroupContext && buttonGroupContext.disabled, disabled) || !!feedbackIcon}
+      disabled={resolveContextOrProp(primaryContext && primaryContext.disabled, disabled) || !!feedbackIcon}
       id={id}
       ref={ref}
     >

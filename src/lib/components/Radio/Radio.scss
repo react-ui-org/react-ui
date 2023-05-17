@@ -1,3 +1,6 @@
+// 1. Legends are tricky to style, let's use a `div` instead.
+//    https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#styling_with_css
+
 @use "../../styles/tools/form-fields/box-field-elements";
 @use "../../styles/tools/form-fields/box-field-layout";
 @use "../../styles/tools/form-fields/foundation";
@@ -11,15 +14,22 @@
 // Foundation
 .root {
     @include foundation.root();
+    @include foundation.fieldset();
     @include variants.visual(check);
 }
 
+// 1.
+.legend {
+    @include accessibility.hide-text();
+}
+
+// 1.
 .label,
 .optionLabel {
     @include foundation.label();
 }
 
-.list {
+.options {
     @include reset.list();
 }
 

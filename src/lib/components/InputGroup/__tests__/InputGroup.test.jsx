@@ -3,11 +3,12 @@ import {
   render,
   within,
 } from '@testing-library/react';
+import { labelPropTest } from '../../../../../tests/propTests/labelPropTest';
 import { Button } from '../../Button';
 import { SelectField } from '../../SelectField';
 import { TextField } from '../../TextField';
 import { childrenEmptyPropTest } from '../../../../../tests/propTests/childrenEmptyPropTest';
-import { isLabelVisible } from '../../../../../tests/propTests/isLabelVisible';
+import { isLabelVisibleTest } from '../../../../../tests/propTests/isLabelVisibleTest';
 import { layoutPropTest } from '../../../../../tests/propTests/layoutPropTest';
 import { InputGroup } from '../InputGroup';
 
@@ -39,6 +40,15 @@ describe('rendering', () => {
       },
     ],
     [
+      { disabled: true },
+      (rootElement) => {
+        expect(rootElement).toBeDisabled();
+        expect(within(rootElement).getByRole('textbox')).toBeDisabled();
+        expect(within(rootElement).getByRole('combobox')).toBeDisabled();
+        expect(within(rootElement).getByRole('button')).toBeDisabled();
+      },
+    ],
+    [
       {
         id: 'id',
         label: 'label',
@@ -46,10 +56,12 @@ describe('rendering', () => {
       (rootElement) => {
         expect(rootElement).toHaveAttribute('id', 'id');
         expect(within(rootElement).getByTestId('id__group'));
-        expect(within(rootElement).getByText('label')).toHaveAttribute('id', 'id__label');
+        expect(within(rootElement).getByTestId('id__label'));
+        expect(within(rootElement).getByTestId('id__displayLabel'));
       },
     ],
-    ...isLabelVisible,
+    ...isLabelVisibleTest('legend'),
+    ...labelPropTest('legend'),
     ...layoutPropTest,
     [
       { size: 'small' },

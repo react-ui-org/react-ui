@@ -77,7 +77,12 @@ See [API](#api) for all available options.
 - Use **clear, calm error messages** when there's a problem with what they
   entered.
 
-📖 [Read more about checkboxes and radios at Nielsen Norman Group.](https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/)
+- In the background, Radio uses the [`fieldset`][fieldset] element. Not only it
+  improves the [accessibility] of the group, it also allows you to make use of
+  its built-in features like disabling all nested inputs or pairing the group
+  with a form outside. Consult [the MDN docs][fieldset] to learn more.
+
+📖 [Read more about checkboxes and radios at Nielsen Norman Group.][nng-radio]
 
 ## Invisible Label
 
@@ -308,5 +313,8 @@ options. On top of that, the following options are available for Radio.
 | `--rui-FormField--check__input--radio__border-radius`              | Input corner radius                            |
 | `--rui-FormField--check__input--radio--checked__background-image` | Checked input background image (inline, URL, …) |
 
+[nng-radio]: https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/
+[fieldset]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset
+[accessibility]: https://www.w3.org/WAI/tutorials/forms/grouping/
 [React synthetic events]: https://reactjs.org/docs/events.html
 [radio]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio#additional_attributes

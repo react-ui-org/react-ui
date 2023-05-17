@@ -59,6 +59,11 @@ See [API](#api) for all available options.
   the [SelectField](/components/select-field) or
   [Radio](/components/radio) components.
 
+- In the background, ButtonGroup uses the [`fieldset`][fieldset] element. Not
+  only it improves the [accessibility] of the group, it also allows you to make
+  use of its built-in features like disabling all nested inputs or pairing the
+  group with a form outside. Consult [the MDN docs][fieldset] to learn more.
+
 - Be careful with using `startCorner` and `endCorner` options for grouped
   buttons. Overflowing elements may cause undesired interaction problems.
 
@@ -277,5 +282,7 @@ its accessibility.
 | `--rui-ButtonGroup--flat__separator__width`                        | Separator width for `flat` buttons             |
 | `--rui-ButtonGroup--flat__separator__color`                        | Separator color for `flat` buttons             |
 
+[fieldset]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset
+[accessibility]: https://www.w3.org/WAI/tutorials/forms/grouping/
 [React synthetic events]: https://reactjs.org/docs/events.html
 [div]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes

@@ -1,10 +1,17 @@
 // 1. Don't let text alignment be affected by a parent.
+// 2. Override foundation reset.
 
 @use "../../settings/form-fields" as settings;
 @use "../../theme/form-fields" as theme;
 
 @mixin root() {
     text-align: left; // 1.
+}
+
+@mixin fieldset() {
+    &:not(:last-child) {
+        margin-bottom: 0; // 2.
+    }
 }
 
 @mixin label() {
