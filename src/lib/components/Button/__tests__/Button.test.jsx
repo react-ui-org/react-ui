@@ -89,7 +89,7 @@ describe('rendering', () => {
         expect(within(rootElement).getByText('label')).toHaveAttribute('id', 'id__labelText');
       },
     ],
-    ...labelPropTest,
+    ...labelPropTest(),
     [
       { labelVisibility: 'sm' },
       (rootElement) => expect(rootElement).toHaveClass('hasLabelVisibleSm'),

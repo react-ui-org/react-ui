@@ -28,11 +28,17 @@ describe('rendering', () => {
     ],
     [
       { disabled: true },
-      (rootElement) => expect(within(rootElement).getByRole('button')).toBeDisabled(),
+      (rootElement) => {
+        expect(rootElement).toBeDisabled();
+        expect(within(rootElement).getByRole('button')).toBeDisabled();
+      },
     ],
     [
       { disabled: false },
-      (rootElement) => expect(within(rootElement).getByRole('button')).not.toBeDisabled(),
+      (rootElement) => {
+        expect(rootElement).not.toBeDisabled();
+        expect(within(rootElement).getByRole('button')).not.toBeDisabled();
+      },
     ],
     [
       { priority: 'filled' },

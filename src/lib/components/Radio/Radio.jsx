@@ -25,7 +25,8 @@ export const Radio = ({
   const context = useContext(FormLayoutContext);
 
   return (
-    <div
+    <fieldset
+      {...transferProps(restProps)}
       className={classNames(
         styles.root,
         context && styles.isRootInFormLayout,
@@ -36,53 +37,59 @@ export const Radio = ({
         required && styles.isRootRequired,
         getRootValidationStateClassName(validationState, styles),
       )}
+      disabled={disabled}
       id={id}
     >
+      <legend
+        className={styles.legend}
+        id={id && `${id}__label`}
+      >
+        {label}
+      </legend>
       <div
+        aria-hidden
         className={classNames(
           styles.label,
           !isLabelVisible && styles.isLabelHidden,
         )}
-        id={id && `${id}__labelText`}
+        id={id && `${id}__displayLabel`}
       >
         {label}
       </div>
       <div className={styles.field}>
-        <ul className={styles.list}>
+        <div className={styles.options}>
           {
             options.map((option) => {
               const key = option.key ?? option.value;
               return (
-                <li key={key}>
-                  <label
-                    className={styles.option}
-                    htmlFor={id && `${id}__item__${key}`}
-                    id={id && `${id}__item__${key}__label`}
+                <label
+                  className={styles.option}
+                  htmlFor={id && `${id}__item__${key}`}
+                  id={id && `${id}__item__${key}__label`}
+                  key={key}
+                >
+                  <input
+                    className={styles.input}
+                    checked={restProps.onChange
+                      ? (value === option.value) || false
+                      : undefined}
+                    disabled={disabled || option.disabled}
+                    id={id && `${id}__item__${key}`}
+                    name={id}
+                    type="radio"
+                    value={option.value}
+                  />
+                  <span
+                    className={styles.optionLabel}
+                    id={id && `${id}__item__${key}__labelText`}
                   >
-                    <input
-                      {...transferProps(restProps)}
-                      className={styles.input}
-                      checked={restProps.onChange
-                        ? (value === option.value) || false
-                        : undefined}
-                      disabled={disabled || option.disabled}
-                      id={id && `${id}__item__${key}`}
-                      name={id}
-                      type="radio"
-                      value={option.value}
-                    />
-                    <span
-                      className={styles.optionLabel}
-                      id={id && `${id}__item__${key}__labelText`}
-                    >
-                      { option.label }
-                    </span>
-                  </label>
-                </li>
+                    { option.label }
+                  </span>
+                </label>
               );
             })
           }
-        </ul>
+        </div>
         {helpText && (
           <div
             className={styles.helpText}
@@ -100,7 +107,7 @@ export const Radio = ({
           </div>
         )}
       </div>
-    </div>
+    </fieldset>
   );
 };
 
@@ -129,7 +136,8 @@ Radio.propTypes = {
    * ID of the root HTML element.
    *
    * Also serves as base for ids of nested elements:
-   * * `<ID>__labelText`
+   * * `<ID>__label`
+   * * `<ID>__displayLabel`
    * * `<ID>__helpText`
    * * `<ID>__validationText`
    *

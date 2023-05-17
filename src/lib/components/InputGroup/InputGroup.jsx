@@ -14,6 +14,7 @@ import styles from './InputGroup.scss';
 
 export const InputGroup = ({
   children,
+  disabled,
   id,
   isLabelVisible,
   label,
@@ -39,7 +40,7 @@ export const InputGroup = ({
   );
 
   return (
-    <div
+    <fieldset
       {...transferProps(restProps)}
       id={id}
       className={classNames(
@@ -48,16 +49,25 @@ export const InputGroup = ({
         resolveContextOrProp(formLayoutContext && formLayoutContext.layout, layout) === 'horizontal'
           ? styles.isRootLayoutHorizontal
           : styles.isRootLayoutVertical,
+        disabled && styles.isRootDisabled,
         getRootSizeClassName(size, styles),
         getRootValidationStateClassName(validationState, styles),
       )}
+      disabled={disabled}
     >
+      <legend
+        className={styles.legend}
+        id={id && `${id}__label`}
+      >
+        {label}
+      </legend>
       <div
+        aria-hidden
         className={classNames(
           styles.label,
           !isLabelVisible && styles.isLabelHidden,
         )}
-        id={id && `${id}__label`}
+        id={id && `${id}__displayLabel`}
       >
         {label}
       </div>
@@ -65,10 +75,10 @@ export const InputGroup = ({
         <div
           className={styles.inputGroup}
           id={id && `${id}__group`}
-          role="group"
         >
           <InputGroupContext.Provider
             value={{
+              disabled,
               layout,
               size,
             }}
@@ -77,24 +87,27 @@ export const InputGroup = ({
           </InputGroupContext.Provider>
         </div>
         {validationTexts && (
-          <div
+          <ul
             className={styles.validationText}
             id={id && `${id}__validationTexts`}
           >
             {validationTexts.map((validationText) => (
-              <Text blockLevel key={validationText}>
-                {validationText}
-              </Text>
+              <li key={validationText}>
+                <Text blockLevel>
+                  {validationText}
+                </Text>
+              </li>
             ))}
-          </div>
+          </ul>
         )}
       </div>
-    </div>
+    </fieldset>
   );
 };
 
 InputGroup.defaultProps = {
   children: null,
+  disabled: false,
   id: undefined,
   isLabelVisible: true,
   layout: 'vertical',
@@ -113,11 +126,16 @@ InputGroup.propTypes = {
    */
   children: PropTypes.node,
   /**
+   * If `true`, the whole input group with all nested inputs and buttons will be disabled.
+   */
+  disabled: PropTypes.bool,
+  /**
    * ID of the root HTML element.
    *
    * Also serves as base for ids of nested elements:
-   * * `<ID>__group`
    * * `<ID>__label`
+   * * `<ID>__displayLabel`
+   * * `<ID>__group`
    * * `<ID>__validationTexts`
    */
   id: PropTypes.string,

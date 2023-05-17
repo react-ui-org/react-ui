@@ -11,7 +11,7 @@ import { disabledPropTest } from '../../../../../tests/propTests/disabledPropTes
 import { refPropTest } from '../../../../../tests/propTests/refPropTest';
 import { helpTextPropTest } from '../../../../../tests/propTests/helpTextPropTest';
 import { formLayoutProviderTest } from '../../../../../tests/providerTests/formLayoutProviderTest';
-import { isLabelVisible } from '../../../../../tests/propTests/isLabelVisible';
+import { isLabelVisibleTest } from '../../../../../tests/propTests/isLabelVisibleTest';
 import { labelPropTest } from '../../../../../tests/propTests/labelPropTest';
 import { requiredPropTest } from '../../../../../tests/propTests/requiredPropTest';
 import { validationStatePropTest } from '../../../../../tests/propTests/validationStatePropTest';
@@ -42,8 +42,8 @@ describe('rendering', () => {
         expect(within(rootElement).getByText('validation text')).toHaveAttribute('id', 'id__validationText');
       },
     ],
-    ...isLabelVisible,
-    ...labelPropTest,
+    ...isLabelVisibleTest(),
+    ...labelPropTest(),
     [
       { labelPosition: 'before' },
       (rootElement) => expect(rootElement).toHaveClass('hasRootLabelBefore'),

@@ -21,14 +21,14 @@ export const ButtonGroup = ({
   }
 
   return (
-    <div
+    <fieldset
       {...transferProps(restProps)}
       className={classNames(
         styles.root,
         block && styles.isRootBlock,
         getRootPriorityClassName(priority, styles),
       )}
-      role="group"
+      disabled={disabled}
     >
       <ButtonGroupContext.Provider
         value={{
@@ -40,7 +40,7 @@ export const ButtonGroup = ({
       >
         {children}
       </ButtonGroupContext.Provider>
-    </div>
+    </fieldset>
   );
 };
 

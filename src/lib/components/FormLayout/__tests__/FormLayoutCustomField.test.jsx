@@ -75,7 +75,7 @@ describe('rendering', () => {
       { innerFieldSize: 'large' },
       (rootElement) => expect(rootElement).toHaveClass('isRootSizeLarge'),
     ],
-    ...labelPropTest,
+    ...labelPropTest(),
     [
       {
         label: 'label',

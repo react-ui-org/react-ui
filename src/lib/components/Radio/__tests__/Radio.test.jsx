@@ -8,7 +8,7 @@ import {
 import userEvent from '@testing-library/user-event';
 import { helpTextPropTest } from '../../../../../tests/propTests/helpTextPropTest';
 import { formLayoutProviderTest } from '../../../../../tests/providerTests/formLayoutProviderTest';
-import { isLabelVisible } from '../../../../../tests/propTests/isLabelVisible';
+import { isLabelVisibleTest } from '../../../../../tests/propTests/isLabelVisibleTest';
 import { labelPropTest } from '../../../../../tests/propTests/labelPropTest';
 import { layoutPropTest } from '../../../../../tests/propTests/layoutPropTest';
 import { requiredPropTest } from '../../../../../tests/propTests/requiredPropTest';
@@ -39,6 +39,7 @@ describe('rendering', () => {
     [
       { disabled: true },
       (rootElement) => {
+        expect(rootElement).toBeDisabled();
         expect(rootElement).toHaveClass('isRootDisabled');
         expect(within(rootElement).getByLabelText('option 1')).toBeDisabled();
       },
@@ -46,6 +47,7 @@ describe('rendering', () => {
     [
       { disabled: false },
       (rootElement) => {
+        expect(rootElement).not.toBeDisabled();
         expect(rootElement).not.toHaveClass('isRootDisabled');
         expect(within(rootElement).getByLabelText('option 1')).not.toBeDisabled();
       },
@@ -59,8 +61,9 @@ describe('rendering', () => {
       },
       (rootElement) => {
         expect(rootElement).toHaveAttribute('id', 'id');
+        expect(within(rootElement).getByTestId('id__label'));
+        expect(within(rootElement).getByTestId('id__displayLabel'));
         expect(within(rootElement).getByText('help text')).toHaveAttribute('id', 'id__helpText');
-        expect(within(rootElement).getByText('label')).toHaveAttribute('id', 'id__labelText');
         expect(within(rootElement).getByText('validation text')).toHaveAttribute('id', 'id__validationText');
         expect(within(rootElement).getByTestId('id__item__1'));
         expect(within(rootElement).getByTestId('id__item__custom_key'));
@@ -70,8 +73,8 @@ describe('rendering', () => {
         expect(within(rootElement).getByText('option 2')).toHaveAttribute('id', 'id__item__custom_key__labelText');
       },
     ],
-    ...isLabelVisible,
-    ...labelPropTest,
+    ...isLabelVisibleTest('legend'),
+    ...labelPropTest('legend'),
     ...layoutPropTest,
     [
       { options: mandatoryProps.options },

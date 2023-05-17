@@ -42,10 +42,10 @@ export const TextField = React.forwardRef((props, ref) => {
         hasSmallInput && styles.hasRootSmallInput,
         inputSize && styles.hasRootCustomInputSize,
         formLayoutContext && styles.isRootInFormLayout,
+        resolveContextOrProp(inputGroupContext && inputGroupContext.disabled, disabled) && styles.isRootDisabled,
         resolveContextOrProp(formLayoutContext && formLayoutContext.layout, layout) === 'horizontal'
           ? styles.isRootLayoutHorizontal
           : styles.isRootLayoutVertical,
-        disabled && styles.isRootDisabled,
         inputGroupContext && styles.isRootGrouped,
         required && styles.isRootRequired,
         getRootSizeClassName(
@@ -73,7 +73,7 @@ export const TextField = React.forwardRef((props, ref) => {
           <input
             {...transferProps(restProps)}
             className={styles.input}
-            disabled={disabled}
+            disabled={resolveContextOrProp(inputGroupContext && inputGroupContext.disabled, disabled)}
             id={id}
             ref={ref}
             required={required}
