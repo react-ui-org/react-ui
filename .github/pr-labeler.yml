@@ -1,7 +1,7 @@
 BC: bc/*
-feature: feature/*
-bug: bugfix/*
+feature: [feature/*, task/*]
+bug: [bug/*, bugfix/*]
 refactoring: refactoring/*
-documentation: ['docs/*', 'documentation/*']
+documentation: [docs/*, documentation/*]
 maintenance: maintenance/*
 'skip changelog': release/*
