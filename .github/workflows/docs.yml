@@ -1,0 +1,36 @@
+name: Docs
+
+on: [ pull_request ]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build Docs
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+
+      - name: Get cache ID
+        run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+
+      - name: Restore cache
+        uses: actions/cache@v3
+        with:
+          key: mkdocs-material-${{ env.cache_id }}
+          path: .cache
+          restore-keys: |
+            mkdocs-material-
+
+      - name: Install MkDocs
+        run: pip install 'mkdocs-material>=9.0.0,<10.0.0'
+
+      - name: Build MkDocs
+        run: mkdocs build
