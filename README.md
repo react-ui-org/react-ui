@@ -1,7 +1,8 @@
 # React UI
 
 ![npm](https://img.shields.io/npm/v/@react-ui-org/react-ui)
-![Build and run tests](https://github.com/react-ui-org/react-ui/workflows/Build%20and%20run%20tests/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/react-ui-org/react-ui/badge.svg)](https://coveralls.io/github/react-ui-org/react-ui)
+[![Tests](https://github.com/react-ui-org/react-ui/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/react-ui-org/react-ui/actions)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/@react-ui-org/react-ui)
 
 > React components for your design system.

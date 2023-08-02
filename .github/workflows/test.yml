@@ -1,6 +1,9 @@
 name: Test
 
-on: [ pull_request ]
+on:
+  pull_request:
+  schedule:
+    - cron: '0 10 * * MON' # every Monday at 10:00 UTC (8:00 CEST, 7:00 CET)
 
 jobs:
   test:
@@ -27,5 +30,8 @@ jobs:
       - name: Install
         run: npm ci
 
-      - name: Test
+      - name: Test and generate code coverage info
         run: npm test
+
+      - name: Upload code coverage info to Coveralls
+        uses: coverallsapp/github-action@v2

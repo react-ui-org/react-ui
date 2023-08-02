@@ -1,5 +1,6 @@
 /.github
 /.idea
+/coverage
 /docker
 /node_modules
 /public
