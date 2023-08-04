@@ -1,5 +1,15 @@
 # Browsers that we support
 
-defaults
-not ie > 1
-not ie_mob > 1
+# Blink/Chromium based
+last 1 ChromeAndroid versions
+last 2 Chrome versions
+last 2 Edge versions
+
+# Gecko based
+last 1 FirefoxAndroid versions
+last 2 Firefox versions
+Firefox ESR
+
+# WebKit based
+last 1 iOS major versions
+last 1 Safari major versions
