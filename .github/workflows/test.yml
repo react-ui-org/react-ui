@@ -9,19 +9,14 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-20.04
-    strategy:
-      matrix:
-        # TODO: Add v18 back (#374) once the docs platform is migrated to a non-Gatsby solution (#373).
-        # node: [ 16, 18 ]
-        node: [ 16 ]
     steps:
       - name: Clone repository
         uses: actions/checkout@v3
 
-      - name: Set up Node.js ${{ matrix.node }}
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 18
           cache: npm
 
       - name: Print Node.js and npm version
