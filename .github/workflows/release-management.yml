@@ -4,9 +4,12 @@ on:
   push:
     branches: [ master ]
 
+permissions:
+  contents: read
+
 jobs:
-  build_and_test:
-    name: Build and test
+  test_and_build:
+    name: Test and build
     runs-on: ubuntu-20.04
     outputs:
       version_changed: ${{ steps.check_package_version.outputs.changed }}
@@ -30,7 +33,7 @@ jobs:
         run: npm test
 
       - name: Build
-        run: docker compose run --rm node_build_site && docker compose run --rm mkdocs_build_site
+        run: npm run build
 
       - name: Check package.json for version change
         id: check_package_version
@@ -44,16 +47,12 @@ jobs:
         if: steps.check_package_version.outputs.changed == 'false'
         run: 'echo "No version change"'
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: docs
-          path: site
-
   update_release_draft:
     name: Update release draft
-    needs: [build_and_test]
-    if: needs.build_and_test.outputs.version_changed == 'false'
+    permissions:
+      contents: write
+    needs: [test_and_build]
+    if: needs.test_and_build.outputs.version_changed == 'false'
     runs-on: ubuntu-20.04
     steps:
       - name: Draft release on GitHub
@@ -63,8 +62,8 @@ jobs:
 
   publish_release_draft_on_version_bump:
     name: Publish release draft
-    needs: [build_and_test]
-    if: needs.build_and_test.outputs.version_changed == 'true'
+    needs: [test_and_build]
+    if: needs.test_and_build.outputs.version_changed == 'true'
     runs-on: ubuntu-20.04
     steps:
       - name: Clone repository
@@ -72,7 +71,7 @@ jobs:
 
       # An existing release draft is published only if there is a version bump in `package.json`.
       # Throws an error and breaks the job if called regardless. We check for version changes in the
-      # `build_and_test` job first so this job is skipped rather than exited with an error.
+      # `test_and_build` job first so this job is skipped rather than exited with an error.
       - name: Publish matching GitHub release draft
         id: github_release
         uses: JamesMGreene/node-draft-releaser@v1
@@ -88,8 +87,8 @@ jobs:
 
   publish_package_to_npm:
     name: Publish to npm
-    needs: [build_and_test, publish_release_draft_on_version_bump]
-    if: needs.build_and_test.outputs.version_changed == 'true'
+    needs: [test_and_build, publish_release_draft_on_version_bump]
+    if: needs.test_and_build.outputs.version_changed == 'true'
     runs-on: ubuntu-20.04
     steps:
       - name: Clone repository
@@ -100,7 +99,7 @@ jobs:
         with:
           node-version: 16
           cache: npm
-          registry-url: https://registry.npmjs.org/
+          registry-url: https://registry.npmjs.org
 
       - name: Install
         run: npm ci
@@ -112,8 +111,10 @@ jobs:
 
   deploy_docs:
     name: Deploy docs
-    needs: [build_and_test, publish_release_draft_on_version_bump]
-    if: needs.build_and_test.outputs.version_changed == 'true'
+    permissions:
+      contents: write
+    needs: [test_and_build, publish_release_draft_on_version_bump]
+    if: needs.test_and_build.outputs.version_changed == 'true'
     runs-on: ubuntu-20.04
     steps:
       - name: Clone repository
@@ -121,18 +122,24 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Download artifacts
-        uses: actions/download-artifact@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          name: docs
-          path: docs
+          python-version: 3.x
 
-      - name: Deploy docs to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Get cache ID
+        run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+
+      - name: Restore cache
+        uses: actions/cache@v3
         with:
-          folder: docs # Must match the name of the artifact used.
-          repository-name: react-ui-org/react-ui-docs
-          token: ${{ secrets.DOCS_REPOSITORY_ACCESS_TOKEN }}
-          branch: master
-          target-folder: docs
-          commit-message: Release new version
+          key: mkdocs-material-${{ env.cache_id }}
+          path: .cache
+          restore-keys: |
+            mkdocs-material-
+
+      - name: Install MkDocs
+        run: pip install 'mkdocs-material>=9.0.0,<10.0.0'
+
+      - name: Build MkDocs
+        run: mkdocs gh-deploy --force
