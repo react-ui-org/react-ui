@@ -1,20 +1,21 @@
-name: Broken links check
+name: Broken Links Check
+
 on:
   schedule:
-    - cron: '0 0 * * 0' # weekly
+    - cron: '0 6 * * *' # daily at 6:00 UTC (7:00 CET, 8:00 CEST)
 
 jobs:
   broken_link_check:
-    runs-on: ubuntu-latest
-    name: Check for broken links
+    runs-on: ubuntu-20.04
+    name: Check react-ui.io for broken links
     steps:
       - name: Check for broken links
         id: link-report
-        uses: celinekurpershoek/link-checker@v1
+        uses: celinekurpershoek/link-checker@v1.0.2
         with:
           url: 'https://react-ui.io'
           honorRobotExclusions: false
-          ignorePatterns: "www.racom.eu"
+          ignorePatterns: "*.racom.eu*"
 
       - name: Get the result
         run: echo "${{steps.link-report.outputs.result}}"
