@@ -3,7 +3,7 @@ name: Test
 on:
   pull_request:
   schedule:
-    - cron: '0 10 * * MON' # every Monday at 10:00 UTC (8:00 CEST, 7:00 CET)
+    - cron: '0 6 * * *' # daily at 6:00 UTC (7:00 CET, 8:00 CEST)
 
 jobs:
   test:
