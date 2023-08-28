@@ -98,7 +98,7 @@ Modal.defaultProps = {
   closeButtonRef: null,
   portalId: null,
   position: 'center',
-  preventScrollUnderneath: 'default',
+  preventScrollUnderneath: window.document.body,
   primaryButtonRef: null,
   size: 'medium',
 };
@@ -137,15 +137,15 @@ Modal.propTypes = {
   position: PropTypes.oneOf(['top', 'center']),
   /**
    * Mode in which Modal prevents scroll of elements bellow:
-   * * `default` - Modal prevents scroll on the `body` element
    * * `off` - Modal does not prevent any scroll
+   * * [HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement) - Modal prevents scroll on this HTML element
    * * object
-   * * * `reset` - method called on Modal's unmount to reset scroll prevention
-   * * * `start` - method called on Modal's mount to custom scroll prevention
+   *   * `reset` - method called on Modal's unmount to reset scroll prevention
+   *   * `start` - method called on Modal's mount to custom scroll prevention
    */
   preventScrollUnderneath: PropTypes.oneOfType([
     PropTypes.oneOf([
-      'default',
+      HTMLElement,
       'off',
     ]),
     PropTypes.shape({

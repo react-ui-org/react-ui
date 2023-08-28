@@ -7,22 +7,24 @@ export const useModalScrollPrevention = (preventScrollUnderneath) => {
         return () => {};
       }
 
-      if (preventScrollUnderneath === 'default') {
-        const scrollbarWidth = Math.abs(window.innerWidth - window.document.documentElement.clientWidth);
-        const prevOverflow = window.document.body.style.overflow;
-        const prevPaddingRight = window.document.body.style.paddingRight;
+      if (preventScrollUnderneath instanceof HTMLElement) {
+        const scrollableElement = preventScrollUnderneath;
 
-        window.document.body.style.overflow = 'hidden';
+        const scrollbarWidth = Math.abs(window.innerWidth - window.document.documentElement.clientWidth);
+        const prevOverflow = scrollableElement.style.overflow;
+        const prevPaddingRight = scrollableElement.style.paddingRight;
+
+        scrollableElement.style.overflow = 'hidden';
 
         if (Number.isNaN(parseInt(prevPaddingRight, 10))) {
-          window.document.body.style.paddingRight = `${scrollbarWidth}px`;
+          scrollableElement.style.paddingRight = `${scrollbarWidth}px`;
         } else {
-          window.document.body.style.paddingRight = `calc(${prevPaddingRight} + ${scrollbarWidth}px)`;
+          scrollableElement.style.paddingRight = `calc(${prevPaddingRight} + ${scrollbarWidth}px)`;
         }
 
         return () => {
-          window.document.body.style.overflow = prevOverflow;
-          window.document.body.style.paddingRight = prevPaddingRight;
+          scrollableElement.style.overflow = prevOverflow;
+          scrollableElement.style.paddingRight = prevPaddingRight;
         };
       }
 
