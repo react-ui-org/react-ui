@@ -1,4 +1,5 @@
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 import sinon from 'sinon';
 import {
   render,
@@ -76,9 +77,9 @@ describe('rendering', () => {
 
 describe('functionality', () => {
   it.each([
-    () => userEvent.keyboard('{esc}'),
+    () => userEvent.keyboard('{Escape}'),
     () => userEvent.click(screen.getByTestId('id').parentNode),
-  ])('call close modal using `closeButtonRef` (%#)', (action) => {
+  ])('call close modal using `closeButtonRef` (%#)', async (action) => {
     const spy = sinon.spy();
     const ref = React.createRef();
     render((
@@ -97,14 +98,14 @@ describe('functionality', () => {
       </Modal>
     ));
 
-    action();
+    await action();
     expect(spy.calledOnce).toEqual(true);
   });
 
   it.each([
-    () => userEvent.keyboard('{esc}'),
+    () => userEvent.keyboard('{Escape}'),
     () => userEvent.click(screen.getByTestId('id').parentNode),
-  ])('do not call close modal using `closeButtonRef` when button is disabled (%#)', (action) => {
+  ])('do not call close modal using `closeButtonRef` when button is disabled (%#)', async (action) => {
     const spy = sinon.spy();
     const ref = React.createRef();
     render((
@@ -124,14 +125,14 @@ describe('functionality', () => {
       </Modal>
     ));
 
-    action();
+    await action();
     expect(spy.called).toEqual(false);
   });
 
   it.each([
-    () => userEvent.keyboard('{esc}'),
+    () => userEvent.keyboard('{Escape}'),
     () => userEvent.click(screen.getByTestId('id').parentNode),
-  ])('call close modal using `closeButtonRef` and `ModalCloseButton` (%#)', (action) => {
+  ])('call close modal using `closeButtonRef` and `ModalCloseButton` (%#)', async (action) => {
     const spy = sinon.spy();
     const ref = React.createRef();
     render((
@@ -148,14 +149,14 @@ describe('functionality', () => {
       </Modal>
     ));
 
-    action();
+    await action();
     expect(spy.calledOnce).toEqual(true);
   });
 
   it.each([
-    () => userEvent.keyboard('{esc}'),
+    () => userEvent.keyboard('{Escape}'),
     () => userEvent.click(screen.getByTestId('id').parentNode),
-  ])('do not call close modal using `closeButtonRef` and `ModalCloseButton` when button is disabled (%#)', (action) => {
+  ])('do not call close modal using `closeButtonRef` and `ModalCloseButton` when button is disabled (%#)', async (action) => {
     const spy = sinon.spy();
     const ref = React.createRef();
     render((
@@ -173,11 +174,11 @@ describe('functionality', () => {
       </Modal>
     ));
 
-    action();
+    await action();
     expect(spy.called).toEqual(false);
   });
 
-  it('call primary action using `primaryButtonRef`', () => {
+  it('call primary action using `primaryButtonRef`', async () => {
     const spy = sinon.spy();
     const ref = React.createRef();
     render((
@@ -196,11 +197,11 @@ describe('functionality', () => {
       </Modal>
     ));
 
-    userEvent.keyboard('{enter}');
-    expect(spy.calledOnce).toEqual(true);
+    await userEvent.keyboard('{Enter}');
+    await expect(spy.calledOnce).toEqual(true);
   });
 
-  it('do not call primary action using `primaryButtonRef when button is disabled', () => {
+  it('do not call primary action using `primaryButtonRef when button is disabled', async () => {
     const spy = sinon.spy();
     const ref = React.createRef();
     render((
@@ -220,7 +221,7 @@ describe('functionality', () => {
       </Modal>
     ));
 
-    userEvent.keyboard('{enter}');
+    await userEvent.keyboard('{enter}');
     expect(spy.called).toEqual(false);
   });
 
@@ -365,7 +366,7 @@ describe('functionality', () => {
     assertFocus(el, true);
   });
 
-  it('traps focus', () => {
+  it('traps focus', async () => {
     const { container } = render((
       <Modal>
         <ModalBody>
@@ -381,11 +382,11 @@ describe('functionality', () => {
     const secondEl = within(container).getByTestId('second');
 
     assertFocus(firstEl, true);
-    userEvent.tab();
+    await userEvent.tab();
     assertFocus(secondEl, true);
-    userEvent.tab();
+    await userEvent.tab();
     assertFocus(firstEl, true);
-    userEvent.tab({ shift: true });
+    await userEvent.tab({ shift: true });
     assertFocus(secondEl, true);
   });
 
@@ -437,10 +438,14 @@ describe('functionality', () => {
 
     const button = within(container).getByTestId('button');
 
-    button.click();
+    await act(async () => {
+      await button.click();
+    });
     expect(within(container).getByTestId('layout')).toHaveStyle('overflow: hidden');
 
-    button.click();
+    await act(async () => {
+      await button.click();
+    });
     expect(within(container).getByTestId('layout')).toHaveStyle('overflow: auto');
   });
 });

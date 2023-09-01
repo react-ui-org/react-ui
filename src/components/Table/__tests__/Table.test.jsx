@@ -111,7 +111,7 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls onClick() on sorting button click', () => {
+  it('calls onClick() on sorting button click', async () => {
     const spy = sinon.spy();
     render((
       <Table
@@ -126,7 +126,7 @@ describe('functionality', () => {
       />
     ));
 
-    userEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByRole('button'));
     expect(spy.calledOnce).toEqual(true);
     expect(spy.lastCall.args).toEqual(['dateOfBirth', 'asc']);
   });

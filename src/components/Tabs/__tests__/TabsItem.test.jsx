@@ -58,16 +58,19 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls onClick() on navigating', () => {
+  it('calls onClick() on navigating', async () => {
     const spy = sinon.spy();
     render((
       <TabsItem
         {...mandatoryProps}
-        onClick={spy}
+        onClick={(e) => {
+          e.preventDefault(); // Prevent the default navigation behavior
+          spy();
+        }}
       />
     ));
 
-    userEvent.click(screen.getByText('label'));
+    await userEvent.click(screen.getByText('label'));
     expect(spy.calledOnce).toEqual(true);
   });
 });

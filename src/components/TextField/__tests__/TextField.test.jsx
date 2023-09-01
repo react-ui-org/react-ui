@@ -106,7 +106,7 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls synthetic event onChange() on changing selected option', () => {
+  it('calls synthetic event onChange() on changing selected option', async () => {
     const spy = sinon.spy();
     render((
       <TextField
@@ -116,7 +116,7 @@ describe('functionality', () => {
       />
     ));
 
-    userEvent.type(screen.getByRole('textbox'), 'content-value');
+    await userEvent.type(screen.getByRole('textbox'), 'content-value');
     expect(spy.callCount).toEqual(13); // once per typed character
   });
 });

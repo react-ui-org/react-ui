@@ -126,7 +126,7 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls synthetic event onChange() on changing selected option', () => {
+  it('calls synthetic event onChange() on changing selected option', async () => {
     const spy = sinon.spy();
     render((
       <SelectField
@@ -136,7 +136,7 @@ describe('functionality', () => {
       />
     ));
 
-    userEvent.selectOptions(screen.getByDisplayValue('option 2'), '1');
+    await userEvent.selectOptions(screen.getByDisplayValue('option 2'), '1');
     expect(spy.calledOnce).toEqual(true);
   });
 });

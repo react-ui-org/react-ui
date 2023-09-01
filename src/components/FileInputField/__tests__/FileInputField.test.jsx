@@ -64,7 +64,7 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls synthetic event onChange()', () => {
+  it('calls synthetic event onChange()', async () => {
     const spy = sinon.spy();
     render((
       <FileInputField
@@ -74,7 +74,7 @@ describe('functionality', () => {
     ));
 
     const file = new File(['hello'], 'hello.png', { type: 'image/png' });
-    userEvent.upload(screen.getByLabelText('label'), file);
+    await userEvent.upload(screen.getByLabelText('label'), file);
     expect(spy.calledOnce).toEqual(true);
   });
 });

@@ -27,7 +27,7 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls synthetic event onClick()', () => {
+  it('calls synthetic event onClick()', async () => {
     const spy = sinon.spy();
     render((
       <ModalCloseButton
@@ -35,7 +35,7 @@ describe('functionality', () => {
       />
     ));
 
-    userEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByRole('button'));
     expect(spy.calledOnce).toEqual(true);
   });
 });

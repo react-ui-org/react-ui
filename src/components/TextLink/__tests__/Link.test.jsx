@@ -35,16 +35,19 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls synthetic event onClick()', () => {
+  it('calls synthetic event onClick()', async () => {
     const spy = sinon.spy();
     render((
       <TextLink
         {...mandatoryProps}
-        onClick={spy}
+        onClick={(e) => {
+          e.preventDefault(); // Prevent the default navigation behavior
+          spy();
+        }}
       />
     ));
 
-    userEvent.click(screen.getByText('link text'));
+    await userEvent.click(screen.getByText('link text'));
     expect(spy.calledOnce).toEqual(true);
   });
 });
