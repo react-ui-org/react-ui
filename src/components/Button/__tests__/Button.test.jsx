@@ -156,7 +156,7 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls synthetic event onClick()', () => {
+  it('calls synthetic event onClick()', async () => {
     const spy = sinon.spy();
     render((
       <Button
@@ -165,7 +165,7 @@ describe('functionality', () => {
       />
     ));
 
-    userEvent.click(screen.getByText('label'));
+    await userEvent.click(screen.getByText('label'));
     expect(spy.calledOnce).toEqual(true);
   });
 });

@@ -114,7 +114,7 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls synthetic event onChange()', () => {
+  it('calls synthetic event onChange()', async () => {
     const spy = sinon.spy();
     render((
       <Radio
@@ -123,7 +123,7 @@ describe('functionality', () => {
       />
     ));
 
-    userEvent.click(screen.getByText('option 1'));
+    await userEvent.click(screen.getByText('option 1'));
     expect(spy.calledOnce).toEqual(true);
   });
 });

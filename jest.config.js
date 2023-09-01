@@ -14,8 +14,8 @@ module.exports = {
     '<rootDir>/tests/setupTestingLibrary.js',
   ],
   testEnvironment: 'jsdom',
-  verbose: true,
   transformIgnorePatterns: [
-    'node_modules/(?!(@react-ui-org))'
+    'node_modules/(?!(@react-ui-org))',
   ],
+  verbose: true,
 };

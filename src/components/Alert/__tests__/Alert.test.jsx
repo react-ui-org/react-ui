@@ -50,7 +50,7 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls onClose() on Close button click', () => {
+  it('calls onClose() on Close button click', async () => {
     const spy = sinon.spy();
     render((
       <Alert
@@ -59,7 +59,7 @@ describe('functionality', () => {
       />
     ));
 
-    userEvent.click(screen.getByTitle('Close'));
+    await userEvent.click(screen.getByTitle('Close'));
     expect(spy.calledOnce).toEqual(true);
   });
 });

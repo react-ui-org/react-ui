@@ -68,7 +68,7 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls synthetic event onChange() on toggling', () => {
+  it('calls synthetic event onChange() on toggling', async () => {
     const spy = sinon.spy();
     render((
       <Toggle
@@ -77,7 +77,7 @@ describe('functionality', () => {
       />
     ));
 
-    userEvent.click(screen.getByRole('checkbox'));
+    await userEvent.click(screen.getByRole('checkbox'));
     expect(spy.callCount).toEqual(1);
   });
 });

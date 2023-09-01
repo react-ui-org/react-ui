@@ -37,8 +37,6 @@ All priorities come in supported
 High-emphasis priority to draw user's attention.
 
 ```docoff-react-preview
-<Badge label="1" color="primary" />
-<Badge label="2" color="secondary" />
 <Badge label="3" color="success" />
 <Badge label="4" color="warning" />
 <Badge label="5" color="danger" />
@@ -50,8 +48,6 @@ High-emphasis priority to draw user's attention.
 ```
 
 ```docoff-react-preview
-<Badge label="Primary" color="primary" />
-<Badge label="Secondary" color="secondary" />
 <Badge label="Success" color="success" />
 <Badge label="Warning" color="warning" />
 <Badge label="Danger" color="danger" />
@@ -67,8 +63,6 @@ High-emphasis priority to draw user's attention.
 Medium-emphasis priority to provide additional context in an unobtrusive way.
 
 ```docoff-react-preview
-<Badge priority="outline" label="1" color="primary" />
-<Badge priority="outline" label="2" color="secondary" />
 <Badge priority="outline" label="3" color="success" />
 <Badge priority="outline" label="4" color="warning" />
 <Badge priority="outline" label="5" color="danger" />
@@ -80,8 +74,6 @@ Medium-emphasis priority to provide additional context in an unobtrusive way.
 ```
 
 ```docoff-react-preview
-<Badge priority="outline" label="Primary" color="primary" />
-<Badge priority="outline" label="Secondary" color="secondary" />
 <Badge priority="outline" label="Success" color="success" />
 <Badge priority="outline" label="Warning" color="warning" />
 <Badge priority="outline" label="Danger" color="danger" />

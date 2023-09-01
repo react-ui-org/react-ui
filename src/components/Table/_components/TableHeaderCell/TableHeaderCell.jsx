@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button } from '../../../..';
+import { Button } from '../../../Button';
 import styles from '../TableCell.scss';
 
 export const TableHeaderCell = ({

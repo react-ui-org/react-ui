@@ -68,7 +68,7 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls synthetic event onChange() on typing', () => {
+  it('calls synthetic event onChange() on typing', async () => {
     const spy = sinon.spy();
     render((
       <TextArea
@@ -78,7 +78,7 @@ describe('functionality', () => {
       />
     ));
 
-    userEvent.type(screen.getByRole('textbox'), 'content-value');
+    await userEvent.type(screen.getByRole('textbox'), 'content-value');
     expect(spy.callCount).toEqual(13); // once per typed character
   });
 });

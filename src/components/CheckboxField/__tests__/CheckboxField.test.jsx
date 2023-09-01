@@ -60,7 +60,7 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls synthetic event onChange()', () => {
+  it('calls synthetic event onChange()', async () => {
     const spy = sinon.spy();
     render((
       <CheckboxField
@@ -69,7 +69,7 @@ describe('functionality', () => {
       />
     ));
 
-    userEvent.click(screen.getByLabelText('label'));
+    await userEvent.click(screen.getByLabelText('label'));
     expect(spy.calledOnce).toEqual(true);
   });
 });
