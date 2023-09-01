@@ -187,7 +187,7 @@ work together yet 🎩.
 ## Custom Fields
 
 You can even place any content you need into the FormLayout — just wrap it with
-the [FormLayoutCustomField](#formlayoutcustomfield) component. This layout
+the FormLayoutCustomField component. This layout
 helper ensures your content is properly spaced and aligned with to other
 FormLayout elements. FormLayoutCustomFields are designed to work solely inside
 the FormLayout component.

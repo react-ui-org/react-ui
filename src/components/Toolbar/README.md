@@ -353,10 +353,7 @@ A wrapper for individual toolbar items.
 | `--rui-Toolbar__gap`                                 | Gap between toolbar items                                    |
 | `--rui-Toolbar__gap--dense`                          | Dense gap between toolbar items                              |
 
-[inline-elements]: https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elements
-[block-elements]: https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elements
 [grid]: /components/Grid
-[spacing]: /css-helpers/spacing
 [text]: /components/Text
 [React synthetic events]: https://reactjs.org/docs/events.html
 [div]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
