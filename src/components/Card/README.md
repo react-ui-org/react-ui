@@ -269,7 +269,7 @@ its accessibility.
 
 ### CardBody
 
-Space your content with CardBody. See [Card Composition](#card-composition) for
+Space your content with CardBody. See [Composition](#composition) for
 all details.
 
 <docoff-react-props src="/components/Card/CardBody.jsx"></docoff-react-props>
@@ -277,7 +277,7 @@ all details.
 ### CardFooter
 
 Separate your card actions with CardFooter. See
-[Card Composition](#card-composition) for all details.
+[Composition](#composition) for all details.
 
 <docoff-react-props src="/components/Card/CardFooter.jsx"></docoff-react-props>
 

@@ -1,8 +1,5 @@
 # Colors
 
-import { Playground } from 'docz'
-import { Placeholder } from '../_components/Placeholder/Placeholder'
-
 Helpers for text and background.
 
 ## Text Colors
