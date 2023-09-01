@@ -1,5 +1,4 @@
 import React from 'react';
-import sinon from 'sinon';
 import {
   render,
   screen,
@@ -112,7 +111,7 @@ describe('rendering', () => {
 
 describe('functionality', () => {
   it('calls onClick() on sorting button click', async () => {
-    const spy = sinon.spy();
+    const spy = jest.fn();
     render((
       <Table
         {...mandatoryProps}
@@ -127,7 +126,7 @@ describe('functionality', () => {
     ));
 
     await userEvent.click(screen.getByRole('button'));
-    expect(spy.calledOnce).toEqual(true);
-    expect(spy.lastCall.args).toEqual(['dateOfBirth', 'asc']);
+    expect(spy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledWith('dateOfBirth', 'asc');
   });
 });

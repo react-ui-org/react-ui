@@ -1,5 +1,4 @@
 import React from 'react';
-import sinon from 'sinon';
 import {
   render,
   screen,
@@ -107,7 +106,7 @@ describe('rendering', () => {
 
 describe('functionality', () => {
   it('calls synthetic event onChange() on changing selected option', async () => {
-    const spy = sinon.spy();
+    const spy = jest.fn();
     render((
       <TextField
         {...mandatoryProps}
@@ -117,6 +116,6 @@ describe('functionality', () => {
     ));
 
     await userEvent.type(screen.getByRole('textbox'), 'content-value');
-    expect(spy.callCount).toEqual(13); // once per typed character
+    expect(spy).toHaveBeenCalledTimes(13); // once per typed character
   });
 });

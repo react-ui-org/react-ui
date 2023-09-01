@@ -3,7 +3,6 @@ import {
   render,
   screen,
 } from '@testing-library/react';
-import sinon from 'sinon';
 import userEvent from '@testing-library/user-event';
 import { TextLink } from '../TextLink';
 
@@ -36,7 +35,7 @@ describe('rendering', () => {
 
 describe('functionality', () => {
   it('calls synthetic event onClick()', async () => {
-    const spy = sinon.spy();
+    const spy = jest.fn();
     render((
       <TextLink
         {...mandatoryProps}
@@ -48,6 +47,6 @@ describe('functionality', () => {
     ));
 
     await userEvent.click(screen.getByText('link text'));
-    expect(spy.calledOnce).toEqual(true);
+    expect(spy).toHaveBeenCalled();
   });
 });

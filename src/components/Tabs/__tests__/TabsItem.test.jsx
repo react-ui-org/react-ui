@@ -1,5 +1,4 @@
 import React from 'react';
-import sinon from 'sinon';
 import {
   render,
   screen,
@@ -59,7 +58,7 @@ describe('rendering', () => {
 
 describe('functionality', () => {
   it('calls onClick() on navigating', async () => {
-    const spy = sinon.spy();
+    const spy = jest.fn();
     render((
       <TabsItem
         {...mandatoryProps}
@@ -71,6 +70,6 @@ describe('functionality', () => {
     ));
 
     await userEvent.click(screen.getByText('label'));
-    expect(spy.calledOnce).toEqual(true);
+    expect(spy).toHaveBeenCalled();
   });
 });

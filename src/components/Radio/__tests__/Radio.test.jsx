@@ -1,5 +1,4 @@
 import React from 'react';
-import sinon from 'sinon';
 import {
   render,
   screen,
@@ -115,7 +114,7 @@ describe('rendering', () => {
 
 describe('functionality', () => {
   it('calls synthetic event onChange()', async () => {
-    const spy = sinon.spy();
+    const spy = jest.fn();
     render((
       <Radio
         {...mandatoryProps}
@@ -124,6 +123,6 @@ describe('functionality', () => {
     ));
 
     await userEvent.click(screen.getByText('option 1'));
-    expect(spy.calledOnce).toEqual(true);
+    expect(spy).toHaveBeenCalled();
   });
 });

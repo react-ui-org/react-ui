@@ -91,7 +91,6 @@
     "prop-types": "^15.8.1",
     "sass": "^1.66.1",
     "sass-loader": "^13.3.2",
-    "sinon": "^14.0.2",
     "stylelint": "^14.16.1",
     "stylelint-webpack-plugin": "^4.1.1",
     "terser-webpack-plugin": "^5.3.9",

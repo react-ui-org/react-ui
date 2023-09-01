@@ -1,6 +1,5 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
-import sinon from 'sinon';
 import {
   render,
   screen,
@@ -80,7 +79,7 @@ describe('functionality', () => {
     () => userEvent.keyboard('{Escape}'),
     () => userEvent.click(screen.getByTestId('id').parentNode),
   ])('call close modal using `closeButtonRef` (%#)', async (action) => {
-    const spy = sinon.spy();
+    const spy = jest.fn();
     const ref = React.createRef();
     render((
       <Modal
@@ -99,14 +98,14 @@ describe('functionality', () => {
     ));
 
     await action();
-    expect(spy.calledOnce).toEqual(true);
+    expect(spy).toHaveBeenCalled();
   });
 
   it.each([
     () => userEvent.keyboard('{Escape}'),
     () => userEvent.click(screen.getByTestId('id').parentNode),
   ])('do not call close modal using `closeButtonRef` when button is disabled (%#)', async (action) => {
-    const spy = sinon.spy();
+    const spy = jest.fn();
     const ref = React.createRef();
     render((
       <Modal
@@ -126,14 +125,14 @@ describe('functionality', () => {
     ));
 
     await action();
-    expect(spy.called).toEqual(false);
+    expect(spy).not.toHaveBeenCalled();
   });
 
   it.each([
     () => userEvent.keyboard('{Escape}'),
     () => userEvent.click(screen.getByTestId('id').parentNode),
   ])('call close modal using `closeButtonRef` and `ModalCloseButton` (%#)', async (action) => {
-    const spy = sinon.spy();
+    const spy = jest.fn();
     const ref = React.createRef();
     render((
       <Modal
@@ -150,14 +149,14 @@ describe('functionality', () => {
     ));
 
     await action();
-    expect(spy.calledOnce).toEqual(true);
+    expect(spy).toHaveBeenCalled();
   });
 
   it.each([
     () => userEvent.keyboard('{Escape}'),
     () => userEvent.click(screen.getByTestId('id').parentNode),
   ])('do not call close modal using `closeButtonRef` and `ModalCloseButton` when button is disabled (%#)', async (action) => {
-    const spy = sinon.spy();
+    const spy = jest.fn();
     const ref = React.createRef();
     render((
       <Modal
@@ -175,11 +174,11 @@ describe('functionality', () => {
     ));
 
     await action();
-    expect(spy.called).toEqual(false);
+    expect(spy).not.toHaveBeenCalled();
   });
 
   it('call primary action using `primaryButtonRef`', async () => {
-    const spy = sinon.spy();
+    const spy = jest.fn();
     const ref = React.createRef();
     render((
       <Modal
@@ -198,11 +197,11 @@ describe('functionality', () => {
     ));
 
     await userEvent.keyboard('{Enter}');
-    await expect(spy.calledOnce).toEqual(true);
+    await expect(spy).toHaveBeenCalled();
   });
 
   it('do not call primary action using `primaryButtonRef when button is disabled', async () => {
-    const spy = sinon.spy();
+    const spy = jest.fn();
     const ref = React.createRef();
     render((
       <Modal
@@ -222,7 +221,7 @@ describe('functionality', () => {
     ));
 
     await userEvent.keyboard('{enter}');
-    expect(spy.called).toEqual(false);
+    expect(spy).not.toHaveBeenCalled();
   });
 
   const assertFocus = (element, shouldHaveFocus) => (

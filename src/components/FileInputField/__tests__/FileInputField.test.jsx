@@ -1,5 +1,4 @@
 import React from 'react';
-import sinon from 'sinon';
 import {
   render,
   screen,
@@ -65,7 +64,7 @@ describe('rendering', () => {
 
 describe('functionality', () => {
   it('calls synthetic event onChange()', async () => {
-    const spy = sinon.spy();
+    const spy = jest.fn();
     render((
       <FileInputField
         {...mandatoryProps}
@@ -75,6 +74,6 @@ describe('functionality', () => {
 
     const file = new File(['hello'], 'hello.png', { type: 'image/png' });
     await userEvent.upload(screen.getByLabelText('label'), file);
-    expect(spy.calledOnce).toEqual(true);
+    expect(spy).toHaveBeenCalled();
   });
 });

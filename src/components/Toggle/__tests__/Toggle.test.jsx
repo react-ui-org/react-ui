@@ -1,5 +1,4 @@
 import React from 'react';
-import sinon from 'sinon';
 import {
   render,
   screen,
@@ -69,7 +68,7 @@ describe('rendering', () => {
 
 describe('functionality', () => {
   it('calls synthetic event onChange() on toggling', async () => {
-    const spy = sinon.spy();
+    const spy = jest.fn();
     render((
       <Toggle
         {...mandatoryProps}
@@ -78,6 +77,6 @@ describe('functionality', () => {
     ));
 
     await userEvent.click(screen.getByRole('checkbox'));
-    expect(spy.callCount).toEqual(1);
+    expect(spy).toHaveBeenCalled();
   });
 });
