@@ -1,5 +1,4 @@
 import React from 'react';
-import sinon from 'sinon';
 import {
   render,
   screen,
@@ -51,7 +50,7 @@ describe('rendering', () => {
 
 describe('functionality', () => {
   it('calls onClose() on Close button click', async () => {
-    const spy = sinon.spy();
+    const spy = jest.fn();
     render((
       <Alert
         {...mandatoryProps}
@@ -60,6 +59,6 @@ describe('functionality', () => {
     ));
 
     await userEvent.click(screen.getByTitle('Close'));
-    expect(spy.calledOnce).toEqual(true);
+    expect(spy).toHaveBeenCalled();
   });
 });

@@ -1,5 +1,4 @@
 import React from 'react';
-import sinon from 'sinon';
 import {
   render,
   screen,
@@ -28,7 +27,7 @@ describe('rendering', () => {
 
 describe('functionality', () => {
   it('calls synthetic event onClick()', async () => {
-    const spy = sinon.spy();
+    const spy = jest.fn();
     render((
       <ModalCloseButton
         onClick={spy}
@@ -36,7 +35,7 @@ describe('functionality', () => {
     ));
 
     await userEvent.click(screen.getByRole('button'));
-    expect(spy.calledOnce).toEqual(true);
+    expect(spy).toHaveBeenCalled();
   });
 });
 

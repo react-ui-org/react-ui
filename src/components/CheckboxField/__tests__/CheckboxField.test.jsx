@@ -1,5 +1,4 @@
 import React from 'react';
-import sinon from 'sinon';
 import {
   render,
   screen,
@@ -61,7 +60,7 @@ describe('rendering', () => {
 
 describe('functionality', () => {
   it('calls synthetic event onChange()', async () => {
-    const spy = sinon.spy();
+    const spy = jest.fn();
     render((
       <CheckboxField
         {...mandatoryProps}
@@ -70,7 +69,7 @@ describe('functionality', () => {
     ));
 
     await userEvent.click(screen.getByLabelText('label'));
-    expect(spy.calledOnce).toEqual(true);
+    expect(spy).toHaveBeenCalled();
   });
 });
 

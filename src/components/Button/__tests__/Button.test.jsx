@@ -4,7 +4,6 @@ import {
   screen,
   within,
 } from '@testing-library/react';
-import sinon from 'sinon';
 import userEvent from '@testing-library/user-event';
 import { actionColorPropTest } from '../../../../tests/propTests/actionColorPropTest';
 import { blockPropTest } from '../../../../tests/propTests/blockPropTest';
@@ -157,7 +156,7 @@ describe('rendering', () => {
 
 describe('functionality', () => {
   it('calls synthetic event onClick()', async () => {
-    const spy = sinon.spy();
+    const spy = jest.fn();
     render((
       <Button
         {...mandatoryProps}
@@ -166,6 +165,6 @@ describe('functionality', () => {
     ));
 
     await userEvent.click(screen.getByText('label'));
-    expect(spy.calledOnce).toEqual(true);
+    expect(spy).toHaveBeenCalled();
   });
 });
