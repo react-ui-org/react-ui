@@ -23,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/react-ui-org/react-ui/issues"
   },
-  "main": "dist/reactui.js",
+  "main": "dist/react-ui.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/react-ui-org/react-ui"
@@ -34,7 +34,7 @@
   },
   "scripts": {
     "build": "webpack --mode=production",
-    "copy": "cp \"src/docs/_assets/generated/reactui.css\" dist & cp \"src/docs/_assets/generated/reactui.js\" dist",
+    "copy": "cp \"src/docs/_assets/generated/react-ui.css\" dist & cp \"src/docs/_assets/generated/react-ui.js\" dist",
     "eslint": "eslint --ext js,jsx src",
     "jest": "jest src --coverage",
     "lint": "npm run eslint && npm run markdownlint && npm run stylelint",
