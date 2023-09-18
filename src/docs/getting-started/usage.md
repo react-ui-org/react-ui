@@ -26,30 +26,38 @@ Google Fonts in your `<head>` element:
 Remember to include all necessary font weights (and only them — for better
 performance).
 
-## Foundation CSS
+## CSS
 
 React UI honors [ITCSS][itcss] principles to make sure that its CSS code base
-will work and perform well even in large scale. There are two global CSS layers:
+will work and perform well even in large scale. There are three global CSS
+layers:
 
-- **Theme:** a collection of hundreds of CSS custom properties that define the
-  look of your app. See [Theming][theming] for more.
-- **Foundation:** the ground-zero CSS for React UI components. Includes global
-  resets and fixes rendering inconsistencies across browsers with
-  `normalize.css`. Not to be confused with the Foundation CSS framework.
+1. **Theme:** a collection of hundreds of CSS custom properties that define the
+   look of your app. See [Theming][theming] for more.
+2. **Foundation:** mandatory ground-zero CSS for React UI components. Includes
+   global resets and fixes rendering inconsistencies across browsers with
+   `normalize.css`. (Not to be confused with the Foundation CSS framework.)
+3. **CSS helpers:** tiny CSS classes that can handle details like
+   [typography][typography], [spacing][spacing], [colors][colors], etc. Class
+   name notation is [inspired by Bootstrap][bootstrap-utilities], so if you are
+   familiar with Bootstrap, you will feel at home here.
 
-Import the two global CSS layers as early as possible in your document:
+All layers are written in Sass and compiled to CSS. You can import them in a
+**ready-to-use CSS bundle** like this:
+
+```js
+import '@react-ui-org/react-ui/dist/react-ui.css';
+```
+
+### Sass
+
+Alternatively, you can import the Sass source files directly:
 
 ```js
 import '@react-ui-org/react-ui/src/theme.scss';
 import '@react-ui-org/react-ui/src/foundation.scss';
+import '@react-ui-org/react-ui/src/helpers.scss';
 ```
-
-⚠️ As of now, you will need **working SASS pipeline** for this to work. This is
-to be changed to a ready-to-use CSS in the future.
-
-️👉️ Because of using CSS custom properties, it is technically possible to import
-the theme layer anywhere later in the app. But it's a nice habit to declare
-variables before using them.
 
 ## Components
 
@@ -60,6 +68,9 @@ import { Button } from '@react-ui-org/react-ui';
 
 <Button label="My Button" />
 ```
+
+👉 Thanks to [CSS modules], React UI components have their styles bundled
+together with the component code.
 
 ### Controlled vs. Uncontrolled
 
@@ -95,8 +106,7 @@ Example JSX:
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Button } from '@react-ui-org/react-ui';
-import '@react-ui-org/react-ui/src/theme.scss';
-import '@react-ui-org/react-ui/src/foundation.scss';
+import '@react-ui-org/react-ui/dist/react-ui.css';
 
 const App = () => (
   <Button label="My Button" />
@@ -105,22 +115,16 @@ const App = () => (
 ReactDOM.render(<App />, document.querySelector('#app'));
 ```
 
-## CSS Helpers
+## CDN
 
-CSS helpers are tiny CSS classes that can handle details like
-[typography][typography], [spacing][spacing], [colors][colors], etc.
+React UI is also available on CDN:
 
-To use CSS helper classes, just import them along the base CSS layers of
-React UI:
+| Description | URL                                                                            |
+|-------------|--------------------------------------------------------------------------------|
+| CSS         | `https://cdn.jsdelivr.net/npm/@react-ui-org/react-ui@latest/dist/react-ui.css` |
+| JS          | `https://cdn.jsdelivr.net/npm/@react-ui-org/react-ui@latest/dist/react-ui.js`  |
 
-```js
-import '@react-ui-org/react-ui/src/theme.scss';
-import '@react-ui-org/react-ui/src/foundation.scss';
-import '@react-ui-org/react-ui/src/helpers.scss';
-```
-
-Class name notation is [inspired by Bootstrap][bootstrap-utilities], so if you
-are familiar with Bootstrap, you will feel at home here.
+👉 Consider using a specific version instead of `latest` in production.
 
 [itcss]: https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/
 [theming]: /docs/customize/theming/overview
@@ -129,3 +133,4 @@ are familiar with Bootstrap, you will feel at home here.
 [spacing]: /docs/css-helpers/spacing
 [colors]: /docs/css-helpers/colors
 [bootstrap-utilities]: https://getbootstrap.com/docs/5.1/utilities/
+[CSS modules]: https://github.com/css-modules/css-modules
