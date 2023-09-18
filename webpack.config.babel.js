@@ -12,8 +12,8 @@ module.exports = (env, argv) => ({
     ? false
     : 'eval-cheap-module-source-map',
   entry: {
-    cssCustomProperties: Path.join(__dirname, 'src/cssCustomProperties.js'),
-    reactui: Path.join(__dirname, 'src/index.js'),
+    'docs-custom-properties': Path.join(__dirname, 'src/docsCustomProperties.js'),
+    'react-ui': Path.join(__dirname, 'src/index.js'),
   },
   externals: {
     react: {
