@@ -3,31 +3,33 @@
 
 @use "theme";
 
-.root {
-    --rui-local-inner-border-radius: #{theme.$inner-border-radius};
+@layer components.button-group {
+    .root {
+        --rui-local-inner-border-radius: #{theme.$inner-border-radius};
 
-    display: inline-flex; // 1.
-}
+        display: inline-flex; // 1.
+    }
 
-.isRootPriorityFilled {
-    --rui-local-gap: #{theme.$filled-gap};
-    --rui-local-separator-width: #{theme.$filled-separator-width};
-    --rui-local-separator-color: #{theme.$filled-separator-color};
-}
+    .isRootPriorityFilled {
+        --rui-local-gap: #{theme.$filled-gap};
+        --rui-local-separator-width: #{theme.$filled-separator-width};
+        --rui-local-separator-color: #{theme.$filled-separator-color};
+    }
 
-.isRootPriorityOutline {
-    --rui-local-gap: #{theme.$outline-gap};
-    --rui-local-separator-width: #{theme.$outline-separator-width};
-    --rui-local-separator-color: #{theme.$outline-separator-color};
-}
+    .isRootPriorityOutline {
+        --rui-local-gap: #{theme.$outline-gap};
+        --rui-local-separator-width: #{theme.$outline-separator-width};
+        --rui-local-separator-color: #{theme.$outline-separator-color};
+    }
 
-.isRootPriorityFlat {
-    --rui-local-gap: #{theme.$flat-gap};
-    --rui-local-separator-width: #{theme.$flat-separator-width};
-    --rui-local-separator-color: #{theme.$flat-separator-color};
-}
+    .isRootPriorityFlat {
+        --rui-local-gap: #{theme.$flat-gap};
+        --rui-local-separator-width: #{theme.$flat-separator-width};
+        --rui-local-separator-color: #{theme.$flat-separator-color};
+    }
 
-.isRootBlock {
-    display: flex;
-    width: 100%;
+    .isRootBlock {
+        display: flex;
+        width: 100%;
+    }
 }

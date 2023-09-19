@@ -28,27 +28,27 @@ performance).
 
 ## CSS
 
-React UI honors [ITCSS][itcss] principles to make sure that its CSS code base
-will work and perform well even in large scale. There are four CSS layers:
-
-1. **Theme:** a collection of hundreds of CSS custom properties that define the
-   look of your app. See [Theming][theming] for more.
-2. **Foundation:** mandatory ground-zero CSS for React UI components. Includes
-   global resets and fixes rendering inconsistencies across browsers with
-   `normalize.css`. (Not to be confused with the Foundation CSS framework.)
-3. **Components:** React UI components' styles. Components utilize [CSS modules]
-   to avoid class name conflicts and to keep the class names scoped.
-4. **CSS helpers:** tiny CSS classes that can handle details like
-   [typography][typography], [spacing][spacing], [colors][colors], etc. Class
-   name notation is [inspired by Bootstrap][bootstrap-utilities], so if you are
-   familiar with Bootstrap, you will feel at home here.
-
-All layers are written in Sass and compiled to CSS. You can import them all in
-a **ready-to-use CSS bundle** like this:
+React UI styles are written in Sass and compiled to CSS. You can import them
+in a **ready-to-use CSS bundle** like this:
 
 ```js
 import '@react-ui-org/react-ui/dist/react-ui.css';
 ```
+
+Under the hood, there are several CSS layers:
+
+1. **Layers definition:** establish [CSS cascade layers].
+2. **Theme:** a collection of hundreds of [design tokens] that define the look
+   and feel of your app. See [Theming] for more.
+3. **Foundation:** mandatory ground-zero CSS for React UI components. Includes
+   global resets and fixes rendering inconsistencies across browsers with
+   `normalize.css`. (Not to be confused with the Foundation CSS framework!)
+4. **Components:** React UI components' styles. Components utilize [CSS modules]
+   to avoid class name conflicts and to keep the class names scoped.
+5. **CSS helpers:** tiny CSS classes (helpers and utilities) that can handle
+   details like [typography], [spacing], [colors], etc. Class name notation is
+   [inspired by Bootstrap utilities][bootstrap-utilities], so if you are
+   familiar with Bootstrap, you will feel at home here.
 
 ### Sass
 
@@ -67,7 +67,7 @@ import { Button } from '@react-ui-org/react-ui';
 ### Controlled vs. Uncontrolled
 
 While you may find out some components are working for you as uncontrolled, we
-currently support only [controlled components][controlled-components].
+currently support only [controlled components].
 
 ## Full Example
 
@@ -118,11 +118,12 @@ React UI is also available on CDN:
 
 👉 Consider using a specific version instead of `latest` in production.
 
-[itcss]: https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/
-[theming]: /docs/customize/theming/overview
-[controlled-components]: https://reactjs.org/docs/forms.html#controlled-components
+[CSS cascade layers]: /docs/contribute/css#cascade-layers
+[design tokens]: /docs/foundation/design-tokens
+[Theming]: /docs/customize/theming/overview
+[CSS modules]: /docs/contribute/css#css-modules
 [typography]: /docs/css-helpers/typography
 [spacing]: /docs/css-helpers/spacing
 [colors]: /docs/css-helpers/colors
-[bootstrap-utilities]: https://getbootstrap.com/docs/5.1/utilities/
-[CSS modules]: https://github.com/css-modules/css-modules
+[bootstrap-utilities]: https://getbootstrap.com/docs/5.3/utilities/api/
+[controlled components]: https://reactjs.org/docs/forms.html#controlled-components

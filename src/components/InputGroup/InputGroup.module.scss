@@ -13,79 +13,81 @@
 @use "../../styles/tools/reset";
 @use "theme";
 
-.root {
-    @include foundation.root();
-    @include foundation.fieldset();
-}
+@layer components.input-group {
+    .root {
+        @include foundation.root();
+        @include foundation.fieldset();
+    }
 
-// 4.
-.legend {
-    @include accessibility.hide-text();
-}
+    // 4.
+    .legend {
+        @include accessibility.hide-text();
+    }
 
-// 4.
-.label {
-    @include foundation.label();
-}
+    // 4.
+    .label {
+        @include foundation.label();
+    }
 
-.inputGroup {
-    --rui-local-inner-border-radius: #{theme.$inner-border-radius};
+    .inputGroup {
+        --rui-local-inner-border-radius: #{theme.$inner-border-radius};
 
-    display: flex; // 2.
-    gap: theme.$gap;
-}
+        display: flex; // 2.
+        gap: theme.$gap;
+    }
 
-// 1.
-.validationText {
-    @include reset.list();
-    @include foundation.help-text();
-}
+    // 1.
+    .validationText {
+        @include reset.list();
+        @include foundation.help-text();
+    }
 
-.isRootRequired .label {
-    @include foundation.label-required();
-}
+    .isRootRequired .label {
+        @include foundation.label-required();
+    }
 
-// States
-.isRootStateInvalid {
-    @include variants.validation(invalid);
-}
+    // States
+    .isRootStateInvalid {
+        @include variants.validation(invalid);
+    }
 
-.isRootStateValid {
-    @include variants.validation(valid);
-}
+    .isRootStateValid {
+        @include variants.validation(valid);
+    }
 
-.isRootStateWarning {
-    @include variants.validation(warning);
-}
+    .isRootStateWarning {
+        @include variants.validation(warning);
+    }
 
-// Layouts
-.isRootLayoutVertical,
-.isRootLayoutHorizontal {
-    @include box-field-layout.vertical();
-}
+    // Layouts
+    .isRootLayoutVertical,
+    .isRootLayoutHorizontal {
+        @include box-field-layout.vertical();
+    }
 
-.isRootLayoutVertical .field,
-.isRootLayoutHorizontal .field {
-    max-width: none; // 3.
-}
+    .isRootLayoutVertical .field,
+    .isRootLayoutHorizontal .field {
+        max-width: none; // 3.
+    }
 
-.isRootLayoutHorizontal {
-    @include box-field-layout.horizontal();
-}
+    .isRootLayoutHorizontal {
+        @include box-field-layout.horizontal();
+    }
 
-.isRootInFormLayout {
-    @include box-field-layout.in-form-layout($is-fieldset: true);
-}
+    .isRootInFormLayout {
+        @include box-field-layout.in-form-layout($is-fieldset: true);
+    }
 
-// Sizes
-.isRootSizeSmall {
-    @include box-field-sizes.size(small, $has-input: false);
-}
+    // Sizes
+    .isRootSizeSmall {
+        @include box-field-sizes.size(small, $has-input: false);
+    }
 
-.isRootSizeMedium {
-    @include box-field-sizes.size(medium, $has-input: false);
-}
+    .isRootSizeMedium {
+        @include box-field-sizes.size(medium, $has-input: false);
+    }
 
-.isRootSizeLarge {
-    @include box-field-sizes.size(large, $has-input: false);
+    .isRootSizeLarge {
+        @include box-field-sizes.size(large, $has-input: false);
+    }
 }

@@ -1,30 +1,32 @@
 @use "theme";
 
-.root {
-    display: flex;
-    flex: none;
-    gap: theme.$header-gap;
-    align-items: baseline;
-    padding: theme.$padding-y theme.$padding-x;
-    border-bottom: theme.$separator-width solid theme.$separator-color;
-}
+@layer components.modal {
+    .root {
+        display: flex;
+        flex: none;
+        gap: theme.$header-gap;
+        align-items: baseline;
+        padding: theme.$padding-y theme.$padding-x;
+        border-bottom: theme.$separator-width solid theme.$separator-color;
+    }
 
-.isRootJustifiedToStart {
-    justify-content: flex-start;
-}
+    .isRootJustifiedToStart {
+        justify-content: flex-start;
+    }
 
-.isRootJustifiedToCenter {
-    justify-content: center;
-}
+    .isRootJustifiedToCenter {
+        justify-content: center;
+    }
 
-.isRootJustifiedToEnd {
-    justify-content: flex-end;
-}
+    .isRootJustifiedToEnd {
+        justify-content: flex-end;
+    }
 
-.isRootJustifiedToSpaceBetween {
-    justify-content: space-between;
-}
+    .isRootJustifiedToSpaceBetween {
+        justify-content: space-between;
+    }
 
-.isRootJustifiedToStretch {
-    display: block;
+    .isRootJustifiedToStretch {
+        display: block;
+    }
 }

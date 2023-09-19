@@ -1,16 +1,18 @@
 @use "theme";
 
-.root {
-    text-decoration: theme.$text-decoration;
-    color: theme.$color;
+@layer components.text-link {
+    .root {
+        text-decoration: theme.$text-decoration;
+        color: theme.$color;
 
-    &:hover {
-        text-decoration: theme.$hover-text-decoration;
-        color: theme.$hover-color;
-    }
+        &:hover {
+            text-decoration: theme.$hover-text-decoration;
+            color: theme.$hover-color;
+        }
 
-    &:active {
-        text-decoration: theme.$active-text-decoration;
-        color: theme.$active-color;
+        &:active {
+            text-decoration: theme.$active-text-decoration;
+            color: theme.$active-color;
+        }
     }
 }

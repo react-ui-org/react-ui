@@ -1,28 +1,33 @@
 // Mandatory themeable CSS layer to prepare ground for components.
-// Structured according to ITCSS methodology, ie. most importantly in ascending specificity.
+
+@use "sass:meta";
 
 //
-// 1. Generic
-// ==========
+// Generic
+// =======
 //
 // Ground-zero styles.
 
-@use "styles/generic/box-sizing";
-@use "normalize.css/normalize.css";
-@use "styles/generic/focus";
-@use "styles/generic/forms";
-@use "styles/generic/reset";
-@use "styles/generic/shared";
+@layer foundation.generic {
+    @include meta.load-css("styles/generic/box-sizing");
+    @include meta.load-css("normalize.css/normalize.css");
+    @include meta.load-css("styles/generic/focus");
+    @include meta.load-css("styles/generic/forms");
+    @include meta.load-css("styles/generic/reset");
+    @include meta.load-css("styles/generic/shared");
+}
 
 //
-// 2. Elements
-// ===========
+// Elements
+// ========
 //
 // Unclassed HTML elements (type selectors).
 
-@use "styles/elements/code";
-@use "styles/elements/links";
-@use "styles/elements/lists";
-@use "styles/elements/page";
-@use "styles/elements/rulers";
-@use "styles/elements/small";
+@layer foundation.elements {
+    @include meta.load-css("styles/elements/code");
+    @include meta.load-css("styles/elements/links");
+    @include meta.load-css("styles/elements/lists");
+    @include meta.load-css("styles/elements/page");
+    @include meta.load-css("styles/elements/rulers");
+    @include meta.load-css("styles/elements/small");
+}

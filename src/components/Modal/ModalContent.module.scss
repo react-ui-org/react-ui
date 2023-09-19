@@ -1,5 +1,7 @@
 @use "theme";
 
-.root {
-    padding: theme.$padding-y theme.$padding-x;
+@layer components.modal {
+    .root {
+        padding: theme.$padding-y theme.$padding-x;
+    }
 }

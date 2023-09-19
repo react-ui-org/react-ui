@@ -7,72 +7,74 @@
 @use "settings";
 @use "theme";
 
-.root {
-    --rui-local-outer-spacing: #{theme.$outer-spacing-xs};
-    --rui-local-max-width: calc(100% - (2 * var(--rui-local-outer-spacing)));
-    --rui-local-max-height: calc(100% - (2 * var(--rui-local-outer-spacing)));
+@layer components.modal {
+    .root {
+        --rui-local-outer-spacing: #{theme.$outer-spacing-xs};
+        --rui-local-max-width: calc(100% - (2 * var(--rui-local-outer-spacing)));
+        --rui-local-max-height: calc(100% - (2 * var(--rui-local-outer-spacing)));
 
-    position: fixed;
-    left: 50%;
-    z-index: settings.$z-index;
-    display: flex;
-    flex-direction: column;
-    max-width: var(--rui-local-max-width);
-    max-height: var(--rui-local-max-height);
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    border-radius: settings.$border-radius;
-    background: theme.$background;
-    box-shadow: theme.$box-shadow;
-    transform: translateX(-50%);
+        position: fixed;
+        left: 50%;
+        z-index: settings.$z-index;
+        display: flex;
+        flex-direction: column;
+        max-width: var(--rui-local-max-width);
+        max-height: var(--rui-local-max-height);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        border-radius: settings.$border-radius;
+        background: theme.$background;
+        box-shadow: theme.$box-shadow;
+        transform: translateX(-50%);
 
-    @include breakpoint.up(sm) {
-        --rui-local-outer-spacing: #{theme.$outer-spacing-sm};
+        @include breakpoint.up(sm) {
+            --rui-local-outer-spacing: #{theme.$outer-spacing-sm};
+        }
     }
-}
 
-.backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: settings.$backdrop-z-index;
-    width: 100vw;
-    height: 100vh;
-    background: theme.$backdrop-background;
-}
+    .backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: settings.$backdrop-z-index;
+        width: 100vw;
+        height: 100vh;
+        background: theme.$backdrop-background;
+    }
 
-.isRootSizeSmall {
-    width: map.get(theme.$sizes, small, width);
-}
+    .isRootSizeSmall {
+        width: map.get(theme.$sizes, small, width);
+    }
 
-.isRootSizeMedium {
-    width: map.get(theme.$sizes, medium, width);
-}
+    .isRootSizeMedium {
+        width: map.get(theme.$sizes, medium, width);
+    }
 
-.isRootSizeLarge {
-    width: map.get(theme.$sizes, large, width);
-}
+    .isRootSizeLarge {
+        width: map.get(theme.$sizes, large, width);
+    }
 
-.isRootSizeFullscreen {
-    width: map.get(theme.$sizes, fullscreen, width);
-    height: map.get(theme.$sizes, fullscreen, height);
-}
+    .isRootSizeFullscreen {
+        width: map.get(theme.$sizes, fullscreen, width);
+        height: map.get(theme.$sizes, fullscreen, height);
+    }
 
-.isRootSizeFullscreen .content {
-    height: 100%;
-}
+    .isRootSizeFullscreen .content {
+        height: 100%;
+    }
 
-.isRootSizeAuto {
-    width: auto;
-    min-width: min(var(--rui-local-max-width), #{map.get(theme.$sizes, auto, min-width)});
-    max-width: min(var(--rui-local-max-width), #{map.get(theme.$sizes, auto, max-width)});
-}
+    .isRootSizeAuto {
+        width: auto;
+        min-width: min(var(--rui-local-max-width), #{map.get(theme.$sizes, auto, min-width)});
+        max-width: min(var(--rui-local-max-width), #{map.get(theme.$sizes, auto, max-width)});
+    }
 
-.isRootPositionCenter {
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
+    .isRootPositionCenter {
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
 
-.isRootPositionTop {
-    top: var(--rui-local-outer-spacing);
+    .isRootPositionTop {
+        top: var(--rui-local-outer-spacing);
+    }
 }
