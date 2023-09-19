@@ -4,60 +4,62 @@
 @use "../../styles/tools/form-fields/variants";
 @use "../../styles/tools/accessibility";
 
-// Foundation
-.root {
-    @include foundation.root();
-}
+@layer components.file-input-field {
+    // Foundation
+    .root {
+        @include foundation.root();
+    }
 
-.label {
-    @include foundation.label();
-}
+    .label {
+        @include foundation.label();
+    }
 
-.inputContainer {
-    @include box-field-elements.input-container();
-}
+    .inputContainer {
+        @include box-field-elements.input-container();
+    }
 
-.helpText,
-.validationText {
-    @include foundation.help-text();
-}
+    .helpText,
+    .validationText {
+        @include foundation.help-text();
+    }
 
-.isRootRequired .label {
-    @include foundation.label-required();
-}
+    .isRootRequired .label {
+        @include foundation.label-required();
+    }
 
-// States
-.isRootStateInvalid {
-    @include variants.validation(invalid);
-}
+    // States
+    .isRootStateInvalid {
+        @include variants.validation(invalid);
+    }
 
-.isRootStateValid {
-    @include variants.validation(valid);
-}
+    .isRootStateValid {
+        @include variants.validation(valid);
+    }
 
-.isRootStateWarning {
-    @include variants.validation(warning);
-}
+    .isRootStateWarning {
+        @include variants.validation(warning);
+    }
 
-// Invisible label
-.isLabelHidden {
-    @include accessibility.hide-text();
-}
+    // Invisible label
+    .isLabelHidden {
+        @include accessibility.hide-text();
+    }
 
-// Layouts
-.isRootLayoutVertical,
-.isRootLayoutHorizontal {
-    @include box-field-layout.vertical();
-}
+    // Layouts
+    .isRootLayoutVertical,
+    .isRootLayoutHorizontal {
+        @include box-field-layout.vertical();
+    }
 
-.isRootLayoutHorizontal {
-    @include box-field-layout.horizontal();
-}
+    .isRootLayoutHorizontal {
+        @include box-field-layout.horizontal();
+    }
 
-.isRootFullWidth {
-    @include box-field-layout.full-width();
-}
+    .isRootFullWidth {
+        @include box-field-layout.full-width();
+    }
 
-.isRootInFormLayout {
-    @include box-field-layout.in-form-layout();
+    .isRootInFormLayout {
+        @include box-field-layout.in-form-layout();
+    }
 }

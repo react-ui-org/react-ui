@@ -3,61 +3,63 @@
 @use "../../styles/tools/form-fields/box-field-sizes";
 @use "../../styles/tools/form-fields/variants";
 
-// Foundation
-.root {
-    @include box-field-layout.in-form-layout();
-    @include variants.visual(custom);
-}
+@layer components.form-layout {
+    // Foundation
+    .root {
+        @include box-field-layout.in-form-layout();
+        @include variants.visual(custom);
+    }
 
-.label {
-    @include foundation.label();
-}
+    .label {
+        @include foundation.label();
+    }
 
-.isRootRequired .label {
-    @include foundation.label-required();
-}
+    .isRootRequired .label {
+        @include foundation.label-required();
+    }
 
-// States
-.isRootStateInvalid {
-    @include variants.validation(invalid);
-}
+    // States
+    .isRootStateInvalid {
+        @include variants.validation(invalid);
+    }
 
-.isRootStateValid {
-    @include variants.validation(valid);
-}
+    .isRootStateValid {
+        @include variants.validation(valid);
+    }
 
-.isRootStateWarning {
-    @include variants.validation(warning);
-}
+    .isRootStateWarning {
+        @include variants.validation(warning);
+    }
 
-// Layouts
-.isRootLayoutVertical,
-.isRootLayoutHorizontal {
-    @include box-field-layout.vertical();
-}
+    // Layouts
+    .isRootLayoutVertical,
+    .isRootLayoutHorizontal {
+        @include box-field-layout.vertical();
+    }
 
-.isRootLayoutHorizontal {
-    @include box-field-layout.horizontal();
-}
+    .isRootLayoutHorizontal {
+        @include box-field-layout.horizontal();
+    }
 
-.isRootLayoutVertical .field,
-.isRootLayoutHorizontal .field {
-    width: auto;
-}
+    .isRootLayoutVertical .field,
+    .isRootLayoutHorizontal .field {
+        width: auto;
+    }
 
-.isRootFullWidth .field {
-    justify-self: stretch;
-}
+    .isRootFullWidth .field {
+        justify-self: stretch;
+    }
 
-// Sizes
-.isRootSizeSmall {
-    @include box-field-sizes.size(small);
-}
+    // Sizes
+    .isRootSizeSmall {
+        @include box-field-sizes.size(small);
+    }
 
-.isRootSizeMedium {
-    @include box-field-sizes.size(medium);
-}
+    .isRootSizeMedium {
+        @include box-field-sizes.size(medium);
+    }
 
-.isRootSizeLarge {
-    @include box-field-sizes.size(large);
+    .isRootSizeLarge {
+        @include box-field-sizes.size(large);
+    }
 }

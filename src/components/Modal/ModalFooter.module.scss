@@ -1,35 +1,37 @@
 @use "settings";
 @use "theme";
 
-.root {
-    display: flex;
-    flex: none;
-    flex-wrap: wrap;
-    gap: theme.$footer-gap;
-    align-items: center;
-    padding: theme.$padding-y theme.$padding-x;
-    border-top: theme.$separator-width solid theme.$separator-color;
-    border-bottom-right-radius: settings.$border-radius;
-    border-bottom-left-radius: settings.$border-radius;
-    background: theme.$footer-background;
-}
+@layer components.modal {
+    .root {
+        display: flex;
+        flex: none;
+        flex-wrap: wrap;
+        gap: theme.$footer-gap;
+        align-items: center;
+        padding: theme.$padding-y theme.$padding-x;
+        border-top: theme.$separator-width solid theme.$separator-color;
+        border-bottom-right-radius: settings.$border-radius;
+        border-bottom-left-radius: settings.$border-radius;
+        background: theme.$footer-background;
+    }
 
-.isRootJustifiedToStart {
-    justify-content: flex-start;
-}
+    .isRootJustifiedToStart {
+        justify-content: flex-start;
+    }
 
-.isRootJustifiedToCenter {
-    justify-content: center;
-}
+    .isRootJustifiedToCenter {
+        justify-content: center;
+    }
 
-.isRootJustifiedToEnd {
-    justify-content: flex-end;
-}
+    .isRootJustifiedToEnd {
+        justify-content: flex-end;
+    }
 
-.isRootJustifiedToSpaceBetween {
-    justify-content: space-between;
-}
+    .isRootJustifiedToSpaceBetween {
+        justify-content: space-between;
+    }
 
-.isRootJustifiedToStretch {
-    display: block;
+    .isRootJustifiedToStretch {
+        display: block;
+    }
 }

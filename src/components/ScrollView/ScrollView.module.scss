@@ -34,198 +34,200 @@
 $_arrow-inner-spacing: spacing.of(2);
 $_arrow-outer-spacing: spacing.of(4);
 
-.root {
-    position: relative; // 2.
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
+@layer components.scroll-view {
+    .root {
+        position: relative; // 2.
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
 
-// 1.
-.scrollingShadows {
-    position: absolute; // 2.
-    width: 100%; // 2.
-    height: 100%; // 2.
-    overflow: hidden; // 2.
-    pointer-events: none; // 2.
+    // 1.
+    .scrollingShadows {
+        position: absolute; // 2.
+        width: 100%; // 2.
+        height: 100%; // 2.
+        overflow: hidden; // 2.
+        pointer-events: none; // 2.
 
-    &::before,
-    &::after {
+        &::before,
+        &::after {
+            @include transition.add((visibility, opacity, transform));
+
+            content: "";
+            position: absolute;
+            z-index: 2; // 2.
+            display: block;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        &::before {
+            background: var(--rui-local-start-shadow-background);
+        }
+
+        &::after {
+            background: var(--rui-local-end-shadow-background);
+        }
+    }
+
+    .viewport {
+        z-index: 1; // 2.
+        width: 100%;
+        scroll-behavior: smooth;
+    }
+
+    .arrowPrev,
+    .arrowNext {
+        @include reset.button();
+        @include accessibility.min-tap-target();
         @include transition.add((visibility, opacity, transform));
 
-        content: "";
-        position: absolute;
-        z-index: 2; // 2.
-        display: block;
+        position: absolute; // 3.
+        z-index: 3; // 3.
+        display: flex;
+        align-items: center;
+        justify-content: center;
         visibility: hidden;
         opacity: 0;
     }
 
-    &::before {
-        background: var(--rui-local-start-shadow-background);
+    .arrowIcon {
+        @include caret.create();
     }
 
-    &::after {
-        background: var(--rui-local-end-shadow-background);
+    .isRootVertical {
+        height: 100%;
+        min-height: 0; // 6.
     }
-}
 
-.viewport {
-    z-index: 1; // 2.
-    width: 100%;
-    scroll-behavior: smooth;
-}
+    .isRootVertical .viewport {
+        height: 100%;
+        overflow-x: clip; // 7., 8.
+        overflow-y: auto; // 2.
+    }
 
-.arrowPrev,
-.arrowNext {
-    @include reset.button();
-    @include accessibility.min-tap-target();
-    @include transition.add((visibility, opacity, transform));
+    .isRootVertical .arrowPrev {
+        top: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        padding-top: $_arrow-outer-spacing;
+        padding-bottom: $_arrow-inner-spacing;
+        color: var(--rui-local-prev-arrow-color);
+        transform: translateY(var(--rui-local-prev-arrow-initial-offset));
+    }
 
-    position: absolute; // 3.
-    z-index: 3; // 3.
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    visibility: hidden;
-    opacity: 0;
-}
+    .isRootVertical .arrowPrev .arrowIcon {
+        @include caret.rotate(180);
+    }
 
-.arrowIcon {
-    @include caret.create();
-}
+    .isRootVertical .arrowNext {
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding-top: $_arrow-inner-spacing;
+        padding-bottom: $_arrow-outer-spacing;
+        color: var(--rui-local-next-arrow-color);
+        transform: translateY(calc(-1 * var(--rui-local-next-arrow-initial-offset)));
+    }
 
-.isRootVertical {
-    height: 100%;
-    min-height: 0; // 6.
-}
+    .isRootHorizontal {
+        min-width: 0; // 6.
+    }
 
-.isRootVertical .viewport {
-    height: 100%;
-    overflow-x: clip; // 7., 8.
-    overflow-y: auto; // 2.
-}
+    .isRootHorizontal .arrowPrev {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        padding-right: $_arrow-inner-spacing;
+        padding-left: $_arrow-outer-spacing;
+        transform: translateX(var(--rui-local-prev-arrow-initial-offset));
+    }
 
-.isRootVertical .arrowPrev {
-    top: 0;
-    right: 0;
-    left: 0;
-    width: 100%;
-    padding-top: $_arrow-outer-spacing;
-    padding-bottom: $_arrow-inner-spacing;
-    color: var(--rui-local-prev-arrow-color);
-    transform: translateY(var(--rui-local-prev-arrow-initial-offset));
-}
+    .isRootHorizontal .arrowPrev .arrowIcon {
+        @include caret.rotate(90);
+    }
 
-.isRootVertical .arrowPrev .arrowIcon {
-    @include caret.rotate(180);
-}
+    .isRootHorizontal .arrowNext {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        padding-right: $_arrow-outer-spacing;
+        padding-left: $_arrow-inner-spacing;
+        transform: translateX(calc(-1 * var(--rui-local-next-arrow-initial-offset)));
+    }
 
-.isRootVertical .arrowNext {
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding-top: $_arrow-inner-spacing;
-    padding-bottom: $_arrow-outer-spacing;
-    color: var(--rui-local-next-arrow-color);
-    transform: translateY(calc(-1 * var(--rui-local-next-arrow-initial-offset)));
-}
+    .isRootHorizontal .arrowNext .arrowIcon {
+        @include caret.rotate(270);
+    }
 
-.isRootHorizontal {
-    min-width: 0; // 6.
-}
+    .isRootVertical .scrollingShadows::before,
+    .isRootVertical .scrollingShadows::after {
+        right: 0;
+        left: 0;
+        width: auto;
+    }
 
-.isRootHorizontal .arrowPrev {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    padding-right: $_arrow-inner-spacing;
-    padding-left: $_arrow-outer-spacing;
-    transform: translateX(var(--rui-local-prev-arrow-initial-offset));
-}
+    .isRootVertical .scrollingShadows::before {
+        top: 0;
+        height: var(--rui-local-start-shadow-size);
+        transform: translateY(var(--rui-local-start-shadow-initial-offset));
+    }
 
-.isRootHorizontal .arrowPrev .arrowIcon {
-    @include caret.rotate(90);
-}
+    .isRootVertical .scrollingShadows::after {
+        bottom: 0;
+        height: var(--rui-local-end-shadow-size);
+        transform: translateY(calc(-1 * var(--rui-local-end-shadow-initial-offset)));
+    }
 
-.isRootHorizontal .arrowNext {
-    top: 0;
-    right: 0;
-    bottom: 0;
-    padding-right: $_arrow-outer-spacing;
-    padding-left: $_arrow-inner-spacing;
-    transform: translateX(calc(-1 * var(--rui-local-next-arrow-initial-offset)));
-}
+    .isRootHorizontal .viewport {
+        overflow-x: auto; // 2.
+        overflow-y: clip; // 5., 7., 8.
+    }
 
-.isRootHorizontal .arrowNext .arrowIcon {
-    @include caret.rotate(270);
-}
+    .isRootHorizontal .content {
+        display: inline-flex; // 4.
+        min-width: 100%;
+        overflow: clip; // 8.
+        vertical-align: top;
+    }
 
-.isRootVertical .scrollingShadows::before,
-.isRootVertical .scrollingShadows::after {
-    right: 0;
-    left: 0;
-    width: auto;
-}
+    .isRootHorizontal .scrollingShadows::before,
+    .isRootHorizontal .scrollingShadows::after {
+        top: 0;
+        bottom: 0;
+        height: auto;
+    }
 
-.isRootVertical .scrollingShadows::before {
-    top: 0;
-    height: var(--rui-local-start-shadow-size);
-    transform: translateY(var(--rui-local-start-shadow-initial-offset));
-}
+    .isRootHorizontal .scrollingShadows::before {
+        left: 0;
+        width: var(--rui-local-start-shadow-size);
+        transform: translateX(var(--rui-local-start-shadow-initial-offset));
+    }
 
-.isRootVertical .scrollingShadows::after {
-    bottom: 0;
-    height: var(--rui-local-end-shadow-size);
-    transform: translateY(calc(-1 * var(--rui-local-end-shadow-initial-offset)));
-}
+    .isRootHorizontal .scrollingShadows::after {
+        right: 0;
+        width: var(--rui-local-end-shadow-size);
+        transform: translateX(calc(-1 * var(--rui-local-end-shadow-initial-offset)));
+    }
 
-.isRootHorizontal .viewport {
-    overflow-x: auto; // 2.
-    overflow-y: clip; // 5., 7., 8.
-}
+    .isRootScrolledAtStart .scrollingShadows::before,
+    .isRootScrolledAtStart .arrowPrev {
+        visibility: visible;
+        opacity: 1;
+        transform: translate(0, 0);
+    }
 
-.isRootHorizontal .content {
-    display: inline-flex; // 4.
-    min-width: 100%;
-    overflow: clip; // 8.
-    vertical-align: top;
-}
+    .isRootScrolledAtEnd .scrollingShadows::after,
+    .isRootScrolledAtEnd .arrowNext {
+        visibility: visible;
+        opacity: 1;
+        transform: translate(0, 0);
+    }
 
-.isRootHorizontal .scrollingShadows::before,
-.isRootHorizontal .scrollingShadows::after {
-    top: 0;
-    bottom: 0;
-    height: auto;
-}
-
-.isRootHorizontal .scrollingShadows::before {
-    left: 0;
-    width: var(--rui-local-start-shadow-size);
-    transform: translateX(var(--rui-local-start-shadow-initial-offset));
-}
-
-.isRootHorizontal .scrollingShadows::after {
-    right: 0;
-    width: var(--rui-local-end-shadow-size);
-    transform: translateX(calc(-1 * var(--rui-local-end-shadow-initial-offset)));
-}
-
-.isRootScrolledAtStart .scrollingShadows::before,
-.isRootScrolledAtStart .arrowPrev {
-    visibility: visible;
-    opacity: 1;
-    transform: translate(0, 0);
-}
-
-.isRootScrolledAtEnd .scrollingShadows::after,
-.isRootScrolledAtEnd .arrowNext {
-    visibility: visible;
-    opacity: 1;
-    transform: translate(0, 0);
-}
-
-.hasRootScrollbarDisabled .viewport {
-    @include scrollbar.hide();
+    .hasRootScrollbarDisabled .viewport {
+        @include scrollbar.hide();
+    }
 }

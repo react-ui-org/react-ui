@@ -77,6 +77,30 @@ There are three simple rules to follow when organizing React UI CSS:
         └── theme.scss            Default theme, a collection of hundreds of CSS custom properties
 ```
 
+### Cascade Layers
+
+React UI CSS is organized into [cascade layers], each with its own specificity
+level. The layers are as follows:
+
+1. `@layer theme` — a collection of hundreds of [CSS custom properties] that
+   define the look and feel of your UI.
+2. `@layer foundation` — mandatory ground-zero CSS for components and other
+   styling. Includes sublayers like `@layer foundation.generic` and
+   `@layer foundation.elements`.
+3. `@layer helpers` — small styling abstractions that can be used across the
+   whole UI.
+4. `@layer components` — component styles are written as CSS modules which
+   output into this layer. Also, each component has its own cascade layer, e.g.
+   `@layer components.modal`.
+5. `@layer utilities` — tiny classes to control selected CSS properties,
+   forcing them with `!important`.
+
+Any custom CSS can be added to the end of the cascade, but it's recommended to
+use any of the existing layers to keep the CSS organized.
+
+👉 With `!important` styles, layered styles take precedence over unlayered
+styles.
+
 ## CSS Modules
 
 For components, React UI leverages [CSS modules] (not to be confused with
@@ -237,9 +261,9 @@ according to [Browserslist] configuration stored in `.browserslistrc`.
 [stylelint-config-visionapps-order]: https://github.com/visionappscz/stylelint-config-visionapps-order
 [stylelint-config-css-modules]: https://github.com/pascalduez/stylelint-config-css-modules
 [Web Components]: https://developer.mozilla.org/en-US/docs/Web/Web_Components
-[ITCSS]: https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/
 [foundation CSS layer]: /docs/getting-started/usage#foundation-css
 [foundation-css-source]: https://github.com/react-ui-org/react-ui/blob/master/src/foundation.scss
+[cascade layers]: https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_layers
 [CSS modules]: https://github.com/css-modules/css-modules
 [modular CSS specification]: https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/What_is_CSS#css_modules
 [modern browsers]: /docs/getting-started/browsers-and-devices

@@ -4,58 +4,60 @@
 @use "../../styles/tools/form-fields/variants";
 @use "../../styles/tools/accessibility";
 
-// Foundation
-.root {
-    @include foundation.root();
-    @include inline-field-layout.root();
-    @include inline-field-elements.min-tap-target($type: checkbox);
-    @include variants.visual(check);
-}
+@layer components.checkbox-field {
+    // Foundation
+    .root {
+        @include foundation.root();
+        @include inline-field-layout.root();
+        @include inline-field-elements.min-tap-target($type: checkbox);
+        @include variants.visual(check);
+    }
 
-.label {
-    @include foundation.label();
-}
+    .label {
+        @include foundation.label();
+    }
 
-.field {
-    @include inline-field-layout.field($type: checkbox);
-}
+    .field {
+        @include inline-field-layout.field($type: checkbox);
+    }
 
-.input {
-    @include inline-field-elements.check-input($type: checkbox);
-}
+    .input {
+        @include inline-field-elements.check-input($type: checkbox);
+    }
 
-.helpText,
-.validationText {
-    @include foundation.help-text();
-}
+    .helpText,
+    .validationText {
+        @include foundation.help-text();
+    }
 
-.isRootRequired .label {
-    @include foundation.label-required();
-}
+    .isRootRequired .label {
+        @include foundation.label-required();
+    }
 
-// States
-.isRootStateInvalid {
-    @include variants.validation(invalid);
-}
+    // States
+    .isRootStateInvalid {
+        @include variants.validation(invalid);
+    }
 
-.isRootStateValid {
-    @include variants.validation(valid);
-}
+    .isRootStateValid {
+        @include variants.validation(valid);
+    }
 
-.isRootStateWarning {
-    @include variants.validation(warning);
-}
+    .isRootStateWarning {
+        @include variants.validation(warning);
+    }
 
-// Invisible label
-.isLabelHidden {
-    @include accessibility.hide-text();
-}
+    // Invisible label
+    .isLabelHidden {
+        @include accessibility.hide-text();
+    }
 
-// Layouts
-.hasRootLabelBefore {
-    @include inline-field-layout.has-label-before();
-}
+    // Layouts
+    .hasRootLabelBefore {
+        @include inline-field-layout.has-label-before();
+    }
 
-.isRootInFormLayout {
-    @include inline-field-layout.in-form-layout();
+    .isRootInFormLayout {
+        @include inline-field-layout.in-form-layout();
+    }
 }

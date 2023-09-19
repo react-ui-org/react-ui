@@ -6,93 +6,95 @@
 @use "theme";
 @use "tools";
 
-.root {
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    width: 100%;
-    color: var(--rui-local-color);
-    border-width: theme.$border-width theme.$border-width theme.$border-width theme.$stripe-width;
-    border-style: solid;
-    border-color: var(--rui-local-foreground-color);
-    border-radius: theme.$border-radius;
-    background-color: var(--rui-local-background-color);
-}
+@layer components.alert {
+    .root {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        width: 100%;
+        color: var(--rui-local-color);
+        border-width: theme.$border-width theme.$border-width theme.$border-width theme.$stripe-width;
+        border-style: solid;
+        border-color: var(--rui-local-foreground-color);
+        border-radius: theme.$border-radius;
+        background-color: var(--rui-local-background-color);
+    }
 
-.icon,
-.message {
-    padding: theme.$padding;
-}
+    .icon,
+    .message {
+        padding: theme.$padding;
+    }
 
-.close,
-.icon {
-    height: settings.$min-height;
-    color: var(--rui-local-foreground-color);
-}
+    .close,
+    .icon {
+        height: settings.$min-height;
+        color: var(--rui-local-foreground-color);
+    }
 
-.icon {
-    display: flex;
-    flex: none;
-    align-items: center;
-    justify-content: center;
-    padding-right: 0;
-}
+    .icon {
+        display: flex;
+        flex: none;
+        align-items: center;
+        justify-content: center;
+        padding-right: 0;
+    }
 
-.message {
-    flex-grow: 1;
-    font-weight: theme.$font-weight;
-    font-size: settings.$font-size;
-    line-height: settings.$line-height;
-}
+    .message {
+        flex-grow: 1;
+        font-weight: theme.$font-weight;
+        font-size: settings.$font-size;
+        line-height: settings.$line-height;
+    }
 
-.message a,
-.message strong {
-    font-weight: theme.$emphasis-font-weight;
-    color: var(--rui-local-foreground-color);
-}
+    .message a,
+    .message strong {
+        font-weight: theme.$emphasis-font-weight;
+        color: var(--rui-local-foreground-color);
+    }
 
-.close {
-    @include reset.button();
-    @include accessibility.min-tap-target();
+    .close {
+        @include reset.button();
+        @include accessibility.min-tap-target();
 
-    padding: theme.$padding;
-    font-size: map.get(typography.$font-size-values, 4);
-    line-height: 1;
-}
+        padding: theme.$padding;
+        font-size: map.get(typography.$font-size-values, 4);
+        line-height: 1;
+    }
 
-.closeSign {
-    position: relative;
-    top: -0.1em;
-}
+    .closeSign {
+        position: relative;
+        top: -0.1em;
+    }
 
-.isRootColorSuccess {
-    @include tools.color(success);
-}
+    .isRootColorSuccess {
+        @include tools.color(success);
+    }
 
-.isRootColorWarning {
-    @include tools.color(warning);
-}
+    .isRootColorWarning {
+        @include tools.color(warning);
+    }
 
-.isRootColorDanger {
-    @include tools.color(danger);
-}
+    .isRootColorDanger {
+        @include tools.color(danger);
+    }
 
-.isRootColorHelp {
-    @include tools.color(help);
-}
+    .isRootColorHelp {
+        @include tools.color(help);
+    }
 
-.isRootColorInfo {
-    @include tools.color(info);
-}
+    .isRootColorInfo {
+        @include tools.color(info);
+    }
 
-.isRootColorNote {
-    @include tools.color(note);
-}
+    .isRootColorNote {
+        @include tools.color(note);
+    }
 
-.isRootColorLight {
-    @include tools.color(light);
-}
+    .isRootColorLight {
+        @include tools.color(light);
+    }
 
-.isRootColorDark {
-    @include tools.color(dark);
+    .isRootColorDark {
+        @include tools.color(dark);
+    }
 }

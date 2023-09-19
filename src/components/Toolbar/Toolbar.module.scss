@@ -3,81 +3,83 @@
 @use "../../styles/tools/spacing";
 @use "theme";
 
-.toolbar,
-.group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: theme.$gap;
-}
+@layer components.toolbar {
+    .toolbar,
+    .group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: theme.$gap;
+    }
 
-.toolbar {
-    @include spacing.bottom(layouts);
-}
+    .toolbar {
+        @include spacing.bottom(layouts);
+    }
 
-.item {
-    display: flex; // 1.
-    flex: none;
-    flex-direction: column; // 1.
-}
+    .item {
+        display: flex; // 1.
+        flex: none;
+        flex-direction: column; // 1.
+    }
 
-.isItemFlexible {
-    flex: 1;
-    min-width: 0;
-}
+    .isItemFlexible {
+        flex: 1;
+        min-width: 0;
+    }
 
-.isToolbarAlignedToTop,
-.isGroupAlignedToTop {
-    align-items: flex-start;
-}
+    .isToolbarAlignedToTop,
+    .isGroupAlignedToTop {
+        align-items: flex-start;
+    }
 
-.isToolbarAlignedToMiddle,
-.isGroupAlignedToMiddle {
-    align-items: center;
-}
+    .isToolbarAlignedToMiddle,
+    .isGroupAlignedToMiddle {
+        align-items: center;
+    }
 
-.isToolbarAlignedToBottom,
-.isGroupAlignedToBottom {
-    align-items: flex-end;
-}
+    .isToolbarAlignedToBottom,
+    .isGroupAlignedToBottom {
+        align-items: flex-end;
+    }
 
-.isToolbarAlignedToBaseline,
-.isGroupAlignedToBaseline {
-    align-items: baseline;
-}
+    .isToolbarAlignedToBaseline,
+    .isGroupAlignedToBaseline {
+        align-items: baseline;
+    }
 
-.isToolbarJustifiedToStart,
-.isGroupJustifiedToStart {
-    justify-content: flex-start;
-}
+    .isToolbarJustifiedToStart,
+    .isGroupJustifiedToStart {
+        justify-content: flex-start;
+    }
 
-.isToolbarJustifiedToCenter,
-.isGroupJustifiedToCenter {
-    justify-content: center;
-}
+    .isToolbarJustifiedToCenter,
+    .isGroupJustifiedToCenter {
+        justify-content: center;
+    }
 
-.isToolbarJustifiedToEnd,
-.isGroupJustifiedToEnd {
-    justify-content: flex-end;
-}
+    .isToolbarJustifiedToEnd,
+    .isGroupJustifiedToEnd {
+        justify-content: flex-end;
+    }
 
-.isToolbarJustifiedToSpaceBetween,
-.isGroupJustifiedToSpaceBetween {
-    justify-content: space-between;
-}
+    .isToolbarJustifiedToSpaceBetween,
+    .isGroupJustifiedToSpaceBetween {
+        justify-content: space-between;
+    }
 
-.isToolbarDense,
-.isGroupDense,
-.isToolbarDense .group,
-.isGroupDense .group {
-    gap: theme.$gap-dense;
-}
+    .isToolbarDense,
+    .isGroupDense,
+    .isToolbarDense .group,
+    .isGroupDense .group {
+        gap: theme.$gap-dense;
+    }
 
-.isToolbarNowrap,
-.isGroupNowrap {
-    flex-wrap: nowrap;
-}
+    .isToolbarNowrap,
+    .isGroupNowrap {
+        flex-wrap: nowrap;
+    }
 
-.isToolbarNowrap > .item:not(.isItemFlexible),
-.isGroupNowrap > .item:not(.isItemFlexible) {
-    flex: 0 1 auto;
+    .isToolbarNowrap > .item:not(.isItemFlexible),
+    .isGroupNowrap > .item:not(.isItemFlexible) {
+        flex: 0 1 auto;
+    }
 }

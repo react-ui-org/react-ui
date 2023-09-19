@@ -1,10 +1,12 @@
 @use "settings";
 
-.root {
-    margin-block: 0;
-    font-size: settings.$title-font-size;
+@layer components.modal {
+    .root {
+        margin-block: 0;
+        font-size: settings.$title-font-size;
 
-    &:not(:last-child) {
-        margin-bottom: 0;
+        &:not(:last-child) {
+            margin-bottom: 0;
+        }
     }
 }

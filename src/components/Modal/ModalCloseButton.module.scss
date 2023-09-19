@@ -4,15 +4,17 @@
 @use "../../styles/tools/reset";
 @use "../../styles/tools/spacing";
 
-.root {
-    @include reset.button();
-    @include accessibility.min-tap-target();
+@layer components.modal {
+    .root {
+        @include reset.button();
+        @include accessibility.min-tap-target();
 
-    font-size: map.get(typography.$font-size-values, 4);
-    line-height: 1;
-    color: inherit;
+        font-size: map.get(typography.$font-size-values, 4);
+        line-height: 1;
+        color: inherit;
 
-    &:disabled {
-        cursor: var(--rui-cursor-not-allowed);
+        &:disabled {
+            cursor: var(--rui-cursor-not-allowed);
+        }
     }
 }

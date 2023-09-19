@@ -25,39 +25,42 @@
 @use "settings";
 @use "tools";
 
-.root {
-    @include tools.assign-responsive-custom-properties(settings.$grid-responsive-properties); // 1.
-    @include spacing.bottom(layouts);
+@layer components.grid {
+    .root {
+        @include tools.assign-responsive-custom-properties(settings.$grid-responsive-properties); // 1.
+        @include spacing.bottom(layouts);
 
-    display: grid;
-    grid-template-columns: var(--rui-local-columns); // 2.
-    grid-template-rows: var(--rui-local-rows); // 2.
-    grid-auto-flow: var(--rui-local-auto-flow); // 2.
-    grid-gap: var(--rui-local-row-gap) var(--rui-local-column-gap); // 2.
-    align-content: var(--rui-local-align-content); // 2.
-    align-items: var(--rui-local-align-items); // 2.
-    justify-content: var(--rui-local-justify-content); // 2.
-    justify-items: var(--rui-local-justify-items); // 2.
+        display: grid;
+        grid-template-columns: var(--rui-local-columns); // 2.
+        grid-template-rows: var(--rui-local-rows); // 2.
+        grid-auto-flow: var(--rui-local-auto-flow); // 2.
+        grid-gap: var(--rui-local-row-gap) var(--rui-local-column-gap); // 2.
+        align-content: var(--rui-local-align-content); // 2.
+        align-items: var(--rui-local-align-items); // 2.
+        justify-content: var(--rui-local-justify-content); // 2.
+        justify-items: var(--rui-local-justify-items); // 2.
+    }
+
+    // stylelint-disable-next-line selector-max-universal -- Reset any previously added margins.
+    .root > * {
+        margin-block: 0;
+    }
+
+    .span {
+        @include tools.assign-responsive-custom-properties(settings.$grid-span-responsive-properties); // 1.
+
+        grid-column: span var(--rui-local-column-span); // 2.
+        grid-row: span var(--rui-local-row-span); // 2.
+    }
+
+    // stylelint-disable selector-no-qualifying-type
+    dl.root,
+    ol.root,
+    ul.root {
+        padding-left: 0;
+        margin-left: 0;
+        list-style: none;
+    }
+
+    // stylelint-enable selector-no-qualifying-type
 }
-
-// stylelint-disable-next-line selector-max-universal -- Reset any previously added margins.
-.root > * {
-    margin-block: 0;
-}
-
-.span {
-    @include tools.assign-responsive-custom-properties(settings.$grid-span-responsive-properties); // 1.
-
-    grid-column: span var(--rui-local-column-span); // 2.
-    grid-row: span var(--rui-local-row-span); // 2.
-}
-
-// stylelint-disable selector-no-qualifying-type
-dl.root,
-ol.root,
-ul.root {
-    padding-left: 0;
-    margin-left: 0;
-    list-style: none;
-}
-// stylelint-enable selector-no-qualifying-type
