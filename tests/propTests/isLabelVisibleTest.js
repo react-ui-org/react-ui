@@ -22,7 +22,7 @@ export const isLabelVisibleTest = (HtmlTag = 'label') => (
       },
       (rootElement) => {
         if (HtmlTag === 'legend') {
-          expect(within(rootElement).getByTestId('id__displayLabel')).toHaveClass('isLabelHidden');
+          expect(within(rootElement).queryByTestId('id__displayLabel')).not.toBeInTheDocument();
         } else {
           expect(within(rootElement).getByText('label')).toHaveClass('isLabelHidden');
         }
