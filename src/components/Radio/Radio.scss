@@ -64,11 +64,6 @@
     @include variants.validation(warning);
 }
 
-// Invisible label
-.isLabelHidden {
-    @include accessibility.hide-text();
-}
-
 // Layouts
 .isRootLayoutVertical,
 .isRootLayoutHorizontal {

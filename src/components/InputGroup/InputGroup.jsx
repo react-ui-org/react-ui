@@ -69,16 +69,15 @@ export const InputGroup = ({
       >
         {label}
       </legend>
-      <div
-        aria-hidden
-        className={classNames(
-          styles.label,
-          !isLabelVisible && styles.isLabelHidden,
-        )}
-        id={id && `${id}__displayLabel`}
-      >
-        {label}
-      </div>
+      {isLabelVisible && (
+        <div
+          aria-hidden
+          className={styles.label}
+          id={id && `${id}__displayLabel`}
+        >
+          {label}
+        </div>
+      )}
       <div className={styles.field}>
         <div
           className={styles.inputGroup}
