@@ -164,6 +164,14 @@ To keep React UI consistent and predictable the following guidelines should be o
 
 1. If component accepts the `children` prop it should be either required or the element
    should return `null` when no children are provided.
+2. When forwarding HTML attributes to the component the following rules should
+    be observed:
+    1. If the component internally instantiates one or more interactive
+        (clickable/editable) elements, the attributes should be forwarded to
+       all of them.
+    2. If the component does not internally instantiate an interactive
+        (clickable/editable) element, the attributes should be forwarded to the
+        root element of the component.
 
 ## Documenting
 
