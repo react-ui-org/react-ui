@@ -159,7 +159,7 @@ React.createElement(() => {
 In addition to the options below in the [component's API](#api) section, you
 can specify [React synthetic events] or **any HTML attribute you like.** All
 attributes that don't interfere with the API are forwarded to the `<nav>` HTML
-element in case of `Tabs` component and to the `<li>` HTML element in
+element in case of `Tabs` component and to the `<a>` HTML element in
 case of `TabsItem`. This enables making the component interactive and helps
 to improve its accessibility.
 

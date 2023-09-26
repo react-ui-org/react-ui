@@ -16,7 +16,6 @@ export const TabsItem = ({
   ...restProps
 }) => (
   <li
-    {...transferProps(restProps)}
     className={classNames(
       styles.root,
       isActive && styles.isRootActive,
@@ -25,6 +24,7 @@ export const TabsItem = ({
     key={href}
   >
     <a
+      {...transferProps(restProps)}
       className={styles.link}
       href={href}
       id={id && `${id}__link`}
