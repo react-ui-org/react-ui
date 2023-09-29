@@ -26,8 +26,12 @@
 //     Reverted for full-width fields.
 //
 // 8.  Grid settings are inherited from horizontal FormLayout and applied using `subgrid`.
-//     A fallback is supplied to browsers that don't support `subgrid` yet. See FormLayout styles
-//     for more.
+//     A fallback is supplied to browsers that don't support `subgrid` yet.
+//
+//     Chrome 117+ supports `subgrid` but it doesn't work for `<fieldset>`. This is why we always
+//     use the fallback for `<fieldset>`.
+//
+//     https://bugs.chromium.org/p/chromium/issues/detail?id=1473242
 //     https://github.com/react-ui-org/react-ui/issues/232
 //
 // 9.  Help texts and validation messages can take up full width of FormLayout. There is no reason
@@ -180,7 +184,7 @@
     }
 }
 
-@mixin in-form-layout() {
+@mixin in-form-layout($is-fieldset: false) {
     justify-self: start; // 12.
 
     .field {
@@ -192,19 +196,27 @@
             width: auto; // 11.
         }
 
-        &.isRootLayoutHorizontal,
-        &.isRootLayoutHorizontal.hasRootSmallInput {
-            grid: inherit; // 8.
-            grid-template-columns: subgrid; // 8.
-            grid-column: span 2; // 8.
-
-            @supports not (grid-template-columns: subgrid) {
-                display: contents; // 8.
+        // 8.
+        @if $is-fieldset {
+            &.isRootLayoutHorizontal,
+            &.isRootLayoutHorizontal.hasRootSmallInput {
+                display: contents;
             }
-        }
+        } @else {
+            &.isRootLayoutHorizontal,
+            &.isRootLayoutHorizontal.hasRootSmallInput {
+                grid: inherit;
+                grid-template-columns: subgrid;
+                grid-column: span 2;
 
-        &.isRootLayoutHorizontal.isRootFullWidth {
-            grid-template-columns: subgrid; // 8.
+                @supports not (grid-template-columns: subgrid) {
+                    display: contents;
+                }
+            }
+
+            &.isRootLayoutHorizontal.isRootFullWidth {
+                grid-template-columns: subgrid;
+            }
         }
 
         &.isRootLayoutHorizontal .label,

@@ -79,5 +79,5 @@
 }
 
 .isRootInFormLayout {
-    @include box-field-layout.in-form-layout();
+    @include box-field-layout.in-form-layout($is-fieldset: true);
 }
