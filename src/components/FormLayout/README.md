@@ -403,6 +403,10 @@ React.createElement(() => {
           options={options}
           value={fruit}
         />
+        <InputGroup label="Promo code">
+          <TextField label="Code" />
+          <Button label="Apply" color="secondary" priority="outline" />
+        </InputGroup>
       </FormLayout>
     </div>
   )
