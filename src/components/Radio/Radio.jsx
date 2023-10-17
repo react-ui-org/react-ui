@@ -26,7 +26,6 @@ export const Radio = ({
 
   return (
     <fieldset
-      {...transferProps(restProps)}
       className={classNames(
         styles.root,
         context && styles.isRootInFormLayout,
@@ -68,6 +67,7 @@ export const Radio = ({
                   key={key}
                 >
                   <input
+                    {...transferProps(restProps)}
                     checked={restProps.onChange
                       ? (value === option.value) || false
                       : undefined}
@@ -75,10 +75,6 @@ export const Radio = ({
                     disabled={disabled || option.disabled}
                     id={id && `${id}__item__${key}`}
                     name={id}
-                    // The change is handled by the `<fieldset>` element. This is a placeholder to prevent React from
-                    // showing the warning about uncontrolled input: "You provided a `checked` prop to a form field
-                    // without an `onChange` handler."
-                    onChange={() => {}}
                     type="radio"
                     value={option.value}
                   />
