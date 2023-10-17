@@ -281,8 +281,8 @@ It's possible to disable just some options or the whole set.
 In addition to the options below in the [component's API](#api) section, you
 can specify [React synthetic events] or you can **add whatever HTML attribute
 you like.** All attributes that don't interfere with the API are forwarded to
-the native HTML `<input>`. This enables making the component interactive and helps
-to improve its accessibility.
+the native HTML `<input>` elements. This enables making the component
+interactive and helps to improve its accessibility.
 
 👉 Refer to the MDN reference for the full list of supported attributes of the
 [radio] input type.
