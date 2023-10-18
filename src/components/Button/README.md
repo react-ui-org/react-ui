@@ -433,10 +433,10 @@ Where:
 - `<INTERACTION STATE>` is one of `default`, `hover`, `active`, or `disabled`
   (the last one being optional),
 - `<PROPERTY>` is one of:
-  - `color`, `border-color`, `background`, or `box-shadow` for the `filled`
-    priority,
-  - `color`, `border-color`, or `background` for the `outline` priority,
-  - `color` or `background` for the `flat` priority.
+    - `color`, `border-color`, `background`, or `box-shadow` for the `filled`
+      priority,
+    - `color`, `border-color`, or `background` for the `outline` priority,
+    - `color` or `background` for the `flat` priority.
 
 ### Theming Sizes
 
