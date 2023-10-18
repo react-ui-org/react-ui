@@ -25,11 +25,11 @@ React.createElement(() => {
   const [modalOpen, setModalOpen] = React.useState(false);
   const modalPrimaryButtonRef = React.useRef();
   const modalCloseButtonRef = React.useRef();
+  {/*
+    The `preventScrollUnderneath` feature is necessary for Modals to work in
+    React UI docs. You may not need it in your application.
+  */}
   return (
-    {/*
-      The `preventScrollUnderneath` feature is necessary for Modals to work in
-      React UI docs. You may not need it in your application.
-    */}
     <RUIProvider globalProps={{
       Modal: { preventScrollUnderneath: window.document.documentElement }
     }}>
@@ -121,11 +121,11 @@ React.createElement(() => {
   const [modalOpen, setModalOpen] = React.useState(null);
   const modalPrimaryButtonRef = React.useRef();
   const modalCloseButtonRef = React.useRef();
+  {/*
+    The `preventScrollUnderneath` feature is necessary for Modals to work in
+    React UI docs. You may not need it in your application.
+  */}
   return (
-    {/*
-      The `preventScrollUnderneath` feature is necessary for Modals to work in
-      React UI docs. You may not need it in your application.
-    */}
     <RUIProvider globalProps={{
       Modal: { preventScrollUnderneath: window.document.documentElement }
     }}>
@@ -276,11 +276,11 @@ React.createElement(() => {
   const [variant, setVariant] = React.useState(null);
   const modalPrimaryButtonRef = React.useRef();
   const modalCloseButtonRef = React.useRef();
+  {/*
+    The `preventScrollUnderneath` feature is necessary for Modals to work in
+    React UI docs. You may not need it in your application.
+  */}
   return (
-    {/*
-      The `preventScrollUnderneath` feature is necessary for Modals to work in
-      React UI docs. You may not need it in your application.
-    */}
     <RUIProvider globalProps={{
       Modal: { preventScrollUnderneath: window.document.documentElement }
     }}>
@@ -410,11 +410,11 @@ React.createElement(() => {
   const [modalJustify, setModalJustify] = React.useState('center');
   const modalPrimaryButtonRef = React.useRef();
   const modalCloseButtonRef = React.useRef();
+  {/*
+    The `preventScrollUnderneath` feature is necessary for Modals to work in
+    React UI docs. You may not need it in your application.
+  */}
   return (
-    {/*
-      The `preventScrollUnderneath` feature is necessary for Modals to work in
-      React UI docs. You may not need it in your application.
-    */}
     <RUIProvider globalProps={{
       Modal: { preventScrollUnderneath: window.document.documentElement }
     }}>
@@ -533,11 +533,11 @@ React.createElement(() => {
   const [modalSize, setModalSize] = React.useState('small');
   const modalPrimaryButtonRef = React.useRef();
   const modalCloseButtonRef = React.useRef();
+  {/*
+    The `preventScrollUnderneath` feature is necessary for Modals to work in
+    React UI docs. You may not need it in your application.
+  */}
   return (
-    {/*
-      The `preventScrollUnderneath` feature is necessary for Modals to work in
-      React UI docs. You may not need it in your application.
-    */}
     <RUIProvider globalProps={{
       Modal: { preventScrollUnderneath: window.document.documentElement }
     }}>
@@ -617,11 +617,11 @@ React.createElement(() => {
   const [modalOpen, setModalOpen] = React.useState(false);
   const modalPrimaryButtonRef = React.useRef();
   const modalCloseButtonRef = React.useRef();
+  {/*
+    The `preventScrollUnderneath` feature is necessary for Modals to work in
+    React UI docs. You may not need it in your application.
+  */}
   return (
-    {/*
-      The `preventScrollUnderneath` feature is necessary for Modals to work in
-      React UI docs. You may not need it in your application.
-    */}
     <RUIProvider globalProps={{
       Modal: { preventScrollUnderneath: window.document.documentElement }
     }}>
@@ -685,11 +685,11 @@ React.createElement(() => {
   const [modalOpen, setModalOpen] = React.useState(false);
   const modalPrimaryButtonRef = React.useRef();
   const modalCloseButtonRef = React.useRef();
+  {/*
+    The `preventScrollUnderneath` feature is necessary for Modals to work in
+    React UI docs. You may not need it in your application.
+  */}
   return (
-    {/*
-      The `preventScrollUnderneath` feature is necessary for Modals to work in
-      React UI docs. You may not need it in your application.
-    */}
     <RUIProvider globalProps={{
       Modal: { preventScrollUnderneath: window.document.documentElement }
     }}>
@@ -749,11 +749,11 @@ React.createElement(() => {
   const [modalPosition, setModalPosition] = React.useState('center');
   const modalPrimaryButtonRef = React.useRef();
   const modalCloseButtonRef = React.useRef();
+  {/*
+    The `preventScrollUnderneath` feature is necessary for Modals to work in
+    React UI docs. You may not need it in your application.
+  */}
   return (
-    {/*
-      The `preventScrollUnderneath` feature is necessary for Modals to work in
-      React UI docs. You may not need it in your application.
-    */}
     <RUIProvider globalProps={{
       Modal: { preventScrollUnderneath: window.document.documentElement }
     }}>
@@ -930,12 +930,12 @@ React.createElement(() => {
         ut, imperdiet a, venenatis vitae, justo.
       </p>
     </ModalContent>
-  )
+  );
+  {/*
+    The `preventScrollUnderneath` feature is necessary for Modals to work in
+    React UI docs. You may not need it in your application.
+  */}
   return (
-    {/*
-      The `preventScrollUnderneath` feature is necessary for Modals to work in
-      React UI docs. You may not need it in your application.
-    */}
     <RUIProvider globalProps={{
       Modal: { preventScrollUnderneath: window.document.documentElement }
     }}>
