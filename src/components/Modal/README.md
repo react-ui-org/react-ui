@@ -105,13 +105,13 @@ See [API](#api) for all available options.
 Modal is decomposed into the following components:
 
 - Modal
-  - [ModalHeader](#modalheader)
-    - ModalTitle
-    - ModalCloseButton
-  - [ModalBody](#modalbody)
-    - ModalContent
-      (may be wrapped with [ScrollView](/components/ScrollView))
-  - [ModalFooter](#modalfooter)
+    - [ModalHeader](#modalheader)
+        - ModalTitle
+        - ModalCloseButton
+    - [ModalBody](#modalbody)
+        - ModalContent
+          (may be wrapped with [ScrollView](/components/ScrollView))
+    - [ModalFooter](#modalfooter)
 
 Using different combinations, you can compose different kinds of modals,
 e.g. dialog modal, blocking modal, scrollable modal, etc.

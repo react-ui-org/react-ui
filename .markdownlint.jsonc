@@ -2,7 +2,10 @@
 
 {
   "default": true,
-  "MD033": false, // Allow inline JSX.
+  "MD007": { // Unordered list indentation
+    "indent": 4 // 4 spaces so MkDocs can render nested lists correctly
+  },
+  "MD033": false, // Allow inline JSX and custom web components
   "MD024": false, // Allow duplicate headings
   "line-length": {
     "code_block_line_length": 120,

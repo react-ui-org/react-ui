@@ -47,8 +47,8 @@ See [API](#api) for all available options.
 Card is decomposed into the following components:
 
 - [Card](#api)
-  - [CardBody](#cardbody)
-  - [CardFooter](#cardfooter)
+    - [CardBody](#cardbody)
+    - [CardFooter](#cardfooter)
 
 Aside from the [CardBody](#cardbody) element, you can add a
 [CardFooter](#cardfooter) to better separate your card's actions from the rest
