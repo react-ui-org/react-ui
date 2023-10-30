@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
-
 :root {
   /* Visual configuration of the `<docoff-react-preview>` and `<docoff-react-base>` code */
   /* The Prism theme CSS file, for options see: https://unpkg.com/browse/prismjs/themes/ */
@@ -10,13 +8,13 @@
   --docoff-code-font-family: "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", monospace;
 
   /* Visual configuration of the `<docoff-react-preview>` live preview */
-  --docoff-preview-border-color: rgb(206, 212, 222);
+  --docoff-preview-border-color: #ced4de;
   --docoff-preview-border-radius: 0.35em;
-  /* To simplify multiple component presentation we add margin to all top level elements*/
+  /* To simplify multiple component presentation we add margin to all top level elements */
   --docoff-preview-children-margin: 0.25em;
   /* To improve component presentation we add padding inside the shadow DOM */
   --docoff-preview-padding: 1em;
-  /*Custom preview CSS file, typically this would be the CSS of your component */
+  /* Custom preview CSS file, typically this would be the CSS of your component */
   --docoff-preview-css: /docs/_assets/generated/react-ui.css;
 
   /* Visual configuration of the `<docoff-placeholder>` element */

@@ -45,9 +45,31 @@ theme:
     - navigation.sections
     - navigation.footer
 
+# Additional CSS. Mind the order!
 extra_css:
-  # CSS Tweaks
-  - docs/_assets/stylesheets/extra.css
+  - https://unpkg.com/prismjs@1.29.0/themes/prism-twilight.min.css # Prism JS syntax highlighting
+  - docs/_assets/stylesheets/extra.css # mkDocs theme tweaks
+  - docs/_assets/generated/docs-custom-properties.css # Load React UI CSS custom properties to make them accessible in the document root (outside shadowDOM) so we can preview colors etc.
+
+# Additional JS. Mind the order!
+extra_javascript:
+  # First load dependencies
+  - https://unpkg.com/@babel/standalone@7.20.15/babel.min.js
+  - https://unpkg.com/react@17.0.2/umd/react.development.js
+  - https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js
+  - https://unpkg.com/@floating-ui/core@1.0.0/dist/floating-ui.core.umd.min.js
+  - https://unpkg.com/@floating-ui/dom@1.0.0/dist/floating-ui.dom.umd.min.js
+  - https://unpkg.com/@floating-ui/react-dom@1.0.0/dist/floating-ui.react-dom.umd.min.js
+  - docs/_assets/generated/react-ui.js
+  - docs/_assets/js/ruiIcon.js
+  - docs/_assets/js/ruiSwatch.js
+
+  # Then load and init Docoff
+  - https://unpkg.com/@react-ui-org/docoff@0.5.4/public/generated/bundle.js
+
+  # Then load non-Docoff code highlighiting
+  - https://unpkg.com/prismjs@1.29.0/components/prism-core.min.js
+  - https://unpkg.com/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js
 
 # Must be open to external connections since MkDocs run in a docker container
 dev_addr: '0.0.0.0:8000'
