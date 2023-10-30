@@ -3,7 +3,8 @@
 :root {
   /* Visual configuration of the `<docoff-react-preview>` and `<docoff-react-base>` code */
   /* The Prism theme CSS file, for options see: https://unpkg.com/browse/prismjs/themes/ */
-  --docoff-code-prism-css: https://unpkg.com/prismjs@1.29.0/themes/prism-twilight.min.css;
+  /* NOTE: Patch version is omitted due to parsing bug in Safari: https://bugs.webkit.org/show_bug.cgi?id=229816 */
+  --docoff-code-prism-css: https://unpkg.com/prismjs@1.29/themes/prism-twilight.min.css;
   --docoff-code-font-size: 1rem;
   --docoff-code-line-height: 1.5;
   --docoff-code-font-family: "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", monospace;
