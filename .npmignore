@@ -18,6 +18,7 @@
 .gitignore
 .markdownlint.jsonc
 babel.config.js
+CODEOWNERS
 CONTRIBUTING.md
 docker-compose.yml
 jest.config.js
