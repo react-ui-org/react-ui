@@ -1,0 +1,28 @@
+// 1. Decorative bottom border.
+
+@use "../../styles/tools/reset";
+@use "theme";
+
+.list {
+    @include reset.list();
+
+    position: relative;
+    display: inline-flex;
+    min-width: 100%;
+    padding-right: theme.$padding-x;
+    padding-left: theme.$padding-x;
+    overflow-y: hidden;
+    white-space: nowrap;
+
+    // 1.
+    &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        height: theme.$border-bottom-width;
+        background-color: theme.$border-bottom-color;
+    }
+}

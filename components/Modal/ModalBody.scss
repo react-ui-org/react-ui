@@ -1,0 +1,18 @@
+.root {
+    flex: 1 1 auto;
+}
+
+.isRootScrollingAuto,
+.isRootScrollingCustom {
+    min-height: 0;
+}
+
+.isRootScrollingAuto {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.isRootScrollingCustom {
+    display: flex;
+    flex-direction: column;
+}

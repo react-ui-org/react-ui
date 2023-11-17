@@ -1,0 +1,21 @@
+$_spin-count: 4;
+$_spin-duration: 2.2s;
+$_spin-easing: cubic-bezier(0.31, 0.3, 0.34, -0.17);
+
+@keyframes spin {
+    0% {
+        transform: rotate(0 * 360deg);
+    }
+
+    100% {
+        transform: rotate($_spin-count * 360deg);
+    }
+}
+
+:global(.animation-spin-clockwise) {
+    animation: spin $_spin-duration $_spin-easing infinite;
+}
+
+:global(.animation-spin-counterclockwise) {
+    animation: spin $_spin-duration $_spin-easing infinite reverse;
+}

@@ -1,0 +1,28 @@
+// Mandatory themeable CSS layer to prepare ground for components.
+// Structured according to ITCSS methodology, ie. most importantly in ascending specificity.
+
+//
+// 1. Generic
+// ==========
+//
+// Ground-zero styles.
+
+@use "styles/generic/box-sizing";
+@use "normalize.css/normalize.css";
+@use "styles/generic/focus";
+@use "styles/generic/forms";
+@use "styles/generic/reset";
+@use "styles/generic/shared";
+
+//
+// 2. Elements
+// ===========
+//
+// Unclassed HTML elements (type selectors).
+
+@use "styles/elements/code";
+@use "styles/elements/links";
+@use "styles/elements/lists";
+@use "styles/elements/page";
+@use "styles/elements/rulers";
+@use "styles/elements/small";

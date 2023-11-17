@@ -1,0 +1,61 @@
+@use "../../styles/tools/form-fields/foundation";
+@use "../../styles/tools/form-fields/inline-field-elements";
+@use "../../styles/tools/form-fields/inline-field-layout";
+@use "../../styles/tools/form-fields/variants";
+@use "../../styles/tools/accessibility";
+
+// Foundation
+.root {
+    @include foundation.root();
+    @include inline-field-layout.root();
+    @include inline-field-elements.min-tap-target($type: checkbox);
+    @include variants.visual(check);
+}
+
+.label {
+    @include foundation.label();
+}
+
+.field {
+    @include inline-field-layout.field($type: checkbox);
+}
+
+.input {
+    @include inline-field-elements.check-input($type: checkbox);
+}
+
+.helpText,
+.validationText {
+    @include foundation.help-text();
+}
+
+.isRootRequired .label {
+    @include foundation.label-required();
+}
+
+// States
+.isRootStateInvalid {
+    @include variants.validation(invalid);
+}
+
+.isRootStateValid {
+    @include variants.validation(valid);
+}
+
+.isRootStateWarning {
+    @include variants.validation(warning);
+}
+
+// Invisible label
+.isLabelHidden {
+    @include accessibility.hide-text();
+}
+
+// Layouts
+.hasRootLabelBefore {
+    @include inline-field-layout.has-label-before();
+}
+
+.isRootInFormLayout {
+    @include inline-field-layout.in-form-layout();
+}

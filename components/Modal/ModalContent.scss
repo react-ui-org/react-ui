@@ -1,0 +1,5 @@
+@use "theme";
+
+.root {
+    padding: theme.$padding-y theme.$padding-x;
+}
