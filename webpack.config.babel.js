@@ -65,11 +65,13 @@ module.exports = (env, argv) => ({
     ],
   },
   optimization: {
-    minimize: true,
+    minimize: argv.mode === 'production',
     minimizer: [new TerserPlugin()],
   },
   output: {
-    filename: '[name].js',
+    filename: argv.mode === 'production'
+      ? '[name].js'
+      : '[name].development.js',
     libraryTarget: 'umd',
     path: Path.join(__dirname, 'src/docs/_assets/generated/'),
   },
@@ -84,8 +86,12 @@ module.exports = (env, argv) => ({
   },
   plugins: [
     new MiniCssExtractPlugin({
-      chunkFilename: '[id].css',
-      filename: '[name].css',
+      chunkFilename: argv.mode === 'production'
+        ? '[id].css'
+        : '[id].development.css',
+      filename: argv.mode === 'production'
+        ? '[name].css'
+        : '[name].development.css',
       ignoreOrder: false, // Enable to remove warnings about conflicting order
     }),
     new StyleLintPlugin({

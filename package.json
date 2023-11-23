@@ -33,8 +33,10 @@
     "npm": ">=9"
   },
   "scripts": {
-    "build": "webpack --mode=production",
-    "copy": "cp \"src/docs/_assets/generated/react-ui.css\" dist & cp \"src/docs/_assets/generated/react-ui.js\" dist",
+    "build": "webpack --mode=production && webpack --mode=development",
+    "copy": "npm run copy:css && npm run copy:js",
+    "copy:css": "cp src/docs/_assets/generated/react-ui.css dist && cp src/docs/_assets/generated/react-ui.development.css dist",
+    "copy:js": "cp src/docs/_assets/generated/react-ui.js dist && cp src/docs/_assets/generated/react-ui.development.js dist",
     "eslint": "eslint --ext js,jsx src",
     "jest": "jest src --coverage",
     "lint": "npm run eslint && npm run markdownlint && npm run stylelint",
