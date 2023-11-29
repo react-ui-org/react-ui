@@ -41,6 +41,10 @@
     @include foundation.help-text();
 }
 
+.isRootRequired .label {
+    @include foundation.label-required();
+}
+
 // States
 .isRootStateInvalid {
     @include variants.validation(invalid);
