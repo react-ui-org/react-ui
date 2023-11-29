@@ -22,6 +22,7 @@ export const InputGroup = ({
   isLabelVisible,
   label,
   layout,
+  required,
   size,
   validationTexts,
   ...restProps
@@ -57,6 +58,7 @@ export const InputGroup = ({
           ? styles.isRootLayoutHorizontal
           : styles.isRootLayoutVertical,
         disabled && styles.isRootDisabled,
+        required && styles.isRootRequired,
         getRootSizeClassName(size, styles),
         getRootValidationStateClassName(validationState, styles),
       )}
@@ -112,6 +114,7 @@ InputGroup.defaultProps = {
   id: undefined,
   isLabelVisible: true,
   layout: 'vertical',
+  required: false,
   size: 'medium',
   validationTexts: null,
 };
@@ -156,6 +159,11 @@ InputGroup.propTypes = {
    * as the value is inherited in such case.
    */
   layout: PropTypes.oneOf(['horizontal', 'vertical']),
+  /**
+   * If `true`, the `InputGroup`'s label appears as required. Underlying `<fieldset>`
+   * element does not take `required` attribute so there is no functional effect.
+   */
+  required: PropTypes.bool,
   /**
    * Size of the `children` elements.
    */

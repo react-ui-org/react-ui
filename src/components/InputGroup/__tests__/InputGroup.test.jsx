@@ -99,6 +99,12 @@ describe('rendering', () => {
         expect(within(rootElement).getByText('validation text 2'));
       },
     ],
+    [
+      { required: true },
+      (rootElement) => {
+        expect(rootElement).toHaveClass('isRootRequired');
+      },
+    ],
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
       <InputGroup
