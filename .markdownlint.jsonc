@@ -3,13 +3,14 @@
 {
   "default": true,
   "MD007": { // Unordered list indentation
-    "indent": 4 // 4 spaces so MkDocs can render nested lists correctly
+    "indent": 4 // 4 spaces so parsers (MkDocs, Bitbucket, etc.) can render nested lists correctly
   },
-  "MD033": false, // Allow inline JSX and custom web components
-  "MD024": false, // Allow duplicate headings
-  "line-length": {
-    "code_block_line_length": 120,
-    "tables": false,
-    "code_blocks": false
-  }
+  "MD013": { // Line length
+    "code_block_line_length": 120, // Max length inside code blocks
+    "tables": false // Do not check length inside tables
+  },
+  "MD024": { // Allow duplicate headings
+    "allow_different_nesting": true // Allow same heading level under different parents
+  },
+  "MD033": false // Allow inline HTML and custom components
 }
