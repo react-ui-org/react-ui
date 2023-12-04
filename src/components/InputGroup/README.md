@@ -176,9 +176,14 @@ not show any `validationText`, they only show their respective `validationState`
 Validation messages passed to input elements' `validationText` prop will be
 ignored.
 
+👉 While there is a `required` property to visually denote the whole input group
+is required, there is no functional effect as there is no such HTML attribute
+for the underlying `<fieldset>` element.
+
 ```docoff-react-preview
 <InputGroup
   label="First and last name"
+  required
   validationTexts={[
     "First name must be filled in.",
     "Last name must be filled in.",
@@ -187,17 +192,20 @@ ignored.
   <TextField
     label="First name"
     placeholder="Eg. John"
+    required
     validationState="invalid"
   />
   <TextField
     label="Last name"
     placeholder="Eg. Doe"
+    required
     validationState="invalid"
   />
   <Button label="Submit" />
 </InputGroup>
 <InputGroup
   label="First and last name"
+  required
   validationTexts={[
     "Last name should not include any digits.",
   ]}
@@ -205,26 +213,33 @@ ignored.
   <TextField
     label="First name"
     placeholder="Eg. John"
+    required
     value="John"
   />
   <TextField
     label="Last name"
     placeholder="Eg. Doe"
+    required
     validationState="warning"
     value="123Doe"
   />
   <Button label="Submit" />
 </InputGroup>
-<InputGroup label="First and last name">
+<InputGroup
+  label="First and last name"
+  required
+>
   <TextField
     label="First name"
     placeholder="Eg. John"
+    required
     validationState="valid"
     value="John"
   />
   <TextField
     label="Last name"
     placeholder="Eg. Doe"
+    required
     validationState="valid"
     value="Doe"
   />
@@ -241,7 +256,7 @@ element which wraps elements to be grouped. This enables making the component
 interactive and helps to improve its accessibility.
 
 👉 Refer to the MDN reference for the full list of supported attributes of the
-[div] element.
+[fieldset][fieldset-attributes] element.
 
 ## API
 
@@ -257,4 +272,4 @@ interactive and helps to improve its accessibility.
 [fieldset]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset
 [accessibility]: https://www.w3.org/WAI/tutorials/forms/grouping/
 [React synthetic events]: https://reactjs.org/docs/events.html
-[div]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
+[fieldset-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#attributes
