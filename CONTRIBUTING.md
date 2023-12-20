@@ -15,16 +15,7 @@ This allows running the documentation site which serves as a development platfor
 
 Review the default env variable values in the `docker-compose.yml` file.
 The defaults should work for most systems, but can be changed if needed.
-
-To change them:
-
-1. Create a `.env` file from the template:
-
-    ```bash
-    cp .env.dist .env
-    ```
-
-2. Edit the new `.env` file as needed
+To change them, edit the `.env` file as needed.
 
 ### Use Docker Compose
 
