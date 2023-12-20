@@ -32,13 +32,13 @@ docker compose run --rm node_shell
 
 #### Run the Dev Server
 
-1. Install dependencies (run within `node_shell`):
+1. **Within `node_shell`:** Install dependencies:
 
     ```bash
     npm ci
     ```
 
-2. Run development server (run on host):
+2. **On host:** Run development server:
 
     ```bash
     docker compose up node_dev_server mkdocs_dev_server
@@ -46,25 +46,25 @@ docker compose run --rm node_shell
 
 #### Build the Project
 
-1. Make sure the dev server is not running (run on host):
+1. **On host:** Make sure the dev server is not running:
 
     ```bash
     docker compose down
     ```
 
-2. Install dependencies (run within `node_shell`):
+2. **Within `node_shell`:** Install dependencies:
 
     ```bash
     npm ci
     ```
 
-3. Build JS (run on host):
+3. **On host:** Build JS:
 
     ```bash
     docker compose run --rm node_build_site
     ```
 
-4. Build mkDocs (run on host):
+4. **On host:** Build mkDocs:
 
     ```bash
     docker compose run --rm mkdocs_build_site
