@@ -15,7 +15,7 @@
   /* To improve component presentation we add padding inside the shadow DOM */
   --docoff-preview-padding: 1em;
   /* Custom preview CSS file, typically this would be the CSS of your component */
-  --docoff-preview-css: /docs/_assets/generated/react-ui.css;
+  --docoff-preview-css: /docs/_assets/generated/react-ui.development.css;
 
   /* Visual configuration of the `<docoff-placeholder>` element */
   --docoff-placeholder-background-dark: #4d4d4d;

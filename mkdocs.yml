@@ -49,7 +49,7 @@ theme:
 extra_css:
   - https://unpkg.com/prismjs@1.29.0/themes/prism-twilight.min.css # Prism JS syntax highlighting
   - docs/_assets/stylesheets/extra.css # mkDocs theme tweaks
-  - docs/_assets/generated/docs-custom-properties.css # Load React UI CSS custom properties to make them accessible in the document root (outside shadowDOM) so we can preview colors etc.
+  - docs/_assets/generated/docs-custom-properties.development.css # Load React UI CSS custom properties to make them accessible in the document root (outside shadowDOM) so we can preview colors etc.
 
 # Additional JS. Mind the order!
 extra_javascript:
@@ -60,7 +60,7 @@ extra_javascript:
   - https://unpkg.com/@floating-ui/core@1.0.0/dist/floating-ui.core.umd.min.js
   - https://unpkg.com/@floating-ui/dom@1.0.0/dist/floating-ui.dom.umd.min.js
   - https://unpkg.com/@floating-ui/react-dom@1.0.0/dist/floating-ui.react-dom.umd.min.js
-  - docs/_assets/generated/react-ui.js
+  - docs/_assets/generated/react-ui.development.js
   - docs/_assets/js/ruiIcon.js
   - docs/_assets/js/ruiSwatch.js
 
