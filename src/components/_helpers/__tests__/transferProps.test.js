@@ -5,7 +5,6 @@ describe('transferProps', () => {
     const props = {
       propA: 'value',
       propB: 'value',
-      propC: 'value',
     };
     const expectedProps = { ...props };
 
@@ -14,13 +13,20 @@ describe('transferProps', () => {
 
   it('returns filtered props using always blacklisted props', () => {
     const props = {
-      children: 'value',
       className: 'value',
-      ref: 'value',
-      staticContext: 'value',
+      contentEditable: true,
+      propA: 'value',
     };
-    const expectedProps = {};
+    const expectedProps = { propA: 'value' };
 
+    let errorString;
+    const originalConsoleError = console.error;
+    console.error = (error) => {
+      errorString = error;
+    };
     expect(transferProps(props)).toEqual(expectedProps);
+    expect(errorString).toEqual('Invalid prop(s) supplied to the "transferProps" function: "className", "contentEditable"');
+
+    console.error = originalConsoleError;
   });
 });
