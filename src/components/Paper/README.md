@@ -54,13 +54,15 @@ Dim background and add transparency to visually suppress the Paper.
 ## Forwarding HTML Attributes
 
 In addition to the options below in the [component's API](#api) section, you
-can specify [React synthetic events] or **any HTML attribute you like.** All
-attributes that don't interfere with the API are forwarded to the root `<div>`
-HTML element. This enables making the component interactive and helps to improve
+can specify **any HTML attribute you like.** All attributes that don't interfere
+with the API of the React component are forwarded to the root `<div>` HTML
+element. This enables making the component interactive and helps to improve
 its accessibility.
 
-👉 Refer to the MDN reference for the full list of supported attributes of the
-[div] element.
+👉 For the full list of supported attributes refer to:
+
+- [`<div>` HTML element attributes][div-attributes]{:target="_blank"}
+- [React common props]{:target="_blank"}
 
 ## API
 
@@ -79,5 +81,5 @@ its accessibility.
 | `--rui-Paper--muted__opacity`                        | Opacity of muted paper                                       |
 | `--rui-Paper--raised__box-shadow`                    | Box shadow of raised paper                                   |
 
-[React synthetic events]: https://reactjs.org/docs/events.html
-[div]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
+[div-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
+[React common props]: https://react.dev/reference/react-dom/components/common#common-props

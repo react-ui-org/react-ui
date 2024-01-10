@@ -248,13 +248,16 @@ property. Check [MDN][grid-auto-flow] to fully understand available options.
 ## Forwarding HTML Attributes
 
 In addition to the options below in the [component's API](#api) section, you
-can specify [React synthetic events] or **any HTML attribute you like.** All
-attributes that don't interfere with the API are forwarded to the HTML element
-of your choice provided by `tag`, which is `<div>` by default. It enables making
-the component interactive and helps to improve its accessibility.
+can specify **any HTML attribute you like.** All attributes that don't interfere
+with the API of the React component are forwarded to the root HTML element
+of your choice provided by `tag`, which is `<div>` by default. This enables
+making the component interactive and helps to improve its accessibility.
 
-👉 Refer to the MDN reference for the full list of supported attributes of the
-[div] element or [any other][all-html-elements] element of your choice.
+👉 For the full list of supported attributes refer to:
+
+- [`<div>` HTML element attributes][div-attributes]{:target="_blank"}
+- [any other HTML element][all-html-elements]{:target="_blank"}
+- [React common props]{:target="_blank"}
 
 ## API
 
@@ -276,6 +279,6 @@ Wrapper for content that should span multiple rows or columns.
 [justify-items]: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items
 [repeat]: https://developer.mozilla.org/en-US/docs/Web/CSS/repeat
 [minmax]: https://developer.mozilla.org/en-US/docs/Web/CSS/minmax
-[React synthetic events]: https://reactjs.org/docs/events.html
-[div]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
+[React common props]: https://react.dev/reference/react-dom/components/common#common-props
+[div-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
 [all-html-elements]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element

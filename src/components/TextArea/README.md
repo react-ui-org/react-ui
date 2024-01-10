@@ -317,10 +317,10 @@ It's possible to disable the whole input.
 ## Forwarding HTML Attributes
 
 In addition to the options below in the [component's API](#api) section, you
-can specify [React synthetic events] or you can **add whatever HTML attribute
-you like.** All attributes that don't interfere with the API are forwarded to
-the native HTML `<textarea>`. This enables making the component interactive and
-to helps to improve its accessibility.
+can specify **any HTML attribute you like.** All attributes that don't interfere
+with the API of the React component are forwarded to the root `<textarea>` HTML
+element. This enables making the component interactive and helps to improve
+its accessibility.
 
 ```docoff-react-preview
 <TextArea
@@ -338,8 +338,10 @@ to helps to improve its accessibility.
 />
 ```
 
-👉 Refer to the MDN reference for the full list of supported attributes of the
-[textarea] element.
+👉 For the full list of supported attributes refer to:
+
+- [`<textarea>` HTML element attributes][textarea-attributes]{:target="_blank"}
+- [React common props]{:target="_blank"}
 
 ## Forwarding ref
 
@@ -354,6 +356,6 @@ If you provide [ref], it is forwarded to the native HTML `<textarea>` element.
 Head to [Forms Theming](/docs/customize/theming/forms) to see shared form theming
 options.
 
-[React synthetic events]: https://reactjs.org/docs/events.html
-[textarea]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attributes
+[React common props]: https://react.dev/reference/react-dom/components/common#common-props
 [ref]: https://reactjs.org/docs/refs-and-the-dom.html
+[textarea-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attributes

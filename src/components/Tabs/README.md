@@ -157,14 +157,20 @@ React.createElement(() => {
 ## Forwarding HTML Attributes
 
 In addition to the options below in the [component's API](#api) section, you
-can specify [React synthetic events] or **any HTML attribute you like.** All
-attributes that don't interfere with the API are forwarded to the `<nav>` HTML
-element in case of `Tabs` component and to the `<a>` HTML element in
-case of `TabsItem`. This enables making the component interactive and helps
-to improve its accessibility.
+can specify **any HTML attribute you like.** All attributes that don't interfere
+with the API of the React component are forwarded to:
 
-👉 Refer to the MDN reference for the full list of supported attributes of the
-[nav] and [li] element.
+- the root `<nav>` HTML element in case of `Tabs` component
+- the `<a>` HTML element in case of `TabsItem`
+
+This enables making the component interactive and helps to improve its
+accessibility.
+
+👉 For the full list of supported attributes refer to:
+
+- [`<nav>` HTML element attributes][nav-attributes]{:target="_blank"}
+- [`<a>` HTML element attributes][a-attributes]{:target="_blank"}
+- [React common props]{:target="_blank"}
 
 ## API
 
@@ -216,6 +222,6 @@ Where:
   `background-color`, `box-shadow`, `shift-y` (shifts vertically the whole
   item), or `label__shift-y` (tweaks vertical position of tab label).
 
-[React synthetic events]: https://reactjs.org/docs/events.html
-[nav]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav#attributes
-[li]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li#attributes
+[a-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li#attributes
+[nav-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav#attributes
+[React common props]: https://react.dev/reference/react-dom/components/common#common-props

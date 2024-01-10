@@ -649,13 +649,15 @@ React.createElement(() => {
 ## Forwarding HTML Attributes
 
 In addition to the options below in the [component's API](#api) section, you
-can specify [React synthetic events] or you can **add whatever HTML attribute
-you like.** All attributes that don't interfere with the API are forwarded to
-the native HTML `<select>`. This enables making the component interactive and helps
-to improve its accessibility.
+can specify **any HTML attribute you like.** All attributes that don't interfere
+with the API of the React component are forwarded to the root `<select>` HTML
+element. This enables making the component interactive and helps to improve
+its accessibility.
 
-👉 Refer to the MDN reference for the full list of supported attributes of the
-[select] element.
+👉 For the full list of supported attributes refer to:
+
+- [`<select>` HTML element attributes][select-attributes]{:target="_blank"}
+- [React common props]{:target="_blank"}
 
 ## Forwarding ref
 
@@ -676,6 +678,6 @@ options. On top of that, the following options are available for SelectField.
 | `--rui-FormField--box--select__caret__background`    | SelectField arrow background (including `url()` or gradient) |
 | `--rui-FormField--box--select__option--disabled__color` | Text color of disabled SelectField options                |
 
-[React synthetic events]: https://reactjs.org/docs/events.html
-[select]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#attributes
+[React common props]: https://react.dev/reference/react-dom/components/common#common-props
 [ref]: https://reactjs.org/docs/refs-and-the-dom.html
+[select-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#attributes
