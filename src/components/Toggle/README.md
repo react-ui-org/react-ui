@@ -168,13 +168,15 @@ Disabled state makes the input unavailable.
 ## Forwarding HTML Attributes
 
 In addition to the options below in the [component's API](#api) section, you
-can specify [React synthetic events] or you can **add whatever HTML attribute
-you like.** All attributes that don't interfere with the API are forwarded to
-the native HTML `<input>`. This enables making the component interactive and
-helps to improve its accessibility.
+can specify **any HTML attribute you like.** All attributes that don't interfere
+with the API of the React component are forwarded to the root `<input>` HTML
+element. This enables making the component interactive and helps to improve
+its accessibility.
 
-👉 Refer to the MDN reference for the full list of supported attributes of the
-[checkbox] input type.
+👉 For the full list of supported attributes refer to:
+
+- [`<input type="checkbox" />` HTML element attributes][checkbox-attributes]{:target="_blank"}
+- [React common props]{:target="_blank"}
 
 ## Forwarding ref
 
@@ -199,6 +201,6 @@ options. On top of that, the following options are available for Toggle.
 | `--rui-FormField--check__input--toggle--checked__background-image` | Background image of checked input              |
 | `--rui-FormField--check__input--toggle--checked__background-position` | Background position of checked input        |
 
-[React synthetic events]: https://reactjs.org/docs/events.html
-[checkbox]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#additional_attributes
+[checkbox-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#additional_attributes
+[React common props]: https://react.dev/reference/react-dom/components/common#common-props
 [ref]: https://reactjs.org/docs/refs-and-the-dom.html

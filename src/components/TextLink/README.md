@@ -47,13 +47,15 @@ It's common to use custom function for routing within SPAs. Use the
 ## Forwarding HTML Attributes
 
 In addition to the options below in the [component's API](#api) section, you
-can specify [React synthetic events] or **any HTML attribute you like.** All
-attributes that don't interfere with the API are forwarded to the `<a>` HTML
-element. This enables making the component interactive and helps to improve its
-accessibility.
+can specify **any HTML attribute you like.** All attributes that don't interfere
+with the API of the React component are forwarded to the root `<a>` HTML
+element. This enables making the component interactive and helps to improve
+its accessibility.
 
-👉 Refer to the MDN reference for the full list of supported attributes of the
-[a] element.
+👉 For the full list of supported attributes refer to:
+
+- [`<a>` HTML element attributes][a-attributes]{:target="_blank"}
+- [React common props]{:target="_blank"}
 
 ## API
 
@@ -70,5 +72,5 @@ accessibility.
 | `--rui-TextLink--active__color`           | Text color in the active state      |
 | `--rui-TextLink--active__text-decoration` | Text decoration in the active state |
 
-[React synthetic events]: https://reactjs.org/docs/events.html
-[a]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#attributes
+[a-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#attributes
+[React common props]: https://react.dev/reference/react-dom/components/common#common-props

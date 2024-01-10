@@ -156,10 +156,10 @@ It's possible to disable the whole input.
 ## Forwarding HTML Attributes
 
 In addition to the options below in the [component's API](#api) section, you
-can specify [React synthetic events] or you can **add whatever HTML attribute
-you like.** All attributes that don't interfere with the API are forwarded to
-the native HTML `<input>`. This enables making the component interactive and
-helps to improve its accessibility.
+can specify **any HTML attribute you like.** All attributes that don't interfere
+with the API of the React component are forwarded to the root `<input>` HTML
+element. This enables making the component interactive and helps to improve
+its accessibility.
 
 ```docoff-react-preview
 <FileInputField
@@ -173,8 +173,10 @@ helps to improve its accessibility.
 />
 ```
 
-👉 Refer to the MDN reference for the full list of supported attributes of the
-[file] input type.
+👉 For the full list of supported attributes refer to:
+
+- [`<input type="file" />` HTML element attributes][file-attributes]{:target="_blank"}
+- [React common props]{:target="_blank"}
 
 ## Forwarding ref
 
@@ -189,6 +191,6 @@ If you provide [ref], it is forwarded to the native HTML `<input>` element.
 Head to [Forms Theming](/docs/customize/theming/forms) to see shared form theming
 options.
 
-[React synthetic events]: https://reactjs.org/docs/events.html
-[file]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#additional_attributes
+[React common props]: https://react.dev/reference/react-dom/components/common#common-props
+[file-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#additional_attributes
 [ref]: https://reactjs.org/docs/refs-and-the-dom.html

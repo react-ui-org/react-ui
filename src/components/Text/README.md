@@ -202,19 +202,25 @@ React.createElement(() => {
 ## Forwarding HTML Attributes
 
 In addition to the options below in the [component's API](#api) section, you
-can specify [React synthetic events] or **any HTML attribute you like.** All
-attributes that don't interfere with the API are forwarded either to the
-`<span>` or to the `<div>` HTML element in case that `blockLevel` is set to
-`true`. This enables making the component interactive and helps to improve its
+can specify **any HTML attribute you like.** All attributes that don't interfere
+with the API of the React component are forwarded to the root:
+
+- `<span>` HTML element in case that `blockLevel` is set to `false`
+- `<div>` HTML element in case that `blockLevel` is set to `true`
+
+This enables making the component interactive and helps to improve its
 accessibility.
 
-👉 Refer to the MDN reference for the full list of supported attributes of the
-[span] and [div] element.
+👉 For the full list of supported attributes refer to:
+
+- [`<span>` HTML element attributes][span-attributes]{:target="_blank"}
+- [`<div>` HTML element attributes][div-attributes]{:target="_blank"}
+- [React common props]{:target="_blank"}
 
 ## API
 
 <docoff-react-props src="/components/Text/Text.jsx"></docoff-react-props>
 
-[React synthetic events]: https://reactjs.org/docs/events.html
-[span]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span#attributes
-[div]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
+[div-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
+[React common props]: https://react.dev/reference/react-dom/components/common#common-props
+[span-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span#attributes

@@ -250,13 +250,15 @@ for the underlying `<fieldset>` element.
 ## Forwarding HTML Attributes
 
 In addition to the options below in the [component's API](#api) section, you
-can specify [React synthetic events] or **any HTML attribute you like.** All
-attributes that don't interfere with the API are forwarded to the `<div>` HTML
-element which wraps elements to be grouped. This enables making the component
-interactive and helps to improve its accessibility.
+can specify **any HTML attribute you like.** All attributes that don't interfere
+with the API of the React component are forwarded to the root `<fieldset>` HTML
+element. This enables making the component interactive and helps to improve
+its accessibility.
 
-👉 Refer to the MDN reference for the full list of supported attributes of the
-[fieldset][fieldset-attributes] element.
+👉 For the full list of supported attributes refer to:
+
+- [`<fieldset>` HTML element attributes][fieldset-attributes]{:target="_blank"}
+- [React common props]{:target="_blank"}
 
 ## API
 
@@ -269,7 +271,7 @@ interactive and helps to improve its accessibility.
 | `--rui-InputGroup__gap`                                            | Gap between elements                           |
 | `--rui-InputGroup__inner-border-radius`                            | Inner border radius of elements                |
 
-[fieldset]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset
 [accessibility]: https://www.w3.org/WAI/tutorials/forms/grouping/
-[React synthetic events]: https://reactjs.org/docs/events.html
+[fieldset]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset
 [fieldset-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#attributes
+[React common props]: https://react.dev/reference/react-dom/components/common#common-props

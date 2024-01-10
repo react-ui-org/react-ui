@@ -1015,22 +1015,25 @@ opened.
 ## Forwarding HTML Attributes
 
 In addition to the options below in the [component's API](#api) section, you
-can specify [React synthetic events] or **any HTML attribute you like.** All
-attributes that don't interfere with the API are forwarded to the:
+can specify **any HTML attribute you like.** All attributes that don't interfere
+with the API of the React component are forwarded to:
 
-- `<div>` HTML element in case of the `Modal` component. This `<div>` is not the
-  root, but its first child which represents the modal window.
-- root `<div>` HTML element in case of `ModalHeader`, `ModalBody`, `ModalContent`
+- the `<div>` HTML element in case of the `Modal` component. This `<div>` is not
+  the root, but its first child which represents the modal window.
+- the root `<div>` HTML element in case of `ModalHeader`, `ModalBody`, `ModalContent`
   and `ModalFooter` components.
-- heading HTML element, which level can be specified through `level` option, in
-  case of the `ModalTitle` component.
-- native HTML `<button>` in case of the `ModalCloseButton` component.
+- the heading (e.g. `<h1>`) HTML element in case of the `ModalTitle` component.
+- the native HTML `<button>` in case of the `ModalCloseButton` component.
 
 This enables making the component interactive and helps to improve its
 accessibility.
 
-👉 Refer to the MDN reference for the full list of supported attributes of the
-[div], [heading] and [button] element.
+👉 For the full list of supported attributes refer to:
+
+- [`<div>` HTML element attributes][div-attributes]{:target="_blank"}
+- [`<h1>`-`<h6>` HTML element attributes][heading-attributes]{:target="_blank"}
+- [`<button>` HTML element attributes][button-attributes]{:target="_blank"}
+- [React common props]{:target="_blank"}
 
 ## API
 
@@ -1084,7 +1087,7 @@ accessibility.
 | `--rui-Modal--fullscreen__width`                     | Width of fullscreen modal                                     |
 | `--rui-Modal--fullscreen__height`                    | Height of fullscreen modal                                    |
 
-[React synthetic events]: https://reactjs.org/docs/events.html
-[div]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
-[heading]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#attributes
-[button]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes
+[button-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes
+[div-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
+[heading-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#attributes
+[React common props]: https://react.dev/reference/react-dom/components/common#common-props

@@ -445,10 +445,10 @@ It's possible to disable the whole input.
 ## Forwarding HTML Attributes
 
 In addition to the options below in the [component's API](#api) section, you
-can specify [React synthetic events] or you can **add whatever HTML attribute
-you like.** All attributes that don't interfere with the API are forwarded to
-the native HTML `<input>`. This enables making the component interactive and
-helps to improve its accessibility.
+can specify **any HTML attribute you like.** All attributes that don't interfere
+with the API of the React component are forwarded to the root `<input>` HTML
+element. This enables making the component interactive and helps to improve
+its accessibility.
 
 ```docoff-react-preview
 <TextField
@@ -481,9 +481,14 @@ helps to improve its accessibility.
 />
 ```
 
-👉 Refer to the MDN reference for the full list of supported attributes of the
-[text][input-text], [email][input-email], [number][input-number],
-[tel][input-tel], and [password][input-password] input types.
+👉 For the full list of supported attributes refer to:
+
+- [`<input type="text" />` HTML element attributes][input-text]{:target="_blank"}
+- [`<input type="email" />` HTML element attributes][input-email]{:target="_blank"}
+- [`<input type="number" />` HTML element attributes][input-number]{:target="_blank"}
+- [`<input type="tel" />` HTML element attributes][input-tel]{:target="_blank"}
+- [`<input type="password" />` HTML element attributes][input-password]{:target="_blank"}
+- [React common props]{:target="_blank"}
 
 ## Forwarding ref
 
@@ -508,5 +513,5 @@ Head to [Forms Theming][theming-forms] to see shared form theming options.
 [input-tel]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/tel#additional_attributes
 [input-password]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password#additional_attributes
 [theming-forms]: /docs/customize/theming/forms
-[React synthetic events]: https://reactjs.org/docs/events.html
+[React common props]: https://react.dev/reference/react-dom/components/common#common-props
 [ref]: https://reactjs.org/docs/refs-and-the-dom.html

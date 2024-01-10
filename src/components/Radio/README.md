@@ -279,13 +279,15 @@ It's possible to disable just some options or the whole set.
 ## Forwarding HTML Attributes
 
 In addition to the options below in the [component's API](#api) section, you
-can specify [React synthetic events] or you can **add whatever HTML attribute
-you like.** All attributes that don't interfere with the API are forwarded to
-the native HTML `<input>` elements. This enables making the component
-interactive and helps to improve its accessibility.
+can specify **any HTML attribute you like.** All attributes that don't interfere
+with the API of the React component are forwarded to the root `<input>` HTML
+element. This enables making the component interactive and helps to improve
+its accessibility.
 
-👉 Refer to the MDN reference for the full list of supported attributes of the
-[radio] input type.
+👉 For the full list of supported attributes refer to:
+
+- [`<input type="radio" />` HTML element attributes][radio-attributes]{:target="_blank"}
+- [React common props]{:target="_blank"}
 
 ## API
 
@@ -301,8 +303,8 @@ options. On top of that, the following options are available for Radio.
 | `--rui-FormField--check__input--radio__border-radius`              | Input corner radius                            |
 | `--rui-FormField--check__input--radio--checked__background-image` | Checked input background image (inline, URL, …) |
 
-[nng-radio]: https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/
-[fieldset]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset
 [accessibility]: https://www.w3.org/WAI/tutorials/forms/grouping/
-[React synthetic events]: https://reactjs.org/docs/events.html
-[radio]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio#additional_attributes
+[fieldset]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset
+[nng-radio]: https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/
+[radio-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio#additional_attributes
+[React common props]: https://react.dev/reference/react-dom/components/common#common-props
