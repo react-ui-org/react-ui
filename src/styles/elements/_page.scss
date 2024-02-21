@@ -2,8 +2,6 @@
 @use "../theme/typography";
 
 html {
-    width: 100%;
-    height: 100%;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     font-weight: typography.$font-weight-base;
@@ -13,8 +11,6 @@ html {
 }
 
 body {
-    width: 100%;
-    min-height: 100%;
     font-size: 1em;
     color: page.$color;
     background-color: page.$background;
