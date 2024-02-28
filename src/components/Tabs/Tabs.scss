@@ -1,4 +1,5 @@
-// 1. Decorative bottom border.
+// 1. Use the `clip` value to prevent the content from unwanted vertical scrolling during keyboard navigation.
+// 2. Decorative bottom border.
 
 @use "../../styles/tools/reset";
 @use "theme";
@@ -11,10 +12,10 @@
     min-width: 100%;
     padding-right: theme.$padding-x;
     padding-left: theme.$padding-x;
-    overflow-y: hidden;
+    overflow-y: clip; // 1.
     white-space: nowrap;
 
-    // 1.
+    // 2.
     &::after {
         content: "";
         position: absolute;
