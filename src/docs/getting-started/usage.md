@@ -29,21 +29,22 @@ performance).
 ## CSS
 
 React UI honors [ITCSS][itcss] principles to make sure that its CSS code base
-will work and perform well even in large scale. There are three global CSS
-layers:
+will work and perform well even in large scale. There are four CSS layers:
 
 1. **Theme:** a collection of hundreds of CSS custom properties that define the
    look of your app. See [Theming][theming] for more.
 2. **Foundation:** mandatory ground-zero CSS for React UI components. Includes
    global resets and fixes rendering inconsistencies across browsers with
    `normalize.css`. (Not to be confused with the Foundation CSS framework.)
-3. **CSS helpers:** tiny CSS classes that can handle details like
+3. **Components:** React UI components' styles. Components utilize [CSS modules]
+   to avoid class name conflicts and to keep the class names scoped.
+4. **CSS helpers:** tiny CSS classes that can handle details like
    [typography][typography], [spacing][spacing], [colors][colors], etc. Class
    name notation is [inspired by Bootstrap][bootstrap-utilities], so if you are
    familiar with Bootstrap, you will feel at home here.
 
-All layers are written in Sass and compiled to CSS. You can import them in a
-**ready-to-use CSS bundle** like this:
+All layers are written in Sass and compiled to CSS. You can import them all in
+a **ready-to-use CSS bundle** like this:
 
 ```js
 import '@react-ui-org/react-ui/dist/react-ui.css';
@@ -51,13 +52,7 @@ import '@react-ui-org/react-ui/dist/react-ui.css';
 
 ### Sass
 
-Alternatively, you can import the Sass source files directly:
-
-```js
-import '@react-ui-org/react-ui/src/theme.scss';
-import '@react-ui-org/react-ui/src/foundation.scss';
-import '@react-ui-org/react-ui/src/helpers.scss';
-```
+👉 As of now, we don't provide a way to import the Sass files directly.
 
 ## Components
 
@@ -68,9 +63,6 @@ import { Button } from '@react-ui-org/react-ui';
 
 <Button label="My Button" />
 ```
-
-👉 Thanks to [CSS modules], React UI components have their styles bundled
-together with the component code.
 
 ### Controlled vs. Uncontrolled
 

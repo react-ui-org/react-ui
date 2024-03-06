@@ -1,5 +1,6 @@
 // Global definitions
-// These need to be imported here to be placed in the distribution CSS file
+// These need to be imported here to be placed in the distribution CSS file.
+// Component styles are imported in the component files themselves.
 import './theme.scss';
 import './foundation.scss';
 import './helpers.scss';
