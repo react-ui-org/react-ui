@@ -62,14 +62,13 @@ To install React UI in your app:
    />
    ```
 
-3. Load the default theme and the CSS foundation layer:
+3. Load React UI CSS in your app:
 
    <!-- eslint-env browser -->
    <!-- eslint-disable import/no-unresolved -->
 
    ```js
-   import '@react-ui-org/react-ui/src/lib/theme.scss';
-   import '@react-ui-org/react-ui/src/lib/foundation.scss';
+   import '@react-ui-org/react-ui/dist/react-ui.css';
    ```
 
    <!-- eslint-env browser -->
@@ -101,8 +100,11 @@ module.exports = (env, argv) => ({
     alias: {
       // Allow to run react-ui in development mode for easier development.
       '@react-ui-org/react-ui$': argv.mode === 'production'
-        ? '@react-ui-org/react-ui/dist/lib.js'
-        : '@react-ui-org/react-ui/dist/lib.development.js',
+        ? '@react-ui-org/react-ui/dist/react-ui.js'
+        : '@react-ui-org/react-ui/dist/react-ui.development.js',
+      '@react-ui-org/react-ui/dist/react-ui.css': modeArgument === 'production'
+        ? '@react-ui-org/react-ui/dist/react-ui.css'
+        : '@react-ui-org/react-ui/dist/react-ui.development.css',
     },
   },
 });
