@@ -40,27 +40,23 @@ For demonstration purposes, all elements that are direct descendants of live
 playgrounds in these docs are given a standard margin on all sides which
 suppresses default spacing behavior described above:
 
-~~~markdown
 ```docoff-react-preview
-  <p>This paragraph will have standard playground margin an all sides.</p>
-  <p>This paragraph will have it too.</p>
+<p>This paragraph will have standard playground margin an all sides.</p>
+<p>This paragraph will have it too.</p>
 ```
-~~~
 
 Once wrapped in a `div`, all elements and components remain unaffected and have
 exactly the same margins as they would have in a real-world React UI project:
 
-~~~markdown
 ```docoff-react-preview
-  <div>
+<div>
     <p>
-      This paragraph will have bottom margin of
-      <code>--rui-dimension-space-bottom-base</code>.
+        This paragraph will have bottom margin of
+        <code>--rui-dimension-space-bottom-base</code>.
     </p>
     <p>
-      This paragraph is a last child of its parent and thus will have no bottom
-      margin.
+        This paragraph is a last child of its parent and thus will have no bottom
+        margin.
     </p>
-  </div>
+</div>
 ```
-~~~
