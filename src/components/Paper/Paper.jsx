@@ -3,7 +3,7 @@ import React from 'react';
 import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { transferProps } from '../_helpers/transferProps';
-import styles from './Paper.scss';
+import styles from './Paper.module.scss';
 
 export const Paper = ({
   children,

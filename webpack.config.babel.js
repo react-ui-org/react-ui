@@ -45,6 +45,7 @@ module.exports = (env, argv) => ({
             loader: 'css-loader',
             options: {
               modules: {
+                auto: true, // Enable CSS Modules only for files with `.module.*` extension
                 localIdentName: argv.mode === 'production'
                   ? '[hash:base64:8]'
                   : '[name]__[local]__[hash:base64:8]',

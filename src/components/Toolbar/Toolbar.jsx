@@ -6,7 +6,7 @@ import { classNames } from '../../utils/classNames';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { getAlignClassName } from './_helpers/getAlignClassName';
 import { getJustifyClassName } from './_helpers/getJustifyClassName';
-import styles from './Toolbar.scss';
+import styles from './Toolbar.module.scss';
 
 export const Toolbar = ({
   align,

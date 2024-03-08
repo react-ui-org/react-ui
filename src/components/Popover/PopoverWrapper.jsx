@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
 import { transferProps } from '../_helpers/transferProps';
-import styles from './PopoverWrapper.scss';
+import styles from './PopoverWrapper.module.scss';
 
 export const PopoverWrapper = ({
   children,
@@ -36,4 +36,3 @@ PopoverWrapper.propTypes = {
 export const PopoverWrapperWithContext = withGlobalProps(PopoverWrapper, 'PopoverWrapper');
 
 export default PopoverWrapperWithContext;
-

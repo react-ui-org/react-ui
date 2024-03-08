@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
 import { transferProps } from '../_helpers/transferProps';
-import styles from './Tabs.scss';
+import styles from './Tabs.module.scss';
 
 export const Tabs = ({
   children,

@@ -4,7 +4,7 @@ import { withGlobalProps } from '../../provider';
 import { transferProps } from '../_helpers/transferProps';
 import { TableHeaderCell } from './_components/TableHeaderCell';
 import { TableBodyCell } from './_components/TableBodyCell';
-import styles from './Table.scss';
+import styles from './Table.module.scss';
 
 export const Table = ({
   columns,

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import styles from '../TableCell.scss';
+import styles from '../TableCell.module.scss';
 
 export const TableBodyCell = ({
   format,

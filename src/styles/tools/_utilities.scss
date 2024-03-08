@@ -20,7 +20,7 @@
         // Don't prefix if value key is null (e.g. with shadow class)
         $property-class-modifier: if($key, "-" + $key, "");
 
-        :global(.#{$property-class + $infix + $property-class-modifier}) {
+        .#{$property-class + $infix + $property-class-modifier} {
             @each $property in $properties {
                 // stylelint-disable-next-line declaration-no-important
                 #{$property}: $value !important;

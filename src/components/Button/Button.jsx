@@ -10,7 +10,7 @@ import { ButtonGroupContext } from '../ButtonGroup';
 import { InputGroupContext } from '../InputGroup/InputGroupContext';
 import getRootPriorityClassName from '../_helpers/getRootPriorityClassName';
 import getRootLabelVisibilityClassName from './helpers/getRootLabelVisibilityClassName';
-import styles from './Button.scss';
+import styles from './Button.module.scss';
 
 export const Button = React.forwardRef((props, ref) => {
   const {

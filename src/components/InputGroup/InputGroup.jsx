@@ -13,7 +13,7 @@ import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
 import { InputGroupContext } from './InputGroupContext';
-import styles from './InputGroup.scss';
+import styles from './InputGroup.module.scss';
 
 export const InputGroup = ({
   children,

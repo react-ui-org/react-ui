@@ -6,7 +6,7 @@ import { getRootValidationStateClassName } from '../_helpers/getRootValidationSt
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
-import styles from './FileInputField.scss';
+import styles from './FileInputField.module.scss';
 
 export const FileInputField = React.forwardRef((props, ref) => {
   const {

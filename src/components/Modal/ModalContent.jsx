@@ -3,7 +3,7 @@ import React from 'react';
 import { withGlobalProps } from '../../provider';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { transferProps } from '../_helpers/transferProps';
-import styles from './ModalContent.scss';
+import styles from './ModalContent.module.scss';
 
 export const ModalContent = ({
   children,

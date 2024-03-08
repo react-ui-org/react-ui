@@ -3,7 +3,7 @@ import React from 'react';
 import { withGlobalProps } from '../../provider';
 import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
-import styles from './TabsItem.scss';
+import styles from './TabsItem.module.scss';
 
 export const TabsItem = ({
   afterLabel,

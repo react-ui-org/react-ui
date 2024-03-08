@@ -4,7 +4,7 @@ import { withGlobalProps } from '../../provider';
 import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import { getJustifyClassName } from './_helpers/getJustifyClassName';
-import styles from './ModalFooter.scss';
+import styles from './ModalFooter.module.scss';
 
 export const ModalFooter = ({
   children,

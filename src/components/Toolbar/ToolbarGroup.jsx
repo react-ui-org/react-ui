@@ -5,7 +5,7 @@ import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { getAlignClassName } from './_helpers/getAlignClassName';
-import styles from './Toolbar.scss';
+import styles from './Toolbar.module.scss';
 
 export const ToolbarGroup = ({
   align,

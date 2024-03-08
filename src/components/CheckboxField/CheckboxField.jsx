@@ -5,7 +5,7 @@ import { classNames } from '../../utils/classNames';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
-import styles from './CheckboxField.scss';
+import styles from './CheckboxField.module.scss';
 
 export const CheckboxField = React.forwardRef((props, ref) => {
   const {

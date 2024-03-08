@@ -5,7 +5,7 @@ import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { FormLayoutContext } from './FormLayoutContext';
-import styles from './FormLayout.scss';
+import styles from './FormLayout.module.scss';
 
 const PREDEFINED_LABEL_WIDTH_VALUES = ['auto', 'default', 'limited'];
 

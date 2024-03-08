@@ -4,7 +4,7 @@ import {
   withGlobalProps,
 } from '../../provider';
 import { transferProps } from '../_helpers/transferProps';
-import styles from './ModalTitle.scss';
+import styles from './ModalTitle.module.scss';
 
 export const ModalTitle = ({
   children,

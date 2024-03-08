@@ -4,7 +4,7 @@ import { withGlobalProps } from '../../provider';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { transferProps } from '../_helpers/transferProps';
 import { generateResponsiveCustomProperties } from './_helpers/generateResponsiveCustomProperties';
-import styles from './Grid.scss';
+import styles from './Grid.module.scss';
 
 export const GridSpan = ({
   children,

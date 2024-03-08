@@ -7,7 +7,7 @@ import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { FormLayoutContext } from './FormLayoutContext';
-import styles from './FormLayoutCustomField.scss';
+import styles from './FormLayoutCustomField.module.scss';
 
 const renderLabel = (id, label, labelForId) => {
   if (labelForId && label) {

@@ -5,7 +5,7 @@ import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { getScrollingClassName } from './_helpers/getScrollingClassName';
-import styles from './ModalBody.scss';
+import styles from './ModalBody.module.scss';
 
 export const ModalBody = ({
   children,

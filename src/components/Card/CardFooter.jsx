@@ -3,7 +3,7 @@ import React from 'react';
 import { withGlobalProps } from '../../provider';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { transferProps } from '../_helpers/transferProps';
-import styles from './Card.scss';
+import styles from './Card.module.scss';
 
 export const CardFooter = ({
   children,
