@@ -7,7 +7,7 @@ import {
 import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import { getRootColorClassName } from '../_helpers/getRootColorClassName';
-import styles from './Alert.scss';
+import styles from './Alert.module.scss';
 
 export const Alert = ({
   children,

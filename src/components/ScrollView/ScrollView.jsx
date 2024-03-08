@@ -15,7 +15,7 @@ import { transferProps } from '../_helpers/transferProps';
 import { getElementsPositionDifference } from './_helpers/getElementsPositionDifference';
 import { useLoadResize } from './_hooks/useLoadResizeHook';
 import { useScrollPosition } from './_hooks/useScrollPositionHook';
-import styles from './ScrollView.scss';
+import styles from './ScrollView.module.scss';
 
 // Function `getElementsPositionDifference` sometimes returns floating point values that results
 // in inaccurate detection of start/end. It is necessary to accept this inaccuracy and take

@@ -7,7 +7,7 @@ import { getRootValidationStateClassName } from '../_helpers/getRootValidationSt
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
-import styles from './TextArea.scss';
+import styles from './TextArea.module.scss';
 
 export const TextArea = React.forwardRef((props, ref) => {
   const {

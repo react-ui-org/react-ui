@@ -9,7 +9,7 @@ import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
 import { InputGroupContext } from '../InputGroup/InputGroupContext';
 import { Option } from './_components/Option';
-import styles from './SelectField.scss';
+import styles from './SelectField.module.scss';
 
 export const SelectField = React.forwardRef((props, ref) => {
   const {

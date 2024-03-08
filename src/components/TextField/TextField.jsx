@@ -8,7 +8,7 @@ import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
 import { InputGroupContext } from '../InputGroup/InputGroupContext';
-import styles from './TextField.scss';
+import styles from './TextField.module.scss';
 
 const SMALL_INPUT_SIZE = 10;
 

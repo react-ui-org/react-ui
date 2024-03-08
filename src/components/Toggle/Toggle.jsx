@@ -5,7 +5,7 @@ import { classNames } from '../../utils/classNames';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
-import styles from './Toggle.scss';
+import styles from './Toggle.module.scss';
 
 export const Toggle = React.forwardRef((props, ref) => {
   const {

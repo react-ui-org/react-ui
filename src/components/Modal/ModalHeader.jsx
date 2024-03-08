@@ -6,7 +6,7 @@ import {
 import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import { getJustifyClassName } from './_helpers/getJustifyClassName';
-import styles from './ModalHeader.scss';
+import styles from './ModalHeader.module.scss';
 
 export const ModalHeader = ({
   children,

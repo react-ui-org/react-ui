@@ -6,7 +6,7 @@ import { classNames } from '../../utils/classNames';
 import { transferProps } from '../_helpers/transferProps';
 import getRootSideClassName from './_helpers/getRootSideClassName';
 import getRootAlignmentClassName from './_helpers/getRootAlignmentClassName';
-import styles from './Popover.scss';
+import styles from './Popover.module.scss';
 
 export const Popover = React.forwardRef((props, ref) => {
   const {

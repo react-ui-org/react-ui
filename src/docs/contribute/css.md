@@ -56,10 +56,10 @@ There are three simple rules to follow when organizing React UI CSS:
             ├── *
                 ├── <Component>
                     ├── …
-                    ├── _settings.scss    Component's non-themeable Sass variables
-                    ├── _theme.scss       Component's Sass interface to its CSS custom properties in `theme.scss`
-                    ├── _tools.scss       Component's Sass mixins and functions
-                    ├── Component.scss    Component's main stylesheet
+                    ├── _settings.scss           Component's non-themeable Sass variables
+                    ├── _theme.scss              Component's Sass interface to its CSS custom properties in `theme.scss`
+                    ├── _tools.scss              Component's Sass mixins and functions
+                    ├── Component.module.scss    Component's main stylesheet loaded as CSS Module
                     └── …
         ├── …
         ├── styles                Partials for top-level Sass endpoints and shared styles
@@ -79,9 +79,9 @@ There are three simple rules to follow when organizing React UI CSS:
 
 ## CSS Modules
 
-React UI leverages [CSS modules] (not to be confused with [modular CSS
-specification] of the same name) to take advantage of writing native CSS
-(meaning “not JSS or CSS in JS”). Together with
+For components, React UI leverages [CSS modules] (not to be confused with
+[modular CSS specification] of the same name) to take advantage of writing
+native CSS (meaning “not JSS or CSS in JS”). Together with
 [Sass](#preprocessing-with-sass), CSS modules represent flexibility and popular
 programming features needed to author modern stylesheets perfectly familiar to
 traditional CSS developers.
@@ -109,7 +109,7 @@ For example, this JSX:
 … with this SCSS:
 
 ```scss
-// Button.scss
+// Button.module.scss
 
 .root {
  // …
@@ -130,23 +130,16 @@ For example, this JSX:
 
 … produces following CSS class names:
 
-- `Button__root__2yVxr5IZ`
-- `Button__beforeLabel__1rrmrrWj`
-- `Button__afterLabel__38eMTilM`
-- `Button__label__23iTNlfS`
+- `Button-module__root__2yVxr5IZ`
+- `Button-module__beforeLabel__1rrmrrWj`
+- `Button-module__afterLabel__38eMTilM`
+- `Button-module__label__23iTNlfS`
 
 Resulting CSS class names are both unique and human-readable at the same time
 which is convenient for development. Class names are further shortened and
 obfuscated for production environments.
 
-### Helpers and Utilities
-
-There are also global helper and utility classes (both documented as CSS Helpers
-for the sake of comprehensibility for non-CSS guys) that can be used by
-developers and thus remain unaltered by CSS modules. For example,
-`:global(.display-block)` selector produces `display-block` CSS class.
-
-## Class Naming Rules
+### Class Naming Rules
 
 Following rules make it clear both in JSX and CSS what is affected by a CSS
 class.
@@ -199,6 +192,16 @@ There are three kinds of custom properties used:
    properties. Part of public API, designed to be customized. Must not reuse
    other custom property types. Refer to the [theming overview] to learn how
    their names are created.
+
+## Helpers and Utilities
+
+There are also global helper and utility classes (both documented as CSS Helpers
+for the sake of comprehensibility for non-CSS guys) that can be used by
+developers and thus remain unaltered by CSS modules.
+
+### Class Naming Rules
+
+Class names must use kebab-case notation to be usable in HTML context.
 
 ## Preprocessing with Sass
 

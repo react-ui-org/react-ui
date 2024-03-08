@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
 import { transferProps } from '../_helpers/transferProps';
-import styles from './TextLink.scss';
+import styles from './TextLink.module.scss';
 
 export const TextLink = ({
   href,

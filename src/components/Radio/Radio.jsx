@@ -6,7 +6,7 @@ import { getRootValidationStateClassName } from '../_helpers/getRootValidationSt
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
-import styles from './Radio.scss';
+import styles from './Radio.module.scss';
 
 export const Radio = ({
   disabled,

@@ -8,7 +8,7 @@ import { getPositionClassName } from './_helpers/getPositionClassName';
 import { getSizeClassName } from './_helpers/getSizeClassName';
 import { useModalFocus } from './_hooks/useModalFocus';
 import { useModalScrollPrevention } from './_hooks/useModalScrollPrevention';
-import styles from './Modal.scss';
+import styles from './Modal.module.scss';
 
 const preRender = (
   children,

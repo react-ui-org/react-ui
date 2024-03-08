@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button } from '../../../Button';
-import styles from '../TableCell.scss';
+import styles from '../TableCell.module.scss';
 
 export const TableHeaderCell = ({
   column,

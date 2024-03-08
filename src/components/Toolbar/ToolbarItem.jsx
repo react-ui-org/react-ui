@@ -4,7 +4,7 @@ import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
 import { withGlobalProps } from '../../provider';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
-import styles from './Toolbar.scss';
+import styles from './Toolbar.module.scss';
 
 export const ToolbarItem = ({
   children,

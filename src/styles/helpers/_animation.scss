@@ -12,10 +12,10 @@ $_spin-easing: cubic-bezier(0.31, 0.3, 0.34, -0.17);
     }
 }
 
-:global(.animation-spin-clockwise) {
+.animation-spin-clockwise {
     animation: spin $_spin-duration $_spin-easing infinite;
 }
 
-:global(.animation-spin-counterclockwise) {
+.animation-spin-counterclockwise {
     animation: spin $_spin-duration $_spin-easing infinite reverse;
 }

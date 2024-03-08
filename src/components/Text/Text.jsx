@@ -7,7 +7,7 @@ import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { getRootClampClassName } from './_helpers/getRootClampClassName';
 import { getRootHyphensClassName } from './_helpers/getRootHyphensClassName';
 import { getRootWordWrappingClassName } from './_helpers/getRootWordWrappingClassName';
-import styles from './Text.scss';
+import styles from './Text.module.scss';
 
 export const Text = ({
   blockLevel,
