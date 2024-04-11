@@ -1,5 +1,5 @@
 {
-  "extends" : [
+  "extends": [
     "@visionappscz/eslint-config-visionapps"
   ],
   "env": {
@@ -17,6 +17,7 @@
   ],
   "parser": "@babel/eslint-parser",
   "rules": {
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "no-console": "error"
   }
 }
