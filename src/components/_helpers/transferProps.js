@@ -24,7 +24,6 @@ export const transferProps = (props) => {
   } = props;
 
   if (process.env.NODE_ENV !== 'production') {
-    console.log('props', props);
     const invalidProps = [
       'children', // It is always either handled by the component itself or not supported.
       'className', // Classes are set by component authors, changing it arbitrarily might break things.

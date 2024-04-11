@@ -20,13 +20,16 @@ describe('transferProps', () => {
     const expectedProps = { propA: 'value' };
 
     let errorString;
+    // eslint-disable-next-line no-console
     const originalConsoleError = console.error;
+    // eslint-disable-next-line no-console
     console.error = (error) => {
       errorString = error;
     };
     expect(transferProps(props)).toEqual(expectedProps);
     expect(errorString).toEqual('Invalid prop(s) supplied to the "transferProps" function: "className", "contentEditable"');
 
+    // eslint-disable-next-line no-console
     console.error = originalConsoleError;
   });
 });
