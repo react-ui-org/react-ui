@@ -421,10 +421,13 @@ with the API of the React component are forwarded to the root `<div>` HTML
 element. This enables making the component interactive and helps to improve
 its accessibility.
 
-👉 For the full list of supported attributes refer to:
+👉 For forwarding HTML attributes programmatically, you can use the `transferProps` function. For detailed usage examples, refer to the [TransferProps documentation](/src/docs/js-helpers/transferProps.md).
+
+For the full list of supported attributes, you can also refer to:
 
 - [`<div>` HTML element attributes][div-attributes]{:target="_blank"}
 - [React common props]{:target="_blank"}
+
 
 ## API
 

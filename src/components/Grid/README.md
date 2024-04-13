@@ -249,15 +249,17 @@ property. Check [MDN][grid-auto-flow] to fully understand available options.
 
 In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't interfere
-with the API of the React component are forwarded to the root HTML element
-of your choice provided by `tag`, which is `<div>` by default. This enables
-making the component interactive and helps to improve its accessibility.
+with the API of the React component are forwarded to the root `<div>` HTML
+element. This enables making the component interactive and helps to improve
+its accessibility.
 
-👉 For the full list of supported attributes refer to:
+👉 For forwarding HTML attributes programmatically, you can use the `transferProps` function. For detailed usage examples, refer to the [TransferProps documentation](/src/docs/js-helpers/transferProps.md).
+
+For the full list of supported attributes, you can also refer to:
 
 - [`<div>` HTML element attributes][div-attributes]{:target="_blank"}
-- [any other HTML element][all-html-elements]{:target="_blank"}
 - [React common props]{:target="_blank"}
+
 
 ## API
 

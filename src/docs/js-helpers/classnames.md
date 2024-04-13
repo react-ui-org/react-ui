@@ -19,7 +19,7 @@ And use it:
 <div
   className={classNames(
     'd-inline-block',
-    Date.now() > 1609455600 && 'text-warning',
+    Date.now() > 1609455600 && 'text-warning',    
     Date.now() > 1622498400 ? 'text-secondary' : null,
   )}
 >

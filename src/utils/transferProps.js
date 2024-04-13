@@ -35,12 +35,15 @@ export const transferProps = (props) => {
       'staticContext', // In `react-router` (v4, v5) this is used during server side rendering, it makes no sense to pass it to a component.
       'style', // Styles are set by component authors, changing it arbitrarily might break things.
       'suppressContentEditableWarning', // Since setting `contentEditable` is not allowed, this is not needed.
-    ]
-      .filter((key) => props[key] !== undefined);
+    ].filter((key) => props[key] !== undefined);
 
     if (invalidProps.length > 0) {
       // eslint-disable-next-line no-console
-      console.error(`Invalid prop(s) supplied to the "transferProps" function: "${invalidProps.join('", "')}"`);
+      console.error(
+        `Invalid prop(s) supplied to the "transferProps" function: "${invalidProps.join(
+          '", "',
+        )}"`,
+      );
     }
   }
 
