@@ -37,5 +37,5 @@ version-resolver:
       - 'bug'
       - 'bugfix'
   default: patch
-change-template: '- $TITLE (PR #$NUMBER)'
+change-template: '- $TITLE by @$AUTHOR (PR #$NUMBER)'
 template: $CHANGES
