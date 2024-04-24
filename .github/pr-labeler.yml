@@ -1,6 +1,6 @@
 BC: bc/*
 feature: [feature/*, task/*]
-bug: [bug/*, bugfix/*]
+fix: [fix/*, bug/*, bugfix/*]
 refactoring: refactoring/*
 documentation: [docs/*, documentation/*]
 maintenance: maintenance/*

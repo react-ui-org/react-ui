@@ -12,6 +12,7 @@ categories:
       - 'enhancement'
   - title: '🐞 Bug Fixes'
     labels:
+      - 'fix'
       - 'bug'
       - 'bugfix'
   - title: '♻️ Refactoring'
@@ -32,6 +33,7 @@ version-resolver:
       - 'feature'
   patch:
     labels:
+      - 'fix'
       - 'bug'
       - 'bugfix'
   default: patch
