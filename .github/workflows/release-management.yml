@@ -4,9 +4,6 @@ on:
   push:
     branches: [ master ]
 
-permissions:
-  contents: read
-
 jobs:
   test_and_build:
     name: Test and build
