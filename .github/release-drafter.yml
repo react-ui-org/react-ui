@@ -39,3 +39,4 @@ version-resolver:
   default: patch
 change-template: '- $TITLE by @$AUTHOR (PR #$NUMBER)'
 template: $CHANGES
+footer: '**Full Changelog**: https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...$RESOLVED_VERSION'
