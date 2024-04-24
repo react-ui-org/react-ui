@@ -38,4 +38,8 @@ version-resolver:
       - 'bugfix'
   default: patch
 change-template: '- $TITLE by @$AUTHOR (PR #$NUMBER)'
-template: $CHANGES
+template: |
+  $CHANGES
+footer: |
+
+  **Full Changelog**: https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
