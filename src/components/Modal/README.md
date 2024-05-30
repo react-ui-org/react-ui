@@ -1019,8 +1019,7 @@ can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
 [`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to:
 
-- the `<div>` HTML element in case of the `Modal` component. This `<div>` is not
-  the root, but its first child which represents the modal window.
+- the `<dialog>` HTML element in case of the `Modal` component.
 - the root `<div>` HTML element in case of `ModalHeader`, `ModalBody`, `ModalContent`
   and `ModalFooter` components.
 - the heading (e.g. `<h1>`) HTML element in case of the `ModalTitle` component.
@@ -1031,6 +1030,7 @@ accessibility.
 
 👉 For the full list of supported attributes refer to:
 
+- [`<dialog>` HTML element attributes][dialog-attributes]{:target="_blank"}
 - [`<div>` HTML element attributes][div-attributes]{:target="_blank"}
 - [`<h1>`-`<h6>` HTML element attributes][heading-attributes]{:target="_blank"}
 - [`<button>` HTML element attributes][button-attributes]{:target="_blank"}
@@ -1066,29 +1066,31 @@ accessibility.
 
 ## Theming
 
-| Custom Property                                      | Description                                                   |
-|------------------------------------------------------|---------------------------------------------------------------|
-| `--rui-Modal__padding-x`                             | Inline padding of individual modal components                 |
-| `--rui-Modal__padding-y`                             | Block padding of individual modal components                  |
-| `--rui-Modal__background`                            | Modal background (including `url()` or gradient)              |
-| `--rui-Modal__box-shadow`                            | Modal box shadow                                              |
-| `--rui-Modal__separator__width`                      | Width of separator between modal header, body, and footer     |
-| `--rui-Modal__separator__color`                      | Color of separator between modal header, body, and footer     |
-| `--rui-Modal__outer-spacing-xs`                      | Spacing around modal, `xs` screen size                        |
-| `--rui-Modal__outer-spacing-sm`                      | Spacing around modal, `sm` screen size and bigger             |
-| `--rui-Modal__header__gap`                           | Modal header gap between children                             |
-| `--rui-Modal__footer__background`                    | Modal footer background (including `url()` or gradient)       |
-| `--rui-Modal__footer__gap`                           | Modal footer gap between children                             |
-| `--rui-Modal__backdrop__background`                  | Modal backdrop background (including `url()` or gradient)     |
-| `--rui-Modal--auto__min-width`                       | Min width of auto-sized modal (when enough screen estate)     |
-| `--rui-Modal--auto__max-width`                       | Max width of auto-sized modal (when enough screen estate)     |
-| `--rui-Modal--small__width`                          | Width of small modal                                          |
-| `--rui-Modal--medium__width`                         | Width of medium modal                                         |
-| `--rui-Modal--large__width`                          | Width of large modal                                          |
-| `--rui-Modal--fullscreen__width`                     | Width of fullscreen modal                                     |
-| `--rui-Modal--fullscreen__height`                    | Height of fullscreen modal                                    |
+| Custom Property                                      | Description                                                 |
+|------------------------------------------------------|-------------------------------------------------------------|
+| `--rui-Modal__padding-x`                             | Inline padding of individual modal components               |
+| `--rui-Modal__padding-y`                             | Block padding of individual modal components                |
+| `--rui-Modal__background`                            | Modal background (including `url()` or gradient)            |
+| `--rui-Modal__box-shadow`                            | Modal box shadow                                            |
+| `--rui-Modal__separator__width`                      | Width of separator between modal header, body, and footer   |
+| `--rui-Modal__separator__color`                      | Color of separator between modal header, body, and footer   |
+| `--rui-Modal__outer-spacing-xs`                      | Spacing around modal, `xs` screen size                      |
+| `--rui-Modal__outer-spacing-sm`                      | Spacing around modal, `sm` screen size and bigger           |
+| `--rui-Modal__header__gap`                           | Modal header gap between children                           |
+| `--rui-Modal__footer__background`                    | Modal footer background (including `url()` or gradient)     |
+| `--rui-Modal__footer__gap`                           | Modal footer gap between children                           |
+| `--rui-Modal__backdrop__background`                  | Modal backdrop background (including `url()` or gradient)   |
+| `--rui-Modal--auto__min-width`                       | Min width of auto-sized modal (when enough screen estate)   |
+| `--rui-Modal--auto__max-width`                       | Max width of auto-sized modal (when enough screen estate)   |
+| `--rui-Modal--small__width`                          | Width of small modal                                        |
+| `--rui-Modal--medium__width`                         | Width of medium modal                                       |
+| `--rui-Modal--large__width`                          | Width of large modal                                        |
+| `--rui-Modal--fullscreen__width`                     | Width of fullscreen modal                                   |
+| `--rui-Modal--fullscreen__height`                    | Height of fullscreen modal                                  |
+| `--rui-Modal__animation__duration`                   | Duration of animation used (when opening modal)             |
 
 [button-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes
+[dialog-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#attributes
 [div-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
 [heading-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#attributes
 [React common props]: https://react.dev/reference/react-dom/components/common#common-props
