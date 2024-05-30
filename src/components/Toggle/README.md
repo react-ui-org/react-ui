@@ -39,6 +39,9 @@ See [API](#api) for all available options.
   me any emails” which would mean that the user needs to turn the toggle **on**
   in order for something **not** to happen.
 
+- **Use text labels** unless it is necessary to wrap text label into
+  Popover-like to component to provide additional info about the field.
+
 - Only make the Toggle's label invisible when there is **another visual clue**
   to guide users through using the input.
 

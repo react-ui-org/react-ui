@@ -56,6 +56,9 @@ See [API](#api) for all available options.
   polite phrases like _Please select your favourite fruit_. Short labels will
   help your users accomplish their task faster.
 
+- **Use text labels** unless it is necessary to wrap text label into
+  Popover-like to component to provide additional info about the field.
+
 - Only make the SelectField's label invisible when there is **another visual
   clue** to guide users through filling the input. Using the first option as
   label is not recommended either — it disappears once user makes their choice.
