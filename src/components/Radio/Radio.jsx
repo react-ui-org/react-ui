@@ -157,7 +157,7 @@ Radio.propTypes = {
   /**
    * Label of the group of options.
    */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   /**
    * Layout of the field.
    *

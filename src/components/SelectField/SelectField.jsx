@@ -182,7 +182,7 @@ SelectField.propTypes = {
   /**
    * Select field label.
    */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   /**
    * Layout of the field.
    *
