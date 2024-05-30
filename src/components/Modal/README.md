@@ -92,10 +92,23 @@ See [API](#api) for all available options.
 - **Modal actions** should correspond to the modal purpose, too. E.g. “Delete”
   tells better what happens rather than “OK”.
 
-- Modal **automatically focuses the first non-disabled form field** by default
-  which allows users to confirm the modal by hitting the enter key. When no
-  field is found then the primary button (in the footer) is focused. To turn
+- While native `<dialog>` (that is used under the hood) can be present in DOM,
+  modal is a more feature-rich component that provides more control over the
+  modal behavior and shall be **removed from DOM when closed**.
+
+- Modal **automatically focuses the first non-disabled form field** by default.
+  When no field is found then the primary button (in the footer) is focused. To turn
   this feature off, set the `autofocus` prop to `false`.
+
+- Modal **submits the form when the user presses the `Enter` key** . A click is
+  programmatically triggered on the primary button in this case. To turn this
+  feature off, set the `allowPrimaryActionOnEnterKey` prop to `false`.
+
+- Modal **closes when the user presses the `Escape` key**. A click is
+  programmatically triggered on the close button in this case. To turn this
+  feature off, set the `allowCloseOnEscapeKey` prop to `false`. Modal can be
+  also **closed by clicking on the backdrop**. To turn this feature off,
+  set the `allowCloseOnBackdropClick` prop to `false`.
 
 - **Avoid stacking** of modals. While it may technically work, the modal is just
   not designed for that.
@@ -114,7 +127,8 @@ Modal is decomposed into the following components:
     - [ModalFooter](#modalfooter)
 
 Using different combinations, you can compose different kinds of modals,
-e.g. dialog modal, blocking modal, scrollable modal, etc.
+e.g. dialog modal, [modal with form](#forms), [blocking modal](#interaction-blocking),
+[scrollable modal](#scrolling-long-content), etc.
 
 ```docoff-react-preview
 React.createElement(() => {
@@ -126,7 +140,7 @@ React.createElement(() => {
     React UI docs. You may not need it in your application.
   */}
   return (
-    <GlobalPropsProvider globalProps={{
+    <RUIProvider globalProps={{
       Modal: { preventScrollUnderneath: window.document.documentElement }
     }}>
       <Button
@@ -150,6 +164,10 @@ React.createElement(() => {
       <Button
         label="Launch modal as form"
         onClick={() => setModalOpen(4)}
+      />
+      <Button
+        label="Launch modal as native form"
+        onClick={() => setModalOpen(5)}
       />
       <div>
         {modalOpen === 1 && (
@@ -225,9 +243,33 @@ React.createElement(() => {
             </ModalHeader>
             <ModalBody>
               <ModalContent>
-                <FormLayout fieldLayout="horizontal">
-                  <TextField label="Username" />
+                <FormLayout fieldLayout="horizontal" labelWidth="limited">
+                  <Toggle
+                    label="Enabled"
+                  />
+                  <TextField label="Username" required />
                   <TextField label="Password" type="password" />
+                  <CheckboxField label="Force password on login" />
+                  <Radio
+                    label="Type of collaboration"
+                    options={[
+                      { label: 'Internal', value: 'internal'},
+                      { label: 'External', value: 'external'},
+                    ]}
+                  />
+                  <SelectField
+                    label="Role"
+                    options={[
+                      { label: 'Programmer', value: 'programmer' },
+                      { label: 'Team leader', value: 'team-leader' },
+                      { label: 'Project manager', value: 'project-manager' },
+                    ]}
+                  />
+                  <FileInputField label="Photo" />
+                  <TextArea
+                    label="Additional info"
+                    helpText={<p>Enter key is used for new line,<br />so <strong>Enter won't submit the form</strong>.</p>}
+                  />
                 </FormLayout>
               </ModalContent>
             </ModalBody>
@@ -246,11 +288,97 @@ React.createElement(() => {
             </ModalFooter>
           </Modal>
         )}
+        {modalOpen === 5 && (
+          <Modal
+            allowPrimaryActionOnEnterKey={false}
+            closeButtonRef={modalCloseButtonRef}
+            onCancel={(e) => {
+                console.log('cancel', e);
+            }}
+            onClose={(e) => {
+                console.log('close', e);
+            }}
+            primaryButtonRef={modalPrimaryButtonRef}
+          >
+            <ModalHeader>
+              <ModalTitle>Add new user using native form</ModalTitle>
+              <ModalCloseButton onClick={() => setModalOpen(false)} />
+            </ModalHeader>
+            <ModalBody>
+              <ModalContent>
+                <p>
+                  This is an example of a native form inside a modal.
+                  The difference is that the dialog is not controlled by React UI,
+                  but using native <code>&lt;form&gt;</code> element.
+                  This is useful when you need to use native form features
+                  like validation, submission, etc.
+                </p>
+                <p>
+                  First, you need to set <code>allowPrimaryActionOnEnterKey</code>
+                  to <code>false</code> and remove <code>onClick</code> from the
+                  primary button. Then, you need to set <code>form</code> attribute
+                  on the primary button to the <code>id</code> of the form to
+                  connect it with the form.
+                </p>
+                <p>
+                  Although we do not encourage using this approach, it is still
+                  possible to use it when needed.
+                </p>
+                <hr />
+                <form method="dialog" id="native-form">
+                  <FormLayout fieldLayout="horizontal" labelWidth="limited">
+                    <Toggle
+                      label="Enabled"
+                    />
+                    <TextField label="Username" required />
+                    <TextField label="Password" type="password" />
+                    <CheckboxField label="Force password on login" />
+                    <Radio
+                      label="Type of collaboration"
+                      options={[
+                        { label: 'Internal', value: 'internal'},
+                        { label: 'External', value: 'external'},
+                      ]}
+                    />
+                    <SelectField
+                      label="Role"
+                      options={[
+                        { label: 'Programmer', value: 'programmer' },
+                        { label: 'Team leader', value: 'team-leader' },
+                        { label: 'Project manager', value: 'project-manager' },
+                      ]}
+                    />
+                    <FileInputField label="Photo" />
+                    <TextArea
+                      label="Additional info"
+                      helpText={<p>Enter key is used for new line,<br />so <strong>Enter won't submit the form</strong>.</p>}
+                    />
+                  </FormLayout>
+                </form>
+              </ModalContent>
+            </ModalBody>
+            <ModalFooter>
+              <Button
+                form="native-form"
+                label="Save"
+                ref={modalPrimaryButtonRef}
+                type="submit"
+              />
+              <Button
+                label="Close"
+                onClick={() => setModalOpen(false)}
+                priority="outline"
+                ref={modalCloseButtonRef}
+              />
+            </ModalFooter>
+          </Modal>
+        )}
       </div>
-    </GlobalPropsProvider>
+    </RUIProvider>
   );
 });
 ```
+>>>>>>> 2514fd7 (Native form example)
 
 ### ModalHeader
 
@@ -812,16 +940,22 @@ React.createElement(() => {
 });
 ```
 
-## Keyboard Control
+## Mouse and Keyboard Control
 
 Modal can be controlled either by mouse or keyboard. To enhance user
-experience, primary action can be fired by pressing `Enter` key and the modal
-can be closed by pressing the `Escape` key.
+experience, primary action can be fired by pressing `Enter` key and
+the modal can be closed by pressing the `Escape` key. Modal can be
+also closed by clicking on the backdrop.
 
 To enable it, you just need to pass a reference to the buttons using
-`primaryButtonRef` and `closeButtonRef` props on Modal. The advantage of passing
-a reference to the button is that if the button is disabled, the key press will
-not fire the event.
+`primaryButtonRef` and `closeButtonRef` props on Modal. The advantage
+of passing a reference to the button is that if the button is disabled,
+the key press or the mouse click will not fire the event.
+
+As `primaryButtonRef` and `closeButtonRef` are used for more than just
+actions mentioned above, you can explicitly disable the default behavior
+by changing `allowCloseOnBackdropClick`, `allowCloseOnEscapeKey` or
+`allowPrimaryActionOnEnterKey` to `false`.
 
 👉 We strongly recommend using this feature together with Autofocus for a better
 user experience.
@@ -839,7 +973,241 @@ is focused.
 Autofocus is enabled by default, so if you want to control the focus of
 elements manually, set the `autoFocus` prop on Modal to `false`.
 
-## Scrolling Long Content
+## Use Cases
+
+### Interaction blocking
+
+Modal can be used to block user interaction while an action is being
+performed.
+
+```docoff-react-preview
+React.createElement(() => {
+  const [modalOpen, setModalOpen] = React.useState(null);
+  const modalPrimaryButtonRef = React.useRef();
+  const modalCloseButtonRef = React.useRef();
+  {/*
+    The `preventScrollUnderneath` feature is necessary for Modals to work in
+    React UI docs. You may not need it in your application.
+  */}
+  return (
+    <RUIProvider globalProps={{
+      Modal: { preventScrollUnderneath: window.document.documentElement }
+    }}>
+      <Button
+        label="Launch blocking modal without title"
+        onClick={() => {
+          setModalOpen(1);
+          setTimeout(() => setModalOpen(null), 2500);
+        }}
+      />
+      <Button
+        label="Launch blocking modal with title"
+        onClick={() => {
+          setModalOpen(2);
+          setTimeout(() => setModalOpen(null), 3500);
+        }}
+      />
+      <div>
+        {modalOpen === 1 && (
+          <Modal>
+            <ModalBody>
+              <ModalContent>
+                <p className="text-center">
+                  Application is being loaded.
+                  <span className="d-inline-flex align-items-center animation-spin-counterclockwise">
+                    <rui-icon icon="loading" />
+                  </span>
+                </p>
+              </ModalContent>
+            </ModalBody>
+          </Modal>
+        )}
+        {modalOpen === 2 && (
+          <Modal>
+            <ModalHeader>
+              <ModalTitle>Action finished</ModalTitle>
+            </ModalHeader>
+            <ModalBody>
+              <ModalContent>
+                <p>
+                  Action has been successfully finished.
+                  You will be redirected within a few seconds.
+                </p>
+              </ModalContent>
+            </ModalBody>
+          </Modal>
+        )}
+      </div>
+    </RUIProvider>
+  );
+});
+```
+
+### Forms
+
+Modal can be used to display forms. It is recommended to use
+[FormLayout](/components/FormLayout) component to layout form fields.
+
+While we support only [controlled components][controlled-components],
+and we encourage you to use them, it is possible to use native form and its
+functionality inside the modal. This might be useful when you need to use
+native form features like validation, submission, etc.
+
+To do so, you need to set `allowPrimaryActionOnEnterKey` to `false` and remove
+`onClick` from the primary button. Then, you need to set `form` attribute on the
+primary button to the `id` of the form to connect it with the form.
+
+```docoff-react-preview
+React.createElement(() => {
+  const [modalOpen, setModalOpen] = React.useState(null);
+  const modalPrimaryButtonRef = React.useRef();
+  const modalCloseButtonRef = React.useRef();
+  {/*
+    The `preventScrollUnderneath` feature is necessary for Modals to work in
+    React UI docs. You may not need it in your application.
+  */}
+  return (
+    <RUIProvider globalProps={{
+      Modal: { preventScrollUnderneath: window.document.documentElement }
+    }}>
+      <Button
+        label="Launch modal as form"
+        onClick={() => setModalOpen(1)}
+      />
+      <Button
+        label="Launch modal as native form"
+        onClick={() => setModalOpen(2)}
+      />
+      <div>
+        {modalOpen === 1 && (
+          <Modal
+            closeButtonRef={modalCloseButtonRef}
+            primaryButtonRef={modalPrimaryButtonRef}
+          >
+            <ModalHeader>
+              <ModalTitle>Add new user</ModalTitle>
+              <ModalCloseButton onClick={() => setModalOpen(false)} />
+            </ModalHeader>
+            <ModalBody>
+              <ModalContent>
+                <FormLayout fieldLayout="horizontal" labelWidth="limited">
+                  <Toggle
+                    label="Enabled"
+                  />
+                  <TextField label="Username" required />
+                  <TextField label="Password" type="password" />
+                  <CheckboxField label="Force password on login" />
+                  <Radio
+                    label="Type of collaboration"
+                    options={[
+                      { label: 'Internal', value: 'internal'},
+                      { label: 'External', value: 'external'},
+                    ]}
+                  />
+                  <SelectField
+                    label="Role"
+                    options={[
+                      { label: 'Programmer', value: 'programmer' },
+                      { label: 'Team leader', value: 'team-leader' },
+                      { label: 'Project manager', value: 'project-manager' },
+                    ]}
+                  />
+                  <FileInputField label="Photo" />
+                  <TextArea
+                    label="Additional info"
+                    helpText={<p>Enter key is used for new line,<br />so <strong>Enter won't submit the form</strong>.</p>}
+                  />
+                </FormLayout>
+              </ModalContent>
+            </ModalBody>
+            <ModalFooter>
+              <Button
+                label="Save"
+                onClick={() => setModalOpen(false)}
+                ref={modalPrimaryButtonRef}
+              />
+              <Button
+                label="Close"
+                onClick={() => setModalOpen(false)}
+                priority="outline"
+                ref={modalCloseButtonRef}
+              />
+            </ModalFooter>
+          </Modal>
+        )}
+        {modalOpen === 2 && (
+          <Modal
+            allowPrimaryActionOnEnterKey={false}
+            closeButtonRef={modalCloseButtonRef}
+            onCancel={(e) => {
+                console.log('cancel', e);
+            }}
+            onClose={(e) => {
+                console.log('close', e);
+            }}
+            primaryButtonRef={modalPrimaryButtonRef}
+          >
+            <ModalHeader>
+              <ModalTitle>Add new user using native form</ModalTitle>
+              <ModalCloseButton onClick={() => setModalOpen(false)} />
+            </ModalHeader>
+            <ModalBody>
+              <ModalContent>
+                <form method="dialog" id="native-form">
+                  <FormLayout fieldLayout="horizontal" labelWidth="limited">
+                    <Toggle
+                      label="Enabled"
+                    />
+                    <TextField label="Username" required />
+                    <TextField label="Password" type="password" />
+                    <CheckboxField label="Force password on login" />
+                    <Radio
+                      label="Type of collaboration"
+                      options={[
+                        { label: 'Internal', value: 'internal'},
+                        { label: 'External', value: 'external'},
+                      ]}
+                    />
+                    <SelectField
+                      label="Role"
+                      options={[
+                        { label: 'Programmer', value: 'programmer' },
+                        { label: 'Team leader', value: 'team-leader' },
+                        { label: 'Project manager', value: 'project-manager' },
+                      ]}
+                    />
+                    <FileInputField label="Photo" />
+                    <TextArea
+                      label="Additional info"
+                      helpText={<p>Enter key is used for new line,<br />so <strong>Enter won't submit the form</strong>.</p>}
+                    />
+                  </FormLayout>
+                </form>
+              </ModalContent>
+            </ModalBody>
+            <ModalFooter>
+              <Button
+                form="native-form"
+                label="Save"
+                ref={modalPrimaryButtonRef}
+                type="submit"
+              />
+              <Button
+                label="Close"
+                onClick={() => setModalOpen(false)}
+                priority="outline"
+                ref={modalCloseButtonRef}
+              />
+            </ModalFooter>
+          </Modal>
+        )}
+      </div>
+    </RUIProvider>
+  );
+});
+```
+
+### Scrolling Long Content
 
 When modals become too long for the user's viewport or device, they scroll
 independent of the page itself. This can be done in three ways using the
@@ -1004,7 +1372,7 @@ React.createElement(() => {
 });
 ```
 
-### Long Content and Autofocus
+#### Long Content and Autofocus
 
 👉 If you wrap ModalContent with ScrollView, you may want to turn `autoFocus`
 off to prevent the modal from scrolling to the end immediately after being
@@ -1019,8 +1387,7 @@ can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
 [`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to:
 
-- the `<div>` HTML element in case of the `Modal` component. This `<div>` is not
-  the root, but its first child which represents the modal window.
+- the `<dialog>` HTML element in case of the `Modal` component.
 - the root `<div>` HTML element in case of `ModalHeader`, `ModalBody`, `ModalContent`
   and `ModalFooter` components.
 - the heading (e.g. `<h1>`) HTML element in case of the `ModalTitle` component.
@@ -1031,6 +1398,7 @@ accessibility.
 
 👉 For the full list of supported attributes refer to:
 
+- [`<dialog>` HTML element attributes][dialog-attributes]{:target="_blank"}
 - [`<div>` HTML element attributes][div-attributes]{:target="_blank"}
 - [`<h1>`-`<h6>` HTML element attributes][heading-attributes]{:target="_blank"}
 - [`<button>` HTML element attributes][button-attributes]{:target="_blank"}
@@ -1066,29 +1434,32 @@ accessibility.
 
 ## Theming
 
-| Custom Property                                      | Description                                                   |
-|------------------------------------------------------|---------------------------------------------------------------|
-| `--rui-Modal__padding-x`                             | Inline padding of individual modal components                 |
-| `--rui-Modal__padding-y`                             | Block padding of individual modal components                  |
-| `--rui-Modal__background`                            | Modal background (including `url()` or gradient)              |
-| `--rui-Modal__box-shadow`                            | Modal box shadow                                              |
-| `--rui-Modal__separator__width`                      | Width of separator between modal header, body, and footer     |
-| `--rui-Modal__separator__color`                      | Color of separator between modal header, body, and footer     |
-| `--rui-Modal__outer-spacing-xs`                      | Spacing around modal, `xs` screen size                        |
-| `--rui-Modal__outer-spacing-sm`                      | Spacing around modal, `sm` screen size and bigger             |
-| `--rui-Modal__header__gap`                           | Modal header gap between children                             |
-| `--rui-Modal__footer__background`                    | Modal footer background (including `url()` or gradient)       |
-| `--rui-Modal__footer__gap`                           | Modal footer gap between children                             |
-| `--rui-Modal__backdrop__background`                  | Modal backdrop background (including `url()` or gradient)     |
-| `--rui-Modal--auto__min-width`                       | Min width of auto-sized modal (when enough screen estate)     |
-| `--rui-Modal--auto__max-width`                       | Max width of auto-sized modal (when enough screen estate)     |
-| `--rui-Modal--small__width`                          | Width of small modal                                          |
-| `--rui-Modal--medium__width`                         | Width of medium modal                                         |
-| `--rui-Modal--large__width`                          | Width of large modal                                          |
-| `--rui-Modal--fullscreen__width`                     | Width of fullscreen modal                                     |
-| `--rui-Modal--fullscreen__height`                    | Height of fullscreen modal                                    |
+| Custom Property                                      | Description                                                 |
+|------------------------------------------------------|-------------------------------------------------------------|
+| `--rui-Modal__padding-x`                             | Inline padding of individual modal components               |
+| `--rui-Modal__padding-y`                             | Block padding of individual modal components                |
+| `--rui-Modal__background`                            | Modal background (including `url()` or gradient)            |
+| `--rui-Modal__box-shadow`                            | Modal box shadow                                            |
+| `--rui-Modal__separator__width`                      | Width of separator between modal header, body, and footer   |
+| `--rui-Modal__separator__color`                      | Color of separator between modal header, body, and footer   |
+| `--rui-Modal__outer-spacing-xs`                      | Spacing around modal, `xs` screen size                      |
+| `--rui-Modal__outer-spacing-sm`                      | Spacing around modal, `sm` screen size and bigger           |
+| `--rui-Modal__header__gap`                           | Modal header gap between children                           |
+| `--rui-Modal__footer__background`                    | Modal footer background (including `url()` or gradient)     |
+| `--rui-Modal__footer__gap`                           | Modal footer gap between children                           |
+| `--rui-Modal__backdrop__background`                  | Modal backdrop background (including `url()` or gradient)   |
+| `--rui-Modal--auto__min-width`                       | Min width of auto-sized modal (when enough screen estate)   |
+| `--rui-Modal--auto__max-width`                       | Max width of auto-sized modal (when enough screen estate)   |
+| `--rui-Modal--small__width`                          | Width of small modal                                        |
+| `--rui-Modal--medium__width`                         | Width of medium modal                                       |
+| `--rui-Modal--large__width`                          | Width of large modal                                        |
+| `--rui-Modal--fullscreen__width`                     | Width of fullscreen modal                                   |
+| `--rui-Modal--fullscreen__height`                    | Height of fullscreen modal                                  |
+| `--rui-Modal__animation__duration`                   | Duration of animation used (when opening modal)             |
 
 [button-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes
+[controlled-components]: /docs/getting-started/usage#foundation-css
+[dialog-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#attributes
 [div-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
 [heading-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#attributes
 [React common props]: https://react.dev/reference/react-dom/components/common#common-props
