@@ -83,3 +83,13 @@ React.createElement(() => {
   );
 });
 ```
+
+## Nested Usage
+
+Global props can be nested. This is useful e.g. when you want to configure
+props across whole application and then override some of them in a specific
+part of the application.
+
+When nested `RUIProvider` is used, the props are merged deeply together. This
+means  that you can extend specific object with new props or override existing
+ones. If you need to remove some prop, you can set it to `undefined`.
