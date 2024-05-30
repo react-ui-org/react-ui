@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types';
-import React, { useRef } from 'react';
+import React, {
+  useEffect,
+  useRef,
+} from 'react';
 import { createPortal } from 'react-dom';
 import { withGlobalProps } from '../../provider';
 import { transferProps } from '../_helpers/transferProps';
@@ -18,32 +21,27 @@ const preRender = (
   restProps,
   size,
 ) => (
-  <div
-    className={styles.backdrop}
+  <dialog
+    {...transferProps(restProps)}
+    className={classNames(
+      styles.root,
+      getSizeClassName(size, styles),
+      getPositionClassName(position, styles),
+    )}
     onClick={(e) => {
+      e.stopPropagation();
+    }}
+    onClose={(e) => {
       e.preventDefault();
       if (closeButtonRef?.current != null) {
         closeButtonRef.current.click();
       }
     }}
+    ref={childrenWrapperRef}
     role="presentation"
   >
-    <div
-      {...transferProps(restProps)}
-      className={classNames(
-        styles.root,
-        getSizeClassName(size, styles),
-        getPositionClassName(position, styles),
-      )}
-      onClick={(e) => {
-        e.stopPropagation();
-      }}
-      ref={childrenWrapperRef}
-      role="presentation"
-    >
-      {children}
-    </div>
-  </div>
+    {children}
+  </dialog>
 );
 
 export const Modal = ({
@@ -59,11 +57,14 @@ export const Modal = ({
 }) => {
   const childrenWrapperRef = useRef();
 
+  useEffect(() => {
+    childrenWrapperRef.current.showModal();
+  }, []);
+
   useModalFocus(
     autoFocus,
     childrenWrapperRef,
     primaryButtonRef,
-    closeButtonRef,
   );
 
   useModalScrollPrevention(preventScrollUnderneath);
@@ -121,7 +122,7 @@ Modal.propTypes = {
    */
   children: PropTypes.node,
   /**
-   * Reference to close button element. It is used to close modal when Escape key is pressed or the backdrop is clicked.
+   * Reference to close button element. It is used to close modal when Escape key is pressed.
    */
   closeButtonRef: PropTypes.shape({
     // eslint-disable-next-line react/forbid-prop-types
