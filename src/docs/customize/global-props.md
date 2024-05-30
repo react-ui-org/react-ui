@@ -83,3 +83,53 @@ React.createElement(() => {
   );
 });
 ```
+
+## Nesting
+
+Global props can be nested. This is useful e.g. when you want to configure
+props across whole application and then override some of them in a specific
+part of the application.
+
+When nested `RUIProvider` is used, the props are merged deeply together. This
+means that you can extend specific object with new props or override existing
+ones. If you need to remove some prop, you can set it to `undefined`.
+
+```docoff-react-preview
+React.createElement(() => {
+  const [variant, setVariant] = React.useState('filled');
+  return (
+    <RUIProvider globalProps={{
+      Grid: {
+        columns: {
+          xs: '1fr',
+          md: '1fr 1fr',
+        },
+        justifyItems: 'center',
+        rows: {
+          xs: '50px',
+          md: '100px',
+        },
+      },
+    }}>
+      <RUIProvider globalProps={{
+        Grid: {
+          columns: {
+            sm: '1fr 1fr 1fr',
+          },
+          justifyItems: 'undefined',
+          rows: undefined,
+        },
+      }}>
+        <Grid>
+          <docoff-placeholder bordered>Grid item</docoff-placeholder>
+          <docoff-placeholder bordered>Grid item</docoff-placeholder>
+          <docoff-placeholder bordered>Grid item</docoff-placeholder>
+          <docoff-placeholder bordered>Grid item</docoff-placeholder>
+          <docoff-placeholder bordered>Grid item</docoff-placeholder>
+          <docoff-placeholder bordered>Grid item</docoff-placeholder>
+        </Grid>
+      </RUIProvider>
+    </RUIProvider>
+  );
+});
+```
