@@ -123,9 +123,9 @@ FileInputField.propTypes = {
    */
   isLabelVisible: PropTypes.bool,
   /**
-   * Text field label.
+   * File input field label.
    */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   /**
    * Layout of the field.
    *

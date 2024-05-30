@@ -114,7 +114,7 @@ Toggle.propTypes = {
   /**
    * Toggle label.
    */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   /**
    * Placement of the label relative to the input.
    */
