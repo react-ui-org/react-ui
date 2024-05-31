@@ -4,6 +4,7 @@ export const useModalFocus = (
   autoFocus,
   childrenWrapperRef,
   primaryButtonRef,
+  closeButtonRef,
 ) => {
   useEffect(
     () => {
@@ -52,6 +53,13 @@ export const useModalFocus = (
       };
 
       const keyPressHandler = (e) => {
+        // While <dialog> component uses built-in browser dialog functionality for closing the dialog, we preserve this
+        // functionality due to lack of support for <dialog> in jsdom and happy-dom testing environments.
+        if (e.key === 'Escape' && closeButtonRef?.current != null) {
+          closeButtonRef.current.click();
+          return;
+        }
+
         if (
           e.key === 'Enter'
           && e.target.nodeName !== 'BUTTON'
