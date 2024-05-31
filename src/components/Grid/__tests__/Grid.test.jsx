@@ -84,13 +84,19 @@ describe('rendering', () => {
       { children: <div>content text</div> },
       (rootElement) => expect(within(rootElement).getByText('content text')),
     ],
+    // The following tests must use `rootElement.outerHTML.includes()` to test presence of CSS variables in the DOM,
+    // because the `toHaveStyle` matcher does not support reading CSS variables via the `var()` function.
     [
       { columnGap: responsiveSpacingBreakpoints },
-      (rootElement) => expect(rootElement).toHaveStyle(responsiveSpacingStyles('column-gap')),
+      (rootElement) => {
+        Object.entries(responsiveSpacingStyles('column-gap')).forEach(([ccsAttribute, cssValue]) => {
+          expect(rootElement.outerHTML.includes(`${ccsAttribute}: ${cssValue}`)).toBeTruthy();
+        });
+      },
     ],
     [
       { columnGap: 0 },
-      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-column-gap-xs': 'var(--rui-dimension-space-0)' }),
+      (rootElement) => expect(rootElement.outerHTML.includes('--rui-local-column-gap-xs: var(--rui-dimension-space-0)')).toBeTruthy(),
     ],
     [
       { columns: responsiveBreakpoints },
@@ -116,13 +122,19 @@ describe('rendering', () => {
       { justifyItems: 'placeholder' },
       (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-justify-items-xs': 'placeholder' }),
     ],
+    // The following tests must use `rootElement.outerHTML.includes()` to test presence of CSS variables in the DOM,
+    // because the `toHaveStyle` matcher does not support reading CSS variables via the `var()` function.
     [
       { rowGap: responsiveSpacingBreakpoints },
-      (rootElement) => expect(rootElement).toHaveStyle(responsiveSpacingStyles('row-gap')),
+      (rootElement) => {
+        Object.entries(responsiveSpacingStyles('row-gap')).forEach(([cssAttribute, cssValue]) => {
+          expect(rootElement.outerHTML.includes(`${cssAttribute}: ${cssValue}`)).toBeTruthy();
+        });
+      },
     ],
     [
       { rowGap: 0 },
-      (rootElement) => expect(rootElement).toHaveStyle({ '--rui-local-row-gap-xs': 'var(--rui-dimension-space-0)' }),
+      (rootElement) => expect(rootElement.outerHTML.includes('--rui-local-row-gap-xs: var(--rui-dimension-space-0)')).toBeTruthy(),
     ],
     [
       { rows: responsiveBreakpoints },
