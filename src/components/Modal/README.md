@@ -130,256 +130,6 @@ Using different combinations, you can compose different kinds of modals,
 e.g. dialog modal, [modal with form](#forms), [blocking modal](#interaction-blocking),
 [scrollable modal](#scrolling-long-content), etc.
 
-```docoff-react-preview
-React.createElement(() => {
-  const [modalOpen, setModalOpen] = React.useState(null);
-  const modalPrimaryButtonRef = React.useRef();
-  const modalCloseButtonRef = React.useRef();
-  {/*
-    The `preventScrollUnderneath` feature is necessary for Modals to work in
-    React UI docs. You may not need it in your application.
-  */}
-  return (
-    <RUIProvider globalProps={{
-      Modal: { preventScrollUnderneath: window.document.documentElement }
-    }}>
-      <Button
-        label="Launch blocking modal without title"
-        onClick={() => {
-          setModalOpen(1);
-          setTimeout(() => setModalOpen(null), 2500);
-        }}
-      />
-      <Button
-        label="Launch blocking modal with title"
-        onClick={() => {
-          setModalOpen(2);
-          setTimeout(() => setModalOpen(null), 3500);
-        }}
-      />
-      <Button
-        label="Launch modal as dialog"
-        onClick={() => setModalOpen(3)}
-      />
-      <Button
-        label="Launch modal as form"
-        onClick={() => setModalOpen(4)}
-      />
-      <Button
-        label="Launch modal as native form"
-        onClick={() => setModalOpen(5)}
-      />
-      <div>
-        {modalOpen === 1 && (
-          <Modal>
-            <ModalBody>
-              <ModalContent>
-                <p className="text-center">
-                  Application is being loaded.
-                  <span className="d-inline-flex align-items-center animation-spin-counterclockwise">
-                    <rui-icon icon="loading" />
-                  </span>
-                </p>
-              </ModalContent>
-            </ModalBody>
-          </Modal>
-        )}
-        {modalOpen === 2 && (
-          <Modal>
-            <ModalHeader>
-              <ModalTitle>Action finished</ModalTitle>
-            </ModalHeader>
-            <ModalBody>
-              <ModalContent>
-                <p>
-                  Action has been successfully finished.
-                  You will be redirected within a few seconds.
-                </p>
-              </ModalContent>
-            </ModalBody>
-          </Modal>
-        )}
-        {modalOpen === 3 && (
-          <Modal
-            closeButtonRef={modalCloseButtonRef}
-            primaryButtonRef={modalPrimaryButtonRef}
-          >
-            <ModalHeader>
-              <ModalTitle>Delete the user?</ModalTitle>
-              <ModalCloseButton onClick={() => setModalOpen(false)} />
-            </ModalHeader>
-            <ModalBody>
-              <ModalContent>
-                <p>
-                  Do you really want to delete the user <code>admin</code>?
-                  This cannot be undone.
-                </p>
-              </ModalContent>
-            </ModalBody>
-            <ModalFooter>
-              <Button
-                color="danger"
-                label="Delete"
-                onClick={() => setModalOpen(false)}
-                ref={modalPrimaryButtonRef}
-              />
-              <Button
-                label="Close"
-                onClick={() => setModalOpen(false)}
-                priority="outline"
-                ref={modalCloseButtonRef}
-              />
-            </ModalFooter>
-          </Modal>
-        )}
-        {modalOpen === 4 && (
-          <Modal
-            closeButtonRef={modalCloseButtonRef}
-            primaryButtonRef={modalPrimaryButtonRef}
-          >
-            <ModalHeader>
-              <ModalTitle>Add new user</ModalTitle>
-              <ModalCloseButton onClick={() => setModalOpen(false)} />
-            </ModalHeader>
-            <ModalBody>
-              <ModalContent>
-                <FormLayout fieldLayout="horizontal" labelWidth="limited">
-                  <Toggle
-                    label="Enabled"
-                  />
-                  <TextField label="Username" required />
-                  <TextField label="Password" type="password" />
-                  <CheckboxField label="Force password on login" />
-                  <Radio
-                    label="Type of collaboration"
-                    options={[
-                      { label: 'Internal', value: 'internal'},
-                      { label: 'External', value: 'external'},
-                    ]}
-                  />
-                  <SelectField
-                    label="Role"
-                    options={[
-                      { label: 'Programmer', value: 'programmer' },
-                      { label: 'Team leader', value: 'team-leader' },
-                      { label: 'Project manager', value: 'project-manager' },
-                    ]}
-                  />
-                  <FileInputField label="Photo" />
-                  <TextArea
-                    label="Additional info"
-                    helpText={<p>Enter key is used for new line,<br />so <strong>Enter won't submit the form</strong>.</p>}
-                  />
-                </FormLayout>
-              </ModalContent>
-            </ModalBody>
-            <ModalFooter>
-              <Button
-                label="Save"
-                onClick={() => setModalOpen(false)}
-                ref={modalPrimaryButtonRef}
-              />
-              <Button
-                label="Close"
-                onClick={() => setModalOpen(false)}
-                priority="outline"
-                ref={modalCloseButtonRef}
-              />
-            </ModalFooter>
-          </Modal>
-        )}
-        {modalOpen === 5 && (
-          <Modal
-            allowPrimaryActionOnEnterKey={false}
-            closeButtonRef={modalCloseButtonRef}
-            onCancel={(e) => {
-                console.log('cancel', e);
-            }}
-            onClose={(e) => {
-                console.log('close', e);
-            }}
-            primaryButtonRef={modalPrimaryButtonRef}
-          >
-            <ModalHeader>
-              <ModalTitle>Add new user using native form</ModalTitle>
-              <ModalCloseButton onClick={() => setModalOpen(false)} />
-            </ModalHeader>
-            <ModalBody>
-              <ModalContent>
-                <p>
-                  This is an example of a native form inside a modal.
-                  The difference is that the dialog is not controlled by React UI,
-                  but using native <code>&lt;form&gt;</code> element.
-                  This is useful when you need to use native form features
-                  like validation, submission, etc.
-                </p>
-                <p>
-                  First, you need to set <code>allowPrimaryActionOnEnterKey</code>
-                  to <code>false</code> and remove <code>onClick</code> from the
-                  primary button. Then, you need to set <code>form</code> attribute
-                  on the primary button to the <code>id</code> of the form to
-                  connect it with the form.
-                </p>
-                <p>
-                  Although we do not encourage using this approach, it is still
-                  possible to use it when needed.
-                </p>
-                <hr />
-                <form method="dialog" id="native-form">
-                  <FormLayout fieldLayout="horizontal" labelWidth="limited">
-                    <Toggle
-                      label="Enabled"
-                    />
-                    <TextField label="Username" required />
-                    <TextField label="Password" type="password" />
-                    <CheckboxField label="Force password on login" />
-                    <Radio
-                      label="Type of collaboration"
-                      options={[
-                        { label: 'Internal', value: 'internal'},
-                        { label: 'External', value: 'external'},
-                      ]}
-                    />
-                    <SelectField
-                      label="Role"
-                      options={[
-                        { label: 'Programmer', value: 'programmer' },
-                        { label: 'Team leader', value: 'team-leader' },
-                        { label: 'Project manager', value: 'project-manager' },
-                      ]}
-                    />
-                    <FileInputField label="Photo" />
-                    <TextArea
-                      label="Additional info"
-                      helpText={<p>Enter key is used for new line,<br />so <strong>Enter won't submit the form</strong>.</p>}
-                    />
-                  </FormLayout>
-                </form>
-              </ModalContent>
-            </ModalBody>
-            <ModalFooter>
-              <Button
-                form="native-form"
-                label="Save"
-                ref={modalPrimaryButtonRef}
-                type="submit"
-              />
-              <Button
-                label="Close"
-                onClick={() => setModalOpen(false)}
-                priority="outline"
-                ref={modalCloseButtonRef}
-              />
-            </ModalFooter>
-          </Modal>
-        )}
-      </div>
-    </RUIProvider>
-  );
-});
-```
->>>>>>> 2514fd7 (Native form example)
-
 ### ModalHeader
 
 ModalHeader is an optional part of the Modal which allows you to display the title
@@ -990,7 +740,7 @@ React.createElement(() => {
     React UI docs. You may not need it in your application.
   */}
   return (
-    <RUIProvider globalProps={{
+    <GlobalPropsProvider globalProps={{
       Modal: { preventScrollUnderneath: window.document.documentElement }
     }}>
       <Button
@@ -1038,7 +788,7 @@ React.createElement(() => {
           </Modal>
         )}
       </div>
-    </RUIProvider>
+    </GlobalPropsProvider>
   );
 });
 ```
@@ -1067,7 +817,7 @@ React.createElement(() => {
     React UI docs. You may not need it in your application.
   */}
   return (
-    <RUIProvider globalProps={{
+    <GlobalPropsProvider globalProps={{
       Modal: { preventScrollUnderneath: window.document.documentElement }
     }}>
       <Button
@@ -1202,7 +952,7 @@ React.createElement(() => {
           </Modal>
         )}
       </div>
-    </RUIProvider>
+    </GlobalPropsProvider>
   );
 });
 ```

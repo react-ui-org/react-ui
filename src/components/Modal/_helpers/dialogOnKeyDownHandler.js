@@ -25,19 +25,24 @@ export const dialogOnKeyDownHandler = (
   allowCloseOnEscapeKey,
   allowPrimaryActionOnEnterKey,
 ) => {
-  // Prevent closing the modal using the Escape key when one of the following conditions is met:
-  // 1. The close button is not present
-  // 2. The close button is disabled
-  // 3. `allowCloseOnEscapeKey` is set to `false`
-  if (
-    e.key === 'Escape'
-    && (
+  if (e.key === 'Escape') {
+    // Prevent closing the modal using the Escape key when one of the following conditions is met:
+    // 1. The close button is not present
+    // 2. The close button is disabled
+    // 3. `allowCloseOnEscapeKey` is set to `false`
+    //
+    // ⚠️ Else-if statement calling `closeButtonRef.current.click()` is necessary due to missing support
+    // of close event in happy-dom library. When this is fixed, the `else` statement can be removed
+    // as the `closeButtonRef.current.click()` will be handled by `dialogOnCancelHandler.js`.
+    if (
       closeButtonRef?.current == null
       || closeButtonRef?.current?.disabled === true
       || !allowCloseOnEscapeKey
-    )
-  ) {
-    e.preventDefault();
+    ) {
+      e.preventDefault();
+    } else if (process?.env?.NODE_ENV === 'test') {
+      closeButtonRef.current.click();
+    }
   }
 
   // Trigger the primary action when the Enter key is pressed and the following conditions are met:

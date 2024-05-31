@@ -30,7 +30,7 @@ describe('rendering', () => {
         level: 1,
       },
       (rootElement) => {
-        expect(rootElement).toContainHTML('<h1');
+        expect(rootElement.tagName).toEqual('H1');
       },
     ],
   ])('renders with props: "%s"', (testedProps, assert) => {
