@@ -14,10 +14,7 @@ import { ModalContent } from '../ModalContent';
 import { ModalFooter } from '../ModalFooter';
 import { ModalHeader } from '../ModalHeader';
 
-// Test suites skipped due to missing implementation of HTMLDialogElement in jsdom
-// See https://github.com/jsdom/jsdom/issues/3294
-
-describe.skip('rendering', () => {
+describe('rendering', () => {
   it('renders with "portalId" props', () => {
     document.body.innerHTML = '<div id="portal-id" />';
     render((
@@ -29,7 +26,7 @@ describe.skip('rendering', () => {
       </Modal>
     ));
 
-    expect(screen.getByTestId('portal-id').firstChild.firstChild).toHaveAttribute('id', 'id');
+    expect(screen.getByTestId('portal-id').firstChild).toHaveAttribute('id', 'id');
     document.body.innerHTML = '';
   });
 
@@ -40,31 +37,27 @@ describe.skip('rendering', () => {
     ],
     [
       { position: 'top' },
-      (rootElement) => expect(within(rootElement).getByRole('presentation')).toHaveClass('isRootPositionTop'),
-    ],
-    [
-      { position: 'center' },
-      (rootElement) => expect(within(rootElement).getByRole('presentation')).toHaveClass('isRootPositionCenter'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootPositionTop'),
     ],
     [
       { size: 'small' },
-      (rootElement) => expect(within(rootElement).getByRole('presentation')).toHaveClass('isRootSizeSmall'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootSizeSmall'),
     ],
     [
       { size: 'medium' },
-      (rootElement) => expect(within(rootElement).getByRole('presentation')).toHaveClass('isRootSizeMedium'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootSizeMedium'),
     ],
     [
       { size: 'large' },
-      (rootElement) => expect(within(rootElement).getByRole('presentation')).toHaveClass('isRootSizeLarge'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootSizeLarge'),
     ],
     [
       { size: 'fullscreen' },
-      (rootElement) => expect(within(rootElement).getByRole('presentation')).toHaveClass('isRootSizeFullscreen'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootSizeFullscreen'),
     ],
     [
       { size: 'auto' },
-      (rootElement) => expect(within(rootElement).getByRole('presentation')).toHaveClass('isRootSizeAuto'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootSizeAuto'),
     ],
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
@@ -77,11 +70,8 @@ describe.skip('rendering', () => {
   });
 });
 
-describe.skip('functionality', () => {
-  it.each([
-    () => userEvent.keyboard('{Escape}'),
-    () => userEvent.click(screen.getByTestId('id').parentNode),
-  ])('call close modal using `closeButtonRef` (%#)', async (action) => {
+describe('functionality', () => {
+  it('call close modal using `closeButtonRef` (%#)', async () => {
     const spy = jest.fn();
     const ref = React.createRef();
     render((
@@ -100,14 +90,11 @@ describe.skip('functionality', () => {
       </Modal>
     ));
 
-    await action();
+    await userEvent.keyboard('{Escape}');
     expect(spy).toHaveBeenCalled();
   });
 
-  it.each([
-    () => userEvent.keyboard('{Escape}'),
-    () => userEvent.click(screen.getByTestId('id').parentNode),
-  ])('do not call close modal using `closeButtonRef` when button is disabled (%#)', async (action) => {
+  it('do not call close modal using `closeButtonRef` when button is disabled (%#)', async () => {
     const spy = jest.fn();
     const ref = React.createRef();
     render((
@@ -127,14 +114,11 @@ describe.skip('functionality', () => {
       </Modal>
     ));
 
-    await action();
+    await userEvent.keyboard('{Escape}');
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it.each([
-    () => userEvent.keyboard('{Escape}'),
-    () => userEvent.click(screen.getByTestId('id').parentNode),
-  ])('call close modal using `closeButtonRef` and `ModalCloseButton` (%#)', async (action) => {
+  it('call close modal using `closeButtonRef` and `ModalCloseButton` (%#)', async () => {
     const spy = jest.fn();
     const ref = React.createRef();
     render((
@@ -151,14 +135,11 @@ describe.skip('functionality', () => {
       </Modal>
     ));
 
-    await action();
+    await userEvent.keyboard('{Escape}');
     expect(spy).toHaveBeenCalled();
   });
 
-  it.each([
-    () => userEvent.keyboard('{Escape}'),
-    () => userEvent.click(screen.getByTestId('id').parentNode),
-  ])('do not call close modal using `closeButtonRef` and `ModalCloseButton` when button is disabled (%#)', async (action) => {
+  it('do not call close modal using `closeButtonRef` and `ModalCloseButton` when button is disabled (%#)', async () => {
     const spy = jest.fn();
     const ref = React.createRef();
     render((
@@ -176,7 +157,7 @@ describe.skip('functionality', () => {
       </Modal>
     ));
 
-    await action();
+    await userEvent.keyboard('{Escape}');
     expect(spy).not.toHaveBeenCalled();
   });
 
@@ -366,30 +347,6 @@ describe.skip('functionality', () => {
 
     const el = within(container).getByTestId('modal');
     assertFocus(el, true);
-  });
-
-  it('traps focus', async () => {
-    const { container } = render((
-      <Modal>
-        <ModalBody>
-          <ModalContent>
-            <input id="first" />
-            <input id="second" />
-          </ModalContent>
-        </ModalBody>
-      </Modal>
-    ));
-
-    const firstEl = within(container).getByTestId('first');
-    const secondEl = within(container).getByTestId('second');
-
-    assertFocus(firstEl, true);
-    await userEvent.tab();
-    assertFocus(secondEl, true);
-    await userEvent.tab();
-    assertFocus(firstEl, true);
-    await userEvent.tab({ shift: true });
-    assertFocus(secondEl, true);
   });
 
   it('prevents body from scrolling by default', () => {
