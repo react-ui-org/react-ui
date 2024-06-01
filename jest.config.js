@@ -13,7 +13,7 @@ module.exports = {
   setupFilesAfterEnv: [
     '<rootDir>/tests/setupTestingLibrary.js',
   ],
-  testEnvironment: 'jsdom',
+  testEnvironment: '@happy-dom/jest-environment',
   transformIgnorePatterns: [
     'node_modules/(?!(@react-ui-org))',
   ],

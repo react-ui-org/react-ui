@@ -65,6 +65,7 @@ export const Modal = ({
     autoFocus,
     childrenWrapperRef,
     primaryButtonRef,
+    closeButtonRef,
   );
 
   useModalScrollPrevention(preventScrollUnderneath);
