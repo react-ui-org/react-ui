@@ -23,10 +23,13 @@ See [API](#api) for all available options.
 - Use **short yet comprehensible labels** to make buttons fit small screens.
 
 - Since buttons are there to take actions, **use a verb** to make it obvious
-  what your buttons do.
+    what your buttons do.
 
 - **Don't overwhelm your UI** with too many high-emphasis actions. There should
-  always be one but chances are that having more of them is not necessary.
+    always be one but chances are that having more of them is not necessary.
+
+- Ensure the **button action is well recognazible** across your target audience.
+    This is especially important when using the button [with an icon only](#icon-buttons).
 
 ## Priorities
 
@@ -144,8 +147,11 @@ before or after the button's label.
 
 ### Icon Buttons
 
-For clear and simple actions, buttons can visually consist just of an icon.
-Label remains mandatory to keep the button accessible.
+With a common and well-known icon, buttons can visually consist just of an icon.
+Label remains mandatory to keep the button accessible when using assistive
+technologies.
+
+👉 Use `labelVisibility="xs"` to make label always visible.
 
 ```docoff-react-preview
   <Button
@@ -161,6 +167,11 @@ of your choice and display label once you know there is enough room for it.
 📐 Try resizing your browser to see how label visibility changes.
 
 ```docoff-react-preview
+  <Button
+    label="Label always visible"
+    labelVisibility="xs"
+    beforeLabel={<rui-icon icon="pencil" />}
+  />
   <Button
     label="Label visible from sm up"
     labelVisibility="sm"
@@ -179,16 +190,6 @@ of your choice and display label once you know there is enough room for it.
   <Button
     label="Label visible from xl up"
     labelVisibility="xl"
-    beforeLabel={<rui-icon icon="pencil" />}
-  />
-  <Button
-    label="Label visible from x2l up"
-    labelVisibility="x2l"
-    beforeLabel={<rui-icon icon="pencil" />}
-  />
-  <Button
-    label="Label visible from x3l up"
-    labelVisibility="x3l"
     beforeLabel={<rui-icon icon="pencil" />}
   />
 ```
