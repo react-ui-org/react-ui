@@ -56,7 +56,7 @@ describe('mergeDeep', () => {
       },
       state: {
         items: [3, 4, 5],
-        itemsSize: 5,
+        itemsSize: 3,
       },
     };
     const expectedObj = {
@@ -70,8 +70,8 @@ describe('mergeDeep', () => {
         },
       },
       state: {
-        items: [1, 2, 3, 4, 5],
-        itemsSize: 5,
+        items: [3, 4, 5],
+        itemsSize: 3,
       },
     };
 

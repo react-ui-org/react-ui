@@ -1,4 +1,4 @@
-const isObject = (obj) => obj && typeof obj === 'object';
+const isObject = (obj) => obj && typeof obj === 'object' && !Array.isArray(obj);
 
 /**
  * Performs a deep merge of objects and returns new object.
@@ -17,9 +17,7 @@ export const mergeDeep = (...objects) => objects.reduce((prev, obj) => {
     const pVal = prev[key];
     const oVal = obj[key];
 
-    if (Array.isArray(pVal) && Array.isArray(oVal)) {
-      newObject[key] = pVal.concat(...oVal);
-    } else if (isObject(pVal) && isObject(oVal)) {
+    if (isObject(pVal) && isObject(oVal)) {
       newObject[key] = mergeDeep(pVal, oVal);
     } else {
       newObject[key] = oVal;
