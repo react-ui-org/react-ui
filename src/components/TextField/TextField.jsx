@@ -156,7 +156,7 @@ TextField.propTypes = {
   /**
    * Text field label.
    */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   /**
    * Layout of the field.
    *

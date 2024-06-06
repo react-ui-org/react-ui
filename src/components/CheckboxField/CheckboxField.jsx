@@ -114,7 +114,7 @@ CheckboxField.propTypes = {
   /**
    * Checkbox field label.
    */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   /**
    * Placement of the label relative to the input.
    */

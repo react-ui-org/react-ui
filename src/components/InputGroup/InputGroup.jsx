@@ -151,7 +151,7 @@ InputGroup.propTypes = {
   /**
    * Input group label.
    */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   /**
    * Layout of the group.
    *
