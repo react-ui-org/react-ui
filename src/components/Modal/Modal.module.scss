@@ -1,5 +1,5 @@
 // 1. Modal uses <dialog> element that uses the browser's built-in dialog functionality, so that:
-//    * visibility of thw .root element and its backdrop is managed by the browser
+//    * visibility of the .root element and its backdrop is managed by the browser
 //    * positioning of the .root element and its backdrop is managed by the browser
 //    * z-index of the .root element and its backdrop is not needed as dialog is rendered in browser's Top layer
 // 2. When dialogs are stacked, only the topmost dialog should have a backdrop.
@@ -26,6 +26,7 @@
         padding: 0;
         overflow-y: auto;
         overscroll-behavior: contain;
+        border-width: 0;
         border-radius: settings.$border-radius;
         background: theme.$background;
         box-shadow: theme.$box-shadow;

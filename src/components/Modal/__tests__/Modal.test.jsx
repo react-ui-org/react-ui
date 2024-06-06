@@ -14,7 +14,7 @@ import { ModalContent } from '../ModalContent';
 import { ModalFooter } from '../ModalFooter';
 import { ModalHeader } from '../ModalHeader';
 
-// Test suites skipped due tu missing implementation of HTMLDialogElement in jsdom
+// Test suites skipped due to missing implementation of HTMLDialogElement in jsdom
 // See https://github.com/jsdom/jsdom/issues/3294
 
 describe.skip('rendering', () => {
