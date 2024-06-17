@@ -85,6 +85,7 @@
 
         &.isRootLayoutHorizontal .label {
             grid-column-start: 1;
+            align-self: start;
             width: auto;
             padding-right: settings.$horizontal-inner-gap;
             margin-left: 0;
