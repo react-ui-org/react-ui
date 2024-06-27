@@ -4,8 +4,8 @@ import {
   RUIContext,
   withGlobalProps,
 } from '../../provider';
-import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
+import { transferProps } from '../../utils/transferProps';
 import { getRootColorClassName } from '../_helpers/getRootColorClassName';
 import styles from './Alert.module.scss';
 

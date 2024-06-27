@@ -6,11 +6,11 @@ import React, {
 import { Text } from '../Text';
 import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
+import { transferProps } from '../../utils/transferProps';
 import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
-import { transferProps } from '../_helpers/transferProps';
 import { FormLayoutContext } from '../FormLayout';
 import { InputGroupContext } from './InputGroupContext';
 import styles from './InputGroup.module.scss';
