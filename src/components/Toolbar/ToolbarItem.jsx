@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
+import { transferProps } from '../../utils/transferProps';
 import { withGlobalProps } from '../../provider';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import styles from './Toolbar.module.scss';

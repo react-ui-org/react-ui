@@ -62,3 +62,4 @@ export { RUIProvider } from './provider';
 
 // Utils
 export { classNames } from './utils/classNames';
+export { transferProps } from './utils/transferProps';

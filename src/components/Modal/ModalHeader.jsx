@@ -1,10 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {
-  withGlobalProps,
-} from '../../provider';
-import { transferProps } from '../_helpers/transferProps';
+import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
+import { transferProps } from '../../utils/transferProps';
 import { getJustifyClassName } from './_helpers/getJustifyClassName';
 import styles from './ModalHeader.module.scss';
 

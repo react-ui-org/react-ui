@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
-import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
+import { transferProps } from '../../utils/transferProps';
 import { getRootColorClassName } from '../_helpers/getRootColorClassName';
 import styles from './Card.module.scss';
 

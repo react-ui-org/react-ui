@@ -4,9 +4,9 @@ import React, {
 } from 'react';
 import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
+import { transferProps } from '../../utils/transferProps';
 import getRootPriorityClassName from '../_helpers/getRootPriorityClassName';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
-import { transferProps } from '../_helpers/transferProps';
 import styles from './ButtonGroup.module.scss';
 import { ButtonGroupContext } from './ButtonGroupContext';
 

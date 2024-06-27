@@ -157,8 +157,9 @@ React.createElement(() => {
 ## Forwarding HTML Attributes
 
 In addition to the options below in the [component's API](#api) section, you
-can specify **any HTML attribute you like.** All attributes that don't interfere
-with the API of the React component are forwarded to:
+can specify **any HTML attribute you like.** All attributes that don't
+interfere with the API of the React component and that aren't filtered out by
+[`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to:
 
 - the root `<nav>` HTML element in case of `Tabs` component
 - the `<a>` HTML element in case of `TabsItem`

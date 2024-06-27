@@ -3,7 +3,7 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
-import { transferProps } from '../_helpers/transferProps';
+import { transferProps } from '../../utils/transferProps';
 import getRootSideClassName from './_helpers/getRootSideClassName';
 import getRootAlignmentClassName from './_helpers/getRootAlignmentClassName';
 import styles from './Popover.module.scss';
