@@ -1,12 +1,4 @@
 /**
- * Controls passing of props from the React component to the HTML element
- *
- * Sometimes it is useful to have a mechanism to pass props from the React component to a rendered HTML element.
- * It enables making the component interactive and helps improve its accessibility. However some props should
- * never be passed to the HTML element as it would break things. This function is used to filter out such props.
- *
- * When run in development mode, the function will log the error to the console if any invalid props are passed.
- *
  * @param props The props that were passed to the React component and were not used by it
  * @returns The props to be passed to the HTML element
  */

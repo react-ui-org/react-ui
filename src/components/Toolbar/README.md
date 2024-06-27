@@ -322,10 +322,11 @@ Or to build a classic media layout with image on the left and text on the right:
 ## Forwarding HTML Attributes
 
 In addition to the options below in the [component's API](#api) section, you
-can specify **any HTML attribute you like.** All attributes that don't interfere
-with the API of the React component are forwarded to the root `<div>` HTML
-element. This enables making the component interactive and helps to improve
-its accessibility.
+can specify **any HTML attribute you like.** All attributes that don't
+interfere with the API of the React component and that aren't filtered out by
+[`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to the
+root `<div>` HTML element. This enables making the component interactive and
+helps to improve its accessibility.
 
 👉 For the full list of supported attributes refer to:
 

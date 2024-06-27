@@ -4,7 +4,7 @@ import {
   RUIContext,
   withGlobalProps,
 } from '../../provider';
-import { transferProps } from '../_helpers/transferProps';
+import { transferProps } from '../../utils/transferProps';
 import styles from './ModalCloseButton.module.scss';
 
 export const ModalCloseButton = React.forwardRef((props, ref) => {

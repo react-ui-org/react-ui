@@ -11,7 +11,7 @@ import {
   withGlobalProps,
 } from '../../provider';
 import { classNames } from '../../utils/classNames';
-import { transferProps } from '../_helpers/transferProps';
+import { transferProps } from '../../utils/transferProps';
 import { getElementsPositionDifference } from './_helpers/getElementsPositionDifference';
 import { useLoadResize } from './_hooks/useLoadResizeHook';
 import { useScrollPosition } from './_hooks/useScrollPositionHook';

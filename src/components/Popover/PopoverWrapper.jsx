@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../provider';
-import { transferProps } from '../_helpers/transferProps';
+import { transferProps } from '../../utils/transferProps';
 import styles from './PopoverWrapper.module.scss';
 
 export const PopoverWrapper = ({
