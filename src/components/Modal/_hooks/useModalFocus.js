@@ -4,7 +4,6 @@ export const useModalFocus = (
   autoFocus,
   childrenWrapperRef,
   primaryButtonRef,
-  closeButtonRef,
 ) => {
   useEffect(
     () => {
@@ -53,11 +52,6 @@ export const useModalFocus = (
       };
 
       const keyPressHandler = (e) => {
-        if (e.key === 'Escape' && closeButtonRef?.current != null) {
-          closeButtonRef.current.click();
-          return;
-        }
-
         if (
           e.key === 'Enter'
           && e.target.nodeName !== 'BUTTON'
@@ -120,7 +114,6 @@ export const useModalFocus = (
       autoFocus,
       childrenWrapperRef,
       primaryButtonRef,
-      closeButtonRef,
     ],
   );
 };

@@ -1,9 +1,16 @@
+// 1. Modal uses <dialog> element that uses the browser's built-in dialog functionality, so that:
+//    * visibility of the .root element and its backdrop is managed by the browser
+//    * positioning of the .root element and its backdrop is managed by the browser
+//    * z-index of the .root element and its backdrop is not needed as dialog is rendered in browser's Top layer
+// 2. When dialogs are stacked, only the topmost dialog should have a backdrop.
+
 @use "sass:map";
 @use "../../styles/theme/typography";
 @use "../../styles/tools/accessibility";
 @use "../../styles/tools/breakpoint";
 @use "../../styles/tools/reset";
 @use "../../styles/tools/spacing";
+@use "animations";
 @use "settings";
 @use "theme";
 
@@ -13,33 +20,34 @@
         --rui-local-max-width: calc(100% - (2 * var(--rui-local-outer-spacing)));
         --rui-local-max-height: calc(100% - (2 * var(--rui-local-outer-spacing)));
 
-        position: fixed;
-        left: 50%;
-        z-index: settings.$z-index;
-        display: flex;
         flex-direction: column;
         max-width: var(--rui-local-max-width);
         max-height: var(--rui-local-max-height);
+        padding: 0;
         overflow-y: auto;
         overscroll-behavior: contain;
+        border-width: 0;
         border-radius: settings.$border-radius;
         background: theme.$background;
         box-shadow: theme.$box-shadow;
-        transform: translateX(-50%);
 
         @include breakpoint.up(sm) {
             --rui-local-outer-spacing: #{theme.$outer-spacing-sm};
         }
     }
 
-    .backdrop {
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: settings.$backdrop-z-index;
-        width: 100vw;
-        height: 100vh;
+    .root:has(.root)::backdrop {
+        background: transparent; // 2.
+    }
+
+    .root[open] {
+        display: flex;
+        animation: fade-in theme.$animation-duration ease-out;
+    }
+
+    .root[open]::backdrop {
         background: theme.$backdrop-background;
+        animation: fade-in theme.$animation-duration ease-out;
     }
 
     .isRootSizeSmall {
@@ -69,12 +77,8 @@
         max-width: min(var(--rui-local-max-width), #{map.get(theme.$sizes, auto, max-width)});
     }
 
-    .isRootPositionCenter {
-        top: 50%;
-        transform: translate(-50%, -50%);
-    }
-
     .isRootPositionTop {
+        position: sticky;
         top: var(--rui-local-outer-spacing);
     }
 }
