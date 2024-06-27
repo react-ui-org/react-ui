@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {
-  withGlobalProps,
-} from '../../provider';
-import { transferProps } from '../_helpers/transferProps';
+import { withGlobalProps } from '../../provider';
+import { transferProps } from '../../utils/transferProps';
 import styles from './ModalTitle.module.scss';
 
 export const ModalTitle = ({
