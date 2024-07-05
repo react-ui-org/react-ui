@@ -46,9 +46,11 @@ module.exports = (env, argv) => ({
             options: {
               modules: {
                 auto: true, // Enable CSS Modules only for files with `.module.*` extension
+                exportLocalsConvention: 'as-is',
                 localIdentName: argv.mode === 'production'
                   ? '[hash:base64:8]'
                   : '[name]__[local]__[hash:base64:8]',
+                namedExport: false,
               },
             },
           },

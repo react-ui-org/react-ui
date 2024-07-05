@@ -1,3 +1,7 @@
+<!-- Allow multiple headings with the same content: -->
+<!-- https://github.com/DavidAnson/markdownlint/blob/main/doc/md024.md -->
+<!-- markdownlint-disable MD024 -->
+
 # CSS Guidelines
 
 Basic rules to follow when authoring React UI CSS.
