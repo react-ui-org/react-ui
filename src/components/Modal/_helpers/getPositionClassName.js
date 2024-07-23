@@ -3,5 +3,5 @@ export const getPositionClassName = (modalPosition, styles) => {
     return styles.isRootPositionTop;
   }
 
-  return styles.isRootPositionCenter;
+  return null;
 };
