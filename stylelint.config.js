@@ -4,8 +4,15 @@ module.exports = {
     '@visionappscz/stylelint-config/order',
     '@visionappscz/stylelint-config/scss',
     '@visionappscz/stylelint-config/cssModules',
+    '@stylistic/stylelint-config',
   ],
   rules: {
+    // Allow @else and @elseif to be on the same line as the closing brace of the @if block.
+    '@stylistic/block-closing-brace-newline-after': 'always-single-line',
+
+    // Use 4 spaces for indentation.
+    '@stylistic/indentation': 4,
+
     // Check that custom property name starts with `rui` prefix and follows either SUIT CSS convention
     // (for components theming) or kebab-case syntax (for global design tokens and local properties).
     //

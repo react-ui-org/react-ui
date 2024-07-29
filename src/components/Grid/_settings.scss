@@ -8,11 +8,11 @@ $grid-responsive-properties: [
     align-items,
     justify-content,
     justify-items,
-]; // stylelint-disable-line indentation -- Broken rule?
+]; // stylelint-disable-line @stylistic/indentation -- Broken rule?
 
 $grid-span-responsive-properties: [
     column-span,
     row-span,
-]; // stylelint-disable-line indentation -- Broken rule?
+]; // stylelint-disable-line @stylistic/indentation -- Broken rule?
 
 $initial-fallback-value: initial;
