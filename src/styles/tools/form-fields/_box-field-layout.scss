@@ -125,8 +125,7 @@
 
         .field {
             grid-area: field;
-            align-self: theme.$horizontal-field-vertical-alignment; // 13.
-            justify-self: start; // 7.
+            place-self: theme.$horizontal-field-vertical-alignment start; // 13. / 7.
         }
     }
 }

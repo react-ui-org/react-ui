@@ -21,11 +21,11 @@
         max-width: var(--rui-local-max-width);
         max-height: var(--rui-local-max-height);
         overflow-y: auto;
-        overscroll-behavior: contain;
         border-radius: settings.$border-radius;
         background: theme.$background;
         box-shadow: theme.$box-shadow;
         transform: translateX(-50%);
+        overscroll-behavior: contain;
 
         @include breakpoint.up(sm) {
             --rui-local-outer-spacing: #{theme.$outer-spacing-sm};

@@ -35,10 +35,8 @@
         grid-template-rows: var(--rui-local-rows); // 2.
         grid-auto-flow: var(--rui-local-auto-flow); // 2.
         grid-gap: var(--rui-local-row-gap) var(--rui-local-column-gap); // 2.
-        align-content: var(--rui-local-align-content); // 2.
-        align-items: var(--rui-local-align-items); // 2.
-        justify-content: var(--rui-local-justify-content); // 2.
-        justify-items: var(--rui-local-justify-items); // 2.
+        place-content: var(--rui-local-align-content) var(--rui-local-justify-content); // 2.
+        place-items: var(--rui-local-align-items) var(--rui-local-justify-items); // 2.
     }
 
     // stylelint-disable-next-line selector-max-universal -- Reset any previously added margins.

@@ -103,8 +103,7 @@ $_arrow-outer-spacing: spacing.of(4);
 
     .isRootVertical .viewport {
         height: 100%;
-        overflow-x: clip; // 7., 8.
-        overflow-y: auto; // 2.
+        overflow: clip auto; // 7., 8. / 2.
     }
 
     .isRootVertical .arrowPrev {
@@ -183,8 +182,7 @@ $_arrow-outer-spacing: spacing.of(4);
     }
 
     .isRootHorizontal .viewport {
-        overflow-x: auto; // 2.
-        overflow-y: clip; // 5., 7., 8.
+        overflow: auto clip; // 2. / 5., 7., 8.
     }
 
     .isRootHorizontal .content {
