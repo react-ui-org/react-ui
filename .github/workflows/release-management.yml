@@ -9,6 +9,7 @@ jobs:
     name: Test and build
     runs-on: ubuntu-20.04
     outputs:
+      version: ${{ steps.check_package_version.outputs.version }}
       version_changed: ${{ steps.check_package_version.outputs.changed }}
     steps:
       - name: Clone repository
@@ -71,11 +72,10 @@ jobs:
       # `test_and_build` job first so this job is skipped rather than exited with an error.
       - name: Publish matching GitHub release draft
         id: github_release
-        uses: JamesMGreene/node-draft-releaser@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          allow_release_name_update: 'false'
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh release edit "v${{ needs.test_and_build.outputs.version }}" --draft=false
 
       - name: Write out the release URL
         run: echo "Released at $RELEASE_URL"
@@ -119,6 +119,13 @@ jobs:
         with:
           persist-credentials: false
 
+      # Hard-coded username and email for the GitHub bot user
+      # https://api.github.com/users/github-actions%5Bbot%5D
+      - name: Configure Git credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -150,5 +157,5 @@ jobs:
       - name: Install MkDocs
         run: pip install 'mkdocs-material>=9.0.0,<10.0.0'
 
-      - name: Build MkDocs
+      - name: Build and deploy MkDocs
         run: mkdocs gh-deploy --force
