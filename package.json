@@ -66,6 +66,7 @@
     "@babel/preset-env": "^7.24.7",
     "@babel/preset-react": "^7.24.7",
     "@babel/register": "^7.24.6",
+    "@stylistic/stylelint-config": "^1.0.1",
     "@svgr/webpack": "^8.1.0",
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.0.0",
