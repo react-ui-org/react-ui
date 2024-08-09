@@ -116,8 +116,6 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
-        with:
-          persist-credentials: false
 
       # Hard-coded username and email for the GitHub bot user
       # https://api.github.com/users/github-actions%5Bbot%5D
