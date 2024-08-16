@@ -1,0 +1,10 @@
+@use "sass:map";
+@use "theme";
+
+@mixin color($color) {
+    $color-variant-properties: map.get(theme.$colors, $color);
+
+    --rui-local-color: #{map.get($color-variant-properties, color)};
+    --rui-local-border-color: #{map.get($color-variant-properties, border-color)};
+    --rui-local-background-color: #{map.get($color-variant-properties, background-color)};
+}

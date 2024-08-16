@@ -1,0 +1,93 @@
+// 1. The class name is intentionally singular because it's targeted by other mixins too.
+// 2. Use a block-level display mode to prevent extra white space below grouped inputs in Safari.
+// 3. Prevent individual inputs from overlapping inside narrow containers.
+// 4. Legends are tricky to style, let's use a `div` instead.
+//    https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#styling_with_css
+
+@use "../../styles/tools/form-fields/box-field-elements";
+@use "../../styles/tools/form-fields/box-field-layout";
+@use "../../styles/tools/form-fields/box-field-sizes";
+@use "../../styles/tools/form-fields/foundation";
+@use "../../styles/tools/form-fields/variants";
+@use "../../styles/tools/accessibility";
+@use "../../styles/tools/reset";
+@use "theme";
+
+@layer components.input-group {
+    .root {
+        @include foundation.root();
+        @include foundation.fieldset();
+    }
+
+    // 4.
+    .legend {
+        @include accessibility.hide-text();
+    }
+
+    // 4.
+    .label {
+        @include foundation.label();
+    }
+
+    .inputGroup {
+        --rui-local-inner-border-radius: #{theme.$inner-border-radius};
+
+        display: flex; // 2.
+        gap: theme.$gap;
+    }
+
+    // 1.
+    .validationText {
+        @include reset.list();
+        @include foundation.help-text();
+    }
+
+    .isRootRequired .label {
+        @include foundation.label-required();
+    }
+
+    // States
+    .isRootStateInvalid {
+        @include variants.validation(invalid);
+    }
+
+    .isRootStateValid {
+        @include variants.validation(valid);
+    }
+
+    .isRootStateWarning {
+        @include variants.validation(warning);
+    }
+
+    // Layouts
+    .isRootLayoutVertical,
+    .isRootLayoutHorizontal {
+        @include box-field-layout.vertical();
+    }
+
+    .isRootLayoutVertical .field,
+    .isRootLayoutHorizontal .field {
+        max-width: none; // 3.
+    }
+
+    .isRootLayoutHorizontal {
+        @include box-field-layout.horizontal();
+    }
+
+    .isRootInFormLayout {
+        @include box-field-layout.in-form-layout($is-fieldset: true);
+    }
+
+    // Sizes
+    .isRootSizeSmall {
+        @include box-field-sizes.size(small, $has-input: false);
+    }
+
+    .isRootSizeMedium {
+        @include box-field-sizes.size(medium, $has-input: false);
+    }
+
+    .isRootSizeLarge {
+        @include box-field-sizes.size(large, $has-input: false);
+    }
+}
