@@ -28,27 +28,6 @@ module.exports = {
       },
     ],
 
-    // Override `@visionappscz/stylelint-config/order` rules to ignore all block at rules:
-    'order/order': [
-      'dollar-variables',
-      'custom-properties',
-      {
-        name: 'extend',
-        type: 'at-rule',
-      },
-      {
-        hasBlock: false,
-        name: 'include',
-        type: 'at-rule',
-      },
-      'declarations',
-      'rules',
-      // {
-      //   hasBlock: true,
-      //   type: 'at-rule',
-      // },
-    ],
-
     // Require camelCase pattern for class names as they are picked up by dot notation in JS.
     // Also allow kebab-case class names for global helper and utility classes.
     //

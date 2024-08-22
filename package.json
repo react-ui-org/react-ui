@@ -71,7 +71,7 @@
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.5.2",
     "@visionappscz/eslint-config-visionapps": "^1.7.0",
-    "@visionappscz/stylelint-config": "^4.0.0-beta1",
+    "@visionappscz/stylelint-config": "^4.0.0",
     "autoprefixer": "^10.4.19",
     "babel-jest": "^29.7.0",
     "babel-loader": "^9.1.3",
