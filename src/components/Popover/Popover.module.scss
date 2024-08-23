@@ -51,52 +51,52 @@
 
     // Sides
     .isRootAtTop {
-        bottom: 100%;
+        bottom: calc(100% + #{theme.$arrow-gap} - #{theme.$arrow-safe-rendering-overlap});
     }
 
     .isRootAtBottom {
-        top: 100%;
+        top: calc(100% + #{theme.$arrow-gap} - #{theme.$arrow-safe-rendering-overlap});
     }
 
     .isRootAtLeft {
-        right: 100%;
+        right: calc(100% + #{theme.$arrow-gap} - #{theme.$arrow-safe-rendering-overlap});
     }
 
     .isRootAtRight {
-        left: 100%;
+        left: calc(100% + #{theme.$arrow-gap} - #{theme.$arrow-safe-rendering-overlap});
     }
 
     // Arrows
     .isRootAtTop > .arrow {
-        top: 100%;
+        top: calc(100% - #{theme.$arrow-safe-rendering-overlap});
     }
 
     .isRootAtBottom > .arrow {
-        bottom: 100%;
+        bottom: calc(100% - #{theme.$arrow-safe-rendering-overlap});
     }
 
     .isRootAtLeft > .arrow {
-        left: 100%;
+        left: calc(100% - #{theme.$arrow-safe-rendering-overlap});
     }
 
     .isRootAtRight > .arrow {
-        right: 100%;
+        right: calc(100% - #{theme.$arrow-safe-rendering-overlap});
     }
 
     // Side alignments: top
     .isRootAtTop.isRootAtCenter {
         left: 50%;
-        transform: translate(-50%, #{-1 * theme.$arrow-height});
+        transform: translate(-50%, calc(-1 * #{theme.$arrow-height}));
     }
 
     .isRootAtTop.isRootAtStart {
         left: 0;
-        transform: translate(0, #{-1 * theme.$arrow-height});
+        transform: translate(0, calc(-1 * #{theme.$arrow-height}));
     }
 
     .isRootAtTop.isRootAtEnd {
         right: 0;
-        transform: translate(0, #{-1 * theme.$arrow-height});
+        transform: translate(0, calc(-1 * #{theme.$arrow-height}));
     }
 
     .isRootAtTop.isRootAtCenter > .arrow {
@@ -148,17 +148,17 @@
     // Side alignments: left
     .isRootAtLeft.isRootAtCenter {
         top: 50%;
-        transform: translate(#{-1 * theme.$arrow-height}, -50%);
+        transform: translate(calc(-1 * #{theme.$arrow-height}), -50%);
     }
 
     .isRootAtLeft.isRootAtStart {
         top: 0;
-        transform: translate(#{-1 * theme.$arrow-height}, 0);
+        transform: translate(calc(-1 * #{theme.$arrow-height}), 0);
     }
 
     .isRootAtLeft.isRootAtEnd {
         bottom: 0;
-        transform: translate(#{-1 * theme.$arrow-height}, 0);
+        transform: translate(calc(-1 * #{theme.$arrow-height}), 0);
     }
 
     .isRootAtLeft.isRootAtCenter > .arrow {
@@ -216,7 +216,7 @@
     }
 
     .isRootControlled.isRootAtTop {
-        transform: translate(0, #{-1 * theme.$arrow-height}); // 2.
+        transform: translate(0, calc(-1 * #{theme.$arrow-height})); // 2.
     }
 
     .isRootControlled.isRootAtBottom {
@@ -224,7 +224,7 @@
     }
 
     .isRootControlled.isRootAtLeft {
-        transform: translate(#{-1 * theme.$arrow-height}, 0); // 2.
+        transform: translate(calc(-1 * #{theme.$arrow-height}), 0); // 2.
     }
 
     .isRootControlled.isRootAtRight {
