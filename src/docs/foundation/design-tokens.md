@@ -10,9 +10,7 @@ organizations.
 design system needs. React UI uses CSS custom properties as a primary storage
 format for design tokens.
 
-## Design Token Types
-
-### Global Tokens
+## Global Tokens
 
 Global tokens represent the basic, context-agnostic values in your design
 language. They define color palettes, typography scales, or spacing values,
@@ -24,7 +22,7 @@ without binding them to any semantic meaning.
 }
 ```
 
-### Semantic Tokens
+## Semantic Tokens
 
 Semantic tokens define roles and decisions that give the design system its
 character. They communicate the intended purpose of a global token and are often
@@ -36,7 +34,7 @@ reused by component tokens.
 }
 ```
 
-### Component Tokens
+## Component Tokens
 
 Component tokens represent the values associated with a component. They often
 inherit from semantic tokens, but are named in a way that narrows down their

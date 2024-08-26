@@ -227,23 +227,17 @@ primary border.
 
 ## Applying Colors
 
-Components can apply colors above using one or more following color groups.
+Components can apply colors above using one or more following approaches.
 
-### Component Colors
+### Color Collections
 
 Some components ([Alert](/components/Alert), [Badge](/components/Badge),
 [Button](/components/Button), and more) come in more color variants to help you
 better reflect their place in content hierarchy or the meaning of their content.
-Following colors are available in such cases:
-
-- **action colors (actionable components only):** `primary`, `secondary`, and
-  `selected`,
-- **feedback colors:** `success`, `warning`, `danger`, `help`, `info`, and
-  `note`,
-- **neutral colors:** `light` and `dark`.
-
-There is always a reasonable default for the component in question that can be
-changed to any of supported values above through the `color` prop.
+In such cases, one or more [Color Collections][collection-colors] are always
+used. There is always a reasonable default color for the component in question
+that can be changed to any of supported collection values through the `color`
+prop.
 
 ### Validation States
 
@@ -258,3 +252,5 @@ apply selected [feedback colors](#feedback-colors) for individual states:
 
 Validation state is always optional. Default styling is applied for the given
 component when its `validationState` prop is not specified.
+
+[collection-colors]: /docs/foundation/collections#colors
