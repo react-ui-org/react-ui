@@ -84,6 +84,7 @@ nav:
           - 'Browsers & Devices': 'docs/getting-started/browsers-and-devices.md'
       - Foundation:
           - 'Design Tokens': 'docs/foundation/design-tokens.md'
+          - 'Collections': 'docs/foundation/collections.md'
           - 'Colors': 'docs/foundation/colors.md'
           - 'Typography': 'docs/foundation/typography.md'
           - 'Spacing': 'docs/foundation/spacing.md'
