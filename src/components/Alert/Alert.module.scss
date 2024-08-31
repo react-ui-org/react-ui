@@ -1,10 +1,10 @@
 @use "sass:map";
 @use "../../styles/theme/typography";
 @use "../../styles/tools/accessibility";
+@use "../../styles/tools/collections";
 @use "../../styles/tools/reset";
 @use "settings";
 @use "theme";
-@use "tools";
 
 @layer components.alert {
     .root {
@@ -66,35 +66,13 @@
         top: -0.1em;
     }
 
-    .isRootColorSuccess {
-        @include tools.color(success);
-    }
-
-    .isRootColorWarning {
-        @include tools.color(warning);
-    }
-
-    .isRootColorDanger {
-        @include tools.color(danger);
-    }
-
-    .isRootColorHelp {
-        @include tools.color(help);
-    }
-
-    .isRootColorInfo {
-        @include tools.color(info);
-    }
-
-    .isRootColorNote {
-        @include tools.color(note);
-    }
-
-    .isRootColorLight {
-        @include tools.color(light);
-    }
-
-    .isRootColorDark {
-        @include tools.color(dark);
+    @each $color in settings.$colors {
+        @include collections.generate-properties(
+            $prefix: "rui-",
+            $component-name: "Alert",
+            $variant-name: "color",
+            $variant-value: $color,
+            $properties: settings.$themeable-properties,
+        );
     }
 }

@@ -70,7 +70,8 @@ Alert.propTypes = {
    */
   children: PropTypes.node.isRequired,
   /**
-   * [Color variant](/docs/foundation/colors#component-colors) to clarify importance and meaning of the alert.
+   * Color variant to clarify importance and meaning of the alert. Implements
+   * [Feedback and Neutral color collections](/docs/foundation/collections#colors).
    */
   color: PropTypes.oneOf(['success', 'warning', 'danger', 'help', 'info', 'note', 'light', 'dark']),
   /**
