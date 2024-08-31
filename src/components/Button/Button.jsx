@@ -4,11 +4,11 @@ import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { transferProps } from '../../utils/transferProps';
 import { getRootColorClassName } from '../_helpers/getRootColorClassName';
+import { getRootPriorityClassName } from '../_helpers/getRootPriorityClassName';
 import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { ButtonGroupContext } from '../ButtonGroup';
 import { InputGroupContext } from '../InputGroup/InputGroupContext';
-import getRootPriorityClassName from '../_helpers/getRootPriorityClassName';
 import getRootLabelVisibilityClassName from './helpers/getRootLabelVisibilityClassName';
 import styles from './Button.module.scss';
 

@@ -19,7 +19,7 @@ describe('rendering', () => {
     ],
     [
       { priority: 'filled' },
-      (rootElement) => expect(rootElement).not.toHaveClass('isRootPriorityOutline'),
+      (rootElement) => expect(rootElement).toHaveClass('isRootPriorityFilled'),
     ],
     [
       { priority: 'outline' },

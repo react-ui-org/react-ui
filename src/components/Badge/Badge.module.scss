@@ -20,6 +20,9 @@ $_badge-size: 1.25rem;
         vertical-align: baseline;
         color: var(--rui-local-color);
         border-radius: math.div($_badge-size, 2);
+    }
+
+    .isRootPriorityFilled {
         background-color: var(--rui-local-background-color);
         box-shadow: var(--rui-local-box-shadow, #{0 0 0 2px rgb(255 255 255 / 80%)});
     }
@@ -67,9 +70,6 @@ $_badge-size: 1.25rem;
     }
 
     .isRootPriorityOutline {
-        --rui-local-background-color: transparent;
-        --rui-local-box-shadow: none;
-
         padding-top: 0.1875rem;
         padding-bottom: 0.1875rem;
         border: borders.$width solid currentcolor;

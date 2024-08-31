@@ -4,6 +4,7 @@ import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { transferProps } from '../../utils/transferProps';
 import { getRootColorClassName } from '../_helpers/getRootColorClassName';
+import { getRootPriorityClassName } from '../_helpers/getRootPriorityClassName';
 import styles from './Badge.module.scss';
 
 export const Badge = ({
@@ -16,7 +17,7 @@ export const Badge = ({
     {...transferProps(restProps)}
     className={classNames(
       styles.root,
-      priority === 'outline' && styles.isRootPriorityOutline,
+      getRootPriorityClassName(priority, styles),
       getRootColorClassName(color, styles),
     )}
   >
