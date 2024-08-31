@@ -147,9 +147,8 @@ for card content.
 
 ## Color Variants
 
-Card supports all
-[component colors](/docs/foundation/colors#component-colors) to cover different needs
-of your app.
+To cover all possible needs of your project, Card is available in colors from
+[Feedback and Neutral color collections](/docs/foundation/collections#colors).
 
 ```docoff-react-preview
 <Card color="success">
@@ -307,9 +306,10 @@ looks as follows:
 
 Where:
 
-- `<COLOR>` is one of supported
-  [component colors](/docs/foundation/colors#component-colors)
-  (see [color variants](#color-variants) and [API](#api)),
+- `<COLOR>` is a value from supported
+  [color collections](/docs/foundation/collections#colors)
+  (check [color variants](#color-variants) and [API](#api) to see which
+  collections are supported),
 - `<PROPERTY>` is one of `color` (color of text), `border-color`, or
   `background-color`.
 
