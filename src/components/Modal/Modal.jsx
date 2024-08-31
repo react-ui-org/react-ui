@@ -38,7 +38,6 @@ const preRender = (
       }
     }}
     ref={childrenWrapperRef}
-    role="presentation"
   >
     {children}
   </dialog>

@@ -47,7 +47,7 @@
 
     .root[open]::backdrop {
         background: theme.$backdrop-background;
-        animation: fade-in theme.$animation-duration ease-out;
+        animation: inherit;
     }
 
     .isRootSizeSmall {
