@@ -32,7 +32,8 @@ Badge.defaultProps = {
 
 Badge.propTypes = {
   /**
-   * [Color variant](/docs/foundation/colors#component-colors) to clarify importance and meaning of the badge.
+   * Color to clarify importance and meaning of the badge. Implements
+   * [Feedback and Neutral color collections](/docs/foundation/collections#colors).
    */
   color: PropTypes.oneOf(['success', 'warning', 'danger', 'help', 'info', 'note', 'light', 'dark']),
   /**
