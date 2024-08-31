@@ -1,8 +1,4 @@
-export const colorPropTest = [
-  [
-    { color: 'dark' },
-    (rootElement) => expect(rootElement).toHaveClass('isRootColorDark'),
-  ],
+export const feedbackColorPropTest = [
   [
     { color: 'danger' },
     (rootElement) => expect(rootElement).toHaveClass('isRootColorDanger'),
@@ -14,10 +10,6 @@ export const colorPropTest = [
   [
     { color: 'info' },
     (rootElement) => expect(rootElement).toHaveClass('isRootColorInfo'),
-  ],
-  [
-    { color: 'light' },
-    (rootElement) => expect(rootElement).toHaveClass('isRootColorLight'),
   ],
   [
     { color: 'note' },

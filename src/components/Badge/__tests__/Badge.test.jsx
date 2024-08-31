@@ -3,7 +3,8 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { colorPropTest } from '../../../../tests/propTests/colorPropTest';
+import { feedbackColorPropTest } from '../../../../tests/propTests/feedbackColorPropTest';
+import { neutralColorPropTest } from '../../../../tests/propTests/neutralColorPropTest';
 import { Badge } from '../Badge';
 
 const mandatoryProps = {
@@ -12,7 +13,8 @@ const mandatoryProps = {
 
 describe('rendering', () => {
   it.each([
-    ...colorPropTest,
+    ...feedbackColorPropTest,
+    ...neutralColorPropTest,
     [
       { label: 'label text' },
       (rootElement) => expect(within(rootElement).getByText('label text')),

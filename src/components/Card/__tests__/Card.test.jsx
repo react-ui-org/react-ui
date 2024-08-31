@@ -3,7 +3,8 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { colorPropTest } from '../../../../tests/propTests/colorPropTest';
+import { feedbackColorPropTest } from '../../../../tests/propTests/feedbackColorPropTest';
+import { neutralColorPropTest } from '../../../../tests/propTests/neutralColorPropTest';
 import { raisedPropTest } from '../../../../tests/propTests/raisedPropTest';
 import { ScrollView } from '../../ScrollView';
 import { Card } from '../Card';
@@ -33,7 +34,8 @@ describe('rendering', () => {
       { children: <ScrollView>scroll view content</ScrollView> },
       (rootElement) => expect(within(rootElement).getByText('scroll view content')),
     ],
-    ...colorPropTest,
+    ...feedbackColorPropTest,
+    ...neutralColorPropTest,
     ...densePropTest('Root'),
     [
       { disabled: true },

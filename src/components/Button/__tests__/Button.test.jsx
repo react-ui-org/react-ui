@@ -7,7 +7,8 @@ import {
 import userEvent from '@testing-library/user-event';
 import { actionColorPropTest } from '../../../../tests/propTests/actionColorPropTest';
 import { blockPropTest } from '../../../../tests/propTests/blockPropTest';
-import { colorPropTest } from '../../../../tests/propTests/colorPropTest';
+import { feedbackColorPropTest } from '../../../../tests/propTests/feedbackColorPropTest';
+import { neutralColorPropTest } from '../../../../tests/propTests/neutralColorPropTest';
 import { refPropTest } from '../../../../tests/propTests/refPropTest';
 import { labelPropTest } from '../../../../tests/propTests/labelPropTest';
 import { sizePropTest } from '../../../../tests/propTests/sizePropTest';
@@ -67,7 +68,8 @@ describe('rendering', () => {
     ],
     ...actionColorPropTest,
     ...blockPropTest,
-    ...colorPropTest,
+    ...feedbackColorPropTest,
+    ...neutralColorPropTest,
     [
       { disabled: true },
       (rootElement) => expect(rootElement).toBeDisabled(),
