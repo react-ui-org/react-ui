@@ -1,4 +1,4 @@
-export default (priority, styles) => {
+export const getRootPriorityClassName = (priority, styles) => {
   if (priority === 'filled') {
     return styles.isRootPriorityFilled;
   }
