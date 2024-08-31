@@ -1,3 +1,5 @@
+@use "sass:list";
+@use "../../styles/settings/collections";
 @use "../../styles/theme/typography";
 @use "../../styles/tools/spacing";
 
@@ -12,9 +14,12 @@ $group-z-indexes: (
     button-overflowing-elements: 3,
 );
 
-$themeable-variants: (primary, secondary, selected, success, warning, danger, help, info, note, light, dark);
-$themeable-states: (default, hover, active, disabled);
-$themeable-priority-properties: (
+$colors:
+    list.join(
+        list.join(collections.$action-colors, collections.$feedback-colors),
+        collections.$neutral-colors
+    );
+$themeable-properties: (
     filled: (color, border-color, background, box-shadow),
     outline: (color, border-color, background),
     flat: (color, background),

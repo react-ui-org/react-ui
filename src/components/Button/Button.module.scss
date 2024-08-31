@@ -1,2 +1,183 @@
-@use "base";
-@use "priorities";
+// 1. ButtonGroup gap is implemented using the `margin` property so the buttons can overlap and reduce duplicate
+//    borders.
+
+@use "sass:map";
+@use "../../styles/tools/breakpoint";
+@use "../../styles/tools/collections";
+@use "settings";
+@use "theme";
+@use "tools";
+
+@layer components.button {
+    .root {
+        @include tools.button();
+    }
+
+    .label {
+        display: block;
+    }
+
+    .beforeLabel,
+    .afterLabel,
+    .startCorner,
+    .endCorner,
+    .feedbackIcon {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+    }
+
+    .startCorner,
+    .endCorner {
+        position: absolute;
+        top: -0.35rem;
+        z-index: 2;
+    }
+
+    .startCorner {
+        left: 0;
+        margin-left: -0.35rem;
+    }
+
+    .endCorner {
+        right: 0;
+        margin-right: -0.35rem;
+    }
+
+    .feedbackIcon {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        align-items: center;
+    }
+
+    .isRootSizeSmall {
+        @include tools.button-size(small);
+    }
+
+    .isRootSizeMedium {
+        @include tools.button-size(medium);
+    }
+
+    .isRootSizeLarge {
+        @include tools.button-size(large);
+    }
+
+    .isRootBlock {
+        width: 100%;
+    }
+
+    .hasRootFeedback:disabled {
+        opacity: theme.$feedback-opacity;
+        cursor: theme.$feedback-cursor;
+    }
+
+    .hasRootFeedback .label,
+    .hasRootFeedback .beforeLabel,
+    .hasRootFeedback .afterLabel {
+        color: transparent;
+    }
+
+    .isRootInButtonGroup,
+    .isRootInInputGroup {
+        z-index: map.get(settings.$group-z-indexes, button);
+
+        &:not(:first-child) {
+            border-start-start-radius: var(--rui-local-inner-border-radius);
+            border-end-start-radius: var(--rui-local-inner-border-radius);
+        }
+
+        &:not(:last-child) {
+            border-start-end-radius: var(--rui-local-inner-border-radius);
+            border-end-end-radius: var(--rui-local-inner-border-radius);
+        }
+    }
+
+    .isRootInButtonGroup:not(:first-child) {
+        margin-inline-start: var(--rui-local-gap); // 1.
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: calc(-1 * #{theme.$border-width});
+            bottom: calc(-1 * #{theme.$border-width});
+            left: calc(-1 * #{theme.$border-width});
+            z-index: map.get(settings.$group-z-indexes, separator);
+            border-left: var(--rui-local-separator-width) solid var(--rui-local-separator-color);
+            transform: translateX(calc(-0.5 * var(--rui-local-gap) - 50%));
+        }
+    }
+
+    .isRootInButtonGroup:focus,
+    .isRootInButtonGroup:not(:disabled):hover {
+        z-index: map.get(settings.$group-z-indexes, button-hover);
+    }
+
+    .isRootInButtonGroup .startCorner,
+    .isRootInInputGroup .startCorner,
+    .isRootInButtonGroup .endCorner,
+    .isRootInInputGroup .endCorner {
+        z-index: map.get(settings.$group-z-indexes, button-overflowing-elements);
+    }
+
+    .hasLabelHidden,
+    .hasLabelVisibleSm,
+    .hasLabelVisibleMd,
+    .hasLabelVisibleLg,
+    .hasLabelVisibleXl,
+    .hasLabelVisibleX2l,
+    .hasLabelVisibleX3l {
+        @include tools.hide-label();
+    }
+
+    .hasLabelVisibleSm {
+        @include breakpoint.up(sm) {
+            @include tools.show-label();
+        }
+    }
+
+    .hasLabelVisibleMd {
+        @include breakpoint.up(md) {
+            @include tools.show-label();
+        }
+    }
+
+    .hasLabelVisibleLg {
+        @include breakpoint.up(lg) {
+            @include tools.show-label();
+        }
+    }
+
+    .hasLabelVisibleXl {
+        @include breakpoint.up(xl) {
+            @include tools.show-label();
+        }
+    }
+
+    .hasLabelVisibleX2l {
+        @include breakpoint.up(x2l) {
+            @include tools.show-label();
+        }
+    }
+
+    .hasLabelVisibleX3l {
+        @include breakpoint.up(x3l) {
+            @include tools.show-label();
+        }
+    }
+
+    @each $priority in map.keys(settings.$themeable-properties) {
+        @each $color in settings.$colors {
+            @include collections.generate-class(
+                $prefix: "rui-",
+                $component-name: "Button",
+                $modifier-name: "priority",
+                $modifier-value: $priority,
+                $variant-name: "color",
+                $variant-value: $color,
+                $generate-interaction-states: true,
+                $properties: map.get(settings.$themeable-properties, $priority),
+            );
+        }
+    }
+}

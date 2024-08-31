@@ -40,8 +40,9 @@ lowest:
 2. outline
 3. flat
 
-All priorities come in supported
-[component colors](/docs/foundation/colors#component-colors).
+All priorities are available in colors from supported
+[color collections](/docs/foundation/collections#colors).
+Check [API](#api) to see which collections are supported.
 
 ### Filled
 
@@ -257,7 +258,7 @@ Disabled state makes the action unavailable.
 
 When user's action triggers an asynchronous process on background, the button's
 feedback state (not to be mistaken with
-[feedback colors](/docs/foundation/colors#component-colors)) can be indicated by
+[feedback colors](/docs/foundation/colors#feedback-colors)) can be indicated by
 showing an icon. The icon replaces button's label while retaining original
 dimensions of the button. Buttons in feedback state are automatically disabled
 to prevent unwanted interaction.
@@ -431,9 +432,10 @@ Where:
 
 - `<PRIORITY>` is one of `filled`, `outline`, or `flat` (see
   [Priorities](#priorities) and [API](#api)),
-- `<COLOR>` is one of supported
-  [component colors](/docs/foundation/colors#component-colors)
-  (see color variants of [each priority](#priorities) and [API](#api)),
+- `<COLOR>` is a value from supported
+  [color collections](/docs/foundation/collections#colors)
+  (check color variants of [each priority](#priorities) and [API](#api) to see
+  which collections are supported),
 - `<INTERACTION STATE>` is one of `default`, `hover`, `active`, or `disabled`
   (the last one being optional),
 - `<PROPERTY>` is one of:
