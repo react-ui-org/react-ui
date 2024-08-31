@@ -1,0 +1,36 @@
+@use "string" as rui-string;
+
+@mixin generate-properties(
+    $prefix,
+    $component-name,
+    $modifier-name: null,
+    $modifier-value: null,
+    $variant-name,
+    $variant-value,
+    $properties,
+) {
+    $combined-class-name:
+        if(
+            $modifier-name and $modifier-value,
+            ".isRoot#{rui-string.capitalize($modifier-name)}#{rui-string.capitalize($modifier-value)}",
+            ""
+        );
+
+    #{$combined-class-name}.isRoot#{rui-string.capitalize($variant-name)}#{rui-string.capitalize($variant-value)} {
+        @each $property in $properties {
+            --#{$prefix}local-#{$property}:
+                var(
+                    #{
+                        "--"
+                        + $prefix
+                        + $component-name
+                        + if($modifier-value, "--" + $modifier-value, "")
+                        + "--"
+                        + $variant-value
+                        + "__"
+                        + $property
+                    }
+                );
+        }
+    }
+}

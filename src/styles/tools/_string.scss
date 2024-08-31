@@ -1,7 +1,10 @@
-// Author: Hugo Giraudel
-
 @use "sass:string";
 
+@function capitalize($string) {
+    @return string.to-upper-case(string.slice($string, 1, 1)) + string.slice($string, 2);
+}
+
+// Author: Hugo Giraudel
 @function replace($string, $search, $replace: "") {
     $index: string.index($string, $search);
 

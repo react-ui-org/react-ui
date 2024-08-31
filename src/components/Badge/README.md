@@ -29,8 +29,9 @@ lowest:
 1. filled
 2. outline
 
-All priorities come in supported
-[component colors](/docs/foundation/colors#component-colors).
+All priorities are available in colors from supported
+[color collections](/docs/foundation/collections#colors).
+Check [API](#api) to see which collections are supported.
 
 ### Filled
 
@@ -101,6 +102,22 @@ helps to improve its accessibility.
 ## API
 
 <docoff-react-props src="/components/Badge/Badge.jsx" />
+
+## Theming
+
+It's possible to adjust the theme of specific badge color variant. Naming
+convention looks as follows:
+
+`--rui-Badge--<PRIORITY>--<COLOR>__<PROPERTY>`
+
+Where:
+
+- `<PRIORITY>` is one of `filled` or `outline`,
+- `<COLOR>` is a value from supported
+  [color collections](/docs/foundation/collections#colors)
+  (check [API](#api) to see which collections are supported),
+- `<PROPERTY>` is one of `color` (color of text) or `background-color` for the
+  filled priority, or just `color` for the outline priority.
 
 [div-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
 [React common props]: https://react.dev/reference/react-dom/components/common#common-props

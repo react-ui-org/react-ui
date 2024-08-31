@@ -307,6 +307,70 @@
         --rui-Alert--dark__background-color: var(--rui-color-background-dark);
 
         //
+        // Badge
+        // =====
+
+        // Badge: filled priority
+
+        // Badge: filled priority: success variant
+        --rui-Badge--filled--success__color: var(--rui-color-feedback-on-success);
+        --rui-Badge--filled--success__background-color: var(--rui-color-feedback-success);
+
+        // Badge: filled priority: warning variant
+        --rui-Badge--filled--warning__color: var(--rui-color-feedback-on-warning);
+        --rui-Badge--filled--warning__background-color: var(--rui-color-feedback-warning);
+
+        // Badge: filled priority: danger variant
+        --rui-Badge--filled--danger__color: var(--rui-color-feedback-on-danger);
+        --rui-Badge--filled--danger__background-color: var(--rui-color-feedback-danger);
+
+        // Badge: filled priority: help variant
+        --rui-Badge--filled--help__color: var(--rui-color-feedback-on-help);
+        --rui-Badge--filled--help__background-color: var(--rui-color-feedback-help);
+
+        // Badge: filled priority: info variant
+        --rui-Badge--filled--info__color: var(--rui-color-feedback-on-info);
+        --rui-Badge--filled--info__background-color: var(--rui-color-feedback-info);
+
+        // Badge: filled priority: note variant
+        --rui-Badge--filled--note__color: var(--rui-color-feedback-on-note);
+        --rui-Badge--filled--note__background-color: var(--rui-color-feedback-note);
+
+        // Badge: filled priority: light variant
+        --rui-Badge--filled--light__color: var(--rui-color-neutral-on-light);
+        --rui-Badge--filled--light__background-color: var(--rui-color-neutral-light);
+
+        // Badge: filled priority: dark variant
+        --rui-Badge--filled--dark__color: var(--rui-color-neutral-on-dark);
+        --rui-Badge--filled--dark__background-color: var(--rui-color-neutral-dark);
+
+        // Badge: outline priority
+
+        // Badge: outline priority: success variant
+        --rui-Badge--outline--success__color: var(--rui-color-feedback-success);
+
+        // Badge: outline priority: warning variant
+        --rui-Badge--outline--warning__color: var(--rui-color-feedback-warning);
+
+        // Badge: outline priority: danger variant
+        --rui-Badge--outline--danger__color: var(--rui-color-feedback-danger);
+
+        // Badge: outline priority: help variant
+        --rui-Badge--outline--help__color: var(--rui-color-feedback-help);
+
+        // Badge: outline priority: info variant
+        --rui-Badge--outline--info__color: var(--rui-color-feedback-info);
+
+        // Badge: outline priority: note variant
+        --rui-Badge--outline--note__color: var(--rui-color-feedback-note);
+
+        // Badge: outline priority: light variant
+        --rui-Badge--outline--light__color: var(--rui-color-neutral-light);
+
+        // Badge: outline priority: dark variant
+        --rui-Badge--outline--dark__color: var(--rui-color-neutral-dark);
+
+        //
         // Button
         // ======
 
