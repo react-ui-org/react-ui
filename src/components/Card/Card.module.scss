@@ -1,7 +1,8 @@
 // 1. Retain equal card widths in flex and grid layouts independently on their content.
 
+@use "../../styles/tools/collections";
+@use "settings";
 @use "theme";
-@use "tools";
 
 @layer components.card {
     .root {
@@ -33,36 +34,14 @@
         box-shadow: theme.$raised-box-shadow;
     }
 
-    .isRootColorSuccess {
-        @include tools.color(success);
-    }
-
-    .isRootColorWarning {
-        @include tools.color(warning);
-    }
-
-    .isRootColorDanger {
-        @include tools.color(danger);
-    }
-
-    .isRootColorHelp {
-        @include tools.color(help);
-    }
-
-    .isRootColorInfo {
-        @include tools.color(info);
-    }
-
-    .isRootColorNote {
-        @include tools.color(note);
-    }
-
-    .isRootColorLight {
-        @include tools.color(light);
-    }
-
-    .isRootColorDark {
-        @include tools.color(dark);
+    @each $color in settings.$colors {
+        @include collections.generate-properties(
+            $prefix: "rui-",
+            $component-name: "Card",
+            $variant-name: "color",
+            $variant-value: $color,
+            $properties: settings.$themeable-properties,
+        );
     }
 
     .isRootDisabled {

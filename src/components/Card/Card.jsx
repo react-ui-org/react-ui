@@ -44,7 +44,8 @@ Card.propTypes = {
    */
   children: PropTypes.node.isRequired,
   /**
-   * [Color variant](/docs/foundation/colors#component-colors) to clarify importance and meaning of the card.
+   * Color to clarify importance and meaning of the card. Implements
+   * [Feedback and Neutral color collections](/docs/foundation/collections#colors).
    */
   color: PropTypes.oneOf(['success', 'warning', 'danger', 'help', 'info', 'note', 'light', 'dark']),
   /**
