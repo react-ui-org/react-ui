@@ -67,7 +67,7 @@
     }
 
     @each $color in settings.$colors {
-        @include collections.generate-properties(
+        @include collections.generate-class(
             $prefix: "rui-",
             $component-name: "Alert",
             $variant-name: "color",

@@ -1,6 +1,3 @@
-// Priority and variant specific theme options are obtained dynamically because there is way too
-// many of them to maintain manually. See `_tools.scss` for details.
-
 $font-weight: var(--rui-Button__font-weight);
 $letter-spacing: var(--rui-Button__letter-spacing);
 $text-transform: var(--rui-Button__text-transform);

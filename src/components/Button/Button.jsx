@@ -133,7 +133,8 @@ Button.propTypes = {
    */
   block: PropTypes.bool,
   /**
-   * [Color variant](/docs/foundation/colors#component-colors) to clarify importance and meaning of the button.
+   * Color variant to clarify importance and meaning of the alert. Implements
+   * [Action, Feedback and Neutral color collections](/docs/foundation/collections#colors).
    */
   color: PropTypes.oneOf(
     ['primary', 'secondary', 'selected', 'success', 'warning', 'danger', 'help', 'info', 'note', 'light', 'dark'],
