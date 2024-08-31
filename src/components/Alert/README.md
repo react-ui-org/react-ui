@@ -31,8 +31,8 @@ See [API](#api) for all available options.
 
 ## Color Variants
 
-All [component colors](/docs/foundation/colors#component-colors) are supported by
-alert to cover all possible needs of your project.
+To cover all possible needs of your project, Alert is available in colors from
+[Feedback and Neutral color collections](/docs/foundation/collections#colors).
 
 ### Success
 
@@ -208,9 +208,10 @@ convention looks as follows:
 
 Where:
 
-- `<COLOR>` is one of supported
-  [component colors](/docs/foundation/colors#component-colors)
-  (see alert [color variants](#color-variants) and [API](#api)),
+- `<COLOR>` is a value from supported
+  [color collections](/docs/foundation/collections#colors)
+  (check [color variants](#color-variants) and [API](#api) to see which
+  collections are supported),
 - `<PROPERTY>` is one of `color` (color of text), `foreground-color` (color of
   border, icon, links, and emphasis), or `background-color`.
 
