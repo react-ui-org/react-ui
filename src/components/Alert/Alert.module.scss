@@ -46,9 +46,11 @@
         line-height: settings.$line-height;
     }
 
-    .message a,
-    .message strong {
+    .message :is(a, strong) {
         font-weight: theme.$emphasis-font-weight;
+    }
+
+    .message strong {
         color: var(--rui-local-foreground-color);
     }
 
@@ -73,6 +75,7 @@
             $variant-name: "color",
             $variant-value: $color,
             $properties: settings.$themeable-properties,
+            $inherit-link-color: true,
         );
     }
 }

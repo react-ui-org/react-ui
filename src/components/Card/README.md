@@ -154,6 +154,8 @@ To cover all possible needs of your project, Card is available in colors from
 <Card color="success">
   <CardBody>
     Hello! I&apos;m success variant of card.
+    {' '}
+    <TextLink href="/" label="This is a link" />
   </CardBody>
   <CardFooter>
     <Button label="Read more" priority="outline" color="success" />
@@ -162,6 +164,8 @@ To cover all possible needs of your project, Card is available in colors from
 <Card color="warning">
   <CardBody>
     Hello! I&apos;m warning variant of card.
+    {' '}
+    <TextLink href="/" label="This is a link" />
   </CardBody>
   <CardFooter>
     <Button label="Read more" priority="outline" color="warning" />
@@ -170,6 +174,8 @@ To cover all possible needs of your project, Card is available in colors from
 <Card color="danger">
   <CardBody>
     Hello! I&apos;m danger variant of card.
+    {' '}
+    <TextLink href="/" label="This is a link" />
   </CardBody>
   <CardFooter>
     <Button label="Read more" priority="outline" color="danger" />
@@ -178,6 +184,8 @@ To cover all possible needs of your project, Card is available in colors from
 <Card color="help">
   <CardBody>
     Hello! I&apos;m help variant of card.
+    {' '}
+    <TextLink href="/" label="This is a link" />
   </CardBody>
   <CardFooter>
     <Button label="Read more" priority="outline" color="help" />
@@ -186,6 +194,8 @@ To cover all possible needs of your project, Card is available in colors from
 <Card color="info">
   <CardBody>
     Hello! I&apos;m info variant of card.
+    {' '}
+    <TextLink href="/" label="This is a link" />
   </CardBody>
   <CardFooter>
     <Button label="Read more" priority="outline" color="info" />
@@ -194,6 +204,8 @@ To cover all possible needs of your project, Card is available in colors from
 <Card color="note">
   <CardBody>
     Hello! I&apos;m note variant of card.
+    {' '}
+    <TextLink href="/" label="This is a link" />
   </CardBody>
   <CardFooter>
     <Button label="Read more" priority="outline" color="note" />
@@ -202,6 +214,8 @@ To cover all possible needs of your project, Card is available in colors from
 <Card>
   <CardBody>
     Hello! I&apos;m light (default) variant of card.
+    {' '}
+    <TextLink href="/" label="This is a link" />
   </CardBody>
   <CardFooter>
     <Button label="Read more" priority="outline" color="dark" />
@@ -210,6 +224,8 @@ To cover all possible needs of your project, Card is available in colors from
 <Card color="dark">
   <CardBody>
     Hello! I&apos;m dark variant of card.
+    {' '}
+    <TextLink href="/" label="This is a link" />
   </CardBody>
   <CardFooter>
     <Button label="Read more" priority="outline" color="light" />
@@ -228,6 +244,8 @@ its interactive elements to disallow user's interaction.
 <Card disabled>
   <CardBody>
     Hello! I&apos;m a disabled card.
+    {' '}
+    <TextLink href="/" label="This is a link" />
   </CardBody>
   <CardFooter>
     <Button label="Read more" priority="outline" disabled />
@@ -236,6 +254,8 @@ its interactive elements to disallow user's interaction.
 <Card disabled raised>
   <CardBody>
     Hello! I&apos;m a disabled raised card.
+    {' '}
+    <TextLink href="/" label="This is a link" />
   </CardBody>
   <CardFooter>
     <Button label="Read more" priority="outline" disabled />
@@ -244,6 +264,8 @@ its interactive elements to disallow user's interaction.
 <Card color="success" disabled>
   <CardBody>
     Hello! I&apos;m a disabled success variant of card.
+    {' '}
+    <TextLink href="/" label="This is a link" />
   </CardBody>
   <CardFooter>
     <Button label="Read more" priority="outline" color="success" disabled />
