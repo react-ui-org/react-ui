@@ -1,6 +1,47 @@
+@use "sass:list";
+@use "sass:map";
+@use "../settings/collections";
 @use "string" as rui-string;
 
-// Mixin to generate CSS custom properties for a set of visual properties.
+// Function to get the parent collection category by value.
+//
+// 1. Returns **only the first** matching collection category.
+//
+// @param {String} $value - The value to get the category for.
+// @param {Map} $collections - The collections map to search in.
+
+@function _get-category-by-value($value, $collections) {
+    @each $category, $values in $collections {
+        @if list.index($values, $value) {
+            @return $category; // 1.
+        }
+    }
+
+    @error
+        "Supplied value \""
+        + $value
+        + "\" not found in any category ("
+        + map.keys($collections)
+        + ")";
+}
+
+// Function to get the matching link color for a component variant.
+//
+// @param {String} $value - The value to get the link color for.
+
+@function _get-link-color-by-value($value) {
+    @if $value == "light" {
+        @return "dark";
+    }
+
+    @if $value == "dark" {
+        @return "light";
+    }
+
+    @return $value;
+}
+
+// Mixin to generate CSS custom properties for a component theme.
 //
 // 1. Generates a CSS custom property for each property in the `$properties` list.
 // 2. Theming of the disabled state is optional, so the `default` theme options are used (via CSS custom property
@@ -15,7 +56,7 @@
 //
 // Example:
 //
-// @include generate-properties(
+// @include generate-component-properties(
 //     $prefix: "rui-",
 //     $component-name: "Card",
 //     $variant-name: "color",
@@ -29,7 +70,7 @@
 // --rui-local-border-color: var(--rui-Card--success__border-color);
 // --rui-local-background-color: var(--rui-Card--success__background-color);
 
-@mixin generate-properties(
+@mixin generate-component-properties(
     $prefix,
     $component-name,
     $modifier-value: null,
@@ -72,6 +113,33 @@
     }
 }
 
+// Mixin to generate CSS custom properties for links theme.
+//
+// @param {String} $prefix - The prefix for the CSS custom properties.
+// @param {String} $variant-value - The value of the variant.
+//
+// Example:
+//
+// @include generate-link-properties(
+//     $prefix: "rui-",
+//     $variant-value: "success",
+// );
+//
+// … will output:
+//
+// --rui-local-link-color: var(--rui-color-feedback-success);
+// --rui-local-link-color-hover: var(--rui-color-feedback-success-hover);
+// --rui-local-link-color-active: var(--rui-color-feedback-success-active);
+
+@mixin generate-link-properties($prefix, $variant-value) {
+    $color-category: _get-category-by-value($value: $variant-value, $collections: collections.$colors);
+    $resolved-variant-value: _get-link-color-by-value($variant-value);
+
+    --#{$prefix}local-link-color: var(--rui-color-#{$color-category}-#{$resolved-variant-value});
+    --#{$prefix}local-link-color-hover: var(--rui-color-#{$color-category}-#{$resolved-variant-value}-hover);
+    --#{$prefix}local-link-color-active: var(--rui-color-#{$color-category}-#{$resolved-variant-value}-active);
+}
+
 // Mixin to generate CSS classes for a component variant.
 //
 // @param {String} $prefix - The prefix for the CSS custom properties.
@@ -81,6 +149,7 @@
 // @param {String} $variant-name - The name of the variant.
 // @param {String} $variant-value - The value of the variant.
 // @param {Boolean} $generate-interaction-states - Whether to generate interaction states (disabled, hover, active).
+// @param {Boolean} $inherit-link-color - Whether to inherit link color from the component variant.
 // @param {List} $properties - The list of properties to generate CSS custom properties for.
 //
 // Examples:
@@ -147,6 +216,7 @@
     $variant-name,
     $variant-value,
     $generate-interaction-states: false,
+    $inherit-link-color: false,
     $properties,
 ) {
     $modifier-class-name:
@@ -168,7 +238,7 @@
 
             @each $interaction-state, $interaction-state-selector in $interaction-state-selector-map {
                 #{$interaction-state-selector} {
-                    @include generate-properties(
+                    @include generate-component-properties(
                         $prefix: $prefix,
                         $component-name: $component-name,
                         $modifier-value: $modifier-value,
@@ -179,13 +249,17 @@
                 }
             }
         } @else {
-            @include generate-properties(
+            @include generate-component-properties(
                 $prefix: $prefix,
                 $component-name: $component-name,
                 $modifier-value: $modifier-value,
                 $variant-value: $variant-value,
                 $properties: $properties,
             );
+        }
+
+        @if $inherit-link-color {
+            @include generate-link-properties($prefix: $prefix, $variant-value: $variant-value);
         }
     }
 }

@@ -34,18 +34,19 @@
         box-shadow: theme.$raised-box-shadow;
     }
 
+    .isRootDisabled {
+        background-color: theme.$disabled-background-color;
+        opacity: theme.$disabled-opacity;
+    }
+
     @each $color in settings.$colors {
         @include collections.generate-class(
             $prefix: "rui-",
             $component-name: "Card",
             $variant-name: "color",
             $variant-value: $color,
+            $inherit-link-color: true,
             $properties: settings.$themeable-properties,
         );
-    }
-
-    .isRootDisabled {
-        background-color: theme.$disabled-background-color;
-        opacity: theme.$disabled-opacity;
     }
 }
