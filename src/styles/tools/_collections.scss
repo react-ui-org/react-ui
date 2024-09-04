@@ -99,7 +99,8 @@
 
 // Mixin to generate CSS custom properties for links theme.
 //
-// 1. Links theming is only available for feedback colors.
+// 1. Use light color for links in the dark variant.
+// 2. Links theming is not available for the light color from the Neutral color collection.
 //
 // @param {String} $prefix - The prefix for the CSS custom properties.
 // @param {String} $variant-value - The value of the variant.
@@ -119,13 +120,13 @@
 
 @mixin generate-link-properties($prefix, $variant-value) {
     $color-category: _get-category-by-value($value: $variant-value, $collections: collections.$colors);
+    $resolved-variant-value: if($variant-value == "dark", "light", $variant-value); // 1.
 
-    // 1.
-    // TODO: Figure out what to do with the `dark` color category where blue links do not work.
-    @if $color-category == "feedback" {
-        --#{$prefix}local-link-color: var(--rui-color-#{$color-category}-#{$variant-value});
-        --#{$prefix}local-link-color-hover: var(--rui-color-#{$color-category}-#{$variant-value}-hover);
-        --#{$prefix}local-link-color-active: var(--rui-color-#{$color-category}-#{$variant-value}-active);
+    // 2.
+    @if $variant-value != "light" {
+        --#{$prefix}local-link-color: var(--rui-color-#{$color-category}-#{$resolved-variant-value});
+        --#{$prefix}local-link-color-hover: var(--rui-color-#{$color-category}-#{$resolved-variant-value}-hover);
+        --#{$prefix}local-link-color-active: var(--rui-color-#{$color-category}-#{$resolved-variant-value}-active);
     }
 }
 
