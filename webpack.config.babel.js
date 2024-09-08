@@ -4,8 +4,8 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const VisualizerPlugin = require('webpack-visualizer-plugin2');
 
-const MAX_DEVELOPMENT_OUTPUT_SIZE = 3300000;
-const MAX_PRODUCTION_OUTPUT_SIZE = 420000;
+const MAX_DEVELOPMENT_OUTPUT_SIZE = 3400000;
+const MAX_PRODUCTION_OUTPUT_SIZE = 430000;
 
 module.exports = (env, argv) => ({
   devtool: argv.mode === 'production'

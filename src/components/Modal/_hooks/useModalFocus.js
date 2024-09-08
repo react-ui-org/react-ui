@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 export const useModalFocus = (
   autoFocus,
-  childrenWrapperRef,
+  dialogRef,
   primaryButtonRef,
 ) => {
   useEffect(
@@ -11,17 +11,17 @@ export const useModalFocus = (
       // field element (input, textarea or select) or primary button and focuses it. This is
       // necessary to have focus on one of those elements to be able to submit the form
       // by pressing Enter key. If there are neither, it tries to focus any other focusable
-      // elements. In case there are none or `autoFocus` is disabled, childrenWrapperElement
+      // elements. In case there are none or `autoFocus` is disabled, dialogElement
       // (Modal itself) is focused.
 
-      const childrenWrapperElement = childrenWrapperRef.current;
+      const dialogElement = dialogRef.current;
 
-      if (childrenWrapperElement == null) {
+      if (dialogElement == null) {
         return () => {};
       }
 
       const childrenFocusableElements = Array.from(
-        childrenWrapperElement.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'),
+        dialogElement.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'),
       );
 
       const firstFocusableElement = childrenFocusableElements[0];
@@ -29,8 +29,8 @@ export const useModalFocus = (
 
       const resolveFocusBeforeListener = () => {
         if (!autoFocus || childrenFocusableElements.length === 0) {
-          childrenWrapperElement.tabIndex = -1;
-          childrenWrapperElement.focus();
+          dialogElement.tabIndex = -1;
+          dialogElement.focus();
           return;
         }
 
@@ -43,7 +43,7 @@ export const useModalFocus = (
           return;
         }
 
-        if (primaryButtonRef?.current != null) {
+        if (primaryButtonRef?.current != null && primaryButtonRef?.current?.disabled === false) {
           primaryButtonRef.current.focus();
           return;
         }
@@ -58,6 +58,7 @@ export const useModalFocus = (
           && e.target.nodeName !== 'TEXTAREA'
           && e.target.nodeName !== 'A'
           && primaryButtonRef?.current != null
+          && primaryButtonRef?.current?.disabled === false
         ) {
           primaryButtonRef.current.click();
           return;
@@ -70,7 +71,7 @@ export const useModalFocus = (
         }
 
         if (childrenFocusableElements.length === 0) {
-          childrenWrapperElement.focus();
+          dialogElement.focus();
           e.preventDefault();
           return;
         }
@@ -78,7 +79,7 @@ export const useModalFocus = (
         if (
           ![
             ...childrenFocusableElements,
-            childrenWrapperElement,
+            dialogElement,
           ]
             .includes(window.document.activeElement)
         ) {
@@ -96,7 +97,7 @@ export const useModalFocus = (
         if (e.shiftKey
           && (
             window.document.activeElement === firstFocusableElement
-            || window.document.activeElement === childrenWrapperElement
+            || window.document.activeElement === dialogElement
           )
         ) {
           lastFocusableElement.focus();
@@ -112,7 +113,7 @@ export const useModalFocus = (
     },
     [
       autoFocus,
-      childrenWrapperRef,
+      dialogRef,
       primaryButtonRef,
     ],
   );

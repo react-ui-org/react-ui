@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, {
+  useCallback,
   useEffect,
   useRef,
 } from 'react';
@@ -7,6 +8,10 @@ import { createPortal } from 'react-dom';
 import { withGlobalProps } from '../../provider';
 import { transferProps } from '../_helpers/transferProps';
 import { classNames } from '../../utils/classNames';
+import { dialogOnCancelHandler } from './_helpers/dialogOnCancelHandler';
+import { dialogOnClickHandler } from './_helpers/dialogOnClickHandler';
+import { dialogOnCloseHandler } from './_helpers/dialogOnCloseHandler';
+import { dialogOnKeyDownHandler } from './_helpers/dialogOnKeyDownHandler';
 import { getPositionClassName } from './_helpers/getPositionClassName';
 import { getSizeClassName } from './_helpers/getSizeClassName';
 import { useModalFocus } from './_hooks/useModalFocus';
@@ -15,35 +20,29 @@ import styles from './Modal.module.scss';
 
 const preRender = (
   children,
-  childrenWrapperRef,
-  closeButtonRef,
+  dialogRef,
   position,
-  restProps,
   size,
+  events,
+  restProps,
 ) => (
   <dialog
     {...transferProps(restProps)}
+    {...transferProps(events)}
     className={classNames(
       styles.root,
       getSizeClassName(size, styles),
       getPositionClassName(position, styles),
     )}
-    onClick={(e) => {
-      e.stopPropagation();
-    }}
-    onClose={(e) => {
-      e.preventDefault();
-      if (closeButtonRef?.current != null) {
-        closeButtonRef.current.click();
-      }
-    }}
-    ref={childrenWrapperRef}
+    ref={dialogRef}
   >
     {children}
   </dialog>
 );
 
 export const Modal = ({
+  allowCloseOnBackdropClick,
+  allowCloseOnEscapeKey,
   autoFocus,
   children,
   closeButtonRef,
@@ -54,45 +53,65 @@ export const Modal = ({
   size,
   ...restProps
 }) => {
-  const childrenWrapperRef = useRef();
+  const dialogRef = useRef();
 
   useEffect(() => {
-    childrenWrapperRef.current.showModal();
+    dialogRef.current.showModal();
   }, []);
 
-  useModalFocus(
-    autoFocus,
-    childrenWrapperRef,
-    primaryButtonRef,
-  );
-
+  useModalFocus(autoFocus, dialogRef, primaryButtonRef);
   useModalScrollPrevention(preventScrollUnderneath);
+
+  const onCancel = useCallback(
+    (e) => dialogOnCancelHandler(e, closeButtonRef),
+    [closeButtonRef],
+  );
+  const onClick = useCallback(
+    (e) => dialogOnClickHandler(e, closeButtonRef, dialogRef, allowCloseOnBackdropClick),
+    [allowCloseOnBackdropClick, closeButtonRef, dialogRef],
+  );
+  const onClose = useCallback(
+    (e) => dialogOnCloseHandler(e, closeButtonRef),
+    [closeButtonRef],
+  );
+  const onKeyDown = useCallback(
+    (e) => dialogOnKeyDownHandler(e, closeButtonRef, allowCloseOnEscapeKey),
+    [allowCloseOnEscapeKey, closeButtonRef],
+  );
+  const events = {
+    onCancel,
+    onClick,
+    onClose,
+    onKeyDown,
+  };
 
   if (portalId === null) {
     return preRender(
       children,
-      childrenWrapperRef,
-      closeButtonRef,
+      dialogRef,
       position,
-      restProps,
       size,
+      events,
+      restProps,
     );
   }
 
   return createPortal(
     preRender(
       children,
-      childrenWrapperRef,
-      closeButtonRef,
+      dialogRef,
       position,
-      restProps,
       size,
+      events,
+      restProps,
     ),
     document.getElementById(portalId),
   );
 };
 
 Modal.defaultProps = {
+  allowCloseOnBackdropClick: true,
+  allowCloseOnEscapeKey: true,
   autoFocus: true,
   children: null,
   closeButtonRef: null,
@@ -104,6 +123,14 @@ Modal.defaultProps = {
 };
 
 Modal.propTypes = {
+  /**
+   * If `true`, the `Modal` can be closed by clicking on the backdrop.
+   */
+  allowCloseOnBackdropClick: PropTypes.bool,
+  /**
+   * If `true`, the `Modal` can be closed by pressing the Escape key.
+   */
+  allowCloseOnEscapeKey: PropTypes.bool,
   /**
    * If `true`, focus the first input element in the `Modal`, or primary button (referenced by the `primaryButtonRef`
    * prop), or other focusable element when the `Modal` is opened. If there are none or `autoFocus` is set to `false`,

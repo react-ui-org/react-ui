@@ -78,7 +78,7 @@
     }
 
     .isRootPositionTop {
-        position: sticky;
         top: var(--rui-local-outer-spacing);
+        bottom: auto;
     }
 }
