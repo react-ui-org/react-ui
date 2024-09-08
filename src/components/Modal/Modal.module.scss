@@ -2,7 +2,6 @@
 //    * visibility of the .root element and its backdrop is managed by the browser
 //    * positioning of the .root element and its backdrop is managed by the browser
 //    * z-index of the .root element and its backdrop is not needed as dialog is rendered in browser's Top layer
-// 2. When dialogs are stacked, only the topmost dialog should have a backdrop.
 
 @use "sass:map";
 @use "../../styles/theme/typography";
@@ -34,10 +33,6 @@
         @include breakpoint.up(sm) {
             --rui-local-outer-spacing: #{theme.$outer-spacing-sm};
         }
-    }
-
-    .root:has(.root)::backdrop {
-        background: transparent; // 2.
     }
 
     .root[open] {
