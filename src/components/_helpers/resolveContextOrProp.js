@@ -1,11 +1,7 @@
 export const resolveContextOrProp = (contextValue, propValue) => {
-  if (contextValue === false) {
+  if (contextValue === false || contextValue === null) {
     return propValue;
   }
 
-  if (contextValue != null) {
-    return contextValue;
-  }
-
-  return propValue;
+  return contextValue;
 };
