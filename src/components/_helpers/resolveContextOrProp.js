@@ -1,7 +1,10 @@
 export const resolveContextOrProp = (contextValue, propValue) => {
-  if (contextValue != null) {
-    return contextValue;
+  // We need to test:
+  //  * `false` - for when the `contextValue` is boolean
+  //  * `null` - for when the `contextValue` is non-boolean
+  if (contextValue === false || contextValue === null) {
+    return propValue;
   }
 
-  return propValue;
+  return contextValue;
 };
