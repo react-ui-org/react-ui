@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 export const useModalFocus = (
+  allowPrimaryActionOnEnterKey,
   autoFocus,
   dialogRef,
   primaryButtonRef,
@@ -53,7 +54,8 @@ export const useModalFocus = (
 
       const keyPressHandler = (e) => {
         if (
-          e.key === 'Enter'
+          allowPrimaryActionOnEnterKey
+          && e.key === 'Enter'
           && e.target.nodeName !== 'BUTTON'
           && e.target.nodeName !== 'TEXTAREA'
           && e.target.nodeName !== 'A'
@@ -112,6 +114,7 @@ export const useModalFocus = (
       return () => window.document.removeEventListener('keydown', keyPressHandler, false);
     },
     [
+      allowPrimaryActionOnEnterKey,
       autoFocus,
       dialogRef,
       primaryButtonRef,

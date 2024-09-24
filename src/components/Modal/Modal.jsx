@@ -43,6 +43,7 @@ const preRender = (
 export const Modal = ({
   allowCloseOnBackdropClick,
   allowCloseOnEscapeKey,
+  allowPrimaryActionOnEnterKey,
   autoFocus,
   children,
   closeButtonRef,
@@ -59,7 +60,7 @@ export const Modal = ({
     dialogRef.current.showModal();
   }, []);
 
-  useModalFocus(autoFocus, dialogRef, primaryButtonRef);
+  useModalFocus(allowPrimaryActionOnEnterKey, autoFocus, dialogRef, primaryButtonRef);
   useModalScrollPrevention(preventScrollUnderneath);
 
   const onCancel = useCallback(
@@ -112,6 +113,7 @@ export const Modal = ({
 Modal.defaultProps = {
   allowCloseOnBackdropClick: true,
   allowCloseOnEscapeKey: true,
+  allowPrimaryActionOnEnterKey: true,
   autoFocus: true,
   children: null,
   closeButtonRef: null,
@@ -131,6 +133,10 @@ Modal.propTypes = {
    * If `true`, the `Modal` can be closed by pressing the Escape key.
    */
   allowCloseOnEscapeKey: PropTypes.bool,
+  /**
+   * If `true`, the `Modal` can be submitted by pressing the Enter key.
+   */
+  allowPrimaryActionOnEnterKey: PropTypes.bool,
   /**
    * If `true`, focus the first input element in the `Modal`, or primary button (referenced by the `primaryButtonRef`
    * prop), or other focusable element when the `Modal` is opened. If there are none or `autoFocus` is set to `false`,
