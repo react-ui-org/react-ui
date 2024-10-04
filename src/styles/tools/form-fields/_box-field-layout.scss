@@ -55,6 +55,9 @@
 //
 // 13. Label and field are vertically aligned to top (start) by default (see 10.). Vertical
 //     alignment of each block can be changed by theme configuration.
+//
+// 14. Intentionally use longhand properties because the custom property fallback mechanism evaluates `initial` values
+//     as empty. That makes the other value of the shorthand property unexpectedly used for both axes.
 
 @use "../../settings/forms";
 @use "../../settings/form-fields" as settings;
@@ -125,7 +128,10 @@
 
         .field {
             grid-area: field;
-            place-self: theme.$horizontal-field-vertical-alignment start; // 13. / 7.
+            // stylelint-disable declaration-block-no-redundant-longhand-properties -- 14.
+            align-self: theme.$horizontal-field-vertical-alignment; // 13.
+            justify-self: start; // 7.
+            // stylelint-enable declaration-block-no-redundant-longhand-properties
         }
     }
 }
