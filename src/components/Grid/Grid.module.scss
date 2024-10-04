@@ -19,6 +19,9 @@
 //    `--rui-local-<PROPERTY>: var(--rui-local-<PROPERTY>-sm, var(--rui-local-<PROPERTY>-xs, <INITIAL FALLBACK>))`
 //
 // 2. Apply custom property value that is defined within current breakpoint, see 1.
+//
+// 3. Intentionally use longhand properties because the custom property fallback mechanism evaluates `initial` values as
+//    empty. That makes the other value of the shorthand property unexpectedly used for both axes.
 
 @use "sass:map";
 @use "../../styles/tools/spacing";
@@ -35,8 +38,12 @@
         grid-template-rows: var(--rui-local-rows); // 2.
         grid-auto-flow: var(--rui-local-auto-flow); // 2.
         grid-gap: var(--rui-local-row-gap) var(--rui-local-column-gap); // 2.
-        place-content: var(--rui-local-align-content) var(--rui-local-justify-content); // 2.
-        place-items: var(--rui-local-align-items) var(--rui-local-justify-items); // 2.
+        // stylelint-disable declaration-block-no-redundant-longhand-properties -- 3.
+        align-content: var(--rui-local-align-content); // 2.
+        align-items: var(--rui-local-align-items); // 2.
+        justify-content: var(--rui-local-justify-content); // 2.
+        justify-items: var(--rui-local-justify-items); // 2.
+        // stylelint-enable declaration-block-no-redundant-longhand-properties
     }
 
     // stylelint-disable-next-line selector-max-universal -- Reset any previously added margins.
