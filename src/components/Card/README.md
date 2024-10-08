@@ -150,7 +150,7 @@ for card content.
 To cover all possible needs of your project, Card is available in colors from
 [Feedback and Neutral color collections](/docs/foundation/collections#colors).
 
-ℹ️ To match users' expectation, links in the light neutral variant of Card use
+ℹ️ To meet users' expectation, links in the light neutral variant of Card use
 the [default link color](/docs/foundation/colors/#text-colors). In other
 variants, links are colored according to the variant.
 
