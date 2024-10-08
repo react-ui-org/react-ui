@@ -64,13 +64,20 @@ helps to improve its accessibility.
 
 ## Theming
 
+ℹ️ The TextLink component is context-aware and can inherit text color from its
+parent component. This applies for components using
+[Feedback color collection](/docs/foundation/collections#colors) and for
+components in any of the supported
+[validation states](/docs/foundation/colors#validation-states).
+In such cases, the custom properties marked with an asterisk (\*) are ignored.
+
 | Custom Property                           | Description                         |
 |-------------------------------------------|-------------------------------------|
-| `--rui-TextLink__color`                   | Text color                          |
+| `--rui-TextLink__color` \*                | Text color                          |
 | `--rui-TextLink__text-decoration`         | Text decoration, e.g. underline     |
-| `--rui-TextLink--hover__color`            | Text color on hover                 |
+| `--rui-TextLink--hover__color` \*         | Text color on hover                 |
 | `--rui-TextLink--hover__text-decoration`  | Text decoration on hover            |
-| `--rui-TextLink--active__color`           | Text color in the active state      |
+| `--rui-TextLink--active__color` \*        | Text color in the active state      |
 | `--rui-TextLink--active__text-decoration` | Text decoration in the active state |
 
 [a-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#attributes

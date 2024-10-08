@@ -1,6 +1,6 @@
-$color: var(--rui-TextLink__color);
+$color: var(--rui-local-link-color, var(--rui-TextLink__color));
 $text-decoration: var(--rui-TextLink__text-decoration);
-$hover-color: var(--rui-TextLink--hover__color);
+$hover-color: var(--rui-local-link-color-hover, var(--rui-TextLink--hover__color));
 $hover-text-decoration: var(--rui-TextLink--hover__text-decoration);
-$active-color: var(--rui-TextLink--active__color);
+$active-color: var(--rui-local-link-color-active, var(--rui-TextLink--active__color));
 $active-text-decoration: var(--rui-TextLink--active__text-decoration);

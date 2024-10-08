@@ -1,4 +1,5 @@
 // 1. Retain equal card widths in flex and grid layouts independently on their content.
+// 2. For Cards, links theming is disabled for the light color from the Neutral color collection.
 
 @use "../../styles/tools/collections";
 @use "settings";
@@ -34,18 +35,19 @@
         box-shadow: theme.$raised-box-shadow;
     }
 
+    .isRootDisabled {
+        background-color: theme.$disabled-background-color;
+        opacity: theme.$disabled-opacity;
+    }
+
     @each $color in settings.$colors {
         @include collections.generate-class(
             $prefix: "rui-",
             $component-name: "Card",
             $variant-name: "color",
             $variant-value: $color,
+            $inherit-link-color: $color != "light", // 2.
             $properties: settings.$themeable-properties,
         );
-    }
-
-    .isRootDisabled {
-        background-color: theme.$disabled-background-color;
-        opacity: theme.$disabled-opacity;
     }
 }
