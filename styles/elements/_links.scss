@@ -1,0 +1,12 @@
+@use "../theme/links";
+
+a {
+    text-decoration: links.$decoration;
+    color: links.$color;
+
+    &:hover,
+    &:focus {
+        text-decoration: links.$hover-decoration;
+        color: links.$hover-color;
+    }
+}

@@ -1,0 +1,32 @@
+@use "theme";
+
+@layer components.modal {
+    .root {
+        display: flex;
+        flex: none;
+        gap: theme.$header-gap;
+        align-items: baseline;
+        padding: theme.$padding-y theme.$padding-x;
+        border-bottom: theme.$separator-width solid theme.$separator-color;
+    }
+
+    .isRootJustifiedToStart {
+        justify-content: flex-start;
+    }
+
+    .isRootJustifiedToCenter {
+        justify-content: center;
+    }
+
+    .isRootJustifiedToEnd {
+        justify-content: flex-end;
+    }
+
+    .isRootJustifiedToSpaceBetween {
+        justify-content: space-between;
+    }
+
+    .isRootJustifiedToStretch {
+        display: block;
+    }
+}

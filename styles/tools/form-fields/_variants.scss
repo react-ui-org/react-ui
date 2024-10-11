@@ -1,0 +1,147 @@
+// 1. Due to complexity, it's easier and safer to resolve variant custom properties dynamically with
+//    a mixin. This way it's also easier to make theming adjustments to all supported modifications
+//    in one place. Generated custom properties are consumed mainly in foundation field styles (see
+//    `tools/form-fields/_foundation.scss` for more).
+//
+// 2. Interaction states other than `default` default to the `default` (sic!) state appearance if
+//    corresponding custom properties are not provided.
+//
+// 3. `.input:focus` is added just in case `:focus-within` doesn't work.
+
+@use "sass:list";
+@use "sass:map";
+@use "../../settings/form-fields" as settings;
+@use "../../theme/form-fields" as theme;
+
+@mixin _disabled-state() {
+    opacity: theme.$disabled-opacity;
+    cursor: theme.$disabled-cursor;
+}
+
+// 1.
+@mixin _generate-custom-properties($type, $variant, $state) {
+    @if not list.index(map.keys(map.get(settings.$themeable-variant-states, $type)), $variant) {
+        @error "Invalid variant specified! #{$variant} doesn't exist. "
+            + "Choose one of #{map.keys(map.get(settings.$themeable-variant-states, $type))}.";
+    }
+
+    @if not list.index(map.keys(settings.$themeable-state-properties), $state) {
+        @error "Invalid state specified! #{$state} doesn't exist. "
+            + "Choose one of #{map.keys(settings.$themeable-state-properties)}.";
+    }
+
+    $properties: map.get(settings.$themeable-state-properties, $state);
+    $infix: $type;
+    $fallback-state: "default";
+
+    @if $type == "validation" {
+        $infix: $variant;
+    }
+
+    @if $type != "validation" and $variant != "default" {
+        $infix: #{$type}--#{$variant};
+    }
+
+    @if $state == "checked-disabled" {
+        $fallback-state: "checked";
+    }
+
+    @if $state == "default" {
+        @each $property in $properties {
+            --rui-local-#{$property}: var(--rui-FormField--#{$infix}--#{$state}__#{$property});
+        }
+    }
+
+    // 2.
+    @else {
+        @each $property in $properties {
+            --rui-local-#{$property}:
+                var(
+                    --rui-FormField--#{$infix}--#{$state}__#{$property},
+                    var(--rui-FormField--#{$infix}--#{$fallback-state}__#{$property})
+                );
+        }
+    }
+}
+
+@mixin _get-theme($type, $variant) {
+    @if not list.index(map.keys(settings.$themeable-variant-states), $type) {
+        @error "Invalid type specified! #{$type} doesn't exist. "
+            + "Choose one of #{map.keys(settings.$themeable-variant-states)}.";
+    }
+
+    $themeable-states: map.get(map.get(settings.$themeable-variant-states, $type), $variant);
+
+    @if list.index($themeable-states, "hover") {
+        @include _generate-custom-properties($type, $variant, "default");
+
+        &:hover {
+            @include _generate-custom-properties($type, $variant, "hover");
+        }
+    } @else {
+        &,
+        &:hover {
+            @include _generate-custom-properties($type, $variant, "default");
+        }
+    }
+
+    @if list.index($themeable-states, "focus") {
+        // 3.
+        &:focus-within,
+        &:focus-within:hover,
+        .input:focus {
+            @include _generate-custom-properties($type, $variant, "focus");
+        }
+    }
+
+    @if list.index($themeable-states, "checked") {
+        .input:checked {
+            @include _generate-custom-properties($type, $variant, "checked");
+        }
+    }
+
+    @if list.index($themeable-states, "disabled") {
+        &.isRootDisabled {
+            @include _generate-custom-properties($type, $variant, "disabled");
+        }
+    }
+
+    @if list.index($themeable-states, "checked-disabled") {
+        .input:checked:disabled {
+            @include _generate-custom-properties($type, $variant, "checked-disabled");
+        }
+    }
+}
+
+@mixin visual($type, $variant: "default", $has-caret: false) {
+    @include _get-theme($type, $variant);
+
+    .input:disabled {
+        @include _disabled-state();
+    }
+
+    @if $type == "box" and $variant == "filled" {
+        .input {
+            border-top-color: transparent;
+            border-right-color: transparent;
+            border-left-color: transparent;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
+
+    @if $type == "box" and $variant == "outline" and $has-caret {
+        .caret {
+            border-left: theme.$box-border-width theme.$box-select-caret-border-style var(--rui-local-border-color);
+            background: theme.$box-select-caret-background;
+        }
+
+        &.isRootDisabled .caret {
+            @include _disabled-state();
+        }
+    }
+}
+
+@mixin validation($variant) {
+    @include _get-theme(validation, $variant);
+}

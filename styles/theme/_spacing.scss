@@ -1,0 +1,16 @@
+$values: (
+    0: var(--rui-dimension-space-0),
+    1: var(--rui-dimension-space-1),
+    2: var(--rui-dimension-space-2),
+    3: var(--rui-dimension-space-3),
+    4: var(--rui-dimension-space-4),
+    5: var(--rui-dimension-space-5),
+    6: var(--rui-dimension-space-6),
+    7: var(--rui-dimension-space-7),
+);
+
+$bottom: (
+    base: var(--rui-dimension-space-bottom-base),
+    headings: var(--rui-dimension-space-bottom-headings),
+    layouts: var(--rui-dimension-space-bottom-layouts),
+);
