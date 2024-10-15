@@ -41,6 +41,8 @@ Success alerts confirm that an operation has been processed successfully.
 ```docoff-react-preview
 <Alert color="success">
   <strong>Success:</strong> Settings have been successfully saved.
+  {' '}
+  <TextLink href="/" label="Undo" />
 </Alert>
 ```
 
@@ -53,7 +55,7 @@ suggest an action to resolve the problem.
 <Alert color="warning">
   <strong>Warning:</strong> Your credit card is going to expire soon.
   {' '}
-  <a href="/">Update my payment options</a>
+  <TextLink href="/" label="Update my payment options" />
 </Alert>
 ```
 
@@ -68,7 +70,7 @@ problem.
   <strong>Error:</strong> Cannot connect to the server. Is your internet
   connection working fine?
   {' '}
-  <a href="/">Try again</a>
+  <TextLink href="/" label="Try again" />
 </Alert>
 ```
 
@@ -80,6 +82,8 @@ This kind of alert can be used to display helpful information.
 <Alert color="help">
   <strong>Help:</strong> You should choose a password you don&apos;t use
   anywhere else.
+  {' '}
+  <TextLink href="/" label="Help me choose" />
 </Alert>
 ```
 
@@ -90,6 +94,8 @@ Another common, informative alert.
 ```docoff-react-preview
 <Alert color="info">
   <strong>Info:</strong> This feature depends on user&apos;s OS preferences.
+  {' '}
+  <TextLink href="/" label="Open preferences" />
 </Alert>
 ```
 
@@ -100,6 +106,8 @@ Neutral informative alert.
 ```docoff-react-preview
 <Alert>
   <strong>Note:</strong> This feature may not be available in all regions.
+  {' '}
+  <TextLink href="/" label="Show list of regions" />
 </Alert>
 ```
 
@@ -111,6 +119,8 @@ Light alert variant.
 <docoff-placeholder dark>
   <Alert color="light">
     <strong>Light alert:</strong> Stands out on dark backgrounds.
+    {' '}
+    <TextLink href="/" label="This is a link" />
   </Alert>
 </docoff-placeholder>
 ```
@@ -122,6 +132,7 @@ Dark alert variant.
 ```docoff-react-preview
 <Alert color="dark">
   <strong>Dark alert:</strong> Stands out on light backgrounds.
+  <TextLink href="/" label="This is a link" />
 </Alert>
 ```
 
