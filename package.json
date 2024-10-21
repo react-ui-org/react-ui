@@ -31,6 +31,17 @@
   "engines": {
     "node": ">=20"
   },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "22.x",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "npm",
+      "onFail": "error"
+    }
+  },
   "scripts": {
     "build": "webpack --mode=production && webpack --mode=development",
     "copy": "npm run copy:css && npm run copy:js",
