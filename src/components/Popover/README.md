@@ -162,6 +162,29 @@ automatically, including smart position updates to ensure Popover visibility,
 we recommend to involve an external library designed specifically for this
 purpose.
 
+To position the popover, you need to provide the `placementStyle` prop with the
+style you want to apply to the popover. This prop should only be used to
+position the popover. The allowed props are:
+
+- `position`
+- `inset`
+- `inset-inline-start`
+- `inset-inline-end`
+- `inset-block-start`
+- `inset-block-end`
+- `top`
+- `right`
+- `bottom`
+- `left`
+- `translate`
+- `transform-origin`
+
+⚠️ [`inset`][mdn-inset] is a shorthand for `top right bottom left`, not for
+`inset-*` properties.
+
+As opposed to `top right bottom left` and the `inset` shorthand, `inset-*`
+properties are writing-direction aware.
+
 ℹ️ The following example is using external library [Floating UI]. To use
 Floating UI, install it first:
 
@@ -267,10 +290,10 @@ React.createElement(() => {
             <Popover
               id="my-advanced-popover"
               placement={finalPlacement}
-              style={{
+              placementStyle={{
                 position: strategy,
-                top: y ? y : '',
-                left: x ? x : '',
+                top: `${y}px`,
+                left: `${x}px`,
               }}
               ref={floating}
             >
@@ -359,5 +382,6 @@ which enables [Advanced Positioning](#advanced-positioning).
 
 [div-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
 [Floating UI]: https://floating-ui.com/docs/react-dom
+[mdn-inset]: https://developer.mozilla.org/en-US/docs/Web/CSS/inset
 [React common props]: https://react.dev/reference/react-dom/components/common#common-props
 [ref]: https://reactjs.org/docs/refs-and-the-dom.html
