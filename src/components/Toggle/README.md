@@ -148,7 +148,15 @@ React.createElement(() => {
         label="Listen in studio quality"
         onChange={() => setStudioQuality(!studioQuality)}
         validationState="invalid"
-        validationText="Please upgrade your plan to make this option available."
+        validationText={(
+          <>
+            Please
+            {' '}
+            <TextLink href="#" label="upgrade your plan" />
+            {' '}
+            to make this option available.
+          </>
+        )}
       />
     </>
   );

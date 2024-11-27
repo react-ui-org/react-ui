@@ -70,7 +70,7 @@
             + "Choose one of #{map.keys(settings.$themeable-variant-states)}.";
     }
 
-    $themeable-states: map.get(map.get(settings.$themeable-variant-states, $type), $variant);
+    $themeable-states: map.get(settings.$themeable-variant-states, $type, $variant);
 
     @if list.index($themeable-states, "hover") {
         @include _generate-custom-properties($type, $variant, "default");
@@ -143,5 +143,9 @@
 }
 
 @mixin validation($variant) {
+    --rui-local-link-color: map.get(theme.$link-validation-colors, $variant, default);
+    --rui-local-link-color-hover: map.get(theme.$link-validation-colors, $variant, hover);
+    --rui-local-link-color-active: map.get(theme.$link-validation-colors, $variant, active);
+
     @include _get-theme(validation, $variant);
 }

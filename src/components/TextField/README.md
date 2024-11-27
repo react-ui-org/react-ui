@@ -388,7 +388,13 @@ have.
   label="User name"
   onChange={() => {}}
   validationState="warning"
-  validationText="Account with this name already exists, pick a different one."
+  validationText={(
+    <>
+      Account with this name already exists, pick a different one.
+      {' '}
+      <TextLink href="#" label="Forgot your password?" />
+    </>
+  )}
   value="joe"
   required
 />
@@ -411,7 +417,13 @@ have.
   label="User name"
   onChange={() => {}}
   validationState="warning"
-  validationText="Account with this name already exists, pick a different one."
+  validationText={(
+    <>
+      Account with this name already exists, pick a different one.
+      {' '}
+      <TextLink href="#" label="Forgot your password?" />
+    </>
+  )}
   variant="filled"
   value="joe"
   required
