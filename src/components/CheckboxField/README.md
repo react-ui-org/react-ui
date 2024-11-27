@@ -18,7 +18,13 @@ React.createElement(() => {
   return (
     <CheckboxField
       checked={agree}
-      label="I agree"
+      label={(
+          <>
+            I have read and agree with
+            {' '}
+            <TextLink href="#" label="terms and conditions" />
+          </>
+        )}
       onChange={() => setAgree(!agree)}
     />
   );
@@ -132,20 +138,44 @@ React.createElement(() => {
     <>
       <CheckboxField
         checked={agree}
-        label="I have read and agree with terms and conditions"
+        label={(
+          <>
+            I have read and agree with
+            {' '}
+            <TextLink href="#" label="terms and conditions" />
+          </>
+        )}
         onChange={() => setAgree(!agree)}
         validationState="valid"
       />
       <CheckboxField
         checked={agree}
-        label="I have read and agree with terms and conditions"
+        label={(
+          <>
+            I have read and agree with
+            {' '}
+            <TextLink href="#" label="terms and conditions" />
+          </>
+        )}
         onChange={() => setAgree(!agree)}
         validationState="warning"
-        validationText="Please wait 10 minutes until we verify your data."
+        validationText={(
+          <>
+            Please wait 10 minutes until we verify your data.
+            {' '}
+            <TextLink href="#" label="Cancel" />
+          </>
+        )}
       />
       <CheckboxField
         checked={agree}
-        label="I have read and agree with terms and conditions"
+        label={(
+          <>
+            I have read and agree with
+            {' '}
+            <TextLink href="#" label="terms and conditions" />
+          </>
+        )}
         onChange={() => setAgree(!agree)}
         required
         validationState="invalid"
