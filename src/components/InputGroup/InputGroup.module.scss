@@ -1,7 +1,9 @@
 // 1. The class name is intentionally singular because it's targeted by other mixins too.
 // 2. Use a block-level display mode to prevent extra white space below grouped inputs in Safari.
-// 3. Prevent individual inputs from overlapping inside narrow containers.
-// 4. Legends are tricky to style, let's use a `div` instead.
+// 3. Let wide input groups honor the minimum input width and overflow horizontally without wrapping and distorting
+//    the inputs.
+// 4. Prevent individual inputs from overlapping inside narrow containers.
+// 5. Legends are tricky to style, let's use a `div` instead.
 //    https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#styling_with_css
 
 @use "../../styles/tools/form-fields/box-field-elements";
@@ -19,12 +21,12 @@
         @include foundation.fieldset();
     }
 
-    // 4.
+    // 5.
     .legend {
         @include accessibility.hide-text();
     }
 
-    // 4.
+    // 5.
     .label {
         @include foundation.label();
     }
@@ -63,11 +65,13 @@
     .isRootLayoutVertical,
     .isRootLayoutHorizontal {
         @include box-field-layout.vertical();
+
+        max-width: none; // 3.
     }
 
     .isRootLayoutVertical .field,
     .isRootLayoutHorizontal .field {
-        max-width: none; // 3.
+        max-width: none; // 4.
     }
 
     .isRootLayoutHorizontal {
