@@ -109,7 +109,8 @@
         --rui-line-height-small: 1.25;
 
         // Text decorations
-        --rui-text-decoration-link: none;
+        --rui-underline-offset-link: 0.1875em;
+        --rui-text-decoration-link: underline;
         --rui-text-decoration-link-hover: underline;
         --rui-text-decoration-link-active: underline;
 
