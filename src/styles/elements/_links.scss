@@ -2,6 +2,7 @@
 
 a {
     text-decoration: links.$decoration;
+    text-underline-offset: links.$underline-offset;
     color: links.$color;
 
     &:hover {
