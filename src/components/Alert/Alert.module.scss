@@ -25,8 +25,8 @@
         padding: theme.$padding;
     }
 
-    .close,
-    .icon {
+    .icon,
+    .close {
         height: settings.$min-height;
         color: var(--rui-local-foreground-color);
     }
@@ -46,11 +46,8 @@
         line-height: settings.$line-height;
     }
 
-    .message :is(a, strong) {
-        font-weight: theme.$emphasis-font-weight;
-    }
-
     .message strong {
+        font-weight: theme.$emphasis-font-weight;
         color: var(--rui-local-foreground-color);
     }
 
