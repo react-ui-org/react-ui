@@ -201,14 +201,14 @@ helps to improve its accessibility.
 
 ### Common Theming Options
 
-| Custom Property                                      | Description                                                  |
-|------------------------------------------------------|--------------------------------------------------------------|
-| `--rui-Alert__padding`                               | Padding between border and message                           |
-| `--rui-Alert__font-weight`                           | Message font weight                                          |
-| `--rui-Alert__border-width`                          | Border width                                                 |
-| `--rui-Alert__border-radius`                         | Corner radius                                                |
-| `--rui-Alert__emphasis__font-weight`                 | Font weight of text emphasised with `<strong>`               |
-| `--rui-Alert__stripe__width`                         | Width of the border at the start of the Alert                |
+| Custom Property                      | Description                                    |
+|--------------------------------------|------------------------------------------------|
+| `--rui-Alert__padding`               | Padding between border and message             |
+| `--rui-Alert__font-weight`           | Message font weight                            |
+| `--rui-Alert__border-width`          | Border width                                   |
+| `--rui-Alert__border-radius`         | Corner radius                                  |
+| `--rui-Alert__emphasis__font-weight` | Font weight of text emphasised with `<strong>` |
+| `--rui-Alert__stripe__width`         | Width of the border at the start of the Alert  |
 
 ### Theming Variants
 
