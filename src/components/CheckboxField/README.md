@@ -186,6 +186,46 @@ React.createElement(() => {
 });
 ```
 
+### Required State
+
+The required state indicates that the input is mandatory.
+
+```docoff-react-preview
+React.createElement(() => {
+  const [agree, setAgree] = React.useState(true);
+  return (
+    <CheckboxField
+      checked={agree}
+      label="I agree"
+      onChange={() => setAgree(!agree)}
+      required
+    />
+  );
+});
+```
+
+However, you may find yourself in a situation where the input is not required
+(i.e. making the input checked), but you also don't want to render the field as
+optional because the unchecked state can be perfectly valid. For this case,
+there is the `renderAsRequired` prop:
+
+```docoff-react-preview
+React.createElement(() => {
+  const [agree, setAgree] = React.useState(true);
+  return (
+    <CheckboxField
+      checked={agree}
+      label="I agree"
+      onChange={() => setAgree(!agree)}
+      renderAsRequired
+    />
+  );
+});
+```
+
+It renders the field as required, but doesn't add the `required` attribute to
+the actual input.
+
 ### Disabled State
 
 Disabled state makes the input unavailable.

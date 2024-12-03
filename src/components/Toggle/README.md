@@ -163,6 +163,46 @@ React.createElement(() => {
 });
 ```
 
+### Required State
+
+The required state indicates that the input is mandatory.
+
+```docoff-react-preview
+React.createElement(() => {
+  const [studioQuality, setStudioQuality] = React.useState(true);
+  return (
+    <Toggle
+      checked={studioQuality}
+      label="Listen in studio quality"
+      onChange={() => setStudioQuality(!studioQuality)}
+      required
+    />
+  );
+});
+```
+
+However, you may find yourself in a situation where the input is not required
+(i.e. turning the toggle on), but you also don't want to render the field as
+optional because the unchecked state can be perfectly valid. For this case,
+there is the `renderAsRequired` prop:
+
+```docoff-react-preview
+React.createElement(() => {
+  const [studioQuality, setStudioQuality] = React.useState(true);
+  return (
+    <Toggle
+      checked={studioQuality}
+      label="Listen in studio quality"
+      onChange={() => setStudioQuality(!studioQuality)}
+      renderAsRequired
+    />
+  );
+});
+```
+
+It renders the field as required, but doesn't add the `required` attribute to
+the actual input.
+
 ### Disabled State
 
 Disabled state makes the input unavailable.

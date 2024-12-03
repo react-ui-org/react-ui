@@ -16,6 +16,7 @@ export const Radio = ({
   label,
   layout,
   options,
+  renderAsRequired,
   required,
   validationState,
   validationText,
@@ -33,7 +34,7 @@ export const Radio = ({
           ? styles.isRootLayoutHorizontal
           : styles.isRootLayoutVertical,
         disabled && styles.isRootDisabled,
-        required && styles.isRootRequired,
+        (renderAsRequired || required) && styles.isRootRequired,
         getRootValidationStateClassName(validationState, styles),
       )}
       disabled={disabled}
@@ -116,6 +117,7 @@ Radio.defaultProps = {
   id: undefined,
   isLabelVisible: true,
   layout: 'vertical',
+  renderAsRequired: false,
   required: false,
   validationState: null,
   validationText: null,
@@ -181,7 +183,11 @@ Radio.propTypes = {
     ]),
   })).isRequired,
   /**
-   * If `true`, the input will be required.
+   * If `true`, the input will be rendered as if it was required.
+   */
+  renderAsRequired: PropTypes.bool,
+  /**
+   * If `true`, the input will be made and rendered as required, regardless of the `renderAsRequired` prop.
    */
   required: PropTypes.bool,
   /**

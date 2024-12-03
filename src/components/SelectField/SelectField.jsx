@@ -21,6 +21,7 @@ export const SelectField = React.forwardRef((props, ref) => {
     label,
     layout,
     options,
+    renderAsRequired,
     required,
     size,
     validationState,
@@ -43,7 +44,7 @@ export const SelectField = React.forwardRef((props, ref) => {
           ? styles.isRootLayoutHorizontal
           : styles.isRootLayoutVertical,
         inputGroupContext && styles.isRootGrouped,
-        required && styles.isRootRequired,
+        (renderAsRequired || required) && styles.isRootRequired,
         getRootSizeClassName(
           resolveContextOrProp(inputGroupContext && inputGroupContext.size, size),
           styles,
@@ -136,6 +137,7 @@ SelectField.defaultProps = {
   id: undefined,
   isLabelVisible: true,
   layout: 'vertical',
+  renderAsRequired: false,
   required: false,
   size: 'medium',
   validationState: null,
@@ -227,7 +229,11 @@ SelectField.propTypes = {
     })),
   ]).isRequired,
   /**
-   * If `true`, the input will be required.
+   * If `true`, the input will be rendered as if it was required.
+   */
+  renderAsRequired: PropTypes.bool,
+  /**
+   * If `true`, the input will be made and rendered as required, regardless of the `renderAsRequired` prop.
    */
   required: PropTypes.bool,
   /**

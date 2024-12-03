@@ -592,6 +592,74 @@ React.createElement(() => {
 })
 ```
 
+### Required State
+
+The required state indicates that the input is mandatory.
+
+```docoff-react-preview
+React.createElement(() => {
+  const [fruit, setFruit] = React.useState('apple');
+  return (
+    <SelectField
+      label="Your favourite fruit"
+      onChange={(e) => setFruit(e.target.value)}
+      options={[
+        {
+          label: 'Apple',
+          value: 'apple',
+        },
+        {
+          label: 'Banana',
+          value: 'banana',
+        },
+        {
+          label: 'Grapefruit',
+          value: 'grapefruit',
+        },
+      ]}
+      value={fruit}
+      required
+    />
+  );
+});
+```
+
+However, you may find yourself in a situation where the input is not required
+(i.e. selecting an option), but you also don't want to render the field as
+optional because the unselected state can be perfectly valid. For this case,
+there is the `renderAsRequired` prop:
+
+```docoff-react-preview
+React.createElement(() => {
+  const [fruit, setFruit] = React.useState('apple');
+  return (
+    <SelectField
+      label="Your favourite fruit"
+      onChange={(e) => setFruit(e.target.value)}
+      options={[
+        {
+          label: 'Apple',
+          value: 'apple',
+        },
+        {
+          label: 'Banana',
+          value: 'banana',
+        },
+        {
+          label: 'Grapefruit',
+          value: 'grapefruit',
+        },
+      ]}
+      value={fruit}
+      renderAsRequired
+    />
+  );
+});
+```
+
+It renders the field as required, but doesn't add the `required` attribute to
+the actual input.
+
 ### Disabled State
 
 It's possible to disable just some options or the whole input.
