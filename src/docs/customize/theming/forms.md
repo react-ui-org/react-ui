@@ -23,9 +23,6 @@ The following theme options define basic appearance of all form fields.
 | `--rui-FormField__help-text__font-size`              | Help text font size                                          |
 | `--rui-FormField__help-text__font-style`             | Help text font style, e.g. italic                            |
 | `--rui-FormField__help-text__color`                  | Help text color                                              |
-| `--rui-FormField--required__label__color`            | Color of required input labels                               |
-| `--rui-FormField--required__sign`                    | Text appended to required input labels                       |
-| `--rui-FormField--required__sign__color`             | Color of text appended to required input labels              |
 
 ## Horizontal Layout
 
@@ -598,6 +595,26 @@ React.createElement(() => {
   )
 });
 ```
+
+## Required State
+
+Theming options for required fields are shared by all form components.
+
+| Custom Property                                      | Description                                                  |
+|------------------------------------------------------|--------------------------------------------------------------|
+| `--rui-FormField--required__label__color`            | Color of required input labels                               |
+| `--rui-FormField--required__sign`                    | Text appended to required input labels                       |
+| `--rui-FormField--required__sign__color`             | Color of text appended to required input labels              |
+
+👉 Please note that selected components can be rendered as required by setting
+the `renderAsRequired` prop to `true`. This is useful when
+`--rui-FormField--required__label__color` is used to indicate the required state
+of input fields, but you want to bypass it for inputs like feature toggles.
+This applies to
+[CheckboxField](/components/CheckboxField/#styling-the-required-state),
+[Radio](/components/Radio/#styling-the-required-state),
+[SelectField](/components/SelectField/#styling-the-required-state),
+and [Toggle](/components/Toggle/#styling-the-required-state).
 
 ## Disabled State
 

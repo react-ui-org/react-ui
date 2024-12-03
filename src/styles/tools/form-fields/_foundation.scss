@@ -18,12 +18,14 @@
     color: var(--rui-local-surrounding-text-color, #{theme.$label-color});
 }
 
-@mixin label-required() {
+@mixin label-required($show-require-sign: true) {
     color: var(--rui-local-surrounding-text-color, #{theme.$required-label-color});
 
-    &::after {
-        content: theme.$required-sign;
-        color: theme.$required-sign-color;
+    @if $show-require-sign {
+        &::after {
+            content: theme.$required-sign;
+            color: theme.$required-sign-color;
+        }
     }
 }
 

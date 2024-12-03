@@ -10,6 +10,7 @@ import { formLayoutProviderTest } from '../../../../tests/providerTests/formLayo
 import { isLabelVisibleTest } from '../../../../tests/propTests/isLabelVisibleTest';
 import { labelPropTest } from '../../../../tests/propTests/labelPropTest';
 import { layoutPropTest } from '../../../../tests/propTests/layoutPropTest';
+import { renderAsRequiredPropTest } from '../../../../tests/propTests/renderAsRequiredPropTest';
 import { requiredPropTest } from '../../../../tests/propTests/requiredPropTest';
 import { validationStatePropTest } from '../../../../tests/propTests/validationStatePropTest';
 import { validationTextPropTest } from '../../../../tests/propTests/validationTextPropTest';
@@ -83,6 +84,7 @@ describe('rendering', () => {
         expect(within(rootElement).getByLabelText('option 2')).toBeDisabled();
       },
     ],
+    ...renderAsRequiredPropTest,
     ...requiredPropTest,
     ...validationStatePropTest,
     ...validationTextPropTest,

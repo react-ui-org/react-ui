@@ -11,6 +11,7 @@ import { helpTextPropTest } from '../../../../tests/propTests/helpTextPropTest';
 import { formLayoutProviderTest } from '../../../../tests/providerTests/formLayoutProviderTest';
 import { isLabelVisibleTest } from '../../../../tests/propTests/isLabelVisibleTest';
 import { labelPropTest } from '../../../../tests/propTests/labelPropTest';
+import { renderAsRequiredPropTest } from '../../../../tests/propTests/renderAsRequiredPropTest';
 import { requiredPropTest } from '../../../../tests/propTests/requiredPropTest';
 import { validationStatePropTest } from '../../../../tests/propTests/validationStatePropTest';
 import { validationTextPropTest } from '../../../../tests/propTests/validationTextPropTest';
@@ -43,6 +44,7 @@ describe('rendering', () => {
     ],
     ...isLabelVisibleTest(),
     ...labelPropTest(),
+    ...renderAsRequiredPropTest,
     ...requiredPropTest,
     ...validationStatePropTest,
     ...validationTextPropTest,
