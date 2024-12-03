@@ -1,6 +1,12 @@
-// 1. Reset positioning for controlled variant.
-// 2. Shift Popover so there is space for the arrow between Popover and reference element.
-// 3. Add top offset in case it's not defined by external library.
+// 1. Hide the popover by default. This is needed because the popover is
+//    controlled via CSS with the help of the helper popover. The popover can't
+//    be displayed directly, because relative positioning doesn't work with
+//    elements on the top-layer, so this CSS hack is needed.
+// 2. Hide the popover helper element.
+// 3. If the popover helper is open, show the actual popover.
+// 4. Reset positioning for controlled variant.
+// 5. Shift Popover so there is space for the arrow between Popover and reference element.
+// 6. Add top offset in case it's not defined by external library.
 
 @use "theme";
 
@@ -47,6 +53,28 @@
             border-width: theme.$arrow-height theme.$arrow-height 0;
             border-top-color: theme.$background-color;
         }
+    }
+
+    // Controlled popover
+    .controlledPopover {
+        display: none; // 1.
+    }
+
+    .helper {
+        position: fixed; // 2.
+        inset: unset;
+        top: 0;
+        right: 0;
+        width: auto;
+        height: auto;
+        padding: 0;
+        border: none;
+        background: transparent;
+        pointer-events: none;
+    }
+
+    .helper:popover-open ~ .controlledPopover {
+        display: block; // 3.
     }
 
     // Sides
@@ -212,27 +240,27 @@
     .isRootControlled.isRootAtBottom,
     .isRootControlled.isRootAtLeft,
     .isRootControlled.isRootAtRight {
-        inset: unset; // 1.
+        inset: unset; // 4.
     }
 
     .isRootControlled.isRootAtTop {
-        transform: translate(0, calc(-1 * #{theme.$arrow-height})); // 2.
+        transform: translate(0, calc(-1 * #{theme.$arrow-height})); // 5.
     }
 
     .isRootControlled.isRootAtBottom {
-        transform: translate(0, #{theme.$arrow-height}); // 2.
+        transform: translate(0, #{theme.$arrow-height}); // 5.
     }
 
     .isRootControlled.isRootAtLeft {
-        transform: translate(calc(-1 * #{theme.$arrow-height}), 0); // 2.
+        transform: translate(calc(-1 * #{theme.$arrow-height}), 0); // 5.
     }
 
     .isRootControlled.isRootAtRight {
-        transform: translate(#{theme.$arrow-height}, 0); // 2.
+        transform: translate(#{theme.$arrow-height}, 0); // 5.
     }
 
     .isRootControlled.isRootAtLeft.isRootAtStart,
     .isRootControlled.isRootAtRight.isRootAtStart {
-        top: 0; // 3.
+        top: 0; // 6.
     }
 }
