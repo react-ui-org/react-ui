@@ -284,6 +284,36 @@ React.createElement(() => {
 });
 ```
 
+## Controlled Popover
+
+To make it easier to implement the popover in your app, you can set the `popoverHelperId` prop to the same ID as the `popovertarget` of a trigger. This uses the browser Popover API and will control the popover by closing it when the trigger or backdrop is pressed.
+
+```docoff-react-preview
+React.createElement(() => {
+  // All inline styles in this example are for demonstration purposes only.
+  return (
+    <div
+      style={{
+        display: 'grid',
+        placeContent: 'center',
+        minWidth: '20rem',
+        minHeight: '10rem',
+      }}
+    >
+      <PopoverWrapper>
+        <Button
+          label="Want to see a popover? Click me!"
+          popovertarget="my-popover-helper"
+        />
+        <Popover id="my-popover" popoverHelperId="my-popover-helper">
+            Hello there!
+        </Popover>
+      </PopoverWrapper>
+    </div>
+  );
+});
+```
+
 ## Forwarding HTML Attributes
 
 In addition to the options below in the [component's API](#api) section, you
