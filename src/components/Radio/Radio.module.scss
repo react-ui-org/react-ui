@@ -52,6 +52,10 @@
         @include foundation.label-required();
     }
 
+    .isRootRequired .optionLabel {
+        @include foundation.label-required($show-require-sign: false);
+    }
+
     // States
     .isRootStateInvalid {
         @include variants.validation(invalid);

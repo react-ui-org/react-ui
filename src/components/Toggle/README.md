@@ -163,6 +163,80 @@ React.createElement(() => {
 });
 ```
 
+### Required State
+
+The required state indicates that the input is mandatory.
+
+```docoff-react-preview
+React.createElement(() => {
+  const [studioQuality, setStudioQuality] = React.useState(true);
+  return (
+    <Toggle
+      checked={studioQuality}
+      label="Listen in studio quality"
+      onChange={() => setStudioQuality(!studioQuality)}
+      required
+    />
+  );
+});
+```
+
+#### Styling the Required State
+
+All form fields in React UI can be
+[styled](/docs/customize/theming/forms/#required-state)
+to indicate the required state.
+
+However, you may find yourself in a situation where a form field is valid in
+both checked and unchecked states, for example to turn on or off a feature.
+If your project uses the label color as the primary means to indicate the
+required state of input fields and the usual asterisk `*` is omitted, you may
+want to keep the label color consistent for both states to avoid confusion.
+
+For this edge case, there is the `renderAsRequired` prop:
+
+```docoff-react-preview
+React.createElement(() => {
+  const [optional, setOptional] = React.useState(false);
+  const [renderAsRequired, setRenderAsRequired] = React.useState(false);
+  return (
+    <React.Fragment>
+      <style>
+      {`
+        .example {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem 0.5rem;
+        }
+
+        .example--themed-form-fields {
+          --rui-FormField__label__color: var(--rui-color-text-secondary);
+          --rui-FormField--required__label__color: var(--rui-color-text-primary);
+          --rui-FormField--required__sign: '';
+        }
+      `}
+      </style>
+      <div class="example example--themed-form-fields">
+       <Toggle
+          checked={optional}
+          label="This field is optional"
+          onChange={() => setOptional(!optional)}
+        />
+        <Toggle
+          checked={renderAsRequired}
+          label="This field is optional but looks like required"
+          onChange={() => setRenderAsRequired(!renderAsRequired)}
+          renderAsRequired
+        />
+      </div>
+    </React.Fragment>
+  );
+});
+```
+
+It renders the field as if it was required, but doesn't add the `required`
+attribute to the actual input.
+
 ### Disabled State
 
 Disabled state makes the input unavailable.
