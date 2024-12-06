@@ -267,11 +267,9 @@ React.createElement(() => {
             <Popover
               id="my-advanced-popover"
               placement={finalPlacement}
-              style={{
-                position: strategy,
-                top: y ? y : '',
-                left: x ? x : '',
-              }}
+              position={strategy}
+              x={x}
+              y={y}
               ref={floating}
             >
               Auto-flipping Popover

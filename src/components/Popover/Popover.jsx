@@ -13,6 +13,9 @@ export const Popover = React.forwardRef((props, ref) => {
     placement,
     children,
     portalId,
+    position,
+    x,
+    y,
     ...restProps
   } = props;
 
@@ -26,6 +29,11 @@ export const Popover = React.forwardRef((props, ref) => {
         getRootAlignmentClassName(placement, styles),
       )}
       ref={ref}
+      style={{
+        left: x,
+        position,
+        top: y,
+      }}
     >
       {children}
       <span className={styles.arrow} />
@@ -42,6 +50,9 @@ export const Popover = React.forwardRef((props, ref) => {
 Popover.defaultProps = {
   placement: 'bottom',
   portalId: null,
+  position: null,
+  x: null,
+  y: null,
 };
 
 Popover.propTypes = {
@@ -71,6 +82,18 @@ Popover.propTypes = {
    * If set, popover is rendered in the React Portal with that ID.
    */
   portalId: PropTypes.string,
+  /**
+   * This sets the CSS property `position` of the popover. This is reserved for use with Floating UI.
+   */
+  position: PropTypes.string,
+  /**
+   * This sets the CSS property `top` of the popover. This is reserved for use with Floating UI.
+   */
+  x: PropTypes.string,
+  /**
+   * This sets the CSS property `left` of the popover. This is reserved for use with Floating UI.
+   */
+  y: PropTypes.string,
 };
 
 export const PopoverWithGlobalProps = withGlobalProps(Popover, 'Popover');
