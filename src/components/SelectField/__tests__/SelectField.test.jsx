@@ -14,6 +14,7 @@ import { formLayoutProviderTest } from '../../../../tests/providerTests/formLayo
 import { isLabelVisibleTest } from '../../../../tests/propTests/isLabelVisibleTest';
 import { labelPropTest } from '../../../../tests/propTests/labelPropTest';
 import { layoutPropTest } from '../../../../tests/propTests/layoutPropTest';
+import { renderAsRequiredPropTest } from '../../../../tests/propTests/renderAsRequiredPropTest';
 import { requiredPropTest } from '../../../../tests/propTests/requiredPropTest';
 import { sizePropTest } from '../../../../tests/propTests/sizePropTest';
 import { validationStatePropTest } from '../../../../tests/propTests/validationStatePropTest';
@@ -107,6 +108,7 @@ describe('rendering', () => {
         expect(within(rootElement).getByText('option 4')).toHaveAttribute('id', 'id__item__key');
       },
     ],
+    ...renderAsRequiredPropTest,
     ...requiredPropTest,
     ...sizePropTest,
     ...validationStatePropTest,

@@ -186,6 +186,76 @@ React.createElement(() => {
 });
 ```
 
+### Required State
+
+The required state indicates that the input is mandatory. Required fields display an asterisk `*` after the label by
+default.
+
+```docoff-react-preview
+React.createElement(() => {
+  const [agree, setAgree] = React.useState(true);
+  return (
+    <CheckboxField
+      checked={agree}
+      label="I agree"
+      onChange={() => setAgree(!agree)}
+      required
+    />
+  );
+});
+```
+
+However, your project may use the label color as the primary means to indicate the required state of input fields (see
+[Forms Theming](/docs/customize/theming/forms) for more). Because not checking an input is also a valid action, it may
+be confusing to users to see the optional check inputs greyed out.
+
+For this case, there is the `renderAsRequired` prop:
+
+```docoff-react-preview
+React.createElement(() => {
+  const [optional, setOptional] = React.useState(false);
+  const [required, setRequired] = React.useState(false);
+  const [renderAsRequired, setRenderAsRequired] = React.useState(false);
+  return (
+    <React.Fragment>
+      <style>
+      {`
+        .example--themed-form-fields {
+          --rui-FormField__label__color: var(--rui-color-text-secondary);
+          --rui-FormField--required__label__color: var(--rui-color-text-primary);
+          --rui-FormField--required__sign: '';
+        }
+      `}
+      </style>
+      <div class="example--themed-form-fields">
+        <CheckboxField
+          checked={optional}
+          label="This field is optional"
+          onChange={() => setOptional(!optional)}
+        />
+        <br />
+        <CheckboxField
+          checked={required}
+          label="This field is required and must be checked"
+          onChange={() => setRequired(!required)}
+          required
+        />
+        <br />
+        <CheckboxField
+          checked={renderAsRequired}
+          label="Checked or unchecked, both states are valid"
+          onChange={() => setRenderAsRequired(!renderAsRequired)}
+          renderAsRequired
+        />
+      </div>
+    </React.Fragment>
+  );
+});
+```
+
+It renders the field as required, but doesn't add the `required` attribute to
+the actual input.
+
 ### Disabled State
 
 Disabled state makes the input unavailable.

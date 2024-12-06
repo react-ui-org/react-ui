@@ -15,6 +15,7 @@ export const CheckboxField = React.forwardRef((props, ref) => {
     isLabelVisible,
     label,
     labelPosition,
+    renderAsRequired,
     required,
     validationState,
     validationText,
@@ -30,7 +31,7 @@ export const CheckboxField = React.forwardRef((props, ref) => {
         context && context.layout === 'horizontal' ? styles.isRootLayoutHorizontal : styles.isRootLayoutVertical,
         labelPosition === 'before' && styles.hasRootLabelBefore,
         disabled && styles.isRootDisabled,
-        required && styles.isRootRequired,
+        (renderAsRequired || required) && styles.isRootRequired,
         getRootValidationStateClassName(validationState, styles),
       )}
       htmlFor={id}
@@ -82,6 +83,7 @@ CheckboxField.defaultProps = {
   id: undefined,
   isLabelVisible: true,
   labelPosition: 'after',
+  renderAsRequired: false,
   required: false,
   validationState: null,
   validationText: null,
@@ -120,7 +122,11 @@ CheckboxField.propTypes = {
    */
   labelPosition: PropTypes.oneOf(['before', 'after']),
   /**
-   * If `true`, the input will be required.
+   * If `true`, the input will be rendered as if it was required.
+   */
+  renderAsRequired: PropTypes.bool,
+  /**
+   * If `true`, the input will be made and rendered as required, regardless of the `renderAsRequired` prop.
    */
   required: PropTypes.bool,
   /**
