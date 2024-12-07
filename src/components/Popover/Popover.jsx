@@ -12,24 +12,29 @@ export const Popover = React.forwardRef((props, ref) => {
   const {
     placement,
     children,
+    popoverHelperId,
     portalId,
     ...restProps
   } = props;
 
   const PopoverEl = (
-    <div
-      {...transferProps(restProps)}
-      className={classNames(
-        styles.root,
-        ref && styles.isRootControlled,
-        getRootSideClassName(placement, styles),
-        getRootAlignmentClassName(placement, styles),
-      )}
-      ref={ref}
-    >
-      {children}
-      <span className={styles.arrow} />
-    </div>
+    <>
+      {!!popoverHelperId && <div className={styles.helper} id={popoverHelperId} popover="auto" />}
+      <div
+        {...transferProps(restProps)}
+        className={classNames(
+          styles.root,
+          ref && styles.isRootControlled,
+          popoverHelperId && styles.controlledPopover,
+          getRootSideClassName(placement, styles),
+          getRootAlignmentClassName(placement, styles),
+        )}
+        ref={ref}
+      >
+        {children}
+        <span className={styles.arrow} />
+      </div>
+    </>
   );
 
   if (portalId === null) {
@@ -41,6 +46,7 @@ export const Popover = React.forwardRef((props, ref) => {
 
 Popover.defaultProps = {
   placement: 'bottom',
+  popoverHelperId: null,
   portalId: null,
 };
 
@@ -67,6 +73,12 @@ Popover.propTypes = {
     'left-start',
     'left-end',
   ]),
+  /**
+   * If set, the popover will become controlled, meaning it will be hidden by default and will need a trigger to open.
+   * This sets the ID of the internal helper element for the popover.
+   * Assign the same ID to `popovertarget` of a trigger to make it open and close.
+   */
+  popoverHelperId: PropTypes.string,
   /**
    * If set, popover is rendered in the React Portal with that ID.
    */
