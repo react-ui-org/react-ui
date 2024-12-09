@@ -188,8 +188,8 @@ React.createElement(() => {
 
 ### Required State
 
-The required state indicates that the input is mandatory. Required fields display an asterisk `*` after the label by
-default.
+The required state indicates that the input is mandatory. Required fields
+display an asterisk `*` after the label by default.
 
 ```docoff-react-preview
 React.createElement(() => {
@@ -205,9 +205,11 @@ React.createElement(() => {
 });
 ```
 
-However, your project may use the label color as the primary means to indicate the required state of input fields (see
-[Forms Theming](/docs/customize/theming/forms) for more). Because not checking an input is also a valid action, it may
-be confusing to users to see the optional check inputs greyed out.
+However, your project may use the label color as the primary means to indicate
+the required state of input fields (see
+[Forms Theming](/docs/customize/theming/forms) for more). Because not checking
+an input is also a valid action, it may be confusing to users to see the
+optional check inputs greyed out.
 
 For this case, there is the `renderAsRequired` prop:
 
