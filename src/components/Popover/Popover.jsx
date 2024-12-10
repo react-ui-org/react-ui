@@ -12,20 +12,31 @@ export const Popover = React.forwardRef((props, ref) => {
   const {
     placement,
     children,
-    popoverHelperId,
+    popoverTargetId,
     portalId,
     ...restProps
   } = props;
 
   const PopoverEl = (
     <>
-      {!!popoverHelperId && <div className={styles.helper} id={popoverHelperId} popover="auto" />}
+      {/**
+        * This hack is needed because the default behavior of the Popover API is to place the popover into a
+        * top-layer. It is currently not possible to position an element in the top-layer relative to a normal element.
+        * This will create a hidden browser popover, then with CSS it will open and close the RUI popover.
+        */}
+      {!!popoverTargetId && (
+        <div
+          className={styles.helper}
+          id={popoverTargetId}
+          popover="auto"
+        />
+      )}
       <div
         {...transferProps(restProps)}
         className={classNames(
           styles.root,
           ref && styles.isRootControlled,
-          popoverHelperId && styles.controlledPopover,
+          popoverTargetId && styles.controlledPopover,
           getRootSideClassName(placement, styles),
           getRootAlignmentClassName(placement, styles),
         )}
@@ -46,7 +57,7 @@ export const Popover = React.forwardRef((props, ref) => {
 
 Popover.defaultProps = {
   placement: 'bottom',
-  popoverHelperId: null,
+  popoverTargetId: null,
   portalId: null,
 };
 
@@ -78,7 +89,7 @@ Popover.propTypes = {
    * This sets the ID of the internal helper element for the popover.
    * Assign the same ID to `popovertarget` of a trigger to make it open and close.
    */
-  popoverHelperId: PropTypes.string,
+  popoverTargetId: PropTypes.string,
   /**
    * If set, popover is rendered in the React Portal with that ID.
    */

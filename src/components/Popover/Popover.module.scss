@@ -49,11 +49,18 @@
         }
     }
 
-    // Controlled popover
+    /**
+     * Controlled popover
+     * Hide the popover by default. This is needed because the popover is
+     * controlled via CSS with the help of the helper popover. The popover can't
+     * be displayed directly, because relative positioning doesn't work with
+     * elements on the top-layer, so this CSS hack is needed.
+     */
     .controlledPopover {
         display: none;
     }
 
+    // Hide the popover helper element
     .helper {
         position: fixed;
         inset: unset;
@@ -67,6 +74,7 @@
         pointer-events: none;
     }
 
+    // If the popover helper is open, show the actual popover
     .helper:popover-open ~ .controlledPopover {
         display: block;
     }
