@@ -4,6 +4,7 @@ import { createPortal } from 'react-dom';
 import { withGlobalProps } from '../../provider';
 import { classNames } from '../../utils/classNames';
 import { transferProps } from '../../utils/transferProps';
+import cleanPlacementStyle from './_helpers/cleanPlacementStyle';
 import getRootSideClassName from './_helpers/getRootSideClassName';
 import getRootAlignmentClassName from './_helpers/getRootAlignmentClassName';
 import styles from './Popover.module.scss';
@@ -12,6 +13,7 @@ export const Popover = React.forwardRef((props, ref) => {
   const {
     placement,
     children,
+    placementStyle,
     portalId,
     position,
     x,
@@ -29,11 +31,7 @@ export const Popover = React.forwardRef((props, ref) => {
         getRootAlignmentClassName(placement, styles),
       )}
       ref={ref}
-      style={{
-        left: x,
-        position,
-        top: y,
-      }}
+      style={cleanPlacementStyle(placementStyle)}
     >
       {children}
       <span className={styles.arrow} />
@@ -49,6 +47,7 @@ export const Popover = React.forwardRef((props, ref) => {
 
 Popover.defaultProps = {
   placement: 'bottom',
+  placementStyle: null,
   portalId: null,
   position: null,
   x: null,
@@ -78,6 +77,24 @@ Popover.propTypes = {
     'left-start',
     'left-end',
   ]),
+  /**
+   * Used for positioning the popover with a library like Floating UI. It is filtered,
+   * then passed as to the popover as the `style` prop.
+   */
+  placementStyle: PropTypes.shape({
+    bottom: PropTypes.string,
+    inset: PropTypes.string,
+    'inset-block-end': PropTypes.string,
+    'inset-block-start': PropTypes.string,
+    'inset-inline-end': PropTypes.string,
+    'inset-inline-start': PropTypes.string,
+    left: PropTypes.string,
+    position: PropTypes.string,
+    right: PropTypes.string,
+    top: PropTypes.string,
+    'transform-origin': PropTypes.string,
+    translate: PropTypes.string,
+  }),
   /**
    * If set, popover is rendered in the React Portal with that ID.
    */

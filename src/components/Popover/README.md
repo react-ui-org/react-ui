@@ -162,6 +162,23 @@ automatically, including smart position updates to ensure Popover visibility,
 we recommend to involve an external library designed specifically for this
 purpose.
 
+To position the popover, you need to provide the `placementStyle` prop with the
+style you want to apply to the popover. This prop is filtered and should only
+be used to position the popover. The allowed props are
+
+ - `position`
+ - `inset`
+ - `inset-inline-start`
+ - `inset-inline-end`
+ - `inset-block-start`
+ - `inset-block-end`
+ - `top`
+ - `right`
+ - `bottom`
+ - `left`
+ - `translate`
+ - `transform-origin`
+
 ℹ️ The following example is using external library [Floating UI]. To use
 Floating UI, install it first:
 
@@ -267,9 +284,11 @@ React.createElement(() => {
             <Popover
               id="my-advanced-popover"
               placement={finalPlacement}
-              position={strategy}
-              x={x}
-              y={y}
+              placementStyle={{
+                position: strategy,
+                top: y,
+                left: x,
+              }}
               ref={floating}
             >
               Auto-flipping Popover
