@@ -179,6 +179,11 @@ be used to position the popover. The allowed props are
  - `translate`
  - `transform-origin`
 
+⚠️ `inset` is a shorthand for `top right bottom left`, not for `inset-*` properties.
+
+As opposed to `top right bottom left` and the `inset` shorthand, `inset-*` properties are writing-direction aware.
+
+
 ℹ️ The following example is using external library [Floating UI]. To use
 Floating UI, install it first:
 
