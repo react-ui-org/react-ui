@@ -12,24 +12,40 @@ export const Popover = React.forwardRef((props, ref) => {
   const {
     placement,
     children,
+    popoverTargetId,
     portalId,
     ...restProps
   } = props;
 
   const PopoverEl = (
-    <div
-      {...transferProps(restProps)}
-      className={classNames(
-        styles.root,
-        ref && styles.isRootControlled,
-        getRootSideClassName(placement, styles),
-        getRootAlignmentClassName(placement, styles),
+    <>
+      {/**
+        * This hack is needed because the default behavior of the Popover API is to place the popover into a
+        * top-layer. It is currently not possible to position an element in the top-layer relative to a normal element.
+        * This will create a hidden browser popover, then with CSS it will open and close the RUI popover.
+        */}
+      {!!popoverTargetId && (
+        <div
+          className={styles.helper}
+          id={popoverTargetId}
+          popover="auto"
+        />
       )}
-      ref={ref}
-    >
-      {children}
-      <span className={styles.arrow} />
-    </div>
+      <div
+        {...transferProps(restProps)}
+        className={classNames(
+          styles.root,
+          ref && styles.isRootControlled,
+          popoverTargetId && styles.controlledPopover,
+          getRootSideClassName(placement, styles),
+          getRootAlignmentClassName(placement, styles),
+        )}
+        ref={ref}
+      >
+        {children}
+        <span className={styles.arrow} />
+      </div>
+    </>
   );
 
   if (portalId === null) {
@@ -41,6 +57,7 @@ export const Popover = React.forwardRef((props, ref) => {
 
 Popover.defaultProps = {
   placement: 'bottom',
+  popoverTargetId: null,
   portalId: null,
 };
 
@@ -67,6 +84,12 @@ Popover.propTypes = {
     'left-start',
     'left-end',
   ]),
+  /**
+   * If set, the popover will become controlled, meaning it will be hidden by default and will need a trigger to open.
+   * This sets the ID of the internal helper element for the popover.
+   * Assign the same ID to `popovertarget` of a trigger to make it open and close.
+   */
+  popoverTargetId: PropTypes.string,
   /**
    * If set, popover is rendered in the React Portal with that ID.
    */

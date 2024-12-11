@@ -284,6 +284,39 @@ React.createElement(() => {
 });
 ```
 
+## Controlled Popover
+
+Popover API can be used to control visibility of Popover component. You need to
+set `id` on the trigger element and matching `popoverTargetId` attribute on the
+Popover component. This leverages the browser's Popover API to control the
+popover, automatically closing it when the trigger or the backdrop is pressed.
+
+```docoff-react-preview
+React.createElement(() => {
+  // All inline styles in this example are for demonstration purposes only.
+  return (
+    <div
+      style={{
+        display: 'grid',
+        placeContent: 'center',
+        minWidth: '20rem',
+        minHeight: '10rem',
+      }}
+    >
+      <PopoverWrapper>
+        <Button
+          label="Want to see a popover? Click me!"
+          popovertarget="my-popover-helper"
+        />
+        <Popover id="my-popover" popoverTargetId="my-popover-helper">
+            Hello there!
+        </Popover>
+      </PopoverWrapper>
+    </div>
+  );
+});
+```
+
 ## Forwarding HTML Attributes
 
 In addition to the options below in the [component's API](#api) section, you
