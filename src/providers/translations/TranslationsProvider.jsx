@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React, {
   useContext,
 } from 'react';
-import defaultTranslations from '../../translations/en';
 import { mergeDeep } from '../../utils/mergeDeep';
 import TranslationsContext from './TranslationsContext';
 
@@ -23,7 +22,7 @@ const TranslationsProvider = ({
 
 TranslationsProvider.defaultProps = {
   children: null,
-  translations: defaultTranslations,
+  translations: {},
 };
 
 TranslationsProvider.propTypes = {
