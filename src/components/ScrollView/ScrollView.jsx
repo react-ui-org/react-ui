@@ -6,10 +6,8 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import {
-  RUIContext,
-  withGlobalProps,
-} from '../../provider';
+import { TranslationsContext } from '../../providers/translations';
+import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../utils/classNames';
 import { transferProps } from '../../utils/transferProps';
 import { getElementsPositionDifference } from './_helpers/getElementsPositionDifference';
@@ -48,7 +46,7 @@ export const ScrollView = React.forwardRef((props, ref) => {
     ...restProps
   } = props;
 
-  const { translations } = useContext(RUIContext);
+  const translations = useContext(TranslationsContext);
 
   const [isAutoScrollInProgress, setIsAutoScrollInProgress] = useState(false);
   const [isScrolledAtStart, setIsScrolledAtStart] = useState(false);

@@ -57,8 +57,9 @@ export {
   ToolbarItem,
 } from './components/Toolbar';
 
-// Provider
-export { RUIProvider } from './provider';
+// Providers
+export { GlobalPropsProvider } from './providers/globalProps';
+export { TranslationsProvider } from './providers/translations';
 
 // Utils
 export { classNames } from './utils/classNames';

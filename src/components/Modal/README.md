@@ -30,7 +30,7 @@ React.createElement(() => {
     React UI docs. You may not need it in your application.
   */}
   return (
-    <RUIProvider globalProps={{
+    <GlobalPropsProvider globalProps={{
       Modal: { preventScrollUnderneath: window.document.documentElement }
     }}>
       <Button
@@ -72,7 +72,7 @@ React.createElement(() => {
           </Modal>
         )}
       </div>
-    </RUIProvider>
+    </GlobalPropsProvider>
   );
 });
 ```
@@ -126,7 +126,7 @@ React.createElement(() => {
     React UI docs. You may not need it in your application.
   */}
   return (
-    <RUIProvider globalProps={{
+    <GlobalPropsProvider globalProps={{
       Modal: { preventScrollUnderneath: window.document.documentElement }
     }}>
       <Button
@@ -247,7 +247,7 @@ React.createElement(() => {
           </Modal>
         )}
       </div>
-    </RUIProvider>
+    </GlobalPropsProvider>
   );
 });
 ```
@@ -281,7 +281,7 @@ React.createElement(() => {
     React UI docs. You may not need it in your application.
   */}
   return (
-    <RUIProvider globalProps={{
+    <GlobalPropsProvider globalProps={{
       Modal: { preventScrollUnderneath: window.document.documentElement }
     }}>
       <Button
@@ -374,7 +374,7 @@ React.createElement(() => {
           </Modal>
         )}
       </div>
-    </RUIProvider>
+    </GlobalPropsProvider>
   );
 });
 ```
@@ -415,7 +415,7 @@ React.createElement(() => {
     React UI docs. You may not need it in your application.
   */}
   return (
-    <RUIProvider globalProps={{
+    <GlobalPropsProvider globalProps={{
       Modal: { preventScrollUnderneath: window.document.documentElement }
     }}>
       <Button
@@ -517,7 +517,7 @@ React.createElement(() => {
           </Modal>
         )}
       </div>
-    </RUIProvider>
+    </GlobalPropsProvider>
   );
 });
 ```
@@ -538,7 +538,7 @@ React.createElement(() => {
     React UI docs. You may not need it in your application.
   */}
   return (
-    <RUIProvider globalProps={{
+    <GlobalPropsProvider globalProps={{
       Modal: { preventScrollUnderneath: window.document.documentElement }
     }}>
       <Button
@@ -605,7 +605,7 @@ React.createElement(() => {
           </Modal>
         )}
       </div>
-    </RUIProvider>
+    </GlobalPropsProvider>
   );
 });
 ```
@@ -622,7 +622,7 @@ React.createElement(() => {
     React UI docs. You may not need it in your application.
   */}
   return (
-    <RUIProvider globalProps={{
+    <GlobalPropsProvider globalProps={{
       Modal: { preventScrollUnderneath: window.document.documentElement }
     }}>
       <Button
@@ -665,7 +665,7 @@ React.createElement(() => {
           </Modal>
         )}
       </div>
-    </RUIProvider>
+    </GlobalPropsProvider>
   );
 });
 ```
@@ -690,7 +690,7 @@ React.createElement(() => {
     React UI docs. You may not need it in your application.
   */}
   return (
-    <RUIProvider globalProps={{
+    <GlobalPropsProvider globalProps={{
       Modal: { preventScrollUnderneath: window.document.documentElement }
     }}>
       <Button
@@ -734,7 +734,7 @@ React.createElement(() => {
           </Modal>
         )}
       </div>
-    </RUIProvider>
+    </GlobalPropsProvider>
   );
 });
 ```
@@ -754,7 +754,7 @@ React.createElement(() => {
     React UI docs. You may not need it in your application.
   */}
   return (
-    <RUIProvider globalProps={{
+    <GlobalPropsProvider globalProps={{
       Modal: { preventScrollUnderneath: window.document.documentElement }
     }}>
       <Button
@@ -807,7 +807,7 @@ React.createElement(() => {
           </Modal>
         )}
       </div>
-    </RUIProvider>
+    </GlobalPropsProvider>
   );
 });
 ```
@@ -936,7 +936,7 @@ React.createElement(() => {
     React UI docs. You may not need it in your application.
   */}
   return (
-    <RUIProvider globalProps={{
+    <GlobalPropsProvider globalProps={{
       Modal: { preventScrollUnderneath: window.document.documentElement }
     }}>
       <Button
@@ -999,7 +999,7 @@ React.createElement(() => {
           </Modal>
         )}
       </div>
-    </RUIProvider>
+    </GlobalPropsProvider>
   );
 });
 ```

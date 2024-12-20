@@ -1,26 +1,24 @@
 import PropTypes from 'prop-types';
-import React from 'react';
-import RUIContext from './RUIContext';
+import React, {
+  useContext,
+} from 'react';
+import GlobalPropsContext from './GlobalPropsContext';
 
 export default (Component, componentName) => {
   const WithGlobalPropsComponent = ({
     forwardedRef,
     ...rest
-  }) => (
-    <RUIContext.Consumer>
-      {({ globalProps }) => {
-        const contextGlobalProps = globalProps ? globalProps[componentName] : null;
+  }) => {
+    const contextGlobalProps = useContext(GlobalPropsContext);
 
-        return (
-          <Component
-            {...contextGlobalProps}
-            {...rest}
-            ref={forwardedRef}
-          />
-        );
-      }}
-    </RUIContext.Consumer>
-  );
+    return (
+      <Component
+        {...contextGlobalProps[componentName] || {}}
+        {...rest}
+        ref={forwardedRef}
+      />
+    );
+  };
 
   WithGlobalPropsComponent.defaultProps = {
     forwardedRef: undefined,
@@ -29,6 +27,8 @@ export default (Component, componentName) => {
   WithGlobalPropsComponent.propTypes = {
     forwardedRef: PropTypes.oneOfType([
       PropTypes.func,
+
+      // The props can be of any type and here we need to support them all
       // eslint-disable-next-line react/forbid-prop-types
       PropTypes.shape({ current: PropTypes.any }),
     ]),

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, {
   useMemo,
 } from 'react';
-import { withGlobalProps } from '../../provider';
+import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../utils/classNames';
 import { transferProps } from '../../utils/transferProps';
 import { getRootPriorityClassName } from '../_helpers/getRootPriorityClassName';

@@ -132,6 +132,7 @@ Dark alert variant.
 ```docoff-react-preview
 <Alert color="dark">
   <strong>Dark alert:</strong> Stands out on light backgrounds.
+  {' '}
   <TextLink href="/" label="This is a link" />
 </Alert>
 ```

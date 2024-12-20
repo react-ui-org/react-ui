@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
-import { withGlobalProps } from '../../provider';
+import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../utils/classNames';
 import { transferProps } from '../../utils/transferProps';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';

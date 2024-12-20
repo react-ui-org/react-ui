@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
-import {
-  RUIContext,
-  withGlobalProps,
-} from '../../provider';
+import { withGlobalProps } from '../../providers/globalProps';
+import { TranslationsContext } from '../../providers/translations';
 import { classNames } from '../../utils/classNames';
 import { transferProps } from '../../utils/transferProps';
 import { getRootColorClassName } from '../_helpers/getRootColorClassName';
@@ -17,7 +15,7 @@ export const Alert = ({
   onClose,
   ...restProps
 }) => {
-  const { translations } = useContext(RUIContext);
+  const translations = useContext(TranslationsContext);
 
   return (
     <div

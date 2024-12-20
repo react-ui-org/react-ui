@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { createPortal } from 'react-dom';
-import { withGlobalProps } from '../../provider';
+import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../utils/classNames';
 import { transferProps } from '../../utils/transferProps';
 import getRootSideClassName from './_helpers/getRootSideClassName';
