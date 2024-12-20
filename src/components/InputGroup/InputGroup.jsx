@@ -3,8 +3,7 @@ import React, {
   useContext,
   useMemo,
 } from 'react';
-import { Text } from '../Text';
-import { withGlobalProps } from '../../provider';
+import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../utils/classNames';
 import { transferProps } from '../../utils/transferProps';
 import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
@@ -12,6 +11,7 @@ import { getRootValidationStateClassName } from '../_helpers/getRootValidationSt
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { FormLayoutContext } from '../FormLayout';
+import { Text } from '../Text';
 import { InputGroupContext } from './InputGroupContext';
 import styles from './InputGroup.module.scss';
 
