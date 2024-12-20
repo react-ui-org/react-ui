@@ -10,11 +10,11 @@ const TranslationsProvider = ({
   children,
   translations,
 }) => {
-  const context = useContext(TranslationsContext);
+  const contextTranslations = useContext(TranslationsContext);
 
   return (
     <TranslationsContext.Provider
-      value={mergeDeep(context?.translations, translations)}
+      value={mergeDeep(contextTranslations, translations)}
     >
       {children}
     </TranslationsContext.Provider>

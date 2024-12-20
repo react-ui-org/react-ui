@@ -4,27 +4,47 @@ import {
   within,
 } from '@testing-library/react';
 import { Alert } from '../../../components/Alert';
+import { ScrollView } from '../../../components/ScrollView';
 import TranslationsProvider from '../TranslationsProvider';
 
 describe('rendering', () => {
-  it.each([
-    [
-      {
-        children: <Alert onClose={() => {}}>alert text</Alert>,
-        translations: {
-          Alert: { close: 'Zavřít' },
-        },
-      },
-      (rootElement) => expect(within(rootElement).getByTitle('Zavřít')),
-    ],
-  ])('renders with props: "%s"', (testedProps, assert) => {
+  it('renders with translations', () => {
     const dom = render((
       <TranslationsProvider
-        {...testedProps}
-      />
+        translations={{
+          Alert: { close: 'Zavřít' },
+        }}
+      >
+        <Alert onClose={() => {}}>alert text</Alert>
+      </TranslationsProvider>
+
     ));
 
-    assert(dom.container.firstChild);
+    expect(within(dom.container.firstChild).getByTitle('Zavřít'));
+  });
+
+  it('renders with nested translations', () => {
+    const dom = render((
+      <TranslationsProvider
+        translations={{
+          ScrollView: {
+            next: 'Další',
+            previous: 'Předchozí',
+          },
+        }}
+      >
+        <TranslationsProvider
+          translations={{
+            ScrollView: { next: 'Sigiente' },
+          }}
+        >
+          <ScrollView arrows>some scrolable text</ScrollView>
+        </TranslationsProvider>
+      </TranslationsProvider>
+
+    ));
+
+    expect(within(dom.container.firstChild).getByTitle('Předchozí'));
+    expect(within(dom.container.firstChild).getByTitle('Sigiente'));
   });
 });
-
