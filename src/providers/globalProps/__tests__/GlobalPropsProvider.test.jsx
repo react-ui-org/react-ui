@@ -3,44 +3,28 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { Alert } from '../../components/Alert';
-import { Badge } from '../../components/Badge';
-import { Grid } from '../../components/Grid';
-import RUIProvider from '../RUIProvider';
+import { Badge } from '../../../components/Badge';
+import { Grid } from '../../../components/Grid';
+import GlobalPropsProvider from '../GlobalPropsProvider';
 
 describe('rendering', () => {
-  it.each([
-    [
-      {
-        children: <Badge />,
-        globalProps: {
-          Badge: { label: 'label' },
-        },
-      },
-      (rootElement) => expect(within(rootElement).getByText('label')),
-    ],
-    [
-      {
-        children: <Alert onClose={() => {}}>alert text</Alert>,
-        translations: {
-          Alert: { close: 'Zavřít' },
-        },
-      },
-      (rootElement) => expect(within(rootElement).getByTitle('Zavřít')),
-    ],
-  ])('renders with props: "%s"', (testedProps, assert) => {
+  it('renders with global props', () => {
     const dom = render((
-      <RUIProvider
-        {...testedProps}
-      />
+      <GlobalPropsProvider
+        globalProps={{
+          Badge: { label: 'label' },
+        }}
+      >
+        <Badge />
+      </GlobalPropsProvider>
     ));
 
-    assert(dom.container.firstChild);
+    expect(within(dom.container.firstChild).getByText('label'));
   });
 
-  it('renders with nested providers', () => {
+  it('renders with nested providers and object typed props', () => {
     const dom = render((
-      <RUIProvider
+      <GlobalPropsProvider
         globalProps={{
           Grid: {
             alignContent: {
@@ -56,7 +40,7 @@ describe('rendering', () => {
           },
         }}
       >
-        <RUIProvider
+        <GlobalPropsProvider
           globalProps={{
             Grid: {
               alignContent: undefined,
@@ -71,7 +55,7 @@ describe('rendering', () => {
             },
           }}
         >
-          <RUIProvider
+          <GlobalPropsProvider
             globalProps={{
               Grid: {
                 autoFlow: {
@@ -86,9 +70,9 @@ describe('rendering', () => {
                 Content text
               </div>
             </Grid>
-          </RUIProvider>
-        </RUIProvider>
-      </RUIProvider>
+          </GlobalPropsProvider>
+        </GlobalPropsProvider>
+      </GlobalPropsProvider>
     ));
 
     // Assert alignContent

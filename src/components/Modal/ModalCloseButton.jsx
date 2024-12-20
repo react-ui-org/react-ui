@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
-import {
-  RUIContext,
-  withGlobalProps,
-} from '../../provider';
+import { TranslationsContext } from '../../providers/translations';
+import { withGlobalProps } from '../../providers/globalProps';
 import { transferProps } from '../../utils/transferProps';
 import styles from './ModalCloseButton.module.scss';
 
@@ -13,7 +11,7 @@ export const ModalCloseButton = React.forwardRef((props, ref) => {
     ...restProps
   } = props;
 
-  const { translations } = useContext(RUIContext);
+  const translations = useContext(TranslationsContext);
 
   return (
     <button

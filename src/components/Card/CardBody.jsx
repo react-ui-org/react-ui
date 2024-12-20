@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withGlobalProps } from '../../provider';
+import { withGlobalProps } from '../../providers/globalProps';
 import { transferProps } from '../../utils/transferProps';
 import styles from './Card.module.scss';
 
