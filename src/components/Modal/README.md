@@ -812,16 +812,22 @@ React.createElement(() => {
 });
 ```
 
-## Keyboard Control
+## Mouse and Keyboard Control
 
 Modal can be controlled either by mouse or keyboard. To enhance user
-experience, primary action can be fired by pressing `Enter` key and the modal
-can be closed by pressing the `Escape` key.
+experience, primary action can be fired by pressing `Enter` key and
+the modal can be closed by pressing the `Escape` key. Modal can be
+also closed by clicking on the backdrop.
 
 To enable it, you just need to pass a reference to the buttons using
-`primaryButtonRef` and `closeButtonRef` props on Modal. The advantage of passing
-a reference to the button is that if the button is disabled, the key press will
-not fire the event.
+`primaryButtonRef` and `closeButtonRef` props on Modal. The advantage
+of passing a reference to the button is that if the button is disabled,
+the key press or the mouse click will not fire the event.
+
+As `primaryButtonRef` and `closeButtonRef` are used for more than just
+actions mentioned above, you can explicitly disable the default behavior
+by changing `allowCloseOnBackdropClick`, `allowCloseOnEscapeKey` or
+`allowPrimaryActionOnEnterKey` to `false`.
 
 👉 We strongly recommend using this feature together with Autofocus for a better
 user experience.

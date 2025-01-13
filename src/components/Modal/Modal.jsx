@@ -154,7 +154,8 @@ Modal.propTypes = {
    */
   children: PropTypes.node,
   /**
-   * Reference to close button element. It is used to close modal when Escape key is pressed.
+   * Reference to close button element. It is used to close modal when Escape key is pressed
+   * or the backdrop is clicked.
    */
   closeButtonRef: PropTypes.shape({
     // eslint-disable-next-line react/forbid-prop-types
