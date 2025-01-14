@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, {
   useCallback,
   useEffect,
+  useImperativeHandle,
   useRef,
 } from 'react';
 import { createPortal } from 'react-dom';
@@ -47,6 +48,7 @@ export const Modal = ({
   autoFocus,
   children,
   closeButtonRef,
+  dialogRef,
   portalId,
   position,
   preventScrollUnderneath,
@@ -54,13 +56,15 @@ export const Modal = ({
   size,
   ...restProps
 }) => {
-  const dialogRef = useRef();
+  const internalDialogRef = useRef();
 
   useEffect(() => {
-    dialogRef.current.showModal();
+    internalDialogRef.current.showModal();
   }, []);
 
-  useModalFocus(autoFocus, dialogRef, primaryButtonRef);
+  useImperativeHandle(dialogRef, () => internalDialogRef.current);
+
+  useModalFocus(autoFocus, internalDialogRef, primaryButtonRef);
   useModalScrollPrevention(preventScrollUnderneath);
 
   const onCancel = useCallback(
@@ -68,8 +72,8 @@ export const Modal = ({
     [closeButtonRef],
   );
   const onClick = useCallback(
-    (e) => dialogOnClickHandler(e, closeButtonRef, dialogRef, allowCloseOnBackdropClick),
-    [allowCloseOnBackdropClick, closeButtonRef, dialogRef],
+    (e) => dialogOnClickHandler(e, closeButtonRef, internalDialogRef, allowCloseOnBackdropClick),
+    [allowCloseOnBackdropClick, closeButtonRef, internalDialogRef],
   );
   const onClose = useCallback(
     (e) => dialogOnCloseHandler(e, closeButtonRef),
@@ -100,7 +104,7 @@ export const Modal = ({
   if (portalId === null) {
     return preRender(
       children,
-      dialogRef,
+      internalDialogRef,
       position,
       size,
       events,
@@ -111,7 +115,7 @@ export const Modal = ({
   return createPortal(
     preRender(
       children,
-      dialogRef,
+      internalDialogRef,
       position,
       size,
       events,
@@ -128,6 +132,7 @@ Modal.defaultProps = {
   autoFocus: true,
   children: null,
   closeButtonRef: null,
+  dialogRef: null,
   portalId: null,
   position: 'center',
   preventScrollUnderneath: window.document.body,
@@ -169,6 +174,13 @@ Modal.propTypes = {
    * or the backdrop is clicked.
    */
   closeButtonRef: PropTypes.shape({
+    // eslint-disable-next-line react/forbid-prop-types
+    current: PropTypes.any,
+  }),
+  /**
+   * Reference to dialog element
+   */
+  dialogRef: PropTypes.shape({
     // eslint-disable-next-line react/forbid-prop-types
     current: PropTypes.any,
   }),
