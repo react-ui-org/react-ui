@@ -68,16 +68,16 @@ export const Modal = ({
   useModalScrollPrevention(preventScrollUnderneath);
 
   const onCancel = useCallback(
-    (e) => dialogOnCancelHandler(e, closeButtonRef),
-    [closeButtonRef],
+    (e) => dialogOnCancelHandler(e, closeButtonRef, restProps.onCancel),
+    [closeButtonRef, restProps.onCancel],
   );
   const onClick = useCallback(
     (e) => dialogOnClickHandler(e, closeButtonRef, internalDialogRef, allowCloseOnBackdropClick),
     [allowCloseOnBackdropClick, closeButtonRef, internalDialogRef],
   );
   const onClose = useCallback(
-    (e) => dialogOnCloseHandler(e, closeButtonRef),
-    [closeButtonRef],
+    (e) => dialogOnCloseHandler(e, closeButtonRef, restProps.onClose),
+    [closeButtonRef, restProps.onClose],
   );
   const onKeyDown = useCallback(
     (e) => dialogOnKeyDownHandler(

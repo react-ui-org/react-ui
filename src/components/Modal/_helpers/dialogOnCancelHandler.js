@@ -1,4 +1,4 @@
-export const dialogOnCancelHandler = (e, closeButtonRef) => {
+export const dialogOnCancelHandler = (e, closeButtonRef, onCancel = undefined) => {
   // Prevent the default behaviour of the event as we want to close dialog manually.
   e.preventDefault();
 
@@ -8,5 +8,10 @@ export const dialogOnCancelHandler = (e, closeButtonRef) => {
     && closeButtonRef?.current?.disabled === false
   ) {
     closeButtonRef.current.click();
+  }
+
+  // This is a custom handler that is passed as a prop to the Modal component
+  if (onCancel) {
+    onCancel(e);
   }
 };

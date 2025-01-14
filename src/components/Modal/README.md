@@ -159,6 +159,10 @@ React.createElement(() => {
         label="Launch modal as form"
         onClick={() => setModalOpen(4)}
       />
+      <Button
+        label="Launch modal as native form"
+        onClick={() => setModalOpen(5)}
+      />
       <div>
         {modalOpen === 1 && (
           <Modal>
@@ -268,6 +272,91 @@ React.createElement(() => {
                 label="Save"
                 onClick={() => setModalOpen(false)}
                 ref={modalPrimaryButtonRef}
+              />
+              <Button
+                label="Close"
+                onClick={() => setModalOpen(false)}
+                priority="outline"
+                ref={modalCloseButtonRef}
+              />
+            </ModalFooter>
+          </Modal>
+        )}
+        {modalOpen === 5 && (
+          <Modal
+            allowPrimaryActionOnEnterKey={false}
+            closeButtonRef={modalCloseButtonRef}
+            onCancel={(e) => {
+                console.log('cancel', e);
+            }}
+            onClose={(e) => {
+                console.log('close', e);
+            }}
+            primaryButtonRef={modalPrimaryButtonRef}
+          >
+            <ModalHeader>
+              <ModalTitle>Add new user using native form</ModalTitle>
+              <ModalCloseButton onClick={() => setModalOpen(false)} />
+            </ModalHeader>
+            <ModalBody>
+              <ModalContent>
+                <p>
+                  This is an example of a native form inside a modal.
+                  The difference is that the dialog is not controlled by React UI,
+                  but using native <code>&lt;form&gt;</code> element.
+                  This is useful when you need to use native form features
+                  like validation, submission, etc.
+                </p>
+                <p>
+                  First, you need to set <code>allowPrimaryActionOnEnterKey</code>
+                  to <code>false</code> and remove <code>onClick</code> from the
+                  primary button. Then, you need to set <code>form</code> attribute
+                  on the primary button to the <code>id</code> of the form to
+                  connect it with the form.
+                </p>
+                <p>
+                  Although we do not encourage using this approach, it is still
+                  possible to use it when needed.
+                </p>
+                <hr />
+                <form method="dialog" id="native-form">
+                  <FormLayout fieldLayout="horizontal" labelWidth="limited">
+                    <Toggle
+                      label="Enabled"
+                    />
+                    <TextField label="Username" required />
+                    <TextField label="Password" type="password" />
+                    <CheckboxField label="Force password on login" />
+                    <Radio
+                      label="Type of collaboration"
+                      options={[
+                        { label: 'Internal', value: 'internal'},
+                        { label: 'External', value: 'external'},
+                      ]}
+                    />
+                    <SelectField
+                      label="Role"
+                      options={[
+                        { label: 'Programmer', value: 'programmer' },
+                        { label: 'Team leader', value: 'team-leader' },
+                        { label: 'Project manager', value: 'project-manager' },
+                      ]}
+                    />
+                    <FileInputField label="Photo" />
+                    <TextArea
+                      label="Additional info"
+                      helpText={<p>Enter key is used for new line,<br />so <strong>Enter won't submit the form</strong>.</p>}
+                    />
+                  </FormLayout>
+                </form>
+              </ModalContent>
+            </ModalBody>
+            <ModalFooter>
+              <Button
+                form="native-form"
+                label="Save"
+                ref={modalPrimaryButtonRef}
+                type="submit"
               />
               <Button
                 label="Close"
