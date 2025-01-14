@@ -60,7 +60,7 @@ export const Modal = ({
     dialogRef.current.showModal();
   }, []);
 
-  useModalFocus(allowPrimaryActionOnEnterKey, autoFocus, dialogRef, primaryButtonRef);
+  useModalFocus(autoFocus, dialogRef, primaryButtonRef);
   useModalScrollPrevention(preventScrollUnderneath);
 
   const onCancel = useCallback(
@@ -76,8 +76,19 @@ export const Modal = ({
     [closeButtonRef],
   );
   const onKeyDown = useCallback(
-    (e) => dialogOnKeyDownHandler(e, closeButtonRef, allowCloseOnEscapeKey),
-    [allowCloseOnEscapeKey, closeButtonRef],
+    (e) => dialogOnKeyDownHandler(
+      e,
+      closeButtonRef,
+      primaryButtonRef,
+      allowCloseOnEscapeKey,
+      allowPrimaryActionOnEnterKey,
+    ),
+    [
+      allowCloseOnEscapeKey,
+      allowPrimaryActionOnEnterKey,
+      closeButtonRef,
+      primaryButtonRef,
+    ],
   );
   const events = {
     onCancel,

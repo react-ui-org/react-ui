@@ -92,10 +92,18 @@ See [API](#api) for all available options.
 - **Modal actions** should correspond to the modal purpose, too. E.g. “Delete”
   tells better what happens rather than “OK”.
 
-- Modal **automatically focuses the first non-disabled form field** by default
-  which allows users to confirm the modal by hitting the enter key. When no
-  field is found then the primary button (in the footer) is focused. To turn
+- Modal **automatically focuses the first non-disabled form field** by default.
+  When no field is found then the primary button (in the footer) is focused. To turn
   this feature off, set the `autofocus` prop to `false`.
+
+- Modal **submits the form when the user presses the `Enter` key** . The primary
+  button is clicked in this case. To turn this feature off, set the
+  `allowPrimaryActionOnEnterKey` prop to `false`.
+
+- Modal **closes when the user presses the `Escape` key**. The close button is
+  clicked in this case. To turn this feature off, set the `allowCloseOnEscapeKey`
+  prop to `false`. Modal can be also **closed by clicking on the backdrop**. To
+  turn this feature off, set the `allowCloseOnBackdropClick` prop to `false`.
 
 - **Avoid stacking** of modals. While it may technically work, the modal is just
   not designed for that.
@@ -225,9 +233,33 @@ React.createElement(() => {
             </ModalHeader>
             <ModalBody>
               <ModalContent>
-                <FormLayout fieldLayout="horizontal">
-                  <TextField label="Username" />
+                <FormLayout fieldLayout="horizontal" labelWidth="limited">
+                  <Toggle
+                    label="Enabled"
+                  />
+                  <TextField label="Username" required />
                   <TextField label="Password" type="password" />
+                  <CheckboxField label="Force password on login" />
+                  <Radio
+                    label="Type of collaboration"
+                    options={[
+                      { label: 'Internal', value: 'internal'},
+                      { label: 'External', value: 'external'},
+                    ]}
+                  />
+                  <SelectField
+                    label="Role"
+                    options={[
+                      { label: 'Programmer', value: 'programmer' },
+                      { label: 'Team leader', value: 'team-leader' },
+                      { label: 'Project manager', value: 'project-manager' },
+                    ]}
+                  />
+                  <FileInputField label="Photo" />
+                  <TextArea
+                    label="Additional info"
+                    helpText={<p>Enter key is used for new line,<br />so <strong>Enter won't submit the form</strong>.</p>}
+                  />
                 </FormLayout>
               </ModalContent>
             </ModalBody>
