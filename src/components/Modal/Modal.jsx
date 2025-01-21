@@ -62,6 +62,9 @@ export const Modal = ({
     internalDialogRef.current.showModal();
   }, []);
 
+  // We need to have a reference to the dialog element to be able to call its methods,
+  // but at the same time we want to expose this reference to the parent component for
+  // case someone wants to call dialog methods from outside the component.
   useImperativeHandle(dialogRef, () => internalDialogRef.current);
 
   useModalFocus(autoFocus, internalDialogRef, primaryButtonRef);
