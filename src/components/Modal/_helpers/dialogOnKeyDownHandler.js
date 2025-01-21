@@ -1,3 +1,5 @@
+// Disable coverage for the following function
+/* istanbul ignore next line */
 export const dialogOnKeyDownHandler = (
   e,
   closeButtonRef,

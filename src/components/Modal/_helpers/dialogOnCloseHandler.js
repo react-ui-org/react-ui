@@ -1,3 +1,5 @@
+// Disable coverage for the following function
+/* istanbul ignore next line */
 export const dialogOnCloseHandler = (e, closeButtonRef, onCloseHandler = undefined) => {
   // Prevent the default behaviour of the event as we want to close dialog manually.
   e.preventDefault();
