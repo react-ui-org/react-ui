@@ -1,4 +1,4 @@
-# Transferring Props
+# transferProps
 
 The `transferProps` helper controls passing of props from the React component
 to the HTML element.

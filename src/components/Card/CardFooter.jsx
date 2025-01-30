@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { transferProps } from '../../jsHelpers/transferProps/transferProps';
+import { transferProps } from '../../helpers/transferProps';
 import { withGlobalProps } from '../../providers/globalProps';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import styles from './Card.module.scss';

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { TranslationsContext } from '../../providers/translations';
 import { withGlobalProps } from '../../providers/globalProps';
-import { transferProps } from '../../jsHelpers/transferProps/transferProps';
+import { transferProps } from '../../helpers/transferProps';
 import styles from './ModalCloseButton.module.scss';
 
 export const ModalCloseButton = React.forwardRef((props, ref) => {
