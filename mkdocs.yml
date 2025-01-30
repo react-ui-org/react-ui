@@ -131,8 +131,8 @@ nav:
           - Spacing: 'docs/css-helpers/spacing.md'
           - Typography: 'docs/css-helpers/typography.md'
       - JS Helpers:
-          - Classnames: 'docs/js-helpers/classnames.md'
-          - Transferring Props: 'docs/js-helpers/transferProps.md'
+          - ClassNames: 'jsHelpers/classNames/README.md'
+          - TransferProps: 'jsHelpers/transferProps/README.md'
   - Guides:
       - Customize:
           - Theming:

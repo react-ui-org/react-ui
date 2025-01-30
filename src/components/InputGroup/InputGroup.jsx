@@ -4,8 +4,8 @@ import React, {
   useMemo,
 } from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
-import { classNames } from '../../utils/classNames';
-import { transferProps } from '../../utils/transferProps';
+import { classNames } from '../../jsHelpers/classNames/classNames';
+import { transferProps } from '../../jsHelpers/transferProps/transferProps';
 import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';

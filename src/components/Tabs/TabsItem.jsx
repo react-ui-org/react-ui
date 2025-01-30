@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
-import { classNames } from '../../utils/classNames';
-import { transferProps } from '../../utils/transferProps';
+import { classNames } from '../../jsHelpers/classNames/classNames';
+import { transferProps } from '../../jsHelpers/transferProps/transferProps';
 import styles from './TabsItem.module.scss';
 
 export const TabsItem = ({

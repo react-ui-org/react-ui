@@ -16,13 +16,20 @@ import { classNames } from '@react-ui-org/react-ui';
 And use it:
 
 ```docoff-react-preview
+<docoff-placeholder bordered>Grid item</docoff-placeholder>
 <div
   className={classNames(
     'd-inline-block',
-    Date.now() > 1609455600 && 'text-warning',
-    Date.now() > 1622498400 ? 'text-secondary' : null,
+    true && 'mt-5',
+    1 && 'ml-5',
+    '',
+    false && 'mb-5',
+    null && 'mb-5',
+    undefined && 'mb-5',
+    0 && 'mb-5',
   )}
 >
   {(new Date()).toLocaleDateString()}
 </div>
+<docoff-placeholder bordered>Grid item</docoff-placeholder>
 ```
