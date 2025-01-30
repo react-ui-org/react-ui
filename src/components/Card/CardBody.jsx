@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
-import { transferProps } from '../../utils/transferProps';
+import { transferProps } from '../../jsHelpers/transferProps/transferProps';
 import styles from './Card.module.scss';
 
 export const CardBody = ({

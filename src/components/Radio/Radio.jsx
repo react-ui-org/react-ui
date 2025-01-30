@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
-import { classNames } from '../../utils/classNames';
-import { transferProps } from '../../utils/transferProps';
+import { classNames } from '../../jsHelpers/classNames/classNames';
+import { transferProps } from '../../jsHelpers/transferProps/transferProps';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { FormLayoutContext } from '../FormLayout';
