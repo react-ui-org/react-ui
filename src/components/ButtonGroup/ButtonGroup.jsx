@@ -3,8 +3,8 @@ import React, {
   useMemo,
 } from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
-import { classNames } from '../../utils/classNames';
-import { transferProps } from '../../utils/transferProps';
+import { classNames } from '../../jsHelpers/classNames/classNames';
+import { transferProps } from '../../jsHelpers/transferProps/transferProps';
 import { getRootPriorityClassName } from '../_helpers/getRootPriorityClassName';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import styles from './ButtonGroup.module.scss';

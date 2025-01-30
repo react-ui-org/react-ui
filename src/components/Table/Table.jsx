@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
-import { transferProps } from '../../utils/transferProps';
+import { transferProps } from '../../jsHelpers/transferProps/transferProps';
 import { TableHeaderCell } from './_components/TableHeaderCell';
 import { TableBodyCell } from './_components/TableBodyCell';
 import styles from './Table.module.scss';
