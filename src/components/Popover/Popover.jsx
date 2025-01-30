@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { createPortal } from 'react-dom';
+import { transferProps } from '../../helpers/transferProps';
+import { classNames } from '../../helpers/classNames';
 import { withGlobalProps } from '../../providers/globalProps';
-import { classNames } from '../../utils/classNames';
-import { transferProps } from '../../utils/transferProps';
 import cleanPlacementStyle from './_helpers/cleanPlacementStyle';
 import getRootSideClassName from './_helpers/getRootSideClassName';
 import getRootAlignmentClassName from './_helpers/getRootAlignmentClassName';

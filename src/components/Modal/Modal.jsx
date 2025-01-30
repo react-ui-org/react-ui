@@ -6,9 +6,9 @@ import React, {
   useRef,
 } from 'react';
 import { createPortal } from 'react-dom';
+import { classNames } from '../../helpers/classNames';
+import { transferProps } from '../../helpers/transferProps';
 import { withGlobalProps } from '../../providers/globalProps';
-import { classNames } from '../../utils/classNames';
-import { transferProps } from '../../utils/transferProps';
 import { dialogOnCancelHandler } from './_helpers/dialogOnCancelHandler';
 import { dialogOnClickHandler } from './_helpers/dialogOnClickHandler';
 import { dialogOnCloseHandler } from './_helpers/dialogOnCloseHandler';
