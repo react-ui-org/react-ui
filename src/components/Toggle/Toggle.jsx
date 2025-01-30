@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
-import { classNames } from '../../jsHelpers/classNames/classNames';
-import { transferProps } from '../../jsHelpers/transferProps/transferProps';
+import { classNames } from '../../helpers/classNames/classNames';
+import { transferProps } from '../../helpers/transferProps';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { FormLayoutContext } from '../FormLayout';
 import styles from './Toggle.module.scss';

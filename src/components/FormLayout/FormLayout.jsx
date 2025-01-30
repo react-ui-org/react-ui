@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { useMemo } from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
-import { classNames } from '../../jsHelpers/classNames/classNames';
-import { transferProps } from '../../jsHelpers/transferProps/transferProps';
+import { classNames } from '../../helpers/classNames/classNames';
+import { transferProps } from '../../helpers/transferProps';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { FormLayoutContext } from './FormLayoutContext';
 import styles from './FormLayout.module.scss';
