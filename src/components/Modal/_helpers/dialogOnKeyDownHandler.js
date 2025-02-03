@@ -1,5 +1,23 @@
 // Disable coverage for the following function
-/* istanbul ignore next line */
+/* istanbul ignore next */
+
+/**
+ * Handles the keydown event of the dialog which is fired when the user presses a key within the dialog.
+ *
+ * This handler is used to stop propagation of the Escape key press, if it is not allowed to close
+ * on Escape key and the close button is disabled.
+ *
+ * It is also used to trigger the primary action when the user presses the Enter key, if it is allowed to trigger
+ * the primary action on Enter key and the primary button is not disabled. This applies only when the focused
+ * element is an input or select as other elements should not trigger the primary action. Textarea is omitted
+ * as Enter key is used for new line.
+ *
+ * @param e
+ * @param closeButtonRef
+ * @param primaryButtonRef
+ * @param allowCloseOnEscapeKey
+ * @param allowPrimaryActionOnEnterKey
+ */
 export const dialogOnKeyDownHandler = (
   e,
   closeButtonRef,

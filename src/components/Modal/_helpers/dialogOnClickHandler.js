@@ -1,5 +1,17 @@
 // Disable coverage for the following function
-/* istanbul ignore next line */
+/* istanbul ignore next */
+
+/**
+ * Handles the click event of the dialog which is fired when the user clicks on the dialog or on its descendants.
+ *
+ * This handler is used to close the dialog when the user clicks on the backdrop, if it is allowed to close
+ * on backdrop click and the close button is not disabled.
+ *
+ * @param e
+ * @param closeButtonRef
+ * @param dialogRef
+ * @param allowCloseOnBackdropClick
+ */
 export const dialogOnClickHandler = (
   e,
   closeButtonRef,
