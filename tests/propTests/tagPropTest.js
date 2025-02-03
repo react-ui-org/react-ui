@@ -1,6 +1,6 @@
 export const tagPropTest = [
   [
     { tag: 'section' },
-    (rootElement) => expect(rootElement).toContainHTML('<section'),
+    (rootElement) => expect(rootElement.tagName).toEqual('SECTION'),
   ],
 ];

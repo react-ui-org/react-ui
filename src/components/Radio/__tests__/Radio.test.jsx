@@ -79,8 +79,8 @@ describe('rendering', () => {
     [
       { options: mandatoryProps.options },
       (rootElement) => {
-        expect(within(rootElement).getByLabelText('option 1')).not.toHaveAttribute('checked');
-        expect(within(rootElement).getByLabelText('option 2')).not.toHaveAttribute('checked');
+        expect(within(rootElement).getByLabelText('option 1')).not.toBeChecked();
+        expect(within(rootElement).getByLabelText('option 2')).not.toBeChecked();
         expect(within(rootElement).getByLabelText('option 2')).toBeDisabled();
       },
     ],
@@ -93,14 +93,14 @@ describe('rendering', () => {
         onChange: () => {},
         value: 'option2',
       },
-      (rootElement) => expect(within(rootElement).getByLabelText('option 2')).toHaveAttribute('checked'),
+      (rootElement) => expect(within(rootElement).getByLabelText('option 2')).toBeChecked(),
     ],
     [
       {
         onChange: () => {},
         value: 1,
       },
-      (rootElement) => expect(within(rootElement).getByLabelText('option 1')).toHaveAttribute('checked'),
+      (rootElement) => expect(within(rootElement).getByLabelText('option 1')).toBeChecked(),
     ],
   ])('renders with props: "%s"', (testedProps, assert) => {
     const dom = render((
