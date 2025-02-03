@@ -38,12 +38,18 @@
 
     .root[open] {
         display: flex;
-        animation: fade-in theme.$animation-duration ease-out;
+
+        @media (prefers-reduced-motion: no-preference) {
+            animation: fade-in theme.$animation-duration ease-out;
+        }
     }
 
     .root[open]::backdrop {
         background: theme.$backdrop-background;
-        animation: inherit;
+
+        @media (prefers-reduced-motion: no-preference) {
+            animation: inherit;
+        }
     }
 
     .isRootSizeSmall {
