@@ -62,5 +62,5 @@ export { GlobalPropsProvider } from './providers/globalProps';
 export { TranslationsProvider } from './providers/translations';
 
 // JS Helpers
-export { classNames } from './jsHelpers/classNames/classNames';
-export { transferProps } from './jsHelpers/transferProps/transferProps';
+export { classNames } from './helpers/classNames/classNames';
+export { transferProps } from './helpers/transferProps/transferProps';
