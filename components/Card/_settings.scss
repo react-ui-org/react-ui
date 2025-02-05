@@ -1,0 +1,5 @@
+@use "sass:list";
+@use "../../styles/settings/collections";
+
+$colors: list.join(collections.$feedback-colors, collections.$neutral-colors);
+$themeable-properties: color, border-color, background-color;
