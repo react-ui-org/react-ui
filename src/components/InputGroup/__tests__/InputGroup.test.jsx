@@ -3,13 +3,13 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { labelPropTest } from '../../../../tests/propTests/labelPropTest';
+import { labelPropTest } from '../../../../tests/jest/propTests/labelPropTest';
 import { Button } from '../../Button';
 import { SelectField } from '../../SelectField';
 import { TextField } from '../../TextField';
-import { childrenEmptyPropTest } from '../../../../tests/propTests/childrenEmptyPropTest';
-import { isLabelVisibleTest } from '../../../../tests/propTests/isLabelVisibleTest';
-import { layoutPropTest } from '../../../../tests/propTests/layoutPropTest';
+import { childrenEmptyPropTest } from '../../../../tests/jest/propTests/childrenEmptyPropTest';
+import { isLabelVisibleTest } from '../../../../tests/jest/propTests/isLabelVisibleTest';
+import { layoutPropTest } from '../../../../tests/jest/propTests/layoutPropTest';
 import { InputGroup } from '../InputGroup';
 
 const mandatoryProps = {
