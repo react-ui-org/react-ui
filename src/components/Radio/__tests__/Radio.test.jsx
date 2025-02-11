@@ -5,15 +5,15 @@ import {
   within,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { helpTextPropTest } from '../../../../tests/propTests/helpTextPropTest';
-import { formLayoutProviderTest } from '../../../../tests/providerTests/formLayoutProviderTest';
-import { isLabelVisibleTest } from '../../../../tests/propTests/isLabelVisibleTest';
-import { labelPropTest } from '../../../../tests/propTests/labelPropTest';
-import { layoutPropTest } from '../../../../tests/propTests/layoutPropTest';
-import { renderAsRequiredPropTest } from '../../../../tests/propTests/renderAsRequiredPropTest';
-import { requiredPropTest } from '../../../../tests/propTests/requiredPropTest';
-import { validationStatePropTest } from '../../../../tests/propTests/validationStatePropTest';
-import { validationTextPropTest } from '../../../../tests/propTests/validationTextPropTest';
+import { helpTextPropTest } from '../../../../tests/jest/propTests/helpTextPropTest';
+import { formLayoutProviderTest } from '../../../../tests/jest/providerTests/formLayoutProviderTest';
+import { isLabelVisibleTest } from '../../../../tests/jest/propTests/isLabelVisibleTest';
+import { labelPropTest } from '../../../../tests/jest/propTests/labelPropTest';
+import { layoutPropTest } from '../../../../tests/jest/propTests/layoutPropTest';
+import { renderAsRequiredPropTest } from '../../../../tests/jest/propTests/renderAsRequiredPropTest';
+import { requiredPropTest } from '../../../../tests/jest/propTests/requiredPropTest';
+import { validationStatePropTest } from '../../../../tests/jest/propTests/validationStatePropTest';
+import { validationTextPropTest } from '../../../../tests/jest/propTests/validationTextPropTest';
 import { Radio } from '../Radio';
 
 const mandatoryProps = {

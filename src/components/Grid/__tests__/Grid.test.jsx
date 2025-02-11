@@ -3,8 +3,8 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { childrenEmptyPropTest } from '../../../../tests/propTests/childrenEmptyPropTest';
-import { tagPropTest } from '../../../../tests/propTests/tagPropTest';
+import { childrenEmptyPropTest } from '../../../../tests/jest/propTests/childrenEmptyPropTest';
+import { tagPropTest } from '../../../../tests/jest/propTests/tagPropTest';
 import { Grid } from '../Grid';
 
 /* eslint-disable sort-keys */

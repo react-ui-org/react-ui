@@ -4,7 +4,7 @@ import {
   within,
 } from '@testing-library/react';
 import { ModalFooter } from '../ModalFooter';
-import { justifyPropTest } from '../../../../tests/propTests/justifyPropTest';
+import { justifyPropTest } from '../../../../tests/jest/propTests/justifyPropTest';
 
 const mandatoryProps = {
   children: <div>content text</div>,

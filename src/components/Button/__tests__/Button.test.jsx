@@ -5,13 +5,13 @@ import {
   within,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { actionColorPropTest } from '../../../../tests/propTests/actionColorPropTest';
-import { blockPropTest } from '../../../../tests/propTests/blockPropTest';
-import { feedbackColorPropTest } from '../../../../tests/propTests/feedbackColorPropTest';
-import { neutralColorPropTest } from '../../../../tests/propTests/neutralColorPropTest';
-import { refPropTest } from '../../../../tests/propTests/refPropTest';
-import { labelPropTest } from '../../../../tests/propTests/labelPropTest';
-import { sizePropTest } from '../../../../tests/propTests/sizePropTest';
+import { actionColorPropTest } from '../../../../tests/jest/propTests/actionColorPropTest';
+import { blockPropTest } from '../../../../tests/jest/propTests/blockPropTest';
+import { feedbackColorPropTest } from '../../../../tests/jest/propTests/feedbackColorPropTest';
+import { neutralColorPropTest } from '../../../../tests/jest/propTests/neutralColorPropTest';
+import { refPropTest } from '../../../../tests/jest/propTests/refPropTest';
+import { labelPropTest } from '../../../../tests/jest/propTests/labelPropTest';
+import { sizePropTest } from '../../../../tests/jest/propTests/sizePropTest';
 import { ButtonGroupContext } from '../../ButtonGroup';
 import { Button } from '../Button';
 

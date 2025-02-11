@@ -5,7 +5,7 @@ import {
   within,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { labelPropTest } from '../../../../tests/propTests/labelPropTest';
+import { labelPropTest } from '../../../../tests/jest/propTests/labelPropTest';
 import { TabsItem } from '../TabsItem';
 
 const mandatoryProps = {

@@ -3,9 +3,9 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { blockPropTest } from '../../../../tests/propTests/blockPropTest';
-import { childrenEmptyPropTest } from '../../../../tests/propTests/childrenEmptyPropTest';
-import { idPropTest } from '../../../../tests/propTests/idPropTest';
+import { blockPropTest } from '../../../../tests/jest/propTests/blockPropTest';
+import { childrenEmptyPropTest } from '../../../../tests/jest/propTests/childrenEmptyPropTest';
+import { idPropTest } from '../../../../tests/jest/propTests/idPropTest';
 import { Button } from '../../Button';
 import { ButtonGroup } from '../ButtonGroup';
 
