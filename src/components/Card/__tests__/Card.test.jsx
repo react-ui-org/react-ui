@@ -3,13 +3,13 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { feedbackColorPropTest } from '../../../../tests/propTests/feedbackColorPropTest';
-import { raisedPropTest } from '../../../../tests/propTests/raisedPropTest';
+import { feedbackColorPropTest } from '../../../../tests/jest/propTests/feedbackColorPropTest';
+import { raisedPropTest } from '../../../../tests/jest/propTests/raisedPropTest';
 import { ScrollView } from '../../ScrollView';
 import { Card } from '../Card';
 import { CardBody } from '../CardBody';
 import { CardFooter } from '../CardFooter';
-import { densePropTest } from '../../../../tests/propTests/densePropTest';
+import { densePropTest } from '../../../../tests/jest/propTests/densePropTest';
 
 const mandatoryProps = {
   children: <CardBody>card body content</CardBody>,

@@ -3,8 +3,8 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { feedbackColorPropTest } from '../../../../tests/propTests/feedbackColorPropTest';
-import { neutralColorPropTest } from '../../../../tests/propTests/neutralColorPropTest';
+import { feedbackColorPropTest } from '../../../../tests/jest/propTests/feedbackColorPropTest';
+import { neutralColorPropTest } from '../../../../tests/jest/propTests/neutralColorPropTest';
 import { Badge } from '../Badge';
 
 const mandatoryProps = {

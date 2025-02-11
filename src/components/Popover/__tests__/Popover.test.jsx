@@ -4,7 +4,7 @@ import {
   screen,
   within,
 } from '@testing-library/react';
-import { refPropTest } from '../../../../tests/propTests/refPropTest';
+import { refPropTest } from '../../../../tests/jest/propTests/refPropTest';
 import { Popover } from '../Popover';
 
 const mandatoryProps = {
