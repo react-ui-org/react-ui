@@ -5,7 +5,7 @@ import {
   within,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { feedbackColorPropTest } from '../../../../tests/propTests/feedbackColorPropTest';
+import { feedbackColorPropTest } from '../../../../tests/jest/propTests/feedbackColorPropTest';
 import defaultTranslations from '../../../translations/en';
 import { Alert } from '../Alert';
 
