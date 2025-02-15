@@ -6,3 +6,8 @@
 .env
 statistics.html
 !.gitkeep
+
+# Playwright
+.env.playwright
+/playwright-report/
+/tests/playwright/.temp/

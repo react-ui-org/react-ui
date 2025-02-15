@@ -70,6 +70,23 @@ docker compose run --rm node_shell
     docker compose run --rm mkdocs_build_site
     ```
 
+#### Playwright
+
+You need to run npm commands such as `test:playwright-ct:all` and
+`test:playwright-ct:all-with-update` within `playwright` docker container.
+
+To log into the container, run:
+
+```bash
+docker compose run --rm playwright
+```
+
+and then run the commands within the `playwright` container:
+
+```bash
+npm run test:playwright-ct:all
+```
+
 ## Git Workflow
 
 In order for the automation to work in the best possible way (we use GitHub
@@ -156,13 +173,13 @@ To keep React UI consistent and predictable the following guidelines should be o
 1. If component accepts the `children` prop it should be either required or the element
    should return `null` when no children are provided.
 2. When forwarding HTML attributes to the component the following rules should
-    be observed:
+   be observed:
     1. If the component internally instantiates one or more interactive
-        (clickable/editable) elements, the attributes should be forwarded to
+       (clickable/editable) elements, the attributes should be forwarded to
        all of them.
     2. If the component does not internally instantiate an interactive
-        (clickable/editable) element, the attributes should be forwarded to the
-        root element of the component.
+       (clickable/editable) element, the attributes should be forwarded to the
+       root element of the component.
 
 ## Documenting
 

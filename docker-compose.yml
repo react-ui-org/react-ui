@@ -24,6 +24,13 @@ services:
     extends: node
     entrypoint: bash
 
+  # For running Playwright tests
+  playwright:
+    build: docker/playwright
+    user: ${COMPOSE_UID-1000}:${COMPOSE_GID-1000}
+    volumes:
+      - .:/workspace:z
+
   # Build services
   mkdocs_build_site:
     extends: mkdocs

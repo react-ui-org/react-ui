@@ -14,6 +14,9 @@ module.exports = {
     '<rootDir>/tests/jest/setupTestingLibrary.js',
   ],
   testEnvironment: '@happy-dom/jest-environment',
+  testMatch: [
+    '**/*.test.{js,jsx}',
+  ],
   transformIgnorePatterns: [
     'node_modules/(?!(@react-ui-org))',
   ],
