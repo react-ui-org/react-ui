@@ -48,16 +48,19 @@
     "copy:css": "cp src/docs/_assets/generated/react-ui.css dist && cp src/docs/_assets/generated/react-ui.development.css dist",
     "copy:js": "cp src/docs/_assets/generated/react-ui.js dist && cp src/docs/_assets/generated/react-ui.development.js dist",
     "eslint": "eslint --ext js,jsx src",
-    "jest": "jest src --coverage",
     "lint": "npm run eslint && npm run markdownlint && npm run stylelint",
     "markdownlint": "markdownlint-cli2 \"CONTRIBUTING.md\" \"README.md\" \"RELEASING.md\" \"src/**/*.md\"",
     "postbuild": "npm run copy",
-    "postinstall": "cp -n .env.dist .env || true",
+    "postinstall": "cp -n .env.dist .env && cp -n .env.playwright.dist .env.playwright || true",
     "precopy": "rm -rf dist && mkdir dist",
     "prepublishOnly": "npm run build",
     "start": "webpack --watch --mode=development",
     "stylelint": "stylelint \"src/**/*.{css,scss}\" \"!src/docs/_assets/generated/**\" --config stylelint.config.js",
-    "test": "npm run jest"
+    "test": "npm run test:jest",
+    "test:jest": "jest src --coverage",
+    "test:playwright-ct:all": "playwright test -c playwright-ct.config.js",
+    "test:playwright-ct:all-with-update": "playwright test -c playwright-ct.config.js --update-snapshots",
+    "test:playwright-ct:show-report": "playwright show-report --host=0.0.0.0 --port=9323"
   },
   "dependencies": {
     "normalize.css": "^8.0.1"
@@ -77,6 +80,7 @@
     "@babel/preset-react": "^7.24.7",
     "@babel/register": "^7.24.6",
     "@happy-dom/jest-environment": "^16.6.0",
+    "@playwright/experimental-ct-react": "^1.50.1",
     "@stylistic/stylelint-config": "^1.0.1",
     "@svgr/webpack": "^8.1.0",
     "@testing-library/jest-dom": "^6.6.3",
@@ -89,6 +93,7 @@
     "babel-loader": "^9.1.3",
     "core-js": "^3.37.1",
     "css-loader": "^7.1.2",
+    "dotenv": "^16.4.7",
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.29.1",
