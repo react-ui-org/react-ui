@@ -24,6 +24,16 @@ services:
     extends: node
     entrypoint: bash
 
+  # For running Playwright tests
+  playwright:
+    build: docker/playwright
+    entrypoint: bash
+    user: ${COMPOSE_UID-1000}:${COMPOSE_GID-1000}
+    ports:
+      - ${COMPOSE_PLAYWRIGHT_REPORT_PORT-9323}:9323
+    volumes:
+      - .:/workspace:z
+
   # Build services
   mkdocs_build_site:
     extends: mkdocs

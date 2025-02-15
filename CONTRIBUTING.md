@@ -22,12 +22,18 @@ To change them, edit the `.env` file as needed.
 #### Node shell
 
 All npm commands such as `npm ci`, `npm test`, `npm run eslint` and others you
-need to run them within the `node_shell` docker container.
+need to run them within the `node_shell` Docker container.
 
 To log into the container, run:
 
 ```bash
 docker compose run --rm node_shell
+```
+
+If you want to run single command, run:
+
+```bash
+docker compose run --rm node_shell -c 'npm <command>'
 ```
 
 #### Run the Dev Server
@@ -69,6 +75,31 @@ docker compose run --rm node_shell
     ```bash
     docker compose run --rm mkdocs_build_site
     ```
+
+#### Playwright
+
+npm commands such as `test:playwright-ct:all` and `test:playwright-ct:all-with-update`
+need to be run them within the `playwright` Docker container.
+
+To log into the container, run:
+
+```bash
+docker compose run --rm --service-ports playwright
+```
+
+If you want to run single command, run:
+
+```bash
+docker compose run --rm --service-ports playwright -c 'npm run test:playwright-ct:*'
+```
+
+Argument `--service-ports` is used to expose the ports of the container to the host
+to serve the test report.
+
+## Testing
+
+Please check out our [Testing Guidelines](/docs/contribute/testing-guidelines/).
+It includes testing guidelines and information on how to run tests.
 
 ## Git Workflow
 
@@ -156,13 +187,13 @@ To keep React UI consistent and predictable the following guidelines should be o
 1. If component accepts the `children` prop it should be either required or the element
    should return `null` when no children are provided.
 2. When forwarding HTML attributes to the component the following rules should
-    be observed:
+   be observed:
     1. If the component internally instantiates one or more interactive
-        (clickable/editable) elements, the attributes should be forwarded to
+       (clickable/editable) elements, the attributes should be forwarded to
        all of them.
     2. If the component does not internally instantiate an interactive
-        (clickable/editable) element, the attributes should be forwarded to the
-        root element of the component.
+       (clickable/editable) element, the attributes should be forwarded to the
+       root element of the component.
 
 ## Documenting
 
