@@ -7,7 +7,7 @@ on:
 jobs:
   test_and_build:
     name: Test and build
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     outputs:
       version: ${{ steps.check_package_version.outputs.version }}
       version_changed: ${{ steps.check_package_version.outputs.changed }}
@@ -51,7 +51,7 @@ jobs:
       contents: write
     needs: [test_and_build]
     if: needs.test_and_build.outputs.version_changed == 'false'
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Draft release on GitHub
         uses: release-drafter/release-drafter@v6
@@ -62,7 +62,7 @@ jobs:
     name: Publish release draft
     needs: [test_and_build]
     if: needs.test_and_build.outputs.version_changed == 'true'
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
@@ -86,7 +86,7 @@ jobs:
     name: Publish to npm
     needs: [test_and_build, publish_release_draft_on_version_bump]
     if: needs.test_and_build.outputs.version_changed == 'true'
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
@@ -112,7 +112,7 @@ jobs:
       contents: write
     needs: [test_and_build, publish_release_draft_on_version_bump]
     if: needs.test_and_build.outputs.version_changed == 'true'
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
