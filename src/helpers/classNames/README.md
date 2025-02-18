@@ -37,7 +37,7 @@ And use it:
 </>
 ```
 
-## Parameter filtering
+## Parameter Filtering
 
 The `classNames` function:
 
