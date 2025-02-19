@@ -4,5 +4,5 @@ export const classNames = (...classes) => {
     && className.trim().length > 0,
   );
 
-  return filteredClassNames.length > 0 ? filteredClassNames.join(' ') : undefined;
+  return filteredClassNames.length > 0 ? filteredClassNames.join(' ') : '';
 };

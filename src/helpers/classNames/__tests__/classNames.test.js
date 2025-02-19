@@ -20,9 +20,15 @@ describe('classNames', () => {
     expect(result).toEqual('class-1 class-2 class-3');
   });
 
-  it('returns undefined if all class names are filtered out', () => {
+  it('returns empty string if called with no params', () => {
     const result = classNames();
 
-    expect(result).toEqual(undefined);
+    expect(result).toEqual('');
+  });
+
+  it('returns empty string if all params are removed', () => {
+    const result = classNames(false);
+
+    expect(result).toEqual('');
   });
 });

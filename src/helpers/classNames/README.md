@@ -50,7 +50,7 @@ The `classNames` function:
   'class-1',
   'class-2 class-3',
   ' ',
-  ' ', // non=-breakable space
+  ' ', // non-breakable space
   '	', // eslint-disable-line no-tabs
   '',
   0,
