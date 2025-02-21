@@ -72,8 +72,8 @@ docker compose run --rm node_shell
 
 #### Playwright
 
-You need to run npm commands such as `test:playwright-ct:all` and
-`test:playwright-ct:all-with-update` within `playwright` docker container.
+Npm commands such as `test:playwright-ct:all` and `test:playwright-ct:all-with-update`
+you  need to run them within the `playwright` docker container.
 
 To log into the container, run:
 
@@ -81,11 +81,10 @@ To log into the container, run:
 docker compose run --rm playwright
 ```
 
-and then run the commands within the `playwright` container:
+## Testing
 
-```bash
-npm run test:playwright-ct:all
-```
+Please check out our [Testing Guidelines](/docs/contribute/testing-guidelines/).
+It includes testing guidelines and information on how to run tests.
 
 ## Git Workflow
 
