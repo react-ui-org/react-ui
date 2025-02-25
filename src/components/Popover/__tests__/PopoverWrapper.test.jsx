@@ -3,7 +3,7 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { tagPropTest } from '../../../../tests/propTests/tagPropTest';
+import { tagPropTest } from '../../../../tests/jest/propTests/tagPropTest';
 import { PopoverWrapper } from '../PopoverWrapper';
 
 const mandatoryProps = {

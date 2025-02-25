@@ -5,7 +5,7 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ModalCloseButton } from '../ModalCloseButton';
-import { refPropTest } from '../../../../tests/propTests/refPropTest';
+import { refPropTest } from '../../../../tests/jest/propTests/refPropTest';
 
 describe('rendering', () => {
   it.each([

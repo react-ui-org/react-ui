@@ -6,19 +6,19 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { TextField } from '../TextField';
-import { disabledPropTest } from '../../../../tests/propTests/disabledPropTest';
-import { refPropTest } from '../../../../tests/propTests/refPropTest';
-import { fullWidthPropTest } from '../../../../tests/propTests/fullWidthPropTest';
-import { helpTextPropTest } from '../../../../tests/propTests/helpTextPropTest';
-import { formLayoutProviderTest } from '../../../../tests/providerTests/formLayoutProviderTest';
-import { isLabelVisibleTest } from '../../../../tests/propTests/isLabelVisibleTest';
-import { labelPropTest } from '../../../../tests/propTests/labelPropTest';
-import { layoutPropTest } from '../../../../tests/propTests/layoutPropTest';
-import { requiredPropTest } from '../../../../tests/propTests/requiredPropTest';
-import { sizePropTest } from '../../../../tests/propTests/sizePropTest';
-import { validationStatePropTest } from '../../../../tests/propTests/validationStatePropTest';
-import { validationTextPropTest } from '../../../../tests/propTests/validationTextPropTest';
-import { variantPropTest } from '../../../../tests/propTests/variantPropTest';
+import { disabledPropTest } from '../../../../tests/jest/propTests/disabledPropTest';
+import { refPropTest } from '../../../../tests/jest/propTests/refPropTest';
+import { fullWidthPropTest } from '../../../../tests/jest/propTests/fullWidthPropTest';
+import { helpTextPropTest } from '../../../../tests/jest/propTests/helpTextPropTest';
+import { formLayoutProviderTest } from '../../../../tests/jest/providerTests/formLayoutProviderTest';
+import { isLabelVisibleTest } from '../../../../tests/jest/propTests/isLabelVisibleTest';
+import { labelPropTest } from '../../../../tests/jest/propTests/labelPropTest';
+import { layoutPropTest } from '../../../../tests/jest/propTests/layoutPropTest';
+import { requiredPropTest } from '../../../../tests/jest/propTests/requiredPropTest';
+import { sizePropTest } from '../../../../tests/jest/propTests/sizePropTest';
+import { validationStatePropTest } from '../../../../tests/jest/propTests/validationStatePropTest';
+import { validationTextPropTest } from '../../../../tests/jest/propTests/validationTextPropTest';
+import { variantPropTest } from '../../../../tests/jest/propTests/variantPropTest';
 
 const mandatoryProps = {
   label: 'label',
