@@ -22,7 +22,7 @@ To change them, edit the `.env` file as needed.
 #### Node shell
 
 All npm commands such as `npm ci`, `npm test`, `npm run eslint` and others you
-need to run them within the `node_shell` docker container.
+need to run them within the `node_shell` Docker container.
 
 To log into the container, run:
 
@@ -72,8 +72,8 @@ docker compose run --rm node_shell
 
 #### Playwright
 
-Npm commands such as `test:playwright-ct:all` and `test:playwright-ct:all-with-update`
-you  need to run them within the `playwright` docker container.
+npm commands such as `test:playwright-ct:all` and `test:playwright-ct:all-with-update`
+need to be run them within the `playwright` Docker container.
 
 To log into the container, run:
 

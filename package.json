@@ -59,7 +59,8 @@
     "test": "npm run test:jest",
     "test:jest": "jest src --coverage",
     "test:playwright-ct:all": "playwright test -c playwright-ct.config.js",
-    "test:playwright-ct:all-with-update": "playwright test -c playwright-ct.config.js --update-snapshots"
+    "test:playwright-ct:all-with-update": "playwright test -c playwright-ct.config.js --update-snapshots",
+    "test:playwright-ct:show-report": "playwright show-report --port=$(grep PW_REPORT_PORT .env.playwright | cut -d '=' -f2)"
   },
   "dependencies": {
     "normalize.css": "^8.0.1"

@@ -98,12 +98,14 @@ npm run test:playwright-ct:<all|all-with-update> -- <cli_argument>
 
 #### Opening Test Report
 
-After running Playwright tests, test report can be served into a browser
+After running Playwright tests, test report can be opened on the host system
 by using the following command:
 
 ```bash
-npx playwright show-report
+npm run test:playwright-ct:show-report
 ```
+
+Test report cannot be server Docker container yet.
 
 [gh-gg-node-shell]: /docs/contribute/general-guidelines#node-shell
 [gh-gg-playwright]: /docs/contribute/general-guidelines#playwright
