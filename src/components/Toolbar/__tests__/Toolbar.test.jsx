@@ -3,11 +3,11 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { alignPropTest } from '../../../../tests/propTests/alignPropTest';
-import { childrenEmptyPropTest } from '../../../../tests/propTests/childrenEmptyPropTest';
-import { densePropTest } from '../../../../tests/propTests/densePropTest';
-import { noWrapPropTest } from '../../../../tests/propTests/noWrapPropTest';
-import { justifyPropTest } from '../../../../tests/propTests/justifyPropTest';
+import { alignPropTest } from '../../../../tests/jest/propTests/alignPropTest';
+import { childrenEmptyPropTest } from '../../../../tests/jest/propTests/childrenEmptyPropTest';
+import { densePropTest } from '../../../../tests/jest/propTests/densePropTest';
+import { noWrapPropTest } from '../../../../tests/jest/propTests/noWrapPropTest';
+import { justifyPropTest } from '../../../../tests/jest/propTests/justifyPropTest';
 import { Toolbar } from '../Toolbar';
 
 const defaultProps = {

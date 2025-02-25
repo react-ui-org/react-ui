@@ -24,11 +24,17 @@ jobs:
       - name: Install
         run: npm ci
 
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
       - name: Lint
         run: npm run lint
 
       - name: Test
         run: npm test
+
+      - name: Test Playwright
+        run: npm run test:playwright-ct:all
 
       - name: Build
         run: npm run build

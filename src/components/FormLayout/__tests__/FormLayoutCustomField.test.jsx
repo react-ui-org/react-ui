@@ -3,11 +3,11 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { childrenEmptyPropTest } from '../../../../tests/propTests/childrenEmptyPropTest';
-import { fullWidthPropTest } from '../../../../tests/propTests/fullWidthPropTest';
-import { labelPropTest } from '../../../../tests/propTests/labelPropTest';
-import { requiredPropTest } from '../../../../tests/propTests/requiredPropTest';
-import { validationStatePropTest } from '../../../../tests/propTests/validationStatePropTest';
+import { childrenEmptyPropTest } from '../../../../tests/jest/propTests/childrenEmptyPropTest';
+import { fullWidthPropTest } from '../../../../tests/jest/propTests/fullWidthPropTest';
+import { labelPropTest } from '../../../../tests/jest/propTests/labelPropTest';
+import { requiredPropTest } from '../../../../tests/jest/propTests/requiredPropTest';
+import { validationStatePropTest } from '../../../../tests/jest/propTests/validationStatePropTest';
 import { FormLayoutContext } from '../FormLayoutContext';
 import { FormLayoutCustomField } from '../FormLayoutCustomField';
 
