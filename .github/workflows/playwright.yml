@@ -9,6 +9,8 @@ jobs:
   test:
     name: Playwright
     runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.50.1-noble
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
@@ -30,6 +32,9 @@ jobs:
 
       - name: Run Playwright tests and generate test report
         run: npm run test:playwright-ct:all
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
 
       - name: Upload Playwright test report
         uses: actions/upload-artifact@v4
