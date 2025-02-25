@@ -15,47 +15,45 @@ their designated Docker containers before pushing changes to the repository.
 
 ### Linters (ESlint, Markdownlint, Stylelint)
 
-They can be run individually:
+**On host:**
 
-1. (optional) [Open][gh-gg-node-shell] `node_shell` Docker
-   container
-2. Run linters:
+[Open][gh-gg-node-shell] `node_shell` Docker container:
 
-    ```bash
-    npm run <eslint|markdownlint|stylelint>
-    ```
+```bash
+docker compose run --rm node_shell
+```
 
-or all together:
+**Within `node_shell`:**
 
-1. (optional) [Open][gh-gg-node-shell] `node_shell` Docker
-   container
-2. Run linters:
+Run linters either all together:
 
-    ```bash
-    npm run lint
-    ```
+```bash
+npm run lint
+```
+
+or run linters individually:
+
+```bash
+npm run <eslint|markdownlint|stylelint>
+```
 
 ### Jest
 
-Jest tests can be run using the following commands:
+**On host:**
 
-1. (optional) [Open][gh-gg-node-shell] `node_shell` Docker
-   container
-2. Run tests:
+[Open][gh-gg-node-shell] `node_shell` Docker container:
 
-     ```bash
-     npm run test:jest
-     ```
+```bash
+docker compose run --rm node_shell
+```
 
-or all together with linters:
+**Within `node_shell`:**
 
-1. (optional) [Open](/README.md#node_shell-docker-container) `node_shell` Docker
-   container
-2. Run tests:
+Run Jest tests:
 
-    ```bash
-    npm test
-    ```
+```bash
+npm run test:jest
+```
 
 ### Playwright
 
@@ -77,12 +75,21 @@ cp .env.playwright.dist .env.playwright
 
 Playwright tests can be run using the following commands:
 
-1. [Open][gh-gg-playwright] `playwright` Docker container
-2. Run tests:
+**On host:**
 
-    ```bash
-    npm run test:playwright-ct:<all|all-with-update>
-    ```
+[Open][gh-gg-playwright] `playwright` Docker container:
+
+```bash
+docker compose run --rm playwright
+```
+
+**Within `node_shell`:**
+
+Run tests:
+
+```bash
+npm run test:playwright-ct:<all|all-with-update>
+```
 
 You can also run specific tests by passing a path to the test files:
 
@@ -98,14 +105,14 @@ npm run test:playwright-ct:<all|all-with-update> -- <cli_argument>
 
 #### Opening Test Report
 
-After running Playwright tests, test report can be opened on the host system
+After running Playwright tests, test report can be opened **on the host system**
 by using the following command:
 
 ```bash
 npm run test:playwright-ct:show-report
 ```
 
-Test report cannot be server Docker container yet.
+Test report cannot be server from Docker container yet.
 
 [gh-gg-node-shell]: /docs/contribute/general-guidelines#node-shell
 [gh-gg-playwright]: /docs/contribute/general-guidelines#playwright

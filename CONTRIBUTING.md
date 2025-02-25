@@ -30,6 +30,12 @@ To log into the container, run:
 docker compose run --rm node_shell
 ```
 
+If you want to run single command, run:
+
+```bash
+docker compose run --rm node_shell bash -c 'npm run <command>'
+```
+
 #### Run the Dev Server
 
 1. **Within `node_shell`:** Install dependencies:
@@ -79,6 +85,12 @@ To log into the container, run:
 
 ```bash
 docker compose run --rm playwright
+```
+
+If you want to run single command, run:
+
+```bash
+docker compose run --rm playwright bash -c 'npm run <command>'
 ```
 
 ## Testing
