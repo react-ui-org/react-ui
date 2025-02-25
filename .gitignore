@@ -1,13 +1,11 @@
 /coverage
 /dist
 /node_modules
+/playwright-report/
 /site
 /src/docs/_assets/generated/*
+/tests/playwright/.temp/
 .env
+.env.playwright
 statistics.html
 !.gitkeep
-
-# Playwright
-.env.playwright
-/playwright-report/
-/tests/playwright/.temp/
