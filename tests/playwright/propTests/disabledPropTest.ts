@@ -1,4 +1,6 @@
-export const disabledPropTest = [
+import type { PropTests } from '../types';
+
+export const disabledPropTest: PropTests = [
   {
     name: 'disabled=false',
     props: { disabled: false },
