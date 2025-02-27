@@ -10,18 +10,26 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "noEmit": false,
     "jsx": "react-jsx"
   },
   "include": [
     "src",
-    "tests"
+    "declaration.d.ts",
+  ],
+  "exclude": [
+    "src/**/__tests__/*",
+    "src/docs/*",
+    "tests/*",
+    "node_modules",
+    "dist",
+    "webpack.config.babel.js"
   ]
 }

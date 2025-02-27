@@ -7,7 +7,7 @@
 /site
 /src/**/__tests__
 /src/docs/
-/src/docsCustomProperties.js
+/src/docsCustomProperties.ts
 /src/index.md
 /tests
 .browserslistrc
