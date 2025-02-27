@@ -1,4 +1,6 @@
-export const feedbackColorPropTest = [
+import type { PropTests } from '../types';
+
+export const feedbackColorPropTest: PropTests = [
   {
     name: 'color=danger',
     props: { color: 'danger' },
