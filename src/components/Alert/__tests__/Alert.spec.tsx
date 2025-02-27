@@ -49,8 +49,7 @@ test.describe('Alert', () => {
         />,
       );
 
-      const id = await component.getAttribute('id');
-      expect(id).toBe('test-id');
+      await expect(component).toHaveAttribute('id', 'test-id');
     });
   });
 
@@ -64,7 +63,7 @@ test.describe('Alert', () => {
           }}
         />,
       );
-      const closeButton = await component.getByRole('button');
+      const closeButton = component.getByRole('button');
       await closeButton.click();
 
       expect(clicked).toBeTruthy();
@@ -79,7 +78,7 @@ test.describe('Alert', () => {
           }}
         />,
       );
-      const closeButton = await component.getByRole('button');
+      const closeButton = component.getByRole('button');
       await closeButton.press('Enter');
 
       expect(clicked).toBeTruthy();

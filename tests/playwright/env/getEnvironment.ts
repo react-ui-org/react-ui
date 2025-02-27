@@ -1,9 +1,13 @@
+type EnvironmentArgs = {
+  [name: string]: string
+};
+
 /**
  * Process environment file arguments.
  *
  * Default values are used if the variable is not specified.
  */
-export const getEnvironment = (environmentArgs) => {
+export const getEnvironment = (environmentArgs: EnvironmentArgs) => {
   const {
     PW_CT_PORT,
     PW_WORKERS,
