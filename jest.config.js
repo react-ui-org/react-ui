@@ -1,19 +1,34 @@
 module.exports = {
+  extensionsToTreatAsEsm: [
+    '.ts',
+    '.tsx',
+  ],
   moduleFileExtensions: [
     'js',
     'jsx',
+    'ts',
+    'tsx',
   ],
   moduleNameMapper: {
     '\\.scss$': 'identity-obj-proxy',
-    '\\.svg$': '<rootDir>/tests/mocks/svgrMock.jsx',
+    '\\.svg$': '<rootDir>/tests/jest/mocks/svgrMock.jsx',
   },
+  preset: 'ts-jest',
   setupFiles: [
-    '<rootDir>/tests/setupJest.js',
+    '<rootDir>/tests/jest/setupJest.js',
   ],
   setupFilesAfterEnv: [
-    '<rootDir>/tests/setupTestingLibrary.js',
   ],
   testEnvironment: '@happy-dom/jest-environment',
+  testMatch: [
+    '**/*.test.{ts,tsx}',
+  ],
+  transform: {
+    '^.+\\.(ts|tsx)$': [
+      'ts-jest',
+      { useESM: true },
+    ],
+  },
   transformIgnorePatterns: [
     'node_modules/(?!(@react-ui-org))',
   ],

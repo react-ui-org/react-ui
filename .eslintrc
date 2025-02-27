@@ -1,21 +1,23 @@
 {
   "extends": [
-    "@visionappscz/eslint-config-visionapps"
+    "@visionappscz/eslint-config-visionapps",
+    "airbnb-typescript",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:deprecation/recommended",
+    "plugin:typescript-sort-keys/recommended",
   ],
   "env": {
     "browser": true,
     "jest": true
   },
-  "ignorePatterns": ["src/docs/_assets/generated"],
-  "overrides": [
-    {
-      "files": ["**/*.md"],
-      "extends": [
-        "plugin:markdown/recommended"
-      ]
-    }
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "@typescript-eslint"
   ],
-  "parser": "@babel/eslint-parser",
   "rules": {
     "import/prefer-default-export": "off",
     "no-console": "error"

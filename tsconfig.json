@@ -1,0 +1,36 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
+        "allowJs": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "noFallthroughCasesInSwitch": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "isolatedModules": false,
+        "noEmit": false,
+        "jsx": "react-jsx"
+    },
+    "include": [
+        "src",
+        "declaration.d.ts",
+        "definitions.d.ts",
+    ],
+    "exclude": [
+        "src/**/__tests__/*",
+        "src/docs/_assets/js/*",
+        "tests/*",
+        "node_modules",
+        "dist",
+        "webpack.config.babel.js"
+    ]
+}
