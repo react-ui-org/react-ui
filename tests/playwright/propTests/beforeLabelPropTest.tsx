@@ -1,7 +1,8 @@
 import React from 'react';
 import { TestIcon } from '../components/TestIcon';
+import type { PropTests } from '../types';
 
-export const beforeLabelPropTest = [
+export const beforeLabelPropTest: PropTests = [
   {
     name: 'beforeLabel',
     props: { beforeLabel: <TestIcon /> },

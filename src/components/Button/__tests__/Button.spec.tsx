@@ -66,8 +66,7 @@ test.describe('Button', () => {
         />,
       );
 
-      const id = await component.getAttribute('id');
-      expect(id).toBe('test-id');
+      await expect(component).toHaveAttribute('id', 'test-id');
     });
 
     test('ref', async ({ mount }) => {

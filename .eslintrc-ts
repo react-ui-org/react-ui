@@ -1,0 +1,36 @@
+{
+  "extends": [
+    "@visionappscz/eslint-config-visionapps",
+    "airbnb-typescript",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:deprecation/recommended",
+    "plugin:typescript-sort-keys/recommended",
+  ],
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.spec.tsx",
+        "*.story.tsx",
+      ],
+      "rules": {
+        "@typescript-eslint/unbound-method": "off"
+      }
+    }
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "import/prefer-default-export": "off",
+    "no-console": "error"
+  }
+}

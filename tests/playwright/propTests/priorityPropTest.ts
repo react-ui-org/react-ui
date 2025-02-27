@@ -1,4 +1,6 @@
-export const priorityPropTest = [
+import type { PropTests } from '../types';
+
+export const priorityPropTest: PropTests = [
   {
     name: 'priority=filled',
     props: { priority: 'filled' },
