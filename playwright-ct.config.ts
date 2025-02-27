@@ -35,7 +35,7 @@ module.exports = defineConfig({
   // Directory where the tests are located
   testDir: './src/',
   // Pattern to search for test files
-  testMatch: '*/*.spec.{js,jsx}',
+  testMatch: '*/*.spec.{ts,tsx}',
   // Timeout for each test
   timeout: 10 * 1000,
   // Do not update snapshots automatically

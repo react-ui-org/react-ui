@@ -1,9 +1,10 @@
 import { breakpoints } from '../constants/breakpoints';
+import type { PropTests } from '../types';
 
 const windowHeight = 100;
 
 const generateLabelVisibilityPropTests = () => {
-  const tests = [
+  const tests: PropTests = [
     {
       name: 'labelVisibility: none (hidden)',
       props: {
@@ -18,7 +19,7 @@ const generateLabelVisibilityPropTests = () => {
     },
   ];
 
-  Object.entries(breakpoints).map(([breakpointName, breakpointValue]) => {
+  Object.entries(breakpoints).forEach(([breakpointName, breakpointValue]) => {
     tests.push({
       name: `labelVisibility: ${breakpointName} (visible)`,
       onBeforeTest: async (page) => {
