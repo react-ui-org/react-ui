@@ -1,4 +1,6 @@
-export const actionColorPropTest = [
+import type { PropTests } from '../types';
+
+export const actionColorPropTest: PropTests = [
   {
     name: 'color=primary',
     props: { color: 'primary' },

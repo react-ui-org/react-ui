@@ -1,4 +1,6 @@
-export const neutralColorPropTest = [
+import type { PropTests } from '../types';
+
+export const neutralColorPropTest: PropTests = [
   {
     name: 'color=dark',
     props: { color: 'dark' },
