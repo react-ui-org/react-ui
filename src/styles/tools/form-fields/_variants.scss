@@ -13,11 +13,6 @@
 @use "../../settings/form-fields" as settings;
 @use "../../theme/form-fields" as theme;
 
-@mixin _disabled-state() {
-    opacity: theme.$disabled-opacity;
-    cursor: theme.$disabled-cursor;
-}
-
 // 1.
 @mixin _generate-custom-properties($type, $variant, $state) {
     @if not list.index(map.keys(map.get(settings.$themeable-variant-states, $type)), $variant) {
@@ -113,11 +108,16 @@
     }
 }
 
+@mixin disabled-state() {
+    opacity: theme.$disabled-opacity;
+    cursor: theme.$disabled-cursor;
+}
+
 @mixin visual($type, $variant: "default", $has-caret: false) {
     @include _get-theme($type, $variant);
 
     .input:disabled {
-        @include _disabled-state();
+        @include disabled-state();
     }
 
     @if $type == "box" and $variant == "filled" {
@@ -137,7 +137,7 @@
         }
 
         &.isRootDisabled .caret {
-            @include _disabled-state();
+            @include disabled-state();
         }
     }
 }

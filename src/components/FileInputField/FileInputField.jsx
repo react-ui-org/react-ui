@@ -1,10 +1,17 @@
 import PropTypes from 'prop-types';
-import React, { useContext } from 'react';
+import React, {
+  useContext,
+  useState,
+} from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../utils/classNames';
 import { transferProps } from '../../utils/transferProps';
+import { TranslationsContext } from '../../providers/translations';
+import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
+import { InputGroupContext } from '../InputGroup';
+import { Text } from '../Text';
 import { FormLayoutContext } from '../FormLayout';
 import styles from './FileInputField.module.scss';
 
@@ -18,24 +25,39 @@ export const FileInputField = React.forwardRef((props, ref) => {
     label,
     layout,
     required,
+    size,
     validationState,
     validationText,
     ...restProps
   } = props;
 
-  const context = useContext(FormLayoutContext);
+  const formLayoutContext = useContext(FormLayoutContext);
+  const inputGroupContext = useContext(InputGroupContext);
+  const translations = useContext(TranslationsContext);
+
+  const [selectedFileName, setSelectedFileName] = useState('');
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedFileName(file.name);
+  };
 
   return (
     <label
       className={classNames(
         styles.root,
         fullWidth && styles.isRootFullWidth,
-        context && styles.isRootInFormLayout,
-        resolveContextOrProp(context && context.layout, layout) === 'horizontal'
+        formLayoutContext && styles.isRootInFormLayout,
+        resolveContextOrProp(formLayoutContext && formLayoutContext.layout, layout) === 'horizontal'
           ? styles.isRootLayoutHorizontal
           : styles.isRootLayoutVertical,
-        disabled && styles.isRootDisabled,
+        resolveContextOrProp(inputGroupContext && inputGroupContext.disabled, disabled) && styles.isRootDisabled,
+        inputGroupContext && styles.isRootGrouped,
         required && styles.isRootRequired,
+        getRootSizeClassName(
+          resolveContextOrProp(inputGroupContext && inputGroupContext.size, size),
+          styles,
+        ),
         getRootValidationStateClassName(validationState, styles),
       )}
       htmlFor={id}
@@ -44,7 +66,7 @@ export const FileInputField = React.forwardRef((props, ref) => {
       <div
         className={classNames(
           styles.label,
-          !isLabelVisible && styles.isLabelHidden,
+          (!isLabelVisible || inputGroupContext) && styles.isLabelHidden,
         )}
         id={id && `${id}__labelText`}
       >
@@ -54,12 +76,26 @@ export const FileInputField = React.forwardRef((props, ref) => {
         <div className={styles.inputContainer}>
           <input
             {...transferProps(restProps)}
-            disabled={disabled}
+            className={styles.input}
+            disabled={resolveContextOrProp(inputGroupContext && inputGroupContext.disabled, disabled)}
             id={id}
+            onChange={handleFileChange}
             ref={ref}
             required={required}
             type="file"
           />
+          <div className={styles.dropZone}>
+            {selectedFileName && (
+              <Text lines={1}>{selectedFileName}</Text>
+            )}
+            {!selectedFileName && (
+              <>
+                {translations.FileInputField.drop}
+                {' '}
+                <span className={styles.dropZoneLink}>{translations.FileInputField.browse}</span>
+              </>
+            )}
+          </div>
         </div>
         {helpText && (
           <div
@@ -90,6 +126,7 @@ FileInputField.defaultProps = {
   isLabelVisible: true,
   layout: 'vertical',
   required: false,
+  size: 'medium',
   validationState: null,
   validationText: null,
 };
@@ -138,6 +175,12 @@ FileInputField.propTypes = {
    * If `true`, the input will be required.
    */
   required: PropTypes.bool,
+  /**
+   * Size of the field.
+   *
+   * Ignored if the component is rendered within `InputGroup` component as the value is inherited in such case.
+   */
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
   /**
    * Alter the field to provide feedback based on validation result.
    */

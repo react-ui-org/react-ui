@@ -48,6 +48,15 @@ layout perspective, FileInputFields work just like any other form fields.
 
 ## Sizes
 
+Aside from the default (medium) size, two additional sizes are available: small
+and large.
+
+```docoff-react-preview
+<FileInputField label="Attachment" size="small" />
+<FileInputField label="Attachment" />
+<FileInputField label="Attachment" size="large" />
+```
+
 Full-width fields span the full width of a parent:
 
 ```docoff-react-preview
