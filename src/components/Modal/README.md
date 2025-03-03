@@ -946,7 +946,7 @@ React.createElement(() => {
                       { label: 'Project manager', value: 'project-manager' },
                     ]}
                   />
-                  <FileInputField label="Photo" />
+                  <FileInputField label="Photo" onFilesChanged={() => {}} />
                   <TextArea
                     label="Additional info"
                     helpText={<p>Enter key is used for new line,<br />so <strong>Enter won't submit the form</strong>.</p>}

@@ -145,7 +145,7 @@ supports this kind of layout as well.
   label="Horizontal layout"
   layout="horizontal"
 >
-  <TextField label="Label" />
+  <FileInputField label="Attachment" onFilesChanged={() => {}} />
   <Button label="Submit" />
 </InputGroup>
 ```

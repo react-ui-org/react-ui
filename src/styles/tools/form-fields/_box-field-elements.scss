@@ -4,6 +4,7 @@
 // 3. Let inputs properly fit various layout scenarios.
 // 4. Leave out space for SelectField caret.
 // 5. Use a block-level display mode to prevent extra white space below grouped inputs in Safari.
+// 6. Pull out the focused input from the group.
 
 @use "../../settings/form-fields" as settings;
 @use "../../theme/form-fields" as theme;
@@ -18,24 +19,29 @@
     max-width: 100%; // 3.
 }
 
-@mixin input() {
+@mixin base() {
     @include transition.add((opacity, color, border-color, background-color, box-shadow));
 
-    appearance: none;
     width: theme.$box-input-width;
     min-width: theme.$box-input-min-width;
     max-width: 100%; // 3.
     height: var(--rui-local-height);
     padding: var(--rui-local-padding-y) var(--rui-local-padding-x);
+    color: var(--rui-local-color);
+    border: theme.$box-border-width solid var(--rui-local-border-color);
+    border-radius: theme.$box-border-radius;
+    background: var(--rui-local-background);
+}
+
+@mixin input() {
+    @include base();
+
+    appearance: none;
     font-weight: settings.$box-input-font-weight;
     font-size: var(--rui-local-font-size);
     line-height: settings.$box-input-line-height;
     font-family: settings.$box-input-font-family;
     vertical-align: middle;
-    color: var(--rui-local-color);
-    border: theme.$box-border-width solid var(--rui-local-border-color);
-    border-radius: theme.$box-border-radius;
-    background: var(--rui-local-background);
     box-shadow: var(--rui-local-box-shadow);
 
     &::placeholder {
@@ -124,17 +130,23 @@
     }
 }
 
-@mixin in-group-layout() {
+@mixin in-group-layout($input-element-selector: ".input") {
+    // 6.
+    &:focus-within {
+        isolation: isolate;
+        z-index: 1;
+    }
+
     .inputContainer {
         display: block; // 5.
     }
 
-    &:not(:first-child) .input {
+    &:not(:first-child) #{$input-element-selector} {
         border-start-start-radius: var(--rui-local-inner-border-radius);
         border-end-start-radius: var(--rui-local-inner-border-radius);
     }
 
-    &:not(:last-child) .input {
+    &:not(:last-child) #{$input-element-selector} {
         border-start-end-radius: var(--rui-local-inner-border-radius);
         border-end-end-radius: var(--rui-local-inner-border-radius);
     }

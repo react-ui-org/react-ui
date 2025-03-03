@@ -13,7 +13,7 @@ import { FileInputField } from '@react-ui-org/react-ui';
 And use it:
 
 ```docoff-react-preview
-<FileInputField label="Attachment" />
+<FileInputField id="my-file" label="Attachment" onFilesChanged={() => {}} />
 ```
 
 See [API](#api) for all available options.
@@ -48,12 +48,37 @@ layout perspective, FileInputFields work just like any other form fields.
 
 ## Sizes
 
+Aside from the default (medium) size, two additional sizes are available: small
+and large.
+
+```docoff-react-preview
+<FileInputField
+  id="my-file-small"
+  label="Attachment"
+  onFilesChanged={() => {}}
+  size="small"
+/>
+<FileInputField
+  id="my-file-medium"
+  label="Attachment"
+  onFilesChanged={() => {}}
+/>
+<FileInputField
+  id="my-file-large"
+  label="Attachment"
+  onFilesChanged={() => {}}
+  size="large"
+/>
+```
+
 Full-width fields span the full width of a parent:
 
 ```docoff-react-preview
 <FileInputField
   fullWidth
+  id="my-file"
   label="First name"
+  onFilesChanged={() => {}}
 />
 ```
 
@@ -68,8 +93,10 @@ dangerous to hide labels from users in most cases. Keep in mind you should
 
 ```docoff-react-preview
 <FileInputField
+  id="my-file"
   isLabelVisible={false}
   label="Attachment"
+  onFilesChanged={() => {}}
 />
 ```
 
@@ -81,14 +108,18 @@ supports this kind of layout as well.
 
 ```docoff-react-preview
 <FileInputField
+  id="my-file-horizontal"
   label="Attachment"
   layout="horizontal"
+  onFilesChanged={() => {}}
 />
 <FileInputField
   fullWidth
+  id="my-file-horizontal-full-width"
   isLabelVisible={false}
   label="Attachment"
   layout="horizontal"
+  onFilesChanged={() => {}}
 />
 ```
 
@@ -100,18 +131,24 @@ filled.
 ```docoff-react-preview
 <FileInputField
   helpText="Choose one or more files to upload."
+  id="my-file-help-text"
   label="Attachment"
+  onFilesChanged={() => {}}
 />
 <FileInputField
   helpText="Choose one or more files to upload."
+  id="my-file-help-text-horizontal"
   label="Attachment"
   layout="horizontal"
+  onFilesChanged={() => {}}
 />
 <FileInputField
   fullWidth
   helpText="Choose one or more files to upload."
+  id="my-file-help-text-horizontal-full-width"
   label="Attachment"
   layout="horizontal"
+  onFilesChanged={() => {}}
 />
 ```
 
@@ -126,17 +163,23 @@ have.
 
 ```docoff-react-preview
 <FileInputField
+  id="my-file-valid"
   label="Attachment"
+  onFilesChanged={() => {}}
   validationState="valid"
   validationText="Looks good!"
 />
 <FileInputField
+  id="my-file-invalid"
   label="Attachment"
+  onFilesChanged={() => {}}
   validationState="invalid"
   validationText="Your file is too big. Please select something smaller."
 />
 <FileInputField
+  id="my-file-warning"
   label="Attachment"
+  onFilesChanged={() => {}}
   validationState="warning"
   validationText={`
     You selected more than 10 files.
@@ -152,7 +195,44 @@ It's possible to disable the whole input.
 ```docoff-react-preview
 <FileInputField
   disabled
+  id="my-file"
   label="Attachment"
+  onFilesChanged={() => {}}
+/>
+```
+
+## Handling Files
+
+Files selected by the user are handled by providing a custom function to the
+`onFilesChanged` prop. The `onFilesChanged` function is then called on the
+`change` event of the `input` element and on the `drop` event of the root
+`div` element.
+
+```docoff-react-preview
+<FileInputField
+  id="my-file"
+  label="Attachment"
+  onFilesChanged={(files, event) => {
+    // Do something with the files…
+    console.log('Files selected:', files);
+  }}
+/>
+```
+
+### Multiple Files
+
+By default, users can select only one file. To allow selecting multiple files,
+set the `multiple` prop to `true`.
+
+```docoff-react-preview
+<FileInputField
+  id="my-files"
+  label="Attachment"
+  multiple
+  onFilesChanged={(files, event) => {
+    // Do something with the files…
+    console.log('Files selected:', files);
+  }}
 />
 ```
 
@@ -172,8 +252,9 @@ to improve its accessibility.
     Choose up to 10 files. Allowed extensions are .pdf, .jpg, .jpeg, or .png.
     Size limit is 10 MB.
   `}
+  id="my-file"
   label="Attachment"
-  multiple
+  onFilesChanged={() => {}}
 />
 ```
 
