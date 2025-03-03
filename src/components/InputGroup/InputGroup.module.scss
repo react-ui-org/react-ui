@@ -84,14 +84,14 @@
 
     // Sizes
     .isRootSizeSmall {
-        @include box-field-sizes.size(small, $has-input: false);
+        @include box-field-sizes.size(small);
     }
 
     .isRootSizeMedium {
-        @include box-field-sizes.size(medium, $has-input: false);
+        @include box-field-sizes.size(medium);
     }
 
     .isRootSizeLarge {
-        @include box-field-sizes.size(large, $has-input: false);
+        @include box-field-sizes.size(large);
     }
 }

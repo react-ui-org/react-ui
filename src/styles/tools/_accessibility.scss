@@ -45,9 +45,7 @@
 }
 
 @mixin focus-ring() {
-    &:focus-visible {
-        outline: theme.$focus-outline;
-        outline-offset: theme.$focus-outline-offset;
-        box-shadow: theme.$focus-box-shadow;
-    }
+    outline: theme.$focus-outline;
+    outline-offset: theme.$focus-outline-offset;
+    box-shadow: theme.$focus-box-shadow;
 }

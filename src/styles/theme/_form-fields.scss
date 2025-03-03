@@ -33,14 +33,14 @@ $horizontal-full-width-label-width: var(--rui-FormField--horizontal--full-width_
 // Form fields: links in validation states
 $link-validation-colors: (
     invalid: (
+        default: var(--rui-color-feedback-danger),
+        hover: var(--rui-color-feedback-danger-hover),
+        active: var(--rui-color-feedback-danger-active),
+    ),
+    valid: (
         default: var(--rui-color-feedback-success),
         hover: var(--rui-color-feedback-success-hover),
         active: var(--rui-color-feedback-success-active),
-    ),
-    valid: (
-        default: var(--rui-color-feedback-valid),
-        hover: var(--rui-color-feedback-valid-hover),
-        active: var(--rui-color-feedback-valid-active),
     ),
     warning: (
         default: var(--rui-color-feedback-warning),
