@@ -166,14 +166,14 @@
     }
 }
 
-@mixin full-width() {
+@mixin full-width($input-element-selector: ".input") {
     display: flex;
     flex-direction: column;
     width: 100%;
 
     .field,
     .inputContainer,
-    .input {
+    #{$input-element-selector} {
         width: 100%;
     }
 

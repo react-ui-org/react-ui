@@ -13,13 +13,16 @@ import { formLayoutProviderTest } from '../../../../tests/providerTests/formLayo
 import { isLabelVisibleTest } from '../../../../tests/propTests/isLabelVisibleTest';
 import { labelPropTest } from '../../../../tests/propTests/labelPropTest';
 import { layoutPropTest } from '../../../../tests/propTests/layoutPropTest';
+import { sizePropTest } from '../../../../tests/propTests/sizePropTest';
 import { requiredPropTest } from '../../../../tests/propTests/requiredPropTest';
 import { validationStatePropTest } from '../../../../tests/propTests/validationStatePropTest';
 import { validationTextPropTest } from '../../../../tests/propTests/validationTextPropTest';
 import { FileInputField } from '../FileInputField';
 
 const mandatoryProps = {
+  id: 'id',
   label: 'label',
+  onFilesChanged: () => {},
 };
 
 describe('rendering', () => {
@@ -33,7 +36,6 @@ describe('rendering', () => {
     [
       {
         helpText: 'help text',
-        id: 'id',
         validationText: 'validation text',
       },
       (rootElement) => {
@@ -41,13 +43,14 @@ describe('rendering', () => {
         expect(within(rootElement).getByText('label')).toHaveAttribute('id', 'id__labelText');
         expect(within(rootElement).getByText('help text')).toHaveAttribute('id', 'id__helpText');
         expect(within(rootElement).getByText('validation text')).toHaveAttribute('id', 'id__validationText');
-        expect(rootElement).toHaveAttribute('id', 'id__label');
+        expect(rootElement).toHaveAttribute('id', 'id__root');
       },
     ],
     ...isLabelVisibleTest(),
     ...labelPropTest(),
     ...layoutPropTest,
     ...requiredPropTest,
+    ...sizePropTest,
     ...validationStatePropTest,
     ...validationTextPropTest,
   ])('renders with props: "%s"', (testedProps, assert) => {
@@ -68,12 +71,13 @@ describe('functionality', () => {
     render((
       <FileInputField
         {...mandatoryProps}
-        onChange={spy}
+        id="id"
+        onFilesChanged={spy}
       />
     ));
 
     const file = new File(['hello'], 'hello.png', { type: 'image/png' });
-    await userEvent.upload(screen.getByLabelText('label'), file);
+    await userEvent.upload(screen.getByTestId('id'), file);
     expect(spy).toHaveBeenCalled();
   });
 });

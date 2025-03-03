@@ -1,8 +1,16 @@
+// 1. The drop zone is constructed as a button to support keyboard operation.
+// 2. Prevent pointer events on all children of the root element to not to trigger drag events on children.
+
 @use "../../styles/tools/form-fields/box-field-elements";
 @use "../../styles/tools/form-fields/box-field-layout";
+@use "../../styles/tools/form-fields/box-field-sizes";
 @use "../../styles/tools/form-fields/foundation";
 @use "../../styles/tools/form-fields/variants";
 @use "../../styles/tools/accessibility";
+@use "../../styles/tools/links";
+@use "../../styles/tools/transition";
+@use "../../styles/tools/reset";
+@use "settings";
 
 @layer components.file-input-field {
     // Foundation
@@ -18,6 +26,54 @@
         @include box-field-elements.input-container();
     }
 
+    .input {
+        @include accessibility.hide-text();
+    }
+
+    .dropZone {
+        --rui-local-color: #{settings.$drop-zone-color};
+        --rui-local-border-color: #{settings.$drop-zone-border-color};
+        --rui-local-background: #{settings.$drop-zone-background-color};
+
+        @include reset.button(); // 1.
+        @include box-field-elements.base();
+
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        font-weight: settings.$drop-zone-font-weight;
+        font-size: var(--rui-local-font-size);
+        line-height: settings.$drop-zone-line-height;
+        font-family: settings.$drop-zone-font-family;
+        border-style: dashed;
+    }
+
+    .isRootDragging .dropZone {
+        --rui-local-border-color: #{settings.$drop-zone-dragging-border-color};
+    }
+
+    .isRootDisabled .dropZone {
+        cursor: settings.$drop-zone-disabled-cursor;
+    }
+
+    .root:not(.isRootDisabled, .isRootDragging) .dropZone:hover {
+        --rui-local-border-color: #{settings.$drop-zone-hover-border-color};
+    }
+
+    .root:not(.isRootDisabled, .isRootDragging) .dropZone:active {
+        --rui-local-border-color: #{settings.$drop-zone-active-border-color};
+    }
+
+    .dropZoneLink {
+        @include links.base();
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+        }
+    }
+
     .helpText,
     .validationText {
         @include foundation.help-text();
@@ -28,6 +84,18 @@
     }
 
     // States
+    .isRootDisabled {
+        --rui-local-color: #{settings.$drop-zone-disabled-color};
+        --rui-local-border-color: #{settings.$drop-zone-disabled-border-color};
+        --rui-local-background: #{settings.$drop-zone-disabled-background-color};
+
+        @include variants.disabled-state();
+    }
+
+    .isRootDisabled .dropZoneLink {
+        cursor: inherit;
+    }
+
     .isRootStateInvalid {
         @include variants.validation(invalid);
     }
@@ -56,10 +124,28 @@
     }
 
     .isRootFullWidth {
-        @include box-field-layout.full-width();
+        @include box-field-layout.full-width($input-element-selector: ".dropZone");
     }
 
     .isRootInFormLayout {
         @include box-field-layout.in-form-layout();
+    }
+
+    // Sizes
+    .isRootSizeSmall {
+        @include box-field-sizes.size(small);
+    }
+
+    .isRootSizeMedium {
+        @include box-field-sizes.size(medium);
+    }
+
+    .isRootSizeLarge {
+        @include box-field-sizes.size(large);
+    }
+
+    // Groups
+    .isRootGrouped {
+        @include box-field-elements.in-group-layout($input-element-selector: ".dropZone");
     }
 }

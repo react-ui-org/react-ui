@@ -6,6 +6,6 @@
     outline: none;
 }
 
-:is(a, button, input, select, textarea, [type="button"], [type="submit"]) {
+:is(a, button, input, select, textarea, [type="button"], [type="submit"]):focus-visible {
     @include accessibility.focus-ring();
 }

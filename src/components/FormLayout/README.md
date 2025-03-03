@@ -389,6 +389,7 @@ React.createElement(() => {
         />
         <FileInputField
           label="Attachment"
+          onFilesChanged={() => {}}
         />
         <Toggle
           checked={receiveNewsletter}
