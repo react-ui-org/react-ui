@@ -143,9 +143,9 @@
 }
 
 @mixin validation($variant) {
-    --rui-local-link-color: map.get(theme.$link-validation-colors, $variant, default);
-    --rui-local-link-color-hover: map.get(theme.$link-validation-colors, $variant, hover);
-    --rui-local-link-color-active: map.get(theme.$link-validation-colors, $variant, active);
+    --rui-local-link-color: #{map.get(theme.$link-validation-colors, $variant, default)};
+    --rui-local-link-color-hover: #{map.get(theme.$link-validation-colors, $variant, hover)};
+    --rui-local-link-color-active: #{map.get(theme.$link-validation-colors, $variant, active)};
 
     @include _get-theme(validation, $variant);
 }
