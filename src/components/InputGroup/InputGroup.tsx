@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, {
   useContext,
   useMemo,
@@ -12,19 +11,24 @@ import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { FormLayoutContext } from '../FormLayout';
 import { Text } from '../Text';
-import { InputGroupContext } from './InputGroupContext';
+import { Validation } from '../../types';
+import {
+  defaultValues,
+  InputGroupContext,
+} from './InputGroupContext';
 import styles from './InputGroup.module.scss';
+import { InputGroupProps } from './InputGroup.types';
 
-export const InputGroup = ({
+export const InputGroup: React.FunctionComponent<InputGroupProps> = ({
   children,
-  disabled,
+  disabled = defaultValues.disabled,
   id,
-  isLabelVisible,
+  isLabelVisible = true,
   label,
-  layout,
-  required,
-  size,
-  validationTexts,
+  layout = defaultValues.layout,
+  required = false,
+  size = defaultValues.size,
+  validationTexts = null,
   ...restProps
 }) => {
   const formLayoutContext = useContext(FormLayoutContext);
@@ -38,14 +42,15 @@ export const InputGroup = ({
     return null;
   }
 
-  const validationState = children.reduce(
+  const childrenWithValidationState = children as unknown as React.Component<{ validationState?: Validation }>[];
+  const validationState = childrenWithValidationState?.reduce<Validation | undefined>(
     (state, child) => {
       if (state === 'invalid' || (state === 'warning' && child.props.validationState === 'valid')) {
-        return state;
+        return state as Validation;
       }
-      return child.props.validationState ?? state;
+      return (child.props.validationState ?? state) as Validation;
     },
-    null,
+    undefined,
   );
 
   return (
@@ -95,7 +100,7 @@ export const InputGroup = ({
             id={id && `${id}__validationTexts`}
           >
             {validationTexts.map((validationText) => (
-              <li key={validationText}>
+              <li key={validationText as React.Key}>
                 <Text blockLevel>
                   {validationText}
                 </Text>
@@ -106,72 +111,6 @@ export const InputGroup = ({
       </div>
     </fieldset>
   );
-};
-
-InputGroup.defaultProps = {
-  children: null,
-  disabled: false,
-  id: undefined,
-  isLabelVisible: true,
-  layout: 'vertical',
-  required: false,
-  size: 'medium',
-  validationTexts: null,
-};
-
-InputGroup.propTypes = {
-  /**
-   * Supported elements to be grouped:
-   * * `Button`
-   * * `SelectField`
-   * * `TextField`
-   *
-   * If none are provided nothing is rendered.
-   */
-  children: PropTypes.node,
-  /**
-   * If `true`, the whole input group with all nested inputs and buttons will be disabled.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * ID of the root HTML element.
-   *
-   * Also serves as base for ids of nested elements:
-   * * `<ID>__label`
-   * * `<ID>__displayLabel`
-   * * `<ID>__group`
-   * * `<ID>__validationTexts`
-   */
-  id: PropTypes.string,
-  /**
-   * If `false`, the label will be visually hidden (but remains accessible by assistive
-   * technologies).
-   */
-  isLabelVisible: PropTypes.bool,
-  /**
-   * Input group label.
-   */
-  label: PropTypes.node.isRequired,
-  /**
-   * Layout of the group.
-   *
-   * Ignored if the component is rendered within `FormLayout` component
-   * as the value is inherited in such case.
-   */
-  layout: PropTypes.oneOf(['horizontal', 'vertical']),
-  /**
-   * If `true`, the `InputGroup`'s label appears as required. Underlying `<fieldset>`
-   * element does not take `required` attribute so there is no functional effect.
-   */
-  required: PropTypes.bool,
-  /**
-   * Size of the `children` elements.
-   */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
-  /**
-   * An array of validation messages to be displayed.
-   */
-  validationTexts: PropTypes.node,
 };
 
 export const InputGroupWithGlobalProps = withGlobalProps(InputGroup, 'InputGroup');

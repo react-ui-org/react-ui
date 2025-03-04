@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 
 export const useModalFocus = (
-  autoFocus,
-  dialogRef,
-  primaryButtonRef,
+  autoFocus: boolean,
+  dialogRef: React.RefObject<HTMLDialogElement | null>,
+  primaryButtonRef?: React.RefObject<HTMLButtonElement>,
 ) => {
   useEffect(
     () => {
@@ -22,7 +22,7 @@ export const useModalFocus = (
 
       const childrenFocusableElements = Array.from(
         dialogElement.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'),
-      );
+      ) as (HTMLButtonElement | HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement)[];
 
       const firstFocusableElement = childrenFocusableElements[0];
 

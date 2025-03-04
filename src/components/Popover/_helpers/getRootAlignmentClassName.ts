@@ -1,4 +1,6 @@
-export default (placement, styles) => {
+import { Placement } from '../../../types';
+
+export default (placement: Placement, styles: Record<string, string>) => {
   const alignment = placement.split('-')[1];
 
   if (alignment === 'start') {

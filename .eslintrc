@@ -1,11 +1,34 @@
 {
   "extends": [
     "@visionappscz/eslint-config-visionapps",
-    "airbnb-typescript",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:deprecation/recommended",
-    "plugin:typescript-sort-keys/recommended",
+    "plugin:deprecation/recommended"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "**/*.ts",
+        "**/*.tsx"
+      ],
+      "extends": [
+        "@visionappscz/eslint-config-visionapps",
+        "airbnb-typescript",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:typescript-sort-keys/recommended"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": "tsconfig.json"
+      },
+      "plugins": ["@typescript-eslint"],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": ["error"],
+        "@typescript-eslint/object-curly-spacing": ["error"],
+        "import/prefer-default-export": ["off"],
+        "no-console": ["error"],
+        "react/default-props-match-prop-types": ["off"],
+        "react/require-default-props": ["off"]
+      }
+    }
   ],
   "env": {
     "browser": true,

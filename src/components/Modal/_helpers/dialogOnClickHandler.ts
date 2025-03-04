@@ -1,6 +1,8 @@
 // Disable coverage for the following function
 /* istanbul ignore next */
 
+import { ModalProps } from '../Modal.types';
+
 /**
  * Handles the click event of the dialog which is fired when the user clicks on the dialog or on its descendants.
  *
@@ -13,10 +15,10 @@
  * @param allowCloseOnBackdropClick
  */
 export const dialogOnClickHandler = (
-  e,
-  closeButtonRef,
-  dialogRef,
-  allowCloseOnBackdropClick,
+  e: React.MouseEvent<HTMLDialogElement>,
+  closeButtonRef: ModalProps['closeButtonRef'],
+  dialogRef: ModalProps['dialogRef'],
+  allowCloseOnBackdropClick: boolean,
 ) => {
   // If it is not allowed to close modal on backdrop click, do nothing.
   if (!allowCloseOnBackdropClick) {
@@ -26,8 +28,8 @@ export const dialogOnClickHandler = (
   // Detection of the click on the backdrop is based on the following conditions:
   // 1. The click target is the dialog itself. This prevents detection of clicks on the dialog's children.
   // 2. The click is outside the dialog's boundaries.
-  const dialogRect = dialogRef.current.getBoundingClientRect();
-  const isClickedOnBackdrop = dialogRef.current === e.target && (
+  const dialogRect = dialogRef?.current?.getBoundingClientRect();
+  const isClickedOnBackdrop = dialogRef?.current === e.target && dialogRect && (
     e.clientX < dialogRect.left
     || e.clientX > dialogRect.right
     || e.clientY < dialogRect.top

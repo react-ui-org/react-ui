@@ -1,16 +1,16 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../utils/classNames';
 import { transferProps } from '../../utils/transferProps';
 import styles from './TabsItem.module.scss';
+import { TabsItemProps } from './TabsItem.types';
 
-export const TabsItem = ({
+export const TabsItem: React.FunctionComponent<TabsItemProps> = ({
   afterLabel,
   beforeLabel,
   href,
   id,
-  isActive,
+  isActive = false,
   label,
   onClick,
   ...restProps
@@ -43,48 +43,6 @@ export const TabsItem = ({
     </a>
   </li>
 );
-
-TabsItem.defaultProps = {
-  afterLabel: null,
-  beforeLabel: null,
-  id: undefined,
-  isActive: false,
-  onClick: null,
-};
-
-TabsItem.propTypes = {
-  /**
-   * Optional element shown after item's label, e.g. an icon.
-   */
-  afterLabel: PropTypes.node,
-  /**
-   * Optional element shown before item's label, e.g. an icon.
-   */
-  beforeLabel: PropTypes.node,
-  /**
-   * Item's link URL. Optionally add custom routing function to the `onClick` option to bypass
-   * browser's default navigation.
-   */
-  href: PropTypes.string.isRequired,
-  /**
-   * ID of the root HTML element. It also serves as base for nested elements:
-   * * `<ID>__link`
-   * * `<ID>__label`
-   */
-  id: PropTypes.string,
-  /**
-   * If `true`, item is marked as active.
-   */
-  isActive: PropTypes.bool,
-  /**
-   * Item's label.
-   */
-  label: PropTypes.string.isRequired,
-  /**
-   * Function to call on item click, e.g. custom routing function.
-   */
-  onClick: PropTypes.func,
-};
 
 export const TabsItemWithGlobalProps = withGlobalProps(TabsItem, 'TabsItem');
 

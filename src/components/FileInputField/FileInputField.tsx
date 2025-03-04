@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../utils/classNames';
@@ -6,20 +5,21 @@ import { transferProps } from '../../utils/transferProps';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { FormLayoutContext } from '../FormLayout';
+import { FileInputFieldProps } from './FileInputfield.types';
 import styles from './FileInputField.module.scss';
 
-export const FileInputField = React.forwardRef((props, ref) => {
+export const FileInputField = React.forwardRef<HTMLInputElement, FileInputFieldProps>((props, ref) => {
   const {
-    disabled,
-    fullWidth,
-    helpText,
+    disabled = false,
+    fullWidth = false,
+    helpText = null,
     id,
-    isLabelVisible,
+    isLabelVisible = true,
     label,
-    layout,
-    required,
+    layout = 'vertical',
+    required = false,
     validationState,
-    validationText,
+    validationText = null,
     ...restProps
   } = props;
 
@@ -81,72 +81,6 @@ export const FileInputField = React.forwardRef((props, ref) => {
     </label>
   );
 });
-
-FileInputField.defaultProps = {
-  disabled: false,
-  fullWidth: false,
-  helpText: null,
-  id: undefined,
-  isLabelVisible: true,
-  layout: 'vertical',
-  required: false,
-  validationState: null,
-  validationText: null,
-};
-
-FileInputField.propTypes = {
-  /**
-   * If `true`, the input will be disabled.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * If `true`, the field will span the full width of its parent.
-   */
-  fullWidth: PropTypes.bool,
-  /**
-   * Optional help text.
-   */
-  helpText: PropTypes.node,
-  /**
-   * ID of the `<input>` HTML element.
-   *
-   * Also serves as base for ids of nested elements:
-   * * `<ID>__label`
-   * * `<ID>__labelText`
-   * * `<ID>__helpText`
-   * * `<ID>__validationText`
-   */
-  id: PropTypes.string,
-  /**
-   * If `false`, the label will be visually hidden (but remains accessible by assistive
-   * technologies).
-   */
-  isLabelVisible: PropTypes.bool,
-  /**
-   * File input field label.
-   */
-  label: PropTypes.node.isRequired,
-  /**
-   * Layout of the field.
-   *
-   * Ignored if the component is rendered within `FormLayout` component
-   * as the value is inherited in such case.
-   *
-   */
-  layout: PropTypes.oneOf(['horizontal', 'vertical']),
-  /**
-   * If `true`, the input will be required.
-   */
-  required: PropTypes.bool,
-  /**
-   * Alter the field to provide feedback based on validation result.
-   */
-  validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
-  /**
-   * Validation message to be displayed.
-   */
-  validationText: PropTypes.node,
-};
 
 export const FileInputFieldWithGlobalProps = withGlobalProps(FileInputField, 'FileInputField');
 

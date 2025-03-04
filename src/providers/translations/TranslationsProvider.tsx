@@ -1,13 +1,13 @@
-import PropTypes from 'prop-types';
 import React, {
   useContext,
 } from 'react';
 import { mergeDeep } from '../../utils/mergeDeep';
 import TranslationsContext from './TranslationsContext';
+import { TranslationsProviderProps } from './TranslationProvider.types';
 
-const TranslationsProvider = ({
+const TranslationsProvider: React.FunctionComponent<TranslationsProviderProps> = ({
   children,
-  translations,
+  translations = {},
 }) => {
   const contextTranslations = useContext(TranslationsContext);
 
@@ -18,16 +18,6 @@ const TranslationsProvider = ({
       {children}
     </TranslationsContext.Provider>
   );
-};
-
-TranslationsProvider.defaultProps = {
-  children: null,
-  translations: {},
-};
-
-TranslationsProvider.propTypes = {
-  children: PropTypes.node,
-  translations: PropTypes.shape({}),
 };
 
 export default TranslationsProvider;

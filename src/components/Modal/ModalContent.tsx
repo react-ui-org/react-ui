@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { transferProps } from '../../utils/transferProps';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
+import { ModalContentProps } from './ModalContent.types';
 import styles from './ModalContent.module.scss';
 
-export const ModalContent = ({
-  children,
+export const ModalContent: React.FunctionComponent<ModalContentProps> = ({
+  children = null,
   ...restProps
 }) => {
   if (isChildrenEmpty(children)) {
@@ -21,17 +21,6 @@ export const ModalContent = ({
       {children}
     </div>
   );
-};
-
-ModalContent.defaultProps = {
-  children: null,
-};
-
-ModalContent.propTypes = {
-  /**
-   * Content of the modal.
-   */
-  children: PropTypes.node,
 };
 
 export const ModalContentWithGlobalProps = withGlobalProps(ModalContent, 'ModalContent');

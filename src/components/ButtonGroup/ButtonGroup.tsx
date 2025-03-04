@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, {
   useMemo,
 } from 'react';
@@ -7,18 +6,23 @@ import { classNames } from '../../utils/classNames';
 import { transferProps } from '../../utils/transferProps';
 import { getRootPriorityClassName } from '../_helpers/getRootPriorityClassName';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
+import {
+  ButtonGroupContext,
+  defaultValues,
+} from './ButtonGroupContext';
+import { ButtonGroupProps } from './ButtonGroup.types';
+import { ButtonGroupContextType } from './ButtonGroupContext.types';
 import styles from './ButtonGroup.module.scss';
-import { ButtonGroupContext } from './ButtonGroupContext';
 
-export const ButtonGroup = ({
-  block,
-  disabled,
-  children,
-  priority,
-  size,
+export const ButtonGroup: React.FunctionComponent<ButtonGroupProps> = ({
+  block = defaultValues.block,
+  disabled = defaultValues.disabled,
+  children = null,
+  priority = defaultValues.priority,
+  size = defaultValues.size,
   ...restProps
 }) => {
-  const childProps = useMemo(() => ({
+  const childProps: ButtonGroupContextType = useMemo(() => ({
     block,
     disabled,
     priority,
@@ -44,37 +48,6 @@ export const ButtonGroup = ({
       </ButtonGroupContext.Provider>
     </fieldset>
   );
-};
-
-ButtonGroup.defaultProps = {
-  block: false,
-  children: null,
-  disabled: false,
-  priority: 'filled',
-  size: 'medium',
-};
-
-ButtonGroup.propTypes = {
-  /**
-   * If `true`, the button group will span the full width of its parent.
-   */
-  block: PropTypes.bool,
-  /**
-   * Buttons to be grouped. If none are provided nothing is rendered.
-   */
-  children: PropTypes.node,
-  /**
-   * If `true`, all buttons inside the group will be disabled.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * Visual priority to highlight or suppress the buttons.
-   */
-  priority: PropTypes.oneOf(['filled', 'outline', 'flat']),
-  /**
-   * Size of the buttons.
-   */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 export const ButtonGroupWithGlobalProps = withGlobalProps(ButtonGroup, 'ButtonGroup');

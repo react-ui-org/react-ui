@@ -1,38 +1,39 @@
-import PropTypes from 'prop-types';
 import React, {
+  ForwardRefExoticComponent,
+  FunctionComponent,
+  RefAttributes,
   useContext,
 } from 'react';
 import GlobalPropsContext from './GlobalPropsContext';
 
-export default (Component, componentName) => {
-  const WithGlobalPropsComponent = ({
-    forwardedRef,
-    ...rest
-  }) => {
+const withGlobalProps = <
+ P extends object,
+ T extends HTMLElement,
+>(
+    Component: ForwardRefExoticComponent<P & RefAttributes<T>> | FunctionComponent<P>,
+    componentName: string,
+  ) => {
+  const WithGlobalPropsComponent = React.forwardRef<T, P>((
+    props,
+    ref,
+  ) => {
     const contextGlobalProps = useContext(GlobalPropsContext);
+
+    const combinedProps = {
+      ...(contextGlobalProps[componentName] || {}),
+      ...props,
+    };
 
     return (
       <Component
-        {...contextGlobalProps[componentName] || {}}
-        {...rest}
-        ref={forwardedRef}
+        {...(combinedProps as P)}
+        ref={ref}
       />
     );
-  };
+  });
 
-  WithGlobalPropsComponent.defaultProps = {
-    forwardedRef: undefined,
-  };
-
-  WithGlobalPropsComponent.propTypes = {
-    forwardedRef: PropTypes.oneOfType([
-      PropTypes.func,
-
-      // The props can be of any type and here we need to support them all
-      // eslint-disable-next-line react/forbid-prop-types
-      PropTypes.shape({ current: PropTypes.any }),
-    ]),
-  };
-
-  return React.forwardRef((props, ref) => (<WithGlobalPropsComponent {...props} forwardedRef={ref} />));
+  return WithGlobalPropsComponent;
 };
+
+export default withGlobalProps;
+

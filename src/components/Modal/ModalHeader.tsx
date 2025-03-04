@@ -1,14 +1,14 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../utils/classNames';
 import { transferProps } from '../../utils/transferProps';
 import { getJustifyClassName } from './_helpers/getJustifyClassName';
+import { ModalHeaderProps } from './ModalHeader.types';
 import styles from './ModalHeader.module.scss';
 
-export const ModalHeader = ({
+export const ModalHeader: React.FunctionComponent<ModalHeaderProps> = ({
   children,
-  justify,
+  justify = 'space-between',
   ...restProps
 }) => (
   <div
@@ -21,21 +21,6 @@ export const ModalHeader = ({
     {children}
   </div>
 );
-
-ModalHeader.defaultProps = {
-  justify: 'space-between',
-};
-
-ModalHeader.propTypes = {
-  /**
-   * Content of the header (preferably ModalTitle and ModalCloseButton).
-   */
-  children: PropTypes.node.isRequired,
-  /**
-   * Horizontal alignment (distribution) of individual buttons.
-   */
-  justify: PropTypes.oneOf(['start', 'center', 'end', 'space-between', 'stretch']),
-};
 
 export const ModalHeaderWithGlobalProps = withGlobalProps(ModalHeader, 'ModalHeader');
 

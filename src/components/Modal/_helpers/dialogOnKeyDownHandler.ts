@@ -19,11 +19,11 @@
  * @param allowPrimaryActionOnEnterKey
  */
 export const dialogOnKeyDownHandler = (
-  e,
-  closeButtonRef,
-  primaryButtonRef,
-  allowCloseOnEscapeKey,
-  allowPrimaryActionOnEnterKey,
+  e: React.KeyboardEvent<HTMLDialogElement>,
+  closeButtonRef: React.RefObject<HTMLButtonElement> | undefined,
+  primaryButtonRef: React.RefObject<HTMLButtonElement> | undefined,
+  allowCloseOnEscapeKey: boolean,
+  allowPrimaryActionOnEnterKey: boolean,
 ) => {
   if (e.key === 'Escape') {
     // Prevent closing the modal using the Escape key when one of the following conditions is met:
@@ -55,7 +55,7 @@ export const dialogOnKeyDownHandler = (
     && primaryButtonRef?.current != null
     && primaryButtonRef?.current?.disabled === false
     && allowPrimaryActionOnEnterKey
-    && ['INPUT', 'SELECT'].includes(e.target.nodeName)
+    && ['INPUT', 'SELECT'].includes((e.target as HTMLElement).nodeName)
   ) {
     primaryButtonRef.current.click();
   }

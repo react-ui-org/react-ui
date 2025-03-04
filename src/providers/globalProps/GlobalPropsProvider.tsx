@@ -1,13 +1,13 @@
-import PropTypes from 'prop-types';
 import React, {
   useContext,
 } from 'react';
 import { mergeDeep } from '../../utils/mergeDeep';
 import GlobalPropsContext from './GlobalPropsContext';
+import { GlobalPropsProviderProps } from './GlobalPropsProvider.types';
 
-const GlobalPropsProvider = ({
+const GlobalPropsProvider: React.FunctionComponent<GlobalPropsProviderProps> = ({
   children,
-  globalProps,
+  globalProps = {},
 }) => {
   const contextGlobalProps = useContext(GlobalPropsContext);
 
@@ -18,16 +18,6 @@ const GlobalPropsProvider = ({
       {children}
     </GlobalPropsContext.Provider>
   );
-};
-
-GlobalPropsProvider.defaultProps = {
-  children: null,
-  globalProps: {},
-};
-
-GlobalPropsProvider.propTypes = {
-  children: PropTypes.node,
-  globalProps: PropTypes.shape({}),
 };
 
 export default GlobalPropsProvider;

@@ -1,6 +1,8 @@
 // Disable coverage for the following function
 /* istanbul ignore next */
 
+import { ModalProps } from '../Modal.types';
+
 /**
  * Handles the close event of the dialog which is fired when the user presses the Escape key or triggers close event
  * by native dialog mechanism.
@@ -12,7 +14,11 @@
  * @param closeButtonRef
  * @param onCloseHandler
  */
-export const dialogOnCloseHandler = (e, closeButtonRef, onCloseHandler = undefined) => {
+export const dialogOnCloseHandler = (
+  e: React.MouseEvent<HTMLDialogElement>,
+  closeButtonRef: ModalProps['closeButtonRef'],
+  onCloseHandler: ModalProps['onClose'] = undefined,
+) => {
   // Prevent the default behaviour of the event as we want to close dialog manually.
   e.preventDefault();
 

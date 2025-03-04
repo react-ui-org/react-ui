@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../utils/classNames';
@@ -7,9 +6,14 @@ import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { FormLayoutContext } from './FormLayoutContext';
+import { FormLayoutCustomFieldProps } from './FormLayoutCustomField.types';
 import styles from './FormLayoutCustomField.module.scss';
 
-const renderLabel = (id, label, labelForId) => {
+const renderLabel = (
+  id?: string,
+  label?: string,
+  labelForId?: string,
+) => {
   if (labelForId && label) {
     return (
       <label
@@ -36,15 +40,15 @@ const renderLabel = (id, label, labelForId) => {
   return null;
 };
 
-export const FormLayoutCustomField = ({
-  children,
-  fullWidth,
+export const FormLayoutCustomField: React.FunctionComponent<FormLayoutCustomFieldProps> = ({
+  children = null,
+  fullWidth = false,
   id,
-  disabled,
+  disabled = false,
   innerFieldSize,
   label,
   labelForId,
-  required,
+  required = false,
   validationState,
   ...restProps
 }) => {
@@ -77,61 +81,6 @@ export const FormLayoutCustomField = ({
       </div>
     </div>
   );
-};
-
-FormLayoutCustomField.defaultProps = {
-  children: null,
-  disabled: false,
-  fullWidth: false,
-  id: undefined,
-  innerFieldSize: null,
-  label: null,
-  labelForId: undefined,
-  required: false,
-  validationState: null,
-};
-
-FormLayoutCustomField.propTypes = {
-  /**
-   * Custom HTML or React component(s). If none are provided nothing is rendered.
-   */
-  children: PropTypes.node,
-  /**
-   * If `true`, label will be shown as disabled.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * If `true`, the field will span the full width of its parent.
-   */
-  fullWidth: PropTypes.bool,
-  /**
-   * ID of the root HTML element.
-   *
-   * Also serves as base for ids of nested elements:
-   * * `<ID>__field`
-   * * `<ID>__label`
-   */
-  id: PropTypes.string,
-  /**
-   * Size of contained form field used to properly align label.
-   */
-  innerFieldSize: PropTypes.oneOf(['small', 'medium', 'large']),
-  /**
-   * Optional label of the field.
-   */
-  label: PropTypes.string,
-  /**
-   * Optional ID of labeled field to keep accessibility features. Only available if `label` is set.
-   */
-  labelForId: PropTypes.string,
-  /**
-   * If `true`, label will be styled as required.
-   */
-  required: PropTypes.bool,
-  /**
-   * Alter the field to provide feedback based on validation result.
-   */
-  validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
 };
 
 export const FormLayoutCustomFieldWithGlobalProps = withGlobalProps(FormLayoutCustomField, 'FormLayoutCustomField');

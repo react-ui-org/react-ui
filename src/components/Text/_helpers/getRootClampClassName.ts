@@ -1,9 +1,9 @@
-export const getRootClampClassName = (lines, styles) => {
+export const getRootClampClassName = (styles: Record<string, string>, lines?: number) => {
   if (lines === 1) {
     return styles.isRootClampSingleLine;
   }
 
-  if (lines > 1) {
+  if (lines !== undefined && lines > 1) {
     return styles.isRootClampMultiLine;
   }
 

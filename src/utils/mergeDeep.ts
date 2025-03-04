@@ -1,4 +1,4 @@
-const isObject = (obj) => obj && typeof obj === 'object' && !Array.isArray(obj);
+const isObject = (obj: unknown) => obj && typeof obj === 'object' && !Array.isArray(obj);
 
 /**
  * Performs a deep merge of objects and returns new object.
@@ -6,7 +6,8 @@ const isObject = (obj) => obj && typeof obj === 'object' && !Array.isArray(obj);
  * @param {...object} objects
  * @returns {object}
  */
-export const mergeDeep = (...objects) => objects.reduce((prev, obj) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const mergeDeep = (...objects: any[]) => objects.reduce((prev, obj) => {
   if (obj == null) {
     return prev;
   }

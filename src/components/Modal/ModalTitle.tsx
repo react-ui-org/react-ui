@@ -1,15 +1,15 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { JSX } from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { transferProps } from '../../utils/transferProps';
+import { ModalTitleProps } from './ModalTitle.types';
 import styles from './ModalTitle.module.scss';
 
-export const ModalTitle = ({
+export const ModalTitle: React.FunctionComponent<ModalTitleProps> = ({
   children,
-  level,
+  level = 2,
   ...restProps
 }) => {
-  const HeadingTag = `h${level}`;
+  const HeadingTag = `h${level}` as keyof JSX.IntrinsicElements;
 
   return (
     <HeadingTag
@@ -19,22 +19,6 @@ export const ModalTitle = ({
       {children}
     </HeadingTag>
   );
-};
-
-ModalTitle.defaultProps = {
-  level: 2,
-};
-
-ModalTitle.propTypes = {
-  /**
-   * Content of the header (preferably ModalTitle and ModalCloseButton).
-   */
-  children: PropTypes.node.isRequired,
-  /**
-   * Optional heading level. Preferably `1` or `2` should be used, see
-   * [W3C recommendation](https://github.com/w3c/aria-practices/issues/551#issuecomment-365134527).
-   */
-  level: PropTypes.number,
 };
 
 export const ModalTitleWithGlobalProps = withGlobalProps(ModalTitle, 'ModalTitle');

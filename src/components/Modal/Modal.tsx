@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React, {
+  ReactNode,
   useCallback,
   useEffect,
   useImperativeHandle,
@@ -17,15 +17,26 @@ import { getPositionClassName } from './_helpers/getPositionClassName';
 import { getSizeClassName } from './_helpers/getSizeClassName';
 import { useModalFocus } from './_hooks/useModalFocus';
 import { useModalScrollPrevention } from './_hooks/useModalScrollPrevention';
+import {
+  ModalProps,
+  ModalSize,
+  ModalVerticalPosition,
+  PreRenderRestProps,
+} from './Modal.types';
 import styles from './Modal.module.scss';
 
 const preRender = (
-  children,
-  dialogRef,
-  position,
-  size,
-  events,
-  restProps,
+  children: ReactNode,
+  dialogRef: React.RefObject<HTMLDialogElement | null>,
+  position: ModalVerticalPosition,
+  size: ModalSize,
+  events: {
+    onCancel: (e: React.MouseEvent<HTMLDialogElement>) => void,
+    onClick: (e: React.MouseEvent<HTMLDialogElement>) => void,
+    onClose: (e: React.MouseEvent<HTMLDialogElement>) => void,
+    onKeyDown: (e: React.KeyboardEvent<HTMLDialogElement>) => void,
+  },
+  restProps: PreRenderRestProps,
 ) => (
   <dialog
     {...transferProps(restProps)}
@@ -41,49 +52,59 @@ const preRender = (
   </dialog>
 );
 
-export const Modal = ({
-  allowCloseOnBackdropClick,
-  allowCloseOnEscapeKey,
-  allowPrimaryActionOnEnterKey,
-  autoFocus,
-  children,
+export const Modal: React.FunctionComponent<ModalProps> = ({
+  allowCloseOnBackdropClick = true,
+  allowCloseOnEscapeKey = true,
+  allowPrimaryActionOnEnterKey = true,
+  autoFocus = true,
+  children = null,
   closeButtonRef,
-  dialogRef,
-  portalId,
-  position,
-  preventScrollUnderneath,
+  dialogRef = null,
+  portalId = null,
+  position = 'center',
+  preventScrollUnderneath = window.document.body,
   primaryButtonRef,
-  size,
+  size = 'medium',
   ...restProps
 }) => {
-  const internalDialogRef = useRef();
+  const internalDialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
-    internalDialogRef.current.showModal();
+    internalDialogRef.current?.showModal();
   }, []);
 
   // We need to have a reference to the dialog element to be able to call its methods,
   // but at the same time we want to expose this reference to the parent component for
   // case someone wants to call dialog methods from outside the component.
-  useImperativeHandle(dialogRef, () => internalDialogRef.current);
+  useImperativeHandle(dialogRef, () => {
+    if (internalDialogRef.current) {
+      return internalDialogRef.current;
+    }
+    return {} as HTMLDialogElement;
+  });
 
   useModalFocus(autoFocus, internalDialogRef, primaryButtonRef);
   useModalScrollPrevention(preventScrollUnderneath);
 
   const onCancel = useCallback(
-    (e) => dialogOnCancelHandler(e, closeButtonRef, restProps.onCancel),
+    (e: React.MouseEvent<HTMLDialogElement>) => dialogOnCancelHandler(e, closeButtonRef, restProps.onCancel),
     [closeButtonRef, restProps.onCancel],
   );
   const onClick = useCallback(
-    (e) => dialogOnClickHandler(e, closeButtonRef, internalDialogRef, allowCloseOnBackdropClick),
+    (e: React.MouseEvent<HTMLDialogElement>) => dialogOnClickHandler(
+      e,
+      closeButtonRef,
+      internalDialogRef,
+      allowCloseOnBackdropClick,
+    ),
     [allowCloseOnBackdropClick, closeButtonRef, internalDialogRef],
   );
   const onClose = useCallback(
-    (e) => dialogOnCloseHandler(e, closeButtonRef, restProps.onClose),
+    (e: React.MouseEvent<HTMLDialogElement>) => dialogOnCloseHandler(e, closeButtonRef, restProps.onClose),
     [closeButtonRef, restProps.onClose],
   );
   const onKeyDown = useCallback(
-    (e) => dialogOnKeyDownHandler(
+    (e: React.KeyboardEvent<HTMLDialogElement>) => dialogOnKeyDownHandler(
       e,
       closeButtonRef,
       primaryButtonRef,
@@ -124,107 +145,8 @@ export const Modal = ({
       events,
       restProps,
     ),
-    document.getElementById(portalId),
+    document.getElementById(portalId) as HTMLElement,
   );
-};
-
-Modal.defaultProps = {
-  allowCloseOnBackdropClick: true,
-  allowCloseOnEscapeKey: true,
-  allowPrimaryActionOnEnterKey: true,
-  autoFocus: true,
-  children: null,
-  closeButtonRef: null,
-  dialogRef: null,
-  portalId: null,
-  position: 'center',
-  preventScrollUnderneath: window.document.body,
-  primaryButtonRef: null,
-  size: 'medium',
-};
-
-Modal.propTypes = {
-  /**
-   * If `true`, the `Modal` can be closed by clicking on the backdrop.
-   */
-  allowCloseOnBackdropClick: PropTypes.bool,
-  /**
-   * If `true`, the `Modal` can be closed by pressing the Escape key.
-   */
-  allowCloseOnEscapeKey: PropTypes.bool,
-  /**
-   * If `true`, the `Modal` can be submitted by pressing the Enter key.
-   */
-  allowPrimaryActionOnEnterKey: PropTypes.bool,
-  /**
-   * If `true`, focus the first input element in the `Modal`, or primary button (referenced by the `primaryButtonRef`
-   * prop), or other focusable element when the `Modal` is opened. If there are none or `autoFocus` is set to `false`,
-   * focus the Modal itself.
-   */
-  autoFocus: PropTypes.bool,
-  /**
-   * Nested elements. Supported types are:
-   *
-   * * `ModalHeader`
-   * * `ModalBody`
-   * * `ModalFooter`
-   *
-   * At least `ModalBody` is required.
-   */
-  children: PropTypes.node,
-  /**
-   * Reference to close button element. It is used to close modal when Escape key is pressed
-   * or the backdrop is clicked.
-   */
-  closeButtonRef: PropTypes.shape({
-    // eslint-disable-next-line react/forbid-prop-types
-    current: PropTypes.any,
-  }),
-  /**
-   * Reference to dialog element
-   */
-  dialogRef: PropTypes.shape({
-    // eslint-disable-next-line react/forbid-prop-types
-    current: PropTypes.any,
-  }),
-  /**
-   * If set, modal is rendered in the React Portal with that ID.
-   */
-  portalId: PropTypes.string,
-  /**
-   * Vertical position of the modal inside browser window.
-   */
-  position: PropTypes.oneOf(['top', 'center']),
-  /**
-   * Mode in which Modal prevents scroll of elements bellow:
-   * * `off` - Modal does not prevent any scroll
-   * * [HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement) - Modal prevents scroll on this HTML element
-   * * object
-   *   * `reset` - method called on Modal's unmount to reset scroll prevention
-   *   * `start` - method called on Modal's mount to custom scroll prevention
-   */
-  preventScrollUnderneath: PropTypes.oneOfType([
-    PropTypes.oneOf([
-      HTMLElement,
-      'off',
-    ]),
-    PropTypes.shape({
-      reset: PropTypes.func,
-      start: PropTypes.func,
-    }),
-  ]),
-  /**
-   * Reference to primary button element. It is used to submit modal when Enter key is pressed and as fallback
-   * when `autoFocus` functionality does not find any input element to be focused.
-   */
-  primaryButtonRef: PropTypes.shape({
-    // eslint-disable-next-line react/forbid-prop-types
-    current: PropTypes.any,
-  }),
-  /**
-   * Size of the modal.
-   */
-  size: PropTypes.oneOf(['small', 'medium', 'large', 'fullscreen', 'auto']),
 };
 
 export const ModalWithGlobalProps = withGlobalProps(Modal, 'Modal');

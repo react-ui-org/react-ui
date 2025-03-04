@@ -1,4 +1,6 @@
-export default (priority, styles) => {
+import { Priority } from '../../../types';
+
+export default (priority: Priority, styles: Record<string, string>) => {
   if (priority === 'filled') {
     return styles.isRootPriorityFilled;
   }

@@ -1,4 +1,10 @@
-export const getAlignClassName = (value, styles, type) => {
+import { Align } from '../../../types';
+
+export const getAlignClassName = (
+  value: Align,
+  styles: Record<string, string>,
+  type: 'group' | 'toolbar',
+) => {
   if (value === 'top') {
     if (type === 'group') {
       return styles.isGroupAlignedToTop;

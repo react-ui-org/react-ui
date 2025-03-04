@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { transferProps } from '../../utils/transferProps';
+import { CardBodyProps } from './CardBody.types';
 import styles from './Card.module.scss';
 
-export const CardBody = ({
+export const CardBody: React.FunctionComponent<CardBodyProps> = ({
   children,
   ...restProps
 }) => (
@@ -15,13 +15,6 @@ export const CardBody = ({
     {children}
   </div>
 );
-
-CardBody.propTypes = {
-  /**
-   * Content of the card.
-   */
-  children: PropTypes.node.isRequired,
-};
 
 export const CardBodyWithGlobalProps = withGlobalProps(CardBody, 'CardBody');
 

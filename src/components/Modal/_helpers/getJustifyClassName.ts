@@ -1,4 +1,6 @@
-export const getJustifyClassName = (value, styles) => {
+import { Justify } from '../../../types';
+
+export const getJustifyClassName = (value: Justify, styles: Record<string, string>) => {
   if (value === 'start') {
     return styles.isRootJustifiedToStart;
   }

@@ -1,4 +1,6 @@
-export default (labelVisibility, styles) => {
+import { Breakpoint } from '../../../types';
+
+export default (labelVisibility: Breakpoint, styles: Record<string, string>) => {
   // Intentionally omitting `xs` which means label is visible on all screen sizes.
 
   if (labelVisibility === 'sm') {

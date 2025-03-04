@@ -1,4 +1,6 @@
-export const getRootPriorityClassName = (priority, styles) => {
+import { Priority } from '../../types';
+
+export const getRootPriorityClassName = (priority: Priority, styles: Record<string, string>) => {
   if (priority === 'filled') {
     return styles.isRootPriorityFilled;
   }

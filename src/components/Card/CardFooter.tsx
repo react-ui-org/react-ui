@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { transferProps } from '../../utils/transferProps';
 import { withGlobalProps } from '../../providers/globalProps';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
+import { CardFooterProps } from './CardFooter.types';
 import styles from './Card.module.scss';
 
-export const CardFooter = ({
+export const CardFooter: React.FunctionComponent<CardFooterProps> = ({
   children,
   ...restProps
 }) => {
@@ -21,17 +21,6 @@ export const CardFooter = ({
       {children}
     </div>
   );
-};
-
-CardFooter.defaultProps = {
-  children: null,
-};
-
-CardFooter.propTypes = {
-  /**
-   * Card actions, usually buttons.
-   */
-  children: PropTypes.node,
 };
 
 export const CardFooterWithGlobalProps = withGlobalProps(CardFooter, 'CardFooter');

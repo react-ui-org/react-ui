@@ -2,7 +2,7 @@
  * @param props The props that were passed to the React component and were not used by it
  * @returns The props to be passed to the HTML element
  */
-export const transferProps = (props) => {
+export const transferProps = (props: Record<string, unknown>) => {
   const {
     children,
     className,

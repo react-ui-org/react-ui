@@ -1,4 +1,9 @@
-export const getRootValidationStateClassName = (validationState, styles) => {
+import { Validation } from '../../types';
+
+export const getRootValidationStateClassName = (
+  validationState: Validation | undefined,
+  styles: Record<string, string>,
+) => {
   if (validationState === 'invalid') {
     return styles.isRootStateInvalid;
   }

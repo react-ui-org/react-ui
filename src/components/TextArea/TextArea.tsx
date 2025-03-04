@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../utils/classNames';
@@ -7,22 +6,23 @@ import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { FormLayoutContext } from '../FormLayout';
+import { TextAreaProps } from './TextArea.types';
 import styles from './TextArea.module.scss';
 
-export const TextArea = React.forwardRef((props, ref) => {
+export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
   const {
-    disabled,
-    fullWidth,
+    disabled = false,
+    fullWidth = false,
     helpText,
     id,
-    isLabelVisible,
+    isLabelVisible = true,
     label,
-    layout,
-    required,
-    size,
+    layout = 'vertical',
+    required = false,
+    size = 'medium',
     validationState,
     validationText,
-    variant,
+    variant = 'outline',
     ...restProps
   } = props;
 
@@ -89,78 +89,6 @@ export const TextArea = React.forwardRef((props, ref) => {
     </label>
   );
 });
-
-TextArea.defaultProps = {
-  disabled: false,
-  fullWidth: false,
-  helpText: null,
-  id: undefined,
-  isLabelVisible: true,
-  layout: 'vertical',
-  required: false,
-  size: 'medium',
-  validationState: null,
-  validationText: null,
-  variant: 'outline',
-};
-
-TextArea.propTypes = {
-  /**
-   * If `true`, the input will be disabled.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * If `true`, the field will span the full width of its parent.
-   */
-  fullWidth: PropTypes.bool,
-  /**
-   * Optional help text.
-   */
-  helpText: PropTypes.node,
-  /** ID of the input HTML element. It also serves as a prefix for nested elements:
-   * * `<ID>__label`
-   * * `<ID>__labelText`
-   * * `<ID>__helpText`
-   * * `<ID>__validationText`
-   */
-  id: PropTypes.string,
-  /**
-   * If `false`, the label will be visually hidden (but remains accessible by assistive
-   * technologies).
-   */
-  isLabelVisible: PropTypes.bool,
-  /**
-   * Text field label.
-   */
-  label: PropTypes.node.isRequired,
-  /**
-   * Layout of the field.
-   *
-   * Ignored if the component is rendered within `FormLayout` component
-   * as the value is inherited in such case.
-   */
-  layout: PropTypes.oneOf(['horizontal', 'vertical']),
-  /**
-   * If `true`, the input will be required.
-   */
-  required: PropTypes.bool,
-  /**
-   * Size of the field.
-   */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
-  /**
-   * Alter the field to provide feedback based on validation result.
-   */
-  validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
-  /**
-   * Validation message to be displayed.
-   */
-  validationText: PropTypes.node,
-  /**
-   * Design variant of the field, further customizable with CSS custom properties.
-   */
-  variant: PropTypes.oneOf(['filled', 'outline']),
-};
 
 export const TextAreaWithGlobalProps = withGlobalProps(TextArea, 'TextArea');
 

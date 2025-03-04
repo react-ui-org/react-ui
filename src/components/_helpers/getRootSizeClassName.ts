@@ -1,4 +1,6 @@
-export const getRootSizeClassName = (size, styles) => {
+import { Size } from '../../types';
+
+export const getRootSizeClassName = (size: Size | undefined, styles: Record<string, string>) => {
   if (size === 'small') {
     return styles.isRootSizeSmall;
   }

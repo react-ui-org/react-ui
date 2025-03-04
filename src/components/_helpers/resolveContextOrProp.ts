@@ -1,4 +1,4 @@
-export const resolveContextOrProp = (contextValue, propValue) => {
+export const resolveContextOrProp = <C, P>(contextValue: C, propValue: P): C | P => {
   // We need to test:
   //  * `false` - for when the `contextValue` is boolean
   //  * `null` - for when the `contextValue` is non-boolean

@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { TranslationsContext } from '../../providers/translations';
@@ -6,13 +5,14 @@ import { classNames } from '../../utils/classNames';
 import { transferProps } from '../../utils/transferProps';
 import { getRootColorClassName } from '../_helpers/getRootColorClassName';
 import styles from './Alert.module.scss';
+import { AlertProps } from './Alert.types';
 
-export const Alert = ({
+export const Alert: React.FunctionComponent<AlertProps> = ({
   children,
-  color,
-  icon,
+  color = 'note',
+  icon = null,
   id,
-  onClose,
+  onClose = null,
   ...restProps
 }) => {
   const translations = useContext(TranslationsContext);
@@ -45,7 +45,7 @@ export const Alert = ({
           className={styles.close}
           onClick={() => onClose()}
           onKeyPress={() => onClose()}
-          tabIndex="0"
+          tabIndex={0}
           title={translations.Alert.close}
         >
           <span className={styles.closeSign}>×</span>
@@ -53,42 +53,6 @@ export const Alert = ({
       )}
     </div>
   );
-};
-
-Alert.defaultProps = {
-  color: 'note',
-  icon: null,
-  id: undefined,
-  onClose: null,
-};
-
-Alert.propTypes = {
-  /**
-   * Alert body.
-   */
-  children: PropTypes.node.isRequired,
-  /**
-   * Color variant to clarify importance and meaning of the alert. Implements
-   * [Feedback and Neutral color collections](/docs/foundation/collections#colors).
-   */
-  color: PropTypes.oneOf(['success', 'warning', 'danger', 'help', 'info', 'note', 'light', 'dark']),
-  /**
-   * Optional element to be displayed next to the alert body.
-   */
-  icon: PropTypes.node,
-  /**
-   * ID of the root HTML element.
-   *
-   * Also serves as base for ids of nested elements:
-   * * `<ID>__close`
-   * * `<ID>__content`
-   */
-  id: PropTypes.string,
-  /**
-   * Function to call when the close button is clicked. If not provided, close buttons will be
-   * hidden.
-   */
-  onClose: PropTypes.func,
 };
 
 export const AlertWithGlobalProps = withGlobalProps(Alert, 'Alert');

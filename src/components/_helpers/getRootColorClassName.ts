@@ -1,4 +1,6 @@
-export const getRootColorClassName = (variant, styles) => {
+import { Color } from '../../types';
+
+export const getRootColorClassName = (variant: Color, styles: Record<string, string>) => {
   if (variant === 'primary') {
     return styles.isRootColorPrimary;
   }

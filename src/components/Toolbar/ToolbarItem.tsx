@@ -1,14 +1,14 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { classNames } from '../../utils/classNames';
 import { transferProps } from '../../utils/transferProps';
 import { withGlobalProps } from '../../providers/globalProps';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
+import { ToolbarItemProps } from './ToolbarItem.types';
 import styles from './Toolbar.module.scss';
 
-export const ToolbarItem = ({
+export const ToolbarItem: React.FunctionComponent<ToolbarItemProps> = ({
   children,
-  flexible,
+  flexible = false,
   ...restProps
 }) => {
   if (isChildrenEmpty(children)) {
@@ -26,22 +26,6 @@ export const ToolbarItem = ({
       {children}
     </div>
   );
-};
-
-ToolbarItem.defaultProps = {
-  children: null,
-  flexible: false,
-};
-
-ToolbarItem.propTypes = {
-  /**
-   * Content of the toolbar item. If none are provided nothing is rendered.
-   */
-  children: PropTypes.node,
-  /**
-   * Allow item to grow and shrink if needed.
-   */
-  flexible: PropTypes.bool,
 };
 
 export const ToolbarItemWithGlobalProps = withGlobalProps(ToolbarItem, 'ToolbarItem');

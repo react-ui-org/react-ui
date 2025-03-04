@@ -1,4 +1,6 @@
-export const getScrollingClassName = (type, styles) => {
+import { Scrolling } from '../../../types';
+
+export const getScrollingClassName = (type: Scrolling, styles: Record<string, string>) => {
   if (type === 'auto') {
     return styles.isRootScrollingAuto;
   }

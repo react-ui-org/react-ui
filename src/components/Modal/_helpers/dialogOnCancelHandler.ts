@@ -12,7 +12,11 @@
  * @param closeButtonRef
  * @param onCancelHandler
  */
-export const dialogOnCancelHandler = (e, closeButtonRef, onCancelHandler = undefined) => {
+export const dialogOnCancelHandler = (
+  e: React.MouseEvent<HTMLDialogElement>,
+  closeButtonRef?: React.RefObject<HTMLButtonElement>,
+  onCancelHandler?: (e: React.MouseEvent<HTMLDialogElement>) => void,
+) => {
   // Prevent the default behaviour of the event as we want to close dialog manually.
   e.preventDefault();
 

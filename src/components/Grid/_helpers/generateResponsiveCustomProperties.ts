@@ -1,4 +1,11 @@
-const prepareValueByType = (value, type) => {
+import {
+  BreakPointKeys,
+  GridBreakpoints,
+  GridGapBreakpoints,
+} from '../Grid.types';
+import { RowColumnsBreakpoints } from '../GridSpan.types';
+
+const prepareValueByType = (value: string | number, type: null | string) => {
   if (type === 'spacing') {
     return `var(--rui-dimension-space-${value})`;
   }
@@ -6,7 +13,11 @@ const prepareValueByType = (value, type) => {
   return value;
 };
 
-export const generateResponsiveCustomProperties = (prop, infix, type = null) => {
+export const generateResponsiveCustomProperties = (
+  prop: string | number | GridBreakpoints | GridGapBreakpoints | RowColumnsBreakpoints | undefined,
+  infix: string,
+  type: null | string = null,
+) => {
   if (typeof prop === 'undefined') {
     return null;
   }
@@ -17,6 +28,6 @@ export const generateResponsiveCustomProperties = (prop, infix, type = null) => 
 
   return Object.keys(prop).reduce((acc, breakpoint) => ({
     ...acc,
-    [`--rui-local-${infix}-${breakpoint}`]: prepareValueByType(prop[breakpoint], type),
+    [`--rui-local-${infix}-${breakpoint}`]: prepareValueByType(prop[breakpoint as BreakPointKeys], type),
   }), {});
 };

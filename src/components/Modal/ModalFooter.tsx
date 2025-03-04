@@ -1,14 +1,14 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../utils/classNames';
 import { transferProps } from '../../utils/transferProps';
 import { getJustifyClassName } from './_helpers/getJustifyClassName';
+import { ModalFooterProps } from './ModalFooter.types';
 import styles from './ModalFooter.module.scss';
 
-export const ModalFooter = ({
+export const ModalFooter: React.FunctionComponent<ModalFooterProps> = ({
   children,
-  justify,
+  justify = 'center',
   ...restProps
 }) => (
   <div
@@ -21,21 +21,6 @@ export const ModalFooter = ({
     {children}
   </div>
 );
-
-ModalFooter.defaultProps = {
-  justify: 'center',
-};
-
-ModalFooter.propTypes = {
-  /**
-   * Content of the footer (preferably nested `Button` elements).
-   */
-  children: PropTypes.node.isRequired,
-  /**
-   * Horizontal alignment (distribution) of individual buttons.
-   */
-  justify: PropTypes.oneOf(['start', 'center', 'end', 'space-between', 'stretch']),
-};
 
 export const ModalFooterWithGlobalProps = withGlobalProps(ModalFooter, 'ModalFooter');
 

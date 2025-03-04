@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { Button } from '../../../Button';
 import styles from '../TableCell.module.scss';
+import { TableHeaderCellProps } from './TableHeaderCell.types';
 
-export const TableHeaderCell = ({
+export const TableHeaderCell: React.FunctionComponent<TableHeaderCellProps> = ({
   column,
   id,
   sort,
@@ -38,37 +38,6 @@ export const TableHeaderCell = ({
       </span>
     </th>
   );
-};
-
-TableHeaderCell.defaultProps = {
-  id: undefined,
-  sort: null,
-};
-
-TableHeaderCell.propTypes = {
-  /**
-   * Table data column, optionally sortable. The `format` function can be used to process the
-   * column data before displaying them.
-   */
-  column: PropTypes.shape({
-    isSortable: PropTypes.bool,
-    label: PropTypes.string,
-    name: PropTypes.string.isRequired,
-  }).isRequired,
-  /**
-   * ID of the HTML <th> element and nested button for sorting.
-   */
-  id: PropTypes.string,
-  /**
-   * Sorting configuration required to make columns sortable.
-   */
-  sort: PropTypes.shape({
-    ascendingIcon: PropTypes.node.isRequired,
-    column: PropTypes.string.isRequired,
-    descendingIcon: PropTypes.node.isRequired,
-    direction: PropTypes.oneOf(['asc', 'desc']).isRequired,
-    onClick: PropTypes.func.isRequired,
-  }),
 };
 
 export default TableHeaderCell;
