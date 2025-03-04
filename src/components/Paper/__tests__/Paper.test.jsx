@@ -3,7 +3,7 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { raisedPropTest } from '../../../../tests/propTests/raisedPropTest';
+import { raisedPropTest } from '../../../../tests/jest/propTests/raisedPropTest';
 import { Paper } from '../Paper';
 
 const defaultProps = {

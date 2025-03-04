@@ -3,7 +3,7 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { childrenEmptyPropTest } from '../../../../tests/propTests/childrenEmptyPropTest';
+import { childrenEmptyPropTest } from '../../../../tests/jest/propTests/childrenEmptyPropTest';
 import { CardFooter } from '../CardFooter';
 
 const defaultProps = {
