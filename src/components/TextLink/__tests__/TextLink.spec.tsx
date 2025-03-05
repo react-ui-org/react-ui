@@ -38,10 +38,7 @@ test.describe('TextLink', () => {
   test.describe('non-visual', () => {
     test('href', async ({ mount }) => {
       const component = await mount(
-        <TextLinkForTest
-          href="/test/uri"
-          label="test-label"
-        />,
+        <TextLinkForTest />,
       );
 
       await expect(component).toHaveAttribute('href', '/test/uri');
@@ -49,12 +46,38 @@ test.describe('TextLink', () => {
   });
 
   test.describe('functionality', () => {
+    test('calls native redirect when clicked on', async ({ mount }) => {
+      const testHref = '/test/uri';
+
+      const component = await mount(<TextLinkForTest />);
+      const page = component.page();
+
+      await Promise.all([
+        page.waitForURL(testHref),
+        component.click(),
+      ]);
+
+      expect(page.url()).toContain(testHref);
+    });
+
+    test('calls native redirect when enter pressed', async ({ mount }) => {
+      const testHref = '/test/uri';
+
+      const component = await mount(<TextLinkForTest />);
+      const page = component.page();
+
+      await Promise.all([
+        page.waitForURL(testHref),
+        component.press('Enter'),
+      ]);
+
+      expect(page.url()).toContain(testHref);
+    });
+
     test('calls onClick when clicked', async ({ mount }) => {
       let clicked = false;
       const component = await mount(
         <TextLinkForTest
-          href="/test/uri"
-          label="test-label"
           onClick={() => {
             clicked = true;
           }}
@@ -69,8 +92,6 @@ test.describe('TextLink', () => {
       let clicked = false;
       const component = await mount(
         <TextLinkForTest
-          href="/test/uri"
-          label="test-label"
           onClick={() => {
             clicked = true;
           }}
