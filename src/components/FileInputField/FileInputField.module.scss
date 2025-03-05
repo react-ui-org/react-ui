@@ -33,6 +33,8 @@
 
         @include box-field-elements.base();
 
+        display: flex;
+        align-items: center;
         font-weight: settings.$drop-zone-font-weight;
         font-size: var(--rui-local-font-size);
         line-height: settings.$drop-zone-line-height;

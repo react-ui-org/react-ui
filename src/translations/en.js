@@ -5,6 +5,7 @@ export default {
   FileInputField: {
     browse: 'browse',
     drop: 'Drop file or',
+    filesSelected: 'files selected',
   },
   ModalCloseButton: {
     close: 'Close',

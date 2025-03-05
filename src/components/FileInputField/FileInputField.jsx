@@ -35,11 +35,23 @@ export const FileInputField = React.forwardRef((props, ref) => {
   const inputGroupContext = useContext(InputGroupContext);
   const translations = useContext(TranslationsContext);
 
-  const [selectedFileName, setSelectedFileName] = useState('');
+  const [selectedFileNames, setSelectedFileNames] = useState([]);
 
   const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    setSelectedFileName(file.name);
+    const { files } = event.target;
+
+    if (files.length === 0) {
+      setSelectedFileNames([]);
+      return;
+    }
+
+    const fileNames = [];
+
+    [...files].forEach((file) => {
+      fileNames.push(file.name);
+    });
+
+    setSelectedFileNames(fileNames);
   };
 
   return (
@@ -85,16 +97,23 @@ export const FileInputField = React.forwardRef((props, ref) => {
             type="file"
           />
           <div className={styles.dropZone}>
-            {selectedFileName && (
-              <Text lines={1}>{selectedFileName}</Text>
-            )}
-            {!selectedFileName && (
-              <>
-                {translations.FileInputField.drop}
-                {' '}
-                <span className={styles.dropZoneLink}>{translations.FileInputField.browse}</span>
-              </>
-            )}
+            <Text lines={1}>
+              {!selectedFileNames.length && (
+                <>
+                  {translations.FileInputField.drop}
+                  {' '}
+                  <span className={styles.dropZoneLink}>{translations.FileInputField.browse}</span>
+                </>
+              )}
+              {selectedFileNames.length === 1 && selectedFileNames[0]}
+              {selectedFileNames.length > 1 && (
+                <>
+                  {selectedFileNames.length}
+                  {' '}
+                  {translations.FileInputField.filesSelected}
+                </>
+              )}
+            </Text>
           </div>
         </div>
         {helpText && (
