@@ -8,5 +8,5 @@ type TextLinkForTestProps = AnchorHTMLAttributes<HTMLAnchorElement>;
 export const TextLinkForTest = ({
   ...props
 }: TextLinkForTestProps) => (
-  <TextLink {...props}/>
+  <TextLink {...props} />
 );
