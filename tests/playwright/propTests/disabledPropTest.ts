@@ -2,11 +2,11 @@ import type { PropTests } from '../types';
 
 export const disabledPropTest: PropTests = [
   {
-    name: 'disabled=false',
+    name: 'disabled:boolean=false',
     props: { disabled: false },
   },
   {
-    name: 'disabled=true',
+    name: 'disabled:boolean=true',
     props: { disabled: true },
   },
 ];
