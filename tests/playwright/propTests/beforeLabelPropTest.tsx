@@ -4,7 +4,7 @@ import type { PropTests } from '../types';
 
 export const beforeLabelPropTest: PropTests = [
   {
-    name: 'beforeLabel',
+    name: 'beforeLabel:node',
     props: { beforeLabel: <TestIcon /> },
   },
 ];
