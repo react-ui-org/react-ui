@@ -6,13 +6,13 @@ const windowHeight = 100;
 const generateLabelVisibilityPropTests = () => {
   const tests: PropTests = [
     {
-      name: 'labelVisibility: none (hidden)',
+      name: 'labelVisibility:string[hidden]=none',
       props: {
         labelVisibility: 'none',
       },
     },
     {
-      name: 'labelVisibility: xs (visible)',
+      name: 'labelVisibility:string[visible]=xs',
       props: {
         labelVisibility: 'xs',
       },
@@ -21,7 +21,7 @@ const generateLabelVisibilityPropTests = () => {
 
   Object.entries(breakpoints).forEach(([breakpointName, breakpointValue]) => {
     tests.push({
-      name: `labelVisibility: ${breakpointName} (visible)`,
+      name: `labelVisibility:string[visible]=${breakpointName}`,
       onBeforeTest: async (page) => {
         await page.setViewportSize({
           height: windowHeight,
@@ -33,7 +33,7 @@ const generateLabelVisibilityPropTests = () => {
       },
     });
     tests.push({
-      name: `labelVisibility: ${breakpointName} (hidden)`,
+      name: `labelVisibility:string[hidden]=${breakpointName}`,
       onBeforeTest: async (page) => {
         await page.setViewportSize({
           height: windowHeight,

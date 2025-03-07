@@ -4,7 +4,7 @@ import type { PropTests } from '../types';
 
 export const endCornerPropTest: PropTests = [
   {
-    name: 'endCorner',
+    name: 'endCorner:node',
     props: { endCorner: <TestIcon /> },
   },
 ];
