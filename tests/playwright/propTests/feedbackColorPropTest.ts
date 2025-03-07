@@ -2,27 +2,27 @@ import type { PropTests } from '../types';
 
 export const feedbackColorPropTest: PropTests = [
   {
-    name: 'color=danger',
+    name: 'color:string=danger',
     props: { color: 'danger' },
   },
   {
-    name: 'color=help',
+    name: 'color:string=help',
     props: { color: 'help' },
   },
   {
-    name: 'color=info',
+    name: 'color:string=info',
     props: { color: 'info' },
   },
   {
-    name: 'color=note',
+    name: 'color:string=note',
     props: { color: 'note' },
   },
   {
-    name: 'color=success',
+    name: 'color:string=success',
     props: { color: 'success' },
   },
   {
-    name: 'color=warning',
+    name: 'color:string=warning',
     props: { color: 'warning' },
   },
 ];

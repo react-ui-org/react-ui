@@ -4,7 +4,7 @@ import type { PropTests } from '../types';
 
 export const iconPropTest: PropTests = [
   {
-    name: 'icon',
+    name: 'icon:node',
     props: { icon: <TestIcon /> },
   },
 ];

@@ -9,6 +9,7 @@ import { AlertForTest } from './Alert.story';
 test.describe('Alert', () => {
   test.describe('visual', () => {
     [
+      ...propTests.defaultComponentPropTest,
       ...propTests.feedbackColorPropTest,
       ...propTests.neutralColorPropTest,
       ...propTests.iconPropTest,
@@ -19,6 +20,7 @@ test.describe('Alert', () => {
     ].forEach(({
       name,
       onBeforeTest,
+      onBeforeSnapshot,
       props,
     }) => {
       test(name, async ({
@@ -34,6 +36,10 @@ test.describe('Alert', () => {
             {...props}
           />,
         );
+
+        if (onBeforeSnapshot) {
+          await onBeforeSnapshot(page, component);
+        }
 
         const screenshot = await component.screenshot();
         expect(screenshot).toMatchSnapshot();
