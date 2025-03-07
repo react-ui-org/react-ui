@@ -4,7 +4,7 @@ import type { PropTests } from '../types';
 
 export const afterLabelPropTest: PropTests = [
   {
-    name: 'afterLabel',
+    name: 'afterLabel:node',
     props: { afterLabel: <TestIcon /> },
   },
 ];

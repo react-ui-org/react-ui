@@ -15,9 +15,16 @@ import {
 test.describe('Button', () => {
   test.describe('visual', () => {
     [
+      ...propTests.defaultComponentPropTest,
       ...propTests.afterLabelPropTest,
       ...propTests.beforeLabelPropTest,
       ...propTests.blockPropTest,
+      ...propTests.endCornerPropTest,
+      ...propTests.feedbackIconPropTest,
+      ...propTests.labelPropTest,
+      ...propTests.labelVisibilityPropTest,
+      ...propTests.sizePropTest,
+      ...propTests.startCornerPropTest,
       ...mixPropTests([
         [
           ...propTests.actionColorPropTest,
@@ -27,15 +34,10 @@ test.describe('Button', () => {
         propTests.disabledPropTest,
         propTests.priorityPropTest,
       ]),
-      ...propTests.endCornerPropTest,
-      ...propTests.feedbackIconPropTest,
-      ...propTests.labelPropTest,
-      ...propTests.labelVisibilityPropTest,
-      ...propTests.sizePropTest,
-      ...propTests.startCornerPropTest,
     ].forEach(({
       name,
       onBeforeTest,
+      onBeforeSnapshot,
       props,
     }) => {
       test(name, async ({
@@ -52,6 +54,10 @@ test.describe('Button', () => {
           />,
         );
 
+        if (onBeforeSnapshot) {
+          await onBeforeSnapshot(page, component);
+        }
+
         const screenshot = await component.screenshot();
         expect(screenshot).toMatchSnapshot();
       });
@@ -60,13 +66,18 @@ test.describe('Button', () => {
 
   test.describe('non-visual', () => {
     test('id', async ({ mount }) => {
+      const testId = 'testId';
+      const testLabel = 'testLabel';
+
       const component = await mount(
         <ButtonForTest
-          id="test-id"
+          id={testId}
+          label={testLabel}
         />,
       );
 
-      await expect(component).toHaveAttribute('id', 'test-id');
+      await expect(component).toHaveAttribute('id', testId);
+      await expect(component.getByText(testLabel)).toHaveAttribute('id', `${testId}__labelText`);
     });
 
     test('ref', async ({ mount }) => {

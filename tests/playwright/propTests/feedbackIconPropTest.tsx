@@ -4,7 +4,7 @@ import type { PropTests } from '../types';
 
 export const feedbackIconPropTest: PropTests = [
   {
-    name: 'feedbackIcon',
+    name: 'feedbackIcon:node',
     props: { feedbackIcon: <TestIcon /> },
   },
 ];
