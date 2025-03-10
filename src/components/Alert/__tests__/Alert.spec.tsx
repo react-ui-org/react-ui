@@ -9,6 +9,7 @@ import { AlertForTest } from './Alert.story';
 test.describe('Alert', () => {
   test.describe('visual', () => {
     [
+      ...propTests.defaultComponentPropTest,
       ...propTests.feedbackColorPropTest,
       ...propTests.neutralColorPropTest,
       ...propTests.iconPropTest,

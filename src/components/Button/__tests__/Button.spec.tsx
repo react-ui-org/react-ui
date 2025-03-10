@@ -15,6 +15,7 @@ import {
 test.describe('Button', () => {
   test.describe('visual', () => {
     [
+      ...propTests.defaultComponentPropTest,
       ...propTests.afterLabelPropTest,
       ...propTests.beforeLabelPropTest,
       ...propTests.blockPropTest,

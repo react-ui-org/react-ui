@@ -13,8 +13,8 @@ type CheckboxFieldForRefTestProps = CheckboxFieldForTestProps & {
   testRefAttrName: string;
   testRefAttrValue: string;
 };
-type CheckboxWForFormLayoutTestsProps = CheckboxFieldForTestProps & {
-  layout: 'vertical' | 'horizontal' | undefined
+export type CheckboxForFormLayoutTestsProps = CheckboxFieldForTestProps & {
+  layout: 'vertical' | 'horizontal'
 };
 
 const defaultLabel = 'test-label';
@@ -48,10 +48,10 @@ export const CheckboxFieldForRefTest = ({
   );
 };
 
-export const CheckboxWForFormLayoutTests = ({
-  layout = undefined,
+export const CheckboxForFormLayoutTests = ({
+  layout,
   ...props
-} : CheckboxWForFormLayoutTestsProps) => {
+} : CheckboxForFormLayoutTestsProps) => {
   const values = useMemo(() => ({ layout }), [layout]);
 
   return (

@@ -10,22 +10,24 @@ import {
 import {
   CheckboxFieldForTest,
   CheckboxFieldForRefTest,
-  CheckboxWForFormLayoutTests,
+  CheckboxForFormLayoutTests,
 } from './CheckboxField.story';
+import type { CheckboxForFormLayoutTestsProps } from './CheckboxField.story';
 import { checkedPropTest } from './_propTests/checkedPropTest';
 
 test.describe('CheckboxField', () => {
   test.describe('base', () => {
     test.describe('visual', () => {
       [
+        ...propTests.defaultComponentPropTest,
         ...propTests.labelPropTest,
         ...propTests.renderAsRequiredPropTest,
         ...propTests.isLabelVisiblePropTest,
-        ...propTests.labelPositionPropTest(),
+        ...propTests.labelPositionPropTest,
         ...mixPropTests([
           checkedPropTest,
           propTests.disabledPropTest,
-          propTests.validationStatePropTest(true),
+          propTests.validationStatePropTest,
         ]),
         ...mixPropTests([
           checkedPropTest,
@@ -33,13 +35,13 @@ test.describe('CheckboxField', () => {
         ]),
         ...mixPropTests([
           checkedPropTest,
-          propTests.validationTextPropTest(true),
-          propTests.validationStatePropTest(true),
+          propTests.validationTextPropTest,
+          propTests.validationStatePropTest,
         ]),
         ...mixPropTests([
           checkedPropTest,
-          propTests.validationTextPropTest(true),
-          propTests.helpTextPropTest(true),
+          propTests.validationTextPropTest,
+          propTests.helpTextPropTest,
         ]),
       ].forEach(({
         name,
@@ -122,7 +124,7 @@ test.describe('CheckboxField', () => {
   test.describe('formLayout', () => {
     test.describe('visual', () => {
       [
-        ...propTests.layoutPropTest(true),
+        ...propTests.layoutPropTest,
       ].forEach(({
         name,
         onBeforeTest,
@@ -137,8 +139,8 @@ test.describe('CheckboxField', () => {
           }
 
           const component = await mount(
-            <CheckboxWForFormLayoutTests
-              {...props}
+            <CheckboxForFormLayoutTests
+              {...props as unknown as CheckboxForFormLayoutTestsProps}
             />,
           );
 

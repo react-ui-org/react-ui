@@ -33,23 +33,24 @@ const options = [
 test.describe('CheckboxField', () => {
   test.describe('visual', () => {
     [
+      ...propTests.defaultComponentPropTest,
       ...propTests.requiredPropTest,
       ...propTests.labelPropTest,
       ...propTests.isLabelVisiblePropTest,
       ...propTests.renderAsRequiredPropTest,
-      ...propTests.layoutPropTest(true),
+      ...propTests.layoutPropTest,
       ...mixPropTests([
-        propTests.validationStatePropTest(true),
-        propTests.validationTextPropTest(true),
+        propTests.validationStatePropTest,
+        propTests.validationTextPropTest,
         propTests.disabledPropTest,
       ]),
       ...mixPropTests([
-        propTests.validationStatePropTest(true),
-        propTests.helpTextPropTest(true),
+        propTests.validationStatePropTest,
+        propTests.helpTextPropTest,
       ]),
       ...mixPropTests([
         partialDisabledOptionsPropTest,
-        propTests.validationStatePropTest(),
+        propTests.validationStatePropTest,
       ]),
     ].forEach(({
       name,

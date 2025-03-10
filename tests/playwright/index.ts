@@ -2,6 +2,7 @@ import { actionColorPropTest } from './propTests/actionColorPropTest';
 import { afterLabelPropTest } from './propTests/afterLabelPropTest';
 import { beforeLabelPropTest } from './propTests/beforeLabelPropTest';
 import { blockPropTest } from './propTests/blockPropTest';
+import { defaultComponentPropTest } from './propTests/defaultComponentPropTest';
 import { disabledPropTest } from './propTests/disabledPropTest';
 import { endCornerPropTest } from './propTests/endCornerPropTest';
 import { feedbackColorPropTest } from './propTests/feedbackColorPropTest';
@@ -31,6 +32,7 @@ export const propTests = {
   afterLabelPropTest,
   beforeLabelPropTest,
   blockPropTest,
+  defaultComponentPropTest,
   disabledPropTest,
   endCornerPropTest,
   feedbackColorPropTest,
