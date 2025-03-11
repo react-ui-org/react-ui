@@ -46,6 +46,7 @@ test.describe('CheckboxField', () => {
       ].forEach(({
         name,
         onBeforeTest,
+        onBeforeSnapshot,
         props,
       }) => {
         test(name, async ({
@@ -61,6 +62,10 @@ test.describe('CheckboxField', () => {
               {...props}
             />,
           );
+
+          if (onBeforeSnapshot) {
+            await onBeforeSnapshot(page, component);
+          }
 
           const screenshot = await component.screenshot();
           expect(screenshot).toMatchSnapshot();
@@ -118,6 +123,17 @@ test.describe('CheckboxField', () => {
         await component.click({ force: true });
         expect(changeCalled).toBeTruthy();
       });
+
+      test('check on space press when focused', async ({ mount }) => {
+        const component = await mount(
+          <CheckboxFieldForTest />,
+        );
+
+        const input = component.getByRole('checkbox');
+        await input.focus();
+        await input.press('Space');
+        await expect(input).toBeChecked();
+      });
     });
   });
 
@@ -128,6 +144,7 @@ test.describe('CheckboxField', () => {
       ].forEach(({
         name,
         onBeforeTest,
+        onBeforeSnapshot,
         props,
       }) => {
         test(name, async ({
@@ -143,6 +160,10 @@ test.describe('CheckboxField', () => {
               {...props as unknown as CheckboxForFormLayoutTestsProps}
             />,
           );
+
+          if (onBeforeSnapshot) {
+            await onBeforeSnapshot(page, component);
+          }
 
           const screenshot = await component.screenshot();
           expect(screenshot).toMatchSnapshot();

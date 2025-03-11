@@ -55,6 +55,7 @@ test.describe('CheckboxField', () => {
     ].forEach(({
       name,
       onBeforeTest,
+      onBeforeSnapshot,
       props,
     }) => {
       test(name, async ({
@@ -70,6 +71,10 @@ test.describe('CheckboxField', () => {
             {...props}
           />,
         );
+
+        if (onBeforeSnapshot) {
+          await onBeforeSnapshot(page, component);
+        }
 
         const screenshot = await component.screenshot();
         expect(screenshot).toMatchSnapshot();
@@ -119,6 +124,24 @@ test.describe('CheckboxField', () => {
       );
 
       await component.getByText(options[1].label).click({ force: true });
+      expect(changeCalled).toBeTruthy();
+    });
+
+    test('check on space press when focused', async ({ mount }) => {
+      let changeCalled = false;
+      const testId = 'testId';
+
+      const component = await mount(
+        <RadioForTest
+          id={testId}
+          onChange={() => { changeCalled = true; }}
+          options={options}
+        />,
+      );
+
+      const input = component.locator(`input[id=${testId}__item__${options[1].key}]`);
+      await input.focus();
+      await input.press('Space');
       expect(changeCalled).toBeTruthy();
     });
   });

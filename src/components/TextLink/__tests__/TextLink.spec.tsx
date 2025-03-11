@@ -15,6 +15,7 @@ test.describe('TextLink', () => {
     ].forEach(({
       name,
       onBeforeTest,
+      onBeforeSnapshot,
       props,
     }) => {
       test(name, async ({
@@ -30,6 +31,10 @@ test.describe('TextLink', () => {
             {...props}
           />,
         );
+
+        if (onBeforeSnapshot) {
+          await onBeforeSnapshot(page, component);
+        }
 
         const screenshot = await component.screenshot();
         expect(screenshot).toMatchSnapshot();

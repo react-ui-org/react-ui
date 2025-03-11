@@ -20,6 +20,7 @@ test.describe('Alert', () => {
     ].forEach(({
       name,
       onBeforeTest,
+      onBeforeSnapshot,
       props,
     }) => {
       test(name, async ({
@@ -35,6 +36,10 @@ test.describe('Alert', () => {
             {...props}
           />,
         );
+
+        if (onBeforeSnapshot) {
+          await onBeforeSnapshot(page, component);
+        }
 
         const screenshot = await component.screenshot();
         expect(screenshot).toMatchSnapshot();
