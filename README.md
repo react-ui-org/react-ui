@@ -119,6 +119,23 @@ We appreciate any contributions you might make. 🙏
 Please check out our [Contributing Guide][gh-contributing]. It includes
 contribution guidelines and information on how to run and develop the project.
 
+## Testing
+
+All contributions should pass linting and tests before being merged.  
+Please follow our [Testing Guidelines][gh-testing], which describe
+how to properly run all tests (linters, unit tests, visual tests)
+in Docker containers to ensure consistency.
+
+## Releasing
+
+React UI uses a fully automated release process.  
+If you plan to release a new version,
+please follow our [Releasing Guide][gh-releasing],
+which explains all necessary steps, including version bumping
+and changelog management.
+
 [rui-docs]: https://react-ui.io
 [RACOM]: https://www.racom.eu
-[gh-contributing]: https://github.com/react-ui-org/react-ui/blob/master/CONTRIBUTING.md
+[gh-contributing]: ./src/docs/contribute/general-guidelines.md
+[gh-testing]: ./src/docs/contribute/testing-guidelines.md
+[gh-releasing]: ./src/docs/contribute/releasing.md
