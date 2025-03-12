@@ -19,13 +19,11 @@
 .markdownlint.jsonc
 babel.config.js
 CODEOWNERS
-CONTRIBUTING.md
 docker-compose.yml
 jest.config.js
 mkdocs.yml
 package-lock.json
 postcss.config.js
-RELEASING.md
 statistics.html
 stylelint.config.js
 webpack.config.babel.js

@@ -51,7 +51,7 @@
     "eslint:js": "eslint --ext js,jsx src",
     "eslint:ts": "eslint --ext ts,tsx -c .eslintrc-ts src tests",
     "lint": "npm run eslint && npm run markdownlint && npm run stylelint",
-    "markdownlint": "markdownlint-cli2 \"CONTRIBUTING.md\" \"README.md\" \"RELEASING.md\" \"src/**/*.md\"",
+    "markdownlint": "markdownlint-cli2 \"README.md\" \"src/**/*.md\"",
     "postbuild": "npm run copy",
     "postinstall": "cp -n .env.dist .env && cp -n .env.playwright.dist .env.playwright || true",
     "precopy": "rm -rf dist && mkdir dist",
