@@ -111,32 +111,6 @@ Neutral informative alert.
 </Alert>
 ```
 
-### Light
-
-Light alert variant.
-
-```docoff-react-preview
-<docoff-placeholder dark>
-  <Alert color="light">
-    <strong>Light alert:</strong> Stands out on dark backgrounds.
-    {' '}
-    <TextLink href="/" label="This is a link" />
-  </Alert>
-</docoff-placeholder>
-```
-
-### Dark
-
-Dark alert variant.
-
-```docoff-react-preview
-<Alert color="dark">
-  <strong>Dark alert:</strong> Stands out on light backgrounds.
-  {' '}
-  <TextLink href="/" label="This is a link" />
-</Alert>
-```
-
 ## Alerts with Icons
 
 An icon can (and should) accompany the message.

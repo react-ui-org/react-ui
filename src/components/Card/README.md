@@ -148,7 +148,7 @@ for card content.
 ## Color Variants
 
 To cover all possible needs of your project, Card is available in colors from
-[Feedback and Neutral color collections](/docs/foundation/collections#colors).
+[Feedback color collection](/docs/foundation/collections#colors).
 
 ```docoff-react-preview
 <Card color="success">
@@ -209,26 +209,6 @@ To cover all possible needs of your project, Card is available in colors from
   </CardBody>
   <CardFooter>
     <Button label="Read more" priority="outline" color="note" />
-  </CardFooter>
-</Card>
-<Card>
-  <CardBody>
-    Hello! I&apos;m light (default) variant of card.
-    {' '}
-    <TextLink href="/" label="This is a link" />
-  </CardBody>
-  <CardFooter>
-    <Button label="Read more" priority="outline" color="dark" />
-  </CardFooter>
-</Card>
-<Card color="dark">
-  <CardBody>
-    Hello! I&apos;m dark variant of card.
-    {' '}
-    <TextLink href="/" label="This is a link" />
-  </CardBody>
-  <CardFooter>
-    <Button label="Read more" priority="outline" color="light" />
   </CardFooter>
 </Card>
 ```
@@ -314,6 +294,7 @@ Separate your card actions with CardFooter. See
 | `--rui-Card__padding`                                | Padding shared by card header, body and footer               |
 | `--rui-Card__border-width`                           | Border width                                                 |
 | `--rui-Card__border-radius`                          | Corner radius                                                |
+| `--rui-Card__background-color`                       | Card background color                                        |
 | `--rui-Card--dense__padding`                         | Padding of dense card                                        |
 | `--rui-Card--raised__box-shadow`                     | Box shadow of raised card                                    |
 | `--rui-Card--disabled__background-color`             | Card background color in disabled state                      |

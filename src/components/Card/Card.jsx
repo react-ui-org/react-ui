@@ -18,7 +18,7 @@ export const Card = ({
     {...transferProps(restProps)}
     className={classNames(
       styles.root,
-      getRootColorClassName(color, styles),
+      color && getRootColorClassName(color, styles),
       dense && styles.isRootDense,
       raised && styles.isRootRaised,
       disabled && styles.isRootDisabled,
@@ -29,7 +29,7 @@ export const Card = ({
 );
 
 Card.defaultProps = {
-  color: 'light',
+  color: undefined,
   dense: false,
   disabled: false,
   raised: false,
@@ -45,9 +45,9 @@ Card.propTypes = {
   children: PropTypes.node.isRequired,
   /**
    * Color to clarify importance and meaning of the card. Implements
-   * [Feedback and Neutral color collections](/docs/foundation/collections#colors).
+   * [Feedback color collection](/docs/foundation/collections#colors).
    */
-  color: PropTypes.oneOf(['success', 'warning', 'danger', 'help', 'info', 'note', 'light', 'dark']),
+  color: PropTypes.oneOf(['success', 'warning', 'danger', 'help', 'info', 'note']),
   /**
    * Make the card more compact.
    */
