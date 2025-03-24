@@ -59,16 +59,11 @@ Styling of basic HTML elements:
 
 ## Font
 
-React UI is designed with [Titillium Web] font, a geometric sans with a wide
-variety of weights and styles. You can change it to a custom font by
-[overriding](/docs/customize/theming/overview) the `--rui-font-family-base` CSS
-custom property:
+React UI uses [native font stack][sm-native-font-stack] for optimum text
+rendering on every device and OS.
 
-```css
-:root {
-  --rui-font-family-base: 'Titillium Web', helvetica, roboto, arial, sans-serif;
-}
-```
+👉 You can replace the native font stack with a
+[custom font](/docs/customize/font).
 
 ## Customization
 
@@ -101,4 +96,4 @@ Font size, font weight, and line height values can be
 }
 ```
 
-[Titillium Web]: https://fonts.google.com/specimen/Titillium+Web
+[sm-native-font-stack]: https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/

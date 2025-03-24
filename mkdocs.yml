@@ -29,8 +29,6 @@ theme:
   language: 'en'
   favicon: 'favicon.ico'
   custom_dir: 'src/docs/_overrides'
-  font:
-    text: 'Titillium Web'
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -135,6 +133,7 @@ nav:
           - TransferProps: 'helpers/transferProps/README.md'
   - Guides:
       - Customize:
+          - Font: 'docs/customize/font.md'
           - Theming:
               - Overview: 'docs/customize/theming/overview.md'
               - Forms: 'docs/customize/theming/forms.md'

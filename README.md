@@ -53,16 +53,7 @@ To install React UI in your app:
    npm install --save @react-ui-org/react-ui
    ```
 
-2. Load the Titillium Web font:
-
-   ```html
-   <link
-     href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap"
-     rel="stylesheet"
-   />
-   ```
-
-3. Load React UI CSS in your app:
+2. Load React UI CSS in your app:
 
    <!-- eslint-env browser -->
    <!-- eslint-disable import/no-unresolved -->
@@ -73,7 +64,7 @@ To install React UI in your app:
 
    <!-- eslint-env browser -->
 
-4. Import and use any of React UI components in your app:
+3. Import and use any of React UI components in your app:
 
    ```jsx
    import { Button } from '@react-ui-org/react-ui';

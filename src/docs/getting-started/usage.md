@@ -11,21 +11,6 @@ add the responsive viewport meta tag to your `<head>` element:
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 ```
 
-## Fonts
-
-React UI is designed with the Titillium Web font. Add it to your project e.g. via
-Google Fonts in your `<head>` element:
-
-```html
-<link
-  href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap"
-  rel="stylesheet"
-/>
-```
-
-Remember to include all necessary font weights (and only them — for better
-performance).
-
 ## CSS
 
 React UI styles are written in Sass and compiled to CSS. You can import them
@@ -80,10 +65,6 @@ Example HTML:
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>React UI Example</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <div id="app"></div>

@@ -56,7 +56,7 @@
     "precopy": "rm -rf dist && mkdir dist",
     "prepublishOnly": "npm run build",
     "start": "webpack --watch --mode=development",
-    "stylelint": "stylelint \"src/**/*.scss\" --config stylelint.config.js",
+    "stylelint": "stylelint \"src/**/*.{css,scss}\" \"!src/docs/_assets/generated/**\" --config stylelint.config.js",
     "test": "npm run jest"
   },
   "dependencies": {

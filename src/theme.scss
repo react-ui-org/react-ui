@@ -49,7 +49,31 @@
         // Font Families
         // =============
 
-        --rui-font-family-base: "Titillium Web", helvetica, roboto, arial, sans-serif;
+        // Native font stack inspired by Bootstrap.
+        // @see https://getbootstrap.com/docs/5.0/content/reboot/#native-font-stack
+        // @see https://css-tricks.com/snippets/css/system-font-stack/
+        --rui-font-family-base:
+            /* Cross-platform generic font family (default user interface font) */
+            system-ui,
+            /* Safari for macOS and iOS (San Francisco)*/
+            -apple-system,
+            /* Windows*/
+            "Segoe UI",
+            /* Android*/
+            roboto,
+            /* Basic web fallback*/
+            "Helvetica Neue",
+            arial,
+            /* Linux*/
+            "Noto Sans",
+            "Liberation Sans",
+            /* Sans serif fallback*/
+            sans-serif,
+            /* Emoji fonts*/
+            "Apple Color Emoji",
+            "Segoe UI Emoji",
+            "Segoe UI Symbol",
+            "Noto Color Emoji";
         --rui-font-family-monospace:
             "SFMono-Regular",
             "Menlo",
