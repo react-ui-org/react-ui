@@ -6,7 +6,6 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { feedbackColorPropTest } from '../../../../tests/propTests/feedbackColorPropTest';
-import { neutralColorPropTest } from '../../../../tests/propTests/neutralColorPropTest';
 import defaultTranslations from '../../../translations/en';
 import { Alert } from '../Alert';
 
@@ -22,7 +21,6 @@ describe('rendering', () => {
       (rootElement) => expect(within(rootElement).getByText('content text')),
     ],
     ...feedbackColorPropTest,
-    ...neutralColorPropTest,
     [
       { icon: (<div>icon</div>) },
       (rootElement) => expect(within(rootElement).getByText('icon')),

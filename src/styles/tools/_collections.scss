@@ -25,22 +25,6 @@
         + ")";
 }
 
-// Function to get the matching link color for a component variant.
-//
-// @param {String} $value - The value to get the link color for.
-
-@function _get-link-color-by-value($value) {
-    @if $value == "light" {
-        @return "dark";
-    }
-
-    @if $value == "dark" {
-        @return "light";
-    }
-
-    @return $value;
-}
-
 // Mixin to generate CSS custom properties for a component theme.
 //
 // 1. Generates a CSS custom property for each property in the `$properties` list.
@@ -133,11 +117,10 @@
 
 @mixin generate-link-properties($prefix, $variant-value) {
     $color-category: _get-category-by-value($value: $variant-value, $collections: collections.$colors);
-    $resolved-variant-value: _get-link-color-by-value($variant-value);
 
-    --#{$prefix}local-link-color: var(--rui-color-#{$color-category}-#{$resolved-variant-value});
-    --#{$prefix}local-link-color-hover: var(--rui-color-#{$color-category}-#{$resolved-variant-value}-hover);
-    --#{$prefix}local-link-color-active: var(--rui-color-#{$color-category}-#{$resolved-variant-value}-active);
+    --#{$prefix}local-link-color: var(--rui-color-#{$color-category}-#{$variant-value});
+    --#{$prefix}local-link-color-hover: var(--rui-color-#{$color-category}-#{$variant-value}-hover);
+    --#{$prefix}local-link-color-active: var(--rui-color-#{$color-category}-#{$variant-value}-active);
 }
 
 // Mixin to generate CSS classes for a component variant.

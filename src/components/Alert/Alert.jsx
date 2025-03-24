@@ -69,9 +69,9 @@ Alert.propTypes = {
   children: PropTypes.node.isRequired,
   /**
    * Color variant to clarify importance and meaning of the alert. Implements
-   * [Feedback and Neutral color collections](/docs/foundation/collections#colors).
+   * [Feedback color collection](/docs/foundation/collections#colors).
    */
-  color: PropTypes.oneOf(['success', 'warning', 'danger', 'help', 'info', 'note', 'light', 'dark']),
+  color: PropTypes.oneOf(['success', 'warning', 'danger', 'help', 'info', 'note']),
   /**
    * Optional element to be displayed next to the alert body.
    */

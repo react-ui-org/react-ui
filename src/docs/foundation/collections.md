@@ -17,8 +17,8 @@ used to ensure consistency across the design system.
 The following color names are designed for use in components that support the
 `color` prop:
 
-| Collection | Available values                                       | Description                                                                      |
-|------------|--------------------------------------------------------|----------------------------------------------------------------------------------|
-| Action     | `primary`, `secondary`, `selected`                     | Reserved for actionable elements, such as buttons and navigation links           |
-| Feedback   | `success`, `warning`, `danger`, `info`, `help`, `note` | For components with feedback state, such as alerts and badges                    |
-| Neutral    | `light`, `dark`                                        | For components that require a neutral background color, such as cards and badges |
+| Collection | Available values                                       | Description                                                                        |
+|------------|--------------------------------------------------------|------------------------------------------------------------------------------------|
+| Action     | `primary`, `secondary`, `selected`                     | Reserved for actionable elements, such as buttons and navigation links             |
+| Feedback   | `success`, `warning`, `danger`, `info`, `help`, `note` | For components with feedback state, such as alerts and buttons                     |
+| Neutral    | `light`, `dark`                                        | For components that require a neutral background color, such as badges and buttons |
