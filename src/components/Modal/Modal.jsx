@@ -9,6 +9,7 @@ import { createPortal } from 'react-dom';
 import { classNames } from '../../helpers/classNames';
 import { transferProps } from '../../helpers/transferProps';
 import { withGlobalProps } from '../../providers/globalProps';
+import { getRootColorClassName } from '../_helpers/getRootColorClassName';
 import { dialogOnCancelHandler } from './_helpers/dialogOnCancelHandler';
 import { dialogOnClickHandler } from './_helpers/dialogOnClickHandler';
 import { dialogOnCloseHandler } from './_helpers/dialogOnCloseHandler';
@@ -21,6 +22,7 @@ import styles from './Modal.module.scss';
 
 const preRender = (
   children,
+  color,
   dialogRef,
   position,
   size,
@@ -32,6 +34,7 @@ const preRender = (
     {...transferProps(events)}
     className={classNames(
       styles.root,
+      color && getRootColorClassName(color, styles),
       getSizeClassName(size, styles),
       getPositionClassName(position, styles),
     )}
@@ -48,6 +51,7 @@ export const Modal = ({
   autoFocus,
   children,
   closeButtonRef,
+  color,
   dialogRef,
   portalId,
   position,
@@ -107,6 +111,7 @@ export const Modal = ({
   if (portalId === null) {
     return preRender(
       children,
+      color,
       internalDialogRef,
       position,
       size,
@@ -118,6 +123,7 @@ export const Modal = ({
   return createPortal(
     preRender(
       children,
+      color,
       internalDialogRef,
       position,
       size,
@@ -135,6 +141,7 @@ Modal.defaultProps = {
   autoFocus: true,
   children: null,
   closeButtonRef: null,
+  color: undefined,
   dialogRef: null,
   portalId: null,
   position: 'center',
@@ -180,6 +187,11 @@ Modal.propTypes = {
     // eslint-disable-next-line react/forbid-prop-types
     current: PropTypes.any,
   }),
+  /**
+   * Color to clarify importance and meaning of the modal. Implements
+   * [Feedback color collection](/docs/foundation/collections#colors).
+   */
+  color: PropTypes.oneOf(['success', 'warning', 'danger', 'help', 'info', 'note']),
   /**
    * Reference to dialog element
    */

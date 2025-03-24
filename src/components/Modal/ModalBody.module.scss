@@ -1,6 +1,24 @@
+// 1. Intentionally do not provide a fallback value for the border color. Setting a fallback value (e.g. `transparent`)
+//    will result in the border being skewed at both ends.
+
+@use "settings";
+
 @layer components.modal {
     .root {
         flex: 1 1 auto;
+        border-inline: settings.$border-width solid var(--rui-local-border-color); // 1.
+
+        &:first-child {
+            border-top: settings.$border-width solid var(--rui-local-border-color); // 1.
+            border-top-left-radius: settings.$border-radius;
+            border-top-right-radius: settings.$border-radius;
+        }
+
+        &:last-child {
+            border-bottom: settings.$border-width solid var(--rui-local-border-color); // 1.
+            border-bottom-right-radius: settings.$border-radius;
+            border-bottom-left-radius: settings.$border-radius;
+        }
     }
 
     .isRootScrollingAuto,

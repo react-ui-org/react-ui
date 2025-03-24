@@ -1,6 +1,10 @@
 @use "sass:map";
+@use "../../styles/settings/collections";
 @use "../../styles/theme/borders";
 @use "../../styles/theme/typography";
 
+$border-width: borders.$width;
 $border-radius: borders.$radius-2;
 $title-font-size: map.get(typography.$font-size-values, 2);
+$colors: collections.$feedback-colors;
+$themeable-properties: border-color, background-color;

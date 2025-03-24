@@ -7,6 +7,7 @@
 @use "../../styles/theme/typography";
 @use "../../styles/tools/accessibility";
 @use "../../styles/tools/breakpoint";
+@use "../../styles/tools/collections";
 @use "../../styles/tools/reset";
 @use "../../styles/tools/spacing";
 @use "animations";
@@ -81,5 +82,15 @@
     .isRootPositionTop {
         top: var(--rui-local-outer-spacing);
         bottom: auto;
+    }
+
+    @each $color in settings.$colors {
+        @include collections.generate-class(
+            $prefix: "rui-",
+            $component-name: "Modal",
+            $variant-name: "color",
+            $variant-value: $color,
+            $properties: settings.$themeable-properties,
+        );
     }
 }

@@ -1014,6 +1014,30 @@
         --rui-Modal--fullscreen__height: 100%;
         --rui-Modal__animation__duration: 0.25s;
 
+        // Modal: success variant
+        --rui-Modal--success__border-color: var(--rui-color-feedback-success);
+        --rui-Modal--success__background-color: var(--rui-color-background-success);
+
+        // Modal: warning variant
+        --rui-Modal--warning__border-color: var(--rui-color-feedback-warning);
+        --rui-Modal--warning__background-color: var(--rui-color-background-warning);
+
+        // Modal: danger variant
+        --rui-Modal--danger__border-color: var(--rui-color-feedback-danger);
+        --rui-Modal--danger__background-color: var(--rui-color-background-danger);
+
+        // Modal: info variant
+        --rui-Modal--info__border-color: var(--rui-color-feedback-info);
+        --rui-Modal--info__background-color: var(--rui-color-background-info);
+
+        // Modal: help variant
+        --rui-Modal--help__border-color: var(--rui-color-feedback-help);
+        --rui-Modal--help__background-color: var(--rui-color-background-help);
+
+        // Modal: note variant
+        --rui-Modal--note__border-color: var(--rui-color-feedback-note);
+        --rui-Modal--note__background-color: var(--rui-color-background-note);
+
         //
         // Paper
         // =====
