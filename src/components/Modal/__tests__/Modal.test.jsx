@@ -6,6 +6,7 @@ import {
   within,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { feedbackColorPropTest } from '../../../../tests/propTests/feedbackColorPropTest';
 import { Button } from '../../..';
 import { Modal } from '../Modal';
 import { ModalBody } from '../ModalBody';
@@ -31,6 +32,7 @@ describe('rendering', () => {
   });
 
   it.each([
+    ...feedbackColorPropTest,
     [
       { children: <div>content text</div> },
       (rootElement) => expect(within(rootElement).getByText('content text')),

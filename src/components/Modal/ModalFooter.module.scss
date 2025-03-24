@@ -1,3 +1,6 @@
+// 1. Intentionally do not provide a fallback value for the border color. Setting a fallback value (e.g. `transparent`)
+//    will result in the border being skewed at both ends.
+
 @use "settings";
 @use "theme";
 
@@ -9,10 +12,11 @@
         gap: theme.$footer-gap;
         align-items: center;
         padding: theme.$padding-y theme.$padding-x;
-        border-top: theme.$separator-width solid theme.$separator-color;
+        border: settings.$border-width solid var(--rui-local-border-color); // 1.
+        border-top: theme.$separator-width solid var(--rui-local-border-color, #{theme.$separator-color});
         border-bottom-right-radius: settings.$border-radius;
         border-bottom-left-radius: settings.$border-radius;
-        background: theme.$footer-background;
+        background: var(--rui-local-background-color, #{theme.$footer-background});
     }
 
     .isRootJustifiedToStart {

@@ -690,6 +690,90 @@ React.createElement(() => {
 });
 ```
 
+## Color Variants
+
+Modal can be colored using the `color` prop. The `color` prop implements the
+[Feedback color collection](/docs/foundation/collections#colors)
+and is applied to the border of the modal and the modal footer.
+
+```docoff-react-preview
+React.createElement(() => {
+  const [modalOpen, setModalOpen] = React.useState(false);
+  const [modalColor, setModalColor] = React.useState('success');
+  const modalCloseButtonRef = React.useRef();
+  {/*
+    The `preventScrollUnderneath` feature is necessary for Modals to work in
+    React UI docs. You may not need it in your application.
+  */}
+  return (
+    <GlobalPropsProvider globalProps={{
+      Modal: { preventScrollUnderneath: window.document.documentElement }
+    }}>
+      <Button
+        label="Launch modal with color options"
+        onClick={() => setModalOpen(true)}
+      />
+      <div>
+        {modalOpen && (
+          <Modal
+            closeButtonRef={modalCloseButtonRef}
+            color={modalColor}
+          >
+            <ModalHeader>
+              <ModalTitle>Modal color</ModalTitle>
+              <ModalCloseButton onClick={() => setModalOpen(false)} />
+            </ModalHeader>
+            <ModalBody>
+              <ModalContent>
+                <Radio
+                  label="Modal color"
+                  onChange={(e) => setModalColor(e.target.value)}
+                  options={[
+                    {
+                      label: 'success',
+                      value: 'success',
+                    },
+                    {
+                      label: 'warning',
+                      value: 'warning',
+                    },
+                    {
+                      label: 'danger',
+                      value: 'danger',
+                    },
+                    {
+                      label: 'info',
+                      value: 'info',
+                    },
+                    {
+                      label: 'help',
+                      value: 'help',
+                    },
+                    {
+                      label: 'note',
+                      value: 'note',
+                    },
+                  ]}
+                  value={modalColor}
+                />
+              </ModalContent>
+            </ModalBody>
+            <ModalFooter>
+              <Button
+                color={modalColor}
+                label="Close"
+                onClick={() => setModalOpen(false)}
+                ref={modalCloseButtonRef}
+              />
+            </ModalFooter>
+          </Modal>
+        )}
+      </div>
+    </GlobalPropsProvider>
+  );
+});
+```
+
 ## Mouse and Keyboard Control
 
 Modal can be controlled either by mouse or keyboard. To enhance user
@@ -1206,6 +1290,21 @@ accessibility.
 | `--rui-Modal--fullscreen__width`                     | Width of fullscreen modal                                   |
 | `--rui-Modal--fullscreen__height`                    | Height of fullscreen modal                                  |
 | `--rui-Modal__animation__duration`                   | Duration of animation used (when opening modal)             |
+
+### Theming Variants
+
+It's possible to adjust the theme of specific color variant. Naming convention
+looks as follows:
+
+`--rui-Modal--<COLOR>__<PROPERTY>`
+
+Where:
+
+- `<COLOR>` is a value from supported
+  [color collections](/docs/foundation/collections#colors)
+  (check [color variants](#color-variants) and [API](#api) to see which
+  collections are supported),
+- `<PROPERTY>` is one of `border-color` or `background-color`.
 
 [button-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes
 [controlled-components]: /docs/getting-started/usage#foundation-css
