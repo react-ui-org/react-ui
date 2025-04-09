@@ -7,7 +7,7 @@ export type PropTest = {
   onBeforeTest?: (page: Page) => Promise<void>,
   props: {
     [name: string]: unknown
-  },
+  }
 };
 
 export type PropTests = PropTest[];
