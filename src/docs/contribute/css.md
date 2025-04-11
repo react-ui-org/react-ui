@@ -183,14 +183,14 @@ class.
 3. **Component's top-level HTML element must have `root` class name.**
    However, this rule has a few exceptions:
 
-   1. When the component is a subcomponent, it's usually better to use
-      subcomponent's name, e.g. `item` or `group`. This enables us to keep
-      related CSS of both the main component and its subcomponents in a single
-      file and see the big picture during development.
+    1. When the component is a subcomponent, it's usually better to use
+       subcomponent's name, e.g. `item` or `group`. This enables us to keep
+       related CSS of both the main component and its subcomponents in a single
+       file and see the big picture during development.
 
-   2. When no CSS on the root element is necessary and styling only takes place
-      once a visual modification is invoked by component props, `root` class
-      name can be omitted entirely.
+    2. When no CSS on the root element is necessary and styling only takes place
+       once a visual modification is invoked by component props, `root` class
+       name can be omitted entirely.
 
 4. **Modifier class names related to the current HTML element must start with
    `is`** and contain the name of the target element, e.g. `isRootLoading`
