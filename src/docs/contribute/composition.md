@@ -8,16 +8,16 @@ There are several types of composition approaches.
 2. **Components with subcomponents:** subcomponents cannot exist on their own
    outside their parent components.
 
-   - **Mandatory subcomponents:** subcomponent must be used at least once in
-     order for the composition to work. E.g. `Tabs` + `TabsItem`.
+     - **Mandatory subcomponents:** subcomponent must be used at least once in
+       order for the composition to work. E.g. `Tabs` + `TabsItem`.
 
-   - **Optional subcomponents:** optional subcomponents may be used to achieve
-     special results. E.g. `FormLayout` + `FormLayoutCustomField` or `Grid` +
-     `GridSpan`.
+     - **Optional subcomponents:** optional subcomponents may be used to achieve
+       special results. E.g. `FormLayout` + `FormLayoutCustomField` or `Grid` +
+       `GridSpan`.
 
-   - **Both mandatory and optional subcomponents:** e.g. `Card` + `CardBody`
-     (mandatory) + `CardFooter` (optional), `Toolbar` + `ToolbarItem`
-     (mandatory) + `ToolbarGroup` (optional), etc.
+     - **Both mandatory and optional subcomponents:** e.g. `Card` + `CardBody`
+       (mandatory) + `CardFooter` (optional), `Toolbar` + `ToolbarItem`
+       (mandatory) + `ToolbarGroup` (optional), etc.
 
 3. **Wrappers for other components:** component is designed to wrap other
    self-contained components. E.g. `FormLayout` + form fields (`CheckboxField`,
