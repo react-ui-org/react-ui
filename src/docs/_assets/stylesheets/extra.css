@@ -20,14 +20,7 @@
     /* stylelint-enable */
 
     --docoff-code-line-height: 1.5;
-    --docoff-code-font-family:
-        "SFMono-Regular",
-        "Menlo",
-        "Monaco",
-        "Consolas",
-        "Liberation Mono",
-        "Courier New",
-        monospace;
+    --docoff-code-font-family: var(--rui-font-family-monospace);
 
     /* Visual configuration of the `<docoff-react-preview>` live preview */
     --docoff-preview-border-color: #ced4de;
@@ -76,13 +69,17 @@
 
 /* Document */
 html {
-    font-size: 100%;
+    /* DO NOT CHANGE THE FONT SIZE. `rem` in docoff previews is calculated from the root font size which is this. */
+    font-size: var(--rui-font-size-base);
     scroll-padding-top: 3.2rem;
     scroll-margin-top: 4rem;
 }
 
 body {
-    font-size: 1rem;
+    --md-text-font-family: var(--rui-font-family-base);
+    --md-code-font-family: var(--rui-font-family-monospace);
+
+    font-size: 1em;
     background-color: var(--md-default-bg-color);
 }
 

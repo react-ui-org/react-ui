@@ -300,7 +300,7 @@ This is a demo of all components supported by FormLayout.
 
 ```docoff-react-preview
 React.createElement(() => {
-  const [fieldLayout, setFieldLayout] = React.useState('vertical');
+  const [fieldLayout, setFieldLayout] = React.useState('horizontal');
   const [fruit, setFruit] = React.useState('apple');
   const [isDeliveryAddress, setIsDeliveryAddress] = React.useState(true);
   const [receiveNewsletter, setReceiveNewsletter] = React.useState(true);
@@ -324,14 +324,14 @@ React.createElement(() => {
         <ToolbarItem>
           <ButtonGroup>
             <Button
-              color={fieldLayout === 'vertical' ? 'selected' : 'secondary'}
-              label="Vertical layout"
-              onClick={() => setFieldLayout('vertical')}
-            />
-            <Button
               color={fieldLayout === 'horizontal' ? 'selected' : 'secondary'}
               label="Horizontal layout"
               onClick={() => setFieldLayout('horizontal')}
+            />
+            <Button
+              color={fieldLayout === 'vertical' ? 'selected' : 'secondary'}
+              label="Vertical layout"
+              onClick={() => setFieldLayout('vertical')}
             />
           </ButtonGroup>
         </ToolbarItem>
@@ -388,6 +388,7 @@ React.createElement(() => {
           rows={3}
         />
         <FileInputField
+          id="my-file"
           label="Attachment"
           onFilesChanged={() => {}}
         />

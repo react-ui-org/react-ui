@@ -32,7 +32,7 @@ See [API](#api) for all available options.
 ## Color Variants
 
 To cover all possible needs of your project, Alert is available in colors from
-[Feedback and Neutral color collections](/docs/foundation/collections#colors).
+[Feedback color collection](/docs/foundation/collections#colors).
 
 ### Success
 
