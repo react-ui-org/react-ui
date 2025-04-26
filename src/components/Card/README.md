@@ -289,16 +289,17 @@ Separate your card actions with CardFooter. See
 
 ### Common Theming Options
 
-| Custom Property                                      | Description                                                  |
-|------------------------------------------------------|--------------------------------------------------------------|
-| `--rui-Card__padding`                                | Padding shared by card header, body and footer               |
-| `--rui-Card__border-width`                           | Border width                                                 |
-| `--rui-Card__border-radius`                          | Corner radius                                                |
-| `--rui-Card__background-color`                       | Card background color                                        |
-| `--rui-Card--dense__padding`                         | Padding of dense card                                        |
-| `--rui-Card--raised__box-shadow`                     | Box shadow of raised card                                    |
-| `--rui-Card--disabled__background-color`             | Card background color in disabled state                      |
-| `--rui-Card--disabled__opacity`                      | Card opacity in disabled state                               |
+| Custom Property                          | Description                                    |
+|------------------------------------------|------------------------------------------------|
+| `--rui-Card__padding`                    | Padding shared by card header, body and footer |
+| `--rui-Card__border-width`               | Border width                                   |
+| `--rui-Card__border-color`               | Border color                                   |
+| `--rui-Card__border-radius`              | Corner radius                                  |
+| `--rui-Card__background-color`           | Card background color                          |
+| `--rui-Card--dense__padding`             | Padding of dense card                          |
+| `--rui-Card--raised__box-shadow`         | Box shadow of raised card                      |
+| `--rui-Card--disabled__background-color` | Card background color in disabled state        |
+| `--rui-Card--disabled__opacity`          | Card opacity in disabled state                 |
 
 ### Theming Variants
 
