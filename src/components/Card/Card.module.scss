@@ -12,7 +12,7 @@
         flex-direction: column;
         min-width: 0; // 1.
         color: var(--rui-local-color);
-        border: theme.$border-width solid var(--rui-local-border-color, transparent);
+        border: theme.$border-width solid var(--rui-local-border-color, theme.$border-color);
         border-radius: theme.$border-radius;
         background-color: var(--rui-local-background-color, theme.$background-color);
     }
