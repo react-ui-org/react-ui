@@ -1,7 +1,7 @@
-import React, { JSX } from 'react';
+import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { transferProps } from '../../helpers/transferProps';
-import { ModalTitleProps } from './ModalTitle.types';
+import type { ModalTitleProps } from './ModalTitle.types';
 import styles from './ModalTitle.module.scss';
 
 export const ModalTitle: React.FunctionComponent<ModalTitleProps> = ({
@@ -9,7 +9,7 @@ export const ModalTitle: React.FunctionComponent<ModalTitleProps> = ({
   level = 2,
   ...restProps
 }) => {
-  const HeadingTag = `h${level}` as keyof JSX.IntrinsicElements;
+  const HeadingTag = `h${level}` as unknown as React.FunctionComponent<ModalTitleProps & { className: string }>;
 
   return (
     <HeadingTag

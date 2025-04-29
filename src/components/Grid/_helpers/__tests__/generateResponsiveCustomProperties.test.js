@@ -1,4 +1,4 @@
-import { generateResponsiveCustomProperties } from '../generateResponsiveCustomProperties';
+import { generateResponsiveCustomProperties } from '../generateResponsiveCustomProperties.ts';
 
 describe('generateResponsiveCustomProperties', () => {
   test('with prop that is undefined', () => {

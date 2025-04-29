@@ -1,4 +1,4 @@
-import { Validation } from '../../types';
+import type { Validation } from '../../types';
 
 export const getRootValidationStateClassName = (
   validationState: Validation | undefined,

@@ -1,6 +1,7 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import type { CleanedComponentPropsWithChildren } from '../../types';
 
-export type TabsProps = React.ComponentProps<'nav'> & {
+export type TabsProps = CleanedComponentPropsWithChildren<'nav'> & {
   /**
    * Nested `TabsItem` elements.
    */

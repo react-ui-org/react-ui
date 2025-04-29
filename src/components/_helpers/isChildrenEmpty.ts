@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 export const isChildrenEmpty = (children: ReactNode) => children == null
   || children === undefined

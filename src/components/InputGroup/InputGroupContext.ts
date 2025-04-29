@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputGroupContextType } from './InputGroupContext.types';
+import type { InputGroupContextType } from './InputGroupContext.types';
 
 export const defaultValues: InputGroupContextType = {
   disabled: false,

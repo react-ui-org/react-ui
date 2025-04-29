@@ -5,7 +5,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:deprecation/recommended",
-    "plugin:typescript-sort-keys/recommended",
+    "plugin:typescript-sort-keys/recommended"
   ],
   "env": {
     "browser": true,
@@ -15,7 +15,7 @@
     {
       "files": [
         "*.spec.tsx",
-        "*.story.tsx",
+        "*.story.tsx"
       ],
       "rules": {
         "@typescript-eslint/unbound-method": "off"

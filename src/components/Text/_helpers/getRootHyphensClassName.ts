@@ -1,4 +1,4 @@
-import { Hyphens } from '../../../types';
+import type { Hyphens } from '../../../types';
 
 export const getRootHyphensClassName = (hyphens: Hyphens, styles: Record<string, string>) => {
   if (hyphens === 'auto') {

@@ -1,10 +1,11 @@
-import { ReactNode } from 'react';
-import {
+import type { ReactNode } from 'react';
+import type {
+  CleanedComponentPropsWithChildren,
   Hyphens,
   WordWrapping,
 } from '../../types';
 
-export type TextProps = React.ComponentProps<'div' | 'span'> & {
+export type TextProps = CleanedComponentPropsWithChildren<'div' | 'span'> & {
   /**
    * If true, the root HTML element renders as `<div>` instead of `<span>`.
    */

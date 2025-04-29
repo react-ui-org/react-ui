@@ -1,10 +1,12 @@
-import { ReactNode } from 'react';
-import {
+import type {
   Align,
+  CleanedComponentPropsWithChildren,
   Justify,
 } from '../../types';
+import type { ToolbarItemProps } from './ToolbarItem.types';
+import type { ToolbarGroupProps } from './ToolbarGroup.types';
 
-export type ToolbarProps = React.ComponentProps<'div'> & {
+export type ToolbarProps = CleanedComponentPropsWithChildren<'div'> & {
   /**
    * Vertical alignment of toolbar items and groups.
    */
@@ -16,7 +18,10 @@ export type ToolbarProps = React.ComponentProps<'div'> & {
    *
    * If none are provided nothing is rendered.
    */
-  children?: ReactNode;
+  children?: React.JSXElementConstructor<
+  ToolbarItemProps
+  | ToolbarGroupProps
+  >[];
   /**
    * If `true`, spacing of all toolbar items in the toolbar will be reduced.
    */

@@ -1,4 +1,4 @@
-import { PlacementStyle } from '../Popover.types';
+import type { PlacementStyle } from '../Popover.types';
 
 export default (placementStyle: PlacementStyle): React.CSSProperties => {
   const validProps = [

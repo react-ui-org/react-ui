@@ -3,7 +3,7 @@ import { classNames } from '../../helpers/classNames/classNames';
 import { transferProps } from '../../helpers/transferProps';
 import { withGlobalProps } from '../../providers/globalProps';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
-import { ToolbarItemProps } from './ToolbarItem.types';
+import type { ToolbarItemProps } from './ToolbarItem.types';
 import styles from './Toolbar.module.scss';
 
 export const ToolbarItem: React.FunctionComponent<ToolbarItemProps> = ({

@@ -1,4 +1,4 @@
-import {
+import type {
   JSX,
   ReactNode,
 } from 'react';

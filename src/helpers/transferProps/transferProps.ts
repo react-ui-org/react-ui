@@ -2,7 +2,7 @@
  * @param props The props that were passed to the React component and were not used by it
  * @returns The props to be passed to the HTML element
  */
-export const transferProps = (props: Record<string, unknown>) => {
+export const transferProps = <T extends { [key: string]: unknown }>(props: Partial<T>) => {
   const {
     children,
     className,
@@ -26,7 +26,7 @@ export const transferProps = (props: Record<string, unknown>) => {
       'style', // Styles are set by component authors, changing it arbitrarily might break things.
       'suppressContentEditableWarning', // Since setting `contentEditable` is not allowed, this is not needed.
     ]
-      .filter((key) => props[key] !== undefined);
+      .filter((key) => props[key as keyof T] !== undefined);
 
     if (invalidProps.length > 0) {
       // eslint-disable-next-line no-console

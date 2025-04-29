@@ -1,10 +1,11 @@
-import { ReactNode } from 'react';
-import {
+import type { ReactNode } from 'react';
+import type {
   AutoScroll,
+  CleanedComponentProps,
   Layout,
 } from '../../types';
 
-export type ScrollViewProps = React.ComponentProps<'div'> & {
+export type ScrollViewProps = CleanedComponentProps<'div'> & {
   /**
    * If `true`, display the arrow controls.
    */

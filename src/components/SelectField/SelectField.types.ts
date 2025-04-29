@@ -1,5 +1,6 @@
-import { ReactNode } from 'react';
-import {
+import type { ReactNode } from 'react';
+import type {
+  CleanedComponentProps,
   Layout,
   Priority,
   Size,
@@ -19,7 +20,7 @@ type GroupedOption = {
   options?: SimpleOption[];
 };
 
-export type SelectFieldProps = React.ComponentProps<'select'> & {
+export type SelectFieldProps = CleanedComponentProps<'select'> & {
   /**
    * If `true`, the input will be disabled.
    */
@@ -76,10 +77,7 @@ export type SelectFieldProps = React.ComponentProps<'select'> & {
    * The same applies for the `label` value of grouped options which is supposed to be unique.
    * To ensure uniqueness `key` attribute can be set manually.
    */
-  options: Array<
-  | GroupedOption
-  | SimpleOption
-  >;
+  options: Array<GroupedOption | SimpleOption>;
   /**
    * If `true`, the input will be rendered as if it was required.
    */

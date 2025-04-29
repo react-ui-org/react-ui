@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import { mergeDeep } from '../../utils/mergeDeep';
 import GlobalPropsContext from './GlobalPropsContext';
-import { GlobalPropsProviderProps } from './GlobalPropsProvider.types';
+import type { GlobalPropsProviderProps } from './GlobalPropsProvider.types';
 
 const GlobalPropsProvider: React.FunctionComponent<GlobalPropsProviderProps> = ({
   children,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { transferProps } from '../../helpers/transferProps';
-import { TabsProps } from './Tabs.types';
+import type { TabsProps } from './Tabs.types';
 import styles from './Tabs.module.scss';
 
 export const Tabs: React.FunctionComponent<TabsProps> = ({

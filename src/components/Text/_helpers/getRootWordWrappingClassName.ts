@@ -1,4 +1,4 @@
-import { WordWrapping } from '../../../types';
+import type { WordWrapping } from '../../../types';
 
 export const getRootWordWrappingClassName = (wordWrapping: WordWrapping, styles: Record<string, string>) => {
   if (wordWrapping === 'anywhere') {

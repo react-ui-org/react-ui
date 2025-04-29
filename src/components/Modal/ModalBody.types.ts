@@ -1,7 +1,10 @@
-import { ReactNode } from 'react';
-import { Scrolling } from '../../types';
+import type { ReactNode } from 'react';
+import type {
+  CleanedComponentPropsWithChildren,
+  Scrolling,
+} from '../../types';
 
-export type ModalBodyProps = React.ComponentProps<'div'> & {
+export type ModalBodyProps = CleanedComponentPropsWithChildren<'div'> & {
   /**
    * Nested elements. Supported types are:
    *

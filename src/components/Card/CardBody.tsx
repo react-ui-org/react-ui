@@ -1,7 +1,7 @@
 import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { transferProps } from '../../helpers/transferProps';
-import { CardBodyProps } from './CardBody.types';
+import type { CardBodyProps } from './CardBody.types';
 import styles from './Card.module.scss';
 
 export const CardBody: React.FunctionComponent<CardBodyProps> = ({

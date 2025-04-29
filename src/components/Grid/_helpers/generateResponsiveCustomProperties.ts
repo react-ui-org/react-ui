@@ -1,9 +1,9 @@
-import {
+import type {
   BreakPointKeys,
   GridBreakpoints,
   GridGapBreakpoints,
 } from '../Grid.types';
-import { RowColumnsBreakpoints } from '../GridSpan.types';
+import type { RowColumnsBreakpoints } from '../GridSpan.types';
 
 const prepareValueByType = (value: string | number, type: null | string) => {
   if (type === 'spacing') {
@@ -18,7 +18,7 @@ export const generateResponsiveCustomProperties = (
   infix: string,
   type: null | string = null,
 ) => {
-  if (typeof prop === 'undefined') {
+  if (prop === undefined) {
     return null;
   }
 

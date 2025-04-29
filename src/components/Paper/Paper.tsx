@@ -2,7 +2,7 @@ import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames';
 import { transferProps } from '../../helpers/transferProps';
-import { PaperProps } from './Paper.types';
+import type { PaperProps } from './Paper.types';
 import styles from './Paper.module.scss';
 
 export const Paper: React.FunctionComponent<PaperProps> = ({

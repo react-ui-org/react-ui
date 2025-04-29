@@ -2,7 +2,7 @@ import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { transferProps } from '../../helpers/transferProps';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
-import { ModalContentProps } from './ModalContent.types';
+import type { ModalContentProps } from './ModalContent.types';
 import styles from './ModalContent.module.scss';
 
 export const ModalContent: React.FunctionComponent<ModalContentProps> = ({

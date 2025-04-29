@@ -1,15 +1,16 @@
-import {
+import type {
   ButtonHTMLAttributes,
   ReactNode,
 } from 'react';
-import {
+import type {
   Breakpoint,
+  CleanedComponentProps,
   Color,
   Priority,
   Size,
 } from '../../types';
 
-export type ButtonProps = React.ComponentProps<'button'> & {
+export type ButtonProps = CleanedComponentProps<'button'> & {
   /**
    * Element to be displayed after label, eg. an icon.
    */

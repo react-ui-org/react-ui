@@ -1,4 +1,4 @@
-import { Justify } from '../../../types';
+import type { Justify } from '../../../types';
 
 export const getJustifyClassName = (value: Justify, styles: Record<string, string>) => {
   if (value === 'start') {

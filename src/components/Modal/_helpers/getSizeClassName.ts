@@ -1,4 +1,4 @@
-import { ModalSize } from '../Modal.types';
+import type { ModalSize } from '../Modal.types';
 
 export const getSizeClassName = (modalSize: ModalSize, styles: Record<string, string>) => {
   if (modalSize === 'small') {

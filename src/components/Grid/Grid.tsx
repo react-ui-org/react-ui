@@ -1,9 +1,9 @@
-import React, { JSX } from 'react';
+import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { transferProps } from '../../helpers/transferProps';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { generateResponsiveCustomProperties } from './_helpers/generateResponsiveCustomProperties';
-import { GridProps } from './Grid.types';
+import type { GridProps } from './Grid.types';
 import styles from './Grid.module.scss';
 
 export const Grid: React.FunctionComponent<GridProps> = ({
@@ -24,10 +24,8 @@ export const Grid: React.FunctionComponent<GridProps> = ({
     return null;
   }
 
-  const TagElement = Tag as unknown as keyof JSX.IntrinsicElements;
-
   return (
-    <TagElement
+    <Tag
       {...transferProps(restProps)}
       className={styles.root}
       style={{
@@ -43,7 +41,7 @@ export const Grid: React.FunctionComponent<GridProps> = ({
       }}
     >
       {children}
-    </TagElement>
+    </Tag>
   );
 };
 

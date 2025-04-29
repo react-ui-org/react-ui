@@ -1,4 +1,4 @@
-export const classNames = (...classes: (string | null)[]) => {
+export const classNames = (...classes: (string | null | boolean | undefined | 0 | 0n)[]) => {
   const filteredClassNames = classes.filter(
     (className) => typeof className === 'string'
     && className.trim().length > 0,

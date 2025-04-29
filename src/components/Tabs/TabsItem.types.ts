@@ -1,6 +1,7 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import type { CleanedComponentProps } from '../../types';
 
-export type TabsItemProps = React.ComponentProps<'a'> & {
+export type TabsItemProps = CleanedComponentProps<'a'> & {
   /**
    * Optional element shown after item's label, e.g. an icon.
    */

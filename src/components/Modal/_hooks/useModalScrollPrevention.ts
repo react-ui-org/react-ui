@@ -1,5 +1,5 @@
 import { useLayoutEffect } from 'react';
-import { PreventScrollUnderneathType } from '../Modal.types';
+import type { PreventScrollUnderneathType } from '../Modal.types';
 
 export const useModalScrollPrevention = (preventScrollUnderneath: PreventScrollUnderneathType) => {
   useLayoutEffect(

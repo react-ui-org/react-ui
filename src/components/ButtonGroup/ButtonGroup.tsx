@@ -10,8 +10,8 @@ import {
   ButtonGroupContext,
   defaultValues,
 } from './ButtonGroupContext';
-import { ButtonGroupProps } from './ButtonGroup.types';
-import { ButtonGroupContextType } from './ButtonGroupContext.types';
+import type { ButtonGroupProps } from './ButtonGroup.types';
+import type { ButtonGroupContextType } from './ButtonGroupContext.types';
 import styles from './ButtonGroup.module.scss';
 
 export const ButtonGroup: React.FunctionComponent<ButtonGroupProps> = ({

@@ -1,4 +1,7 @@
-import React, { useContext } from 'react';
+import React, {
+  useContext,
+  forwardRef,
+} from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
 import { transferProps } from '../../helpers/transferProps';
@@ -9,10 +12,10 @@ import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { ButtonGroupContext } from '../ButtonGroup';
 import { InputGroupContext } from '../InputGroup/InputGroupContext';
 import getRootLabelVisibilityClassName from './helpers/getRootLabelVisibilityClassName';
-import { ButtonProps } from './Button.types';
+import type { ButtonProps } from './Button.types';
 import styles from './Button.module.scss';
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const {
     afterLabel,
     beforeLabel,

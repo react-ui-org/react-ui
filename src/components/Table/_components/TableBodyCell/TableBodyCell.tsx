@@ -1,6 +1,7 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
+import type { ReactNode } from 'react';
 import styles from '../TableCell.module.scss';
-import { TableBodyCellProps } from './TableBodyCell.types';
+import type { TableBodyCellProps } from './TableBodyCell.types';
 
 export const TableBodyCell: React.FunctionComponent<TableBodyCellProps> = ({
   format,

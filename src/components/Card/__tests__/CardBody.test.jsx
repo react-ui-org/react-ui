@@ -3,7 +3,7 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { CardBody } from '../CardBody';
+import { CardBody } from '../CardBody.tsx';
 
 const defaultProps = {
   children: 'content',

@@ -2,7 +2,7 @@ import React from 'react';
 import {
   render, within,
 } from '@testing-library/react';
-import { ModalBody } from '../index';
+import { ModalBody } from '../index.ts';
 
 const mandatoryProps = {
   children: <div>content text</div>,

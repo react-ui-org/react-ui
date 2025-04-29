@@ -17,7 +17,7 @@ import { requiredPropTest } from '../../../../tests/jest/propTests/requiredPropT
 import { sizePropTest } from '../../../../tests/jest/propTests/sizePropTest';
 import { validationStatePropTest } from '../../../../tests/jest/propTests/validationStatePropTest';
 import { validationTextPropTest } from '../../../../tests/jest/propTests/validationTextPropTest';
-import { FileInputField } from '../FileInputField';
+import { FileInputField } from '../FileInputField.tsx';
 
 const mandatoryProps = {
   id: 'id',

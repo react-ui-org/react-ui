@@ -1,3 +1,8 @@
+import type {
+  JSX,
+  JSXElementConstructor,
+} from 'react';
+
 export type ActionColor = 'primary' | 'secondary' | 'selected';
 export type FeedbackColor = 'success' | 'warning' | 'danger' | 'help' | 'info' | 'note';
 export type NeutralColor = 'light' | 'dark';
@@ -17,3 +22,6 @@ export type AutoScroll = 'always' | 'detectEnd' | 'off';
 export type Direction = 'asc' | 'desc';
 export type Hyphens = 'none' | 'auto' | 'manual';
 export type WordWrapping = 'normal' | 'long-words' | 'anywhere';
+
+export type CleanedComponentProps<T extends keyof JSX.IntrinsicElements | JSXElementConstructor<unknown>> = Omit<React.ComponentProps<T>, 'children' | 'className' | 'contentEditable' | 'dangerouslySetInnerHTML' | 'ref' | 'staticContext' | 'style' | 'suppressContentEditableWarning'>;
+export type CleanedComponentPropsWithChildren<T extends keyof JSX.IntrinsicElements | JSXElementConstructor<unknown>> = Omit<React.ComponentProps<T>, 'className' | 'contentEditable' | 'dangerouslySetInnerHTML' | 'ref' | 'staticContext' | 'style' | 'suppressContentEditableWarning'>;

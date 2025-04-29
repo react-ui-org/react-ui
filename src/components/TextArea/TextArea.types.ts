@@ -1,12 +1,13 @@
-import { ReactNode } from 'react';
-import {
+import type { ReactNode } from 'react';
+import type {
+  CleanedComponentProps,
   Layout,
   Priority,
   Size,
   Validation,
 } from '../../types';
 
-export type TextAreaProps = React.ComponentProps<'textarea'> & {
+export type TextAreaProps = CleanedComponentProps<'textarea'> & {
   /**
    * If `true`, the input will be disabled.
    */

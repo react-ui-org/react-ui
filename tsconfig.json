@@ -22,12 +22,12 @@
   },
   "include": [
     "src",
+    "tests",
     "declaration.d.ts",
   ],
   "exclude": [
-    "src/**/__tests__/*",
     "src/docs/*",
-    "tests/*",
+    "tests/jest/*",
     "node_modules",
     "dist",
     "webpack.config.babel.js"

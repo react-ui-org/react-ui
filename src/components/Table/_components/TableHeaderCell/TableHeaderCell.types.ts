@@ -1,4 +1,4 @@
-import { TableSortConfig } from '../../Table.types';
+import type { TableSortConfig } from '../../Table.types';
 
 export type TableHeaderCellProps = {
   /**

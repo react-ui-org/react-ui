@@ -3,7 +3,7 @@ import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
 import { transferProps } from '../../helpers/transferProps';
 import { getJustifyClassName } from './_helpers/getJustifyClassName';
-import { ModalHeaderProps } from './ModalHeader.types';
+import type { ModalHeaderProps } from './ModalHeader.types';
 import styles from './ModalHeader.module.scss';
 
 export const ModalHeader: React.FunctionComponent<ModalHeaderProps> = ({

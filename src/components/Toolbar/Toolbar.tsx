@@ -5,7 +5,7 @@ import { transferProps } from '../../helpers/transferProps';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { getAlignClassName } from './_helpers/getAlignClassName';
 import { getJustifyClassName } from './_helpers/getJustifyClassName';
-import { ToolbarProps } from './Toolbar.types';
+import type { ToolbarProps } from './Toolbar.types';
 import styles from './Toolbar.module.scss';
 
 export const Toolbar: React.FunctionComponent<ToolbarProps> = ({

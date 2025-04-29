@@ -6,8 +6,7 @@ const isObject = (obj: unknown) => obj && typeof obj === 'object' && !Array.isAr
  * @param {...object} objects
  * @returns {object}
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const mergeDeep = (...objects: any[]) => objects.reduce((prev, obj) => {
+export const mergeDeep = (...objects: Record<string, unknown>[]) => objects.reduce((prev, obj) => {
   if (obj == null) {
     return prev;
   }
@@ -19,7 +18,10 @@ export const mergeDeep = (...objects: any[]) => objects.reduce((prev, obj) => {
     const currentVal = obj[key];
 
     if (isObject(previousVal) && isObject(currentVal)) {
-      newObject[key] = mergeDeep(previousVal, currentVal);
+      newObject[key] = mergeDeep(
+        previousVal as Record<string, unknown>,
+        currentVal as Record<string, unknown>,
+      );
     } else {
       newObject[key] = currentVal;
     }

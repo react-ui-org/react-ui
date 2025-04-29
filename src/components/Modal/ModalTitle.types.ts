@@ -1,6 +1,7 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import type { CleanedComponentPropsWithChildren } from '../../types';
 
-export type ModalTitleProps = React.ComponentProps<
+export type ModalTitleProps = CleanedComponentPropsWithChildren<
 | 'h1'
 | 'h2'
 | 'h3'
@@ -8,10 +9,6 @@ export type ModalTitleProps = React.ComponentProps<
 | 'h5'
 | 'h6'
 > & {
-  /**
-   * Rest of the props.
-   */
-  [key: string]: unknown;
   /**
    * Content of the header (preferably ModalTitle and ModalCloseButton).
    */

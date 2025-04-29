@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '../../../Button';
 import styles from '../TableCell.module.scss';
-import { TableHeaderCellProps } from './TableHeaderCell.types';
+import type { TableHeaderCellProps } from './TableHeaderCell.types';
 
 export const TableHeaderCell: React.FunctionComponent<TableHeaderCellProps> = ({
   column,

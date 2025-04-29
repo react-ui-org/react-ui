@@ -1,4 +1,7 @@
-import React, { useContext } from 'react';
+import React, {
+  useContext,
+  forwardRef,
+} from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
 import { transferProps } from '../../helpers/transferProps';
@@ -6,10 +9,10 @@ import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { FormLayoutContext } from '../FormLayout';
-import { TextAreaProps } from './TextArea.types';
+import type { TextAreaProps } from './TextArea.types';
 import styles from './TextArea.module.scss';
 
-export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
   const {
     disabled = false,
     fullWidth = false,

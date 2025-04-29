@@ -1,16 +1,16 @@
 import React, {
-  ReactNode,
   useCallback,
   useEffect,
   useImperativeHandle,
   useRef,
 } from 'react';
+import type { ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames';
 import { transferProps } from '../../helpers/transferProps';
 import { getRootColorClassName } from '../_helpers/getRootColorClassName';
-import { Color } from '../../types';
+import type { Color } from '../../types';
 import { dialogOnCancelHandler } from './_helpers/dialogOnCancelHandler';
 import { dialogOnClickHandler } from './_helpers/dialogOnClickHandler';
 import { dialogOnCloseHandler } from './_helpers/dialogOnCloseHandler';
@@ -19,7 +19,7 @@ import { getPositionClassName } from './_helpers/getPositionClassName';
 import { getSizeClassName } from './_helpers/getSizeClassName';
 import { useModalFocus } from './_hooks/useModalFocus';
 import { useModalScrollPrevention } from './_hooks/useModalScrollPrevention';
-import {
+import type {
   ModalProps,
   ModalSize,
   ModalVerticalPosition,

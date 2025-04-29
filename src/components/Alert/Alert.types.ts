@@ -1,10 +1,11 @@
-import { ReactNode } from 'react';
-import {
+import type { ReactNode } from 'react';
+import type {
+  CleanedComponentProps,
   FeedbackColor,
   NeutralColor,
 } from '../../types';
 
-export type AlertProps = React.ComponentProps<'div'> & {
+export type AlertProps = CleanedComponentProps<'div'> & {
   /**
    * Alert body.
    */

@@ -1,7 +1,7 @@
 // Disable coverage for the following function
 /* istanbul ignore next */
 
-import { ModalProps } from '../Modal.types';
+import type { ModalProps } from '../Modal.types';
 
 /**
  * Handles the close event of the dialog which is fired when the user presses the Escape key or triggers close event

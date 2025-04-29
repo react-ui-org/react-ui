@@ -5,6 +5,7 @@ import React, {
   useImperativeHandle,
   useRef,
   useState,
+  forwardRef,
 } from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames';
@@ -17,11 +18,13 @@ import { InputGroupContext } from '../InputGroup';
 import { Text } from '../Text';
 import { FormLayoutContext } from '../FormLayout';
 import {
-  FileInputFieldProps, InputFieldWithResetState, ResetFileInputEventType,
+  FileInputFieldProps,
+  InputFieldWithResetState,
+  ResetFileInputEventType,
 } from './FileInputfield.types';
 import styles from './FileInputField.module.scss';
 
-export const FileInputField = React.forwardRef<InputFieldWithResetState, FileInputFieldProps>((props, ref) => {
+export const FileInputField = forwardRef<InputFieldWithResetState, FileInputFieldProps>((props, ref) => {
   const {
     disabled = false,
     fullWidth = false,

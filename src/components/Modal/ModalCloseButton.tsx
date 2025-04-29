@@ -1,11 +1,14 @@
-import React, { useContext } from 'react';
+import React, {
+  useContext,
+  forwardRef,
+} from 'react';
 import { TranslationsContext } from '../../providers/translations';
 import { withGlobalProps } from '../../providers/globalProps';
 import { transferProps } from '../../helpers/transferProps';
-import { ModalCloseButtonProps } from './ModalCloseButton.types';
+import type { ModalCloseButtonProps } from './ModalCloseButton.types';
 import styles from './ModalCloseButton.module.scss';
 
-export const ModalCloseButton = React.forwardRef<HTMLButtonElement, ModalCloseButtonProps>((props, ref) => {
+export const ModalCloseButton = forwardRef<HTMLButtonElement, ModalCloseButtonProps>((props, ref) => {
   const {
     disabled = false,
     ...restProps

@@ -5,7 +5,7 @@ import {
   within,
 } from '@testing-library/react';
 import { refPropTest } from '../../../../tests/jest/propTests/refPropTest';
-import { Popover } from '../Popover';
+import { Popover } from '../Popover.tsx';
 
 const mandatoryProps = {
   children: <div>content text</div>,

@@ -1,7 +1,7 @@
 // Disable coverage for the following function
 /* istanbul ignore next */
 
-import { ModalProps } from '../Modal.types';
+import type { ModalProps } from '../Modal.types';
 
 /**
  * Handles the click event of the dialog which is fired when the user clicks on the dialog or on its descendants.

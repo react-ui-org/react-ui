@@ -1,4 +1,4 @@
-import { mergeDeep } from '../mergeDeep';
+import { mergeDeep } from '../mergeDeep.ts';
 
 describe('mergeDeep', () => {
   it('adds new attributes', () => {

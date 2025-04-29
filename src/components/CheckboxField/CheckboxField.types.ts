@@ -1,10 +1,11 @@
-import { ReactNode } from 'react';
-import {
+import type { ReactNode } from 'react';
+import type {
+  CleanedComponentProps,
   Position,
   Validation,
 } from '../../types';
 
-export type CheckboxFieldProps = React.ComponentProps<'input'> & {
+export type CheckboxFieldProps = CleanedComponentProps<'input'> & {
   /**
    * If `true`, the input will be disabled.
    */

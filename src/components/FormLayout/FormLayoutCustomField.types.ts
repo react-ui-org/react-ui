@@ -1,10 +1,11 @@
-import { ReactNode } from 'react';
-import {
+import type { ReactNode } from 'react';
+import type {
+  CleanedComponentProps,
   Size,
   Validation,
 } from '../../types';
 
-export type FormLayoutCustomFieldProps = React.ComponentProps<'div'> & {
+export type FormLayoutCustomFieldProps = CleanedComponentProps<'div'> & {
   /**
    * Custom HTML or React component(s). If none are provided nothing is rendered.
    */

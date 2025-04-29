@@ -3,7 +3,7 @@ import { withGlobalProps } from '../../providers/globalProps';
 import { transferProps } from '../../helpers/transferProps';
 import { TableHeaderCell } from './_components/TableHeaderCell';
 import { TableBodyCell } from './_components/TableBodyCell';
-import { TableProps } from './Table.types';
+import type { TableProps } from './Table.types';
 import styles from './Table.module.scss';
 
 export const Table: React.FunctionComponent<TableProps> = ({

@@ -1,5 +1,8 @@
-import { ReactNode } from 'react';
-import { Placement } from '../../types';
+import type { ReactNode } from 'react';
+import type {
+  CleanedComponentPropsWithChildren,
+  Placement,
+} from '../../types';
 
 export type PlacementStyle = {
   bottom?: string;
@@ -16,7 +19,7 @@ export type PlacementStyle = {
   translate?: string;
 };
 
-export type PopoverProps = React.ComponentProps<'div'> & {
+export type PopoverProps = CleanedComponentPropsWithChildren<'div'> & {
   /**
    * Popover content.
    */

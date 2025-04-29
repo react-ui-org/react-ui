@@ -3,7 +3,7 @@ import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
 import { transferProps } from '../../helpers/transferProps';
 import { getJustifyClassName } from './_helpers/getJustifyClassName';
-import { ModalFooterProps } from './ModalFooter.types';
+import type { ModalFooterProps } from './ModalFooter.types';
 import styles from './ModalFooter.module.scss';
 
 export const ModalFooter: React.FunctionComponent<ModalFooterProps> = ({

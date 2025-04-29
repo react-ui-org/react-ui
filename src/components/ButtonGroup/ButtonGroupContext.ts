@@ -1,15 +1,11 @@
 import React from 'react';
-import {
-  Priority,
-  Size,
-} from '../../types';
-import { ButtonGroupContextType } from './ButtonGroupContext.types';
+import type { ButtonGroupContextType } from './ButtonGroupContext.types';
 
 export const defaultValues: ButtonGroupContextType = {
   block: false,
   disabled: false,
-  priority: 'filled' as Priority,
-  size: 'medium' as Size,
+  priority: 'filled',
+  size: 'medium',
 };
 
 export const ButtonGroupContext = React.createContext <ButtonGroupContextType>(defaultValues);

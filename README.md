@@ -80,7 +80,6 @@ It is possible to run React UI in your app in development mode. This is useful
 because:
 
 - In production mode React UI uses non-human-readable class names.
-- Runtime check (i.e. PropTypes) are suppressed in production mode.
 
 To enable development mode, add the following code to the `webpack.config.js`
 file in your app:

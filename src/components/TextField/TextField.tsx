@@ -1,4 +1,7 @@
-import React, { useContext } from 'react';
+import React, {
+  useContext,
+  forwardRef,
+} from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
 import { transferProps } from '../../helpers/transferProps';
@@ -7,12 +10,12 @@ import { getRootValidationStateClassName } from '../_helpers/getRootValidationSt
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { FormLayoutContext } from '../FormLayout';
 import { InputGroupContext } from '../InputGroup/InputGroupContext';
-import { TextFieldProps } from './TextField.types';
+import type { TextFieldProps } from './TextField.types';
 import styles from './TextField.module.scss';
 
 const SMALL_INPUT_SIZE = 10;
 
-export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
+export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
   const {
     disabled = false,
     fullWidth = false,

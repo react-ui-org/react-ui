@@ -1,4 +1,4 @@
-import { Priority } from '../../../types';
+import type { Priority } from '../../../types';
 
 export default (priority: Priority, styles: Record<string, string>) => {
   if (priority === 'filled') {

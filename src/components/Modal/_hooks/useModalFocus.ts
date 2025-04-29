@@ -20,9 +20,9 @@ export const useModalFocus = (
         return () => {};
       }
 
-      const childrenFocusableElements = Array.from(
+      const childrenFocusableElements = Array.from<HTMLElement>(
         dialogElement.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'),
-      ) as (HTMLButtonElement | HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement)[];
+      );
 
       const firstFocusableElement = childrenFocusableElements[0];
 
@@ -33,7 +33,7 @@ export const useModalFocus = (
       }
 
       const firstFormFieldEl = childrenFocusableElements.find(
-        (element) => ['INPUT', 'TEXTAREA', 'SELECT'].includes(element.nodeName) && !element.disabled,
+        (element) => ['INPUT', 'TEXTAREA', 'SELECT'].includes(element.nodeName) && !(element as (HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement)).disabled,
       );
 
       if (firstFormFieldEl) {

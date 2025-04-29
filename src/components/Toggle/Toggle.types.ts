@@ -1,10 +1,11 @@
-import { ReactNode } from 'react';
-import {
+import type { ReactNode } from 'react';
+import type {
+  CleanedComponentProps,
   Position,
   Validation,
 } from '../../types';
 
-export type ToggleProps = React.ComponentProps<'input'> & {
+export type ToggleProps = CleanedComponentProps<'input'> & {
   /**
    * If `true`, the input will be disabled.
    */

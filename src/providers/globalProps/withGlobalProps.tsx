@@ -1,7 +1,9 @@
-import React, {
+import type {
   ForwardRefExoticComponent,
   FunctionComponent,
   RefAttributes,
+} from 'react';
+import React, {
   useContext,
 } from 'react';
 import GlobalPropsContext from './GlobalPropsContext';

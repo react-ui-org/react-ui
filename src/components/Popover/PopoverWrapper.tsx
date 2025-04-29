@@ -1,7 +1,7 @@
 import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { transferProps } from '../../helpers/transferProps';
-import { PopoverWrapperProps } from './PopoverWrapper.types';
+import type { PopoverWrapperProps } from './PopoverWrapper.types';
 import styles from './PopoverWrapper.module.scss';
 
 export const PopoverWrapper: React.FunctionComponent<PopoverWrapperProps> = ({

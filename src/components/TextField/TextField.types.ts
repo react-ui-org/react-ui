@@ -1,5 +1,6 @@
-import { ReactNode } from 'react';
-import {
+import type { ReactNode } from 'react';
+import type {
+  CleanedComponentProps,
   InputType,
   Layout,
   Priority,
@@ -7,7 +8,7 @@ import {
   Validation,
 } from '../../types';
 
-export type TextFieldProps = React.ComponentProps<'input'> & {
+export type TextFieldProps = CleanedComponentProps<'input'> & {
   /**
    * If `true`, the input will be disabled.
    */

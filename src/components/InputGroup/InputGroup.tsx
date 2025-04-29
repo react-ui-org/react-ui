@@ -11,13 +11,13 @@ import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { FormLayoutContext } from '../FormLayout';
 import { Text } from '../Text';
-import { Validation } from '../../types';
+import type { Validation } from '../../types';
 import {
   defaultValues,
   InputGroupContext,
 } from './InputGroupContext';
 import styles from './InputGroup.module.scss';
-import { InputGroupProps } from './InputGroup.types';
+import type { InputGroupProps } from './InputGroup.types';
 
 export const InputGroup: React.FunctionComponent<InputGroupProps> = ({
   children,
@@ -46,9 +46,9 @@ export const InputGroup: React.FunctionComponent<InputGroupProps> = ({
   const validationState = childrenWithValidationState?.reduce<Validation | undefined>(
     (state, child) => {
       if (state === 'invalid' || (state === 'warning' && child.props.validationState === 'valid')) {
-        return state as Validation;
+        return state;
       }
-      return (child.props.validationState ?? state) as Validation;
+      return (child.props.validationState ?? state);
     },
     undefined,
   );
@@ -100,7 +100,7 @@ export const InputGroup: React.FunctionComponent<InputGroupProps> = ({
             id={id && `${id}__validationTexts`}
           >
             {validationTexts.map((validationText) => (
-              <li key={validationText as React.Key}>
+              <li key={String(validationText)}>
                 <Text blockLevel>
                   {validationText}
                 </Text>

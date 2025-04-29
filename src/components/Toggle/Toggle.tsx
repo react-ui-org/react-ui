@@ -1,13 +1,16 @@
-import React, { useContext } from 'react';
+import React, {
+  useContext,
+  forwardRef,
+} from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
 import { transferProps } from '../../helpers/transferProps';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { FormLayoutContext } from '../FormLayout';
-import { ToggleProps } from './Toggle.types';
+import type { ToggleProps } from './Toggle.types';
 import styles from './Toggle.module.scss';
 
-export const Toggle = React.forwardRef<HTMLInputElement, ToggleProps>((props, ref) => {
+export const Toggle = forwardRef<HTMLInputElement, ToggleProps>((props, ref) => {
   const {
     disabled = false,
     helpText,

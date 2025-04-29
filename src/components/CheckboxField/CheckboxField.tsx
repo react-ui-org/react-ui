@@ -1,13 +1,16 @@
-import React, { useContext } from 'react';
+import React, {
+  useContext,
+  forwardRef,
+} from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
 import { transferProps } from '../../helpers/transferProps';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { FormLayoutContext } from '../FormLayout';
-import { CheckboxFieldProps } from './CheckboxField.types';
+import type { CheckboxFieldProps } from './CheckboxField.types';
 import styles from './CheckboxField.module.scss';
 
-export const CheckboxField = React.forwardRef<HTMLInputElement, CheckboxFieldProps>((props, ref) => {
+export const CheckboxField = forwardRef<HTMLInputElement, CheckboxFieldProps>((props, ref) => {
   const {
     disabled = false,
     helpText,

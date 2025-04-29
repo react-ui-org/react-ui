@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import { mergeDeep } from '../../utils/mergeDeep';
 import TranslationsContext from './TranslationsContext';
-import { TranslationsProviderProps } from './TranslationProvider.types';
+import type { TranslationsProviderProps } from './TranslationProvider.types';
 
 const TranslationsProvider: React.FunctionComponent<TranslationsProviderProps> = ({
   children,
@@ -13,7 +13,7 @@ const TranslationsProvider: React.FunctionComponent<TranslationsProviderProps> =
 
   return (
     <TranslationsContext.Provider
-      value={mergeDeep(contextTranslations, translations)}
+      value={mergeDeep(contextTranslations, translations) as typeof contextTranslations}
     >
       {children}
     </TranslationsContext.Provider>

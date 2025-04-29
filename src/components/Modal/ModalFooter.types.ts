@@ -1,7 +1,10 @@
-import { ReactNode } from 'react';
-import { Justify } from '../../types';
+import type { ReactNode } from 'react';
+import type {
+  CleanedComponentPropsWithChildren,
+  Justify,
+} from '../../types';
 
-export type ModalFooterProps = React.ComponentProps<'div'> & {
+export type ModalFooterProps = CleanedComponentPropsWithChildren<'div'> & {
   /**
    * Content of the footer (preferably nested `Button` elements).
    */

@@ -1,12 +1,13 @@
-import {
+import type {
+  CleanedComponentPropsWithChildren,
   FeedbackColor,
   NeutralColor,
 } from '../../types';
-import { ScrollViewProps } from '../ScrollView/ScrollView.types';
-import { CardBodyProps } from './CardBody.types';
-import { CardFooterProps } from './CardFooter.types';
+import type { ScrollViewProps } from '../ScrollView/ScrollView.types';
+import type { CardBodyProps } from './CardBody.types';
+import type { CardFooterProps } from './CardFooter.types';
 
-export type CardProps = React.ComponentProps<'div'> & {
+export type CardProps = CleanedComponentPropsWithChildren<'div'> & {
   /**
    * Slot for individual card elements that build up the inner layout:
    * * `CardBody`

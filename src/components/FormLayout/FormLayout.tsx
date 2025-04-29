@@ -8,8 +8,8 @@ import {
   FormLayoutContext,
 } from './FormLayoutContext';
 import styles from './FormLayout.module.scss';
-import { FormLayoutProps } from './FormLayout.types';
-import { FormLayoutContextType } from './FormLayoutContext.types';
+import type { FormLayoutProps } from './FormLayout.types';
+import type { FormLayoutContextType } from './FormLayoutContext.types';
 import { PREDEFINED_LABEL_WIDTH_VALUES } from './constants';
 
 export const FormLayout: React.FunctionComponent<FormLayoutProps> = ({
@@ -25,7 +25,8 @@ export const FormLayout: React.FunctionComponent<FormLayoutProps> = ({
     return null;
   }
 
-  const hasCustomLabelWidth = !PREDEFINED_LABEL_WIDTH_VALUES.includes(labelWidth);
+  const hasCustomLabelWidth = !PREDEFINED_LABEL_WIDTH_VALUES
+    .includes(labelWidth as (typeof PREDEFINED_LABEL_WIDTH_VALUES)[number]);
 
   const fieldLayoutClass = (layout: FormLayoutProps['fieldLayout']) => {
     if (layout === 'horizontal') {

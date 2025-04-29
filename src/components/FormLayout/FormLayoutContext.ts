@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormLayoutContextType } from './FormLayoutContext.types';
+import type { FormLayoutContextType } from './FormLayoutContext.types';
 
 export const defaultValues: FormLayoutContextType = {
   layout: 'vertical',

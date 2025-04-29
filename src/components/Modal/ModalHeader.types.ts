@@ -1,7 +1,10 @@
-import { ReactNode } from 'react';
-import { Justify } from '../../types';
+import type { ReactNode } from 'react';
+import type {
+  CleanedComponentPropsWithChildren,
+  Justify,
+} from '../../types';
 
-export type ModalHeaderProps = React.ComponentProps<'div'> & {
+export type ModalHeaderProps = CleanedComponentPropsWithChildren<'div'> & {
   /**
    * Content of the header (preferably ModalTitle and ModalCloseButton).
    */

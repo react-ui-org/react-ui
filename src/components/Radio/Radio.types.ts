@@ -1,5 +1,6 @@
-import { ReactNode } from 'react';
-import {
+import type { ReactNode } from 'react';
+import type {
+  CleanedComponentProps,
   Layout,
   Validation,
 } from '../../types';
@@ -11,7 +12,7 @@ export type RadioOption = {
   value: string | number;
 };
 
-export type RadioProps = React.ComponentProps<'input'> & {
+export type RadioProps = CleanedComponentProps<'input'> & {
   /**
    * If `true`, the input will be disabled.
    */

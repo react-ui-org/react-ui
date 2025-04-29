@@ -1,46 +1,25 @@
 {
   "extends": [
-    "@visionappscz/eslint-config-visionapps",
-    "plugin:deprecation/recommended"
-  ],
-  "overrides": [
-    {
-      "files": [
-        "**/*.ts",
-        "**/*.tsx"
-      ],
-      "extends": [
-        "@visionappscz/eslint-config-visionapps",
-        "airbnb-typescript",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:typescript-sort-keys/recommended"
-      ],
-      "parser": "@typescript-eslint/parser",
-      "parserOptions": {
-        "project": "tsconfig.json"
-      },
-      "plugins": ["@typescript-eslint"],
-      "rules": {
-        "@typescript-eslint/no-unused-vars": ["error"],
-        "@typescript-eslint/object-curly-spacing": ["error"],
-        "import/prefer-default-export": ["off"],
-        "no-console": ["error"],
-        "react/default-props-match-prop-types": ["off"],
-        "react/require-default-props": ["off"]
-      }
-    }
+    "@visionappscz/eslint-config-visionapps"
   ],
   "env": {
     "browser": true,
     "jest": true
   },
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "project": "./tsconfig.json"
-  },
-  "plugins": [
-    "@typescript-eslint"
+  "ignorePatterns": [
+    "src/docs/_assets/generated"
   ],
+  "overrides": [
+    {
+      "files": [
+        "**/*.md"
+      ],
+      "extends": [
+        "plugin:markdown/recommended"
+      ]
+    }
+  ],
+  "parser": "@babel/eslint-parser",
   "rules": {
     "import/prefer-default-export": "off",
     "no-console": "error"

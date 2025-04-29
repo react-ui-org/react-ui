@@ -1,4 +1,7 @@
-import React, { useContext } from 'react';
+import React, {
+  useContext,
+  forwardRef,
+} from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames';
 import { transferProps } from '../../helpers/transferProps';
@@ -9,12 +12,12 @@ import { FormLayoutContext } from '../FormLayout';
 import { InputGroupContext } from '../InputGroup/InputGroupContext';
 import { Option } from './_components/Option';
 import styles from './SelectField.module.scss';
-import {
+import type {
   SelectFieldProps,
   SimpleOption,
 } from './SelectField.types';
 
-export const SelectField = React.forwardRef<HTMLSelectElement, SelectFieldProps>((props, ref) => {
+export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>((props, ref) => {
   const {
     disabled = false,
     fullWidth = false,

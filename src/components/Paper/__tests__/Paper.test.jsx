@@ -4,7 +4,7 @@ import {
   within,
 } from '@testing-library/react';
 import { raisedPropTest } from '../../../../tests/jest/propTests/raisedPropTest';
-import { Paper } from '../Paper';
+import { Paper } from '../Paper.tsx';
 
 const defaultProps = {
   children: 'sample text',

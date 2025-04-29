@@ -4,7 +4,7 @@ import { classNames } from '../../helpers/classNames/classNames';
 import { transferProps } from '../../helpers/transferProps';
 import { getRootColorClassName } from '../_helpers/getRootColorClassName';
 import { getRootPriorityClassName } from '../_helpers/getRootPriorityClassName';
-import { BadgeProps } from './Badge.types';
+import type { BadgeProps } from './Badge.types';
 import styles from './Badge.module.scss';
 
 export const Badge: React.FunctionComponent<BadgeProps> = ({

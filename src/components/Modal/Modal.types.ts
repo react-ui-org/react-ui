@@ -1,14 +1,17 @@
-import { ReactNode } from 'react';
-import {
+import type {
+  CleanedComponentPropsWithChildren,
   Color,
   Size,
 } from '../../types';
+import type { ModalBodyProps } from './ModalBody.types';
+import type { ModalHeaderProps } from './ModalHeader.types';
+import type { ModalFooterProps } from './ModalFooter.types';
 
 export type ModalVerticalPosition = 'top' | 'center';
 export type ModalSize = Size | 'fullscreen' | 'auto';
 export type PreventScrollUnderneathType = ('off' | HTMLElement) | { reset: () => void; start: () => void };
 
-export type ModalProps = React.ComponentProps<'dialog'> & {
+export type ModalProps = CleanedComponentPropsWithChildren<'dialog'> & {
   /**
    * If `true`, the `Modal` can be closed by clicking on the backdrop.
    */
@@ -36,7 +39,11 @@ export type ModalProps = React.ComponentProps<'dialog'> & {
    *
    * At least `ModalBody` is required.
    */
-  children?: ReactNode;
+  children?: React.JSXElementConstructor<
+  ModalBodyProps
+  | ModalHeaderProps
+  | ModalFooterProps
+  >[];
   /**
    * Reference to close button element. It is used to close modal when Escape key is pressed
    * or the backdrop is clicked.
@@ -88,7 +95,20 @@ export type ModalProps = React.ComponentProps<'dialog'> & {
 };
 
 export type PreRenderRestProps = {
-  [key: string]: unknown;
   onCancel?: (e: React.MouseEvent<HTMLDialogElement>) => void;
   onClose?: (e: React.MouseEvent<HTMLDialogElement>) => void;
-};
+} & Omit<ModalProps,
+'size'
+| 'primaryButtonRef'
+| 'preventScrollUnderneath'
+| 'position'
+| 'portalId'
+| 'dialogRef'
+| 'color'
+| 'closeButtonRef'
+| 'children'
+| 'autoFocus'
+| 'allowPrimaryActionOnEnterKey'
+| 'allowCloseOnEscapeKey'
+| 'allowCloseOnBackdropClick'
+>;

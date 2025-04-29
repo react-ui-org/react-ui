@@ -1,4 +1,4 @@
-import { Placement } from '../../../types';
+import type { Placement } from '../../../types';
 
 export default (placement: Placement, styles: Record<string, string>) => {
   const alignment = placement.split('-')[1];

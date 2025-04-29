@@ -3,7 +3,7 @@ import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames';
 import { transferProps } from '../../helpers/transferProps';
 import styles from './TabsItem.module.scss';
-import { TabsItemProps } from './TabsItem.types';
+import type { TabsItemProps } from './TabsItem.types';
 
 export const TabsItem: React.FunctionComponent<TabsItemProps> = ({
   afterLabel,

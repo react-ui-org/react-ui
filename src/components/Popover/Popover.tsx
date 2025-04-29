@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { createPortal } from 'react-dom';
 import { transferProps } from '../../helpers/transferProps';
 import { classNames } from '../../helpers/classNames';
@@ -6,10 +6,10 @@ import { withGlobalProps } from '../../providers/globalProps';
 import cleanPlacementStyle from './_helpers/cleanPlacementStyle';
 import getRootSideClassName from './_helpers/getRootSideClassName';
 import getRootAlignmentClassName from './_helpers/getRootAlignmentClassName';
-import { PopoverProps } from './Popover.types';
+import type { PopoverProps } from './Popover.types';
 import styles from './Popover.module.scss';
 
-export const Popover = React.forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
+export const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
   const {
     placement = 'bottom',
     children,

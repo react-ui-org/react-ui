@@ -5,7 +5,7 @@ import { classNames } from '../../helpers/classNames/classNames';
 import { transferProps } from '../../helpers/transferProps';
 import { getRootColorClassName } from '../_helpers/getRootColorClassName';
 import styles from './Alert.module.scss';
-import { AlertProps } from './Alert.types';
+import type { AlertProps } from './Alert.types';
 
 export const Alert: React.FunctionComponent<AlertProps> = ({
   children,

@@ -1,9 +1,10 @@
-import React, {
+import type {
   ReactNode,
   DragEvent,
   ChangeEvent,
 } from 'react';
-import {
+import type {
+  CleanedComponentProps,
   Layout,
   Size,
   Validation,
@@ -15,7 +16,7 @@ export type InputFieldWithResetState = HTMLInputElement & {
 
 export type ResetFileInputEventType = ChangeEvent<HTMLInputElement> | DragEvent<HTMLDivElement> | null;
 
-export type FileInputFieldProps = React.ComponentProps<'input'> & {
+export type FileInputFieldProps = CleanedComponentProps<'input'> & {
   /**
    * If `true`, the input will be disabled.
    */

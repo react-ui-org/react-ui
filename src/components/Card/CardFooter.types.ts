@@ -1,6 +1,7 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import type { CleanedComponentPropsWithChildren } from '../../types';
 
-export type CardFooterProps = React.ComponentProps<'div'> & {
+export type CardFooterProps = CleanedComponentPropsWithChildren<'div'> & {
   /**
    * Card actions, usually buttons.
    */

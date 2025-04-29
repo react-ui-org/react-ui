@@ -5,7 +5,7 @@ import { transferProps } from '../../helpers/transferProps';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { FormLayoutContext } from '../FormLayout';
-import { RadioProps } from './Radio.types';
+import type { RadioProps } from './Radio.types';
 import styles from './Radio.module.scss';
 
 export const Radio: React.FunctionComponent<RadioProps> = ({

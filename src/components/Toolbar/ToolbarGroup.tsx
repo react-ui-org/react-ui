@@ -4,7 +4,7 @@ import { classNames } from '../../helpers/classNames/classNames';
 import { transferProps } from '../../helpers/transferProps';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { getAlignClassName } from './_helpers/getAlignClassName';
-import { ToolbarGroupProps } from './ToolbarGroup.types';
+import type { ToolbarGroupProps } from './ToolbarGroup.types';
 import styles from './Toolbar.module.scss';
 
 export const ToolbarGroup: React.FunctionComponent<ToolbarGroupProps> = ({

@@ -4,7 +4,7 @@ import { classNames } from '../../helpers/classNames';
 import { transferProps } from '../../helpers/transferProps';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { getScrollingClassName } from './_helpers/getScrollingClassName';
-import { ModalBodyProps } from './ModalBody.types';
+import type { ModalBodyProps } from './ModalBody.types';
 import styles from './ModalBody.module.scss';
 
 export const ModalBody: React.FunctionComponent<ModalBodyProps> = ({

@@ -1,10 +1,11 @@
-import { ReactNode } from 'react';
-import {
+import type { ReactNode } from 'react';
+import type {
+  CleanedComponentPropsWithChildren,
   Priority,
   Size,
 } from '../../types';
 
-export type ButtonGroupProps = React.ComponentProps<'fieldset'> & {
+export type ButtonGroupProps = CleanedComponentPropsWithChildren<'fieldset'> & {
   /**
    * If `true`, the button group will span the full width of its parent.
    */

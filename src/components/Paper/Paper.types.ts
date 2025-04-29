@@ -1,6 +1,7 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import type { CleanedComponentPropsWithChildren } from '../../types';
 
-export type PaperProps = React.ComponentProps<'div'> & {
+export type PaperProps = CleanedComponentPropsWithChildren<'div'> & {
   /**
    * Content to be placed onto Paper.
    */

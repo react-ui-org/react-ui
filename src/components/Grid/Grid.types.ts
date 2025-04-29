@@ -1,4 +1,8 @@
-import { ReactNode } from 'react';
+import type {
+  JSX,
+  ReactNode,
+} from 'react';
+import type { CleanedComponentPropsWithChildren } from '../../types';
 /* Breakpoints are easier to work with when ordered according to their value, not name. */
 /* eslint-disable typescript-sort-keys/interface */
 
@@ -26,7 +30,7 @@ export type GridGapBreakpoints = {
 
 export type BreakPointKeys = keyof GridBreakpoints & keyof GridGapBreakpoints;
 
-export type GridProps = React.ComponentProps<'div'> & {
+export type GridProps = CleanedComponentPropsWithChildren<'div'> & {
   /**
    * Content alignment. Accepts any valid value of `align-content` CSS property.
    * See [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content) for more.
@@ -90,5 +94,5 @@ export type GridProps = React.ComponentProps<'div'> & {
    * HTML tag to render. Can be any valid HTML tag of your choice, usually a
    * [block-level element](https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements).
    */
-  tag?: HTMLElement;
+  tag?: keyof JSX.IntrinsicElements;
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { transferProps } from '../../helpers/transferProps';
 import styles from './TextLink.module.scss';
-import { TextLinkProps } from './TextLink.types';
+import type { TextLinkProps } from './TextLink.types';
 
 export const TextLink: React.FunctionComponent<TextLinkProps> = ({
   href,

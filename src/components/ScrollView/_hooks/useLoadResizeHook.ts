@@ -3,7 +3,7 @@ import {
   useRef,
 } from 'react';
 import { getElementsPositionDifference } from '../_helpers/getElementsPositionDifference';
-import { PositionDifference } from '../ScrollView.types';
+import type { PositionDifference } from '../ScrollView.types';
 
 export const useLoadResize = (
   effect: (currentPosition: PositionDifference | null) => void,

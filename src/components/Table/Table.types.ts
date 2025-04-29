@@ -1,5 +1,8 @@
-import { ReactNode } from 'react';
-import { Direction } from '../../types';
+import type { ReactNode } from 'react';
+import type {
+  CleanedComponentProps,
+  Direction,
+} from '../../types';
 
 type TableColumn = {
   /**
@@ -43,7 +46,7 @@ export type TableSortConfig = {
   onClick: (column: string, direction: Direction) => void;
 };
 
-export type TableProps = React.ComponentProps<'table'> & {
+export type TableProps = CleanedComponentProps<'table'> & {
   /**
    * Table data columns, optionally sortable. The `format` function can be used to process the
    * column data before displaying them.

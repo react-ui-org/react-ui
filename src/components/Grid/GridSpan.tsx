@@ -4,7 +4,7 @@ import { transferProps } from '../../helpers/transferProps';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { generateResponsiveCustomProperties } from './_helpers/generateResponsiveCustomProperties';
 import styles from './Grid.module.scss';
-import { GridSpanProps } from './GridSpan.types';
+import type { GridSpanProps } from './GridSpan.types';
 
 export const GridSpan: React.FunctionComponent<GridSpanProps> = ({
   children,

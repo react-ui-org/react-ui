@@ -1,15 +1,17 @@
-import { Layout } from '../../types';
-import { CheckboxFieldProps } from '../CheckboxField/CheckboxField.types';
-import { FileInputFieldProps } from '../FileInputField/FileInputfield.types';
-import { RadioProps } from '../Radio/Radio.types';
-import { SelectFieldProps } from '../SelectField/SelectField.types';
-import { TextAreaProps } from '../TextArea/TextArea.types';
-import { TextFieldProps } from '../TextField/TextField.types';
-import { ToggleProps } from '../Toggle/Toggle.types';
-import { PREDEFINED_LABEL_WIDTH_VALUES } from './constants';
-import { FormLayoutCustomFieldProps } from './FormLayoutCustomField.types';
+import type {
+  CleanedComponentPropsWithChildren,
+  Layout,
+} from '../../types';
+import type { CheckboxFieldProps } from '../CheckboxField/CheckboxField.types';
+import type { FileInputFieldProps } from '../FileInputField/FileInputfield.types';
+import type { RadioProps } from '../Radio/Radio.types';
+import type { SelectFieldProps } from '../SelectField/SelectField.types';
+import type { TextAreaProps } from '../TextArea/TextArea.types';
+import type { TextFieldProps } from '../TextField/TextField.types';
+import type { ToggleProps } from '../Toggle/Toggle.types';
+import type { FormLayoutCustomFieldProps } from './FormLayoutCustomField.types';
 
-export type FormLayoutProps = React.ComponentProps<'div'> & {
+export type FormLayoutProps = CleanedComponentPropsWithChildren<'div'> & {
   /**
    * If `true`, FormLayout will take up only as much horizontal space as necessary.
    */
@@ -45,5 +47,5 @@ export type FormLayoutProps = React.ComponentProps<'div'> & {
    * Width of the column with form field labels. Only available if the `fieldLayout` is set to
    * `horizontal`.
    */
-  labelWidth?: typeof PREDEFINED_LABEL_WIDTH_VALUES[number] | string;
+  labelWidth?: string;
 };

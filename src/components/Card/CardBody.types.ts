@@ -1,6 +1,7 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import type { CleanedComponentPropsWithChildren } from '../../types';
 
-export type CardBodyProps = React.ComponentProps<'div'> & {
+export type CardBodyProps = CleanedComponentPropsWithChildren<'div'> & {
   /**
    * Content of the card.
    */

@@ -5,7 +5,7 @@ import {
   within,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Table } from '../Table';
+import { Table } from '../Table.tsx';
 
 const mandatoryProps = {
   columns: [

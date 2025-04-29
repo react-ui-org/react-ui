@@ -6,7 +6,7 @@ import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
 import { FormLayoutContext } from './FormLayoutContext';
-import { FormLayoutCustomFieldProps } from './FormLayoutCustomField.types';
+import type { FormLayoutCustomFieldProps } from './FormLayoutCustomField.types';
 import styles from './FormLayoutCustomField.module.scss';
 
 const renderLabel = (

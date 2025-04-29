@@ -3,7 +3,7 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { ModalHeader } from '../ModalHeader';
+import { ModalHeader } from '../ModalHeader.tsx';
 import { justifyPropTest } from '../../../../tests/jest/propTests/justifyPropTest';
 
 const mandatoryProps = {

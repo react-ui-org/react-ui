@@ -1,7 +1,10 @@
-import { ReactNode } from 'react';
-import { Align } from '../../types';
+import type { ReactNode } from 'react';
+import type {
+  Align,
+  CleanedComponentPropsWithChildren,
+} from '../../types';
 
-export type ToolbarGroupProps = React.ComponentProps<'div'> & {
+export type ToolbarGroupProps = CleanedComponentPropsWithChildren<'div'> & {
   /**
    * Vertical alignment of toolbar items in the group.
    */

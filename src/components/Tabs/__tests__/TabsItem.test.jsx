@@ -6,7 +6,7 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { labelPropTest } from '../../../../tests/jest/propTests/labelPropTest';
-import { TabsItem } from '../TabsItem';
+import { TabsItem } from '../TabsItem.tsx';
 
 const mandatoryProps = {
   href: 'href',

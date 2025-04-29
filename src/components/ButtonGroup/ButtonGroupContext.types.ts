@@ -1,4 +1,4 @@
-import {
+import type {
   Priority,
   Size,
 } from '../../types';

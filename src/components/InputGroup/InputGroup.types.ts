@@ -1,13 +1,14 @@
-import { ReactNode } from 'react';
-import {
+import type { ReactNode } from 'react';
+import type {
+  CleanedComponentPropsWithChildren,
   Layout,
   Size,
 } from '../../types';
-import { Button } from '../Button';
-import { SelectField } from '../SelectField';
-import { TextField } from '../TextField';
+import type { ButtonProps } from '../Button/Button.types';
+import type { SelectFieldProps } from '../SelectField/SelectField.types';
+import type { TextFieldProps } from '../TextField/TextField.types';
 
-export type InputGroupProps = React.ComponentProps<'fieldset'> & {
+export type InputGroupProps = CleanedComponentPropsWithChildren<'fieldset'> & {
   /**
    * Supported elements to be grouped:
    * * `Button`
@@ -16,7 +17,11 @@ export type InputGroupProps = React.ComponentProps<'fieldset'> & {
    *
    * If none are provided nothing is rendered.
    */
-  children?: (typeof Button | typeof SelectField | typeof TextField)[];
+  children?: React.JSXElementConstructor<
+  ButtonProps
+  | SelectFieldProps
+  | TextFieldProps
+  >[]
   /**
    * If `true`, the whole input group with all nested inputs and buttons will be disabled.
    */

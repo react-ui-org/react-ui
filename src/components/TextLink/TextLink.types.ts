@@ -1,4 +1,6 @@
-export type TextLinkProps = React.ComponentProps<'a'> & {
+import type { CleanedComponentProps } from '../../types';
+
+export type TextLinkProps = CleanedComponentProps<'a'> & {
   /**
    * Link's `href` attribute.
    */

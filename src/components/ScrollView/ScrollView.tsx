@@ -1,20 +1,20 @@
 import React, {
-  ReactNode,
   useContext,
   useEffect,
   useLayoutEffect,
   useRef,
   useState,
 } from 'react';
+import type { ReactNode } from 'react';
 import { TranslationsContext } from '../../providers/translations';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames';
 import { transferProps } from '../../helpers/transferProps';
-import { Layout } from '../../types';
+import type { Layout } from '../../types';
 import { getElementsPositionDifference } from './_helpers/getElementsPositionDifference';
 import { useLoadResize } from './_hooks/useLoadResizeHook';
 import { useScrollPosition } from './_hooks/useScrollPositionHook';
-import {
+import type {
   PositionDifference,
   ScrollViewProps,
 } from './ScrollView.types';
@@ -61,7 +61,7 @@ export const ScrollView = React.forwardRef<HTMLDivElement, ScrollViewProps>((pro
   const scrollPositionEnd = direction === 'horizontal' ? 'right' : 'bottom';
   const scrollViewContentEl = useRef<HTMLDivElement>(null);
   const blankRef = useRef<HTMLDivElement>(null);
-  const scrollViewViewportEl: React.RefObject<HTMLDivElement> = (ref as React.RefObject<HTMLDivElement> ?? blankRef);
+  const scrollViewViewportEl = (ref as React.RefObject<HTMLDivElement> ?? blankRef);
 
   const handleScrollViewState = (currentPosition: PositionDifference | null) => {
     if (currentPosition === null) {
@@ -95,8 +95,8 @@ export const ScrollView = React.forwardRef<HTMLDivElement, ScrollViewProps>((pro
     }
 
     const currentPosition = getElementsPositionDifference(
-      scrollViewContentEl as React.RefObject<HTMLDivElement>,
-      scrollViewViewportEl as React.RefObject<HTMLDivElement>,
+      scrollViewContentEl,
+      scrollViewViewportEl,
     );
 
     if (
@@ -119,8 +119,8 @@ export const ScrollView = React.forwardRef<HTMLDivElement, ScrollViewProps>((pro
       return () => {};
     }
 
-    const scrollViewContentElement = scrollViewContentEl.current as unknown as HTMLElement;
-    const scrollViewViewportElement = scrollViewViewportEl.current as unknown as HTMLElement;
+    const scrollViewContentElement = scrollViewContentEl.current;
+    const scrollViewViewportElement = scrollViewViewportEl.current;
 
     const differenceX = (direction === 'horizontal' && scrollViewContentElement) ? scrollViewContentElement.offsetWidth : 0;
     const differenceY = (direction !== 'horizontal' && scrollViewContentElement) ? scrollViewContentElement?.offsetHeight : 0;
@@ -147,8 +147,8 @@ export const ScrollView = React.forwardRef<HTMLDivElement, ScrollViewProps>((pro
     () => {
       handleScrollViewState(
         getElementsPositionDifference(
-          scrollViewContentEl as React.RefObject<HTMLDivElement>,
-          scrollViewViewportEl as React.RefObject<HTMLDivElement>,
+          scrollViewContentEl,
+          scrollViewViewportEl,
         ),
       );
     },

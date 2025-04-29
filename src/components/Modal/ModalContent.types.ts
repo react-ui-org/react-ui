@@ -1,6 +1,7 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import type { CleanedComponentPropsWithChildren } from '../../types';
 
-export type ModalContentProps = React.ComponentProps<'div'> & {
+export type ModalContentProps = CleanedComponentPropsWithChildren<'div'> & {
   /**
    * Content of the modal.
    */
