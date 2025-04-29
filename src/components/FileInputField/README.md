@@ -236,6 +236,44 @@ set the `multiple` prop to `true`.
 />
 ```
 
+## Resetting Input State
+
+If you need to reset the input state, you can do it by calling the
+`resetState` method on the component's ref.
+
+```docoff-react-preview
+React.createElement(() => {
+  const fileInputRef = React.useRef();
+
+  return (
+    <Toolbar align="bottom">
+      <ToolbarItem>
+        <FileInputField
+          id="my-file"
+          label="Attachment"
+          onFilesChanged={() => {}}
+          ref={fileInputRef}
+        />
+      </ToolbarItem>
+      <ToolbarItem>
+        <Button
+          label="Reset file input state"
+          onClick={() => {
+            if (!fileInputRef.current) {
+              return;
+            }
+            fileInputRef.current.resetState();
+          }}
+        />
+      </ToolbarItem>
+    </Toolbar>
+  );
+});
+```
+
+You can also reset the input state by clicking the button with the `reset` type
+inside a form.
+
 ## Forwarding HTML Attributes
 
 In addition to the options below in the [component's API](#api) section, you
