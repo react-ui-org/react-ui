@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import React, {
+  useCallback,
+  useEffect,
   useContext,
   useImperativeHandle,
   useRef,
@@ -98,6 +100,29 @@ export const FileInputField = React.forwardRef((props, ref) => {
       setIsDragging(false);
     }
   };
+
+  const handleReset = useCallback((event) => {
+    setSelectedFileNames([]);
+    onFilesChanged([], event);
+  }, [onFilesChanged]);
+
+  useEffect(() => {
+    const inputEl = internalInputRef.current;
+    if (!inputEl) {
+      return () => {};
+    }
+
+    const { form } = inputEl;
+    if (!form) {
+      return () => {};
+    }
+
+    form.addEventListener('reset', handleReset);
+
+    return () => {
+      form.removeEventListener('reset', handleReset);
+    };
+  }, [handleReset]);
 
   return (
     <div
