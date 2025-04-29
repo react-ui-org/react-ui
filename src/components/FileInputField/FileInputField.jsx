@@ -37,19 +37,37 @@ export const FileInputField = React.forwardRef((props, ref) => {
     ...restProps
   } = props;
 
-  const internalInputRef = useRef();
-
-  // We need to have a reference to the input element to be able to call its methods,
-  // but at the same time we want to expose this reference to the parent component for
-  // case someone wants to call input methods from outside the component.
-  useImperativeHandle(ref, () => internalInputRef.current);
-
   const formLayoutContext = useContext(FormLayoutContext);
   const inputGroupContext = useContext(InputGroupContext);
   const translations = useContext(TranslationsContext);
 
   const [selectedFileNames, setSelectedFileNames] = useState([]);
   const [isDragging, setIsDragging] = useState(false);
+
+  const internalInputRef = useRef();
+
+  const handleReset = useCallback((event) => {
+    setSelectedFileNames([]);
+    onFilesChanged([], event);
+  }, [onFilesChanged]);
+
+  // We need to have a reference to the input element to be able to call its methods,
+  // but at the same time we want to expose this reference to the parent component in
+  // case someone wants to call input methods from outside the component.
+  useImperativeHandle(
+    ref,
+    () => {
+      // The reason of extending object instead of using spread operator is that
+      // if it is transformed to the object, it changes the reference of the object
+      // and its prototype chain.
+      const inputEl = internalInputRef?.current ?? {};
+      inputEl.resetState = () => {
+        handleReset(null);
+      };
+      return inputEl;
+    },
+    [handleReset],
+  );
 
   const handleFileChange = (files, event) => {
     if (files.length === 0) {
@@ -100,11 +118,6 @@ export const FileInputField = React.forwardRef((props, ref) => {
       setIsDragging(false);
     }
   };
-
-  const handleReset = useCallback((event) => {
-    setSelectedFileNames([]);
-    onFilesChanged([], event);
-  }, [onFilesChanged]);
 
   useEffect(() => {
     const inputEl = internalInputRef.current;
