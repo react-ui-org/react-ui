@@ -1,23 +1,26 @@
 # Default owners for code review
 *              @developers
 
+# Following code owners are temporarily disabled due to unavailability to merge PRs
+# @see https://github.com/react-ui-org/react-ui/issues/632
+
 # Default owners for file types
-*.js           @mbohal @bedrich-schindler @developers
-*.jsx          @mbohal @bedrich-schindler @developers
-*.md           @adamkudrna @developers
-*.scss         @adamkudrna @developers
+# *.js           @mbohal @bedrich-schindler @developers
+# *.jsx          @mbohal @bedrich-schindler @developers
+# *.md           @adamkudrna @developers
+# *.scss         @adamkudrna @developers
 
 # Default owners for directories
-/docker        @mbohal @bedrich-schindler @developers
-/src/docs      @adamkudrna @developers
+# /docker        @mbohal @bedrich-schindler @developers
+# /src/docs      @adamkudrna @developers
 
 # Default owners for specific files
-/.browserslistrc            @adamkudrna @developers
-/.eslintrc                  @mbohal @bedrich-schindler @developers
-/.markdownlint.jsonc        @adamkudrna @developers
-/babel.config.js            @mbohal @bedrich-schindler @developers
-/docker-compose.yml         @mbohal @bedrich-schindler @developers
-/jest.config.js             @mbohal @bedrich-schindler @developers
-/postcss.config.js          @adamkudrna @developers
-/stylelint.config.js        @adamkudrna @developers
-/webpack.config.babel.js    @mbohal @bedrich-schindler @developers
+# /.browserslistrc            @adamkudrna @developers
+# /.eslintrc                  @mbohal @bedrich-schindler @developers
+# /.markdownlint.jsonc        @adamkudrna @developers
+# /babel.config.js            @mbohal @bedrich-schindler @developers
+# /docker-compose.yml         @mbohal @bedrich-schindler @developers
+# /jest.config.js             @mbohal @bedrich-schindler @developers
+# /postcss.config.js          @adamkudrna @developers
+# /stylelint.config.js        @adamkudrna @developers
+# /webpack.config.babel.js    @mbohal @bedrich-schindler @developers
