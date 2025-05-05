@@ -19,6 +19,7 @@ import { labelVisibilityPropTest } from './propTests/labelVisibilityPropTest';
 import { layoutPropTest } from './propTests/layoutPropTest';
 import { neutralColorPropTest } from './propTests/neutralColorPropTest';
 import { priorityPropTest } from './propTests/priorityPropTest';
+import { raisedPropTest } from './propTests/raisedPropTest';
 import { renderAsRequiredPropTest } from './propTests/renderAsRequiredPropTest';
 import { sizePropTest } from './propTests/sizePropTest';
 import { startCornerPropTest } from './propTests/startCornerPropTest';
@@ -30,6 +31,7 @@ import { requiredPropTest } from './propTests/requiredPropTest';
 export { TestIcon } from './components/TestIcon';
 
 export { mixPropTests } from './utils/mixPropTests';
+export { getActualFocusedElementText } from './utils/getActualFocusedElementText';
 
 export const propTests = {
   actionColorPropTest,
@@ -53,6 +55,7 @@ export const propTests = {
   layoutPropTest,
   neutralColorPropTest,
   priorityPropTest,
+  raisedPropTest,
   renderAsRequiredPropTest,
   requiredPropTest,
   sizePropTest,
