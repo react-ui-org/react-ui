@@ -108,6 +108,10 @@ visual impact on the appearance of the component.
 - For all possible combinations of multiple `propTests` should be used
 function `mixPropTests`.
 
+- When testing different variants of a property, it's important to include
+all possible values, even if some are already used in the
+default variant of the component.
+
 ### Format
 
 - Prop test variants should be sorted alphabetically. If there are multiple
