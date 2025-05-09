@@ -4,7 +4,7 @@ import {
   within,
 } from '@testing-library/react';
 import { childrenEmptyPropTest } from '../../../../tests/jest/propTests/childrenEmptyPropTest';
-import { CardFooter } from '../CardFooter';
+import { CardFooter } from '../CardFooter.tsx';
 
 const defaultProps = {
   children: 'content',

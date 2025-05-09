@@ -3,7 +3,7 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { ScrollView } from '../ScrollView';
+import { ScrollView } from '../ScrollView.tsx';
 
 const mandatoryProps = {
   children: <div>content text</div>,

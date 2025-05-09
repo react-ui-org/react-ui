@@ -12,8 +12,8 @@ module.exports = (env, argv) => ({
     ? false
     : 'eval-cheap-module-source-map',
   entry: {
-    'docs-custom-properties': Path.join(__dirname, 'src/docsCustomProperties.js'),
-    'react-ui': Path.join(__dirname, 'src/index.js'),
+    'docs-custom-properties': Path.join(__dirname, 'src/docsCustomProperties.ts'),
+    'react-ui': Path.join(__dirname, 'src/index.ts'),
   },
   externals: {
     react: {
@@ -36,6 +36,10 @@ module.exports = (env, argv) => ({
       {
         test: /\.(js|jsx)$/,
         use: [{ loader: 'babel-loader' }],
+      },
+      {
+        test: /\.(ts|tsx)$/,
+        use: [{ loader: 'ts-loader' }],
       },
       {
         test: /\.scss$/,
@@ -106,7 +110,7 @@ module.exports = (env, argv) => ({
     }),
   ],
   resolve: {
-    extensions: ['.js', '.jsx', '.scss'],
+    extensions: ['.js', '.ts', '.tsx', '.scss'],
     modules: ['src', 'node_modules'],
   },
 });

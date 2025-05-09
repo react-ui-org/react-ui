@@ -5,7 +5,7 @@ import {
 } from '@testing-library/react';
 import { feedbackColorPropTest } from '../../../../tests/jest/propTests/feedbackColorPropTest';
 import { neutralColorPropTest } from '../../../../tests/jest/propTests/neutralColorPropTest';
-import { Badge } from '../Badge';
+import { Badge } from '../Badge.tsx';
 
 const mandatoryProps = {
   label: 'label',

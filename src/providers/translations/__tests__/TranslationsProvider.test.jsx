@@ -3,9 +3,9 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { Alert } from '../../../components/Alert';
-import { ScrollView } from '../../../components/ScrollView';
-import TranslationsProvider from '../TranslationsProvider';
+import { Alert } from '../../../components/Alert/index.ts';
+import { ScrollView } from '../../../components/ScrollView/index.ts';
+import TranslationsProvider from '../TranslationsProvider.tsx';
 
 describe('rendering', () => {
   it('renders with translations', () => {

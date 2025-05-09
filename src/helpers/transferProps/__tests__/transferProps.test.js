@@ -1,4 +1,4 @@
-import { transferProps } from '../transferProps';
+import { transferProps } from '../transferProps.ts';
 
 describe('transferProps', () => {
   it('returns all props when always blacklisted props are not present', () => {

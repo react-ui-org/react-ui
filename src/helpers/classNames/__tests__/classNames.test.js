@@ -1,4 +1,4 @@
-import { classNames } from '../classNames';
+import { classNames } from '../classNames.ts';
 
 describe('classNames', () => {
   it('returns filtered class names', () => {

@@ -3,7 +3,7 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { Text } from '../Text';
+import { Text } from '../Text.tsx';
 
 const defaultProps = {
   children: 'sample text',

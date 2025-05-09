@@ -3,7 +3,7 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { ModalContent } from '../ModalContent';
+import { ModalContent } from '../ModalContent.tsx';
 
 const mandatoryProps = {
   children: <div>content text</div>,

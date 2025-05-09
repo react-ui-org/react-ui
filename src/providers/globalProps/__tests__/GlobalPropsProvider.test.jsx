@@ -3,9 +3,9 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { Badge } from '../../../components/Badge';
-import { Grid } from '../../../components/Grid';
-import GlobalPropsProvider from '../GlobalPropsProvider';
+import { Badge } from '../../../components/Badge/index.ts';
+import { Grid } from '../../../components/Grid/index.ts';
+import GlobalPropsProvider from '../GlobalPropsProvider.tsx';
 
 describe('rendering', () => {
   it('renders with global props', () => {

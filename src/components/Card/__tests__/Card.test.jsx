@@ -5,10 +5,10 @@ import {
 } from '@testing-library/react';
 import { feedbackColorPropTest } from '../../../../tests/jest/propTests/feedbackColorPropTest';
 import { raisedPropTest } from '../../../../tests/jest/propTests/raisedPropTest';
-import { ScrollView } from '../../ScrollView';
-import { Card } from '../Card';
-import { CardBody } from '../CardBody';
-import { CardFooter } from '../CardFooter';
+import { ScrollView } from '../../ScrollView/index.ts';
+import { Card } from '../Card.tsx';
+import { CardBody } from '../CardBody.tsx';
+import { CardFooter } from '../CardFooter.tsx';
 import { densePropTest } from '../../../../tests/jest/propTests/densePropTest';
 
 const mandatoryProps = {

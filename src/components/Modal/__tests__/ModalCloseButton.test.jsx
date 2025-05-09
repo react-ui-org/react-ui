@@ -4,7 +4,7 @@ import {
   screen,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { ModalCloseButton } from '../ModalCloseButton';
+import { ModalCloseButton } from '../ModalCloseButton.tsx';
 import { refPropTest } from '../../../../tests/jest/propTests/refPropTest';
 
 describe('rendering', () => {

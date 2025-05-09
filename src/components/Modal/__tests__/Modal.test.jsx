@@ -7,13 +7,13 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { feedbackColorPropTest } from '../../../../tests/jest/propTests/feedbackColorPropTest';
-import { Button } from '../../..';
-import { Modal } from '../Modal';
-import { ModalBody } from '../ModalBody';
-import { ModalCloseButton } from '../ModalCloseButton';
-import { ModalContent } from '../ModalContent';
-import { ModalFooter } from '../ModalFooter';
-import { ModalHeader } from '../ModalHeader';
+import { Button } from '../../Button/index.ts';
+import { Modal } from '../Modal.tsx';
+import { ModalBody } from '../ModalBody.tsx';
+import { ModalCloseButton } from '../ModalCloseButton.tsx';
+import { ModalContent } from '../ModalContent.tsx';
+import { ModalFooter } from '../ModalFooter.tsx';
+import { ModalHeader } from '../ModalHeader.tsx';
 
 describe('rendering', () => {
   it('renders with "portalId" props', () => {

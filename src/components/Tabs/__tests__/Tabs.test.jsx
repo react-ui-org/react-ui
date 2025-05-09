@@ -3,8 +3,8 @@ import {
   render,
   within,
 } from '@testing-library/react';
-import { Tabs } from '../Tabs';
-import { TabsItem } from '../TabsItem';
+import { Tabs } from '../Tabs.tsx';
+import { TabsItem } from '../TabsItem.tsx';
 
 const tab = (
   <TabsItem
