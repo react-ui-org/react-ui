@@ -21,30 +21,30 @@ test.describe('TextField', () => {
     test.describe('visual', () => {
       [
         ...propTests.defaultComponentPropTest,
-        ...propTests.labelPropTest,
-        ...propTests.isLabelVisiblePropTest,
-        ...propTests.sizePropTest,
-        ...propTests.requiredPropTest,
-        ...propTests.helpTextAndValidationTextPropType,
-        ...inputSizePropTest,
-        ...typePropTest,
-        ...mixPropTests([
-          propTests.fullWidthPropTest,
-          propTests.layoutPropTest,
-        ]),
-        ...mixPropTests([
-          propTests.requiredPropTest,
-          propTests.validationStatePropTest,
-        ]),
-        ...mixPropTests([
-          propTests.renderAsRequiredPropTest,
-          propTests.validationStatePropTest,
-        ]),
         ...mixPropTests([
           propTests.disabledPropTest,
           propTests.validationStatePropTest,
           propTests.variantPropTest,
         ]),
+        ...mixPropTests([
+          propTests.fullWidthPropTest,
+          propTests.layoutPropTest,
+        ]),
+        ...propTests.helpTextAndValidationTextPropType,
+        ...inputSizePropTest,
+        ...propTests.isLabelVisiblePropTest,
+        ...propTests.labelPropTest,
+        ...propTests.requiredPropTest,
+        ...mixPropTests([
+          propTests.renderAsRequiredPropTest,
+          propTests.validationStatePropTest,
+        ]),
+        ...mixPropTests([
+          propTests.requiredPropTest,
+          propTests.validationStatePropTest,
+        ]),
+        ...propTests.sizePropTest,
+        ...typePropTest,
       ].forEach(({
         name,
         onBeforeTest,
