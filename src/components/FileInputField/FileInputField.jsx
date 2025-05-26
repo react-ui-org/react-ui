@@ -47,6 +47,10 @@ export const FileInputField = React.forwardRef((props, ref) => {
   const internalInputRef = useRef();
 
   const handleReset = useCallback((event) => {
+    if (internalInputRef.current) {
+      internalInputRef.current.value = '';
+    }
+
     setSelectedFileNames([]);
     onFilesChanged([], event);
   }, [onFilesChanged]);
