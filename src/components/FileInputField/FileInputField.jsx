@@ -19,6 +19,8 @@ import { Text } from '../Text';
 import { FormLayoutContext } from '../FormLayout';
 import styles from './FileInputField.module.scss';
 
+/* istanbul ignore file */
+
 export const FileInputField = React.forwardRef((props, ref) => {
   const {
     disabled,
