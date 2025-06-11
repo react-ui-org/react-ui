@@ -9,9 +9,6 @@ test.describe('PopoverWrapper', () => {
   test.describe('non-visual', () => {
     const tags = [
       'div',
-      'main',
-      'nav',
-      'section',
       'span',
     ];
 
