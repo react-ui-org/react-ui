@@ -13,6 +13,7 @@ import {
 type ModalTitleForTestProps = HtmlHTMLAttributes<HTMLDialogElement>;
 
 export const ModalTitleForTest = ({
+  children,
   ...props
 }: ModalTitleForTestProps) => (
   <div
@@ -23,7 +24,7 @@ export const ModalTitleForTest = ({
   >
     <Modal>
       <ModalHeader>
-        <ModalTitle {...props}>Modal title</ModalTitle>
+        <ModalTitle {...props}>{children ?? 'Modal title'}</ModalTitle>
       </ModalHeader>
       <ModalBody>
         <ModalContent>

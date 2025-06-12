@@ -5,8 +5,10 @@ import {
 } from '@playwright/experimental-ct-react';
 import { propTests } from '../../../../tests/playwright';
 import {
-  ModalForCallbackTest,
+  ModalWithInputsForTest,
   ModalForTest,
+  ModalWithPartiallyDisabledInputsForTest,
+  ModalWithButtonsAndWithoutInputsForTest,
 } from './Modal.story';
 import { positionPropTest } from './_propTests/Modal/positionPropTest';
 import { sizePropTest } from './_propTests/Modal/sizePropTest';
@@ -63,165 +65,202 @@ test.describe('Modal', () => {
   });
 
   test.describe('functionality', () => {
-    test('close on esc key press when allowCloseOnEscapeKey enabled', async ({ mount }) => {
-      let called = false;
+    test.describe('allowCloseOnEscapeKey', () => {
+      test('close on esc key press when enabled', async ({ mount }) => {
+        let called = false;
 
-      const component = await mount(
-        <ModalForCallbackTest
-          allowCloseOnEscapeKey
-          closeButtonOnClick={() => {
-            called = true;
-          }}
-        />,
-      );
-
-      const dialog = component.locator('dialog');
-      await dialog.focus();
-      await dialog.press('Escape');
-      expect(called).toBe(true);
-    });
-
-    test('do not close on esc key press when allowCloseOnEscapeKey disabled', async ({ mount }) => {
-      let called = false;
-
-      const component = await mount(
-        <ModalForCallbackTest
-          allowCloseOnEscapeKey={false}
-          closeButtonOnClick={() => {
-            called = true;
-          }}
-        />,
-      );
-
-      const dialog = component.locator('dialog');
-      await dialog.focus();
-      await dialog.press('Escape');
-      expect(called).toBe(false);
-    });
-
-    test('call primary action on enter key press when input/select content focused', async ({ mount }) => {
-      let called = false;
-
-      const component = await mount(
-        <ModalForCallbackTest
-          allowPrimaryActionOnEnterKey
-          primaryButtonOnClick={() => {
-            called = true;
-          }}
-        />,
-      );
-
-      const input = component.locator('input[name="input1"]');
-      await input.focus();
-      await input.press('Enter');
-      expect(called).toBe(true);
-    });
-
-    test('do not call primary action on enter key press when allowPrimaryActionOnEnterKey is disabled', async ({ mount }) => {
-      let called = false;
-
-      const component = await mount(
-        <ModalForCallbackTest
-          allowPrimaryActionOnEnterKey={false}
-          primaryButtonOnClick={() => {
-            called = true;
-          }}
-        />,
-      );
-
-      const input = component.locator('input[name="input1"]');
-      await input.focus();
-      await input.press('Enter');
-      expect(called).toBe(false);
-    });
-
-    test('focus first input element when autoFocus enabled', async ({ mount }) => {
-      const component = await mount(
-        <ModalForCallbackTest autoFocus />,
-      );
-
-      const input = component.locator('input[name="input1"]');
-      await expect(input).toBeFocused();
-    });
-
-    test('no focused element when autoFocus disabled', async ({ mount }) => {
-      const component = await mount(
-        <ModalForCallbackTest autoFocus={false} />,
-      );
-
-      const promises: Promise<void>[] = [];
-      const inputs = await component.locator('input').all();
-      const buttons = await component.locator('button').all();
-
-      inputs.forEach((input) => promises.push(expect(input).not.toBeFocused()));
-      buttons.forEach((button) => promises.push(expect(button).not.toBeFocused()));
-
-      await Promise.allSettled(promises);
-    });
-
-    test('close on backdrop click when allowCloseOnBackdropClick enabled', async ({
-      mount,
-      page,
-    }) => {
-      let called = false;
-
-      const component = await mount(
-        <ModalForCallbackTest
-          allowCloseOnBackdropClick
-          closeButtonOnClick={() => {
-            called = true;
-          }}
-        />,
-      );
-
-      const dialog = component.locator('dialog');
-      const box = await dialog.evaluate((element) => element.getBoundingClientRect());
-      await page.mouse.click(box.x - 50, box.y - 50);
-      await page.waitForTimeout(2000);
-      expect(called).toBe(true);
-    });
-
-    test('do not close on backdrop click when allowCloseOnBackdropClick disabled', async ({
-      mount,
-      page,
-    }) => {
-      let called = false;
-
-      const component = await mount(
-        <div>
-          <ModalForCallbackTest
-            allowCloseOnBackdropClick={false}
+        const component = await mount(
+          <ModalWithInputsForTest
+            allowCloseOnEscapeKey
             closeButtonOnClick={() => {
               called = true;
             }}
-          />
-        </div>,
-      );
+          />,
+        );
 
-      const dialog = component.locator('dialog');
-      const box = await dialog.evaluate((element) => element.getBoundingClientRect());
-      await page.mouse.click(box.x - 50, box.y - 50);
-      expect(called).toBe(false);
-    });
-
-    test('render in portal when portalId defined', async ({
-      mount,
-      page,
-    }) => {
-      const portalId = 'portal-id';
-
-      await page.evaluate(() => {
-        document.body.innerHTML += '<div id="portal-id" />';
+        const dialog = component.locator('dialog');
+        await dialog.focus();
+        await dialog.press('Escape');
+        expect(called).toBe(true);
       });
 
-      await mount(
-        <ModalForTest portalId={portalId} />,
-      );
+      test('do not close on esc key press when disabled', async ({ mount }) => {
+        let called = false;
 
-      const portalHTMLContent = await page
-        .evaluate((id) => document.getElementById(id).innerHTML, portalId);
+        const component = await mount(
+          <ModalWithInputsForTest
+            allowCloseOnEscapeKey={false}
+            closeButtonOnClick={() => {
+              called = true;
+            }}
+          />,
+        );
 
-      expect(portalHTMLContent).toContain('dialog');
+        const dialog = component.locator('dialog');
+        await dialog.focus();
+        await dialog.press('Escape');
+        expect(called).toBe(false);
+      });
+    });
+
+    test.describe('allowPrimaryActionOnEnterKey', () => {
+      test('call primary action on enter key press when input/select content focused', async ({ mount }) => {
+        let called = false;
+
+        const component = await mount(
+          <ModalWithInputsForTest
+            allowPrimaryActionOnEnterKey
+            primaryButtonOnClick={() => {
+              called = true;
+            }}
+          />,
+        );
+
+        const input = component.locator('input[name="input1"]');
+        await input.focus();
+        await input.press('Enter');
+        expect(called).toBe(true);
+      });
+
+      test('do not call primary action on enter key press when is disabled', async ({ mount }) => {
+        let called = false;
+
+        const component = await mount(
+          <ModalWithInputsForTest
+            allowPrimaryActionOnEnterKey={false}
+            primaryButtonOnClick={() => {
+              called = true;
+            }}
+          />,
+        );
+
+        const input = component.locator('input[name="input1"]');
+        await input.focus();
+        await input.press('Enter');
+        expect(called).toBe(false);
+      });
+    });
+
+    test.describe('autoFocus', () => {
+      test('focus first input element when enabled', async ({ mount }) => {
+        const component = await mount(
+          <ModalWithInputsForTest autoFocus />,
+        );
+
+        const input = component.locator('input[name="input1"]');
+        await expect(input).toBeFocused();
+      });
+
+      test('focus first non disabled input element when enabled', async ({ mount }) => {
+        const component = await mount(
+          <ModalWithPartiallyDisabledInputsForTest autoFocus />,
+        );
+
+        const input = component.locator('input[name="input2"]');
+        await expect(input).toBeFocused();
+      });
+
+      test('focus primary button when no input content and autoFocus is enabled', async ({ mount }) => {
+        const component = await mount(
+          <ModalWithButtonsAndWithoutInputsForTest autoFocus />,
+        );
+
+        const button = component.getByText('Primary button');
+        await expect(button).toBeFocused();
+      });
+
+      test('focus modal itself, when no focusable element and autoFocus enabled', async ({ mount }) => {
+        const component = await mount(
+          <ModalForTest autoFocus />,
+        );
+
+        const dialog = component.locator('dialog');
+        await expect(dialog).toBeFocused();
+      });
+
+      test('no focused element when disabled', async ({ mount }) => {
+        const component = await mount(
+          <ModalWithInputsForTest autoFocus={false} />,
+        );
+
+        const promises: Promise<void>[] = [];
+        const inputs = await component.locator('input').all();
+        const buttons = await component.locator('button').all();
+
+        inputs.forEach((input) => promises.push(expect(input).not.toBeFocused()));
+        buttons.forEach((button) => promises.push(expect(button).not.toBeFocused()));
+
+        await Promise.allSettled(promises);
+      });
+    });
+
+    test.describe('allowCloseOnBackdropClick', () => {
+      test('close on backdrop click when enabled', async ({
+        mount,
+        page,
+      }) => {
+        let called = false;
+
+        const component = await mount(
+          <ModalWithInputsForTest
+            allowCloseOnBackdropClick
+            closeButtonOnClick={() => {
+              called = true;
+            }}
+          />,
+        );
+
+        const dialog = component.locator('dialog');
+        const box = await dialog.evaluate((element) => element.getBoundingClientRect());
+        await page.mouse.click(box.x - 50, box.y - 50);
+        await page.waitForTimeout(2000);
+        expect(called).toBe(true);
+      });
+
+      test('do not close on backdrop click when disabled', async ({
+        mount,
+        page,
+      }) => {
+        let called = false;
+
+        const component = await mount(
+          <div>
+            <ModalWithInputsForTest
+              allowCloseOnBackdropClick={false}
+              closeButtonOnClick={() => {
+                called = true;
+              }}
+            />
+          </div>,
+        );
+
+        const dialog = component.locator('dialog');
+        const box = await dialog.evaluate((element) => element.getBoundingClientRect());
+        await page.mouse.click(box.x - 50, box.y - 50);
+        expect(called).toBe(false);
+      });
+    });
+
+    test.describe('portalId', () => {
+      test('render in portal when defined', async ({
+        mount,
+        page,
+      }) => {
+        const portalId = 'portal-id';
+
+        await page.evaluate(() => {
+          document.body.innerHTML += '<div id="portal-id" />';
+        });
+
+        await mount(
+          <ModalForTest portalId={portalId} />,
+        );
+
+        const portalHTMLContent = await page
+          .evaluate((id) => document.getElementById(id).innerHTML, portalId);
+
+        expect(portalHTMLContent).toContain('dialog');
+      });
     });
   });
 });

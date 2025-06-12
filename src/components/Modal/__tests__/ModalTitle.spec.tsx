@@ -5,7 +5,6 @@ import {
 } from '@playwright/experimental-ct-react';
 import { propTests } from '../../../../tests/playwright';
 import { ModalTitleForTest } from './ModalTitle.story';
-import { levelPropTest } from './_propTests/ModalTitle/levelPropTest';
 import { contentPropTest } from './_propTests/contentPropTest';
 
 test.describe('ModalTitle', () => {
@@ -13,7 +12,6 @@ test.describe('ModalTitle', () => {
     [
       ...propTests.defaultComponentPropTest,
       ...contentPropTest,
-      ...levelPropTest,
     ].forEach(({
       name,
       onBeforeTest,
@@ -53,6 +51,20 @@ test.describe('ModalTitle', () => {
       );
 
       expect(component.locator(`div[id="${testId}"]`)).toBeDefined();
+    });
+
+    test('title level', async ({ mount }) => {
+      const component = await mount(<ModalTitleForTest level={1} />);
+
+      const title1 = component.getByText('Modal title');
+      const nodeName1 = await title1.evaluate((element) => element.nodeName);
+      expect(nodeName1).toBe('H1');
+
+      await component.update(<ModalTitleForTest level={2} />);
+
+      const title2 = component.getByText('Modal title');
+      const nodeName2 = await title2.evaluate((element) => element.nodeName);
+      expect(nodeName2).toBe('H2');
     });
   });
 });
