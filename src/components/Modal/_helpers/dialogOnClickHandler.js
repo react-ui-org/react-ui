@@ -17,9 +17,15 @@ export const dialogOnClickHandler = (
   closeButtonRef,
   dialogRef,
   allowCloseOnBackdropClick,
+  mouseDownTarget,
 ) => {
   // If it is not allowed to close modal on backdrop click, do nothing.
   if (!allowCloseOnBackdropClick) {
+    return;
+  }
+
+  // If the click started on the inside of the dialog, do nothing.
+  if (e.target !== mouseDownTarget) {
     return;
   }
 

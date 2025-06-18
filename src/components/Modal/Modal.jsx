@@ -61,6 +61,7 @@ export const Modal = ({
   ...restProps
 }) => {
   const internalDialogRef = useRef();
+  const mouseDownTarget = useRef(null);
 
   useEffect(() => {
     internalDialogRef.current.showModal();
@@ -79,7 +80,13 @@ export const Modal = ({
     [closeButtonRef, restProps.onCancel],
   );
   const onClick = useCallback(
-    (e) => dialogOnClickHandler(e, closeButtonRef, internalDialogRef, allowCloseOnBackdropClick),
+    (e) => dialogOnClickHandler(
+      e,
+      closeButtonRef,
+      internalDialogRef,
+      allowCloseOnBackdropClick,
+      mouseDownTarget.current,
+    ),
     [allowCloseOnBackdropClick, closeButtonRef, internalDialogRef],
   );
   const onClose = useCallback(
@@ -101,11 +108,17 @@ export const Modal = ({
       primaryButtonRef,
     ],
   );
+
+  const onMouseDown = useCallback((e) => {
+    mouseDownTarget.current = e.target;
+  }, []);
+
   const events = {
     onCancel,
     onClick,
     onClose,
     onKeyDown,
+    onMouseDown,
   };
 
   if (portalId === null) {
