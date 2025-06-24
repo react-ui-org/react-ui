@@ -6,7 +6,7 @@ import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
 import { transferProps } from '../../helpers/transferProps';
 import { getRootPriorityClassName } from '../_helpers/getRootPriorityClassName';
-import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
+import { isChildrenEmpty } from '../../helpers/isChildrenEmpty/isChildrenEmpty';
 import styles from './ButtonGroup.module.scss';
 import { ButtonGroupContext } from './ButtonGroupContext';
 

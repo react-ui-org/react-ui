@@ -3,7 +3,7 @@ import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
 import { transferProps } from '../../helpers/transferProps';
-import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
+import { isChildrenEmpty } from '../../helpers/isChildrenEmpty/isChildrenEmpty';
 import { getScrollingClassName } from './_helpers/getScrollingClassName';
 import styles from './ModalBody.module.scss';
 
