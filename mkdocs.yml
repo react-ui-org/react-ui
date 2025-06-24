@@ -131,6 +131,7 @@ nav:
           - Typography: 'docs/css-helpers/typography.md'
       - JS Helpers:
           - ClassNames: 'helpers/classNames/README.md'
+          - IsChildrenEmpty: 'helpers/isChildrenEmpty/README.md'
           - TransferProps: 'helpers/transferProps/README.md'
   - Guides:
       - Customize:
