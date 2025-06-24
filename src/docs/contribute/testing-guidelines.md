@@ -94,13 +94,13 @@ npm run test:playwright-ct:<all|all-with-update>
 You can also run specific tests by passing a path to the test files:
 
 ```bash
-npm run test:playwright-ct:<all|all-with-update> -- <match_path>
+npm run test:playwright-ct:<all|all-with-update> -- -- <match_path>
 ```
 
 You can also pass any [CLI command][playwright-cli] to the test runner:
 
 ```bash
-npm run test:playwright-ct:<all|all-with-update> -- <cli_argument>
+npm run test:playwright-ct:<all|all-with-update> -- -- <cli_argument>
 ```
 
 #### Opening Test Report
