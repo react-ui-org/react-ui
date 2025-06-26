@@ -832,6 +832,8 @@
         --rui-Card--raised__box-shadow: var(--rui-shadow-layer-1);
         --rui-Card--disabled__background-color: var(--rui-color-background-disabled);
         --rui-Card--disabled__opacity: var(--rui-ratio-disabled-opacity);
+        --rui-Card--disabled__border-width: var(--rui-dimension-border-width-1);
+        --rui-Card--disabled__border-color: var(--rui-color-border-primary);
 
         // Card: variant: success
         --rui-Card--success__color: var(--rui-color-text-primary);
