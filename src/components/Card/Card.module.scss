@@ -35,6 +35,7 @@
     }
 
     .isRootDisabled {
+        border: theme.$disabled-border-width solid var(--rui-local-border-color, theme.$disabled-border-color);
         background-color: theme.$disabled-background-color;
         opacity: theme.$disabled-opacity;
     }
