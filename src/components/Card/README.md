@@ -300,6 +300,8 @@ Separate your card actions with CardFooter. See
 | `--rui-Card--raised__box-shadow`         | Box shadow of raised card                      |
 | `--rui-Card--disabled__background-color` | Card background color in disabled state        |
 | `--rui-Card--disabled__opacity`          | Card opacity in disabled state                 |
+| `--rui-Card--disabled__border-width`     | Card border width in disabled state            |
+| `--rui-Card--disabled__border-color`     | Card border color in disabled state            |
 
 ### Theming Variants
 
