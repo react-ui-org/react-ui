@@ -5,6 +5,7 @@ import React, {
   useLayoutEffect,
   useRef,
   useState,
+  useCallback,
 } from 'react';
 import { TranslationsContext } from '../../providers/translations';
 import { withGlobalProps } from '../../providers/globalProps';
@@ -58,20 +59,26 @@ export const ScrollView = React.forwardRef((props, ref) => {
   const blankRef = useRef(null);
   const scrollViewViewportEl = ref ?? blankRef;
 
-  const handleScrollViewState = (currentPosition) => {
+  const handleScrollViewState = useCallback((currentPosition) => {
     const isScrolledAtStartActive = currentPosition[scrollPositionStart]
       <= -1 * EDGE_DETECTION_INACCURACY_PX;
     const isScrolledAtEndActive = currentPosition[scrollPositionEnd]
       >= EDGE_DETECTION_INACCURACY_PX;
 
-    if (isScrolledAtStartActive !== isScrolledAtStart) {
-      setIsScrolledAtStart(isScrolledAtStartActive);
-    }
+    setIsScrolledAtStart((prevIsScrolledAtStart) => {
+      if (isScrolledAtStartActive !== prevIsScrolledAtStart) {
+        return isScrolledAtStartActive;
+      }
+      return prevIsScrolledAtStart;
+    });
 
-    if (isScrolledAtEndActive !== isScrolledAtEnd) {
-      setIsScrolledAtEnd(isScrolledAtEndActive);
-    }
-  };
+    setIsScrolledAtEnd((prevIsScrolledAtEnd) => {
+      if (isScrolledAtEndActive !== prevIsScrolledAtEnd) {
+        return isScrolledAtEndActive;
+      }
+      return prevIsScrolledAtEnd;
+    });
+  }, [scrollPositionStart, scrollPositionEnd]);
 
   /**
    * It handles scroll event fired on `scrollViewViewportEl` element. If autoScroll is in progress,
@@ -146,7 +153,6 @@ export const ScrollView = React.forwardRef((props, ref) => {
 
   useScrollPosition(
     (currentPosition) => (handleScrollViewState(currentPosition)),
-    [isScrolledAtStart, isScrolledAtEnd],
     scrollViewContentEl,
     scrollViewViewportEl,
     debounce,
@@ -162,6 +168,30 @@ export const ScrollView = React.forwardRef((props, ref) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [autoScroll, autoScrollChildrenKeys, autoScrollChildrenLength],
   );
+
+  // ResizeObserver to detect when content or viewport dimensions change due to style changes
+  useLayoutEffect(() => {
+    const contentElement = scrollViewContentEl.current;
+    const viewportElement = scrollViewViewportEl.current;
+
+    if (!contentElement || !viewportElement) {
+      return () => {};
+    }
+
+    const resizeObserver = new ResizeObserver(() => {
+      handleScrollViewState(
+        getElementsPositionDifference(scrollViewContentEl, scrollViewViewportEl),
+      );
+    });
+
+    // Observe both content and viewport for dimension changes
+    resizeObserver.observe(contentElement);
+    resizeObserver.observe(viewportElement);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, [scrollViewContentEl, scrollViewViewportEl, handleScrollViewState]);
 
   const arrowHandler = (contentEl, viewportEl, scrollViewDirection, shiftDirection, step) => {
     const offset = shiftDirection === 'next' ? step : -1 * step;
