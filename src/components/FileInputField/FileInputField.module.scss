@@ -64,6 +64,10 @@
         --rui-local-border-color: #{settings.$drop-zone-active-border-color};
     }
 
+    .dropFileHereText {
+        color: var(--rui-local-link-color, var(--rui-color-text-link));
+    }
+
     .dropZoneLink {
         @include links.base();
 
