@@ -198,15 +198,20 @@ export const FileInputField = React.forwardRef((props, ref) => {
             type="button"
           >
             <Text lines={1}>
-              {!selectedFileNames.length && (
+              {isDragging && (
+                <span className={styles.dropFileHereText}>
+                  {translations.FileInputField.dropFileHere}
+                </span>
+              )}
+              {!isDragging && !selectedFileNames.length && (
                 <>
                   <span className={styles.dropZoneLink}>{translations.FileInputField.browse}</span>
                   {' '}
                   {translations.FileInputField.drop}
                 </>
               )}
-              {selectedFileNames.length === 1 && selectedFileNames[0]}
-              {selectedFileNames.length > 1 && (
+              {!isDragging && selectedFileNames.length === 1 && selectedFileNames[0]}
+              {!isDragging && selectedFileNames.length > 1 && (
                 <>
                   {selectedFileNames.length}
                   {' '}
