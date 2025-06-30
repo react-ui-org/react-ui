@@ -5,7 +5,7 @@ import { classNames } from '../../helpers/classNames/classNames';
 import { transferProps } from '../../helpers/transferProps';
 import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
-import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
+import { isChildrenEmpty } from '../../helpers/isChildrenEmpty/isChildrenEmpty';
 import { FormLayoutContext } from './FormLayoutContext';
 import styles from './FormLayoutCustomField.module.scss';
 

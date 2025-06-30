@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
 import { transferProps } from '../../helpers/transferProps';
-import { isChildrenEmpty } from '../_helpers/isChildrenEmpty';
+import { isChildrenEmpty } from '../../helpers/isChildrenEmpty/isChildrenEmpty';
 import { FormLayoutContext } from './FormLayoutContext';
 import styles from './FormLayout.module.scss';
 

@@ -64,3 +64,4 @@ export { TranslationsProvider } from './providers/translations';
 // Helpers
 export { classNames } from './helpers/classNames';
 export { transferProps } from './helpers/transferProps';
+export { isChildrenEmpty } from './helpers/isChildrenEmpty';
