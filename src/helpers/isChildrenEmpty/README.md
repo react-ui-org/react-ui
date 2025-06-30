@@ -36,7 +36,12 @@ React.createElement(() => {
 
 ```docoff-react-preview
 React.createElement(() => {
-  const children = "Meaningful content";
+  const children = (
+    <>
+      <h1>Title</h1>
+      <p>Content</p>
+    </>
+  );
   const isEmpty = isChildrenEmpty(children);
 
   if (isEmpty === false) {
