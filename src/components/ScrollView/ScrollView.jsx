@@ -191,7 +191,7 @@ export const ScrollView = React.forwardRef((props, ref) => {
     return () => {
       resizeObserver.disconnect();
     };
-  }, [isScrolledAtStart, isScrolledAtEnd, scrollViewViewportEl, handleScrollViewState]);
+  }, [scrollViewContentEl, scrollViewViewportEl, handleScrollViewState]);
 
   const arrowHandler = (contentEl, viewportEl, scrollViewDirection, shiftDirection, step) => {
     const offset = shiftDirection === 'next' ? step : -1 * step;
