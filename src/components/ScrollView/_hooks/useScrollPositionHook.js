@@ -1,10 +1,10 @@
 import {
-  useLayoutEffect,
   useRef,
+  useEffect,
 } from 'react';
 import { getElementsPositionDifference } from '../_helpers/getElementsPositionDifference';
 
-export const useScrollPosition = (effect, dependencies, contentEl, viewportEl, wait) => {
+export const useScrollPosition = (effect, contentEl, viewportEl, wait) => {
   const throttleTimeout = useRef(null);
 
   const callBack = (wasDelayed = false) => {
@@ -15,7 +15,7 @@ export const useScrollPosition = (effect, dependencies, contentEl, viewportEl, w
     }
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const viewport = viewportEl.current;
 
     const handleScroll = () => {
@@ -34,7 +34,7 @@ export const useScrollPosition = (effect, dependencies, contentEl, viewportEl, w
       clearTimeout(throttleTimeout.current);
       viewport.removeEventListener('scroll', handleScroll);
     };
-  }, dependencies); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 };
 
 export default useScrollPosition;
