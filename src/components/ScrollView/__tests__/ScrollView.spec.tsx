@@ -12,16 +12,16 @@ import {
   ScrollViewForRefTest,
   ScrollViewForTest,
 } from './ScrollView.story';
-import { arrowsPropTest } from './_propTests/arrowsPropTest';
 import { directionPropTest } from './_propTests/directionPropTest';
 import { nextArrowColorPropTest } from './_propTests/nextArrowColorPropTest';
 import { nextArrowElementPropTest } from './_propTests/nextArrowElementPropTest';
 import { prevArrowColorPropTest } from './_propTests/prevArrowColorPropTest';
 import { prevArrowElementPropTest } from './_propTests/prevArrowElementPropTest';
-import { endShadowBackgroundPropTest } from './_propTests/endShadowBackgroundPropTest';
-import { startShadowBackgroundPropTest } from './_propTests/startShadowBackgroundPropTest';
 import { endShadowSizePropTest } from './_propTests/endShadowSizePropTest';
 import { startShadowSizePropTest } from './_propTests/startShadowSizePropTest';
+import { mixArrowsDirectionPropTest } from './_propTests/mixes/mixArrowsDirectionPropTest';
+import { mixEndShadowBackgroundDirectionPropTest } from './_propTests/mixes/mixEndShadowBackgroundDirectionPropTest';
+import { mixStartShadowBackgroundDirectionPropTest } from './_propTests/mixes/mixStartShadowBackgroundDirectionPropTest';
 import { shadowsPropTest } from './_propTests/shadowsPropTest';
 import type { ExtendedWindow } from './types';
 
@@ -29,14 +29,8 @@ test.describe('ScrollView', () => {
   test.describe('visual', () => {
     [
       ...propTests.defaultComponentPropTest,
-      ...mixPropTests([
-        arrowsPropTest,
-        directionPropTest,
-      ]),
-      ...mixPropTests([
-        endShadowBackgroundPropTest,
-        directionPropTest,
-      ]),
+      ...mixArrowsDirectionPropTest,
+      ...mixEndShadowBackgroundDirectionPropTest,
       ...mixPropTests([
         endShadowSizePropTest,
         directionPropTest,
@@ -46,10 +40,7 @@ test.describe('ScrollView', () => {
       ...prevArrowColorPropTest,
       ...prevArrowElementPropTest,
       ...shadowsPropTest,
-      ...mixPropTests([
-        startShadowBackgroundPropTest,
-        directionPropTest,
-      ]),
+      ...mixStartShadowBackgroundDirectionPropTest,
       ...mixPropTests([
         startShadowSizePropTest,
         directionPropTest,
