@@ -1,0 +1,18 @@
+@use "sass:map";
+@use "sass:meta";
+@use "settings/breakpoints" as breakpoint-settings;
+@use "settings/utilities" as utility-settings;
+@use "tools/breakpoint";
+@use "tools/utilities";
+
+@each $breakpoint in map.keys(breakpoint-settings.$values) {
+    @include breakpoint.up($breakpoint) {
+        $infix: if(map.get(breakpoint-settings.$values, $breakpoint) == 0, "", "-#{$breakpoint}");
+
+        @each $key, $utility in utility-settings.$map {
+            @if meta.type-of($utility) == "map" and (map.get($utility, responsive) == true or $infix == "") {
+                @include utilities.generate($utility, $infix);
+            }
+        }
+    }
+}
