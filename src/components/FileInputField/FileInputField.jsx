@@ -78,6 +78,7 @@ export const FileInputField = React.forwardRef((props, ref) => {
   const handleFileChange = (files, event) => {
     if (files.length === 0) {
       setSelectedFileNames([]);
+      onFilesChanged([], event);
       return;
     }
 
@@ -85,6 +86,7 @@ export const FileInputField = React.forwardRef((props, ref) => {
     // does not accept multiple files, no files are processed.
     if (files.length > 1 && !multiple) {
       setSelectedFileNames([]);
+      onFilesChanged([], event);
       return;
     }
 

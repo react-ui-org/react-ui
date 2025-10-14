@@ -126,6 +126,26 @@ test.describe('FileInputField', () => {
         expect(called).toBe(true);
       });
 
+      test('Call onFilesChanged callback when no file is selected.', async ({ mount }) => {
+        let called = false;
+        let calledWith: FileList | null = null;
+
+        const component = await mount(
+          <FileInputFieldForTest
+            onFilesChanged={(files: FileList) => {
+              called = true;
+              calledWith = files;
+            }}
+          />,
+        );
+
+        const inputField = component.locator('input[type="file"]');
+        await inputField.setInputFiles([]);
+
+        expect(called).toBe(true);
+        expect(calledWith).toStrictEqual([]);
+      });
+
       test('Call onFilesChanged callback when file drag and drop into field.', async ({
         mount,
         page,
