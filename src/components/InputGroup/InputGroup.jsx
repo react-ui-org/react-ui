@@ -109,14 +109,14 @@ export const InputGroup = ({
 };
 
 InputGroup.defaultProps = {
-  children: null,
+  children: undefined,
   disabled: false,
   id: undefined,
   isLabelVisible: true,
   layout: 'vertical',
   required: false,
   size: 'medium',
-  validationTexts: null,
+  validationTexts: undefined,
 };
 
 InputGroup.propTypes = {

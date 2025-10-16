@@ -81,14 +81,14 @@ export const Toggle = React.forwardRef((props, ref) => {
 
 Toggle.defaultProps = {
   disabled: false,
-  helpText: null,
+  helpText: undefined,
   id: undefined,
   isLabelVisible: true,
   labelPosition: 'after',
   renderAsRequired: false,
   required: false,
-  validationState: null,
-  validationText: null,
+  validationState: undefined,
+  validationText: undefined,
 };
 
 Toggle.propTypes = {

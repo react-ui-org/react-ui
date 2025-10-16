@@ -79,14 +79,14 @@ export const CheckboxField = React.forwardRef((props, ref) => {
 
 CheckboxField.defaultProps = {
   disabled: false,
-  helpText: null,
+  helpText: undefined,
   id: undefined,
   isLabelVisible: true,
   labelPosition: 'after',
   renderAsRequired: false,
   required: false,
-  validationState: null,
-  validationText: null,
+  validationState: undefined,
+  validationText: undefined,
 };
 
 CheckboxField.propTypes = {

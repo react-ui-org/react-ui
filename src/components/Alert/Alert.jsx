@@ -57,9 +57,9 @@ export const Alert = ({
 
 Alert.defaultProps = {
   color: 'note',
-  icon: null,
+  icon: undefined,
   id: undefined,
-  onClose: null,
+  onClose: undefined,
 };
 
 Alert.propTypes = {

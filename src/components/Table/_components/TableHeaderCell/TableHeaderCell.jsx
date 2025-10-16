@@ -42,7 +42,7 @@ export const TableHeaderCell = ({
 
 TableHeaderCell.defaultProps = {
   id: undefined,
-  sort: null,
+  sort: undefined,
 };
 
 TableHeaderCell.propTypes = {

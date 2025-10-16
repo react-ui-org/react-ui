@@ -133,15 +133,15 @@ export const SelectField = React.forwardRef((props, ref) => {
 SelectField.defaultProps = {
   disabled: false,
   fullWidth: false,
-  helpText: null,
+  helpText: undefined,
   id: undefined,
   isLabelVisible: true,
   layout: 'vertical',
   renderAsRequired: false,
   required: false,
   size: 'medium',
-  validationState: null,
-  validationText: null,
+  validationState: undefined,
+  validationText: undefined,
   variant: 'outline',
 };
 

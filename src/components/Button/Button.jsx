@@ -101,18 +101,18 @@ export const Button = React.forwardRef((props, ref) => {
 });
 
 Button.defaultProps = {
-  afterLabel: null,
-  beforeLabel: null,
+  afterLabel: undefined,
+  beforeLabel: undefined,
   block: false,
   color: 'primary',
   disabled: false,
-  endCorner: null,
-  feedbackIcon: null,
+  endCorner: undefined,
+  feedbackIcon: undefined,
   id: undefined,
   labelVisibility: 'xs',
   priority: 'filled',
   size: 'medium',
-  startCorner: null,
+  startCorner: undefined,
   type: 'button',
 };
 

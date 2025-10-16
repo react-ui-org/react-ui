@@ -20,7 +20,7 @@ TableBodyCell.defaultProps = {
   format: undefined,
   id: undefined,
   isSortingActive: false,
-  value: null,
+  value: undefined,
 };
 
 TableBodyCell.propTypes = {

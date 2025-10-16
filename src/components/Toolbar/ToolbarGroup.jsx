@@ -35,7 +35,7 @@ export const ToolbarGroup = ({
 
 ToolbarGroup.defaultProps = {
   align: 'top',
-  children: null,
+  children: undefined,
   dense: false,
   nowrap: false,
 };

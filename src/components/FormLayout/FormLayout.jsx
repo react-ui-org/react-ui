@@ -68,7 +68,7 @@ export const FormLayout = ({
 
 FormLayout.defaultProps = {
   autoWidth: false,
-  children: null,
+  children: undefined,
   fieldLayout: 'vertical',
   labelWidth: 'default',
 };

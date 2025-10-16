@@ -93,14 +93,14 @@ export const TextArea = React.forwardRef((props, ref) => {
 TextArea.defaultProps = {
   disabled: false,
   fullWidth: false,
-  helpText: null,
+  helpText: undefined,
   id: undefined,
   isLabelVisible: true,
   layout: 'vertical',
   required: false,
   size: 'medium',
-  validationState: null,
-  validationText: null,
+  validationState: undefined,
+  validationText: undefined,
   variant: 'outline',
 };
 

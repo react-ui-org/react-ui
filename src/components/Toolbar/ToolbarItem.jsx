@@ -29,7 +29,7 @@ export const ToolbarItem = ({
 };
 
 ToolbarItem.defaultProps = {
-  children: null,
+  children: undefined,
   flexible: false,
 };
 

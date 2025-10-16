@@ -113,14 +113,14 @@ export const Radio = ({
 
 Radio.defaultProps = {
   disabled: false,
-  helpText: null,
+  helpText: undefined,
   id: undefined,
   isLabelVisible: true,
   layout: 'vertical',
   renderAsRequired: false,
   required: false,
-  validationState: null,
-  validationText: null,
+  validationState: undefined,
+  validationText: undefined,
   value: undefined,
 };
 

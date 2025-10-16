@@ -121,7 +121,7 @@ export const Modal = ({
     onMouseDown,
   };
 
-  if (portalId === null) {
+  if (portalId === undefined) {
     return preRender(
       children,
       color,
@@ -152,14 +152,14 @@ Modal.defaultProps = {
   allowCloseOnEscapeKey: true,
   allowPrimaryActionOnEnterKey: true,
   autoFocus: true,
-  children: null,
-  closeButtonRef: null,
+  children: undefined,
+  closeButtonRef: undefined,
   color: undefined,
-  dialogRef: null,
-  portalId: null,
+  dialogRef: undefined,
+  portalId: undefined,
   position: 'center',
   preventScrollUnderneath: window.document.body,
-  primaryButtonRef: null,
+  primaryButtonRef: undefined,
   size: 'medium',
 };
 

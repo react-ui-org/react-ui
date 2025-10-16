@@ -54,7 +54,7 @@ Grid.defaultProps = {
   alignContent: undefined,
   alignItems: undefined,
   autoFlow: undefined,
-  children: null,
+  children: undefined,
   columnGap: 4,
   columns: '1fr',
   justifyContent: undefined,

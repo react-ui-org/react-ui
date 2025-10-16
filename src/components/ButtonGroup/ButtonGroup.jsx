@@ -48,7 +48,7 @@ export const ButtonGroup = ({
 
 ButtonGroup.defaultProps = {
   block: false,
-  children: null,
+  children: undefined,
   disabled: false,
   priority: 'filled',
   size: 'medium',

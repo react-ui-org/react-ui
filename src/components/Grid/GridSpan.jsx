@@ -35,7 +35,7 @@ export const GridSpan = ({
 /* eslint-disable sort-keys */
 
 GridSpan.defaultProps = {
-  children: null,
+  children: undefined,
   columns: 1,
   rows: 1,
   tag: 'div',
