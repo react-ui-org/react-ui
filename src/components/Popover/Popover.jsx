@@ -43,7 +43,7 @@ export const Popover = React.forwardRef((props, ref) => {
           getRootAlignmentClassName(placement, styles),
         )}
         ref={ref}
-        style={placementStyle ? cleanPlacementStyle(placementStyle) : null}
+        style={placementStyle ? cleanPlacementStyle(placementStyle) : undefined}
       >
         {children}
         <span className={styles.arrow} />
@@ -51,7 +51,7 @@ export const Popover = React.forwardRef((props, ref) => {
     </>
   );
 
-  if (portalId === null) {
+  if (portalId === undefined) {
     return PopoverEl;
   }
 
@@ -60,9 +60,9 @@ export const Popover = React.forwardRef((props, ref) => {
 
 Popover.defaultProps = {
   placement: 'bottom',
-  placementStyle: null,
-  popoverTargetId: null,
-  portalId: null,
+  placementStyle: undefined,
+  popoverTargetId: undefined,
+  portalId: undefined,
 };
 
 Popover.propTypes = {

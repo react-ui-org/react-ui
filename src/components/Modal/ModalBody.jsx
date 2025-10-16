@@ -30,7 +30,7 @@ export const ModalBody = ({
 };
 
 ModalBody.defaultProps = {
-  children: null,
+  children: undefined,
   scrolling: 'auto',
 };
 

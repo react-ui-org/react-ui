@@ -21,7 +21,7 @@ const GlobalPropsProvider = ({
 };
 
 GlobalPropsProvider.defaultProps = {
-  children: null,
+  children: undefined,
   globalProps: {},
 };
 

@@ -38,7 +38,7 @@ export const Toolbar = ({
 
 Toolbar.defaultProps = {
   align: 'top',
-  children: null,
+  children: undefined,
   dense: false,
   justify: 'start',
   nowrap: false,

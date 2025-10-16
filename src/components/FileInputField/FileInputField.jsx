@@ -247,14 +247,14 @@ export const FileInputField = React.forwardRef((props, ref) => {
 FileInputField.defaultProps = {
   disabled: false,
   fullWidth: false,
-  helpText: null,
+  helpText: undefined,
   isLabelVisible: true,
   layout: 'vertical',
   multiple: false,
   required: false,
   size: 'medium',
-  validationState: null,
-  validationText: null,
+  validationState: undefined,
+  validationText: undefined,
 };
 
 FileInputField.propTypes = {

@@ -80,15 +80,15 @@ export const FormLayoutCustomField = ({
 };
 
 FormLayoutCustomField.defaultProps = {
-  children: null,
+  children: undefined,
   disabled: false,
   fullWidth: false,
   id: undefined,
-  innerFieldSize: null,
-  label: null,
+  innerFieldSize: undefined,
+  label: undefined,
   labelForId: undefined,
   required: false,
-  validationState: null,
+  validationState: undefined,
 };
 
 FormLayoutCustomField.propTypes = {

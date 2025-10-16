@@ -53,7 +53,7 @@ export const Table = ({
 
 Table.defaultProps = {
   id: undefined,
-  sort: null,
+  sort: undefined,
 };
 
 Table.propTypes = {

@@ -42,7 +42,7 @@ export const Text = ({
 
 Text.defaultProps = {
   blockLevel: false,
-  children: null,
+  children: undefined,
   hyphens: 'none',
   lines: undefined,
   wordWrapping: 'normal',

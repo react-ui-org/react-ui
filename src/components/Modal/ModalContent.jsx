@@ -24,7 +24,7 @@ export const ModalContent = ({
 };
 
 ModalContent.defaultProps = {
-  children: null,
+  children: undefined,
 };
 
 ModalContent.propTypes = {

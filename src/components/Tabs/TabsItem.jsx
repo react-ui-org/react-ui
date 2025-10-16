@@ -45,11 +45,11 @@ export const TabsItem = ({
 );
 
 TabsItem.defaultProps = {
-  afterLabel: null,
-  beforeLabel: null,
+  afterLabel: undefined,
+  beforeLabel: undefined,
   id: undefined,
   isActive: false,
-  onClick: null,
+  onClick: undefined,
 };
 
 TabsItem.propTypes = {

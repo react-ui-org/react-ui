@@ -32,7 +32,7 @@ export const TextField = React.forwardRef((props, ref) => {
   } = props;
   const formLayoutContext = useContext(FormLayoutContext);
   const inputGroupContext = useContext(InputGroupContext);
-  const hasSmallInput = (inputSize !== null) && (inputSize <= SMALL_INPUT_SIZE);
+  const hasSmallInput = (inputSize !== undefined) && (inputSize <= SMALL_INPUT_SIZE);
 
   return (
     <label
@@ -108,16 +108,16 @@ export const TextField = React.forwardRef((props, ref) => {
 TextField.defaultProps = {
   disabled: false,
   fullWidth: false,
-  helpText: null,
+  helpText: undefined,
   id: undefined,
-  inputSize: null,
+  inputSize: undefined,
   isLabelVisible: true,
   layout: 'vertical',
   required: false,
   size: 'medium',
   type: 'text',
-  validationState: null,
-  validationText: null,
+  validationState: undefined,
+  validationText: undefined,
   variant: 'outline',
 };
 

@@ -21,7 +21,7 @@ const TranslationsProvider = ({
 };
 
 TranslationsProvider.defaultProps = {
-  children: null,
+  children: undefined,
   translations: {},
 };
 

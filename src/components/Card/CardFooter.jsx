@@ -24,7 +24,7 @@ export const CardFooter = ({
 };
 
 CardFooter.defaultProps = {
-  children: null,
+  children: undefined,
 };
 
 CardFooter.propTypes = {
