@@ -156,6 +156,9 @@ SelectField.propTypes = {
   fullWidth: PropTypes.bool,
   /**
    * Optional help text.
+   *
+   * Help text is never rendered when the component is placed into `InputGroup`.
+   * If a help text is needed, it must be defined on the `InputGroup` component instead.
    */
   helpText: PropTypes.node,
   /**
@@ -172,9 +175,6 @@ SelectField.propTypes = {
    *
    * If `key` in the option definition object is set,
    * then `option.key` is used instead of `option.value` in place of `<VALUE>`.
-   *
-   * Help text is never rendered when the component is placed into `InputGroup`.
-   * If a help text is needed, it must be defined on the `InputGroup` component instead.
    */
   id: PropTypes.string,
   /**
@@ -253,7 +253,7 @@ SelectField.propTypes = {
    * Validation message to be displayed.
    *
    * Validation text is never rendered when the component is placed into `InputGroup`.
-   * If a help text is needed, it must be defined on the `InputGroup` component instead.
+   * If a validation text is needed, it must be defined on the `InputGroup` component instead.
    */
   validationText: PropTypes.node,
   /**
