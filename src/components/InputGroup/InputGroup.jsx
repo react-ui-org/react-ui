@@ -152,7 +152,7 @@ InputGroup.propTypes = {
   /**
    * An array of help texts to be displayed.
    */
-  helpTexts: PropTypes.node,
+  helpTexts: PropTypes.arrayOf(PropTypes.node),
   /**
    * ID of the root HTML element.
    *
@@ -191,7 +191,7 @@ InputGroup.propTypes = {
   /**
    * An array of validation messages to be displayed.
    */
-  validationTexts: PropTypes.node,
+  validationTexts: PropTypes.arrayOf(PropTypes.node),
 };
 
 export const InputGroupWithGlobalProps = withGlobalProps(InputGroup, 'InputGroup');
