@@ -63,6 +63,7 @@ test.describe('InputGroup', () => {
 
         const component = await mount(
           <InputGroupForTest
+            helpTexts={['Help text.']}
             id={id}
             isLabelVisible
             label={label}
@@ -74,7 +75,8 @@ test.describe('InputGroup', () => {
         await expect(component.getByText(label).first()).toHaveAttribute('id', `${id}__label`);
         await expect(component.getByText(label).last()).toHaveAttribute('id', `${id}__displayLabel`);
         await expect(component.locator(`div[id=${id}__group]`)).not.toBeEmpty();
-        await expect(component.getByRole('list')).toHaveAttribute('id', `${id}__validationTexts`);
+        await expect(component.getByRole('list').first()).toHaveAttribute('id', `${id}__helpTexts`);
+        await expect(component.getByRole('list').last()).toHaveAttribute('id', `${id}__validationTexts`);
       });
     });
 

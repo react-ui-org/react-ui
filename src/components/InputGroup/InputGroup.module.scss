@@ -1,4 +1,4 @@
-// 1. The class name is intentionally singular because it's targeted by other mixins too.
+// 1. The class names are intentionally singular because they are also targeted by other mixins.
 // 2. Use a block-level display mode to prevent extra white space below grouped inputs in Safari.
 // 3. Let wide input groups honor the minimum input width and overflow horizontally without wrapping and distorting
 //    the inputs.
@@ -39,6 +39,7 @@
     }
 
     // 1.
+    .helpText,
     .validationText {
         @include reset.list();
         @include foundation.help-text();
