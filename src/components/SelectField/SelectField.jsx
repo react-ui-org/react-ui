@@ -173,8 +173,8 @@ SelectField.propTypes = {
    * If `key` in the option definition object is set,
    * then `option.key` is used instead of `option.value` in place of `<VALUE>`.
    *
-   * Help text is never rendered when the component is placed into `InputGroup`. Instead, the `InputGroup`
-   * component itself renders all help texts of its nested components.
+   * Help text is never rendered when the component is placed into `InputGroup`.
+   * If a help text is needed, it must be defined on the `InputGroup` component instead.
    */
   id: PropTypes.string,
   /**
@@ -252,8 +252,8 @@ SelectField.propTypes = {
   /**
    * Validation message to be displayed.
    *
-   * Validation text is never rendered when the component is placed into `InputGroup`. Instead, the `InputGroup`
-   * component itself renders all validation texts of its nested components.
+   * Validation text is never rendered when the component is placed into `InputGroup`.
+   * If a help text is needed, it must be defined on the `InputGroup` component instead.
    */
   validationText: PropTypes.node,
   /**
