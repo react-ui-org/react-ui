@@ -60,13 +60,14 @@ See [API](#api) for all available options.
   Make sure your inputs fit their container, especially on small screens.
 
 - In the background, InputGroup uses the [`fieldset`][fieldset] element. Not
-  only it improves the [accessibility] of the group, it also allows you to make
-  use of its built-in features like disabling all nested inputs or pairing the
-  group with a form outside. Consult [the MDN docs][fieldset] to learn more.
+  only does it improve the [accessibility] of the group, it also allows you to
+  make use of its built-in features like disabling all nested inputs or pairing
+  the group with a form outside. Consult [the MDN docs][fieldset] to learn more.
 
 - InputGroup currently **supports grouping of**
   [TextField](/components/TextField), [SelectField](/components/SelectField),
-  and [Button](/components/Button) components.
+  [FileInputField](/components/FileInputField), and [Button](/components/Button)
+  components.
 
 - To group [Buttons](/components/Button) only, use the
   [ButtonGroup](/components/ButtonGroup) component which is designed
@@ -104,7 +105,7 @@ You can set the `size` property directly on InputGroup to be shared for all
 fields and buttons inside the group. This property is then passed over to
 individual elements. At the same time, it **cannot be overridden** on the
 fields' or buttons' level. While technically possible, from the design point of
-view it's undesirable to group elements of totally different types or sizes.
+view, it's undesirable to group elements of totally different types or sizes.
 
 ## Invisible Label
 
@@ -136,9 +137,9 @@ the input.
 
 ## Horizontal layout
 
-The default vertical layout is very easy to use and work with. However, there
-are situations where horizontal layout suits better — and that's why React UI
-supports this kind of layout as well.
+The default vertical layout is straightforward to use and work with. However,
+there are situations where horizontal layout suits better — and that's why
+React UI supports this kind of layout as well.
 
 ```docoff-react-preview
 <InputGroup
@@ -148,6 +149,57 @@ supports this kind of layout as well.
   <FileInputField id="my-file" label="Attachment" onFilesChanged={() => {}} />
   <Button label="Submit" />
 </InputGroup>
+```
+
+## Help Text
+
+You may provide one or more additional help texts to clarify how the input group
+should be filled.
+
+These messages are not semantically tied to the `children` elements, the
+connection should be expressed in textual form in the actual message.
+
+⚠️ Help texts passed to input elements' `helpText` prop are ignored within
+InputGroup.
+
+```docoff-react-preview
+React.createElement(() => {
+  const [fruit, setFruit] = React.useState('apple');
+  const options = [
+    {
+      label: 'Apple',
+      value: 'apple',
+    },
+    {
+      label: 'Pear',
+      value: 'pear',
+    },
+    {
+      label: 'Cherry',
+      value: 'cherry',
+    },
+  ];
+  return (
+    <InputGroup
+      label="Your favourite fruit"
+      helpTexts={[
+        "Choose one or more kinds of fruit to feel happy.",
+      ]}
+    >
+      <SelectField
+        label="Your favourite fruit"
+        onChange={(e) => setFruit(e.target.value)}
+        options={options}
+        value={fruit}
+      />
+      <TextField
+        label="Variety"
+        placeholder="Eg. Golden delicious"
+      />
+      <Button label="Submit" />
+    </InputGroup>
+  );
+})
 ```
 
 ## States
@@ -169,12 +221,15 @@ Validation states visually present the result of validation of the grouped
 inputs. Input group's validation state is taken from its child inputs. You
 should always **provide validation messages for states other than valid**
 directly through `validationTexts` prop so users know what happened and what
-action they should take or what options they have. These messages are not
-semantically tied to the `children` elements, the connection should be expressed
-in textual form in the actual message. The individual `children` elements must
-not show any `validationText`, they only show their respective `validationState`.
-Validation messages passed to input elements' `validationText` prop will be
-ignored.
+action they should take or what options they have.
+
+These messages are not semantically tied to the `children` elements, the
+connection should be expressed in textual form in the actual message. The
+individual `children` elements must not show any `validationText`, they only
+show their respective `validationState`.
+
+⚠️ Validation messages passed to input elements' `validationText` prop are
+ignored within InputGroup.
 
 👉 While there is a `required` property to visually denote the whole input group
 is required, there is no functional effect as there is no such HTML attribute

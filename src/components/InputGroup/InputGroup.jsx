@@ -18,6 +18,7 @@ import styles from './InputGroup.module.scss';
 export const InputGroup = ({
   children,
   disabled,
+  helpTexts,
   id,
   isLabelVisible,
   label,
@@ -89,7 +90,21 @@ export const InputGroup = ({
             {children}
           </InputGroupContext.Provider>
         </div>
-        {validationTexts && (
+        {helpTexts && helpTexts.length > 0 && (
+          <ul
+            className={styles.helpText}
+            id={id && `${id}__helpTexts`}
+          >
+            {helpTexts.map((helpText) => (
+              <li key={helpText}>
+                <Text blockLevel>
+                  {helpText}
+                </Text>
+              </li>
+            ))}
+          </ul>
+        )}
+        {validationTexts && validationTexts.length > 0 && (
           <ul
             className={styles.validationText}
             id={id && `${id}__validationTexts`}
@@ -111,6 +126,7 @@ export const InputGroup = ({
 InputGroup.defaultProps = {
   children: undefined,
   disabled: false,
+  helpTexts: undefined,
   id: undefined,
   isLabelVisible: true,
   layout: 'vertical',
@@ -133,6 +149,10 @@ InputGroup.propTypes = {
    * If `true`, the whole input group with all nested inputs and buttons will be disabled.
    */
   disabled: PropTypes.bool,
+  /**
+   * An array of help texts to be displayed.
+   */
+  helpTexts: PropTypes.arrayOf(PropTypes.node),
   /**
    * ID of the root HTML element.
    *
@@ -171,7 +191,7 @@ InputGroup.propTypes = {
   /**
    * An array of validation messages to be displayed.
    */
-  validationTexts: PropTypes.node,
+  validationTexts: PropTypes.arrayOf(PropTypes.node),
 };
 
 export const InputGroupWithGlobalProps = withGlobalProps(InputGroup, 'InputGroup');
