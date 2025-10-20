@@ -28,7 +28,7 @@ See [API](#api) for all available options.
 - **Don't overwhelm your UI** with too many high-emphasis actions. There should
     always be one but chances are that having more of them is not necessary.
 
-- Ensure the **button action is well recognazible** across your target audience.
+- Ensure the **button action is well recognizable** across your target audience.
     This is especially important when using the button [with an icon only](#icon-buttons).
 
 ## Priorities

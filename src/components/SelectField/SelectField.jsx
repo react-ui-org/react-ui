@@ -109,7 +109,7 @@ export const SelectField = React.forwardRef((props, ref) => {
             <div className={styles.bottomLine} />
           )}
         </div>
-        {helpText && (
+        {(helpText && !inputGroupContext) && (
           <div
             className={styles.helpText}
             id={id && `${id}__helpText`}
@@ -172,6 +172,9 @@ SelectField.propTypes = {
    *
    * If `key` in the option definition object is set,
    * then `option.key` is used instead of `option.value` in place of `<VALUE>`.
+   *
+   * Help text is never rendered when the component is placed into `InputGroup`. Instead, the `InputGroup`
+   * component itself renders all help texts of its nested components.
    */
   id: PropTypes.string,
   /**

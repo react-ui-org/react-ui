@@ -84,7 +84,7 @@ export const TextField = React.forwardRef((props, ref) => {
             <div className={styles.bottomLine} />
           )}
         </div>
-        {helpText && (
+        {(helpText && !inputGroupContext) && (
           <div
             className={styles.helpText}
             id={id && `${id}__helpText`}
@@ -132,6 +132,9 @@ TextField.propTypes = {
   fullWidth: PropTypes.bool,
   /**
    * Optional help text.
+   *
+   * Help text is never rendered when the component is placed into `InputGroup`. Instead, the `InputGroup`
+   * component itself renders all help texts of its nested components.
    */
   helpText: PropTypes.node,
   /**

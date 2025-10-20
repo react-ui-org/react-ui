@@ -18,6 +18,7 @@ import styles from './InputGroup.module.scss';
 export const InputGroup = ({
   children,
   disabled,
+  helpTexts,
   id,
   isLabelVisible,
   label,
@@ -89,6 +90,20 @@ export const InputGroup = ({
             {children}
           </InputGroupContext.Provider>
         </div>
+        {helpTexts && (
+          <ul
+            className={styles.helpText}
+            id={id && `${id}__helpTexts`}
+          >
+            {helpTexts.map((helpText) => (
+              <li key={helpText}>
+                <Text blockLevel>
+                  {helpText}
+                </Text>
+              </li>
+            ))}
+          </ul>
+        )}
         {validationTexts && (
           <ul
             className={styles.validationText}
@@ -111,6 +126,7 @@ export const InputGroup = ({
 InputGroup.defaultProps = {
   children: undefined,
   disabled: false,
+  helpTexts: null,
   id: undefined,
   isLabelVisible: true,
   layout: 'vertical',
@@ -133,6 +149,10 @@ InputGroup.propTypes = {
    * If `true`, the whole input group with all nested inputs and buttons will be disabled.
    */
   disabled: PropTypes.bool,
+  /**
+   * An array of help texts to be displayed.
+   */
+  helpTexts: PropTypes.node,
   /**
    * ID of the root HTML element.
    *

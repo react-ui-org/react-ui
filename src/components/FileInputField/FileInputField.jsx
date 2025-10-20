@@ -223,7 +223,7 @@ export const FileInputField = React.forwardRef((props, ref) => {
             </Text>
           </button>
         </div>
-        {helpText && (
+        {(helpText && !inputGroupContext) && (
           <div
             className={styles.helpText}
             id={`${id}__helpText`}
@@ -231,7 +231,7 @@ export const FileInputField = React.forwardRef((props, ref) => {
             {helpText}
           </div>
         )}
-        {validationText && (
+        {(validationText && !inputGroupContext) && (
           <div
             className={styles.validationText}
             id={`${id}__validationText`}
@@ -268,6 +268,9 @@ FileInputField.propTypes = {
   fullWidth: PropTypes.bool,
   /**
    * Optional help text.
+   *
+   * Help text is never rendered when the component is placed into `InputGroup`. Instead, the `InputGroup`
+   * component itself renders all help texts of its nested components.
    */
   helpText: PropTypes.node,
   /**
@@ -321,6 +324,9 @@ FileInputField.propTypes = {
   validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
   /**
    * Validation message to be displayed.
+   *
+   * Validation text is never rendered when the component is placed into `InputGroup`. Instead, the `InputGroup`
+   * component itself renders all validation texts of its nested components.
    */
   validationText: PropTypes.node,
 };
