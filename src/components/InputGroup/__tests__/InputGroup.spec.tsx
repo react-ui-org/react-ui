@@ -63,10 +63,10 @@ test.describe('InputGroup', () => {
 
         const component = await mount(
           <InputGroupForTest
+            helpTexts={['Help text.']}
             id={id}
             isLabelVisible
             label={label}
-            helpTexts={['Help text.']}
             validationTexts={['Validation text.']}
           />,
         );
