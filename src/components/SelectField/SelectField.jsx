@@ -109,7 +109,7 @@ export const SelectField = React.forwardRef((props, ref) => {
             <div className={styles.bottomLine} />
           )}
         </div>
-        {helpText && (
+        {(helpText && !inputGroupContext) && (
           <div
             className={styles.helpText}
             id={id && `${id}__helpText`}
@@ -156,6 +156,9 @@ SelectField.propTypes = {
   fullWidth: PropTypes.bool,
   /**
    * Optional help text.
+   *
+   * Help text is never rendered when the component is placed into `InputGroup`.
+   * If a help text is needed, it must be defined on the `InputGroup` component instead.
    */
   helpText: PropTypes.node,
   /**
@@ -249,8 +252,8 @@ SelectField.propTypes = {
   /**
    * Validation message to be displayed.
    *
-   * Validation text is never rendered when the component is placed into `InputGroup`. Instead, the `InputGroup`
-   * component itself renders all validation texts of its nested components.
+   * Validation text is never rendered when the component is placed into `InputGroup`.
+   * If a validation text is needed, it must be defined on the `InputGroup` component instead.
    */
   validationText: PropTypes.node,
   /**
