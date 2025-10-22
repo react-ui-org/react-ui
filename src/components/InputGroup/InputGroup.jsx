@@ -90,7 +90,7 @@ export const InputGroup = ({
             {children}
           </InputGroupContext.Provider>
         </div>
-        {helpTexts && (
+        {helpTexts && helpTexts.length > 0 && (
           <ul
             className={styles.helpText}
             id={id && `${id}__helpTexts`}
@@ -104,7 +104,7 @@ export const InputGroup = ({
             ))}
           </ul>
         )}
-        {validationTexts && (
+        {validationTexts && validationTexts.length > 0 && (
           <ul
             className={styles.validationText}
             id={id && `${id}__validationTexts`}
@@ -126,7 +126,7 @@ export const InputGroup = ({
 InputGroup.defaultProps = {
   children: undefined,
   disabled: false,
-  helpTexts: null,
+  helpTexts: undefined,
   id: undefined,
   isLabelVisible: true,
   layout: 'vertical',
