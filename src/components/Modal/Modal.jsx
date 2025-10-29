@@ -76,7 +76,12 @@ export const Modal = ({
   useModalScrollPrevention(preventScrollUnderneath);
 
   const onCancel = useCallback(
-    (e) => dialogOnCancelHandler(e, closeButtonRef, restProps.onCancel),
+    (e) => {
+      if (e.target !== internalDialogRef.current) {
+        return;
+      }
+      dialogOnCancelHandler(e, closeButtonRef, restProps.onCancel);
+    },
     [closeButtonRef, restProps.onCancel],
   );
   const onClick = useCallback(
