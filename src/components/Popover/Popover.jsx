@@ -16,8 +16,15 @@ export const Popover = React.forwardRef((props, ref) => {
     placementStyle,
     popoverTargetId,
     portalId,
+    zIndex,
     ...restProps
   } = props;
+
+  const placementStyleObject = placementStyle ? cleanPlacementStyle(placementStyle) : {};
+  const style = zIndex !== undefined ? {
+    ...placementStyleObject,
+    zIndex,
+  } : placementStyleObject;
 
   const PopoverEl = (
     <>
@@ -43,7 +50,7 @@ export const Popover = React.forwardRef((props, ref) => {
           getRootAlignmentClassName(placement, styles),
         )}
         ref={ref}
-        style={placementStyle ? cleanPlacementStyle(placementStyle) : undefined}
+        style={style}
       >
         {children}
         <span className={styles.arrow} />
@@ -63,6 +70,7 @@ Popover.defaultProps = {
   placementStyle: undefined,
   popoverTargetId: undefined,
   portalId: undefined,
+  zIndex: undefined,
 };
 
 Popover.propTypes = {
@@ -116,6 +124,10 @@ Popover.propTypes = {
    * If set, popover is rendered in the React Portal with that ID.
    */
   portalId: PropTypes.string,
+  /**
+   * Z-Index of the popover.
+   */
+  zIndex: PropTypes.number,
 };
 
 export const PopoverWithGlobalProps = withGlobalProps(Popover, 'Popover');
