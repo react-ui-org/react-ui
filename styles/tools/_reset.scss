@@ -1,0 +1,32 @@
+@mixin button() {
+    appearance: none;
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+@mixin link() {
+    text-decoration: none;
+    color: inherit;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+@mixin list() {
+    padding-left: 0;
+    list-style: none;
+
+    &:not(:last-child) {
+        margin-bottom: 0;
+    }
+}
