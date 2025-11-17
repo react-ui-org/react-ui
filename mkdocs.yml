@@ -143,7 +143,9 @@ nav:
           - Translations: 'docs/customize/translations.md'
       - Contribute:
           - General Guidelines: 'docs/contribute/general-guidelines.md'
-          - Testing Guidelines: 'docs/contribute/testing-guidelines.md'
+          - Testing Guidelines:
+              - Testing: 'docs/contribute/testing-guidelines.md'
+              - Writing Tests: 'docs/contribute/writing-tests-guidelines.md'
           - API Guidelines: 'docs/contribute/api.md'
           - Composition: 'docs/contribute/composition.md'
           - CSS Guidelines: 'docs/contribute/css.md'
