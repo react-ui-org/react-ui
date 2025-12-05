@@ -29,12 +29,12 @@
     "url": "https://github.com/react-ui-org/react-ui"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "22.x",
+      "version": "22.x || 24.x",
       "onFail": "error"
     },
     "packageManager": {
