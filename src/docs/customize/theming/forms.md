@@ -28,15 +28,15 @@ The following theme options define basic appearance of all form fields.
 
 Options for fields that support horizontal layout.
 
-| Custom Property                                      | Description                                                  |
-|------------------------------------------------------|--------------------------------------------------------------|
-| `--rui-FormField--horizontal__label__text-align`     | Text alignment of labels in horizontal layout                |
-| `--rui-FormField--horizontal__label__min-width`      | Minimum width of labels in horizontal layout                 |
-| `--rui-FormField--horizontal__label__width`          | Default width of labels in horizontal layout                 |
-| `--rui-FormField--horizontal__label__padding-y`      | Top and bottom padding to tweak vertical alignment of labels |
-| `--rui-FormField--horizontal__label__vertical-alignment` | Vertical box alignment of labels in horizontal layout    |
-| `--rui-FormField--horizontal__field__vertical-alignment` | Vertical box alignment of fields in horizontal layout    |
-| `--rui-FormField--horizontal--full-width__label__width` | Default width of labels in full-width horizontal layout   |
+| Custom Property                                          | Description                                                  |
+|----------------------------------------------------------|--------------------------------------------------------------|
+| `--rui-FormField--horizontal__label__text-align`         | Text alignment of labels in horizontal layout                |
+| `--rui-FormField--horizontal__label__min-width`          | Minimum width of labels in horizontal layout                 |
+| `--rui-FormField--horizontal__label__width`              | Default width of labels in horizontal layout                 |
+| `--rui-FormField--horizontal__label__padding-y`          | Top and bottom padding to tweak vertical alignment of labels |
+| `--rui-FormField--horizontal__label__vertical-alignment` | Vertical box alignment of labels in horizontal layout        |
+| `--rui-FormField--horizontal__field__vertical-alignment` | Vertical box alignment of fields in horizontal layout        |
+| `--rui-FormField--horizontal--full-width__label__width`  | Default width of labels in full-width horizontal layout      |
 
 ## Box Fields
 
@@ -311,16 +311,16 @@ and [Toggle](/components/Toggle).
 
 Interaction states:
 
-| Custom Property                                      | Description                                                  |
-|------------------------------------------------------|--------------------------------------------------------------|
-| `--rui-FormField--check--default__border-color`      | Border color of unchecked inputs                             |
-| `--rui-FormField--check--default__check-background-color` | Background color of unchecked inputs                    |
-| `--rui-FormField--check--checked__border-color`      | Border color of checked inputs                               |
-| `--rui-FormField--check--checked__check-background-color` | Background color of checked inputs                      |
-| `--rui-FormField--check--disabled__border-color`     | Border color of disabled unchecked inputs                    |
-| `--rui-FormField--check--disabled__check-background-color` | Background color of disabled unchecked inputs          |
-| `--rui-FormField--check--checked-disabled__border-color` | Border color of disabled checked inputs                  |
-| `--rui-FormField--check--checked-disabled__check-background-color` | Background color of disabled checked inputs    |
+| Custom Property                                                    | Description                                   |
+|--------------------------------------------------------------------|-----------------------------------------------|
+| `--rui-FormField--check--default__border-color`                    | Border color of unchecked inputs              |
+| `--rui-FormField--check--default__check-background-color`          | Background color of unchecked inputs          |
+| `--rui-FormField--check--checked__border-color`                    | Border color of checked inputs                |
+| `--rui-FormField--check--checked__check-background-color`          | Background color of checked inputs            |
+| `--rui-FormField--check--disabled__border-color`                   | Border color of disabled unchecked inputs     |
+| `--rui-FormField--check--disabled__check-background-color`         | Background color of disabled unchecked inputs |
+| `--rui-FormField--check--checked-disabled__border-color`           | Border color of disabled checked inputs       |
+| `--rui-FormField--check--checked-disabled__check-background-color` | Background color of disabled checked inputs   |
 
 Example:
 

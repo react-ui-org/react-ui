@@ -779,11 +779,11 @@ If you provide [ref], it is forwarded to the native HTML `<select>` element.
 Head to [Forms Theming](/docs/customize/theming/forms) to see shared form theming
 options. On top of that, the following options are available for SelectField.
 
-| Custom Property                                      | Description                                                  |
-|------------------------------------------------------|--------------------------------------------------------------|
-| `--rui-FormField--box--select__caret__border-style`  | SelectField arrow border style (e.g. `solid`)                |
-| `--rui-FormField--box--select__caret__background`    | SelectField arrow background (including `url()` or gradient) |
-| `--rui-FormField--box--select__option--disabled__color` | Text color of disabled SelectField options                |
+| Custom Property                                         | Description                                                  |
+|---------------------------------------------------------|--------------------------------------------------------------|
+| `--rui-FormField--box--select__caret__border-style`     | SelectField arrow border style (e.g. `solid`)                |
+| `--rui-FormField--box--select__caret__background`       | SelectField arrow background (including `url()` or gradient) |
+| `--rui-FormField--box--select__option--disabled__color` | Text color of disabled SelectField options                   |
 
 [React common props]: https://react.dev/reference/react-dom/components/common#common-props
 [ref]: https://reactjs.org/docs/refs-and-the-dom.html

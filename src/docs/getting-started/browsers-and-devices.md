@@ -17,15 +17,15 @@ browser versions. See the source of our `.browserslistrc` config to learn how.
 
 |         | Chrome | Firefox | Safari |
 |---------|--------|---------|--------|
-| Android | ✅     | ✅      | —      |
-| iOS     | ✅     | ✅      | ✅     |
+| Android | ✅      | ✅       | —      |
+| iOS     | ✅      | ✅       | ✅      |
 
 ## Desktop Browsers
 
 |         | Chrome | Firefox | Safari | Microsoft Edge |
 |---------|--------|---------|--------|----------------|
-| Windows | ✅     | ✅      | —      | ✅             |
-| macOS   | ✅     | ✅      | ✅     | ✅             |
-| Linux   | ✅     | ✅      | —      | —              |
+| Windows | ✅      | ✅       | —      | ✅              |
+| macOS   | ✅      | ✅       | ✅      | ✅              |
+| Linux   | ✅      | ✅       | —      | —              |
 
 To be explicit: Internet Explorer is not supported.

@@ -277,15 +277,15 @@ If you provide [ref], it is forwarded to the native HTML `<input>` element.
 Head to [Forms Theming](/docs/customize/theming/forms) to see shared form theming
 options. On top of that, the following options are available for Toggle.
 
-| Custom Property                                                    | Description                                    |
-|--------------------------------------------------------------------|------------------------------------------------|
-| `--rui-FormField--check__input--toggle__width`             | Input width (height is shared with other check fields) |
-| `--rui-FormField--check__input--toggle__border-radius`             | Input corner radius                            |
-| `--rui-FormField--check__input--toggle__background-size`           | Input background size                          |
-| `--rui-FormField--check__input--toggle--default__background-image` | Background image of unchecked input            |
-| `--rui-FormField--check__input--toggle--default__background-position` | Background position of unchecked input      |
-| `--rui-FormField--check__input--toggle--checked__background-image` | Background image of checked input              |
-| `--rui-FormField--check__input--toggle--checked__background-position` | Background position of checked input        |
+| Custom Property                                                       | Description                                            |
+|-----------------------------------------------------------------------|--------------------------------------------------------|
+| `--rui-FormField--check__input--toggle__width`                        | Input width (height is shared with other check fields) |
+| `--rui-FormField--check__input--toggle__border-radius`                | Input corner radius                                    |
+| `--rui-FormField--check__input--toggle__background-size`              | Input background size                                  |
+| `--rui-FormField--check__input--toggle--default__background-image`    | Background image of unchecked input                    |
+| `--rui-FormField--check__input--toggle--default__background-position` | Background position of unchecked input                 |
+| `--rui-FormField--check__input--toggle--checked__background-image`    | Background image of checked input                      |
+| `--rui-FormField--check__input--toggle--checked__background-position` | Background position of checked input                   |
 
 [checkbox-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#additional_attributes
 [React common props]: https://react.dev/reference/react-dom/components/common#common-props

@@ -405,10 +405,10 @@ to improve its accessibility.
 Head to [Forms Theming](/docs/customize/theming/forms) to see shared form theming
 options. On top of that, the following options are available for Radio.
 
-| Custom Property                                                    | Description                                    |
-|--------------------------------------------------------------------|------------------------------------------------|
-| `--rui-FormField--check__input--radio__border-radius`              | Input corner radius                            |
-| `--rui-FormField--check__input--radio--checked__background-image` | Checked input background image (inline, URL, …) |
+| Custom Property                                                    | Description                                      |
+|--------------------------------------------------------------------|--------------------------------------------------|
+| `--rui-FormField--check__input--radio__border-radius`              | Input corner radius                              |
+| `--rui-FormField--check__input--radio--checked__background-image`  | Checked input background image (inline, URL, …)  |
 
 [accessibility]: https://www.w3.org/WAI/tutorials/forms/grouping/
 [fieldset]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset

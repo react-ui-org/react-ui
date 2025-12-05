@@ -441,22 +441,22 @@ A place for custom content inside FormLayout.
 
 ## Theming
 
-| Custom Property                                      | Description                                                  |
-|------------------------------------------------------|--------------------------------------------------------------|
-| `--rui-FormLayout__row-gap`                          | Gap between individual rows                                  |
-| `--rui-FormLayout--horizontal__label__width`         | Default label width                                          |
-| `--rui-FormLayout--horizontal__label__width--auto`   | Label width in automatic layout                              |
-| `--rui-FormLayout--horizontal__label__width--limited` | Label width in limited-width layout                         |
+| Custom Property                                        | Description                         |
+|--------------------------------------------------------|-------------------------------------|
+| `--rui-FormLayout__row-gap`                            | Gap between individual rows         |
+| `--rui-FormLayout--horizontal__label__width`           | Default label width                 |
+| `--rui-FormLayout--horizontal__label__width--auto`     | Label width in automatic layout     |
+| `--rui-FormLayout--horizontal__label__width--limited`  | Label width in limited-width layout |
 
 ### FormLayoutCustomField Theming
 
 FormLayoutCustomField can be styled using a small subset of
 [other form fields theming options](/docs/customize/theming/forms).
 
-| Custom Property                                      | Description                                                  |
-|------------------------------------------------------|--------------------------------------------------------------|
-| `--rui-FormField--custom--default__surrounding-text-color` | Custom field label color in default state              |
-| `--rui-FormField--custom--disabled__surrounding-text-color` | Custom field label color in disabled-like state       |
+| Custom Property                                             | Description                                      |
+|-------------------------------------------------------------|--------------------------------------------------|
+| `--rui-FormField--custom--default__surrounding-text-color`  | Custom field label color in default state        |
+| `--rui-FormField--custom--disabled__surrounding-text-color` | Custom field label color in disabled-like state  |
 
 [div-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
 [fragments]: https://reactjs.org/docs/fragments.html
