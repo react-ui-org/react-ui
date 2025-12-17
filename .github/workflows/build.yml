@@ -2,21 +2,83 @@ name: Build
 
 on: [ pull_request ]
 
+# We build distribution CSS and JS on both the active LTS and previous LTS Node.js versions,
+# to ensure compatibility across a wider range of environments. Those versions are defined
+# in package.json `devEngines` field and must match the versions defined in `env` section below.
+#
+# As package.json does not support comments, we document the version mapping here.
+#
+# `engines` field in package.json defines the minimum required Node.js version for running the package.
+# We set it to the first released previous LTS version of Node.js. This means we allow users
+# to run the package on this version and any later versions.
+#
+#  "engines": {
+#    "node": ">=22.11.0"
+#  }
+#
+# `devEngines` field in package.json defines the Node.js versions used for development and building.
+# We set both to the first released active and previous LTS versions of Node.js. We also set
+# the npm version to the version of npm bundled with the first released active LTS Node.js version.
+# This means we strictly require one of those versions for development and building.
+#
+#  "devEngines": {
+#    "runtime": {
+#      "name": "node",
+#      "version": "^22.11.0 || ^24.11.0",
+#      "onFail": "error"
+#    },
+#    "packageManager": {
+#      "name": "npm",
+#      "version": "^11.6.1",
+#      "onFail": "error"
+#    }
+#  }
+#
+# Versions defined in `env` use major version numbers only to install the latest minor/patch.
+
+env:
+  NODE_ACTIVE_LTS_VERSION: 24
+  NODE_PREVIOUS_LTS_VERSION: 22
+  NPM_VERSION: 11
+
 jobs:
-  build:
-    name: Build distribution CSS and JS
+  build_on_node_previous_lts:
+    name: Build distribution CSS and JS (Node Previous LTS)
     runs-on: ubuntu-24.04
-    strategy:
-      matrix:
-        node: [ 22, 24 ]
     steps:
       - name: Clone repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
-      - name: Set up Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v4
+      - name: Set up Node.js (${{ env.NODE_PREVIOUS_LTS_VERSION }})
+        uses: actions/setup-node@v6
         with:
-          node-version: ${{ matrix.node }}
+          node-version: ${{ env.NODE_PREVIOUS_LTS_VERSION }}
+          cache: npm
+        continue-on-error: true
+
+      - name: Install npm@${{ env.NPM_VERSION }}
+        run: npm install -g npm@${{ env.NPM_VERSION }}
+
+      - name: Print Node.js and npm version
+        run: node --version && npm --version
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+  build_on_node_active_lts:
+    name: Build distribution CSS and JS (Node Active LTS)
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js (${{ env.NODE_ACTIVE_LTS_VERSION }})
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_ACTIVE_LTS_VERSION }}
           cache: npm
 
       - name: Print Node.js and npm version
