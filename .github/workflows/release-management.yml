@@ -106,7 +106,7 @@ jobs:
         run: npm ci
 
       - name: Publish to npm
-        run: npm publish
+        run: npm publish --provenance
 
   deploy_docs:
     name: Deploy docs
