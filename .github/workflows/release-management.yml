@@ -4,6 +4,10 @@ on:
   push:
     branches: [ master ]
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   test_and_build:
     name: Test and build
@@ -103,8 +107,6 @@ jobs:
 
       - name: Publish to npm
         run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
 
   deploy_docs:
     name: Deploy docs
