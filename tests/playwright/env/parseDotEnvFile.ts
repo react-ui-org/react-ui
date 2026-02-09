@@ -6,7 +6,10 @@ const PLAYWRIGHT_ENV_FILE = '.env.playwright';
  * Load and parse Playwright environment file into an object.
  */
 export const parseDotEnvFile = () => {
-  const dotEnvConfigOutput = dotenv.config({ path: PLAYWRIGHT_ENV_FILE });
+  const dotEnvConfigOutput = dotenv.config({
+    path: PLAYWRIGHT_ENV_FILE,
+    quiet: true,
+  });
 
   if (dotEnvConfigOutput.error) {
     // eslint-disable-next-line no-console
