@@ -63,8 +63,29 @@
     $properties,
 ) {
     @each $property in $properties {
-        $modifier: if($modifier-value, "--" + $modifier-value, "");
-        $state: if($interaction-state, "--" + $interaction-state, "");
+        $fallback-custom-property: "";
+        $modifier: "";
+        $state: "";
+
+        @if $modifier-value {
+            $modifier: "--" + $modifier-value;
+        }
+
+        @if $interaction-state {
+            $state: "--" + $interaction-state;
+        }
+
+        @if $interaction-state == "disabled" {
+            $fallback-custom-property: ", var(--"
+                + $prefix
+                + $component-name
+                + $modifier
+                + "--"
+                + $variant-value
+                + "--default__"
+                + $property
+                + ")";
+        }
 
         // 1.
         --#{$prefix}local-#{$property}:
@@ -80,19 +101,7 @@
                     + "__"
                     + $property
                 }
-                #{if(
-                    $interaction-state and $interaction-state == "disabled",
-                    ", var(--"
-                    + $prefix
-                    + $component-name
-                    + $modifier
-                    + "--"
-                    + $variant-value
-                    + "--default__"
-                    + $property
-                    + ")",
-                    ""
-                )}
+                #{$fallback-custom-property}
             ); // 2.
     }
 }
@@ -202,13 +211,16 @@
     $inherit-link-color: false,
     $properties,
 ) {
-    $modifier-class-name:
-        if(
-            $modifier-name and $modifier-value,
-            ".isRoot#{rui-string.capitalize($modifier-name)}#{rui-string.capitalize($modifier-value)}",
-            ""
-        );
-    $variant-class-name: ".isRoot#{rui-string.capitalize($variant-name)}#{rui-string.capitalize($variant-value)}";
+    $modifier-class-name: "";
+    $variant-class-name: ".isRoot"
+        + rui-string.capitalize($variant-name)
+        + rui-string.capitalize($variant-value);
+
+    @if $modifier-name and $modifier-value {
+        $modifier-class-name: ".isRoot"
+            + rui-string.capitalize($modifier-name)
+            + rui-string.capitalize($modifier-value);
+    }
 
     #{$modifier-class-name}#{$variant-class-name} {
         @if $generate-interaction-states {
