@@ -1,0 +1,11 @@
+@use "sass:map";
+@use "../../styles/settings/collections";
+@use "../../styles/theme/typography";
+@use "theme";
+
+$font-size: map.get(typography.$font-size-values, 1);
+$line-height: typography.$line-height-base;
+$min-height: calc(#{$font-size} * #{$line-height} + 2 * #{theme.$padding});
+
+$colors: collections.$feedback-colors;
+$themeable-properties: color, foreground-color, background-color;

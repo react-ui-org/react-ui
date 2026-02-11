@@ -1,0 +1,64 @@
+@use "sass:map";
+@use "sass:math";
+@use "../../styles/theme/borders";
+@use "../../styles/theme/typography";
+@use "../../styles/tools/collections";
+@use "settings";
+
+@layer components.badge {
+    .root {
+        display: inline-block;
+        min-width: settings.$badge-size;
+        height: settings.$badge-size;
+        padding: 0.25rem 0.35rem;
+        overflow: hidden;
+        font-weight: map.get(typography.$font-weight-values, bold);
+        font-size: typography.$font-size-smaller;
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        color: var(--rui-local-color);
+        border-radius: math.div(settings.$badge-size, 2);
+    }
+
+    .isRootPriorityFilled {
+        background-color: var(--rui-local-background-color);
+        box-shadow: var(--rui-local-box-shadow, #{0 0 0 2px rgb(255 255 255 / 80%)});
+    }
+
+    @each $color in settings.$colors {
+        @include collections.generate-class(
+            $prefix: "rui-",
+            $component-name: "Badge",
+            $modifier-name: "priority",
+            $modifier-value: "filled",
+            $variant-name: "color",
+            $variant-value: $color,
+            $properties: settings.$themeable-properties-filled,
+        );
+    }
+
+    .isRootColorLight,
+    .isRootColorDark {
+        --rui-local-box-shadow: none;
+    }
+
+    .isRootPriorityOutline {
+        padding-top: 0.1875rem;
+        padding-bottom: 0.1875rem;
+        border: borders.$width solid currentcolor;
+    }
+
+    @each $color in settings.$colors {
+        @include collections.generate-class(
+            $prefix: "rui-",
+            $component-name: "Badge",
+            $modifier-name: "priority",
+            $modifier-value: "outline",
+            $variant-name: "color",
+            $variant-value: $color,
+            $properties: settings.$themeable-properties-outline,
+        );
+    }
+}

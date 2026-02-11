@@ -1,0 +1,8 @@
+@use "sass:list";
+@use "../../styles/settings/collections";
+
+$badge-size: 1.25rem;
+
+$colors: list.join(collections.$feedback-colors, collections.$neutral-colors);
+$themeable-properties-filled: color, background-color;
+$themeable-properties-outline: color;

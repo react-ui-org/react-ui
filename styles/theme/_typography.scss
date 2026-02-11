@@ -1,0 +1,25 @@
+$font-weight-values: (
+    light: var(--rui-font-weight-light),
+    default: var(--rui-font-weight-base),
+    bold: var(--rui-font-weight-bold),
+);
+
+$font-weight-base: var(--rui-font-weight-base);
+
+$font-size-values: (
+    1: var(--rui-font-size-1),
+    2: var(--rui-font-size-2),
+    3: var(--rui-font-size-3),
+    4: var(--rui-font-size-4),
+    5: var(--rui-font-size-5),
+    6: var(--rui-font-size-6),
+);
+
+$font-size-base: var(--rui-font-size-base);
+$font-size-small: var(--rui-font-size-small);
+$font-size-smaller: var(--rui-font-size-smaller);
+
+$font-family-base: var(--rui-font-family-base);
+
+$line-height-base: var(--rui-line-height-base);
+$line-height-small: var(--rui-line-height-small);

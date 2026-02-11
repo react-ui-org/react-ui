@@ -1,0 +1,15 @@
+@use "../../styles/theme/typography";
+
+$drop-zone-color: var(--rui-color-text-primary);
+$drop-zone-disabled-color: var(--rui-color-text-primary-disabled);
+$drop-zone-border-color: var(--rui-color-border-primary);
+$drop-zone-hover-border-color: var(--rui-color-border-primary-hover);
+$drop-zone-active-border-color: var(--rui-color-border-primary-active);
+$drop-zone-dragging-border-color: var(--rui-color-border-primary-active);
+$drop-zone-disabled-border-color: var(--rui-color-border-primary);
+$drop-zone-background-color: var(--rui-color-background-basic);
+$drop-zone-disabled-background-color: var(--rui-color-background-disabled);
+$drop-zone-disabled-cursor: var(--rui-cursor-not-allowed);
+$drop-zone-font-weight: typography.$font-weight-base;
+$drop-zone-line-height: typography.$line-height-base;
+$drop-zone-font-family: typography.$font-family-base;
