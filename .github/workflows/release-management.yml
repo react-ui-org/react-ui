@@ -64,6 +64,8 @@ jobs:
 
   publish_release_draft_on_version_bump:
     name: Publish release draft
+    permissions:
+      contents: write
     needs: [test_and_build]
     if: needs.test_and_build.outputs.version_changed == 'true'
     runs-on: ubuntu-24.04
@@ -79,7 +81,12 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
-        run: gh release edit "v${{ needs.test_and_build.outputs.version }}" --draft=false
+        run: |
+          if ! gh release view "v${{ needs.test_and_build.outputs.version }}" &>/dev/null
+          then
+            gh release create "v${{ needs.test_and_build.outputs.version }}" --draft --title "v${{ needs.test_and_build.outputs.version }}"
+          fi
+          gh release edit "v${{ needs.test_and_build.outputs.version }}" --draft=false
 
       - name: Write out the release URL
         run: echo "Released at $RELEASE_URL"
