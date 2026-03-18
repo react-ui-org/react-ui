@@ -10,6 +10,8 @@ import {
 import {
   ButtonForTest,
   ButtonForRefTest,
+  ButtonInVerticalFormLayoutForTest,
+  ButtonInHorizontalFormLayoutForTest,
 } from './Button.story';
 
 test.describe('Button', () => {
@@ -151,6 +153,20 @@ test.describe('Button', () => {
 
       await expect(component).toBeDisabled();
       expect(clicked).toBeFalsy();
+    });
+  });
+
+  test.describe('formLayout', () => {
+    test.describe('visual', () => {
+      test('vertical', async ({ mount }) => {
+        const component = await mount(<ButtonInVerticalFormLayoutForTest />);
+        expect(await component.screenshot()).toMatchSnapshot();
+      });
+
+      test('horizontal', async ({ mount }) => {
+        const component = await mount(<ButtonInHorizontalFormLayoutForTest />);
+        expect(await component.screenshot()).toMatchSnapshot();
+      });
     });
   });
 });
