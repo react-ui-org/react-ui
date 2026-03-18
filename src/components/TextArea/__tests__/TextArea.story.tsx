@@ -4,7 +4,11 @@ import React, {
   useRef,
 } from 'react';
 import type { TextareaHTMLAttributes } from 'react';
-import { FormLayoutContext } from '../../FormLayout';
+import {
+  FormLayout,
+  FormLayoutContext,
+  FormLayoutCustomFieldContext,
+} from '../../FormLayout';
 import { TextArea } from '..';
 
 // Types for story component will be improved when we have full TypeScript support
@@ -48,6 +52,13 @@ export const TextAreaForRefTest = ({
   );
 };
 
+export const TextAreaForFormLayoutLabelWidthTests = () => (
+  <FormLayout fieldLayout="horizontal" labelWidth="100px">
+    <TextArea label={defaultLabel} />
+    <TextArea label="another-test-label" />
+  </FormLayout>
+);
+
 export const TextAreaForFormLayoutTests = ({
   layout,
   ...props
@@ -69,3 +80,14 @@ export const TextAreaForFormLayoutTests = ({
     </FormLayoutContext.Provider>
   );
 };
+
+export const TextAreaForFormLayoutCustomFieldTests = ({
+  ...props
+}: TextAreaForTestProps) => (
+  <FormLayoutCustomFieldContext.Provider value>
+    <TextArea
+      label={defaultLabel}
+      {...props}
+    />
+  </FormLayoutCustomFieldContext.Provider>
+);
