@@ -14,7 +14,8 @@ And use it:
 
 ```docoff-react-preview
 <FormLayout>
-  <TextField label="A form element" />
+  <TextField label="A text field" />
+  <Button label="Submit" />
 </FormLayout>
 ```
 
@@ -27,18 +28,14 @@ one after another in a row by default.** The FormLayout component is there to
 make building **vertical and horizontal forms** easy. It uses the right tool for
 the job: the [CSS grid layout][grid].
 
-- Put **only form field components** from React UI inside the FormLayout and
-  make sure they are **direct descendants** of it (React [fragments] are
-  supported!). All React UI form components are ready for this use case and
-  don't need to be wrapped in any `div`s. Namely, the FormLayout supports the
-  following React UI components:
-  [CheckboxField](/components/CheckboxField),
-  [Radio](/components/Radio), [SelectField](/components/SelectField),
-  [TextArea](/components/TextArea), [TextField](/components/TextField),
-  and [Toggle](/components/Toggle).
+- Put **only form field components or buttons** from React UI inside the
+  FormLayout and make sure they are **direct descendants** of it (React
+  [fragments][fragments] are supported!). All React UI form components are
+  [ready for this use case](#supported-form-fields), no wrapping `<div>`s are
+  needed.
 
-- Use the [FormLayoutCustomField](#custom-fields) component when you need to
-  place any **custom content** inside the FormLayout. This layout helper ensures
+- To **place any custom content** inside the FormLayout, use the
+  [FormLayoutCustomField](#custom-fields) component. This layout helper ensures
   your content is properly spaced and aligned with other FormLayout elements.
   Do **not** try to put any custom HTML or React components directly into
   FormLayout without wrapping it with the FormLayoutCustomField first.
@@ -47,6 +44,132 @@ the job: the [CSS grid layout][grid].
 for your FormLayout. This prevents FormLayout from unexpectedly growing in
 browsers that [don't support][rui-232] [CSS subgrid][subgrid] in cases when
 there are longer validation messages or help texts.
+
+## Supported Form Fields
+
+The FormLayout supports buttons and all React UI form fields:
+[Button](/components/Button), [CheckboxField](/components/CheckboxField),
+[FileInputField](/components/FileInputField), [Radio](/components/Radio),
+[SelectField](/components/SelectField), [TextArea](/components/TextArea),
+[TextField](/components/TextField), and [Toggle](/components/Toggle).
+
+```docoff-react-preview
+React.createElement(() => {
+  const [fieldLayout, setFieldLayout] = React.useState('horizontal');
+  const [fruit, setFruit] = React.useState('apple');
+  const [isDeliveryAddress, setIsDeliveryAddress] = React.useState(true);
+  const [receiveNewsletter, setReceiveNewsletter] = React.useState(true);
+  const options = [
+    {
+      label: 'Apple',
+      value: 'apple',
+    },
+    {
+      label: 'Banana',
+      value: 'banana',
+    },
+    {
+      label: 'Grapefruit',
+      value: 'grapefruit',
+    },
+  ];
+  return (
+    <div>
+      <Toolbar>
+        <ToolbarItem>
+          <ButtonGroup>
+            <Button
+              color={fieldLayout === 'horizontal' ? 'selected' : 'secondary'}
+              label="Horizontal layout"
+              onClick={() => setFieldLayout('horizontal')}
+            />
+            <Button
+              color={fieldLayout === 'vertical' ? 'selected' : 'secondary'}
+              label="Vertical layout"
+              onClick={() => setFieldLayout('vertical')}
+            />
+          </ButtonGroup>
+        </ToolbarItem>
+      </Toolbar>
+      <FormLayout fieldLayout={fieldLayout} labelWidth="auto">
+        <>
+          <TextField
+            label="First Name"
+          />
+          <TextField
+            label="Last Name"
+          />
+        </>
+        <TextField
+          helpText="Optional"
+          label="Email address"
+          type="email"
+        />
+        <>
+          <TextField
+            label="Address"
+            placeholder="Address line 1"
+          />
+          <TextField
+            isLabelVisible={false}
+            label="Address 2"
+            placeholder="Address line 2"
+          />
+          <TextField
+            inputSize={6}
+            label="ZIP"
+            validationState="invalid"
+            validationText="ZIP should be 5 to 6 digits long code."
+          />
+          <FormLayoutCustomField label="Country">
+            <span>Czech Republic</span>
+          </FormLayoutCustomField>
+          <CheckboxField
+            checked={isDeliveryAddress}
+            helpText="Uncheck if you wish to deliver to a different address."
+            label="This is my delivery address"
+            onChange={() => setIsDeliveryAddress(!isDeliveryAddress)}
+          />
+        </>
+        <SelectField
+          label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
+          options={options}
+          value={fruit}
+        />
+        <TextArea
+          fullWidth
+          label="Message"
+          rows={3}
+        />
+        <FileInputField
+          id="my-file"
+          label="Attachment"
+          onFilesChanged={() => {}}
+        />
+        <Toggle
+          checked={receiveNewsletter}
+          helpText="Only once per week!"
+          label="Receive weekly newsletter"
+          onChange={() => setReceiveNewsletter(!receiveNewsletter)}
+          required
+        />
+        <Radio
+          label="And fruit again!"
+          onChange={(e) => setFruit(e.target.value)}
+          options={options}
+          value={fruit}
+        />
+        <InputGroup label="Promo code">
+          <TextField label="Code" />
+          <Button label="Apply" color="secondary" priority="outline" />
+        </InputGroup>
+        <Button label="Submit" />
+      </FormLayout>
+    </div>
+  )
+});
+```
 
 ## Vertical Layout
 
@@ -59,6 +182,7 @@ layout, simply wrap your form fields with the FormLayout component:
   <TextField label="A form element" />
   <TextField label="Another form element" />
   <TextField label="Yet another one" />
+  <Button label="Submit" />
 </FormLayout>
 ```
 
@@ -73,6 +197,7 @@ viewport size onward and it forces the horizontal layout on the fields.
   <TextField label="A form element" />
   <TextField label="Another form element" />
   <TextField label="Yet another one" />
+  <Button label="Submit" />
 </FormLayout>
 ```
 
@@ -194,11 +319,9 @@ the FormLayout component.
 
 ```docoff-react-preview
 <FormLayout fieldLayout="horizontal" labelWidth="auto">
-  <TextField label="A form element" />
   <FormLayoutCustomField label="Optional custom field label">
     <docoff-placeholder bordered>Custom field content</docoff-placeholder>
   </FormLayoutCustomField>
-  <TextField label="Another form element" />
 </FormLayout>
 ```
 
@@ -218,7 +341,6 @@ this task.
 
 ```docoff-react-preview
 <FormLayout fieldLayout="horizontal" labelWidth="auto">
-  <TextField label="A form element" />
   <FormLayoutCustomField
     innerFieldSize="medium"
     label="Custom field label aligned to inner text input"
@@ -229,7 +351,6 @@ this task.
       placeholder="Text field with invisible label"
     />
   </FormLayoutCustomField>
-  <TextField label="Another form element" />
 </FormLayout>
 ```
 
@@ -240,14 +361,12 @@ provide labels with optional feedback style.
 
 ```docoff-react-preview
 <FormLayout fieldLayout="horizontal" labelWidth="auto">
-  <TextField label="A form element" />
   <FormLayoutCustomField
     label="Custom field label in valid state"
     validationState="valid"
   >
     <docoff-placeholder bordered>Custom field content</docoff-placeholder>
   </FormLayoutCustomField>
-  <TextField label="Another form element" />
 </FormLayout>
 ```
 
@@ -264,153 +383,20 @@ React.createElement(() => {
   const [isChecked, setIsChecked] = React.useState(false);
   return (
     <FormLayout fieldLayout="horizontal" labelWidth="auto">
-      <TextField label="A form element" />
       <FormLayoutCustomField
         fullWidth
-        label="Custom field label aligned with medium form field"
-        labelForId="my-text-field-custom-accessibility-2"
+        label="Custom field label associated with a text field"
+        labelForId="my-text-field-custom-accessibility"
         innerFieldSize="medium"
       >
-        <Toolbar align="middle" dense>
-          <ToolbarItem>
-            <TextField
-              isLabelVisible={false}
-              label="A form element"
-              placeholder="Text field with invisible label"
-            />
-          </ToolbarItem>
-          <ToolbarItem>
-            <CheckboxField
-              checked={isChecked}
-              label="Another form field"
-              onChange={() => setIsChecked(!isChecked)}
-            />
-          </ToolbarItem>
-        </Toolbar>
-      </FormLayoutCustomField>
-      <TextField label="Another form element" />
-    </FormLayout>
-  )
-});
-```
-
-## Full Example
-
-This is a demo of all components supported by FormLayout.
-
-```docoff-react-preview
-React.createElement(() => {
-  const [fieldLayout, setFieldLayout] = React.useState('horizontal');
-  const [fruit, setFruit] = React.useState('apple');
-  const [isDeliveryAddress, setIsDeliveryAddress] = React.useState(true);
-  const [receiveNewsletter, setReceiveNewsletter] = React.useState(true);
-  const options = [
-    {
-      label: 'Apple',
-      value: 'apple',
-    },
-    {
-      label: 'Banana',
-      value: 'banana',
-    },
-    {
-      label: 'Grapefruit',
-      value: 'grapefruit',
-    },
-  ];
-  return (
-    <div>
-      <Toolbar>
-        <ToolbarItem>
-          <ButtonGroup>
-            <Button
-              color={fieldLayout === 'horizontal' ? 'selected' : 'secondary'}
-              label="Horizontal layout"
-              onClick={() => setFieldLayout('horizontal')}
-            />
-            <Button
-              color={fieldLayout === 'vertical' ? 'selected' : 'secondary'}
-              label="Vertical layout"
-              onClick={() => setFieldLayout('vertical')}
-            />
-          </ButtonGroup>
-        </ToolbarItem>
-      </Toolbar>
-      <FormLayout fieldLayout={fieldLayout} labelWidth="auto">
-        <>
-          <TextField
-            label="First Name"
-          />
-          <TextField
-            label="Last Name"
-          />
-        </>
         <TextField
-          helpText="Optional"
-          label="Email address"
-          type="email"
+          id="my-text-field-custom-accessibility"
+          isLabelVisible={false}
+          label="A form element"
+          placeholder="Text field with invisible label"
         />
-        <>
-          <TextField
-            label="Address"
-            placeholder="Address line 1"
-          />
-          <TextField
-            isLabelVisible={false}
-            label="Address 2"
-            placeholder="Address line 2"
-          />
-          <TextField
-            inputSize={6}
-            label="ZIP"
-            validationState="invalid"
-            validationText="ZIP should be 5 to 6 digits long code."
-          />
-          <FormLayoutCustomField label="Country">
-            <span>Czech Republic</span>
-          </FormLayoutCustomField>
-          <CheckboxField
-            checked={isDeliveryAddress}
-            helpText="Uncheck if you wish to deliver to a different address."
-            label="This is my delivery address"
-            onChange={() => setIsDeliveryAddress(!isDeliveryAddress)}
-          />
-        </>
-        <SelectField
-          label="Your favourite fruit"
-          onChange={(e) => setFruit(e.target.value)}
-          options={options}
-          value={fruit}
-        />
-        <TextArea
-          fullWidth
-          label="Message"
-          rows={3}
-        />
-        <FileInputField
-          id="my-file"
-          label="Attachment"
-          onFilesChanged={() => {}}
-        />
-        <Toggle
-          checked={receiveNewsletter}
-          helpText="Only once per week!"
-          label="Receive weekly newsletter"
-          onChange={() => setReceiveNewsletter(!receiveNewsletter)}
-          required
-        />
-        <Radio
-          label="And fruit again!"
-          onChange={(e) => setFruit(e.target.value)}
-          options={options}
-          value={fruit}
-        />
-        <InputGroup label="Promo code">
-          <TextField label="Code" />
-          <Button label="Apply" color="secondary" priority="outline" />
-        </InputGroup>
-      </FormLayout>
-    </div>
+      </FormLayoutCustomField>
+    </FormLayout>
   )
 });
 ```
