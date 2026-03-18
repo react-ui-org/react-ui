@@ -6,7 +6,10 @@ import { transferProps } from '../../helpers/transferProps';
 import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
-import { FormLayoutContext } from '../FormLayout';
+import {
+  FormLayoutContext,
+  FormLayoutCustomFieldContext,
+} from '../FormLayout';
 import styles from './TextArea.module.scss';
 
 export const TextArea = React.forwardRef((props, ref) => {
@@ -27,6 +30,7 @@ export const TextArea = React.forwardRef((props, ref) => {
   } = props;
 
   const context = useContext(FormLayoutContext);
+  const formLayoutCustomFieldContext = useContext(FormLayoutCustomFieldContext);
 
   return (
     <label
@@ -49,7 +53,7 @@ export const TextArea = React.forwardRef((props, ref) => {
       <div
         className={classNames(
           styles.label,
-          !isLabelVisible && styles.isLabelHidden,
+          (!isLabelVisible || formLayoutCustomFieldContext) && styles.isLabelHidden,
         )}
         id={id && `${id}__labelText`}
       >
@@ -127,6 +131,9 @@ TextArea.propTypes = {
   /**
    * If `false`, the label will be visually hidden (but remains accessible by assistive
    * technologies).
+   *
+   * Automatically set to `false` when the component is rendered within `FormLayoutCustomField`
+   * component.
    */
   isLabelVisible: PropTypes.bool,
   /**

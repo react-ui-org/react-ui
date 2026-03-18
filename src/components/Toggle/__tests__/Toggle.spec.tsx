@@ -7,12 +7,13 @@ import {
   mixPropTests,
   propTests,
 } from '../../../../tests/playwright';
-import {
-  ToggleForTest,
-  ToggleForRefTest,
-  ToggleForFormLayoutTests,
-} from './Toggle.story';
 import type { ToggleForFormLayoutTestsProps } from './Toggle.story';
+import {
+  ToggleForFormLayoutLabelWidthTests,
+  ToggleForFormLayoutTests,
+  ToggleForRefTest,
+  ToggleForTest,
+} from './Toggle.story';
 
 test.describe('Toggle', () => {
   test.describe('base', () => {
@@ -142,6 +143,13 @@ test.describe('Toggle', () => {
 
   test.describe('formLayout', () => {
     test.describe('visual', () => {
+      test('labelWidth:string=100px', async ({ mount }) => {
+        const component = await mount(<ToggleForFormLayoutLabelWidthTests />);
+
+        const screenshot = await component.screenshot();
+        expect(screenshot).toMatchSnapshot();
+      });
+
       [
         ...propTests.layoutPropTest,
       ].forEach(({

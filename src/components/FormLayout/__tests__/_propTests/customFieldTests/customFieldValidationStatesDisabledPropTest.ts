@@ -9,7 +9,6 @@ export const customFieldValidationStatesDisabledPropTest: CustomFieldTestsType =
       ...propTest.props,
     },
     customFieldProps: {
-      isLabelVisible: false,
       label: 'Custom field label',
     },
     name: `${propTest.name} disabled:boolean=true`,

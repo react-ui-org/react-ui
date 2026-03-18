@@ -8,11 +8,12 @@ import {
   propTests,
 } from '../../../../tests/playwright';
 import { partialDisabledOptionsPropTest } from './_propTests/partialDisabledOptionsPropTest';
-import {
-  RadioForTest,
-  RadioForFormLayoutTests,
-} from './Radio.story';
 import type { RadioForFormLayoutTestsProps } from './Radio.story';
+import {
+  RadioForFormLayoutLabelWidthTests,
+  RadioForFormLayoutTests,
+  RadioForTest,
+} from './Radio.story';
 
 const options = [
   {
@@ -158,6 +159,13 @@ test.describe('Radio', () => {
 
   test.describe('formLayout', () => {
     test.describe('visual', () => {
+      test('labelWidth:string=100px', async ({ mount }) => {
+        const component = await mount(<RadioForFormLayoutLabelWidthTests />);
+
+        const screenshot = await component.screenshot();
+        expect(screenshot).toMatchSnapshot();
+      });
+
       [
         ...propTests.layoutPropTest,
       ].forEach(({

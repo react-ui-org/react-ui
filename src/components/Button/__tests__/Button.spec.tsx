@@ -7,11 +7,13 @@ import {
   mixPropTests,
   propTests,
 } from '../../../../tests/playwright';
+import type { ButtonForFormLayoutTestsProps } from './Button.story';
 import {
-  ButtonForTest,
+  ButtonForFormLayoutTests,
   ButtonForRefTest,
-  ButtonInVerticalFormLayoutForTest,
+  ButtonForTest,
   ButtonInHorizontalFormLayoutForTest,
+  ButtonInVerticalFormLayoutForTest,
 } from './Button.story';
 
 test.describe('Button', () => {
@@ -166,6 +168,37 @@ test.describe('Button', () => {
       test('horizontal', async ({ mount }) => {
         const component = await mount(<ButtonInHorizontalFormLayoutForTest />);
         expect(await component.screenshot()).toMatchSnapshot();
+      });
+
+      [
+        ...propTests.layoutPropTest,
+      ].forEach(({
+        name,
+        onBeforeTest,
+        onBeforeSnapshot,
+        props,
+      }) => {
+        test(name, async ({
+          mount,
+          page,
+        }) => {
+          if (onBeforeTest) {
+            await onBeforeTest(page);
+          }
+
+          const component = await mount(
+            <ButtonForFormLayoutTests
+              {...props as unknown as ButtonForFormLayoutTestsProps}
+            />,
+          );
+
+          if (onBeforeSnapshot) {
+            await onBeforeSnapshot(page, component);
+          }
+
+          const screenshot = await component.screenshot();
+          expect(screenshot).toMatchSnapshot();
+        });
       });
     });
   });
