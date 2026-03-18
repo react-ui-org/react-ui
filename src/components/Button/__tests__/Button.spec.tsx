@@ -8,10 +8,10 @@ import {
   propTests,
 } from '../../../../tests/playwright';
 import {
-  ButtonForTest,
   ButtonForRefTest,
-  ButtonInVerticalFormLayoutForTest,
+  ButtonForTest,
   ButtonInHorizontalFormLayoutForTest,
+  ButtonInVerticalFormLayoutForTest,
 } from './Button.story';
 
 test.describe('Button', () => {

@@ -6,7 +6,10 @@ import { transferProps } from '../../helpers/transferProps';
 import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
-import { FormLayoutContext } from '../FormLayout';
+import {
+  FormLayoutContext,
+  FormLayoutCustomFieldContext,
+} from '../FormLayout';
 import { InputGroupContext } from '../InputGroup/InputGroupContext';
 import { Option } from './_components/Option';
 import styles from './SelectField.module.scss';
@@ -31,6 +34,7 @@ export const SelectField = React.forwardRef((props, ref) => {
   } = props;
 
   const formLayoutContext = useContext(FormLayoutContext);
+  const formLayoutCustomFieldContext = useContext(FormLayoutCustomFieldContext);
   const inputGroupContext = useContext(InputGroupContext);
 
   return (
@@ -58,7 +62,7 @@ export const SelectField = React.forwardRef((props, ref) => {
       <div
         className={classNames(
           styles.label,
-          (!isLabelVisible || inputGroupContext) && styles.isLabelHidden,
+          (!isLabelVisible || inputGroupContext || formLayoutCustomFieldContext) && styles.isLabelHidden,
         )}
         id={id && `${id}__labelText`}
       >
@@ -181,7 +185,8 @@ SelectField.propTypes = {
    * If `false`, the label will be visually hidden (but remains accessible by assistive
    * technologies).
    *
-   * Automatically set to `false` when the component is rendered within `InputGroup` component.
+   * Automatically set to `false` when the component is rendered within `InputGroup` or
+   * `FormLayoutCustomField` component.
    */
   isLabelVisible: PropTypes.bool,
   /**
