@@ -1,0 +1,135 @@
+name: PR Preview
+
+on:
+  pull_request:
+    types: [ opened, synchronize, reopened, closed ]
+    paths:
+      - 'src/**'
+      - '.browserslistrc'
+      - 'babel.config.js'
+      - 'mkdocs.yml'
+      - 'package-lock.json'
+      - 'package.json'
+      - 'postcss.config.js'
+      - 'tsconfig.json'
+      - 'webpack.config.babel.js'
+
+concurrency:
+  group: preview-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  deployments: write
+  pull-requests: write
+
+env:
+  NODE_VERSION: 24
+
+jobs:
+  build:
+    name: Build PR Preview
+    if: github.event.action != 'closed'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      - name: Build assets
+        run: npm run build
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+
+      - name: Get cache ID
+        run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          key: mkdocs-material-${{ env.cache_id }}
+          path: .cache
+          restore-keys: |
+            mkdocs-material-
+
+      - name: Install MkDocs
+        run: pip install 'mkdocs-material>=9.0.0,<10.0.0'
+
+      - name: Build docs
+        run: mkdocs build
+
+      - name: Upload docs artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-site
+          path: site/
+
+  deploy_preview:
+    name: Deploy PR Preview
+    needs: [build]
+    runs-on: ubuntu-24.04
+    environment:
+      name: pr-preview/pr-${{ github.event.pull_request.number }}
+      url: https://react-ui-org.github.io/react-ui/pr-preview/pr-${{ github.event.pull_request.number }}/
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v6
+
+      - name: Download docs artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: docs-site
+          path: site/
+
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          wait-for-pages-deployment: true
+          source-dir: site/
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
+          action: deploy
+
+  cleanup:
+    name: Clean Up PR Preview
+    if: github.event.action == 'closed'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v6
+
+      - name: Remove preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
+          action: remove
+
+      - name: Delete preview environment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          ENV_NAME="pr-preview/pr-${{ github.event.pull_request.number }}"
+          ENCODED_ENV="${ENV_NAME//\//%2F}"
+
+          gh api "repos/${{ github.repository }}/deployments" \
+            -X GET -f environment="$ENV_NAME" --jq '.[].id' \
+          | while IFS= read -r id; do
+              gh api "repos/${{ github.repository }}/deployments/$id/statuses" \
+                -X POST -f state=inactive
+              gh api "repos/${{ github.repository }}/deployments/$id" -X DELETE
+            done
+
+          gh api "repos/${{ github.repository }}/environments/$ENCODED_ENV" -X DELETE
