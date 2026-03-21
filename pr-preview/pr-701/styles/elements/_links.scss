@@ -1,0 +1,5 @@
+@use "../tools/links";
+
+a {
+    @include links.base();
+}
