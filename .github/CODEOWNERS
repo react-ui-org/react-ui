@@ -1,0 +1,23 @@
+# Default owners for code review
+*                           @react-ui-org/maintainers
+
+# Protect against unauthorized changes
+/.github/CODEOWNERS         @react-ui-org/maintainers
+
+# Soft gates — any team member can review, but relevant expert is notified
+
+# Infrastructure & build tooling
+/docker/                    @bedrich-schindler @mbohal @react-ui-org/maintainers
+/docker-compose.yml         @bedrich-schindler @mbohal @react-ui-org/maintainers
+/webpack.config.babel.js    @bedrich-schindler @mbohal @react-ui-org/maintainers
+/babel.config.js            @bedrich-schindler @mbohal @react-ui-org/maintainers
+/jest.config.js             @bedrich-schindler @mbohal @react-ui-org/maintainers
+/.eslintrc                  @bedrich-schindler @mbohal @react-ui-org/maintainers
+
+# Docs, styles & style tooling
+*.md                        @adamkudrna @react-ui-org/maintainers
+/postcss.config.js          @adamkudrna @react-ui-org/maintainers
+/src/docs/                  @adamkudrna @react-ui-org/maintainers
+/src/styles/                @adamkudrna @react-ui-org/maintainers
+/src/theme.scss             @adamkudrna @react-ui-org/maintainers
+/stylelint.config.js        @adamkudrna @react-ui-org/maintainers
