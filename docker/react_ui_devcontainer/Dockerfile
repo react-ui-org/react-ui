@@ -62,7 +62,7 @@ RUN install -m 0755 -d /etc/apt/keyrings && \
 USER $USERNAME:$USERNAME
 
 # Install Oh My Zsh
-RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # Persist terminal history across container restarts via a Docker volume
 # mounted at $HOME/.terminal_history in docker-compose.base.yml
