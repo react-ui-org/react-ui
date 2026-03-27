@@ -101,6 +101,7 @@ To customize the `devcontainer`, create a
 `docker/react_ui_devcontainer_local/Dockerfile` that extends the base image:
 
 ```Dockerfile
+# Image name `react-ui_devcontainer` might differ based on Docker compose project name
 FROM react-ui_devcontainer as react-ui_devcontainer_local
 # Add your customizations here
 ```

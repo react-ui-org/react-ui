@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 trap 'echo "Failed to build Docker images"; exit 1' ERR

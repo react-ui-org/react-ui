@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 DEFAULT_PROJECT_NAME="react-ui"
 DEFAULT_USER_ID=1000
