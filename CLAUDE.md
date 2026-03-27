@@ -5,7 +5,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 All commands below are meant to be run directly inside the Docker container `devcontainer`.
-If project is started using Development Containers, run it without starting the Docker.
+If you open the project in a Dev Container, you can run these commands without manually
+starting Docker Compose on the host.
 
 
 ```bash

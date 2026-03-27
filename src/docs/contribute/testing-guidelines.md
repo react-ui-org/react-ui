@@ -13,10 +13,10 @@ their designated Docker containers before pushing changes to the repository.
 
 ## Tools
 
-Except Playwright, you can run all tests with a single command:
+You can run all tests with a single command:
 
 ```bash
-npm run test
+npm run lint && npm test && npm run test:playwright-ct:all
 ```
 
 ### Linters (ESLint, Markdownlint, Stylelint)
