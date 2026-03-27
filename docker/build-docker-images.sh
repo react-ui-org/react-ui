@@ -7,6 +7,11 @@ cd "$(dirname "$0")"
 
 echo "Building Docker images..."
 
+if [ ! -f ../.env ]; then
+  echo "Error: .env file not found in the project root"
+  exit 1
+fi
+
 PROJECT_NAME=$(grep -E '^COMPOSE_PROJECT_NAME=' ../.env | cut -d '=' -f 2-)
 PROJECT_DEVCONTAINER_IMAGE="${PROJECT_NAME}_devcontainer"
 
