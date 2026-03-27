@@ -1,0 +1,51 @@
+// 1. Screen readers only, inspired by Bootstrap.
+//    https://github.com/twbs/bootstrap/blob/master/scss/mixins/_screen-reader.scss
+//
+// 2. Make tap target big enough to improve accessibility on touch screens.
+
+@use "../theme/accessibility" as theme;
+
+// 1.
+@mixin hide-text() {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@mixin unhide-text() {
+    position: unset;
+    width: unset;
+    height: unset;
+    overflow: unset;
+    clip: unset;
+    white-space: unset;
+}
+
+// 2.
+@mixin min-tap-target($size: theme.$tap-target-size, $center: true) {
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: $size;
+        height: $size;
+
+        @if $center {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+
+@mixin focus-ring() {
+    outline: theme.$focus-outline;
+    outline-offset: theme.$focus-outline-offset;
+    box-shadow: theme.$focus-box-shadow;
+}
