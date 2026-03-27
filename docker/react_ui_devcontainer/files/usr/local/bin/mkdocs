@@ -1,0 +1,3 @@
+#!/bin/sh
+
+sudo docker compose -p "$COMPOSE_PROJECT_NAME" exec docs mkdocs "$@"

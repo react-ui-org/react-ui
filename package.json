@@ -54,7 +54,6 @@
     "lint": "npm run eslint && npm run markdownlint && npm run stylelint",
     "markdownlint": "markdownlint-cli2 \"README.md\" \"src/**/*.md\"",
     "postbuild": "npm run copy",
-    "postinstall": "cp -n .env.dist .env && cp -n .env.playwright.dist .env.playwright || true",
     "precopy": "rm -rf dist && mkdir dist",
     "prepublishOnly": "npm run build",
     "start": "webpack --watch --mode=development",

@@ -1,0 +1,91 @@
+services:
+  # This service is responsible for providing the main development environment for developers
+  devcontainer:
+    hostname: ${COMPOSE_PROJECT_NAME:-react-ui}_devcontainer
+    build:
+      context: docker/react_ui_devcontainer/
+      dockerfile: Dockerfile
+    # Start dependent services before starting the `devcontainer` service to ensure that the necessary environments
+    # and tools are available when the `devcontainer` starts.
+    depends_on:
+      node:
+        condition: service_started
+      playwright:
+        condition: service_started
+      docs:
+        condition: service_started
+    user: ${COMPOSE_UID}:${COMPOSE_GID}
+    # Keep the container running indefinitely to allow developers to attach to it and use it as their development environment
+    command: sleep infinity
+    # Injects environment variables from the `.env` file into the `devcontainer` service,
+    # making them accessible within the container's environment.
+    env_file:
+      - .env
+    environment:
+      # This must be set correctly for the `devcontainer` to be able to access the host's Docker daemon,
+      # enabling Docker-from-Docker capabilities (e.g., running Docker commands from within the `devcontainer`).
+      COMPOSE_PROJECT_NAME: ${COMPOSE_PROJECT_NAME:-react-ui}
+    init: true
+    volumes:
+      - .:/workspace:z
+      # The following volume is used to allow the `devcontainer` to access the host's Docker daemon,
+      # enabling Docker-from-Docker capabilities (e.g., running Docker commands from within the `devcontainer`).
+      - /var/run/docker.sock:/var/run/docker.sock
+      # The following named volumes persist data (e.g. terminal history, AI tools data, etc.) across container restarts.
+      # Using separate named volumes (instead of a single volume with subpaths) allows Docker to automatically
+      # seed the volume with data from the image on first use.
+      - terminal-history:/home/developer/.terminal_history
+      - claude-config:/home/developer/.config/claude
+      - claude-share:/home/developer/.local/share/claude
+      - claude-state:/home/developer/.local/state/claude
+      - copilot:/home/developer/.copilot
+      - copilot-config:/home/developer/.config/copilot
+      - opencode-config:/home/developer/.config/opencode
+      - opencode-share:/home/developer/.local/share/opencode
+      - opencode-state:/home/developer/.local/state/opencode
+
+  # This service provides Node environment and NPM
+  node:
+    build: docker/node
+    user: ${COMPOSE_UID}:${COMPOSE_GID}
+    command: sh -c 'if [ "$$COMPOSE_START_JS_FILES_WATCHER_AT_START" = "true" ]; then npm ci && npm start; else sleep infinity; fi'
+    env_file:
+      - .env
+    volumes:
+      - .:/workspace:z
+
+  # This service provides Playwright environment and tools for browser automation and testing
+  playwright:
+    build: docker/playwright
+    user: ${COMPOSE_UID}:${COMPOSE_GID}
+    command: sleep infinity
+    env_file:
+      - .env
+    ports:
+      - ${COMPOSE_PLAYWRIGHT_REPORT_PORT}:9323
+    volumes:
+      - .:/workspace:z
+
+  # This provides server for documentation
+  docs:
+    build: docker/mkdocs
+    user: ${COMPOSE_UID}:${COMPOSE_GID}
+    entrypoint: sh -c 'if [ "$$COMPOSE_START_DOCS_SERVER_AT_START" = "true" ]; then mkdocs serve; else sleep infinity; fi'
+    env_file:
+      - .env
+    ports:
+      - ${COMPOSE_START_DOCS_SERVER_PORT}:8000
+    volumes:
+      - .:/workspace:ro
+
+volumes:
+  # The following volumes are used to persist data (e.g. terminal history, AI tools data, etc.) across container restarts
+  terminal-history:
+  claude-config:
+  claude-share:
+  claude-state:
+  copilot:
+  copilot-config:
+  opencode-config:
+  opencode-share:
+  opencode-state:

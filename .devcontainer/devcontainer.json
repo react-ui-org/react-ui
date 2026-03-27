@@ -1,0 +1,23 @@
+{
+  "name": "React UI (${localWorkspaceFolderBasename})",
+  "initializeCommand": "sh ./setup.sh",
+  "dockerComposeFile": [
+    "../docker-compose.yml",
+  ],
+  "service": "devcontainer",
+  "shutdownAction": "stopCompose",
+  "workspaceFolder": "/workspace",
+  "forwardPorts": [
+    "docs:8000"
+  ],
+  "portsAttributes": {
+    "docs:8000": {
+      "label": "Docs server",
+      "protocol": "http",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "otherPortsAttributes": {
+    "onAutoForward": "ignore"
+  }
+}

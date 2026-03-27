@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 
-const PLAYWRIGHT_ENV_FILE = '.env.playwright';
+const PLAYWRIGHT_ENV_FILE = '.env';
 
 /**
  * Load and parse Playwright environment file into an object.

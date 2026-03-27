@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ "$1" = "run" ] && echo "$2" | grep -q '^test:playwright'; then
+  sudo docker compose -p "$COMPOSE_PROJECT_NAME" exec playwright npm "$@"
+else
+  sudo docker compose -p "$COMPOSE_PROJECT_NAME" exec node npm "$@"
+fi
