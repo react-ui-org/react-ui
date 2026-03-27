@@ -36,12 +36,12 @@ npm run <eslint|markdownlint|stylelint>
 ### Jest
 
 ```bash
-npm run jest
+npm run test:jest
 ```
 
 ### Playwright
 
-####  Configuration
+#### Configuration
 
 Test parameters can be tweaked by creating and tweaking `.env` file.
 

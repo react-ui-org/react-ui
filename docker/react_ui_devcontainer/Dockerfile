@@ -33,7 +33,7 @@ RUN apt-get update && \
 
 # Create the user
 RUN addgroup --gid $USER_GID $USERNAME && \
-    adduser --uid $USER_UID --ingroup $USERNAME --home $HOME -shell $SHELL --disabled-password --gecos "" $USERNAME && \
+    adduser --uid $USER_UID --ingroup $USERNAME --home $HOME --shell $SHELL --disabled-password --gecos "" $USERNAME && \
     echo "$USERNAME ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers.d/$USERNAME && \
     chmod 0440 /etc/sudoers.d/$USERNAME
 
@@ -85,7 +85,7 @@ RUN mkdir -p "$HOME/.config/claude" && \
 # Install Open Code CLI
 RUN curl -fsSL https://opencode.ai/install | bash -s -- --no-modify-path
 
-# Install Github Copilot CLI
+# Install GitHub Copilot CLI
 # Note: Copilot CLI does not support XDG configuration, see:
 # * <https://github.com/github/copilot-cli/issues/1347>
 # * <https://github.com/github/copilot-cli/issues/1750>

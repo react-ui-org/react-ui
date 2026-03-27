@@ -76,7 +76,7 @@ services:
     ports:
       - ${COMPOSE_START_DOCS_SERVER_PORT}:8000
     volumes:
-      - .:/workspace:ro
+      - .:/workspace:z
 
 volumes:
   # The following volumes are used to persist data (e.g. terminal history, AI tools data, etc.) across container restarts
