@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/home/developer/.opencode/bin/opencode "$@"
