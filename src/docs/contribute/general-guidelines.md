@@ -138,7 +138,6 @@ The `devcontainer` is built in the following layers:
 General-purpose development layer. Makes the environment container-agnostic
 by wrapping commands to run in the appropriate service containers.
 
-
 * **OS:** Debian Bookworm
 * **Shells:** Bash, Zsh (with Oh My Zsh), Fish
 * **Editors:** Vim, Nano
@@ -309,7 +308,6 @@ the documentation platform.
 
 Do see their respective documentation for details.
 
-[apple-silicon-issue]: https://racom-jira.atlassian.net/browse/WECL-312
 [Development Containers]: https://containers.dev/
 [Docker]: https://docs.docker.com/get-started/
 [Docker Compose]: https://docs.docker.com/compose/
