@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# This script is a wrapper around the `mkdocs` command that executes it within the Docker container.
+# Docker Socket is owned by root, so we need to use `sudo` to access it.
+sudo docker compose -p "$COMPOSE_PROJECT_NAME" exec docs mkdocs "$@"

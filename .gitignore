@@ -1,4 +1,7 @@
 /coverage
+/docker-compose.yml
+/docker/react_ui_devcontainer_local
+!/docker/react_ui_devcontainer_local/Dockerfile.dist
 /dist
 /node_modules
 /playwright-report/
@@ -6,6 +9,5 @@
 /src/docs/_assets/generated/*
 /tests/playwright/.temp/
 .env
-.env.playwright
 statistics.html
 !.gitkeep

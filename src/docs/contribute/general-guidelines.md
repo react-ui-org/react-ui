@@ -2,99 +2,232 @@
 
 In the first place, thank you for your interest in contributing! 🙏
 
-## Development
+## Development Environment
 
-Working on the site requires:
+### Overview
+
+All development is done inside the container named `devcontainer` which
+contains all necessary tools and dependencies. All commands in the documentation
+are container-agnostic and are meant to be run directly inside the `devcontainer`.
+
+The `devcontainer` orchestrates other service containers behind the scenes via
+Docker-from-Docker. Other containers are implementation details and should not
+be accessed directly.
+
+There are two supported ways to access the development environment. The
+recommended way is to use [Development Containers] with an IDE, which provides
+a more seamless experience. The alternative is to use Docker Compose directly,
+which is suitable for cases when IDE integration is not needed
+(e.g. terminal-only workflows).
+
+### Requirements
 
 * [Docker]
 * [Docker Compose]
+* [Development Containers] (Are recommended)
 
-This allows running the documentation site which serves as a development platform.
+### Setup
 
-### Configure Docker Compose
+#### Automatic setup
 
-Review the default env variable values in the `docker-compose.yml` file.
-The defaults should work for most systems, but can be changed if needed.
-To change them, edit the `.env` file as needed.
+> You can skip this section when using [Development Containers]. They run this
+> script automatically the first time the project is opened.
 
-### Use Docker Compose
-
-#### Node shell
-
-All npm commands such as `npm ci`, `npm test`, `npm run eslint` and others you
-need to run them within the `node_shell` Docker container.
-
-To log into the container, run:
+Run the setup script to automatically create and configure all necessary files
+and build Docker images:
 
 ```bash
-docker compose run --rm node_shell
+bash setup.sh
 ```
 
-If you want to run single command, run:
+#### Manual setup
 
-```bash
-docker compose run --rm node_shell -c 'npm <command>'
-```
+If you prefer to set up the project manually:
 
-#### Run the Dev Server
-
-1. **Within `node_shell`:** Install dependencies:
+1. Create `.env` file and configure it:
 
     ```bash
-    npm ci
+    cp .env.dist .env
     ```
 
-2. **On host:** Run development server:
+2. Create `docker-compose.yml` and configure it:
 
     ```bash
-    docker compose up node_dev_server mkdocs_dev_server
+    cp docker-compose.yml.dist docker-compose.yml
     ```
 
-#### Build the Project
+3. Build Docker images:
 
-1. **On host:** Make sure the dev server is not running:
+    ```bash
+    bash docker/build-docker-images.sh
+    ```
+
+#### Environment
+
+The `.env` file configures services (ports, UID/GID, source mapping),
+the `devcontainer` shell, editor and SSH agent forwarding, as well as application
+settings. See `.env.dist` for available options.
+
+### Accessing the Development Environment
+
+#### Using Development Containers
+
+Open the project in an IDE that supports [Development Containers] (e.g.
+[Visual Studio Code][vscode-devcontainers], [JetBrains IDEs][jetbrains-devcontainers]).
+The IDE will automatically set up the environment using the configuration in
+`.devcontainer/devcontainer.json`.
+
+#### Using Docker Compose
+
+1. Start the `devcontainer` in the background:
+
+    ```bash
+    docker compose up -d
+    ```
+
+2. Open a shell inside the `devcontainer`:
+
+    ```bash
+    docker compose exec devcontainer bash
+    ```
+
+3. To stop the environment:
 
     ```bash
     docker compose down
     ```
 
-2. **Within `node_shell`:** Install dependencies:
+### Customization
 
-    ```bash
-    npm ci
-    ```
+To customize the `devcontainer`, create a
+`docker/react_ui_devcontainer_local/Dockerfile` that extends the base image:
 
-3. **On host:** Build JS:
-
-    ```bash
-    docker compose run --rm node_build_site
-    ```
-
-4. **On host:** Build mkDocs:
-
-    ```bash
-    docker compose run --rm mkdocs_build_site
-    ```
-
-#### Playwright
-
-npm commands such as `test:playwright-ct:all` and `test:playwright-ct:all-with-update`
-need to be run them within the `playwright` Docker container.
-
-To log into the container, run:
-
-```bash
-docker compose run --rm --service-ports playwright
+```Dockerfile
+# Image name `react-ui_devcontainer` might differ based on Docker compose project name
+FROM react-ui_devcontainer as react-ui_devcontainer_local
+# Add your customizations here
 ```
 
-If you want to run single command, run:
+Then ensure `docker-compose.yml` has the `build` directive for the `devcontainer`
+service:
 
-```bash
-docker compose run --rm --service-ports playwright -c 'npm run test:playwright-ct:*'
+```yml
+devcontainer:
+  extends:
+    file: docker-compose.base.yml
+    service: devcontainer
+  build:
+    context: ./docker/react_ui_devcontainer_local/
+    dockerfile: Dockerfile
 ```
 
-Argument `--service-ports` is used to expose the ports of the container to the host
-to serve the test report.
+Rebuild the images after making changes:
+
+```bash
+bash docker/build-docker-images.sh
+```
+
+If you need to persist additional data across container restarts, see how it is
+done in `docker-compose.base.yml`. You will need to add a volume mapping to the
+`devcontainer` service and add a corresponding named volume definition.
+
+### What the `devcontainer` Contains
+
+The `devcontainer` is built in the following layers:
+
+#### Base Layer (`react-ui_devcontainer`)
+
+General-purpose development layer. Makes the environment container-agnostic
+by wrapping commands to run in the appropriate service containers.
+
+* **OS:** Debian Bookworm
+* **Shells:** Bash, Zsh (with Oh My Zsh), Fish
+* **Editors:** Vim, Nano
+* **Tools:** Git, SSH client, Docker CLI (Docker-from-Docker)
+* **AI coding assistants:** Claude Code, GitHub Copilot CLI, Open Code
+
+#### Local Layer (`react-ui_devcontainer_local`)
+
+Optional layer that allows individual developers to customize the environment.
+See [Customization](#customization) for details.
+
+### Service Containers
+
+The `devcontainer` depends on the following service containers defined in
+`docker-compose.base.yml`:
+
+| Container    | Purpose                                          |
+|--------------|--------------------------------------------------|
+| `node`       | Runs Node.js commands (`npm`, `node`)            |
+| `playwright` | Runs Playwright and Lighthouse tests             |
+| `docs`       | Serves documentation via MkDocs                  |
+
+All service containers mount the workspace at `/workspace` so that file changes
+are shared.
+
+## Automatic Service Bootstrap
+
+> You can skip this section if you do not want to automatically
+> [install dependencies](#installing-dependencies), [build](#building), and
+> [run](#running) the application, or if you are not an experienced developer.
+> If you do use it, you can skip those sections as well, since the steps they
+> describe are performed automatically.
+
+Setting `COMPOSE_AUTOSTART=true` in `.env` makes the `node` and `docs`
+service containers automatically install dependencies, build, and run the
+application when they start. The default is `false`.
+
+Setting `COMPOSE_AUTOSTART=true` comes with the following trade-offs:
+
+* **Changes to dependencies require a container restart.** The watcher owns the
+  service container's entrypoint, so updating dependencies (e.g. pulling a
+  branch that changes `package-lock.json`, or running `npm install <pkg>`)
+  only takes effect after restarting the `node` service container. The same
+  applies to changes that affect the documentation server.
+* **Service logs are not directly visible.** The watcher and docs server run in
+  their own service containers rather than in your `devcontainer` shell, so
+  their output is not shown alongside your regular terminal work. You have to
+  inspect it via `docker compose logs <service>` from the host.
+
+> If something is not working as expected, or you are not sure what is going on,
+> set `COMPOSE_AUTOSTART=false`, restart the containers, and follow the
+> manual steps in the sections below instead.
+
+## Installing Dependencies
+
+Run it on initial setup or when dependencies have changed:
+
+```bash
+npm ci
+```
+
+## Building
+
+To build the JavaScript code:
+
+```bash
+npm run build
+```
+
+To build the documentation:
+
+```bash
+mkdocs build
+```
+
+## Running
+
+To start building JavaScript files in watch mode:
+
+```bash
+npm start
+```
+
+To start the documentation server:
+
+```bash
+mkdocs serve
+```
 
 ## Testing
 
@@ -161,7 +294,7 @@ pull request from the changelog.
 The best way for development of React UI is to link `react-ui` into your
 application with `npm link` so you can see it in action.
 
-1. In React UI repository, run `npm link`
+1. In React UI repository **on your host machine**, run `npm link`
 2. In your application, run `npm link @react-ui-org/react-ui`
 
 To prevent [Invalid Hook Call Warning][react-invalid-hook] when React UI is
@@ -202,8 +335,11 @@ the documentation platform.
 
 Do see their respective documentation for details.
 
-[Docker]: https://www.docker.com
+[Development Containers]: https://containers.dev/
+[Docker]: https://docs.docker.com/get-started/
 [Docker Compose]: https://docs.docker.com/compose/
+[jetbrains-devcontainers]: https://www.jetbrains.com/help/idea/start-dev-container-inside-ide.html#dev_container_context_menu
+[vscode-devcontainers]: https://code.visualstudio.com/docs/devcontainers/tutorial
 [react-invalid-hook]: https://reactjs.org/warnings/invalid-hook-call-warning.html#duplicate-react
 [mkdocs-material]: https://squidfunk.github.io/mkdocs-material/
 [Docoff]: https://github.com/react-ui-org/docoff
