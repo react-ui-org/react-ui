@@ -32,7 +32,7 @@ Run the setup script to automatically create and configure all necessary files
 and build Docker images:
 
 ```bash
-sh setup.sh
+bash setup.sh
 ```
 
 [Development Containers] run this script automatically if the project has not
@@ -57,7 +57,7 @@ If you prefer to set up the project manually:
 3. Build Docker images:
 
     ```bash
-    sh docker/build-docker-images.sh
+    bash docker/build-docker-images.sh
     ```
 
 #### Environment
@@ -122,7 +122,7 @@ devcontainer:
 Rebuild the images after making changes:
 
 ```bash
-sh docker/build-docker-images.sh
+bash docker/build-docker-images.sh
 ```
 
 If you need to persist additional data across container restarts, see how it is

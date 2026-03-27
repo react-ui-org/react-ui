@@ -1,6 +1,6 @@
 {
   "name": "React UI (${localWorkspaceFolderBasename})",
-  "initializeCommand": "sh ./setup.sh",
+  "initializeCommand": "bash ./setup.sh",
   "dockerComposeFile": [
     "../docker-compose.yml"
   ],
