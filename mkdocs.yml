@@ -64,6 +64,10 @@ extra_javascript:
   - docs/_assets/js/ruiIcon.js
   - docs/_assets/js/ruiSwatch.js
 
+  # Workaround for https://github.com/react-ui-org/docoff/issues/50 — sets --docoff-preview-css
+  # dynamically so subdirectory deployments (e.g. PR previews) load the correct CSS bundle.
+  - docs/_assets/js/setupDocoff.js
+
   # Then load and init Docoff
   - https://unpkg.com/@react-ui-org/docoff@0.5.4/public/generated/bundle.js
 
