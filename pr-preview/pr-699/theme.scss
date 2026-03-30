@@ -1,0 +1,1164 @@
+// Default theme. Designed to be used as a starting point for your custom theme.
+
+@use "styles/theme-constants/breakpoints";
+@use "styles/theme-constants/colors";
+@use "styles/theme-constants/svg";
+
+@layer theme {
+    :root {
+        // ============================================================================================ //
+        // GLOBAL TOKENS                                                                                //
+        // ============================================================================================ //
+
+        //
+        // Dimensions
+        // ==========
+
+        // Borders
+        --rui-dimension-border-width-1: 1px;
+
+        // Breakpoints
+        //
+        // ⚠️ Breakpoints are read-only in CSS. Custom properties cannot be used within media queries
+        // since media query is not a property.
+        // https://www.w3.org/TR/css-variables-1/#using-variables
+        --rui-dimension-breakpoint-xs: #{breakpoints.$xs};
+        --rui-dimension-breakpoint-sm: #{breakpoints.$sm};
+        --rui-dimension-breakpoint-md: #{breakpoints.$md};
+        --rui-dimension-breakpoint-lg: #{breakpoints.$lg};
+        --rui-dimension-breakpoint-xl: #{breakpoints.$xl};
+        --rui-dimension-breakpoint-x2l: #{breakpoints.$x2l};
+        --rui-dimension-breakpoint-x3l: #{breakpoints.$x3l};
+
+        // Radii
+        --rui-dimension-radius-1: 0.125rem;
+        --rui-dimension-radius-2: 0.25rem;
+
+        // Spacing
+        --rui-dimension-space-0: 0;
+        --rui-dimension-space-1: 0.25rem;
+        --rui-dimension-space-2: 0.5rem;
+        --rui-dimension-space-3: 0.75rem;
+        --rui-dimension-space-4: 1rem;
+        --rui-dimension-space-5: 1.5rem;
+        --rui-dimension-space-6: 2rem;
+        --rui-dimension-space-7: 2.5rem;
+
+        //
+        // Font Families
+        // =============
+
+        // Native font stack inspired by Bootstrap.
+        // @see https://getbootstrap.com/docs/5.0/content/reboot/#native-font-stack
+        // @see https://css-tricks.com/snippets/css/system-font-stack/
+        --rui-font-family-base:
+            /* Cross-platform generic font family (default user interface font) */
+            system-ui,
+            /* Safari for macOS and iOS (San Francisco)*/
+            -apple-system,
+            /* Windows*/
+            "Segoe UI",
+            /* Android*/
+            roboto,
+            /* Basic web fallback*/
+            "Helvetica Neue",
+            arial,
+            /* Linux*/
+            "Noto Sans",
+            "Liberation Sans",
+            /* Sans serif fallback*/
+            sans-serif,
+            /* Emoji fonts*/
+            "Apple Color Emoji",
+            "Segoe UI Emoji",
+            "Segoe UI Symbol",
+            "Noto Color Emoji";
+        --rui-font-family-monospace:
+            "SFMono-Regular",
+            "Menlo",
+            "Monaco",
+            "Consolas",
+            "Liberation Mono",
+            "Courier New",
+            monospace;
+
+        //
+        // Font Weights
+        // ============
+
+        --rui-font-weight-base: 400;
+        --rui-font-weight-light: 300;
+        --rui-font-weight-bold: 700;
+
+        //
+        // Ratios
+        // ======
+
+        --rui-ratio-opacity-medium: 0.5;
+
+        //
+        // Shadows
+        // =======
+
+        --rui-shadow-1: 0 0.01rem 0.65rem -0.1rem rgb(0 0 0 / 30%);
+        --rui-shadow-2: 0.2rem 0.25rem 1.2rem -0.1rem rgb(0 0 0 / 15%);
+
+        //
+        // Other
+        // =====
+
+        // ⚠️ Non-standard token types!
+        // The DTF specification is still in the draft status, and the following token types have proven necessary.
+        //
+        // To be honest, some of these tokens are NOT context agnostic as required by the global tokens category.
+        // These will be probably superseded by semantic typography styles in the future.
+
+        // Font sizes
+        --rui-font-size-base: 100%;
+        --rui-font-size-small: 0.889rem;
+        --rui-font-size-smaller: 0.75rem;
+        --rui-font-size-code: 85%;
+
+        // Modular scale ratio: 1.125 / 8:9 / major second
+        --rui-font-size-1: 1rem;
+        --rui-font-size-2: 1.125rem;
+        --rui-font-size-3: 1.266rem;
+        --rui-font-size-4: 1.424rem;
+        --rui-font-size-5: 1.602rem;
+        --rui-font-size-6: 1.802rem;
+
+        // Line heights
+        --rui-line-height-base: 1.5;
+        --rui-line-height-small: 1.25;
+
+        // Text decorations
+        --rui-underline-offset-link: 0.1875em;
+        --rui-text-decoration-link: underline;
+        --rui-text-decoration-link-hover: underline;
+        --rui-text-decoration-link-active: underline;
+
+        // List styles
+        --rui-list-style-unordered: square;
+
+        // Cursors
+        --rui-cursor-not-allowed: not-allowed;
+
+        // ============================================================================================ //
+        // SEMANTIC TOKENS                                                                              //
+        // ============================================================================================ //
+
+        //
+        // Borders
+        // =======
+
+        --rui-border-focus-ring: var(--rui-dimension-space-1) solid #{colors.$focus};
+
+        //
+        // Colors
+        // ======
+
+        // 👉 Actual color values are stored in separate SCSS so they can be generated programmatically.
+
+        // Text colors
+        --rui-color-text-primary: #{colors.$black};
+        --rui-color-text-primary-disabled: #{colors.$gray-300};
+        --rui-color-text-secondary: #{colors.$gray-500};
+        --rui-color-text-secondary-disabled: #{colors.$gray-300};
+        --rui-color-text-link: #{colors.$note};
+        --rui-color-text-link-hover: #{colors.$note-dark};
+        --rui-color-text-link-active: #{colors.$note-darker};
+
+        // Action colors
+        --rui-color-action-primary: #{colors.$primary};
+        --rui-color-action-primary-hover: #{colors.$primary-dark};
+        --rui-color-action-primary-active: #{colors.$primary-darker};
+        --rui-color-action-on-primary: #{colors.$on-primary};
+        --rui-color-action-secondary: #{colors.$secondary};
+        --rui-color-action-secondary-hover: #{colors.$secondary-dark};
+        --rui-color-action-secondary-active: #{colors.$secondary-darker};
+        --rui-color-action-on-secondary: #{colors.$on-secondary};
+        --rui-color-action-selected: #{colors.$selected};
+        --rui-color-action-selected-hover: #{colors.$selected-dark};
+        --rui-color-action-selected-active: #{colors.$selected-darker};
+        --rui-color-action-on-selected: #{colors.$on-selected};
+
+        // Feedback colors
+        --rui-color-feedback-success: #{colors.$success};
+        --rui-color-feedback-success-hover: #{colors.$success-dark};
+        --rui-color-feedback-success-active: #{colors.$success-darker};
+        --rui-color-feedback-on-success: #{colors.$on-success};
+        --rui-color-feedback-warning: #{colors.$warning};
+        --rui-color-feedback-warning-hover: #{colors.$warning-dark};
+        --rui-color-feedback-warning-active: #{colors.$warning-darker};
+        --rui-color-feedback-on-warning: #{colors.$on-warning};
+        --rui-color-feedback-danger: #{colors.$danger};
+        --rui-color-feedback-danger-hover: #{colors.$danger-dark};
+        --rui-color-feedback-danger-active: #{colors.$danger-darker};
+        --rui-color-feedback-on-danger: #{colors.$on-danger};
+        --rui-color-feedback-help: #{colors.$help};
+        --rui-color-feedback-help-hover: #{colors.$help-dark};
+        --rui-color-feedback-help-active: #{colors.$help-darker};
+        --rui-color-feedback-on-help: #{colors.$on-help};
+        --rui-color-feedback-info: #{colors.$info};
+        --rui-color-feedback-info-hover: #{colors.$info-dark};
+        --rui-color-feedback-info-active: #{colors.$info-darker};
+        --rui-color-feedback-on-info: #{colors.$on-info};
+        --rui-color-feedback-note: #{colors.$note};
+        --rui-color-feedback-note-hover: #{colors.$note-dark};
+        --rui-color-feedback-note-active: #{colors.$note-darker};
+        --rui-color-feedback-on-note: #{colors.$on-note};
+
+        // Neutral colors
+        --rui-color-neutral-light: #{colors.$white};
+        --rui-color-neutral-light-hover: #{colors.$gray-50};
+        --rui-color-neutral-light-active: #{colors.$gray-100};
+        --rui-color-neutral-on-light: #{colors.$gray-700};
+        --rui-color-neutral-dark: #{colors.$gray-700};
+        --rui-color-neutral-dark-hover: #{colors.$gray-800};
+        --rui-color-neutral-dark-active: #{colors.$gray-900};
+        --rui-color-neutral-on-dark: #{colors.$white};
+
+        // Background colors
+        --rui-color-background-base: #{colors.$gray-50};
+        --rui-color-background-layer-1: #{colors.$white};
+        --rui-color-background-layer-2: #{colors.$white};
+        --rui-color-background-basic: #{colors.$white};
+        --rui-color-background-disabled: #{colors.$gray-50};
+        --rui-color-background-interactive: #{colors.$transparent};
+        --rui-color-background-interactive-hover: #{colors.$gray-50};
+        --rui-color-background-interactive-active: #{colors.$gray-100};
+        --rui-color-background-primary: #{colors.$primary-light};
+        --rui-color-background-secondary: #{colors.$secondary-light};
+        --rui-color-background-selected: #{colors.$selected-light};
+        --rui-color-background-success: #{colors.$success-light};
+        --rui-color-background-warning: #{colors.$warning-light};
+        --rui-color-background-danger: #{colors.$danger-light};
+        --rui-color-background-help: #{colors.$help-light};
+        --rui-color-background-info: #{colors.$info-light};
+        --rui-color-background-note: #{colors.$note-light};
+        --rui-color-background-light: #{colors.$gray-100};
+        --rui-color-background-dark: #{colors.$gray-600};
+
+        // Border colors
+        --rui-color-border-primary: #{colors.$gray-200};
+        --rui-color-border-primary-hover: #{colors.$gray-500};
+        --rui-color-border-primary-active: #{colors.$selected-darker};
+        --rui-color-border-secondary: #{colors.$gray-100};
+
+        //
+        // Dimensions
+        // ==========
+
+        // Accessibility
+        --rui-dimension-focus-ring-offset: var(--rui-dimension-border-width-1);
+        --rui-dimension-tap-target-size: var(--rui-dimension-space-7);
+
+        // Shared bottom spacings
+        --rui-dimension-space-bottom-base: var(--rui-dimension-space-5);
+        --rui-dimension-space-bottom-headings: var(--rui-dimension-space-5);
+        --rui-dimension-space-bottom-layouts: var(--rui-dimension-space-5);
+
+        //
+        // Ratios
+        // ======
+
+        --rui-ratio-disabled-opacity: var(--rui-ratio-opacity-medium);
+
+        //
+        // Shadows
+        // =======
+
+        // 1. Use `initial`, `revert` or `unset` to keep the original box shadow of the component.
+
+        --rui-shadow-layer-1: var(--rui-shadow-1);
+        --rui-shadow-layer-2: var(--rui-shadow-2);
+        --rui-shadow-focus-ring: initial; // 1.
+
+        // ============================================================================================ //
+        // COMPONENT TOKENS                                                                             //
+        // ============================================================================================ //
+
+        //
+        // Alert
+        // =====
+
+        // Alert: common properties
+        --rui-Alert__padding: var(--rui-dimension-space-3);
+        --rui-Alert__font-weight: var(--rui-font-weight-base);
+        --rui-Alert__border-width: var(--rui-dimension-border-width-1);
+        --rui-Alert__border-radius: var(--rui-dimension-radius-2);
+        --rui-Alert__emphasis__font-weight: var(--rui-font-weight-bold);
+        --rui-Alert__stripe__width: var(--rui-dimension-border-width-1);
+
+        // Alert: variant: success
+        --rui-Alert--success__color: var(--rui-color-text-primary);
+        --rui-Alert--success__foreground-color: var(--rui-color-feedback-success);
+        --rui-Alert--success__background-color: var(--rui-color-background-success);
+
+        // Alert: variant: warning
+        --rui-Alert--warning__color: var(--rui-color-text-primary);
+        --rui-Alert--warning__foreground-color: var(--rui-color-feedback-warning);
+        --rui-Alert--warning__background-color: var(--rui-color-background-warning);
+
+        // Alert: variant: danger
+        --rui-Alert--danger__color: var(--rui-color-text-primary);
+        --rui-Alert--danger__foreground-color: var(--rui-color-feedback-danger);
+        --rui-Alert--danger__background-color: var(--rui-color-background-danger);
+
+        // Alert: variant: info
+        --rui-Alert--info__color: var(--rui-color-text-primary);
+        --rui-Alert--info__foreground-color: var(--rui-color-feedback-info);
+        --rui-Alert--info__background-color: var(--rui-color-background-info);
+
+        // Alert: variant: help
+        --rui-Alert--help__color: var(--rui-color-text-primary);
+        --rui-Alert--help__foreground-color: var(--rui-color-feedback-help);
+        --rui-Alert--help__background-color: var(--rui-color-background-help);
+
+        // Alert: variant: note
+        --rui-Alert--note__color: var(--rui-color-text-primary);
+        --rui-Alert--note__foreground-color: var(--rui-color-feedback-note);
+        --rui-Alert--note__background-color: var(--rui-color-background-note);
+
+        // Alert: variant: light
+        --rui-Alert--light__color: var(--rui-color-neutral-on-light);
+        --rui-Alert--light__foreground-color: var(--rui-color-neutral-on-light);
+        --rui-Alert--light__background-color: var(--rui-color-background-light);
+
+        // Alert: variant: dark
+        --rui-Alert--dark__color: var(--rui-color-neutral-on-dark);
+        --rui-Alert--dark__foreground-color: var(--rui-color-neutral-on-dark);
+        --rui-Alert--dark__background-color: var(--rui-color-background-dark);
+
+        //
+        // Badge
+        // =====
+
+        // Badge: filled priority
+
+        // Badge: filled priority: success variant
+        --rui-Badge--filled--success__color: var(--rui-color-feedback-on-success);
+        --rui-Badge--filled--success__background-color: var(--rui-color-feedback-success);
+
+        // Badge: filled priority: warning variant
+        --rui-Badge--filled--warning__color: var(--rui-color-feedback-on-warning);
+        --rui-Badge--filled--warning__background-color: var(--rui-color-feedback-warning);
+
+        // Badge: filled priority: danger variant
+        --rui-Badge--filled--danger__color: var(--rui-color-feedback-on-danger);
+        --rui-Badge--filled--danger__background-color: var(--rui-color-feedback-danger);
+
+        // Badge: filled priority: help variant
+        --rui-Badge--filled--help__color: var(--rui-color-feedback-on-help);
+        --rui-Badge--filled--help__background-color: var(--rui-color-feedback-help);
+
+        // Badge: filled priority: info variant
+        --rui-Badge--filled--info__color: var(--rui-color-feedback-on-info);
+        --rui-Badge--filled--info__background-color: var(--rui-color-feedback-info);
+
+        // Badge: filled priority: note variant
+        --rui-Badge--filled--note__color: var(--rui-color-feedback-on-note);
+        --rui-Badge--filled--note__background-color: var(--rui-color-feedback-note);
+
+        // Badge: filled priority: light variant
+        --rui-Badge--filled--light__color: var(--rui-color-neutral-on-light);
+        --rui-Badge--filled--light__background-color: var(--rui-color-neutral-light);
+
+        // Badge: filled priority: dark variant
+        --rui-Badge--filled--dark__color: var(--rui-color-neutral-on-dark);
+        --rui-Badge--filled--dark__background-color: var(--rui-color-neutral-dark);
+
+        // Badge: outline priority
+
+        // Badge: outline priority: success variant
+        --rui-Badge--outline--success__color: var(--rui-color-feedback-success);
+
+        // Badge: outline priority: warning variant
+        --rui-Badge--outline--warning__color: var(--rui-color-feedback-warning);
+
+        // Badge: outline priority: danger variant
+        --rui-Badge--outline--danger__color: var(--rui-color-feedback-danger);
+
+        // Badge: outline priority: help variant
+        --rui-Badge--outline--help__color: var(--rui-color-feedback-help);
+
+        // Badge: outline priority: info variant
+        --rui-Badge--outline--info__color: var(--rui-color-feedback-info);
+
+        // Badge: outline priority: note variant
+        --rui-Badge--outline--note__color: var(--rui-color-feedback-note);
+
+        // Badge: outline priority: light variant
+        --rui-Badge--outline--light__color: var(--rui-color-neutral-light);
+
+        // Badge: outline priority: dark variant
+        --rui-Badge--outline--dark__color: var(--rui-color-neutral-dark);
+
+        //
+        // Button
+        // ======
+
+        // Buttons: common properties
+        --rui-Button__font-weight: var(--rui-font-weight-base);
+        --rui-Button__letter-spacing: 0;
+        --rui-Button__text-transform: none;
+        --rui-Button__border-width: var(--rui-dimension-border-width-1);
+        --rui-Button__border-radius: var(--rui-dimension-radius-2);
+        --rui-Button--disabled__opacity: var(--rui-ratio-disabled-opacity);
+        --rui-Button--disabled__cursor: var(--rui-cursor-not-allowed);
+        --rui-Button--feedback__opacity: 1;
+        --rui-Button--feedback__cursor: var(--rui-cursor-not-allowed);
+
+        // Buttons: filled priority
+
+        // Buttons: filled priority: primary variant
+        --rui-Button--filled--primary--default__color: var(--rui-color-action-on-primary);
+        --rui-Button--filled--primary--default__border-color: var(--rui-color-action-primary);
+        --rui-Button--filled--primary--default__background: var(--rui-color-action-primary);
+        --rui-Button--filled--primary--default__box-shadow: none;
+        --rui-Button--filled--primary--hover__color: var(--rui-color-action-on-primary);
+        --rui-Button--filled--primary--hover__border-color: var(--rui-color-action-primary-hover);
+        --rui-Button--filled--primary--hover__background: var(--rui-color-action-primary-hover);
+        --rui-Button--filled--primary--hover__box-shadow: none;
+        --rui-Button--filled--primary--active__color: var(--rui-color-action-on-primary);
+        --rui-Button--filled--primary--active__border-color: var(--rui-color-action-primary-active);
+        --rui-Button--filled--primary--active__background: var(--rui-color-action-primary-active);
+        --rui-Button--filled--primary--active__box-shadow: none;
+
+        // Buttons: filled priority: secondary variant
+        --rui-Button--filled--secondary--default__color: var(--rui-color-action-on-secondary);
+        --rui-Button--filled--secondary--default__border-color: var(--rui-color-action-secondary);
+        --rui-Button--filled--secondary--default__background: var(--rui-color-action-secondary);
+        --rui-Button--filled--secondary--default__box-shadow: none;
+        --rui-Button--filled--secondary--hover__color: var(--rui-color-action-on-secondary);
+        --rui-Button--filled--secondary--hover__border-color: var(--rui-color-action-secondary-hover);
+        --rui-Button--filled--secondary--hover__background: var(--rui-color-action-secondary-hover);
+        --rui-Button--filled--secondary--hover__box-shadow: none;
+        --rui-Button--filled--secondary--active__color: var(--rui-color-action-on-secondary);
+        --rui-Button--filled--secondary--active__border-color: var(--rui-color-action-secondary-active);
+        --rui-Button--filled--secondary--active__background: var(--rui-color-action-secondary-active);
+        --rui-Button--filled--secondary--active__box-shadow: none;
+
+        // Buttons: filled priority: selected variant
+        --rui-Button--filled--selected--default__color: var(--rui-color-action-on-selected);
+        --rui-Button--filled--selected--default__border-color: var(--rui-color-action-selected);
+        --rui-Button--filled--selected--default__background: var(--rui-color-action-selected);
+        --rui-Button--filled--selected--default__box-shadow: none;
+        --rui-Button--filled--selected--hover__color: var(--rui-color-action-on-selected);
+        --rui-Button--filled--selected--hover__border-color: var(--rui-color-action-selected-hover);
+        --rui-Button--filled--selected--hover__background: var(--rui-color-action-selected-hover);
+        --rui-Button--filled--selected--hover__box-shadow: none;
+        --rui-Button--filled--selected--active__color: var(--rui-color-action-on-selected);
+        --rui-Button--filled--selected--active__border-color: var(--rui-color-action-selected-active);
+        --rui-Button--filled--selected--active__background: var(--rui-color-action-selected-active);
+        --rui-Button--filled--selected--active__box-shadow: none;
+
+        // Buttons: filled priority: success variant
+        --rui-Button--filled--success--default__color: var(--rui-color-feedback-on-success);
+        --rui-Button--filled--success--default__border-color: var(--rui-color-feedback-success);
+        --rui-Button--filled--success--default__background: var(--rui-color-feedback-success);
+        --rui-Button--filled--success--default__box-shadow: none;
+        --rui-Button--filled--success--hover__color: var(--rui-color-feedback-on-success);
+        --rui-Button--filled--success--hover__border-color: var(--rui-color-feedback-success-hover);
+        --rui-Button--filled--success--hover__background: var(--rui-color-feedback-success-hover);
+        --rui-Button--filled--success--hover__box-shadow: none;
+        --rui-Button--filled--success--active__color: var(--rui-color-feedback-on-success);
+        --rui-Button--filled--success--active__border-color: var(--rui-color-feedback-success-active);
+        --rui-Button--filled--success--active__background: var(--rui-color-feedback-success-active);
+        --rui-Button--filled--success--active__box-shadow: none;
+
+        // Buttons: filled priority: warning variant
+        --rui-Button--filled--warning--default__color: var(--rui-color-feedback-on-warning);
+        --rui-Button--filled--warning--default__border-color: var(--rui-color-feedback-warning);
+        --rui-Button--filled--warning--default__background: var(--rui-color-feedback-warning);
+        --rui-Button--filled--warning--default__box-shadow: none;
+        --rui-Button--filled--warning--hover__color: var(--rui-color-feedback-on-warning);
+        --rui-Button--filled--warning--hover__border-color: var(--rui-color-feedback-warning-hover);
+        --rui-Button--filled--warning--hover__background: var(--rui-color-feedback-warning-hover);
+        --rui-Button--filled--warning--hover__box-shadow: none;
+        --rui-Button--filled--warning--active__color: var(--rui-color-feedback-on-warning);
+        --rui-Button--filled--warning--active__border-color: var(--rui-color-feedback-warning-active);
+        --rui-Button--filled--warning--active__background: var(--rui-color-feedback-warning-active);
+        --rui-Button--filled--warning--active__box-shadow: none;
+
+        // Buttons: filled priority: danger variant
+        --rui-Button--filled--danger--default__color: var(--rui-color-feedback-on-danger);
+        --rui-Button--filled--danger--default__border-color: var(--rui-color-feedback-danger);
+        --rui-Button--filled--danger--default__background: var(--rui-color-feedback-danger);
+        --rui-Button--filled--danger--default__box-shadow: none;
+        --rui-Button--filled--danger--hover__color: var(--rui-color-feedback-on-danger);
+        --rui-Button--filled--danger--hover__border-color: var(--rui-color-feedback-danger-hover);
+        --rui-Button--filled--danger--hover__background: var(--rui-color-feedback-danger-hover);
+        --rui-Button--filled--danger--hover__box-shadow: none;
+        --rui-Button--filled--danger--active__color: var(--rui-color-feedback-on-danger);
+        --rui-Button--filled--danger--active__border-color: var(--rui-color-feedback-danger-active);
+        --rui-Button--filled--danger--active__background: var(--rui-color-feedback-danger-active);
+        --rui-Button--filled--danger--active__box-shadow: none;
+
+        // Buttons: filled priority: help variant
+        --rui-Button--filled--help--default__color: var(--rui-color-feedback-on-help);
+        --rui-Button--filled--help--default__border-color: var(--rui-color-feedback-help);
+        --rui-Button--filled--help--default__background: var(--rui-color-feedback-help);
+        --rui-Button--filled--help--default__box-shadow: none;
+        --rui-Button--filled--help--hover__color: var(--rui-color-feedback-on-help);
+        --rui-Button--filled--help--hover__border-color: var(--rui-color-feedback-help-hover);
+        --rui-Button--filled--help--hover__background: var(--rui-color-feedback-help-hover);
+        --rui-Button--filled--help--hover__box-shadow: none;
+        --rui-Button--filled--help--active__color: var(--rui-color-feedback-on-help);
+        --rui-Button--filled--help--active__border-color: var(--rui-color-feedback-help-active);
+        --rui-Button--filled--help--active__background: var(--rui-color-feedback-help-active);
+        --rui-Button--filled--help--active__box-shadow: none;
+
+        // Buttons: filled priority: info variant
+        --rui-Button--filled--info--default__color: var(--rui-color-feedback-on-info);
+        --rui-Button--filled--info--default__border-color: var(--rui-color-feedback-info);
+        --rui-Button--filled--info--default__background: var(--rui-color-feedback-info);
+        --rui-Button--filled--info--default__box-shadow: none;
+        --rui-Button--filled--info--hover__color: var(--rui-color-feedback-on-info);
+        --rui-Button--filled--info--hover__border-color: var(--rui-color-feedback-info-hover);
+        --rui-Button--filled--info--hover__background: var(--rui-color-feedback-info-hover);
+        --rui-Button--filled--info--hover__box-shadow: none;
+        --rui-Button--filled--info--active__color: var(--rui-color-feedback-on-info);
+        --rui-Button--filled--info--active__border-color: var(--rui-color-feedback-info-active);
+        --rui-Button--filled--info--active__background: var(--rui-color-feedback-info-active);
+        --rui-Button--filled--info--active__box-shadow: none;
+
+        // Buttons: filled priority: note variant
+        --rui-Button--filled--note--default__color: var(--rui-color-feedback-on-note);
+        --rui-Button--filled--note--default__border-color: var(--rui-color-feedback-note);
+        --rui-Button--filled--note--default__background: var(--rui-color-feedback-note);
+        --rui-Button--filled--note--default__box-shadow: none;
+        --rui-Button--filled--note--hover__color: var(--rui-color-feedback-on-note);
+        --rui-Button--filled--note--hover__border-color: var(--rui-color-feedback-note-hover);
+        --rui-Button--filled--note--hover__background: var(--rui-color-feedback-note-hover);
+        --rui-Button--filled--note--hover__box-shadow: none;
+        --rui-Button--filled--note--active__color: var(--rui-color-feedback-on-note);
+        --rui-Button--filled--note--active__border-color: var(--rui-color-feedback-note-active);
+        --rui-Button--filled--note--active__background: var(--rui-color-feedback-note-active);
+        --rui-Button--filled--note--active__box-shadow: none;
+
+        // Buttons: filled priority: light variant
+        --rui-Button--filled--light--default__color: var(--rui-color-neutral-on-light);
+        --rui-Button--filled--light--default__border-color: var(--rui-color-neutral-light);
+        --rui-Button--filled--light--default__background: var(--rui-color-neutral-light);
+        --rui-Button--filled--light--default__box-shadow: none;
+        --rui-Button--filled--light--hover__color: var(--rui-color-neutral-on-light);
+        --rui-Button--filled--light--hover__border-color: var(--rui-color-neutral-light-hover);
+        --rui-Button--filled--light--hover__background: var(--rui-color-neutral-light-hover);
+        --rui-Button--filled--light--hover__box-shadow: none;
+        --rui-Button--filled--light--active__color: var(--rui-color-neutral-on-light);
+        --rui-Button--filled--light--active__border-color: var(--rui-color-neutral-light-active);
+        --rui-Button--filled--light--active__background: var(--rui-color-neutral-light-active);
+        --rui-Button--filled--light--active__box-shadow: none;
+
+        // Buttons: filled priority: dark variant
+        --rui-Button--filled--dark--default__color: var(--rui-color-neutral-on-dark);
+        --rui-Button--filled--dark--default__border-color: var(--rui-color-neutral-dark);
+        --rui-Button--filled--dark--default__background: var(--rui-color-neutral-dark);
+        --rui-Button--filled--dark--default__box-shadow: none;
+        --rui-Button--filled--dark--hover__color: var(--rui-color-neutral-on-dark);
+        --rui-Button--filled--dark--hover__border-color: var(--rui-color-neutral-dark-hover);
+        --rui-Button--filled--dark--hover__background: var(--rui-color-neutral-dark-hover);
+        --rui-Button--filled--dark--hover__box-shadow: none;
+        --rui-Button--filled--dark--active__color: var(--rui-color-neutral-on-dark);
+        --rui-Button--filled--dark--active__border-color: var(--rui-color-neutral-dark-active);
+        --rui-Button--filled--dark--active__background: var(--rui-color-neutral-dark-active);
+        --rui-Button--filled--dark--active__box-shadow: none;
+
+        // Buttons: outline priority
+
+        // Buttons: outline priority: primary variant
+        --rui-Button--outline--primary--default__color: var(--rui-color-action-primary);
+        --rui-Button--outline--primary--default__border-color: var(--rui-color-action-primary);
+        --rui-Button--outline--primary--default__background: transparent;
+        --rui-Button--outline--primary--hover__color: var(--rui-color-action-on-primary);
+        --rui-Button--outline--primary--hover__border-color: var(--rui-color-action-primary-hover);
+        --rui-Button--outline--primary--hover__background: var(--rui-color-action-primary-hover);
+        --rui-Button--outline--primary--active__color: var(--rui-color-action-on-primary);
+        --rui-Button--outline--primary--active__border-color: var(--rui-color-action-primary-active);
+        --rui-Button--outline--primary--active__background: var(--rui-color-action-primary-active);
+
+        // Buttons: outline priority: secondary variant
+        --rui-Button--outline--secondary--default__color: var(--rui-color-action-secondary);
+        --rui-Button--outline--secondary--default__border-color: var(--rui-color-action-secondary);
+        --rui-Button--outline--secondary--default__background: transparent;
+        --rui-Button--outline--secondary--hover__color: var(--rui-color-action-on-secondary);
+        --rui-Button--outline--secondary--hover__border-color: var(--rui-color-action-secondary-hover);
+        --rui-Button--outline--secondary--hover__background: var(--rui-color-action-secondary-hover);
+        --rui-Button--outline--secondary--active__color: var(--rui-color-action-on-secondary);
+        --rui-Button--outline--secondary--active__border-color: var(--rui-color-action-secondary-active);
+        --rui-Button--outline--secondary--active__background: var(--rui-color-action-secondary-active);
+
+        // Buttons: outline priority: selected variant
+        --rui-Button--outline--selected--default__color: var(--rui-color-action-selected);
+        --rui-Button--outline--selected--default__border-color: var(--rui-color-action-selected);
+        --rui-Button--outline--selected--default__background: var(--rui-color-background-selected);
+        --rui-Button--outline--selected--hover__color: var(--rui-color-action-on-selected);
+        --rui-Button--outline--selected--hover__border-color: var(--rui-color-action-selected-hover);
+        --rui-Button--outline--selected--hover__background: var(--rui-color-action-selected-hover);
+        --rui-Button--outline--selected--active__color: var(--rui-color-action-on-selected);
+        --rui-Button--outline--selected--active__border-color: var(--rui-color-action-selected-active);
+        --rui-Button--outline--selected--active__background: var(--rui-color-action-selected-active);
+
+        // Buttons: outline priority: success variant
+        --rui-Button--outline--success--default__color: var(--rui-color-feedback-success);
+        --rui-Button--outline--success--default__border-color: var(--rui-color-feedback-success);
+        --rui-Button--outline--success--default__background: transparent;
+        --rui-Button--outline--success--hover__color: var(--rui-color-feedback-on-success);
+        --rui-Button--outline--success--hover__border-color: var(--rui-color-feedback-success-hover);
+        --rui-Button--outline--success--hover__background: var(--rui-color-feedback-success-hover);
+        --rui-Button--outline--success--active__color: var(--rui-color-feedback-on-success);
+        --rui-Button--outline--success--active__border-color: var(--rui-color-feedback-success-active);
+        --rui-Button--outline--success--active__background: var(--rui-color-feedback-success-active);
+
+        // Buttons: outline priority: warning variant
+        --rui-Button--outline--warning--default__color: var(--rui-color-feedback-warning);
+        --rui-Button--outline--warning--default__border-color: var(--rui-color-feedback-warning);
+        --rui-Button--outline--warning--default__background: transparent;
+        --rui-Button--outline--warning--hover__color: var(--rui-color-feedback-on-warning);
+        --rui-Button--outline--warning--hover__border-color: var(--rui-color-feedback-warning-hover);
+        --rui-Button--outline--warning--hover__background: var(--rui-color-feedback-warning-hover);
+        --rui-Button--outline--warning--active__color: var(--rui-color-feedback-on-warning);
+        --rui-Button--outline--warning--active__border-color: var(--rui-color-feedback-warning-active);
+        --rui-Button--outline--warning--active__background: var(--rui-color-feedback-warning-active);
+
+        // Buttons: outline priority: danger variant
+        --rui-Button--outline--danger--default__color: var(--rui-color-feedback-danger);
+        --rui-Button--outline--danger--default__border-color: var(--rui-color-feedback-danger);
+        --rui-Button--outline--danger--default__background: transparent;
+        --rui-Button--outline--danger--hover__color: var(--rui-color-feedback-on-danger);
+        --rui-Button--outline--danger--hover__border-color: var(--rui-color-feedback-danger-hover);
+        --rui-Button--outline--danger--hover__background: var(--rui-color-feedback-danger-hover);
+        --rui-Button--outline--danger--active__color: var(--rui-color-feedback-on-danger);
+        --rui-Button--outline--danger--active__border-color: var(--rui-color-feedback-danger-active);
+        --rui-Button--outline--danger--active__background: var(--rui-color-feedback-danger-active);
+
+        // Buttons: outline priority: help variant
+        --rui-Button--outline--help--default__color: var(--rui-color-feedback-help);
+        --rui-Button--outline--help--default__border-color: var(--rui-color-feedback-help);
+        --rui-Button--outline--help--default__background: transparent;
+        --rui-Button--outline--help--hover__color: var(--rui-color-feedback-on-help);
+        --rui-Button--outline--help--hover__border-color: var(--rui-color-feedback-help-hover);
+        --rui-Button--outline--help--hover__background: var(--rui-color-feedback-help-hover);
+        --rui-Button--outline--help--active__color: var(--rui-color-feedback-on-help);
+        --rui-Button--outline--help--active__border-color: var(--rui-color-feedback-help-active);
+        --rui-Button--outline--help--active__background: var(--rui-color-feedback-help-active);
+
+        // Buttons: outline priority: info variant
+        --rui-Button--outline--info--default__color: var(--rui-color-feedback-info);
+        --rui-Button--outline--info--default__border-color: var(--rui-color-feedback-info);
+        --rui-Button--outline--info--default__background: transparent;
+        --rui-Button--outline--info--hover__color: var(--rui-color-feedback-on-info);
+        --rui-Button--outline--info--hover__border-color: var(--rui-color-feedback-info-hover);
+        --rui-Button--outline--info--hover__background: var(--rui-color-feedback-info-hover);
+        --rui-Button--outline--info--active__color: var(--rui-color-feedback-on-info);
+        --rui-Button--outline--info--active__border-color: var(--rui-color-feedback-info-active);
+        --rui-Button--outline--info--active__background: var(--rui-color-feedback-info-active);
+
+        // Buttons: outline priority: note variant
+        --rui-Button--outline--note--default__color: var(--rui-color-feedback-note);
+        --rui-Button--outline--note--default__border-color: var(--rui-color-feedback-note);
+        --rui-Button--outline--note--default__background: transparent;
+        --rui-Button--outline--note--hover__color: var(--rui-color-feedback-on-note);
+        --rui-Button--outline--note--hover__border-color: var(--rui-color-feedback-note-hover);
+        --rui-Button--outline--note--hover__background: var(--rui-color-feedback-note-hover);
+        --rui-Button--outline--note--active__color: var(--rui-color-feedback-on-note);
+        --rui-Button--outline--note--active__border-color: var(--rui-color-feedback-note-active);
+        --rui-Button--outline--note--active__background: var(--rui-color-feedback-note-active);
+
+        // Buttons: outline priority: light variant
+        --rui-Button--outline--light--default__color: var(--rui-color-neutral-light);
+        --rui-Button--outline--light--default__border-color: var(--rui-color-neutral-light);
+        --rui-Button--outline--light--default__background: transparent;
+        --rui-Button--outline--light--hover__color: var(--rui-color-neutral-on-light);
+        --rui-Button--outline--light--hover__border-color: var(--rui-color-neutral-light-hover);
+        --rui-Button--outline--light--hover__background: var(--rui-color-neutral-light-hover);
+        --rui-Button--outline--light--active__color: var(--rui-color-neutral-on-light);
+        --rui-Button--outline--light--active__border-color: var(--rui-color-neutral-light-active);
+        --rui-Button--outline--light--active__background: var(--rui-color-neutral-light-active);
+
+        // Buttons: outline priority: dark variant
+        --rui-Button--outline--dark--default__color: var(--rui-color-neutral-dark);
+        --rui-Button--outline--dark--default__border-color: var(--rui-color-neutral-dark);
+        --rui-Button--outline--dark--default__background: transparent;
+        --rui-Button--outline--dark--hover__color: var(--rui-color-neutral-on-dark);
+        --rui-Button--outline--dark--hover__border-color: var(--rui-color-neutral-dark-hover);
+        --rui-Button--outline--dark--hover__background: var(--rui-color-neutral-dark-hover);
+        --rui-Button--outline--dark--active__color: var(--rui-color-neutral-on-dark);
+        --rui-Button--outline--dark--active__border-color: var(--rui-color-neutral-dark-active);
+        --rui-Button--outline--dark--active__background: var(--rui-color-neutral-dark-active);
+
+        // Buttons: flat
+
+        // Buttons: flat priority: primary variant
+        --rui-Button--flat--primary--default__color: var(--rui-color-action-primary);
+        --rui-Button--flat--primary--default__background: transparent;
+        --rui-Button--flat--primary--hover__color: var(--rui-color-action-primary-hover);
+        --rui-Button--flat--primary--hover__background: var(--rui-color-background-primary);
+        --rui-Button--flat--primary--active__color: var(--rui-color-action-primary-active);
+        --rui-Button--flat--primary--active__background: var(--rui-color-background-primary);
+
+        // Buttons: flat priority: secondary variant
+        --rui-Button--flat--secondary--default__color: var(--rui-color-action-secondary);
+        --rui-Button--flat--secondary--default__background: transparent;
+        --rui-Button--flat--secondary--hover__color: var(--rui-color-action-secondary-hover);
+        --rui-Button--flat--secondary--hover__background: var(--rui-color-background-secondary);
+        --rui-Button--flat--secondary--active__color: var(--rui-color-action-secondary-active);
+        --rui-Button--flat--secondary--active__background: var(--rui-color-background-secondary);
+
+        // Buttons: flat priority: selected variant
+        --rui-Button--flat--selected--default__color: var(--rui-color-action-selected);
+        --rui-Button--flat--selected--default__background: var(--rui-color-background-selected);
+        --rui-Button--flat--selected--hover__color: var(--rui-color-action-selected-hover);
+        --rui-Button--flat--selected--hover__background: var(--rui-color-background-selected);
+        --rui-Button--flat--selected--active__color: var(--rui-color-action-selected-active);
+        --rui-Button--flat--selected--active__background: var(--rui-color-background-selected);
+
+        // Buttons: flat priority: success variant
+        --rui-Button--flat--success--default__color: var(--rui-color-feedback-success);
+        --rui-Button--flat--success--default__background: transparent;
+        --rui-Button--flat--success--hover__color: var(--rui-color-feedback-success-hover);
+        --rui-Button--flat--success--hover__background: var(--rui-color-background-success);
+        --rui-Button--flat--success--active__color: var(--rui-color-feedback-success-active);
+        --rui-Button--flat--success--active__background: var(--rui-color-background-success);
+
+        // Buttons: flat priority: warning variant
+        --rui-Button--flat--warning--default__color: var(--rui-color-feedback-warning);
+        --rui-Button--flat--warning--default__background: transparent;
+        --rui-Button--flat--warning--hover__color: var(--rui-color-feedback-warning-hover);
+        --rui-Button--flat--warning--hover__background: var(--rui-color-background-warning);
+        --rui-Button--flat--warning--active__color: var(--rui-color-feedback-warning-active);
+        --rui-Button--flat--warning--active__background: var(--rui-color-background-warning);
+
+        // Buttons: flat priority: danger variant
+        --rui-Button--flat--danger--default__color: var(--rui-color-feedback-danger);
+        --rui-Button--flat--danger--default__background: transparent;
+        --rui-Button--flat--danger--hover__color: var(--rui-color-feedback-danger-hover);
+        --rui-Button--flat--danger--hover__background: var(--rui-color-background-danger);
+        --rui-Button--flat--danger--active__color: var(--rui-color-feedback-danger-active);
+        --rui-Button--flat--danger--active__background: var(--rui-color-background-danger);
+
+        // Buttons: flat priority: help variant
+        --rui-Button--flat--help--default__color: var(--rui-color-feedback-help);
+        --rui-Button--flat--help--default__background: transparent;
+        --rui-Button--flat--help--hover__color: var(--rui-color-feedback-help-hover);
+        --rui-Button--flat--help--hover__background: var(--rui-color-background-help);
+        --rui-Button--flat--help--active__color: var(--rui-color-feedback-help-active);
+        --rui-Button--flat--help--active__background: var(--rui-color-background-help);
+
+        // Buttons: flat priority: info variant
+        --rui-Button--flat--info--default__color: var(--rui-color-feedback-info);
+        --rui-Button--flat--info--default__background: transparent;
+        --rui-Button--flat--info--hover__color: var(--rui-color-feedback-info-hover);
+        --rui-Button--flat--info--hover__background: var(--rui-color-background-info);
+        --rui-Button--flat--info--active__color: var(--rui-color-feedback-info-active);
+        --rui-Button--flat--info--active__background: var(--rui-color-background-info);
+
+        // Buttons: flat priority: note variant
+        --rui-Button--flat--note--default__color: var(--rui-color-feedback-note);
+        --rui-Button--flat--note--default__background: transparent;
+        --rui-Button--flat--note--hover__color: var(--rui-color-feedback-note-hover);
+        --rui-Button--flat--note--hover__background: var(--rui-color-background-note);
+        --rui-Button--flat--note--active__color: var(--rui-color-feedback-note-active);
+        --rui-Button--flat--note--active__background: var(--rui-color-background-note);
+
+        // Buttons: flat priority: light variant
+        --rui-Button--flat--light--default__color: var(--rui-color-neutral-light);
+        --rui-Button--flat--light--default__background: transparent;
+        --rui-Button--flat--light--hover__color: var(--rui-color-neutral-light-hover);
+        --rui-Button--flat--light--hover__background: var(--rui-color-background-dark);
+        --rui-Button--flat--light--active__color: var(--rui-color-neutral-light-active);
+        --rui-Button--flat--light--active__background: var(--rui-color-background-dark);
+
+        // Buttons: flat priority: dark variant
+        --rui-Button--flat--dark--default__color: var(--rui-color-neutral-dark);
+        --rui-Button--flat--dark--default__background: transparent;
+        --rui-Button--flat--dark--hover__color: var(--rui-color-neutral-dark-hover);
+        --rui-Button--flat--dark--hover__background: var(--rui-color-background-light);
+        --rui-Button--flat--dark--active__color: var(--rui-color-neutral-dark-active);
+        --rui-Button--flat--dark--active__background: var(--rui-color-background-light);
+
+        // Buttons: sizes
+
+        // Buttons: sizes: small
+        --rui-Button--small__height: 1.75rem;
+        --rui-Button--small__padding-y: var(--rui-dimension-space-1);
+        --rui-Button--small__padding-x: var(--rui-dimension-space-3);
+        --rui-Button--small__font-size: var(--rui-font-size-small);
+
+        // Buttons: sizes: medium
+        --rui-Button--medium__height: 2.25rem;
+        --rui-Button--medium__padding-y: var(--rui-dimension-space-1);
+        --rui-Button--medium__padding-x: var(--rui-dimension-space-4);
+        --rui-Button--medium__font-size: var(--rui-font-size-1);
+
+        // Buttons: sizes: large
+        --rui-Button--large__height: 2.75rem;
+        --rui-Button--large__padding-y: var(--rui-dimension-space-2);
+        --rui-Button--large__padding-x: var(--rui-dimension-space-5);
+        --rui-Button--large__font-size: var(--rui-font-size-2);
+
+        //
+        // ButtonGroup
+        // ===========
+
+        --rui-ButtonGroup__inner-border-radius: 0;
+
+        // ButtonGroup: filled buttons
+        --rui-ButtonGroup--filled__gap: calc(-1 * var(--rui-Button__border-width));
+        --rui-ButtonGroup--filled__separator__width: var(--rui-Button__border-width);
+        --rui-ButtonGroup--filled__separator__color: currentcolor;
+
+        // ButtonGroup: outline buttons
+        --rui-ButtonGroup--outline__gap: calc(-1 * var(--rui-Button__border-width));
+        --rui-ButtonGroup--outline__separator__width: 0;
+        --rui-ButtonGroup--outline__separator__color: transparent;
+
+        // ButtonGroup: flat buttons
+        --rui-ButtonGroup--flat__gap: var(--rui-Button__border-width);
+        --rui-ButtonGroup--flat__separator__width: var(--rui-ButtonGroup--flat__gap);
+        --rui-ButtonGroup--flat__separator__color: currentcolor;
+
+        //
+        // Card
+        // ====
+
+        --rui-Card__padding: var(--rui-dimension-space-4);
+        --rui-Card__border-width: var(--rui-dimension-border-width-1);
+        --rui-Card__border-color: var(--rui-color-border-primary);
+        --rui-Card__border-radius: var(--rui-dimension-radius-2);
+        --rui-Card__background-color: var(--rui-color-background-layer-1);
+        --rui-Card--dense__padding: var(--rui-dimension-space-2);
+        --rui-Card--raised__box-shadow: var(--rui-shadow-layer-1);
+        --rui-Card--disabled__background-color: var(--rui-color-background-disabled);
+        --rui-Card--disabled__opacity: var(--rui-ratio-disabled-opacity);
+        --rui-Card--disabled__border-width: var(--rui-dimension-border-width-1);
+        --rui-Card--disabled__border-color: var(--rui-color-border-primary);
+
+        // Card: variant: success
+        --rui-Card--success__color: var(--rui-color-text-primary);
+        --rui-Card--success__border-color: var(--rui-color-feedback-success);
+        --rui-Card--success__background-color: var(--rui-color-background-layer-1);
+
+        // Card: variant: warning
+        --rui-Card--warning__color: var(--rui-color-text-primary);
+        --rui-Card--warning__border-color: var(--rui-color-feedback-warning);
+        --rui-Card--warning__background-color: var(--rui-color-background-layer-1);
+
+        // Card: variant: danger
+        --rui-Card--danger__color: var(--rui-color-text-primary);
+        --rui-Card--danger__border-color: var(--rui-color-feedback-danger);
+        --rui-Card--danger__background-color: var(--rui-color-background-layer-1);
+
+        // Card: variant: info
+        --rui-Card--info__color: var(--rui-color-text-primary);
+        --rui-Card--info__border-color: var(--rui-color-feedback-info);
+        --rui-Card--info__background-color: var(--rui-color-background-layer-1);
+
+        // Card: variant: help
+        --rui-Card--help__color: var(--rui-color-text-primary);
+        --rui-Card--help__border-color: var(--rui-color-feedback-help);
+        --rui-Card--help__background-color: var(--rui-color-background-layer-1);
+
+        // Card: variant: note
+        --rui-Card--note__color: var(--rui-color-text-primary);
+        --rui-Card--note__border-color: var(--rui-color-feedback-note);
+        --rui-Card--note__background-color: var(--rui-color-background-layer-1);
+
+        // Card: variant: light
+        --rui-Card--light__color: var(--rui-color-text-primary);
+        --rui-Card--light__border-color: var(--rui-color-neutral-light);
+        --rui-Card--light__background-color: var(--rui-color-background-layer-1);
+
+        // Card: variant: dark
+        --rui-Card--dark__color: var(--rui-color-neutral-on-dark);
+        --rui-Card--dark__border-color: var(--rui-color-neutral-on-dark);
+        --rui-Card--dark__background-color: var(--rui-color-background-dark);
+
+        //
+        // Form Fields
+        // ===========
+        //
+        // 1. Please note that `min-width` values under cca 150 px do not take effect due to default input
+        //    width defined in browsers unless `width` (same or smaller) is also defined.
+        //    https://stackoverflow.com/questions/36247140/why-dont-flex-items-shrink-past-content-size
+        //
+        // 2. Append non-breaking space and asterisk to required filed labels.
+        //
+        // 3. Avoid using `fit-content()` for label width, it behaves differently in Chrome vs. FF for
+        //    inline grid.
+
+        // Forms fields: common properties
+        --rui-FormField__label__color: inherit;
+        --rui-FormField__label__font-size: var(--rui-font-size-1);
+        --rui-FormField__help-text__font-size: var(--rui-font-size-small);
+        --rui-FormField__help-text__font-style: normal;
+        --rui-FormField__help-text__color: var(--rui-color-text-secondary);
+        --rui-FormField--required__label__color: inherit;
+        --rui-FormField--required__sign: "\00a0*"; // 2.
+        --rui-FormField--required__sign__color: var(--rui-color-text-secondary);
+
+        // Form fields: horizontal layout
+        --rui-FormField--horizontal__label__text-align: left;
+        --rui-FormField--horizontal__label__min-width: 0;
+        --rui-FormField--horizontal__label__width: minmax(auto, 50%); // 3.
+        --rui-FormField--horizontal__label__vertical-alignment: initial;
+        --rui-FormField--horizontal__field__vertical-alignment: initial;
+        --rui-FormField--horizontal--full-width__label__width: fit-content(50%);
+
+        // Forms fields: disabled state
+        --rui-FormField--disabled__cursor: var(--rui-cursor-not-allowed);
+        --rui-FormField--disabled__opacity: var(--rui-ratio-disabled-opacity);
+
+        // Form fields: validation states: invalid
+        --rui-FormField--invalid--default__border-color: var(--rui-color-feedback-danger);
+        --rui-FormField--invalid--default__background: var(--rui-color-background-danger);
+        --rui-FormField--invalid--default__check-background-color: var(--rui-FormField--invalid--default__background);
+        --rui-FormField--invalid--default__surrounding-text-color: var(--rui-color-feedback-danger);
+        --rui-FormField--invalid--checked__check-background-color: var(--rui-FormField--invalid--default__border-color);
+
+        // Form fields: validation states: valid
+        --rui-FormField--valid--default__border-color: var(--rui-color-feedback-success);
+        --rui-FormField--valid--default__background: var(--rui-color-background-success);
+        --rui-FormField--valid--default__check-background-color: var(--rui-FormField--valid--default__background);
+        --rui-FormField--valid--default__surrounding-text-color: var(--rui-color-feedback-success);
+        --rui-FormField--valid--checked__check-background-color: var(--rui-FormField--valid--default__border-color);
+
+        // Form fields: validation states: warning
+        --rui-FormField--warning--default__border-color: var(--rui-color-feedback-warning-hover);
+        --rui-FormField--warning--default__background: var(--rui-color-background-warning);
+        --rui-FormField--warning--default__check-background-color: var(--rui-FormField--warning--default__background);
+        --rui-FormField--warning--default__surrounding-text-color: var(--rui-color-feedback-warning-active);
+        --rui-FormField--warning--checked__check-background-color: var(--rui-FormField--warning--default__border-color);
+
+        // Form fields: box fields
+        --rui-FormField--box__border-width: var(--rui-dimension-border-width-1);
+        --rui-FormField--box__border-radius: var(--rui-dimension-radius-2);
+        --rui-FormField--box__input__width: auto; // 1.
+        --rui-FormField--box__input__min-width: 240px; // 1.
+        --rui-FormField--box__placeholder__color: var(--rui-color-text-secondary);
+        --rui-FormField--box--select__caret__border-style: none;
+        --rui-FormField--box--select__caret__background: transparent;
+        --rui-FormField--box--select__option--disabled__color: var(--rui-color-text-primary-disabled);
+
+        // Form fields: box field sizes: small
+        --rui-FormField--box--small__height: var(--rui-Button--small__height);
+        --rui-FormField--box--small__padding-y: 0.0625rem;
+        --rui-FormField--box--small__padding-x: var(--rui-dimension-space-2);
+        --rui-FormField--box--small__font-size: var(--rui-font-size-small);
+
+        // Form fields: box field sizes: medium
+        --rui-FormField--box--medium__height: var(--rui-Button--medium__height);
+        --rui-FormField--box--medium__padding-y: 0.3125rem;
+        --rui-FormField--box--medium__padding-x: var(--rui-dimension-space-3);
+        --rui-FormField--box--medium__font-size: var(--rui-font-size-1);
+
+        // Form fields: box field sizes: large
+        --rui-FormField--box--large__height: var(--rui-Button--large__height);
+        --rui-FormField--box--large__padding-y: 0.5625rem;
+        --rui-FormField--box--large__padding-x: var(--rui-dimension-space-4);
+        --rui-FormField--box--large__font-size: var(--rui-font-size-2);
+
+        // Form fields: box field variants: filled variant interaction states
+        --rui-FormField--box--filled--default__color: var(--rui-color-text-primary);
+        --rui-FormField--box--filled--default__border-color: var(--rui-color-border-primary);
+        --rui-FormField--box--filled--default__background: var(--rui-color-background-basic);
+        --rui-FormField--box--filled--default__box-shadow: none;
+        --rui-FormField--box--filled--hover__border-color: var(--rui-color-border-primary-hover);
+        --rui-FormField--box--filled--focus__border-color: var(--rui-color-border-primary-active);
+
+        // Form fields: box field variants: outline variant interaction states
+        --rui-FormField--box--outline--default__color: var(--rui-color-text-primary);
+        --rui-FormField--box--outline--default__border-color: var(--rui-color-border-primary);
+        --rui-FormField--box--outline--default__background: var(--rui-color-background-basic);
+        --rui-FormField--box--outline--default__box-shadow: none;
+        --rui-FormField--box--outline--hover__border-color: var(--rui-color-border-primary-hover);
+        --rui-FormField--box--outline--focus__border-color: var(--rui-color-border-primary-active);
+
+        // Form fields: check fields
+        --rui-FormField--check__input__size: 1.125rem;
+        --rui-FormField--check__input__border-width: var(--rui-FormField--box__border-width);
+        --rui-FormField--check__input--focus__box-shadow: var(--rui-shadow-focus-ring);
+        --rui-FormField--check__tap-target-size: var(--rui-dimension-tap-target-size);
+
+        // Form fields: check fields, component specific
+        --rui-FormField--check__input--checkbox__border-radius: var(--rui-FormField--box__border-radius);
+        --rui-FormField--check__input--checkbox--checked__background-image: #{svg.$checkbox-checked};
+        --rui-FormField--check__input--radio__border-radius: 50%;
+        --rui-FormField--check__input--radio--checked__background-image: #{svg.$radio-checked};
+        --rui-FormField--check__input--toggle__width: 2.25rem;
+        --rui-FormField--check__input--toggle__border-radius: 0.5625rem;
+        --rui-FormField--check__input--toggle__background-size: contain;
+        --rui-FormField--check__input--toggle--default__background-image: #{svg.$toggle};
+        --rui-FormField--check__input--toggle--default__background-position: left center;
+        --rui-FormField--check__input--toggle--checked__background-image: #{svg.$toggle-checked};
+        --rui-FormField--check__input--toggle--checked__background-position: right center;
+
+        // Form fields: check fields interaction states
+        --rui-FormField--check--default__border-color: var(--rui-color-border-primary);
+        --rui-FormField--check--default__check-background-color: var(--rui-color-background-basic);
+        --rui-FormField--check--checked__border-color: var(--rui-color-action-selected);
+        --rui-FormField--check--checked__check-background-color: var(--rui-color-action-selected);
+
+        //
+        // FormLayout
+        // ==========
+
+        --rui-FormLayout__row-gap: var(--rui-dimension-space-4);
+        --rui-FormLayout--horizontal__label__width: 10em;
+        --rui-FormLayout--horizontal__label__width--auto: auto;
+        --rui-FormLayout--horizontal__label__width--limited: fit-content(50%);
+
+        //
+        // InputGroup
+        // =======
+
+        --rui-InputGroup__gap: var(--rui-dimension-space-1);
+        --rui-InputGroup__inner-border-radius: var(--rui-dimension-radius-1);
+
+        //
+        // Modal
+        // =====
+
+        --rui-Modal__padding-x: var(--rui-dimension-space-4);
+        --rui-Modal__padding-y: var(--rui-dimension-space-4);
+        --rui-Modal__background: var(--rui-color-background-layer-2);
+        --rui-Modal__box-shadow: var(--rui-shadow-layer-2);
+        --rui-Modal__separator__width: var(--rui-dimension-border-width-1);
+        --rui-Modal__separator__color: var(--rui-color-border-secondary);
+        --rui-Modal__header__gap: var(--rui-dimension-space-2);
+        --rui-Modal__outer-spacing--xs: var(--rui-dimension-space-2);
+        --rui-Modal__outer-spacing--sm: var(--rui-dimension-space-6);
+        --rui-Modal__footer__background: var(--rui-Modal__background);
+        --rui-Modal__footer__gap: var(--rui-dimension-space-2);
+        --rui-Modal__backdrop__background: rgb(0 0 0 / 50%);
+        --rui-Modal--auto__min-width: 18rem;
+        --rui-Modal--auto__max-width: 60rem;
+        --rui-Modal--small__width: 20rem;
+        --rui-Modal--medium__width: 40rem;
+        --rui-Modal--large__width: 60rem;
+        --rui-Modal--fullscreen__width: 100%;
+        --rui-Modal--fullscreen__height: 100%;
+        --rui-Modal__animation__duration: 0.25s;
+
+        // Modal: success variant
+        --rui-Modal--success__border-color: var(--rui-color-feedback-success);
+        --rui-Modal--success__background-color: var(--rui-color-background-success);
+
+        // Modal: warning variant
+        --rui-Modal--warning__border-color: var(--rui-color-feedback-warning);
+        --rui-Modal--warning__background-color: var(--rui-color-background-warning);
+
+        // Modal: danger variant
+        --rui-Modal--danger__border-color: var(--rui-color-feedback-danger);
+        --rui-Modal--danger__background-color: var(--rui-color-background-danger);
+
+        // Modal: info variant
+        --rui-Modal--info__border-color: var(--rui-color-feedback-info);
+        --rui-Modal--info__background-color: var(--rui-color-background-info);
+
+        // Modal: help variant
+        --rui-Modal--help__border-color: var(--rui-color-feedback-help);
+        --rui-Modal--help__background-color: var(--rui-color-background-help);
+
+        // Modal: note variant
+        --rui-Modal--note__border-color: var(--rui-color-feedback-note);
+        --rui-Modal--note__background-color: var(--rui-color-background-note);
+
+        //
+        // Paper
+        // =====
+
+        --rui-Paper__padding: var(--rui-dimension-space-4);
+        --rui-Paper__border-width: 0;
+        --rui-Paper__border-color: transparent;
+        --rui-Paper__border-radius: var(--rui-dimension-radius-2);
+        --rui-Paper__background-color: var(--rui-color-background-layer-1);
+        --rui-Paper--muted__background-color: var(--rui-color-background-disabled);
+        --rui-Paper--muted__opacity: var(--rui-ratio-disabled-opacity);
+        --rui-Paper--raised__box-shadow: var(--rui-shadow-layer-1);
+
+        //
+        // Popover
+        // =======
+
+        --rui-Popover__max-width: 15rem;
+        --rui-Popover__padding: var(--rui-dimension-space-3);
+        --rui-Popover__border-width: 0;
+        --rui-Popover__border-color: transparent;
+        --rui-Popover__border-radius: var(--rui-dimension-radius-2);
+        --rui-Popover__color: var(--rui-color-text-primary);
+        --rui-Popover__background-color: var(--rui-color-background-layer-2);
+        --rui-Popover__box-shadow: var(--rui-shadow-layer-2);
+
+        //
+        // Tabs
+        // ====
+
+        --rui-Tabs__border-bottom-width: var(--rui-dimension-border-width-1);
+        --rui-Tabs__border-bottom-color: var(--rui-color-border-primary);
+        --rui-Tabs__gap--xs: var(--rui-dimension-space-1);
+        --rui-Tabs__gap--sm: var(--rui-dimension-space-1);
+        --rui-Tabs__gap--md: var(--rui-dimension-space-1);
+        --rui-Tabs__padding-x: 0;
+
+        // Tabs items
+        --rui-Tabs__item__padding--xs: var(--rui-dimension-space-3);
+        --rui-Tabs__item__padding--sm: var(--rui-dimension-space-4);
+        --rui-Tabs__item__padding--md: var(--rui-dimension-space-4);
+        --rui-Tabs__item__font-weight: inherit;
+        --rui-Tabs__item__color: var(--rui-color-text-secondary);
+        --rui-Tabs__item__border-width: var(--rui-dimension-border-width-1);
+        --rui-Tabs__item__border-color:
+            var(--rui-color-border-secondary)
+            var(--rui-color-border-secondary)
+            transparent
+            var(--rui-color-border-secondary);
+        --rui-Tabs__item__border-radius: var(--rui-dimension-radius-2);
+        --rui-Tabs__item__background-color: var(--rui-color-background-layer-1);
+        --rui-Tabs__item__box-shadow: none;
+        --rui-Tabs__item__icon__gap: var(--rui-dimension-space-2);
+
+        // Tabs items: hover
+        --rui-Tabs__item--hover__font-weight: var(--rui-Tabs__item__font-weight);
+        --rui-Tabs__item--hover__color: var(--rui-Tabs__item__color);
+        --rui-Tabs__item--hover__border-width: var(--rui-Tabs__item__border-width);
+        --rui-Tabs__item--hover__border-color: var(--rui-Tabs__item__border-color);
+        --rui-Tabs__item--hover__background-color: var(--rui-Tabs__item__background-color);
+        --rui-Tabs__item--hover__box-shadow: var(--rui-Tabs__item__box-shadow);
+        --rui-Tabs__item--hover__shift-y: -0.15rem;
+        --rui-Tabs__item--hover__label__shift-y: 0;
+
+        // Tabs items: active
+        --rui-Tabs__item--active__font-weight: inherit;
+        --rui-Tabs__item--active__color: var(--rui-color-text-primary);
+        --rui-Tabs__item--active__border-width: var(--rui-Tabs__item__border-width);
+        --rui-Tabs__item--active__border-color:
+            var(--rui-Tabs__border-bottom-color)
+            var(--rui-Tabs__border-bottom-color)
+            transparent
+            var(--rui-Tabs__border-bottom-color);
+        --rui-Tabs__item--active__background-color: var(--rui-Tabs__item__background-color);
+        --rui-Tabs__item--active__box-shadow: var(--rui-Tabs__item__box-shadow);
+        --rui-Tabs__item--active__shift-y: -0.25em;
+        --rui-Tabs__item--active__label__shift-y: 0;
+
+        //
+        // TextLink
+        // ========
+
+        --rui-TextLink__color: var(--rui-color-text-link);
+        --rui-TextLink__text-decoration: var(--rui-text-decoration-link);
+        --rui-TextLink--hover__color: var(--rui-color-text-link-hover);
+        --rui-TextLink--hover__text-decoration: var(--rui-text-decoration-link-hover);
+        --rui-TextLink--active__color: var(--rui-color-text-link-active);
+        --rui-TextLink--active__text-decoration: var(--rui-text-decoration-link-active);
+
+        //
+        // Toolbar
+        // =======
+
+        --rui-Toolbar__gap: var(--rui-dimension-space-4);
+        --rui-Toolbar__gap--dense: var(--rui-dimension-space-2);
+    }
+}

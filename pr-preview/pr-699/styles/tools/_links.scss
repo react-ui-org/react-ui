@@ -1,0 +1,17 @@
+@use "../theme/links";
+
+@mixin base() {
+    text-decoration: links.$decoration;
+    text-underline-offset: links.$underline-offset;
+    color: links.$color;
+
+    &:hover {
+        text-decoration: links.$hover-decoration;
+        color: links.$hover-color;
+    }
+
+    &:active {
+        text-decoration: links.$active-decoration;
+        color: links.$active-color;
+    }
+}

@@ -1,0 +1,447 @@
+/* stylelint-disable
+    custom-property-pattern,
+    declaration-no-important,
+    no-descending-specificity,
+    selector-class-pattern,
+    selector-max-compound-selectors,
+    selector-max-specificity,
+    selector-no-qualifying-type
+    -- We are overriding third-party styles.
+*/
+
+:root {
+    /* Visual configuration of the `<docoff-react-preview>` and `<docoff-react-base>` code */
+
+    /* The Prism theme CSS file, for options see: https://unpkg.com/browse/prismjs/themes/
+       NOTE: Patch version is omitted due to parsing bug in Safari: https://bugs.webkit.org/show_bug.cgi?id=229816 */
+    /* stylelint-disable -- Allow URL without quotes. */
+    --docoff-code-prism-css: https://unpkg.com/prismjs@1.29/themes/prism-twilight.min.css;
+    --docoff-code-font-size: 1rem;
+    /* stylelint-enable */
+
+    --docoff-code-line-height: 1.5;
+    --docoff-code-font-family: var(--rui-font-family-monospace);
+
+    /* Visual configuration of the `<docoff-react-preview>` live preview */
+    --docoff-preview-border-color: #ced4de;
+    --docoff-preview-border-radius: 0.35em;
+
+    /* To simplify multiple component presentation we add margin to all top level elements */
+    --docoff-preview-children-margin: 0.25em;
+
+    /* To improve component presentation we add padding inside the shadow DOM */
+    --docoff-preview-padding: 1em;
+
+    /* Custom preview CSS file, typically this would be the CSS of your component */
+    --docoff-preview-css: /docs/_assets/generated/react-ui.development.css;
+
+    /* Visual configuration of the `<docoff-placeholder>` element */
+    --docoff-placeholder-background-dark: #4d4d4d;
+    --docoff-placeholder-background-light: #fff;
+    --docoff-placeholder-border-color: #ccc;
+    --docoff-placeholder-border-width: 2px;
+}
+
+/* Color schemes */
+[data-md-color-scheme="default"] {
+    --md-primary-fg-color: #00778b;
+    --md-primary-fg-color--light: #fff;
+    --md-primary-fg-color--dark: #006b7d;
+    --md-accent-fg-color: #007bff;
+    --md-typeset-a-color: #007bff;
+    --md-typeset-a-hover-color: #006fe6;
+    --md-default-bg-color: #fff;
+    --md-typeset-color: #2d3747;
+    --md-code-bg-color: rgb(242 242 242);
+}
+
+[data-md-color-scheme="slate"] {
+    --md-primary-fg-color: #1a1a1a;
+    --md-primary-fg-color--light: #fff;
+    --md-primary-fg-color--dark: #005f6f;
+    --md-accent-fg-color: #007bff;
+    --md-typeset-a-color: #007bff;
+    --md-typeset-a-hover-color: #ffede8;
+    --md-default-bg-color: #1a1a1a;
+    --md-typeset-color: #f2f2f2;
+    --md-code-bg-color: #000;
+}
+
+/* Document */
+html {
+    /* DO NOT CHANGE THE FONT SIZE. `rem` in docoff previews is calculated from the root font size which is this. */
+    font-size: var(--rui-font-size-base);
+    scroll-padding-top: 3.2rem;
+    scroll-margin-top: 4rem;
+}
+
+body {
+    --md-text-font-family: var(--rui-font-family-base);
+    --md-code-font-family: var(--rui-font-family-monospace);
+
+    font-size: 1em;
+    background-color: var(--md-default-bg-color);
+}
+
+/* Typography */
+code,
+kbd,
+pre {
+    font-family: var(--docoff-code-font-family);
+}
+
+.md-nav--primary .md-nav__item,
+.md-nav--primary .md-nav__title,
+.md-skip,
+.md-footer__direction,
+.md-typeset .md-input,
+.md-search__input,
+.md-search-result .md-typeset,
+.md-search-result .md-typeset :is(h1, h2),
+.md-search-result__meta,
+.md-search-result__more summary,
+.md-search-result__title,
+.md-search-result__teaser,
+.md-search-result__terms,
+.md-source,
+.md-top {
+    font-size: 0.875rem;
+}
+
+.md-nav,
+.md-copyright,
+.md-source__facts,
+.md-tag,
+.md-tooltip__inner,
+.md-typeset .footnote,
+.md-typeset .footnote-ref,
+.md-typeset .tabbed-labels > label {
+    font-size: 0.875rem;
+}
+
+.md-typeset {
+    font-size: 1rem;
+}
+
+.md-typeset a {
+    text-decoration: none;
+    text-underline-offset: 0.1875em;
+    color: var(--md-typeset-a-color);
+}
+
+.md-typeset a:hover {
+    text-decoration: underline;
+    color: var(--md-typeset-a-hover-color);
+}
+
+.md-typeset :is(h1, h2, h3, h4, h5, h6) {
+    font-weight: 700;
+}
+
+.md-typeset h1 {
+    margin-top: 0.8rem;
+    margin-bottom: 0.4rem;
+    font-weight: 800;
+    font-size: 2.4rem;
+    color: inherit;
+}
+
+.md-content .md-typeset h1 + p {
+    font-size: 1.3rem;
+}
+
+.md-typeset h2 {
+    margin-top: 3.2rem;
+    margin-bottom: 0.25rem;
+    font-size: 1.65rem;
+}
+
+.md-typeset h3 {
+    margin-top: 2.4rem;
+    margin-bottom: 0.15rem;
+    font-size: 1.45rem;
+}
+
+.md-typeset h4 {
+    margin-top: 1.6rem;
+    margin-bottom: 0.25rem;
+    font-size: 1.25rem;
+}
+
+.md-typeset h5,
+.md-typeset h6 {
+    margin-top: 1.6rem;
+    margin-bottom: 0.25rem;
+    font-size: 1.125rem;
+}
+
+.md-typeset blockquote {
+    padding: 1.6rem 2rem;
+    margin-block: 2.4rem;
+    background-color: var(--md-default-fg-color--lightest);
+}
+
+[dir="ltr"] .md-typeset blockquote {
+    padding-left: 2rem;
+}
+
+.md-typeset blockquote p {
+    font-size: 1.25rem;
+}
+
+.md-typeset blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+.md-typeset ul {
+    list-style-type: square;
+}
+
+.md-typeset :is(ol, ul) li {
+    margin-bottom: 0.55rem;
+}
+
+.md-typeset ol li blockquote,
+.md-typeset ol li p,
+.md-typeset ul li blockquote,
+.md-typeset ul li p {
+    margin-block: 0;
+}
+
+.md-typeset hr {
+    margin-block: 3.2rem;
+}
+
+/* Tables */
+table {
+    display: table !important;
+    table-layout: auto;
+    width: 100%;
+}
+
+.md-typeset__table {
+    min-width: 100%;
+}
+
+.md-typeset table:not([class]) {
+    font-size: 0.875rem;
+    border: none;
+}
+
+.md-typeset table:not([class]) :is(th, td) {
+    padding: 1rem 0.5rem;
+    vertical-align: middle;
+    border-width: 1px;
+    border-style: none none solid;
+    border-color: var(--md-typeset-table-color);
+}
+
+/* Layout */
+.md-header {
+    height: 4rem;
+}
+
+.md-header__inner {
+    height: 100%;
+    padding: 0 0.5rem;
+}
+
+.md-header__title {
+    font-size: 1.5rem;
+}
+
+.md-header__button {
+    margin-inline: 0.75rem;
+}
+
+.md-main__inner {
+    margin-top: 0;
+}
+
+.md-tabs__link,
+.md-source {
+    color: var(--md-primary-fg-color--light);
+}
+
+.md-tabs__link {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+}
+
+.md-header,
+.md-tabs {
+    background-color: var(--md-primary-fg-color--dark);
+}
+
+.md-nav {
+    line-height: 1.5;
+}
+
+.md-nav__link--active {
+    font-weight: 700;
+}
+
+.md-content__inner {
+    min-width: 0;
+    max-width: 50rem;
+    padding-top: 0;
+    margin: 3.2rem 3rem 6.4rem;
+}
+
+.md-sidebar {
+    padding-block: 1.6rem;
+}
+
+@media screen and (width >= 76.25em) {
+    .md-grid {
+        max-width: 96%;
+    }
+
+    .md-content {
+        display: grid;
+        justify-content: center;
+    }
+}
+
+@media screen and (width <= 59.9375em) {
+    .md-content__inner {
+        margin-inline: 8vw;
+    }
+}
+
+@media screen and (width <= 76.1875em) {
+    .md-nav--primary .md-nav__title .md-nav__icon {
+        top: 1rem;
+    }
+}
+
+@media screen and (width >= 76.25em) {
+    [dir="ltr"] .md-sidebar--secondary:not([hidden]) ~ .md-content > .md-content__inner,
+    [dir="rtl"] .md-sidebar--primary:not([hidden]) ~ .md-content > .md-content__inner {
+        margin-right: 3rem;
+    }
+
+    [dir="ltr"] .md-sidebar--primary:not([hidden]) ~ .md-content > .md-content__inner {
+        margin-left: 3rem;
+    }
+}
+
+@media screen and (width <= 59.9375em) {
+    .md-nav__source {
+        padding-block: 0.8rem;
+    }
+}
+
+/* Search */
+.md-search-result__meta {
+    padding-block: 0.8rem;
+}
+
+.md-search-result__more > summary > div {
+    font-size: 0.85rem;
+}
+
+@media screen and (width >= 60em) {
+    .md-search {
+        padding: 0;
+    }
+
+    .md-search__form {
+        height: 2.4rem;
+    }
+
+    .md-search__icon[for="__search"],
+    .md-search__options {
+        top: 0.6rem;
+    }
+
+    .md-search__output {
+        top: calc(100% - 2px);
+    }
+
+    .md-search-result__meta {
+        padding-block: 0.8rem;
+    }
+}
+
+/* Clipboard */
+.md-clipboard,
+.md-clipboard:is(:focus, :hover) {
+    color: white;
+}
+
+.md-clipboard::after {
+    color: var(--md-typeset-a-color);
+}
+
+:hover > .md-clipboard {
+    color: white;
+}
+
+/* Code */
+.md-typeset code {
+    padding: 0.15rem 0.25rem;
+    border-radius: 0.1875rem;
+}
+
+.md-typeset table pre > code {
+    display: inline;
+    padding: 0.15rem 0.25rem;
+    white-space: pre-wrap;
+}
+
+.md-typeset pre > code {
+    padding: 0;
+}
+
+pre[class*="language-"] {
+    overflow: hidden;
+    border: none;
+    border-radius: 0.35em;
+    background: rgb(40 40 40);
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+    font-weight: 400;
+    font-size: 1rem;
+    font-family: var(--docoff-code-font-family) !important;
+    text-shadow: none;
+}
+
+pre[class*="language-"],
+.docoff-Root {
+    margin-top: 0;
+    margin-bottom: 2.4rem;
+}
+
+.md-typeset :is(p, ul, ol, dl) {
+    max-width: 40rem;
+    margin-top: 0;
+    margin-bottom: 1.6rem;
+}
+
+/* API */
+docoff-react-props {
+    display: block;
+    overflow-x: auto;
+}
+
+docoff-react-props > table tr {
+    transition: background-color 125ms;
+}
+
+docoff-react-props > table tr:hover {
+    background-color: var(--md-typeset-table-color--light);
+    box-shadow: 0 0.05rem 0 var(--md-default-bg-color) inset;
+}
+
+@media screen and (width <= 44.9375em) {
+    docoff-react-props,
+    .docoff-Root,
+    .md-content__inner > .highlight {
+        margin-inline: -1rem;
+        margin-top: 0;
+        margin-bottom: 1.6rem;
+    }
+}
