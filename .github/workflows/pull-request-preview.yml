@@ -115,21 +115,3 @@ jobs:
           preview-branch: gh-pages
           umbrella-dir: pr-preview
           action: remove
-
-      - name: Delete preview environment
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          set -e
-          ENV_NAME="pr-preview/pr-${{ github.event.pull_request.number }}"
-          ENCODED_ENV="${ENV_NAME//\//%2F}"
-
-          gh api "repos/${{ github.repository }}/deployments" \
-            -X GET -f environment="$ENV_NAME" --jq '.[].id' \
-          | while IFS= read -r id; do
-              gh api "repos/${{ github.repository }}/deployments/$id/statuses" \
-                -X POST -f state=inactive
-              gh api "repos/${{ github.repository }}/deployments/$id" -X DELETE
-            done
-
-          gh api "repos/${{ github.repository }}/environments/$ENCODED_ENV" -X DELETE
