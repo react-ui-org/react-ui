@@ -67,10 +67,7 @@ export const FormLayoutForTest = ({
       label="Label6"
     />
     <FormLayoutCustomField label="Custom field label">
-      <TextField
-        isLabelVisible={false}
-        label="Label7"
-      />
+      <TextField label="Label7" />
     </FormLayoutCustomField>
     <FileInputField label="Attachment label 8" />
     <Button label="Submit" />

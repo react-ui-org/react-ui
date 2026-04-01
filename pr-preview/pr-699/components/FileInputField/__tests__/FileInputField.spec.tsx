@@ -9,7 +9,9 @@ import {
 } from '../../../../tests/playwright';
 import type { FileInputFieldForFormLayoutTestsProps } from './FileInputField.story';
 import {
+  FileInputFieldForFormLayoutLabelWidthTests,
   FileInputFieldForFormLayoutTests,
+  FileInputFieldForFormLayoutCustomFieldTests,
   FileInputFieldForRefTest,
   FileInputFieldForTest,
   FileInputFieldWithResetButtonForTest,
@@ -314,6 +316,13 @@ test.describe('FileInputField', () => {
 
   test.describe('formLayout', () => {
     test.describe('visual', () => {
+      test('labelWidth:string=100px', async ({ mount }) => {
+        const component = await mount(<FileInputFieldForFormLayoutLabelWidthTests />);
+
+        const screenshot = await component.screenshot();
+        expect(screenshot).toMatchSnapshot();
+      });
+
       [
         ...propTests.layoutPropTest,
       ].forEach(({
@@ -343,6 +352,17 @@ test.describe('FileInputField', () => {
           const screenshot = await component.screenshot();
           expect(screenshot).toMatchSnapshot();
         });
+      });
+    });
+  });
+
+  test.describe('formLayoutCustomField', () => {
+    test.describe('visual', () => {
+      test('label:hidden', async ({ mount }) => {
+        const component = await mount(<FileInputFieldForFormLayoutCustomFieldTests />);
+
+        const screenshot = await component.screenshot();
+        expect(screenshot).toMatchSnapshot();
       });
     });
   });

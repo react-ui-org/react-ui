@@ -10,7 +10,9 @@ import {
 import {
   TextAreaForTest,
   TextAreaForRefTest,
+  TextAreaForFormLayoutLabelWidthTests,
   TextAreaForFormLayoutTests,
+  TextAreaForFormLayoutCustomFieldTests,
 } from './TextArea.story';
 import type { TextAreaForFormLayoutTestsProps } from './TextArea.story';
 
@@ -124,6 +126,13 @@ test.describe('TextArea', () => {
 
   test.describe('formLayout', () => {
     test.describe('visual', () => {
+      test('labelWidth:string=100px', async ({ mount }) => {
+        const component = await mount(<TextAreaForFormLayoutLabelWidthTests />);
+
+        const screenshot = await component.screenshot();
+        expect(screenshot).toMatchSnapshot();
+      });
+
       [
         ...propTests.layoutPropTest,
       ].forEach(({
@@ -153,6 +162,17 @@ test.describe('TextArea', () => {
           const screenshot = await component.screenshot();
           expect(screenshot).toMatchSnapshot();
         });
+      });
+    });
+  });
+
+  test.describe('formLayoutCustomField', () => {
+    test.describe('visual', () => {
+      test('label:hidden', async ({ mount }) => {
+        const component = await mount(<TextAreaForFormLayoutCustomFieldTests />);
+
+        const screenshot = await component.screenshot();
+        expect(screenshot).toMatchSnapshot();
       });
     });
   });

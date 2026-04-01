@@ -10,7 +10,9 @@ import {
 import {
   TextFieldForTest,
   TextFieldForRefTest,
+  TextFieldForFormLayoutLabelWidthTests,
   TextFieldForFormLayoutTests,
+  TextFieldForFormLayoutCustomFieldTests,
 } from './TextField.story';
 import type { TextFieldForFormLayoutTestsProps } from './TextField.story';
 import { inputSizePropTest } from './_propTests/inputSizePropTest';
@@ -164,6 +166,13 @@ test.describe('TextField', () => {
 
   test.describe('formLayout', () => {
     test.describe('visual', () => {
+      test('labelWidth:string=100px', async ({ mount }) => {
+        const component = await mount(<TextFieldForFormLayoutLabelWidthTests />);
+
+        const screenshot = await component.screenshot();
+        expect(screenshot).toMatchSnapshot();
+      });
+
       [
         ...propTests.layoutPropTest,
       ].forEach(({
@@ -193,6 +202,17 @@ test.describe('TextField', () => {
           const screenshot = await component.screenshot();
           expect(screenshot).toMatchSnapshot();
         });
+      });
+    });
+  });
+
+  test.describe('formLayoutCustomField', () => {
+    test.describe('visual', () => {
+      test('label:hidden', async ({ mount }) => {
+        const component = await mount(<TextFieldForFormLayoutCustomFieldTests />);
+
+        const screenshot = await component.screenshot();
+        expect(screenshot).toMatchSnapshot();
       });
     });
   });

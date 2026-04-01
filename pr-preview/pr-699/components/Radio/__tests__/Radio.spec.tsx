@@ -10,6 +10,7 @@ import {
 import { partialDisabledOptionsPropTest } from './_propTests/partialDisabledOptionsPropTest';
 import {
   RadioForTest,
+  RadioForFormLayoutLabelWidthTests,
   RadioForFormLayoutTests,
 } from './Radio.story';
 import type { RadioForFormLayoutTestsProps } from './Radio.story';
@@ -158,6 +159,13 @@ test.describe('Radio', () => {
 
   test.describe('formLayout', () => {
     test.describe('visual', () => {
+      test('labelWidth:string=100px', async ({ mount }) => {
+        const component = await mount(<RadioForFormLayoutLabelWidthTests />);
+
+        const screenshot = await component.screenshot();
+        expect(screenshot).toMatchSnapshot();
+      });
+
       [
         ...propTests.layoutPropTest,
       ].forEach(({

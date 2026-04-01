@@ -3645,15 +3645,14 @@ forget to mirror the aforementioned properties to the contained form fields too
 as API options as such are <strong>not</strong> inherited.</p>
 <h3 id="nested-fields-labels">Nested Fields Labels</h3>
 <p>When placing box form fields — TextField, TextArea, SelectField, or
-FileInputField — inside a FormLayoutCustomField, we recommend to hide their
-labels with <code>isLabelVisible={false}</code>.</p>
+FileInputField — inside a FormLayoutCustomField, their labels are hidden
+automatically.</p>
 <pre class="highlight"><code class="language-docoff-react-preview">&lt;FormLayout fieldLayout="horizontal" labelWidth="auto"&gt;
   &lt;FormLayoutCustomField
     innerFieldSize="medium"
     label="Custom field with invisible label"
   &gt;
     &lt;TextField
-      isLabelVisible={false}
       label="This field's label is hidden"
     /&gt;
   &lt;/FormLayoutCustomField&gt;
@@ -3674,7 +3673,6 @@ this task.</p>
     label="Custom field label aligned to inner text input"
   &gt;
     &lt;TextField
-      isLabelVisible={false}
       label="A form element"
       placeholder="Text field with invisible label"
     /&gt;
@@ -3708,7 +3706,6 @@ properly vertically aligned.</p>
       &gt;
         &lt;TextField
           id="my-text-field-custom-accessibility"
-          isLabelVisible={false}
           label="A form element"
           placeholder="Text field with invisible label"
         /&gt;

@@ -17,7 +17,6 @@ export const customFieldLabelAlignmentPropTest: CustomFieldTestsType = [
   {
     customFieldLayoutProps: customFieldLayoutBaseProps,
     customFieldProps: {
-      isLabelVisible: false,
       label: 'Custom field label',
     },
     name: 'labelVisible:boolean=true fieldLayout:string=horizontal',
@@ -26,7 +25,6 @@ export const customFieldLabelAlignmentPropTest: CustomFieldTestsType = [
   {
     customFieldLayoutProps: customFieldLayoutBaseProps,
     customFieldProps: {
-      isLabelVisible: false,
       label: 'Custom field label',
     },
     name: 'labelVisible:boolean=false fieldLayout:string=vertical',

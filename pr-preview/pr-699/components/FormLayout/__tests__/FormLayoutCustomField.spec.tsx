@@ -63,7 +63,6 @@ test.describe('FormLayoutCustomField', () => {
               label: 'CustomLayoutFieldLabel',
             }}
             customFieldProps={{
-              isLabelVisible: false,
               label: 'CustomFieldLabel',
             }}
           />,
@@ -86,7 +85,6 @@ test.describe('FormLayoutCustomField', () => {
               labelForId,
             }}
             customFieldProps={{
-              isLabelVisible: false,
               label: 'CustomFieldLabel',
             }}
           />,

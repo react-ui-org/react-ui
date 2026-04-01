@@ -10,7 +10,6 @@ const customFieldLayoutBaseProps = {
 };
 
 const customFieldBaseProps = {
-  isLabelVisible: false,
   label: 'Custom field label',
 };
 

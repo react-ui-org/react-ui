@@ -10,6 +10,7 @@ import {
 import {
   ToggleForTest,
   ToggleForRefTest,
+  ToggleForFormLayoutLabelWidthTests,
   ToggleForFormLayoutTests,
 } from './Toggle.story';
 import type { ToggleForFormLayoutTestsProps } from './Toggle.story';
@@ -142,6 +143,13 @@ test.describe('Toggle', () => {
 
   test.describe('formLayout', () => {
     test.describe('visual', () => {
+      test('labelWidth:string=100px', async ({ mount }) => {
+        const component = await mount(<ToggleForFormLayoutLabelWidthTests />);
+
+        const screenshot = await component.screenshot();
+        expect(screenshot).toMatchSnapshot();
+      });
+
       [
         ...propTests.layoutPropTest,
       ].forEach(({

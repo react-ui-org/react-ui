@@ -7,6 +7,7 @@ import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
 import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
 import { isChildrenEmpty } from '../../helpers/isChildrenEmpty/isChildrenEmpty';
 import { FormLayoutContext } from './FormLayoutContext';
+import { FormLayoutCustomFieldContext } from './FormLayoutCustomFieldContext';
 import styles from './FormLayoutCustomField.module.scss';
 
 const renderLabel = (id, label, labelForId) => {
@@ -73,7 +74,9 @@ export const FormLayoutCustomField = ({
         className={styles.field}
         id={id && `${id}__field`}
       >
-        {children}
+        <FormLayoutCustomFieldContext.Provider value>
+          {children}
+        </FormLayoutCustomFieldContext.Provider>
       </div>
     </div>
   );
