@@ -33,7 +33,12 @@
     --docoff-preview-padding: 1em;
 
     /* Custom preview CSS file, typically this would be the CSS of your component */
-    --docoff-preview-css: /docs/_assets/generated/react-ui.development.css;
+
+    /* Commented out — an absolute path breaks subdirectory deployments (e.g. PR previews).
+       Set dynamically via docs/_assets/js/setupDocoff.js instead.
+       See https://github.com/react-ui-org/docoff/issues/50 for the upstream fix. */
+
+    /* --docoff-preview-css: /docs/_assets/generated/react-ui.development.css; */
 
     /* Visual configuration of the `<docoff-placeholder>` element */
     --docoff-placeholder-background-dark: #4d4d4d;
