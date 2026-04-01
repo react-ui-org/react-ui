@@ -7,14 +7,14 @@ import {
   mixPropTests,
   propTests,
 } from '../../../../tests/playwright';
+import type { SelectFieldForFormLayoutTestsProps } from './SelectField.story';
 import {
-  SelectFieldForTest,
-  SelectFieldForRefTest,
+  SelectFieldForFormLayoutCustomFieldTests,
   SelectFieldForFormLayoutLabelWidthTests,
   SelectFieldForFormLayoutTests,
-  SelectFieldForFormLayoutCustomFieldTests,
+  SelectFieldForRefTest,
+  SelectFieldForTest,
 } from './SelectField.story';
-import type { SelectFieldForFormLayoutTestsProps } from './SelectField.story';
 import { openSelectFieldOptionsTest } from './_propTests/openSelectFieldOptionsTest';
 
 const groupedOptions = [

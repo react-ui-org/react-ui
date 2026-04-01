@@ -7,13 +7,13 @@ import {
   mixPropTests,
   propTests,
 } from '../../../../tests/playwright';
+import type { ToggleForFormLayoutTestsProps } from './Toggle.story';
 import {
-  ToggleForTest,
-  ToggleForRefTest,
   ToggleForFormLayoutLabelWidthTests,
   ToggleForFormLayoutTests,
+  ToggleForRefTest,
+  ToggleForTest,
 } from './Toggle.story';
-import type { ToggleForFormLayoutTestsProps } from './Toggle.story';
 
 test.describe('Toggle', () => {
   test.describe('base', () => {

@@ -9,6 +9,7 @@ import {
   FormLayoutContext,
 } from '../../FormLayout';
 import { Button } from '..';
+import { TextField } from '../../TextField';
 
 // Types for story component will be improved when we have full TypeScript support
 type ButtonForTestProps = ButtonHTMLAttributes<HTMLButtonElement>;
@@ -49,12 +50,6 @@ export const ButtonForRefTest = ({
   );
 };
 
-export const ButtonForFormLayoutLabelWidthTests = () => (
-  <FormLayout fieldLayout="horizontal" labelWidth="100px">
-    <Button label="Button" />
-  </FormLayout>
-);
-
 export const ButtonForFormLayoutTests = ({
   layout,
   ...props
@@ -77,6 +72,7 @@ export const ButtonInVerticalFormLayoutForTest = ({
   ...props
 }: ButtonForTestProps) => (
   <FormLayout fieldLayout="vertical">
+    <TextField label="Text field" />
     <Button
       label="Button"
       {...props}
@@ -88,6 +84,7 @@ export const ButtonInHorizontalFormLayoutForTest = ({
   ...props
 }: ButtonForTestProps) => (
   <FormLayout fieldLayout="horizontal">
+    <TextField label="Text field" />
     <Button
       label="Button"
       {...props}

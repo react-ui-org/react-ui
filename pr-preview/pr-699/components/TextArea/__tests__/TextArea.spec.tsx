@@ -7,14 +7,14 @@ import {
   mixPropTests,
   propTests,
 } from '../../../../tests/playwright';
+import type { TextAreaForFormLayoutTestsProps } from './TextArea.story';
 import {
-  TextAreaForTest,
-  TextAreaForRefTest,
+  TextAreaForFormLayoutCustomFieldTests,
   TextAreaForFormLayoutLabelWidthTests,
   TextAreaForFormLayoutTests,
-  TextAreaForFormLayoutCustomFieldTests,
+  TextAreaForRefTest,
+  TextAreaForTest,
 } from './TextArea.story';
-import type { TextAreaForFormLayoutTestsProps } from './TextArea.story';
 
 test.describe('TextArea', () => {
   test.describe('base', () => {

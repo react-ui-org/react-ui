@@ -7,13 +7,13 @@ import {
   mixPropTests,
   propTests,
 } from '../../../../tests/playwright';
+import type { CheckboxForFormLayoutTestsProps } from './CheckboxField.story';
 import {
-  CheckboxFieldForTest,
   CheckboxFieldForRefTest,
+  CheckboxFieldForTest,
   CheckboxForFormLayoutLabelWidthTests,
   CheckboxForFormLayoutTests,
 } from './CheckboxField.story';
-import type { CheckboxForFormLayoutTestsProps } from './CheckboxField.story';
 
 test.describe('CheckboxField', () => {
   test.describe('base', () => {

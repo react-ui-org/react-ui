@@ -8,12 +8,12 @@ import {
   propTests,
 } from '../../../../tests/playwright';
 import { partialDisabledOptionsPropTest } from './_propTests/partialDisabledOptionsPropTest';
+import type { RadioForFormLayoutTestsProps } from './Radio.story';
 import {
-  RadioForTest,
   RadioForFormLayoutLabelWidthTests,
   RadioForFormLayoutTests,
+  RadioForTest,
 } from './Radio.story';
-import type { RadioForFormLayoutTestsProps } from './Radio.story';
 
 const options = [
   {

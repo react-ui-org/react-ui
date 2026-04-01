@@ -7,14 +7,14 @@ import {
   mixPropTests,
   propTests,
 } from '../../../../tests/playwright';
+import type { TextFieldForFormLayoutTestsProps } from './TextField.story';
 import {
-  TextFieldForTest,
-  TextFieldForRefTest,
+  TextFieldForFormLayoutCustomFieldTests,
   TextFieldForFormLayoutLabelWidthTests,
   TextFieldForFormLayoutTests,
-  TextFieldForFormLayoutCustomFieldTests,
+  TextFieldForRefTest,
+  TextFieldForTest,
 } from './TextField.story';
-import type { TextFieldForFormLayoutTestsProps } from './TextField.story';
 import { inputSizePropTest } from './_propTests/inputSizePropTest';
 import { typePropTest } from './_propTests/typePropTest';
 

@@ -9,9 +9,9 @@ import {
 } from '../../../../tests/playwright';
 import type { FileInputFieldForFormLayoutTestsProps } from './FileInputField.story';
 import {
+  FileInputFieldForFormLayoutCustomFieldTests,
   FileInputFieldForFormLayoutLabelWidthTests,
   FileInputFieldForFormLayoutTests,
-  FileInputFieldForFormLayoutCustomFieldTests,
   FileInputFieldForRefTest,
   FileInputFieldForTest,
   FileInputFieldWithResetButtonForTest,

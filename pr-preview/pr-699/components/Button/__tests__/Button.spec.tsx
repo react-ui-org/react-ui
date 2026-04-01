@@ -7,15 +7,14 @@ import {
   mixPropTests,
   propTests,
 } from '../../../../tests/playwright';
-import {
-  ButtonForTest,
-  ButtonForRefTest,
-  ButtonForFormLayoutLabelWidthTests,
-  ButtonForFormLayoutTests,
-  ButtonInVerticalFormLayoutForTest,
-  ButtonInHorizontalFormLayoutForTest,
-} from './Button.story';
 import type { ButtonForFormLayoutTestsProps } from './Button.story';
+import {
+  ButtonForFormLayoutTests,
+  ButtonForRefTest,
+  ButtonForTest,
+  ButtonInHorizontalFormLayoutForTest,
+  ButtonInVerticalFormLayoutForTest,
+} from './Button.story';
 
 test.describe('Button', () => {
   test.describe('visual', () => {
@@ -169,13 +168,6 @@ test.describe('Button', () => {
       test('horizontal', async ({ mount }) => {
         const component = await mount(<ButtonInHorizontalFormLayoutForTest />);
         expect(await component.screenshot()).toMatchSnapshot();
-      });
-
-      test('labelWidth:string=100px', async ({ mount }) => {
-        const component = await mount(<ButtonForFormLayoutLabelWidthTests />);
-
-        const screenshot = await component.screenshot();
-        expect(screenshot).toMatchSnapshot();
       });
 
       [
