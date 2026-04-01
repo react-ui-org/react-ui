@@ -1,7 +1,10 @@
 import React, { useMemo } from 'react';
 import type { InputHTMLAttributes } from 'react';
 import { Radio } from '..';
-import { FormLayoutContext } from '../../FormLayout';
+import {
+  FormLayout,
+  FormLayoutContext,
+} from '../../FormLayout';
 
 // Types for story component will be improved when we have full TypeScript support
 type RadioForTestProps = InputHTMLAttributes<HTMLInputElement>;
@@ -35,6 +38,13 @@ export const RadioForTest = ({
     value={defaultOptions[0].value}
     {...props}
   />
+);
+
+export const RadioForFormLayoutLabelWidthTests = () => (
+  <FormLayout fieldLayout="horizontal" labelWidth="100px">
+    <Radio label={defaultLabel} options={defaultOptions} />
+    <Radio label="another-test-label" options={defaultOptions} />
+  </FormLayout>
 );
 
 export const RadioForFormLayoutTests = ({

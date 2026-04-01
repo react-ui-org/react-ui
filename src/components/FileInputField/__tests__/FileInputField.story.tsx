@@ -5,7 +5,11 @@ import React, {
 } from 'react';
 import type { HTMLAttributes } from 'react';
 import { FileInputField } from '..';
-import { FormLayoutContext } from '../../FormLayout';
+import {
+  FormLayout,
+  FormLayoutContext,
+  FormLayoutCustomFieldContext,
+} from '../../FormLayout';
 
 // Types for story component will be improved when we have full TypeScript support
 type FileInputFieldForTestProps = HTMLAttributes<HTMLDivElement>;
@@ -99,6 +103,13 @@ export const FileInputFieldForRefTest = ({
   );
 };
 
+export const FileInputFieldForFormLayoutLabelWidthTests = () => (
+  <FormLayout fieldLayout="horizontal" labelWidth="100px">
+    <FileInputField id="testId" label="FirstLabel" onFilesChanged={() => {}} />
+    <FileInputField id="anotherTestId" label="SecondLabel" onFilesChanged={() => {}} />
+  </FormLayout>
+);
+
 export const FileInputFieldForFormLayoutTests = ({
   layout,
   ...props
@@ -126,3 +137,18 @@ export const FileInputFieldForFormLayoutTests = ({
     </FormLayoutContext.Provider>
   );
 };
+
+export const FileInputFieldForFormLayoutCustomFieldTests = ({
+  ...props
+}: FileInputFieldForTestProps) => (
+  <InputWrapper {...props}>
+    <FormLayoutCustomFieldContext.Provider value>
+      <FileInputField
+        id="testId"
+        label="Attachment"
+        onFilesChanged={() => {}}
+        {...props}
+      />
+    </FormLayoutCustomFieldContext.Provider>
+  </InputWrapper>
+);

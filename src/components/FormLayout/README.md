@@ -330,6 +330,29 @@ and its styles may affect contained form fields through CSS cascade, don't
 forget to mirror the aforementioned properties to the contained form fields too
 as API options as such are **not** inherited.
 
+### Nested Fields Labels
+
+When placing box form fields — TextField, TextArea, SelectField, or
+FileInputField — inside a FormLayoutCustomField, their labels are hidden
+automatically.
+
+```docoff-react-preview
+<FormLayout fieldLayout="horizontal" labelWidth="auto">
+  <FormLayoutCustomField
+    innerFieldSize="medium"
+    label="Custom field with invisible label"
+  >
+    <TextField
+      label="This field's label is hidden"
+    />
+  </FormLayoutCustomField>
+</FormLayout>
+```
+
+ℹ️ Because FormLayout forces horizontal layout on all its descendants, the
+nested field's own label would conflict with the FormLayout grid and produce
+incorrect alignment.
+
 ### Label Alignment
 
 If you are in a situation with one or more box form fields inside your
@@ -346,7 +369,6 @@ this task.
     label="Custom field label aligned to inner text input"
   >
     <TextField
-      isLabelVisible={false}
       label="A form element"
       placeholder="Text field with invisible label"
     />
@@ -391,7 +413,6 @@ React.createElement(() => {
       >
         <TextField
           id="my-text-field-custom-accessibility"
-          isLabelVisible={false}
           label="A form element"
           placeholder="Text field with invisible label"
         />

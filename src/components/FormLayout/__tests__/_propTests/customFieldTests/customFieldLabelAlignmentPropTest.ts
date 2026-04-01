@@ -17,7 +17,6 @@ export const customFieldLabelAlignmentPropTest: CustomFieldTestsType = [
   {
     customFieldLayoutProps: customFieldLayoutBaseProps,
     customFieldProps: {
-      isLabelVisible: true,
       label: 'Custom field label',
     },
     name: 'labelVisible:boolean=true fieldLayout:string=horizontal',
@@ -26,25 +25,6 @@ export const customFieldLabelAlignmentPropTest: CustomFieldTestsType = [
   {
     customFieldLayoutProps: customFieldLayoutBaseProps,
     customFieldProps: {
-      isLabelVisible: false,
-      label: 'Custom field label',
-    },
-    name: 'labelVisible:boolean=false fieldLayout:string=horizontal',
-    props: formLayoutHorizontalBaseProps,
-  },
-  {
-    customFieldLayoutProps: customFieldLayoutBaseProps,
-    customFieldProps: {
-      isLabelVisible: true,
-      label: 'Custom field label',
-    },
-    name: 'labelVisible:boolean=true fieldLayout:string=vertical',
-    props: formLayoutVerticalBaseProps,
-  },
-  {
-    customFieldLayoutProps: customFieldLayoutBaseProps,
-    customFieldProps: {
-      isLabelVisible: false,
       label: 'Custom field label',
     },
     name: 'labelVisible:boolean=false fieldLayout:string=vertical',

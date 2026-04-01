@@ -16,7 +16,10 @@ import { getRootValidationStateClassName } from '../_helpers/getRootValidationSt
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { InputGroupContext } from '../InputGroup';
 import { Text } from '../Text';
-import { FormLayoutContext } from '../FormLayout';
+import {
+  FormLayoutContext,
+  FormLayoutCustomFieldContext,
+} from '../FormLayout';
 import styles from './FileInputField.module.scss';
 
 /* istanbul ignore file */
@@ -40,6 +43,7 @@ export const FileInputField = React.forwardRef((props, ref) => {
   } = props;
 
   const formLayoutContext = useContext(FormLayoutContext);
+  const formLayoutCustomFieldContext = useContext(FormLayoutCustomFieldContext);
   const inputGroupContext = useContext(InputGroupContext);
   const translations = useContext(TranslationsContext);
 
@@ -172,7 +176,7 @@ export const FileInputField = React.forwardRef((props, ref) => {
       <label
         className={classNames(
           styles.label,
-          (!isLabelVisible || inputGroupContext) && styles.isLabelHidden,
+          (!isLabelVisible || inputGroupContext || formLayoutCustomFieldContext) && styles.isLabelHidden,
         )}
         htmlFor={id}
         id={`${id}__labelText`}
@@ -286,6 +290,9 @@ FileInputField.propTypes = {
   /**
    * If `false`, the label will be visually hidden (but remains accessible by assistive
    * technologies).
+   *
+   * Automatically set to `false` when the component is rendered within `FormLayoutCustomField`
+   * component.
    */
   isLabelVisible: PropTypes.bool,
   /**
