@@ -72,7 +72,7 @@ settings. See `.env.dist` for available options.
 
 Open the project in an IDE that supports [Development Containers] (e.g.
 [Visual Studio Code][vscode-devcontainers], [JetBrains IDEs][jetbrains-devcontainers]).
-The IDE will automatically setup the environment using the configuration in
+The IDE will automatically set up the environment using the configuration in
 `.devcontainer/devcontainer.json`.
 
 #### Using Docker Compose
@@ -193,7 +193,7 @@ mkdocs build
 To start building JavaScript files in watch mode:
 
 ```bash
-npm run start
+npm start
 ```
 
 To start the documentation server:

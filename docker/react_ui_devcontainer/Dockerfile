@@ -1,4 +1,4 @@
-FROM debian:bookworm AS react-ui-devcontainer
+FROM debian:bookworm-slim AS react-ui-devcontainer
 
 # Build arguments for user configuration
 # Those can be changed using fixuid's remapping feature when running the container

@@ -5,7 +5,7 @@ DEFAULT_USER_ID=1000
 DEFAULT_GROUP_ID=1000
 
 set -e
-trap 'echo "Failed to setup project"; rf -f .env.temp; exit 1' ERR
+trap 'echo "Failed to set up project"; rm -f .env.temp; exit 1' ERR
 
 # Function to handle sed command with cross-platform compatibility
 sed_cmd() {
