@@ -1406,6 +1406,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#supported-form-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Form Fields
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#vertical-layout" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1547,17 +1558,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#full-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Full Example
-      
-    </span>
-  </a>
   
 </li>
       
@@ -3085,6 +3085,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#supported-form-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Form Fields
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#vertical-layout" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3230,17 +3241,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#full-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Full Example
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#forwarding-html-attributes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3334,7 +3334,8 @@
 <pre class="highlight"><code class="language-js">import { FormLayout } from '@react-ui-org/react-ui';</code></pre>
 <p>And use it:</p>
 <pre class="highlight"><code class="language-docoff-react-preview">&lt;FormLayout&gt;
-  &lt;TextField label="A form element" /&gt;
+  &lt;TextField label="A text field" /&gt;
+  &lt;Button label="Submit" /&gt;
 &lt;/FormLayout&gt;</code></pre>
 <p>See <a href="#api">API</a> for all available options.</p>
 <h2 id="general-guidelines">General Guidelines</h2>
@@ -3344,19 +3345,15 @@ make building <strong>vertical and horizontal forms</strong> easy. It uses the r
 the job: the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout">CSS grid layout</a>.</p>
 <ul>
 <li>
-<p>Put <strong>only form field components</strong> from React UI inside the FormLayout and
-  make sure they are <strong>direct descendants</strong> of it (React <a href="https://reactjs.org/docs/fragments.html">fragments</a> are
-  supported!). All React UI form components are ready for this use case and
-  don't need to be wrapped in any <code>div</code>s. Namely, the FormLayout supports the
-  following React UI components:
-  <a href="/components/CheckboxField">CheckboxField</a>,
-  <a href="/components/Radio">Radio</a>, <a href="/components/SelectField">SelectField</a>,
-  <a href="/components/TextArea">TextArea</a>, <a href="/components/TextField">TextField</a>,
-  and <a href="/components/Toggle">Toggle</a>.</p>
+<p>Put <strong>only form field components or buttons</strong> from React UI inside the
+  FormLayout and make sure they are <strong>direct descendants</strong> of it (React
+  <a href="https://reactjs.org/docs/fragments.html">fragments</a> are supported!). All React UI form components are
+  <a href="#supported-form-fields">ready for this use case</a>, no wrapping <code>&lt;div&gt;</code>s are
+  needed.</p>
 </li>
 <li>
-<p>Use the <a href="#custom-fields">FormLayoutCustomField</a> component when you need to
-  place any <strong>custom content</strong> inside the FormLayout. This layout helper ensures
+<p>To <strong>place any custom content</strong> inside the FormLayout, use the
+  <a href="#custom-fields">FormLayoutCustomField</a> component. This layout helper ensures
   your content is properly spaced and aligned with other FormLayout elements.
   Do <strong>not</strong> try to put any custom HTML or React components directly into
   FormLayout without wrapping it with the FormLayoutCustomField first.</p>
@@ -3366,216 +3363,12 @@ the job: the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_
 for your FormLayout. This prevents FormLayout from unexpectedly growing in
 browsers that <a href="https://github.com/react-ui-org/react-ui/issues/232">don't support</a> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Subgrid">CSS subgrid</a> in cases when
 there are longer validation messages or help texts.</p>
-<h2 id="vertical-layout">Vertical Layout</h2>
-<p>Vertical FormLayout works similar to single-column <a href="/components/Grid">Grid</a>
-layout while it also forces vertical layout mode on form fields. To use this
-layout, simply wrap your form fields with the FormLayout component:</p>
-<pre class="highlight"><code class="language-docoff-react-preview">&lt;FormLayout&gt;
-  &lt;TextField label="A form element" /&gt;
-  &lt;TextField label="Another form element" /&gt;
-  &lt;TextField label="Yet another one" /&gt;
-&lt;/FormLayout&gt;</code></pre>
-<h2 id="horizontal-layout">Horizontal Layout</h2>
-<p>Horizontal FormLayout is designed for horizontal form fields: it nicely <strong>aligns
-labels and inputs in an organized grid.</strong> It is applied starting from the <code>md</code>
-viewport size onward and it forces the horizontal layout on the fields.</p>
-<pre class="highlight"><code class="language-docoff-react-preview">&lt;FormLayout fieldLayout="horizontal"&gt;
-  &lt;TextField label="A form element" /&gt;
-  &lt;TextField label="Another form element" /&gt;
-  &lt;TextField label="Yet another one" /&gt;
-&lt;/FormLayout&gt;</code></pre>
-<h3 id="label-width">Label Width</h3>
-<p>In the horizontal layout mode, it's possible to fine-tune the way how the form
-will be aligned through the <code>labelWidth</code> option to cover various design
-requirements. It comes with <strong>three globally shared options:</strong> default width,
-auto width, and limited width. For cases where an individual manual width works
-better, there is the <strong>local custom width mode</strong> which enables setting a width
-that is applied just for the current FormLayout.</p>
-<p>👉 All global label width options can be easily <a href="/docs/customize/theming/overview">customized</a>
-with CSS custom properties.</p>
-<h4 id="label-width-options">Label Width Options</h4>
-<ul>
-<li>
-<p>The <code>default</code> mode (global) sets the width of all labels to a <strong>global default
-  value</strong> which is 10 em.</p>
-</li>
-<li>
-<p>The <code>auto</code> mode (global) aligns the form <strong>according to the longest label.</strong></p>
-</li>
-<li>
-<p>The <code>limited</code> mode (global) works as <code>auto</code> except it's intended for values
-  that <strong>set a limit for the label width.</strong> Its default value is
-  <code>fitcontent(50%)</code> which also aligns the form according to the longest label
-  like <code>auto</code>, but with the difference that the labels cannot be wider than
-  50 % of the FormLayout.</p>
-</li>
-<li>
-<p>The <code>custom</code> mode (local) allows you to enter any <strong>custom label width for
-  individual FormLayouts.</strong></p>
-</li>
-</ul>
-<pre class="highlight"><code class="language-docoff-react-preview">React.createElement(() =&gt; {
-  const [labelWidth, setLabelWidth] = React.useState('default');
-  const [customLabelWidth, setCustomLabelWidth] = React.useState('20em');
-  return (
-    &lt;div&gt;
-      &lt;Toolbar align="baseline"&gt;
-        &lt;ToolbarItem&gt;
-          &lt;span id="label-width-options-label"&gt;Label width:&lt;/span&gt;
-        &lt;/ToolbarItem&gt;
-        &lt;ToolbarItem&gt;
-          &lt;ButtonGroup aria-labelledby="label-width-options-label"&gt;
-            &lt;Button
-              color={labelWidth === 'default' ? 'selected' : 'secondary'}
-              label="default"
-              onClick={() =&gt; setLabelWidth('default')}
-            /&gt;
-            &lt;Button
-              color={labelWidth === 'auto' ? 'selected' : 'secondary'}
-              label="auto"
-              onClick={() =&gt; setLabelWidth('auto')}
-            /&gt;
-            &lt;Button
-              color={labelWidth === 'limited' ? 'selected' : 'secondary'}
-              label="limited"
-              onClick={() =&gt; setLabelWidth('limited')}
-            /&gt;
-            &lt;Button
-              color={labelWidth === 'custom' ? 'selected' : 'secondary'}
-              label="custom"
-              onClick={() =&gt; setLabelWidth('custom')}
-            /&gt;
-          &lt;/ButtonGroup&gt;
-        &lt;/ToolbarItem&gt;
-        {labelWidth === 'custom' &amp;&amp; (
-          &lt;ToolbarItem&gt;
-            &lt;TextField
-              inputSize={5}
-              isLabelVisible={false}
-              label="Custom label width"
-              layout="horizontal"
-              onChange={(e) =&gt; setCustomLabelWidth(e.target.value)}
-              value={customLabelWidth}
-            /&gt;
-          &lt;/ToolbarItem&gt;
-        )}
-      &lt;/Toolbar&gt;
-      &lt;FormLayout
-        fieldLayout="horizontal"
-        labelWidth={labelWidth === 'custom' ? customLabelWidth : labelWidth}
-      &gt;
-        &lt;TextField label="A form element" /&gt;
-        &lt;TextField
-          label={'Another form element with a very long label that is so '
-            + 'long that in the auto mode, it should make the label column '
-            + 'grow until the inputs reach the end of the line, but it will '
-            + 'not exceed 50 % of the FormLayout width in the limited label '
-            + 'width mode'}
-        /&gt;
-        &lt;TextField label="Yet another one" /&gt;
-      &lt;/FormLayout&gt;
-    &lt;/div&gt;
-  );
-});</code></pre>
-<h3 id="limitations">Limitations</h3>
-<h4 id="label-position">Label Position</h4>
-<p>Label position of inline form fields (CheckboxField, Toggle) is ignored in
-horizontal FormLayout.</p>
-<h4 id="modals">Modals</h4>
-<p>Please note the <code>auto</code> and <code>limited</code> label width options may not function
-correctly in combination with other auto layout mechanisms, e.g. the auto-width
-<a href="/components/Modal">Modal</a>. It's just too much of magic that does not quite
-work together yet 🎩.</p>
-<h2 id="custom-fields">Custom Fields</h2>
-<p>You can even place any content you need into the FormLayout — just wrap it with
-the FormLayoutCustomField component. This layout
-helper ensures your content is properly spaced and aligned with to other
-FormLayout elements. FormLayoutCustomFields are designed to work solely inside
-the FormLayout component.</p>
-<pre class="highlight"><code class="language-docoff-react-preview">&lt;FormLayout fieldLayout="horizontal" labelWidth="auto"&gt;
-  &lt;TextField label="A form element" /&gt;
-  &lt;FormLayoutCustomField label="Optional custom field label"&gt;
-    &lt;docoff-placeholder bordered&gt;Custom field content&lt;/docoff-placeholder&gt;
-  &lt;/FormLayoutCustomField&gt;
-  &lt;TextField label="Another form element" /&gt;
-&lt;/FormLayout&gt;</code></pre>
-<p>👉 While you can set FormLayoutCustomField as <code>disabled</code>, <code>valid</code> or <code>required</code>
-and its styles may affect contained form fields through CSS cascade, don't
-forget to mirror the aforementioned properties to the contained form fields too
-as API options as such are <strong>not</strong> inherited.</p>
-<h3 id="label-alignment">Label Alignment</h3>
-<p>If you are in a situation with one or more box form fields inside your
-FormLayoutCustomField, you may want to have its label aligned with the fields
-inside. Since it's <a href="https://github.com/react-ui-org/react-ui/issues/265">not quite possible to do this automatically</a> due to
-limited browser support, there is <code>innerFieldSize</code> option which accepts any of
-existing box field sizes (small, medium, or large) and is intended right for
-this task.</p>
-<pre class="highlight"><code class="language-docoff-react-preview">&lt;FormLayout fieldLayout="horizontal" labelWidth="auto"&gt;
-  &lt;TextField label="A form element" /&gt;
-  &lt;FormLayoutCustomField
-    innerFieldSize="medium"
-    label="Custom field label aligned to inner text input"
-  &gt;
-    &lt;TextField
-      isLabelVisible={false}
-      label="A form element"
-      placeholder="Text field with invisible label"
-    /&gt;
-  &lt;/FormLayoutCustomField&gt;
-  &lt;TextField label="Another form element" /&gt;
-&lt;/FormLayout&gt;</code></pre>
-<h3 id="validation-states">Validation States</h3>
-<p>Custom fields support the same validation states as regular form fields to
-provide labels with optional feedback style.</p>
-<pre class="highlight"><code class="language-docoff-react-preview">&lt;FormLayout fieldLayout="horizontal" labelWidth="auto"&gt;
-  &lt;TextField label="A form element" /&gt;
-  &lt;FormLayoutCustomField
-    label="Custom field label in valid state"
-    validationState="valid"
-  &gt;
-    &lt;docoff-placeholder bordered&gt;Custom field content&lt;/docoff-placeholder&gt;
-  &lt;/FormLayoutCustomField&gt;
-  &lt;TextField label="Another form element" /&gt;
-&lt;/FormLayout&gt;</code></pre>
-<h3 id="accessibility">Accessibility</h3>
-<p>If possible, use the <code>labelForId</code> option to provide ID of contained form field
-so the field remains accessible via custom field label.</p>
-<p>You can also specify size of contained form field so custom field label is
-properly vertically aligned.</p>
-<pre class="highlight"><code class="language-docoff-react-preview">React.createElement(() =&gt; {
-  const [isChecked, setIsChecked] = React.useState(false);
-  return (
-    &lt;FormLayout fieldLayout="horizontal" labelWidth="auto"&gt;
-      &lt;TextField label="A form element" /&gt;
-      &lt;FormLayoutCustomField
-        fullWidth
-        label="Custom field label aligned with medium form field"
-        labelForId="my-text-field-custom-accessibility-2"
-        innerFieldSize="medium"
-      &gt;
-        &lt;Toolbar align="middle" dense&gt;
-          &lt;ToolbarItem&gt;
-            &lt;TextField
-              isLabelVisible={false}
-              label="A form element"
-              placeholder="Text field with invisible label"
-            /&gt;
-          &lt;/ToolbarItem&gt;
-          &lt;ToolbarItem&gt;
-            &lt;CheckboxField
-              checked={isChecked}
-              label="Another form field"
-              onChange={() =&gt; setIsChecked(!isChecked)}
-            /&gt;
-          &lt;/ToolbarItem&gt;
-        &lt;/Toolbar&gt;
-      &lt;/FormLayoutCustomField&gt;
-      &lt;TextField label="Another form element" /&gt;
-    &lt;/FormLayout&gt;
-  )
-});</code></pre>
-<h2 id="full-example">Full Example</h2>
-<p>This is a demo of all components supported by FormLayout.</p>
+<h2 id="supported-form-fields">Supported Form Fields</h2>
+<p>The FormLayout supports buttons and all React UI form fields:
+<a href="/components/Button">Button</a>, <a href="/components/CheckboxField">CheckboxField</a>,
+<a href="/components/FileInputField">FileInputField</a>, <a href="/components/Radio">Radio</a>,
+<a href="/components/SelectField">SelectField</a>, <a href="/components/TextArea">TextArea</a>,
+<a href="/components/TextField">TextField</a>, and <a href="/components/Toggle">Toggle</a>.</p>
 <pre class="highlight"><code class="language-docoff-react-preview">React.createElement(() =&gt; {
   const [fieldLayout, setFieldLayout] = React.useState('horizontal');
   const [fruit, setFruit] = React.useState('apple');
@@ -3686,8 +3479,201 @@ properly vertically aligned.</p>
           &lt;TextField label="Code" /&gt;
           &lt;Button label="Apply" color="secondary" priority="outline" /&gt;
         &lt;/InputGroup&gt;
+        &lt;Button label="Submit" /&gt;
       &lt;/FormLayout&gt;
     &lt;/div&gt;
+  )
+});</code></pre>
+<h2 id="vertical-layout">Vertical Layout</h2>
+<p>Vertical FormLayout works similar to single-column <a href="/components/Grid">Grid</a>
+layout while it also forces vertical layout mode on form fields. To use this
+layout, simply wrap your form fields with the FormLayout component:</p>
+<pre class="highlight"><code class="language-docoff-react-preview">&lt;FormLayout&gt;
+  &lt;TextField label="A form element" /&gt;
+  &lt;TextField label="Another form element" /&gt;
+  &lt;TextField label="Yet another one" /&gt;
+  &lt;Button label="Submit" /&gt;
+&lt;/FormLayout&gt;</code></pre>
+<h2 id="horizontal-layout">Horizontal Layout</h2>
+<p>Horizontal FormLayout is designed for horizontal form fields: it nicely <strong>aligns
+labels and inputs in an organized grid.</strong> It is applied starting from the <code>md</code>
+viewport size onward and it forces the horizontal layout on the fields.</p>
+<pre class="highlight"><code class="language-docoff-react-preview">&lt;FormLayout fieldLayout="horizontal"&gt;
+  &lt;TextField label="A form element" /&gt;
+  &lt;TextField label="Another form element" /&gt;
+  &lt;TextField label="Yet another one" /&gt;
+  &lt;Button label="Submit" /&gt;
+&lt;/FormLayout&gt;</code></pre>
+<h3 id="label-width">Label Width</h3>
+<p>In the horizontal layout mode, it's possible to fine-tune the way how the form
+will be aligned through the <code>labelWidth</code> option to cover various design
+requirements. It comes with <strong>three globally shared options:</strong> default width,
+auto width, and limited width. For cases where an individual manual width works
+better, there is the <strong>local custom width mode</strong> which enables setting a width
+that is applied just for the current FormLayout.</p>
+<p>👉 All global label width options can be easily <a href="/docs/customize/theming/overview">customized</a>
+with CSS custom properties.</p>
+<h4 id="label-width-options">Label Width Options</h4>
+<ul>
+<li>
+<p>The <code>default</code> mode (global) sets the width of all labels to a <strong>global default
+  value</strong> which is 10 em.</p>
+</li>
+<li>
+<p>The <code>auto</code> mode (global) aligns the form <strong>according to the longest label.</strong></p>
+</li>
+<li>
+<p>The <code>limited</code> mode (global) works as <code>auto</code> except it's intended for values
+  that <strong>set a limit for the label width.</strong> Its default value is
+  <code>fitcontent(50%)</code> which also aligns the form according to the longest label
+  like <code>auto</code>, but with the difference that the labels cannot be wider than
+  50 % of the FormLayout.</p>
+</li>
+<li>
+<p>The <code>custom</code> mode (local) allows you to enter any <strong>custom label width for
+  individual FormLayouts.</strong></p>
+</li>
+</ul>
+<pre class="highlight"><code class="language-docoff-react-preview">React.createElement(() =&gt; {
+  const [labelWidth, setLabelWidth] = React.useState('default');
+  const [customLabelWidth, setCustomLabelWidth] = React.useState('20em');
+  return (
+    &lt;div&gt;
+      &lt;Toolbar align="baseline"&gt;
+        &lt;ToolbarItem&gt;
+          &lt;span id="label-width-options-label"&gt;Label width:&lt;/span&gt;
+        &lt;/ToolbarItem&gt;
+        &lt;ToolbarItem&gt;
+          &lt;ButtonGroup aria-labelledby="label-width-options-label"&gt;
+            &lt;Button
+              color={labelWidth === 'default' ? 'selected' : 'secondary'}
+              label="default"
+              onClick={() =&gt; setLabelWidth('default')}
+            /&gt;
+            &lt;Button
+              color={labelWidth === 'auto' ? 'selected' : 'secondary'}
+              label="auto"
+              onClick={() =&gt; setLabelWidth('auto')}
+            /&gt;
+            &lt;Button
+              color={labelWidth === 'limited' ? 'selected' : 'secondary'}
+              label="limited"
+              onClick={() =&gt; setLabelWidth('limited')}
+            /&gt;
+            &lt;Button
+              color={labelWidth === 'custom' ? 'selected' : 'secondary'}
+              label="custom"
+              onClick={() =&gt; setLabelWidth('custom')}
+            /&gt;
+          &lt;/ButtonGroup&gt;
+        &lt;/ToolbarItem&gt;
+        {labelWidth === 'custom' &amp;&amp; (
+          &lt;ToolbarItem&gt;
+            &lt;TextField
+              inputSize={5}
+              isLabelVisible={false}
+              label="Custom label width"
+              layout="horizontal"
+              onChange={(e) =&gt; setCustomLabelWidth(e.target.value)}
+              value={customLabelWidth}
+            /&gt;
+          &lt;/ToolbarItem&gt;
+        )}
+      &lt;/Toolbar&gt;
+      &lt;FormLayout
+        fieldLayout="horizontal"
+        labelWidth={labelWidth === 'custom' ? customLabelWidth : labelWidth}
+      &gt;
+        &lt;TextField label="A form element" /&gt;
+        &lt;TextField
+          label={'Another form element with a very long label that is so '
+            + 'long that in the auto mode, it should make the label column '
+            + 'grow until the inputs reach the end of the line, but it will '
+            + 'not exceed 50 % of the FormLayout width in the limited label '
+            + 'width mode'}
+        /&gt;
+        &lt;TextField label="Yet another one" /&gt;
+      &lt;/FormLayout&gt;
+    &lt;/div&gt;
+  );
+});</code></pre>
+<h3 id="limitations">Limitations</h3>
+<h4 id="label-position">Label Position</h4>
+<p>Label position of inline form fields (CheckboxField, Toggle) is ignored in
+horizontal FormLayout.</p>
+<h4 id="modals">Modals</h4>
+<p>Please note the <code>auto</code> and <code>limited</code> label width options may not function
+correctly in combination with other auto layout mechanisms, e.g. the auto-width
+<a href="/components/Modal">Modal</a>. It's just too much of magic that does not quite
+work together yet 🎩.</p>
+<h2 id="custom-fields">Custom Fields</h2>
+<p>You can even place any content you need into the FormLayout — just wrap it with
+the FormLayoutCustomField component. This layout
+helper ensures your content is properly spaced and aligned with to other
+FormLayout elements. FormLayoutCustomFields are designed to work solely inside
+the FormLayout component.</p>
+<pre class="highlight"><code class="language-docoff-react-preview">&lt;FormLayout fieldLayout="horizontal" labelWidth="auto"&gt;
+  &lt;FormLayoutCustomField label="Optional custom field label"&gt;
+    &lt;docoff-placeholder bordered&gt;Custom field content&lt;/docoff-placeholder&gt;
+  &lt;/FormLayoutCustomField&gt;
+&lt;/FormLayout&gt;</code></pre>
+<p>👉 While you can set FormLayoutCustomField as <code>disabled</code>, <code>valid</code> or <code>required</code>
+and its styles may affect contained form fields through CSS cascade, don't
+forget to mirror the aforementioned properties to the contained form fields too
+as API options as such are <strong>not</strong> inherited.</p>
+<h3 id="label-alignment">Label Alignment</h3>
+<p>If you are in a situation with one or more box form fields inside your
+FormLayoutCustomField, you may want to have its label aligned with the fields
+inside. Since it's <a href="https://github.com/react-ui-org/react-ui/issues/265">not quite possible to do this automatically</a> due to
+limited browser support, there is <code>innerFieldSize</code> option which accepts any of
+existing box field sizes (small, medium, or large) and is intended right for
+this task.</p>
+<pre class="highlight"><code class="language-docoff-react-preview">&lt;FormLayout fieldLayout="horizontal" labelWidth="auto"&gt;
+  &lt;FormLayoutCustomField
+    innerFieldSize="medium"
+    label="Custom field label aligned to inner text input"
+  &gt;
+    &lt;TextField
+      isLabelVisible={false}
+      label="A form element"
+      placeholder="Text field with invisible label"
+    /&gt;
+  &lt;/FormLayoutCustomField&gt;
+&lt;/FormLayout&gt;</code></pre>
+<h3 id="validation-states">Validation States</h3>
+<p>Custom fields support the same validation states as regular form fields to
+provide labels with optional feedback style.</p>
+<pre class="highlight"><code class="language-docoff-react-preview">&lt;FormLayout fieldLayout="horizontal" labelWidth="auto"&gt;
+  &lt;FormLayoutCustomField
+    label="Custom field label in valid state"
+    validationState="valid"
+  &gt;
+    &lt;docoff-placeholder bordered&gt;Custom field content&lt;/docoff-placeholder&gt;
+  &lt;/FormLayoutCustomField&gt;
+&lt;/FormLayout&gt;</code></pre>
+<h3 id="accessibility">Accessibility</h3>
+<p>If possible, use the <code>labelForId</code> option to provide ID of contained form field
+so the field remains accessible via custom field label.</p>
+<p>You can also specify size of contained form field so custom field label is
+properly vertically aligned.</p>
+<pre class="highlight"><code class="language-docoff-react-preview">React.createElement(() =&gt; {
+  const [isChecked, setIsChecked] = React.useState(false);
+  return (
+    &lt;FormLayout fieldLayout="horizontal" labelWidth="auto"&gt;
+      &lt;FormLayoutCustomField
+        fullWidth
+        label="Custom field label associated with a text field"
+        labelForId="my-text-field-custom-accessibility"
+        innerFieldSize="medium"
+      &gt;
+        &lt;TextField
+          id="my-text-field-custom-accessibility"
+          isLabelVisible={false}
+          label="A form element"
+          placeholder="Text field with invisible label"
+        /&gt;
+      &lt;/FormLayoutCustomField&gt;
+    &lt;/FormLayout&gt;
   )
 });</code></pre>
 <h2 id="forwarding-html-attributes">Forwarding HTML Attributes</h2>
@@ -3866,6 +3852,8 @@ helps to improve its accessibility.</p>
         <script src="../../docs/_assets/js/ruiIcon.js"></script>
       
         <script src="../../docs/_assets/js/ruiSwatch.js"></script>
+      
+        <script src="../../docs/_assets/js/setupDocoff.js"></script>
       
         <script src="https://unpkg.com/@react-ui-org/docoff@0.5.4/public/generated/bundle.js"></script>
       

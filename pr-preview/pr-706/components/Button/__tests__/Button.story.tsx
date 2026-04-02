@@ -3,6 +3,7 @@ import React, {
   useRef,
 } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
+import { FormLayout } from '../../FormLayout';
 import { Button } from '..';
 
 // Types for story component will be improved when we have full TypeScript support
@@ -40,3 +41,25 @@ export const ButtonForRefTest = ({
     />
   );
 };
+
+export const ButtonInVerticalFormLayoutForTest = ({
+  ...props
+}: ButtonForTestProps) => (
+  <FormLayout fieldLayout="vertical">
+    <Button
+      label="Button"
+      {...props}
+    />
+  </FormLayout>
+);
+
+export const ButtonInHorizontalFormLayoutForTest = ({
+  ...props
+}: ButtonForTestProps) => (
+  <FormLayout fieldLayout="horizontal">
+    <Button
+      label="Button"
+      {...props}
+    />
+  </FormLayout>
+);
