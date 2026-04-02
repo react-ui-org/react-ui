@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# This script is a wrapper around the `npm` command that executes it within the Docker container.
+# Docker Socket is owned by root, so we need to use `sudo` to access it.
 if [ "$1" = "run" ] && echo "$2" | grep -q '^test:playwright'; then
   sudo docker compose -p "$COMPOSE_PROJECT_NAME" exec playwright npm "$@"
 else
