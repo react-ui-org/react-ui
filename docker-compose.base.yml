@@ -48,7 +48,8 @@ services:
   node:
     build: docker/node
     user: ${COMPOSE_UID}:${COMPOSE_GID}
-    command: sh -c 'if [ "$$COMPOSE_START_JS_FILES_WATCHER_AT_START" = "true" ]; then npm ci && npm start; else sleep infinity; fi'
+    command: sleep infinity
+    entrypoint: sh -c 'if [ "$$COMPOSE_START_JS_FILES_WATCHER_AT_START" = "true" ]; then npm ci && npm start; fi'
     env_file:
       - .env
     volumes:
@@ -70,7 +71,8 @@ services:
   docs:
     build: docker/mkdocs
     user: ${COMPOSE_UID}:${COMPOSE_GID}
-    entrypoint: sh -c 'if [ "$$COMPOSE_START_DOCS_SERVER_AT_START" = "true" ]; then mkdocs serve; else sleep infinity; fi'
+    command: sleep infinity
+    entrypoint: sh -c 'if [ "$$COMPOSE_START_DOCS_SERVER_AT_START" = "true" ]; then mkdocs serve; fi'
     env_file:
       - .env
     ports:
