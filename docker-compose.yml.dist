@@ -1,0 +1,42 @@
+services:
+  # This service is responsible for providing the main development environment for developers
+  devcontainer:
+    extends:
+      file: docker-compose.base.yml
+      service: devcontainer
+    # Use `build` when you want to customize the devcontainer using `docker/react_ui_devcontainer_local/Dockerfile`
+    # build:
+    #   context: ./docker/react_ui_devcontainer_local/
+    #   dockerfile: Dockerfile
+    # Use `image` when you want to use the default devcontainer
+    image: react-ui_devcontainer
+
+  # This service provides Node environment and NPM
+  node:
+    extends:
+      file: docker-compose.base.yml
+      service: node
+
+  # This service provides Playwright environment and tools for browser automation and testing
+  playwright:
+    extends:
+      file: docker-compose.base.yml
+      service: playwright
+
+  # This provides server for documentation
+  docs:
+    extends:
+      file: docker-compose.base.yml
+      service: docs
+
+volumes:
+  # The following volumes are used to persist data (e.g. terminal history, AI tools data, etc.) across container restarts
+  terminal-history:
+  claude-config:
+  claude-share:
+  claude-state:
+  copilot:
+  copilot-config:
+  opencode-config:
+  opencode-share:
+  opencode-state:
