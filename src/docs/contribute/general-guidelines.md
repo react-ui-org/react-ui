@@ -163,6 +163,32 @@ The `devcontainer` depends on the following service containers defined in
 All service containers mount the workspace at `/workspace` so that file changes
 are shared.
 
+## Automatic Service Bootstrap
+
+> You can skip this section if you do not want to automatically
+> [install dependencies](#installing-dependencies), [build](#building), and
+> [run](#running) the application, or if you are not an experienced developer.
+
+Setting `COMPOSE_AUTOSTART=true` in `.env` makes the `node` and `docs`
+service containers automatically install dependencies, build, and run the
+application when they start. The default is `false`.
+
+Setting `COMPOSE_AUTOSTART=true` comes with the following trade-offs:
+
+* **Changes to dependencies require a container restart.** The watcher owns the
+  service container's entrypoint, so updating dependencies (e.g. pulling a
+  branch that changes `package-lock.json`, or running `npm install <pkg>`)
+  only takes effect after restarting the `node` service container. The same
+  applies to changes that affect the documentation server.
+* **Service logs are not directly visible.** The watcher and docs server run in
+  their own service containers rather than in your `devcontainer` shell, so
+  their output is not shown alongside your regular terminal work. You have to
+  inspect it via `docker compose logs <service>` from the host.
+
+> If something is not working as expected, or you are not sure what is going on,
+> set `COMPOSE_AUTOSTART=false`, restart the containers, and follow the
+> manual steps in the sections below instead.
+
 ## Installing Dependencies
 
 Run it on initial setup or when dependencies have changed:
@@ -186,9 +212,6 @@ mkdocs build
 ```
 
 ## Running
-
-> See `.env` whether both the application and documentation server are not configured
-> to auto-start on container startup. If they are, you can skip the following steps.
 
 To start building JavaScript files in watch mode:
 

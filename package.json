@@ -54,6 +54,7 @@
     "lint": "npm run eslint && npm run markdownlint && npm run stylelint",
     "markdownlint": "markdownlint-cli2 \"README.md\" \"src/**/*.md\"",
     "postbuild": "npm run copy",
+    "postinstall": "sh scripts/write-lockfile-hash.sh",
     "precopy": "rm -rf dist && mkdir dist",
     "prepublishOnly": "npm run build",
     "start": "webpack --watch --mode=development",

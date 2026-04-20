@@ -48,8 +48,7 @@ services:
   node:
     build: docker/node
     user: ${COMPOSE_UID}:${COMPOSE_GID}
-    command: sleep infinity
-    entrypoint: sh -c 'if [ "$$COMPOSE_START_JS_FILES_WATCHER_AT_START" = "true" ]; then npm ci && npm start; fi'
+    entrypoint: sh -c 'if [ "$$COMPOSE_AUTOSTART" = "true" ]; then sh scripts/auto-start-node.sh; else sleep infinity; fi'
     env_file:
       - .env
     volumes:
@@ -71,12 +70,11 @@ services:
   docs:
     build: docker/mkdocs
     user: ${COMPOSE_UID}:${COMPOSE_GID}
-    command: sleep infinity
-    entrypoint: sh -c 'if [ "$$COMPOSE_START_DOCS_SERVER_AT_START" = "true" ]; then mkdocs serve; fi'
+    entrypoint: sh -c 'if [ "$$COMPOSE_AUTOSTART" = "true" ]; then sh scripts/auto-start-mkdocs.sh; else sleep infinity; fi'
     env_file:
       - .env
     ports:
-      - ${COMPOSE_START_DOCS_SERVER_PORT}:8000
+      - ${COMPOSE_DOCS_SERVER_PORT}:8000
     volumes:
       - .:/workspace:z
 
