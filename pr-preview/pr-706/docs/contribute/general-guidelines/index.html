@@ -2817,6 +2817,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#automatic-service-bootstrap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automatic Service Bootstrap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#installing-dependencies" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3284,6 +3295,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#automatic-service-bootstrap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automatic Service Bootstrap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#installing-dependencies" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3520,6 +3542,32 @@ See <a href="#customization">Customization</a> for details.</p>
 </table>
 <p>All service containers mount the workspace at <code>/workspace</code> so that file changes
 are shared.</p>
+<h2 id="automatic-service-bootstrap">Automatic Service Bootstrap</h2>
+<blockquote>
+<p>You can skip this section if you do not want to automatically
+<a href="#installing-dependencies">install dependencies</a>, <a href="#building">build</a>, and
+<a href="#running">run</a> the application, or if you are not an experienced developer.</p>
+</blockquote>
+<p>Setting <code>COMPOSE_AUTOSTART=true</code> in <code>.env</code> makes the <code>node</code> and <code>docs</code>
+service containers automatically install dependencies, build, and run the
+application when they start. The default is <code>false</code>.</p>
+<p>Setting <code>COMPOSE_AUTOSTART=true</code> comes with the following trade-offs:</p>
+<ul>
+<li><strong>Changes to dependencies require a container restart.</strong> The watcher owns the
+  service container's entrypoint, so updating dependencies (e.g. pulling a
+  branch that changes <code>package-lock.json</code>, or running <code>npm install &lt;pkg&gt;</code>)
+  only takes effect after restarting the <code>node</code> service container. The same
+  applies to changes that affect the documentation server.</li>
+<li><strong>Service logs are not directly visible.</strong> The watcher and docs server run in
+  their own service containers rather than in your <code>devcontainer</code> shell, so
+  their output is not shown alongside your regular terminal work. You have to
+  inspect it via <code>docker compose logs &lt;service&gt;</code> from the host.</li>
+</ul>
+<blockquote>
+<p>If something is not working as expected, or you are not sure what is going on,
+set <code>COMPOSE_AUTOSTART=false</code>, restart the containers, and follow the
+manual steps in the sections below instead.</p>
+</blockquote>
 <h2 id="installing-dependencies">Installing Dependencies</h2>
 <p>Run it on initial setup or when dependencies have changed:</p>
 <pre class="highlight"><code class="language-bash">npm ci</code></pre>
@@ -3529,10 +3577,6 @@ are shared.</p>
 <p>To build the documentation:</p>
 <pre class="highlight"><code class="language-bash">mkdocs build</code></pre>
 <h2 id="running">Running</h2>
-<blockquote>
-<p>See <code>.env</code> whether both the application and documentation server are not configured
-to auto-start on container startup. If they are, you can skip the following steps.</p>
-</blockquote>
 <p>To start building JavaScript files in watch mode:</p>
 <pre class="highlight"><code class="language-bash">npm start</code></pre>
 <p>To start the documentation server:</p>
