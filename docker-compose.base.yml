@@ -14,6 +14,10 @@ services:
         condition: service_started
       docs:
         condition: service_started
+    # Run as host UID/GID so files created in mounted volumes are owned correctly on the host.
+    # The images use `fixuid` (https://github.com/boxboat/fixuid) to remap the built-in `developer`
+    # user to these IDs at startup — the `user:` directive is required for that remap to work.
+    # Applied to all services below for the same reason.
     user: ${COMPOSE_UID}:${COMPOSE_GID}
     # Keep the container running indefinitely to allow developers to attach to it and use it as their development environment
     command: sleep infinity

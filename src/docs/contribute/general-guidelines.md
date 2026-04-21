@@ -14,15 +14,17 @@ The `devcontainer` orchestrates other service containers behind the scenes via
 Docker-from-Docker. Other containers are implementation details and should not
 be accessed directly.
 
-There are two supported ways to access the development environment. Recommended
-way is to use [Development Containers] with an IDE, which provides a more
-seamless experience. The alternative is to use Docker Compose directly.
+There are two supported ways to access the development environment. The
+recommended way is to use [Development Containers] with an IDE, which provides
+a more seamless experience. The alternative is to use Docker Compose directly,
+which is suitable for cases when IDE integration is not needed
+(e.g. terminal-only workflows).
 
 ### Requirements
 
 * [Docker]
 * [Docker Compose]
-* [Development Containers] (strongly recommended)
+* [Development Containers] (Are recommended)
 
 ### Setup
 
