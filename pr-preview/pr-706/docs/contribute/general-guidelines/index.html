@@ -3423,14 +3423,16 @@ are container-agnostic and are meant to be run directly inside the <code>devcont
 <p>The <code>devcontainer</code> orchestrates other service containers behind the scenes via
 Docker-from-Docker. Other containers are implementation details and should not
 be accessed directly.</p>
-<p>There are two supported ways to access the development environment. Recommended
-way is to use <a href="https://containers.dev/">Development Containers</a> with an IDE, which provides a more
-seamless experience. The alternative is to use Docker Compose directly.</p>
+<p>There are two supported ways to access the development environment. The
+recommended way is to use <a href="https://containers.dev/">Development Containers</a> with an IDE, which provides
+a more seamless experience. The alternative is to use Docker Compose directly,
+which is suitable for cases when IDE integration is not needed
+(e.g. terminal-only workflows).</p>
 <h3 id="requirements">Requirements</h3>
 <ul>
 <li><a href="https://docs.docker.com/get-started/">Docker</a></li>
 <li><a href="https://docs.docker.com/compose/">Docker Compose</a></li>
-<li><a href="https://containers.dev/">Development Containers</a> (strongly recommended)</li>
+<li><a href="https://containers.dev/">Development Containers</a> (Are recommended)</li>
 </ul>
 <h3 id="setup">Setup</h3>
 <h4 id="automatic-setup">Automatic setup</h4>
