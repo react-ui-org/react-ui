@@ -30,15 +30,15 @@ which is suitable for cases when IDE integration is not needed
 
 #### Automatic setup
 
+> You can skip this section when using [Development Containers]. They run this
+> script automatically the first time the project is opened.
+
 Run the setup script to automatically create and configure all necessary files
 and build Docker images:
 
 ```bash
 bash setup.sh
 ```
-
-[Development Containers] run this script automatically if the project has not
-been set up prior to opening it.
 
 #### Manual setup
 
@@ -170,6 +170,8 @@ are shared.
 > You can skip this section if you do not want to automatically
 > [install dependencies](#installing-dependencies), [build](#building), and
 > [run](#running) the application, or if you are not an experienced developer.
+> If you do use it, you can skip those sections as well, since the steps they
+> describe are performed automatically.
 
 Setting `COMPOSE_AUTOSTART=true` in `.env` makes the `node` and `docs`
 service containers automatically install dependencies, build, and run the
