@@ -3436,11 +3436,13 @@ which is suitable for cases when IDE integration is not needed
 </ul>
 <h3 id="setup">Setup</h3>
 <h4 id="automatic-setup">Automatic setup</h4>
+<blockquote>
+<p>You can skip this section when using <a href="https://containers.dev/">Development Containers</a>. They run this
+script automatically the first time the project is opened.</p>
+</blockquote>
 <p>Run the setup script to automatically create and configure all necessary files
 and build Docker images:</p>
 <pre class="highlight"><code class="language-bash">bash setup.sh</code></pre>
-<p><a href="https://containers.dev/">Development Containers</a> run this script automatically if the project has not
-been set up prior to opening it.</p>
 <h4 id="manual-setup">Manual setup</h4>
 <p>If you prefer to set up the project manually:</p>
 <ol>
@@ -3548,7 +3550,9 @@ are shared.</p>
 <blockquote>
 <p>You can skip this section if you do not want to automatically
 <a href="#installing-dependencies">install dependencies</a>, <a href="#building">build</a>, and
-<a href="#running">run</a> the application, or if you are not an experienced developer.</p>
+<a href="#running">run</a> the application, or if you are not an experienced developer.
+If you do use it, you can skip those sections as well, since the steps they
+describe are performed automatically.</p>
 </blockquote>
 <p>Setting <code>COMPOSE_AUTOSTART=true</code> in <code>.env</code> makes the <code>node</code> and <code>docs</code>
 service containers automatically install dependencies, build, and run the
