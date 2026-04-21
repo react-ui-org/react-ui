@@ -98,6 +98,7 @@ COPY --chmod=+x files/usr/local/bin/claude /usr/local/bin/claude
 COPY --chmod=+x files/usr/local/bin/opencode /usr/local/bin/opencode
 COPY --chmod=+x files/usr/local/bin/docker-entrypoint /usr/local/bin/docker-entrypoint
 COPY --chmod=+x files/home/$USERNAME/shell-init.sh ${HOME}/shell-init.sh
+COPY --chmod=+x files/home/$USERNAME/shell-init.fish ${HOME}/shell-init.fish
 
 # Wrapper scripts that execute commands inside the appropriate Docker containers.
 # These scripts use Docker-from-Docker to run the commands in the context of the
@@ -113,9 +114,9 @@ RUN mkdir -p $HOME/.config/fish && \
     echo 'export PATH="/usr/local/bin:$PATH"' >> $HOME/.bashrc && \
     echo 'export PATH="/usr/local/bin:$PATH"' >> $HOME/.zshrc && \
     echo 'set -gx PATH /usr/local/bin $PATH' >> $HOME/.config/fish/config.fish && \
-    echo '$HOME/shell-init.sh' >> $HOME/.bashrc && \
-    echo '$HOME/shell-init.sh' >> $HOME/.zshrc && \
-    echo '$HOME/shell-init.sh' >> $HOME/.config/fish/config.fish
+    echo '. $HOME/shell-init.sh' >> $HOME/.bashrc && \
+    echo '. $HOME/shell-init.sh' >> $HOME/.zshrc && \
+    echo 'source $HOME/shell-init.fish' >> $HOME/.config/fish/config.fish
 
 # Set the default working directory when starting a container from this image
 WORKDIR /workspace
