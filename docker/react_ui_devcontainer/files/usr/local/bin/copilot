@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/home/developer/.local/bin/copilot --config-dir "/home/developer/.config/copilot" "$@"

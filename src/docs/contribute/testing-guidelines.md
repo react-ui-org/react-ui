@@ -3,9 +3,9 @@
 Tools used to test the application:
 
 * **ESLint** (static code analysis of JS files)
-* **Markdownlint** (static analysis of MD files)
 * **Stylelint** (static code analysis of CSS files)
-* **Jest** (unit testing)
+* **Markdownlint** (static code analysis of Markdown files)
+* **Jest** (unit tests)
 * **Playwright** (visual and functional component testing)
 
 Generally, `npm test` and `npm run test:playwright-ct:all` should be run  within
@@ -13,17 +13,13 @@ their designated Docker containers before pushing changes to the repository.
 
 ## Tools
 
-### Linters (ESlint, Markdownlint, Stylelint)
-
-**On host:**
-
-[Open][gh-gg-node-shell] `node_shell` Docker container:
+You can run all tests with a single command:
 
 ```bash
-docker compose run --rm node_shell
+npm run lint && npm test && npm run test:playwright-ct:all
 ```
 
-**Within `node_shell`:**
+### Linters (ESLint, Markdownlint, Stylelint)
 
 Run linters either all together:
 
@@ -39,51 +35,17 @@ npm run <eslint|markdownlint|stylelint>
 
 ### Jest
 
-**On host:**
-
-[Open][gh-gg-node-shell] `node_shell` Docker container:
-
-```bash
-docker compose run --rm node_shell
-```
-
-**Within `node_shell`:**
-
-Run Jest tests:
-
 ```bash
 npm run test:jest
 ```
 
 ### Playwright
 
-Playwright tests must be run in a Docker container to ensure a uniform
-environment. Otherwise, snapshots would differ between operating systems.
-
-This is the reason why you need to run Playwright tests separately
-from other tools.
-
 #### Configuration
 
-Test parameters can be tweaked by creating and tweaking `.env.playwright` file:
-
-```bash
-cp .env.playwright.dist .env.playwright
-```
+Test parameters can be tweaked by creating and tweaking `.env` file.
 
 #### Running Tests
-
-Playwright tests can be run using the following commands:
-
-**On host:**
-
-[Open][gh-gg-playwright] `playwright` Docker container:
-
-```bash
-docker compose run --rm --service-ports playwright
-```
-
-**Within `playwright`:**
 
 Run tests:
 
@@ -116,6 +78,4 @@ Then open the displayed URL (typically `http://localhost:9323`)
 in your browser. Please note that the test report is only available
 if the tests were run prior to serving the report.
 
-[gh-gg-node-shell]: ./general-guidelines.md#node-shell
-[gh-gg-playwright]: ./general-guidelines.md#playwright
 [playwright-cli]: https://playwright.dev/docs/test-cli#reference

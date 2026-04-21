@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Ensure the developer user owns their home directory and all files within it
+sudo chown -R developer:developer /home/developer
+
+# Remap the developer user's UID/GID to match the host user
+eval "$(fixuid -q)"
+
+# Execute the command passed to the container (e.g. via `command` in docker-compose)
+exec "$@"

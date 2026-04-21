@@ -4,17 +4,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
-All `npm` commands must be run inside Docker containers. Use `node_shell` for most tasks, `playwright` for visual tests.
+All commands below are meant to be run directly inside the Docker container `devcontainer`.
+If you open the project in a Dev Container, you can run these commands without manually
+starting Docker Compose on the host.
 
-```bash
-# Enter node_shell container
-docker compose run --rm node_shell
-
-# Enter playwright container (for visual tests)
-docker compose run --rm --service-ports playwright
-```
-
-**Within `node_shell`:**
 
 ```bash
 npm run lint                          # All linters (ESLint + Stylelint + Markdownlint)
@@ -23,11 +16,6 @@ npm run stylelint                     # SCSS linting
 npm run test:jest                     # All Jest unit tests
 npm run test:jest:ts -- <file>        # Single TypeScript test file
 npm run test:jest:js -- <file>        # Single JavaScript test file
-```
-
-**Within `playwright`:**
-
-```bash
 npm run test:playwright-ct:all                          # All component tests
 npm run test:playwright-ct:all-with-update              # Update snapshots
 npm run test:playwright-ct:all -- -- src/components/Button   # Tests for one component
