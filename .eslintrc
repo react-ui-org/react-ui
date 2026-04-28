@@ -11,7 +11,7 @@
     {
       "files": ["**/*.md"],
       "extends": [
-        "plugin:markdown/recommended"
+        "plugin:markdown/recommended-legacy"
       ]
     }
   ],
