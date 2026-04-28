@@ -143,7 +143,9 @@ test.describe('Radio', () => {
         const component = await mount(
           <RadioForTest
             id={testId}
-            onChange={() => { changeCalled = true; }}
+            onChange={() => {
+              changeCalled = true;
+            }}
             options={options}
           />,
         );

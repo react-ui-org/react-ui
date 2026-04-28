@@ -13,9 +13,9 @@ for two main reasons:
 
 ## Theming Options
 
-[Design tokens](/docs/foundation/design-tokens) define common visual properties like
-colors, fonts, borders, shadows, or spacing. [CSS custom properties] are the
-technical representation of the design tokens in React UI.
+[Design tokens](/docs/foundation/design-tokens) define common visual properties
+like colors, fonts, borders, shadows, or spacing. [CSS custom properties] are
+the technical representation of the design tokens in React UI.
 
 All CSS custom properties in React UI come prefixed with `rui` so they don't
 get in the way of other custom properties in your project.
