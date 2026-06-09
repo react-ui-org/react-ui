@@ -24,6 +24,6 @@ instance?
 
 ## Measures
 
-Always use [spacing values](/docs/foundation/spacing) for all kinds of measures like
-offsets, gaps, or spacings. This helps keep the design consistent across
+Always use [spacing values](/docs/foundation/spacing) for all kinds of measures
+like offsets, gaps, or spacings. This helps keep the design consistent across
 components.

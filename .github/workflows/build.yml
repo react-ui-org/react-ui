@@ -39,7 +39,9 @@ on: [ pull_request ]
 env:
   NODE_ACTIVE_LTS_VERSION: 24
   NODE_PREVIOUS_LTS_VERSION: 22
-  NPM_VERSION: 11
+  # Pin npm version to prevent npm issues from breaking the build
+  # See <https://github.com/nodejs/node/issues/62425#issuecomment-4200715930>
+  NPM_VERSION: 11.11.0
 
 jobs:
   build_on_node_previous_lts:

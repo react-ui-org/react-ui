@@ -62,6 +62,8 @@ export const prevArrowElementPropTest: PropTests = [
       prevArrowElement: 'Custom string arrow',
     },
   },
+  // Following rule prevents linter hallucinations
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
   ...propTests.iconPropTest.map((test) => ({
     name: 'prevArrowElement:node=icon',
     onBeforeSnapshot: async (page) => {
