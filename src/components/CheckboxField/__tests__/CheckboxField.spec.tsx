@@ -7,12 +7,13 @@ import {
   mixPropTests,
   propTests,
 } from '../../../../tests/playwright';
+import type { CheckboxForFormLayoutTestsProps } from './CheckboxField.story';
 import {
-  CheckboxFieldForTest,
   CheckboxFieldForRefTest,
+  CheckboxFieldForTest,
+  CheckboxForFormLayoutLabelWidthTests,
   CheckboxForFormLayoutTests,
 } from './CheckboxField.story';
-import type { CheckboxForFormLayoutTestsProps } from './CheckboxField.story';
 
 test.describe('CheckboxField', () => {
   test.describe('base', () => {
@@ -139,6 +140,13 @@ test.describe('CheckboxField', () => {
 
   test.describe('formLayout', () => {
     test.describe('visual', () => {
+      test('labelWidth:string=100px', async ({ mount }) => {
+        const component = await mount(<CheckboxForFormLayoutLabelWidthTests />);
+
+        const screenshot = await component.screenshot();
+        expect(screenshot).toMatchSnapshot();
+      });
+
       [
         ...propTests.layoutPropTest,
       ].forEach(({

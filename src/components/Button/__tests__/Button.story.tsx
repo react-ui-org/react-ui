@@ -1,16 +1,24 @@
 import React, {
   useEffect,
+  useMemo,
   useRef,
 } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
-import { FormLayout } from '../../FormLayout';
+import {
+  FormLayout,
+  FormLayoutContext,
+} from '../../FormLayout';
 import { Button } from '..';
+import { TextField } from '../../TextField';
 
 // Types for story component will be improved when we have full TypeScript support
 type ButtonForTestProps = ButtonHTMLAttributes<HTMLButtonElement>;
 type ButtonForRefTestProps = ButtonForTestProps & {
   testRefAttrName: string;
   testRefAttrValue: string;
+};
+export type ButtonForFormLayoutTestsProps = ButtonForTestProps & {
+  layout: 'vertical' | 'horizontal'
 };
 
 export const ButtonForTest = ({
@@ -42,10 +50,29 @@ export const ButtonForRefTest = ({
   );
 };
 
+export const ButtonForFormLayoutTests = ({
+  layout,
+  ...props
+}: ButtonForFormLayoutTestsProps) => {
+  const values = useMemo(() => ({ layout }), [layout]);
+
+  return (
+    <FormLayoutContext.Provider
+      value={values}
+    >
+      <Button
+        label="Button"
+        {...props}
+      />
+    </FormLayoutContext.Provider>
+  );
+};
+
 export const ButtonInVerticalFormLayoutForTest = ({
   ...props
 }: ButtonForTestProps) => (
   <FormLayout fieldLayout="vertical">
+    <TextField label="Text field" />
     <Button
       label="Button"
       {...props}
@@ -57,6 +84,7 @@ export const ButtonInHorizontalFormLayoutForTest = ({
   ...props
 }: ButtonForTestProps) => (
   <FormLayout fieldLayout="horizontal">
+    <TextField label="Text field" />
     <Button
       label="Button"
       {...props}
