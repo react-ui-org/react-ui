@@ -178,9 +178,14 @@ position the popover. The allowed props are:
 - `left`
 - `translate`
 - `transform-origin`
+- `visibility`
 
 ⚠️ [`inset`][mdn-inset] is a shorthand for `top right bottom left`, not for
 `inset-*` properties.
+
+ℹ️ `visibility` can be used to hide the Popover before its initial position is
+computed, preventing a flash of the Popover in a wrong position. Set it to
+`hidden` initially, then remove or update it once the position is ready.
 
 As opposed to `top right bottom left` and the `inset` shorthand, `inset-*`
 properties are writing-direction aware.
@@ -307,6 +312,29 @@ React.createElement(() => {
 });
 ```
 
+## z-index
+
+By default, the Popover's `z-index` is `auto`, which means it participates in
+the stacking context of its nearest positioned ancestor. This works well in most
+cases, but can cause the Popover to appear behind other positioned elements such
+as sticky headers, fixed toolbars, or modals.
+
+When that happens, set `--rui-Popover__z-index` to a numeric value high enough
+to place the Popover above the conflicting layer. The override can be applied
+globally or scoped to a specific context:
+
+```css
+/* Global override */
+:root {
+  --rui-Popover__z-index: 1000;
+}
+
+/* Scoped override */
+.my-context {
+  --rui-Popover__z-index: 1000;
+}
+```
+
 ## Controlled Popover
 
 Popover API can be used to control visibility of Popover component. You need to
@@ -379,6 +407,7 @@ which enables [Advanced Positioning](#advanced-positioning).
 | `--rui-Popover__color`                               | Text color                                                   |
 | `--rui-Popover__background-color`                    | Background color                                             |
 | `--rui-Popover__box-shadow`                          | Popover box shadow                                           |
+| `--rui-Popover__z-index`                             | Popover z-index (default: `auto`)                            |
 
 [div-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
 [Floating UI]: https://floating-ui.com/docs/react-dom
