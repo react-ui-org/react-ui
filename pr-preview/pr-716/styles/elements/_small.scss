@@ -1,0 +1,5 @@
+@use "../theme/typography";
+
+small {
+    font-size: typography.$font-size-small;
+}
