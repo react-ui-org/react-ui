@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git show:*)",
+      "Bash(git status:*)",
+      "Bash(npm audit)",
+      "Bash(npm audit signatures)",
+      "Bash(npm ci)",
+      "Bash(npm run build:*)",
+      "Bash(npm run lint)",
+      "Bash(npm run eslint:*)",
+      "Bash(npm run stylelint:*)",
+      "Bash(npm run markdownlint:*)",
+      "Bash(npm start)",
+      "Bash(npm run start:*)",
+      "Bash(npm test)",
+      "Bash(npm run test:jest:*)",
+      "Bash(npm run test:playwright-ct:*)"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "chrome-host"
+  ],
+  "enabledPlugins": {
+    "github@claude-plugins-official": true,
+    "context7@claude-plugins-official": true
+  }
+}

@@ -98,6 +98,9 @@ else
   echo "docker-compose.yml file already exists, skipping creation."
 fi
 
+# Configure the Chrome-host bridge networking (native Docker Engine only)
+sh ./scripts/mcps/chrome-host/mcp-setup.sh
+
 # Build Docker images
 sh ./docker/build-docker-images.sh
 

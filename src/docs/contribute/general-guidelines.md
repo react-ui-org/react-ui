@@ -264,6 +264,10 @@ Actions), please follow these guidelines:
        (#261)_.
     3. Optionally use Markdown code blocks to emphasize, e.g.
        _Create `ScrollView` component (#53)_.
+    4. When a commit fixes a commit already on the current branch (review
+       feedback, a bug or typo in earlier work, a follow-up), commit it as a
+       _fixup_ so history stays atomic after the pre-merge squash, instead of a
+       standalone "fix" commit.
 
 5. **Write clear, helpful and descriptive PR names.**
 

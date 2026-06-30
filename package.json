@@ -58,6 +58,7 @@
     "precopy": "rm -rf dist && mkdir dist",
     "prepublishOnly": "npm run build",
     "start": "webpack --watch --mode=development",
+    "start:chrome": "sh scripts/mcps/chrome-host/start-host-chrome.sh",
     "stylelint": "stylelint \"src/**/*.{css,scss}\" \"!src/docs/_assets/generated/**\" --config stylelint.config.js",
     "test": "npm run test:jest",
     "test:jest": "npm run test:jest:ts && npm run test:jest:js",
