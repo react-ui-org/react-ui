@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "chrome-host": {
+      "command": "sh",
+      "args": ["scripts/mcps/chrome-host/mcp-entry.sh"]
+    }
+  }
+}

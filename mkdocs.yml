@@ -148,6 +148,7 @@ nav:
       - Contribute:
           - General Guidelines: 'docs/contribute/general-guidelines.md'
           - Testing Guidelines: 'docs/contribute/testing-guidelines.md'
+          - AI Integration: 'docs/contribute/ai-integration.md'
           - API Guidelines: 'docs/contribute/api.md'
           - Composition: 'docs/contribute/composition.md'
           - CSS Guidelines: 'docs/contribute/css.md'

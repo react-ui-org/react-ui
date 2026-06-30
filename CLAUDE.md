@@ -1,89 +1,82 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository
+
+## Environment
+
+This project is developed inside a Docker container called `devcontainer`.
+The commands below assume you are running inside the `devcontainer`.
+
+From the host, run them inside it with
+`docker compose exec -T devcontainer <command>` (start it first with
+`docker compose up -d`). The other service containers (`node`, `playwright`,
+`docs`) are implementation details — do not call them directly.
+
+If file `/.dockerenv` is present, you are in a Docker container.
+
+For details, see the
+[Contributing Guide](src/docs/contribute/general-guidelines.md#development-environment).
 
 ## Commands
 
-All commands below are meant to be run directly inside the Docker container `devcontainer`.
-If you open the project in a Dev Container, you can run these commands without manually
-starting Docker Compose on the host.
+Run these inside the `devcontainer` (from the host, prefix with
+`docker compose exec -T devcontainer`). For details, see the
+[Contributing Guide](src/docs/contribute/general-guidelines.md).
 
+| Task                              | Command                                                             |
+|-----------------------------------|---------------------------------------------------------------------|
+| Install JS                        | `npm ci`                                                            |
+| Build library                     | `npm run build`                                                     |
+| Run static checks                 | `npm run lint`                                                      |
+| Run unit tests                    | `npm run test:jest`                                                 |
+| Run a single unit test file       | `npm run test:jest:ts -- <file>` / `npm run test:jest:js -- <file>` |
+| Run component tests               | `npm run test:playwright-ct:all`                                    |
+| Component tests for one component | `npm run test:playwright-ct:all -- -- src/components/Button`        |
+| Update component snapshots        | `npm run test:playwright-ct:all-with-update`                        |
+| Start build watcher               | `npm start`                                                         |
+| Build documentation               | `mkdocs build`                                                      |
+| Serve documentation               | `mkdocs serve`                                                      |
 
-```bash
-npm run lint                          # All linters (ESLint + Stylelint + Markdownlint)
-npm run eslint                        # JS + TS linting
-npm run stylelint                     # SCSS linting
-npm run test:jest                     # All Jest unit tests
-npm run test:jest:ts -- <file>        # Single TypeScript test file
-npm run test:jest:js -- <file>        # Single JavaScript test file
-npm run test:playwright-ct:all                          # All component tests
-npm run test:playwright-ct:all-with-update              # Update snapshots
-npm run test:playwright-ct:all -- -- src/components/Button   # Tests for one component
-npm run test:playwright-ct:show-report                  # Serve test report at localhost:9323
-```
+Notes:
 
-Playwright snapshots must always be generated inside the Docker container — snapshots differ between operating systems.
+* Commands like `npm`, `playwright` run in specific Docker containers.
+  Normally, when you run those commands, they are executed within dedicated
+  containers. If you need to communicate directly with specific Docker container,
+  use `sudo docker compose ...`. It can be useful when stopping server that is
+  running within `node` container even though it is started from `devcontainer`.
+* See the `scripts` section in `package.json` for the full list of commands.
 
-## Architecture
+## Topics (Claude Rules)
 
-React UI is a themeable React component library. It is distributed in two ways:
+Project rules live in [.claude/rules/](.claude/rules/). There are two kinds.
 
-- **UMD bundle** with separate CSS — ready to use out of the box
-- **ESM** — users are responsible for their own SASS pipeline to compile the styles
+**Always-on** (no frontmatter) — apply to every change:
 
-### Component structure
+* [code.md](.claude/rules/code.md) — scope discipline, minimal changes.
+* [git.md](.claude/rules/git.md) — branches, commits, PRs.
+* [safety-guards.md](.claude/rules/safety-guards.md) — hard guard rails.
 
-Each component lives in `src/components/<ComponentName>/` and follows this layout:
+**Path-scoped** — each carries a `paths:` glob declaring the files it governs;
+consult it when touching those files:
 
-```
-Button/
-  Button.jsx              # Component implementation (React.forwardRef + withGlobalProps)
-  Button.module.scss      # CSS Modules styles
-  index.js                # Re-exports default (withGlobalProps-wrapped) as named export
-  _settings.scss          # Component-level SCSS variables
-  _theme.scss             # CSS custom properties (design tokens)
-  _tools.scss             # SCSS mixins
-  README.md               # Docoff/MkDocs documentation with live previews
-  helpers/                # Component-specific helper functions
-  __tests__/
-    Button.spec.tsx        # Playwright visual + functional tests
-    Button.story.tsx       # Story components used as test fixtures
-    _propTests/            # Reusable prop test generators (arrays of test cases)
-```
+* [frontend.md](.claude/rules/frontend.md) — `src/**/*.js`, `src/**/*.jsx`:
+  stack, component structure, implementation pattern.
+* [styling.md](.claude/rules/styling.md) — `src/**/*.scss`, `src/**/*.css`:
+  CSS Modules, class naming, theming.
+* [testing.md](.claude/rules/testing.md) — `*.spec.tsx`, `*.story.tsx`,
+  `__tests__/**`, `tests/**`: Jest and table-driven Playwright tests.
+* [docs.md](.claude/rules/docs.md) — `src/docs/**`, component `README.md`.
 
-### Component implementation pattern
+## Agents (Claude Agents)
 
-Components are `.jsx` files (not `.tsx`) using PropTypes. They:
-1. Use `React.forwardRef` to forward refs to the root HTML element
-2. Are wrapped with `withGlobalProps(Component, 'ComponentName')` for global prop injection; the wrapped version is the default export
-3. Use `useContext` to detect layout/group contexts (`FormLayoutContext`, `ButtonGroupContext`, `InputGroupContext`) and apply CSS class variants accordingly
-4. Use `classNames()` helper to conditionally combine CSS Module class names
-5. Use `transferProps()` to pass through non-React HTML attributes to the root element
+Specialized agents live in [.claude/agents/](.claude/agents/).
 
-### Styling
+* `code-reviewer` — review a change against this repo's rules (uncommitted work,
+  or a whole branch vs its base).
 
-- CSS Modules (`.module.scss`) with camelCase class names
-- Class naming convention: `root` for the root element; modifiers follow `isRootXxx` (state), `hasRootXxx` (has feature), `isRootInXxx` (context), `isRootLayoutXxx` (layout variant)
-- `src/styles/` contains the global theming system: settings (variables), tools (mixins), and a large set of CSS custom properties for theming
-- Component SCSS files `@use` their own `settings`, `theme`, `tools` partials plus shared styles from `src/styles/`
+## AI Integration
 
-### Testing patterns
-
-**Playwright component tests** (`.spec.tsx`) use a table-driven pattern:
-- Import arrays of test cases from `_propTests/` directories and from shared `tests/playwright/propTests/`
-- Each test case is `{ name, props, onBeforeTest?, onBeforeSnapshot? }`; custom field tests add `customFieldLayoutProps`, `customFieldProps`, etc.
-- `mixPropTests([...arrays])` generates the cartesian product of multiple prop arrays
-- `propTests` from `tests/playwright/` provides standard reusable test sets (e.g. `layoutPropTest`, `sizePropTest`, `disabledPropTest`)
-- Snapshot images are stored alongside the spec file in `<ComponentName>.spec.tsx-snapshots/`
-
-**Story components** (`.story.tsx`) wrap the real component in a minimal fixture (sometimes inside a context provider) and are imported only by `.spec.tsx` files. Naming convention: `<ComponentName>ForTest`, `<ComponentName>ForRefTest`, `<ComponentName>ForFormLayoutTests` — FormLayout story component is always last.
-
-**Test describe structure:** `test.describe('ComponentName')` → `test.describe('base')` (if present) → `visual` / `non-visual` / `functionality`; `formLayout` describe is always the last block at the same level as `base`.
-
-### Git workflow
-
-Branch naming: `bc/*`, `feature/*`, `bugfix/*`, `refactoring/*`, `docs/*`, `maintenance/*`
-
-Commit messages: imperative English, component names in backticks (e.g. `` Add `FormLayout` context awareness to `Button` ``). No `Co-Authored-By` lines.
-
-PR names follow the same rules as commit messages and are used directly in the changelog. Only PRs into `master` appear in the changelog.
+MCP-capable assistants in the `devcontainer` can drive host Chrome to verify the
+docs site and rendered components. See
+[AI Integration](src/docs/contribute/ai-integration.md) and
+[scripts/mcps/chrome-host/README.md](scripts/mcps/chrome-host/README.md).

@@ -11,3 +11,9 @@
 .env
 statistics.html
 !.gitkeep
+
+/.claude/settings.local.json
+/CLAUDE.local.md
+
+__pycache__/
+*.pyc

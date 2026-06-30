@@ -1,0 +1,10 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "chrome-host": {
+      "type": "local",
+      "command": ["sh", "scripts/mcps/chrome-host/mcp-entry.sh"],
+      "enabled": true
+    }
+  }
+}
