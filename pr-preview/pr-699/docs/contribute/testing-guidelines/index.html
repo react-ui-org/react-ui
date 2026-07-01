@@ -2671,7 +2671,7 @@
   <a href="#linters-eslint-markdownlint-stylelint" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Linters (ESlint, Markdownlint, Stylelint)
+        Linters (ESLint, Markdownlint, Stylelint)
       
     </span>
   </a>
@@ -2922,7 +2922,7 @@
   <a href="#linters-eslint-markdownlint-stylelint" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Linters (ESlint, Markdownlint, Stylelint)
+        Linters (ESLint, Markdownlint, Stylelint)
       
     </span>
   </a>
@@ -3019,44 +3019,27 @@
 <p>Tools used to test the application:</p>
 <ul>
 <li><strong>ESLint</strong> (static code analysis of JS files)</li>
-<li><strong>Markdownlint</strong> (static analysis of MD files)</li>
 <li><strong>Stylelint</strong> (static code analysis of CSS files)</li>
-<li><strong>Jest</strong> (unit testing)</li>
+<li><strong>Markdownlint</strong> (static code analysis of Markdown files)</li>
+<li><strong>Jest</strong> (unit tests)</li>
 <li><strong>Playwright</strong> (visual and functional component testing)</li>
 </ul>
 <p>Generally, <code>npm test</code> and <code>npm run test:playwright-ct:all</code> should be run  within
 their designated Docker containers before pushing changes to the repository.</p>
 <h2 id="tools">Tools</h2>
-<h3 id="linters-eslint-markdownlint-stylelint">Linters (ESlint, Markdownlint, Stylelint)</h3>
-<p><strong>On host:</strong></p>
-<p><a href="../general-guidelines/#node-shell">Open</a> <code>node_shell</code> Docker container:</p>
-<pre class="highlight"><code class="language-bash">docker compose run --rm node_shell</code></pre>
-<p><strong>Within <code>node_shell</code>:</strong></p>
+<p>You can run all tests with a single command:</p>
+<pre class="highlight"><code class="language-bash">npm run lint &amp;&amp; npm test &amp;&amp; npm run test:playwright-ct:all</code></pre>
+<h3 id="linters-eslint-markdownlint-stylelint">Linters (ESLint, Markdownlint, Stylelint)</h3>
 <p>Run linters either all together:</p>
 <pre class="highlight"><code class="language-bash">npm run lint</code></pre>
 <p>or run linters individually:</p>
 <pre class="highlight"><code class="language-bash">npm run &lt;eslint|markdownlint|stylelint&gt;</code></pre>
 <h3 id="jest">Jest</h3>
-<p><strong>On host:</strong></p>
-<p><a href="../general-guidelines/#node-shell">Open</a> <code>node_shell</code> Docker container:</p>
-<pre class="highlight"><code class="language-bash">docker compose run --rm node_shell</code></pre>
-<p><strong>Within <code>node_shell</code>:</strong></p>
-<p>Run Jest tests:</p>
 <pre class="highlight"><code class="language-bash">npm run test:jest</code></pre>
 <h3 id="playwright">Playwright</h3>
-<p>Playwright tests must be run in a Docker container to ensure a uniform
-environment. Otherwise, snapshots would differ between operating systems.</p>
-<p>This is the reason why you need to run Playwright tests separately
-from other tools.</p>
 <h4 id="configuration">Configuration</h4>
-<p>Test parameters can be tweaked by creating and tweaking <code>.env.playwright</code> file:</p>
-<pre class="highlight"><code class="language-bash">cp .env.playwright.dist .env.playwright</code></pre>
+<p>Test parameters can be tweaked by creating and tweaking <code>.env</code> file.</p>
 <h4 id="running-tests">Running Tests</h4>
-<p>Playwright tests can be run using the following commands:</p>
-<p><strong>On host:</strong></p>
-<p><a href="../general-guidelines/#playwright">Open</a> <code>playwright</code> Docker container:</p>
-<pre class="highlight"><code class="language-bash">docker compose run --rm --service-ports playwright</code></pre>
-<p><strong>Within <code>playwright</code>:</strong></p>
 <p>Run tests:</p>
 <pre class="highlight"><code class="language-bash">npm run test:playwright-ct:&lt;all|all-with-update&gt;</code></pre>
 <p>You can also run specific tests by passing a path to the test files:</p>

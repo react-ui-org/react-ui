@@ -3657,9 +3657,9 @@ automatically.</p>
     /&gt;
   &lt;/FormLayoutCustomField&gt;
 &lt;/FormLayout&gt;</code></pre>
-<p>ℹ️ Because FormLayout forces horizontal layout on all its descendants, the
-nested field's own label would conflict with the FormLayout grid and produce
-incorrect alignment.</p>
+<p>ℹ️ Labels are hidden regardless of <code>fieldLayout</code>. In a horizontal FormLayout,
+the nested field's own label would conflict with the FormLayout grid and
+produce incorrect alignment, so it is always hidden for consistency.</p>
 <h3 id="label-alignment">Label Alignment</h3>
 <p>If you are in a situation with one or more box form fields inside your
 FormLayoutCustomField, you may want to have its label aligned with the fields

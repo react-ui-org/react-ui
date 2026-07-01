@@ -12,6 +12,7 @@ export default (placementStyle) => {
     'left',
     'translate',
     'transform-origin',
+    'visibility',
   ];
 
   return Object.fromEntries(

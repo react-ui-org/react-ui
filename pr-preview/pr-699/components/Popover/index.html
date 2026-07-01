@@ -1737,6 +1737,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#z-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        z-index
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#controlled-popover" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2978,6 +2989,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#z-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        z-index
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#controlled-popover" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3222,9 +3244,13 @@ position the popover. The allowed props are:</p>
 <li><code>left</code></li>
 <li><code>translate</code></li>
 <li><code>transform-origin</code></li>
+<li><code>visibility</code></li>
 </ul>
 <p>⚠️ <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/inset"><code>inset</code></a> is a shorthand for <code>top right bottom left</code>, not for
 <code>inset-*</code> properties.</p>
+<p>ℹ️ <code>visibility</code> can be used to hide the Popover before its initial position is
+computed, preventing a flash of the Popover in a wrong position. Set it to
+<code>hidden</code> initially, then remove or update it once the position is ready.</p>
 <p>As opposed to <code>top right bottom left</code> and the <code>inset</code> shorthand, <code>inset-*</code>
 properties are writing-direction aware.</p>
 <p>ℹ️ The following example is using external library <a href="https://floating-ui.com/docs/react-dom">Floating UI</a>. To use
@@ -3334,6 +3360,23 @@ get an idea of all possible cases you may need to cover.</p>
     &lt;/&gt;
   );
 });</code></pre>
+<h2 id="z-index">z-index</h2>
+<p>By default, the Popover's <code>z-index</code> is <code>auto</code>, which means it participates in
+the stacking context of its nearest positioned ancestor. This works well in most
+cases, but can cause the Popover to appear behind other positioned elements such
+as sticky headers, fixed toolbars, or modals.</p>
+<p>When that happens, set <code>--rui-Popover__z-index</code> to a numeric value high enough
+to place the Popover above the conflicting layer. The override can be applied
+globally or scoped to a specific context:</p>
+<pre class="highlight"><code class="language-css">/* Global override */
+:root {
+  --rui-Popover__z-index: 1000;
+}
+
+/* Scoped override */
+.my-context {
+  --rui-Popover__z-index: 1000;
+}</code></pre>
 <h2 id="controlled-popover">Controlled Popover</h2>
 <p>Popover API can be used to control visibility of Popover component. You need to
 set <code>id</code> on the trigger element and matching <code>popoverTargetId</code> attribute on the
@@ -3421,6 +3464,10 @@ which enables <a href="#advanced-positioning">Advanced Positioning</a>.</p>
 <tr>
 <td><code>--rui-Popover__box-shadow</code></td>
 <td>Popover box shadow</td>
+</tr>
+<tr>
+<td><code>--rui-Popover__z-index</code></td>
+<td>Popover z-index (default: <code>auto</code>)</td>
 </tr>
 </tbody>
 </table>
