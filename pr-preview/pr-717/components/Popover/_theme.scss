@@ -2,6 +2,7 @@
 
 @use "sass:math";
 
+$z-index: var(--rui-Popover__z-index);
 $max-width: var(--rui-Popover__max-width);
 $padding: var(--rui-Popover__padding);
 $border-width: var(--rui-Popover__border-width);

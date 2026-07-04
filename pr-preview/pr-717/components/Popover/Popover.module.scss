@@ -13,6 +13,7 @@
 @layer components.popover {
     .root {
         position: absolute;
+        z-index: theme.$z-index;
         width: max-content;
         max-width: theme.$max-width;
         padding: theme.$padding;
