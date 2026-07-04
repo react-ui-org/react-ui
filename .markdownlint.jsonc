@@ -12,5 +12,6 @@
   "MD024": { // Allow duplicate headings
     "allow_different_nesting": true // Allow same heading level under different parents
   },
-  "MD033": false // Allow inline HTML and custom components
+  "MD033": false, // Allow inline HTML and custom components
+  "MD060": false // Do not enforce table column alignment (emoji widths break it)
 }

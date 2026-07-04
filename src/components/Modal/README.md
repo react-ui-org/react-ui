@@ -97,8 +97,8 @@ See [API](#api) for all available options.
   modal behavior and shall be **removed from DOM when closed**.
 
 - Modal **automatically focuses the first non-disabled form field** by default.
-  When no field is found then the primary button (in the footer) is focused. To turn
-  this feature off, set the `autofocus` prop to `false`.
+  When no field is found then the primary button (in the footer) is focused.
+  To turn this feature off, set the `autofocus` prop to `false`.
 
 - Modal **submits the form when the user presses the `Enter` key** . A click is
   programmatically triggered on the primary button in this case. To turn this
