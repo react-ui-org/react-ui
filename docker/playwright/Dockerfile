@@ -1,3 +1,3 @@
-FROM        mcr.microsoft.com/playwright:v1.57.0
+FROM        mcr.microsoft.com/playwright:v1.61.1
 RUN         mkdir /workspace
 WORKDIR     /workspace

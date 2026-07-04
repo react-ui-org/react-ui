@@ -221,7 +221,9 @@ test.describe('SelectField', () => {
 
         const component = await mount(
           <SelectFieldForTest
-            onChange={() => { changeCalled = true; }}
+            onChange={() => {
+              changeCalled = true;
+            }}
             options={baseOptions}
             value={baseOptions[0].value}
           />,
@@ -236,7 +238,9 @@ test.describe('SelectField', () => {
 
         const component = await mount(
           <SelectFieldForTest
-            onChange={() => { changeCalled = true; }}
+            onChange={() => {
+              changeCalled = true;
+            }}
             options={baseOptions}
             value={baseOptions[0].value}
           />,
@@ -252,7 +256,9 @@ test.describe('SelectField', () => {
 
         const component = await mount(
           <SelectFieldForTest
-            onChange={() => { changeCalled = true; }}
+            onChange={() => {
+              changeCalled = true;
+            }}
             options={baseOptions}
             value={baseOptions[1].value}
           />,
