@@ -137,6 +137,7 @@
   "overrides": {
     "eslint-config-airbnb": {
       "eslint-plugin-react-hooks": "^7.1.1"
-    }
+    },
+    "js-yaml": "^4.3.0"
   }
 }
