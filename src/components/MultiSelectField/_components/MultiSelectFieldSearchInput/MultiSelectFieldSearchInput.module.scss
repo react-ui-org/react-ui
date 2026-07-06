@@ -1,0 +1,34 @@
+@use "../../../../styles/settings/form-fields" as form-settings;
+
+@layer components.multi-select-field {
+    .root {
+        appearance: none;
+        display: block;
+        flex: 1 0 auto;
+        min-width: 2ch;
+        padding: 0;
+        margin: 0;
+        font-weight: form-settings.$box-input-font-weight;
+        font-size: var(--rui-local-font-size);
+        line-height: form-settings.$box-input-line-height;
+        font-family: form-settings.$box-input-font-family;
+        white-space: nowrap;
+        vertical-align: baseline;
+        color: inherit;
+        border: 0;
+        background-color: transparent;
+
+        &:focus {
+            // No focus ring
+            outline: none;
+        }
+    }
+
+    // Google Chrome inserts span for contenteditable elements
+    .root span {
+        font-weight: form-settings.$box-input-font-weight;
+        font-size: var(--rui-local-font-size);
+        line-height: form-settings.$box-input-line-height;
+        font-family: form-settings.$box-input-font-family;
+    }
+}
