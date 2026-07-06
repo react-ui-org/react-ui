@@ -94,6 +94,14 @@ export type {
   ModalSize,
   ModalTitleProps,
 } from './components/Modal';
+export {
+  caseInsensitiveAccentInsensitivePrefixSearch,
+  caseInsensitiveAccentInsensitiveSubstringSearch,
+  caseInsensitiveAccentSensitivePrefixSearch,
+  caseInsensitiveAccentSensitiveSubstringSearch,
+  genericSearch,
+  MultiSelectField,
+} from './components/MultiSelectField';
 export { Paper } from './components/Paper';
 export type { PaperProps } from './components/Paper';
 export {

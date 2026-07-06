@@ -1,0 +1,17 @@
+@use "../../theme";
+
+@layer components.multi-select-field {
+    .root {
+        position: absolute;
+        z-index: theme.$dropdown-z-index;
+        max-height: theme.$dropdown-max-height;
+        overflow: hidden auto;
+        border-width: var(--rui-dimension-border-width-1);
+        border-style: solid;
+        border-color: theme.$dropdown-border-color;
+        border-radius: var(--rui-dimension-radius-1);
+        background-color: theme.$dropdown-background-color;
+        box-shadow: theme.$dropdown-box-shadow;
+        transform: translateY(-1px);
+    }
+}
