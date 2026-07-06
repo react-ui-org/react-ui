@@ -33,6 +33,14 @@ export {
   ModalHeader,
   ModalTitle,
 } from './components/Modal';
+export {
+  caseInsensitiveAccentInsensitivePrefixSearch,
+  caseInsensitiveAccentInsensitiveSubstringSearch,
+  caseInsensitiveAccentSensitivePrefixSearch,
+  caseInsensitiveAccentSensitiveSubstringSearch,
+  genericSearch,
+  MultiSelectField,
+} from './components/MultiSelectField';
 export { Paper } from './components/Paper';
 export {
   Popover,

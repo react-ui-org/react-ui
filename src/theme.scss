@@ -1066,6 +1066,52 @@
         --rui-Modal--note__background-color: var(--rui-color-background-note);
 
         //
+        // MultiSelectField
+        // ================
+
+        // MultiSelectField: Dropdown
+        --rui-MultiSelectField__dropdown__background-color: var(--rui-color-background-basic);
+        --rui-MultiSelectField__dropdown__border-color: var(--rui-color-border-primary-hover);
+        --rui-MultiSelectField__dropdown__box-shadow: var(--rui-shadow-layer-2);
+        --rui-MultiSelectField__dropdown__max-height: 200px;
+        --rui-MultiSelectField__dropdown__z-index: 1000;
+        --rui-MultiSelectField__dropdown-group__color: var(--rui-color-text-primary);
+        --rui-MultiSelectField__dropdown-group__font-weight: var(--rui-font-weight-base);
+        --rui-MultiSelectField__dropdown-item__background-color: var(--rui-color-background-interactive);
+        --rui-MultiSelectField__dropdown-item__color: var(--rui-color-text-primary);
+        --rui-MultiSelectField__dropdown-item--selected__background-color: var(--rui-color-background-selected);
+        --rui-MultiSelectField__dropdown-item--selected__color: var(--rui-color-text-primary);
+        --rui-MultiSelectField__dropdown-item--selected__font-weight: var(--rui-font-weight-bold);
+        --rui-MultiSelectField__dropdown-item--selected--focus__background-color: var(--rui-color-action-selected);
+        --rui-MultiSelectField__dropdown-item--selected--focus__color: var(--rui-color-action-on-selected);
+        --rui-MultiSelectField__dropdown-item--focus__background-color: var(--rui-color-neutral-light-hover);
+        --rui-MultiSelectField__dropdown-item--focus__color: var(--rui-color-text-primary);
+        --rui-MultiSelectField__dropdown-text-item__color: var(--rui-color-text-secondary);
+
+        // MultiSelectField: Tag
+        --rui-MultiSelectField__tag__border-width: var(--rui-dimension-border-width-1);
+        --rui-MultiSelectField__tag__border-radius: var(--rui-dimension-radius-2);
+        --rui-MultiSelectField__tag__gap: var(--rui-dimension-space-1);
+        --rui-MultiSelectField--filled__tag--default__background-color: var(--rui-color-background-base);
+        --rui-MultiSelectField--filled__tag--default__border-color: var(--rui-color-border-primary);
+        --rui-MultiSelectField--filled__tag--default__color: var(--rui-color-text-primary);
+        --rui-MultiSelectField--filled__tag--hover__background-color: var(--rui-color-background-light);
+        --rui-MultiSelectField--filled__tag--hover__border-color: var(--rui-color-border-primary-hover);
+        --rui-MultiSelectField--filled__tag--hover__color: var(--rui-color-text-primary);
+        --rui-MultiSelectField--outline__tag--default__background-color: var(--rui-color-background-interactive);
+        --rui-MultiSelectField--outline__tag--default__border-color: var(--rui-color-border-primary);
+        --rui-MultiSelectField--outline__tag--default__color: var(--rui-color-text-primary);
+        --rui-MultiSelectField--outline__tag--hover__background-color: var(--rui-color-neutral-light-hover);
+        --rui-MultiSelectField--outline__tag--hover__border-color: var(--rui-color-border-primary-hover);
+        --rui-MultiSelectField--outline__tag--hover__color: var(--rui-color-text-primary);
+        --rui-MultiSelectField--small__tag__font-size: var(--rui-font-size-smaller);
+        --rui-MultiSelectField--small__tag__padding-inline: var(--rui-dimension-space-1);
+        --rui-MultiSelectField--medium__tag__font-size: var(--rui-font-size-small);
+        --rui-MultiSelectField--medium__tag__padding-inline: var(--rui-dimension-space-2);
+        --rui-MultiSelectField--large__tag__font-size: var(--rui-font-size-base);
+        --rui-MultiSelectField--large__tag__padding-inline: var(--rui-dimension-space-2);
+
+        //
         // Paper
         // =====
 

@@ -139,6 +139,7 @@ InputGroup.propTypes = {
   /**
    * Supported elements to be grouped:
    * * `Button`
+   * * `MultiSelectField`
    * * `SelectField`
    * * `TextField`
    *

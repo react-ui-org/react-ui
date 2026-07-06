@@ -64,14 +64,88 @@ See [API](#api) for all available options.
   make use of its built-in features like disabling all nested inputs or pairing
   the group with a form outside. Consult [the MDN docs][fieldset] to learn more.
 
-- InputGroup currently **supports grouping of**
-  [TextField](/components/TextField), [SelectField](/components/SelectField),
-  [FileInputField](/components/FileInputField), and [Button](/components/Button)
-  components.
-
 - To group [Buttons](/components/Button) only, use the
   [ButtonGroup](/components/ButtonGroup) component which is designed
   specifically for that purpose.
+
+## Supported Form Fields
+
+The InputGroup supports buttons and the following React UI form fields:
+[Button](/components/Button), [FileInputField](/components/FileInputField),
+[MultiSelectField](/components/MultiSelectField),
+[SelectField](/components/SelectField), and [TextField](/components/TextField).
+
+```docoff-react-preview
+React.createElement(() => {
+  const [fruit, setFruit] = React.useState('apple');
+  const [countries, setCountries] = React.useState(['cz']);
+  const options = [
+    {
+      label: 'Apple',
+      value: 'apple',
+    },
+    {
+      label: 'Pear',
+      value: 'pear',
+    },
+    {
+      label: 'Cherry',
+      value: 'cherry',
+    },
+  ];
+  const countryOptions = [
+    {
+      label: 'Czech Republic',
+      value: 'cz',
+    },
+    {
+      label: 'Poland',
+      value: 'pl',
+    },
+    {
+      label: 'Slovakia',
+      value: 'sk',
+    },
+  ];
+  return (
+    <FormLayout>
+      <InputGroup label="TextField">
+        <TextField
+          label="Variety"
+          placeholder="Eg. Golden delicious"
+        />
+        <Button label="Submit" />
+      </InputGroup>
+      <InputGroup label="SelectField">
+        <SelectField
+          label="Your favourite fruit"
+          onChange={(e) => setFruit(e.target.value)}
+          options={options}
+          value={fruit}
+        />
+        <Button label="Submit" />
+      </InputGroup>
+      <InputGroup label="MultiSelectField">
+        <MultiSelectField
+          label="Countries of origin"
+          onChange={(value) => setCountries(value)}
+          options={countryOptions}
+          value={countries}
+        />
+        <Button label="Submit" />
+      </InputGroup>
+      <InputGroup label="FileInputField">
+        <FileInputField
+          id="supported-form-fields-attachment"
+          label="Attachment"
+          onFilesChanged={() => {}}
+        />
+        <Button label="Submit" />
+      </InputGroup>
+    </FormLayout>
+  );
+})
+```
 
 ## Sizes
 
