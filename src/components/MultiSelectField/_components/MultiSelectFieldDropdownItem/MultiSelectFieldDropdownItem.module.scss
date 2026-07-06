@@ -1,0 +1,52 @@
+@use "../../../../styles/theme/form-fields" as form-theme;
+@use "../../theme";
+
+@layer components.multi-select-field {
+    .root {
+        display: flex;
+        align-items: center;
+        min-width: form-theme.$box-input-min-width;
+        max-width: 100%;
+        height: var(--rui-local-height);
+        padding: 0 var(--rui-local-padding-x);
+        font-size: var(--rui-local-font-size);
+        color: theme.$dropdown-item-color;
+        background-color: theme.$dropdown-item-background-color;
+        cursor: pointer;
+
+        &:active {
+            color: theme.$dropdown-item-focus-color;
+            background-color: theme.$dropdown-item-focus-background-color;
+        }
+
+        // `focus-visible` is used so the focus background only shows for keyboard navigation
+        // and does not stick to an option focused by clicking it.
+        &:hover,
+        &:focus-visible {
+            color: theme.$dropdown-item-focus-color;
+            background-color: theme.$dropdown-item-focus-background-color;
+        }
+    }
+
+    .isRootDisabled {
+        opacity: theme.$disabled-opacity;
+        cursor: theme.$disabled-cursor;
+    }
+
+    .isRootSelected {
+        font-weight: theme.$dropdown-item-selected-font-weight;
+        color: theme.$dropdown-item-selected-color;
+        background-color: theme.$dropdown-item-selected-background-color;
+
+        &:active,
+        &:hover,
+        &:focus-visible {
+            color: theme.$dropdown-item-selected-focus-color;
+            background-color: theme.$dropdown-item-selected-focus-background;
+        }
+    }
+
+    .isRootInGroup {
+        padding-inline-start: calc(var(--rui-local-padding-x) * 2);
+    }
+}

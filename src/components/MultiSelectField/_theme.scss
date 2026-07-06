@@ -1,0 +1,68 @@
+$disabled-cursor: var(--rui-FormField--disabled__cursor);
+$disabled-opacity: var(--rui-FormField--disabled__opacity);
+
+$dropdown-background-color: var(--rui-MultiSelectField__dropdown__background-color);
+$dropdown-border-color: var(--rui-MultiSelectField__dropdown__border-color);
+$dropdown-box-shadow: var(--rui-MultiSelectField__dropdown__box-shadow);
+$dropdown-max-height: var(--rui-MultiSelectField__dropdown__max-height);
+$dropdown-z-index: var(--rui-MultiSelectField__dropdown__z-index);
+
+$dropdown-group-color: var(--rui-MultiSelectField__dropdown-group__color);
+$dropdown-group-font-weight: var(--rui-MultiSelectField__dropdown-group__font-weight);
+
+$dropdown-item-background-color: var(--rui-MultiSelectField__dropdown-item__background-color);
+$dropdown-item-color: var(--rui-MultiSelectField__dropdown-item__color);
+$dropdown-item-selected-background-color: var(--rui-MultiSelectField__dropdown-item--selected__background-color);
+$dropdown-item-selected-color: var(--rui-MultiSelectField__dropdown-item--selected__color);
+$dropdown-item-selected-font-weight: var(--rui-MultiSelectField__dropdown-item--selected__font-weight);
+$dropdown-item-selected-focus-background: var(--rui-MultiSelectField__dropdown-item--selected--focus__background-color);
+$dropdown-item-selected-focus-color: var(--rui-MultiSelectField__dropdown-item--selected--focus__color);
+$dropdown-item-focus-background-color: var(--rui-MultiSelectField__dropdown-item--focus__background-color);
+$dropdown-item-focus-color: var(--rui-MultiSelectField__dropdown-item--focus__color);
+$dropdown-text-item-color: var(--rui-MultiSelectField__dropdown-text-item__color);
+
+$tag-border-width: var(--rui-MultiSelectField__tag__border-width);
+$tag-border-radius: var(--rui-MultiSelectField__tag__border-radius);
+$tag-gap: var(--rui-MultiSelectField__tag__gap);
+
+$tag-priorities: (
+    filled: (
+        default: (
+            background-color: var(--rui-MultiSelectField--filled__tag--default__background-color),
+            border-color: var(--rui-MultiSelectField--filled__tag--default__border-color),
+            color: var(--rui-MultiSelectField--filled__tag--default__color),
+        ),
+        hover: (
+            background-color: var(--rui-MultiSelectField--filled__tag--hover__background-color),
+            border-color: var(--rui-MultiSelectField--filled__tag--hover__border-color),
+            color: var(--rui-MultiSelectField--filled__tag--hover__color),
+        )
+    ),
+    outline: (
+        default: (
+            background-color: var(--rui-MultiSelectField--outline__tag--default__background-color),
+            border-color: var(--rui-MultiSelectField--outline__tag--default__border-color),
+            color: var(--rui-MultiSelectField--outline__tag--default__color),
+        ),
+        hover: (
+            background-color: var(--rui-MultiSelectField--outline__tag--hover__background-color),
+            border-color: var(--rui-MultiSelectField--outline__tag--hover__border-color),
+            color: var(--rui-MultiSelectField--outline__tag--hover__color),
+        )
+    ),
+);
+
+$tag-sizes: (
+    small: (
+        font-size: var(--rui-MultiSelectField--small__tag__font-size),
+        padding-inline: var(--rui-MultiSelectField--small__tag__padding-inline),
+    ),
+    medium: (
+        font-size: var(--rui-MultiSelectField--medium__tag__font-size),
+        padding-inline: var(--rui-MultiSelectField--medium__tag__padding-inline),
+    ),
+    large: (
+        font-size: var(--rui-MultiSelectField--large__tag__font-size),
+        padding-inline: var(--rui-MultiSelectField--large__tag__padding-inline),
+    ),
+);

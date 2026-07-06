@@ -103,6 +103,7 @@ nav:
       - Inputs:
           - CheckBoxField: 'components/CheckboxField/README.md'
           - FileInputField: 'components/FileInputField/README.md'
+          - MultiSelectField: 'components/MultiSelectField/README.md'
           - Radio: 'components/Radio/README.md'
           - SelectField: 'components/SelectField/README.md'
           - TextArea: 'components/TextArea/README.md'
