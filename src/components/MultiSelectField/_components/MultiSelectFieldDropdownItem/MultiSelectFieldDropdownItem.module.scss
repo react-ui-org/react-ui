@@ -7,10 +7,12 @@
         align-items: center;
         min-width: form-theme.$box-input-min-width;
         max-width: 100%;
-        height: var(--rui-local-height);
-        padding: 0 var(--rui-local-padding-x);
+        height: calc(var(--rui-local-height) - 2 * theme.$dropdown-item-gap);
+        padding: 0 calc(var(--rui-local-padding-x) - theme.$dropdown-item-gap);
+        margin: theme.$dropdown-item-gap;
         font-size: var(--rui-local-font-size);
         color: theme.$dropdown-item-color;
+        border-radius: theme.$dropdown-item-border-radius;
         background-color: theme.$dropdown-item-background-color;
         cursor: pointer;
 
@@ -47,6 +49,6 @@
     }
 
     .isRootInGroup {
-        padding-inline-start: calc(var(--rui-local-padding-x) * 2);
+        padding-inline-start: calc(var(--rui-local-padding-x) * 2 - theme.$dropdown-item-gap);
     }
 }
