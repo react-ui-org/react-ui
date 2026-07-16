@@ -1136,7 +1136,9 @@ MultiSelectField.
 | `--rui-MultiSelectField__dropdown-group__color`                         | Text color of group labels                           |
 | `--rui-MultiSelectField__dropdown-group__font-weight`                   | Font weight of group labels                          |
 | `--rui-MultiSelectField__dropdown-item__background-color`               | Background color of dropdown items                   |
+| `--rui-MultiSelectField__dropdown-item__border-radius`                  | Corner radius of dropdown item background            |
 | `--rui-MultiSelectField__dropdown-item__color`                          | Text color of dropdown items                         |
+| `--rui-MultiSelectField__dropdown-item__gap`                            | Gap around dropdown item background                  |
 | `--rui-MultiSelectField__dropdown-item--selected__background-color`     | Background color of selected dropdown items          |
 | `--rui-MultiSelectField__dropdown-item--selected__color`                | Text color of selected dropdown items                |
 | `--rui-MultiSelectField__dropdown-item--selected__font-weight`          | Font weight of selected dropdown items               |

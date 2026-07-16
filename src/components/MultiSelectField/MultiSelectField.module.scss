@@ -1,3 +1,4 @@
+@use "../../styles/settings/form-fields" as settings;
 @use "../../styles/tools/form-fields/box-field-elements";
 @use "../../styles/tools/form-fields/box-field-layout";
 @use "../../styles/tools/form-fields/box-field-sizes";
@@ -37,6 +38,9 @@
         align-items: center;
         height: auto;
         min-height: var(--rui-local-height);
+
+        // Leave out space for the caret so the tags wrap instead of sliding under it.
+        padding-right: calc(#{settings.$box-field-caret-size} - 2 * #{theme.$box-border-width});
     }
 
     .caret {
