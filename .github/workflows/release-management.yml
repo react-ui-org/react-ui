@@ -164,5 +164,26 @@ jobs:
       - name: Install MkDocs
         run: pip install 'mkdocs-material>=9.0.0,<10.0.0'
 
-      - name: Build and deploy MkDocs
-        run: mkdocs gh-deploy
+      - name: Build docs
+        run: mkdocs build
+
+      # The `gh-pages` branch also holds PR previews under `pr-preview/` (see
+      # pull-request-preview.yml), so `mkdocs gh-deploy` can't be used here: it
+      # replaces the entire branch content, which would wipe those previews.
+      # Deploy manually instead, replacing everything on `gh-pages` except
+      # `pr-preview/` and pushing normally.
+      - name: Deploy docs
+        run: |
+          git fetch origin gh-pages:refs/remotes/origin/gh-pages
+          git worktree add -B gh-pages gh-pages-worktree refs/remotes/origin/gh-pages
+          find gh-pages-worktree -mindepth 1 -maxdepth 1 ! -name pr-preview ! -name .git -exec rm -rf {} +
+          cp -a site/. gh-pages-worktree/
+          touch gh-pages-worktree/.nojekyll
+          cd gh-pages-worktree
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to deploy."
+          else
+            git commit -m "Deploy docs for React UI v${{ needs.test_and_build.outputs.version }} (${GITHUB_SHA:0:7})"
+            git push origin gh-pages
+          fi
