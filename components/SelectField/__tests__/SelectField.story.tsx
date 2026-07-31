@@ -4,7 +4,11 @@ import React, {
   useRef,
 } from 'react';
 import type { InputHTMLAttributes } from 'react';
-import { FormLayoutContext } from '../../FormLayout';
+import {
+  FormLayout,
+  FormLayoutContext,
+  FormLayoutCustomFieldContext,
+} from '../../FormLayout';
 import { SelectField } from '..';
 
 type SelectFieldForTestProps = InputHTMLAttributes<HTMLSelectElement>;
@@ -63,6 +67,13 @@ export const SelectFieldForRefTest = ({
   );
 };
 
+export const SelectFieldForFormLayoutLabelWidthTests = () => (
+  <FormLayout fieldLayout="horizontal" labelWidth="100px">
+    <SelectField label={defaultLabel} options={defaultOptions} />
+    <SelectField label="another-test-label" options={defaultOptions} />
+  </FormLayout>
+);
+
 export const SelectFieldForFormLayoutTests = ({
   layout,
   ...props
@@ -86,3 +97,15 @@ export const SelectFieldForFormLayoutTests = ({
     </FormLayoutContext.Provider>
   );
 };
+
+export const SelectFieldForFormLayoutCustomFieldTests = ({
+  ...props
+}: SelectFieldForTestProps) => (
+  <FormLayoutCustomFieldContext.Provider value>
+    <SelectField
+      label={defaultLabel}
+      options={defaultOptions}
+      {...props}
+    />
+  </FormLayoutCustomFieldContext.Provider>
+);

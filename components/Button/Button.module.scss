@@ -2,6 +2,7 @@
 //    borders.
 
 @use "sass:map";
+@use "../../styles/settings/forms";
 @use "../../styles/tools/breakpoint";
 @use "../../styles/tools/collections";
 @use "settings";
@@ -76,6 +77,16 @@
     .hasRootFeedback .beforeLabel,
     .hasRootFeedback .afterLabel {
         color: transparent;
+    }
+
+    .isRootInFormLayout {
+        justify-self: start;
+    }
+
+    .isRootLayoutHorizontal {
+        @include breakpoint.up(forms.$horizontal-breakpoint) {
+            grid-column-start: 2;
+        }
     }
 
     .isRootInButtonGroup,

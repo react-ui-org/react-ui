@@ -8,6 +8,7 @@ import { getRootPriorityClassName } from '../_helpers/getRootPriorityClassName';
 import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { ButtonGroupContext } from '../ButtonGroup';
+import { FormLayoutContext } from '../FormLayout';
 import { InputGroupContext } from '../InputGroup/InputGroupContext';
 import getRootLabelVisibilityClassName from './helpers/getRootLabelVisibilityClassName';
 import styles from './Button.module.scss';
@@ -30,6 +31,7 @@ export const Button = React.forwardRef((props, ref) => {
     ...restProps
   } = props;
   const buttonGroupContext = useContext(ButtonGroupContext);
+  const formLayoutContext = useContext(FormLayoutContext);
   const inputGroupContext = useContext(InputGroupContext);
 
   if (buttonGroupContext && inputGroupContext) {
@@ -58,6 +60,8 @@ export const Button = React.forwardRef((props, ref) => {
         resolveContextOrProp(buttonGroupContext && buttonGroupContext.block, block) && styles.isRootBlock,
         buttonGroupContext && styles.isRootInButtonGroup,
         inputGroupContext && styles.isRootInInputGroup,
+        formLayoutContext && styles.isRootInFormLayout,
+        formLayoutContext && formLayoutContext.layout === 'horizontal' && styles.isRootLayoutHorizontal,
         feedbackIcon && styles.hasRootFeedback,
       )}
       disabled={resolveContextOrProp(primaryContext && primaryContext.disabled, disabled) || !!feedbackIcon}

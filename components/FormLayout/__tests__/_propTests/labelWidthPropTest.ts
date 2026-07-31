@@ -23,10 +23,10 @@ export const labelWidthPropTest: PropTests = [
     },
   },
   {
-    name: 'labelWidth:string=30px',
+    name: 'labelWidth:string=100px',
     props: {
       fieldLayout: 'horizontal',
-      labelWidth: '30px',
+      labelWidth: '100px',
     },
   },
 ];

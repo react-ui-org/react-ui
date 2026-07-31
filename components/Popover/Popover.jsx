@@ -105,6 +105,7 @@ Popover.propTypes = {
     top: PropTypes.string,
     'transform-origin': PropTypes.string,
     translate: PropTypes.string,
+    visibility: PropTypes.string,
   }),
   /**
    * If set, the popover will become controlled, meaning it will be hidden by default and will need a trigger to open.

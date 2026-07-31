@@ -1,10 +1,11 @@
 import React from 'react';
 import type { HTMLAttributes } from 'react';
+import { TextField } from '../../TextField';
 import {
   FormLayout,
   FormLayoutCustomField,
 } from '..';
-import { TextField } from '../../TextField';
+
 // Types for story component will be improved when we have full TypeScript support
 type FormLayoutForTestProps = HTMLAttributes<HTMLDivElement>;
 type FormLayoutCustomFieldForTestProps = FormLayoutForTestProps & {
