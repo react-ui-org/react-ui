@@ -39,7 +39,7 @@ export const InputGroup = ({
     return null;
   }
 
-  const validationState = children.reduce(
+  const validationState = React.Children.toArray(children).reduce(
     (state, child) => {
       if (state === 'invalid' || (state === 'warning' && child.props.validationState === 'valid')) {
         return state;

@@ -26,20 +26,30 @@ const options = [
   },
 ];
 
+const defaultChildren = [
+  <SelectField
+    key="selectField"
+    label="Select label"
+    options={options}
+    value={options[0].value}
+  />,
+  <TextField
+    key="textField"
+    label="Text label"
+    placeholder="Placeholder"
+  />,
+  <Button
+    key="button"
+    label="Submit"
+  />,
+];
+
 export const InputGroupForTest = ({
+  children,
   ...props
 }: InputGroupTestProps) => (
   <InputGroup label="Input group label" {...props}>
-    <SelectField
-      label="Select label"
-      options={options}
-      value={options[0].value}
-    />
-    <TextField
-      label="Text label"
-      placeholder="Placeholder"
-    />
-    <Button label="Submit" />
+    {children ?? defaultChildren}
   </InputGroup>
 );
 
