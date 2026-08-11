@@ -1,0 +1,113 @@
+// Variant specific theme options are obtained dynamically because there is way too many of them to
+// maintain manually. See `settings/_form-fields.scss` and `tools/form-fields/_variants.scss` for
+// details.
+//
+// 1. Defaults to zero when neither `--rui-FormField--horizontal__label__padding-y` (optional) nor
+//    `--rui-local-padding-y` (handled by the `size()` mixin in case of box form fields, see
+//    `_box-field-sizes.scss`) is defined. This is useful because FormLayoutCustomField may have no
+//    size specified therefore its label should have no padding at the top.
+
+// Forms fields: common properties
+$label-color: var(--rui-FormField__label__color);
+$label-font-size: var(--rui-FormField__label__font-size);
+$help-text-font-size: var(--rui-FormField__help-text__font-size);
+$help-text-font-style: var(--rui-FormField__help-text__font-style);
+$help-text-color: var(--rui-FormField__help-text__color);
+$required-label-color: var(--rui-FormField--required__label__color);
+$required-sign: var(--rui-FormField--required__sign);
+$required-sign-color: var(--rui-FormField--required__sign__color);
+
+// Form fields: horizontal layout
+$horizontal-label-text-align: var(--rui-FormField--horizontal__label__text-align);
+$horizontal-label-min-width: var(--rui-FormField--horizontal__label__min-width);
+$horizontal-label-width: var(--rui-FormField--horizontal__label__width);
+$horizontal-label-padding-y:
+    var(
+        --rui-FormField--horizontal__label__padding-y,
+        calc(var(--rui-FormField--box__border-width) + var(--rui-local-padding-y))
+    ); // 1.
+$horizontal-label-vertical-alignment: var(--rui-FormField--horizontal__label__vertical-alignment);
+$horizontal-field-vertical-alignment: var(--rui-FormField--horizontal__field__vertical-alignment);
+$horizontal-full-width-label-width: var(--rui-FormField--horizontal--full-width__label__width);
+
+// Form fields: links in validation states
+$link-validation-colors: (
+    invalid: (
+        default: var(--rui-color-feedback-danger),
+        hover: var(--rui-color-feedback-danger-hover),
+        active: var(--rui-color-feedback-danger-active),
+    ),
+    valid: (
+        default: var(--rui-color-feedback-success),
+        hover: var(--rui-color-feedback-success-hover),
+        active: var(--rui-color-feedback-success-active),
+    ),
+    warning: (
+        default: var(--rui-color-feedback-warning),
+        hover: var(--rui-color-feedback-warning-hover),
+        active: var(--rui-color-feedback-warning-active),
+    ),
+);
+
+// Form fields: disabled state
+$disabled-cursor: var(--rui-FormField--disabled__cursor);
+$disabled-opacity: var(--rui-FormField--disabled__opacity);
+
+// Form fields: box fields
+$box-border-width: var(--rui-FormField--box__border-width);
+$box-border-radius: var(--rui-FormField--box__border-radius);
+$box-input-width: var(--rui-FormField--box__input__width);
+$box-input-min-width: var(--rui-FormField--box__input__min-width);
+$box-placeholder-color: var(--rui-FormField--box__placeholder__color);
+
+// Form fields: box fields, component specific
+$box-select-caret-border-style: var(--rui-FormField--box--select__caret__border-style);
+$box-select-caret-background: var(--rui-FormField--box--select__caret__background);
+$box-select-option-disabled-color: var(--rui-FormField--box--select__option--disabled__color);
+
+// Form fields: box field sizes
+$box-sizes: (
+    small: (
+        height: var(--rui-FormField--box--small__height),
+        padding-y: var(--rui-FormField--box--small__padding-y),
+        padding-x: var(--rui-FormField--box--small__padding-x),
+        font-size: var(--rui-FormField--box--small__font-size),
+    ),
+    medium: (
+        height: var(--rui-FormField--box--medium__height),
+        padding-y: var(--rui-FormField--box--medium__padding-y),
+        padding-x: var(--rui-FormField--box--medium__padding-x),
+        font-size: var(--rui-FormField--box--medium__font-size),
+    ),
+    large: (
+        height: var(--rui-FormField--box--large__height),
+        padding-y: var(--rui-FormField--box--large__padding-y),
+        padding-x: var(--rui-FormField--box--large__padding-x),
+        font-size: var(--rui-FormField--box--large__font-size),
+    ),
+);
+
+// Form fields: check fields
+$check-input-size: var(--rui-FormField--check__input__size);
+$check-input-border-width: var(--rui-FormField--check__input__border-width);
+$check-input-focus-box-shadow: var(--rui-FormField--check__input--focus__box-shadow);
+$check-tap-target-size: var(--rui-FormField--check__tap-target-size);
+
+// Form fields: check fields, component specific
+$check-input-checkbox-border-radius: var(--rui-FormField--check__input--checkbox__border-radius);
+$check-input-checkbox-checked-background-image: var(--rui-FormField--check__input--checkbox--checked__background-image);
+$check-input-radio-border-radius: var(--rui-FormField--check__input--radio__border-radius);
+$check-input-radio-checked-background-image: var(--rui-FormField--check__input--radio--checked__background-image);
+$check-input-toggle-width: var(--rui-FormField--check__input--toggle__width);
+$check-input-toggle-border-radius: var(--rui-FormField--check__input--toggle__border-radius);
+$check-input-toggle-background-size: var(--rui-FormField--check__input--toggle__background-size);
+$check-input-toggle-default-background-image: var(--rui-FormField--check__input--toggle--default__background-image);
+$check-input-toggle-default-background-position:
+    var(
+        --rui-FormField--check__input--toggle--default__background-position
+    );
+$check-input-toggle-checked-background-image: var(--rui-FormField--check__input--toggle--checked__background-image);
+$check-input-toggle-checked-background-position:
+    var(
+        --rui-FormField--check__input--toggle--checked__background-position
+    );
