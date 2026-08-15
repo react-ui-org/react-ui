@@ -5,6 +5,7 @@
     "../docker-compose.yml"
   ],
   "service": "devcontainer",
+  "remoteUser": "developer",
   "shutdownAction": "stopCompose",
   "workspaceFolder": "/workspace",
   "forwardPorts": [
