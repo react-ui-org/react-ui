@@ -4,7 +4,11 @@ import React, {
   useRef,
 } from 'react';
 import type { InputHTMLAttributes } from 'react';
-import { FormLayoutContext } from '../../FormLayout';
+import {
+  FormLayout,
+  FormLayoutContext,
+  FormLayoutCustomFieldContext,
+} from '../../FormLayout';
 import { TextField } from '..';
 
 // Types for story component will be improved when we have full TypeScript support
@@ -48,6 +52,13 @@ export const TextFieldForRefTest = ({
   );
 };
 
+export const TextFieldForFormLayoutLabelWidthTests = () => (
+  <FormLayout fieldLayout="horizontal" labelWidth="100px">
+    <TextField label={defaultLabel} />
+    <TextField label="another-test-label" />
+  </FormLayout>
+);
+
 export const TextFieldForFormLayoutTests = ({
   layout,
   ...props
@@ -69,3 +80,14 @@ export const TextFieldForFormLayoutTests = ({
     </FormLayoutContext.Provider>
   );
 };
+
+export const TextFieldForFormLayoutCustomFieldTests = ({
+  ...props
+}: TextFieldForTestProps) => (
+  <FormLayoutCustomFieldContext.Provider value>
+    <TextField
+      label={defaultLabel}
+      {...props}
+    />
+  </FormLayoutCustomFieldContext.Provider>
+);

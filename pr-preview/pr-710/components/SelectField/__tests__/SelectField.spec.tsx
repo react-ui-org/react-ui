@@ -7,12 +7,14 @@ import {
   mixPropTests,
   propTests,
 } from '../../../../tests/playwright';
-import {
-  SelectFieldForTest,
-  SelectFieldForRefTest,
-  SelectFieldForFormLayoutTests,
-} from './SelectField.story';
 import type { SelectFieldForFormLayoutTestsProps } from './SelectField.story';
+import {
+  SelectFieldForFormLayoutCustomFieldTests,
+  SelectFieldForFormLayoutLabelWidthTests,
+  SelectFieldForFormLayoutTests,
+  SelectFieldForRefTest,
+  SelectFieldForTest,
+} from './SelectField.story';
 import { openSelectFieldOptionsTest } from './_propTests/openSelectFieldOptionsTest';
 
 const groupedOptions = [
@@ -272,6 +274,13 @@ test.describe('SelectField', () => {
 
   test.describe('formLayout', () => {
     test.describe('visual', () => {
+      test('labelWidth:string=100px', async ({ mount }) => {
+        const component = await mount(<SelectFieldForFormLayoutLabelWidthTests />);
+
+        const screenshot = await component.screenshot({ animations: 'disabled' });
+        expect(screenshot).toMatchSnapshot();
+      });
+
       [
         ...propTests.layoutPropTest,
       ].forEach(({
@@ -301,6 +310,17 @@ test.describe('SelectField', () => {
           const screenshot = await component.screenshot({ animations: 'disabled' });
           expect(screenshot).toMatchSnapshot();
         });
+      });
+    });
+  });
+
+  test.describe('formLayoutCustomField', () => {
+    test.describe('visual', () => {
+      test('label:hidden', async ({ mount }) => {
+        const component = await mount(<SelectFieldForFormLayoutCustomFieldTests />);
+
+        const screenshot = await component.screenshot({ animations: 'disabled' });
+        expect(screenshot).toMatchSnapshot();
       });
     });
   });
