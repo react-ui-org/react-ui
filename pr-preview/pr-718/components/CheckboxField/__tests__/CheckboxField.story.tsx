@@ -4,7 +4,10 @@ import React, {
   useRef,
 } from 'react';
 import type { LabelHTMLAttributes } from 'react';
-import { FormLayoutContext } from '../../FormLayout';
+import {
+  FormLayout,
+  FormLayoutContext,
+} from '../../FormLayout';
 import { CheckboxField } from '..';
 
 // Types for story component will be improved when we have full TypeScript support
@@ -47,6 +50,13 @@ export const CheckboxFieldForRefTest = ({
     />
   );
 };
+
+export const CheckboxForFormLayoutLabelWidthTests = () => (
+  <FormLayout fieldLayout="horizontal" labelWidth="100px">
+    <CheckboxField label={defaultLabel} />
+    <CheckboxField label="another-test-label" />
+  </FormLayout>
+);
 
 export const CheckboxForFormLayoutTests = ({
   layout,

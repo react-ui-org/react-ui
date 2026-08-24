@@ -705,7 +705,9 @@
     --rui-MultiSelectField__dropdown-group__color: var(--rui-color-text-primary);
     --rui-MultiSelectField__dropdown-group__font-weight: var(--rui-font-weight-base);
     --rui-MultiSelectField__dropdown-item__background-color: var(--rui-color-background-interactive);
+    --rui-MultiSelectField__dropdown-item__border-radius: 0px;
     --rui-MultiSelectField__dropdown-item__color: var(--rui-color-text-primary);
+    --rui-MultiSelectField__dropdown-item__gap: 0px;
     --rui-MultiSelectField__dropdown-item--selected__background-color: var(--rui-color-background-selected);
     --rui-MultiSelectField__dropdown-item--selected__color: var(--rui-color-text-primary);
     --rui-MultiSelectField__dropdown-item--selected__font-weight: var(--rui-font-weight-bold);
@@ -9117,10 +9119,12 @@
     align-items: center;
     min-width: var(--rui-FormField--box__input__min-width);
     max-width: 100%;
-    height: var(--rui-local-height);
-    padding: 0 var(--rui-local-padding-x);
+    height: calc(var(--rui-local-height) - 2 * var(--rui-MultiSelectField__dropdown-item__gap));
+    padding: 0 calc(var(--rui-local-padding-x) - var(--rui-MultiSelectField__dropdown-item__gap));
+    margin: var(--rui-MultiSelectField__dropdown-item__gap);
     font-size: var(--rui-local-font-size);
     color: var(--rui-MultiSelectField__dropdown-item__color);
+    border-radius: var(--rui-MultiSelectField__dropdown-item__border-radius);
     background-color: var(--rui-MultiSelectField__dropdown-item__background-color);
     cursor: pointer;
   }
@@ -9146,7 +9150,7 @@
     background-color: var(--rui-MultiSelectField__dropdown-item--selected--focus__background-color);
   }
   .MultiSelectFieldDropdownItem-module__isRootInGroup__fv_hzOXW {
-    padding-inline-start: calc(var(--rui-local-padding-x) * 2);
+    padding-inline-start: calc(var(--rui-local-padding-x) * 2 - var(--rui-MultiSelectField__dropdown-item__gap));
   }
 }
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
@@ -9328,6 +9332,7 @@
     align-items: center;
     height: auto;
     min-height: var(--rui-local-height);
+    padding-right: calc(2.25rem - 2 * var(--rui-FormField--box__border-width));
   }
   .MultiSelectField-module__caret__U4vIDKP6 {
     transition-property: border-color;

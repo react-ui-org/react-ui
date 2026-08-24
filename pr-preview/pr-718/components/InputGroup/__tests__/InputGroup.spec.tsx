@@ -9,6 +9,7 @@ import {
   InputGroupWithCustomInputPropsForTest,
   InputGroupWithoutChildrenForTest,
 } from './InputGroup.story';
+import { childrenPropTest } from './_propTests/childrenPropTest';
 import { validationTextsPropTest } from './_propTests/validationTextsPropTest';
 import { validationStatePropTest } from './_propTests/validationStatePropTest';
 
@@ -17,6 +18,7 @@ test.describe('InputGroup', () => {
     test.describe('visual', () => {
       [
         ...propTests.defaultComponentPropTest,
+        ...childrenPropTest,
         ...propTests.disabledPropTest,
         ...propTests.isLabelVisiblePropTest,
         ...propTests.layoutPropTest,

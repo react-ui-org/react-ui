@@ -9,7 +9,6 @@ export const customFieldValidationStatesPropTest: CustomFieldTestsType = validat
       ...propTest.props,
     },
     customFieldProps: {
-      isLabelVisible: false,
       label: 'Custom field label',
     },
     name: propTest.name,

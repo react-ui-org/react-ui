@@ -1,16 +1,17 @@
 import React from 'react';
 import type { HTMLAttributes } from 'react';
-import {
-  FormLayout,
-  FormLayoutCustomField,
-} from '..';
-import { TextField } from '../../TextField';
+import { Button } from '../../Button';
 import { CheckboxField } from '../../CheckboxField';
 import { FileInputField } from '../../FileInputField';
 import { Radio } from '../../Radio';
 import { SelectField } from '../../SelectField';
 import { TextArea } from '../../TextArea';
+import { TextField } from '../../TextField';
 import { Toggle } from '../../Toggle';
+import {
+  FormLayout,
+  FormLayoutCustomField,
+} from '..';
 
 // Types for story component will be improved when we have full TypeScript support
 type FormLayoutForTestProps = HTMLAttributes<HTMLDivElement>;
@@ -69,6 +70,7 @@ export const FormLayoutForTest = ({
       <TextField label="Label7" />
     </FormLayoutCustomField>
     <FileInputField label="Attachment label 8" />
+    <Button label="Submit" />
   </FormLayout>
 );
 
