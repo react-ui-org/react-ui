@@ -55,8 +55,8 @@ extra_css:
 extra_javascript:
   # First load dependencies
   - https://unpkg.com/@babel/standalone@7.20.15/babel.min.js
-  - https://unpkg.com/react@17.0.2/umd/react.development.js
-  - https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js
+  - https://unpkg.com/react@18.2.0/umd/react.development.js
+  - https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js
   - https://unpkg.com/@floating-ui/core@1.0.0/dist/floating-ui.core.umd.min.js
   - https://unpkg.com/@floating-ui/dom@1.0.0/dist/floating-ui.dom.umd.min.js
   - https://unpkg.com/@floating-ui/react-dom@1.0.0/dist/floating-ui.react-dom.umd.min.js
@@ -69,7 +69,7 @@ extra_javascript:
   - docs/_assets/js/setupDocoff.js
 
   # Then load and init Docoff
-  - https://unpkg.com/@react-ui-org/docoff@0.5.4/public/generated/bundle.js
+  - https://unpkg.com/@react-ui-org/docoff@0.7.2/public/generated/bundle.js
 
   # Then load non-Docoff code highlighiting
   - https://unpkg.com/prismjs@1.29.0/components/prism-core.min.js
