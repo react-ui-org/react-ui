@@ -1,0 +1,12 @@
+@use "../theme/code";
+
+code,
+pre {
+    font-size: code.$font-size;
+    font-family: code.$font-family;
+}
+
+code {
+    padding: 0.15em 0.5em;
+    background-color: var(--rui-color-background-light);
+}
