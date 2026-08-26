@@ -1,0 +1,30 @@
+@use "../../styles/tools/transition";
+@use "settings";
+
+@layer components.table {
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .tableRow,
+    .tableHeadRow {
+        @include transition.add((background-color));
+    }
+
+    .tableRow {
+        background-color: settings.$background-color;
+
+        &:hover {
+            background-color: settings.$hover-background-color;
+        }
+    }
+
+    .tableHeadRow {
+        background-color: settings.$head-background-color;
+
+        &:hover {
+            background-color: settings.$head-background-color;
+        }
+    }
+}
