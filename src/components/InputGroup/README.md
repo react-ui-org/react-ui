@@ -73,6 +73,10 @@ See [API](#api) for all available options.
   [ButtonGroup](/components/ButtonGroup) component which is designed
   specifically for that purpose.
 
+- InputGroup can be used inside [FormLayout](/components/FormLayout). In that
+  case, its `layout` prop is ignored and the value is inherited from
+  FormLayout instead.
+
 ## Sizes
 
 All existing field and button sizes are also available on the input group level:

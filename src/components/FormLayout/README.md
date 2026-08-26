@@ -49,7 +49,8 @@ there are longer validation messages or help texts.
 
 The FormLayout supports buttons and all React UI form fields:
 [Button](/components/Button), [CheckboxField](/components/CheckboxField),
-[FileInputField](/components/FileInputField), [Radio](/components/Radio),
+[FileInputField](/components/FileInputField),
+[InputGroup](/components/InputGroup), [Radio](/components/Radio),
 [SelectField](/components/SelectField), [TextArea](/components/TextArea),
 [TextField](/components/TextField), and [Toggle](/components/Toggle).
 
