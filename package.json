@@ -34,12 +34,12 @@
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "^22.11.0 || ^24.11.0",
+      "version": "^22.23.0 || ^24.19.0",
       "onFail": "error"
     },
     "packageManager": {
       "name": "npm",
-      "version": "^11.6.1",
+      "version": "^11.17.0",
       "onFail": "error"
     }
   },
