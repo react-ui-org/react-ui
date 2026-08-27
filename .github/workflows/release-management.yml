@@ -22,7 +22,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 24.19
           cache: npm
 
       - name: Install
@@ -105,7 +105,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 24.19
           cache: npm
           registry-url: https://registry.npmjs.org
 
@@ -136,7 +136,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 24.19
           cache: npm
 
       - name: Install
