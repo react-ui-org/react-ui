@@ -11,6 +11,11 @@ export default {
   ModalCloseButton: {
     close: 'Close',
   },
+  MultiSelectField: {
+    noOptions: 'No options',
+    removeTag: 'Remove',
+    search: 'Search',
+  },
   ScrollView: {
     next: 'Next',
     previous: 'Previous',

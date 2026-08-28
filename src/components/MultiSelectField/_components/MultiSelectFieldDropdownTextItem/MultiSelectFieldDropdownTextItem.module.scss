@@ -1,0 +1,16 @@
+@use "../../../../styles/theme/form-fields" as form-theme;
+@use "../../theme";
+
+@layer components.multi-select-field {
+    .root {
+        display: flex;
+        align-items: center;
+        min-width: form-theme.$box-input-min-width;
+        max-width: 100%;
+        height: var(--rui-local-height);
+        padding: 0 var(--rui-local-padding-x);
+        font-size: var(--rui-local-font-size);
+        color: theme.$dropdown-text-item-color;
+        cursor: default;
+    }
+}

@@ -49,7 +49,8 @@ there are longer validation messages or help texts.
 
 The FormLayout supports buttons and all React UI form fields:
 [Button](/components/Button), [CheckboxField](/components/CheckboxField),
-[FileInputField](/components/FileInputField), [Radio](/components/Radio),
+[FileInputField](/components/FileInputField),
+[MultiSelectField](/components/MultiSelectField), [Radio](/components/Radio),
 [SelectField](/components/SelectField), [TextArea](/components/TextArea),
 [TextField](/components/TextField), and [Toggle](/components/Toggle).
 
@@ -57,6 +58,7 @@ The FormLayout supports buttons and all React UI form fields:
 React.createElement(() => {
   const [fieldLayout, setFieldLayout] = React.useState('horizontal');
   const [fruit, setFruit] = React.useState('apple');
+  const [preferredFruits, setPreferredFruits] = React.useState(['apple']);
   const [isDeliveryAddress, setIsDeliveryAddress] = React.useState(true);
   const [receiveNewsletter, setReceiveNewsletter] = React.useState(true);
   const options = [
@@ -136,6 +138,12 @@ React.createElement(() => {
           onChange={(e) => setFruit(e.target.value)}
           options={options}
           value={fruit}
+        />
+        <MultiSelectField
+          label="Fruits to order"
+          onChange={(value) => setPreferredFruits(value)}
+          options={options}
+          value={preferredFruits}
         />
         <TextArea
           fullWidth
