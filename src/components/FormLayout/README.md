@@ -439,13 +439,13 @@ helps to improve its accessibility.
 
 ## API
 
-<docoff-react-props src="/components/FormLayout/FormLayout.jsx"></docoff-react-props>
+<docoff-react-props src="/components/FormLayout/FormLayout.tsx"></docoff-react-props>
 
 ### FormLayoutCustomField API
 
 A place for custom content inside FormLayout.
 
-<docoff-react-props src="/components/FormLayout/FormLayoutCustomField.jsx"></docoff-react-props>
+<docoff-react-props src="/components/FormLayout/FormLayoutCustomField.tsx"></docoff-react-props>
 
 ## Theming
 

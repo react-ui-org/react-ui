@@ -772,7 +772,7 @@ If you provide [ref], it is forwarded to the native HTML `<select>` element.
 
 ## API
 
-<docoff-react-props src="/components/SelectField/SelectField.jsx"></docoff-react-props>
+<docoff-react-props src="/components/SelectField/SelectField.tsx"></docoff-react-props>
 
 ## Theming
 

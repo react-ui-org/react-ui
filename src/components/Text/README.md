@@ -220,7 +220,7 @@ accessibility.
 
 ## API
 
-<docoff-react-props src="/components/Text/Text.jsx"></docoff-react-props>
+<docoff-react-props src="/components/Text/Text.tsx"></docoff-react-props>
 
 [div-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
 [React common props]: https://react.dev/reference/react-dom/components/common#common-props

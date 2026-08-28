@@ -407,7 +407,7 @@ If you provide [ref], it is forwarded to the native HTML `<button>` element.
 
 ## API
 
-<docoff-react-props src="/components/Button/Button.jsx"></docoff-react-props>
+<docoff-react-props src="/components/Button/Button.tsx"></docoff-react-props>
 
 ## Theming
 

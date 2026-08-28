@@ -90,7 +90,7 @@ Easy-to-miss invariants beyond the generic checks above:
   eslint + markdownlint + stylelint. It is not auto-run — remind the author to
   run `npm run lint`, `npm run test:jest`, and `npm run test:playwright-ct:all`.
 * **Component layout** ([frontend.md](../rules/frontend.md)): every component
-  folder has the `.jsx` + `index.js` barrel + `*.module.scss` + `_settings`/
+  folder has the `.tsx` + `.types.ts` + `index.ts` barrel + `*.module.scss` + `_settings`/
   `_theme`/`_tools` SCSS partials + `README.md` + `__tests__/`. PropTypes, not
   TypeScript, in source.
 * **CSS Modules class naming** ([styling.md](../rules/styling.md)): `root`,
@@ -109,11 +109,11 @@ Group findings by severity. For each:
 
 ```text
 ## Blocking
-- [requirements] src/components/Foo/Foo.jsx:42 — acceptance criterion not implemented.
+- [requirements] src/components/Foo/Foo.tsx:42 — acceptance criterion not implemented.
 - [tests] src/helpers/bar/bar.js:10 (testing.md) — new helper `bar` has no test.
 
 ## Non-blocking / nits
-- [design] src/components/Foo/Foo.jsx:7 (frontend.md) — ref not forwarded to root element.
+- [design] src/components/Foo/Foo.tsx:7 (frontend.md) — ref not forwarded to root element.
 
 ## Reminders
 - Run `npm run lint`, `npm run test:jest`, and `npm run test:playwright-ct:all` before committing.

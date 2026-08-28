@@ -256,7 +256,7 @@ helps to improve its accessibility.
 
 ## API
 
-<docoff-react-props src="/components/Table/Table.jsx"></docoff-react-props>
+<docoff-react-props src="/components/Table/Table.tsx"></docoff-react-props>
 
 [React common props]: https://react.dev/reference/react-dom/components/common#common-props
 [table-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#attributes

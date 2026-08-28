@@ -353,7 +353,7 @@ If you provide [ref], it is forwarded to the native HTML `<textarea>` element.
 
 ## API
 
-<docoff-react-props src="/components/TextArea/TextArea.jsx"></docoff-react-props>
+<docoff-react-props src="/components/TextArea/TextArea.tsx"></docoff-react-props>
 
 ## Theming
 

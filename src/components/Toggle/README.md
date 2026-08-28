@@ -270,7 +270,7 @@ If you provide [ref], it is forwarded to the native HTML `<input>` element.
 
 ## API
 
-<docoff-react-props src="/components/Toggle/Toggle.jsx"></docoff-react-props>
+<docoff-react-props src="/components/Toggle/Toggle.tsx"></docoff-react-props>
 
 ## Theming
 

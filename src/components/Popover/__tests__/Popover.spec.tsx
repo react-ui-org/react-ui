@@ -105,7 +105,7 @@ test.describe('Popover', () => {
       );
 
       const portalHTMLContent = await page
-        .evaluate((id) => document.getElementById(id).innerHTML, portalId);
+        .evaluate((id) => document.getElementById(id)?.innerHTML, portalId);
 
       expect(portalHTMLContent).toContain(portalContent);
     });

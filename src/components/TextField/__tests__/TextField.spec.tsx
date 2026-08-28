@@ -113,13 +113,13 @@ test.describe('TextField', () => {
       });
 
       test.describe('pass type into input', () => {
-        [
+        ([
           'email',
           'number',
           'password',
           'tel',
           'text',
-        ].forEach((type) => {
+        ] as const).forEach((type) => {
           test(`input type ${type} passed`, async ({ mount }) => {
             const component = await mount(
               <TextFieldForTest

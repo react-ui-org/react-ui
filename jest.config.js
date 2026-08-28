@@ -1,21 +1,23 @@
 module.exports = {
   moduleFileExtensions: [
+    // Jest runner requires `js` extension to be defined
     'js',
-    'jsx',
+    'ts',
+    'tsx',
   ],
   moduleNameMapper: {
     '\\.scss$': 'identity-obj-proxy',
-    '\\.svg$': '<rootDir>/tests/jest/mocks/svgrMock.jsx',
+    '\\.svg$': '<rootDir>/tests/jest/mocks/svgrMock.ts',
   },
   setupFiles: [
-    '<rootDir>/tests/jest/setupJest.js',
+    '<rootDir>/tests/jest/setupJest.ts',
   ],
   setupFilesAfterEnv: [
-    '<rootDir>/tests/jest/setupTestingLibrary.js',
+    '<rootDir>/tests/jest/setupTestingLibrary.ts',
   ],
   testEnvironment: '@happy-dom/jest-environment',
   testMatch: [
-    '**/*.test.{js,jsx}',
+    '**/*.test.{ts,tsx}',
   ],
   transformIgnorePatterns: [
     'node_modules/(?!(@react-ui-org))',
