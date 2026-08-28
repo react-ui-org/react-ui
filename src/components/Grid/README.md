@@ -263,13 +263,13 @@ accessibility.
 
 ## API
 
-<docoff-react-props src="/components/Grid/Grid.jsx"></docoff-react-props>
+<docoff-react-props src="/components/Grid/Grid.tsx"></docoff-react-props>
 
 ### GridSpan API
 
 Wrapper for content that should span multiple rows or columns.
 
-<docoff-react-props src="/components/Grid/GridSpan.jsx"></docoff-react-props>
+<docoff-react-props src="/components/Grid/GridSpan.tsx"></docoff-react-props>
 
 [grid-layout]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout
 [grid-template-columns]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns

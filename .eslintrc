@@ -17,7 +17,20 @@
   ],
   "parser": "@babel/eslint-parser",
   "rules": {
+    "import/extensions": ["error", "ignorePackages", {
+      "js": "never",
+      "jsx": "never",
+      "ts": "never",
+      "tsx": "never"
+    }],
     "import/prefer-default-export": "off",
     "no-console": "error"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
   }
 }

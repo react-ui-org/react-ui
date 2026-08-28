@@ -11,7 +11,7 @@ paths:
 ## Commands
 
 * Run all Jest unit tests with `npm run test:jest` (TS + JS). For a single file:
-  `npm run test:jest:ts -- <file>` or `npm run test:jest:js -- <file>`.
+  `npm run test:jest -- <file>`.
 * Run all Playwright component tests with `npm run test:playwright-ct:all`; for
   one component, `npm run test:playwright-ct:all -- -- src/components/Button`.
 * Update Playwright snapshots with `npm run test:playwright-ct:all-with-update`.
@@ -45,7 +45,9 @@ Jest unit/component tests are co-located in a component's `__tests__/` folder.
 
 **Story components** (`.story.tsx`) wrap the real component in a minimal fixture
 (sometimes inside a context provider) and are imported only by `.spec.tsx`
-files. Naming convention: `<ComponentName>ForTest`, `<ComponentName>ForRefTest`,
+files. Type them with the real component props; when the story fills in a
+default for a required prop, use `StoryProps<Props, 'key'>` from
+`tests/playwright` instead of hand-written `Omit & { key?: … }` types. Naming convention: `<ComponentName>ForTest`, `<ComponentName>ForRefTest`,
 `<ComponentName>ForFormLayoutTests` — the FormLayout story component is always
 last.
 

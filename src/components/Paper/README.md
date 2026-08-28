@@ -67,7 +67,7 @@ helps to improve its accessibility.
 
 ## API
 
-<docoff-react-props src="/components/Paper/Paper.jsx"></docoff-react-props>
+<docoff-react-props src="/components/Paper/Paper.tsx"></docoff-react-props>
 
 ## Theming
 

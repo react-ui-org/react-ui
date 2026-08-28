@@ -2,11 +2,10 @@ import React, {
   useEffect,
   useRef,
 } from 'react';
-import type { HTMLAttributes } from 'react';
 import { ScrollView } from '..';
+import type { ScrollViewProps } from '..';
 
-// Types for story component will be improved when we have full TypeScript support
-type ScrollViewTestProps = HTMLAttributes<HTMLDivElement>;
+type ScrollViewTestProps = ScrollViewProps;
 type ScrollViewForRefTestProps = ScrollViewTestProps & {
   testRefAttrName: string;
   testRefAttrValue: string;
@@ -115,7 +114,7 @@ export const ScrollViewForRefTest = ({
   testRefAttrValue,
   ...props
 } : ScrollViewForRefTestProps) => {
-  const ref = useRef<HTMLDivElement>(undefined);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     ref.current?.setAttribute(testRefAttrName, testRefAttrValue);

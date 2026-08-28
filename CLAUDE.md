@@ -27,9 +27,11 @@ Run these inside the `devcontainer` (from the host, prefix with
 |-----------------------------------|---------------------------------------------------------------------|
 | Install JS                        | `npm ci`                                                            |
 | Build library                     | `npm run build`                                                     |
+| Build type declarations only      | `npm run build:types`                                               |
 | Run static checks                 | `npm run lint`                                                      |
+| Run type check                    | `npm run typecheck`                                                 |
 | Run unit tests                    | `npm run test:jest`                                                 |
-| Run a single unit test file       | `npm run test:jest:ts -- <file>` / `npm run test:jest:js -- <file>` |
+| Run a single unit test file       | `npm run test:jest -- <file>`                                       |
 | Run component tests               | `npm run test:playwright-ct:all`                                    |
 | Component tests for one component | `npm run test:playwright-ct:all -- -- src/components/Button`        |
 | Update component snapshots        | `npm run test:playwright-ct:all-with-update`                        |
@@ -59,7 +61,7 @@ Project rules live in [.claude/rules/](.claude/rules/). There are two kinds.
 **Path-scoped** — each carries a `paths:` glob declaring the files it governs;
 consult it when touching those files:
 
-* [frontend.md](.claude/rules/frontend.md) — `src/**/*.js`, `src/**/*.jsx`:
+* [frontend.md](.claude/rules/frontend.md) — `src/**/*.ts`, `src/**/*.tsx`:
   stack, component structure, implementation pattern.
 * [styling.md](.claude/rules/styling.md) — `src/**/*.scss`, `src/**/*.css`:
   CSS Modules, class naming, theming.

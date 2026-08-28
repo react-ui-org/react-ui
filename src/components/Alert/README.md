@@ -170,7 +170,7 @@ helps to improve its accessibility.
 
 ## API
 
-<docoff-react-props src="/components/Alert/Alert.jsx" />
+<docoff-react-props src="/components/Alert/Alert.tsx" />
 
 ## Theming
 

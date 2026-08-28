@@ -2,6 +2,8 @@ module.exports = {
   moduleFileExtensions: [
     'js',
     'jsx',
+    'ts',
+    'tsx',
   ],
   moduleNameMapper: {
     '\\.scss$': 'identity-obj-proxy',
@@ -15,7 +17,7 @@ module.exports = {
   ],
   testEnvironment: '@happy-dom/jest-environment',
   testMatch: [
-    '**/*.test.{js,jsx}',
+    '**/*.test.{js,jsx,ts,tsx}',
   ],
   transformIgnorePatterns: [
     'node_modules/(?!(@react-ui-org))',

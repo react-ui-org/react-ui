@@ -307,7 +307,7 @@ If you provide [ref], it is forwarded to the native HTML `<input>` element.
 
 ## API
 
-<docoff-react-props src="/components/FileInputField/FileInputField.jsx"></docoff-react-props>
+<docoff-react-props src="/components/FileInputField/FileInputField.tsx"></docoff-react-props>
 
 ## Theming
 

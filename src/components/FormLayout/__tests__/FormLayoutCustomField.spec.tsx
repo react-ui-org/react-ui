@@ -58,13 +58,13 @@ test.describe('FormLayoutCustomField', () => {
         const component = await mount(
           <FormLayoutCustomFieldForTest
             customFieldLayoutProps={{
-              fieldLayout: 'horizontal',
               id,
               label: 'CustomLayoutFieldLabel',
             }}
             customFieldProps={{
               label: 'CustomFieldLabel',
             }}
+            fieldLayout="horizontal"
           />,
         );
 

@@ -389,11 +389,11 @@ which enables [Advanced Positioning](#advanced-positioning).
 
 ## API
 
-<docoff-react-props src="/components/Popover/Popover.jsx"></docoff-react-props>
+<docoff-react-props src="/components/Popover/Popover.tsx"></docoff-react-props>
 
 ### PopoverWrapper API
 
-<docoff-react-props src="/components/Popover/PopoverWrapper.jsx"></docoff-react-props>
+<docoff-react-props src="/components/Popover/PopoverWrapper.tsx"></docoff-react-props>
 
 ## Theming
 

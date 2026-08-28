@@ -11,3 +11,10 @@ export type PropTest = {
 };
 
 export type PropTests = PropTest[];
+
+/**
+ * Props of a story component: the component props with `DefaultedKeys` made optional because the
+ * story fills in a default for them.
+ */
+export type StoryProps<Props, DefaultedKeys extends keyof Props> =
+  Omit<Props, DefaultedKeys> & Partial<Pick<Props, DefaultedKeys>>;
