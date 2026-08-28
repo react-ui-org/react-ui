@@ -322,7 +322,7 @@ and helps to improve its accessibility.
 
 ## API
 
-<docoff-react-props src="/components/InputGroup/InputGroup.jsx"></docoff-react-props>
+<docoff-react-props src="/components/InputGroup/InputGroup.tsx"></docoff-react-props>
 
 ## Theming
 

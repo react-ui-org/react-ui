@@ -2,7 +2,7 @@
 
 Tools used to test the application:
 
-* **ESLint** (static code analysis of JS files)
+* **ESLint** (static code analysis of TypeScript files)
 * **Stylelint** (static code analysis of CSS files)
 * **Markdownlint** (static code analysis of Markdown files)
 * **Jest** (unit tests)

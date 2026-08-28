@@ -70,7 +70,7 @@ test.describe('ModalContent', () => {
 
       const modalBodyContent = await component.evaluate((element) => {
         const modalBody = element.querySelector('#modalBodyId');
-        return modalBody.textContent;
+        return modalBody?.textContent;
       });
       expect(modalBodyContent).toBe('');
     });

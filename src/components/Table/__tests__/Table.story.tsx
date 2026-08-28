@@ -1,11 +1,15 @@
 import React from 'react';
-import type { HTMLAttributes } from 'react';
 import { Table } from '..';
+import type {
+  TableColumn,
+  TableProps,
+  TableRow,
+} from '..';
+import type { StoryProps } from '../../../../tests/playwright';
 
-// Types for story component will be improved when we have full TypeScript support
-type TableForTestProps = HTMLAttributes<HTMLTableElement>;
+type TableForTestProps = StoryProps<TableProps, 'columns' | 'rows'>;
 
-const baseColumns = [
+const baseColumns: TableColumn[] = [
   {
     label: 'ID',
     name: 'id',
@@ -15,14 +19,14 @@ const baseColumns = [
     name: 'name',
   },
   {
-    format: (date: Date) => date.toLocaleDateString('en-GB'),
+    format: (date) => (date as Date).toLocaleDateString('en-GB'),
     isSortable: true,
     label: 'Date of birth',
     name: 'dateOfBirth',
   },
 ];
 
-const baseRows = [
+const baseRows: TableRow[] = [
   {
     dateOfBirth: new Date(1940, 10, 9),
     id: 1,
@@ -46,11 +50,13 @@ const baseRows = [
 ];
 
 export const TableForTest = ({
+  columns = baseColumns,
+  rows = baseRows,
   ...props
 }: TableForTestProps) => (
   <Table
-    columns={baseColumns}
-    rows={baseRows}
+    columns={columns}
+    rows={rows}
     {...props}
   />
 );
