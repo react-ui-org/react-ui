@@ -26,7 +26,7 @@ export const rowGapPropTest: PropTests = [
   )),
   ...Object.entries(breakpoints).map(([breakpointName, breakpointValue]) => (
     {
-      name: `rowGap:shape[breakpointShape=${breakpointShape[breakpointName]}] breakpoint=${breakpointName}`,
+      name: `rowGap:shape[breakpointShape=${breakpointShape[breakpointName as keyof typeof breakpointShape]}] breakpoint=${breakpointName}`,
       onBeforeTest: async (page: Page) => {
         await page.setViewportSize({
           height: 200,

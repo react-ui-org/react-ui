@@ -1,9 +1,11 @@
-import type { HTMLAttributes } from 'react';
+import type { ComponentProps } from 'react';
 import type { PropTest } from '../../../../../../tests/playwright/types';
+import type { TextField } from '../../../../TextField';
+import type { FormLayoutCustomFieldProps } from '../../..';
 
 export type CustomFieldTestType = PropTest & {
-  customFieldLayoutProps: HTMLAttributes<HTMLDivElement>;
-  customFieldProps?: HTMLAttributes<HTMLDivElement>;
+  customFieldLayoutProps: FormLayoutCustomFieldProps;
+  customFieldProps?: ComponentProps<typeof TextField>;
 };
 
 export type CustomFieldTestsType = CustomFieldTestType[];

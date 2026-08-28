@@ -335,19 +335,19 @@ helps to improve its accessibility.
 
 ## API
 
-<docoff-react-props src="/components/Toolbar/Toolbar.jsx"></docoff-react-props>
+<docoff-react-props src="/components/Toolbar/Toolbar.tsx"></docoff-react-props>
 
 ### ToolbarGroup API
 
 A wrapper for grouping ToolbarItems together.
 
-<docoff-react-props src="/components/Toolbar/ToolbarGroup.jsx"></docoff-react-props>
+<docoff-react-props src="/components/Toolbar/ToolbarGroup.tsx"></docoff-react-props>
 
 ### ToolbarItem API
 
 A wrapper for individual toolbar items.
 
-<docoff-react-props src="/components/Toolbar/ToolbarItem.jsx"></docoff-react-props>
+<docoff-react-props src="/components/Toolbar/ToolbarItem.tsx"></docoff-react-props>
 
 ## Theming
 

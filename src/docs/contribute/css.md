@@ -124,8 +124,8 @@ app.
 
 For example, this JSX:
 
-```jsx
-// Button.jsx
+```tsx
+// Button.tsx
 
 <button className={styles.root}>
   <span className={styles.beforeLabel}>{beforeLabel}</span>

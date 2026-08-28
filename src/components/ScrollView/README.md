@@ -498,7 +498,7 @@ If you provide [ref], it is forwarded to the scrolling viewport native HTML
 
 ## API
 
-<docoff-react-props src="/components/ScrollView/ScrollView.jsx"></docoff-react-props>
+<docoff-react-props src="/components/ScrollView/ScrollView.tsx"></docoff-react-props>
 
 [div-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
 [linear gradients]: https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient

@@ -64,4 +64,4 @@ export const propTests = {
   validationTextPropTest,
   variantPropTest,
 };
-
+export type { StoryProps } from './types';

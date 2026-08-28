@@ -4,8 +4,6 @@
     "./configs/eslint-config-airbnb-typescript",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-type-checked",
-    "plugin:deprecation/recommended",
-    "plugin:typescript-sort-keys/recommended",
   ],
   "env": {
     "browser": true,
@@ -27,14 +25,20 @@
     "projectService": true
   },
   "plugins": [
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "perfectionist"
   ],
   "rules": {
     "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     "@typescript-eslint/consistent-type-exports": ["error"],
     "@typescript-eslint/consistent-type-imports": ["error"],
+    "@typescript-eslint/no-deprecated": ["error"],
     "import/prefer-default-export": "off",
     "no-console": ["error"],
+    "perfectionist/sort-enums": ["error", { "ignoreCase": true, "type": "alphabetical" }],
+    "perfectionist/sort-interfaces": ["error", { "ignoreCase": true, "type": "alphabetical" }],
+    "perfectionist/sort-object-types": ["error", { "ignoreCase": true, "type": "alphabetical" }],
     "react/jsx-filename-extension": ["error", { "extensions": [".jsx", ".tsx"] }],
+    "react/require-default-props": "off",
   }
 }

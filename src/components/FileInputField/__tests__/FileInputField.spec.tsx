@@ -130,11 +130,11 @@ test.describe('FileInputField', () => {
 
       test('Call onFilesChanged callback when no file is selected.', async ({ mount }) => {
         let called = false;
-        let calledWith: FileList | null = null;
+        let calledWith: FileList | File[] | null = null;
 
         const component = await mount(
           <FileInputFieldForTest
-            onFilesChanged={(files: FileList) => {
+            onFilesChanged={(files) => {
               called = true;
               calledWith = files;
             }}
@@ -198,7 +198,7 @@ test.describe('FileInputField', () => {
         const component = await mount(
           <FileInputFieldForTest
             multiple
-            onFilesChanged={(files: FileList) => {
+            onFilesChanged={(files) => {
               listLength = Object.keys(files).length;
             }}
           />,
@@ -290,7 +290,7 @@ test.describe('FileInputField', () => {
 
         const component = await mount(
           <FileInputFieldWithResetButtonForTest
-            onFilesChanged={(files: FileList) => {
+            onFilesChanged={(files) => {
               keyLength = Object.keys(files).length;
             }}
           />,

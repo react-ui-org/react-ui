@@ -1,16 +1,18 @@
 import React from 'react';
-import type { AnchorHTMLAttributes } from 'react';
 import { TextLink } from '..';
+import type { TextLinkProps } from '..';
+import type { StoryProps } from '../../../../tests/playwright';
 
-// Types for story component will be improved when we have full TypeScript support
-type TextLinkForTestProps = AnchorHTMLAttributes<HTMLAnchorElement>;
+type TextLinkForTestProps = StoryProps<TextLinkProps, 'href' | 'label'>;
 
 export const TextLinkForTest = ({
+  href = '/test/uri',
+  label = 'Link',
   ...props
 }: TextLinkForTestProps) => (
   <TextLink
-    href="/test/uri"
-    label="Link"
+    href={href}
+    label={label}
     {...props}
   />
 );

@@ -1,12 +1,11 @@
 import React from 'react';
-import type { HTMLAttributes } from 'react';
 import {
   Toolbar,
   ToolbarItem,
 } from '..';
+import type { ToolbarProps } from '..';
 
-// Types for story component will be improved when we have full TypeScript support
-type ToolbarTestProps = HTMLAttributes<HTMLFieldSetElement>;
+type ToolbarTestProps = ToolbarProps;
 
 export const ToolbarForTest = ({
   ...props

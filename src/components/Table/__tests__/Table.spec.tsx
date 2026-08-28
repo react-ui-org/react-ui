@@ -101,7 +101,7 @@ test.describe('Table', () => {
         rows.map((row) => row.getByRole('cell').all()),
       );
 
-      const testChain = [];
+      const testChain: Promise<void>[] = [];
 
       rowCells.forEach((cells, rowIndex) => {
         cells.forEach((cell, cellIndex) => testChain.push(
@@ -199,7 +199,7 @@ test.describe('Table', () => {
 
       const getFocusedElementParentInnerText = () => page.evaluate(() => {
         const selector = document.activeElement;
-        return selector ? selector.parentElement.innerText : null;
+        return selector?.parentElement ? selector.parentElement.innerText : null;
       });
 
       await page.keyboard.press('Tab');
