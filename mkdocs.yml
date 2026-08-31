@@ -153,3 +153,5 @@ nav:
           - Composition: 'docs/contribute/composition.md'
           - CSS Guidelines: 'docs/contribute/css.md'
           - Releasing: 'docs/contribute/releasing.md'
+          - Decisions:
+              - '1. State Collection': 'docs/contribute/decisions/0001-state-collection.md'
