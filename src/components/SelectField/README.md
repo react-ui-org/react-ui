@@ -78,8 +78,7 @@ mobile devices by using the native select of the platform.
 ## Design Variants
 
 To satisfy the design requirements of your project, all input fields in React UI
-come in two design variants to choose from: outline and filled. Both can be
-further [customized](#theming) with CSS custom properties.
+come in two design variants to choose from: outline and filled.
 
 ```docoff-react-preview
 React.createElement(() => {
@@ -624,18 +623,10 @@ React.createElement(() => {
 });
 ```
 
-#### Styling the Required State
+#### Rendering as Required
 
-All form fields in React UI can be
-[styled](/docs/customize/theming/forms/#required-state)
-to indicate the required state.
-
-However, you may find yourself in a situation where a form field is valid in
-both selected and unselected states, for example to turn on or off a feature.
-If your project uses the label color as the primary means to indicate the
-required state of input fields and the usual asterisk `*` is omitted, you may
-want to keep the label color consistent for both states to avoid confusion.
-
+A form field may be valid in both selected and unselected states, for example
+to turn on or off a feature, while your design still needs it to look required.
 For this edge case, there is the `renderAsRequired` prop:
 
 ```docoff-react-preview
@@ -656,38 +647,21 @@ React.createElement(() => {
     },
   ];
   return (
-   <React.Fragment>
-      <style>
-      {`
-        .example {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1rem 0.5rem;
-        }
-
-        .example--themed-form-fields {
-          --rui-FormField__label__color: var(--rui-color-text-secondary);
-          --rui-FormField--required__label__color: var(--rui-color-text-primary);
-          --rui-FormField--required__sign: '';
-        }
-      `}
-      </style>
-      <div class="example example--themed-form-fields">
+    <>
       <SelectField
-          label="This field is optional"
-          onChange={(e) => setFruit(e.target.value)}
-          options={options}
-          value={fruit}
-        />
-        <SelectField
-          label="This field is optional but looks like required"
-          onChange={(e) => setFruit(e.target.value)}
-          options={options}
-          value={fruit}
-          renderAsRequired
-        />
-      </div>
-    </React.Fragment>
+        label="This field is optional"
+        onChange={(e) => setFruit(e.target.value)}
+        options={options}
+        value={fruit}
+      />
+      <SelectField
+        label="This field is optional but looks like required"
+        onChange={(e) => setFruit(e.target.value)}
+        options={options}
+        value={fruit}
+        renderAsRequired
+      />
+    </>
   );
 });
 ```
@@ -784,6 +758,71 @@ options. On top of that, the following options are available for SelectField.
 | `--rui-FormField--box--select__caret__border-style`     | SelectField arrow border style (e.g. `solid`)                |
 | `--rui-FormField--box--select__caret__background`       | SelectField arrow background (including `url()` or gradient) |
 | `--rui-FormField--box--select__option--disabled__color` | Text color of disabled SelectField options                   |
+
+### Theming the Required State
+
+Required fields are indicated by
+[shared theming options](/docs/customize/theming/forms/#required-state).
+
+If your project uses the label color as the primary means to indicate the
+required state of input fields and the usual asterisk `*` is omitted, you may
+want to keep the label color consistent for fields that are valid in both
+selected and unselected states. Pair the theming options with the
+[`renderAsRequired`](#rendering-as-required) prop to achieve that:
+
+```docoff-react-preview
+React.createElement(() => {
+  const [fruit, setFruit] = React.useState('apple');
+  const options = [
+    {
+      label: 'Apple',
+      value: 'apple',
+    },
+    {
+      label: 'Banana',
+      value: 'banana',
+    },
+    {
+      label: 'Grapefruit',
+      value: 'grapefruit',
+    },
+  ];
+  return (
+    <React.Fragment>
+      <style>
+      {`
+        .example {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem 0.5rem;
+        }
+
+        .example--themed-form-fields {
+          --rui-FormField__label__color: var(--rui-color-text-secondary);
+          --rui-FormField--required__label__color: var(--rui-color-text-primary);
+          --rui-FormField--required__sign: '';
+        }
+      `}
+      </style>
+      <div class="example example--themed-form-fields">
+        <SelectField
+          label="This field is optional"
+          onChange={(e) => setFruit(e.target.value)}
+          options={options}
+          value={fruit}
+        />
+        <SelectField
+          label="This field is optional but looks like required"
+          onChange={(e) => setFruit(e.target.value)}
+          options={options}
+          value={fruit}
+          renderAsRequired
+        />
+      </div>
+    </React.Fragment>
+  );
+});
+```
 
 [React common props]: https://react.dev/reference/react-dom/components/common#common-props
 [ref]: https://reactjs.org/docs/refs-and-the-dom.html

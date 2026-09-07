@@ -26,6 +26,11 @@ See [Commands](../../CLAUDE.md#commands).
   each component's `README.md`; guides and foundations live under `src/docs/`.
 * New pages must be wired into the navigation in [mkdocs.yml](../../mkdocs.yml).
 * Use relative links between docs.
+* Keep theming out of README prose: document it only in the `## Theming` section
+  at the end of a component's `README.md`, including examples that override
+  `--rui-*` custom properties. Other sections must not link to
+  `/docs/customize/theming/*` or to `#theming` — downstream design systems drop
+  the whole section when they sync our docs.
 
 ## Reference
 
