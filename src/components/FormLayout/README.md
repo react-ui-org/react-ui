@@ -211,9 +211,6 @@ auto width, and limited width. For cases where an individual manual width works
 better, there is the **local custom width mode** which enables setting a width
 that is applied just for the current FormLayout.
 
-👉 All global label width options can be easily [customized](/docs/customize/theming/overview)
-with CSS custom properties.
-
 #### Label Width Options
 
 - The `default` mode (global) sets the width of all labels to a **global default

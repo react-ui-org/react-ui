@@ -312,29 +312,6 @@ React.createElement(() => {
 });
 ```
 
-## z-index
-
-By default, the Popover's `z-index` is `auto`, which means it participates in
-the stacking context of its nearest positioned ancestor. This works well in most
-cases, but can cause the Popover to appear behind other positioned elements such
-as sticky headers, fixed toolbars, or modals.
-
-When that happens, set `--rui-Popover__z-index` to a numeric value high enough
-to place the Popover above the conflicting layer. The override can be applied
-globally or scoped to a specific context:
-
-```css
-/* Global override */
-:root {
-  --rui-Popover__z-index: 1000;
-}
-
-/* Scoped override */
-.my-context {
-  --rui-Popover__z-index: 1000;
-}
-```
-
 ## Controlled Popover
 
 Popover API can be used to control visibility of Popover component. You need to
@@ -408,6 +385,29 @@ which enables [Advanced Positioning](#advanced-positioning).
 | `--rui-Popover__background-color`                    | Background color                                             |
 | `--rui-Popover__box-shadow`                          | Popover box shadow                                           |
 | `--rui-Popover__z-index`                             | Popover z-index (default: `auto`)                            |
+
+### z-index
+
+By default, the Popover's `z-index` is `auto`, which means it participates in
+the stacking context of its nearest positioned ancestor. This works well in most
+cases, but can cause the Popover to appear behind other positioned elements such
+as sticky headers, fixed toolbars, or modals.
+
+When that happens, set `--rui-Popover__z-index` to a numeric value high enough
+to place the Popover above the conflicting layer. The override can be applied
+globally or scoped to a specific context:
+
+```css
+/* Global override */
+:root {
+  --rui-Popover__z-index: 1000;
+}
+
+/* Scoped override */
+.my-context {
+  --rui-Popover__z-index: 1000;
+}
+```
 
 [div-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
 [Floating UI]: https://floating-ui.com/docs/react-dom
