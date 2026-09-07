@@ -25,10 +25,9 @@ See [API](#api) for all available options.
 
 ## General Guidelines
 
-- Default card is **designed for non-white background.** You may want to either
-  use the [raised variant](#raised-card) or
-  [customize](/docs/customize/theming/overview) the default appearance to make the
-  card stand out on white surfaces.
+- Default card is **designed for non-white background.** You may want to use
+  the [raised variant](#raised-card) to make the card stand out on white
+  surfaces.
 
 - Use optional [CardBody](#cardbody) and [CardFooter](#cardfooter) components to
   provide your content with expected spacing.

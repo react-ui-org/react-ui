@@ -47,8 +47,7 @@ See [API](#api) for all available options.
 ## Design Variants
 
 To satisfy the design requirements of your project, all input fields in React UI
-come in **two design variants** to choose from: outline and filled. Both can be
-further [customized](#theming) with CSS custom properties.
+come in **two design variants** to choose from: outline and filled.
 
 ```docoff-react-preview
 <TextArea
@@ -109,11 +108,9 @@ Full-width fields span the full width of a parent:
 
 ## Input Size
 
-The default width of all inputs is 240 px, and it can be
-[customized](/docs/customize/theming/overview) with a CSS custom property.
-However, you can also **control the size of individual text areas** using
-the `rows` and `cols` properties. Additionally, text areas are vertically
-resizable by users.
+The default width of all inputs is 240 px. You can **control the size of
+individual text areas** using the `rows` and `cols` properties. Additionally,
+text areas are vertically resizable by users.
 
 👉 Remember that the `cols` and `rows` HTML attributes **do not limit on how
 many characters** the user can enter. Use the
