@@ -22,9 +22,8 @@ See [API](#api) for all available options.
 
 ## General Guidelines
 
-- Paper is **designed for non-white background.** You may want to either use its
-  [raised variant](#raised-paper) or [customize](/docs/customize/theming/overview)
-  the default appearance to make it stand out on white background.
+- Paper is **designed for non-white background.** You may want to use its
+  [raised variant](#raised-paper) to make it stand out on white background.
 
 - **Paper, or Card?** Paper is a basic surface to put content on. However,
   there is also the [Card](/components/Card) component. While Paper is

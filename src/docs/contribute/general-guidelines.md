@@ -339,6 +339,12 @@ the documentation platform.
 
 Do see their respective documentation for details.
 
+**Keep theming out of README prose.** Theming belongs to the `## Theming`
+section at the end of a component's `README.md`, including examples that
+override `--rui-*` custom properties. Other sections must not link to the
+theming guides or to `#theming` so that the whole section can be dropped when
+the docs are reused in a design system that doesn't expose theming.
+
 [Development Containers]: https://containers.dev/
 [Docker]: https://docs.docker.com/get-started/
 [Docker Compose]: https://docs.docker.com/compose/

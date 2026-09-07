@@ -60,8 +60,7 @@ See [API](#api) for all available options.
 ## Design Variants
 
 To satisfy the design requirements of your project, all input fields in React UI
-come in **two design variants** to choose from: outline and filled. Both can be
-further [customized](#theming) with CSS custom properties.
+come in **two design variants** to choose from: outline and filled.
 
 ```docoff-react-preview
 <TextField
@@ -166,8 +165,7 @@ and `tel` types at your disposal.
 
 ## Input Size
 
-The default width of all inputs is 240 px, and it can be [customized](#theming)
-with a CSS custom property. However, you can also **change the width of
+The default width of all inputs is 240 px. You can **change the width of
 individual text fields** using the `inputSize` property. It (obviously) sets the
 `size` attribute of the `input` element and is further picked up by CSS to
 normalize rendering across browsers.
@@ -516,7 +514,8 @@ If you provide [ref], it is forwarded to the native HTML `<input>` element.
 
 ## Theming
 
-Head to [Forms Theming][theming-forms] to see shared form theming options.
+Head to [Forms Theming](/docs/customize/theming/forms) to see shared form
+theming options.
 
 [pattern]: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern
 [autocomplete]: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
@@ -528,6 +527,5 @@ Head to [Forms Theming][theming-forms] to see shared form theming options.
 [input-number]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number#additional_attributes
 [input-tel]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/tel#additional_attributes
 [input-password]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password#additional_attributes
-[theming-forms]: /docs/customize/theming/forms
 [React common props]: https://react.dev/reference/react-dom/components/common#common-props
 [ref]: https://reactjs.org/docs/refs-and-the-dom.html
