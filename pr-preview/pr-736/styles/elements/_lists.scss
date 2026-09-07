@@ -1,0 +1,10 @@
+@use "../theme/lists";
+
+ol,
+ul {
+    padding-left: 1.25em;
+}
+
+ul {
+    list-style-type: lists.$unordered-style;
+}

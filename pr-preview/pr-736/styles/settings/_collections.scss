@@ -1,0 +1,9 @@
+$action-colors: primary, secondary, selected;
+$feedback-colors: success, warning, danger, info, help, note;
+$neutral-colors: light, dark;
+
+$colors: (
+    action: $action-colors,
+    feedback: $feedback-colors,
+    neutral: $neutral-colors,
+);

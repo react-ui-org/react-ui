@@ -1,0 +1,115 @@
+// 1. Inline form fields and fields with vertical layout take up as much space as they need. Labels
+//    do not wrap until forced by container of the field. Min and max limits make extra long words
+//    break if necessary.
+//
+// 2. Retain multiline field layout and make the field fit parent layout using `inline-grid`
+//    (`inline-flex` cannot do the job).
+//
+// 3. Make fields just as wide as necessary. Fields should be interactive only where their visible
+//    content is.
+
+@use "../../settings/forms";
+@use "../../settings/form-fields" as settings;
+@use "../../theme/form-fields" as theme;
+@use "../../theme/typography";
+@use "../breakpoint";
+
+@mixin root() {
+    display: inline-flex; // 1.
+    flex-wrap: wrap;
+    align-items: baseline;
+    width: min-content;
+    min-width: 0; // 1.
+    max-width: 100%; // 1.
+
+    .helpText,
+    .validationText {
+        padding-top: settings.$vertical-inner-gap;
+    }
+}
+
+@mixin field($type) {
+    display: flex; // 1.
+    align-items: flex-start;
+    min-width: 0; // 1.
+
+    @if $type == "radio" {
+        flex-direction: row;
+    } @else {
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
+
+    .input {
+        flex: none;
+    }
+
+    .label,
+    .optionLabel {
+        width: max-content; // 1.
+        margin-left: settings.$inline-field-inner-gap;
+    }
+}
+
+@mixin has-label-before() {
+    .field {
+        flex-direction: row;
+    }
+
+    .label,
+    .optionLabel {
+        margin-right: settings.$inline-field-inner-gap;
+        margin-left: 0;
+    }
+}
+
+@mixin in-form-layout() {
+    display: inline-grid; // 2.
+    justify-self: start; // 3.
+    width: auto; // 2., 3.
+
+    @include breakpoint.up(forms.$horizontal-breakpoint) {
+        &.isRootLayoutHorizontal {
+            grid: inherit;
+            grid-template-columns: subgrid;
+            grid-column: span 2;
+
+            @supports not (grid-template-columns: subgrid) {
+                display: contents;
+            }
+        }
+
+        &.isRootLayoutHorizontal .field {
+            display: contents;
+        }
+
+        &.isRootLayoutHorizontal .label {
+            grid-column-start: 1;
+            align-self: start;
+            width: auto;
+            padding-right: settings.$horizontal-inner-gap;
+            margin-left: 0;
+            text-align: theme.$horizontal-label-text-align;
+        }
+
+        &.isRootLayoutHorizontal .input,
+        &.isRootLayoutHorizontal .helpText,
+        &.isRootLayoutHorizontal .validationText {
+            grid-column-start: 2;
+        }
+
+        &.isRootLayoutHorizontal .helpText,
+        &.isRootLayoutHorizontal .validationText {
+            width: auto;
+            max-width: 100%;
+
+            @supports not (grid-template-columns: subgrid) {
+                margin-top: calc(-1 * var(--rui-FormLayout__row-gap));
+            }
+        }
+
+        &.isRootLayoutHorizontal.hasRootLabelBefore .label {
+            margin-right: 0;
+        }
+    }
+}

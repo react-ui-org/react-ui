@@ -1,0 +1,51 @@
+// 1. Input `line-height` is specified in `rem` so inputs do not break when their font size gets
+//    changed later.
+
+@use "sass:map";
+@use "../theme/typography";
+@use "../tools/spacing";
+
+$help-text-line-height: 1.2rem;
+
+$vertical-inner-gap: spacing.of(1);
+$vertical-inner-gap-large: spacing.of(2);
+$vertical-outer-spacing: spacing.of(2);
+
+$horizontal-inner-gap: spacing.of(2);
+$horizontal-outer-spacing: spacing.of(2);
+
+$box-input-font-family: typography.$font-family-base;
+$box-input-font-weight: map.get(typography.$font-weight-values, default);
+$box-input-line-height: 1.5rem; // 1.
+$box-field-caret-size: 2.25rem;
+$box-field-input-number-arrows-width: 1.5rem;
+$box-field-bottom-line-height: 2px;
+
+$inline-field-inner-gap: spacing.of(2);
+
+$themeable-variant-states: (
+    box: (
+        filled: (default, hover, focus, disabled),
+        outline: (default, hover, focus, disabled),
+    ),
+    check: (
+        default: (default, checked, disabled, checked-disabled),
+    ),
+    custom: (
+        default: (default, disabled),
+    ),
+    validation: (
+        invalid: (default, checked, disabled, checked-disabled),
+        valid: (default, checked, disabled, checked-disabled),
+        warning: (default, checked, disabled, checked-disabled),
+    ),
+);
+
+$themeable-state-properties: (
+    default: (color, border-color, background, check-background-color, box-shadow, surrounding-text-color),
+    hover: (color, border-color, background, box-shadow),
+    focus: (color, border-color, background, check-background-color, box-shadow),
+    checked: (border-color, check-background-color),
+    disabled: (color, border-color, background, check-background-color, box-shadow, surrounding-text-color),
+    checked-disabled: (border-color, check-background-color),
+);

@@ -1,0 +1,14 @@
+@use "sass:map";
+@use "../../styles/theme/borders";
+@use "../../styles/theme/typography";
+@use "../../styles/tools/spacing";
+
+$cell-padding-x: spacing.of(3);
+$cell-padding-y: spacing.of(1);
+$border-width: borders.$width;
+$border-color: var(--rui-color-border-secondary);
+$background-color: var(--rui-color-background-basic);
+$head-background-color: var(--rui-color-background-basic);
+$head-font-weight: map.get(typography.$font-weight-values, bold);
+$hover-background-color: var(--rui-color-background-interactive-hover);
+$sorted-background-color: var(--rui-color-background-selected);

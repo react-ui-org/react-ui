@@ -1,0 +1,39 @@
+// 1. Intentionally do not provide a fallback value for the border color. Setting a fallback value (e.g. `transparent`)
+//    will result in the border being skewed at both ends.
+
+@use "settings";
+@use "theme";
+
+@layer components.modal {
+    .root {
+        display: flex;
+        flex: none;
+        gap: theme.$header-gap;
+        align-items: baseline;
+        padding: theme.$padding-y theme.$padding-x;
+        border: settings.$border-width solid var(--rui-local-border-color); // 1.
+        border-bottom: theme.$separator-width solid var(--rui-local-border-color, #{theme.$separator-color});
+        border-top-left-radius: settings.$border-radius;
+        border-top-right-radius: settings.$border-radius;
+    }
+
+    .isRootJustifiedToStart {
+        justify-content: flex-start;
+    }
+
+    .isRootJustifiedToCenter {
+        justify-content: center;
+    }
+
+    .isRootJustifiedToEnd {
+        justify-content: flex-end;
+    }
+
+    .isRootJustifiedToSpaceBetween {
+        justify-content: space-between;
+    }
+
+    .isRootJustifiedToStretch {
+        display: block;
+    }
+}
