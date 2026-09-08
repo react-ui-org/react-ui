@@ -16,7 +16,7 @@ export const ModalFooter: React.FunctionComponent<ModalFooterProps> = ({
     {...transferProps(restProps)}
     className={classNames(
       styles.root,
-      getJustifyClassName(justify, styles),
+      getJustifyClassName(styles, justify),
     )}
   >
     {children}

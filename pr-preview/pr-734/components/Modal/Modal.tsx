@@ -47,9 +47,9 @@ const preRender = (
     {...transferProps(events)}
     className={classNames(
       styles.root,
-      color && getRootColorClassName(color, styles),
-      getSizeClassName(size, styles),
-      getPositionClassName(position, styles),
+      color && getRootColorClassName(styles, color),
+      getSizeClassName(styles, size),
+      getPositionClassName(styles, position),
     )}
     ref={dialogRef}
   >

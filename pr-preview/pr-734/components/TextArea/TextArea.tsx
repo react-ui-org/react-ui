@@ -40,8 +40,8 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(({
           : styles.isRootLayoutVertical,
         disabled && styles.isRootDisabled,
         required && styles.isRootRequired,
-        getRootSizeClassName(size, styles),
-        getRootValidationStateClassName(validationState, styles),
+        getRootSizeClassName(styles, size),
+        getRootValidationStateClassName(styles, validationState),
         variant === 'filled' ? styles.isRootVariantFilled : styles.isRootVariantOutline,
       )}
       htmlFor={id}

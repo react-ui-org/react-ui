@@ -168,10 +168,10 @@ export const FileInputField = React.forwardRef<FileInputFieldRef, FileInputField
         isDragging && styles.isRootDragging,
         required && styles.isRootRequired,
         getRootSizeClassName(
-          resolveContextOrProp(inputGroupContext && inputGroupContext.size, size),
           styles,
+          resolveContextOrProp(inputGroupContext && inputGroupContext.size, size),
         ),
-        getRootValidationStateClassName(validationState, styles),
+        getRootValidationStateClassName(styles, validationState),
       )}
       id={`${id}__root`}
       onDragLeave={!disabled ? handleDragLeave : undefined}

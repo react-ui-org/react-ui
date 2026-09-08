@@ -49,15 +49,15 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
       className={classNames(
         styles.root,
         getRootPriorityClassName(
+          styles,
           resolveContextOrProp(buttonGroupContext && buttonGroupContext.priority, priority),
-          styles,
         ),
-        getRootColorClassName(color, styles),
+        getRootColorClassName(styles, color),
         getRootSizeClassName(
-          resolveContextOrProp(primaryContext && primaryContext.size, size),
           styles,
+          resolveContextOrProp(primaryContext && primaryContext.size, size),
         ),
-        getRootLabelVisibilityClassName(labelVisibility, styles),
+        getRootLabelVisibilityClassName(styles, labelVisibility),
         resolveContextOrProp(buttonGroupContext && buttonGroupContext.block, block) && styles.isRootBlock,
         buttonGroupContext && styles.isRootInButtonGroup,
         inputGroupContext && styles.isRootInInputGroup,

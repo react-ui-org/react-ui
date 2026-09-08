@@ -3,7 +3,7 @@ import type {
   Size,
 } from '../../types';
 
-export const getRootSizeClassName = (size: Size | undefined, styles: CssModuleClasses) => {
+export const getRootSizeClassName = (styles: CssModuleClasses, size?: Size) => {
   if (size === 'small') {
     return styles.isRootSizeSmall;
   }

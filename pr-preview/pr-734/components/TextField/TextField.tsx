@@ -52,10 +52,10 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(({
         inputGroupContext && styles.isRootGrouped,
         required && styles.isRootRequired,
         getRootSizeClassName(
-          resolveContextOrProp(inputGroupContext && inputGroupContext.size, size),
           styles,
+          resolveContextOrProp(inputGroupContext && inputGroupContext.size, size),
         ),
-        getRootValidationStateClassName(validationState, styles),
+        getRootValidationStateClassName(styles, validationState),
         variant === 'filled' ? styles.isRootVariantFilled : styles.isRootVariantOutline,
       )}
       htmlFor={id}

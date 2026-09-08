@@ -1,7 +1,7 @@
 import type { CssModuleClasses } from '../../../types';
 import type { ModalScrolling } from '../Modal.types';
 
-export const getScrollingClassName = (type: ModalScrolling | undefined, styles: CssModuleClasses) => {
+export const getScrollingClassName = (styles: CssModuleClasses, type?: ModalScrolling) => {
   if (type === 'auto') {
     return styles.isRootScrollingAuto;
   }

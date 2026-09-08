@@ -68,8 +68,8 @@ export const InputGroup: React.FunctionComponent<InputGroupProps> = ({
           : styles.isRootLayoutVertical,
         disabled && styles.isRootDisabled,
         required && styles.isRootRequired,
-        getRootSizeClassName(size, styles),
-        getRootValidationStateClassName(validationState, styles),
+        getRootSizeClassName(styles, size),
+        getRootValidationStateClassName(styles, validationState),
       )}
       disabled={disabled}
       id={id}

@@ -30,9 +30,9 @@ export const Text: React.FunctionComponent<TextProps> = ({
       {...transferProps(restProps)}
       className={(hyphens !== 'none' || (lines !== undefined && lines > 0) || wordWrapping !== 'normal')
         ? classNames(
-          getRootClampClassName(lines, styles),
-          getRootHyphensClassName(hyphens, styles),
-          getRootWordWrappingClassName(wordWrapping, styles),
+          getRootClampClassName(styles, lines),
+          getRootHyphensClassName(styles, hyphens),
+          getRootWordWrappingClassName(styles, wordWrapping),
         )
         : undefined}
       style={(lines !== undefined && lines > 1) ? { '--rui-custom-lines': lines } as CSSProperties : undefined}

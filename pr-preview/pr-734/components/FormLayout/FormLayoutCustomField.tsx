@@ -65,8 +65,8 @@ export const FormLayoutCustomField: React.FunctionComponent<FormLayoutCustomFiel
         context && context.layout === 'horizontal' ? styles.isRootLayoutHorizontal : styles.isRootLayoutVertical,
         disabled && styles.isRootDisabled,
         required && styles.isRootRequired,
-        getRootSizeClassName(innerFieldSize, styles),
-        getRootValidationStateClassName(validationState, styles),
+        getRootSizeClassName(styles, innerFieldSize),
+        getRootValidationStateClassName(styles, validationState),
       )}
       id={id}
     >

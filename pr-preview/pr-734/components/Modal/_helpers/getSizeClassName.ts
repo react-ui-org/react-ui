@@ -1,7 +1,7 @@
 import type { CssModuleClasses } from '../../../types';
 import type { ModalSize } from '../Modal.types';
 
-export const getSizeClassName = (modalSize: ModalSize | undefined, styles: CssModuleClasses) => {
+export const getSizeClassName = (styles: CssModuleClasses, modalSize?: ModalSize) => {
   if (modalSize === 'small') {
     return styles.isRootSizeSmall;
   }

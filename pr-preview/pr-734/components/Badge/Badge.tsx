@@ -18,8 +18,8 @@ export const Badge: React.FunctionComponent<BadgeProps> = ({
     {...transferProps(restProps)}
     className={classNames(
       styles.root,
-      getRootPriorityClassName(priority, styles),
-      getRootColorClassName(color, styles),
+      getRootPriorityClassName(styles, priority),
+      getRootColorClassName(styles, color),
     )}
   >
     {label}

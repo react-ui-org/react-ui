@@ -19,7 +19,7 @@ export const Card: React.FunctionComponent<CardProps> = ({
     {...transferProps(restProps)}
     className={classNames(
       styles.root,
-      color && getRootColorClassName(color, styles),
+      color && getRootColorClassName(styles, color),
       dense && styles.isRootDense,
       raised && styles.isRootRaised,
       disabled && styles.isRootDisabled,

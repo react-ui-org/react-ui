@@ -23,7 +23,7 @@ export const Alert: React.FunctionComponent<AlertProps> = ({
       {...transferProps(restProps)}
       className={classNames(
         styles.root,
-        getRootColorClassName(color, styles),
+        getRootColorClassName(styles, color),
       )}
       id={id}
       role="alert"

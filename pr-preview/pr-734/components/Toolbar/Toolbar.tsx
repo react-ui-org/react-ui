@@ -28,8 +28,8 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
         styles.toolbar,
         dense && styles.isToolbarDense,
         nowrap && styles.isToolbarNowrap,
-        getAlignClassName(align, styles, 'toolbar'),
-        getJustifyClassName(justify, styles),
+        getAlignClassName(styles, 'toolbar', align),
+        getJustifyClassName(styles, justify),
       )}
     >
       {children}

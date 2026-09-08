@@ -36,7 +36,7 @@ export const ButtonGroup: React.FunctionComponent<ButtonGroupProps> = ({
       className={classNames(
         styles.root,
         block && styles.isRootBlock,
-        getRootPriorityClassName(priority, styles),
+        getRootPriorityClassName(styles, priority),
       )}
       disabled={disabled}
     >

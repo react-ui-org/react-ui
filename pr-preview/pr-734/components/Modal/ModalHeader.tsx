@@ -16,7 +16,7 @@ export const ModalHeader: React.FunctionComponent<ModalHeaderProps> = ({
     {...transferProps(restProps)}
     className={classNames(
       styles.root,
-      getJustifyClassName(justify, styles),
+      getJustifyClassName(styles, justify),
     )}
   >
     {children}

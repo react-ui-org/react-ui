@@ -2,9 +2,9 @@ import type { CssModuleClasses } from '../../../types';
 import type { ToolbarAlign } from '../Toolbar.types';
 
 export const getAlignClassName = (
-  value: ToolbarAlign | undefined,
   styles: CssModuleClasses,
   type: 'toolbar' | 'group',
+  value?: ToolbarAlign,
 ) => {
   if (value === 'top') {
     if (type === 'group') {

@@ -1,7 +1,7 @@
 import type { CssModuleClasses } from '../../../types';
 import type { ButtonLabelVisibility } from '../Button.types';
 
-export default (labelVisibility: ButtonLabelVisibility | undefined, styles: CssModuleClasses) => {
+export default (styles: CssModuleClasses, labelVisibility?: ButtonLabelVisibility) => {
   // Intentionally omitting `xs` which means label is visible on all screen sizes.
 
   if (labelVisibility === 'sm') {

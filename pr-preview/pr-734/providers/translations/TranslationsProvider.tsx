@@ -17,7 +17,7 @@ const TranslationsProvider: React.FunctionComponent<TranslationsProviderProps> =
 
   return (
     <TranslationsContext.Provider
-      value={mergeDeep(contextTranslations, translations) as Translations}
+      value={mergeDeep<Translations>(contextTranslations, translations)}
     >
       {children}
     </TranslationsContext.Provider>

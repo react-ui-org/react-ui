@@ -3,10 +3,7 @@ import type {
   ValidationState,
 } from '../../types';
 
-export const getRootValidationStateClassName = (
-  validationState: ValidationState | undefined,
-  styles: CssModuleClasses,
-) => {
+export const getRootValidationStateClassName = (styles: CssModuleClasses, validationState?: ValidationState) => {
   if (validationState === 'invalid') {
     return styles.isRootStateInvalid;
   }

@@ -26,7 +26,7 @@ export const ToolbarGroup: React.FunctionComponent<ToolbarGroupProps> = ({
         styles.group,
         dense && styles.isGroupDense,
         nowrap && styles.isGroupNowrap,
-        getAlignClassName(align, styles, 'group'),
+        getAlignClassName(styles, 'group', align),
       )}
     >
       {children}

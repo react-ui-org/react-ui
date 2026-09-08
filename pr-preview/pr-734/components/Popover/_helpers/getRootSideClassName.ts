@@ -1,7 +1,7 @@
 import type { CssModuleClasses } from '../../../types';
 import type { PopoverPlacement } from '../Popover.types';
 
-export default (placement: PopoverPlacement, styles: CssModuleClasses) => {
+export default (styles: CssModuleClasses, placement: PopoverPlacement) => {
   const side = placement.split('-')[0];
 
   if (side === 'top') {

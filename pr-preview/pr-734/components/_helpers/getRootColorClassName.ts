@@ -3,7 +3,7 @@ import type {
   CssModuleClasses,
 } from '../../types';
 
-export const getRootColorClassName = (variant: Color | undefined, styles: CssModuleClasses) => {
+export const getRootColorClassName = (styles: CssModuleClasses, variant?: Color) => {
   if (variant === 'primary') {
     return styles.isRootColorPrimary;
   }

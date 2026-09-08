@@ -3,7 +3,7 @@ import type {
   Priority,
 } from '../../types';
 
-export const getRootPriorityClassName = (priority: Priority | undefined, styles: CssModuleClasses) => {
+export const getRootPriorityClassName = (styles: CssModuleClasses, priority?: Priority) => {
   if (priority === 'filled') {
     return styles.isRootPriorityFilled;
   }

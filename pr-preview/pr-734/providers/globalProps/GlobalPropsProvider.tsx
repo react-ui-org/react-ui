@@ -17,7 +17,7 @@ const GlobalPropsProvider: React.FunctionComponent<GlobalPropsProviderProps> = (
 
   return (
     <GlobalPropsContext.Provider
-      value={mergeDeep(contextGlobalProps, globalProps) as GlobalProps}
+      value={mergeDeep<GlobalProps>(contextGlobalProps, globalProps)}
     >
       {children}
     </GlobalPropsContext.Provider>

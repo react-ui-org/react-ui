@@ -32,7 +32,7 @@ export const CheckboxField = React.forwardRef<HTMLInputElement, CheckboxFieldPro
         labelPosition === 'before' && styles.hasRootLabelBefore,
         disabled && styles.isRootDisabled,
         (renderAsRequired || required) && styles.isRootRequired,
-        getRootValidationStateClassName(validationState, styles),
+        getRootValidationStateClassName(styles, validationState),
       )}
       htmlFor={id}
       id={id && `${id}__label`}

@@ -38,8 +38,8 @@ export const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(({
           styles.root,
           ref && styles.isRootControlled,
           popoverTargetId && styles.controlledPopover,
-          getRootSideClassName(placement, styles),
-          getRootAlignmentClassName(placement, styles),
+          getRootSideClassName(styles, placement),
+          getRootAlignmentClassName(styles, placement),
         )}
         ref={ref}
         style={placementStyle ? cleanPlacementStyle(placementStyle) : undefined}

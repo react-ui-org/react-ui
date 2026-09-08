@@ -1,7 +1,7 @@
 import type { CssModuleClasses } from '../../../types';
 import type { ToolbarJustify } from '../Toolbar.types';
 
-export const getJustifyClassName = (value: ToolbarJustify | undefined, styles: CssModuleClasses) => {
+export const getJustifyClassName = (styles: CssModuleClasses, value?: ToolbarJustify) => {
   if (value === 'start') {
     return styles.isToolbarJustifiedToStart;
   }

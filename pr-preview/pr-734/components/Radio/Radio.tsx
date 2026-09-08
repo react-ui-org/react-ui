@@ -36,7 +36,7 @@ export const Radio: React.FunctionComponent<RadioProps> = ({
           : styles.isRootLayoutVertical,
         disabled && styles.isRootDisabled,
         (renderAsRequired || required) && styles.isRootRequired,
-        getRootValidationStateClassName(validationState, styles),
+        getRootValidationStateClassName(styles, validationState),
       )}
       disabled={disabled}
       id={id}

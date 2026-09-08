@@ -1,7 +1,7 @@
 import type { CssModuleClasses } from '../../../types';
 import type { ModalJustify } from '../Modal.types';
 
-export const getJustifyClassName = (value: ModalJustify | undefined, styles: CssModuleClasses) => {
+export const getJustifyClassName = (styles: CssModuleClasses, value?: ModalJustify) => {
   if (value === 'start') {
     return styles.isRootJustifiedToStart;
   }

@@ -51,10 +51,10 @@ export const SelectField = React.forwardRef<HTMLSelectElement, SelectFieldProps>
         inputGroupContext && styles.isRootGrouped,
         (renderAsRequired || required) && styles.isRootRequired,
         getRootSizeClassName(
-          resolveContextOrProp(inputGroupContext && inputGroupContext.size, size),
           styles,
+          resolveContextOrProp(inputGroupContext && inputGroupContext.size, size),
         ),
-        getRootValidationStateClassName(validationState, styles),
+        getRootValidationStateClassName(styles, validationState),
         variant === 'filled' ? styles.isRootVariantFilled : styles.isRootVariantOutline,
       )}
       htmlFor={id}

@@ -4,8 +4,12 @@ const isObject = (obj: unknown): obj is PlainObject => !!obj && typeof obj === '
 
 /**
  * Performs a deep merge of objects and returns new object.
+ *
+ * The result is typed as `Result`; the caller is responsible for passing objects that make up that shape.
  */
-export const mergeDeep = (...objects: (PlainObject | null | undefined)[]): PlainObject => objects.reduce<PlainObject>(
+export const mergeDeep = <Result extends PlainObject = PlainObject>(
+  ...objects: (PlainObject | null | undefined)[]
+): Result => objects.reduce<PlainObject>(
   (prev, obj) => {
     if (obj == null) {
       return prev;
@@ -27,4 +31,4 @@ export const mergeDeep = (...objects: (PlainObject | null | undefined)[]): Plain
     return newObject;
   },
   {},
-);
+) as Result;

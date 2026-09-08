@@ -32,7 +32,7 @@ export const Toggle = React.forwardRef<HTMLInputElement, ToggleProps>(({
         labelPosition === 'before' && styles.hasRootLabelBefore,
         disabled && styles.isRootDisabled,
         (required || renderAsRequired) && styles.isRootRequired,
-        getRootValidationStateClassName(validationState, styles),
+        getRootValidationStateClassName(styles, validationState),
       )}
       htmlFor={id}
       id={id && `${id}__label`}

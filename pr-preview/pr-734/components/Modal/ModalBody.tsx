@@ -22,7 +22,7 @@ export const ModalBody: React.FunctionComponent<ModalBodyProps> = ({
       {...transferProps(restProps)}
       className={classNames(
         styles.root,
-        getScrollingClassName(scrolling, styles),
+        getScrollingClassName(styles, scrolling),
       )}
     >
       {children}
