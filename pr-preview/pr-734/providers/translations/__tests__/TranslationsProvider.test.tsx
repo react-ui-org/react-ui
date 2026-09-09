@@ -20,7 +20,9 @@ describe('rendering', () => {
 
     ));
 
-    expect(within(dom.container.firstChild).getByTitle('Zavřít'));
+    const rootElement = dom.container.firstChild as HTMLElement;
+
+    expect(within(rootElement).getByTitle('Zavřít'));
   });
 
   it('renders with nested translations', () => {
@@ -44,7 +46,9 @@ describe('rendering', () => {
 
     ));
 
-    expect(within(dom.container.firstChild).getByTitle('Předchozí'));
-    expect(within(dom.container.firstChild).getByTitle('Siguiente'));
+    const rootElement = dom.container.firstChild as HTMLElement;
+
+    expect(within(rootElement).getByTitle('Předchozí'));
+    expect(within(rootElement).getByTitle('Siguiente'));
   });
 });

@@ -3,7 +3,7 @@ import { generateResponsiveCustomProperties } from '../generateResponsiveCustomP
 describe('generateResponsiveCustomProperties', () => {
   test('with prop that is undefined', () => {
     expect(
-      generateResponsiveCustomProperties(undefined, null),
+      generateResponsiveCustomProperties(undefined, 'columns'),
     ).toEqual(null);
   });
 

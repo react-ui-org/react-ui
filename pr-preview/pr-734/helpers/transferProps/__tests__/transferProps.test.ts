@@ -19,11 +19,11 @@ describe('transferProps', () => {
     };
     const expectedProps = { propA: 'value' };
 
-    let errorString;
+    let errorString: string | undefined;
     // eslint-disable-next-line no-console
     const originalConsoleError = console.error;
     // eslint-disable-next-line no-console
-    console.error = (error) => {
+    console.error = (error: string) => {
       errorString = error;
     };
     expect(transferProps(props)).toEqual(expectedProps);

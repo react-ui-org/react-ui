@@ -15,11 +15,14 @@ describe('rendering', () => {
           Badge: { label: 'label' },
         }}
       >
+        {/* @ts-expect-error The required `label` prop is supplied by the global props. */}
         <Badge />
       </GlobalPropsProvider>
     ));
 
-    expect(within(dom.container.firstChild).getByText('label'));
+    const rootElement = dom.container.firstChild as HTMLElement;
+
+    expect(within(rootElement).getByText('label'));
   });
 
   it('renders with nested providers and object typed props', () => {
@@ -75,23 +78,25 @@ describe('rendering', () => {
       </GlobalPropsProvider>
     ));
 
+    const rootElement = dom.container.firstChild as HTMLElement;
+
     // Assert alignContent
-    expect(dom.container.firstChild.style.cssText.includes('--rui-local-align-content')).toBeFalsy();
+    expect(rootElement.style.cssText.includes('--rui-local-align-content')).toBeFalsy();
 
     // Assert autoFlow
-    expect(dom.container.firstChild.style.cssText.includes('--rui-local-auto-flow-lg: column')).toBeTruthy();
-    expect(dom.container.firstChild.style.cssText.includes('--rui-local-auto-flow-md: column')).toBeTruthy();
-    expect(dom.container.firstChild.style.cssText.includes('--rui-local-auto-flow-sm')).toBeFalsy();
-    expect(dom.container.firstChild.style.cssText.includes('--rui-local-auto-flow-xs: row dense')).toBeTruthy();
+    expect(rootElement.style.cssText.includes('--rui-local-auto-flow-lg: column')).toBeTruthy();
+    expect(rootElement.style.cssText.includes('--rui-local-auto-flow-md: column')).toBeTruthy();
+    expect(rootElement.style.cssText.includes('--rui-local-auto-flow-sm')).toBeFalsy();
+    expect(rootElement.style.cssText.includes('--rui-local-auto-flow-xs: row dense')).toBeTruthy();
 
     // Assert justifyContent
-    expect(dom.container.firstChild.style.cssText.includes('--rui-local-justify-content-xs: center;')).toBeTruthy();
+    expect(rootElement.style.cssText.includes('--rui-local-justify-content-xs: center;')).toBeTruthy();
 
     // Assert justifyItems
-    expect(dom.container.firstChild.style.cssText.includes('--rui-local-justify-items')).toBeFalsy();
+    expect(rootElement.style.cssText.includes('--rui-local-justify-items')).toBeFalsy();
 
     // Assert tag
-    expect(dom.container.firstChild.tagName).toEqual('SECTION');
+    expect(rootElement.tagName).toEqual('SECTION');
   });
 });
 
