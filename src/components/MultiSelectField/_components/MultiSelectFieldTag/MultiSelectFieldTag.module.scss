@@ -1,0 +1,67 @@
+@use "sass:map";
+@use "../../../../styles/settings/form-fields" as form-settings;
+@use "../../../../styles/theme/typography";
+@use "../../theme";
+
+@layer components.multi-select-field {
+    .root {
+        display: inline-flex;
+        gap: theme.$tag-gap;
+        align-items: center;
+        overflow: hidden;
+        font-weight: map.get(typography.$font-weight-values, default);
+
+        // Together with the border, the tag is exactly as tall as the line of the input text
+        // so adding a tag does not grow the height of the input.
+        line-height: calc(#{form-settings.$box-input-line-height} - 2 * #{theme.$tag-border-width});
+        font-family: typography.$font-family-base;
+        white-space: nowrap;
+        border-width: theme.$tag-border-width;
+        border-style: solid;
+        border-radius: theme.$tag-border-radius;
+        cursor: pointer;
+    }
+
+    .isRootDisabled {
+        cursor: theme.$disabled-cursor;
+    }
+
+    .isRootPriorityFilled {
+        color: map.get(theme.$tag-priorities, filled, default, color);
+        border-color: map.get(theme.$tag-priorities, filled, default, border-color);
+        background-color: map.get(theme.$tag-priorities, filled, default, background-color);
+
+        &:hover {
+            color: map.get(theme.$tag-priorities, filled, hover, color);
+            border-color: map.get(theme.$tag-priorities, filled, hover, border-color);
+            background-color: map.get(theme.$tag-priorities, filled, hover, background-color);
+        }
+    }
+
+    .isRootPriorityOutline {
+        color: map.get(theme.$tag-priorities, outline, default, color);
+        border-color: map.get(theme.$tag-priorities, outline, default, border-color);
+        background-color: map.get(theme.$tag-priorities, outline, default, background-color);
+
+        &:hover {
+            color: map.get(theme.$tag-priorities, outline, hover, color);
+            border-color: map.get(theme.$tag-priorities, outline, hover, border-color);
+            background-color: map.get(theme.$tag-priorities, outline, hover, background-color);
+        }
+    }
+
+    .isRootSizeSmall {
+        padding-inline: map.get(theme.$tag-sizes, small, padding-inline);
+        font-size: map.get(theme.$tag-sizes, small, font-size);
+    }
+
+    .isRootSizeMedium {
+        padding-inline: map.get(theme.$tag-sizes, medium, padding-inline);
+        font-size: map.get(theme.$tag-sizes, medium, font-size);
+    }
+
+    .isRootSizeLarge {
+        padding-inline: map.get(theme.$tag-sizes, large, padding-inline);
+        font-size: map.get(theme.$tag-sizes, large, font-size);
+    }
+}
