@@ -102,6 +102,14 @@ export {
   genericSearch,
   MultiSelectField,
 } from './components/MultiSelectField';
+export type {
+  GenericSearchComparator,
+  MultiSelectFieldOption,
+  MultiSelectFieldOptionGroup,
+  MultiSelectFieldProps,
+  MultiSelectFieldSearchAlgorithm,
+  MultiSelectFieldVariant,
+} from './components/MultiSelectField';
 export { Paper } from './components/Paper';
 export type { PaperProps } from './components/Paper';
 export {
