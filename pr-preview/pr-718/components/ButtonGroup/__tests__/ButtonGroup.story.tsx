@@ -1,10 +1,9 @@
 import React from 'react';
-import type { HTMLAttributes } from 'react';
 import { ButtonGroup } from '..';
+import type { ButtonGroupProps } from '..';
 import { Button } from '../../Button';
 
-// Types for story component will be improved when we have full TypeScript support
-type ButtonGroupForTestProps = HTMLAttributes<HTMLFieldSetElement>;
+type ButtonGroupForTestProps = ButtonGroupProps;
 
 export const ButtonGroupForTest = ({
   ...props
@@ -25,4 +24,3 @@ export const SelectedButtonGroupForTest = ({
     <Button label="Button3" />
   </ButtonGroup>
 );
-

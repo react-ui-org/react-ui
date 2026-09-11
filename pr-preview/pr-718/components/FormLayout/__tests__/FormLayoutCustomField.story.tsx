@@ -1,16 +1,19 @@
 import React from 'react';
-import type { HTMLAttributes } from 'react';
+import type { ComponentProps } from 'react';
 import { TextField } from '../../TextField';
 import {
   FormLayout,
   FormLayoutCustomField,
 } from '..';
+import type {
+  FormLayoutCustomFieldProps,
+  FormLayoutProps,
+} from '..';
 
-// Types for story component will be improved when we have full TypeScript support
-type FormLayoutForTestProps = HTMLAttributes<HTMLDivElement>;
+type FormLayoutForTestProps = FormLayoutProps;
 type FormLayoutCustomFieldForTestProps = FormLayoutForTestProps & {
-  customFieldLayoutProps?: HTMLAttributes<HTMLDivElement>;
-  customFieldProps?: HTMLAttributes<HTMLDivElement>;
+  customFieldLayoutProps?: FormLayoutCustomFieldProps;
+  customFieldProps?: ComponentProps<typeof TextField>;
 };
 
 export const FormLayoutCustomFieldForTest = (props: FormLayoutCustomFieldForTestProps) => {
@@ -29,9 +32,4 @@ export const FormLayoutCustomFieldForTest = (props: FormLayoutCustomFieldForTest
       </FormLayoutCustomField>
     </FormLayout>
   );
-};
-
-FormLayoutCustomFieldForTest.defaultProps = {
-  customFieldLayoutProps: undefined,
-  customFieldProps: undefined,
 };

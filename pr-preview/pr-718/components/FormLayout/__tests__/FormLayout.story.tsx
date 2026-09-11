@@ -1,5 +1,4 @@
 import React from 'react';
-import type { HTMLAttributes } from 'react';
 import { Button } from '../../Button';
 import { CheckboxField } from '../../CheckboxField';
 import { FileInputField } from '../../FileInputField';
@@ -12,9 +11,9 @@ import {
   FormLayout,
   FormLayoutCustomField,
 } from '..';
+import type { FormLayoutProps } from '..';
 
-// Types for story component will be improved when we have full TypeScript support
-type FormLayoutForTestProps = HTMLAttributes<HTMLDivElement>;
+type FormLayoutForTestProps = FormLayoutProps;
 
 export const FormLayoutForTest = ({
   ...props
@@ -69,7 +68,11 @@ export const FormLayoutForTest = ({
     <FormLayoutCustomField label="Custom field label">
       <TextField label="Label7" />
     </FormLayoutCustomField>
-    <FileInputField label="Attachment label 8" />
+    <FileInputField
+      id="attachment"
+      label="Attachment label 8"
+      onFilesChanged={() => {}}
+    />
     <Button label="Submit" />
   </FormLayout>
 );

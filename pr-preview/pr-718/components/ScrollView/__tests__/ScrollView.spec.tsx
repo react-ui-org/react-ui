@@ -74,7 +74,7 @@ test.describe('ScrollView', () => {
         ) {
           await page.evaluate((id) => {
             (window as ExtendedWindow).scrollEnd = false;
-            const parent = document.getElementById(id);
+            const parent = document.getElementById(id) as HTMLElement;
             parent.children[0].addEventListener('scrollend', () => {
               (window as ExtendedWindow).scrollEnd = true;
             }, { once: true });
@@ -82,12 +82,12 @@ test.describe('ScrollView', () => {
 
           if (props?.direction === 'horizontal') {
             await page.evaluate((id) => {
-              const parent = document.getElementById(id);
+              const parent = document.getElementById(id) as HTMLElement;
               parent.children[0].scrollLeft += 124;
             }, 'scrollbar');
           } else {
             await page.evaluate((id) => {
-              const parent = document.getElementById(id);
+              const parent = document.getElementById(id) as HTMLElement;
               parent.children[0].scrollTop += 124;
             }, 'scrollbar');
           }
@@ -133,7 +133,7 @@ test.describe('ScrollView', () => {
         />,
       );
 
-      const refValue = await component.evaluate((_, idArg) => document.getElementById(idArg).firstElementChild.getAttribute('test-ref'), id);
+      const refValue = await component.evaluate((_, idArg) => (document.getElementById(idArg) as HTMLElement).firstElementChild?.getAttribute('test-ref'), id);
 
       expect(refValue).toBe('test-ref-value');
     });
@@ -156,7 +156,7 @@ test.describe('ScrollView', () => {
 
       const arrow = component.locator(`button[id="${id}__arrowNextButton"]`);
       await page.evaluate((idArg) => {
-        const parent = document.getElementById(idArg);
+        const parent = document.getElementById(idArg) as HTMLElement;
         parent.children[0].setAttribute('style', 'scroll-behavior: unset;');
       }, id);
       const scroll = component.locator(`div[id="${id}"] > div:first-child`);
@@ -182,12 +182,12 @@ test.describe('ScrollView', () => {
 
       await page.evaluate((idArg) => {
         (window as ExtendedWindow).scrollEnd = false;
-        const parent = document.getElementById(idArg);
+        const parent = document.getElementById(idArg) as HTMLElement;
         parent.children[0].setAttribute('style', 'scroll-behavior: unset;');
       }, id);
 
       await page.evaluate((idArg) => {
-        const parent = document.getElementById(idArg);
+        const parent = document.getElementById(idArg) as HTMLElement;
         parent.children[0].addEventListener('scrollend', () => {
           (window as ExtendedWindow).scrollEnd = true;
         });
@@ -225,10 +225,10 @@ test.describe('ScrollView', () => {
       await page.evaluate((idArg) => {
         (window as ExtendedWindow).scrollEnd = false;
 
-        const parent = document.getElementById(idArg);
+        const parent = document.getElementById(idArg) as HTMLElement;
         parent.children[0].addEventListener('scrollend', () => {
           (window as ExtendedWindow).scrollEnd = true;
-          (window as ExtendedWindow)?.onScrollEnd(parent.children[0].scrollTop);
+          (window as ExtendedWindow).onScrollEnd?.(parent.children[0].scrollTop);
         }, { once: true });
       }, id);
 
@@ -239,7 +239,7 @@ test.describe('ScrollView', () => {
        */
       await page.evaluate((idArg) => {
         (window as ExtendedWindow).scrollEnd = false;
-        const parent = document.getElementById(idArg);
+        const parent = document.getElementById(idArg) as HTMLElement;
         parent.children[0].addEventListener('scrollend', () => {
           (window as ExtendedWindow).scrollEnd = true;
         });
@@ -254,7 +254,7 @@ test.describe('ScrollView', () => {
       await page.waitForFunction(() => (window as ExtendedWindow).scrollEnd === true);
 
       const scrollTopAfter = await page.evaluate((idArg) => {
-        const parent = document.getElementById(idArg);
+        const parent = document.getElementById(idArg) as HTMLElement;
         return parent.children[0].scrollTop;
       }, id);
 
@@ -281,7 +281,7 @@ test.describe('ScrollView', () => {
        */
       await page.evaluate((idArg) => {
         (window as ExtendedWindow).scrollEnd = false;
-        const parent = document.getElementById(idArg);
+        const parent = document.getElementById(idArg) as HTMLElement;
         parent.children[0].addEventListener('scrollend', () => {
           (window as ExtendedWindow).scrollEnd = true;
         }, { once: true });
@@ -291,7 +291,7 @@ test.describe('ScrollView', () => {
        * Scroll down
        */
       await page.evaluate((idArg) => {
-        const parent = document.getElementById(idArg);
+        const parent = document.getElementById(idArg) as HTMLElement;
         parent.children[0].scrollTop += 200;
       }, id);
       await page.waitForFunction(() => (window as ExtendedWindow).scrollEnd === true);
@@ -320,7 +320,7 @@ test.describe('ScrollView', () => {
        */
       await page.evaluate((idArg) => {
         (window as ExtendedWindow).scrollEnd = false;
-        const parent = document.getElementById(idArg);
+        const parent = document.getElementById(idArg) as HTMLElement;
         parent.children[0].addEventListener('scrollend', () => {
           (window as ExtendedWindow).scrollEnd = true;
         }, { once: true });
@@ -330,7 +330,7 @@ test.describe('ScrollView', () => {
        * Scroll down
        */
       await page.evaluate((idArg) => {
-        const parent = document.getElementById(idArg);
+        const parent = document.getElementById(idArg) as HTMLElement;
         parent.children[0].scrollTop = parent.children[0].children[0].clientHeight;
       }, id);
       await page.waitForFunction(() => (window as ExtendedWindow).scrollEnd === true);

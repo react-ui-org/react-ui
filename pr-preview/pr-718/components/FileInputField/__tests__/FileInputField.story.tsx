@@ -3,16 +3,18 @@ import React, {
   useMemo,
   useRef,
 } from 'react';
-import type { HTMLAttributes } from 'react';
+import type { ReactNode } from 'react';
 import { FileInputField } from '..';
-import {
-  FormLayout,
-  FormLayoutContext,
-  FormLayoutCustomFieldContext,
-} from '../../FormLayout';
+import type {
+  FileInputFieldProps,
+  FileInputFieldRef,
+} from '..';
+import { FormLayout } from '../../FormLayout';
+import { FormLayoutContext } from '../../FormLayout/FormLayoutContext';
+import { FormLayoutCustomFieldContext } from '../../FormLayout/FormLayoutCustomFieldContext';
+import type { StoryProps } from '../../../../tests/playwright';
 
-// Types for story component will be improved when we have full TypeScript support
-type FileInputFieldForTestProps = HTMLAttributes<HTMLDivElement>;
+type FileInputFieldForTestProps = StoryProps<FileInputFieldProps, 'id' | 'label' | 'onFilesChanged'>;
 type FileInputFieldForRefTestProps = FileInputFieldForTestProps & {
   testRefAttrName: string;
   testRefAttrValue: string;
@@ -24,7 +26,7 @@ export type FileInputFieldForFormLayoutTestsProps = FileInputFieldForTestProps &
 const InputWrapper = ({
   children,
   ...props
-}: FileInputFieldForTestProps) => {
+}: FileInputFieldForTestProps & { children: ReactNode }) => {
   const style = Object.keys(props).includes('fullWidth')
     ? { padding: '10px' }
     : {
@@ -40,29 +42,35 @@ const InputWrapper = ({
 };
 
 export const FileInputFieldForTest = ({
+  id = 'testId',
+  label = 'Attachment',
+  onFilesChanged = () => {},
   ...props
 }: FileInputFieldForTestProps) => (
   <InputWrapper {...props}>
     <FileInputField
-      id="testId"
-      label="Attachment"
-      onFilesChanged={() => {}}
+      id={id}
+      label={label}
+      onFilesChanged={onFilesChanged}
       {...props}
     />
   </InputWrapper>
 );
 
 export const FileInputFieldWithResetButtonForTest = ({
+  id = 'testId',
+  label = 'Attachment',
+  onFilesChanged = () => {},
   ...props
 }: FileInputFieldForTestProps) => {
-  const ref = useRef<{ resetState:() => void }>(undefined);
+  const ref = useRef<FileInputFieldRef>(null);
 
   return (
     <>
       <FileInputField
-        id="testId"
-        label="Attachment"
-        onFilesChanged={() => {}}
+        id={id}
+        label={label}
+        onFilesChanged={onFilesChanged}
         {...props}
         ref={ref}
       />
@@ -82,11 +90,14 @@ export const FileInputFieldWithResetButtonForTest = ({
 };
 
 export const FileInputFieldForRefTest = ({
+  id = 'testId',
+  label = 'Attachment',
+  onFilesChanged = () => {},
   testRefAttrName,
   testRefAttrValue,
   ...props
 }: FileInputFieldForRefTestProps) => {
-  const ref = useRef<HTMLDivElement>(undefined);
+  const ref = useRef<FileInputFieldRef>(null);
 
   useEffect(() => {
     ref.current?.setAttribute(testRefAttrName, testRefAttrValue);
@@ -95,9 +106,9 @@ export const FileInputFieldForRefTest = ({
   return (
     <FileInputField
       {...props}
-      id="testId"
-      label="Attachment"
-      onFilesChanged={() => {}}
+      id={id}
+      label={label}
+      onFilesChanged={onFilesChanged}
       ref={ref}
     />
   );
@@ -111,7 +122,10 @@ export const FileInputFieldForFormLayoutLabelWidthTests = () => (
 );
 
 export const FileInputFieldForFormLayoutTests = ({
+  id = 'testId',
+  label = 'FirstLabel',
   layout,
+  onFilesChanged = () => {},
   ...props
 }: FileInputFieldForFormLayoutTestsProps) => {
   const values = useMemo(() => ({ layout }), [layout]);
@@ -122,15 +136,15 @@ export const FileInputFieldForFormLayoutTests = ({
     >
       <InputWrapper {...props}>
         <FileInputField
-          id="testId"
-          label="FirstLabel"
-          onFilesChanged={() => {}}
+          id={id}
+          label={label}
+          onFilesChanged={onFilesChanged}
           {...props}
         />
         <FileInputField
           id="anotherTestId"
           label="SecondLabel"
-          onFilesChanged={() => {}}
+          onFilesChanged={onFilesChanged}
           {...props}
         />
       </InputWrapper>
@@ -139,14 +153,17 @@ export const FileInputFieldForFormLayoutTests = ({
 };
 
 export const FileInputFieldForFormLayoutCustomFieldTests = ({
+  id = 'testId',
+  label = 'Attachment',
+  onFilesChanged = () => {},
   ...props
 }: FileInputFieldForTestProps) => (
   <InputWrapper {...props}>
     <FormLayoutCustomFieldContext.Provider value>
       <FileInputField
-        id="testId"
-        label="Attachment"
-        onFilesChanged={() => {}}
+        id={id}
+        label={label}
+        onFilesChanged={onFilesChanged}
         {...props}
       />
     </FormLayoutCustomFieldContext.Provider>
