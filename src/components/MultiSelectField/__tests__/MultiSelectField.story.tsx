@@ -4,17 +4,14 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import type { HTMLAttributes } from 'react';
 import { TranslationsProvider } from '../../../providers/translations';
-import { FormLayoutContext } from '../../FormLayout';
+import { FormLayoutContext } from '../../FormLayout/FormLayoutContext';
 import { MultiSelectField } from '..';
+import type { MultiSelectFieldProps } from '..';
+import type { StoryProps } from '../../../../tests/playwright';
 
-type MultiSelectFieldValue = (string | number)[];
-type MultiSelectFieldForTestProps = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> & {
-  // eslint-disable-next-line react/require-default-props
-  initialValue?: MultiSelectFieldValue;
-  // eslint-disable-next-line react/require-default-props
-  onChange?: (value: MultiSelectFieldValue) => void;
+type MultiSelectFieldForTestProps = Omit<StoryProps<MultiSelectFieldProps, 'label' | 'onChange' | 'options'>, 'value'> & {
+  initialValue?: MultiSelectFieldProps['value'];
 };
 type MultiSelectFieldForRefTestProps = MultiSelectFieldForTestProps & {
   testRefAttrName: string;
@@ -42,17 +39,19 @@ const defaultOptions = [
 
 export const MultiSelectFieldForTest = ({
   initialValue,
+  label = defaultLabel,
   onChange,
+  options = defaultOptions,
   ...props
 }: MultiSelectFieldForTestProps) => {
-  const [value, setValue] = useState<MultiSelectFieldValue>(initialValue ?? ['value1']);
+  const [value, setValue] = useState<MultiSelectFieldProps['value']>(initialValue ?? ['value1']);
 
   return (
     <MultiSelectField
-      label={defaultLabel}
-      options={defaultOptions}
+      label={label}
+      options={options}
       {...props}
-      onChange={(newValue: MultiSelectFieldValue) => {
+      onChange={(newValue) => {
         onChange?.(newValue);
         setValue(newValue);
       }}
@@ -62,12 +61,14 @@ export const MultiSelectFieldForTest = ({
 };
 
 export const MultiSelectFieldForRefTest = ({
+  label = defaultLabel,
+  options = defaultOptions,
   testRefAttrName,
   testRefAttrValue,
   ...props
 }: MultiSelectFieldForRefTestProps) => {
-  const ref = useRef<HTMLDivElement>(undefined);
-  const [value, setValue] = useState<MultiSelectFieldValue>(['value1']);
+  const ref = useRef<HTMLDivElement>(null);
+  const [value, setValue] = useState<MultiSelectFieldProps['value']>(['value1']);
 
   useEffect(() => {
     ref.current?.setAttribute(testRefAttrName, testRefAttrValue);
@@ -75,10 +76,10 @@ export const MultiSelectFieldForRefTest = ({
 
   return (
     <MultiSelectField
-      label={defaultLabel}
-      options={defaultOptions}
+      label={label}
+      options={options}
       {...props}
-      onChange={(newValue: MultiSelectFieldValue) => setValue(newValue)}
+      onChange={(newValue) => setValue(newValue)}
       ref={ref}
       value={value}
     />
