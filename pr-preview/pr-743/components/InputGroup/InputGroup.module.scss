@@ -1,0 +1,98 @@
+// 1. The class names are intentionally singular because they are also targeted by other mixins.
+// 2. Use a block-level display mode to prevent extra white space below grouped inputs in Safari.
+// 3. Let wide input groups honor the minimum input width and overflow horizontally without wrapping and distorting
+//    the inputs.
+// 4. Prevent individual inputs from overlapping inside narrow containers.
+// 5. Legends are tricky to style, let's use a `div` instead.
+//    https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#styling_with_css
+
+@use "../../styles/tools/form-fields/box-field-elements";
+@use "../../styles/tools/form-fields/box-field-layout";
+@use "../../styles/tools/form-fields/box-field-sizes";
+@use "../../styles/tools/form-fields/foundation";
+@use "../../styles/tools/form-fields/variants";
+@use "../../styles/tools/accessibility";
+@use "../../styles/tools/reset";
+@use "theme";
+
+@layer components.input-group {
+    .root {
+        @include foundation.root();
+        @include foundation.fieldset();
+    }
+
+    // 5.
+    .legend {
+        @include accessibility.hide-text();
+    }
+
+    // 5.
+    .label {
+        @include foundation.label();
+    }
+
+    .inputGroup {
+        --rui-local-inner-border-radius: #{theme.$inner-border-radius};
+
+        display: flex; // 2.
+        gap: theme.$gap;
+    }
+
+    // 1.
+    .helpText,
+    .validationText {
+        @include reset.list();
+        @include foundation.help-text();
+    }
+
+    .isRootRequired .label {
+        @include foundation.label-required();
+    }
+
+    // States
+    .isRootStateInvalid {
+        @include variants.validation(invalid);
+    }
+
+    .isRootStateValid {
+        @include variants.validation(valid);
+    }
+
+    .isRootStateWarning {
+        @include variants.validation(warning);
+    }
+
+    // Layouts
+    .isRootLayoutVertical,
+    .isRootLayoutHorizontal {
+        @include box-field-layout.vertical();
+
+        max-width: none; // 3.
+    }
+
+    .isRootLayoutVertical .field,
+    .isRootLayoutHorizontal .field {
+        max-width: none; // 4.
+    }
+
+    .isRootLayoutHorizontal {
+        @include box-field-layout.horizontal();
+    }
+
+    .isRootInFormLayout {
+        @include box-field-layout.in-form-layout($is-fieldset: true);
+    }
+
+    // Sizes
+    .isRootSizeSmall {
+        @include box-field-sizes.size(small);
+    }
+
+    .isRootSizeMedium {
+        @include box-field-sizes.size(medium);
+    }
+
+    .isRootSizeLarge {
+        @include box-field-sizes.size(large);
+    }
+}

@@ -1,0 +1,147 @@
+@use "sass:map";
+@use "../theme/spacing";
+@use "../theme/typography";
+
+$map: (
+    "display": (
+        responsive: true,
+        property: display,
+        class: d,
+        values: (block, flex, inline, inline-block, inline-flex, none),
+    ),
+    "align-items": (
+        responsive: true,
+        property: align-items,
+        class: align-items,
+        values: (center, start, flex-start, end, flex-end, baseline, stretch),
+    ),
+    "align-self": (
+        responsive: true,
+        property: align-self,
+        class: align-self,
+        values: (center, start, flex-start, end, flex-end, baseline, stretch),
+    ),
+    "justify-content": (
+        responsive: true,
+        property: justify-content,
+        class: justify-content,
+        values: (center, start, flex-start, end, flex-end, space-between),
+    ),
+    "justify-self": (
+        responsive: true,
+        property: justify-self,
+        class: justify-self,
+        values: (center, start, end, baseline, stretch),
+    ),
+    "margin-top": (
+        responsive: true,
+        property: margin-top,
+        class: mt,
+        values: map.merge(spacing.$values, (auto: auto)),
+    ),
+    "margin-right": (
+        responsive: true,
+        property: margin-right,
+        class: mr,
+        values: map.merge(spacing.$values, (auto: auto)),
+    ),
+    "margin-bottom": (
+        responsive: true,
+        property: margin-bottom,
+        class: mb,
+        values: map.merge(spacing.$values, (auto: auto)),
+    ),
+    "margin-left": (
+        responsive: true,
+        property: margin-left,
+        class: ml,
+        values: map.merge(spacing.$values, (auto: auto)),
+    ),
+    "padding-top": (
+        responsive: true,
+        property: padding-top,
+        class: pt,
+        values: spacing.$values,
+    ),
+    "padding-right": (
+        responsive: true,
+        property: padding-right,
+        class: pr,
+        values: spacing.$values,
+    ),
+    "padding-bottom": (
+        responsive: true,
+        property: padding-bottom,
+        class: pb,
+        values: spacing.$values,
+    ),
+    "padding-left": (
+        responsive: true,
+        property: padding-left,
+        class: pl,
+        values: spacing.$values,
+    ),
+    "font-size": (
+        responsive: false,
+        property: font-size,
+        class: font-size,
+        values: typography.$font-size-values,
+    ),
+    "text-align": (
+        responsive: true,
+        property: text-align,
+        class: text,
+        values: left right center justify,
+    ),
+    "text-color": (
+        responsive: false,
+        property: color,
+        class: text,
+        values: (
+            // Text colors
+            primary: var(--rui-color-text-primary),
+            primary-disabled: var(--rui-color-text-primary-disabled),
+            secondary: var(--rui-color-text-secondary),
+            secondary-disabled: var(--rui-color-text-secondary-disabled),
+            // Feedback colors
+            success: var(--rui-color-feedback-success),
+            warning: var(--rui-color-feedback-warning),
+            danger: var(--rui-color-feedback-danger),
+            help: var(--rui-color-feedback-help),
+            info: var(--rui-color-feedback-info),
+            note: var(--rui-color-feedback-note),
+            // Neutral colors
+            light: var(--rui-color-neutral-light),
+            dark: var(--rui-color-neutral-dark),
+        ),
+    ),
+    "background-color": (
+        responsive: false,
+        property: background-color,
+        class: bg,
+        values: (
+            // Content layers
+            base: var(--rui-color-background-base),
+            layer-1: var(--rui-color-background-layer-1),
+            layer-2: var(--rui-color-background-layer-2),
+            // Component backgrounds
+            basic: var(--rui-color-background-basic),
+            disabled: var(--rui-color-background-disabled),
+            // Interactive backgrounds: intentionally not generated to utilities, CSS use only.
+            // Action backgrounds
+            primary: var(--rui-color-background-primary),
+            secondary: var(--rui-color-background-secondary),
+            selected: var(--rui-color-background-selected),
+            // Feedback backgrounds
+            success: var(--rui-color-background-success),
+            warning: var(--rui-color-background-warning),
+            danger: var(--rui-color-background-danger),
+            help: var(--rui-color-background-help),
+            info: var(--rui-color-background-info),
+            note: var(--rui-color-background-note),
+            // Neutral backgrounds
+            light: var(--rui-color-background-light),
+            dark: var(--rui-color-background-dark),
+        ),
+    ),
+);

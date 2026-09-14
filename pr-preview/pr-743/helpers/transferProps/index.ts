@@ -1,0 +1,1 @@
+export { transferProps } from './transferProps';
