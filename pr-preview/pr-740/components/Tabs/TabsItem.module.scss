@@ -1,0 +1,119 @@
+// 1. Keep inactive items under Tabs' decorative bottom border and pop active ones above it.
+
+@use "../../styles/tools/breakpoint";
+@use "../../styles/tools/reset";
+@use "../../styles/tools/transition";
+@use "theme";
+
+@layer components.tabs {
+    .root {
+        @include transition.add(transform);
+
+        position: relative; // 1.
+        z-index: 1; // 1.
+        flex: none;
+        padding-top: calc(-1 * #{theme.$item-active-shift-y});
+        margin-bottom: theme.$item-active-shift-y;
+        transform: translateY(0);
+
+        &:hover,
+        &:focus-within {
+            transform: translateY(theme.$item-hover-shift-y);
+        }
+
+        &:not(:last-child) {
+            margin-right: theme.$gap-xs;
+        }
+
+        @include breakpoint.up(sm) {
+            &:not(:last-child) {
+                margin-right: theme.$gap-sm;
+            }
+        }
+
+        @include breakpoint.up(md) {
+            &:not(:last-child) {
+                margin-right: theme.$gap-md;
+            }
+        }
+    }
+
+    .link {
+        @include reset.link();
+        @include transition.add((color, border-color, background-color, box-shadow));
+
+        display: block;
+        padding: theme.$item-padding-xs;
+        font-weight: theme.$item-font-weight;
+        line-height: 1;
+        text-decoration: none;
+        color: theme.$item-color;
+        border: theme.$item-border-width solid;
+        border-color: theme.$item-border-color;
+        border-top-left-radius: theme.$item-border-radius;
+        border-top-right-radius: theme.$item-border-radius;
+        background-color: theme.$item-background-color;
+        box-shadow: theme.$item-box-shadow;
+
+        &:hover,
+        &:focus {
+            font-weight: theme.$item-hover-font-weight;
+            color: theme.$item-hover-color;
+            border-width: theme.$item-hover-border-width;
+            border-color: theme.$item-hover-border-color;
+            background-color: theme.$item-hover-background-color;
+            box-shadow: theme.$item-hover-box-shadow;
+        }
+
+        @include breakpoint.up(sm) {
+            padding: theme.$item-padding-sm;
+        }
+
+        @include breakpoint.up(md) {
+            padding: theme.$item-padding-md;
+        }
+    }
+
+    .linkContent {
+        @include transition.add(transform);
+
+        display: flex;
+        align-items: center;
+        transform: translateY(0);
+    }
+
+    .label:not(:first-child) {
+        margin-left: theme.$item-icon-gap;
+    }
+
+    .label:not(:last-child) {
+        margin-right: theme.$item-icon-gap;
+    }
+
+    .isRootActive,
+    .isRootActive:hover,
+    .isRootActive:focus-within {
+        z-index: 2; // 1.
+        transform: translateY(theme.$item-active-shift-y);
+    }
+
+    .isRootActive .link {
+        font-weight: theme.$item-active-font-weight;
+        color: theme.$item-active-color;
+        border-width: theme.$item-active-border-width;
+        border-color: theme.$item-active-border-color;
+        background-color: theme.$item-active-background-color;
+        box-shadow: theme.$item-active-box-shadow;
+    }
+
+    .link:hover .linkContent,
+    .link:focus .linkContent {
+        transform: translateY(theme.$item-hover-label-shift-y);
+    }
+
+    .isRootActive .link .linkContent,
+    .isRootActive .link:hover .linkContent,
+    .isRootActive .link:focus .linkContent {
+        transform: translateY(theme.$item-active-label-shift-y);
+    }
+}

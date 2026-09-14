@@ -1,0 +1,4 @@
+@use "../../styles/settings/collections";
+
+$colors: collections.$feedback-colors;
+$themeable-properties: color, border-color, background-color;

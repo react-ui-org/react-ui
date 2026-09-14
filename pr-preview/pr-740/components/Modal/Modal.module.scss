@@ -1,0 +1,96 @@
+// 1. Modal uses <dialog> element that uses the browser's built-in dialog functionality, so that:
+//    * visibility of the .root element and its backdrop is managed by the browser
+//    * positioning of the .root element and its backdrop is managed by the browser
+//    * z-index of the .root element and its backdrop is not needed as dialog is rendered in browser's Top layer
+
+@use "sass:map";
+@use "../../styles/theme/typography";
+@use "../../styles/tools/accessibility";
+@use "../../styles/tools/breakpoint";
+@use "../../styles/tools/collections";
+@use "../../styles/tools/reset";
+@use "../../styles/tools/spacing";
+@use "animations";
+@use "settings";
+@use "theme";
+
+@layer components.modal {
+    .root {
+        --rui-local-outer-spacing: #{theme.$outer-spacing-xs};
+        --rui-local-max-width: calc(100% - (2 * var(--rui-local-outer-spacing)));
+        --rui-local-max-height: calc(100% - (2 * var(--rui-local-outer-spacing)));
+
+        flex-direction: column;
+        max-width: var(--rui-local-max-width);
+        max-height: var(--rui-local-max-height);
+        padding: 0;
+        overflow-y: auto;
+        color: inherit;
+        border-width: 0;
+        border-radius: settings.$border-radius;
+        background: theme.$background;
+        box-shadow: theme.$box-shadow;
+        overscroll-behavior: contain;
+
+        @include breakpoint.up(sm) {
+            --rui-local-outer-spacing: #{theme.$outer-spacing-sm};
+        }
+    }
+
+    .root[open] {
+        display: flex;
+
+        @media (prefers-reduced-motion: no-preference) {
+            animation: fade-in theme.$animation-duration ease-out;
+        }
+    }
+
+    .root[open]::backdrop {
+        background: theme.$backdrop-background;
+
+        @media (prefers-reduced-motion: no-preference) {
+            animation: inherit;
+        }
+    }
+
+    .isRootSizeSmall {
+        width: map.get(theme.$sizes, small, width);
+    }
+
+    .isRootSizeMedium {
+        width: map.get(theme.$sizes, medium, width);
+    }
+
+    .isRootSizeLarge {
+        width: map.get(theme.$sizes, large, width);
+    }
+
+    .isRootSizeFullscreen {
+        width: map.get(theme.$sizes, fullscreen, width);
+        height: map.get(theme.$sizes, fullscreen, height);
+    }
+
+    .isRootSizeFullscreen .content {
+        height: 100%;
+    }
+
+    .isRootSizeAuto {
+        min-width: min(var(--rui-local-max-width), #{map.get(theme.$sizes, auto, min-width)});
+        max-width: min(var(--rui-local-max-width), #{map.get(theme.$sizes, auto, max-width)});
+    }
+
+    .isRootPositionTop {
+        top: var(--rui-local-outer-spacing);
+        bottom: auto;
+    }
+
+    @each $color in settings.$colors {
+        @include collections.generate-class(
+            $prefix: "rui-",
+            $component-name: "Modal",
+            $variant-name: "color",
+            $variant-value: $color,
+            $properties: settings.$themeable-properties,
+        );
+    }
+}
