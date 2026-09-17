@@ -17,7 +17,7 @@ type ToggleForRefTestProps = ToggleForTestProps & {
   testRefAttrValue: string;
 };
 export type ToggleForFormLayoutTestsProps = ToggleForTestProps & {
-  layout: 'vertical' | 'horizontal'
+  layout: 'vertical' | 'horizontal';
 };
 
 const defaultLabel = 'test-label';
@@ -25,7 +25,7 @@ const defaultLabel = 'test-label';
 export const ToggleForTest = ({
   label = defaultLabel,
   ...props
-} : ToggleForTestProps) => (
+}: ToggleForTestProps) => (
   <Toggle
     label={label}
     {...props}
@@ -37,7 +37,7 @@ export const ToggleForRefTest = ({
   testRefAttrName,
   testRefAttrValue,
   ...props
-} : ToggleForRefTestProps) => {
+}: ToggleForRefTestProps) => {
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {

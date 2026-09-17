@@ -15,6 +15,8 @@ export const useModalScrollPrevention = (preventScrollUnderneath: ModalScrollPre
         const prevOverflow = scrollableElement.style.overflow;
         const prevPaddingRight = scrollableElement.style.paddingRight;
 
+        // The element is a DOM node owned by the consumer, mutating its styles is the purpose of this hook.
+        // eslint-disable-next-line react-hooks/immutability
         scrollableElement.style.overflow = 'hidden';
 
         if (Number.isNaN(parseInt(prevPaddingRight, 10))) {

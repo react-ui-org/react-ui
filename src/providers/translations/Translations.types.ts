@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
-import type defaultTranslations from '../../translations/en';
+import type en from '../../translations/en';
 
-export type Translations = typeof defaultTranslations;
+export type Translations = typeof en;
 
 /**
  * Translations with any subset of components and keys, merged into the defaults by `TranslationsProvider`.
@@ -9,9 +9,7 @@ export type Translations = typeof defaultTranslations;
  */
 export type PartialTranslations = {
   [Component in keyof Translations]?: Partial<Translations[Component]>;
-} & {
-  [component: string]: Record<string, string | undefined> | undefined;
-};
+} & Record<string, Record<string, string | undefined> | undefined>;
 
 /**
  * Props of the `TranslationsProvider` component.
