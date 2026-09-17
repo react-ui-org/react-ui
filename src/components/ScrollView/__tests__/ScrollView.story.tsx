@@ -113,7 +113,7 @@ export const ScrollViewForRefTest = ({
   testRefAttrName,
   testRefAttrValue,
   ...props
-} : ScrollViewForRefTestProps) => {
+}: ScrollViewForRefTestProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

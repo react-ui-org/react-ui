@@ -1,6 +1,4 @@
-type EnvironmentArgs = {
-  [name: string]: string
-};
+type EnvironmentArgs = Record<string, string>;
 
 /**
  * Process environment file arguments.

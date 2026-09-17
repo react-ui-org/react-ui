@@ -171,7 +171,7 @@ export type ModalTitleProps = HTMLAttributes<HTMLHeadingElement> & {
  * Dialog event handlers wired by `Modal`.
  */
 export type ModalEvents = Pick<
-DialogHTMLAttributes<HTMLDialogElement>,
+  DialogHTMLAttributes<HTMLDialogElement>,
 'onCancel' | 'onClick' | 'onClose' | 'onKeyDown' | 'onMouseDown'
 >;
 
