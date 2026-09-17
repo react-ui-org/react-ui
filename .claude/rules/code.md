@@ -7,7 +7,7 @@
 * Follow the project formatting and style sources:
   [.editorconfig](../../.editorconfig) (general),
   [.markdownlint.jsonc](../../.markdownlint.jsonc) (Markdown),
-  [.eslintrc](../../.eslintrc) (TypeScript),
+  [eslint.config.mjs](../../eslint.config.mjs) (TypeScript),
   [stylelint.config.js](../../stylelint.config.js) (SCSS).
 * Only fix linting/formatting issues in files you created or modified for the
   current task. Do not fix pre-existing issues outside that scope.
