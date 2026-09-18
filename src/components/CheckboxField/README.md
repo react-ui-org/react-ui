@@ -205,18 +205,10 @@ React.createElement(() => {
 });
 ```
 
-#### Styling the Required State
+#### Rendering as Required
 
-All form fields in React UI can be
-[styled](/docs/customize/theming/forms/#required-state)
-to indicate the required state.
-
-However, you may find yourself in a situation where a form field is valid in
-both checked and unchecked states, for example to turn on or off a feature.
-If your project uses the label color as the primary means to indicate the
-required state of input fields and the usual asterisk `*` is omitted, you may
-want to keep the label color consistent for both states to avoid confusion.
-
+A form field may be valid in both checked and unchecked states, for example to
+turn on or off a feature, while your design still needs it to look required.
 For this edge case, there is the `renderAsRequired` prop:
 
 ```docoff-react-preview
@@ -224,36 +216,19 @@ React.createElement(() => {
   const [optional, setOptional] = React.useState(false);
   const [renderAsRequired, setRenderAsRequired] = React.useState(false);
   return (
-    <React.Fragment>
-      <style>
-      {`
-        .example {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1rem 0.5rem;
-        }
-
-        .example--themed-form-fields {
-          --rui-FormField__label__color: var(--rui-color-text-secondary);
-          --rui-FormField--required__label__color: var(--rui-color-text-primary);
-          --rui-FormField--required__sign: '';
-        }
-      `}
-      </style>
-      <div class="example example--themed-form-fields">
-        <CheckboxField
-          checked={optional}
-          label="This field is optional"
-          onChange={() => setOptional(!optional)}
-        />
-        <CheckboxField
-          checked={renderAsRequired}
-          label="This field is optional but looks like required"
-          onChange={() => setRenderAsRequired(!renderAsRequired)}
-          renderAsRequired
-        />
-      </div>
-    </React.Fragment>
+    <>
+      <CheckboxField
+        checked={optional}
+        label="This field is optional"
+        onChange={() => setOptional(!optional)}
+      />
+      <CheckboxField
+        checked={renderAsRequired}
+        label="This field is optional but looks like required"
+        onChange={() => setRenderAsRequired(!renderAsRequired)}
+        renderAsRequired
+      />
+    </>
   );
 });
 ```
@@ -308,6 +283,56 @@ options. On top of that, the following options are available for CheckboxField.
 |----------------------------------------------------------------------|----------------------------------------------|
 | `--rui-FormField--check__input--checkbox__border-radius`             | Input corner radius                          |
 | `--rui-FormField--check__input--checkbox--checked__background-image` | Background image of checked input            |
+
+### Theming the Required State
+
+Required fields are indicated by
+[shared theming options](/docs/customize/theming/forms/#required-state).
+
+If your project uses the label color as the primary means to indicate the
+required state of input fields and the usual asterisk `*` is omitted, you may
+want to keep the label color consistent for fields that are valid in both
+checked and unchecked states. Pair the theming options with the
+[`renderAsRequired`](#rendering-as-required) prop to achieve that:
+
+```docoff-react-preview
+React.createElement(() => {
+  const [optional, setOptional] = React.useState(false);
+  const [renderAsRequired, setRenderAsRequired] = React.useState(false);
+  return (
+    <React.Fragment>
+      <style>
+      {`
+        .example {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem 0.5rem;
+        }
+
+        .example--themed-form-fields {
+          --rui-FormField__label__color: var(--rui-color-text-secondary);
+          --rui-FormField--required__label__color: var(--rui-color-text-primary);
+          --rui-FormField--required__sign: '';
+        }
+      `}
+      </style>
+      <div class="example example--themed-form-fields">
+        <CheckboxField
+          checked={optional}
+          label="This field is optional"
+          onChange={() => setOptional(!optional)}
+        />
+        <CheckboxField
+          checked={renderAsRequired}
+          label="This field is optional but looks like required"
+          onChange={() => setRenderAsRequired(!renderAsRequired)}
+          renderAsRequired
+        />
+      </div>
+    </React.Fragment>
+  );
+});
+```
 
 [checkbox-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#additional_attributes
 [React common props]: https://react.dev/reference/react-dom/components/common#common-props

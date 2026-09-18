@@ -611,10 +611,10 @@ the `renderAsRequired` prop to `true`. This is useful when
 `--rui-FormField--required__label__color` is used to indicate the required state
 of input fields, but you want to bypass it for inputs like feature toggles.
 This applies to
-[CheckboxField](/components/CheckboxField/#styling-the-required-state),
-[Radio](/components/Radio/#styling-the-required-state),
-[SelectField](/components/SelectField/#styling-the-required-state),
-and [Toggle](/components/Toggle/#styling-the-required-state).
+[CheckboxField](/components/CheckboxField/#theming-the-required-state),
+[Radio](/components/Radio/#theming-the-required-state),
+[SelectField](/components/SelectField/#theming-the-required-state),
+and [Toggle](/components/Toggle/#theming-the-required-state).
 
 ## Disabled State
 
