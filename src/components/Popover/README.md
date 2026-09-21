@@ -312,6 +312,18 @@ React.createElement(() => {
 });
 ```
 
+## Scrollable Containers
+
+When Popover is rendered inside a scrollable container (e.g. an element with
+`overflow: auto`) and its closest positioned parent is the container itself or
+an element inside it, Popover is clipped by the container and scrolls along
+with its content. This is always the case inside
+[ScrollView](/components/ScrollView), and it also applies to Popover wrapped in
+PopoverWrapper.
+
+If Popover needs to overflow the scrollable container, use Floating UI with the
+`fixed` positioning strategy (see [Advanced Positioning](#advanced-positioning)).
+
 ## Controlled Popover
 
 Popover API can be used to control visibility of Popover component. You need to
