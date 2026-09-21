@@ -1,0 +1,7 @@
+@use "../theme/borders";
+
+hr {
+    border: 0;
+    border-top: borders.$width solid var(--rui-color-border-secondary);
+    background: none;
+}
