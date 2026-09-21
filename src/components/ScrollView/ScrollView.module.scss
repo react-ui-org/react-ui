@@ -23,6 +23,10 @@
 //
 // 8. Use the `clip` value for `overflow` to prevent the content from unwanted scrolling on the
 //    cross axis during keyboard navigation.
+//
+// 9. Make `.viewport` the containing block of absolutely positioned content (e.g. visually hidden
+//    labels). Otherwise such content resolves to `.root`, escapes the scroll container, and
+//    enlarges the scrollable area of the parent elements.
 
 @use "../../styles/tools/accessibility";
 @use "../../styles/tools/caret";
@@ -72,6 +76,7 @@ $_arrow-outer-spacing: spacing.of(4);
     }
 
     .viewport {
+        position: relative; // 9.
         z-index: 1; // 2.
         width: 100%;
         scroll-behavior: smooth;

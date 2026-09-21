@@ -7,6 +7,7 @@ import {
 } from '../../../../tests/playwright';
 import {
   ScrollViewForDetectEndAutoscrollTest,
+  ScrollViewForPositionedContentTest,
   ScrollViewForRefTest,
   ScrollViewForTest,
 } from './ScrollView.story';
@@ -134,6 +135,22 @@ test.describe('ScrollView', () => {
       const refValue = await component.evaluate((_, idArg) => (document.getElementById(idArg) as HTMLElement).firstElementChild?.getAttribute('test-ref'), id);
 
       expect(refValue).toBe('test-ref-value');
+    });
+
+    test('absolutely positioned content does not enlarge scrollable area of parent', async ({ mount }) => {
+      const component = await mount(
+        <ScrollViewForPositionedContentTest />,
+      );
+
+      const {
+        clientHeight,
+        scrollHeight,
+      } = await component.evaluate((element) => ({
+        clientHeight: element.clientHeight,
+        scrollHeight: element.scrollHeight,
+      }));
+
+      expect(scrollHeight).toBe(clientHeight);
     });
   });
 
