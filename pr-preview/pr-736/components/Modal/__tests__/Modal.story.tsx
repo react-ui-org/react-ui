@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import type { HtmlHTMLAttributes } from 'react';
 import {
   Modal,
   ModalBody,
@@ -8,12 +7,12 @@ import {
   ModalHeader,
   ModalTitle,
 } from '..';
+import type { ModalProps } from '..';
 
-// Types for story component will be improved when we have full TypeScript support
-type ModalForTestProps = HtmlHTMLAttributes<HTMLDialogElement>;
+type ModalForTestProps = ModalProps;
 type ModalWithInputsAndCallbackForTestProps = ModalForTestProps & {
-  closeButtonOnClick: () => void | undefined
-  primaryButtonOnClick: () => void | undefined
+  closeButtonOnClick?: () => void;
+  primaryButtonOnClick?: () => void;
 };
 
 const customModalTitle = (
@@ -78,8 +77,8 @@ export const ModalWithInputsForTest = ({
   primaryButtonOnClick,
   ...props
 }: ModalWithInputsAndCallbackForTestProps) => {
-  const closeRef = useRef(null);
-  const primaryRef = useRef(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const primaryRef = useRef<HTMLButtonElement>(null);
 
   return (
     <div style={wrapperStyle}>
@@ -118,8 +117,8 @@ export const ModalWithPartiallyDisabledInputsForTest = ({
   primaryButtonOnClick,
   ...props
 }: ModalWithInputsAndCallbackForTestProps) => {
-  const closeRef = useRef(null);
-  const primaryRef = useRef(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const primaryRef = useRef<HTMLButtonElement>(null);
 
   return (
     <div style={wrapperStyle}>
@@ -158,8 +157,8 @@ export const ModalWithButtonsAndWithoutInputsForTest = ({
   primaryButtonOnClick,
   ...props
 }: ModalWithInputsAndCallbackForTestProps) => {
-  const closeRef = useRef(null);
-  const primaryRef = useRef(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const primaryRef = useRef<HTMLButtonElement>(null);
 
   return (
     <div style={wrapperStyle}>

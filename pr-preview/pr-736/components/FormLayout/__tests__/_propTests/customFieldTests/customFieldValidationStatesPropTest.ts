@@ -1,4 +1,5 @@
 import { validationStatePropTest } from '../../../../../../tests/playwright/propTests/validationStatePropTest';
+import type { FormLayoutCustomFieldProps } from '../../..';
 import type { CustomFieldTestsType } from './types';
 
 export const customFieldValidationStatesPropTest: CustomFieldTestsType = validationStatePropTest
@@ -6,7 +7,7 @@ export const customFieldValidationStatesPropTest: CustomFieldTestsType = validat
   .map((propTest) => ({
     customFieldLayoutProps: {
       label: 'Form layout custom field label',
-      ...propTest.props,
+      ...propTest.props as Pick<FormLayoutCustomFieldProps, 'validationState'>,
     },
     customFieldProps: {
       label: 'Custom field label',

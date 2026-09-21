@@ -2,15 +2,15 @@ import React, {
   useEffect,
   useRef,
 } from 'react';
-import type { HTMLAttributes } from 'react';
 import {
   Popover,
   PopoverWrapper,
 } from '..';
+import type { PopoverProps } from '..';
 import { Button } from '../../Button';
+import type { StoryProps } from '../../../../tests/playwright';
 
-// Types for story component will be improved when we have full TypeScript support
-type PopoverForTestProps = HTMLAttributes<HTMLDivElement> & { popoverTargetId: string };
+type PopoverForTestProps = StoryProps<PopoverProps, 'children'>;
 type PopoverForRefTestProps = PopoverForTestProps & {
   testRefAttrName: string;
   testRefAttrValue: string;
@@ -78,7 +78,7 @@ export const PopoverWithTargetIdForTest = ({
       <PopoverWrapper>
         <Button
           label="Button with target id"
-          popovertarget={popoverTargetId}
+          {...{ popovertarget: popoverTargetId }}
         />
         <Popover
           {...restProps}
@@ -101,7 +101,7 @@ export const PopoverForRefTest = ({
     ...restProps
   } = props;
 
-  const ref = useRef<HTMLLabelElement>(undefined);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     ref.current?.setAttribute(testRefAttrName, testRefAttrValue);

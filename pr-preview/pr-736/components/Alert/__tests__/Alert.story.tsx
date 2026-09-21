@@ -1,9 +1,9 @@
 import React from 'react';
-import type { HTMLAttributes } from 'react';
 import { Alert } from '..';
+import type { AlertProps } from '..';
+import type { StoryProps } from '../../../../tests/playwright';
 
-// Types for story component will be improved when we have full TypeScript support
-type AlertForTestProps = HTMLAttributes<HTMLDivElement>;
+type AlertForTestProps = StoryProps<AlertProps, 'children'>;
 
 export const AlertForTest = ({
   ...props

@@ -29,7 +29,7 @@ export const justifyItemsPropTest: PropTests = [
     }
   )),
   ...Object.entries(breakpoints).map(([breakpointName, breakpointValue]) => ({
-    name: `justifyItems:shape[breakpointShape=${breakpointShape[breakpointName]}] breakpoint=${breakpointName}`,
+    name: `justifyItems:shape[breakpointShape=${breakpointShape[breakpointName as keyof typeof breakpointShape]}] breakpoint=${breakpointName}`,
     onBeforeTest: async (page: Page) => {
       await page.setViewportSize({
         height: 200,

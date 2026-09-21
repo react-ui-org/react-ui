@@ -1,13 +1,11 @@
 import React, { useMemo } from 'react';
-import type { InputHTMLAttributes } from 'react';
 import { Radio } from '..';
-import {
-  FormLayout,
-  FormLayoutContext,
-} from '../../FormLayout';
+import type { RadioProps } from '..';
+import { FormLayout } from '../../FormLayout';
+import { FormLayoutContext } from '../../FormLayout/FormLayoutContext';
+import type { StoryProps } from '../../../../tests/playwright';
 
-// Types for story component will be improved when we have full TypeScript support
-type RadioForTestProps = InputHTMLAttributes<HTMLInputElement>;
+type RadioForTestProps = StoryProps<RadioProps, 'label' | 'options'>;
 export type RadioForFormLayoutTestsProps = RadioForTestProps & {
   layout: 'vertical' | 'horizontal'
 };
@@ -29,12 +27,14 @@ const defaultOptions = [
 ];
 
 export const RadioForTest = ({
+  label = defaultLabel,
+  options = defaultOptions,
   ...props
 }: RadioForTestProps) => (
   <Radio
-    label={defaultLabel}
+    label={label}
     onChange={() => {}}
-    options={defaultOptions}
+    options={options}
     value={defaultOptions[0].value}
     {...props}
   />
@@ -48,7 +48,9 @@ export const RadioForFormLayoutLabelWidthTests = () => (
 );
 
 export const RadioForFormLayoutTests = ({
+  label = defaultLabel,
   layout,
+  options = defaultOptions,
   ...props
 } : RadioForFormLayoutTestsProps) => {
   const values = useMemo(() => ({ layout }), [layout]);
@@ -58,13 +60,13 @@ export const RadioForFormLayoutTests = ({
       value={values}
     >
       <Radio
-        label={defaultLabel}
-        options={defaultOptions}
+        label={label}
+        options={options}
         {...props}
       />
       <Radio
         label="another-test-label"
-        options={defaultOptions}
+        options={options}
         {...props}
       />
     </FormLayoutContext.Provider>

@@ -31,7 +31,7 @@ export const alignContentPropTest: PropTests = [
     }
   )),
   ...Object.entries(breakpoints).map(([breakpointName, breakpointValue]) => ({
-    name: `alignContent:shape[breakpointShape=${breakpointShape[breakpointName]}] breakpoint=${breakpointName}`,
+    name: `alignContent:shape[breakpointShape=${breakpointShape[breakpointName as keyof typeof breakpointShape]}] breakpoint=${breakpointName}`,
     onBeforeTest: async (page: Page) => {
       await page.setViewportSize({
         height: 200,

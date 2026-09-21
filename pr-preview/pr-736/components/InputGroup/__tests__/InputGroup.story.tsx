@@ -1,14 +1,15 @@
 import React from 'react';
-import type { HTMLAttributes } from 'react';
 import { InputGroup } from '..';
+import type { InputGroupProps } from '..';
 import { SelectField } from '../../SelectField';
 import { Button } from '../../Button';
 import { TextField } from '../../TextField';
+import type { ValidationState } from '../../../types';
+import type { StoryProps } from '../../../../tests/playwright';
 
-// Types for story component will be improved when we have full TypeScript support
-type InputGroupTestProps = HTMLAttributes<HTMLFieldSetElement>;
+type InputGroupTestProps = StoryProps<InputGroupProps, 'label'>;
 type InputGroupWithCustomInputTestProps = InputGroupTestProps & {
-  inputProps: { validationState: string }
+  inputProps?: { validationState: ValidationState }
 };
 
 const options = [
@@ -46,9 +47,10 @@ const defaultChildren = [
 
 export const InputGroupForTest = ({
   children,
+  label = 'Input group label',
   ...props
 }: InputGroupTestProps) => (
-  <InputGroup label="Input group label" {...props}>
+  <InputGroup label={label} {...props}>
     {children ?? defaultChildren}
   </InputGroup>
 );
@@ -58,11 +60,12 @@ export const InputGroupWithCustomInputPropsForTest = ({
 }: InputGroupWithCustomInputTestProps) => {
   const {
     inputProps,
+    label = 'Input group label',
     ...inputGroupProps
   } = props;
 
   return (
-    <InputGroup label="Input group label" {...inputGroupProps}>
+    <InputGroup label={label} {...inputGroupProps}>
       <SelectField
         label="Select label"
         options={options}
@@ -80,7 +83,8 @@ export const InputGroupWithCustomInputPropsForTest = ({
 };
 
 export const InputGroupWithoutChildrenForTest = ({
+  label = 'Input group label',
   ...props
 }: InputGroupTestProps) => (
-  <InputGroup {...props} />
+  <InputGroup label={label} {...props} />
 );

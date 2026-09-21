@@ -2,7 +2,6 @@ import React, {
   useEffect,
   useRef,
 } from 'react';
-import type { HtmlHTMLAttributes } from 'react';
 import {
   Modal,
   ModalBody,
@@ -11,9 +10,9 @@ import {
   ModalFooter,
   ModalHeader,
 } from '..';
+import type { ModalCloseButtonProps } from '..';
 
-// Types for story component will be improved when we have full TypeScript support
-type ModalCloseButtonForTestProps = HtmlHTMLAttributes<HTMLButtonElement>;
+type ModalCloseButtonForTestProps = ModalCloseButtonProps;
 type ModalCloseButtonForRefTestProps = ModalCloseButtonForTestProps & {
   testRefAttrName: string;
   testRefAttrValue: string;
@@ -48,7 +47,7 @@ export const ModalCloseButtonForRefTest = ({
   testRefAttrValue,
   ...props
 } : ModalCloseButtonForRefTestProps) => {
-  const ref = useRef<HTMLButtonElement>(undefined);
+  const ref = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     ref.current?.setAttribute(testRefAttrName, testRefAttrValue);

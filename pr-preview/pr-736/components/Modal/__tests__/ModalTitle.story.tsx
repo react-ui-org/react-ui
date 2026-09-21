@@ -1,5 +1,4 @@
 import React from 'react';
-import type { HtmlHTMLAttributes } from 'react';
 import {
   Modal,
   ModalBody,
@@ -8,9 +7,10 @@ import {
   ModalHeader,
   ModalTitle,
 } from '..';
+import type { ModalTitleProps } from '..';
+import type { StoryProps } from '../../../../tests/playwright';
 
-// Types for story component will be improved when we have full TypeScript support
-type ModalTitleForTestProps = HtmlHTMLAttributes<HTMLDialogElement>;
+type ModalTitleForTestProps = StoryProps<ModalTitleProps, 'children'>;
 
 export const ModalTitleForTest = ({
   children,

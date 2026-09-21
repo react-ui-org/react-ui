@@ -20,13 +20,13 @@ return /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/docsCustomProperties.js"
+/***/ "./src/docsCustomProperties.ts"
 /*!*************************************!*\
-  !*** ./src/docsCustomProperties.js ***!
+  !*** ./src/docsCustomProperties.ts ***!
   \*************************************/
 (__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
 
-eval("{\n\n__webpack_require__(/*! ./theme.scss */ \"./src/theme.scss\");//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvZG9jc0N1c3RvbVByb3BlcnRpZXMuanMiLCJtYXBwaW5ncyI6Ijs7QUFFQSIsInNvdXJjZXMiOlsid2VicGFjazovL0ByZWFjdC11aS1vcmcvcmVhY3QtdWkvLi9zcmMvZG9jc0N1c3RvbVByb3BlcnRpZXMuanM/MjM3MSJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBUaGlzIGlzIG5lZWRlZCB0byBnZW5lcmF0ZSBDU1MgZmlsZSBjb250YWluaW5nIG9ubHkgQ1NTIGN1c3RvbSBwcm9wZXJ0eSBkZWZpbml0aW9uc1xuLy8gVGhpcyBmaWxlIGlzIG5lZWRlZCB0byBtYWtlIGN1c3RvbSBwcm9wZXJ0eSB2YWx1ZXMgYWNjZXNzaWJsZSBpbiB0aGUgZG9jdW1lbnRhdGlvblxuaW1wb3J0ICcuL3RoZW1lLnNjc3MnO1xuIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./src/docsCustomProperties.js\n\n}");
+eval("{\n\n__webpack_require__(/*! ./theme.scss */ \"./src/theme.scss\");//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvZG9jc0N1c3RvbVByb3BlcnRpZXMudHMiLCJtYXBwaW5ncyI6Ijs7QUFFQSIsInNvdXJjZXMiOlsid2VicGFjazovL0ByZWFjdC11aS1vcmcvcmVhY3QtdWkvLi9zcmMvZG9jc0N1c3RvbVByb3BlcnRpZXMudHM/YjNlYSJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBUaGlzIGlzIG5lZWRlZCB0byBnZW5lcmF0ZSBDU1MgZmlsZSBjb250YWluaW5nIG9ubHkgQ1NTIGN1c3RvbSBwcm9wZXJ0eSBkZWZpbml0aW9uc1xuLy8gVGhpcyBmaWxlIGlzIG5lZWRlZCB0byBtYWtlIGN1c3RvbSBwcm9wZXJ0eSB2YWx1ZXMgYWNjZXNzaWJsZSBpbiB0aGUgZG9jdW1lbnRhdGlvblxuaW1wb3J0ICcuL3RoZW1lLnNjc3MnO1xuIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./src/docsCustomProperties.ts\n\n}");
 
 /***/ },
 
@@ -36,7 +36,7 @@ eval("{\n\n__webpack_require__(/*! ./theme.scss */ \"./src/theme.scss\");//# sou
   \************************/
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-eval("{__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvdGhlbWUuc2NzcyIsIm1hcHBpbmdzIjoiO0FBQUEiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9AcmVhY3QtdWktb3JnL3JlYWN0LXVpLy4vc3JjL3RoZW1lLnNjc3M/NmZmYiJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBleHRyYWN0ZWQgYnkgbWluaS1jc3MtZXh0cmFjdC1wbHVnaW5cbmV4cG9ydCB7fTsiXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./src/theme.scss\n\n}");
+eval("{__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvdGhlbWUuc2NzcyIsIm1hcHBpbmdzIjoiO0FBQUEiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9AcmVhY3QtdWktb3JnL3JlYWN0LXVpLy4vc3JjL3RoZW1lLnNjc3M/MzhhNyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBleHRyYWN0ZWQgYnkgbWluaS1jc3MtZXh0cmFjdC1wbHVnaW5cbmV4cG9ydCB7fTsiXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./src/theme.scss\n\n}");
 
 /***/ }
 
@@ -74,22 +74,18 @@ eval("{__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-ext
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = (exports) => {
+/******/ 		Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
 /******/ 	
 /************************************************************************/
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval-source-map devtool is used.
-/******/ 	let __webpack_exports__ = __webpack_require__("./src/docsCustomProperties.js");
+/******/ 	let __webpack_exports__ = __webpack_require__("./src/docsCustomProperties.ts");
 /******/ 	
 /******/ 	return __webpack_exports__;
 /******/ })()
