@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
-import type en from '../../translations/en';
+import type defaultTranslations from '../../translations/en';
 
-export type Translations = typeof en;
+export type Translations = typeof defaultTranslations;
 
 /**
  * Translations with any subset of components and keys, merged into the defaults by `TranslationsProvider`.
