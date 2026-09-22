@@ -16,7 +16,7 @@ type SelectFieldForRefTestProps = SelectFieldForTestProps & {
   testRefAttrValue: string;
 };
 export type SelectFieldForFormLayoutTestsProps = SelectFieldForTestProps & {
-  layout: 'vertical' | 'horizontal'
+  layout: 'vertical' | 'horizontal';
 };
 
 const defaultLabel = 'test-label';
@@ -82,7 +82,7 @@ export const SelectFieldForFormLayoutTests = ({
   layout,
   options = defaultOptions,
   ...props
-} : SelectFieldForFormLayoutTestsProps) => {
+}: SelectFieldForFormLayoutTestsProps) => {
   const values = useMemo(() => ({ layout }), [layout]);
 
   return (

@@ -46,7 +46,7 @@ export const ModalCloseButtonForRefTest = ({
   testRefAttrName,
   testRefAttrValue,
   ...props
-} : ModalCloseButtonForRefTestProps) => {
+}: ModalCloseButtonForRefTestProps) => {
   const ref = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {

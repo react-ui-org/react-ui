@@ -20,7 +20,7 @@ type FileInputFieldForRefTestProps = FileInputFieldForTestProps & {
   testRefAttrValue: string;
 };
 export type FileInputFieldForFormLayoutTestsProps = FileInputFieldForTestProps & {
-  layout: 'vertical' | 'horizontal'
+  layout: 'vertical' | 'horizontal';
 };
 
 const InputWrapper = ({
