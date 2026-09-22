@@ -1,0 +1,42 @@
+// 1. `word-break: break-word` is deprecated in favour of `overflow-wrap: anywhere`, but it's still
+//     required for Safari.
+//     https://caniuse.com/mdn-css_properties_overflow-wrap_anywhere
+//
+// 2. Different approaches are used for single and multiline texts because the latter approach
+//    doesn't always work for single-line texts.
+
+@layer components.text {
+    .isRootClampSingleLine {
+        display: block; // 2.
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    // stylelint-disable property-no-vendor-prefix, value-no-vendor-prefix
+    .isRootClampMultiLine {
+        display: -webkit-box; // 2.
+        -webkit-line-clamp: var(--rui-custom-lines);
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    // stylelint-enable property-no-vendor-prefix, value-no-vendor-prefix
+
+    .isRootHyphensAuto {
+        hyphens: auto;
+    }
+
+    .isRootHyphensManual {
+        hyphens: manual;
+    }
+
+    .isRootWordWrappingAnywhere {
+        word-break: break-all;
+    }
+
+    .isRootWordWrappingLongWords {
+        word-break: break-word; // 1.
+        overflow-wrap: anywhere;
+    }
+}

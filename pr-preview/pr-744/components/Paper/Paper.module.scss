@@ -1,0 +1,19 @@
+@use "theme";
+
+@layer components.paper {
+    .root {
+        padding: theme.$padding;
+        border: theme.$border-width solid theme.$border-color;
+        border-radius: theme.$border-radius;
+        background-color: theme.$background-color;
+    }
+
+    .isRootMuted {
+        background-color: theme.$muted-background-color;
+        opacity: theme.$muted-opacity;
+    }
+
+    .isRootRaised {
+        box-shadow: theme.$raised-box-shadow;
+    }
+}
