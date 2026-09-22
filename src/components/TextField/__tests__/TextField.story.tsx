@@ -16,7 +16,7 @@ type TextFieldForRefTestProps = TextFieldForTestProps & {
   testRefAttrValue: string;
 };
 export type TextFieldForFormLayoutTestsProps = TextFieldForTestProps & {
-  layout: 'vertical' | 'horizontal'
+  layout: 'vertical' | 'horizontal';
 };
 
 const defaultLabel = 'test-label';
@@ -24,7 +24,7 @@ const defaultLabel = 'test-label';
 export const TextFieldForTest = ({
   label = defaultLabel,
   ...props
-} : TextFieldForTestProps) => (
+}: TextFieldForTestProps) => (
   <TextField
     label={label}
     {...props}
@@ -36,7 +36,7 @@ export const TextFieldForRefTest = ({
   testRefAttrName,
   testRefAttrValue,
   ...props
-} : TextFieldForRefTestProps) => {
+}: TextFieldForRefTestProps) => {
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {

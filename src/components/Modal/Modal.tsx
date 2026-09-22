@@ -139,6 +139,8 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
     onMouseDown,
   };
 
+  // `preRender` only forwards the ref to the `<dialog>` element, it does not read it during render.
+  /* eslint-disable react-hooks/refs */
   if (portalId === undefined) {
     return preRender(
       children,
@@ -163,6 +165,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
     ),
     document.getElementById(portalId) as HTMLElement,
   );
+  /* eslint-enable react-hooks/refs */
 };
 
 // `propTypes` are kept for runtime validation until the TypeScript migration is complete.
