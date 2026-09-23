@@ -139,7 +139,6 @@
   "overrides": {
     "babel-preset-current-node-syntax": {
       "@babel/core": "$@babel/core"
-    },
-    "js-yaml": "^4.3.2"
+    }
   }
 }
