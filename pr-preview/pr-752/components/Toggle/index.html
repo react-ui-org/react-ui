@@ -1350,10 +1350,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#styling-the-required-state" class="md-nav__link">
+  <a href="#rendering-as-required" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Styling the Required State
+        Rendering as Required
       
     </span>
   </a>
@@ -1422,6 +1422,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Theming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theming-the-required-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Theming the Required State
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3080,10 +3097,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#styling-the-required-state" class="md-nav__link">
+  <a href="#rendering-as-required" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Styling the Required State
+        Rendering as Required
       
     </span>
   </a>
@@ -3152,6 +3169,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Theming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theming-the-required-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Theming the Required State
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3329,50 +3363,27 @@ have.</p>
     /&gt;
   );
 });</code></pre>
-<h4 id="styling-the-required-state">Styling the Required State</h4>
-<p>All form fields in React UI can be
-<a href="/docs/customize/theming/forms/#required-state">styled</a>
-to indicate the required state.</p>
-<p>However, you may find yourself in a situation where a form field is valid in
-both checked and unchecked states, for example to turn on or off a feature.
-If your project uses the label color as the primary means to indicate the
-required state of input fields and the usual asterisk <code>*</code> is omitted, you may
-want to keep the label color consistent for both states to avoid confusion.</p>
-<p>For this edge case, there is the <code>renderAsRequired</code> prop:</p>
+<h4 id="rendering-as-required">Rendering as Required</h4>
+<p>A form field may be valid in both checked and unchecked states, for example to
+turn on or off a feature, while your design still needs it to look required.
+For this edge case, there is the <code>renderAsRequired</code> prop:</p>
 <pre class="highlight"><code class="language-docoff-react-preview">React.createElement(() =&gt; {
   const [optional, setOptional] = React.useState(false);
   const [renderAsRequired, setRenderAsRequired] = React.useState(false);
   return (
-    &lt;React.Fragment&gt;
-      &lt;style&gt;
-      {`
-        .example {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1rem 0.5rem;
-        }
-
-        .example--themed-form-fields {
-          --rui-FormField__label__color: var(--rui-color-text-secondary);
-          --rui-FormField--required__label__color: var(--rui-color-text-primary);
-          --rui-FormField--required__sign: '';
-        }
-      `}
-      &lt;/style&gt;
-      &lt;div class="example example--themed-form-fields"&gt;
-       &lt;Toggle
-          checked={optional}
-          label="This field is optional"
-          onChange={() =&gt; setOptional(!optional)}
-        /&gt;
-        &lt;Toggle
-          checked={renderAsRequired}
-          label="This field is optional but looks like required"
-          onChange={() =&gt; setRenderAsRequired(!renderAsRequired)}
-          renderAsRequired
-        /&gt;
-      &lt;/div&gt;
-    &lt;/React.Fragment&gt;
+    &lt;&gt;
+      &lt;Toggle
+        checked={optional}
+        label="This field is optional"
+        onChange={() =&gt; setOptional(!optional)}
+      /&gt;
+      &lt;Toggle
+        checked={renderAsRequired}
+        label="This field is optional but looks like required"
+        onChange={() =&gt; setRenderAsRequired(!renderAsRequired)}
+        renderAsRequired
+      /&gt;
+    &lt;/&gt;
   );
 });</code></pre>
 <p>It renders the field as if it was required, but doesn't add the <code>required</code>
@@ -3442,6 +3453,50 @@ options. On top of that, the following options are available for Toggle.</p>
 </tr>
 </tbody>
 </table>
+<h3 id="theming-the-required-state">Theming the Required State</h3>
+<p>Required fields are indicated by
+<a href="/docs/customize/theming/forms/#required-state">shared theming options</a>.</p>
+<p>If your project uses the label color as the primary means to indicate the
+required state of input fields and the usual asterisk <code>*</code> is omitted, you may
+want to keep the label color consistent for fields that are valid in both
+checked and unchecked states. Pair the theming options with the
+<a href="#rendering-as-required"><code>renderAsRequired</code></a> prop to achieve that:</p>
+<pre class="highlight"><code class="language-docoff-react-preview">React.createElement(() =&gt; {
+  const [optional, setOptional] = React.useState(false);
+  const [renderAsRequired, setRenderAsRequired] = React.useState(false);
+  return (
+    &lt;React.Fragment&gt;
+      &lt;style&gt;
+      {`
+        .example {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem 0.5rem;
+        }
+
+        .example--themed-form-fields {
+          --rui-FormField__label__color: var(--rui-color-text-secondary);
+          --rui-FormField--required__label__color: var(--rui-color-text-primary);
+          --rui-FormField--required__sign: '';
+        }
+      `}
+      &lt;/style&gt;
+      &lt;div class="example example--themed-form-fields"&gt;
+        &lt;Toggle
+          checked={optional}
+          label="This field is optional"
+          onChange={() =&gt; setOptional(!optional)}
+        /&gt;
+        &lt;Toggle
+          checked={renderAsRequired}
+          label="This field is optional but looks like required"
+          onChange={() =&gt; setRenderAsRequired(!renderAsRequired)}
+          renderAsRequired
+        /&gt;
+      &lt;/div&gt;
+    &lt;/React.Fragment&gt;
+  );
+});</code></pre>
 
 
 
