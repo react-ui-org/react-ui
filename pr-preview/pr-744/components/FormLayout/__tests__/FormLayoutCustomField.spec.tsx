@@ -2,7 +2,7 @@ import React from 'react';
 import {
   expect,
   test,
-} from '@playwright/experimental-ct-react';
+} from '../../../../tests/playwright';
 import { customFieldValidationStatesPropTest } from './_propTests/customFieldTests/customFieldValidationStatesPropTest';
 import { customFieldLabelAlignmentPropTest } from './_propTests/customFieldTests/customFieldLabelAlignmentPropTest';
 import { customFieldRequiredPropTest } from './_propTests/customFieldTests/customFieldRequiredPropTest';

@@ -1,11 +1,9 @@
 import React from 'react';
 import {
   expect,
-  test,
-} from '@playwright/experimental-ct-react';
-import {
   propTests,
   mixPropTests,
+  test,
 } from '../../../../tests/playwright';
 import { TabItemForTest } from './TabItem.story';
 import { isActivePropTest } from './_propTests/tabItem/isActivePropTest';

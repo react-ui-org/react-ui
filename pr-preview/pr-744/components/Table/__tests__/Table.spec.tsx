@@ -1,9 +1,9 @@
 import React from 'react';
 import {
   expect,
+  propTests,
   test,
-} from '@playwright/experimental-ct-react';
-import { propTests } from '../../../../tests/playwright';
+} from '../../../../tests/playwright';
 import { TableForTest } from './Table.story';
 import { sortPropTest } from './_propTests/sortPropTest';
 
