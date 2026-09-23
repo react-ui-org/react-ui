@@ -90,7 +90,6 @@
     "react-dom": "~18.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.29.7",
     "@babel/core": "^7.29.7",
     "@babel/preset-env": "^7.29.7",
     "@babel/preset-react": "^7.29.7",
@@ -100,11 +99,9 @@
     "@playwright/experimental-ct-react": "^1.62.1",
     "@react-ui-org/eslint-config": "^1.1.0",
     "@stylistic/stylelint-config": "^1.0.1",
-    "@svgr/webpack": "^8.1.0",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
-    "@testing-library/user-event": "^14.6.7",
     "@types/jest": "^30.0.0",
     "@types/node": "^26.5.1",
     "@types/prop-types": "^15.7.15",
