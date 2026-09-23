@@ -119,7 +119,7 @@
     "eslint": "^9.39.5",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^30.5.1",
-    "markdownlint-cli2": "^0.23.2",
+    "markdownlint-cli2": "^0.23.3",
     "mini-css-extract-plugin": "^2.10.2",
     "postcss": "^8.5.28",
     "postcss-loader": "^8.2.1",
