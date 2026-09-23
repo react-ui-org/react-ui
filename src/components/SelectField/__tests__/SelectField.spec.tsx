@@ -1,11 +1,9 @@
 import React from 'react';
 import {
   expect,
-  test,
-} from '@playwright/experimental-ct-react';
-import {
   mixPropTests,
   propTests,
+  test,
 } from '../../../../tests/playwright';
 import type { SelectFieldForFormLayoutTestsProps } from './SelectField.story';
 import {
