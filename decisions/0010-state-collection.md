@@ -31,13 +31,17 @@ like and is the author's choice. `state` says what condition the data is in and
 follows from the data. That is why `changed` gets its own colour token but does
 not join the Feedback colours: `<Alert color="changed">` would mean nothing.
 
+`changed` is fuchsia (`#b5179e`). The blues are taken by `primary`, `selected`,
+`info` and `note`. Fuchsia sits between `help` and `danger`, far enough from
+both, and passes WCAG AA contrast on white.
+
 Each state maps to a colour in one place:
 
 ```scss
 --rui-color-state-valid: var(--rui-color-feedback-success);
 --rui-color-state-invalid: var(--rui-color-feedback-danger);
 --rui-color-state-warning: var(--rui-color-feedback-warning);
---rui-color-state-changed: /* new hue */;
+--rui-color-state-changed: #b5179e;
 ```
 
 A component shows one state at a time. Data can be changed and invalid at once,
@@ -76,11 +80,6 @@ input would look the same as a form with unsaved edits.
   already decide, and two props would interact in hidden ways.
 - **A generic `color` prop ([#721][721]).** Consumers would keep mapping meaning
   to colour themselves.
-
-## Open questions
-
-- Which hue for `--rui-color-state-changed`? The blues are taken by `note`,
-  `selected`, `info` and `primary`, and violet is close to `help`.
 
 [711]: https://github.com/react-ui-org/react-ui/issues/711
 [712]: https://github.com/react-ui-org/react-ui/issues/712
