@@ -7,7 +7,7 @@ import type { StoryProps } from '../../../../tests/playwright';
 
 type RadioForTestProps = StoryProps<RadioProps, 'label' | 'options'>;
 export type RadioForFormLayoutTestsProps = RadioForTestProps & {
-  layout: 'vertical' | 'horizontal'
+  layout: 'vertical' | 'horizontal';
 };
 
 const defaultLabel = 'test-group-label';
@@ -52,7 +52,7 @@ export const RadioForFormLayoutTests = ({
   layout,
   options = defaultOptions,
   ...props
-} : RadioForFormLayoutTestsProps) => {
+}: RadioForFormLayoutTestsProps) => {
   const values = useMemo(() => ({ layout }), [layout]);
 
   return (

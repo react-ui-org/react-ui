@@ -7,7 +7,7 @@ type AlertForTestProps = StoryProps<AlertProps, 'children'>;
 
 export const AlertForTest = ({
   ...props
-} : AlertForTestProps) => (
+}: AlertForTestProps) => (
   <Alert
     {...props}
   >

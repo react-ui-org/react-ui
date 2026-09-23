@@ -3,8 +3,7 @@ import type {
   ReactNode,
 } from 'react';
 
-export type PopoverPlacement =
-  | 'top'
+export type PopoverPlacement = 'top'
   | 'top-start'
   | 'top-end'
   | 'right'

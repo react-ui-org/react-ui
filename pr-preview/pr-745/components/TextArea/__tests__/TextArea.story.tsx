@@ -16,7 +16,7 @@ type TextAreaForRefTestProps = TextAreaForTestProps & {
   testRefAttrValue: string;
 };
 export type TextAreaForFormLayoutTestsProps = TextAreaForTestProps & {
-  layout: 'vertical' | 'horizontal'
+  layout: 'vertical' | 'horizontal';
 };
 
 const defaultLabel = 'test-label';
@@ -24,7 +24,7 @@ const defaultLabel = 'test-label';
 export const TextAreaForTest = ({
   label = defaultLabel,
   ...props
-} : TextAreaForTestProps) => (
+}: TextAreaForTestProps) => (
   <TextArea
     label={label}
     {...props}
@@ -36,7 +36,7 @@ export const TextAreaForRefTest = ({
   testRefAttrName,
   testRefAttrValue,
   ...props
-} : TextAreaForRefTestProps) => {
+}: TextAreaForRefTestProps) => {
   const ref = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
