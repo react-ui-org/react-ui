@@ -90,11 +90,10 @@
     "react-dom": "~18.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.29.7",
-    "@babel/preset-env": "^7.29.7",
-    "@babel/preset-react": "^7.29.7",
-    "@babel/preset-typescript": "^7.29.7",
-    "@babel/register": "^7.29.7",
+    "@babel/core": "^8.0.5",
+    "@babel/preset-env": "^8.0.5",
+    "@babel/preset-react": "^8.0.1",
+    "@babel/preset-typescript": "^8.0.1",
     "@happy-dom/jest-environment": "^20.14.5",
     "@playwright/experimental-ct-react": "^1.62.1",
     "@react-ui-org/eslint-config": "^1.1.0",
@@ -112,6 +111,7 @@
     "autoprefixer": "^10.6.0",
     "babel-jest": "^30.5.1",
     "babel-loader": "^10.1.1",
+    "babel-plugin-polyfill-corejs3": "^1.0.0",
     "core-js": "^3.50.0",
     "css-loader": "^7.1.5",
     "dotenv": "^17.4.2",
@@ -137,6 +137,9 @@
     "webpack-visualizer-plugin2": "^2.0.0"
   },
   "overrides": {
+    "babel-preset-current-node-syntax": {
+      "@babel/core": "$@babel/core"
+    },
     "js-yaml": "^4.3.2"
   }
 }

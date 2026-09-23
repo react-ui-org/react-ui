@@ -12,7 +12,7 @@ on:
       - 'package.json'
       - 'postcss.config.js'
       - 'tsconfig.json'
-      - 'webpack.config.babel.js'
+      - 'webpack.config.js'
 
 concurrency:
   group: preview-${{ github.ref }}
