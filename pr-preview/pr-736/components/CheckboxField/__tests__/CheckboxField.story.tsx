@@ -15,7 +15,7 @@ type CheckboxFieldForRefTestProps = CheckboxFieldForTestProps & {
   testRefAttrValue: string;
 };
 export type CheckboxForFormLayoutTestsProps = CheckboxFieldForTestProps & {
-  layout: 'vertical' | 'horizontal'
+  layout: 'vertical' | 'horizontal';
 };
 
 const defaultLabel = 'test-label';
@@ -23,7 +23,7 @@ const defaultLabel = 'test-label';
 export const CheckboxFieldForTest = ({
   label = defaultLabel,
   ...props
-} : CheckboxFieldForTestProps) => (
+}: CheckboxFieldForTestProps) => (
   <CheckboxField
     label={label}
     {...props}
@@ -35,7 +35,7 @@ export const CheckboxFieldForRefTest = ({
   testRefAttrName,
   testRefAttrValue,
   ...props
-} : CheckboxFieldForRefTestProps) => {
+}: CheckboxFieldForRefTestProps) => {
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -62,7 +62,7 @@ export const CheckboxForFormLayoutTests = ({
   label = defaultLabel,
   layout,
   ...props
-} : CheckboxForFormLayoutTestsProps) => {
+}: CheckboxForFormLayoutTestsProps) => {
   const values = useMemo(() => ({ layout }), [layout]);
 
   return (

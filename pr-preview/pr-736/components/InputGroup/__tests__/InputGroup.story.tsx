@@ -9,7 +9,7 @@ import type { StoryProps } from '../../../../tests/playwright';
 
 type InputGroupTestProps = StoryProps<InputGroupProps, 'label'>;
 type InputGroupWithCustomInputTestProps = InputGroupTestProps & {
-  inputProps?: { validationState: ValidationState }
+  inputProps?: { validationState: ValidationState };
 };
 
 const options = [

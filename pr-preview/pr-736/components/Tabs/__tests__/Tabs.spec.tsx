@@ -1,11 +1,9 @@
 import React from 'react';
 import {
   expect,
-  test,
-} from '@playwright/experimental-ct-react';
-import {
   getActualFocusedElementText,
   propTests,
+  test,
 } from '../../../../tests/playwright';
 import { TabsForTest } from './Tabs.story';
 

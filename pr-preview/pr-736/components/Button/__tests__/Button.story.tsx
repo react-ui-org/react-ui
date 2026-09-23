@@ -17,7 +17,7 @@ type ButtonForRefTestProps = ButtonForTestProps & {
 export const ButtonForTest = ({
   label = 'Button',
   ...props
-} : ButtonForTestProps) => (
+}: ButtonForTestProps) => (
   <Button
     label={label}
     {...props}
@@ -29,7 +29,7 @@ export const ButtonForRefTest = ({
   testRefAttrName,
   testRefAttrValue,
   ...props
-} : ButtonForRefTestProps) => {
+}: ButtonForRefTestProps) => {
   const ref = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
