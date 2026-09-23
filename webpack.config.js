@@ -34,6 +34,8 @@ module.exports = (env, argv) => ({
   module: {
     rules: [
       {
+        // `core-js` must not be transpiled, see https://github.com/babel/babel-loader#exclude-libraries-that-should-not-be-transpiled
+        exclude: /node_modules[\\/]core-js/,
         test: /\.(js|jsx|ts|tsx)$/,
         use: [{ loader: 'babel-loader' }],
       },

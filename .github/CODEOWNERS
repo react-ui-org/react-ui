@@ -9,7 +9,7 @@
 # Infrastructure & build tooling
 /docker/                    @bedrich-schindler @mbohal @react-ui-org/maintainers
 /docker-compose.yml         @bedrich-schindler @mbohal @react-ui-org/maintainers
-/webpack.config.babel.js    @bedrich-schindler @mbohal @react-ui-org/maintainers
+/webpack.config.js          @bedrich-schindler @mbohal @react-ui-org/maintainers
 /babel.config.js            @bedrich-schindler @mbohal @react-ui-org/maintainers
 /jest.config.js             @bedrich-schindler @mbohal @react-ui-org/maintainers
 /eslint.config.mjs          @bedrich-schindler @mbohal @react-ui-org/maintainers

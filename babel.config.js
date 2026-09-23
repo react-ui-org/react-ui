@@ -1,16 +1,26 @@
 module.exports = {
   plugins: [
-    '@babel/plugin-transform-modules-commonjs',
+    [
+      'babel-plugin-polyfill-corejs3',
+      {
+        method: 'usage-global',
+        version: require('core-js/package.json').version,
+      },
+    ],
   ],
   presets: [
     [
       '@babel/preset-env',
       {
-        corejs: 3,
-        useBuiltIns: 'usage',
+        modules: 'commonjs',
       },
     ],
-    '@babel/preset-react',
+    [
+      '@babel/preset-react',
+      {
+        runtime: 'classic',
+      },
+    ],
     '@babel/preset-typescript',
   ],
 };
