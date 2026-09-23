@@ -30,6 +30,11 @@ import { requiredPropTest } from './propTests/requiredPropTest';
 
 export { TestIcon } from './components/TestIcon';
 
+export {
+  expect,
+  test,
+} from './test';
+
 export { mixPropTests } from './utils/mixPropTests';
 export { getActualFocusedElementText } from './utils/getActualFocusedElementText';
 

@@ -32,6 +32,9 @@ Jest unit/component tests are co-located in a component's `__tests__/` folder.
 
 `.spec.tsx` specs use a table-driven pattern:
 
+* Import `test` and `expect` from `tests/playwright`, never directly from
+  `@playwright/experimental-ct-react`; its `mount` moves the pointer out of the
+  viewport so components do not get into `:hover` state.
 * Import arrays of test cases from `_propTests/` directories and from shared
   `tests/playwright/propTests/`.
 * Each test case is `{ name, props, onBeforeTest?, onBeforeSnapshot? }`; custom

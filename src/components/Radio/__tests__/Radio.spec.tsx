@@ -1,11 +1,9 @@
 import React from 'react';
 import {
   expect,
-  test,
-} from '@playwright/experimental-ct-react';
-import {
   mixPropTests,
   propTests,
+  test,
 } from '../../../../tests/playwright';
 import { partialDisabledOptionsPropTest } from './_propTests/partialDisabledOptionsPropTest';
 import type { RadioForFormLayoutTestsProps } from './Radio.story';

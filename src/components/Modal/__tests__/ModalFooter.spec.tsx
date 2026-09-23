@@ -1,9 +1,9 @@
 import React from 'react';
 import {
   expect,
+  propTests,
   test,
-} from '@playwright/experimental-ct-react';
-import { propTests } from '../../../../tests/playwright';
+} from '../../../../tests/playwright';
 import { ModalFooterForTest } from './ModalFooter.story';
 import { justifyPropTest } from './_propTests/justifyPropTest';
 
