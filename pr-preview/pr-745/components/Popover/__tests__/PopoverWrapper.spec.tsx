@@ -2,7 +2,7 @@ import React from 'react';
 import {
   expect,
   test,
-} from '@playwright/experimental-ct-react';
+} from '../../../../tests/playwright';
 import { PopoverWrapperForTest } from './PopoverWrapper.story';
 
 test.describe('PopoverWrapper', () => {
