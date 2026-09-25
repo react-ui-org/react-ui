@@ -1,9 +1,5 @@
 import PropTypes from 'prop-types';
-import React, {
-  useContext,
-  useEffect,
-  useRef,
-} from 'react';
+import React, { useContext } from 'react';
 import { TranslationsContext } from '../../../../providers/translations';
 import { MultiSelectFieldDropdownGroup } from '../MultiSelectFieldDropdownGroup';
 import { MultiSelectFieldDropdownItem } from '../MultiSelectFieldDropdownItem';
@@ -13,75 +9,31 @@ import styles from './MultiSelectFieldDropdown.module.scss';
 import type { MultiSelectFieldDropdownProps } from './MultiSelectFieldDropdown.types';
 
 const MultiSelectFieldDropdown: React.FunctionComponent<MultiSelectFieldDropdownProps> = ({
-  autoFocusFirstOptionOnOpen,
+  activeOptionKey,
+  disabled,
+  getOptionId,
   id,
-  onClose,
+  labelId,
   onItemSelected,
   options,
-  optionsRef,
   value,
 }: MultiSelectFieldDropdownProps) => {
   const translations = useContext(TranslationsContext);
-  const focusedOptionIndexRef = useRef(-1);
-
-  // Options that can receive focus, i.e. all displayed options that are not disabled, in the order of rendering.
-  const focusableOptions = options.flatMap((option) => ('options' in option
-    ? option.options.filter((groupOption) => !option.disabled && !groupOption.disabled)
-    : [option].filter((individualOption) => !individualOption.disabled)));
-  const focusableOptionsCount = focusableOptions.length;
-
-  useEffect(() => {
-    // Drop refs of options that are no longer displayed, e.g. after the options were filtered.
-    optionsRef.current.length = focusableOptionsCount; // eslint-disable-line no-param-reassign
-  }, [focusableOptionsCount, optionsRef]);
-
-  useEffect(() => {
-    if (autoFocusFirstOptionOnOpen) {
-      optionsRef.current[0]?.focus();
-    }
-  }, [autoFocusFirstOptionOnOpen, optionsRef]);
 
   const renderOption = (option: MultiSelectFieldOption, isWithinGroup: boolean, isGroupDisabled: boolean) => {
-    const isOptionDisabled = isGroupDisabled || option.disabled || false;
-
-    // Index of the option among all focusable options
-    const focusableOptionIndex = focusableOptions.indexOf(option);
-    const currentOptionIndex = focusableOptionIndex === -1 ? null : focusableOptionIndex;
+    const optionKey = option.key ?? option.value;
+    const isOptionDisabled = disabled || isGroupDisabled || (option.disabled ?? false);
 
     return (
       <MultiSelectFieldDropdownItem
         disabled={isOptionDisabled}
-        id={id && `${id}__item__${option.key ?? option.value}`}
+        id={getOptionId(optionKey)}
+        isActive={optionKey === activeOptionKey}
         isSelected={value.includes(option.value)}
         isWithinGroup={isWithinGroup}
-        key={option.key ?? option.value}
-        onCloseDropdown={onClose}
-        onFocus={() => {
-          if (currentOptionIndex != null) {
-            focusedOptionIndexRef.current = currentOptionIndex;
-          }
-        }}
-        onFocusNextDropdownItem={() => {
-          if (focusedOptionIndexRef.current < optionsRef.current.length - 1) {
-            focusedOptionIndexRef.current += 1;
-          }
-
-          optionsRef.current[focusedOptionIndexRef.current]?.focus();
-        }}
-        onFocusPreviousDropdownItem={() => {
-          if (focusedOptionIndexRef.current > 0) {
-            focusedOptionIndexRef.current -= 1;
-          }
-
-          optionsRef.current[focusedOptionIndexRef.current]?.focus();
-        }}
+        key={optionKey}
         onSelectDropdownItem={() => {
           onItemSelected(option.value);
-        }}
-        ref={(element) => {
-          if (element != null && currentOptionIndex != null) {
-            optionsRef.current[currentOptionIndex] = element; // eslint-disable-line no-param-reassign
-          }
         }}
       >
         {option.label}
@@ -90,29 +42,40 @@ const MultiSelectFieldDropdown: React.FunctionComponent<MultiSelectFieldDropdown
   };
 
   return (
+    // The handler only keeps the focus in the combobox input, which handles the keyboard.
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
-      aria-multiselectable
       className={styles.root}
-      id={id && `${id}__dropdown`}
-      role="listbox"
-      tabIndex={-1}
+      onMouseDown={(event) => {
+        // Keep the focus in the combobox input when options are clicked.
+        event.preventDefault();
+      }}
     >
-      {options.map((option) => {
-        if ('options' in option) {
-          return option.options.length > 0 && (
-            <MultiSelectFieldDropdownGroup
-              key={option.key ?? option.label}
-              label={option.label}
-            >
-              {option.options.map(
-                (groupOption) => renderOption(groupOption, true, option.disabled || false),
-              )}
-            </MultiSelectFieldDropdownGroup>
-          );
-        }
+      <div
+        aria-labelledby={labelId}
+        aria-multiselectable
+        id={id}
+        role="listbox"
+        tabIndex={-1}
+      >
+        {options.map((option) => {
+          if ('options' in option) {
+            return option.options.length > 0 && (
+              <MultiSelectFieldDropdownGroup
+                key={option.key ?? option.label}
+                label={option.label}
+              >
+                {option.options.map(
+                  (groupOption) => renderOption(groupOption, true, option.disabled ?? false),
+                )}
+              </MultiSelectFieldDropdownGroup>
+            );
+          }
 
-        return renderOption(option, false, false);
-      })}
+          return renderOption(option, false, false);
+        })}
+      </div>
+      {/* A listbox may only contain options and groups, so the text is placed next to it. */}
       {options.length === 0 && (
         <MultiSelectFieldDropdownTextItem>
           {translations.MultiSelectField.noOptions}
@@ -125,9 +88,14 @@ const MultiSelectFieldDropdown: React.FunctionComponent<MultiSelectFieldDropdown
 // `propTypes` are kept for runtime validation until the TypeScript migration is complete.
 // eslint-disable-next-line @typescript-eslint/no-deprecated
 MultiSelectFieldDropdown.propTypes = {
-  autoFocusFirstOptionOnOpen: PropTypes.bool.isRequired,
-  id: PropTypes.string,
-  onClose: PropTypes.func.isRequired,
+  activeOptionKey: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
+  disabled: PropTypes.bool.isRequired,
+  getOptionId: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  labelId: PropTypes.string.isRequired,
   onItemSelected: PropTypes.func.isRequired,
   options: PropTypes.oneOfType([
     PropTypes.arrayOf(
@@ -155,10 +123,6 @@ MultiSelectFieldDropdown.propTypes = {
       ]),
     })),
   ]).isRequired,
-  optionsRef: PropTypes.shape({
-    // eslint-disable-next-line react/forbid-prop-types
-    current: PropTypes.array.isRequired,
-  }).isRequired,
   value: PropTypes.arrayOf(PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,

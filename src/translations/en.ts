@@ -14,7 +14,7 @@ const en = {
   MultiSelectField: {
     noOptions: 'No options',
     removeTag: 'Remove',
-    search: 'Search',
+    tagDescription: 'Press Delete or Backspace to remove',
   },
   ScrollView: {
     next: 'Next',

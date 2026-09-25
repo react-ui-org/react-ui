@@ -1,5 +1,5 @@
 import type {
-  HTMLAttributes,
+  InputHTMLAttributes,
   ReactNode,
 } from 'react';
 import type {
@@ -35,7 +35,7 @@ export type MultiSelectFieldVariant = 'filled' | 'outline';
 /**
  * Props of the `MultiSelectField` component.
  */
-export type MultiSelectFieldProps = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> & {
+export type MultiSelectFieldProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'size' | 'value'> & {
   /**
    * If `true`, the input will be disabled.
    */
@@ -52,7 +52,7 @@ export type MultiSelectFieldProps = Omit<HTMLAttributes<HTMLDivElement>, 'onChan
    */
   helpText?: ReactNode;
   /**
-   * ID of the input HTML element.
+   * ID of the input HTML element. Generated automatically when not set.
    *
    * Also serves as a prefix for important inner elements:
    * * `<ID>__label`

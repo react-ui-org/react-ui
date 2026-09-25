@@ -1,9 +1,8 @@
 export default {
   closeDropdown: ['Escape'],
-  focusLastTagOnEmptySearchInput: ['Backspace'],
-  focusNextDropdownItem: ['ArrowDown'],
-  focusPreviousDropdownItem: ['ArrowUp'],
-  openDropdown: ['Enter', ' '],
+  focusFirstTag: ['Home'],
+  focusLastTag: ['End'],
+  focusNextTag: ['ArrowRight', 'ArrowDown'],
+  focusPreviousTag: ['ArrowLeft', 'ArrowUp'],
   removeTag: ['Delete', 'Backspace'],
-  selectDropdownItem: ['Enter', ' '],
 };

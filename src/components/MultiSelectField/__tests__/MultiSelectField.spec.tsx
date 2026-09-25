@@ -1,3 +1,4 @@
+import type { Locator } from '@playwright/test';
 import {
   expect,
   mixPropTests,
@@ -192,6 +193,28 @@ test.describe('MultiSelectField', () => {
         await expect(component.getByRole('option').last()).toHaveAttribute('id', `${testId}__item__${baseOptions[1].value}`);
       });
 
+      test('has accessible name and ARIA references without id', async ({ mount }) => {
+        const component = await mount('MultiSelectField/MultiSelectFieldForTest');
+
+        const combobox = component.getByRole('combobox');
+        await expect(combobox).toHaveAccessibleName('test-label');
+        await expect(component.getByRole('grid')).toHaveAccessibleName('test-label');
+
+        await combobox.click();
+
+        await expect(component.getByRole('listbox')).toHaveAccessibleName('test-label');
+
+        const listboxId = await component.getByRole('listbox').getAttribute('id');
+        expect(listboxId).toBeTruthy();
+        await expect(combobox).toHaveAttribute('aria-controls', listboxId!);
+
+        await combobox.press('ArrowDown');
+
+        const optionId = await component.getByRole('option', { name: 'option1' }).getAttribute('id');
+        expect(optionId).toBeTruthy();
+        await expect(combobox).toHaveAttribute('aria-activedescendant', optionId!);
+      });
+
       test('ref', async ({ mount }) => {
         const component = await mount('MultiSelectField/MultiSelectFieldForRefTest', {
           testRefAttrName: 'test-ref',
@@ -207,8 +230,8 @@ test.describe('MultiSelectField', () => {
       }) => {
         const component = await mount('MultiSelectField/MultiSelectFieldForTranslationsTest');
 
-        await expect(component.getByRole('button', { name: 'option1' })).toHaveAttribute('title', 'Remove this tag');
-        await expect(component.getByRole('textbox')).toHaveAttribute('aria-label', 'Search options');
+        await expect(component.getByRole('button', { name: 'Remove this tag option1' })).toBeAttached();
+        await expect(component.getByRole('row', { name: 'option1' })).toHaveAccessibleDescription('Delete removes this tag');
 
         await component.getByRole('combobox').click();
         await page.keyboard.type('nonexistent');
@@ -225,8 +248,17 @@ test.describe('MultiSelectField', () => {
           await component.getByRole('combobox').click();
 
           await expect(component.getByRole('listbox')).toBeVisible();
-          // Focus moves to the search input
-          await expect(component.getByRole('textbox')).toBeFocused();
+          await expect(component.getByRole('combobox')).toBeFocused();
+          await expect(component.getByRole('combobox')).toHaveAttribute('aria-expanded', 'true');
+        });
+
+        test('opens dropdown and focuses the input on clicking the label', async ({ mount }) => {
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest');
+
+          await component.getByText('test-label').click();
+
+          await expect(component.getByRole('listbox')).toBeVisible();
+          await expect(component.getByRole('combobox')).toBeFocused();
         });
 
         ['Enter', 'Space', 'ArrowDown', 'ArrowUp'].forEach((openKey) => {
@@ -237,7 +269,26 @@ test.describe('MultiSelectField', () => {
             await combobox.focus();
             await combobox.press(openKey);
 
-            await expect(component.getByRole('listbox')).toBeVisible();
+            // The listbox may be empty, e.g. when Space typed into the search matches no option
+            await expect(component.getByRole('listbox')).toBeAttached();
+            await expect(combobox).toHaveAttribute('aria-expanded', 'true');
+          });
+        });
+
+        [
+          ['ArrowDown', 'option1'],
+          ['ArrowUp', 'option2'],
+        ].forEach(([openKey, activeOptionName]) => {
+          test(`activates ${activeOptionName} on opening dropdown by ${openKey} key press`, async ({ mount }) => {
+            const component = await mount('MultiSelectField/MultiSelectFieldForTest');
+
+            const combobox = component.getByRole('combobox');
+            await combobox.focus();
+            await combobox.press(openKey);
+
+            const optionId = await component.getByRole('option', { name: activeOptionName }).getAttribute('id');
+            await expect(combobox).toHaveAttribute('aria-activedescendant', optionId!);
+            await expect(combobox).toBeFocused();
           });
         });
 
@@ -251,30 +302,40 @@ test.describe('MultiSelectField', () => {
           await combobox.press('o');
 
           await expect(component.getByRole('listbox')).toBeVisible();
-          await expect(component.getByRole('textbox')).toBeFocused();
+          await expect(combobox).toBeFocused();
+          await expect(combobox).toHaveValue('o');
+        });
+
+        test('does not open dropdown on focus', async ({ mount }) => {
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest');
+
+          await component.getByRole('combobox').focus();
+
+          await expect(component.getByRole('listbox')).toHaveCount(0);
         });
 
         test('does not open dropdown when disabled', async ({ mount }) => {
-          const component = await mount('MultiSelectField/MultiSelectFieldSpyForTest', {
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
             disabled: true,
           });
 
-          // `force` is needed as Playwright refuses to click elements with `aria-disabled="true"`
           const combobox = component.getByRole('combobox');
+          await expect(combobox).toBeDisabled();
+
+          // `force` is needed as Playwright refuses to click disabled elements
           await combobox.click({ force: true });
 
           await expect(component.getByRole('listbox')).toHaveCount(0);
 
-          // Disabled tags are not removable
-          const tag = component.getByRole('button', { name: 'option1' });
-          await tag.click({ force: true });
-          await expect(tag).toBeVisible();
-          await expect.poll(() => component.getSpyValue('onChange')).toEqual([]);
+          // Disabled tags can be neither removed nor focused
+          await expect(component.getByRole('row', { name: 'option1' })).toBeVisible();
+          await expect(component.getByRole('row', { name: 'option1' })).toHaveAttribute('tabindex', '-1');
+          await expect(component.getByRole('button')).toHaveCount(0);
         });
       });
 
       test.describe('closing', () => {
-        test('closes dropdown on Escape key press in the search input', async ({
+        test('closes dropdown on Escape key press', async ({
           mount,
           page,
         }) => {
@@ -288,9 +349,10 @@ test.describe('MultiSelectField', () => {
 
           await expect(component.getByRole('listbox')).toHaveCount(0);
           await expect(combobox).toBeFocused();
+          await expect(combobox).toHaveAttribute('aria-expanded', 'false');
         });
 
-        test('closes dropdown on Escape key press on a focused option', async ({
+        test('closes dropdown on Escape key press with an active option', async ({
           mount,
           page,
         }) => {
@@ -301,12 +363,13 @@ test.describe('MultiSelectField', () => {
           await combobox.press('Enter');
 
           await page.keyboard.press('ArrowDown');
-          await expect(component.getByRole('option', { name: 'option1' })).toBeFocused();
+          await expect(combobox).toHaveAttribute('aria-activedescendant');
 
           await page.keyboard.press('Escape');
 
           await expect(component.getByRole('listbox')).toHaveCount(0);
           await expect(combobox).toBeFocused();
+          await expect(combobox).not.toHaveAttribute('aria-activedescendant');
         });
 
         test('closes dropdown on Escape key press on a focused tag', async ({
@@ -315,35 +378,12 @@ test.describe('MultiSelectField', () => {
         }) => {
           const component = await mount('MultiSelectField/MultiSelectFieldForTest');
 
-          // Open using keyboard as clicking the center of the input could hit one of the tags
           const combobox = component.getByRole('combobox');
           await combobox.focus();
           await combobox.press('Enter');
 
           await page.keyboard.press('Shift+Tab');
-          await expect(component.getByRole('button', { name: 'option1' })).toBeFocused();
-
-          await page.keyboard.press('Escape');
-
-          await expect(component.getByRole('listbox')).toHaveCount(0);
-          await expect(combobox).toBeFocused();
-        });
-
-        test('closes dropdown on Escape key press on the input', async ({
-          mount,
-          page,
-        }) => {
-          const component = await mount('MultiSelectField/MultiSelectFieldForTest');
-
-          // Open using keyboard as clicking the center of the input could hit one of the tags
-          const combobox = component.getByRole('combobox');
-          await combobox.focus();
-          await combobox.press('Enter');
-
-          // Walk back from the search input to the input itself
-          await page.keyboard.press('Shift+Tab');
-          await page.keyboard.press('Shift+Tab');
-          await expect(combobox).toBeFocused();
+          await expect(component.getByRole('row', { name: 'option1' })).toBeFocused();
 
           await page.keyboard.press('Escape');
 
@@ -360,38 +400,38 @@ test.describe('MultiSelectField', () => {
           await component.getByRole('combobox').first().click();
           await expect(component.getByRole('listbox')).toBeVisible();
 
-          // Tab moves focus from the search input of the first field to the second field
+          // Tab moves focus from the input of the first field to the tags of the second field
           await page.keyboard.press('Tab');
 
-          await expect(component.getByRole('combobox').last()).toBeFocused();
+          await expect(component.getByRole('row', { name: 'option1' }).last()).toBeFocused();
           await expect(component.getByRole('listbox')).toHaveCount(0);
         });
 
-        test('closes dropdown on clicking the input', async ({ mount }) => {
+        test('closes dropdown on clicking the caret', async ({
+          mount,
+          page,
+        }) => {
           const component = await mount('MultiSelectField/MultiSelectFieldForTest');
 
           const combobox = component.getByRole('combobox');
           await combobox.click();
           await expect(component.getByRole('listbox')).toBeVisible();
 
-          // Click next to the caret so neither a tag nor the search input is hit
-          await combobox.click({
-            position: {
-              x: 230,
-              y: 17,
-            },
-          });
+          // The caret is placed right of the input
+          const box = await combobox.boundingBox();
+          await page.mouse.click(box!.x + box!.width + 16, box!.y + box!.height / 2);
 
           await expect(component.getByRole('listbox')).toHaveCount(0);
+          await expect(combobox).toBeFocused();
         });
 
-        test('does not close dropdown on clicking the search input', async ({ mount }) => {
+        test('does not close dropdown on clicking the input', async ({ mount }) => {
           const component = await mount('MultiSelectField/MultiSelectFieldForTest');
 
           await component.getByRole('combobox').click();
           await expect(component.getByRole('listbox')).toBeVisible();
 
-          await component.getByRole('textbox').click();
+          await component.getByRole('combobox').click();
 
           await expect(component.getByRole('listbox')).toBeVisible();
         });
@@ -423,6 +463,7 @@ test.describe('MultiSelectField', () => {
           await expect(component.getByRole('option')).toHaveCount(1);
 
           await page.keyboard.press('Escape');
+          await expect(combobox).toHaveValue('');
           await combobox.press('Enter');
 
           // All options are displayed again
@@ -440,9 +481,11 @@ test.describe('MultiSelectField', () => {
           await component.getByRole('option', { name: 'option1' }).click();
 
           await expect.poll(() => component.getSpyValue('onChange')).toEqual([['value1']]);
-          await expect(component.getByRole('button', { name: 'option1' })).toBeVisible();
+          await expect(component.getByRole('row', { name: 'option1' })).toBeVisible();
           // Dropdown stays open to allow selecting more options
           await expect(component.getByRole('listbox')).toBeVisible();
+          // Focus stays in the input
+          await expect(component.getByRole('combobox')).toBeFocused();
         });
 
         test('unselects a selected option on click', async ({ mount }) => {
@@ -454,30 +497,45 @@ test.describe('MultiSelectField', () => {
           await component.getByRole('option', { name: 'option1' }).click();
 
           await expect.poll(() => component.getSpyValue('onChange')).toEqual([[]]);
-          await expect(component.getByRole('button', { name: 'option1' })).toHaveCount(0);
+          await expect(component.getByRole('row', { name: 'option1' })).toHaveCount(0);
         });
 
-        ['Enter', 'Space'].forEach((selectKey) => {
-          test(`selects an option on ${selectKey} key press`, async ({
-            mount,
-            page,
-          }) => {
-            const component = await mount('MultiSelectField/MultiSelectFieldSpyForTest', {
-              initialValue: [],
-            });
-
-            const combobox = component.getByRole('combobox');
-            await combobox.focus();
-            await combobox.press('Enter');
-
-            await expect(component.getByRole('listbox')).toBeVisible();
-
-            await page.keyboard.press('ArrowDown');
-            await expect(component.getByRole('option', { name: 'option1' })).toBeFocused();
-
-            await page.keyboard.press(selectKey);
-            await expect.poll(() => component.getSpyValue('onChange')).toEqual([['value1']]);
+        test('selects the active option on Enter key press', async ({
+          mount,
+          page,
+        }) => {
+          const component = await mount('MultiSelectField/MultiSelectFieldSpyForTest', {
+            initialValue: [],
           });
+
+          const combobox = component.getByRole('combobox');
+          await combobox.focus();
+          await combobox.press('Enter');
+
+          await expect(component.getByRole('listbox')).toBeVisible();
+
+          await page.keyboard.press('ArrowDown');
+          await page.keyboard.press('Enter');
+
+          await expect.poll(() => component.getSpyValue('onChange')).toEqual([['value1']]);
+          await expect(combobox).toBeFocused();
+        });
+
+        test('types a space instead of selecting on Space key press when search is enabled', async ({
+          mount,
+          page,
+        }) => {
+          const component = await mount('MultiSelectField/MultiSelectFieldSpyForTest', {
+            initialValue: [],
+          });
+
+          const combobox = component.getByRole('combobox');
+          await combobox.click();
+          await page.keyboard.press('ArrowDown');
+          await page.keyboard.press('Space');
+
+          await expect.poll(() => component.getSpyValue('onChange')).toEqual([]);
+          await expect(combobox).toHaveValue(' ');
         });
 
         test('selects an option filtered by search', async ({
@@ -495,6 +553,36 @@ test.describe('MultiSelectField', () => {
           await expect.poll(() => component.getSpyValue('onChange')).toEqual([['value2']]);
         });
 
+        ['click', 'Enter'].forEach((selectMethod) => {
+          test(`clears the search on selecting an option by ${selectMethod}`, async ({
+            mount,
+            page,
+          }) => {
+            const component = await mount('MultiSelectField/MultiSelectFieldSpyForTest', {
+              initialValue: [],
+            });
+
+            const combobox = component.getByRole('combobox');
+            await combobox.click();
+            await page.keyboard.type('option2');
+            await expect(component.getByRole('option')).toHaveCount(1);
+
+            if (selectMethod === 'click') {
+              await component.getByRole('option', { name: 'option2' }).click();
+            } else {
+              await page.keyboard.press('ArrowDown');
+              await page.keyboard.press('Enter');
+            }
+
+            await expect.poll(() => component.getSpyValue('onChange')).toEqual([['value2']]);
+            await expect(combobox).toHaveValue('');
+            await expect(combobox).not.toHaveAttribute('aria-activedescendant');
+            // All options are displayed again and the dropdown stays open
+            await expect(component.getByRole('option')).toHaveCount(2);
+            await expect(combobox).toBeFocused();
+          });
+        });
+
         test('does not select a disabled option', async ({ mount }) => {
           const component = await mount('MultiSelectField/MultiSelectFieldSpyForTest', {
             initialValue: [],
@@ -509,10 +597,40 @@ test.describe('MultiSelectField', () => {
           await expect.poll(() => component.getSpyValue('onChange')).toEqual([]);
           await expect(component.getByRole('listbox')).toBeVisible();
         });
+
+        test('does not select an option after the field was disabled with the dropdown open', async ({ mount }) => {
+          const component = await mount('MultiSelectField/MultiSelectFieldSpyForTest', {
+            initialValue: [],
+          });
+
+          await component.getByRole('combobox').click();
+          await expect(component.getByRole('listbox')).toBeVisible();
+
+          await component.update({
+            disabled: true,
+            initialValue: [],
+          });
+
+          const option = component.getByRole('option', { name: 'option1' });
+          await expect(option).toHaveAttribute('aria-disabled', 'true');
+          // `force` is needed as Playwright refuses to click elements with `aria-disabled="true"`
+          await option.click({ force: true });
+
+          await expect.poll(() => component.getSpyValue('onChange')).toEqual([]);
+        });
       });
 
       test.describe('navigation', () => {
-        test('moves focus to the first option on ArrowDown key press in the search input', async ({
+        const expectActiveOption = async (
+          component: Locator,
+          name: string,
+        ) => {
+          const optionId = await component.getByRole('option', { name }).getAttribute('id');
+          await expect(component.getByRole('combobox')).toHaveAttribute('aria-activedescendant', optionId!);
+          await expect(component.getByRole('combobox')).toBeFocused();
+        };
+
+        test('activates the first option on ArrowDown key press', async ({
           mount,
           page,
         }) => {
@@ -521,10 +639,10 @@ test.describe('MultiSelectField', () => {
           await component.getByRole('combobox').click();
           await page.keyboard.press('ArrowDown');
 
-          await expect(component.getByRole('option', { name: 'option1' })).toBeFocused();
+          await expectActiveOption(component, 'option1');
         });
 
-        test('moves focus to the last option on ArrowUp key press in the search input', async ({
+        test('activates the last option on ArrowUp key press', async ({
           mount,
           page,
         }) => {
@@ -533,7 +651,7 @@ test.describe('MultiSelectField', () => {
           await component.getByRole('combobox').click();
           await page.keyboard.press('ArrowUp');
 
-          await expect(component.getByRole('option', { name: 'option2' })).toBeFocused();
+          await expectActiveOption(component, 'option2');
         });
 
         test('skips disabled options on arrow key press', async ({
@@ -547,14 +665,14 @@ test.describe('MultiSelectField', () => {
           await component.getByRole('combobox').click();
 
           await page.keyboard.press('ArrowDown');
-          await expect(component.getByRole('option', { name: 'option1' })).toBeFocused();
+          await expectActiveOption(component, 'option1');
 
           // The disabled option2 is skipped
           await page.keyboard.press('ArrowDown');
-          await expect(component.getByRole('option', { name: 'option3' })).toBeFocused();
+          await expectActiveOption(component, 'option3');
         });
 
-        test('moves focus across group boundaries on arrow key press', async ({
+        test('moves across group boundaries on arrow key press', async ({
           mount,
           page,
         }) => {
@@ -565,17 +683,17 @@ test.describe('MultiSelectField', () => {
           await component.getByRole('combobox').click();
 
           await page.keyboard.press('ArrowDown');
-          await expect(component.getByRole('option', { name: 'option1' })).toBeFocused();
+          await expectActiveOption(component, 'option1');
 
           await page.keyboard.press('ArrowDown');
-          await expect(component.getByRole('option', { name: 'option2' })).toBeFocused();
+          await expectActiveOption(component, 'option2');
 
-          // Focus moves to the first option of the following group
+          // The first option of the following group becomes active
           await page.keyboard.press('ArrowDown');
-          await expect(component.getByRole('option', { name: 'option3' })).toBeFocused();
+          await expectActiveOption(component, 'option3');
         });
 
-        test('does not move focus past the first or last option', async ({
+        test('wraps around at the first and last option', async ({
           mount,
           page,
         }) => {
@@ -585,14 +703,80 @@ test.describe('MultiSelectField', () => {
 
           await page.keyboard.press('ArrowDown');
           await page.keyboard.press('ArrowUp');
-          await expect(component.getByRole('option', { name: 'option1' })).toBeFocused();
+          await expectActiveOption(component, 'option2');
 
           await page.keyboard.press('ArrowDown');
-          await page.keyboard.press('ArrowDown');
-          await expect(component.getByRole('option', { name: 'option2' })).toBeFocused();
+          await expectActiveOption(component, 'option1');
         });
 
-        test('moves focus through tags to the search input on Tab key press', async ({
+        test('activates the first and last option on Home and End key press', async ({
+          mount,
+          page,
+        }) => {
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
+            options: groupedOptions,
+          });
+
+          await component.getByRole('combobox').click();
+          await page.keyboard.press('ArrowDown');
+
+          await page.keyboard.press('End');
+          await expectActiveOption(component, 'option4');
+
+          await page.keyboard.press('Home');
+          await expectActiveOption(component, 'option1');
+        });
+
+        test('opens dropdown without activating an option on Alt + Arrow Down key press', async ({ mount }) => {
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest');
+
+          const combobox = component.getByRole('combobox');
+          await combobox.focus();
+          await combobox.press('Alt+ArrowDown');
+
+          await expect(component.getByRole('listbox')).toBeVisible();
+          await expect(combobox).not.toHaveAttribute('aria-activedescendant');
+        });
+
+        test('closes dropdown on Alt + Arrow Up key press', async ({ mount }) => {
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest');
+
+          const combobox = component.getByRole('combobox');
+          await combobox.click();
+          await expect(component.getByRole('listbox')).toBeVisible();
+
+          await combobox.press('Alt+ArrowUp');
+
+          await expect(component.getByRole('listbox')).toHaveCount(0);
+          await expect(combobox).toBeFocused();
+        });
+
+        ['ArrowLeft', 'ArrowRight'].forEach((cursorKey) => {
+          test(`returns to editing the search on ${cursorKey} key press`, async ({
+            mount,
+            page,
+          }) => {
+            const component = await mount('MultiSelectField/MultiSelectFieldForTest');
+
+            const combobox = component.getByRole('combobox');
+            await combobox.click();
+            await page.keyboard.type('opt');
+            await page.keyboard.press('ArrowLeft');
+            await page.keyboard.press('ArrowDown');
+            await expect(combobox).toHaveAttribute('aria-activedescendant');
+
+            await page.keyboard.press(cursorKey);
+
+            await expect(combobox).not.toHaveAttribute('aria-activedescendant');
+            await expect(component.getByRole('listbox')).toBeVisible();
+            // The cursor moves within the search text as usual
+            await expect.poll(() => combobox.evaluate(
+              (input: HTMLInputElement) => input.selectionStart,
+            )).toBe(cursorKey === 'ArrowLeft' ? 1 : 3);
+          });
+        });
+
+        test('makes tags a single tab stop navigable by arrow keys', async ({
           mount,
           page,
         }) => {
@@ -600,40 +784,79 @@ test.describe('MultiSelectField', () => {
             initialValue: ['value1', 'value2'],
           });
 
-          // Open using keyboard as clicking the center of the input could hit one of the tags
           const combobox = component.getByRole('combobox');
+          const firstTag = component.getByRole('row', { name: 'option1' });
+          const secondTag = component.getByRole('row', { name: 'option2' });
+
+          // Tags are reachable while the dropdown is closed
           await combobox.focus();
-          await combobox.press('Enter');
+          await page.keyboard.press('Shift+Tab');
+          await expect(firstTag).toBeFocused();
 
-          // Walk back to the input first
-          await page.keyboard.press('Shift+Tab');
-          await page.keyboard.press('Shift+Tab');
-          await page.keyboard.press('Shift+Tab');
+          await page.keyboard.press('ArrowRight');
+          await expect(secondTag).toBeFocused();
+
+          await page.keyboard.press('ArrowRight');
+          await expect(firstTag).toBeFocused();
+
+          await page.keyboard.press('End');
+          await expect(secondTag).toBeFocused();
+
+          await page.keyboard.press('Home');
+          await expect(firstTag).toBeFocused();
+
+          // The remove button of the focused tag is the next tab stop, followed by the input
+          await page.keyboard.press('Tab');
+          await expect(component.getByRole('button', { name: 'Remove option1' })).toBeFocused();
+
+          await page.keyboard.press('Tab');
           await expect(combobox).toBeFocused();
-
-          await page.keyboard.press('Tab');
-          await expect(component.getByRole('button', { name: 'option1' })).toBeFocused();
-
-          await page.keyboard.press('Tab');
-          await expect(component.getByRole('button', { name: 'option2' })).toBeFocused();
-
-          await page.keyboard.press('Tab');
-          await expect(component.getByRole('textbox')).toBeFocused();
         });
       });
 
       test.describe('tags', () => {
-        test('removes a tag on click', async ({ mount }) => {
+        test('removes a tag on clicking its remove button', async ({ mount }) => {
           const component = await mount('MultiSelectField/MultiSelectFieldSpyForTest', {
             initialValue: ['value1'],
           });
 
-          await component.getByRole('button', { name: 'option1' }).click();
+          await component.getByRole('button', { name: 'Remove option1' }).click();
 
           await expect.poll(() => component.getSpyValue('onChange')).toEqual([[]]);
-          await expect(component.getByRole('button', { name: 'option1' })).toHaveCount(0);
+          await expect(component.getByRole('row', { name: 'option1' })).toHaveCount(0);
           // Clicking a tag must not open the dropdown
           await expect(component.getByRole('listbox')).toHaveCount(0);
+        });
+
+        test('does not remove a tag on clicking its label', async ({ mount }) => {
+          const component = await mount('MultiSelectField/MultiSelectFieldSpyForTest', {
+            initialValue: ['value1'],
+          });
+
+          await component.getByRole('row', { name: 'option1' }).getByText('option1').click();
+
+          await expect.poll(() => component.getSpyValue('onChange')).toEqual([]);
+          await expect(component.getByRole('listbox')).toHaveCount(0);
+        });
+
+        ['Enter', 'Space'].forEach((removeKey) => {
+          test(`removes a tag on ${removeKey} key press on its remove button`, async ({
+            mount,
+            page,
+          }) => {
+            const component = await mount('MultiSelectField/MultiSelectFieldSpyForTest', {
+              initialValue: ['value1', 'value2'],
+            });
+
+            await component.getByRole('row', { name: 'option2' }).focus();
+            await page.keyboard.press('Tab');
+            await expect(component.getByRole('button', { name: 'Remove option2' })).toBeFocused();
+
+            await page.keyboard.press(removeKey);
+
+            await expect.poll(() => component.getSpyValue('onChange')).toEqual([['value1']]);
+            await expect(component.getByRole('row', { name: 'option1' })).toBeFocused();
+          });
         });
 
         ['Delete', 'Backspace'].forEach((removeKey) => {
@@ -645,20 +868,17 @@ test.describe('MultiSelectField', () => {
               initialValue: ['value1', 'value2'],
             });
 
-            // Open using keyboard as clicking the center of the input could hit one of the tags
+            // Backspace in the empty input moves focus to the last tag
             const combobox = component.getByRole('combobox');
             await combobox.focus();
-            await combobox.press('Enter');
-
-            // Focus moves from the search input back to the last tag
-            await page.keyboard.press('Shift+Tab');
-            await expect(component.getByRole('button', { name: 'option2' })).toBeFocused();
+            await combobox.press('Backspace');
+            await expect(component.getByRole('row', { name: 'option2' })).toBeFocused();
 
             await page.keyboard.press(removeKey);
 
             await expect.poll(() => component.getSpyValue('onChange')).toEqual([['value1']]);
             // Focus moves to the previous tag
-            await expect(component.getByRole('button', { name: 'option1' })).toBeFocused();
+            await expect(component.getByRole('row', { name: 'option1' })).toBeFocused();
           });
         });
 
@@ -670,38 +890,32 @@ test.describe('MultiSelectField', () => {
             initialValue: ['value1', 'value2'],
           });
 
-          // Open using keyboard as clicking the center of the input could hit one of the tags
           const combobox = component.getByRole('combobox');
           await combobox.focus();
-          await combobox.press('Enter');
-
           await page.keyboard.press('Shift+Tab');
-          await page.keyboard.press('Shift+Tab');
-          await expect(component.getByRole('button', { name: 'option1' })).toBeFocused();
+          await expect(component.getByRole('row', { name: 'option1' })).toBeFocused();
 
           await page.keyboard.press('Delete');
 
           await expect.poll(() => component.getSpyValue('onChange')).toEqual([['value2']]);
           // There is no previous tag, focus moves to the next one
-          await expect(component.getByRole('button', { name: 'option2' })).toBeFocused();
+          await expect(component.getByRole('row', { name: 'option2' })).toBeFocused();
+          await expect(component.getByRole('row', { name: 'option2' })).toHaveAttribute('tabindex', '0');
         });
 
         test('moves focus to the last tag on Backspace key press in the empty search input', async ({
           mount,
-          page,
         }) => {
           const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
             initialValue: ['value1', 'value2'],
           });
 
-          // Open using keyboard as clicking the center of the input could hit one of the tags
           const combobox = component.getByRole('combobox');
           await combobox.focus();
           await combobox.press('Enter');
+          await combobox.press('Backspace');
 
-          await page.keyboard.press('Backspace');
-
-          await expect(component.getByRole('button', { name: 'option2' })).toBeFocused();
+          await expect(component.getByRole('row', { name: 'option2' })).toBeFocused();
         });
       });
 
@@ -730,6 +944,8 @@ test.describe('MultiSelectField', () => {
 
           await expect(component.getByRole('option')).toHaveCount(0);
           await expect(component.getByText('No options')).toBeVisible();
+          // A listbox may only contain options and groups
+          await expect(component.getByRole('listbox').getByText('No options')).toHaveCount(0);
         });
 
         test('reopens dropdown on typing into the focused search input', async ({
@@ -739,9 +955,9 @@ test.describe('MultiSelectField', () => {
           const component = await mount('MultiSelectField/MultiSelectFieldForTest');
 
           // Removing the only tag with dropdown closed moves focus to the search input
-          await component.getByRole('button', { name: 'option1' }).click();
+          await component.getByRole('button', { name: 'Remove option1' }).click();
           await expect(component.getByRole('listbox')).toHaveCount(0);
-          await expect(component.getByRole('textbox')).toBeFocused();
+          await expect(component.getByRole('combobox')).toBeFocused();
 
           await page.keyboard.type('option2');
 
@@ -749,18 +965,7 @@ test.describe('MultiSelectField', () => {
           await expect(component.getByRole('option', { name: 'option2' })).toBeVisible();
         });
 
-        test('does not render search input when search is disabled', async ({ mount }) => {
-          const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
-            searchAlgorithm: null,
-          });
-
-          await component.getByRole('combobox').click();
-
-          await expect(component.getByRole('listbox')).toBeVisible();
-          await expect(component.getByRole('textbox')).toHaveCount(0);
-        });
-
-        test('moves focus to the first option on open when search is disabled', async ({
+        test('makes the input read-only when search is disabled', async ({
           mount,
           page,
         }) => {
@@ -769,13 +974,35 @@ test.describe('MultiSelectField', () => {
           });
 
           const combobox = component.getByRole('combobox');
+          await combobox.click();
+
+          await expect(component.getByRole('listbox')).toBeVisible();
+          await expect(combobox).toHaveAttribute('readonly');
+          await expect(combobox).not.toHaveAttribute('aria-autocomplete');
+
+          await page.keyboard.type('option2');
+          await expect(combobox).toHaveValue('');
+          await expect(component.getByRole('option')).toHaveCount(2);
+        });
+
+        test('selects the active option on Space key press when search is disabled', async ({
+          mount,
+          page,
+        }) => {
+          const component = await mount('MultiSelectField/MultiSelectFieldSpyForTest', {
+            initialValue: [],
+            searchAlgorithm: null,
+          });
+
+          const combobox = component.getByRole('combobox');
           await combobox.focus();
-          await combobox.press('Enter');
+          await combobox.press('Space');
+          await expect(component.getByRole('listbox')).toBeVisible();
 
-          await expect(component.getByRole('option', { name: 'option1' })).toBeFocused();
+          await page.keyboard.press('ArrowDown');
+          await page.keyboard.press('Space');
 
-          await page.keyboard.press('Escape');
-          await expect(combobox).toBeFocused();
+          await expect.poll(() => component.getSpyValue('onChange')).toEqual([['value1']]);
         });
 
         test('does not open dropdown on typing a character when search is disabled', async ({ mount }) => {
@@ -795,7 +1022,7 @@ test.describe('MultiSelectField', () => {
             searchAlgorithm: null,
           });
 
-          await component.getByRole('button', { name: 'option1' }).click();
+          await component.getByRole('button', { name: 'Remove option1' }).click();
 
           await expect(component.getByRole('button')).toHaveCount(0);
           await expect(component.getByRole('combobox')).toBeFocused();

@@ -96,18 +96,48 @@ See [API](#api) for all available options.
 
 ### Keyboard Interaction
 
-- **Enter**, **Space**, **Arrow Up**, or **Arrow Down** opens the dropdown.
-  Typing a character opens the dropdown too (when [search](#search) is
-  enabled).
-- **Typing** into the search input filters the displayed options (when
-  [search](#search) is enabled).
-- **Arrow Up** and **Arrow Down** move focus between the options.
-- **Enter** or **Space** toggles selection of the focused option.
-- **Delete** or **Backspace** removes a focused tag. **Backspace** in an empty
-  search input moves focus to the last tag.
-- **Escape** closes the dropdown and returns focus to the input.
-- **Tab** moves focus through the tags and further out of the field while the
-  dropdown is open.
+Focus stays in the input while you move between options, so you can keep
+typing to filter them at any time.
+
+- **Arrow Down** or **Arrow Up** opens the dropdown and activates the first or
+  last option. **Alt + Arrow Down** opens it without activating an option.
+  **Enter** opens the dropdown too. **Space** opens it only when
+  [search](#search) is disabled; otherwise it types a space.
+- **Typing** into the input opens the dropdown and filters the displayed
+  options (when [search](#search) is enabled). Selecting an option clears the
+  search.
+- **Arrow Down** and **Arrow Up** move between the options, wrapping around at
+  both ends. Disabled options are skipped.
+- **Home** and **End** activate the first and last option once an option is
+  active. Until then, they move the cursor within the search text.
+- **Arrow Left** and **Arrow Right** deactivate the active option and move the
+  cursor within the search text.
+- **Enter** toggles selection of the active option. **Space** does so too when
+  search is disabled.
+- **Escape** or **Alt + Arrow Up** closes the dropdown.
+- **Backspace** in an empty input moves focus to the last tag.
+- The tags form a **single tab stop** in front of the input, reachable whether
+  the dropdown is open or not. **Arrow Left**, **Arrow Right**, **Arrow Up**
+  and **Arrow Down** move between tags, wrapping around at both ends.
+  **Home** and **End** move to the first and last tag.
+- **Delete** or **Backspace** removes the focused tag. **Tab** moves from the
+  focused tag to its remove button, where **Enter** or **Space** removes it.
+
+## Accessibility
+
+MultiSelectField follows the [ARIA combobox pattern][combobox-pattern] with
+the options navigated by `aria-activedescendant`:
+
+| Element     | Role / attribute                                                                                                                         |
+|-------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| Input       | `<input>` with `role="combobox"`, `aria-expanded`, `aria-controls`, `aria-activedescendant`, `aria-autocomplete="list"` (search enabled) |
+| Dropdown    | `role="listbox"` labelled by the field label, with `aria-multiselectable="true"`, groups of options are `role="group"`                  |
+| Option      | `role="option"` with `aria-selected` and `aria-disabled`                                                                                 |
+| Tags        | `role="grid"` labelled by the field label, each tag is a `role="row"` described by a hint on how to remove it                            |
+| Remove tag  | `<button>` labelled _Remove &lt;option label&gt;_                                                                                        |
+
+When no `id` is set, it is generated so that all ARIA references are always
+complete. When [search](#search) is disabled, the input is read-only.
 
 ## Design Variants
 
@@ -1103,18 +1133,18 @@ In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
 [`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to the
-`<div>` HTML element representing the input of the field. This enables making
+`<input>` HTML element with the `combobox` role. This enables making
 the component interactive and helps to improve its accessibility.
 
 👉 For the full list of supported attributes refer to:
 
-- [`<div>` HTML element attributes][div-attributes]{:target="_blank"}
+- [`<input>` HTML element attributes][input-attributes]{:target="_blank"}
 - [React common props]{:target="_blank"}
 
 ## Forwarding ref
 
-If you provide [ref], it is forwarded to the `<div>` HTML element representing
-the input of the field.
+If you provide [ref], it is forwarded to the `<input>` HTML element with the
+`combobox` role.
 
 ## API
 
@@ -1156,6 +1186,7 @@ MultiSelectField.
 | `--rui-MultiSelectField--<SIZE>__tag__font-size`                        | Tag font size                                        |
 | `--rui-MultiSelectField--<SIZE>__tag__padding-inline`                   | Tag horizontal padding                               |
 
-[div-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
+[combobox-pattern]: https://www.w3.org/WAI/ARIA/apg/patterns/combobox/
+[input-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes
 [React common props]: https://react.dev/reference/react-dom/components/common#common-props
 [ref]: https://reactjs.org/docs/refs-and-the-dom.html

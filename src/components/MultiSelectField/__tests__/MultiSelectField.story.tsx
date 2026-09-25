@@ -82,7 +82,7 @@ export const MultiSelectFieldForRefTest = ({
   testRefAttrValue,
   ...props
 }: MultiSelectFieldForRefTestProps) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState<MultiSelectFieldProps['value']>(['value1']);
 
   useEffect(() => {
@@ -122,7 +122,7 @@ export const MultiSelectFieldForTranslationsTest = ({
       MultiSelectField: {
         noOptions: 'Nothing found',
         removeTag: 'Remove this tag',
-        search: 'Search options',
+        tagDescription: 'Delete removes this tag',
       },
     }}
   >

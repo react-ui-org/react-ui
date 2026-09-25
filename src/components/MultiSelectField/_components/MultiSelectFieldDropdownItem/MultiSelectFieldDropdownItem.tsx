@@ -1,83 +1,69 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {
+  useEffect,
+  useRef,
+} from 'react';
 import { classNames } from '../../../../helpers/classNames';
-import { keyDetected } from '../../_helpers/keyDetected';
-import keyBindings from '../../keyBindings';
 import styles from './MultiSelectFieldDropdownItem.module.scss';
 import type { MultiSelectFieldDropdownItemProps } from './MultiSelectFieldDropdownItem.types';
 
-const MultiSelectFieldDropdownItem = React.forwardRef<HTMLDivElement, MultiSelectFieldDropdownItemProps>((
-  {
-    children,
-    disabled,
-    id,
-    isSelected,
-    isWithinGroup,
-    onCloseDropdown,
-    onFocus,
-    onFocusNextDropdownItem,
-    onFocusPreviousDropdownItem,
-    onSelectDropdownItem,
-  },
-  ref,
-) => (
-  <div
-    aria-disabled={disabled}
-    aria-selected={isSelected}
-    className={classNames(
-      styles.root,
-      disabled && styles.isRootDisabled,
-      isSelected && styles.isRootSelected,
-      isWithinGroup && styles.isRootInGroup,
-    )}
-    id={id}
-    onClick={() => {
-      if (disabled) {
-        return;
-      }
+const MultiSelectFieldDropdownItem: React.FunctionComponent<MultiSelectFieldDropdownItemProps> = ({
+  children,
+  disabled,
+  id,
+  isActive,
+  isSelected,
+  isWithinGroup,
+  onSelectDropdownItem,
+}: MultiSelectFieldDropdownItemProps) => {
+  const itemRef = useRef<HTMLDivElement>(null);
 
-      onSelectDropdownItem();
-    }}
-    onFocus={onFocus}
-    onKeyDown={(event) => {
-      if (disabled) {
-        return;
-      }
+  useEffect(() => {
+    // The active option does not receive DOM focus, so it must be scrolled into view manually.
+    if (isActive) {
+      itemRef.current?.scrollIntoView({ block: 'nearest' });
+    }
+  }, [isActive]);
 
-      if (keyDetected(event, keyBindings.closeDropdown)) {
-        event.preventDefault();
-        onCloseDropdown();
-      } else if (keyDetected(event, keyBindings.focusNextDropdownItem)) {
-        event.preventDefault();
-        onFocusNextDropdownItem();
-      } else if (keyDetected(event, keyBindings.focusPreviousDropdownItem)) {
-        event.preventDefault();
-        onFocusPreviousDropdownItem();
-      } else if (keyDetected(event, keyBindings.selectDropdownItem)) {
-        event.preventDefault();
+  return (
+    // Keyboard selection is handled by the combobox input through `aria-activedescendant`.
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+    <div
+      aria-disabled={disabled}
+      aria-selected={isSelected}
+      className={classNames(
+        styles.root,
+        disabled && styles.isRootDisabled,
+        isActive && styles.isRootActive,
+        isSelected && styles.isRootSelected,
+        isWithinGroup && styles.isRootInGroup,
+      )}
+      id={id}
+      onClick={() => {
+        if (disabled) {
+          return;
+        }
+
         onSelectDropdownItem();
-      }
-    }}
-    ref={ref}
-    role="option"
-    tabIndex={-1}
-  >
-    {children}
-  </div>
-));
+      }}
+      ref={itemRef}
+      role="option"
+      tabIndex={-1}
+    >
+      {children}
+    </div>
+  );
+};
 
 // `propTypes` are kept for runtime validation until the TypeScript migration is complete.
 // eslint-disable-next-line @typescript-eslint/no-deprecated
 MultiSelectFieldDropdownItem.propTypes = {
   children: PropTypes.node.isRequired,
   disabled: PropTypes.bool.isRequired,
-  id: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  isActive: PropTypes.bool.isRequired,
   isSelected: PropTypes.bool.isRequired,
   isWithinGroup: PropTypes.bool.isRequired,
-  onCloseDropdown: PropTypes.func.isRequired,
-  onFocus: PropTypes.func.isRequired,
-  onFocusNextDropdownItem: PropTypes.func.isRequired,
-  onFocusPreviousDropdownItem: PropTypes.func.isRequired,
   onSelectDropdownItem: PropTypes.func.isRequired,
 };
 

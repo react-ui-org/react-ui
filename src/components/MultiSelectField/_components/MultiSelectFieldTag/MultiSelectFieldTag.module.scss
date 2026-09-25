@@ -19,6 +19,20 @@
         border-width: theme.$tag-border-width;
         border-style: solid;
         border-radius: theme.$tag-border-radius;
+    }
+
+    .cell {
+        display: contents;
+    }
+
+    .removeButton {
+        appearance: none;
+        padding: 0;
+        margin: 0;
+        font: inherit;
+        color: inherit;
+        border: 0;
+        background: none;
         cursor: pointer;
     }
 

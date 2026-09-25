@@ -6,12 +6,9 @@ import type { ReactNode } from 'react';
 export type MultiSelectFieldDropdownItemProps = {
   children: ReactNode;
   disabled: boolean;
-  id?: string;
+  id: string;
+  isActive: boolean;
   isSelected: boolean;
   isWithinGroup: boolean;
-  onCloseDropdown: () => void;
-  onFocus: () => void;
-  onFocusNextDropdownItem: () => void;
-  onFocusPreviousDropdownItem: () => void;
   onSelectDropdownItem: () => void;
 };

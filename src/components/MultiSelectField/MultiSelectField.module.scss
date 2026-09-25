@@ -43,6 +43,37 @@
         padding-right: calc(#{settings.$box-field-caret-size} - 2 * #{theme.$box-border-width});
     }
 
+    // The tags are laid out as direct children of the input so they wrap together with the search input.
+    .tags {
+        display: contents;
+    }
+
+    .searchInput {
+        appearance: none;
+        display: block;
+        flex: 1 0 auto;
+        width: 2ch;
+        min-width: 2ch;
+        padding: 0;
+        margin: 0;
+        font-weight: settings.$box-input-font-weight;
+        font-size: var(--rui-local-font-size);
+        line-height: settings.$box-input-line-height;
+        font-family: settings.$box-input-font-family;
+        color: inherit;
+        border: 0;
+        background-color: transparent;
+
+        &:focus {
+            // The focus is indicated by the whole field
+            outline: none;
+        }
+
+        &:disabled {
+            cursor: inherit;
+        }
+    }
+
     .caret {
         @include box-field-elements.caret();
     }
