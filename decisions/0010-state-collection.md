@@ -11,7 +11,7 @@ saved one.
 Projects using React UI already work around the missing state:
 
 - `valid` is never used.
-- `warning` is repainted to mean "changed", which makes it unusable for real
+- `warning` is repurposed to mean "changed", which makes it unusable for real
   warnings in the same app.
 - Projects define their own state type and map it to `validationState` for
   fields and to `color` for containers, because nothing relates the two.
@@ -64,7 +64,7 @@ input would look the same as a form with unsaved edits.
   deprecation mechanism, and wrapper libraries can absorb the rename.
 - Theme overrides keep working, because the `--rui-FormField--<STATE>--*` token
   names do not change.
-- Projects that repainted `warning` can drop the override and use `changed`.
+- Projects that repurposed `warning` can drop the override and use `changed`.
 - `warning` now exists both as a state and as a Feedback colour. The docs need
   to explain the difference.
 - [#711][711] and [#712][712] rework the same code and docs. They land as
