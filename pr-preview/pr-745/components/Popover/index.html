@@ -1748,17 +1748,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#z-index" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        z-index
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#controlled-popover" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1827,6 +1816,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Theming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#z-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        z-index
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3039,17 +3045,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#z-index" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        z-index
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#controlled-popover" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3118,6 +3113,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Theming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#z-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        z-index
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3419,23 +3431,6 @@ with its content. This is always the case inside
 PopoverWrapper.</p>
 <p>If Popover needs to overflow the scrollable container, use Floating UI with the
 <code>fixed</code> positioning strategy (see <a href="#advanced-positioning">Advanced Positioning</a>).</p>
-<h2 id="z-index">z-index</h2>
-<p>By default, the Popover's <code>z-index</code> is <code>auto</code>, which means it participates in
-the stacking context of its nearest positioned ancestor. This works well in most
-cases, but can cause the Popover to appear behind other positioned elements such
-as sticky headers, fixed toolbars, or modals.</p>
-<p>When that happens, set <code>--rui-Popover__z-index</code> to a numeric value high enough
-to place the Popover above the conflicting layer. The override can be applied
-globally or scoped to a specific context:</p>
-<pre class="highlight"><code class="language-css">/* Global override */
-:root {
-  --rui-Popover__z-index: 1000;
-}
-
-/* Scoped override */
-.my-context {
-  --rui-Popover__z-index: 1000;
-}</code></pre>
 <h2 id="controlled-popover">Controlled Popover</h2>
 <p>Popover API can be used to control visibility of Popover component. You need to
 set <code>id</code> on the trigger element and matching <code>popoverTargetId</code> attribute on the
@@ -3530,6 +3525,23 @@ which enables <a href="#advanced-positioning">Advanced Positioning</a>.</p>
 </tr>
 </tbody>
 </table>
+<h3 id="z-index">z-index</h3>
+<p>By default, the Popover's <code>z-index</code> is <code>auto</code>, which means it participates in
+the stacking context of its nearest positioned ancestor. This works well in most
+cases, but can cause the Popover to appear behind other positioned elements such
+as sticky headers, fixed toolbars, or modals.</p>
+<p>When that happens, set <code>--rui-Popover__z-index</code> to a numeric value high enough
+to place the Popover above the conflicting layer. The override can be applied
+globally or scoped to a specific context:</p>
+<pre class="highlight"><code class="language-css">/* Global override */
+:root {
+  --rui-Popover__z-index: 1000;
+}
+
+/* Scoped override */
+.my-context {
+  --rui-Popover__z-index: 1000;
+}</code></pre>
 
 
 

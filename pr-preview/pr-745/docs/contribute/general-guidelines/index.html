@@ -3723,6 +3723,11 @@ module.exports = {
 <p>We use combination of <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a> and <a href="https://github.com/react-ui-org/docoff">Docoff</a> as
 the documentation platform.</p>
 <p>Do see their respective documentation for details.</p>
+<p><strong>Keep theming out of README prose.</strong> Theming belongs to the <code>## Theming</code>
+section at the end of a component's <code>README.md</code>, including examples that
+override <code>--rui-*</code> custom properties. Other sections must not link to the
+theming guides or to <code>#theming</code> so that the whole section can be dropped when
+the docs are reused in a design system that doesn't expose theming.</p>
 
 
 
