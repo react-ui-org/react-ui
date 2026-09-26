@@ -29,7 +29,7 @@
     .isRootFieldLayoutHorizontal {
         display: grid;
         grid-template-columns: var(--rui-local-field-width);
-        grid-row-gap: theme.$row-gap;
+        row-gap: theme.$row-gap;
     }
 
     .isRootFieldLayoutHorizontal {

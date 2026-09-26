@@ -8,7 +8,7 @@
   [.editorconfig](../../.editorconfig) (general),
   [.markdownlint.jsonc](../../.markdownlint.jsonc) (Markdown),
   [eslint.config.mjs](../../eslint.config.mjs) (TypeScript),
-  [stylelint.config.js](../../stylelint.config.js) (SCSS).
+  [stylelint.config.mjs](../../stylelint.config.mjs) (SCSS).
 * Only fix linting/formatting issues in files you created or modified for the
   current task. Do not fix pre-existing issues outside that scope.
 * Keep comments simple and use terminology and language matching repository
