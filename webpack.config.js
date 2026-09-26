@@ -100,7 +100,7 @@ module.exports = (env, argv) => ({
       ignoreOrder: false, // Enable to remove warnings about conflicting order
     }),
     new StyleLintPlugin({
-      configFile: 'stylelint.config.js',
+      configFile: 'stylelint.config.mjs',
       files: 'src/**/*.scss',
     }),
     new VisualizerPlugin({

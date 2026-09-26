@@ -11,17 +11,11 @@ Basic rules to follow when authoring React UI CSS.
 React UI uses [Stylelint] to avoid errors in CSS and enforce unified coding
 style across all stylesheets.
 
-Configurations used:
-
-- [`stylelint-config-visionapps`][stylelint-config-visionapps] — a more strict
-  extension of popular community preset
-  [`stylelint-config-standard`][stylelint-config-standard].
-
-- [`stylelint-config-visionapps-order`][stylelint-config-visionapps-order] —
-  an opinionated list of CSS properties order.
-
-- [`stylelint-config-css-modules`][stylelint-config-css-modules] — tweak of
-  Stylelint rules for CSS modules.
+The configuration is [`@react-ui-org/stylelint-config`][stylelint-config], a
+more strict extension of popular community preset
+[`stylelint-config-standard`][stylelint-config-standard] with an opinionated
+list of CSS properties order and stylistic rules. Its additions for SCSS and
+CSS modules are used as well.
 
 ## CSS Architecture
 
@@ -260,10 +254,8 @@ All styles are automatically prefixed by [Autoprefixer] plugin for [PostCSS]
 according to [Browserslist] configuration stored in `.browserslistrc`.
 
 [Stylelint]: https://stylelint.io
-[stylelint-config-visionapps]: https://github.com/visionappscz/stylelint-config-visionapps
+[stylelint-config]: https://github.com/react-ui-org/stylelint-config
 [stylelint-config-standard]: https://github.com/stylelint/stylelint-config-standard
-[stylelint-config-visionapps-order]: https://github.com/visionappscz/stylelint-config-visionapps-order
-[stylelint-config-css-modules]: https://github.com/pascalduez/stylelint-config-css-modules
 [Web Components]: https://developer.mozilla.org/en-US/docs/Web/Web_Components
 [foundation CSS layer]: /docs/getting-started/usage#foundation-css
 [foundation-css-source]: https://github.com/react-ui-org/react-ui/blob/master/src/foundation.scss

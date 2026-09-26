@@ -20,4 +20,4 @@
 /src/docs/                  @adamkudrna @react-ui-org/maintainers
 /src/styles/                @adamkudrna @react-ui-org/maintainers
 /src/theme.scss             @adamkudrna @react-ui-org/maintainers
-/stylelint.config.js        @adamkudrna @react-ui-org/maintainers
+/stylelint.config.mjs       @adamkudrna @react-ui-org/maintainers
