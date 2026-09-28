@@ -47,7 +47,8 @@ Before committing, check the following (see [Commands](../../../CLAUDE.md#comman
 Write a commit message for the staged changes following the project's git
 conventions ([General Guidelines › Git Workflow](../../../src/docs/contribute/general-guidelines.md#git-workflow)):
 
-Do not append `Co-Authored-By`.
+Do not add any AI attribution: no `Co-Authored-By` or `Claude-Session`
+trailers, no "Generated with …" lines and no session links.
 
 ## Reference
 
