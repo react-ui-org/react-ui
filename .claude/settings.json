@@ -22,6 +22,11 @@
       "Bash(npm run test:playwright-ct:*)"
     ]
   },
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
   "enabledMcpjsonServers": [
     "chrome-host"
   ],

@@ -99,8 +99,9 @@ Easy-to-miss invariants beyond the generic checks above:
   `README.md`; new doc pages are wired into `mkdocs.yml`.
 * **Git hygiene** ([git.md](../rules/git.md)): no push or remote change without
   approval; commit/PR subjects imperative English with backticked symbols and a
-  trailing `(#issue)` when one exists; **no `Co-Authored-By`**. PR names land in
-  the changelog.
+  trailing `(#issue)` when one exists. PR names land in the changelog. Do not
+  add any AI attribution: no `Co-Authored-By` or `Claude-Session` trailers, no
+  "Generated with …" lines and no session links.
 
 ## Output format
 
