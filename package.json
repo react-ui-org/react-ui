@@ -95,12 +95,13 @@
     "@babel/preset-react": "^8.0.1",
     "@babel/preset-typescript": "^8.0.1",
     "@happy-dom/jest-environment": "^20.14.5",
-    "@playwright/experimental-ct-react": "^1.62.1",
+    "@playwright/test": "~1.63.0",
     "@react-ui-org/eslint-config": "^1.1.0",
     "@react-ui-org/stylelint-config": "^1.0.0",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
     "@types/jest": "^30.0.0",
     "@types/node": "^26.5.1",
     "@types/prop-types": "^15.7.15",
@@ -133,6 +134,7 @@
     "typescript": "npm:@typescript/typescript6@^6.0.2",
     "webpack": "^5.111.0",
     "webpack-cli": "^7.2.3",
+    "webpack-dev-server": "^6.0.0",
     "webpack-visualizer-plugin2": "^2.0.0"
   },
   "overrides": {

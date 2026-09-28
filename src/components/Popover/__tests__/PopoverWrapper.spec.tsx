@@ -1,9 +1,7 @@
-import React from 'react';
 import {
   expect,
   test,
 } from '../../../../tests/playwright';
-import { PopoverWrapperForTest } from './PopoverWrapper.story';
 
 test.describe('PopoverWrapper', () => {
   test.describe('non-visual', () => {
@@ -14,9 +12,9 @@ test.describe('PopoverWrapper', () => {
 
     tags.forEach((tag) => {
       test(`Render tag: ${tag}`, async ({ mount }) => {
-        const component = await mount(
-          <PopoverWrapperForTest tag={tag} />,
-        );
+        const component = await mount('PopoverWrapper/PopoverWrapperForTest', {
+          tag,
+        });
 
         const tagName = await component.evaluate((element) => element.tagName);
         expect(tagName.toLowerCase()).toBe(tag);
@@ -28,11 +26,10 @@ test.describe('PopoverWrapper', () => {
       const id = 'custom-id';
       const childrenText = 'Some text';
 
-      const component = await mount(
-        <PopoverWrapperForTest id={id}>
-          {childrenText}
-        </PopoverWrapperForTest>,
-      );
+      const component = await mount('PopoverWrapper/PopoverWrapperForTest', {
+        children: childrenText,
+        id,
+      });
 
       await expect(component.getByText(childrenText)).toHaveAttribute('id', id);
     });

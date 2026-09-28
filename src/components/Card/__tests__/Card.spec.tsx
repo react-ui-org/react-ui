@@ -1,15 +1,9 @@
-import React from 'react';
 import {
   expect,
   mixPropTests,
   propTests,
   test,
 } from '../../../../tests/playwright';
-import {
-  CadForTest,
-  CadWithScrollableForTest,
-  CardOnlyWithBodyForTest,
-} from './Card.story';
 import { densePropTest } from './_propTests/densePropTest';
 
 test.describe('Card', () => {
@@ -36,11 +30,7 @@ test.describe('Card', () => {
           await onBeforeTest(page);
         }
 
-        const component = await mount(
-          <CadForTest
-            {...props}
-          />,
-        );
+        const component = await mount('Card/CadForTest', props);
 
         if (onBeforeSnapshot) {
           await onBeforeSnapshot(page, component);
@@ -73,11 +63,7 @@ test.describe('Card', () => {
               await onBeforeTest(page);
             }
 
-            const component = await mount(
-              <CardOnlyWithBodyForTest
-                {...props}
-              />,
-            );
+            const component = await mount('Card/CardOnlyWithBodyForTest', props);
 
             if (onBeforeSnapshot) {
               await onBeforeSnapshot(page, component);
@@ -106,11 +92,7 @@ test.describe('Card', () => {
               await onBeforeTest(page);
             }
 
-            const component = await mount(
-              <CadWithScrollableForTest
-                {...props}
-              />,
-            );
+            const component = await mount('Card/CadWithScrollableForTest', props);
 
             if (onBeforeSnapshot) {
               await onBeforeSnapshot(page, component);
@@ -128,11 +110,9 @@ test.describe('Card', () => {
     test('id', async ({ mount }) => {
       const id = 'test-id';
 
-      const component = await mount(
-        <CadForTest
-          id={id}
-        />,
-      );
+      const component = await mount('Card/CadForTest', {
+        id,
+      });
 
       await expect(component.locator(`div[id=${id}]`)).toHaveAttribute('id', id);
     });

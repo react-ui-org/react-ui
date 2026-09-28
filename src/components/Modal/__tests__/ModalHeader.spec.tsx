@@ -1,10 +1,8 @@
-import React from 'react';
 import {
   expect,
   propTests,
   test,
 } from '../../../../tests/playwright';
-import { ModalHeaderForTest } from './ModalHeader.story';
 import { justifyPropTest } from './_propTests/justifyPropTest';
 
 test.describe('ModalHeader', () => {
@@ -26,11 +24,7 @@ test.describe('ModalHeader', () => {
           await onBeforeTest(page);
         }
 
-        const component = await mount(
-          <ModalHeaderForTest
-            {...props}
-          />,
-        );
+        const component = await mount('ModalHeader/ModalHeaderForTest', props);
 
         if (onBeforeSnapshot) {
           await onBeforeSnapshot(page, component);
@@ -46,9 +40,9 @@ test.describe('ModalHeader', () => {
     test('id', async ({ mount }) => {
       const testId = 'testId';
 
-      const component = await mount(
-        <ModalHeaderForTest id={testId} />,
-      );
+      const component = await mount('ModalHeader/ModalHeaderForTest', {
+        id: testId,
+      });
 
       expect(component.locator(`div[id="${testId}"]`)).toBeDefined();
     });

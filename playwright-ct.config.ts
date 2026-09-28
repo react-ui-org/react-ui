@@ -1,12 +1,15 @@
 import {
   defineConfig,
   devices,
-} from '@playwright/experimental-ct-react';
+} from '@playwright/test';
 import { parseEnvironment } from './tests/playwright/env/parseEnvironment';
 
 const environment = parseEnvironment();
 
 const isCI = !!process.env.CI;
+
+// URL of the Playwright Component Testing page served by the webpack dev server (see `tests/playwright/ct/`)
+const componentTestingUrl = `http://localhost:${environment.CT_PORT}/index.html`;
 
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -42,12 +45,12 @@ module.exports = defineConfig({
   updateSnapshots: 'none',
   // Configuration for Playwright component testing
   use: {
-    // Directory where the cache is stored
-    ctCacheDir: './tests/playwright/.temp/playwright-ct-cache',
-    // Port to use for Playwright component endpoint
-    ctPort: environment.CT_PORT,
-    // Directory where the templates are stored
-    ctTemplateDir: './tests/playwright/templates',
+    // URL of the Playwright Component Testing page the `mount` fixture navigates to
+    baseURL: componentTestingUrl,
+    // Reuse the browser context across tests in a worker (`mount()` navigates, so tests stay isolated)
+    reuseContext: true,
+    // Prevent a service worker from serving cached responses that would shadow `page.route()` mocks
+    serviceWorkers: 'block',
     // Launch options for Playwright
     launchOptions: {
       args: [
@@ -62,6 +65,12 @@ module.exports = defineConfig({
     },
     // Collect trace on all retries
     trace: 'on-all-retries',
+  },
+  // Webpack dev server serving the Playwright Component Testing page
+  webServer: {
+    command: `webpack serve --config tests/playwright/ct/webpack.config.js --port ${environment.CT_PORT}`,
+    reuseExistingServer: !isCI,
+    url: componentTestingUrl,
   },
   // Number of workers to use
   workers: environment.WORKERS,

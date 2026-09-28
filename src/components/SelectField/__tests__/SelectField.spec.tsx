@@ -1,18 +1,9 @@
-import React from 'react';
 import {
   expect,
   mixPropTests,
   propTests,
   test,
 } from '../../../../tests/playwright';
-import type { SelectFieldForFormLayoutTestsProps } from './SelectField.story';
-import {
-  SelectFieldForFormLayoutCustomFieldTests,
-  SelectFieldForFormLayoutLabelWidthTests,
-  SelectFieldForFormLayoutTests,
-  SelectFieldForRefTest,
-  SelectFieldForTest,
-} from './SelectField.story';
 import { openSelectFieldOptionsTest } from './_propTests/openSelectFieldOptionsTest';
 
 const groupedOptions = [
@@ -90,11 +81,7 @@ test.describe('SelectField', () => {
             await onBeforeTest(page);
           }
 
-          const component = await mount(
-            <SelectFieldForTest
-              {...props}
-            />,
-          );
+          const component = await mount('SelectField/SelectFieldForTest', props);
 
           if (onBeforeSnapshot) {
             await onBeforeSnapshot(page, component);
@@ -126,11 +113,7 @@ test.describe('SelectField', () => {
               await onBeforeTest(page);
             }
 
-            const component = await mount(
-              <SelectFieldForTest
-                {...props}
-              />,
-            );
+            const component = await mount('SelectField/SelectFieldForTest', props);
 
             if (onBeforeSnapshot) {
               await onBeforeSnapshot(page, component);
@@ -145,11 +128,9 @@ test.describe('SelectField', () => {
 
     test.describe('non-visual', () => {
       test('Have partially disabled group options', async ({ mount }) => {
-        const component = await mount(
-          <SelectFieldForTest
-            options={groupedOptions}
-          />,
-        );
+        const component = await mount('SelectField/SelectFieldForTest', {
+          options: groupedOptions,
+        });
 
         await expect(component.getByRole('combobox').getByText(groupedOptions[0].options[0].label)).not.toHaveAttribute('disabled', '');
         await expect(component.getByRole('combobox').getByText(groupedOptions[0].options[1].label)).toHaveAttribute('disabled', '');
@@ -165,11 +146,9 @@ test.describe('SelectField', () => {
             value: 'value3',
           },
         ];
-        const component = await mount(
-          <SelectFieldForTest
-            options={partiallyDisabledBaseOptions}
-          />,
-        );
+        const component = await mount('SelectField/SelectFieldForTest', {
+          options: partiallyDisabledBaseOptions,
+        });
 
         await expect(component.getByRole('combobox').getByText(partiallyDisabledBaseOptions[0].label)).not.toHaveAttribute('disabled', '');
         await expect(component.getByRole('combobox').getByText(partiallyDisabledBaseOptions[1].label)).not.toHaveAttribute('disabled', '');
@@ -182,15 +161,13 @@ test.describe('SelectField', () => {
         const testHelpText = 'testHelpText';
         const testValidationText = 'testValidationText';
 
-        const component = await mount(
-          <SelectFieldForTest
-            helpText={testHelpText}
-            id={testId}
-            label={testLabel}
-            options={baseOptions}
-            validationText={testValidationText}
-          />,
-        );
+        const component = await mount('SelectField/SelectFieldForTest', {
+          helpText: testHelpText,
+          id: testId,
+          label: testLabel,
+          options: baseOptions,
+          validationText: testValidationText,
+        });
 
         await expect(component.getByRole('combobox')).toHaveAttribute('id', testId);
         await expect(component.getByRole('option').first()).toHaveAttribute('id', `${testId}__item__${baseOptions[0].key}`);
@@ -202,12 +179,10 @@ test.describe('SelectField', () => {
       });
 
       test('ref', async ({ mount }) => {
-        const component = await mount(
-          <SelectFieldForRefTest
-            testRefAttrName="test-ref"
-            testRefAttrValue="test-ref-value"
-          />,
-        );
+        const component = await mount('SelectField/SelectFieldForRefTest', {
+          testRefAttrName: 'test-ref',
+          testRefAttrValue: 'test-ref-value',
+        });
 
         await expect(component.getByRole('combobox')).toHaveAttribute('test-ref', 'test-ref-value');
       });
@@ -215,57 +190,36 @@ test.describe('SelectField', () => {
 
     test.describe('functionality', () => {
       test('calls synthetic event onChange() on changing selected option', async ({ mount }) => {
-        let changeCalled = false;
-
-        const component = await mount(
-          <SelectFieldForTest
-            onChange={() => {
-              changeCalled = true;
-            }}
-            options={baseOptions}
-            value={baseOptions[0].value}
-          />,
-        );
+        const component = await mount('SelectField/SelectFieldSpyForTest', {
+          options: baseOptions,
+          value: baseOptions[0].value,
+        });
 
         await component.getByRole('combobox').selectOption(baseOptions[1].value);
-        expect(changeCalled).toBeTruthy();
+        await expect.poll(() => component.getSpyValue('onChange')).toContain(true);
       });
 
       test('change options on down key press', async ({ mount }) => {
-        let changeCalled = false;
-
-        const component = await mount(
-          <SelectFieldForTest
-            onChange={() => {
-              changeCalled = true;
-            }}
-            options={baseOptions}
-            value={baseOptions[0].value}
-          />,
-        );
+        const component = await mount('SelectField/SelectFieldSpyForTest', {
+          options: baseOptions,
+          value: baseOptions[0].value,
+        });
 
         const select = component.getByRole('combobox');
         await select.focus();
         await select.press('ArrowDown');
-        expect(changeCalled).toBeTruthy();
+        await expect.poll(() => component.getSpyValue('onChange')).toContain(true);
       });
       test('change options on up key press', async ({ mount }) => {
-        let changeCalled = false;
-
-        const component = await mount(
-          <SelectFieldForTest
-            onChange={() => {
-              changeCalled = true;
-            }}
-            options={baseOptions}
-            value={baseOptions[1].value}
-          />,
-        );
+        const component = await mount('SelectField/SelectFieldSpyForTest', {
+          options: baseOptions,
+          value: baseOptions[1].value,
+        });
 
         const select = component.getByRole('combobox');
         await select.focus();
         await select.press('ArrowUp');
-        expect(changeCalled).toBeTruthy();
+        await expect.poll(() => component.getSpyValue('onChange')).toContain(true);
       });
     });
   });
@@ -273,7 +227,7 @@ test.describe('SelectField', () => {
   test.describe('formLayout', () => {
     test.describe('visual', () => {
       test('labelWidth:string=100px', async ({ mount }) => {
-        const component = await mount(<SelectFieldForFormLayoutLabelWidthTests />);
+        const component = await mount('SelectField/SelectFieldForFormLayoutLabelWidthTests');
 
         const screenshot = await component.screenshot({ animations: 'disabled' });
         expect(screenshot).toMatchSnapshot();
@@ -295,11 +249,7 @@ test.describe('SelectField', () => {
             await onBeforeTest(page);
           }
 
-          const component = await mount(
-            <SelectFieldForFormLayoutTests
-              {...props as unknown as SelectFieldForFormLayoutTestsProps}
-            />,
-          );
+          const component = await mount('SelectField/SelectFieldForFormLayoutTests', props);
 
           if (onBeforeSnapshot) {
             await onBeforeSnapshot(page, component);
@@ -315,7 +265,7 @@ test.describe('SelectField', () => {
   test.describe('formLayoutCustomField', () => {
     test.describe('visual', () => {
       test('label:hidden', async ({ mount }) => {
-        const component = await mount(<SelectFieldForFormLayoutCustomFieldTests />);
+        const component = await mount('SelectField/SelectFieldForFormLayoutCustomFieldTests');
 
         const screenshot = await component.screenshot({ animations: 'disabled' });
         expect(screenshot).toMatchSnapshot();

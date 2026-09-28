@@ -1,5 +1,5 @@
-import type { MountResult } from '@playwright/experimental-ct-react';
-import type { Page } from 'playwright/test';
+import type { Page } from '@playwright/test';
+import type { MountResult } from './test';
 
 export type PropTest = {
   name: string;

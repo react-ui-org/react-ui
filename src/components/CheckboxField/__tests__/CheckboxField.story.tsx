@@ -7,6 +7,10 @@ import { FormLayout } from '../../FormLayout';
 import { FormLayoutContext } from '../../FormLayout/FormLayoutContext';
 import { CheckboxField } from '..';
 import type { CheckboxFieldProps } from '..';
+import {
+  useSpy,
+  withSpy,
+} from '../../../../tests/playwright/utils/spy';
 import type { StoryProps } from '../../../../tests/playwright';
 
 type CheckboxFieldForTestProps = StoryProps<CheckboxFieldProps, 'label'>;
@@ -80,3 +84,14 @@ export const CheckboxForFormLayoutTests = ({
     </FormLayoutContext.Provider>
   );
 };
+
+export const CheckboxFieldSpyForTest = withSpy((props: CheckboxFieldForTestProps) => {
+  const onChange = useSpy('onChange', () => true);
+
+  return (
+    <CheckboxFieldForTest
+      onChange={onChange}
+      {...props}
+    />
+  );
+});

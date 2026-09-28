@@ -4,7 +4,13 @@ import type {
   TableColumn,
   TableProps,
   TableRow,
+  TableSort,
+  TableSortDirection,
 } from '..';
+import {
+  useSpy,
+  withSpy,
+} from '../../../../tests/playwright/utils/spy';
 import type { StoryProps } from '../../../../tests/playwright';
 
 type TableForTestProps = StoryProps<TableProps, 'columns' | 'rows'>;
@@ -60,3 +66,27 @@ export const TableForTest = ({
     {...props}
   />
 );
+
+type TableSpyForTestProps = Omit<TableForTestProps, 'sort'> & {
+  sort?: Omit<TableSort, 'onClick'>;
+};
+
+export const TableSpyForTest = withSpy(({
+  sort,
+  ...props
+}: TableSpyForTestProps) => {
+  const onSortClick = useSpy('onSortClick', (column: string, direction: TableSortDirection) => ({
+    column,
+    direction,
+  }));
+
+  return (
+    <TableForTest
+      {...props}
+      sort={sort && {
+        ...sort,
+        onClick: onSortClick,
+      }}
+    />
+  );
+});

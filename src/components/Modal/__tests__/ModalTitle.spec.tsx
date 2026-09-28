@@ -1,10 +1,8 @@
-import React from 'react';
 import {
   expect,
   propTests,
   test,
 } from '../../../../tests/playwright';
-import { ModalTitleForTest } from './ModalTitle.story';
 import { contentPropTest } from './_propTests/contentPropTest';
 
 test.describe('ModalTitle', () => {
@@ -26,11 +24,7 @@ test.describe('ModalTitle', () => {
           await onBeforeTest(page);
         }
 
-        const component = await mount(
-          <ModalTitleForTest
-            {...props}
-          />,
-        );
+        const component = await mount('ModalTitle/ModalTitleForTest', props);
 
         if (onBeforeSnapshot) {
           await onBeforeSnapshot(page, component);
@@ -46,21 +40,23 @@ test.describe('ModalTitle', () => {
     test('id', async ({ mount }) => {
       const testId = 'testId';
 
-      const component = await mount(
-        <ModalTitleForTest id={testId} />,
-      );
+      const component = await mount('ModalTitle/ModalTitleForTest', {
+        id: testId,
+      });
 
       expect(component.locator(`div[id="${testId}"]`)).toBeDefined();
     });
 
     test('title level', async ({ mount }) => {
-      const component = await mount(<ModalTitleForTest level={1} />);
+      const component = await mount('ModalTitle/ModalTitleForTest', {
+        level: 1,
+      });
 
       const title1 = component.getByText('Modal title');
       const nodeName1 = await title1.evaluate((element) => element.nodeName);
       expect(nodeName1).toBe('H1');
 
-      await component.update(<ModalTitleForTest level={2} />);
+      await component.update({ level: 2 });
 
       const title2 = component.getByText('Modal title');
       const nodeName2 = await title2.evaluate((element) => element.nodeName);

@@ -1,10 +1,8 @@
-import React from 'react';
 import {
   expect,
   propTests,
   test,
 } from '../../../../tests/playwright';
-import { AlertForTest } from './Alert.story';
 
 test.describe('Alert', () => {
   test.describe('visual', () => {
@@ -31,11 +29,7 @@ test.describe('Alert', () => {
           await onBeforeTest(page);
         }
 
-        const component = await mount(
-          <AlertForTest
-            {...props}
-          />,
-        );
+        const component = await mount('Alert/AlertForTest', props);
 
         if (onBeforeSnapshot) {
           await onBeforeSnapshot(page, component);
@@ -49,11 +43,9 @@ test.describe('Alert', () => {
 
   test.describe('non-visual', () => {
     test('id', async ({ mount }) => {
-      const component = await mount(
-        <AlertForTest
-          id="test-id"
-        />,
-      );
+      const component = await mount('Alert/AlertForTest', {
+        id: 'test-id',
+      });
 
       await expect(component).toHaveAttribute('id', 'test-id');
     });
@@ -61,33 +53,19 @@ test.describe('Alert', () => {
 
   test.describe('functionality', () => {
     test('calls onClose when close button clicked', async ({ mount }) => {
-      let clicked = false;
-      const component = await mount(
-        <AlertForTest
-          onClose={() => {
-            clicked = true;
-          }}
-        />,
-      );
+      const component = await mount('Alert/AlertSpyForTest');
       const closeButton = component.getByRole('button');
       await closeButton.click();
 
-      expect(clicked).toBeTruthy();
+      await expect.poll(() => component.getSpyValue('onClose')).toContain(true);
     });
 
     test('calls onClose when Enter pressed on close button', async ({ mount }) => {
-      let clicked = false;
-      const component = await mount(
-        <AlertForTest
-          onClose={() => {
-            clicked = true;
-          }}
-        />,
-      );
+      const component = await mount('Alert/AlertSpyForTest');
       const closeButton = component.getByRole('button');
       await closeButton.press('Enter');
 
-      expect(clicked).toBeTruthy();
+      await expect.poll(() => component.getSpyValue('onClose')).toContain(true);
     });
   });
 });

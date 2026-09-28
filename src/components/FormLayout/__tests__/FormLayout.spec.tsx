@@ -1,13 +1,8 @@
-import React from 'react';
 import {
   expect,
   propTests,
   test,
 } from '../../../../tests/playwright';
-import {
-  FormLayoutForTest,
-  FormLayoutWithoutChildrenForTest,
-} from './FormLayout.story';
 import { labelWidthPropTest } from './_propTests/labelWidthPropTest';
 import { fieldLayoutPropTest } from './_propTests/fieldLayoutPropTest';
 
@@ -38,7 +33,7 @@ test.describe('FormLayout', () => {
             await onBeforeTest(page);
           }
 
-          const component = await mount(<FormLayoutForTest {...props} />);
+          const component = await mount('FormLayout/FormLayoutForTest', props);
 
           if (onBeforeSnapshot) {
             await onBeforeSnapshot(page, component);
@@ -54,9 +49,9 @@ test.describe('FormLayout', () => {
       test('pass id into root component', async ({ mount }) => {
         const id = 'custom-id';
 
-        const component = await mount(
-          <FormLayoutForTest id={id} />,
-        );
+        const component = await mount('FormLayout/FormLayoutForTest', {
+          id,
+        });
 
         const root = await component.getAttribute('id');
         expect(root).toBe(id);
@@ -65,9 +60,7 @@ test.describe('FormLayout', () => {
 
     test.describe('functionality', () => {
       test('render null when no children provided', async ({ mount }) => {
-        const component = await mount(
-          <FormLayoutWithoutChildrenForTest />,
-        );
+        const component = await mount('FormLayout/FormLayoutWithoutChildrenForTest');
 
         const innerHTML = await component.innerHTML();
         expect(innerHTML).toBe('');

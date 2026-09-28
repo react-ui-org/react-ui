@@ -1,11 +1,9 @@
-import React from 'react';
 import {
   expect,
   propTests,
   mixPropTests,
   test,
 } from '../../../../tests/playwright';
-import { TabItemForTest } from './TabItem.story';
 import { isActivePropTest } from './_propTests/tabItem/isActivePropTest';
 
 test.describe('TabItem', () => {
@@ -33,9 +31,7 @@ test.describe('TabItem', () => {
         if (onBeforeTest) {
           await onBeforeTest(page);
         }
-        const component = await mount(
-          <TabItemForTest {...props} />,
-        );
+        const component = await mount('TabItem/TabItemForTest', props);
         if (onBeforeSnapshot) {
           await onBeforeSnapshot(page, component);
         }
@@ -50,12 +46,10 @@ test.describe('TabItem', () => {
       const id = 'test-id';
       const label = 'label';
 
-      const component = await mount(
-        <TabItemForTest
-          id={id}
-          label={label}
-        />,
-      );
+      const component = await mount('TabItem/TabItemForTest', {
+        id,
+        label,
+      });
 
       expect(component.locator(`li[id=${id}]`)).toBeDefined();
       await expect(component.getByRole('link')).toHaveAttribute('id', `${id}__link`);
@@ -65,51 +59,36 @@ test.describe('TabItem', () => {
 
   test.describe('functionality', () => {
     test('call on click callback', async ({ mount }) => {
-      let clicked = false;
       const label = 'label';
 
-      const component = await mount(
-        <TabItemForTest
-          label={label}
-          onClick={() => {
-            clicked = true;
-          }}
-        />,
-      );
+      const component = await mount('TabItem/TabItemSpyForTest', {
+        label,
+      });
 
       const link = component.getByRole('link');
       await link.click({ force: true });
-      expect(clicked).toBe(true);
+      await expect.poll(() => component.getSpyValue('onClick')).toContain(true);
     });
 
     test('call on click callback when Enter pressed', async ({ mount }) => {
-      let clicked = false;
       const label = 'label';
 
-      const component = await mount(
-        <TabItemForTest
-          label={label}
-          onClick={() => {
-            clicked = true;
-          }}
-        />,
-      );
+      const component = await mount('TabItem/TabItemSpyForTest', {
+        label,
+      });
 
       const link = component.getByRole('link');
       await link.focus();
       await link.press('Enter');
-      expect(clicked).toBe(true);
+      await expect.poll(() => component.getSpyValue('onClick')).toContain(true);
     });
 
     test('calls native redirect when clicked on', async ({ mount }) => {
       const testHref = '/test/custom/uri';
 
-      const component = await mount(
-        <TabItemForTest
-          href={testHref}
-          onClick={() => {}}
-        />,
-      );
+      const component = await mount('TabItem/TabItemSpyForTest', {
+        href: testHref,
+      });
 
       const link = component.getByRole('link');
       const page = component.page();
