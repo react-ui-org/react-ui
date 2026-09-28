@@ -33,8 +33,15 @@ Jest unit/component tests are co-located in a component's `__tests__/` folder.
 `.spec.tsx` specs use a table-driven pattern:
 
 * Import `test` and `expect` from `tests/playwright`, never directly from
-  `@playwright/experimental-ct-react`; its `mount` moves the pointer out of the
-  viewport so components do not get into `:hover` state.
+  `@playwright/test`; its `mount` moves the pointer out of the viewport so
+  components do not get into `:hover` state.
+* Mount stories by ID (`<StoryFile>/<StoryExport>`, e.g.
+  `Button/ButtonForTest`) through the Playwright Component Testing page in
+  [tests/playwright/ct/](../../tests/playwright/ct), passing plain data props
+  only. Describe elements passed in props (icons, nodes) with `element()` from
+  `tests/playwright`. Callbacks are asserted through `*SpyForTest` stories
+  wrapped with `withSpy` that register the callbacks with `useSpy`; specs read
+  the recorded values with `expect.poll(() => component.getSpyValue(name))`.
 * Import arrays of test cases from `_propTests/` directories and from shared
   `tests/playwright/propTests/`.
 * Each test case is `{ name, props, onBeforeTest?, onBeforeSnapshot? }`; custom
@@ -47,10 +54,13 @@ Jest unit/component tests are co-located in a component's `__tests__/` folder.
   `<ComponentName>.spec.tsx-snapshots/`.
 
 **Story components** (`.story.tsx`) wrap the real component in a minimal fixture
-(sometimes inside a context provider) and are imported only by `.spec.tsx`
-files. Type them with the real component props; when the story fills in a
-default for a required prop, use `StoryProps<Props, 'key'>` from
-`tests/playwright` instead of hand-written `Omit & { key?: … }` types. Naming convention: `<ComponentName>ForTest`, `<ComponentName>ForRefTest`,
+(sometimes inside a context provider) and are mounted by ID from `.spec.tsx`
+files. They run in the browser, so they import `withSpy` / `useSpy` from
+`tests/playwright/utils/spy`, not from `tests/playwright`. Type them with the
+real component props; when the story fills in a default for a required prop, use
+`StoryProps<Props, 'key'>` from `tests/playwright` instead of hand-written
+`Omit & { key?: … }` types. Naming convention: `<ComponentName>ForTest`,
+`<ComponentName>ForRefTest`, `<ComponentName>SpyForTest`,
 `<ComponentName>ForFormLayoutTests` — the FormLayout story component is always
 last.
 

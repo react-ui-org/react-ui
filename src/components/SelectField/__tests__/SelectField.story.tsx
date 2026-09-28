@@ -8,6 +8,10 @@ import { FormLayoutContext } from '../../FormLayout/FormLayoutContext';
 import { FormLayoutCustomFieldContext } from '../../FormLayout/FormLayoutCustomFieldContext';
 import { SelectField } from '..';
 import type { SelectFieldProps } from '..';
+import {
+  useSpy,
+  withSpy,
+} from '../../../../tests/playwright/utils/spy';
 import type { StoryProps } from '../../../../tests/playwright';
 
 type SelectFieldForTestProps = StoryProps<SelectFieldProps, 'label' | 'options'>;
@@ -116,3 +120,14 @@ export const SelectFieldForFormLayoutCustomFieldTests = ({
     />
   </FormLayoutCustomFieldContext.Provider>
 );
+
+export const SelectFieldSpyForTest = withSpy((props: SelectFieldForTestProps) => {
+  const onChange = useSpy('onChange', () => true);
+
+  return (
+    <SelectFieldForTest
+      onChange={onChange}
+      {...props}
+    />
+  );
+});

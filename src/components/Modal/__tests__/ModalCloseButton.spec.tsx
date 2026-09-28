@@ -1,13 +1,8 @@
-import React from 'react';
 import {
   expect,
   propTests,
   test,
 } from '../../../../tests/playwright';
-import {
-  ModalCloseButtonForRefTest,
-  ModalCloseButtonForTest,
-} from './ModalCloseButton.story';
 
 test.describe('ModalCloseButton', () => {
   test.describe('visual', () => {
@@ -28,11 +23,7 @@ test.describe('ModalCloseButton', () => {
           await onBeforeTest(page);
         }
 
-        const component = await mount(
-          <ModalCloseButtonForTest
-            {...props}
-          />,
-        );
+        const component = await mount('ModalCloseButton/ModalCloseButtonForTest', props);
 
         if (onBeforeSnapshot) {
           await onBeforeSnapshot(page, component);
@@ -46,21 +37,19 @@ test.describe('ModalCloseButton', () => {
 
   test.describe('non-visual', () => {
     test('ref', async ({ mount }) => {
-      const component = await mount(
-        <ModalCloseButtonForRefTest
-          testRefAttrName="test-ref"
-          testRefAttrValue="test-ref-value"
-        />,
-      );
+      const component = await mount('ModalCloseButton/ModalCloseButtonForRefTest', {
+        testRefAttrName: 'test-ref',
+        testRefAttrValue: 'test-ref-value',
+      });
 
       await expect(component.getByRole('button')).toHaveAttribute('test-ref', 'test-ref-value');
     });
     test('id', async ({ mount }) => {
       const testId = 'testId';
 
-      const component = await mount(
-        <ModalCloseButtonForTest id={testId} />,
-      );
+      const component = await mount('ModalCloseButton/ModalCloseButtonForTest', {
+        id: testId,
+      });
 
       await expect(component.getByRole('button')).toHaveAttribute('id', testId);
     });

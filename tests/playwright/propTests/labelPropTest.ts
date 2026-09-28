@@ -1,4 +1,4 @@
-import React from 'react';
+import { element } from '../utils/element';
 import type { PropTests } from '../types';
 
 export const labelPropTest: PropTests = [
@@ -8,6 +8,6 @@ export const labelPropTest: PropTests = [
   },
   {
     name: 'label:node[normal]',
-    props: { label: <div>Label as node</div> },
+    props: { label: element('div', { children: 'Label as node' }) },
   },
 ];

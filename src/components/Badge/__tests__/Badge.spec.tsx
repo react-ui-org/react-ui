@@ -1,11 +1,9 @@
-import React from 'react';
 import {
   expect,
   mixPropTests,
   propTests,
   test,
 } from '../../../../tests/playwright';
-import { BadgeForTest } from './Badge.story';
 import { labelPropTest } from './_propTests/labelPropTest';
 import { priorityPropTest } from './_propTests/priorityPropTest';
 
@@ -35,11 +33,7 @@ test.describe('Badge', () => {
           await onBeforeTest(page);
         }
 
-        const component = await mount(
-          <BadgeForTest
-            {...props}
-          />,
-        );
+        const component = await mount('Badge/BadgeForTest', props);
 
         if (onBeforeSnapshot) {
           await onBeforeSnapshot(page, component);
@@ -53,11 +47,9 @@ test.describe('Badge', () => {
 
   test.describe('non-visual', () => {
     test('id', async ({ mount }) => {
-      const component = await mount(
-        <BadgeForTest
-          id="test-id"
-        />,
-      );
+      const component = await mount('Badge/BadgeForTest', {
+        id: 'test-id',
+      });
 
       await expect(component).toHaveAttribute('id', 'test-id');
     });

@@ -8,6 +8,10 @@ import {
   ModalTitle,
 } from '..';
 import type { ModalProps } from '..';
+import {
+  useSpy,
+  withSpy,
+} from '../../../../tests/playwright/utils/spy';
 
 type ModalForTestProps = ModalProps;
 type ModalWithInputsAndCallbackForTestProps = ModalForTestProps & {
@@ -191,3 +195,16 @@ export const ModalWithButtonsAndWithoutInputsForTest = ({
     </div>
   );
 };
+
+export const ModalWithInputsSpyForTest = withSpy((props: ModalWithInputsAndCallbackForTestProps) => {
+  const closeButtonOnClick = useSpy('closeButtonOnClick', () => true);
+  const primaryButtonOnClick = useSpy('primaryButtonOnClick', () => true);
+
+  return (
+    <ModalWithInputsForTest
+      closeButtonOnClick={closeButtonOnClick}
+      primaryButtonOnClick={primaryButtonOnClick}
+      {...props}
+    />
+  );
+});

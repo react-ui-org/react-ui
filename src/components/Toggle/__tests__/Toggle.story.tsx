@@ -9,6 +9,10 @@ import {
 } from '../../FormLayout';
 import { Toggle } from '..';
 import type { ToggleProps } from '..';
+import {
+  useSpy,
+  withSpy,
+} from '../../../../tests/playwright/utils/spy';
 import type { StoryProps } from '../../../../tests/playwright';
 
 type ToggleForTestProps = StoryProps<ToggleProps, 'label'>;
@@ -82,3 +86,14 @@ export const ToggleForFormLayoutTests = ({
     </FormLayoutContext.Provider>
   );
 };
+
+export const ToggleSpyForTest = withSpy((props: ToggleForTestProps) => {
+  const onChange = useSpy('onChange', () => true);
+
+  return (
+    <ToggleForTest
+      onChange={onChange}
+      {...props}
+    />
+  );
+});

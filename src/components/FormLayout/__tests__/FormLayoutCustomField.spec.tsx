@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   expect,
   test,
@@ -6,7 +5,6 @@ import {
 import { customFieldValidationStatesPropTest } from './_propTests/customFieldTests/customFieldValidationStatesPropTest';
 import { customFieldLabelAlignmentPropTest } from './_propTests/customFieldTests/customFieldLabelAlignmentPropTest';
 import { customFieldRequiredPropTest } from './_propTests/customFieldTests/customFieldRequiredPropTest';
-import { FormLayoutCustomFieldForTest } from './FormLayoutCustomField.story';
 import { customFieldValidationStatesDisabledPropTest } from './_propTests/customFieldTests/customFieldValidationStatesDisabledPropTest';
 
 test.describe('FormLayoutCustomField', () => {
@@ -33,13 +31,11 @@ test.describe('FormLayoutCustomField', () => {
             await onBeforeTest(page);
           }
 
-          const component = await mount(
-            <FormLayoutCustomFieldForTest
-              {...props}
-              customFieldLayoutProps={customFieldLayoutProps}
-              customFieldProps={customFieldProps}
-            />,
-          );
+          const component = await mount('FormLayoutCustomField/FormLayoutCustomFieldForTest', {
+            ...props,
+            customFieldLayoutProps,
+            customFieldProps,
+          });
 
           if (onBeforeSnapshot) {
             await onBeforeSnapshot(page, component);
@@ -55,18 +51,16 @@ test.describe('FormLayoutCustomField', () => {
       test('pass id into custom field', async ({ mount }) => {
         const id = 'custom-id';
 
-        const component = await mount(
-          <FormLayoutCustomFieldForTest
-            customFieldLayoutProps={{
-              id,
-              label: 'CustomLayoutFieldLabel',
-            }}
-            customFieldProps={{
-              label: 'CustomFieldLabel',
-            }}
-            fieldLayout="horizontal"
-          />,
-        );
+        const component = await mount('FormLayoutCustomField/FormLayoutCustomFieldForTest', {
+          customFieldLayoutProps: {
+            id,
+            label: 'CustomLayoutFieldLabel',
+          },
+          customFieldProps: {
+            label: 'CustomFieldLabel',
+          },
+          fieldLayout: 'horizontal',
+        });
 
         await expect(component.locator(`div[id=${id}]`)).not.toBeEmpty();
         await expect(component.locator(`div[id=${id}__label]`)).not.toBeEmpty();
@@ -77,18 +71,16 @@ test.describe('FormLayoutCustomField', () => {
         const id = 'custom-id';
         const labelForId = 'custom-labelForId';
 
-        const component = await mount(
-          <FormLayoutCustomFieldForTest
-            customFieldLayoutProps={{
-              id,
-              label: 'CustomFieldLabel',
-              labelForId,
-            }}
-            customFieldProps={{
-              label: 'CustomFieldLabel',
-            }}
-          />,
-        );
+        const component = await mount('FormLayoutCustomField/FormLayoutCustomFieldForTest', {
+          customFieldLayoutProps: {
+            id,
+            label: 'CustomFieldLabel',
+            labelForId,
+          },
+          customFieldProps: {
+            label: 'CustomFieldLabel',
+          },
+        });
 
         await expect(component.locator(`label[id=${id}__label][for=${labelForId}]`)).not.toBeEmpty();
       });
@@ -96,7 +88,7 @@ test.describe('FormLayoutCustomField', () => {
 
     test.describe('functionality', () => {
       test('render null when no children to custom field provided', async ({ mount }) => {
-        const component = await mount(<FormLayoutCustomFieldForTest />);
+        const component = await mount('FormLayoutCustomField/FormLayoutCustomFieldForTest');
 
         const numberOfInputComponents = await component.getByRole('textbox').count();
         expect(numberOfInputComponents).toBe(2);

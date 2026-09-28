@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   expect,
   mixPropTests,
@@ -6,12 +5,6 @@ import {
   test,
 } from '../../../../tests/playwright';
 import { partialDisabledOptionsPropTest } from './_propTests/partialDisabledOptionsPropTest';
-import type { RadioForFormLayoutTestsProps } from './Radio.story';
-import {
-  RadioForFormLayoutLabelWidthTests,
-  RadioForFormLayoutTests,
-  RadioForTest,
-} from './Radio.story';
 
 const options = [
   {
@@ -75,11 +68,7 @@ test.describe('Radio', () => {
             await onBeforeTest(page);
           }
 
-          const component = await mount(
-            <RadioForTest
-              {...props}
-            />,
-          );
+          const component = await mount('Radio/RadioForTest', props);
 
           if (onBeforeSnapshot) {
             await onBeforeSnapshot(page, component);
@@ -96,13 +85,11 @@ test.describe('Radio', () => {
         const radioId = 'radioId';
         const label = 'radioLabel';
 
-        const component = await mount(
-          <RadioForTest
-            id={radioId}
-            label={label}
-            options={options}
-          />,
-        );
+        const component = await mount('Radio/RadioForTest', {
+          id: radioId,
+          label,
+          options,
+        });
 
         await expect(component).toHaveAttribute('id', radioId);
         await expect(component.getByText(label).first()).toHaveAttribute('id', `${radioId}__label`);
@@ -121,38 +108,25 @@ test.describe('Radio', () => {
 
     test.describe('functionality', () => {
       test('calls synthetic event onChange()', async ({ mount }) => {
-        let changeCalled = false;
-
-        const component = await mount(
-          <RadioForTest
-            onChange={() => {
-              changeCalled = true;
-            }}
-            options={options}
-          />,
-        );
+        const component = await mount('Radio/RadioSpyForTest', {
+          options,
+        });
 
         await component.getByText(options[1].label).click({ force: true });
-        expect(changeCalled).toBeTruthy();
+        await expect.poll(() => component.getSpyValue('onChange')).toContain(true);
       });
       test('check on space press when focused', async ({ mount }) => {
-        let changeCalled = false;
         const testId = 'testId';
 
-        const component = await mount(
-          <RadioForTest
-            id={testId}
-            onChange={() => {
-              changeCalled = true;
-            }}
-            options={options}
-          />,
-        );
+        const component = await mount('Radio/RadioSpyForTest', {
+          id: testId,
+          options,
+        });
 
         const input = component.locator(`input[id=${testId}__item__${options[1].key}]`);
         await input.focus();
         await input.press('Space');
-        expect(changeCalled).toBeTruthy();
+        await expect.poll(() => component.getSpyValue('onChange')).toContain(true);
       });
     });
   });
@@ -160,7 +134,7 @@ test.describe('Radio', () => {
   test.describe('formLayout', () => {
     test.describe('visual', () => {
       test('labelWidth:string=100px', async ({ mount }) => {
-        const component = await mount(<RadioForFormLayoutLabelWidthTests />);
+        const component = await mount('Radio/RadioForFormLayoutLabelWidthTests');
 
         const screenshot = await component.screenshot();
         expect(screenshot).toMatchSnapshot();
@@ -182,11 +156,7 @@ test.describe('Radio', () => {
             await onBeforeTest(page);
           }
 
-          const component = await mount(
-            <RadioForFormLayoutTests
-              {...props as unknown as RadioForFormLayoutTestsProps}
-            />,
-          );
+          const component = await mount('Radio/RadioForFormLayoutTests', props);
 
           if (onBeforeSnapshot) {
             await onBeforeSnapshot(page, component);
