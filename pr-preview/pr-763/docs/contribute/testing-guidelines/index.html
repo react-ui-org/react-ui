@@ -3102,33 +3102,128 @@ to the spec. Specs import <code>test</code> and <code>expect</code> from <code>t
 <code>mount</code> fixture navigates to the Playwright Component Testing page in
 <code>tests/playwright/ct/</code> (served by webpack-dev-server, which Playwright
 starts automatically) and mounts a story by its ID, which is the story file
-name followed by the export name, with plain data props:</p>
-<pre class="highlight"><code class="language-ts">import {
-  expect,
-  test,
-} from '../../../../tests/playwright';
-
-test('size', async ({ mount }) =&gt; {
-  const component = await mount('Button/ButtonForTest', { size: 'small' });
-
-  expect(await component.screenshot()).toMatchSnapshot();
-});</code></pre>
+name followed by the export name, with plain data props.</p>
 <p>Props are sent to the browser as data, so JSX cannot be passed to a story.
 Describe elements passed in props with <code>element()</code> from <code>tests/playwright</code>,
 e.g. <code>element('TestIcon')</code> or <code>element('div', { children: 'Label' })</code>.</p>
 <p>Callbacks cannot be passed to a story either. To assert them, add
 a <code>*SpyForTest</code> story wrapped with <code>withSpy</code> that registers the callbacks with
-<code>useSpy</code>, and read the recorded values in the spec with <code>getSpyValue</code>:</p>
-<pre class="highlight"><code class="language-tsx">export const ButtonSpyForTest = withSpy((props: ButtonForTestProps) =&gt; {
-  const onClick = useSpy('onClick', () =&gt; true);
-
-  return &lt;ButtonForTest onClick={onClick} {...props} /&gt;;
-});</code></pre>
-<pre class="highlight"><code class="language-ts">await component.getByRole('button').click();
-await expect.poll(() =&gt; component.getSpyValue('onClick')).toEqual([true]);</code></pre>
-<p><code>useSpy(name, select)</code> records <code>select(...args)</code> of every call, the first
+<code>useSpy</code>, and read the recorded values in the spec with <code>getSpyValue</code>.
+<code>useSpy(name, select)</code> records <code>select(...args)</code> of every call, the first
 argument by default. The values are recorded asynchronously, hence
 <code>expect.poll()</code>.</p>
+<p>Visual tests are table-driven. Each test case is
+<code>{ name, props, onBeforeTest?, onBeforeSnapshot? }</code>. Reusable test cases are
+available in <code>propTests</code> from <code>tests/playwright</code>, component specific ones live
+in the <code>_propTests/</code> directory next to the spec. <code>mixPropTests()</code> combines
+multiple arrays of test cases into all their combinations. Snapshots are stored
+next to the spec in <code>&lt;ComponentName&gt;.spec.tsx-snapshots/</code>.</p>
+<p>Story file <code>src/components/Button/__tests__/Button.story.tsx</code>:</p>
+<pre class="highlight"><code class="language-tsx">import React from 'react';
+import { Button } from '..';
+import type { ButtonProps } from '..';
+import {
+  useSpy,
+  withSpy,
+} from '../../../../tests/playwright/utils/spy';
+import type { StoryProps } from '../../../../tests/playwright';
+
+type ButtonForTestProps = StoryProps&lt;ButtonProps, 'label'&gt;;
+
+export const ButtonForTest = ({
+  label = 'Button',
+  ...props
+}: ButtonForTestProps) =&gt; (
+  &lt;Button
+    label={label}
+    {...props}
+  /&gt;
+);
+
+export const ButtonSpyForTest = withSpy((props: ButtonForTestProps) =&gt; {
+  const onClick = useSpy('onClick', () =&gt; true);
+
+  return (
+    &lt;ButtonForTest
+      onClick={onClick}
+      {...props}
+    /&gt;
+  );
+});</code></pre>
+<p>Spec file <code>src/components/Button/__tests__/Button.spec.tsx</code>:</p>
+<pre class="highlight"><code class="language-ts">import {
+  element,
+  expect,
+  mixPropTests,
+  propTests,
+  test,
+} from '../../../../tests/playwright';
+
+test.describe('Button', () =&gt; {
+  test.describe('visual', () =&gt; {
+    [
+      ...propTests.defaultComponentPropTest,
+      ...propTests.sizePropTest,
+      ...mixPropTests([
+        propTests.actionColorPropTest,
+        propTests.priorityPropTest,
+      ]),
+    ].forEach(({
+      name,
+      onBeforeTest,
+      onBeforeSnapshot,
+      props,
+    }) =&gt; {
+      test(name, async ({
+        mount,
+        page,
+      }) =&gt; {
+        if (onBeforeTest) {
+          await onBeforeTest(page);
+        }
+
+        const component = await mount('Button/ButtonForTest', props);
+
+        if (onBeforeSnapshot) {
+          await onBeforeSnapshot(page, component);
+        }
+
+        const screenshot = await component.screenshot();
+        expect(screenshot).toMatchSnapshot();
+      });
+    });
+  });
+
+  test.describe('non-visual', () =&gt; {
+    test('id', async ({ mount }) =&gt; {
+      const component = await mount('Button/ButtonForTest', {
+        id: 'testId',
+      });
+
+      await expect(component).toHaveAttribute('id', 'testId');
+    });
+  });
+
+  test.describe('functionality', () =&gt; {
+    test('calls onClick when clicked', async ({ mount }) =&gt; {
+      const component = await mount('Button/ButtonSpyForTest');
+      await component.getByRole('button').click();
+
+      await expect.poll(() =&gt; component.getSpyValue('onClick')).toEqual([true]);
+    });
+
+    test('is disabled when feedbackIcon is set', async ({ mount }) =&gt; {
+      const component = await mount('Button/ButtonSpyForTest', {
+        feedbackIcon: element('span', { children: 'Placeholder' }),
+      });
+      const button = component.getByRole('button');
+      await button.click({ force: true });
+
+      await expect(button).toBeDisabled();
+      await expect.poll(() =&gt; component.getSpyValue('onClick')).toEqual([]);
+    });
+  });
+});</code></pre>
 <h4 id="opening-test-report">Opening Test Report</h4>
 <p>After running Playwright tests, test report can be served by using
 the following command:</p>
