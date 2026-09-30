@@ -1,18 +1,9 @@
-import React from 'react';
 import {
   expect,
   mixPropTests,
   propTests,
   test,
 } from '../../../../tests/playwright';
-import type { TextAreaForFormLayoutTestsProps } from './TextArea.story';
-import {
-  TextAreaForFormLayoutCustomFieldTests,
-  TextAreaForFormLayoutLabelWidthTests,
-  TextAreaForFormLayoutTests,
-  TextAreaForRefTest,
-  TextAreaForTest,
-} from './TextArea.story';
 
 test.describe('TextArea', () => {
   test.describe('base', () => {
@@ -51,11 +42,7 @@ test.describe('TextArea', () => {
             await onBeforeTest(page);
           }
 
-          const component = await mount(
-            <TextAreaForTest
-              {...props}
-            />,
-          );
+          const component = await mount('TextArea/TextAreaForTest', props);
 
           if (onBeforeSnapshot) {
             await onBeforeSnapshot(page, component);
@@ -74,14 +61,12 @@ test.describe('TextArea', () => {
         const testHelpText = 'testHelpText';
         const testValidationText = 'testValidationText';
 
-        const component = await mount(
-          <TextAreaForTest
-            helpText={testHelpText}
-            id={testId}
-            label={testLabel}
-            validationText={testValidationText}
-          />,
-        );
+        const component = await mount('TextArea/TextAreaForTest', {
+          helpText: testHelpText,
+          id: testId,
+          label: testLabel,
+          validationText: testValidationText,
+        });
 
         await expect(component).toHaveAttribute('id', `${testId}__label`);
         await expect(component.getByText(testLabel)).toHaveAttribute('id', `${testId}__labelText`);
@@ -91,12 +76,10 @@ test.describe('TextArea', () => {
       });
 
       test('ref', async ({ mount }) => {
-        const component = await mount(
-          <TextAreaForRefTest
-            testRefAttrName="test-ref"
-            testRefAttrValue="test-ref-value"
-          />,
-        );
+        const component = await mount('TextArea/TextAreaForRefTest', {
+          testRefAttrName: 'test-ref',
+          testRefAttrValue: 'test-ref-value',
+        });
 
         await expect(component.getByRole('textbox')).toHaveAttribute('test-ref', 'test-ref-value');
       });
@@ -104,20 +87,14 @@ test.describe('TextArea', () => {
 
     test.describe('functionality', () => {
       test('calls synthetic event onChange() on typing', async ({ mount }) => {
-        let clickedCount = 0;
         const value = 'testValue';
 
-        const component = await mount(
-          <TextAreaForTest
-            onChange={() => {
-              clickedCount += 1;
-            }}
-            value={value}
-          />,
-        );
+        const component = await mount('TextArea/TextAreaSpyForTest', {
+          value,
+        });
 
         await component.getByRole('textbox').pressSequentially(value);
-        expect(clickedCount).toBe(value.length);
+        await expect.poll(async () => (await component.getSpyValue('onChange')).length).toBe(value.length);
       });
     });
   });
@@ -125,7 +102,7 @@ test.describe('TextArea', () => {
   test.describe('formLayout', () => {
     test.describe('visual', () => {
       test('labelWidth:string=100px', async ({ mount }) => {
-        const component = await mount(<TextAreaForFormLayoutLabelWidthTests />);
+        const component = await mount('TextArea/TextAreaForFormLayoutLabelWidthTests');
 
         const screenshot = await component.screenshot();
         expect(screenshot).toMatchSnapshot();
@@ -147,11 +124,7 @@ test.describe('TextArea', () => {
             await onBeforeTest(page);
           }
 
-          const component = await mount(
-            <TextAreaForFormLayoutTests
-              {...props as unknown as TextAreaForFormLayoutTestsProps}
-            />,
-          );
+          const component = await mount('TextArea/TextAreaForFormLayoutTests', props);
 
           if (onBeforeSnapshot) {
             await onBeforeSnapshot(page, component);
@@ -167,7 +140,7 @@ test.describe('TextArea', () => {
   test.describe('formLayoutCustomField', () => {
     test.describe('visual', () => {
       test('label:hidden', async ({ mount }) => {
-        const component = await mount(<TextAreaForFormLayoutCustomFieldTests />);
+        const component = await mount('TextArea/TextAreaForFormLayoutCustomFieldTests');
 
         const screenshot = await component.screenshot();
         expect(screenshot).toMatchSnapshot();

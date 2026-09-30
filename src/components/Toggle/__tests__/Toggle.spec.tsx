@@ -1,17 +1,9 @@
-import React from 'react';
 import {
   expect,
   mixPropTests,
   propTests,
   test,
 } from '../../../../tests/playwright';
-import type { ToggleForFormLayoutTestsProps } from './Toggle.story';
-import {
-  ToggleForFormLayoutLabelWidthTests,
-  ToggleForFormLayoutTests,
-  ToggleForRefTest,
-  ToggleForTest,
-} from './Toggle.story';
 
 test.describe('Toggle', () => {
   test.describe('base', () => {
@@ -53,11 +45,7 @@ test.describe('Toggle', () => {
             await onBeforeTest(page);
           }
 
-          const component = await mount(
-            <ToggleForTest
-              {...props}
-            />,
-          );
+          const component = await mount('Toggle/ToggleForTest', props);
 
           if (onBeforeSnapshot) {
             await onBeforeSnapshot(page, component);
@@ -76,14 +64,12 @@ test.describe('Toggle', () => {
         const testHelpText = 'testHelpText';
         const testValidationText = 'testValidationText';
 
-        const component = await mount(
-          <ToggleForTest
-            helpText={testHelpText}
-            id={testId}
-            label={testLabel}
-            validationText={testValidationText}
-          />,
-        );
+        const component = await mount('Toggle/ToggleForTest', {
+          helpText: testHelpText,
+          id: testId,
+          label: testLabel,
+          validationText: testValidationText,
+        });
 
         await expect(component).toHaveAttribute('id', `${testId}__label`);
         await expect(component.getByText(testLabel)).toHaveAttribute('id', `${testId}__labelText`);
@@ -93,12 +79,10 @@ test.describe('Toggle', () => {
       });
 
       test('ref', async ({ mount }) => {
-        const component = await mount(
-          <ToggleForRefTest
-            testRefAttrName="test-ref"
-            testRefAttrValue="test-ref-value"
-          />,
-        );
+        const component = await mount('Toggle/ToggleForRefTest', {
+          testRefAttrName: 'test-ref',
+          testRefAttrValue: 'test-ref-value',
+        });
 
         await expect(component.getByRole('checkbox')).toHaveAttribute('test-ref', 'test-ref-value');
       });
@@ -106,35 +90,19 @@ test.describe('Toggle', () => {
 
     test.describe('functionality', () => {
       test('calls synthetic event onChange() on toggling', async ({ mount }) => {
-        let called = false;
-
-        const component = await mount(
-          <ToggleForTest
-            onChange={() => {
-              called = true;
-            }}
-          />,
-        );
+        const component = await mount('Toggle/ToggleSpyForTest');
 
         await component.getByRole('checkbox').click({ force: true });
-        expect(called).toBeTruthy();
+        await expect.poll(() => component.getSpyValue('onChange')).toContain(true);
       });
 
       test('toggle on space press', async ({ mount }) => {
-        let called = false;
-
-        const component = await mount(
-          <ToggleForTest
-            onChange={() => {
-              called = true;
-            }}
-          />,
-        );
+        const component = await mount('Toggle/ToggleSpyForTest');
 
         const input = component.getByRole('checkbox');
         await input.focus();
         await input.press('Space');
-        expect(called).toBeTruthy();
+        await expect.poll(() => component.getSpyValue('onChange')).toContain(true);
       });
     });
   });
@@ -142,7 +110,7 @@ test.describe('Toggle', () => {
   test.describe('formLayout', () => {
     test.describe('visual', () => {
       test('labelWidth:string=100px', async ({ mount }) => {
-        const component = await mount(<ToggleForFormLayoutLabelWidthTests />);
+        const component = await mount('Toggle/ToggleForFormLayoutLabelWidthTests');
 
         const screenshot = await component.screenshot();
         expect(screenshot).toMatchSnapshot();
@@ -164,11 +132,7 @@ test.describe('Toggle', () => {
             await onBeforeTest(page);
           }
 
-          const component = await mount(
-            <ToggleForFormLayoutTests
-              {...props as unknown as ToggleForFormLayoutTestsProps}
-            />,
-          );
+          const component = await mount('Toggle/ToggleForFormLayoutTests', props);
 
           if (onBeforeSnapshot) {
             await onBeforeSnapshot(page, component);

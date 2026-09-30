@@ -8,6 +8,10 @@ import { FormLayoutContext } from '../../FormLayout/FormLayoutContext';
 import { FormLayoutCustomFieldContext } from '../../FormLayout/FormLayoutCustomFieldContext';
 import { TextArea } from '..';
 import type { TextAreaProps } from '..';
+import {
+  useSpy,
+  withSpy,
+} from '../../../../tests/playwright/utils/spy';
 import type { StoryProps } from '../../../../tests/playwright';
 
 type TextAreaForTestProps = StoryProps<TextAreaProps, 'label'>;
@@ -93,3 +97,14 @@ export const TextAreaForFormLayoutCustomFieldTests = ({
     />
   </FormLayoutCustomFieldContext.Provider>
 );
+
+export const TextAreaSpyForTest = withSpy((props: TextAreaForTestProps) => {
+  const onChange = useSpy('onChange', () => true);
+
+  return (
+    <TextAreaForTest
+      onChange={onChange}
+      {...props}
+    />
+  );
+});

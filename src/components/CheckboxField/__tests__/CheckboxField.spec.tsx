@@ -1,17 +1,9 @@
-import React from 'react';
 import {
   expect,
   mixPropTests,
   propTests,
   test,
 } from '../../../../tests/playwright';
-import type { CheckboxForFormLayoutTestsProps } from './CheckboxField.story';
-import {
-  CheckboxFieldForRefTest,
-  CheckboxFieldForTest,
-  CheckboxForFormLayoutLabelWidthTests,
-  CheckboxForFormLayoutTests,
-} from './CheckboxField.story';
 
 test.describe('CheckboxField', () => {
   test.describe('base', () => {
@@ -56,11 +48,7 @@ test.describe('CheckboxField', () => {
             await onBeforeTest(page);
           }
 
-          const component = await mount(
-            <CheckboxFieldForTest
-              {...props}
-            />,
-          );
+          const component = await mount('CheckboxField/CheckboxFieldForTest', props);
 
           if (onBeforeSnapshot) {
             await onBeforeSnapshot(page, component);
@@ -79,14 +67,12 @@ test.describe('CheckboxField', () => {
         const helpText = 'checkbox-helpText';
         const validationText = 'checkbox-validationText';
 
-        const component = await mount(
-          <CheckboxFieldForTest
-            helpText={helpText}
-            id={idValue}
-            label={label}
-            validationText={validationText}
-          />,
-        );
+        const component = await mount('CheckboxField/CheckboxFieldForTest', {
+          helpText,
+          id: idValue,
+          label,
+          validationText,
+        });
 
         await expect(component.getByRole('checkbox')).toHaveAttribute('id', idValue);
         await expect(component).toHaveAttribute('id', `${idValue}__label`);
@@ -96,12 +82,10 @@ test.describe('CheckboxField', () => {
       });
 
       test('ref', async ({ mount }) => {
-        const component = await mount(
-          <CheckboxFieldForRefTest
-            testRefAttrName="test-ref"
-            testRefAttrValue="test-ref-value"
-          />,
-        );
+        const component = await mount('CheckboxField/CheckboxFieldForRefTest', {
+          testRefAttrName: 'test-ref',
+          testRefAttrValue: 'test-ref-value',
+        });
 
         await expect(component.getByRole('checkbox')).toHaveAttribute('test-ref', 'test-ref-value');
       });
@@ -109,24 +93,14 @@ test.describe('CheckboxField', () => {
 
     test.describe('functionality', () => {
       test('calls synthetic event onChange()', async ({ mount }) => {
-        let changeCalled = false;
+        const component = await mount('CheckboxField/CheckboxFieldSpyForTest');
 
-        const component = await mount(
-          <CheckboxFieldForTest
-            onChange={() => {
-              changeCalled = true;
-            }}
-          />,
-        );
-
-        await component.click({ force: true });
-        expect(changeCalled).toBeTruthy();
+        await component.getByRole('checkbox').click({ force: true });
+        await expect.poll(() => component.getSpyValue('onChange')).toContain(true);
       });
 
       test('check on space press when focused', async ({ mount }) => {
-        const component = await mount(
-          <CheckboxFieldForTest />,
-        );
+        const component = await mount('CheckboxField/CheckboxFieldForTest');
 
         const input = component.getByRole('checkbox');
         await input.focus();
@@ -139,7 +113,7 @@ test.describe('CheckboxField', () => {
   test.describe('formLayout', () => {
     test.describe('visual', () => {
       test('labelWidth:string=100px', async ({ mount }) => {
-        const component = await mount(<CheckboxForFormLayoutLabelWidthTests />);
+        const component = await mount('CheckboxField/CheckboxForFormLayoutLabelWidthTests');
 
         const screenshot = await component.screenshot();
         expect(screenshot).toMatchSnapshot();
@@ -161,11 +135,7 @@ test.describe('CheckboxField', () => {
             await onBeforeTest(page);
           }
 
-          const component = await mount(
-            <CheckboxForFormLayoutTests
-              {...props as unknown as CheckboxForFormLayoutTestsProps}
-            />,
-          );
+          const component = await mount('CheckboxField/CheckboxForFormLayoutTests', props);
 
           if (onBeforeSnapshot) {
             await onBeforeSnapshot(page, component);

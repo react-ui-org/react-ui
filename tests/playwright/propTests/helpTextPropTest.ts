@@ -1,4 +1,4 @@
-import React from 'react';
+import { element } from '../utils/element';
 import type { PropTests } from '../types';
 
 export const helpTextPropTest: PropTests = [
@@ -12,6 +12,6 @@ export const helpTextPropTest: PropTests = [
   },
   {
     name: 'helpText:node[normal]',
-    props: { validationText: <div>Node help text</div> },
+    props: { validationText: element('div', { children: 'Node help text' }) },
   },
 ];

@@ -1,5 +1,7 @@
-import React from 'react';
-import { propTests } from '../../../../../tests/playwright';
+import {
+  element,
+  propTests,
+} from '../../../../../tests/playwright';
 import type {
   PropTest,
   PropTests,
@@ -27,16 +29,13 @@ export const prevArrowElementPropTest: PropTests = [
     },
     props: {
       arrows: true,
-      prevArrowElement: (
-        <div
-          style={{
-            background: 'red',
-            padding: '10px',
-          }}
-        >
-          Custom node arrow
-        </div>
-      ),
+      prevArrowElement: element('div', {
+        children: 'Custom node arrow',
+        style: {
+          background: 'red',
+          padding: '10px',
+        },
+      }),
     },
   },
   {

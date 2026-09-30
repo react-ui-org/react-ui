@@ -1,10 +1,9 @@
-import React from 'react';
-import { TestIcon } from '../components/TestIcon';
+import { element } from '../utils/element';
 import type { PropTests } from '../types';
 
 export const afterLabelPropTest: PropTests = [
   {
     name: 'afterLabel:node',
-    props: { afterLabel: <TestIcon /> },
+    props: { afterLabel: element('TestIcon') },
   },
 ];

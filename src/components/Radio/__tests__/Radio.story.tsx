@@ -3,6 +3,10 @@ import { Radio } from '..';
 import type { RadioProps } from '..';
 import { FormLayout } from '../../FormLayout';
 import { FormLayoutContext } from '../../FormLayout/FormLayoutContext';
+import {
+  useSpy,
+  withSpy,
+} from '../../../../tests/playwright/utils/spy';
 import type { StoryProps } from '../../../../tests/playwright';
 
 type RadioForTestProps = StoryProps<RadioProps, 'label' | 'options'>;
@@ -72,3 +76,14 @@ export const RadioForFormLayoutTests = ({
     </FormLayoutContext.Provider>
   );
 };
+
+export const RadioSpyForTest = withSpy((props: RadioForTestProps) => {
+  const onChange = useSpy('onChange', () => true);
+
+  return (
+    <RadioForTest
+      onChange={onChange}
+      {...props}
+    />
+  );
+});

@@ -1,10 +1,8 @@
-import React from 'react';
 import {
   expect,
   propTests,
   test,
 } from '../../../../tests/playwright';
-import { TextLinkForTest } from './TextLink.story';
 
 test.describe('TextLink', () => {
   const testHref = '/test/custom/uri';
@@ -26,11 +24,7 @@ test.describe('TextLink', () => {
           await onBeforeTest(page);
         }
 
-        const component = await mount(
-          <TextLinkForTest
-            {...props}
-          />,
-        );
+        const component = await mount('TextLink/TextLinkForTest', props);
 
         if (onBeforeSnapshot) {
           await onBeforeSnapshot(page, component);
@@ -44,9 +38,9 @@ test.describe('TextLink', () => {
 
   test.describe('non-visual', () => {
     test('href', async ({ mount }) => {
-      const component = await mount(
-        <TextLinkForTest href={testHref} />,
-      );
+      const component = await mount('TextLink/TextLinkForTest', {
+        href: testHref,
+      });
 
       await expect(component).toHaveAttribute('href', testHref);
     });
@@ -54,7 +48,9 @@ test.describe('TextLink', () => {
 
   test.describe('functionality', () => {
     test('calls native redirect when clicked on', async ({ mount }) => {
-      const component = await mount(<TextLinkForTest href={testHref} />);
+      const component = await mount('TextLink/TextLinkForTest', {
+        href: testHref,
+      });
       const page = component.page();
 
       await Promise.all([
@@ -66,7 +62,9 @@ test.describe('TextLink', () => {
     });
 
     test('calls native redirect when Enter pressed', async ({ mount }) => {
-      const component = await mount(<TextLinkForTest href={testHref} />);
+      const component = await mount('TextLink/TextLinkForTest', {
+        href: testHref,
+      });
       const page = component.page();
 
       await Promise.all([
@@ -78,31 +76,17 @@ test.describe('TextLink', () => {
     });
 
     test('calls onClick when clicked', async ({ mount }) => {
-      let clicked = false;
-      const component = await mount(
-        <TextLinkForTest
-          onClick={() => {
-            clicked = true;
-          }}
-        />,
-      );
-      await component.click();
+      const component = await mount('TextLink/TextLinkSpyForTest');
+      await component.getByRole('link').click();
 
-      expect(clicked).toBeTruthy();
+      await expect.poll(() => component.getSpyValue('onClick')).toContain(true);
     });
 
     test('calls onClick when Enter pressed', async ({ mount }) => {
-      let clicked = false;
-      const component = await mount(
-        <TextLinkForTest
-          onClick={() => {
-            clicked = true;
-          }}
-        />,
-      );
-      await component.press('Enter');
+      const component = await mount('TextLink/TextLinkSpyForTest');
+      await component.getByRole('link').press('Enter');
 
-      expect(clicked).toBeTruthy();
+      await expect.poll(() => component.getSpyValue('onClick')).toContain(true);
     });
   });
 });

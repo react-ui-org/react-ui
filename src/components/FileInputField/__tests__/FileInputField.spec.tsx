@@ -1,19 +1,9 @@
-import React from 'react';
 import {
   expect,
   mixPropTests,
   propTests,
   test,
 } from '../../../../tests/playwright';
-import type { FileInputFieldForFormLayoutTestsProps } from './FileInputField.story';
-import {
-  FileInputFieldForFormLayoutCustomFieldTests,
-  FileInputFieldForFormLayoutLabelWidthTests,
-  FileInputFieldForFormLayoutTests,
-  FileInputFieldForRefTest,
-  FileInputFieldForTest,
-  FileInputFieldWithResetButtonForTest,
-} from './FileInputField.story';
 import { fileSelectedPropTest } from './_propTests/fileSelectedPropTest';
 
 test.describe('FileInputField', () => {
@@ -51,11 +41,7 @@ test.describe('FileInputField', () => {
             await onBeforeTest(page);
           }
 
-          const component = await mount(
-            <FileInputFieldForTest
-              {...props}
-            />,
-          );
+          const component = await mount('FileInputField/FileInputFieldForTest', props);
 
           if (onBeforeSnapshot) {
             await onBeforeSnapshot(page, component);
@@ -74,14 +60,12 @@ test.describe('FileInputField', () => {
         const helpText = 'helpText';
         const validationText = 'validationText';
 
-        const component = await mount(
-          <FileInputFieldForTest
-            helpText={helpText}
-            id={testId}
-            label={testLabel}
-            validationText={validationText}
-          />,
-        );
+        const component = await mount('FileInputField/FileInputFieldForTest', {
+          helpText,
+          id: testId,
+          label: testLabel,
+          validationText,
+        });
 
         expect(component.locator(`div[id="${testId}__root"]`)).toBeDefined();
         await expect(component.getByText(testLabel)).toHaveAttribute('id', `${testId}__labelText`);
@@ -91,12 +75,10 @@ test.describe('FileInputField', () => {
       });
 
       test('ref', async ({ mount }) => {
-        const component = await mount(
-          <FileInputFieldForRefTest
-            testRefAttrName="test-ref"
-            testRefAttrValue="test-ref-value"
-          />,
-        );
+        const component = await mount('FileInputField/FileInputFieldForRefTest', {
+          testRefAttrName: 'test-ref',
+          testRefAttrValue: 'test-ref-value',
+        });
 
         await expect(component.locator('input[type="file"]')).toHaveAttribute('test-ref', 'test-ref-value');
       });
@@ -104,15 +86,7 @@ test.describe('FileInputField', () => {
 
     test.describe('functionality', () => {
       test('Call onFilesChanged callback when file upload.', async ({ mount }) => {
-        let called = false;
-
-        const component = await mount(
-          <FileInputFieldForTest
-            onFilesChanged={() => {
-              called = true;
-            }}
-          />,
-        );
+        const component = await mount('FileInputField/FileInputFieldSpyForTest');
 
         const virtualFile = {
           buffer: Buffer.from('This is test file.'),
@@ -123,27 +97,16 @@ test.describe('FileInputField', () => {
         const inputField = component.locator('input[type="file"]');
         await inputField.setInputFiles(virtualFile);
 
-        expect(called).toBe(true);
+        await expect.poll(() => component.getSpyValue('onFilesChanged')).toEqual([['testfile.txt']]);
       });
 
       test('Call onFilesChanged callback when no file is selected.', async ({ mount }) => {
-        let called = false;
-        let calledWith: FileList | File[] | null = null;
-
-        const component = await mount(
-          <FileInputFieldForTest
-            onFilesChanged={(files) => {
-              called = true;
-              calledWith = files;
-            }}
-          />,
-        );
+        const component = await mount('FileInputField/FileInputFieldSpyForTest');
 
         const inputField = component.locator('input[type="file"]');
         await inputField.setInputFiles([]);
 
-        expect(called).toBe(true);
-        expect(calledWith).toStrictEqual([]);
+        await expect.poll(() => component.getSpyValue('onFilesChanged')).toEqual([[]]);
       });
 
       test('Call onFilesChanged callback when file drag and drop into field.', async ({
@@ -151,16 +114,10 @@ test.describe('FileInputField', () => {
         page,
       }) => {
         const id = 'dropzoneId';
-        let called = false;
 
-        const component = await mount(
-          <FileInputFieldForTest
-            id={id}
-            onFilesChanged={() => {
-              called = true;
-            }}
-          />,
-        );
+        const component = await mount('FileInputField/FileInputFieldSpyForTest', {
+          id,
+        });
 
         const fileName = 'newFile.txt';
         const fileContent = 'This is a test file';
@@ -187,20 +144,13 @@ test.describe('FileInputField', () => {
         await dropZone.dispatchEvent('dragenter', { dataTransfer });
         await dropZone.dispatchEvent('drop', { dataTransfer });
 
-        expect(called).toBe(true);
+        await expect.poll(() => component.getSpyValue('onFilesChanged')).toEqual([[fileName]]);
       });
 
       test('Can upload multiple files.', async ({ mount }) => {
-        let listLength = 0;
-
-        const component = await mount(
-          <FileInputFieldForTest
-            multiple
-            onFilesChanged={(files) => {
-              listLength = Object.keys(files).length;
-            }}
-          />,
-        );
+        const component = await mount('FileInputField/FileInputFieldSpyForTest', {
+          multiple: true,
+        });
 
         const virtualFile1 = {
           buffer: Buffer.from('This is test file.'),
@@ -220,7 +170,7 @@ test.describe('FileInputField', () => {
           virtualFile2,
         ]);
 
-        expect(listLength).toBe(2);
+        await expect.poll(() => component.getSpyValue('onFilesChanged')).toEqual([['testfile.txt', 'testfile.txt']]);
       });
 
       test('Can upload multiple files via drag and drop.', async ({
@@ -228,17 +178,11 @@ test.describe('FileInputField', () => {
         page,
       }) => {
         const id = 'dropzoneId';
-        let numberOfCalls = 0;
 
-        const component = await mount(
-          <FileInputFieldForTest
-            id={id}
-            multiple
-            onFilesChanged={() => {
-              numberOfCalls += 1;
-            }}
-          />,
-        );
+        const component = await mount('FileInputField/FileInputFieldSpyForTest', {
+          id,
+          multiple: true,
+        });
 
         const fileName1 = 'newFile1.txt';
         const fileContent1 = 'This is a test file';
@@ -280,19 +224,11 @@ test.describe('FileInputField', () => {
         await dropZone.dispatchEvent('dragenter', { dataTransfer: dataTransfer2 });
         await dropZone.dispatchEvent('drop', { dataTransfer: dataTransfer2 });
 
-        expect(numberOfCalls).toBe(2);
+        await expect.poll(async () => (await component.getSpyValue('onFilesChanged')).length).toBe(2);
       });
 
       test('Able to reset selected file.', async ({ mount }) => {
-        let keyLength;
-
-        const component = await mount(
-          <FileInputFieldWithResetButtonForTest
-            onFilesChanged={(files) => {
-              keyLength = Object.keys(files).length;
-            }}
-          />,
-        );
+        const component = await mount('FileInputField/FileInputFieldWithResetButtonSpyForTest');
 
         const virtualFile = {
           buffer: Buffer.from('This is test file.'),
@@ -304,10 +240,10 @@ test.describe('FileInputField', () => {
         const resetButton = component.getByText('Reset');
 
         await inputField.setInputFiles(virtualFile);
-        expect(keyLength).toBe(1);
+        await expect.poll(async () => (await component.getSpyValue('onFilesChanged')).at(-1)).toEqual(['testfile.txt']);
 
         await resetButton.click();
-        expect(keyLength).toBe(0);
+        await expect.poll(async () => (await component.getSpyValue('onFilesChanged')).at(-1)).toEqual([]);
       });
     });
   });
@@ -315,7 +251,7 @@ test.describe('FileInputField', () => {
   test.describe('formLayout', () => {
     test.describe('visual', () => {
       test('labelWidth:string=100px', async ({ mount }) => {
-        const component = await mount(<FileInputFieldForFormLayoutLabelWidthTests />);
+        const component = await mount('FileInputField/FileInputFieldForFormLayoutLabelWidthTests');
 
         const screenshot = await component.screenshot();
         expect(screenshot).toMatchSnapshot();
@@ -337,11 +273,7 @@ test.describe('FileInputField', () => {
             await onBeforeTest(page);
           }
 
-          const component = await mount(
-            <FileInputFieldForFormLayoutTests
-              {...props as unknown as FileInputFieldForFormLayoutTestsProps}
-            />,
-          );
+          const component = await mount('FileInputField/FileInputFieldForFormLayoutTests', props);
 
           if (onBeforeSnapshot) {
             await onBeforeSnapshot(page, component);
@@ -357,7 +289,7 @@ test.describe('FileInputField', () => {
   test.describe('formLayoutCustomField', () => {
     test.describe('visual', () => {
       test('label:hidden', async ({ mount }) => {
-        const component = await mount(<FileInputFieldForFormLayoutCustomFieldTests />);
+        const component = await mount('FileInputField/FileInputFieldForFormLayoutCustomFieldTests');
 
         const screenshot = await component.screenshot();
         expect(screenshot).toMatchSnapshot();

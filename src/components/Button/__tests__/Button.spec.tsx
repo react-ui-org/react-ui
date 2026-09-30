@@ -1,16 +1,10 @@
-import React from 'react';
 import {
+  element,
   expect,
   mixPropTests,
   propTests,
   test,
 } from '../../../../tests/playwright';
-import {
-  ButtonForRefTest,
-  ButtonForTest,
-  ButtonInHorizontalFormLayoutForTest,
-  ButtonInVerticalFormLayoutForTest,
-} from './Button.story';
 
 test.describe('Button', () => {
   test.describe('visual', () => {
@@ -48,11 +42,7 @@ test.describe('Button', () => {
           await onBeforeTest(page);
         }
 
-        const component = await mount(
-          <ButtonForTest
-            {...props}
-          />,
-        );
+        const component = await mount('Button/ButtonForTest', props);
 
         if (onBeforeSnapshot) {
           await onBeforeSnapshot(page, component);
@@ -69,24 +59,20 @@ test.describe('Button', () => {
       const testId = 'testId';
       const testLabel = 'testLabel';
 
-      const component = await mount(
-        <ButtonForTest
-          id={testId}
-          label={testLabel}
-        />,
-      );
+      const component = await mount('Button/ButtonForTest', {
+        id: testId,
+        label: testLabel,
+      });
 
       await expect(component).toHaveAttribute('id', testId);
       await expect(component.getByText(testLabel)).toHaveAttribute('id', `${testId}__labelText`);
     });
 
     test('ref', async ({ mount }) => {
-      const component = await mount(
-        <ButtonForRefTest
-          testRefAttrName="test-ref"
-          testRefAttrValue="test-ref-value"
-        />,
-      );
+      const component = await mount('Button/ButtonForRefTest', {
+        testRefAttrName: 'test-ref',
+        testRefAttrValue: 'test-ref-value',
+      });
 
       await expect(component).toHaveAttribute('test-ref', 'test-ref-value');
     });
@@ -94,75 +80,51 @@ test.describe('Button', () => {
 
   test.describe('functionality', () => {
     test('calls onClick when clicked', async ({ mount }) => {
-      let clicked = false;
-      const component = await mount(
-        <ButtonForTest
-          onClick={() => {
-            clicked = true;
-          }}
-        />,
-      );
-      await component.click();
+      const component = await mount('Button/ButtonSpyForTest');
+      await component.getByRole('button').click();
 
-      expect(clicked).toBeTruthy();
+      await expect.poll(() => component.getSpyValue('onClick')).toContain(true);
     });
 
     test('calls onClick when Enter pressed', async ({ mount }) => {
-      let clicked = false;
-      const component = await mount(
-        <ButtonForTest
-          onClick={() => {
-            clicked = true;
-          }}
-        />,
-      );
-      await component.press('Enter');
+      const component = await mount('Button/ButtonSpyForTest');
+      await component.getByRole('button').press('Enter');
 
-      expect(clicked).toBeTruthy();
+      await expect.poll(() => component.getSpyValue('onClick')).toContain(true);
     });
 
     test('is disabled when disabled is set', async ({ mount }) => {
-      let clicked = false;
-      const component = await mount(
-        <ButtonForTest
-          disabled
-          onClick={() => {
-            clicked = true;
-          }}
-        />,
-      );
-      await component.click({ force: true });
+      const component = await mount('Button/ButtonSpyForTest', {
+        disabled: true,
+      });
+      const button = component.getByRole('button');
+      await button.click({ force: true });
 
-      await expect(component).toBeDisabled();
-      expect(clicked).toBeFalsy();
+      await expect(button).toBeDisabled();
+      await expect.poll(() => component.getSpyValue('onClick')).toEqual([]);
     });
 
     test('is disabled when feedbackIcon is set', async ({ mount }) => {
-      let clicked = false;
-      const component = await mount(
-        <ButtonForTest
-          feedbackIcon={<span>Placeholder</span>}
-          onClick={() => {
-            clicked = true;
-          }}
-        />,
-      );
-      await component.click({ force: true });
+      const component = await mount('Button/ButtonSpyForTest', {
+        feedbackIcon: element('span', { children: 'Placeholder' }),
+      });
+      const button = component.getByRole('button');
+      await button.click({ force: true });
 
-      await expect(component).toBeDisabled();
-      expect(clicked).toBeFalsy();
+      await expect(button).toBeDisabled();
+      await expect.poll(() => component.getSpyValue('onClick')).toEqual([]);
     });
   });
 
   test.describe('formLayout', () => {
     test.describe('visual', () => {
       test('vertical', async ({ mount }) => {
-        const component = await mount(<ButtonInVerticalFormLayoutForTest />);
+        const component = await mount('Button/ButtonInVerticalFormLayoutForTest');
         expect(await component.screenshot()).toMatchSnapshot();
       });
 
       test('horizontal', async ({ mount }) => {
-        const component = await mount(<ButtonInHorizontalFormLayoutForTest />);
+        const component = await mount('Button/ButtonInHorizontalFormLayoutForTest');
         expect(await component.screenshot()).toMatchSnapshot();
       });
     });

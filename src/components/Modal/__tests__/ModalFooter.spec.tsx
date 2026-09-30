@@ -1,10 +1,8 @@
-import React from 'react';
 import {
   expect,
   propTests,
   test,
 } from '../../../../tests/playwright';
-import { ModalFooterForTest } from './ModalFooter.story';
 import { justifyPropTest } from './_propTests/justifyPropTest';
 
 test.describe('ModalFooter', () => {
@@ -26,11 +24,7 @@ test.describe('ModalFooter', () => {
           await onBeforeTest(page);
         }
 
-        const component = await mount(
-          <ModalFooterForTest
-            {...props}
-          />,
-        );
+        const component = await mount('ModalFooter/ModalFooterForTest', props);
 
         if (onBeforeSnapshot) {
           await onBeforeSnapshot(page, component);
@@ -46,9 +40,9 @@ test.describe('ModalFooter', () => {
     test('id', async ({ mount }) => {
       const testId = 'testId';
 
-      const component = await mount(
-        <ModalFooterForTest id={testId} />,
-      );
+      const component = await mount('ModalFooter/ModalFooterForTest', {
+        id: testId,
+      });
 
       expect(component.locator(`div[id="${testId}"]`)).toBeDefined();
     });
