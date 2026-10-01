@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
@@ -32,27 +31,6 @@ export const ToolbarGroup: React.FunctionComponent<ToolbarGroupProps> = ({
       {children}
     </div>
   );
-};
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-ToolbarGroup.propTypes = {
-  /**
-   * Vertical alignment of toolbar items in the group.
-   */
-  align: PropTypes.oneOf(['top', 'middle', 'bottom', 'baseline']),
-  /**
-   * Grouped ToolbarItems. If none are provided nothing is rendered.
-   */
-  children: PropTypes.node,
-  /**
-   * If `true`, spacing of toolbar items in the group will be reduced.
-   */
-  dense: PropTypes.bool,
-  /**
-   * If set, the toolbar group will not wrap.
-   */
-  nowrap: PropTypes.bool,
 };
 
 export const ToolbarGroupWithGlobalProps = withGlobalProps<ToolbarGroupProps, never>(ToolbarGroup, 'ToolbarGroup');

@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { transferProps } from '../../helpers/transferProps';
@@ -22,20 +21,6 @@ export const Tabs: React.FunctionComponent<TabsProps> = ({
     </ul>
   </nav>
 );
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-Tabs.propTypes = {
-  /**
-   * Nested `TabsItem` elements.
-   */
-  children: PropTypes.node.isRequired,
-  /**
-   * ID of the root HTML element. It also serves as base for nested element:
-   * * `<ID>__list`
-   */
-  id: PropTypes.string,
-};
 
 export const TabsWithGlobalProps = withGlobalProps<TabsProps, HTMLElement>(Tabs, 'Tabs');
 

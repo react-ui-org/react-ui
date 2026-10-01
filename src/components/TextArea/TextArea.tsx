@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
@@ -90,69 +89,6 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(({
     </label>
   );
 });
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-TextArea.propTypes = {
-  /**
-   * If `true`, the input will be disabled.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * If `true`, the field will span the full width of its parent.
-   */
-  fullWidth: PropTypes.bool,
-  /**
-   * Optional help text.
-   */
-  helpText: PropTypes.node,
-  /** ID of the input HTML element. It also serves as a prefix for nested elements:
-   * * `<ID>__label`
-   * * `<ID>__labelText`
-   * * `<ID>__helpText`
-   * * `<ID>__validationText`
-   */
-  id: PropTypes.string,
-  /**
-   * If `false`, the label will be visually hidden (but remains accessible by assistive
-   * technologies).
-   *
-   * Automatically set to `false` when the component is rendered within `FormLayoutCustomField`
-   * component.
-   */
-  isLabelVisible: PropTypes.bool,
-  /**
-   * Text field label.
-   */
-  label: PropTypes.node.isRequired,
-  /**
-   * Layout of the field.
-   *
-   * Ignored if the component is rendered within `FormLayout` component
-   * as the value is inherited in such case.
-   */
-  layout: PropTypes.oneOf(['horizontal', 'vertical']),
-  /**
-   * If `true`, the input will be required.
-   */
-  required: PropTypes.bool,
-  /**
-   * Size of the field.
-   */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
-  /**
-   * Alter the field to provide feedback based on validation result.
-   */
-  validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
-  /**
-   * Validation message to be displayed.
-   */
-  validationText: PropTypes.node,
-  /**
-   * Design variant of the field, further customizable with CSS custom properties.
-   */
-  variant: PropTypes.oneOf(['filled', 'outline']),
-};
 
 export const TextAreaWithGlobalProps = withGlobalProps<TextAreaProps, HTMLTextAreaElement>(TextArea, 'TextArea');
 
