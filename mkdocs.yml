@@ -69,7 +69,7 @@ extra_javascript:
   - docs/_assets/js/setupDocoff.js
 
   # Then load and init Docoff
-  - https://unpkg.com/@react-ui-org/docoff@0.7.2/public/generated/bundle.js
+  - https://react-ui-org-docoff.surge.sh/bundle.js
 
   # Then load non-Docoff code highlighiting
   - https://unpkg.com/prismjs@1.29.0/components/prism-core.min.js
