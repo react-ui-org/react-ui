@@ -421,6 +421,12 @@ pre[class*="language-"],
 }
 
 /* API */
+
+/* Markdown wraps the table in a paragraph, whose width must not be limited so that the table can use all the space. */
+.md-typeset p:has(> docoff-react-props) {
+    max-width: none;
+}
+
 docoff-react-props {
     display: block;
     overflow-x: auto;
@@ -428,6 +434,12 @@ docoff-react-props {
 
 docoff-react-props > table tr {
     transition: background-color 125ms;
+}
+
+/* Types are only wrapped between words, so that values like `'invalid'` are never broken in the middle. */
+docoff-react-props > table td:nth-child(2) code {
+    word-break: normal;
+    overflow-wrap: normal;
 }
 
 docoff-react-props > table tr:hover {
