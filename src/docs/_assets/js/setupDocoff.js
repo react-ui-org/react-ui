@@ -1,11 +1,13 @@
-// Derives --docoff-preview-css from the co-located react-ui bundle URL so that
-// subdirectory deployments (e.g. PR previews) resolve the correct CSS file.
-// Remove once https://github.com/react-ui-org/docoff/issues/50 is fixed.
+// Tells Docoff the URL the docs are deployed at, so that URLs starting with a slash
+// (preview CSS, sources of components) work in subdirectory deployments (e.g. PR previews) too.
+// The URL is derived from the co-located react-ui bundle URL.
 (() => {
   const script = [...document.querySelectorAll('script[src]')]
     .find((s) => /react-ui(\.\w+)?\.js$/.test(s.src));
 
   if (script) {
-    document.body.style.setProperty('--docoff-preview-css', script.src.replace(/\.js$/, '.css'));
+    window.docoffConfig = {
+      basePath: script.src.replace(/docs\/_assets\/generated\/.*$/, ''),
+    };
   }
 })();
