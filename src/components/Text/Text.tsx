@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import type { CSSProperties } from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
@@ -40,31 +39,6 @@ export const Text: React.FunctionComponent<TextProps> = ({
       {children}
     </HtmlElement>
   );
-};
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-Text.propTypes = {
-  /**
-   * If true, the root HTML element renders as `<div>` instead of `<span>`.
-   */
-  blockLevel: PropTypes.bool,
-  /**
-   * Text content to be sanitized. Can contain HTML.
-   */
-  children: PropTypes.node,
-  /**
-   * Turn on hyphenation. Head to [Hyphens](#hyphens) to learn more.
-   */
-  hyphens: PropTypes.oneOf(['none', 'auto', 'manual']),
-  /**
-   * Optional number of lines. If exceeded, the content is truncated and appended by an ellipsis (`…`).
-   */
-  lines: PropTypes.number,
-  /**
-   * How to deal with long words. Head to [Word Wrapping](#word-wrapping) for detailed explanation.
-   */
-  wordWrapping: PropTypes.oneOf(['normal', 'long-words', 'anywhere']),
 };
 
 export const TextWithGlobalProps = withGlobalProps<TextProps, HTMLElement>(Text, 'Text');

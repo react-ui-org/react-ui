@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
@@ -105,86 +104,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     /* eslint-enable react/button-has-type */
   );
 });
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-Button.propTypes = {
-  /**
-   * Element to be displayed after label, eg. an icon.
-   */
-  afterLabel: PropTypes.node,
-  /**
-   * Element to be displayed before label, eg. an icon.
-   */
-  beforeLabel: PropTypes.node,
-  /**
-   * If `true`, the button will span the full width of its parent.
-   *
-   * Ignored if the component is rendered within `ButtonGroup` component
-   * as the value is inherited in such case.
-   */
-  block: PropTypes.bool,
-  /**
-   * Color variant to clarify importance and meaning of the alert. Implements
-   * [Action, Feedback and Neutral color collections](/docs/foundation/collections#colors).
-   */
-  color: PropTypes.oneOf(
-    ['primary', 'secondary', 'selected', 'success', 'warning', 'danger', 'help', 'info', 'note', 'light', 'dark'],
-  ),
-  /**
-   * If `true`, the button will be disabled.
-   *
-   * Ignored if the component is rendered within `ButtonGroup` component
-   * as the value is inherited in such case.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * Element to be displayed in the top right corner.
-   */
-  endCorner: PropTypes.node,
-  /**
-   * Element to be displayed as a feedback icon on top of button label. When defined, it implies the
-   * button is in feedback state.
-   */
-  feedbackIcon: PropTypes.node,
-  /**
-   * ID of the root HTML element.
-   *
-   * Also serves as base for ids of nested elements:
-   * * `<ID>__labelText`
-   */
-  id: PropTypes.string,
-  /**
-   * Button label.
-   */
-  label: PropTypes.string.isRequired,
-  /**
-   * Defines minimum breakpoint from which the button label will be visible.
-   */
-  labelVisibility: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl', 'x2l', 'x3l', 'none']),
-  /**
-   * Visual priority to highlight or suppress the button.
-   *
-   * Ignored if the component is rendered within `ButtonGroup` component
-   * as the value is inherited in such case.
-   */
-  priority: PropTypes.oneOf(['filled', 'outline', 'flat']),
-  /**
-   * Size of the button.
-   *
-   * Ignored if the component is rendered within `ButtonGroup` or `InputGroup` component as the value is inherited in
-   * such case.
-   */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
-  /**
-   * Element to be displayed in the top left corner.
-   */
-  startCorner: PropTypes.node,
-  /**
-   * Set the HTML `type` attribute of the `button` element.
-   */
-  type: PropTypes.oneOf(['button', 'submit']),
-};
 
 export const ButtonWithGlobalProps = withGlobalProps<ButtonProps, HTMLButtonElement>(Button, 'Button');
 

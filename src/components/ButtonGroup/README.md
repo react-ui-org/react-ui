@@ -262,7 +262,7 @@ helps to improve its accessibility.
 
 ## API
 
-<docoff-react-props src="/components/ButtonGroup/ButtonGroup.tsx"></docoff-react-props>
+<docoff-react-props src="/components/ButtonGroup/ButtonGroup.tsx" name="ButtonGroup"></docoff-react-props>
 
 ## Theming
 

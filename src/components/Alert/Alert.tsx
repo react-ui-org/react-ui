@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { TranslationsContext } from '../../providers/translations';
@@ -55,37 +54,6 @@ export const Alert: React.FunctionComponent<AlertProps> = ({
       )}
     </div>
   );
-};
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-Alert.propTypes = {
-  /**
-   * Alert body.
-   */
-  children: PropTypes.node.isRequired,
-  /**
-   * Color variant to clarify importance and meaning of the alert. Implements
-   * [Feedback color collection](/docs/foundation/collections#colors).
-   */
-  color: PropTypes.oneOf(['success', 'warning', 'danger', 'help', 'info', 'note']),
-  /**
-   * Optional element to be displayed next to the alert body.
-   */
-  icon: PropTypes.node,
-  /**
-   * ID of the root HTML element.
-   *
-   * Also serves as base for ids of nested elements:
-   * * `<ID>__close`
-   * * `<ID>__content`
-   */
-  id: PropTypes.string,
-  /**
-   * Function to call when the close button is clicked. If not provided, close buttons will be
-   * hidden.
-   */
-  onClose: PropTypes.func,
 };
 
 export const AlertWithGlobalProps = withGlobalProps<AlertProps, never>(Alert, 'Alert');

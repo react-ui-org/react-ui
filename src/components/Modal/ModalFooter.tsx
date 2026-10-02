@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
@@ -22,19 +21,6 @@ export const ModalFooter: React.FunctionComponent<ModalFooterProps> = ({
     {children}
   </div>
 );
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-ModalFooter.propTypes = {
-  /**
-   * Content of the footer (preferably nested `Button` elements).
-   */
-  children: PropTypes.node.isRequired,
-  /**
-   * Horizontal alignment (distribution) of individual buttons.
-   */
-  justify: PropTypes.oneOf(['start', 'center', 'end', 'space-between', 'stretch']),
-};
 
 export const ModalFooterWithGlobalProps = withGlobalProps<ModalFooterProps, never>(ModalFooter, 'ModalFooter');
 
