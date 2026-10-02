@@ -268,21 +268,21 @@ helps to improve its accessibility.
 
 ## API
 
-<docoff-react-props src="/components/Card/Card.tsx"></docoff-react-props>
+<docoff-react-props src="/components/Card/Card.tsx" name="Card"></docoff-react-props>
 
 ### CardBody
 
 Space your content with CardBody. See [Composition](#composition) for
 all details.
 
-<docoff-react-props src="/components/Card/CardBody.tsx"></docoff-react-props>
+<docoff-react-props src="/components/Card/CardBody.tsx" name="CardBody"></docoff-react-props>
 
 ### CardFooter
 
 Separate your card actions with CardFooter. See
 [Composition](#composition) for all details.
 
-<docoff-react-props src="/components/Card/CardFooter.tsx"></docoff-react-props>
+<docoff-react-props src="/components/Card/CardFooter.tsx" name="CardFooter"></docoff-react-props>
 
 ## Theming
 

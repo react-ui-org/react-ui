@@ -510,7 +510,7 @@ If you provide [ref], it is forwarded to the native HTML `<input>` element.
 
 ## API
 
-<docoff-react-props src="/components/TextField/TextField.tsx"></docoff-react-props>
+<docoff-react-props src="/components/TextField/TextField.tsx" name="TextField"></docoff-react-props>
 
 ## Theming
 
