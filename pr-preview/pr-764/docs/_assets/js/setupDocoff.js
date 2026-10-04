@@ -7,7 +7,7 @@
 
   if (script) {
     window.docoffConfig = {
-      baseUrl: script.src.replace(/docs\/_assets\/generated\/.*$/, ''),
+      basePath: script.src.replace(/docs\/_assets\/generated\/.*$/, ''),
     };
   }
 })();
