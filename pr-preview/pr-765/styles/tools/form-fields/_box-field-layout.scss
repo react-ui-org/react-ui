@@ -1,0 +1,246 @@
+// 1.  Inline form fields and fields with vertical layout take up as much space as they need. Labels
+//     do not wrap until forced by container of the field. Min and max limits make extra long words
+//     break if necessary.
+//
+// 2.  Form fields in horizontal layout also take up only as much space as they need. Labels do not
+//     wrap until label width limit is reached (50 % of available horizontal space by default).
+//
+// 3.  Help texts and validation messages are aligned below input and wrapped. Their width is always
+//     limited to the width of the input field so they don't shift adjacent elements when they show
+//     up. This applies unless the field is inside FormLayout (see 10).
+//
+// 4.  Define grid spacing as padding of child elements because grid areas make row and column gaps
+//     show up even when not necessary.
+//
+// 5.  When input size is small and form field layout is set to horizontal, expand help text and
+//     validation message over full form field width to improve their readability. Otherwise the
+//     text would be packed into a very narrow column and hard to read. To prevent help text and
+//     validation message from growing the layout more than necessary (ie. the size without
+//     help/validation text), `min-content` grid sizing must be used along with disabled wrapping of
+//     label.
+//
+// 6.  Full-width horizontal form fields prefer not wrapping the label until a limit is reached
+//     (50 % of available horizontal space by default, same as in 2.).
+//
+// 7.  Justify inputs to `start` in horizontal layouts to fix positioning issues with Select Fields.
+//     Reverted for full-width fields.
+//
+// 8.  Grid settings are inherited from horizontal FormLayout and applied using `subgrid`.
+//     A fallback is supplied to browsers that don't support `subgrid` yet.
+//
+//     Chrome 117+ supports `subgrid` but it doesn't work for `<fieldset>`. This is why we always
+//     use the fallback for `<fieldset>`.
+//
+//     https://bugs.chromium.org/p/chromium/issues/detail?id=1473242
+//     https://github.com/react-ui-org/react-ui/issues/232
+//
+// 9.  Help texts and validation messages can take up full width of FormLayout. There is no reason
+//     to make them wrap as they cannot break layout of FormLayout.
+//
+// 10. Visually align label to input baseline. Achieved with `padding-top` and `padding-bottom` due
+//     to two reasons:
+//
+//     * `align-items: baseline` doesn't work for blank text inputs in Safari. See
+//        https://bugs.webkit.org/show_bug.cgi?id=142968 and
+//        https://github.com/react-ui-org/react-ui/issues/265.
+//
+//     * `align-items: baseline` doesn't allow subsequent vertical centering of tall inputs and/or
+//        multiline labels (see `theme.$horizontal-label-vertical-alignment` and
+//        `theme.$horizontal-field-vertical-alignment`).
+//
+// 11. Reset `width` previously set by inline field layout (see `_inline-field-layout.scss`).
+//
+// 12. Make fields just as wide as necessary. Fields should be interactive only where their visible
+//     content is.
+//
+// 13. Label and field are vertically aligned to top (start) by default (see 10.). Vertical
+//     alignment of each block can be changed by theme configuration.
+//
+// 14. Intentionally use longhand properties because the custom property fallback mechanism evaluates `initial` values
+//     as empty. That makes the other value of the shorthand property unexpectedly used for both axes.
+
+@use "../../settings/forms";
+@use "../../settings/form-fields" as settings;
+@use "../../theme/form-fields" as theme;
+@use "../../theme/typography";
+@use "../breakpoint";
+
+@mixin vertical($has-list: false) {
+    @if $has-list {
+        --rui-local-vertical-gap: #{settings.$vertical-inner-gap-large};
+    }
+
+    display: inline-flex; // 1.
+    flex-direction: column;
+    min-width: 0; // 1.
+    max-width: 100%; // 1.
+
+    .label {
+        padding-bottom: var(--rui-local-vertical-gap, #{settings.$vertical-inner-gap});
+    }
+
+    .helpText,
+    .validationText {
+        padding-top: var(--rui-local-vertical-gap, #{settings.$vertical-inner-gap});
+    }
+
+    .field {
+        width: min-content; // 3.
+        max-width: 100%; // 3.
+    }
+}
+
+@mixin horizontal($has-min-tap-target: false) {
+    @include breakpoint.up(forms.$horizontal-breakpoint) {
+        display: inline-grid; // 2.
+        grid-template-columns: theme.$horizontal-label-width min-content; // 2.
+        grid-template-areas: "label field";
+        align-items: start; // 10., 13.
+
+        .label {
+            grid-area: label;
+            align-self: theme.$horizontal-label-vertical-alignment; // 13.
+            min-width: theme.$horizontal-label-min-width;
+
+            // 10.
+            @if $has-min-tap-target {
+                padding-top:
+                    calc(
+                        (#{theme.$check-tap-target-size} - 1rem * #{typography.$line-height-base})
+                        / 2
+                    );
+                padding-bottom:
+                    calc(
+                        (#{theme.$check-tap-target-size} - 1rem * #{typography.$line-height-base})
+                        / 2
+                    );
+            }
+
+            // 10., 13.
+            @else {
+                padding-top: #{theme.$horizontal-label-padding-y};
+                padding-bottom: #{theme.$horizontal-label-padding-y};
+            }
+
+            padding-right: settings.$horizontal-inner-gap; // 4.
+            text-align: theme.$horizontal-label-text-align;
+        }
+
+        .field {
+            grid-area: field;
+            // stylelint-disable declaration-block-no-redundant-longhand-properties -- 14.
+            align-self: theme.$horizontal-field-vertical-alignment; // 13.
+            justify-self: start; // 7.
+            // stylelint-enable declaration-block-no-redundant-longhand-properties
+        }
+    }
+}
+
+@mixin horizontal-with-small-input() {
+    @include breakpoint.up(forms.$horizontal-breakpoint) {
+        grid-template-columns: min-content min-content; // 5.
+        grid-template-areas:
+            "label field"
+            "helptext helptext"
+            "validationtext validationtext"; // 5.
+
+        .label {
+            white-space: nowrap; // 5.
+        }
+
+        .field {
+            display: contents; // 5.
+        }
+
+        .inputContainer {
+            grid-area: field; // 5.
+        }
+
+        .helpText {
+            grid-area: helptext; // 5.
+        }
+
+        .validationText {
+            grid-area: validationtext; // 5.
+        }
+    }
+}
+
+@mixin full-width($input-element-selector: ".input") {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .field,
+    .inputContainer,
+    #{$input-element-selector} {
+        width: 100%;
+    }
+
+    @include breakpoint.up(forms.$horizontal-breakpoint) {
+        &.isRootLayoutHorizontal {
+            display: grid;
+            grid-template-columns: theme.$horizontal-full-width-label-width 1fr; // 6.
+        }
+
+        &.isRootLayoutHorizontal .field {
+            justify-self: stretch; // 7.
+        }
+    }
+}
+
+@mixin in-form-layout($is-fieldset: false) {
+    justify-self: start; // 12.
+
+    .field {
+        width: auto; // 9.
+    }
+
+    @include breakpoint.up(forms.$horizontal-breakpoint) {
+        .optionLabel {
+            width: auto; // 11.
+        }
+
+        // 8.
+        @if $is-fieldset {
+            &.isRootLayoutHorizontal,
+            &.isRootLayoutHorizontal.hasRootSmallInput {
+                display: contents;
+            }
+        } @else {
+            &.isRootLayoutHorizontal,
+            &.isRootLayoutHorizontal.hasRootSmallInput {
+                grid: inherit;
+                grid-template-columns: subgrid;
+                grid-column: span 2;
+
+                @supports not (grid-template-columns: subgrid) {
+                    display: contents;
+                }
+            }
+
+            &.isRootLayoutHorizontal.isRootFullWidth {
+                grid-template-columns: subgrid;
+            }
+        }
+
+        &.isRootLayoutHorizontal .label,
+        &.isRootLayoutHorizontal .field,
+        &.isRootLayoutHorizontal .inputContainer,
+        &.isRootLayoutHorizontal .helpText,
+        &.isRootLayoutHorizontal .validationText {
+            grid-area: unset; // 8.
+        }
+
+        &.isRootLayoutHorizontal .field,
+        &.isRootLayoutHorizontal .inputContainer,
+        &.isRootLayoutHorizontal .helpText,
+        &.isRootLayoutHorizontal .validationText {
+            grid-column-start: 2; // 8.
+        }
+
+        &.isRootLayoutHorizontal.hasRootSmallInput .field {
+            display: block; // 5.
+        }
+    }
+}

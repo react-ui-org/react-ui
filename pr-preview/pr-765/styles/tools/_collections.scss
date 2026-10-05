@@ -1,0 +1,260 @@
+@use "sass:list";
+@use "sass:map";
+@use "../settings/collections";
+@use "string" as rui-string;
+
+// Function to get the parent collection category by value.
+//
+// 1. Returns **only the first** matching collection category.
+//
+// @param {String} $value - The value to get the category for.
+// @param {Map} $collections - The collections map to search in.
+
+@function _get-category-by-value($value, $collections) {
+    @each $category, $values in $collections {
+        @if list.index($values, $value) {
+            @return $category; // 1.
+        }
+    }
+
+    @error
+        "Supplied value \""
+        + $value
+        + "\" not found in any category ("
+        + map.keys($collections)
+        + ")";
+}
+
+// Mixin to generate CSS custom properties for a component theme.
+//
+// 1. Generates a CSS custom property for each property in the `$properties` list.
+// 2. Theming of the disabled state is optional, so the `default` theme options are used (via CSS custom property
+//    fallback) if no `disabled` styling for the specific variant is provided by user.
+//
+// @param {String} $prefix - The prefix for the CSS custom properties.
+// @param {String} $component-name - The name of the component.
+// @param {String} $modifier-value - The value of the modifier.
+// @param {String} $variant-value - The value of the variant.
+// @param {String} $interaction-state - The interaction state.
+// @param {List} $properties - The list of properties to generate CSS custom properties for.
+//
+// Example:
+//
+// @include generate-component-properties(
+//     $prefix: "rui-",
+//     $component-name: "Card",
+//     $variant-name: "color",
+//     $variant-value: "success",
+//     $properties: color, border-color, background-color,
+// );
+//
+// … will output:
+//
+// --rui-local-color: var(--rui-Card--success__color);
+// --rui-local-border-color: var(--rui-Card--success__border-color);
+// --rui-local-background-color: var(--rui-Card--success__background-color);
+
+@mixin generate-component-properties(
+    $prefix,
+    $component-name,
+    $modifier-value: null,
+    $variant-value,
+    $interaction-state: null,
+    $properties,
+) {
+    @each $property in $properties {
+        $fallback-custom-property: "";
+        $modifier: "";
+        $state: "";
+
+        @if $modifier-value {
+            $modifier: "--" + $modifier-value;
+        }
+
+        @if $interaction-state {
+            $state: "--" + $interaction-state;
+        }
+
+        @if $interaction-state == "disabled" {
+            $fallback-custom-property: ", var(--"
+                + $prefix
+                + $component-name
+                + $modifier
+                + "--"
+                + $variant-value
+                + "--default__"
+                + $property
+                + ")";
+        }
+
+        // 1.
+        --#{$prefix}local-#{$property}:
+            var(
+                #{
+                    "--"
+                    + $prefix
+                    + $component-name
+                    + $modifier
+                    + "--"
+                    + $variant-value
+                    + $state
+                    + "__"
+                    + $property
+                }
+                #{$fallback-custom-property}
+            ); // 2.
+    }
+}
+
+// Mixin to generate CSS custom properties for links theme.
+//
+// @param {String} $prefix - The prefix for the CSS custom properties.
+// @param {String} $variant-value - The value of the variant.
+//
+// Example:
+//
+// @include generate-link-properties(
+//     $prefix: "rui-",
+//     $variant-value: "success",
+// );
+//
+// … will output:
+//
+// --rui-local-link-color: var(--rui-color-feedback-success);
+// --rui-local-link-color-hover: var(--rui-color-feedback-success-hover);
+// --rui-local-link-color-active: var(--rui-color-feedback-success-active);
+
+@mixin generate-link-properties($prefix, $variant-value) {
+    $color-category: _get-category-by-value($value: $variant-value, $collections: collections.$colors);
+
+    --#{$prefix}local-link-color: var(--rui-color-#{$color-category}-#{$variant-value});
+    --#{$prefix}local-link-color-hover: var(--rui-color-#{$color-category}-#{$variant-value}-hover);
+    --#{$prefix}local-link-color-active: var(--rui-color-#{$color-category}-#{$variant-value}-active);
+}
+
+// Mixin to generate CSS classes for a component variant.
+//
+// @param {String} $prefix - The prefix for the CSS custom properties.
+// @param {String} $component-name - The name of the component.
+// @param {String} $modifier-name - Optional name of the class name modifier.
+// @param {String} $modifier-name - Optional value of the class name modifier.
+// @param {String} $variant-name - The name of the variant.
+// @param {String} $variant-value - The value of the variant.
+// @param {Boolean} $generate-interaction-states - Whether to generate interaction states (disabled, hover, active).
+// @param {Boolean} $inherit-link-color - Whether to inherit link color from the component variant.
+// @param {List} $properties - The list of properties to generate CSS custom properties for.
+//
+// Examples:
+//
+// @include collections.generate-class(
+//     $prefix: "rui-",
+//     $component-name: "Card",
+//     $variant-name: "color",
+//     $variant-value: "success",
+//     $properties: color, border-color, background-color,
+// );
+//
+// … will output:
+//
+// .isRootColorSuccess {
+//     --rui-local-color: var(--rui-Card--success__color);
+//     --rui-local-border-color: var(--rui-Card--success__border-color);
+//     --rui-local-background-color: var(--rui-Card--success__background-color);
+// }
+//
+// @include collections.generate-class(
+//     $prefix: "rui-",
+//     $component-name: "Button",
+//     $modifier-name: "priority",
+//     $modifier-value: "flat",
+//     $variant-name: "color",
+//     $variant-value: "success",
+//     $generate-interaction-states: true,
+//     $properties: color, background,
+// );
+//
+// … will output:
+//
+// .isRootPriorityFlat.isRootColorSuccess {
+//     --rui-local-color: var(--rui-Button--flat--success--default__color);
+//     --rui-local-background: var(--rui-Button--flat--success--default__background);
+// }
+// .isRootPriorityFlat.isRootColorSuccess:disabled {
+//     --rui-local-color:
+//         var(
+//             --rui-Button--flat--success--disabled__color,
+//             var(--rui-Button--flat--success--default__color)
+//         );
+//     --rui-local-background:
+//         var(
+//             --rui-Button--flat--success--disabled__background,
+//             var(--rui-Button--flat--success--default__background)
+//         );
+// }
+// .isRootPriorityFlat.isRootColorSuccess:not(:disabled):hover {
+//     --rui-local-color: var(--rui-Button--flat--success--hover__color);
+//     --rui-local-background: var(--rui-Button--flat--success--hover__background);
+// }
+// .isRootPriorityFlat.isRootColorSuccess:not(:disabled):active {
+//     --rui-local-color: var(--rui-Button--flat--success--active__color);
+//     --rui-local-background: var(--rui-Button--flat--success--active__background);
+// }
+
+@mixin generate-class(
+    $prefix,
+    $component-name,
+    $modifier-name: null,
+    $modifier-value: null,
+    $variant-name,
+    $variant-value,
+    $generate-interaction-states: false,
+    $inherit-link-color: false,
+    $properties,
+) {
+    $modifier-class-name: "";
+    $variant-class-name: ".isRoot"
+        + rui-string.capitalize($variant-name)
+        + rui-string.capitalize($variant-value);
+
+    @if $modifier-name and $modifier-value {
+        $modifier-class-name: ".isRoot"
+            + rui-string.capitalize($modifier-name)
+            + rui-string.capitalize($modifier-value);
+    }
+
+    #{$modifier-class-name}#{$variant-class-name} {
+        @if $generate-interaction-states {
+            $interaction-state-selector-map: (
+                default: "&",
+                disabled: "&:disabled",
+                hover: "&:not(:disabled):hover",
+                active: "&:not(:disabled):active",
+            );
+
+            @each $interaction-state, $interaction-state-selector in $interaction-state-selector-map {
+                #{$interaction-state-selector} {
+                    @include generate-component-properties(
+                        $prefix: $prefix,
+                        $component-name: $component-name,
+                        $modifier-value: $modifier-value,
+                        $variant-value: $variant-value,
+                        $interaction-state: $interaction-state,
+                        $properties: $properties,
+                    );
+                }
+            }
+        } @else {
+            @include generate-component-properties(
+                $prefix: $prefix,
+                $component-name: $component-name,
+                $modifier-value: $modifier-value,
+                $variant-value: $variant-value,
+                $properties: $properties,
+            );
+        }
+
+        @if $inherit-link-color {
+            @include generate-link-properties($prefix: $prefix, $variant-value: $variant-value);
+        }
+    }
+}
