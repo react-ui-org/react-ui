@@ -1,14 +1,8 @@
-import React from 'react';
 import {
   expect,
   propTests,
   test,
 } from '../../../../tests/playwright';
-import {
-  InputGroupForTest,
-  InputGroupWithCustomInputPropsForTest,
-  InputGroupWithoutChildrenForTest,
-} from './InputGroup.story';
 import { childrenPropTest } from './_propTests/childrenPropTest';
 import { validationTextsPropTest } from './_propTests/validationTextsPropTest';
 import { validationStatePropTest } from './_propTests/validationStatePropTest';
@@ -44,8 +38,9 @@ test.describe('InputGroup', () => {
 
           const component = await mount(
             hasInputProps
-              ? <InputGroupWithCustomInputPropsForTest {...props} />
-              : <InputGroupForTest {...props} />,
+              ? 'InputGroup/InputGroupWithCustomInputPropsForTest'
+              : 'InputGroup/InputGroupForTest',
+            props,
           );
 
           if (onBeforeSnapshot) {
@@ -63,15 +58,13 @@ test.describe('InputGroup', () => {
         const id = 'custom-id';
         const label = 'custom-label';
 
-        const component = await mount(
-          <InputGroupForTest
-            helpTexts={['Help text.']}
-            id={id}
-            isLabelVisible
-            label={label}
-            validationTexts={['Validation text.']}
-          />,
-        );
+        const component = await mount('InputGroup/InputGroupForTest', {
+          helpTexts: ['Help text.'],
+          id,
+          isLabelVisible: true,
+          label,
+          validationTexts: ['Validation text.'],
+        });
 
         await expect(component).toHaveAttribute('id', id);
         await expect(component.getByText(label).first()).toHaveAttribute('id', `${id}__label`);
@@ -84,7 +77,7 @@ test.describe('InputGroup', () => {
 
     test.describe('functionality', () => {
       test('return null when no children provided', async ({ mount }) => {
-        const component = await mount(<InputGroupWithoutChildrenForTest />);
+        const component = await mount('InputGroup/InputGroupWithoutChildrenForTest');
 
         await expect(component).toBeEmpty();
       });

@@ -12,6 +12,10 @@ import type {
 import { FormLayout } from '../../FormLayout';
 import { FormLayoutContext } from '../../FormLayout/FormLayoutContext';
 import { FormLayoutCustomFieldContext } from '../../FormLayout/FormLayoutCustomFieldContext';
+import {
+  useSpy,
+  withSpy,
+} from '../../../../tests/playwright/utils/spy';
 import type { StoryProps } from '../../../../tests/playwright';
 
 type FileInputFieldForTestProps = StoryProps<FileInputFieldProps, 'id' | 'label' | 'onFilesChanged'>;
@@ -169,3 +173,28 @@ export const FileInputFieldForFormLayoutCustomFieldTests = ({
     </FormLayoutCustomFieldContext.Provider>
   </InputWrapper>
 );
+
+// Records the names of the selected files
+const selectFileNames = (files: FileList | File[]) => Array.from(files, (file) => file.name);
+
+export const FileInputFieldSpyForTest = withSpy((props: FileInputFieldForTestProps) => {
+  const onFilesChanged = useSpy('onFilesChanged', selectFileNames);
+
+  return (
+    <FileInputFieldForTest
+      onFilesChanged={onFilesChanged}
+      {...props}
+    />
+  );
+});
+
+export const FileInputFieldWithResetButtonSpyForTest = withSpy((props: FileInputFieldForTestProps) => {
+  const onFilesChanged = useSpy('onFilesChanged', selectFileNames);
+
+  return (
+    <FileInputFieldWithResetButtonForTest
+      onFilesChanged={onFilesChanged}
+      {...props}
+    />
+  );
+});

@@ -1,14 +1,8 @@
-import React from 'react';
 import {
   expect,
   propTests,
   test,
 } from '../../../../tests/playwright';
-import {
-  PopoverForRefTest,
-  PopoverForTest,
-  PopoverWithTargetIdForTest,
-} from './Popover.story';
 import { placementPropTest } from './_propTests/placementPropTest';
 import { popoverTargetIdPropTest } from './_propTests/popoverTargetIdPropTest';
 
@@ -35,16 +29,8 @@ test.describe('Popover', () => {
         const hasTargetId = props?.popoverTargetId !== undefined;
 
         const component = hasTargetId
-          ? await mount(
-            <PopoverWithTargetIdForTest
-              {...props}
-            />,
-          )
-          : await mount(
-            <PopoverForTest
-              {...props}
-            />,
-          );
+          ? await mount('Popover/PopoverWithTargetIdForTest', props)
+          : await mount('Popover/PopoverForTest', props);
 
         if (onBeforeSnapshot) {
           await onBeforeSnapshot(page, component);
@@ -61,11 +47,10 @@ test.describe('Popover', () => {
       const id = 'custom-id';
       const childrenText = 'Some text';
 
-      const component = await mount(
-        <PopoverForTest id={id}>
-          {childrenText}
-        </PopoverForTest>,
-      );
+      const component = await mount('Popover/PopoverForTest', {
+        children: childrenText,
+        id,
+      });
 
       await expect(component.getByText(childrenText)).toHaveAttribute('id', id);
     });
@@ -73,14 +58,11 @@ test.describe('Popover', () => {
     test('ref', async ({ mount }) => {
       const childrenText = 'Some text';
 
-      const component = await mount(
-        <PopoverForRefTest
-          testRefAttrName="test-ref"
-          testRefAttrValue="test-ref-value"
-        >
-          {childrenText}
-        </PopoverForRefTest>,
-      );
+      const component = await mount('Popover/PopoverForRefTest', {
+        children: childrenText,
+        testRefAttrName: 'test-ref',
+        testRefAttrValue: 'test-ref-value',
+      });
 
       await expect(component.getByText(childrenText)).toHaveAttribute('test-ref', 'test-ref-value');
     });
@@ -94,15 +76,19 @@ test.describe('Popover', () => {
       const portalId = 'portal-id';
       const portalContent = 'portal content';
 
-      await page.evaluate(() => {
-        document.body.innerHTML += '<div id="portal-id" />';
+      const component = await mount('Popover/PopoverForTest', {
+        children: portalContent,
       });
 
-      await mount(
-        <PopoverForTest portalId={portalId}>
-          {portalContent}
-        </PopoverForTest>,
-      );
+      // `mount()` reloads the page, so the portal is added after it and the story is re-rendered into it
+      await page.evaluate((id) => {
+        document.body.insertAdjacentHTML('beforeend', `<div id="${id}"></div>`);
+      }, portalId);
+
+      await component.update({
+        children: portalContent,
+        portalId,
+      });
 
       const portalHTMLContent = await page
         .evaluate((id) => document.getElementById(id)?.innerHTML, portalId);
@@ -133,11 +119,10 @@ test.describe('Popover', () => {
         right: '10px',
       };
 
-      const insetStyleComponent = await mount(
-        <PopoverForTest placementStyle={insetPlacementStyle}>
-          {content}
-        </PopoverForTest>,
-      );
+      const insetStyleComponent = await mount('Popover/PopoverForTest', {
+        children: content,
+        placementStyle: insetPlacementStyle,
+      });
 
       const insetPopover = insetStyleComponent.getByText(content);
       const insetStyle = await insetPopover.getAttribute('style');
@@ -150,11 +135,10 @@ test.describe('Popover', () => {
 
       await insetStyleComponent.unmount();
 
-      const positionComponent1 = await mount(
-        <PopoverForTest placementStyle={positionStyleObject1}>
-          {content}
-        </PopoverForTest>,
-      );
+      const positionComponent1 = await mount('Popover/PopoverForTest', {
+        children: content,
+        placementStyle: positionStyleObject1,
+      });
 
       const positionPopover1 = positionComponent1.getByText(content);
       const positionStyle1 = await positionPopover1.getAttribute('style');
@@ -164,11 +148,10 @@ test.describe('Popover', () => {
 
       await positionComponent1.unmount();
 
-      const positionComponent2 = await mount(
-        <PopoverForTest placementStyle={positionStyleObject2}>
-          {content}
-        </PopoverForTest>,
-      );
+      const positionComponent2 = await mount('Popover/PopoverForTest', {
+        children: content,
+        placementStyle: positionStyleObject2,
+      });
 
       const positionPopover2 = positionComponent2.getByText(content);
       const positionStyle2 = await positionPopover2.getAttribute('style');

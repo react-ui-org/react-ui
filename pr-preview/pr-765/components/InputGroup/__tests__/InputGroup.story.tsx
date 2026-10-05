@@ -7,7 +7,10 @@ import { TextField } from '../../TextField';
 import type { ValidationState } from '../../../types';
 import type { StoryProps } from '../../../../tests/playwright';
 
-type InputGroupTestProps = StoryProps<InputGroupProps, 'label'>;
+type InputGroupTestProps = StoryProps<InputGroupProps, 'label'> & {
+  // Children rendered by the story instead of `children`, which cannot be passed as JSX to `mount()`
+  childrenVariant?: 'multiple' | 'single';
+};
 type InputGroupWithCustomInputTestProps = InputGroupTestProps & {
   inputProps?: { validationState: ValidationState };
 };
@@ -45,13 +48,24 @@ const defaultChildren = [
   />,
 ];
 
+const childrenVariants = {
+  multiple: defaultChildren,
+  single: (
+    <TextField
+      label="Text label"
+      placeholder="Placeholder"
+    />
+  ),
+};
+
 export const InputGroupForTest = ({
   children,
+  childrenVariant,
   label = 'Input group label',
   ...props
 }: InputGroupTestProps) => (
   <InputGroup label={label} {...props}>
-    {children ?? defaultChildren}
+    {childrenVariant ? childrenVariants[childrenVariant] : (children ?? defaultChildren)}
   </InputGroup>
 );
 

@@ -1,11 +1,9 @@
-import React from 'react';
 import {
   expect,
   mixPropTests,
   propTests,
   test,
 } from '../../../../tests/playwright';
-import { PaperForTest } from './Paper.story';
 import { mutedPropTest } from './_propTests/mutedPropTest';
 
 test.describe('Paper', () => {
@@ -30,11 +28,7 @@ test.describe('Paper', () => {
           await onBeforeTest(page);
         }
 
-        const component = await mount(
-          <PaperForTest
-            {...props}
-          />,
-        );
+        const component = await mount('Paper/PaperForTest', props);
 
         if (onBeforeSnapshot) {
           await onBeforeSnapshot(page, component);
@@ -50,11 +44,9 @@ test.describe('Paper', () => {
     test('id', async ({ mount }) => {
       const id = 'test-id';
 
-      const component = await mount(
-        <PaperForTest
-          id={id}
-        />,
-      );
+      const component = await mount('Paper/PaperForTest', {
+        id,
+      });
 
       await expect(component.locator(`div[id=${id}]`)).toHaveAttribute('id', id);
     });

@@ -1,14 +1,9 @@
-import React from 'react';
 import {
   expect,
   mixPropTests,
   propTests,
   test,
 } from '../../../../tests/playwright';
-import {
-  ButtonGroupForTest,
-  SelectedButtonGroupForTest,
-} from './ButtonGroup.story';
 
 test.describe('ButtonGroup', () => {
   test.describe('base', () => {
@@ -36,7 +31,7 @@ test.describe('ButtonGroup', () => {
             await onBeforeTest(page);
           }
 
-          const component = await mount(<ButtonGroupForTest {...props} />);
+          const component = await mount('ButtonGroup/ButtonGroupForTest', props);
 
           if (onBeforeSnapshot) {
             await onBeforeSnapshot(page, component);
@@ -67,7 +62,7 @@ test.describe('ButtonGroup', () => {
               await onBeforeTest(page);
             }
 
-            const component = await mount(<SelectedButtonGroupForTest {...props} />);
+            const component = await mount('ButtonGroup/SelectedButtonGroupForTest', props);
 
             if (onBeforeSnapshot) {
               await onBeforeSnapshot(page, component);

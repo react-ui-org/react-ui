@@ -1,15 +1,8 @@
-import React from 'react';
 import {
   expect,
   propTests,
   test,
 } from '../../../../tests/playwright';
-import {
-  GridForTest,
-  GridWithFixedCardsHeightForTest,
-  GridWithGridSpanForTest,
-  GridWithoutChildrenForTest,
-} from './Grid.story';
 import { columnPropTest } from './_propTests/columnsPropTest';
 import { rowsPropTest } from './_propTests/rowsPropTest';
 import { justifyItemsPropTest } from './_propTests/justifyItemsPropTest';
@@ -45,7 +38,7 @@ test.describe('Grid', () => {
             await onBeforeTest(page);
           }
 
-          const component = await mount(<GridForTest {...props} />);
+          const component = await mount('Grid/GridForTest', props);
 
           if (onBeforeSnapshot) {
             await onBeforeSnapshot(page, component);
@@ -73,7 +66,7 @@ test.describe('Grid', () => {
               await onBeforeTest(page);
             }
 
-            const component = await mount(<GridWithFixedCardsHeightForTest {...props} />);
+            const component = await mount('Grid/GridWithFixedCardsHeightForTest', props);
 
             if (onBeforeSnapshot) {
               await onBeforeSnapshot(page, component);
@@ -102,7 +95,7 @@ test.describe('Grid', () => {
               await onBeforeTest(page);
             }
 
-            const component = await mount(<GridWithGridSpanForTest {...props} />);
+            const component = await mount('Grid/GridWithGridSpanForTest', props);
 
             if (onBeforeSnapshot) {
               await onBeforeSnapshot(page, component);
@@ -116,32 +109,34 @@ test.describe('Grid', () => {
     });
 
     test.describe('non-visual', () => {
-      test('pass custom id', async ({ mount }) => {
+      test('pass custom id', async ({
+        mount,
+        page,
+      }) => {
         const id = 'custom-id';
 
-        const component = await mount(
-          <div>
-            <GridForTest id={id} />
-          </div>,
-        );
+        await mount('Grid/GridForTest', {
+          id,
+        });
 
-        await expect(component.locator(`div[id=${id}]`)).not.toBeEmpty();
+        await expect(page.locator(`div[id=${id}]`)).not.toBeEmpty();
       });
     });
 
     test.describe('functionality', () => {
-      test('have custom tag', async ({ mount }) => {
-        const component = await mount(
-          <div>
-            <GridForTest tag="ul" />
-          </div>,
-        );
+      test('have custom tag', async ({
+        mount,
+        page,
+      }) => {
+        await mount('Grid/GridForTest', {
+          tag: 'ul',
+        });
 
-        await expect(component.locator('ul')).not.toBeEmpty();
+        await expect(page.locator('ul')).not.toBeEmpty();
       });
 
       test('return null when no children provided', async ({ mount }) => {
-        const component = await mount(<GridWithoutChildrenForTest />);
+        const component = await mount('Grid/GridWithoutChildrenForTest');
 
         await expect(component).toBeEmpty();
       });
