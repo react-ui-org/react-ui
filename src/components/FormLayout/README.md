@@ -40,11 +40,6 @@ the job: the [CSS grid layout][grid].
   Do **not** try to put any custom HTML or React components directly into
   FormLayout without wrapping it with the FormLayoutCustomField first.
 
-👉 For usage in auto-width Modal, you may need to turn on the `autoWidth` option
-for your FormLayout. This prevents FormLayout from unexpectedly growing in
-browsers that [don't support][rui-232] [CSS subgrid][subgrid] in cases when
-there are longer validation messages or help texts.
-
 ## Supported Form Fields
 
 The FormLayout supports buttons and all React UI form fields:
@@ -467,6 +462,4 @@ FormLayoutCustomField can be styled using a small subset of
 [fragments]: https://reactjs.org/docs/fragments.html
 [grid]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout
 [React common props]: https://react.dev/reference/react-dom/components/common#common-props
-[rui-232]: https://github.com/react-ui-org/react-ui/issues/232
 [rui-265]: https://github.com/react-ui-org/react-ui/issues/265
-[subgrid]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Subgrid
