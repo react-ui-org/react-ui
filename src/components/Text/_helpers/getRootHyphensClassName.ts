@@ -10,5 +10,5 @@ export const getRootHyphensClassName = (styles: CssModuleClasses, hyphens?: Text
     return styles.isRootHyphensManual;
   }
 
-  return null;
+  return undefined;
 };

@@ -10,5 +10,5 @@ export const getRootWordWrappingClassName = (styles: CssModuleClasses, wordWrapp
     return styles.isRootWordWrappingLongWords;
   }
 
-  return null;
+  return undefined;
 };
