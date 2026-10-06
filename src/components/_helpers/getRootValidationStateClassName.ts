@@ -16,5 +16,5 @@ export const getRootValidationStateClassName = (styles: CssModuleClasses, valida
     return styles.isRootStateWarning;
   }
 
-  return null;
+  return undefined;
 };
