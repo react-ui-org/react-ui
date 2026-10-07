@@ -55,8 +55,8 @@ extra_css:
 extra_javascript:
   # First load dependencies
   - https://unpkg.com/@babel/standalone@7.20.15/babel.min.js
-  - https://unpkg.com/react@18.2.0/umd/react.development.js
-  - https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js
+  - https://unpkg.com/react@18.3.1/umd/react.development.js
+  - https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js
   - https://unpkg.com/@floating-ui/core@1.0.0/dist/floating-ui.core.umd.min.js
   - https://unpkg.com/@floating-ui/dom@1.0.0/dist/floating-ui.dom.umd.min.js
   - https://unpkg.com/@floating-ui/react-dom@1.0.0/dist/floating-ui.react-dom.umd.min.js
