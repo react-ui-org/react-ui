@@ -1,0 +1,12 @@
+// ⚠️ For `theme.scss` purposes only, do not use anywhere else.
+
+@use "sass:map";
+@use "../settings/breakpoints";
+
+$xs: map.get(breakpoints.$values, xs);
+$sm: map.get(breakpoints.$values, sm);
+$md: map.get(breakpoints.$values, md);
+$lg: map.get(breakpoints.$values, lg);
+$xl: map.get(breakpoints.$values, xl);
+$x2l: map.get(breakpoints.$values, x2l);
+$x3l: map.get(breakpoints.$values, x3l);
