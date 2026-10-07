@@ -2959,15 +2959,15 @@ components.</p>
 <h2 id="empty-values">Empty Values</h2>
 <p>Use <code>undefined</code>, not <code>null</code>, for values that are not set:</p>
 <ul>
-<li>Do not use <code>null</code> as a prop default, leave props without a default
-  <code>undefined</code>.</li>
+<li>Do not use <code>null</code> as a default value of a prop. Props without a default value
+  are left <code>undefined</code>.</li>
 <li>Helpers computing a class name return <code>undefined</code> when no class applies.
-  Their result may be passed directly to <code>className</code>, which accepts
-  <code>string | undefined</code> but not <code>null</code>.</li>
+  Their result may be passed directly to <code>className</code>, which is typed as
+  <code>string | undefined</code>.</li>
 </ul>
 <p>Keep <code>null</code> where it is an intentional empty value: a component returning
-<code>null</code> to render nothing, React refs and context defaults, or a helper result
-spread into <code>style</code>.</p>
+<code>null</code> to render nothing, React refs, a context default meaning the component
+is not rendered inside its provider, or a helper result spread into <code>style</code>.</p>
 
 
 
