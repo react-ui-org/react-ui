@@ -47,6 +47,10 @@ jobs:
       - name: Build assets
         run: npm run build
 
+      # Docoff looks up types imported by components in the bundled type declarations
+      - name: Copy type declarations to docs
+        run: cp dist/react-ui.d.ts src/docs/_assets/generated/
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:

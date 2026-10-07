@@ -101,7 +101,7 @@ helps to improve its accessibility.
 
 ## API
 
-<docoff-react-props src="/components/Badge/Badge.tsx" />
+<docoff-react-props src="/components/Badge/Badge.tsx" name="Badge" />
 
 ## Theming
 

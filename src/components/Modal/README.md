@@ -1240,31 +1240,31 @@ accessibility.
 
 ## API
 
-<docoff-react-props src="/components/Modal/Modal.tsx"></docoff-react-props>
+<docoff-react-props src="/components/Modal/Modal.tsx" name="Modal"></docoff-react-props>
 
 ### ModalHeader
 
-<docoff-react-props src="/components/Modal/ModalHeader.tsx"></docoff-react-props>
+<docoff-react-props src="/components/Modal/ModalHeader.tsx" name="ModalHeader"></docoff-react-props>
 
 ### ModalTitle
 
-<docoff-react-props src="/components/Modal/ModalTitle.tsx"></docoff-react-props>
+<docoff-react-props src="/components/Modal/ModalTitle.tsx" name="ModalTitle"></docoff-react-props>
 
 ### ModalCloseButton
 
-<docoff-react-props src="/components/Modal/ModalCloseButton.tsx"></docoff-react-props>
+<docoff-react-props src="/components/Modal/ModalCloseButton.tsx" name="ModalCloseButton"></docoff-react-props>
 
 ### ModalBody
 
-<docoff-react-props src="/components/Modal/ModalBody.tsx"></docoff-react-props>
+<docoff-react-props src="/components/Modal/ModalBody.tsx" name="ModalBody"></docoff-react-props>
 
 ### ModalContent
 
-<docoff-react-props src="/components/Modal/ModalContent.tsx"></docoff-react-props>
+<docoff-react-props src="/components/Modal/ModalContent.tsx" name="ModalContent"></docoff-react-props>
 
 ### ModalFooter
 
-<docoff-react-props src="/components/Modal/ModalFooter.tsx"></docoff-react-props>
+<docoff-react-props src="/components/Modal/ModalFooter.tsx" name="ModalFooter"></docoff-react-props>
 
 ## Theming
 

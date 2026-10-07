@@ -272,7 +272,7 @@ If you provide [ref], it is forwarded to the native HTML `<input>` element.
 
 ## API
 
-<docoff-react-props src="/components/CheckboxField/CheckboxField.tsx"></docoff-react-props>
+<docoff-react-props src="/components/CheckboxField/CheckboxField.tsx" name="CheckboxField"></docoff-react-props>
 
 ## Theming
 
