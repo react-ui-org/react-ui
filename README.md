@@ -46,8 +46,8 @@ these requirements:
 
 To install React UI in your app:
 
-1. Install `react-ui` with npm. Make sure you also have `prop-types`, `react` and
-  `react-dom` installed.
+1. Install `react-ui` with npm. Make sure you also have `react` and `react-dom`
+  installed.
 
    ```bash
    npm install --save @react-ui-org/react-ui

@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
@@ -110,91 +109,6 @@ export const Radio: React.FunctionComponent<RadioProps> = ({
       </div>
     </fieldset>
   );
-};
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-Radio.propTypes = {
-  /**
-   * If `true`, the input will be disabled.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * Optional help text.
-   */
-  helpText: PropTypes.node,
-  /**
-   * ID of the root HTML element.
-   *
-   * Also serves as base for ids of nested elements:
-   * * `<ID>__label`
-   * * `<ID>__displayLabel`
-   * * `<ID>__helpText`
-   * * `<ID>__validationText`
-   *
-   * and of individual options (`<input>`):
-   * * `<ID>__item__<VALUE>`
-   * * `<ID>__item__<VALUE>__label`
-   * * `<ID>__item__<VALUE>__labelText`
-   *
-   * If `key` in the option definition object is set,
-   * then `option.key` is used instead of `option.value` in place of `<VALUE>`.
-   */
-  id: PropTypes.string,
-  /**
-   * If `false`, the label will be visually hidden (but remains accessible by assistive
-   * technologies).
-   */
-  isLabelVisible: PropTypes.bool,
-  /**
-   * Label of the group of options.
-   */
-  label: PropTypes.node.isRequired,
-  /**
-   * Layout of the field.
-   *
-   * Ignored if the component is rendered within `FormLayout` component
-   * as the value is inherited in such case.
-   */
-  layout: PropTypes.oneOf(['horizontal', 'vertical']),
-  /**
-   * Set of options to be chosen from.
-   *
-   * For generating unique IDs the `option.value` is normally used. For cases when this is not practical or
-   * the `option.value` values are not unique the `option.key` attribute can be set manually.
-   */
-  options: PropTypes.arrayOf(PropTypes.shape({
-    disabled: PropTypes.bool,
-    key: PropTypes.string,
-    label: PropTypes.string.isRequired,
-    value: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-    ]),
-  })).isRequired,
-  /**
-   * If `true`, the input will be rendered as if it was required.
-   */
-  renderAsRequired: PropTypes.bool,
-  /**
-   * If `true`, the input will be made and rendered as required, regardless of the `renderAsRequired` prop.
-   */
-  required: PropTypes.bool,
-  /**
-   * Alter the field to provide feedback based on validation result.
-   */
-  validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
-  /**
-   * Validation message to be displayed.
-   */
-  validationText: PropTypes.node,
-  /**
-   * Value of the input.
-   */
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
 };
 
 export const RadioWithGlobalProps = withGlobalProps<RadioProps, never>(Radio, 'Radio');

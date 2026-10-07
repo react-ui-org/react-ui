@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { TranslationsContext } from '../../providers/translations';
 import { withGlobalProps } from '../../providers/globalProps';
@@ -25,15 +24,6 @@ export const ModalCloseButton = React.forwardRef<HTMLButtonElement, ModalCloseBu
     </button>
   );
 });
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-ModalCloseButton.propTypes = {
-  /**
-   * If `true`, close button will be disabled.
-   */
-  disabled: PropTypes.bool,
-};
 
 export const ModalCloseButtonWithGlobalProps = withGlobalProps<ModalCloseButtonProps, HTMLButtonElement>(ModalCloseButton, 'ModalCloseButton');
 
