@@ -27,12 +27,10 @@ published declarations (`dist/types`, via `tsconfig.build.json` in
 `npm run build`); `dts-bundle-generator` then flattens them into the single
 `dist/react-ui.d.ts` referenced by `package.json` `types`. An older TypeScript
 is installed alongside under the `typescript` package name for tools that need
-the compiler API (typescript-eslint). Components additionally keep `prop-types`
-for runtime validation. For the exact versions of these packages, see
-[package.json](../../package.json).
+the compiler API (typescript-eslint). For the exact versions of these packages,
+see [package.json](../../package.json).
 
-Plain function components are annotated as `React.FunctionComponent<Props>`
-so their `propTypes` do not leak into the emitted declarations.
+Plain function components are annotated as `React.FunctionComponent<Props>`.
 
 ## Component structure
 
@@ -80,9 +78,8 @@ Components are `.tsx` files. They:
    types (`transferProps.types.ts`, `mergeDeep.types.ts`); implementation
    files declare no `type`/`interface` and `.types.ts` files contain no
    runtime code. `*Context.ts` files contain only `createContext`.
-7. Keep `propTypes` (with the JSDoc descriptions — they are the documentation
-   source for `docoff-react-props`) preceded by the
-   `@typescript-eslint/no-deprecated` disable comment.
+7. Describe every prop with JSDoc in the `Props` type — it is the
+   documentation source for `docoff-react-props`.
 
 Honour the [API Guidelines](../../src/docs/contribute/api.md) and
 [Composition](../../src/docs/contribute/composition.md) when shaping props and

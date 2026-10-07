@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
@@ -28,35 +27,6 @@ export const Card: React.FunctionComponent<CardProps> = ({
     {children}
   </div>
 );
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-Card.propTypes = {
-  /**
-   * Slot for individual card elements that build up the inner layout:
-   * * `CardBody`
-   * * `CardFooter`
-   * * `ScrollView`
-   */
-  children: PropTypes.node.isRequired,
-  /**
-   * Color to clarify importance and meaning of the card. Implements
-   * [Feedback color collection](/docs/foundation/collections#colors).
-   */
-  color: PropTypes.oneOf(['success', 'warning', 'danger', 'help', 'info', 'note']),
-  /**
-   * Make the card more compact.
-   */
-  dense: PropTypes.bool,
-  /**
-   * If `true`, the card will be disabled.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * Add shadow to pull the card above surface.
-   */
-  raised: PropTypes.bool,
-};
 
 export const CardWithGlobalProps = withGlobalProps<CardProps, never>(Card, 'Card');
 

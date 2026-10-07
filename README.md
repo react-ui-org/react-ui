@@ -46,8 +46,8 @@ these requirements:
 
 To install React UI in your app:
 
-1. Install `react-ui` with npm. Make sure you also have `prop-types`, `react` and
-  `react-dom` installed.
+1. Install `react-ui` with npm. Make sure you also have `react` and `react-dom`
+  installed.
 
    ```bash
    npm install --save @react-ui-org/react-ui
@@ -77,10 +77,7 @@ Head to [the docs][rui-docs] to see how to use, customize, and extend React UI.
 ### Development Mode
 
 It is possible to run React UI in your app in development mode. This is useful
-because:
-
-- In production mode React UI uses non-human-readable class names.
-- Runtime check (i.e. PropTypes) are suppressed in production mode.
+because in production mode React UI uses non-human-readable class names.
 
 To enable development mode, add the following code to the `webpack.config.js`
 file in your app:
