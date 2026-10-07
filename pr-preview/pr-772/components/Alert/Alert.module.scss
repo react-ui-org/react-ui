@@ -1,0 +1,78 @@
+@use "sass:map";
+@use "../../styles/theme/typography";
+@use "../../styles/tools/accessibility";
+@use "../../styles/tools/collections";
+@use "../../styles/tools/reset";
+@use "settings";
+@use "theme";
+
+@layer components.alert {
+    .root {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        width: 100%;
+        color: var(--rui-local-color);
+        border-width: theme.$border-width theme.$border-width theme.$border-width theme.$stripe-width;
+        border-style: solid;
+        border-color: var(--rui-local-foreground-color);
+        border-radius: theme.$border-radius;
+        background-color: var(--rui-local-background-color);
+    }
+
+    .icon,
+    .message {
+        padding: theme.$padding;
+    }
+
+    .icon,
+    .close {
+        height: settings.$min-height;
+        color: var(--rui-local-foreground-color);
+    }
+
+    .icon {
+        display: flex;
+        flex: none;
+        align-items: center;
+        justify-content: center;
+        padding-right: 0;
+    }
+
+    .message {
+        flex-grow: 1;
+        font-weight: theme.$font-weight;
+        font-size: settings.$font-size;
+        line-height: settings.$line-height;
+    }
+
+    .message strong {
+        font-weight: theme.$emphasis-font-weight;
+        color: var(--rui-local-foreground-color);
+    }
+
+    .close {
+        @include reset.button();
+        @include accessibility.min-tap-target();
+
+        padding: theme.$padding;
+        font-size: map.get(typography.$font-size-values, 4);
+        line-height: 1;
+    }
+
+    .closeSign {
+        position: relative;
+        top: -0.1em;
+    }
+
+    @each $color in settings.$colors {
+        @include collections.generate-class(
+            $prefix: "rui-",
+            $component-name: "Alert",
+            $variant-name: "color",
+            $variant-value: $color,
+            $properties: settings.$themeable-properties,
+            $inherit-link-color: true,
+        );
+    }
+}
