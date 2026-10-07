@@ -73,10 +73,6 @@
             grid: inherit;
             grid-template-columns: subgrid;
             grid-column: span 2;
-
-            @supports not (grid-template-columns: subgrid) {
-                display: contents;
-            }
         }
 
         &.isRootLayoutHorizontal .field {
@@ -102,10 +98,6 @@
         &.isRootLayoutHorizontal .validationText {
             width: auto;
             max-width: 100%;
-
-            @supports not (grid-template-columns: subgrid) {
-                margin-top: calc(-1 * var(--rui-FormLayout__row-gap));
-            }
         }
 
         &.isRootLayoutHorizontal.hasRootLabelBefore .label {

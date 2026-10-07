@@ -26,12 +26,13 @@
 //     Reverted for full-width fields.
 //
 // 8.  Grid settings are inherited from horizontal FormLayout and applied using `subgrid`.
-//     A fallback is supplied to browsers that don't support `subgrid` yet.
 //
-//     Chrome 117+ supports `subgrid` but it doesn't work for `<fieldset>`. This is why we always
-//     use the fallback for `<fieldset>`.
+//     `<fieldset>` cannot be a subgrid: the HTML spec wraps its content in an anonymous box which
+//     breaks it, and Chrome doesn't support it at all. This is why `<fieldset>` uses
+//     `display: contents` instead.
 //
-//     https://bugs.chromium.org/p/chromium/issues/detail?id=1473242
+//     https://issues.chromium.org/issues/40278914
+//     https://github.com/whatwg/html/issues/11546
 //     https://github.com/react-ui-org/react-ui/issues/232
 //
 // 9.  Help texts and validation messages can take up full width of FormLayout. There is no reason
@@ -213,10 +214,6 @@
                 grid: inherit;
                 grid-template-columns: subgrid;
                 grid-column: span 2;
-
-                @supports not (grid-template-columns: subgrid) {
-                    display: contents;
-                }
             }
 
             &.isRootLayoutHorizontal.isRootFullWidth {
