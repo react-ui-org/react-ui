@@ -99,12 +99,12 @@ React UI is also available on CDN:
 
 👉 Consider using a specific version instead of `latest` in production.
 
-[CSS cascade layers]: /docs/contribute/css#cascade-layers
-[design tokens]: /docs/foundation/design-tokens
-[Theming]: /docs/customize/theming/overview
-[CSS modules]: /docs/contribute/css#css-modules
-[typography]: /docs/css-helpers/typography
-[spacing]: /docs/css-helpers/spacing
-[colors]: /docs/css-helpers/colors
+[CSS cascade layers]: ../contribute/css.md#cascade-layers
+[design tokens]: ../foundation/design-tokens.md
+[Theming]: ../customize/theming/overview.md
+[CSS modules]: ../contribute/css.md#css-modules
+[typography]: ../css-helpers/typography.md
+[spacing]: ../css-helpers/spacing.md
+[colors]: ../css-helpers/colors.md
 [bootstrap-utilities]: https://getbootstrap.com/docs/5.3/utilities/api/
 [controlled components]: https://reactjs.org/docs/forms.html#controlled-components

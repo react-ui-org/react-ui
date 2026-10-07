@@ -5,9 +5,9 @@ Helpers for text and background.
 ## Text Colors
 
 The text color helpers allow coloring any text with predefined
-[text colors](/docs/foundation/colors#text-colors),
-[feedback colors](/docs/foundation/colors#feedback-colors), and
-[neutral colors](/docs/foundation/colors#neutral-colors).
+[text colors](../foundation/colors.md#text-colors),
+[feedback colors](../foundation/colors.md#feedback-colors), and
+[neutral colors](../foundation/colors.md#neutral-colors).
 
 ```docoff-react-preview
   <docoff-placeholder bordered>
@@ -51,7 +51,7 @@ The text color helpers allow coloring any text with predefined
 ## Background Colors
 
 The background color helpers allow coloring any element with predefined
-[background colors](/docs/foundation/colors#background-colors) (with an
+[background colors](../foundation/colors.md#background-colors) (with an
 exception to background colors for interactive areas that are intended to be
 used only in CSS).
 

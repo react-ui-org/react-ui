@@ -41,9 +41,9 @@ Options for fields that support horizontal layout.
 ## Box Fields
 
 Options shared by box form controls. This includes
-[TextField](/components/TextField),
-[TextArea](/components/TextArea), and
-[SelectField](/components/SelectField).
+[TextField](../../../components/TextField/README.md),
+[TextArea](../../../components/TextArea/README.md), and
+[SelectField](../../../components/SelectField/README.md).
 
 | Custom Property                                      | Description                                                  |
 |------------------------------------------------------|--------------------------------------------------------------|
@@ -227,8 +227,8 @@ Where:
 - `<PROPERTY>` is one of `height`, `padding-x`, `padding-y`, or `font-size`
 
 👉 Box field sizes are linked to
-[Button sizes](/components/Button/#theming-sizes) so they align nicely when
-placed in row.
+[Button sizes](../../../components/Button/README.md#theming-sizes) so they align
+nicely when placed in row.
 
 Example:
 
@@ -299,8 +299,8 @@ React.createElement(() => {
 ## Check Fields
 
 Options shared by checkable form controls. This includes
-[CheckboxField](/components/CheckboxField), [Radio](/components/Radio),
-and [Toggle](/components/Toggle).
+[CheckboxField](../../../components/CheckboxField/README.md), [Radio](../../../components/Radio/README.md),
+and [Toggle](../../../components/Toggle/README.md).
 
 | Custom Property                                      | Description                                                  |
 |------------------------------------------------------|--------------------------------------------------------------|
@@ -611,10 +611,10 @@ the `renderAsRequired` prop to `true`. This is useful when
 `--rui-FormField--required__label__color` is used to indicate the required state
 of input fields, but you want to bypass it for inputs like feature toggles.
 This applies to
-[CheckboxField](/components/CheckboxField/#theming-the-required-state),
-[Radio](/components/Radio/#theming-the-required-state),
-[SelectField](/components/SelectField/#theming-the-required-state),
-and [Toggle](/components/Toggle/#theming-the-required-state).
+[CheckboxField](../../../components/CheckboxField/README.md#theming-the-required-state),
+[Radio](../../../components/Radio/README.md#theming-the-required-state),
+[SelectField](../../../components/SelectField/README.md#theming-the-required-state),
+and [Toggle](../../../components/Toggle/README.md#theming-the-required-state).
 
 ## Disabled State
 

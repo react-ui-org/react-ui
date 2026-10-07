@@ -44,13 +44,13 @@ See [API](#api) for all available options.
 ## General Guidelines
 
 - Use SelectField for **many options**. For sets of just a few options
-  (say 3 at maximum) consider using the [Radio](/components/Radio) component.
+  (say 3 at maximum) consider using the [Radio](../Radio/README.md) component.
   This will help keep your UI clean and uncluttered and prevent your users from
   being overwhelmed by too many options.
 
 - **Don't use for boolean** (true/false) selection or to toggle things on and
-  off. [CheckboxField](/components/CheckboxField) and
-  [Toggle](/components/Toggle) are more suitable for such cases.
+  off. [CheckboxField](../CheckboxField/README.md) and
+  [Toggle](../Toggle/README.md) are more suitable for such cases.
 
 - Use **short and descriptive labels**, ideally nouns rather than seemingly
   polite phrases like _Please select your favourite fruit_. Short labels will
@@ -731,8 +731,8 @@ React.createElement(() => {
 In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
-[`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to the
-`<select>` HTML element. This enables making the component interactive and
+[`transferProps`](../../helpers/transferProps/README.md) helper are forwarded to
+the `<select>` HTML element. This enables making the component interactive and
 helps to improve its accessibility.
 
 👉 For the full list of supported attributes refer to:
@@ -750,8 +750,9 @@ If you provide [ref], it is forwarded to the native HTML `<select>` element.
 
 ## Theming
 
-Head to [Forms Theming](/docs/customize/theming/forms) to see shared form theming
-options. On top of that, the following options are available for SelectField.
+Head to [Forms Theming](../../docs/customize/theming/forms.md) to see shared
+form theming options. On top of that, the following options are available for
+SelectField.
 
 | Custom Property                                         | Description                                                  |
 |---------------------------------------------------------|--------------------------------------------------------------|
@@ -762,7 +763,7 @@ options. On top of that, the following options are available for SelectField.
 ### Theming the Required State
 
 Required fields are indicated by
-[shared theming options](/docs/customize/theming/forms/#required-state).
+[shared theming options](../../docs/customize/theming/forms.md#required-state).
 
 If your project uses the label color as the primary means to indicate the
 required state of input fields and the usual asterisk `*` is omitted, you may

@@ -3,8 +3,8 @@
 Borders separate the content from the outer context.
 
 👉 All values on this page can be changed by
-[overriding](/docs/customize/theming/overview) values in your
-[design tokens](/docs/foundation/design-tokens).
+[overriding](../customize/theming/overview.md) values in your
+[design tokens](design-tokens.md).
 
 Available border widths (the list may grow in the future):
 
@@ -18,7 +18,7 @@ Available border styles:
 |--------------|---------------------------|-----------------------------------|
 | focus ring   | `--rui-border-focus-ring` | Focus ring style                  |
 
-👉 Check [Colors](/docs/foundation/colors#border-colors) for available border colors.
+👉 Check [Colors](colors.md#border-colors) for available border colors.
 
-👉 Check [Accessibility](/docs/foundation/accessibility#keyboard-friendliness) for
+👉 Check [Accessibility](accessibility.md#keyboard-friendliness) for
 all focus ring options.

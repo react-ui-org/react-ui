@@ -32,7 +32,7 @@ See [API](#api) for all available options.
 ## Color Variants
 
 To cover all possible needs of your project, Alert is available in colors from
-[Feedback color collection](/docs/foundation/collections#colors).
+[Feedback color collection](../../docs/foundation/collections.md#colors).
 
 ### Success
 
@@ -116,7 +116,7 @@ Neutral informative alert.
 An icon can (and should) accompany the message.
 
 👉 Please note there are no icons pre-packed in React UI. Visit
-[Icons](/docs/foundation/icons) to see how it works.
+[Icons](../../docs/foundation/icons.md) to see how it works.
 
 ```docoff-react-preview
 <Alert color="success" icon={<rui-icon icon="success" />}>
@@ -159,8 +159,8 @@ React.createElement(() => {
 In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
-[`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to the
-root `<div>` HTML element. This enables making the component interactive and
+[`transferProps`](../../helpers/transferProps/README.md) helper are forwarded to
+the root `<div>` HTML element. This enables making the component interactive and
 helps to improve its accessibility.
 
 👉 For the full list of supported attributes refer to:
@@ -195,7 +195,7 @@ convention looks as follows:
 Where:
 
 - `<COLOR>` is a value from supported
-  [color collections](/docs/foundation/collections#colors)
+  [color collections](../../docs/foundation/collections.md#colors)
   (check [color variants](#color-variants) and [API](#api) to see which
   collections are supported),
 - `<PROPERTY>` is one of `color` (color of text), `foreground-color` (color of

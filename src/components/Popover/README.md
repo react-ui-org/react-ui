@@ -318,7 +318,7 @@ When Popover is rendered inside a scrollable container (e.g. an element with
 `overflow: auto`) and its closest positioned parent is the container itself or
 an element inside it, Popover is clipped by the container and scrolls along
 with its content. This is always the case inside
-[ScrollView](/components/ScrollView), and it also applies to Popover wrapped in
+[ScrollView](../ScrollView/README.md), and it also applies to Popover wrapped in
 PopoverWrapper.
 
 If Popover needs to overflow the scrollable container, use Floating UI with the
@@ -362,8 +362,8 @@ React.createElement(() => {
 In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
-[`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to the
-root `<div>` HTML element. This enables making the component interactive and
+[`transferProps`](../../helpers/transferProps/README.md) helper are forwarded to
+the root `<div>` HTML element. This enables making the component interactive and
 helps to improve its accessibility.
 
 👉 For the full list of supported attributes refer to:

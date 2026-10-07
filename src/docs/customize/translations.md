@@ -3,7 +3,7 @@
 Some components may contain texts which improve components' accessibility.
 All texts are in English by default and can be translated to other languages.
 
-Structure of translations can be found in the file [src/translations/en.json].
+Structure of translations can be found in the file [src/translations/en.ts].
 
 To use custom translations, you need to import `TranslationsProvider` first:
 
@@ -52,4 +52,4 @@ ones.
 </TranslationsProvider>
 ```
 
-[src/translations/en.json]: https://github.com/react-ui-org/react-ui/blob/master/src/translations/en.js
+[src/translations/en.ts]: https://github.com/react-ui-org/react-ui/blob/master/src/translations/en.ts

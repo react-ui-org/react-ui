@@ -115,8 +115,8 @@ insert hyphens where appropriate.
 👉 The `auto` setting's behavior depends on the language being properly tagged
 to select the appropriate hyphenation rules. **You must specify a language**
 using the `lang` HTML attribute (e.g.
-[on `<html>` tag](/docs/getting-started/usage#full-example)) to guarantee that
-automatic hyphenation is applied in that language.
+[on `<html>` tag](../../docs/getting-started/usage.md#full-example)) to
+guarantee that automatic hyphenation is applied in that language.
 
 👉 [Manually suggested line break opportunities](https://developer.mozilla.org/en-US/docs/Web/CSS/hyphens#suggesting_line_break_opportunities)
 will override automatic break point selection in `auto` mode when present.
@@ -204,7 +204,7 @@ React.createElement(() => {
 In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
-[`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to:
+[`transferProps`](../../helpers/transferProps/README.md) helper are forwarded to:
 
 - `<span>` HTML element in case that `blockLevel` is set to `false`
 - `<div>` HTML element in case that `blockLevel` is set to `true`

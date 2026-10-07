@@ -16,7 +16,7 @@ You can change it to a custom font by loading the font in your project:
    />
 ```
 
-… and [overriding](/docs/customize/theming/overview) the
+… and [overriding](theming/overview.md) the
 `--rui-font-family-base` CSS custom property:
 
 ```css

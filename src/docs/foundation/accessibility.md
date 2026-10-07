@@ -4,7 +4,8 @@ React UI bakes accessibility principles right into its core.
 
 👉 You can adjust all custom properties on this page (and more) in your theme by
 overriding values in the
-[design tokens](/docs/customize/theming/overview#design-tokens) section.
+[design tokens](../customize/theming/overview.md#global-and-semantic-design-tokens)
+section.
 
 ## Touch Friendliness
 
@@ -13,24 +14,24 @@ elements can be easily targeted on touch screens. Recommended dimensions may
 vary from platform to platform, however a commonly used size is 7–10 mm.
 
 Default tap target size in React UI is used by all potentially small interactive
-components like [Alert](/components/Alert) close button,
-[CheckboxField](/components/CheckboxField), or [Toggle](/components/Toggle).
+components like [Alert](../../components/Alert/README.md) close button,
+[CheckboxField](../../components/CheckboxField/README.md), or [Toggle](../../components/Toggle/README.md).
 Tap target size can be adjusted via the `--rui-dimension-tap-target-size`
-custom property (see [Theming](/docs/customize/theming/overview) to learn how).
+custom property (see [Theming](../customize/theming/overview.md) to learn how).
 
 📖 [Read more about touch targets at Norman Nielsen Group.][nn-group]
 
 ### Form Fields and Reserved Space
 
 Note that form fields with potentially small inputs (like
-[CheckboxField](/components/CheckboxField) or
-[Toggle](/components/Toggle)) reserve vertical space corresponding to the
-minimum tap target size. In other words, form fields **box model is taller.**
-The reason behind this behaviour is that in many cases the minimum tap target
-size could overflow its component's box model and tap targets of neighboring
-components could collide. The extra added space prevents this.
+[CheckboxField](../../components/CheckboxField/README.md) or
+[Toggle](../../components/Toggle/README.md)) reserve vertical space
+corresponding to the minimum tap target size. In other words, form fields **box
+model is taller.** The reason behind this behaviour is that in many cases the
+minimum tap target size could overflow its component's box model and tap targets
+of neighboring components could collide. The extra added space prevents this.
 
-However, if placed inside [FormLayout](/components/FormLayout), form
+However, if placed inside [FormLayout](../../components/FormLayout/README.md), form
 fields do not add any extra vertical space because it is already provided by
 `FormLayout` row gap. Remember to check that form fields in your `FormLayout`
 are properly spaced and interactive elements do not collide should you decide to
@@ -47,7 +48,7 @@ React UI are **highlighted on focus** so keyboard users can easily tab over
 them and see what control currently has focus.
 
 All interactive elements obtain a blue outline on focus. Appearance of the focus
-highlight can be [adjusted](/docs/customize/theming/overview) with the following
+highlight can be [adjusted](../customize/theming/overview.md) with the following
 custom properties:
 
 - `--rui-border-focus-ring`,

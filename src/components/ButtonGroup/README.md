@@ -37,11 +37,11 @@ See [API](#api) for all available options.
 - Use **short labels or icons** so the buttons can fit small screens.
 
 - For toggling between on/off states, use rather the
-  [Toggle](/components/Toggle) component.
+  [Toggle](../Toggle/README.md) component.
 
 - For switching between options in a form that needs to be submitted, use rather
-  the [SelectField](/components/SelectField) or
-  [Radio](/components/Radio) components.
+  the [SelectField](../SelectField/README.md) or
+  [Radio](../Radio/README.md) components.
 
 - In the background, ButtonGroup uses the [`fieldset`][fieldset] element. Not
   only it improves the [accessibility] of the group, it also allows you to make
@@ -69,7 +69,7 @@ buttons of totally different types or sizes.
 ## Priorities
 
 There are three **visual priorities** of buttons which exactly copy the
-priorities of the [Button](/components/Button/) component:
+priorities of the [Button](../Button/README.md) component:
 
 1. filled
 2. outline
@@ -251,8 +251,8 @@ and communicating the state of individual options.
 In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
-[`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to the
-root `<div>` HTML element. This enables making the component interactive and
+[`transferProps`](../../helpers/transferProps/README.md) helper are forwarded to
+the root `<div>` HTML element. This enables making the component interactive and
 helps to improve its accessibility.
 
 👉 For the full list of supported attributes refer to:

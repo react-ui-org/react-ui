@@ -28,9 +28,9 @@ See [Commands](../../CLAUDE.md#commands).
 * Use relative links between docs.
 * Keep theming out of README prose: document it only in the `## Theming` section
   at the end of a component's `README.md`, including examples that override
-  `--rui-*` custom properties. Other sections must not link to
-  `/docs/customize/theming/*` or to `#theming` — downstream design systems drop
-  the whole section when they sync our docs.
+  `--rui-*` custom properties. Other sections must not link to the theming
+  guides (`docs/customize/theming/*.md`) or to `#theming` — downstream design
+  systems drop the whole section when they sync our docs.
 
 ## Reference
 

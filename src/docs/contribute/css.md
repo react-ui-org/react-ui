@@ -257,14 +257,14 @@ according to [Browserslist] configuration stored in `.browserslistrc`.
 [stylelint-config]: https://github.com/react-ui-org/stylelint-config
 [stylelint-config-standard]: https://github.com/stylelint/stylelint-config-standard
 [Web Components]: https://developer.mozilla.org/en-US/docs/Web/Web_Components
-[foundation CSS layer]: /docs/getting-started/usage#foundation-css
+[foundation CSS layer]: ../getting-started/usage.md#css
 [foundation-css-source]: https://github.com/react-ui-org/react-ui/blob/master/src/foundation.scss
 [cascade layers]: https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_layers
 [CSS modules]: https://github.com/css-modules/css-modules
 [modular CSS specification]: https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/What_is_CSS#css_modules
-[modern browsers]: /docs/getting-started/browsers-and-devices
+[modern browsers]: ../getting-started/browsers-and-devices.md
 [CSS custom properties]: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
-[theming overview]: /docs/customize/theming/overview
+[theming overview]: ../customize/theming/overview.md
 [Sass]: https://sass-lang.com
 [Sass modules]: https://sass-lang.com/blog/the-module-system-is-launched
 [Built-in Sass modules]: https://sass-lang.com/documentation/modules

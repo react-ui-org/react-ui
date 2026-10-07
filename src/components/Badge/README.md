@@ -30,7 +30,7 @@ lowest:
 2. outline
 
 All priorities are available in colors from supported
-[color collections](/docs/foundation/collections#colors).
+[color collections](../../docs/foundation/collections.md#colors).
 Check [API](#api) to see which collections are supported.
 
 ### Filled
@@ -90,8 +90,8 @@ Medium-emphasis priority to provide additional context in an unobtrusive way.
 In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
-[`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to the
-root `<div>` HTML element. This enables making the component interactive and
+[`transferProps`](../../helpers/transferProps/README.md) helper are forwarded to
+the root `<div>` HTML element. This enables making the component interactive and
 helps to improve its accessibility.
 
 👉 For the full list of supported attributes refer to:
@@ -114,7 +114,7 @@ Where:
 
 - `<PRIORITY>` is one of `filled` or `outline`,
 - `<COLOR>` is a value from supported
-  [color collections](/docs/foundation/collections#colors)
+  [color collections](../../docs/foundation/collections.md#colors)
   (check [API](#api) to see which collections are supported),
 - `<PROPERTY>` is one of `color` (color of text) or `background-color` for the
   filled priority, or just `color` for the outline priority.
