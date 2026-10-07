@@ -1,20 +1,9 @@
-import React from 'react';
 import {
   expect,
-  test,
-} from '@playwright/experimental-ct-react';
-import {
   mixPropTests,
   propTests,
+  test,
 } from '../../../../tests/playwright';
-import {
-  MultiSelectFieldForTest,
-  MultiSelectFieldForRefTest,
-  MultiSelectFieldForFocusTests,
-  MultiSelectFieldForTranslationsTest,
-  MultiSelectFieldForFormLayoutTests,
-} from './MultiSelectField.story';
-import type { MultiSelectFieldForFormLayoutTestsProps } from './MultiSelectField.story';
 import { openMultiSelectFieldOptionsTest } from './_propTests/openMultiSelectFieldOptionsTest';
 
 const baseOptions = [
@@ -124,11 +113,7 @@ test.describe('MultiSelectField', () => {
             await onBeforeTest(page);
           }
 
-          const component = await mount(
-            <MultiSelectFieldForTest
-              {...props}
-            />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest', props);
 
           if (onBeforeSnapshot) {
             await onBeforeSnapshot(page, component);
@@ -166,11 +151,7 @@ test.describe('MultiSelectField', () => {
               await onBeforeTest(page);
             }
 
-            const component = await mount(
-              <MultiSelectFieldForTest
-                {...props}
-              />,
-            );
+            const component = await mount('MultiSelectField/MultiSelectFieldForTest', props);
 
             if (onBeforeSnapshot) {
               await onBeforeSnapshot(page, component);
@@ -190,15 +171,13 @@ test.describe('MultiSelectField', () => {
         const testHelpText = 'testHelpText';
         const testValidationText = 'testValidationText';
 
-        const component = await mount(
-          <MultiSelectFieldForTest
-            helpText={testHelpText}
-            id={testId}
-            label={testLabel}
-            options={baseOptions}
-            validationText={testValidationText}
-          />,
-        );
+        const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
+          helpText: testHelpText,
+          id: testId,
+          label: testLabel,
+          options: baseOptions,
+          validationText: testValidationText,
+        });
 
         await expect(component.getByRole('combobox')).toHaveAttribute('id', testId);
         await expect(component.getByText(testHelpText)).toHaveAttribute('id', `${testId}__helpText`);
@@ -214,12 +193,10 @@ test.describe('MultiSelectField', () => {
       });
 
       test('ref', async ({ mount }) => {
-        const component = await mount(
-          <MultiSelectFieldForRefTest
-            testRefAttrName="test-ref"
-            testRefAttrValue="test-ref-value"
-          />,
-        );
+        const component = await mount('MultiSelectField/MultiSelectFieldForRefTest', {
+          testRefAttrName: 'test-ref',
+          testRefAttrValue: 'test-ref-value',
+        });
 
         await expect(component.getByRole('combobox')).toHaveAttribute('test-ref', 'test-ref-value');
       });
@@ -228,9 +205,7 @@ test.describe('MultiSelectField', () => {
         mount,
         page,
       }) => {
-        const component = await mount(
-          <MultiSelectFieldForTranslationsTest />,
-        );
+        const component = await mount('MultiSelectField/MultiSelectFieldForTranslationsTest');
 
         await expect(component.getByRole('button', { name: 'option1' })).toHaveAttribute('title', 'Remove this tag');
         await expect(component.getByRole('textbox')).toHaveAttribute('aria-label', 'Search options');
@@ -245,9 +220,7 @@ test.describe('MultiSelectField', () => {
     test.describe('functionality', () => {
       test.describe('opening', () => {
         test('opens dropdown on mouse click', async ({ mount }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest');
 
           await component.getByRole('combobox').click();
 
@@ -258,9 +231,7 @@ test.describe('MultiSelectField', () => {
 
         ['Enter', 'Space', 'ArrowDown', 'ArrowUp'].forEach((openKey) => {
           test(`opens dropdown on ${openKey} key press`, async ({ mount }) => {
-            const component = await mount(
-              <MultiSelectFieldForTest />,
-            );
+            const component = await mount('MultiSelectField/MultiSelectFieldForTest');
 
             const combobox = component.getByRole('combobox');
             await combobox.focus();
@@ -273,9 +244,7 @@ test.describe('MultiSelectField', () => {
         test('opens dropdown on character key press', async ({
           mount,
         }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest');
 
           const combobox = component.getByRole('combobox');
           await combobox.focus();
@@ -286,16 +255,9 @@ test.describe('MultiSelectField', () => {
         });
 
         test('does not open dropdown when disabled', async ({ mount }) => {
-          let receivedValue = null;
-
-          const component = await mount(
-            <MultiSelectFieldForTest
-              disabled
-              onChange={(value) => {
-                receivedValue = value;
-              }}
-            />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldSpyForTest', {
+            disabled: true,
+          });
 
           // `force` is needed as Playwright refuses to click elements with `aria-disabled="true"`
           const combobox = component.getByRole('combobox');
@@ -307,7 +269,7 @@ test.describe('MultiSelectField', () => {
           const tag = component.getByRole('button', { name: 'option1' });
           await tag.click({ force: true });
           await expect(tag).toBeVisible();
-          expect(receivedValue).toBeNull();
+          await expect.poll(() => component.getSpyValue('onChange')).toEqual([]);
         });
       });
 
@@ -316,9 +278,7 @@ test.describe('MultiSelectField', () => {
           mount,
           page,
         }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest');
 
           const combobox = component.getByRole('combobox');
           await combobox.click();
@@ -334,9 +294,7 @@ test.describe('MultiSelectField', () => {
           mount,
           page,
         }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest');
 
           const combobox = component.getByRole('combobox');
           await combobox.focus();
@@ -355,9 +313,7 @@ test.describe('MultiSelectField', () => {
           mount,
           page,
         }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest');
 
           // Open using keyboard as clicking the center of the input could hit one of the tags
           const combobox = component.getByRole('combobox');
@@ -377,9 +333,7 @@ test.describe('MultiSelectField', () => {
           mount,
           page,
         }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest');
 
           // Open using keyboard as clicking the center of the input could hit one of the tags
           const combobox = component.getByRole('combobox');
@@ -401,9 +355,7 @@ test.describe('MultiSelectField', () => {
           mount,
           page,
         }) => {
-          const component = await mount(
-            <MultiSelectFieldForFocusTests />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForFocusTests');
 
           await component.getByRole('combobox').first().click();
           await expect(component.getByRole('listbox')).toBeVisible();
@@ -416,9 +368,7 @@ test.describe('MultiSelectField', () => {
         });
 
         test('closes dropdown on clicking the input', async ({ mount }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest');
 
           const combobox = component.getByRole('combobox');
           await combobox.click();
@@ -436,9 +386,7 @@ test.describe('MultiSelectField', () => {
         });
 
         test('does not close dropdown on clicking the search input', async ({ mount }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest');
 
           await component.getByRole('combobox').click();
           await expect(component.getByRole('listbox')).toBeVisible();
@@ -452,9 +400,7 @@ test.describe('MultiSelectField', () => {
           mount,
           page,
         }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest');
 
           await component.getByRole('combobox').click();
           await expect(component.getByRole('listbox')).toBeVisible();
@@ -469,9 +415,7 @@ test.describe('MultiSelectField', () => {
           mount,
           page,
         }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest');
 
           const combobox = component.getByRole('combobox');
           await combobox.click();
@@ -488,42 +432,28 @@ test.describe('MultiSelectField', () => {
 
       test.describe('selection', () => {
         test('selects an option on click', async ({ mount }) => {
-          let receivedValue = null;
-
-          const component = await mount(
-            <MultiSelectFieldForTest
-              initialValue={[]}
-              onChange={(value) => {
-                receivedValue = value;
-              }}
-            />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldSpyForTest', {
+            initialValue: [],
+          });
 
           await component.getByRole('combobox').click();
           await component.getByRole('option', { name: 'option1' }).click();
 
-          expect(receivedValue).toEqual(['value1']);
+          await expect.poll(() => component.getSpyValue('onChange')).toEqual([['value1']]);
           await expect(component.getByRole('button', { name: 'option1' })).toBeVisible();
           // Dropdown stays open to allow selecting more options
           await expect(component.getByRole('listbox')).toBeVisible();
         });
 
         test('unselects a selected option on click', async ({ mount }) => {
-          let receivedValue = null;
-
-          const component = await mount(
-            <MultiSelectFieldForTest
-              initialValue={['value1']}
-              onChange={(value) => {
-                receivedValue = value;
-              }}
-            />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldSpyForTest', {
+            initialValue: ['value1'],
+          });
 
           await component.getByRole('combobox').click();
           await component.getByRole('option', { name: 'option1' }).click();
 
-          expect(receivedValue).toEqual([]);
+          await expect.poll(() => component.getSpyValue('onChange')).toEqual([[]]);
           await expect(component.getByRole('button', { name: 'option1' })).toHaveCount(0);
         });
 
@@ -532,16 +462,9 @@ test.describe('MultiSelectField', () => {
             mount,
             page,
           }) => {
-            let receivedValue = null;
-
-            const component = await mount(
-              <MultiSelectFieldForTest
-                initialValue={[]}
-                onChange={(value) => {
-                  receivedValue = value;
-                }}
-              />,
-            );
+            const component = await mount('MultiSelectField/MultiSelectFieldSpyForTest', {
+              initialValue: [],
+            });
 
             const combobox = component.getByRole('combobox');
             await combobox.focus();
@@ -553,7 +476,7 @@ test.describe('MultiSelectField', () => {
             await expect(component.getByRole('option', { name: 'option1' })).toBeFocused();
 
             await page.keyboard.press(selectKey);
-            expect(receivedValue).toEqual(['value1']);
+            await expect.poll(() => component.getSpyValue('onChange')).toEqual([['value1']]);
           });
         });
 
@@ -561,43 +484,29 @@ test.describe('MultiSelectField', () => {
           mount,
           page,
         }) => {
-          let receivedValue = null;
-
-          const component = await mount(
-            <MultiSelectFieldForTest
-              initialValue={[]}
-              onChange={(value) => {
-                receivedValue = value;
-              }}
-            />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldSpyForTest', {
+            initialValue: [],
+          });
 
           await component.getByRole('combobox').click();
           await page.keyboard.type('option2');
           await component.getByRole('option', { name: 'option2' }).click();
 
-          expect(receivedValue).toEqual(['value2']);
+          await expect.poll(() => component.getSpyValue('onChange')).toEqual([['value2']]);
         });
 
         test('does not select a disabled option', async ({ mount }) => {
-          let receivedValue = null;
-
-          const component = await mount(
-            <MultiSelectFieldForTest
-              initialValue={[]}
-              onChange={(value) => {
-                receivedValue = value;
-              }}
-              options={partiallyDisabledOptions}
-            />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldSpyForTest', {
+            initialValue: [],
+            options: partiallyDisabledOptions,
+          });
 
           await component.getByRole('combobox').click();
 
           // `force` is needed as Playwright refuses to click elements with `aria-disabled="true"`
           await component.getByRole('option', { name: 'option2' }).click({ force: true });
 
-          expect(receivedValue).toBeNull();
+          await expect.poll(() => component.getSpyValue('onChange')).toEqual([]);
           await expect(component.getByRole('listbox')).toBeVisible();
         });
       });
@@ -607,9 +516,7 @@ test.describe('MultiSelectField', () => {
           mount,
           page,
         }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest');
 
           await component.getByRole('combobox').click();
           await page.keyboard.press('ArrowDown');
@@ -621,9 +528,7 @@ test.describe('MultiSelectField', () => {
           mount,
           page,
         }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest');
 
           await component.getByRole('combobox').click();
           await page.keyboard.press('ArrowUp');
@@ -635,11 +540,9 @@ test.describe('MultiSelectField', () => {
           mount,
           page,
         }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest
-              options={partiallyDisabledOptions}
-            />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
+            options: partiallyDisabledOptions,
+          });
 
           await component.getByRole('combobox').click();
 
@@ -655,11 +558,9 @@ test.describe('MultiSelectField', () => {
           mount,
           page,
         }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest
-              options={groupedOptions}
-            />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
+            options: groupedOptions,
+          });
 
           await component.getByRole('combobox').click();
 
@@ -678,9 +579,7 @@ test.describe('MultiSelectField', () => {
           mount,
           page,
         }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest');
 
           await component.getByRole('combobox').click();
 
@@ -697,11 +596,9 @@ test.describe('MultiSelectField', () => {
           mount,
           page,
         }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest
-              initialValue={['value1', 'value2']}
-            />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
+            initialValue: ['value1', 'value2'],
+          });
 
           // Open using keyboard as clicking the center of the input could hit one of the tags
           const combobox = component.getByRole('combobox');
@@ -727,20 +624,13 @@ test.describe('MultiSelectField', () => {
 
       test.describe('tags', () => {
         test('removes a tag on click', async ({ mount }) => {
-          let receivedValue = null;
-
-          const component = await mount(
-            <MultiSelectFieldForTest
-              initialValue={['value1']}
-              onChange={(value) => {
-                receivedValue = value;
-              }}
-            />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldSpyForTest', {
+            initialValue: ['value1'],
+          });
 
           await component.getByRole('button', { name: 'option1' }).click();
 
-          expect(receivedValue).toEqual([]);
+          await expect.poll(() => component.getSpyValue('onChange')).toEqual([[]]);
           await expect(component.getByRole('button', { name: 'option1' })).toHaveCount(0);
           // Clicking a tag must not open the dropdown
           await expect(component.getByRole('listbox')).toHaveCount(0);
@@ -751,16 +641,9 @@ test.describe('MultiSelectField', () => {
             mount,
             page,
           }) => {
-            let receivedValue = null;
-
-            const component = await mount(
-              <MultiSelectFieldForTest
-                initialValue={['value1', 'value2']}
-                onChange={(value) => {
-                  receivedValue = value;
-                }}
-              />,
-            );
+            const component = await mount('MultiSelectField/MultiSelectFieldSpyForTest', {
+              initialValue: ['value1', 'value2'],
+            });
 
             // Open using keyboard as clicking the center of the input could hit one of the tags
             const combobox = component.getByRole('combobox');
@@ -773,7 +656,7 @@ test.describe('MultiSelectField', () => {
 
             await page.keyboard.press(removeKey);
 
-            expect(receivedValue).toEqual(['value1']);
+            await expect.poll(() => component.getSpyValue('onChange')).toEqual([['value1']]);
             // Focus moves to the previous tag
             await expect(component.getByRole('button', { name: 'option1' })).toBeFocused();
           });
@@ -783,16 +666,9 @@ test.describe('MultiSelectField', () => {
           mount,
           page,
         }) => {
-          let receivedValue = null;
-
-          const component = await mount(
-            <MultiSelectFieldForTest
-              initialValue={['value1', 'value2']}
-              onChange={(value) => {
-                receivedValue = value;
-              }}
-            />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldSpyForTest', {
+            initialValue: ['value1', 'value2'],
+          });
 
           // Open using keyboard as clicking the center of the input could hit one of the tags
           const combobox = component.getByRole('combobox');
@@ -805,7 +681,7 @@ test.describe('MultiSelectField', () => {
 
           await page.keyboard.press('Delete');
 
-          expect(receivedValue).toEqual(['value2']);
+          await expect.poll(() => component.getSpyValue('onChange')).toEqual([['value2']]);
           // There is no previous tag, focus moves to the next one
           await expect(component.getByRole('button', { name: 'option2' })).toBeFocused();
         });
@@ -814,11 +690,9 @@ test.describe('MultiSelectField', () => {
           mount,
           page,
         }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest
-              initialValue={['value1', 'value2']}
-            />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
+            initialValue: ['value1', 'value2'],
+          });
 
           // Open using keyboard as clicking the center of the input could hit one of the tags
           const combobox = component.getByRole('combobox');
@@ -836,9 +710,7 @@ test.describe('MultiSelectField', () => {
           mount,
           page,
         }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest');
 
           await component.getByRole('combobox').click();
           await page.keyboard.type('option2');
@@ -851,9 +723,7 @@ test.describe('MultiSelectField', () => {
           mount,
           page,
         }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest');
 
           await component.getByRole('combobox').click();
           await page.keyboard.type('nonexistent');
@@ -866,9 +736,7 @@ test.describe('MultiSelectField', () => {
           mount,
           page,
         }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest');
 
           // Removing the only tag with dropdown closed moves focus to the search input
           await component.getByRole('button', { name: 'option1' }).click();
@@ -882,11 +750,9 @@ test.describe('MultiSelectField', () => {
         });
 
         test('does not render search input when search is disabled', async ({ mount }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest
-              searchAlgorithm={null}
-            />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
+            searchAlgorithm: null,
+          });
 
           await component.getByRole('combobox').click();
 
@@ -898,11 +764,9 @@ test.describe('MultiSelectField', () => {
           mount,
           page,
         }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest
-              searchAlgorithm={null}
-            />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
+            searchAlgorithm: null,
+          });
 
           const combobox = component.getByRole('combobox');
           await combobox.focus();
@@ -915,11 +779,9 @@ test.describe('MultiSelectField', () => {
         });
 
         test('does not open dropdown on typing a character when search is disabled', async ({ mount }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest
-              searchAlgorithm={null}
-            />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
+            searchAlgorithm: null,
+          });
 
           const combobox = component.getByRole('combobox');
           await combobox.focus();
@@ -929,11 +791,9 @@ test.describe('MultiSelectField', () => {
         });
 
         test('moves focus to the input on removing the last tag when search is disabled', async ({ mount }) => {
-          const component = await mount(
-            <MultiSelectFieldForTest
-              searchAlgorithm={null}
-            />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
+            searchAlgorithm: null,
+          });
 
           await component.getByRole('button', { name: 'option1' }).click();
 
@@ -962,11 +822,7 @@ test.describe('MultiSelectField', () => {
             await onBeforeTest(page);
           }
 
-          const component = await mount(
-            <MultiSelectFieldForFormLayoutTests
-              {...props as unknown as MultiSelectFieldForFormLayoutTestsProps}
-            />,
-          );
+          const component = await mount('MultiSelectField/MultiSelectFieldForFormLayoutTests', props);
 
           if (onBeforeSnapshot) {
             await onBeforeSnapshot(page, component);

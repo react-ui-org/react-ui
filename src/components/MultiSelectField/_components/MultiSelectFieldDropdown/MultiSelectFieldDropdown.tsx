@@ -24,13 +24,11 @@ const MultiSelectFieldDropdown: React.FunctionComponent<MultiSelectFieldDropdown
   const translations = useContext(TranslationsContext);
   const focusedOptionIndexRef = useRef(-1);
 
-  // Number of options that can receive focus, i.e. all displayed options that are not disabled.
-  const focusableOptionsCount = options.reduce(
-    (count, option) => ('options' in option
-      ? count + option.options.filter((groupOption) => !option.disabled && !groupOption.disabled).length
-      : count + (option.disabled ? 0 : 1)),
-    0,
-  );
+  // Options that can receive focus, i.e. all displayed options that are not disabled, in the order of rendering.
+  const focusableOptions = options.flatMap((option) => ('options' in option
+    ? option.options.filter((groupOption) => !option.disabled && !groupOption.disabled)
+    : [option].filter((individualOption) => !individualOption.disabled)));
+  const focusableOptionsCount = focusableOptions.length;
 
   useEffect(() => {
     // Drop refs of options that are no longer displayed, e.g. after the options were filtered.
@@ -43,17 +41,12 @@ const MultiSelectFieldDropdown: React.FunctionComponent<MultiSelectFieldDropdown
     }
   }, [autoFocusFirstOptionOnOpen, optionsRef]);
 
-  // Index of an option among all focusable options, assigned in the order of rendering.
-  let optionIndex = 0;
-
   const renderOption = (option: MultiSelectFieldOption, isWithinGroup: boolean, isGroupDisabled: boolean) => {
     const isOptionDisabled = isGroupDisabled || option.disabled || false;
 
-    let currentOptionIndex: number | null = null;
-    if (!isOptionDisabled) {
-      currentOptionIndex = optionIndex;
-      optionIndex += 1;
-    }
+    // Index of the option among all focusable options
+    const focusableOptionIndex = focusableOptions.indexOf(option);
+    const currentOptionIndex = focusableOptionIndex === -1 ? null : focusableOptionIndex;
 
     return (
       <MultiSelectFieldDropdownItem

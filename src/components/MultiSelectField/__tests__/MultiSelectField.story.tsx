@@ -8,6 +8,10 @@ import { TranslationsProvider } from '../../../providers/translations';
 import { FormLayoutContext } from '../../FormLayout/FormLayoutContext';
 import { MultiSelectField } from '..';
 import type { MultiSelectFieldProps } from '..';
+import {
+  useSpy,
+  withSpy,
+} from '../../../../tests/playwright/utils/spy';
 import type { StoryProps } from '../../../../tests/playwright';
 
 type MultiSelectFieldForTestProps = Omit<StoryProps<MultiSelectFieldProps, 'label' | 'onChange' | 'options'>, 'value'> & {
@@ -18,7 +22,7 @@ type MultiSelectFieldForRefTestProps = MultiSelectFieldForTestProps & {
   testRefAttrValue: string;
 };
 export type MultiSelectFieldForFormLayoutTestsProps = MultiSelectFieldForTestProps & {
-  layout: 'vertical' | 'horizontal'
+  layout: 'vertical' | 'horizontal';
 };
 
 const defaultLabel = 'test-label';
@@ -59,6 +63,17 @@ export const MultiSelectFieldForTest = ({
     />
   );
 };
+
+export const MultiSelectFieldSpyForTest = withSpy((props: MultiSelectFieldForTestProps) => {
+  const onChange = useSpy('onChange');
+
+  return (
+    <MultiSelectFieldForTest
+      onChange={onChange}
+      {...props}
+    />
+  );
+});
 
 export const MultiSelectFieldForRefTest = ({
   label = defaultLabel,
@@ -120,7 +135,7 @@ export const MultiSelectFieldForTranslationsTest = ({
 export const MultiSelectFieldForFormLayoutTests = ({
   layout,
   ...props
-} : MultiSelectFieldForFormLayoutTestsProps) => {
+}: MultiSelectFieldForFormLayoutTestsProps) => {
   const values = useMemo(() => ({ layout }), [layout]);
 
   return (
