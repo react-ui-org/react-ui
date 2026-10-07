@@ -175,11 +175,11 @@ accessibility.
 
 ## API
 
-<docoff-react-props src="/components/Tabs/Tabs.tsx"></docoff-react-props>
+<docoff-react-props src="/components/Tabs/Tabs.tsx" name="Tabs"></docoff-react-props>
 
 ### TabsItem
 
-<docoff-react-props src="/components/Tabs/TabsItem.tsx"></docoff-react-props>
+<docoff-react-props src="/components/Tabs/TabsItem.tsx" name="TabsItem"></docoff-react-props>
 
 ## Theming
 
