@@ -5,6 +5,7 @@ Tools used to test the application:
 * **ESLint** (static code analysis of TypeScript files)
 * **Stylelint** (static code analysis of CSS files)
 * **Markdownlint** (static code analysis of Markdown files)
+* **Markdown link check** (checking links in Markdown files)
 * **Jest** (unit tests)
 * **Playwright** (visual and functional component testing)
 
@@ -19,7 +20,7 @@ You can run all tests with a single command:
 npm run lint && npm test && npm run test:playwright-ct:all
 ```
 
-### Linters (ESLint, Markdownlint, Stylelint)
+### Linters (ESLint, Markdownlint, Markdown link check, Stylelint)
 
 Run linters either all together:
 
@@ -30,7 +31,7 @@ npm run lint
 or run linters individually:
 
 ```bash
-npm run <eslint|markdownlint|stylelint>
+npm run <eslint|markdownlint|markdown-link-check|stylelint>
 ```
 
 ### Jest

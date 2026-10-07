@@ -65,7 +65,10 @@
     "copy:css": "cp src/docs/_assets/generated/react-ui.css dist && cp src/docs/_assets/generated/react-ui.development.css dist",
     "copy:js": "cp src/docs/_assets/generated/react-ui.js dist && cp src/docs/_assets/generated/react-ui.development.js dist",
     "eslint": "eslint src tests",
-    "lint": "npm run eslint && npm run markdownlint && npm run stylelint && npm run typecheck",
+    "lint": "npm run eslint && npm run markdownlint && npm run stylelint && npm run typecheck && npm run markdown-link-check",
+    "markdown-link-check": "npm run markdown-link-check:internal && npm run markdown-link-check:external",
+    "markdown-link-check:external": "markdown-link-check --config .markdown-link-check-external.json --quiet README.md CLAUDE.md LICENSE.md .claude scripts src",
+    "markdown-link-check:internal": "markdown-link-check --config .markdown-link-check-internal.json --quiet README.md CLAUDE.md LICENSE.md .claude scripts src",
     "markdownlint": "markdownlint-cli2 \"README.md\" \"src/**/*.md\"",
     "postbuild": "npm run copy && npm run build:types",
     "postinstall": "sh scripts/write-lockfile-hash.sh",
@@ -119,6 +122,7 @@
     "eslint": "^9.39.5",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^30.5.1",
+    "markdown-link-check": "^3.15.0",
     "markdownlint-cli2": "^0.23.3",
     "mini-css-extract-plugin": "^2.10.2",
     "postcss": "^8.5.28",
@@ -140,6 +144,7 @@
   "overrides": {
     "babel-preset-current-node-syntax": {
       "@babel/core": "$@babel/core"
-    }
+    },
+    "basic-ftp": "^6.2.1"
   }
 }
