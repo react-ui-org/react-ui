@@ -16,5 +16,5 @@ export const getRootPriorityClassName = (styles: CssModuleClasses, priority?: Pr
     return styles.isRootPriorityFlat;
   }
 
-  return null;
+  return undefined;
 };

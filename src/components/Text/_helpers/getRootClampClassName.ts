@@ -9,5 +9,5 @@ export const getRootClampClassName = (styles: CssModuleClasses, lines?: number) 
     return styles.isRootClampMultiLine;
   }
 
-  return null;
+  return undefined;
 };
