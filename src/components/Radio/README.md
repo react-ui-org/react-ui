@@ -44,13 +44,13 @@ See [API](#api) for all available options.
 ## General Guidelines
 
 - Use Radio for **just a few options**. For larger sets of many options (say 4
-  and more) consider using the [SelectField](/components/SelectField)
+  and more) consider using the [SelectField](../SelectField/README.md)
   component. This will help keep your UI clean and uncluttered and prevent your
   users from being overwhelmed by too many options.
 
 - **Don't use for boolean** (true/false) selection or to toggle things on and
-  off. [CheckboxField](/components/CheckboxField) and
-  [Toggle](/components/Toggle) are more suitable for such cases.
+  off. [CheckboxField](../CheckboxField/README.md) and
+  [Toggle](../Toggle/README.md) are more suitable for such cases.
 
 - Use **short and descriptive labels**, ideally nouns rather than seemingly
   polite phrases like _Please select your favourite fruit_. Short labels will
@@ -362,9 +362,9 @@ It's possible to disable just some options or the whole set.
 In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
-[`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to the
-`<input>` HTML element. This enables making the component interactive and helps
-to improve its accessibility.
+[`transferProps`](../../helpers/transferProps/README.md) helper are forwarded to
+the `<input>` HTML element. This enables making the component interactive and
+helps to improve its accessibility.
 
 👉 For the full list of supported attributes refer to:
 
@@ -377,8 +377,9 @@ to improve its accessibility.
 
 ## Theming
 
-Head to [Forms Theming](/docs/customize/theming/forms) to see shared form theming
-options. On top of that, the following options are available for Radio.
+Head to [Forms Theming](../../docs/customize/theming/forms.md) to see shared
+form theming options. On top of that, the following options are available for
+Radio.
 
 | Custom Property                                                    | Description                                      |
 |--------------------------------------------------------------------|--------------------------------------------------|
@@ -388,7 +389,7 @@ options. On top of that, the following options are available for Radio.
 ### Theming the Required State
 
 Required fields are indicated by
-[shared theming options](/docs/customize/theming/forms/#required-state).
+[shared theming options](../../docs/customize/theming/forms.md#required-state).
 
 If your project uses the label color as the primary means to indicate the
 required state of input fields and the usual asterisk `*` is omitted, you may

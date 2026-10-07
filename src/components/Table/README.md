@@ -63,16 +63,16 @@ See [API](#api) for all available options.
 
 - Tables are **good for displaying complex tabular data.** For simpler data sets
   or even plain key-value pairs, consider using the
-  [Grid](/components/Grid) component.
+  [Grid](../Grid/README.md) component.
 
 - Tables make **lots of information easier to scan and compare.** If you have
   fewer sections and want to emphasize each group more, consider using
-  [Cards](/components/Card).
+  [Cards](../Card/README.md).
 
 ## Responsive Tables
 
 The easiest way to make tables responsive is to wrap them with the
-[ScrollView](/components/ScrollView) component in the horizontal mode.
+[ScrollView](../ScrollView/README.md) component in the horizontal mode.
 
 ```docoff-react-preview
 <ScrollView direction="horizontal">
@@ -245,9 +245,9 @@ React.createElement(() => {
 In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
-[`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to the
-root `<table>` HTML element. This enables making the component interactive and
-helps to improve its accessibility.
+[`transferProps`](../../helpers/transferProps/README.md) helper are forwarded to
+the root `<table>` HTML element. This enables making the component interactive
+and helps to improve its accessibility.
 
 👉 For the full list of supported attributes refer to:
 

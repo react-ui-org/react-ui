@@ -65,15 +65,15 @@ See [API](#api) for all available options.
   the group with a form outside. Consult [the MDN docs][fieldset] to learn more.
 
 - InputGroup currently **supports grouping of**
-  [TextField](/components/TextField), [SelectField](/components/SelectField),
-  [FileInputField](/components/FileInputField), and [Button](/components/Button)
+  [TextField](../TextField/README.md), [SelectField](../SelectField/README.md),
+  [FileInputField](../FileInputField/README.md), and [Button](../Button/README.md)
   components.
 
-- To group [Buttons](/components/Button) only, use the
-  [ButtonGroup](/components/ButtonGroup) component which is designed
+- To group [Buttons](../Button/README.md) only, use the
+  [ButtonGroup](../ButtonGroup/README.md) component which is designed
   specifically for that purpose.
 
-- InputGroup can be used inside [FormLayout](/components/FormLayout). In that
+- InputGroup can be used inside [FormLayout](../FormLayout/README.md). In that
   case, its `layout` prop is ignored and the value is inherited from
   FormLayout instead.
 
@@ -311,9 +311,9 @@ for the underlying `<fieldset>` element.
 In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
-[`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to the
-root `<fieldset>` HTML element. This enables making the component interactive
-and helps to improve its accessibility.
+[`transferProps`](../../helpers/transferProps/README.md) helper are forwarded to
+the root `<fieldset>` HTML element. This enables making the component
+interactive and helps to improve its accessibility.
 
 👉 For the full list of supported attributes refer to:
 

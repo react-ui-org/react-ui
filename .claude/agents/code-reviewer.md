@@ -87,7 +87,8 @@ rules in section 6 are the easiest to miss — do not skip them.
 Easy-to-miss invariants beyond the generic checks above:
 
 * **Lint gate** ([CLAUDE.md](../../CLAUDE.md#commands)): `npm run lint` =
-  eslint + markdownlint + stylelint. It is not auto-run — remind the author to
+  eslint + markdownlint + stylelint + typecheck + markdown-link-check. It is not
+  auto-run — remind the author to
   run `npm run lint`, `npm run test:jest`, and `npm run test:playwright-ct:all`.
 * **Component layout** ([frontend.md](../rules/frontend.md)): every component
   folder has the `.tsx` + `.types.ts` + `index.ts` barrel + `*.module.scss` + `_settings`/

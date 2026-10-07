@@ -22,5 +22,22 @@ jobs:
       - name: Install
         run: npm ci
 
-      - name: Test
-        run: npm run lint
+      - name: ESLint
+        run: npm run eslint
+
+      - name: Markdownlint
+        run: npm run markdownlint
+
+      - name: Markdown link check (internal)
+        run: npm run markdown-link-check:internal
+
+      - name: Markdown link check (external)
+        run: npm run markdown-link-check:external
+        # Report broken links without blocking the pull request, external websites can fail at any time
+        continue-on-error: true
+
+      - name: Stylelint
+        run: npm run stylelint
+
+      - name: Typecheck
+        run: npm run typecheck

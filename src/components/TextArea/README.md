@@ -319,8 +319,8 @@ It's possible to disable the whole input.
 In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
-[`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to the
-`<textarea>` HTML element. This enables making the component interactive and
+[`transferProps`](../../helpers/transferProps/README.md) helper are forwarded to
+the `<textarea>` HTML element. This enables making the component interactive and
 helps to improve its accessibility.
 
 ```docoff-react-preview
@@ -354,8 +354,8 @@ If you provide [ref], it is forwarded to the native HTML `<textarea>` element.
 
 ## Theming
 
-Head to [Forms Theming](/docs/customize/theming/forms) to see shared form theming
-options.
+Head to [Forms Theming](../../docs/customize/theming/forms.md) to see shared
+form theming options.
 
 [React common props]: https://react.dev/reference/react-dom/components/common#common-props
 [ref]: https://reactjs.org/docs/refs-and-the-dom.html

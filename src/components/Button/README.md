@@ -41,7 +41,7 @@ lowest:
 3. flat
 
 All priorities are available in colors from supported
-[color collections](/docs/foundation/collections#colors).
+[color collections](../../docs/foundation/collections.md#colors).
 Check [API](#api) to see which collections are supported.
 
 ### Filled
@@ -133,7 +133,7 @@ To improve clarity or to draw attention to the action, icons can be added
 before or after the button's label.
 
 👉 Please note there are no icons pre-packed in React UI. Visit
-[Icons](/docs/foundation/icons) to see how to include them.
+[Icons](../../docs/foundation/icons.md) to see how to include them.
 
 ```docoff-react-preview
 <Button
@@ -162,7 +162,7 @@ technologies.
   />
 ```
 
-Icon buttons can optionally enhance on a [breakpoint](/docs/foundation/breakpoints)
+Icon buttons can optionally enhance on a [breakpoint](../../docs/foundation/breakpoints.md)
 of your choice and display label once you know there is enough room for it.
 
 📐 Try resizing your browser to see how label visibility changes.
@@ -197,7 +197,7 @@ of your choice and display label once you know there is enough room for it.
 
 ## Buttons with Badges
 
-A [Badge](/components/Badge) can be added to buttons to provide additional
+A [Badge](../Badge/README.md) can be added to buttons to provide additional
 information or to draw user's attention.
 
 ```docoff-react-preview
@@ -258,10 +258,10 @@ Disabled state makes the action unavailable.
 
 When user's action triggers an asynchronous process on background, the button's
 feedback state (not to be mistaken with
-[feedback colors](/docs/foundation/colors#feedback-colors)) can be indicated by
-showing an icon. The icon replaces button's label while retaining original
-dimensions of the button. Buttons in feedback state are automatically disabled
-to prevent unwanted interaction.
+[feedback colors](../../docs/foundation/colors.md#feedback-colors)) can be
+indicated by showing an icon. The icon replaces button's label while retaining
+original dimensions of the button. Buttons in feedback state are automatically
+disabled to prevent unwanted interaction.
 
 Filled buttons in feedback state:
 
@@ -384,17 +384,17 @@ Flat buttons in feedback state:
 />
 ```
 
-👉 Visit the [CSS Helpers](/docs/css-helpers/animation) section to see how the icon
-animation is made.
+👉 Visit the [CSS Helpers](../../docs/css-helpers/animation.md) section to see
+how the icon animation is made.
 
 ## Forwarding HTML Attributes
 
 In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
-[`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to the
-root `<button>` HTML element. This enables making the component interactive and
-helps to improve its accessibility.
+[`transferProps`](../../helpers/transferProps/README.md) helper are forwarded to
+the root `<button>` HTML element. This enables making the component interactive
+and helps to improve its accessibility.
 
 👉 For the full list of supported attributes refer to:
 
@@ -433,7 +433,7 @@ Where:
 - `<PRIORITY>` is one of `filled`, `outline`, or `flat` (see
   [Priorities](#priorities) and [API](#api)),
 - `<COLOR>` is a value from supported
-  [color collections](/docs/foundation/collections#colors)
+  [color collections](../../docs/foundation/collections.md#colors)
   (check color variants of [each priority](#priorities) and [API](#api) to see
   which collections are supported),
 - `<INTERACTION STATE>` is one of `default`, `hover`, `active`, or `disabled`
@@ -457,8 +457,8 @@ Where:
 - `<PROPERTY>` is one of `height`, `padding-x`, `padding-y`, or `font-size`
 
 👉 Button sizes are linked to
-[box field sizes](/docs/customize/theming/forms#box-field-sizes) sizes so they align
-nicely when placed in row.
+[box field sizes](../../docs/customize/theming/forms.md#box-field-sizes) sizes
+so they align nicely when placed in row.
 
 ### Example Theme
 

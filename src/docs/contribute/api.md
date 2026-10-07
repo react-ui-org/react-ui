@@ -16,14 +16,14 @@ the component instance:
 instance?
 
 - If yes, put it into the API of the component. Developers can adjust their
-  [global props](/docs/customize/global-props), but the option value can still be
+  [global props](../customize/global-props.md), but the option value can still be
   overridden per component instance.
 - If not, put it into the theme. Developers can change it
-  [in their theme](/docs/customize/theming/overview) and it will be
+  [in their theme](../customize/theming/overview.md) and it will be
   the same for all component instances.
 
 ## Measures
 
-Always use [spacing values](/docs/foundation/spacing) for all kinds of measures
+Always use [spacing values](../foundation/spacing.md) for all kinds of measures
 like offsets, gaps, or spacings. This helps keep the design consistent across
 components.
