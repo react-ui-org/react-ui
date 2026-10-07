@@ -91,8 +91,8 @@ Easy-to-miss invariants beyond the generic checks above:
   run `npm run lint`, `npm run test:jest`, and `npm run test:playwright-ct:all`.
 * **Component layout** ([frontend.md](../rules/frontend.md)): every component
   folder has the `.tsx` + `.types.ts` + `index.ts` barrel + `*.module.scss` + `_settings`/
-  `_theme`/`_tools` SCSS partials + `README.md` + `__tests__/`. PropTypes, not
-  TypeScript, in source.
+  `_theme`/`_tools` SCSS partials + `README.md` + `__tests__/`. Props are
+  described with JSDoc in the `Props` type, no `propTypes`.
 * **CSS Modules class naming** ([styling.md](../rules/styling.md)): `root`,
   `isRootXxx`, `hasRootXxx`, `isRootInXxx`, `isRootLayoutXxx`.
 * **Docs** ([docs.md](../rules/docs.md)): component docs live in the component's

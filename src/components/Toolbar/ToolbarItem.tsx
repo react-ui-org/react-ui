@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { classNames } from '../../helpers/classNames/classNames';
 import { transferProps } from '../../helpers/transferProps';
@@ -27,19 +26,6 @@ export const ToolbarItem: React.FunctionComponent<ToolbarItemProps> = ({
       {children}
     </div>
   );
-};
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-ToolbarItem.propTypes = {
-  /**
-   * Content of the toolbar item. If none are provided nothing is rendered.
-   */
-  children: PropTypes.node,
-  /**
-   * Allow item to grow and shrink if needed.
-   */
-  flexible: PropTypes.bool,
 };
 
 export const ToolbarItemWithGlobalProps = withGlobalProps<ToolbarItemProps, never>(ToolbarItem, 'ToolbarItem');
