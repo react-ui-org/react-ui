@@ -5,6 +5,7 @@ Tools used to test the application:
 * **ESLint** (static code analysis of TypeScript files)
 * **Stylelint** (static code analysis of CSS files)
 * **Markdownlint** (static code analysis of Markdown files)
+* **License check** (licenses of all dependencies, including transitive ones)
 * **Jest** (unit tests)
 * **Playwright** (visual and functional component testing)
 
@@ -32,6 +33,21 @@ or run linters individually:
 ```bash
 npm run <eslint|markdownlint|stylelint>
 ```
+
+### License Check
+
+`npm run lint` also checks that all dependencies, including transitive ones,
+use an allowed permissive license, so that no copyleft license reaches
+consumers of the library. Run it individually with:
+
+```bash
+npm run licenses
+```
+
+When the check fails, replace the dependency. If its license turns out to be
+permissive, add it to the allowed licenses in `scripts/check-licenses.js`
+instead. Dev dependencies that never get bundled into `dist` can be excepted
+there, too.
 
 ### Jest
 
