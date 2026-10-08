@@ -8,6 +8,8 @@ export type FormLayoutPredefinedLabelWidth = 'auto' | 'default' | 'limited';
 
 /**
  * Either one of the predefined values or any valid CSS width.
+ *
+ * @docoffOverrideType FormLayoutPredefinedLabelWidth | string
  */
 export type FormLayoutLabelWidth = FormLayoutPredefinedLabelWidth | (string & NonNullable<unknown>);
 

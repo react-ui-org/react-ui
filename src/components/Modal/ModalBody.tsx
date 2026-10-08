@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
@@ -28,29 +27,6 @@ export const ModalBody: React.FunctionComponent<ModalBodyProps> = ({
       {children}
     </div>
   );
-};
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-ModalBody.propTypes = {
-  /**
-   * Nested elements. Supported types are:
-   *
-   * * `ModalContent`
-   * * `ScrollView` (`scrolling: 'custom'` must be set)
-   *
-   * You can also provide a custom component responsible for scrolling and displaying content correctly.
-   * At most one nested element is allowed. If none are provided nothing is rendered.
-   */
-  children: PropTypes.node,
-  /**
-   * Scrolling mode:
-   *
-   * - `auto`: scrolling is enabled on ModalBody.
-   * - `custom`: use if providing a custom scrolling component, e.g. an instance of `ScrollView`.
-   * - `none`: scrolling is disabled on ModalBody and the entire Modal is scrollable instead.
-   */
-  scrolling: PropTypes.oneOf(['auto', 'custom', 'none']),
 };
 
 export const ModalBodyWithGlobalProps = withGlobalProps<ModalBodyProps, never>(ModalBody, 'ModalBody');

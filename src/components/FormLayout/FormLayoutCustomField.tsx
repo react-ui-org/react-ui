@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
@@ -81,51 +80,6 @@ export const FormLayoutCustomField: React.FunctionComponent<FormLayoutCustomFiel
       </div>
     </div>
   );
-};
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-FormLayoutCustomField.propTypes = {
-  /**
-   * Custom HTML or React component(s). If none are provided nothing is rendered.
-   */
-  children: PropTypes.node,
-  /**
-   * If `true`, label will be shown as disabled.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * If `true`, the field will span the full width of its parent.
-   */
-  fullWidth: PropTypes.bool,
-  /**
-   * ID of the root HTML element.
-   *
-   * Also serves as base for ids of nested elements:
-   * * `<ID>__field`
-   * * `<ID>__label`
-   */
-  id: PropTypes.string,
-  /**
-   * Size of contained form field used to properly align label.
-   */
-  innerFieldSize: PropTypes.oneOf(['small', 'medium', 'large']),
-  /**
-   * Optional label of the field.
-   */
-  label: PropTypes.string,
-  /**
-   * Optional ID of labeled field to keep accessibility features. Only available if `label` is set.
-   */
-  labelForId: PropTypes.string,
-  /**
-   * If `true`, label will be styled as required.
-   */
-  required: PropTypes.bool,
-  /**
-   * Alter the field to provide feedback based on validation result.
-   */
-  validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
 };
 
 export const FormLayoutCustomFieldWithGlobalProps = withGlobalProps<FormLayoutCustomFieldProps, never>(FormLayoutCustomField, 'FormLayoutCustomField');
