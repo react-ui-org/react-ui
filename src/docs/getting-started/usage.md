@@ -77,7 +77,7 @@ Example JSX:
 
 ```jsx
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { Button } from '@react-ui-org/react-ui';
 import '@react-ui-org/react-ui/dist/react-ui.css';
 
@@ -85,7 +85,7 @@ const App = () => (
   <Button label="My Button" />
 );
 
-ReactDOM.render(<App />, document.querySelector('#app'));
+createRoot(document.querySelector('#app')).render(<App />);
 ```
 
 ## CDN
