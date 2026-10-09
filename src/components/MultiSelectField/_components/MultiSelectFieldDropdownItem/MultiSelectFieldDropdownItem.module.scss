@@ -1,3 +1,4 @@
+@use "../../../../styles/theme/accessibility" as accessibility-theme;
 @use "../../../../styles/theme/form-fields" as form-theme;
 @use "../../theme";
 
@@ -29,9 +30,13 @@
 
     // The option is active through `aria-activedescendant` of the combobox input while the DOM
     // focus stays in the input.
+    // The outline is drawn inside the option so that the scrollable dropdown does not clip it. Its offset matches
+    // the width of the focus ring.
     .isRootActive {
         color: theme.$dropdown-item-focus-color;
         background-color: theme.$dropdown-item-focus-background-color;
+        outline: accessibility-theme.$focus-outline;
+        outline-offset: calc(-1 * var(--rui-dimension-space-1));
     }
 
     .isRootDisabled {
@@ -50,6 +55,11 @@
             color: theme.$dropdown-item-selected-focus-color;
             background-color: theme.$dropdown-item-selected-focus-background;
         }
+    }
+
+    // The focus ring has the same color as the selected background, so the text color is used instead.
+    .isRootSelected.isRootActive {
+        outline-color: theme.$dropdown-item-selected-focus-color;
     }
 
     .isRootInGroup {

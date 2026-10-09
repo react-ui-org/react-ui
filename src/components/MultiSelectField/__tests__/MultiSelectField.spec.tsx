@@ -776,6 +776,62 @@ test.describe('MultiSelectField', () => {
           });
         });
 
+        test('keeps option IDs valid for `aria-activedescendant` when values contain whitespace', async ({
+          mount,
+          page,
+        }) => {
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
+            initialValue: [],
+            options: [
+              {
+                label: 'Czech Republic',
+                value: 'Czech Republic',
+              },
+            ],
+          });
+
+          const combobox = component.getByRole('combobox');
+          await combobox.click();
+          await page.keyboard.press('ArrowDown');
+
+          const activeDescendantId = await combobox.getAttribute('aria-activedescendant');
+          expect(activeDescendantId).not.toMatch(/\s/);
+          await expect(page.locator(`[id="${activeDescendantId}"]`)).toHaveAccessibleName('Czech Republic');
+        });
+
+        [
+          ['an unselected', []],
+          ['a selected', ['value1']],
+        ].forEach(([description, initialValue]) => {
+          test(`indicates ${description as string} active option with a visible outline`, async ({
+            mount,
+            page,
+          }) => {
+            const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
+              initialValue,
+            });
+
+            await component.getByRole('combobox').click();
+            await page.keyboard.press('ArrowDown');
+
+            const style = await component.getByRole('option', { name: 'option1' }).evaluate((option) => {
+              const computedStyle = getComputedStyle(option);
+
+              return {
+                backgroundColor: computedStyle.backgroundColor,
+                outlineColor: computedStyle.outlineColor,
+                outlineOffset: computedStyle.outlineOffset,
+                outlineStyle: computedStyle.outlineStyle,
+              };
+            });
+
+            expect(style.outlineStyle).toBe('solid');
+            expect(style.outlineColor).not.toBe(style.backgroundColor);
+            // The outline is drawn inside the option so the scrollable dropdown does not clip it
+            expect(parseFloat(style.outlineOffset)).toBeLessThan(0);
+          });
+        });
+
         test('makes tags a single tab stop navigable by arrow keys', async ({
           mount,
           page,
@@ -948,6 +1004,25 @@ test.describe('MultiSelectField', () => {
           await expect(component.getByRole('listbox').getByText('No options')).toHaveCount(0);
         });
 
+        test('announces no matching options through a live region', async ({
+          mount,
+          page,
+        }) => {
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest');
+
+          await component.getByRole('combobox').click();
+
+          // The live region must exist before its content changes to be announced reliably
+          const status = component.getByRole('status');
+          await expect(status).toBeAttached();
+          await expect(status).toHaveAttribute('aria-live', 'polite');
+          await expect(status).toHaveText('');
+
+          await page.keyboard.type('nonexistent');
+
+          await expect(status).toHaveText('No options');
+        });
+
         test('reopens dropdown on typing into the focused search input', async ({
           mount,
           page,
@@ -965,7 +1040,7 @@ test.describe('MultiSelectField', () => {
           await expect(component.getByRole('option', { name: 'option2' })).toBeVisible();
         });
 
-        test('makes the input read-only when search is disabled', async ({
+        test('renders a non-editable combobox when search is disabled', async ({
           mount,
           page,
         }) => {
@@ -974,15 +1049,37 @@ test.describe('MultiSelectField', () => {
           });
 
           const combobox = component.getByRole('combobox');
-          await combobox.click();
-
-          await expect(component.getByRole('listbox')).toBeVisible();
-          await expect(combobox).toHaveAttribute('readonly');
+          await expect(combobox).toHaveAccessibleName('test-label');
+          await expect(combobox).toHaveAttribute('tabindex', '0');
           await expect(combobox).not.toHaveAttribute('aria-autocomplete');
+          expect(await combobox.evaluate((element) => element.tagName)).toBe('DIV');
+
+          await combobox.click();
+          await expect(component.getByRole('listbox')).toBeVisible();
 
           await page.keyboard.type('option2');
-          await expect(combobox).toHaveValue('');
           await expect(component.getByRole('option')).toHaveCount(2);
+        });
+
+        test('focuses the combobox on clicking the label when search is disabled', async ({ mount }) => {
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
+            searchAlgorithm: null,
+          });
+
+          await component.getByText('test-label').click();
+
+          await expect(component.getByRole('combobox')).toBeFocused();
+        });
+
+        test('takes the disabled combobox out of the tab order when search is disabled', async ({ mount }) => {
+          const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
+            disabled: true,
+            searchAlgorithm: null,
+          });
+
+          const combobox = component.getByRole('combobox');
+          await expect(combobox).toHaveAttribute('aria-disabled', 'true');
+          await expect(combobox).toHaveAttribute('tabindex', '-1');
         });
 
         test('selects the active option on Space key press when search is disabled', async ({

@@ -128,16 +128,17 @@ typing to filter them at any time.
 MultiSelectField follows the [ARIA combobox pattern][combobox-pattern] with
 the options navigated by `aria-activedescendant`:
 
-| Element     | Role / attribute                                                                                                                         |
-|-------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| Input       | `<input>` with `role="combobox"`, `aria-expanded`, `aria-controls`, `aria-activedescendant`, `aria-autocomplete="list"` (search enabled) |
-| Dropdown    | `role="listbox"` labelled by the field label, with `aria-multiselectable="true"`, groups of options are `role="group"`                  |
-| Option      | `role="option"` with `aria-selected` and `aria-disabled`                                                                                 |
-| Tags        | `role="grid"` labelled by the field label, each tag is a `role="row"` described by a hint on how to remove it                            |
-| Remove tag  | `<button>` labelled _Remove &lt;option label&gt;_                                                                                        |
+| Element    | Role / attribute                                                                                                                                                                                                                                |
+|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Combobox   | `<input>` with `role="combobox"`, `aria-expanded`, `aria-controls`, `aria-activedescendant` and `aria-autocomplete="list"`; a focusable `<div>` with the same role and attributes except `aria-autocomplete` when [search](#search) is disabled |
+| Dropdown   | `role="listbox"` labelled by the field label, with `aria-multiselectable="true"`, groups of options are `role="group"`                                                                                                                          |
+| Option     | `role="option"` with `aria-selected` and `aria-disabled`, highlighted with a focus ring while active                                                                                                                                            |
+| No options | `role="status"` live region next to the listbox                                                                                                                                                                                                 |
+| Tags       | `role="grid"` labelled by the field label, each tag is a `role="row"` described by a hint on how to remove it                                                                                                                                   |
+| Remove tag | `<button>` labelled _Remove &lt;option label&gt;_                                                                                                                                                                                               |
 
 When no `id` is set, it is generated so that all ARIA references are always
-complete. When [search](#search) is disabled, the input is read-only.
+complete.
 
 ## Design Variants
 
@@ -1133,18 +1134,21 @@ In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
 [`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to the
-`<input>` HTML element with the `combobox` role. This enables making
+element with the `combobox` role: the `<input>` HTML element, or the `<div>` HTML
+element when [search](#search) is disabled. This enables making
 the component interactive and helps to improve its accessibility.
 
 👉 For the full list of supported attributes refer to:
 
 - [`<input>` HTML element attributes][input-attributes]{:target="_blank"}
+- [`<div>` HTML element attributes][div-attributes]{:target="_blank"}
 - [React common props]{:target="_blank"}
 
 ## Forwarding ref
 
-If you provide [ref], it is forwarded to the `<input>` HTML element with the
-`combobox` role.
+If you provide [ref], it is forwarded to the element with the `combobox` role:
+the `<input>` HTML element, or the `<div>` HTML element when [search](#search)
+is disabled.
 
 ## API
 
@@ -1187,6 +1191,7 @@ MultiSelectField.
 | `--rui-MultiSelectField--<SIZE>__tag__padding-inline`                   | Tag horizontal padding                               |
 
 [combobox-pattern]: https://www.w3.org/WAI/ARIA/apg/patterns/combobox/
+[div-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
 [input-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes
 [React common props]: https://react.dev/reference/react-dom/components/common#common-props
 [ref]: https://reactjs.org/docs/refs-and-the-dom.html

@@ -66,6 +66,8 @@ export type MultiSelectFieldProps = Omit<InputHTMLAttributes<HTMLInputElement>, 
    *
    * If `key` in the option definition object is set,
    * then `option.key` is used instead of `option.value` in place of `<VALUE>`.
+   * Whitespace in `<VALUE>` is URL-encoded, e.g. `Czech%20Republic`, so that the ID
+   * can be referenced by `aria-activedescendant`.
    */
   id?: string;
   /**

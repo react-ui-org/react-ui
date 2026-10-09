@@ -75,12 +75,18 @@ const MultiSelectFieldDropdown: React.FunctionComponent<MultiSelectFieldDropdown
           return renderOption(option, false, false);
         })}
       </div>
-      {/* A listbox may only contain options and groups, so the text is placed next to it. */}
-      {options.length === 0 && (
-        <MultiSelectFieldDropdownTextItem>
-          {translations.MultiSelectField.noOptions}
-        </MultiSelectFieldDropdownTextItem>
-      )}
+      {/* A listbox may only contain options and groups, so the text is placed next to it. The live region
+          is always rendered so that screen readers announce the text reliably once it appears. */}
+      <div
+        aria-live="polite"
+        role="status"
+      >
+        {options.length === 0 && (
+          <MultiSelectFieldDropdownTextItem>
+            {translations.MultiSelectField.noOptions}
+          </MultiSelectFieldDropdownTextItem>
+        )}
+      </div>
     </div>
   );
 };

@@ -17,4 +17,9 @@ describe('getFieldIds', () => {
     expect(getFieldIds('fruit').item('apple')).toBe('fruit__item__apple');
     expect(getFieldIds('fruit').item(1)).toBe('fruit__item__1');
   });
+
+  it('encodes whitespace in IDs of individual options so they stay valid ID references', () => {
+    expect(getFieldIds('country').item('Czech Republic')).toBe('country__item__Czech%20Republic');
+    expect(getFieldIds('country').item('a\tb\nc')).toBe('country__item__a%09b%0Ac');
+  });
 });

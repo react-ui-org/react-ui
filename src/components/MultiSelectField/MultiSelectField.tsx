@@ -33,7 +33,7 @@ import {
 import styles from './MultiSelectField.module.scss';
 import type { MultiSelectFieldProps } from './MultiSelectField.types';
 
-export const MultiSelectField = React.forwardRef<HTMLInputElement, MultiSelectFieldProps>(({
+export const MultiSelectField = React.forwardRef<HTMLInputElement | HTMLDivElement, MultiSelectFieldProps>(({
   disabled = false,
   fullWidth = false,
   helpText,
@@ -59,7 +59,7 @@ export const MultiSelectField = React.forwardRef<HTMLInputElement, MultiSelectFi
   const [activeOptionIndex, setActiveOptionIndex] = useState(-1);
   // Index of the tag that is reachable by the Tab key
   const [activeTagIndex, setActiveTagIndex] = useState(0);
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const comboboxRef = useRef<HTMLInputElement | HTMLDivElement | null>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const tagsRef = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -103,7 +103,7 @@ export const MultiSelectField = React.forwardRef<HTMLInputElement, MultiSelectFi
 
   const closeDropdownAndFocusInput = () => {
     closeDropdown();
-    inputRef.current?.focus();
+    comboboxRef.current?.focus();
   };
 
   const toggleValue = (optionValue: MultiSelectFieldProps['value'][number]) => {
@@ -134,8 +134,91 @@ export const MultiSelectField = React.forwardRef<HTMLInputElement, MultiSelectFi
       tagsRef.current[1]?.focus();
       setActiveTagIndex(0);
     } else {
-      inputRef.current?.focus();
+      comboboxRef.current?.focus();
     }
+  };
+
+  // Props shared by the editable combobox input and the non-editable combobox element
+  const comboboxProps = {
+    'aria-activedescendant': activeOption && ids.item(activeOption.key),
+    'aria-controls': isDropdownOpen ? ids.dropdown : undefined,
+    'aria-expanded': isDropdownOpen,
+    'aria-haspopup': 'listbox' as const,
+    'aria-labelledby': ids.labelText,
+    'aria-required': required,
+    className: styles.combobox,
+    id: ids.input,
+    onClick: () => {
+      if (!isDropdownOpen && !resolvedDisabled) {
+        openDropdown();
+      }
+    },
+    onKeyDown: (event: React.KeyboardEvent<HTMLElement>) => {
+      const action = mapKeyToAction(event, {
+        canFocusLastTag: search.length === 0 && value.length > 0,
+        hasActiveOption: activeOption != null,
+        isEditable: isSearchEnabled,
+        isOpen: isDropdownOpen,
+      });
+
+      if (action == null) {
+        return;
+      }
+
+      // The browser still moves the cursor within the search text.
+      if (action === 'deactivate') {
+        setActiveOptionIndex(-1);
+        return;
+      }
+
+      event.preventDefault();
+
+      switch (action) {
+        case 'open':
+          openDropdown();
+          break;
+        case 'openAndActivateFirst':
+          openDropdown('first');
+          break;
+        case 'openAndActivateLast':
+          openDropdown('last');
+          break;
+        case 'close':
+          closeDropdown();
+          break;
+        case 'activateFirst':
+          setActiveOptionIndex(getNextActiveOptionIndex(-1, 'first'));
+          break;
+        case 'activateLast':
+          setActiveOptionIndex(getNextActiveOptionIndex(-1, 'last'));
+          break;
+        case 'activateNext':
+          setActiveOptionIndex(getNextActiveOptionIndex(activeOptionIndex, 'next'));
+          break;
+        case 'activatePrevious':
+          setActiveOptionIndex(getNextActiveOptionIndex(activeOptionIndex, 'previous'));
+          break;
+        case 'toggleActive':
+          if (activeOption && !activeOption.disabled) {
+            toggleValue(activeOption.value);
+          }
+          break;
+        case 'focusLastTag':
+          focusTag(value.length - 1);
+          break;
+        default:
+          break;
+      }
+    },
+    ref: (element: HTMLInputElement | HTMLDivElement | null) => {
+      comboboxRef.current = element;
+      if (typeof ref === 'function') {
+        ref(element);
+      } else if (ref != null) {
+        ref.current = element; // eslint-disable-line no-param-reassign
+      }
+    },
+    role: 'combobox',
   };
 
   useClickOutside(rootRef, () => {
@@ -180,13 +263,19 @@ export const MultiSelectField = React.forwardRef<HTMLInputElement, MultiSelectFi
       }}
       ref={rootRef}
     >
+      {/* Keyboard users reach the combobox by Tab, the click only helps pointer users. */}
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
       <label
         className={classNames(
           styles.label,
           (!isLabelVisible || inputGroupContext) && styles.isLabelHidden,
         )}
-        htmlFor={ids.input}
+        // A label can only be associated with the input, the non-editable combobox is focused on click instead.
+        htmlFor={isSearchEnabled ? ids.input : undefined}
         id={ids.labelText}
+        onClick={isSearchEnabled ? undefined : () => {
+          comboboxRef.current?.focus();
+        }}
       >
         {label}
       </label>
@@ -197,7 +286,7 @@ export const MultiSelectField = React.forwardRef<HTMLInputElement, MultiSelectFi
           className={styles.inputContainer}
           onClick={(event) => {
             // Clicks on the combobox input only open the dropdown, see its own click handler.
-            if (resolvedDisabled || event.target === inputRef.current) {
+            if (resolvedDisabled || event.target === comboboxRef.current) {
               return;
             }
 
@@ -207,7 +296,7 @@ export const MultiSelectField = React.forwardRef<HTMLInputElement, MultiSelectFi
               openDropdown();
             }
 
-            inputRef.current?.focus();
+            comboboxRef.current?.focus();
           }}
         >
           <div className={styles.input}>
@@ -243,103 +332,35 @@ export const MultiSelectField = React.forwardRef<HTMLInputElement, MultiSelectFi
                 ))}
               </div>
             )}
-            <input
-              {...transferProps(restProps)}
-              aria-activedescendant={activeOption && ids.item(activeOption.key)}
-              aria-autocomplete={isSearchEnabled ? 'list' : undefined}
-              aria-controls={isDropdownOpen ? ids.dropdown : undefined}
-              aria-expanded={isDropdownOpen}
-              aria-haspopup="listbox"
-              aria-labelledby={ids.labelText}
-              aria-required={required}
-              autoComplete="off"
-              className={styles.searchInput}
-              disabled={resolvedDisabled}
-              id={ids.input}
-              onChange={(event) => {
-                setSearch(event.target.value);
-                setActiveOptionIndex(-1);
-
-                // Typing into the input while the dropdown is closed opens it.
-                if (!isDropdownOpen) {
-                  setIsDropdownOpen(true);
-                }
-              }}
-              onClick={() => {
-                if (!isDropdownOpen) {
-                  openDropdown();
-                }
-              }}
-              onKeyDown={(event) => {
-                const action = mapKeyToAction(event, {
-                  canFocusLastTag: search.length === 0 && value.length > 0,
-                  hasActiveOption: activeOption != null,
-                  isEditable: isSearchEnabled,
-                  isOpen: isDropdownOpen,
-                });
-
-                if (action == null) {
-                  return;
-                }
-
-                // The browser still moves the cursor within the search text.
-                if (action === 'deactivate') {
+            {isSearchEnabled ? (
+              <input
+                {...transferProps(restProps)}
+                {...comboboxProps}
+                aria-autocomplete="list"
+                autoComplete="off"
+                disabled={resolvedDisabled}
+                onChange={(event) => {
+                  setSearch(event.target.value);
                   setActiveOptionIndex(-1);
-                  return;
-                }
 
-                event.preventDefault();
-
-                switch (action) {
-                  case 'open':
-                    openDropdown();
-                    break;
-                  case 'openAndActivateFirst':
-                    openDropdown('first');
-                    break;
-                  case 'openAndActivateLast':
-                    openDropdown('last');
-                    break;
-                  case 'close':
-                    closeDropdown();
-                    break;
-                  case 'activateFirst':
-                    setActiveOptionIndex(getNextActiveOptionIndex(-1, 'first'));
-                    break;
-                  case 'activateLast':
-                    setActiveOptionIndex(getNextActiveOptionIndex(-1, 'last'));
-                    break;
-                  case 'activateNext':
-                    setActiveOptionIndex(getNextActiveOptionIndex(activeOptionIndex, 'next'));
-                    break;
-                  case 'activatePrevious':
-                    setActiveOptionIndex(getNextActiveOptionIndex(activeOptionIndex, 'previous'));
-                    break;
-                  case 'toggleActive':
-                    if (activeOption && !activeOption.disabled) {
-                      toggleValue(activeOption.value);
-                    }
-                    break;
-                  case 'focusLastTag':
-                    focusTag(value.length - 1);
-                    break;
-                  default:
-                    break;
-                }
-              }}
-              readOnly={!isSearchEnabled}
-              ref={(element) => {
-                inputRef.current = element;
-                if (typeof ref === 'function') {
-                  ref(element);
-                } else if (ref != null) {
-                  ref.current = element; // eslint-disable-line no-param-reassign
-                }
-              }}
-              role="combobox"
-              type="text"
-              value={search}
-            />
+                  // Typing into the input while the dropdown is closed opens it.
+                  if (!isDropdownOpen) {
+                    setIsDropdownOpen(true);
+                  }
+                }}
+                type="text"
+                value={search}
+              />
+            ) : (
+              // Without search, the combobox is not editable, so it is not rendered as an input which screen readers
+              // would announce as read-only.
+              <div
+                {...transferProps(restProps)}
+                {...comboboxProps}
+                aria-disabled={resolvedDisabled || undefined}
+                tabIndex={resolvedDisabled ? -1 : 0}
+              />
+            )}
           </div>
           <div className={styles.caret}>
             <span className={styles.caretIcon} />
@@ -424,6 +445,8 @@ MultiSelectField.propTypes = {
    *
    * If `key` in the option definition object is set,
    * then `option.key` is used instead of `option.value` in place of `<VALUE>`.
+   * Whitespace in `<VALUE>` is URL-encoded, e.g. `Czech%20Republic`, so that the ID
+   * can be referenced by `aria-activedescendant`.
    */
   id: PropTypes.string,
   /**
@@ -532,6 +555,6 @@ MultiSelectField.propTypes = {
   variant: PropTypes.oneOf(['filled', 'outline']),
 };
 
-export const MultiSelectFieldWithGlobalProps = withGlobalProps<MultiSelectFieldProps, HTMLInputElement>(MultiSelectField, 'MultiSelectField');
+export const MultiSelectFieldWithGlobalProps = withGlobalProps<MultiSelectFieldProps, HTMLInputElement | HTMLDivElement>(MultiSelectField, 'MultiSelectField');
 
 export default MultiSelectFieldWithGlobalProps;

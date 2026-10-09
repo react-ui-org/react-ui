@@ -48,12 +48,13 @@
         display: contents;
     }
 
-    .searchInput {
+    .combobox {
         appearance: none;
         display: block;
         flex: 1 0 auto;
         width: 2ch;
         min-width: 2ch;
+        min-height: settings.$box-input-line-height; // The non-editable combobox element has no content.
         padding: 0;
         margin: 0;
         font-weight: settings.$box-input-font-weight;

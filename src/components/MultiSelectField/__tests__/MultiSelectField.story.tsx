@@ -82,7 +82,7 @@ export const MultiSelectFieldForRefTest = ({
   testRefAttrValue,
   ...props
 }: MultiSelectFieldForRefTestProps) => {
-  const ref = useRef<HTMLInputElement>(null);
+  const ref = useRef<HTMLInputElement | HTMLDivElement>(null);
   const [value, setValue] = useState<MultiSelectFieldProps['value']>(['value1']);
 
   useEffect(() => {
