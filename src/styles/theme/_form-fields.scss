@@ -30,22 +30,27 @@ $horizontal-label-vertical-alignment: var(--rui-FormField--horizontal__label__ve
 $horizontal-field-vertical-alignment: var(--rui-FormField--horizontal__field__vertical-alignment);
 $horizontal-full-width-label-width: var(--rui-FormField--horizontal--full-width__label__width);
 
-// Form fields: links in validation states
-$link-validation-colors: (
+// Form fields: links in states
+$link-state-colors: (
+    changed: (
+        default: var(--rui-color-state-changed),
+        hover: var(--rui-color-state-changed-hover),
+        active: var(--rui-color-state-changed-active),
+    ),
     invalid: (
-        default: var(--rui-color-feedback-danger),
-        hover: var(--rui-color-feedback-danger-hover),
-        active: var(--rui-color-feedback-danger-active),
+        default: var(--rui-color-state-invalid),
+        hover: var(--rui-color-state-invalid-hover),
+        active: var(--rui-color-state-invalid-active),
     ),
     valid: (
-        default: var(--rui-color-feedback-success),
-        hover: var(--rui-color-feedback-success-hover),
-        active: var(--rui-color-feedback-success-active),
+        default: var(--rui-color-state-valid),
+        hover: var(--rui-color-state-valid-hover),
+        active: var(--rui-color-state-valid-active),
     ),
     warning: (
-        default: var(--rui-color-feedback-warning),
-        hover: var(--rui-color-feedback-warning-hover),
-        active: var(--rui-color-feedback-warning-active),
+        default: var(--rui-color-state-warning),
+        hover: var(--rui-color-state-warning-hover),
+        active: var(--rui-color-state-warning-active),
     ),
 );
 

@@ -68,7 +68,7 @@ helps to improve its accessibility.
 parent component. This applies for components using
 [Feedback color collection](/docs/foundation/collections#colors) and for
 components in any of the supported
-[validation states](/docs/foundation/colors#validation-states).
+[states](../../docs/foundation/colors.md#states).
 In such cases, the custom properties marked with an asterisk (\*) are ignored.
 
 | Custom Property                           | Description                         |

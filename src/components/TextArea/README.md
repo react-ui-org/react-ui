@@ -252,7 +252,7 @@ what happened and what action they should take or what options they have.
 <TextArea
   label="Your feedback"
   onChange={() => {}}
-  validationState="valid"
+  state="valid"
   validationText="Looks good!"
   value="Like that!"
   required
@@ -260,21 +260,21 @@ what happened and what action they should take or what options they have.
 <TextArea
   label="Your feedback"
   onChange={() => {}}
-  validationState="warning"
+  state="warning"
   validationText="The feedback should be at least 3 characters long."
   value=".."
   required
 />
 <TextArea
   label="Your feedback"
-  validationState="invalid"
+  state="invalid"
   validationText="Please share your feedback with us."
   required
 />
 <TextArea
   label="Your feedback"
   onChange={() => {}}
-  validationState="valid"
+  state="valid"
   validationText="Looks good!"
   variant="filled"
   value="Like that!"
@@ -283,7 +283,7 @@ what happened and what action they should take or what options they have.
 <TextArea
   label="Your feedback"
   onChange={() => {}}
-  validationState="warning"
+  state="warning"
   validationText="The feedback should be at least 3 characters long."
   variant="filled"
   value=".."
@@ -291,10 +291,34 @@ what happened and what action they should take or what options they have.
 />
 <TextArea
   label="Your feedback"
-  validationState="invalid"
+  state="invalid"
   validationText="Please share your feedback with us."
   variant="filled"
   required
+/>
+```
+
+### Changed State
+
+Changed state highlights fields whose value differs from the saved one, so users
+can review their edits before saving.
+
+A field shows one state at a time. When a changed value is also invalid, it's
+up to you to pick the state that matters more to the user.
+
+```docoff-react-preview
+<TextArea
+  label="Your feedback"
+  onChange={() => {}}
+  state="changed"
+  value="Like that!"
+/>
+<TextArea
+  label="Your feedback"
+  onChange={() => {}}
+  state="changed"
+  variant="filled"
+  value="Like that!"
 />
 ```
 

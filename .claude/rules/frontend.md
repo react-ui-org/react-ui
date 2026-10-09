@@ -71,7 +71,7 @@ Components are `.tsx` files. They:
    element.
 6. Declare `Props` in `<ComponentName>.types.ts` (extending the matching
    `*HTMLAttributes` type) and export it from `index.ts`. Reuse shared unions
-   from `src/types` (`Color`, `Priority`, `Size`, `Layout`, `ValidationState`,
+   from `src/types` (`Color`, `Priority`, `Size`, `Layout`, `State`,
    …); component-specific unions stay in the component directory. Every
    type lives in a `.types.ts` file next to its implementation — including
    context values (`<ComponentName>ContextValue`), provider props and helper

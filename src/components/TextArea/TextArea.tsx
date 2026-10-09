@@ -3,7 +3,7 @@ import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
 import { transferProps } from '../../helpers/transferProps';
 import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
-import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
+import { getRootStateClassName } from '../_helpers/getRootStateClassName';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { FormLayoutContext } from '../FormLayout/FormLayoutContext';
 import { FormLayoutCustomFieldContext } from '../FormLayout/FormLayoutCustomFieldContext';
@@ -20,7 +20,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(({
   layout = 'vertical',
   required = false,
   size = 'medium',
-  validationState,
+  state,
   validationText,
   variant = 'outline',
   ...restProps
@@ -40,7 +40,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(({
         disabled && styles.isRootDisabled,
         required && styles.isRootRequired,
         getRootSizeClassName(styles, size),
-        getRootValidationStateClassName(styles, validationState),
+        getRootStateClassName(styles, state),
         variant === 'filled' ? styles.isRootVariantFilled : styles.isRootVariantOutline,
       )}
       htmlFor={id}

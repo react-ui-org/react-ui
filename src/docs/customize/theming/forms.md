@@ -419,26 +419,26 @@ React.createElement(() => {
 });
 ```
 
-## Validation States
+## States
 
-Theming options for validation states are shared by all form components. Naming
+Theming options for states are shared by all form components. Naming
 convention looks as follows:
 
-`--rui-FormField--<VALIDATION STATE>--<INTERACTION STATE>__<PROPERTY>`
+`--rui-FormField--<STATE>--<INTERACTION STATE>__<PROPERTY>`
 
 Where:
 
-- `<VALIDATION STATE>` is one of `invalid`, `valid`, or `warning`
+- `<STATE>` is one of `changed`, `invalid`, `valid`, or `warning`
 - `<INTERACTION STATE>` is one of `default`, `checked`, `disabled`, or
   `checked-disabled`
 - `<PROPERTY>` is one of `color`, `border-color`, `background`,
   `check-background-color`, `box-shadow`, or `surrounding-text-color`
 
 Not all properties are used by all components, this varies from component to
-component. Also, `hover` interaction state is unavailable for validation states
+component. Also, `hover` interaction state is unavailable for form field states
 everywhere — `default` state appearance is retained on hovering. For box fields,
-`focus` state for validation states is inherited from default form field
-appearance (i.e. as if no validation state was set).
+`focus` appearance of a field in a state is inherited from default form field
+appearance (i.e. as if no state was set).
 
 Example:
 
@@ -473,7 +473,7 @@ React.createElement(() => {
           margin: 4px;
         }
 
-        .example--themed-form-field-validation-states {
+        .example--themed-form-field-states {
           --rui-FormField--valid--default__color: white;
           --rui-FormField--valid--default__border-color: LightSeaGreen;
           --rui-FormField--valid--default__background: MediumAquamarine;
@@ -486,7 +486,7 @@ React.createElement(() => {
       <TextField
         id="default-valid-text-field"
         label="Default valid text field"
-        validationState="valid"
+        state="valid"
         validationText="This field is valid"
       />
       <SelectField
@@ -494,7 +494,7 @@ React.createElement(() => {
         label="Default valid select field"
         onChange={(e) => setFruit(e.target.value)}
         options={options}
-        validationState="valid"
+        state="valid"
         validationText="This field is valid"
         value={fruit}
       />
@@ -516,7 +516,7 @@ React.createElement(() => {
             value: 'grapefruit',
           },
         ]}
-        validationState="valid"
+        state="valid"
         validationText="This field is valid"
         value={fruit}
       />
@@ -525,7 +525,7 @@ React.createElement(() => {
         id="default-valid-checkbox"
         label="Default valid checkbox"
         onChange={() => setAgree(!agree)}
-        validationState="valid"
+        state="valid"
         validationText="This field is valid"
       />
       <Toggle
@@ -533,14 +533,14 @@ React.createElement(() => {
         id="default-valid-toggle"
         label="Default valid toggle"
         onChange={() => setStudioQuality(!studioQuality)}
-        validationState="valid"
+        state="valid"
         validationText="This field is valid"
       />
-      <div className="example example--themed-form-field-validation-states mt-6">
+      <div className="example example--themed-form-field-states mt-6">
         <TextField
           id="themed-valid-text-field"
           label="Themed valid text field"
-          validationState="valid"
+          state="valid"
           validationText="This field is valid"
         />
         <SelectField
@@ -548,7 +548,7 @@ React.createElement(() => {
           label="Themed valid select field"
           onChange={(e) => setFruit(e.target.value)}
           options={options}
-          validationState="valid"
+          state="valid"
           validationText="This field is valid"
           value={fruit}
         />
@@ -570,7 +570,7 @@ React.createElement(() => {
               value: 'grapefruit',
             },
           ]}
-          validationState="valid"
+          state="valid"
           validationText="This field is valid"
           value={fruit}
         />
@@ -579,7 +579,7 @@ React.createElement(() => {
           id="themed-valid-checkbox"
           label="Themed valid checkbox"
           onChange={() => setAgree(!agree)}
-          validationState="valid"
+          state="valid"
           validationText="This field is valid"
         />
         <Toggle
@@ -587,7 +587,7 @@ React.createElement(() => {
           checked={studioQuality}
           id="themed-valid-toggle"
           label="Themed valid toggle"
-          validationState="valid"
+          state="valid"
           validationText="This field is valid"
         />
       </div>
@@ -627,7 +627,7 @@ cursor on hover so users know the fields cannot be used.
 | `--rui-FormField--disabled__opacity`                 | Opacity of disabled form fields (inc. label and help text)   |
 
 Should your design require custom styling of disabled fields, individual field
-types and validation states can be fine-tuned by several theming options
+types and states can be fine-tuned by several theming options
 available. All you need is to define all necessary custom properties following
 the naming conventions documented in previous sections (for simplicity, the
 properties do not exist in the default theme, we only use transparency to mark
@@ -721,7 +721,7 @@ React.createElement(() => {
         disabled
         id="default-disabled-invalid-text-field"
         label="Default disabled invalid text field"
-        validationState="invalid"
+        state="invalid"
       />
       <Radio
         disabled
@@ -759,14 +759,14 @@ React.createElement(() => {
         disabled
         id="default-disabled-warning-checkbox"
         label="Default disabled warning checkbox"
-        validationState="warning"
+        state="warning"
       />
       <Toggle
         checked
         disabled
         id="default-disabled-valid-toggle"
         label="Default disabled valid toggle"
-        validationState="valid"
+        state="valid"
       />
       <div className="example example--themed-form-field-disabled-state mt-6">
         <TextField
@@ -785,7 +785,7 @@ React.createElement(() => {
           disabled
           id="themed-disabled-invalid-text-field"
           label="Themed disabled invalid text field"
-          validationState="invalid"
+          state="invalid"
         />
         <Radio
           disabled
@@ -823,14 +823,14 @@ React.createElement(() => {
           disabled
           id="themed-disabled-warning-checkbox"
           label="Themed disabled warning checkbox"
-          validationState="warning"
+          state="warning"
         />
         <Toggle
           checked
           disabled
           id="themed-disabled-valid-toggle"
           label="Themed disabled valid toggle"
-          validationState="valid"
+          state="valid"
         />
       </div>
     </React.Fragment>
