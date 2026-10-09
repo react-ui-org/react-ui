@@ -534,7 +534,7 @@ React.createElement(() => {
         onChange={(e) => setFruit(e.target.value)}
         options={options}
         required
-        validationState="valid"
+        state="valid"
         validationText="Great, they're in stock!"
         value={fruit}
       />
@@ -543,7 +543,7 @@ React.createElement(() => {
         onChange={(e) => setFruit(e.target.value)}
         options={options}
         required
-        validationState="warning"
+        state="warning"
         validationText="Oh, really?"
         value={fruit}
       />
@@ -552,7 +552,7 @@ React.createElement(() => {
         onChange={(e) => setFruit(e.target.value)}
         options={options}
         required
-        validationState="invalid"
+        state="invalid"
         validationText="You must select at least one kind of fruit."
         value={fruit}
       />
@@ -561,7 +561,7 @@ React.createElement(() => {
         onChange={(e) => setFruit(e.target.value)}
         options={options}
         required
-        validationState="valid"
+        state="valid"
         validationText="Great, they're in stock!"
         value={fruit}
         variant="filled"
@@ -571,7 +571,7 @@ React.createElement(() => {
         onChange={(e) => setFruit(e.target.value)}
         options={options}
         required
-        validationState="warning"
+        state="warning"
         validationText="Oh, really?"
         value={fruit}
         variant="filled"
@@ -582,8 +582,55 @@ React.createElement(() => {
         options={options}
         required
         value={fruit}
-        validationState="invalid"
+        state="invalid"
         validationText="You must select at least one kind of fruit."
+        variant="filled"
+      />
+    </>
+  );
+})
+```
+
+### Changed State
+
+Changed state highlights fields whose value differs from the saved one, so users
+can review their edits before saving.
+
+A field shows one state at a time. When a changed value is also invalid, it's
+up to you to pick the state that matters more to the user.
+
+```docoff-react-preview
+React.createElement(() => {
+  const [fruit, setFruit] = React.useState('banana');
+  const options = [
+    {
+      label: 'Apple',
+      value: 'apple',
+    },
+    {
+      label: 'Banana',
+      value: 'banana',
+    },
+    {
+      label: 'Grapefruit',
+      value: 'grapefruit',
+    },
+  ];
+  return (
+    <>
+      <SelectField
+        label="Your favourite fruit"
+        onChange={(e) => setFruit(e.target.value)}
+        options={options}
+        state="changed"
+        value={fruit}
+      />
+      <SelectField
+        label="Your favourite fruit"
+        onChange={(e) => setFruit(e.target.value)}
+        options={options}
+        state="changed"
+        value={fruit}
         variant="filled"
       />
     </>

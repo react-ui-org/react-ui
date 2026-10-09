@@ -166,25 +166,42 @@ have.
   id="my-file-valid"
   label="Attachment"
   onFilesChanged={() => {}}
-  validationState="valid"
+  state="valid"
   validationText="Looks good!"
 />
 <FileInputField
   id="my-file-invalid"
   label="Attachment"
   onFilesChanged={() => {}}
-  validationState="invalid"
+  state="invalid"
   validationText="Your file is too big. Please select something smaller."
 />
 <FileInputField
   id="my-file-warning"
   label="Attachment"
   onFilesChanged={() => {}}
-  validationState="warning"
+  state="warning"
   validationText={`
     You selected more than 10 files.
     It may take some time before we process them.
   `}
+/>
+```
+
+### Changed State
+
+Changed state highlights fields whose value differs from the saved one, so users
+can review their edits before saving.
+
+A field shows one state at a time. When a changed value is also invalid, it's
+up to you to pick the state that matters more to the user.
+
+```docoff-react-preview
+<FileInputField
+  id="my-file-changed"
+  label="Attachment"
+  onFilesChanged={() => {}}
+  state="changed"
 />
 ```
 

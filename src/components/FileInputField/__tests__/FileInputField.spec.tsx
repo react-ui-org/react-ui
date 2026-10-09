@@ -13,7 +13,7 @@ test.describe('FileInputField', () => {
         ...propTests.defaultComponentPropTest,
         ...mixPropTests([
           propTests.disabledPropTest,
-          propTests.validationStatePropTest,
+          propTests.statePropTest,
         ]),
         ...fileSelectedPropTest,
         ...mixPropTests([
