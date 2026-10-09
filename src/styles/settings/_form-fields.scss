@@ -35,6 +35,7 @@ $themeable-variant-states: (
         default: (default, disabled),
     ),
     validation: (
+        changed: (default, checked, disabled, checked-disabled),
         invalid: (default, checked, disabled, checked-disabled),
         valid: (default, checked, disabled, checked-disabled),
         warning: (default, checked, disabled, checked-disabled),

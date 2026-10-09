@@ -5,7 +5,7 @@ import type {
 import type {
   Layout,
   Size,
-  ValidationState,
+  State,
 } from '../../types';
 
 export type TextFieldType = 'email' | 'number' | 'password' | 'tel' | 'text';
@@ -73,13 +73,14 @@ export type TextFieldProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size' 
    */
   size?: Size;
   /**
+   * Alter the field to reflect the state of its data, e.g. a validation result or a change
+   * against the saved value.
+   */
+  state?: State;
+  /**
    * HTML input type, translated as `type` attribute of the input.
    */
   type?: TextFieldType;
-  /**
-   * Alter the field to provide feedback based on validation result.
-   */
-  validationState?: ValidationState;
   /**
    * Validation message to be displayed.
    *

@@ -131,13 +131,13 @@ React.createElement(() => {
         checked={studioQuality}
         label="Listen in studio quality"
         onChange={() => setStudioQuality(!studioQuality)}
-        validationState="valid"
+        state="valid"
       />
       <Toggle
         checked={studioQuality}
         label="Listen in studio quality"
         onChange={() => setStudioQuality(!studioQuality)}
-        validationState="warning"
+        state="warning"
         validationText={
           'Looks like you are connected over cellular network. '
           + 'Please make sure you know what you are doing.'
@@ -147,7 +147,7 @@ React.createElement(() => {
         checked={studioQuality}
         label="Listen in studio quality"
         onChange={() => setStudioQuality(!studioQuality)}
-        validationState="invalid"
+        state="invalid"
         validationText={(
           <>
             Please
@@ -159,6 +159,28 @@ React.createElement(() => {
         )}
       />
     </>
+  );
+});
+```
+
+### Changed State
+
+Changed state highlights fields whose value differs from the saved one, so users
+can review their edits before saving.
+
+A field shows one state at a time. When a changed value is also invalid, it's
+up to you to pick the state that matters more to the user.
+
+```docoff-react-preview
+React.createElement(() => {
+  const [studioQuality, setStudioQuality] = React.useState(true);
+  return (
+    <Toggle
+      checked={studioQuality}
+      label="Listen in studio quality"
+      onChange={() => setStudioQuality(!studioQuality)}
+      state="changed"
+    />
   );
 });
 ```

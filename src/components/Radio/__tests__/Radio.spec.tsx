@@ -39,20 +39,20 @@ test.describe('Radio', () => {
         ...propTests.requiredPropTest,
         ...mixPropTests([
           propTests.disabledPropTest,
-          propTests.validationStatePropTest,
+          propTests.statePropTest,
           propTests.validationTextPropTest,
         ]),
         ...mixPropTests([
           propTests.requiredPropTest,
-          propTests.validationStatePropTest,
+          propTests.statePropTest,
         ]),
         ...mixPropTests([
           propTests.renderAsRequiredPropTest,
-          propTests.validationStatePropTest,
+          propTests.statePropTest,
         ]),
         ...mixPropTests([
           partialDisabledOptionsPropTest,
-          propTests.validationStatePropTest,
+          propTests.statePropTest,
         ]),
       ].forEach(({
         name,

@@ -222,7 +222,7 @@ Disables all fields and buttons inside the group.
 ### Validation States
 
 Validation states visually present the result of validation of the grouped
-inputs. Input group's validation state is taken from its child inputs. You
+inputs. Input group's state is taken from its child inputs. You
 should always **provide validation messages for states other than valid**
 directly through `validationTexts` prop so users know what happened and what
 action they should take or what options they have.
@@ -230,7 +230,7 @@ action they should take or what options they have.
 These messages are not semantically tied to the `children` elements, the
 connection should be expressed in textual form in the actual message. The
 individual `children` elements must not show any `validationText`, they only
-show their respective `validationState`.
+show their respective `state`.
 
 ⚠️ Validation messages passed to input elements' `validationText` prop are
 ignored within InputGroup.
@@ -252,13 +252,13 @@ for the underlying `<fieldset>` element.
     label="First name"
     placeholder="Eg. John"
     required
-    validationState="invalid"
+    state="invalid"
   />
   <TextField
     label="Last name"
     placeholder="Eg. Doe"
     required
-    validationState="invalid"
+    state="invalid"
   />
   <Button label="Submit" />
 </InputGroup>
@@ -279,7 +279,7 @@ for the underlying `<fieldset>` element.
     label="Last name"
     placeholder="Eg. Doe"
     required
-    validationState="warning"
+    state="warning"
     value="123Doe"
   />
   <Button label="Submit" />
@@ -292,14 +292,42 @@ for the underlying `<fieldset>` element.
     label="First name"
     placeholder="Eg. John"
     required
-    validationState="valid"
+    state="valid"
     value="John"
   />
   <TextField
     label="Last name"
     placeholder="Eg. Doe"
     required
-    validationState="valid"
+    state="valid"
+    value="Doe"
+  />
+  <Button label="Submit" />
+</InputGroup>
+```
+
+### Changed State
+
+Changed state highlights inputs whose value differs from the saved one, so users
+can review their edits before saving.
+
+Input group shows one state at a time. When its inputs have different states,
+the group takes the one that matters most to the user, in this order:
+`invalid`, `warning`, `changed`, `valid`.
+
+```docoff-react-preview
+<InputGroup label="First and last name">
+  <TextField
+    label="First name"
+    onChange={() => {}}
+    placeholder="Eg. John"
+    value="John"
+  />
+  <TextField
+    label="Last name"
+    onChange={() => {}}
+    placeholder="Eg. Doe"
+    state="changed"
     value="Doe"
   />
   <Button label="Submit" />

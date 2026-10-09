@@ -23,7 +23,7 @@ import { raisedPropTest } from './propTests/raisedPropTest';
 import { renderAsRequiredPropTest } from './propTests/renderAsRequiredPropTest';
 import { sizePropTest } from './propTests/sizePropTest';
 import { startCornerPropTest } from './propTests/startCornerPropTest';
-import { validationStatePropTest } from './propTests/validationStatePropTest';
+import { statePropTest } from './propTests/statePropTest';
 import { validationTextPropTest } from './propTests/validationTextPropTest';
 import { variantPropTest } from './propTests/variantPropTest';
 import { requiredPropTest } from './propTests/requiredPropTest';
@@ -64,7 +64,7 @@ export const propTests = {
   requiredPropTest,
   sizePropTest,
   startCornerPropTest,
-  validationStatePropTest,
+  statePropTest,
   validationTextPropTest,
   variantPropTest,
 };
