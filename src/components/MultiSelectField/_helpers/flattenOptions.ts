@@ -17,6 +17,7 @@ export const flattenOptions = (
   const toFlatOption = (item: MultiSelectFieldOption, isGroupDisabled: boolean): FlatOption => ({
     disabled: isFieldDisabled || isGroupDisabled || (item.disabled ?? false),
     key: item.key ?? item.value,
+    label: item.label,
     value: item.value,
   });
 

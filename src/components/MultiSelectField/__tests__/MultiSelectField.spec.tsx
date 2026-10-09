@@ -1061,6 +1061,85 @@ test.describe('MultiSelectField', () => {
           await expect(component.getByRole('option')).toHaveCount(2);
         });
 
+        test.describe('type-ahead when search is disabled', () => {
+          const expectActiveOptionName = async (component: Locator, name: string) => {
+            const optionId = await component.getByRole('option', { name }).getAttribute('id');
+            await expect(component.getByRole('combobox')).toHaveAttribute('aria-activedescendant', optionId!);
+          };
+
+          test('opens dropdown and activates the option matching typed characters', async ({
+            mount,
+            page,
+          }) => {
+            const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
+              searchAlgorithm: null,
+            });
+
+            await component.getByRole('combobox').focus();
+            await page.keyboard.type('option2');
+
+            await expect(component.getByRole('listbox')).toBeVisible();
+            await expectActiveOptionName(component, 'option2');
+          });
+
+          test('cycles through options starting with a repeated character', async ({
+            mount,
+            page,
+          }) => {
+            const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
+              searchAlgorithm: null,
+            });
+
+            await component.getByRole('combobox').focus();
+            await page.keyboard.press('o');
+            await expectActiveOptionName(component, 'option1');
+
+            await page.keyboard.press('o');
+            await expectActiveOptionName(component, 'option2');
+
+            await page.keyboard.press('o');
+            await expectActiveOptionName(component, 'option1');
+          });
+
+          test('starts a new search after a pause in typing', async ({
+            mount,
+            page,
+          }) => {
+            const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
+              searchAlgorithm: null,
+            });
+
+            await component.getByRole('combobox').focus();
+            await page.keyboard.type('option2');
+            await expectActiveOptionName(component, 'option2');
+
+            // The typed characters are forgotten after 500 ms, so "o" searches again from the next option
+            await page.waitForTimeout(600);
+            await page.keyboard.press('o');
+            await expectActiveOptionName(component, 'option1');
+          });
+
+          [
+            ['Home', 'option1'],
+            ['End', 'option2'],
+          ].forEach(([key, optionName]) => {
+            test(`opens dropdown and activates ${optionName} on ${key} key press`, async ({
+              mount,
+              page,
+            }) => {
+              const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
+                searchAlgorithm: null,
+              });
+
+              await component.getByRole('combobox').focus();
+              await page.keyboard.press(key);
+
+              await expect(component.getByRole('listbox')).toBeVisible();
+              await expectActiveOptionName(component, optionName);
+            });
+          });
+        });
+
         test('focuses the combobox on clicking the label when search is disabled', async ({ mount }) => {
           const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
             searchAlgorithm: null,
@@ -1100,18 +1179,6 @@ test.describe('MultiSelectField', () => {
           await page.keyboard.press('Space');
 
           await expect.poll(() => component.getSpyValue('onChange')).toEqual([['value1']]);
-        });
-
-        test('does not open dropdown on typing a character when search is disabled', async ({ mount }) => {
-          const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
-            searchAlgorithm: null,
-          });
-
-          const combobox = component.getByRole('combobox');
-          await combobox.focus();
-          await combobox.press('o');
-
-          await expect(component.getByRole('listbox')).toHaveCount(0);
         });
 
         test('moves focus to the input on removing the last tag when search is disabled', async ({ mount }) => {

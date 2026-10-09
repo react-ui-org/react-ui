@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, {
   useContext,
+  useEffect,
   useId,
   useMemo,
   useRef,
@@ -26,12 +27,16 @@ import {
 } from './_helpers/getNextEnabledIndex';
 import type { IndexMove } from './_helpers/getNextEnabledIndex.types';
 import { getOptionsLabelMap } from './_helpers/getOptionsLabelMap';
+import { getTypeAheadIndex } from './_helpers/getTypeAheadIndex';
 import { mapKeyToAction } from './_helpers/mapKeyToAction';
 import {
   caseInsensitiveAccentSensitivePrefixSearch,
 } from './_searchAlgorithms/caseInsensitiveAccentSensitivePrefixSearch';
 import styles from './MultiSelectField.module.scss';
 import type { MultiSelectFieldProps } from './MultiSelectField.types';
+
+// Time in milliseconds after which characters typed into the non-editable combobox start a new search
+const TYPE_AHEAD_TIMEOUT = 500;
 
 export const MultiSelectField = React.forwardRef<HTMLInputElement | HTMLDivElement, MultiSelectFieldProps>(({
   disabled = false,
@@ -62,6 +67,9 @@ export const MultiSelectField = React.forwardRef<HTMLInputElement | HTMLDivEleme
   const comboboxRef = useRef<HTMLInputElement | HTMLDivElement | null>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const tagsRef = useRef<(HTMLDivElement | null)[]>([]);
+  // Characters typed in quick succession into the non-editable combobox, see `typeAhead`
+  const typeAheadStringRef = useRef('');
+  const typeAheadTimeoutRef = useRef<number | undefined>(undefined);
 
   const generatedId = useId();
   const ids = getFieldIds(id ?? generatedId);
@@ -138,6 +146,31 @@ export const MultiSelectField = React.forwardRef<HTMLInputElement | HTMLDivEleme
     }
   };
 
+  // Opens the dropdown and activates the option matching the characters typed in quick succession, like a native
+  // select. Follows the APG select-only combobox example.
+  const typeAhead = (character: string) => {
+    window.clearTimeout(typeAheadTimeoutRef.current);
+    setIsDropdownOpen(true);
+
+    const searchString = typeAheadStringRef.current + character;
+    const index = getTypeAheadIndex(flatOptions, searchString, activeOptionIndex + 1);
+
+    if (index === -1) {
+      typeAheadStringRef.current = '';
+      return;
+    }
+
+    setActiveOptionIndex(index);
+    typeAheadStringRef.current = searchString;
+    typeAheadTimeoutRef.current = window.setTimeout(() => {
+      typeAheadStringRef.current = '';
+    }, TYPE_AHEAD_TIMEOUT);
+  };
+
+  useEffect(() => () => {
+    window.clearTimeout(typeAheadTimeoutRef.current);
+  }, []);
+
   // Props shared by the editable combobox input and the non-editable combobox element
   const comboboxProps = {
     'aria-activedescendant': activeOption && ids.item(activeOption.key),
@@ -205,6 +238,9 @@ export const MultiSelectField = React.forwardRef<HTMLInputElement | HTMLDivEleme
           break;
         case 'focusLastTag':
           focusTag(value.length - 1);
+          break;
+        case 'typeAhead':
+          typeAhead(event.key);
           break;
         default:
           break;

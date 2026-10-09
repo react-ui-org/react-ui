@@ -8,7 +8,8 @@ export type KeyAction = 'activateFirst'
   | 'open'
   | 'openAndActivateFirst'
   | 'openAndActivateLast'
-  | 'toggleActive';
+  | 'toggleActive'
+  | 'typeAhead';
 
 export type KeyActionContext = {
   // Backspace may move focus to the last tag, i.e. the search is empty and there are tags

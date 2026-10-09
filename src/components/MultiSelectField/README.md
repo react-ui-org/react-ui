@@ -105,11 +105,15 @@ typing to filter them at any time.
   [search](#search) is disabled; otherwise it types a space.
 - **Typing** into the input opens the dropdown and filters the displayed
   options (when [search](#search) is enabled). Selecting an option clears the
-  search.
+  search. When search is disabled, typing opens the dropdown and activates the
+  first option whose label starts with the typed characters. Typing the same
+  character repeatedly cycles through the options starting with it.
 - **Arrow Down** and **Arrow Up** move between the options, wrapping around at
   both ends. Disabled options are skipped.
 - **Home** and **End** activate the first and last option once an option is
-  active. Until then, they move the cursor within the search text.
+  active. Until then, they move the cursor within the search text. When search
+  is disabled, they always activate the first and last option, and open the
+  dropdown when it is closed.
 - **Arrow Left** and **Arrow Right** deactivate the active option and move the
   cursor within the search text.
 - **Enter** toggles selection of the active option. **Space** does so too when
@@ -139,6 +143,28 @@ the options navigated by `aria-activedescendant`:
 
 When no `id` is set, it is generated so that all ARIA references are always
 complete.
+
+### Search Disabled: Select-Only Combobox
+
+When [search](#search) is disabled, MultiSelectField follows the
+[APG select-only combobox example][select-only-combobox]: the combobox is a
+focusable `<div>` rather than a read-only `<input>`, which screen readers would
+announce as read-only, and typing activates the matching option (type-ahead).
+
+It differs from the example where multiple selection requires it, or where it
+follows the editable variant for consistency:
+
+- **Enter** and **Space** toggle the active option and keep the dropdown open,
+  so that more options can be selected. **Alt + Arrow Up** and **Tab** close
+  the dropdown without changing the selection.
+- **Arrow Down** and **Arrow Up** on the closed combobox activate the first and
+  last option, as there is no single current value to start from. Navigation
+  wraps around at both ends instead of stopping.
+- **Page Up** and **Page Down** are not supported. Disabled options are skipped.
+
+A button that opens a listbox is not used for this case on purpose: the APG
+deprecated its [collapsible dropdown listbox example][collapsible-listbox] in
+favor of the select-only combobox.
 
 ## Design Variants
 
@@ -1190,8 +1216,10 @@ MultiSelectField.
 | `--rui-MultiSelectField--<SIZE>__tag__font-size`                        | Tag font size                                        |
 | `--rui-MultiSelectField--<SIZE>__tag__padding-inline`                   | Tag horizontal padding                               |
 
+[collapsible-listbox]: https://www.w3.org/WAI/ARIA/apg/patterns/listbox/examples/listbox-collapsible/
 [combobox-pattern]: https://www.w3.org/WAI/ARIA/apg/patterns/combobox/
 [div-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
 [input-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes
 [React common props]: https://react.dev/reference/react-dom/components/common#common-props
 [ref]: https://reactjs.org/docs/refs-and-the-dom.html
+[select-only-combobox]: https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-select-only/

@@ -17,11 +17,13 @@ describe('flattenOptions', () => {
       {
         disabled: false,
         key: 'apple',
+        label: 'Apple',
         value: 'apple',
       },
       {
         disabled: true,
         key: 'b',
+        label: 'Banana',
         value: 'banana',
       },
     ]);
@@ -52,11 +54,13 @@ describe('flattenOptions', () => {
       {
         disabled: false,
         key: 'apple',
+        label: 'Apple',
         value: 'apple',
       },
       {
         disabled: true,
         key: 'carrot',
+        label: 'Carrot',
         value: 'carrot',
       },
     ]);
@@ -72,6 +76,7 @@ describe('flattenOptions', () => {
       {
         disabled: true,
         key: 'apple',
+        label: 'Apple',
         value: 'apple',
       },
     ]);

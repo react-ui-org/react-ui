@@ -111,6 +111,51 @@ describe('mapKeyToAction', () => {
     });
   });
 
+  describe('non-editable combobox', () => {
+    it('opens the dropdown and activates the first or last option on Home or End', () => {
+      expect(mapKeyToAction({ key: 'Home' }, context({ isEditable: false }))).toBe('openAndActivateFirst');
+      expect(mapKeyToAction({ key: 'End' }, context({ isEditable: false }))).toBe('openAndActivateLast');
+    });
+
+    it('activates the first or last option on Home or End even before an option is active', () => {
+      expect(mapKeyToAction({ key: 'Home' }, context({
+        isEditable: false,
+        isOpen: true,
+      }))).toBe('activateFirst');
+      expect(mapKeyToAction({ key: 'End' }, context({
+        isEditable: false,
+        isOpen: true,
+      }))).toBe('activateLast');
+    });
+
+    it.each([false, true])('maps printable characters to type-ahead (open: %s)', (isOpen) => {
+      expect(mapKeyToAction({ key: 'c' }, context({
+        isEditable: false,
+        isOpen,
+      }))).toBe('typeAhead');
+      expect(mapKeyToAction({ key: 'Č' }, context({
+        isEditable: false,
+        isOpen,
+      }))).toBe('typeAhead');
+    });
+
+    it('does not map Space and characters typed with a modifier key to type-ahead', () => {
+      expect(mapKeyToAction({ key: ' ' }, context({ isEditable: false }))).toBe('open');
+      expect(mapKeyToAction({
+        ctrlKey: true,
+        key: 'c',
+      }, context({ isEditable: false }))).toBeNull();
+      expect(mapKeyToAction({
+        key: 'c',
+        metaKey: true,
+      }, context({ isEditable: false }))).toBeNull();
+    });
+
+    it('leaves printable characters to the editable input', () => {
+      expect(mapKeyToAction({ key: 'c' }, context({ isOpen: true }))).toBeNull();
+    });
+  });
+
   it('focuses the last tag on Backspace when allowed', () => {
     expect(mapKeyToAction({ key: 'Backspace' }, context({ canFocusLastTag: true }))).toBe('focusLastTag');
     expect(mapKeyToAction({ key: 'Backspace' }, context({

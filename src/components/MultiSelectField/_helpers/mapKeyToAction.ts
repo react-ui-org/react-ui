@@ -16,8 +16,10 @@ import type {
 export const mapKeyToAction = (
   {
     altKey = false,
+    ctrlKey = false,
     key,
-  }: Pick<KeyDetectedEvent, 'altKey' | 'key'>,
+    metaKey = false,
+  }: Pick<KeyDetectedEvent, 'altKey' | 'ctrlKey' | 'key' | 'metaKey'>,
   {
     canFocusLastTag,
     hasActiveOption,
@@ -38,6 +40,11 @@ export const mapKeyToAction = (
     return isOpen ? 'close' : null;
   }
 
+  // Without an editable input, typing moves to the matching option like in a native select.
+  if (!isEditable && key.length === 1 && key !== ' ' && !altKey && !ctrlKey && !metaKey) {
+    return 'typeAhead';
+  }
+
   const isSelectKey = key === 'Enter' || (key === ' ' && !isEditable);
 
   if (!isOpen) {
@@ -46,6 +53,15 @@ export const mapKeyToAction = (
     }
 
     if (key === 'ArrowUp') {
+      return 'openAndActivateLast';
+    }
+
+    // Without an editable input, Home and End do not need to move the text cursor.
+    if (!isEditable && key === 'Home') {
+      return 'openAndActivateFirst';
+    }
+
+    if (!isEditable && key === 'End') {
       return 'openAndActivateLast';
     }
 
@@ -59,11 +75,11 @@ export const mapKeyToAction = (
       return hasActiveOption ? 'activateNext' : 'activateFirst';
     case 'ArrowUp':
       return hasActiveOption ? 'activatePrevious' : 'activateLast';
-    // Until an option is active, Home and End move the cursor within the search text.
+    // In the editable input, Home and End move the cursor within the search text until an option is active.
     case 'Home':
-      return hasActiveOption ? 'activateFirst' : null;
+      return (hasActiveOption || !isEditable) ? 'activateFirst' : null;
     case 'End':
-      return hasActiveOption ? 'activateLast' : null;
+      return (hasActiveOption || !isEditable) ? 'activateLast' : null;
     // Arrow Left and Arrow Right return to editing the search text, the browser moves the cursor.
     case 'ArrowLeft':
     case 'ArrowRight':
