@@ -6,5 +6,5 @@ export const getPositionClassName = (styles: CssModuleClasses, modalPosition?: M
     return styles.isRootPositionTop;
   }
 
-  return null;
+  return undefined;
 };
