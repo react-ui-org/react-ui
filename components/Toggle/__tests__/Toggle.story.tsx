@@ -3,40 +3,46 @@ import React, {
   useMemo,
   useRef,
 } from 'react';
-import type { InputHTMLAttributes } from 'react';
 import {
   FormLayout,
   FormLayoutContext,
 } from '../../FormLayout';
 import { Toggle } from '..';
+import type { ToggleProps } from '..';
+import {
+  useSpy,
+  withSpy,
+} from '../../../../tests/playwright/utils/spy';
+import type { StoryProps } from '../../../../tests/playwright';
 
-// Types for story component will be improved when we have full TypeScript support
-type ToggleForTestProps = InputHTMLAttributes<HTMLInputElement>;
+type ToggleForTestProps = StoryProps<ToggleProps, 'label'>;
 type ToggleForRefTestProps = ToggleForTestProps & {
   testRefAttrName: string;
   testRefAttrValue: string;
 };
 export type ToggleForFormLayoutTestsProps = ToggleForTestProps & {
-  layout: 'vertical' | 'horizontal'
+  layout: 'vertical' | 'horizontal';
 };
 
 const defaultLabel = 'test-label';
 
 export const ToggleForTest = ({
+  label = defaultLabel,
   ...props
-} : ToggleForTestProps) => (
+}: ToggleForTestProps) => (
   <Toggle
-    label={defaultLabel}
+    label={label}
     {...props}
   />
 );
 
 export const ToggleForRefTest = ({
+  label = defaultLabel,
   testRefAttrName,
   testRefAttrValue,
   ...props
-} : ToggleForRefTestProps) => {
-  const ref = useRef<HTMLInputElement>(undefined);
+}: ToggleForRefTestProps) => {
+  const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     ref.current?.setAttribute(testRefAttrName, testRefAttrValue);
@@ -44,7 +50,7 @@ export const ToggleForRefTest = ({
 
   return (
     <Toggle
-      label={defaultLabel}
+      label={label}
       {...props}
       ref={ref}
     />
@@ -59,6 +65,7 @@ export const ToggleForFormLayoutLabelWidthTests = () => (
 );
 
 export const ToggleForFormLayoutTests = ({
+  label = defaultLabel,
   layout,
   ...props
 }: ToggleForFormLayoutTestsProps) => {
@@ -69,7 +76,7 @@ export const ToggleForFormLayoutTests = ({
       value={values}
     >
       <Toggle
-        label={defaultLabel}
+        label={label}
         {...props}
       />
       <Toggle
@@ -79,3 +86,14 @@ export const ToggleForFormLayoutTests = ({
     </FormLayoutContext.Provider>
   );
 };
+
+export const ToggleSpyForTest = withSpy((props: ToggleForTestProps) => {
+  const onChange = useSpy('onChange', () => true);
+
+  return (
+    <ToggleForTest
+      onChange={onChange}
+      {...props}
+    />
+  );
+});

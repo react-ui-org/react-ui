@@ -1,16 +1,38 @@
 import React from 'react';
-import type { AnchorHTMLAttributes } from 'react';
 import { TextLink } from '..';
+import type { TextLinkProps } from '..';
+import {
+  useSpy,
+  withSpy,
+} from '../../../../tests/playwright/utils/spy';
+import type { StoryProps } from '../../../../tests/playwright';
 
-// Types for story component will be improved when we have full TypeScript support
-type TextLinkForTestProps = AnchorHTMLAttributes<HTMLAnchorElement>;
+type TextLinkForTestProps = StoryProps<TextLinkProps, 'href' | 'label'>;
 
 export const TextLinkForTest = ({
+  href = '/test/uri',
+  label = 'Link',
   ...props
 }: TextLinkForTestProps) => (
   <TextLink
-    href="/test/uri"
-    label="Link"
+    href={href}
+    label={label}
     {...props}
   />
 );
+
+export const TextLinkSpyForTest = withSpy(({
+  // The link must not navigate away, the recorded calls would be lost with the page
+  href = '#',
+  ...props
+}: TextLinkForTestProps) => {
+  const onClick = useSpy('onClick', () => true);
+
+  return (
+    <TextLinkForTest
+      href={href}
+      onClick={onClick}
+      {...props}
+    />
+  );
+});

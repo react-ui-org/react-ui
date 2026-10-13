@@ -1,4 +1,4 @@
-import type { Page } from 'playwright/test';
+import type { Page } from '@playwright/test';
 import { breakpoints } from '../../../../../tests/playwright/constants/breakpoints';
 import type { PropTests } from '../../../../../tests/playwright/types';
 
@@ -26,7 +26,7 @@ export const columnGapPropTest: PropTests = [
   )),
   ...Object.entries(breakpoints).map(([breakpointName, breakpointValue]) => (
     {
-      name: `columnGap:shape[breakpointShape=${breakpointShape[breakpointName]}] breakpoint=${breakpointName}`,
+      name: `columnGap:shape[breakpointShape=${breakpointShape[breakpointName as keyof typeof breakpointShape]}] breakpoint=${breakpointName}`,
       onBeforeTest: async (page: Page) => {
         await page.setViewportSize({
           height: 200,

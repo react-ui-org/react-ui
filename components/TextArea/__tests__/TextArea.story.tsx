@@ -3,41 +3,45 @@ import React, {
   useMemo,
   useRef,
 } from 'react';
-import type { TextareaHTMLAttributes } from 'react';
-import {
-  FormLayout,
-  FormLayoutContext,
-  FormLayoutCustomFieldContext,
-} from '../../FormLayout';
+import { FormLayout } from '../../FormLayout';
+import { FormLayoutContext } from '../../FormLayout/FormLayoutContext';
+import { FormLayoutCustomFieldContext } from '../../FormLayout/FormLayoutCustomFieldContext';
 import { TextArea } from '..';
+import type { TextAreaProps } from '..';
+import {
+  useSpy,
+  withSpy,
+} from '../../../../tests/playwright/utils/spy';
+import type { StoryProps } from '../../../../tests/playwright';
 
-// Types for story component will be improved when we have full TypeScript support
-type TextAreaForTestProps = TextareaHTMLAttributes<HTMLTextAreaElement>;
+type TextAreaForTestProps = StoryProps<TextAreaProps, 'label'>;
 type TextAreaForRefTestProps = TextAreaForTestProps & {
   testRefAttrName: string;
   testRefAttrValue: string;
 };
 export type TextAreaForFormLayoutTestsProps = TextAreaForTestProps & {
-  layout: 'vertical' | 'horizontal'
+  layout: 'vertical' | 'horizontal';
 };
 
 const defaultLabel = 'test-label';
 
 export const TextAreaForTest = ({
+  label = defaultLabel,
   ...props
-} : TextAreaForTestProps) => (
+}: TextAreaForTestProps) => (
   <TextArea
-    label={defaultLabel}
+    label={label}
     {...props}
   />
 );
 
 export const TextAreaForRefTest = ({
+  label = defaultLabel,
   testRefAttrName,
   testRefAttrValue,
   ...props
-} : TextAreaForRefTestProps) => {
-  const ref = useRef<HTMLTextAreaElement>(undefined);
+}: TextAreaForRefTestProps) => {
+  const ref = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     ref.current?.setAttribute(testRefAttrName, testRefAttrValue);
@@ -45,7 +49,7 @@ export const TextAreaForRefTest = ({
 
   return (
     <TextArea
-      label={defaultLabel}
+      label={label}
       {...props}
       ref={ref}
     />
@@ -60,6 +64,7 @@ export const TextAreaForFormLayoutLabelWidthTests = () => (
 );
 
 export const TextAreaForFormLayoutTests = ({
+  label = defaultLabel,
   layout,
   ...props
 }: TextAreaForFormLayoutTestsProps) => {
@@ -70,7 +75,7 @@ export const TextAreaForFormLayoutTests = ({
       value={values}
     >
       <TextArea
-        label={defaultLabel}
+        label={label}
         {...props}
       />
       <TextArea
@@ -82,12 +87,24 @@ export const TextAreaForFormLayoutTests = ({
 };
 
 export const TextAreaForFormLayoutCustomFieldTests = ({
+  label = defaultLabel,
   ...props
 }: TextAreaForTestProps) => (
   <FormLayoutCustomFieldContext.Provider value>
     <TextArea
-      label={defaultLabel}
+      label={label}
       {...props}
     />
   </FormLayoutCustomFieldContext.Provider>
 );
+
+export const TextAreaSpyForTest = withSpy((props: TextAreaForTestProps) => {
+  const onChange = useSpy('onChange', () => true);
+
+  return (
+    <TextAreaForTest
+      onChange={onChange}
+      {...props}
+    />
+  );
+});

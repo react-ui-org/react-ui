@@ -1,9 +1,9 @@
 import React from 'react';
-import type { HTMLAttributes } from 'react';
 import { Paper } from '..';
+import type { PaperProps } from '..';
+import type { StoryProps } from '../../../../tests/playwright';
 
-// Types for story component will be improved when we have full TypeScript support
-type PaperForTestProps = HTMLAttributes<HTMLDivElement>;
+type PaperForTestProps = StoryProps<PaperProps, 'children'>;
 
 export const PaperForTest = ({
   ...props

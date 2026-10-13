@@ -7,14 +7,14 @@ export const prevArrowColorPropTest: PropTests = colorForms.map((color) => ({
   onBeforeSnapshot: async (page) => {
     await page.evaluate((id) => {
       (window as ExtendedWindow).scrollEnd = false;
-      const parent = document.getElementById(id);
+      const parent = document.getElementById(id) as HTMLElement;
       parent.children[0].addEventListener('scrollend', () => {
         (window as ExtendedWindow).scrollEnd = true;
       }, { once: true });
     }, 'scrollbar');
 
     await page.evaluate((id) => {
-      const parent = document.getElementById(id);
+      const parent = document.getElementById(id) as HTMLElement;
       parent.children[0].scrollTop += 124;
     }, 'scrollbar');
 

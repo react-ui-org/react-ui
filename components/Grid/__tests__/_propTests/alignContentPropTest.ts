@@ -1,4 +1,4 @@
-import type { Page } from 'playwright/test';
+import type { Page } from '@playwright/test';
 import { breakpoints } from '../../../../../tests/playwright/constants/breakpoints';
 import type { PropTests } from '../../../../../tests/playwright/types';
 
@@ -31,7 +31,7 @@ export const alignContentPropTest: PropTests = [
     }
   )),
   ...Object.entries(breakpoints).map(([breakpointName, breakpointValue]) => ({
-    name: `alignContent:shape[breakpointShape=${breakpointShape[breakpointName]}] breakpoint=${breakpointName}`,
+    name: `alignContent:shape[breakpointShape=${breakpointShape[breakpointName as keyof typeof breakpointShape]}] breakpoint=${breakpointName}`,
     onBeforeTest: async (page: Page) => {
       await page.setViewportSize({
         height: 200,

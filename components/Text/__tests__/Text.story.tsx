@@ -1,9 +1,8 @@
 import React from 'react';
-import type { HTMLAttributes } from 'react';
 import { Text } from '..';
+import type { TextProps } from '..';
 
-// Types for story component will be improved when we have full TypeScript support
-type TextForTestProps = HTMLAttributes<HTMLElement>;
+type TextForTestProps = TextProps;
 type TextForRenderTestProps = { children: React.ReactNode };
 
 export const TextForTest = ({

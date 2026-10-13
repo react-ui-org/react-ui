@@ -1,5 +1,5 @@
-import type { Page } from 'playwright/test';
-import type { MountResult } from '@playwright/experimental-ct-react';
+import type { Page } from '@playwright/test';
+import type { MountResult } from '../../../../../tests/playwright';
 import { propTests } from '../../../../../tests/playwright';
 import type { PropTests } from '../../../../../tests/playwright/types';
 

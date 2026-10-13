@@ -20,7 +20,7 @@
         text-align: left;
         white-space: normal;
         word-break: normal;
-        word-wrap: break-word;
+        overflow-wrap: break-word;
         color: theme.$color;
         border: theme.$border-width solid theme.$border-color;
         border-radius: theme.$border-radius;

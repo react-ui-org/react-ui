@@ -1737,10 +1737,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#z-index" class="md-nav__link">
+  <a href="#scrollable-containers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        z-index
+        Scrollable Containers
       
     </span>
   </a>
@@ -1816,6 +1816,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Theming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#z-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        z-index
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3017,10 +3034,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#z-index" class="md-nav__link">
+  <a href="#scrollable-containers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        z-index
+        Scrollable Containers
       
     </span>
   </a>
@@ -3096,6 +3113,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Theming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#z-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        z-index
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3388,23 +3422,15 @@ get an idea of all possible cases you may need to cover.</p>
     &lt;/&gt;
   );
 });</code></pre>
-<h2 id="z-index">z-index</h2>
-<p>By default, the Popover's <code>z-index</code> is <code>auto</code>, which means it participates in
-the stacking context of its nearest positioned ancestor. This works well in most
-cases, but can cause the Popover to appear behind other positioned elements such
-as sticky headers, fixed toolbars, or modals.</p>
-<p>When that happens, set <code>--rui-Popover__z-index</code> to a numeric value high enough
-to place the Popover above the conflicting layer. The override can be applied
-globally or scoped to a specific context:</p>
-<pre class="highlight"><code class="language-css">/* Global override */
-:root {
-  --rui-Popover__z-index: 1000;
-}
-
-/* Scoped override */
-.my-context {
-  --rui-Popover__z-index: 1000;
-}</code></pre>
+<h2 id="scrollable-containers">Scrollable Containers</h2>
+<p>When Popover is rendered inside a scrollable container (e.g. an element with
+<code>overflow: auto</code>) and its closest positioned parent is the container itself or
+an element inside it, Popover is clipped by the container and scrolls along
+with its content. This is always the case inside
+<a href="/components/ScrollView">ScrollView</a>, and it also applies to Popover wrapped in
+PopoverWrapper.</p>
+<p>If Popover needs to overflow the scrollable container, use Floating UI with the
+<code>fixed</code> positioning strategy (see <a href="#advanced-positioning">Advanced Positioning</a>).</p>
 <h2 id="controlled-popover">Controlled Popover</h2>
 <p>Popover API can be used to control visibility of Popover component. You need to
 set <code>id</code> on the trigger element and matching <code>popoverTargetId</code> attribute on the
@@ -3449,9 +3475,9 @@ helps to improve its accessibility.</p>
 <p>If you provide <a href="https://reactjs.org/docs/refs-and-the-dom.html">ref</a>, it is forwarded to the root native HTML <code>&lt;div&gt;</code> element,
 which enables <a href="#advanced-positioning">Advanced Positioning</a>.</p>
 <h2 id="api">API</h2>
-<p><docoff-react-props src="/components/Popover/Popover.jsx"></docoff-react-props></p>
+<p><docoff-react-props src="/components/Popover/Popover.tsx" name="Popover"></docoff-react-props></p>
 <h3 id="popoverwrapper-api">PopoverWrapper API</h3>
-<p><docoff-react-props src="/components/Popover/PopoverWrapper.jsx"></docoff-react-props></p>
+<p><docoff-react-props src="/components/Popover/PopoverWrapper.tsx" name="PopoverWrapper"></docoff-react-props></p>
 <h2 id="theming">Theming</h2>
 <table>
 <thead>
@@ -3499,6 +3525,23 @@ which enables <a href="#advanced-positioning">Advanced Positioning</a>.</p>
 </tr>
 </tbody>
 </table>
+<h3 id="z-index">z-index</h3>
+<p>By default, the Popover's <code>z-index</code> is <code>auto</code>, which means it participates in
+the stacking context of its nearest positioned ancestor. This works well in most
+cases, but can cause the Popover to appear behind other positioned elements such
+as sticky headers, fixed toolbars, or modals.</p>
+<p>When that happens, set <code>--rui-Popover__z-index</code> to a numeric value high enough
+to place the Popover above the conflicting layer. The override can be applied
+globally or scoped to a specific context:</p>
+<pre class="highlight"><code class="language-css">/* Global override */
+:root {
+  --rui-Popover__z-index: 1000;
+}
+
+/* Scoped override */
+.my-context {
+  --rui-Popover__z-index: 1000;
+}</code></pre>
 
 
 
@@ -3595,9 +3638,9 @@ which enables <a href="#advanced-positioning">Advanced Positioning</a>.</p>
       
         <script src="https://unpkg.com/@babel/standalone@7.20.15/babel.min.js"></script>
       
-        <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react@18.3.1/umd/react.development.js"></script>
       
-        <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"></script>
       
         <script src="https://unpkg.com/@floating-ui/core@1.0.0/dist/floating-ui.core.umd.min.js"></script>
       
@@ -3613,7 +3656,7 @@ which enables <a href="#advanced-positioning">Advanced Positioning</a>.</p>
       
         <script src="../../docs/_assets/js/setupDocoff.js"></script>
       
-        <script src="https://unpkg.com/@react-ui-org/docoff@0.5.4/public/generated/bundle.js"></script>
+        <script src="https://unpkg.com/@react-ui-org/docoff@0.9.1/public/generated/bundle.js"></script>
       
         <script src="https://unpkg.com/prismjs@1.29.0/components/prism-core.min.js"></script>
       

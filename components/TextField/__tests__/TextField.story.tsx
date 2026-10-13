@@ -3,41 +3,45 @@ import React, {
   useMemo,
   useRef,
 } from 'react';
-import type { InputHTMLAttributes } from 'react';
-import {
-  FormLayout,
-  FormLayoutContext,
-  FormLayoutCustomFieldContext,
-} from '../../FormLayout';
+import { FormLayout } from '../../FormLayout';
+import { FormLayoutContext } from '../../FormLayout/FormLayoutContext';
+import { FormLayoutCustomFieldContext } from '../../FormLayout/FormLayoutCustomFieldContext';
 import { TextField } from '..';
+import type { TextFieldProps } from '..';
+import {
+  useSpy,
+  withSpy,
+} from '../../../../tests/playwright/utils/spy';
+import type { StoryProps } from '../../../../tests/playwright';
 
-// Types for story component will be improved when we have full TypeScript support
-type TextFieldForTestProps = InputHTMLAttributes<HTMLInputElement>;
+type TextFieldForTestProps = StoryProps<TextFieldProps, 'label'>;
 type TextFieldForRefTestProps = TextFieldForTestProps & {
   testRefAttrName: string;
   testRefAttrValue: string;
 };
 export type TextFieldForFormLayoutTestsProps = TextFieldForTestProps & {
-  layout: 'vertical' | 'horizontal'
+  layout: 'vertical' | 'horizontal';
 };
 
 const defaultLabel = 'test-label';
 
 export const TextFieldForTest = ({
+  label = defaultLabel,
   ...props
-} : TextFieldForTestProps) => (
+}: TextFieldForTestProps) => (
   <TextField
-    label={defaultLabel}
+    label={label}
     {...props}
   />
 );
 
 export const TextFieldForRefTest = ({
+  label = defaultLabel,
   testRefAttrName,
   testRefAttrValue,
   ...props
-} : TextFieldForRefTestProps) => {
-  const ref = useRef<HTMLInputElement>(undefined);
+}: TextFieldForRefTestProps) => {
+  const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     ref.current?.setAttribute(testRefAttrName, testRefAttrValue);
@@ -45,7 +49,7 @@ export const TextFieldForRefTest = ({
 
   return (
     <TextField
-      label={defaultLabel}
+      label={label}
       {...props}
       ref={ref}
     />
@@ -60,6 +64,7 @@ export const TextFieldForFormLayoutLabelWidthTests = () => (
 );
 
 export const TextFieldForFormLayoutTests = ({
+  label = defaultLabel,
   layout,
   ...props
 }: TextFieldForFormLayoutTestsProps) => {
@@ -70,7 +75,7 @@ export const TextFieldForFormLayoutTests = ({
       value={values}
     >
       <TextField
-        label={defaultLabel}
+        label={label}
         {...props}
       />
       <TextField
@@ -82,12 +87,24 @@ export const TextFieldForFormLayoutTests = ({
 };
 
 export const TextFieldForFormLayoutCustomFieldTests = ({
+  label = defaultLabel,
   ...props
 }: TextFieldForTestProps) => (
   <FormLayoutCustomFieldContext.Provider value>
     <TextField
-      label={defaultLabel}
+      label={label}
       {...props}
     />
   </FormLayoutCustomFieldContext.Provider>
 );
+
+export const TextFieldSpyForTest = withSpy((props: TextFieldForTestProps) => {
+  const onChange = useSpy('onChange', () => true);
+
+  return (
+    <TextFieldForTest
+      onChange={onChange}
+      {...props}
+    />
+  );
+});

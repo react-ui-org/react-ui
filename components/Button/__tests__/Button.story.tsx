@@ -2,33 +2,39 @@ import React, {
   useEffect,
   useRef,
 } from 'react';
-import type { ButtonHTMLAttributes } from 'react';
 import { FormLayout } from '../../FormLayout';
 import { TextField } from '../../TextField';
 import { Button } from '..';
+import type { ButtonProps } from '..';
+import {
+  useSpy,
+  withSpy,
+} from '../../../../tests/playwright/utils/spy';
+import type { StoryProps } from '../../../../tests/playwright';
 
-// Types for story component will be improved when we have full TypeScript support
-type ButtonForTestProps = ButtonHTMLAttributes<HTMLButtonElement>;
+type ButtonForTestProps = StoryProps<ButtonProps, 'label'>;
 type ButtonForRefTestProps = ButtonForTestProps & {
   testRefAttrName: string;
   testRefAttrValue: string;
 };
 
 export const ButtonForTest = ({
+  label = 'Button',
   ...props
-} : ButtonForTestProps) => (
+}: ButtonForTestProps) => (
   <Button
-    label="Button"
+    label={label}
     {...props}
   />
 );
 
 export const ButtonForRefTest = ({
+  label = 'Button',
   testRefAttrName,
   testRefAttrValue,
   ...props
-} : ButtonForRefTestProps) => {
-  const ref = useRef<HTMLButtonElement>(undefined);
+}: ButtonForRefTestProps) => {
+  const ref = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     ref.current?.setAttribute(testRefAttrName, testRefAttrValue);
@@ -37,32 +43,45 @@ export const ButtonForRefTest = ({
   return (
     <Button
       {...props}
-      label="Button"
+      label={label}
       ref={ref}
     />
   );
 };
 
 export const ButtonInVerticalFormLayoutForTest = ({
+  label = 'Button',
   ...props
 }: ButtonForTestProps) => (
   <FormLayout fieldLayout="vertical">
     <TextField label="Text field" />
     <Button
-      label="Button"
+      label={label}
       {...props}
     />
   </FormLayout>
 );
 
 export const ButtonInHorizontalFormLayoutForTest = ({
+  label = 'Button',
   ...props
 }: ButtonForTestProps) => (
   <FormLayout fieldLayout="horizontal">
     <TextField label="Text field" />
     <Button
-      label="Button"
+      label={label}
       {...props}
     />
   </FormLayout>
 );
+
+export const ButtonSpyForTest = withSpy((props: ButtonForTestProps) => {
+  const onClick = useSpy('onClick', () => true);
+
+  return (
+    <ButtonForTest
+      onClick={onClick}
+      {...props}
+    />
+  );
+});

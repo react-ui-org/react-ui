@@ -1,16 +1,16 @@
 import React from 'react';
-import type { HTMLAttributes } from 'react';
 import {
   Card,
   CardBody,
   CardFooter,
 } from '..';
+import type { CardProps } from '..';
 import { TextLink } from '../../TextLink';
 import { Button } from '../../Button';
 import { ScrollView } from '../../ScrollView';
+import type { StoryProps } from '../../../../tests/playwright';
 
-// Types for story component will be improved when we have full TypeScript support
-type CardForTestProps = HTMLAttributes<HTMLDivElement>;
+type CardForTestProps = StoryProps<CardProps, 'children'>;
 
 export const CadForTest = ({
   ...props

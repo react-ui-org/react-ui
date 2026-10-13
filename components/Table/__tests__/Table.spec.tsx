@@ -1,10 +1,9 @@
-import React from 'react';
 import {
+  element,
   expect,
+  propTests,
   test,
-} from '@playwright/experimental-ct-react';
-import { propTests } from '../../../../tests/playwright';
-import { TableForTest } from './Table.story';
+} from '../../../../tests/playwright';
 import { sortPropTest } from './_propTests/sortPropTest';
 
 const baseColumns = [
@@ -41,6 +40,13 @@ const baseRows = [
   },
 ];
 
+const sort = {
+  ascendingIcon: element('div', { children: 'up' }),
+  column: 'column2',
+  descendingIcon: element('div', { children: 'down' }),
+  direction: 'asc',
+};
+
 test.describe('Table', () => {
   test.describe('visual', () => {
     [
@@ -60,11 +66,7 @@ test.describe('Table', () => {
           await onBeforeTest(page);
         }
 
-        const component = await mount(
-          <TableForTest
-            {...props}
-          />,
-        );
+        const component = await mount('Table/TableForTest', props);
 
         if (onBeforeSnapshot) {
           await onBeforeSnapshot(page, component);
@@ -80,13 +82,11 @@ test.describe('Table', () => {
     test('id', async ({ mount }) => {
       const id = 'test-id';
 
-      const component = await mount(
-        <TableForTest
-          columns={baseColumns}
-          id={id}
-          rows={baseRows}
-        />,
-      );
+      const component = await mount('Table/TableForTest', {
+        columns: baseColumns,
+        id,
+        rows: baseRows,
+      });
 
       await expect(component).toHaveAttribute('id', id);
       const headers = await component.getByRole('columnheader').all();
@@ -101,7 +101,7 @@ test.describe('Table', () => {
         rows.map((row) => row.getByRole('cell').all()),
       );
 
-      const testChain = [];
+      const testChain: Promise<void>[] = [];
 
       rowCells.forEach((cells, rowIndex) => {
         cells.forEach((cell, cellIndex) => testChain.push(
@@ -115,63 +115,33 @@ test.describe('Table', () => {
 
   test.describe('functionality', () => {
     test('execute sort callback on click', async ({ mount }) => {
-      let called = false;
-      let columnName;
-      let directionName;
-
-      const component = await mount(
-        <TableForTest
-          columns={baseColumns}
-          rows={baseRows}
-          sort={{
-            ascendingIcon: <div>up</div>,
-            column: 'column2',
-            descendingIcon: <div>down</div>,
-            direction: 'asc',
-            onClick: (column: string, direction: string) => {
-              called = true;
-              columnName = column;
-              directionName = direction;
-            },
-          }}
-        />,
-      );
+      const component = await mount('Table/TableSpyForTest', {
+        columns: baseColumns,
+        rows: baseRows,
+        sort,
+      });
 
       await component.getByText('up').click({ force: true });
-      expect(called).toBe(true);
-      expect(columnName).toBe('column2');
-      expect(directionName).toBe('asc');
+      await expect.poll(() => component.getSpyValue('onSortClick')).toEqual([{
+        column: 'column2',
+        direction: 'asc',
+      }]);
     });
 
     test('execute sort callback on Enter press', async ({ mount }) => {
-      let called = false;
-      let columnName;
-      let directionName;
-
-      const component = await mount(
-        <TableForTest
-          columns={baseColumns}
-          rows={baseRows}
-          sort={{
-            ascendingIcon: <div>up</div>,
-            column: 'column2',
-            descendingIcon: <div>down</div>,
-            direction: 'asc',
-            onClick: (column: string, direction: string) => {
-              called = true;
-              columnName = column;
-              directionName = direction;
-            },
-          }}
-        />,
-      );
+      const component = await mount('Table/TableSpyForTest', {
+        columns: baseColumns,
+        rows: baseRows,
+        sort,
+      });
 
       const button = component.getByRole('button');
       await button.focus();
       await button.press('Enter');
-      expect(called).toBe(true);
-      expect(columnName).toBe('column2');
-      expect(directionName).toBe('asc');
+      await expect.poll(() => component.getSpyValue('onSortClick')).toEqual([{
+        column: 'column2',
+        direction: 'asc',
+      }]);
     });
 
     test('has correct tab focus order', async ({
@@ -183,23 +153,15 @@ test.describe('Table', () => {
         isSortable: true,
       }));
 
-      await mount(
-        <TableForTest
-          columns={allSortableColumns}
-          rows={baseRows}
-          sort={{
-            ascendingIcon: <div>up</div>,
-            column: 'column2',
-            descendingIcon: <div>down</div>,
-            direction: 'asc',
-            onClick: () => {},
-          }}
-        />,
-      );
+      await mount('Table/TableSpyForTest', {
+        columns: allSortableColumns,
+        rows: baseRows,
+        sort,
+      });
 
       const getFocusedElementParentInnerText = () => page.evaluate(() => {
         const selector = document.activeElement;
-        return selector ? selector.parentElement.innerText : null;
+        return selector?.parentElement ? selector.parentElement.innerText : null;
       });
 
       await page.keyboard.press('Tab');

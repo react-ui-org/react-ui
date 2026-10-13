@@ -1,18 +1,17 @@
 import React from 'react';
-import type { HTMLAttributes } from 'react';
 import './Grid.tests.scss';
 
 import {
   Grid,
   GridSpan,
 } from '..';
+import type { GridProps } from '..';
 import {
   Card,
   CardBody,
 } from '../../Card';
 
-// Types for story component will be improved when we have full TypeScript support
-type GridTestProps = HTMLAttributes<HTMLElement>;
+type GridTestProps = GridProps;
 
 const GridComponent = ({ children }: { children: React.ReactNode }) => (
   <Card>

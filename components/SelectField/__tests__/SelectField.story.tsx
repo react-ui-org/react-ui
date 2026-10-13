@@ -3,21 +3,24 @@ import React, {
   useMemo,
   useRef,
 } from 'react';
-import type { InputHTMLAttributes } from 'react';
-import {
-  FormLayout,
-  FormLayoutContext,
-  FormLayoutCustomFieldContext,
-} from '../../FormLayout';
+import { FormLayout } from '../../FormLayout';
+import { FormLayoutContext } from '../../FormLayout/FormLayoutContext';
+import { FormLayoutCustomFieldContext } from '../../FormLayout/FormLayoutCustomFieldContext';
 import { SelectField } from '..';
+import type { SelectFieldProps } from '..';
+import {
+  useSpy,
+  withSpy,
+} from '../../../../tests/playwright/utils/spy';
+import type { StoryProps } from '../../../../tests/playwright';
 
-type SelectFieldForTestProps = InputHTMLAttributes<HTMLSelectElement>;
+type SelectFieldForTestProps = StoryProps<SelectFieldProps, 'label' | 'options'>;
 type SelectFieldForRefTestProps = SelectFieldForTestProps & {
   testRefAttrName: string;
   testRefAttrValue: string;
 };
 export type SelectFieldForFormLayoutTestsProps = SelectFieldForTestProps & {
-  layout: 'vertical' | 'horizontal'
+  layout: 'vertical' | 'horizontal';
 };
 
 const defaultLabel = 'test-label';
@@ -37,21 +40,25 @@ const defaultOptions = [
 ];
 
 export const SelectFieldForTest = ({
+  label = defaultLabel,
+  options = defaultOptions,
   ...props
 }: SelectFieldForTestProps) => (
   <SelectField
-    label={defaultLabel}
-    options={defaultOptions}
+    label={label}
+    options={options}
     {...props}
   />
 );
 
 export const SelectFieldForRefTest = ({
+  label = defaultLabel,
+  options = defaultOptions,
   testRefAttrName,
   testRefAttrValue,
   ...props
 }: SelectFieldForRefTestProps) => {
-  const ref = useRef<HTMLSelectElement>(undefined);
+  const ref = useRef<HTMLSelectElement>(null);
 
   useEffect(() => {
     ref.current?.setAttribute(testRefAttrName, testRefAttrValue);
@@ -59,8 +66,8 @@ export const SelectFieldForRefTest = ({
 
   return (
     <SelectField
-      label={defaultLabel}
-      options={defaultOptions}
+      label={label}
+      options={options}
       {...props}
       ref={ref}
     />
@@ -75,9 +82,11 @@ export const SelectFieldForFormLayoutLabelWidthTests = () => (
 );
 
 export const SelectFieldForFormLayoutTests = ({
+  label = defaultLabel,
   layout,
+  options = defaultOptions,
   ...props
-} : SelectFieldForFormLayoutTestsProps) => {
+}: SelectFieldForFormLayoutTestsProps) => {
   const values = useMemo(() => ({ layout }), [layout]);
 
   return (
@@ -85,13 +94,13 @@ export const SelectFieldForFormLayoutTests = ({
       value={values}
     >
       <SelectField
-        label={defaultLabel}
-        options={defaultOptions}
+        label={label}
+        options={options}
         {...props}
       />
       <SelectField
         label="another-test-label"
-        options={defaultOptions}
+        options={options}
         {...props}
       />
     </FormLayoutContext.Provider>
@@ -99,13 +108,26 @@ export const SelectFieldForFormLayoutTests = ({
 };
 
 export const SelectFieldForFormLayoutCustomFieldTests = ({
+  label = defaultLabel,
+  options = defaultOptions,
   ...props
 }: SelectFieldForTestProps) => (
   <FormLayoutCustomFieldContext.Provider value>
     <SelectField
-      label={defaultLabel}
-      options={defaultOptions}
+      label={label}
+      options={options}
       {...props}
     />
   </FormLayoutCustomFieldContext.Provider>
 );
+
+export const SelectFieldSpyForTest = withSpy((props: SelectFieldForTestProps) => {
+  const onChange = useSpy('onChange', () => true);
+
+  return (
+    <SelectFieldForTest
+      onChange={onChange}
+      {...props}
+    />
+  );
+});

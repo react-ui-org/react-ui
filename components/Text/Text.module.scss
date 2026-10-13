@@ -1,6 +1,6 @@
-// 1. `word-break: break-word` is deprecated in favour of `overflow-wrap: anywhere`, but it's still
-//     required for Safari.
-//     https://caniuse.com/mdn-css_properties_overflow-wrap_anywhere
+// 1. `word-break: break-word` is deprecated, `word-break: normal` with `overflow-wrap: anywhere` is
+//    its standard equivalent.
+//    https://drafts.csswg.org/css-text-3/#valdef-word-break-break-word
 //
 // 2. Different approaches are used for single and multiline texts because the latter approach
 //    doesn't always work for single-line texts.
@@ -13,7 +13,6 @@
         white-space: nowrap;
     }
 
-    // stylelint-disable property-no-vendor-prefix, value-no-vendor-prefix
     .isRootClampMultiLine {
         display: -webkit-box; // 2.
         -webkit-line-clamp: var(--rui-custom-lines);
@@ -21,7 +20,6 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
-    // stylelint-enable property-no-vendor-prefix, value-no-vendor-prefix
 
     .isRootHyphensAuto {
         hyphens: auto;
@@ -36,7 +34,7 @@
     }
 
     .isRootWordWrappingLongWords {
-        word-break: break-word; // 1.
-        overflow-wrap: anywhere;
+        word-break: normal; // 1.
+        overflow-wrap: anywhere; // 1.
     }
 }

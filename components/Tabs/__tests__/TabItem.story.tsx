@@ -1,24 +1,41 @@
 import React from 'react';
-import type { HTMLAttributes } from 'react';
 import {
   Tabs,
   TabsItem,
 } from '..';
+import type { TabsItemProps } from '..';
+import {
+  useSpy,
+  withSpy,
+} from '../../../../tests/playwright/utils/spy';
+import type { StoryProps } from '../../../../tests/playwright';
 
-// Types for story component will be improved when we have full TypeScript support
-type TabItemForTestProps = HTMLAttributes<HTMLLIElement>;
+type TabItemForTestProps = StoryProps<TabsItemProps, 'href' | 'label'>;
 
 export const TabItemForTest = ({
+  href = '#tab1',
+  label = 'Tab1',
   ...props
 }: TabItemForTestProps) => (
   <Tabs>
     <TabsItem
-      href="#tab1"
-      label="Tab1"
-      onClick={(e: Event) => {
-        e.preventDefault();
+      href={href}
+      label={label}
+      onClick={(event) => {
+        event.preventDefault();
       }}
       {...props}
     />
   </Tabs>
 );
+
+export const TabItemSpyForTest = withSpy((props: TabItemForTestProps) => {
+  const onClick = useSpy('onClick', () => true);
+
+  return (
+    <TabItemForTest
+      onClick={onClick}
+      {...props}
+    />
+  );
+});

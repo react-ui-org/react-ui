@@ -3,40 +3,44 @@ import React, {
   useMemo,
   useRef,
 } from 'react';
-import type { LabelHTMLAttributes } from 'react';
-import {
-  FormLayout,
-  FormLayoutContext,
-} from '../../FormLayout';
+import { FormLayout } from '../../FormLayout';
+import { FormLayoutContext } from '../../FormLayout/FormLayoutContext';
 import { CheckboxField } from '..';
+import type { CheckboxFieldProps } from '..';
+import {
+  useSpy,
+  withSpy,
+} from '../../../../tests/playwright/utils/spy';
+import type { StoryProps } from '../../../../tests/playwright';
 
-// Types for story component will be improved when we have full TypeScript support
-type CheckboxFieldForTestProps = LabelHTMLAttributes<HTMLLabelElement>;
+type CheckboxFieldForTestProps = StoryProps<CheckboxFieldProps, 'label'>;
 type CheckboxFieldForRefTestProps = CheckboxFieldForTestProps & {
   testRefAttrName: string;
   testRefAttrValue: string;
 };
 export type CheckboxForFormLayoutTestsProps = CheckboxFieldForTestProps & {
-  layout: 'vertical' | 'horizontal'
+  layout: 'vertical' | 'horizontal';
 };
 
 const defaultLabel = 'test-label';
 
 export const CheckboxFieldForTest = ({
+  label = defaultLabel,
   ...props
-} : CheckboxFieldForTestProps) => (
+}: CheckboxFieldForTestProps) => (
   <CheckboxField
-    label={defaultLabel}
+    label={label}
     {...props}
   />
 );
 
 export const CheckboxFieldForRefTest = ({
+  label = defaultLabel,
   testRefAttrName,
   testRefAttrValue,
   ...props
-} : CheckboxFieldForRefTestProps) => {
-  const ref = useRef<HTMLLabelElement>(undefined);
+}: CheckboxFieldForRefTestProps) => {
+  const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     ref.current?.setAttribute(testRefAttrName, testRefAttrValue);
@@ -44,7 +48,7 @@ export const CheckboxFieldForRefTest = ({
 
   return (
     <CheckboxField
-      label={defaultLabel}
+      label={label}
       {...props}
       ref={ref}
     />
@@ -59,9 +63,10 @@ export const CheckboxForFormLayoutLabelWidthTests = () => (
 );
 
 export const CheckboxForFormLayoutTests = ({
+  label = defaultLabel,
   layout,
   ...props
-} : CheckboxForFormLayoutTestsProps) => {
+}: CheckboxForFormLayoutTestsProps) => {
   const values = useMemo(() => ({ layout }), [layout]);
 
   return (
@@ -69,7 +74,7 @@ export const CheckboxForFormLayoutTests = ({
       value={values}
     >
       <CheckboxField
-        label={defaultLabel}
+        label={label}
         {...props}
       />
       <CheckboxField
@@ -79,3 +84,14 @@ export const CheckboxForFormLayoutTests = ({
     </FormLayoutContext.Provider>
   );
 };
+
+export const CheckboxFieldSpyForTest = withSpy((props: CheckboxFieldForTestProps) => {
+  const onChange = useSpy('onChange', () => true);
+
+  return (
+    <CheckboxFieldForTest
+      onChange={onChange}
+      {...props}
+    />
+  );
+});

@@ -1,14 +1,18 @@
 import React from 'react';
-import type { HTMLAttributes } from 'react';
 import { InputGroup } from '..';
+import type { InputGroupProps } from '..';
 import { SelectField } from '../../SelectField';
 import { Button } from '../../Button';
 import { TextField } from '../../TextField';
+import type { ValidationState } from '../../../types';
+import type { StoryProps } from '../../../../tests/playwright';
 
-// Types for story component will be improved when we have full TypeScript support
-type InputGroupTestProps = HTMLAttributes<HTMLFieldSetElement>;
+type InputGroupTestProps = StoryProps<InputGroupProps, 'label'> & {
+  // Children rendered by the story instead of `children`, which cannot be passed as JSX to `mount()`
+  childrenVariant?: 'multiple' | 'single';
+};
 type InputGroupWithCustomInputTestProps = InputGroupTestProps & {
-  inputProps: { validationState: string }
+  inputProps?: { validationState: ValidationState };
 };
 
 const options = [
@@ -26,20 +30,42 @@ const options = [
   },
 ];
 
-export const InputGroupForTest = ({
-  ...props
-}: InputGroupTestProps) => (
-  <InputGroup label="Input group label" {...props}>
-    <SelectField
-      label="Select label"
-      options={options}
-      value={options[0].value}
-    />
+const defaultChildren = [
+  <SelectField
+    key="selectField"
+    label="Select label"
+    options={options}
+    value={options[0].value}
+  />,
+  <TextField
+    key="textField"
+    label="Text label"
+    placeholder="Placeholder"
+  />,
+  <Button
+    key="button"
+    label="Submit"
+  />,
+];
+
+const childrenVariants = {
+  multiple: defaultChildren,
+  single: (
     <TextField
       label="Text label"
       placeholder="Placeholder"
     />
-    <Button label="Submit" />
+  ),
+};
+
+export const InputGroupForTest = ({
+  children,
+  childrenVariant,
+  label = 'Input group label',
+  ...props
+}: InputGroupTestProps) => (
+  <InputGroup label={label} {...props}>
+    {childrenVariant ? childrenVariants[childrenVariant] : (children ?? defaultChildren)}
   </InputGroup>
 );
 
@@ -48,11 +74,12 @@ export const InputGroupWithCustomInputPropsForTest = ({
 }: InputGroupWithCustomInputTestProps) => {
   const {
     inputProps,
+    label = 'Input group label',
     ...inputGroupProps
   } = props;
 
   return (
-    <InputGroup label="Input group label" {...inputGroupProps}>
+    <InputGroup label={label} {...inputGroupProps}>
       <SelectField
         label="Select label"
         options={options}
@@ -70,7 +97,8 @@ export const InputGroupWithCustomInputPropsForTest = ({
 };
 
 export const InputGroupWithoutChildrenForTest = ({
+  label = 'Input group label',
   ...props
 }: InputGroupTestProps) => (
-  <InputGroup {...props} />
+  <InputGroup label={label} {...props} />
 );
