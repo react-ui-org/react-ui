@@ -27,4 +27,4 @@ While authoring self-contained components (1) and wrappers (3) is quite
 straightforward, components with subcomponents require special attention when
 styling. Head to [CSS Guidelines] to learn more.
 
-[CSS Guidelines]: /docs/contribute/css
+[CSS Guidelines]: css.md

@@ -7,7 +7,7 @@ Use the box-alignment classes **on flex or grid containers,** they will not work
 elsewhere.
 
 👉 If you need to quickly create a flex container, there is the
-[`.d-flex`](/docs/css-helpers/display) helper class at your disposal.
+[`.d-flex`](display.md) helper class at your disposal.
 
 📖 Read more about [flexbox] and [grid] layout concepts.
 
@@ -15,7 +15,7 @@ elsewhere.
 
 The classes are named using the format `[alignment]-[value]` for `xs` and
 `[alignment]-[breakpoint]-[value]` for `sm`, `md`, `lg`, `xl`, `x2l`, and
-`x3l` [breakpoints](/docs/foundation/breakpoints).
+`x3l` [breakpoints](../foundation/breakpoints.md).
 
 Where `alignment` is one of:
 
@@ -137,7 +137,7 @@ flexbox), `center`, `end` (`flex-end` for flexbox), `baseline`, and `stretch`.
 ## Responsive Box Alignment
 
 From `sm` up you can set the desired box alignment for individual
-[breakpoints](/docs/foundation/breakpoints).
+[breakpoints](../foundation/breakpoints.md).
 
 ```docoff-react-preview
 <div className="d-flex justify-content-sm-flex-start">

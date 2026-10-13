@@ -1,0 +1,20 @@
+{
+  "ignorePatterns": [
+    {
+      "pattern": "^(?!https?://)"
+    },
+    {
+      "pattern": "^https://stackoverflow\\.com/"
+    },
+    {
+      "pattern": "^https://react\\.dev/reference/react-dom/components/common#common-props$"
+    },
+    {
+      "pattern": "^https://coveralls\\.io/"
+    },
+    {
+      "pattern": "^https://uxdesign\\.cc/"
+    }
+  ],
+  "aliveStatusCodes": [200, 429]
+}

@@ -48,11 +48,11 @@ there are longer validation messages or help texts.
 ## Supported Form Fields
 
 The FormLayout supports buttons and all React UI form fields:
-[Button](/components/Button), [CheckboxField](/components/CheckboxField),
-[FileInputField](/components/FileInputField),
-[InputGroup](/components/InputGroup), [Radio](/components/Radio),
-[SelectField](/components/SelectField), [TextArea](/components/TextArea),
-[TextField](/components/TextField), and [Toggle](/components/Toggle).
+[Button](../Button/README.md), [CheckboxField](../CheckboxField/README.md),
+[FileInputField](../FileInputField/README.md),
+[InputGroup](../InputGroup/README.md), [Radio](../Radio/README.md),
+[SelectField](../SelectField/README.md), [TextArea](../TextArea/README.md),
+[TextField](../TextField/README.md), and [Toggle](../Toggle/README.md).
 
 ```docoff-react-preview
 React.createElement(() => {
@@ -174,7 +174,7 @@ React.createElement(() => {
 
 ## Vertical Layout
 
-Vertical FormLayout works similar to single-column [Grid](/components/Grid)
+Vertical FormLayout works similar to single-column [Grid](../Grid/README.md)
 layout while it also forces vertical layout mode on form fields. To use this
 layout, simply wrap your form fields with the FormLayout component:
 
@@ -304,7 +304,7 @@ horizontal FormLayout.
 
 Please note the `auto` and `limited` label width options may not function
 correctly in combination with other auto layout mechanisms, e.g. the auto-width
-[Modal](/components/Modal). It's just too much of magic that does not quite
+[Modal](../Modal/README.md). It's just too much of magic that does not quite
 work together yet 🎩.
 
 ## Custom Fields
@@ -425,8 +425,8 @@ React.createElement(() => {
 In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
-[`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to the
-root `<div>` HTML element. This enables making the component interactive and
+[`transferProps`](../../helpers/transferProps/README.md) helper are forwarded to
+the root `<div>` HTML element. This enables making the component interactive and
 helps to improve its accessibility.
 
 👉 For the full list of supported attributes refer to:
@@ -456,7 +456,7 @@ A place for custom content inside FormLayout.
 ### FormLayoutCustomField Theming
 
 FormLayoutCustomField can be styled using a small subset of
-[other form fields theming options](/docs/customize/theming/forms).
+[other form fields theming options](../../docs/customize/theming/forms.md).
 
 | Custom Property                                             | Description                                      |
 |-------------------------------------------------------------|--------------------------------------------------|

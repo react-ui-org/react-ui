@@ -4,8 +4,8 @@ Typography is the basic means to present information to users. It also serves to
 communicate the hierarchy of a page.
 
 👉 All values on this page can be changed by
-[overriding](/docs/customize/theming/overview) values in your
-[design tokens](/docs/foundation/design-tokens).
+[overriding](../customize/theming/overview.md) values in your
+[design tokens](design-tokens.md).
 
 ## Showcase
 
@@ -63,12 +63,12 @@ React UI uses [native font stack][sm-native-font-stack] for optimum text
 rendering on every device and OS.
 
 👉 You can replace the native font stack with a
-[custom font](/docs/customize/font).
+[custom font](../customize/font.md).
 
 ## Customization
 
 Font size, font weight, and line height values can be
-[customised](/docs/customize/theming/overview) as well:
+[customised](../customize/theming/overview.md) as well:
 
 ```css
 :root {

@@ -104,7 +104,7 @@ React.createElement(() => {
 
 If you have more than a few tabs, you may need to make sure they will be all
 accessible no matter the space they have around. Wrap Tabs into
-[ScrollView](/components/ScrollView) to make them scrollable if necessary.
+[ScrollView](../ScrollView/README.md) to make them scrollable if necessary.
 
 ```docoff-react-preview
 React.createElement(() => {
@@ -159,7 +159,7 @@ React.createElement(() => {
 In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
-[`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to:
+[`transferProps`](../../helpers/transferProps/README.md) helper are forwarded to:
 
 - the root `<nav>` HTML element in case of `Tabs` component
 - the `<a>` HTML element in case of `TabsItem`
