@@ -1,0 +1,83 @@
+// ⚠️ FOR `theme.scss` PURPOSES ONLY. DO NOT USE AS A BASE FOR YOUR COLOR PALETTES OR ANYWHERE ELSE THAN IN THE THEME.
+
+@use "sass:color";
+@use "../tools/colors";
+
+$_gray-base-color: #fff;
+$_amount-light: 90%;
+$_amount-dark: 10%;
+$_amount-darker: 20%;
+
+$gray-50: colors.darken-color($_gray-base-color, 5%);
+$gray-100: colors.darken-color($_gray-base-color, 10%);
+$gray-200: colors.darken-color($_gray-base-color, 20%);
+$gray-300: colors.darken-color($_gray-base-color, 30%);
+$gray-400: colors.darken-color($_gray-base-color, 40%);
+$gray-500: colors.darken-color($_gray-base-color, 50%);
+$gray-600: colors.darken-color($_gray-base-color, 60%);
+$gray-700: colors.darken-color($_gray-base-color, 70%);
+$gray-800: colors.darken-color($_gray-base-color, 80%);
+$gray-900: colors.darken-color($_gray-base-color, 90%);
+
+$primary: #00778b;
+$secondary: $gray-500;
+$selected: #007bff;
+
+$focus: color.scale($selected, $alpha: -50%);
+
+$transparent: transparent;
+
+$success: #28a745;
+$warning: #ffc107;
+$danger: #dc3545;
+$help: #6610f2;
+$info: #17a2b8;
+$note: #007bff;
+
+$white: #fff;
+$black: #000;
+
+$primary-light: colors.lighten-color($primary, $_amount-light);
+$primary-dark: colors.darken-color($primary, $_amount-dark);
+$primary-darker: colors.darken-color($primary, $_amount-darker);
+$on-primary: $white;
+
+$secondary-light: colors.lighten-color($secondary, $_amount-light);
+$secondary-dark: colors.darken-color($secondary, $_amount-dark);
+$secondary-darker: colors.darken-color($secondary, $_amount-darker);
+$on-secondary: $white;
+
+$selected-light: colors.lighten-color($selected, $_amount-light);
+$selected-dark: colors.darken-color($selected, $_amount-dark);
+$selected-darker: colors.darken-color($selected, $_amount-darker);
+$on-selected: $white;
+
+$success-light: colors.lighten-color($success, $_amount-light);
+$success-dark: colors.darken-color($success, $_amount-dark);
+$success-darker: colors.darken-color($success, $_amount-darker);
+$on-success: $white;
+
+$warning-light: colors.lighten-color($warning, $_amount-light);
+$warning-dark: colors.darken-color($warning, $_amount-dark);
+$warning-darker: colors.darken-color($warning, $_amount-darker);
+$on-warning: $black;
+
+$danger-light: colors.lighten-color($danger, $_amount-light);
+$danger-dark: colors.darken-color($danger, $_amount-dark);
+$danger-darker: colors.darken-color($danger, $_amount-darker);
+$on-danger: $white;
+
+$help-light: colors.lighten-color($help, $_amount-light);
+$help-dark: colors.darken-color($help, $_amount-dark);
+$help-darker: colors.darken-color($help, $_amount-darker);
+$on-help: $white;
+
+$info-light: colors.lighten-color($info, $_amount-light);
+$info-dark: colors.darken-color($info, $_amount-dark);
+$info-darker: colors.darken-color($info, $_amount-darker);
+$on-info: $white;
+
+$note-light: colors.lighten-color($note, $_amount-light);
+$note-dark: colors.darken-color($note, $_amount-dark);
+$note-darker: colors.darken-color($note, $_amount-darker);
+$on-note: $white;

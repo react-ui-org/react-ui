@@ -1,0 +1,4 @@
+// Establish CSS cascade layers.
+// ⚠️ WARNING: This file must be called before other React UI styles for the cascade layers to work as intended.
+
+@layer theme, foundation, helpers, components, utilities;
