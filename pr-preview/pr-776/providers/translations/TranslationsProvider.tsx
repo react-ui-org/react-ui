@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, {
   useContext,
 } from 'react';
@@ -22,13 +21,6 @@ const TranslationsProvider: React.FunctionComponent<TranslationsProviderProps> =
       {children}
     </TranslationsContext.Provider>
   );
-};
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-TranslationsProvider.propTypes = {
-  children: PropTypes.node,
-  translations: PropTypes.shape({}),
 };
 
 export default TranslationsProvider;

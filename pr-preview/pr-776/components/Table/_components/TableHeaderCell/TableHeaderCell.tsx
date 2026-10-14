@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { Button } from '../../../Button';
 import styles from '../TableCell.module.scss';
@@ -39,34 +38,6 @@ export const TableHeaderCell: React.FunctionComponent<TableHeaderCellProps> = ({
       </span>
     </th>
   );
-};
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-TableHeaderCell.propTypes = {
-  /**
-   * Table data column, optionally sortable. The `format` function can be used to process the
-   * column data before displaying them.
-   */
-  column: PropTypes.shape({
-    isSortable: PropTypes.bool,
-    label: PropTypes.string,
-    name: PropTypes.string.isRequired,
-  }).isRequired,
-  /**
-   * ID of the HTML <th> element and nested button for sorting.
-   */
-  id: PropTypes.string,
-  /**
-   * Sorting configuration required to make columns sortable.
-   */
-  sort: PropTypes.shape({
-    ascendingIcon: PropTypes.node.isRequired,
-    column: PropTypes.string.isRequired,
-    descendingIcon: PropTypes.node.isRequired,
-    direction: PropTypes.oneOf(['asc', 'desc']).isRequired,
-    onClick: PropTypes.func.isRequired,
-  }),
 };
 
 export default TableHeaderCell;

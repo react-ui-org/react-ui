@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, {
   useContext,
 } from 'react';
@@ -26,16 +25,6 @@ export default <Props extends object, Element>(
         ref={forwardedRef}
       />
     );
-  };
-
-  WithGlobalPropsComponent.propTypes = {
-    forwardedRef: PropTypes.oneOfType([
-      PropTypes.func,
-
-      // The props can be of any type and here we need to support them all
-      // eslint-disable-next-line react/forbid-prop-types
-      PropTypes.shape({ current: PropTypes.any }),
-    ]),
   };
 
   return React.forwardRef<Element, Props>((props, ref) => (

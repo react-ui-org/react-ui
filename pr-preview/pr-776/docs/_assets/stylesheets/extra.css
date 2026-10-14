@@ -32,12 +32,7 @@
     --docoff-preview-padding: 1em;
 
     /* Custom preview CSS file, typically this would be the CSS of your component */
-
-    /* Commented out — an absolute path breaks subdirectory deployments (e.g. PR previews).
-       Set dynamically via docs/_assets/js/setupDocoff.js instead.
-       See https://github.com/react-ui-org/docoff/issues/50 for the upstream fix. */
-
-    /* --docoff-preview-css: /docs/_assets/generated/react-ui.development.css; */
+    --docoff-preview-css: /docs/_assets/generated/react-ui.development.css;
 
     /* Visual configuration of the `<docoff-placeholder>` element */
     --docoff-placeholder-background-dark: #4d4d4d;
@@ -426,6 +421,12 @@ pre[class*="language-"],
 }
 
 /* API */
+
+/* Markdown wraps the table in a paragraph, whose width must not be limited so that the table can use all the space. */
+.md-typeset p:has(> docoff-react-props) {
+    max-width: none;
+}
+
 docoff-react-props {
     display: block;
     overflow-x: auto;
@@ -433,6 +434,12 @@ docoff-react-props {
 
 docoff-react-props > table tr {
     transition: background-color 125ms;
+}
+
+/* Types are only wrapped between words, so that values like `'invalid'` are never broken in the middle. */
+docoff-react-props > table td:nth-child(2) code {
+    word-break: normal;
+    overflow-wrap: normal;
 }
 
 docoff-react-props > table tr:hover {

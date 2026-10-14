@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useMemo } from 'react';
 import type { CSSProperties } from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
@@ -70,41 +69,6 @@ export const FormLayout: React.FunctionComponent<FormLayoutProps> = ({
       </FormLayoutContext.Provider>
     </div>
   );
-};
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-FormLayout.propTypes = {
-  /**
-   * If `true`, FormLayout will take up only as much horizontal space as necessary.
-   */
-  autoWidth: PropTypes.bool,
-  /**
-   * Supported form field components:
-   * * `CheckboxField`
-   * * `FileInputField`
-   * * `FormLayoutCustomField`
-   * * `Radio`
-   * * `SelectField`
-   * * `TextArea`
-   * * `TextField`
-   * * `Toggle`
-   *
-   * If none are provided nothing is rendered.
-   */
-  children: PropTypes.node,
-  /**
-   * Layout that is forced on children form fields.
-   */
-  fieldLayout: PropTypes.oneOf(['horizontal', 'vertical']),
-  /**
-   * Width of the column with form field labels. Only available if the `fieldLayout` is set to
-   * `horizontal`.
-   */
-  labelWidth: PropTypes.oneOfType([
-    PropTypes.oneOf(PREDEFINED_LABEL_WIDTH_VALUES),
-    PropTypes.string,
-  ]),
 };
 
 export const FormLayoutWithGlobalProps = withGlobalProps<FormLayoutProps, never>(FormLayout, 'FormLayout');
