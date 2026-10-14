@@ -14,7 +14,7 @@ test.describe('TextField', () => {
         ...propTests.defaultComponentPropTest,
         ...mixPropTests([
           propTests.disabledPropTest,
-          propTests.validationStatePropTest,
+          propTests.statePropTest,
           propTests.variantPropTest,
         ]),
         ...mixPropTests([
@@ -28,11 +28,11 @@ test.describe('TextField', () => {
         ...propTests.requiredPropTest,
         ...mixPropTests([
           propTests.renderAsRequiredPropTest,
-          propTests.validationStatePropTest,
+          propTests.statePropTest,
         ]),
         ...mixPropTests([
           propTests.requiredPropTest,
-          propTests.validationStatePropTest,
+          propTests.statePropTest,
         ]),
         ...propTests.sizePropTest,
         ...typePropTest,

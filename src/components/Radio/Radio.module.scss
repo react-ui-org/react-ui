@@ -57,6 +57,10 @@
     }
 
     // States
+    .isRootStateChanged {
+        @include variants.validation(changed);
+    }
+
     .isRootStateInvalid {
         @include variants.validation(invalid);
     }

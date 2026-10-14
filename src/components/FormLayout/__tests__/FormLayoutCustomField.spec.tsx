@@ -2,18 +2,18 @@ import {
   expect,
   test,
 } from '../../../../tests/playwright';
-import { customFieldValidationStatesPropTest } from './_propTests/customFieldTests/customFieldValidationStatesPropTest';
+import { customFieldStatesPropTest } from './_propTests/customFieldTests/customFieldStatesPropTest';
 import { customFieldLabelAlignmentPropTest } from './_propTests/customFieldTests/customFieldLabelAlignmentPropTest';
 import { customFieldRequiredPropTest } from './_propTests/customFieldTests/customFieldRequiredPropTest';
-import { customFieldValidationStatesDisabledPropTest } from './_propTests/customFieldTests/customFieldValidationStatesDisabledPropTest';
+import { customFieldStatesDisabledPropTest } from './_propTests/customFieldTests/customFieldStatesDisabledPropTest';
 
 test.describe('FormLayoutCustomField', () => {
   test.describe('base', () => {
     test.describe('visual', () => {
       [
         ...customFieldLabelAlignmentPropTest,
-        ...customFieldValidationStatesPropTest,
-        ...customFieldValidationStatesDisabledPropTest,
+        ...customFieldStatesPropTest,
+        ...customFieldStatesDisabledPropTest,
         ...customFieldRequiredPropTest,
       ].forEach(({
         name,

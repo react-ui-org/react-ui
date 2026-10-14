@@ -117,6 +117,34 @@ feedback colors to fit various design situations.
   <rui-swatch color="feedback-on-note"></rui-swatch>
 </div>
 
+## State Colors
+
+State colors reflect the [state](collections.md#states) of data in
+form fields. Valid, warning, and invalid states look like the success, warning,
+and danger feedback colors by default, but they are separate and can be
+customized independently. The changed state has a color of its own.
+
+<div>
+  <rui-swatch color="state-valid"></rui-swatch>
+  <rui-swatch color="state-valid-hover"></rui-swatch>
+  <rui-swatch color="state-valid-active"></rui-swatch>
+</div>
+<div>
+  <rui-swatch color="state-invalid"></rui-swatch>
+  <rui-swatch color="state-invalid-hover"></rui-swatch>
+  <rui-swatch color="state-invalid-active"></rui-swatch>
+</div>
+<div>
+  <rui-swatch color="state-warning"></rui-swatch>
+  <rui-swatch color="state-warning-hover"></rui-swatch>
+  <rui-swatch color="state-warning-active"></rui-swatch>
+</div>
+<div>
+  <rui-swatch color="state-changed"></rui-swatch>
+  <rui-swatch color="state-changed-hover"></rui-swatch>
+  <rui-swatch color="state-changed-active"></rui-swatch>
+</div>
+
 ## Neutral Colors
 
 Neutral colors are intended for neutral variants of components that support
@@ -203,6 +231,17 @@ Backgrounds for feedback areas.
   <rui-swatch color="background-note"></rui-swatch>
 </div>
 
+### State Backgrounds
+
+Backgrounds for form fields in individual states.
+
+<div>
+  <rui-swatch color="background-state-valid"></rui-swatch>
+  <rui-swatch color="background-state-invalid"></rui-swatch>
+  <rui-swatch color="background-state-warning"></rui-swatch>
+  <rui-swatch color="background-state-changed"></rui-swatch>
+</div>
+
 ### Neutral Backgrounds
 
 Neutral backgrounds to help you structure your content.
@@ -239,18 +278,20 @@ used. There is always a reasonable default color for the component in question
 that can be changed to any of supported collection values through the `color`
 prop.
 
-### Validation States
+### States
 
-All form field components that support validation states
+All form field components that support
+[states](collections.md#states)
 ([CheckboxField](/components/CheckboxField),
 [TextField](/components/TextField), [Toggle](/components/Toggle) and more)
-apply selected [feedback colors](#feedback-colors) for individual states:
+apply [state colors](#state-colors) for individual states:
 
-- `success` feedback color for **valid** state,
-- `warning` feedback color for **warning** state,
-- `danger` feedback color for **invalid** state.
+- `state-valid` color for **valid** state,
+- `state-warning` color for **warning** state,
+- `state-invalid` color for **invalid** state,
+- `state-changed` color for **changed** state.
 
-Validation state is always optional. Default styling is applied for the given
-component when its `validationState` prop is not specified.
+State is always optional. Default styling is applied for the given component
+when its `state` prop is not specified.
 
 [collection-colors]: /docs/foundation/collections#colors

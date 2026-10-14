@@ -34,6 +34,11 @@ $help: #6610f2;
 $info: #17a2b8;
 $note: #007bff;
 
+$state-valid: #28a745;
+$state-invalid: #dc3545;
+$state-warning: #ffc107;
+$state-changed: #b5179e;
+
 $white: #fff;
 $black: #000;
 
@@ -81,3 +86,19 @@ $note-light: colors.lighten-color($note, $_amount-light);
 $note-dark: colors.darken-color($note, $_amount-dark);
 $note-darker: colors.darken-color($note, $_amount-darker);
 $on-note: $white;
+
+$state-valid-light: colors.lighten-color($state-valid, $_amount-light);
+$state-valid-dark: colors.darken-color($state-valid, $_amount-dark);
+$state-valid-darker: colors.darken-color($state-valid, $_amount-darker);
+
+$state-invalid-light: colors.lighten-color($state-invalid, $_amount-light);
+$state-invalid-dark: colors.darken-color($state-invalid, $_amount-dark);
+$state-invalid-darker: colors.darken-color($state-invalid, $_amount-darker);
+
+$state-warning-light: colors.lighten-color($state-warning, $_amount-light);
+$state-warning-dark: colors.darken-color($state-warning, $_amount-dark);
+$state-warning-darker: colors.darken-color($state-warning, $_amount-darker);
+
+$state-changed-light: colors.lighten-color($state-changed, $_amount-light);
+$state-changed-dark: colors.darken-color($state-changed, $_amount-dark);
+$state-changed-darker: colors.darken-color($state-changed, $_amount-darker);

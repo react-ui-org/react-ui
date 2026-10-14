@@ -7,7 +7,7 @@ import type {
 import type {
   Layout,
   Size,
-  ValidationState,
+  State,
 } from '../../types';
 
 export type FileInputFieldFilesChangedEvent = ChangeEvent<HTMLInputElement> | DragEvent<HTMLDivElement> | Event | null;
@@ -87,9 +87,10 @@ export type FileInputFieldProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'i
    */
   size?: Size;
   /**
-   * Alter the field to provide feedback based on validation result.
+   * Alter the field to reflect the state of its data, e.g. a validation result or a change
+   * against the saved value.
    */
-  validationState?: ValidationState;
+  state?: State;
   /**
    * Validation message to be displayed.
    *

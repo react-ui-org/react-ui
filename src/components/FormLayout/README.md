@@ -119,7 +119,7 @@ React.createElement(() => {
           <TextField
             inputSize={6}
             label="ZIP"
-            validationState="invalid"
+            state="invalid"
             validationText="ZIP should be 5 to 6 digits long code."
           />
           <FormLayoutCustomField label="Country">
@@ -383,7 +383,7 @@ provide labels with optional feedback style.
 <FormLayout fieldLayout="horizontal" labelWidth="auto">
   <FormLayoutCustomField
     label="Custom field label in valid state"
-    validationState="valid"
+    state="valid"
   >
     <docoff-placeholder bordered>Custom field content</docoff-placeholder>
   </FormLayoutCustomField>

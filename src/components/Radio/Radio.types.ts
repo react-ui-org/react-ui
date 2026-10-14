@@ -4,7 +4,7 @@ import type {
 } from 'react';
 import type {
   Layout,
-  ValidationState,
+  State,
 } from '../../types';
 
 export type RadioOption = {
@@ -76,9 +76,10 @@ export type RadioProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'v
    */
   required?: boolean;
   /**
-   * Alter the field to provide feedback based on validation result.
+   * Alter the field to reflect the state of its data, e.g. a validation result or a change
+   * against the saved value.
    */
-  validationState?: ValidationState;
+  state?: State;
   /**
    * Validation message to be displayed.
    */

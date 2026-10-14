@@ -56,15 +56,15 @@ test.describe('SelectField', () => {
         ]),
         ...mixPropTests([
           propTests.requiredPropTest,
-          propTests.validationStatePropTest,
+          propTests.statePropTest,
         ]),
         ...mixPropTests([
           propTests.renderAsRequiredPropTest,
-          propTests.validationStatePropTest,
+          propTests.statePropTest,
         ]),
         ...mixPropTests([
           propTests.disabledPropTest,
-          propTests.validationStatePropTest,
+          propTests.statePropTest,
           propTests.variantPropTest,
         ]),
       ].forEach(({
