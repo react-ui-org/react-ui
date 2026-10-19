@@ -30,8 +30,8 @@ $horizontal-label-vertical-alignment: var(--rui-FormField--horizontal__label__ve
 $horizontal-field-vertical-alignment: var(--rui-FormField--horizontal__field__vertical-alignment);
 $horizontal-full-width-label-width: var(--rui-FormField--horizontal--full-width__label__width);
 
-// Form fields: links in validation states
-$link-validation-colors: (
+// Form fields: links in states
+$link-state-colors: (
     changed: (
         default: var(--rui-color-state-changed),
         hover: var(--rui-color-state-changed-hover),
