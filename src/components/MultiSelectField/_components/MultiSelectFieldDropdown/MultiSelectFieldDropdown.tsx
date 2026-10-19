@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, {
   useContext,
   useEffect,
@@ -24,13 +23,21 @@ const MultiSelectFieldDropdown: React.FunctionComponent<MultiSelectFieldDropdown
   const translations = useContext(TranslationsContext);
   const focusedOptionIndexRef = useRef(-1);
 
-  // Number of options that can receive focus, i.e. all displayed options that are not disabled.
-  const focusableOptionsCount = options.reduce(
-    (count, option) => ('options' in option
-      ? count + option.options.filter((groupOption) => !option.disabled && !groupOption.disabled).length
-      : count + (option.disabled ? 0 : 1)),
-    0,
-  );
+  // Index of each option that can receive focus, i.e. of each displayed option that is not disabled,
+  // among all focusable options, in the order of rendering.
+  const focusableOptionIndexes = new Map<MultiSelectFieldOption, number>();
+  options.forEach((option) => {
+    if ('options' in option) {
+      option.options.forEach((groupOption) => {
+        if (!option.disabled && !groupOption.disabled) {
+          focusableOptionIndexes.set(groupOption, focusableOptionIndexes.size);
+        }
+      });
+    } else if (!option.disabled) {
+      focusableOptionIndexes.set(option, focusableOptionIndexes.size);
+    }
+  });
+  const focusableOptionsCount = focusableOptionIndexes.size;
 
   useEffect(() => {
     // Drop refs of options that are no longer displayed, e.g. after the options were filtered.
@@ -43,17 +50,10 @@ const MultiSelectFieldDropdown: React.FunctionComponent<MultiSelectFieldDropdown
     }
   }, [autoFocusFirstOptionOnOpen, optionsRef]);
 
-  // Index of an option among all focusable options, assigned in the order of rendering.
-  let optionIndex = 0;
-
   const renderOption = (option: MultiSelectFieldOption, isWithinGroup: boolean, isGroupDisabled: boolean) => {
     const isOptionDisabled = isGroupDisabled || option.disabled || false;
 
-    let currentOptionIndex: number | null = null;
-    if (!isOptionDisabled) {
-      currentOptionIndex = optionIndex;
-      optionIndex += 1;
-    }
+    const currentOptionIndex = focusableOptionIndexes.get(option) ?? null;
 
     return (
       <MultiSelectFieldDropdownItem
@@ -127,49 +127,6 @@ const MultiSelectFieldDropdown: React.FunctionComponent<MultiSelectFieldDropdown
       )}
     </div>
   );
-};
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-MultiSelectFieldDropdown.propTypes = {
-  autoFocusFirstOptionOnOpen: PropTypes.bool.isRequired,
-  id: PropTypes.string,
-  onClose: PropTypes.func.isRequired,
-  onItemSelected: PropTypes.func.isRequired,
-  options: PropTypes.oneOfType([
-    PropTypes.arrayOf(
-      PropTypes.shape({
-        key: PropTypes.string,
-        label: PropTypes.string.isRequired,
-        options: PropTypes.arrayOf(PropTypes.shape({
-          disabled: PropTypes.bool,
-          key: PropTypes.string,
-          label: PropTypes.string.isRequired,
-          value: PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.number,
-          ]),
-        })),
-      }),
-    ),
-    PropTypes.arrayOf(PropTypes.shape({
-      disabled: PropTypes.bool,
-      key: PropTypes.string,
-      label: PropTypes.string.isRequired,
-      value: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-      ]),
-    })),
-  ]).isRequired,
-  optionsRef: PropTypes.shape({
-    // eslint-disable-next-line react/forbid-prop-types
-    current: PropTypes.array.isRequired,
-  }).isRequired,
-  value: PropTypes.arrayOf(PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ])).isRequired,
 };
 
 export default MultiSelectFieldDropdown;

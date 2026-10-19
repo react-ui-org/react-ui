@@ -1118,7 +1118,7 @@ the input of the field.
 
 ## API
 
-<docoff-react-props src="/components/MultiSelectField/MultiSelectField.tsx"></docoff-react-props>
+<docoff-react-props src="/components/MultiSelectField/MultiSelectField.tsx" name="MultiSelectField"></docoff-react-props>
 
 ## Theming
 
