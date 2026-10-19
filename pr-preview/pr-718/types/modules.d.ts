@@ -1,5 +1,5 @@
 declare module '*.module.scss' {
-  const classes: { readonly [className: string]: string };
+  const classes: Readonly<Record<string, string>>;
   export default classes;
 }
 

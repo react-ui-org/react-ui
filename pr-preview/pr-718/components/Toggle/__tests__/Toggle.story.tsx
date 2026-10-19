@@ -9,6 +9,10 @@ import {
 } from '../../FormLayout';
 import { Toggle } from '..';
 import type { ToggleProps } from '..';
+import {
+  useSpy,
+  withSpy,
+} from '../../../../tests/playwright/utils/spy';
 import type { StoryProps } from '../../../../tests/playwright';
 
 type ToggleForTestProps = StoryProps<ToggleProps, 'label'>;
@@ -17,7 +21,7 @@ type ToggleForRefTestProps = ToggleForTestProps & {
   testRefAttrValue: string;
 };
 export type ToggleForFormLayoutTestsProps = ToggleForTestProps & {
-  layout: 'vertical' | 'horizontal'
+  layout: 'vertical' | 'horizontal';
 };
 
 const defaultLabel = 'test-label';
@@ -25,7 +29,7 @@ const defaultLabel = 'test-label';
 export const ToggleForTest = ({
   label = defaultLabel,
   ...props
-} : ToggleForTestProps) => (
+}: ToggleForTestProps) => (
   <Toggle
     label={label}
     {...props}
@@ -37,7 +41,7 @@ export const ToggleForRefTest = ({
   testRefAttrName,
   testRefAttrValue,
   ...props
-} : ToggleForRefTestProps) => {
+}: ToggleForRefTestProps) => {
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -82,3 +86,14 @@ export const ToggleForFormLayoutTests = ({
     </FormLayoutContext.Provider>
   );
 };
+
+export const ToggleSpyForTest = withSpy((props: ToggleForTestProps) => {
+  const onChange = useSpy('onChange', () => true);
+
+  return (
+    <ToggleForTest
+      onChange={onChange}
+      {...props}
+    />
+  );
+});

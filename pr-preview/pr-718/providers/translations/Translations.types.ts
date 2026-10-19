@@ -9,9 +9,7 @@ export type Translations = typeof defaultTranslations;
  */
 export type PartialTranslations = {
   [Component in keyof Translations]?: Partial<Translations[Component]>;
-} & {
-  [component: string]: Record<string, string | undefined> | undefined;
-};
+} & Record<string, Record<string, string | undefined> | undefined>;
 
 /**
  * Props of the `TranslationsProvider` component.

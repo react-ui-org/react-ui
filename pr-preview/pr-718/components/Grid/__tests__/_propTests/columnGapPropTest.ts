@@ -1,4 +1,4 @@
-import type { Page } from 'playwright/test';
+import type { Page } from '@playwright/test';
 import { breakpoints } from '../../../../../tests/playwright/constants/breakpoints';
 import type { PropTests } from '../../../../../tests/playwright/types';
 

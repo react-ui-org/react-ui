@@ -37,7 +37,7 @@
         grid-template-columns: var(--rui-local-columns); // 2.
         grid-template-rows: var(--rui-local-rows); // 2.
         grid-auto-flow: var(--rui-local-auto-flow); // 2.
-        grid-gap: var(--rui-local-row-gap) var(--rui-local-column-gap); // 2.
+        gap: var(--rui-local-row-gap) var(--rui-local-column-gap); // 2.
         // stylelint-disable declaration-block-no-redundant-longhand-properties -- 3.
         align-content: var(--rui-local-align-content); // 2.
         align-items: var(--rui-local-align-items); // 2.

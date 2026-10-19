@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { transferProps } from '../../helpers/transferProps';
@@ -16,15 +15,6 @@ export const CardBody: React.FunctionComponent<CardBodyProps> = ({
     {children}
   </div>
 );
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-CardBody.propTypes = {
-  /**
-   * Content of the card.
-   */
-  children: PropTypes.node.isRequired,
-};
 
 export const CardBodyWithGlobalProps = withGlobalProps<CardBodyProps, never>(CardBody, 'CardBody');
 

@@ -113,7 +113,7 @@ export const ScrollViewForRefTest = ({
   testRefAttrName,
   testRefAttrValue,
   ...props
-} : ScrollViewForRefTestProps) => {
+}: ScrollViewForRefTestProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -129,6 +129,29 @@ export const ScrollViewForRefTest = ({
     </ScrollView>
   );
 };
+
+export const ScrollViewForPositionedContentTest = ({
+  ...props
+}: ScrollViewTestProps) => (
+  <div
+    style={{
+      height: '300px',
+      overflow: 'auto',
+      width: '300px',
+    }}
+  >
+    <ScrollView
+      id="scrollbar"
+      {...props}
+    >
+      {content}
+      {/* Without coordinates, it stays at its static position below the long content. */}
+      <span style={{ position: 'absolute' }}>
+        Absolutely positioned content
+      </span>
+    </ScrollView>
+  </div>
+);
 
 export const ScrollViewForDetectEndAutoscrollTest = ({
   ...props

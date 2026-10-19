@@ -3123,7 +3123,7 @@ currently support only <a href="https://reactjs.org/docs/forms.html#controlled-c
 &lt;/html&gt;</code></pre>
 <p>Example JSX:</p>
 <pre class="highlight"><code class="language-jsx">import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { Button } from '@react-ui-org/react-ui';
 import '@react-ui-org/react-ui/dist/react-ui.css';
 
@@ -3131,7 +3131,7 @@ const App = () =&gt; (
   &lt;Button label="My Button" /&gt;
 );
 
-ReactDOM.render(&lt;App /&gt;, document.querySelector('#app'));</code></pre>
+createRoot(document.querySelector('#app')).render(&lt;App /&gt;);</code></pre>
 <h2 id="cdn">CDN</h2>
 <p>React UI is also available on CDN:</p>
 <table>
@@ -3249,9 +3249,9 @@ ReactDOM.render(&lt;App /&gt;, document.querySelector('#app'));</code></pre>
       
         <script src="https://unpkg.com/@babel/standalone@7.20.15/babel.min.js"></script>
       
-        <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react@18.3.1/umd/react.development.js"></script>
       
-        <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"></script>
       
         <script src="https://unpkg.com/@floating-ui/core@1.0.0/dist/floating-ui.core.umd.min.js"></script>
       
@@ -3267,7 +3267,7 @@ ReactDOM.render(&lt;App /&gt;, document.querySelector('#app'));</code></pre>
       
         <script src="../../_assets/js/setupDocoff.js"></script>
       
-        <script src="https://unpkg.com/@react-ui-org/docoff@0.7.2/public/generated/bundle.js"></script>
+        <script src="https://unpkg.com/@react-ui-org/docoff@0.9.1/public/generated/bundle.js"></script>
       
         <script src="https://unpkg.com/prismjs@1.29.0/components/prism-core.min.js"></script>
       

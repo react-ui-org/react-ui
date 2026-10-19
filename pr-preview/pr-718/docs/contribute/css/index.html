@@ -3202,22 +3202,11 @@
 <h2 id="coding-style">Coding Style</h2>
 <p>React UI uses <a href="https://stylelint.io">Stylelint</a> to avoid errors in CSS and enforce unified coding
 style across all stylesheets.</p>
-<p>Configurations used:</p>
-<ul>
-<li>
-<p><a href="https://github.com/visionappscz/stylelint-config-visionapps"><code>stylelint-config-visionapps</code></a> — a more strict
-  extension of popular community preset
-  <a href="https://github.com/stylelint/stylelint-config-standard"><code>stylelint-config-standard</code></a>.</p>
-</li>
-<li>
-<p><a href="https://github.com/visionappscz/stylelint-config-visionapps-order"><code>stylelint-config-visionapps-order</code></a> —
-  an opinionated list of CSS properties order.</p>
-</li>
-<li>
-<p><a href="https://github.com/pascalduez/stylelint-config-css-modules"><code>stylelint-config-css-modules</code></a> — tweak of
-  Stylelint rules for CSS modules.</p>
-</li>
-</ul>
+<p>The configuration is <a href="https://github.com/react-ui-org/stylelint-config"><code>@react-ui-org/stylelint-config</code></a>, a
+more strict extension of popular community preset
+<a href="https://github.com/stylelint/stylelint-config-standard"><code>stylelint-config-standard</code></a> with an opinionated
+list of CSS properties order and stylistic rules. Its additions for SCSS and
+CSS modules are used as well.</p>
 <h2 id="css-architecture">CSS Architecture</h2>
 <p>Without <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">Web Components</a>, there is no such thing as a complete encapsulation of
 a component. Inside browser window, a React app is still a bunch of HTML and CSS
@@ -3537,9 +3526,9 @@ according to <a href="https://github.com/browserslist/browserslist">Browserslist
       
         <script src="https://unpkg.com/@babel/standalone@7.20.15/babel.min.js"></script>
       
-        <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react@18.3.1/umd/react.development.js"></script>
       
-        <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"></script>
       
         <script src="https://unpkg.com/@floating-ui/core@1.0.0/dist/floating-ui.core.umd.min.js"></script>
       
@@ -3555,7 +3544,7 @@ according to <a href="https://github.com/browserslist/browserslist">Browserslist
       
         <script src="../../_assets/js/setupDocoff.js"></script>
       
-        <script src="https://unpkg.com/@react-ui-org/docoff@0.7.2/public/generated/bundle.js"></script>
+        <script src="https://unpkg.com/@react-ui-org/docoff@0.9.1/public/generated/bundle.js"></script>
       
         <script src="https://unpkg.com/prismjs@1.29.0/components/prism-core.min.js"></script>
       

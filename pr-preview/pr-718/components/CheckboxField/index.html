@@ -1182,10 +1182,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#styling-the-required-state" class="md-nav__link">
+  <a href="#rendering-as-required" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Styling the Required State
+        Rendering as Required
       
     </span>
   </a>
@@ -1254,6 +1254,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Theming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theming-the-required-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Theming the Required State
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3108,10 +3125,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#styling-the-required-state" class="md-nav__link">
+  <a href="#rendering-as-required" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Styling the Required State
+        Rendering as Required
       
     </span>
   </a>
@@ -3180,6 +3197,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Theming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theming-the-required-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Theming the Required State
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3381,16 +3415,87 @@ display an asterisk <code>*</code> after the label by default.</p>
     /&gt;
   );
 });</code></pre>
-<h4 id="styling-the-required-state">Styling the Required State</h4>
-<p>All form fields in React UI can be
-<a href="/docs/customize/theming/forms/#required-state">styled</a>
-to indicate the required state.</p>
-<p>However, you may find yourself in a situation where a form field is valid in
-both checked and unchecked states, for example to turn on or off a feature.
-If your project uses the label color as the primary means to indicate the
+<h4 id="rendering-as-required">Rendering as Required</h4>
+<p>A form field may be valid in both checked and unchecked states, for example to
+turn on or off a feature, while your design still needs it to look required.
+For this edge case, there is the <code>renderAsRequired</code> prop:</p>
+<pre class="highlight"><code class="language-docoff-react-preview">React.createElement(() =&gt; {
+  const [optional, setOptional] = React.useState(false);
+  const [renderAsRequired, setRenderAsRequired] = React.useState(false);
+  return (
+    &lt;&gt;
+      &lt;CheckboxField
+        checked={optional}
+        label="This field is optional"
+        onChange={() =&gt; setOptional(!optional)}
+      /&gt;
+      &lt;CheckboxField
+        checked={renderAsRequired}
+        label="This field is optional but looks like required"
+        onChange={() =&gt; setRenderAsRequired(!renderAsRequired)}
+        renderAsRequired
+      /&gt;
+    &lt;/&gt;
+  );
+});</code></pre>
+<p>It renders the field as if it was required, but doesn't add the <code>required</code>
+attribute to the actual input.</p>
+<h3 id="disabled-state">Disabled State</h3>
+<p>Disabled state makes the input unavailable.</p>
+<pre class="highlight"><code class="language-docoff-react-preview">&lt;CheckboxField
+  disabled
+  label="Disabled checkbox"
+/&gt;
+&lt;CheckboxField
+  checked
+  disabled
+  label="Disabled checkbox, checked"
+/&gt;</code></pre>
+<h2 id="forwarding-html-attributes">Forwarding HTML Attributes</h2>
+<p>In addition to the options below in the <a href="#api">component's API</a> section, you
+can specify <strong>any HTML attribute you like.</strong> All attributes that don't
+interfere with the API of the React component and that aren't filtered out by
+<a href="/docs/js-helpers/transferProps"><code>transferProps</code></a> helper are forwarded to the
+<code>&lt;input&gt;</code> HTML element. This enables making the component interactive and helps
+to improve its accessibility.</p>
+<p>👉 For the full list of supported attributes refer to:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#additional_attributes" target="_blank"><code>&lt;input type="checkbox" /&gt;</code> HTML element attributes</a></li>
+<li><a href="https://react.dev/reference/react-dom/components/common#common-props" target="_blank">React common props</a></li>
+</ul>
+<h2 id="forwarding-ref">Forwarding ref</h2>
+<p>If you provide <a href="https://reactjs.org/docs/refs-and-the-dom.html">ref</a>, it is forwarded to the native HTML <code>&lt;input&gt;</code> element.</p>
+<h2 id="api">API</h2>
+<p><docoff-react-props src="/components/CheckboxField/CheckboxField.tsx" name="CheckboxField"></docoff-react-props></p>
+<h2 id="theming">Theming</h2>
+<p>Head to <a href="/docs/customize/theming/forms">Forms Theming</a> to see shared form theming
+options. On top of that, the following options are available for CheckboxField.</p>
+<table>
+<thead>
+<tr>
+<th>Custom Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--rui-FormField--check__input--checkbox__border-radius</code></td>
+<td>Input corner radius</td>
+</tr>
+<tr>
+<td><code>--rui-FormField--check__input--checkbox--checked__background-image</code></td>
+<td>Background image of checked input</td>
+</tr>
+</tbody>
+</table>
+<h3 id="theming-the-required-state">Theming the Required State</h3>
+<p>Required fields are indicated by
+<a href="/docs/customize/theming/forms/#required-state">shared theming options</a>.</p>
+<p>If your project uses the label color as the primary means to indicate the
 required state of input fields and the usual asterisk <code>*</code> is omitted, you may
-want to keep the label color consistent for both states to avoid confusion.</p>
-<p>For this edge case, there is the <code>renderAsRequired</code> prop:</p>
+want to keep the label color consistent for fields that are valid in both
+checked and unchecked states. Pair the theming options with the
+<a href="#rendering-as-required"><code>renderAsRequired</code></a> prop to achieve that:</p>
 <pre class="highlight"><code class="language-docoff-react-preview">React.createElement(() =&gt; {
   const [optional, setOptional] = React.useState(false);
   const [renderAsRequired, setRenderAsRequired] = React.useState(false);
@@ -3427,56 +3532,6 @@ want to keep the label color consistent for both states to avoid confusion.</p>
     &lt;/React.Fragment&gt;
   );
 });</code></pre>
-<p>It renders the field as if it was required, but doesn't add the <code>required</code>
-attribute to the actual input.</p>
-<h3 id="disabled-state">Disabled State</h3>
-<p>Disabled state makes the input unavailable.</p>
-<pre class="highlight"><code class="language-docoff-react-preview">&lt;CheckboxField
-  disabled
-  label="Disabled checkbox"
-/&gt;
-&lt;CheckboxField
-  checked
-  disabled
-  label="Disabled checkbox, checked"
-/&gt;</code></pre>
-<h2 id="forwarding-html-attributes">Forwarding HTML Attributes</h2>
-<p>In addition to the options below in the <a href="#api">component's API</a> section, you
-can specify <strong>any HTML attribute you like.</strong> All attributes that don't
-interfere with the API of the React component and that aren't filtered out by
-<a href="/docs/js-helpers/transferProps"><code>transferProps</code></a> helper are forwarded to the
-<code>&lt;input&gt;</code> HTML element. This enables making the component interactive and helps
-to improve its accessibility.</p>
-<p>👉 For the full list of supported attributes refer to:</p>
-<ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#additional_attributes" target="_blank"><code>&lt;input type="checkbox" /&gt;</code> HTML element attributes</a></li>
-<li><a href="https://react.dev/reference/react-dom/components/common#common-props" target="_blank">React common props</a></li>
-</ul>
-<h2 id="forwarding-ref">Forwarding ref</h2>
-<p>If you provide <a href="https://reactjs.org/docs/refs-and-the-dom.html">ref</a>, it is forwarded to the native HTML <code>&lt;input&gt;</code> element.</p>
-<h2 id="api">API</h2>
-<p><docoff-react-props src="/components/CheckboxField/CheckboxField.tsx"></docoff-react-props></p>
-<h2 id="theming">Theming</h2>
-<p>Head to <a href="/docs/customize/theming/forms">Forms Theming</a> to see shared form theming
-options. On top of that, the following options are available for CheckboxField.</p>
-<table>
-<thead>
-<tr>
-<th>Custom Property</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>--rui-FormField--check__input--checkbox__border-radius</code></td>
-<td>Input corner radius</td>
-</tr>
-<tr>
-<td><code>--rui-FormField--check__input--checkbox--checked__background-image</code></td>
-<td>Background image of checked input</td>
-</tr>
-</tbody>
-</table>
 
 
 
@@ -3573,9 +3628,9 @@ options. On top of that, the following options are available for CheckboxField.<
       
         <script src="https://unpkg.com/@babel/standalone@7.20.15/babel.min.js"></script>
       
-        <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react@18.3.1/umd/react.development.js"></script>
       
-        <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"></script>
       
         <script src="https://unpkg.com/@floating-ui/core@1.0.0/dist/floating-ui.core.umd.min.js"></script>
       
@@ -3591,7 +3646,7 @@ options. On top of that, the following options are available for CheckboxField.<
       
         <script src="../../docs/_assets/js/setupDocoff.js"></script>
       
-        <script src="https://unpkg.com/@react-ui-org/docoff@0.7.2/public/generated/bundle.js"></script>
+        <script src="https://unpkg.com/@react-ui-org/docoff@0.9.1/public/generated/bundle.js"></script>
       
         <script src="https://unpkg.com/prismjs@1.29.0/components/prism-core.min.js"></script>
       

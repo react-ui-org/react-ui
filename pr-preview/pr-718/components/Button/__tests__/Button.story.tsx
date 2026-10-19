@@ -6,6 +6,10 @@ import { FormLayout } from '../../FormLayout';
 import { TextField } from '../../TextField';
 import { Button } from '..';
 import type { ButtonProps } from '..';
+import {
+  useSpy,
+  withSpy,
+} from '../../../../tests/playwright/utils/spy';
 import type { StoryProps } from '../../../../tests/playwright';
 
 type ButtonForTestProps = StoryProps<ButtonProps, 'label'>;
@@ -17,7 +21,7 @@ type ButtonForRefTestProps = ButtonForTestProps & {
 export const ButtonForTest = ({
   label = 'Button',
   ...props
-} : ButtonForTestProps) => (
+}: ButtonForTestProps) => (
   <Button
     label={label}
     {...props}
@@ -29,7 +33,7 @@ export const ButtonForRefTest = ({
   testRefAttrName,
   testRefAttrValue,
   ...props
-} : ButtonForRefTestProps) => {
+}: ButtonForRefTestProps) => {
   const ref = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -70,3 +74,14 @@ export const ButtonInHorizontalFormLayoutForTest = ({
     />
   </FormLayout>
 );
+
+export const ButtonSpyForTest = withSpy((props: ButtonForTestProps) => {
+  const onClick = useSpy('onClick', () => true);
+
+  return (
+    <ButtonForTest
+      onClick={onClick}
+      {...props}
+    />
+  );
+});

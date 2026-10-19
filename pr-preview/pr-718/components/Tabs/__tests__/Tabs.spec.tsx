@@ -1,13 +1,9 @@
-import React from 'react';
 import {
   expect,
-  test,
-} from '@playwright/experimental-ct-react';
-import {
   getActualFocusedElementText,
   propTests,
+  test,
 } from '../../../../tests/playwright';
-import { TabsForTest } from './Tabs.story';
 
 test.describe('Tabs', () => {
   test.describe('visual', () => {
@@ -26,9 +22,7 @@ test.describe('Tabs', () => {
         if (onBeforeTest) {
           await onBeforeTest(page);
         }
-        const component = await mount(
-          <TabsForTest {...props} />,
-        );
+        const component = await mount('Tabs/TabsForTest', props);
         if (onBeforeSnapshot) {
           await onBeforeSnapshot(page, component);
         }
@@ -43,11 +37,9 @@ test.describe('Tabs', () => {
     test('id', async ({ mount }) => {
       const id = 'test-id';
 
-      const component = await mount(
-        <TabsForTest
-          id={id}
-        />,
-      );
+      const component = await mount('Tabs/TabsForTest', {
+        id,
+      });
 
       expect(component.locator(`nav[id=${id}]`)).toBeDefined();
       await expect(component.getByRole('list')).toHaveAttribute('id', `${id}__list`);
@@ -59,9 +51,7 @@ test.describe('Tabs', () => {
       mount,
       page,
     }) => {
-      await mount(
-        <TabsForTest />,
-      );
+      await mount('Tabs/TabsForTest');
 
       await page.keyboard.press('Tab');
       const label1 = await getActualFocusedElementText(page);

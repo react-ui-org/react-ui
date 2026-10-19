@@ -7,7 +7,7 @@ describe('classNames', () => {
       'class-2 class-3',
       ' ',
       ' ', // non=-breakable space
-      '	', // eslint-disable-line no-tabs
+      '	', // eslint-disable-line @stylistic/no-tabs
       '',
       0,
       1,

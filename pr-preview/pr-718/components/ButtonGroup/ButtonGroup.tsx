@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, {
   useMemo,
 } from 'react';
@@ -45,31 +44,6 @@ export const ButtonGroup: React.FunctionComponent<ButtonGroupProps> = ({
       </ButtonGroupContext.Provider>
     </fieldset>
   );
-};
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-ButtonGroup.propTypes = {
-  /**
-   * If `true`, the button group will span the full width of its parent.
-   */
-  block: PropTypes.bool,
-  /**
-   * Buttons to be grouped. If none are provided nothing is rendered.
-   */
-  children: PropTypes.node,
-  /**
-   * If `true`, all buttons inside the group will be disabled.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * Visual priority to highlight or suppress the buttons.
-   */
-  priority: PropTypes.oneOf(['filled', 'outline', 'flat']),
-  /**
-   * Size of the buttons.
-   */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 export const ButtonGroupWithGlobalProps = withGlobalProps<ButtonGroupProps, never>(ButtonGroup, 'ButtonGroup');

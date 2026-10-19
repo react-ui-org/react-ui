@@ -8,6 +8,10 @@ import { FormLayoutContext } from '../../FormLayout/FormLayoutContext';
 import { FormLayoutCustomFieldContext } from '../../FormLayout/FormLayoutCustomFieldContext';
 import { TextArea } from '..';
 import type { TextAreaProps } from '..';
+import {
+  useSpy,
+  withSpy,
+} from '../../../../tests/playwright/utils/spy';
 import type { StoryProps } from '../../../../tests/playwright';
 
 type TextAreaForTestProps = StoryProps<TextAreaProps, 'label'>;
@@ -16,7 +20,7 @@ type TextAreaForRefTestProps = TextAreaForTestProps & {
   testRefAttrValue: string;
 };
 export type TextAreaForFormLayoutTestsProps = TextAreaForTestProps & {
-  layout: 'vertical' | 'horizontal'
+  layout: 'vertical' | 'horizontal';
 };
 
 const defaultLabel = 'test-label';
@@ -24,7 +28,7 @@ const defaultLabel = 'test-label';
 export const TextAreaForTest = ({
   label = defaultLabel,
   ...props
-} : TextAreaForTestProps) => (
+}: TextAreaForTestProps) => (
   <TextArea
     label={label}
     {...props}
@@ -36,7 +40,7 @@ export const TextAreaForRefTest = ({
   testRefAttrName,
   testRefAttrValue,
   ...props
-} : TextAreaForRefTestProps) => {
+}: TextAreaForRefTestProps) => {
   const ref = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
@@ -93,3 +97,14 @@ export const TextAreaForFormLayoutCustomFieldTests = ({
     />
   </FormLayoutCustomFieldContext.Provider>
 );
+
+export const TextAreaSpyForTest = withSpy((props: TextAreaForTestProps) => {
+  const onChange = useSpy('onChange', () => true);
+
+  return (
+    <TextAreaForTest
+      onChange={onChange}
+      {...props}
+    />
+  );
+});

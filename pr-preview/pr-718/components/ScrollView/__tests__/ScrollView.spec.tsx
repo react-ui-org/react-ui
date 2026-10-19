@@ -1,17 +1,9 @@
-import React from 'react';
 import {
   expect,
-  test,
-} from '@playwright/experimental-ct-react';
-import {
   mixPropTests,
   propTests,
+  test,
 } from '../../../../tests/playwright';
-import {
-  ScrollViewForDetectEndAutoscrollTest,
-  ScrollViewForRefTest,
-  ScrollViewForTest,
-} from './ScrollView.story';
 import { directionPropTest } from './_propTests/directionPropTest';
 import { nextArrowColorPropTest } from './_propTests/nextArrowColorPropTest';
 import { nextArrowElementPropTest } from './_propTests/nextArrowElementPropTest';
@@ -59,11 +51,7 @@ test.describe('ScrollView', () => {
           await onBeforeTest(page);
         }
 
-        const component = await mount(
-          <ScrollViewForTest
-            {...props}
-          />,
-        );
+        const component = await mount('ScrollView/ScrollViewForTest', props);
 
         /**
          * Because onBeforeSnapshot is not propagated through mixPropTests
@@ -109,12 +97,10 @@ test.describe('ScrollView', () => {
     test('id', async ({ mount }) => {
       const id = 'testId';
 
-      const component = await mount(
-        <ScrollViewForTest
-          arrows
-          id={id}
-        />,
-      );
+      const component = await mount('ScrollView/ScrollViewForTest', {
+        arrows: true,
+        id,
+      });
 
       expect(component.locator(`div[id="${id}"]`)).toBeDefined();
       expect(component.locator(`div[id="${id}__content"]`)).toBeDefined();
@@ -125,17 +111,29 @@ test.describe('ScrollView', () => {
     test('ref', async ({ mount }) => {
       const id = 'testId';
 
-      const component = await mount(
-        <ScrollViewForRefTest
-          id={id}
-          testRefAttrName="test-ref"
-          testRefAttrValue="test-ref-value"
-        />,
-      );
+      const component = await mount('ScrollView/ScrollViewForRefTest', {
+        id,
+        testRefAttrName: 'test-ref',
+        testRefAttrValue: 'test-ref-value',
+      });
 
       const refValue = await component.evaluate((_, idArg) => (document.getElementById(idArg) as HTMLElement).firstElementChild?.getAttribute('test-ref'), id);
 
       expect(refValue).toBe('test-ref-value');
+    });
+
+    test('absolutely positioned content does not enlarge scrollable area of parent', async ({ mount }) => {
+      const component = await mount('ScrollView/ScrollViewForPositionedContentTest');
+
+      const {
+        clientHeight,
+        scrollHeight,
+      } = await component.evaluate((element) => ({
+        clientHeight: element.clientHeight,
+        scrollHeight: element.scrollHeight,
+      }));
+
+      expect(scrollHeight).toBe(clientHeight);
     });
   });
 
@@ -146,13 +144,11 @@ test.describe('ScrollView', () => {
     }) => {
       const id = 'testId';
 
-      const component = await mount(
-        <ScrollViewForTest
-          arrows
-          arrowsScrollStep={600}
-          id={id}
-        />,
-      );
+      const component = await mount('ScrollView/ScrollViewForTest', {
+        arrows: true,
+        arrowsScrollStep: 600,
+        id,
+      });
 
       const arrow = component.locator(`button[id="${id}__arrowNextButton"]`);
       await page.evaluate((idArg) => {
@@ -173,12 +169,10 @@ test.describe('ScrollView', () => {
     }) => {
       const id = 'testId';
 
-      const component = await mount(
-        <ScrollViewForTest
-          autoScroll="always"
-          id={id}
-        />,
-      );
+      const component = await mount('ScrollView/ScrollViewForTest', {
+        autoScroll: 'always',
+        id,
+      });
 
       await page.evaluate((idArg) => {
         (window as ExtendedWindow).scrollEnd = false;
@@ -213,11 +207,9 @@ test.describe('ScrollView', () => {
         initialScrollTop = value;
       });
 
-      const component = await mount(
-        <ScrollViewForDetectEndAutoscrollTest
-          id={id}
-        />,
-      );
+      const component = await mount('ScrollView/ScrollViewForDetectEndAutoscrollTest', {
+        id,
+      });
 
       /**
        * First need to wait for initial scroll down.
@@ -268,13 +260,11 @@ test.describe('ScrollView', () => {
       const id = 'testId';
       const debounceTimeout = 2000;
 
-      const component = await mount(
-        <ScrollViewForTest
-          arrows
-          debounce={debounceTimeout}
-          id={id}
-        />,
-      );
+      const component = await mount('ScrollView/ScrollViewForTest', {
+        arrows: true,
+        debounce: debounceTimeout,
+        id,
+      });
 
       /**
        * Setup scroll down listener.
@@ -307,13 +297,11 @@ test.describe('ScrollView', () => {
       const id = 'testId';
       const debounceTimeout = 5000;
 
-      const component = await mount(
-        <ScrollViewForTest
-          arrows
-          debounce={debounceTimeout}
-          id={id}
-        />,
-      );
+      const component = await mount('ScrollView/ScrollViewForTest', {
+        arrows: true,
+        debounce: debounceTimeout,
+        id,
+      });
 
       /**
        * Setup scroll down listener.

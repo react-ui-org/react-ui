@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { TranslationsContext } from '../../../../providers/translations';
 import { classNames } from '../../../../helpers/classNames';
@@ -74,17 +73,5 @@ const MultiSelectFieldTag = React.forwardRef<HTMLDivElement, MultiSelectFieldTag
     </div>
   );
 });
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-MultiSelectFieldTag.propTypes = {
-  children: PropTypes.node.isRequired,
-  disabled: PropTypes.bool.isRequired,
-  isFocusable: PropTypes.bool.isRequired,
-  onCloseDropdown: PropTypes.func.isRequired,
-  onRemoveTag: PropTypes.func.isRequired,
-  priority: PropTypes.oneOf(['filled', 'outline']).isRequired,
-  size: PropTypes.oneOf(['small', 'medium', 'large']).isRequired,
-};
 
 export default MultiSelectFieldTag;
