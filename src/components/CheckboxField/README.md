@@ -146,7 +146,7 @@ React.createElement(() => {
           </>
         )}
         onChange={() => setAgree(!agree)}
-        validationState="valid"
+        state="valid"
       />
       <CheckboxField
         checked={agree}
@@ -158,7 +158,7 @@ React.createElement(() => {
           </>
         )}
         onChange={() => setAgree(!agree)}
-        validationState="warning"
+        state="warning"
         validationText={(
           <>
             Please wait 10 minutes until we verify your data.
@@ -178,10 +178,32 @@ React.createElement(() => {
         )}
         onChange={() => setAgree(!agree)}
         required
-        validationState="invalid"
+        state="invalid"
         validationText="You must agree to be able to proceed."
       />
     </>
+  );
+});
+```
+
+### Changed State
+
+Changed state highlights fields whose value differs from the saved one, so users
+can review their edits before saving.
+
+A field shows one state at a time. When a changed value is also invalid, it's
+up to you to pick the state that matters more to the user.
+
+```docoff-react-preview
+React.createElement(() => {
+  const [newsletter, setNewsletter] = React.useState(true);
+  return (
+    <CheckboxField
+      checked={newsletter}
+      label="Subscribe to newsletter"
+      onChange={() => setNewsletter(!newsletter)}
+      state="changed"
+    />
   );
 });
 ```

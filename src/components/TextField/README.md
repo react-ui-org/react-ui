@@ -377,7 +377,7 @@ have.
 <TextField
   label="User name"
   onChange={() => {}}
-  validationState="valid"
+  state="valid"
   validationText="Looks good!"
   value="johnny1986"
   required
@@ -385,7 +385,7 @@ have.
 <TextField
   label="User name"
   onChange={() => {}}
-  validationState="warning"
+  state="warning"
   validationText={(
     <>
       Account with this name already exists, pick a different one.
@@ -398,14 +398,14 @@ have.
 />
 <TextField
   label="User name"
-  validationState="invalid"
+  state="invalid"
   validationText="Please enter a user name of your choice."
   required
 />
 <TextField
   label="User name"
   onChange={() => {}}
-  validationState="valid"
+  state="valid"
   validationText="Looks good!"
   variant="filled"
   value="johnny1986"
@@ -414,7 +414,7 @@ have.
 <TextField
   label="User name"
   onChange={() => {}}
-  validationState="warning"
+  state="warning"
   validationText={(
     <>
       Account with this name already exists, pick a different one.
@@ -428,10 +428,34 @@ have.
 />
 <TextField
   label="User name"
-  validationState="invalid"
+  state="invalid"
   validationText="Please enter a user name of your choice."
   variant="filled"
   required
+/>
+```
+
+### Changed State
+
+Changed state highlights fields whose value differs from the saved one, so users
+can review their edits before saving.
+
+A field shows one state at a time. When a changed value is also invalid, it's
+up to you to pick the state that matters more to the user.
+
+```docoff-react-preview
+<TextField
+  label="User name"
+  onChange={() => {}}
+  state="changed"
+  value="johnny1986"
+/>
+<TextField
+  label="User name"
+  onChange={() => {}}
+  state="changed"
+  variant="filled"
+  value="johnny1986"
 />
 ```
 
