@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { classNames } from '../../../../helpers/classNames';
 import { keyDetected } from '../../_helpers/keyDetected';
@@ -65,20 +64,5 @@ const MultiSelectFieldDropdownItem = React.forwardRef<HTMLDivElement, MultiSelec
     {children}
   </div>
 ));
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-MultiSelectFieldDropdownItem.propTypes = {
-  children: PropTypes.node.isRequired,
-  disabled: PropTypes.bool.isRequired,
-  id: PropTypes.string,
-  isSelected: PropTypes.bool.isRequired,
-  isWithinGroup: PropTypes.bool.isRequired,
-  onCloseDropdown: PropTypes.func.isRequired,
-  onFocus: PropTypes.func.isRequired,
-  onFocusNextDropdownItem: PropTypes.func.isRequired,
-  onFocusPreviousDropdownItem: PropTypes.func.isRequired,
-  onSelectDropdownItem: PropTypes.func.isRequired,
-};
 
 export default MultiSelectFieldDropdownItem;
