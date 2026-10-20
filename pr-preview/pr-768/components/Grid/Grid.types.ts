@@ -14,6 +14,8 @@ export type GridSpacingValue = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
 /**
  * Any valid HTML tag.
+ *
+ * @docoffOverrideType string
  */
 export type GridTag = keyof JSX.IntrinsicElements & keyof HTMLElementTagNameMap;
 

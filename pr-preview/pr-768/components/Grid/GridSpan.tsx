@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { transferProps } from '../../helpers/transferProps';
@@ -30,53 +29,6 @@ export const GridSpan: React.FunctionComponent<GridSpanProps> = ({
       {children}
     </Tag>
   );
-};
-
-/* Breakpoints are easier to work with when ordered according to their value, not name. */
-/* eslint-disable sort-keys */
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-GridSpan.propTypes = {
-  /**
-   * Items to be aligned in the grid. If none are provided nothing is rendered.
-   */
-  children: PropTypes.node,
-  /**
-   * Number of columns to span.
-   */
-  columns: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.shape({
-      xs: PropTypes.number,
-      sm: PropTypes.number,
-      md: PropTypes.number,
-      lg: PropTypes.number,
-      xl: PropTypes.number,
-      x2l: PropTypes.number,
-      x3l: PropTypes.number,
-    }),
-  ]),
-  /**
-   * Number of rows to span.
-   */
-  rows: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.shape({
-      xs: PropTypes.number,
-      sm: PropTypes.number,
-      md: PropTypes.number,
-      lg: PropTypes.number,
-      xl: PropTypes.number,
-      x2l: PropTypes.number,
-      x3l: PropTypes.number,
-    }),
-  ]),
-  /**
-   * HTML tag to render. Can be any valid HTML tag of your choice, usually a
-   * [block-level element](https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements).
-   */
-  tag: PropTypes.string,
 };
 
 export const GridSpanWithGlobalProps = withGlobalProps<GridSpanProps, HTMLElement>(GridSpan, 'GridSpan');
