@@ -6587,11 +6587,6 @@
   .CheckboxField-module__root__Q14XiaZu.CheckboxField-module__isRootInFormLayout__qJftdsXt.CheckboxField-module__isRootLayoutHorizontal__xNZjpdEE::before {
     grid-column-start: 2;
   }
-  @supports not (grid-template-columns: subgrid) {
-    .CheckboxField-module__root__Q14XiaZu.CheckboxField-module__isRootInFormLayout__qJftdsXt.CheckboxField-module__isRootLayoutHorizontal__xNZjpdEE::before {
-      display: none;
-    }
-  }
   .CheckboxField-module__root__Q14XiaZu, .CheckboxField-module__root__Q14XiaZu:hover {
     --rui-local-color: var(--rui-FormField--check--default__color);
     --rui-local-border-color: var(--rui-FormField--check--default__border-color);
@@ -6959,11 +6954,6 @@
       grid-template-columns: subgrid;
       grid-column: span 2;
     }
-    @supports not (grid-template-columns: subgrid) {
-      .CheckboxField-module__isRootInFormLayout__qJftdsXt.CheckboxField-module__isRootLayoutHorizontal__xNZjpdEE {
-        display: contents;
-      }
-    }
     .CheckboxField-module__isRootInFormLayout__qJftdsXt.CheckboxField-module__isRootLayoutHorizontal__xNZjpdEE .CheckboxField-module__field__ngU9luHX {
       display: contents;
     }
@@ -6981,11 +6971,6 @@
     .CheckboxField-module__isRootInFormLayout__qJftdsXt.CheckboxField-module__isRootLayoutHorizontal__xNZjpdEE .CheckboxField-module__helpText__Aez2BnQn, .CheckboxField-module__isRootInFormLayout__qJftdsXt.CheckboxField-module__isRootLayoutHorizontal__xNZjpdEE .CheckboxField-module__validationText__XpWqY2DS {
       width: auto;
       max-width: 100%;
-    }
-    @supports not (grid-template-columns: subgrid) {
-      .CheckboxField-module__isRootInFormLayout__qJftdsXt.CheckboxField-module__isRootLayoutHorizontal__xNZjpdEE .CheckboxField-module__helpText__Aez2BnQn, .CheckboxField-module__isRootInFormLayout__qJftdsXt.CheckboxField-module__isRootLayoutHorizontal__xNZjpdEE .CheckboxField-module__validationText__XpWqY2DS {
-        margin-top: calc(-1 * var(--rui-FormLayout__row-gap));
-      }
     }
     .CheckboxField-module__isRootInFormLayout__qJftdsXt.CheckboxField-module__isRootLayoutHorizontal__xNZjpdEE.CheckboxField-module__hasRootLabelBefore__bIDGTLio .CheckboxField-module__label__COOgBeex {
       margin-right: 0;
@@ -7457,11 +7442,6 @@
       grid-template-columns: subgrid;
       grid-column: span 2;
     }
-    @supports not (grid-template-columns: subgrid) {
-      .FileInputField-module__isRootInFormLayout__y6mVJsQY.FileInputField-module__isRootLayoutHorizontal__lHc4IRZD, .FileInputField-module__isRootInFormLayout__y6mVJsQY.FileInputField-module__isRootLayoutHorizontal__lHc4IRZD.FileInputField-module__hasRootSmallInput__rFEgcot4 {
-        display: contents;
-      }
-    }
     .FileInputField-module__isRootInFormLayout__y6mVJsQY.FileInputField-module__isRootLayoutHorizontal__lHc4IRZD.FileInputField-module__isRootFullWidth__cpb0405R {
       grid-template-columns: subgrid;
     }
@@ -7564,11 +7544,6 @@
       grid: inherit;
       grid-template-columns: subgrid;
       grid-column: span 2;
-    }
-    @supports not (grid-template-columns: subgrid) {
-      .FormLayoutCustomField-module__root__KVUXjS2E.FormLayoutCustomField-module__isRootLayoutHorizontal__u3SsP1T1, .FormLayoutCustomField-module__root__KVUXjS2E.FormLayoutCustomField-module__isRootLayoutHorizontal__u3SsP1T1.FormLayoutCustomField-module__hasRootSmallInput__WQVYF3em {
-        display: contents;
-      }
     }
     .FormLayoutCustomField-module__root__KVUXjS2E.FormLayoutCustomField-module__isRootLayoutHorizontal__u3SsP1T1.FormLayoutCustomField-module__isRootFullWidth__rkr98Y5M {
       grid-template-columns: subgrid;
@@ -10623,11 +10598,6 @@
       grid-template-columns: subgrid;
       grid-column: span 2;
     }
-    @supports not (grid-template-columns: subgrid) {
-      .SelectField-module__isRootInFormLayout__UEyplq3s.SelectField-module__isRootLayoutHorizontal__CPQ6cI7b, .SelectField-module__isRootInFormLayout__UEyplq3s.SelectField-module__isRootLayoutHorizontal__CPQ6cI7b.SelectField-module__hasRootSmallInput__OvbLKk03 {
-        display: contents;
-      }
-    }
     .SelectField-module__isRootInFormLayout__UEyplq3s.SelectField-module__isRootLayoutHorizontal__CPQ6cI7b.SelectField-module__isRootFullWidth__VRGdlMAN {
       grid-template-columns: subgrid;
     }
@@ -11476,11 +11446,6 @@
       grid-template-columns: subgrid;
       grid-column: span 2;
     }
-    @supports not (grid-template-columns: subgrid) {
-      .TextArea-module__isRootInFormLayout__Cb0CQWE4.TextArea-module__isRootLayoutHorizontal__cNOI7ysK, .TextArea-module__isRootInFormLayout__Cb0CQWE4.TextArea-module__isRootLayoutHorizontal__cNOI7ysK.TextArea-module__hasRootSmallInput__qYvj8IVv {
-        display: contents;
-      }
-    }
     .TextArea-module__isRootInFormLayout__Cb0CQWE4.TextArea-module__isRootLayoutHorizontal__cNOI7ysK.TextArea-module__isRootFullWidth__VJ__x0vM {
       grid-template-columns: subgrid;
     }
@@ -12109,11 +12074,6 @@
       grid-template-columns: subgrid;
       grid-column: span 2;
     }
-    @supports not (grid-template-columns: subgrid) {
-      .TextField-module__isRootInFormLayout__hDXJ7Cah.TextField-module__isRootLayoutHorizontal__OH1K4lj5, .TextField-module__isRootInFormLayout__hDXJ7Cah.TextField-module__isRootLayoutHorizontal__OH1K4lj5.TextField-module__hasRootSmallInput__ZPUZQjfQ {
-        display: contents;
-      }
-    }
     .TextField-module__isRootInFormLayout__hDXJ7Cah.TextField-module__isRootLayoutHorizontal__OH1K4lj5.TextField-module__isRootFullWidth__v9O9JDms {
       grid-template-columns: subgrid;
     }
@@ -12285,11 +12245,6 @@
   }
   .Toggle-module__root__rqUESGQ8.Toggle-module__isRootInFormLayout__op60MdLR.Toggle-module__isRootLayoutHorizontal__hwPmxjxq::before {
     grid-column-start: 2;
-  }
-  @supports not (grid-template-columns: subgrid) {
-    .Toggle-module__root__rqUESGQ8.Toggle-module__isRootInFormLayout__op60MdLR.Toggle-module__isRootLayoutHorizontal__hwPmxjxq::before {
-      display: none;
-    }
   }
   .Toggle-module__root__rqUESGQ8, .Toggle-module__root__rqUESGQ8:hover {
     --rui-local-color: var(--rui-FormField--check--default__color);
@@ -12663,11 +12618,6 @@
       grid-template-columns: subgrid;
       grid-column: span 2;
     }
-    @supports not (grid-template-columns: subgrid) {
-      .Toggle-module__isRootInFormLayout__op60MdLR.Toggle-module__isRootLayoutHorizontal__hwPmxjxq {
-        display: contents;
-      }
-    }
     .Toggle-module__isRootInFormLayout__op60MdLR.Toggle-module__isRootLayoutHorizontal__hwPmxjxq .Toggle-module__field__xMuy6yqN {
       display: contents;
     }
@@ -12685,11 +12635,6 @@
     .Toggle-module__isRootInFormLayout__op60MdLR.Toggle-module__isRootLayoutHorizontal__hwPmxjxq .Toggle-module__helpText__T0WZrsde, .Toggle-module__isRootInFormLayout__op60MdLR.Toggle-module__isRootLayoutHorizontal__hwPmxjxq .Toggle-module__validationText__R70A8wzX {
       width: auto;
       max-width: 100%;
-    }
-    @supports not (grid-template-columns: subgrid) {
-      .Toggle-module__isRootInFormLayout__op60MdLR.Toggle-module__isRootLayoutHorizontal__hwPmxjxq .Toggle-module__helpText__T0WZrsde, .Toggle-module__isRootInFormLayout__op60MdLR.Toggle-module__isRootLayoutHorizontal__hwPmxjxq .Toggle-module__validationText__R70A8wzX {
-        margin-top: calc(-1 * var(--rui-FormLayout__row-gap));
-      }
     }
     .Toggle-module__isRootInFormLayout__op60MdLR.Toggle-module__isRootLayoutHorizontal__hwPmxjxq.Toggle-module__hasRootLabelBefore__mk6RK6a4 .Toggle-module__label__rk_uCGgk {
       margin-right: 0;

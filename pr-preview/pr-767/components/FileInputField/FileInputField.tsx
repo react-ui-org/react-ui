@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, {
   useCallback,
   useEffect,
@@ -252,85 +251,6 @@ export const FileInputField = React.forwardRef<FileInputFieldRef, FileInputField
     </div>
   );
 });
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-FileInputField.propTypes = {
-  /**
-   * If `true`, the input will be disabled.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * If `true`, the field will span the full width of its parent.
-   */
-  fullWidth: PropTypes.bool,
-  /**
-   * Optional help text.
-   *
-   * Help text is never rendered when the component is placed into `InputGroup`.
-   * If a help text is needed, it must be defined on the `InputGroup` component instead.
-   */
-  helpText: PropTypes.node,
-  /**
-   * ID of the `<input>` HTML element.
-   *
-   * Also serves as base for ids of nested elements:
-   * * `<ID>__label`
-   * * `<ID>__labelText`
-   * * `<ID>__helpText`
-   * * `<ID>__validationText`
-   */
-  id: PropTypes.string.isRequired,
-  /**
-   * If `false`, the label will be visually hidden (but remains accessible by assistive
-   * technologies).
-   *
-   * Automatically set to `false` when the component is rendered within `FormLayoutCustomField`
-   * component.
-   */
-  isLabelVisible: PropTypes.bool,
-  /**
-   * File input field label.
-   */
-  label: PropTypes.node.isRequired,
-  /**
-   * Layout of the field.
-   *
-   * Ignored if the component is rendered within `FormLayout` component
-   * as the value is inherited in such case.
-   *
-   */
-  layout: PropTypes.oneOf(['horizontal', 'vertical']),
-  /**
-   * If `true`, the input will accept multiple files.
-   */
-  multiple: PropTypes.bool,
-  /**
-   * Callback fired when the value of the input changes.
-   */
-  onFilesChanged: PropTypes.func.isRequired,
-  /**
-   * If `true`, the input will be required.
-   */
-  required: PropTypes.bool,
-  /**
-   * Size of the field.
-   *
-   * Ignored if the component is rendered within `InputGroup` component as the value is inherited in such case.
-   */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
-  /**
-   * Alter the field to provide feedback based on validation result.
-   */
-  validationState: PropTypes.oneOf(['invalid', 'valid', 'warning']),
-  /**
-   * Validation message to be displayed.
-   *
-   * Validation text is never rendered when the component is placed into `InputGroup`.
-   * If a validation text is needed, it must be defined on the `InputGroup` component instead.
-   */
-  validationText: PropTypes.node,
-};
 
 export const FileInputFieldWithGlobalProps = withGlobalProps<FileInputFieldProps, FileInputFieldRef>(FileInputField, 'FileInputField');
 

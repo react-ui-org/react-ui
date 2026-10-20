@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, {
   useContext,
   useMemo,
@@ -129,67 +128,6 @@ export const InputGroup: React.FunctionComponent<InputGroupProps> = ({
       </div>
     </fieldset>
   );
-};
-
-// `propTypes` are kept for runtime validation until the TypeScript migration is complete.
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-InputGroup.propTypes = {
-  /**
-   * Supported elements to be grouped:
-   * * `Button`
-   * * `SelectField`
-   * * `TextField`
-   *
-   * If none are provided nothing is rendered.
-   */
-  children: PropTypes.node,
-  /**
-   * If `true`, the whole input group with all nested inputs and buttons will be disabled.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * An array of help texts to be displayed.
-   */
-  helpTexts: PropTypes.arrayOf(PropTypes.node),
-  /**
-   * ID of the root HTML element.
-   *
-   * Also serves as base for ids of nested elements:
-   * * `<ID>__label`
-   * * `<ID>__displayLabel`
-   * * `<ID>__group`
-   * * `<ID>__validationTexts`
-   */
-  id: PropTypes.string,
-  /**
-   * If `false`, the label will be visually hidden (but remains accessible by assistive
-   * technologies).
-   */
-  isLabelVisible: PropTypes.bool,
-  /**
-   * Input group label.
-   */
-  label: PropTypes.node.isRequired,
-  /**
-   * Layout of the group.
-   *
-   * Ignored if the component is rendered within `FormLayout` component
-   * as the value is inherited in such case.
-   */
-  layout: PropTypes.oneOf(['horizontal', 'vertical']),
-  /**
-   * If `true`, the `InputGroup`'s label appears as required. Underlying `<fieldset>`
-   * element does not take `required` attribute so there is no functional effect.
-   */
-  required: PropTypes.bool,
-  /**
-   * Size of the `children` elements.
-   */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
-  /**
-   * An array of validation messages to be displayed.
-   */
-  validationTexts: PropTypes.arrayOf(PropTypes.node),
 };
 
 export const InputGroupWithGlobalProps = withGlobalProps<InputGroupProps, never>(InputGroup, 'InputGroup');
