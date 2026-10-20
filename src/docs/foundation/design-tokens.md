@@ -6,7 +6,7 @@ tools, and technologies. They help establish a common vocabulary across
 organizations.
 
 👉 Design tokens are your starting point for
-[customization](/docs/customize/theming/overview) of React UI to make it fit your
+[customization](../customize/theming/overview.md) of React UI to make it fit your
 design system needs. React UI uses CSS custom properties as a primary storage
 format for design tokens.
 

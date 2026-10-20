@@ -7,7 +7,7 @@ including hiding the content.
 
 The classes are named using the format `d-[value]` for `xs` and
 `d-[breakpoint]-[value]` for `sm`, `md`, `lg`, `xl`, `x2l`, and `x3l`
-[breakpoints](/docs/foundation/breakpoints).
+[breakpoints](../foundation/breakpoints.md).
 
 Where `value` is one of:
 

@@ -13,7 +13,7 @@ for two main reasons:
 
 ## Theming Options
 
-[Design tokens](/docs/foundation/design-tokens) define common visual properties
+[Design tokens](../../foundation/design-tokens.md) define common visual properties
 like colors, fonts, borders, shadows, or spacing. [CSS custom properties] are
 the technical representation of the design tokens in React UI.
 
@@ -145,5 +145,5 @@ directly in your stylesheet, or through an intermediate, shareable layer like
 [dtf]: https://design-tokens.github.io/community-group/format/
 [theme constants]: https://github.com/react-ui-org/react-ui/blob/master/src/styles/theme-constants
 [w3c-custom-properties]: https://www.w3.org/TR/css-variables-1/#using-variables
-[BEM]: https://getbem.com
+[BEM]: https://en.bem.info/
 [SUIT CSS]: https://suitcss.github.io

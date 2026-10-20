@@ -28,26 +28,26 @@ React UI consists of four building blocks:
 
 1. **Foundation CSS:** basic themeable CSS layer. **Mandatory ground zero for
    components.**
-   [Learn how to get started quickly.](/docs/getting-started/installation)
+   [Learn how to get started quickly.](docs/getting-started/installation.md)
 
 2. **Components:** reusable and themeable React components and layouts:
-   [alerts](/components/Alert), [buttons](/components/Button/),
-   [cards](/components/Card), and more.
+   [alerts](components/Alert/README.md), [buttons](components/Button/README.md),
+   [cards](components/Card/README.md), and more.
 
 3. **Theme:** a collection of CSS custom properties that define the visual
    appearance of the UI.
-   [Learn how to create a theme.](/docs/customize/theming/overview)
+   [Learn how to create a theme.](docs/customize/theming/overview.md)
 
 4. **Helper CSS classes (optional):** tiny CSS classes with notation
    **inspired by Bootstrap.** They can handle details like
-   [typography](/docs/css-helpers/typography), [spacing](/docs/css-helpers/spacing),
-   [colors](/docs/css-helpers/colors), etc.
+   [typography](docs/css-helpers/typography.md), [spacing](docs/css-helpers/spacing.md),
+   [colors](docs/css-helpers/colors.md), etc.
 
 ## Sponsors
 
 <a href="https://www.racom.eu" target="_blank" rel="noopener noreferrer">
   <img
-    src="/docs/_assets/racom.svg"
+    src="docs/_assets/racom.svg"
     width="190"
     height="30"
     className="mt-5 mb-6"

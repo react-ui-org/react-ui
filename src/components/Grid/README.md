@@ -35,7 +35,7 @@ See [API](#api) for all available options.
   markup** like GridItem or Cell is necessary for your items. But it's there
   when you really need it—see [Advanced Layouts](#advanced-layouts).
 
-- For forms, use rather the [FormLayout](/components/FormLayout) component
+- For forms, use rather the [FormLayout](../FormLayout/README.md) component
   which is designed specifically for that purpose.
 
 - The Grid component is so powerful that it enables you to build even very
@@ -108,7 +108,7 @@ Use `columns` and `rows` to specify a more complicated grid layout.
 ## Gaps
 
 Both column and row gaps can be customized. The value must correspond to any of
-[available spacings](/docs/foundation/spacing).
+[available spacings](../../docs/foundation/spacing.md).
 
 ```docoff-react-preview
 <Grid columns="repeat(3, 1fr)" columnGap={2} rowGap={6}>
@@ -164,9 +164,9 @@ and wrap your items with `<li>`.
 
 If you need to build more complicated layouts, you have full control over the
 grid definition. Just specify your grid layout for
-[breakpoints](/docs/foundation/breakpoints) where a change of layout is needed.
-The Grid component is written with the mobile-first approach so values for small
-breakpoints are used until they're overridden by a bigger breakpoint.
+[breakpoints](../../docs/foundation/breakpoints.md) where a change of layout is
+needed. The Grid component is written with the mobile-first approach so values
+for small breakpoints are used until they're overridden by a bigger breakpoint.
 
 👉 With this syntax there are no defaults for individual breakpoints.
 
@@ -250,8 +250,8 @@ property. Check [MDN][grid-auto-flow] to fully understand available options.
 In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
-[`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to the
-root HTML element of your choice provided by `tag`, which is `<div>` by
+[`transferProps`](../../helpers/transferProps/README.md) helper are forwarded to
+the root HTML element of your choice provided by `tag`, which is `<div>` by
 default. This enables making the component interactive and helps to improve its
 accessibility.
 

@@ -7,7 +7,7 @@ Responsive spacing helper classes enable to simply add or modify `margin` and
 
 The classes are named using the format `[property][sides]-[size]` for `xs` and
 `[property][sides]-[breakpoint]-[size]` for `sm`, `md`, `lg`, `xl`, `x2l`, and
- `x3l` [breakpoints](/docs/foundation/breakpoints).
+ `x3l` [breakpoints](../foundation/breakpoints.md).
 
 Where `property` is one of:
 
@@ -33,7 +33,7 @@ Where `size` is one of:
 - `7`
 - `auto` for classes that set the `margin` to `auto`
 
-👉 Check the [spacing scale](/docs/foundation/spacing) to see the exact values of
+👉 Check the [spacing scale](../foundation/spacing.md) to see the exact values of
 individual sizes.
 
 ## Examples

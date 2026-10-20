@@ -324,8 +324,8 @@ Or to build a classic media layout with image on the left and text on the right:
 In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
-[`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to the
-root `<div>` HTML element. This enables making the component interactive and
+[`transferProps`](../../helpers/transferProps/README.md) helper are forwarded to
+the root `<div>` HTML element. This enables making the component interactive and
 helps to improve its accessibility.
 
 👉 For the full list of supported attributes refer to:
@@ -357,6 +357,6 @@ A wrapper for individual toolbar items.
 | `--rui-Toolbar__gap--dense`                          | Dense gap between toolbar items                              |
 
 [div-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
-[grid]: /components/Grid
-[text]: /components/Text
+[grid]: ../Grid/README.md
+[text]: ../Text/README.md
 [React common props]: https://react.dev/reference/react-dom/components/common#common-props
