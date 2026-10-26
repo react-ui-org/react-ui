@@ -326,7 +326,7 @@ export const MultiSelectField = React.forwardRef<HTMLInputElement | HTMLDivEleme
               registerTag={registerTag}
               size={resolvedSize}
               tags={value.map((selectedValue) => ({
-                label: optionsLabelMap[selectedValue] ?? String(selectedValue),
+                label: optionsLabelMap.get(selectedValue) ?? String(selectedValue),
                 value: selectedValue,
               }))}
             />
