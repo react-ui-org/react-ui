@@ -20,5 +20,5 @@ export const getRootStateClassName = (styles: CssModuleClasses, state?: State) =
     return styles.isRootStateWarning;
   }
 
-  return null;
+  return undefined;
 };

@@ -10,5 +10,5 @@ export const getScrollingClassName = (styles: CssModuleClasses, type?: ModalScro
     return styles.isRootScrollingCustom;
   }
 
-  return null;
+  return undefined;
 };
