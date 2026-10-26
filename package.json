@@ -94,7 +94,7 @@
     "@babel/preset-react": "^8.0.1",
     "@babel/preset-typescript": "^8.0.1",
     "@happy-dom/jest-environment": "^20.14.5",
-    "@playwright/test": "~1.63.0",
+    "@playwright/test": "~1.64.1",
     "@react-ui-org/eslint-config": "^1.1.0",
     "@react-ui-org/stylelint-config": "^1.0.0",
     "@testing-library/dom": "^10.4.2",
