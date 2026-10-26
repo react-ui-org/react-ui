@@ -14,6 +14,8 @@ export type InputGroupProps = Omit<FieldsetHTMLAttributes<HTMLFieldSetElement>, 
   /**
    * Supported elements to be grouped:
    * * `Button`
+   * * `FileInputField`
+   * * `MultiSelectField`
    * * `SelectField`
    * * `TextField`
    *

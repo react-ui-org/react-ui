@@ -1,0 +1,66 @@
+@use "../../../../styles/tools/accessibility";
+@use "../../../../styles/theme/form-fields" as form-theme;
+@use "../../settings";
+@use "../../theme";
+
+@layer components.multi-select-field {
+    .root {
+        display: flex;
+        align-items: center;
+        min-width: form-theme.$box-input-min-width;
+        max-width: 100%;
+        height: calc(var(--rui-local-height) - 2 * theme.$dropdown-item-gap);
+        padding: 0 calc(var(--rui-local-padding-x) - theme.$dropdown-item-gap);
+        margin: theme.$dropdown-item-gap;
+        font-size: var(--rui-local-font-size);
+        color: theme.$dropdown-item-color;
+        border-radius: theme.$dropdown-item-border-radius;
+        background-color: theme.$dropdown-item-background-color;
+
+        // Keeps the focus ring visible when the active option is scrolled into view
+        scroll-margin: settings.$dropdown-focus-ring-space;
+        cursor: pointer;
+
+        &:active {
+            color: theme.$dropdown-item-focus-color;
+            background-color: theme.$dropdown-item-focus-background-color;
+        }
+
+        &:hover {
+            color: theme.$dropdown-item-focus-color;
+            background-color: theme.$dropdown-item-focus-background-color;
+        }
+    }
+
+    // The option is active through `aria-activedescendant` of the combobox input while the DOM
+    // focus stays in the input, so it shows the focus ring of the library. The dropdown leaves room for the ring,
+    // see `MultiSelectFieldDropdown.module.scss`.
+    .isRootActive {
+        @include accessibility.focus-ring();
+
+        color: theme.$dropdown-item-focus-color;
+        background-color: theme.$dropdown-item-focus-background-color;
+    }
+
+    .isRootDisabled {
+        opacity: theme.$disabled-opacity;
+        cursor: theme.$disabled-cursor;
+    }
+
+    .isRootSelected {
+        font-weight: theme.$dropdown-item-selected-font-weight;
+        color: theme.$dropdown-item-selected-color;
+        background-color: theme.$dropdown-item-selected-background-color;
+
+        &:active,
+        &:hover,
+        &.isRootActive {
+            color: theme.$dropdown-item-selected-focus-color;
+            background-color: theme.$dropdown-item-selected-focus-background;
+        }
+    }
+
+    .isRootInGroup {
+        padding-inline-start: calc(var(--rui-local-padding-x) * 2 - theme.$dropdown-item-gap);
+    }
+}

@@ -1,0 +1,18 @@
+@use "../../settings";
+@use "../../theme";
+@use "../../tools";
+
+@layer components.multi-select-field {
+    .root {
+        @include tools.dropdown-panel();
+
+        position: absolute;
+        max-height: theme.$dropdown-max-height;
+        overflow: hidden auto;
+    }
+
+    // Leaves room for the focus ring of the active option, which would be clipped by the scrolling panel otherwise
+    .listbox {
+        padding: settings.$dropdown-focus-ring-space;
+    }
+}
