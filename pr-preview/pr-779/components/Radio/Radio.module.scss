@@ -1,0 +1,89 @@
+// 1. Legends are tricky to style, let's use a `div` instead.
+//    https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#styling_with_css
+
+@use "../../styles/tools/form-fields/box-field-elements";
+@use "../../styles/tools/form-fields/box-field-layout";
+@use "../../styles/tools/form-fields/foundation";
+@use "../../styles/tools/form-fields/inline-field-elements";
+@use "../../styles/tools/form-fields/inline-field-layout";
+@use "../../styles/tools/form-fields/variants";
+@use "../../styles/tools/accessibility";
+@use "../../styles/tools/reset";
+@use "../../styles/tools/spacing";
+
+@layer components.radio {
+    // Foundation
+    .root {
+        @include foundation.root();
+        @include foundation.fieldset();
+        @include variants.visual(check);
+    }
+
+    // 1.
+    .legend {
+        @include accessibility.hide-text();
+    }
+
+    // 1.
+    .label,
+    .optionLabel {
+        @include foundation.label();
+    }
+
+    .options {
+        @include reset.list();
+    }
+
+    .option {
+        @include inline-field-layout.field($type: radio);
+        @include inline-field-elements.min-tap-target($type: radio);
+    }
+
+    .input {
+        @include inline-field-elements.check-input($type: radio);
+    }
+
+    .helpText,
+    .validationText {
+        @include foundation.help-text();
+    }
+
+    .isRootRequired .label {
+        @include foundation.label-required();
+    }
+
+    .isRootRequired .optionLabel {
+        @include foundation.label-required($show-require-sign: false);
+    }
+
+    // States
+    .isRootStateInvalid {
+        @include variants.validation(invalid);
+    }
+
+    .isRootStateValid {
+        @include variants.validation(valid);
+    }
+
+    .isRootStateWarning {
+        @include variants.validation(warning);
+    }
+
+    // Layouts
+    .isRootLayoutVertical,
+    .isRootLayoutHorizontal {
+        @include box-field-layout.vertical($has-list: true);
+    }
+
+    .isRootLayoutHorizontal {
+        @include box-field-layout.horizontal($has-min-tap-target: true);
+    }
+
+    .isRootFullWidth {
+        @include box-field-layout.full-width();
+    }
+
+    .isRootInFormLayout {
+        @include box-field-layout.in-form-layout($is-fieldset: true);
+    }
+}
