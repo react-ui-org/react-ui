@@ -630,7 +630,7 @@ React.createElement(() => {
         onChange={(value) => setFruits(value)}
         options={options}
         required
-        validationState="valid"
+        state="valid"
         validationText="Great, they're in stock!"
         value={fruits}
       />
@@ -639,7 +639,7 @@ React.createElement(() => {
         onChange={(value) => setFruits(value)}
         options={options}
         required
-        validationState="warning"
+        state="warning"
         validationText="Oh, really?"
         value={fruits}
       />
@@ -648,7 +648,7 @@ React.createElement(() => {
         onChange={(value) => setFruits(value)}
         options={options}
         required
-        validationState="invalid"
+        state="invalid"
         validationText="You must select at least one kind of fruit."
         value={fruits}
       />
@@ -657,7 +657,7 @@ React.createElement(() => {
         onChange={(value) => setFruits(value)}
         options={options}
         required
-        validationState="valid"
+        state="valid"
         validationText="Great, they're in stock!"
         value={fruits}
         variant="filled"
@@ -667,7 +667,7 @@ React.createElement(() => {
         onChange={(value) => setFruits(value)}
         options={options}
         required
-        validationState="warning"
+        state="warning"
         validationText="Oh, really?"
         value={fruits}
         variant="filled"
@@ -678,8 +678,55 @@ React.createElement(() => {
         options={options}
         required
         value={fruits}
-        validationState="invalid"
+        state="invalid"
         validationText="You must select at least one kind of fruit."
+        variant="filled"
+      />
+    </>
+  );
+})
+```
+
+### Changed State
+
+Changed state highlights fields whose value differs from the saved one, so users
+can review their edits before saving.
+
+A field shows one state at a time. When a changed value is also invalid, it's
+up to you to pick the state that matters more to the user.
+
+```docoff-react-preview
+React.createElement(() => {
+  const [fruits, setFruits] = React.useState(['apple']);
+  const options = [
+    {
+      label: 'Apple',
+      value: 'apple',
+    },
+    {
+      label: 'Banana',
+      value: 'banana',
+    },
+    {
+      label: 'Grapefruit',
+      value: 'grapefruit',
+    },
+  ];
+  return (
+    <>
+      <MultiSelectField
+        label="Your favourite fruits"
+        onChange={(value) => setFruits(value)}
+        options={options}
+        state="changed"
+        value={fruits}
+      />
+      <MultiSelectField
+        label="Your favourite fruits"
+        onChange={(value) => setFruits(value)}
+        options={options}
+        state="changed"
+        value={fruits}
         variant="filled"
       />
     </>

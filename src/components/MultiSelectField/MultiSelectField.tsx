@@ -17,7 +17,7 @@ import { classNames } from '../../helpers/classNames';
 import { transferProps } from '../../helpers/transferProps';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
-import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
+import { getRootStateClassName } from '../_helpers/getRootStateClassName';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { FormLayoutContext } from '../FormLayout';
 import { InputGroupContext } from '../InputGroup';
@@ -56,7 +56,7 @@ export const MultiSelectField = React.forwardRef<HTMLInputElement | HTMLDivEleme
   required = false,
   searchAlgorithm = caseInsensitiveAccentSensitivePrefixSearch,
   size = 'medium',
-  validationState,
+  state,
   validationText,
   variant = 'outline',
   value,
@@ -77,7 +77,7 @@ export const MultiSelectField = React.forwardRef<HTMLInputElement | HTMLDivEleme
 
   const optionsLabelMap = useMemo(() => getOptionsLabelMap(options), [options]);
 
-  const state = useMultiSelectFieldState({
+  const fieldState = useMultiSelectFieldState({
     isDisabled: resolvedDisabled,
     onChange,
     options,
@@ -95,11 +95,11 @@ export const MultiSelectField = React.forwardRef<HTMLInputElement | HTMLDivEleme
     openDropdown,
     search,
     toggleValue,
-  } = state;
+  } = fieldState;
   const keyboard = useMultiSelectFieldKeyboard({
     comboboxRef,
     isDisabled: resolvedDisabled,
-    state,
+    state: fieldState,
     value,
   });
   const {
@@ -249,7 +249,7 @@ export const MultiSelectField = React.forwardRef<HTMLInputElement | HTMLDivEleme
     // The dropdown is only expanded while it has options to show, see the status region for the "no options" text.
     'aria-expanded': isDropdownOpen && flatOptions.length > 0,
     'aria-haspopup': 'listbox' as const,
-    'aria-invalid': validationState === 'invalid' ? true : restProps['aria-invalid'],
+    'aria-invalid': state === 'invalid' ? true : restProps['aria-invalid'],
     'aria-labelledby': ids.labelText,
     'aria-required': required,
     className: styles.combobox,
@@ -286,7 +286,7 @@ export const MultiSelectField = React.forwardRef<HTMLInputElement | HTMLDivEleme
           styles,
           resolvedSize,
         ),
-        getRootValidationStateClassName(styles, validationState),
+        getRootStateClassName(styles, state),
         variant === 'filled' ? styles.isRootVariantFilled : styles.isRootVariantOutline,
       )}
       id={ids.label}

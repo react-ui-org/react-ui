@@ -7,7 +7,7 @@ import type {
 import type {
   Layout,
   Size,
-  ValidationState,
+  State,
 } from '../../types';
 
 export type MultiSelectFieldOption = {
@@ -137,9 +137,10 @@ export type MultiSelectFieldProps = Omit<InputHTMLAttributes<HTMLInputElement>, 
    */
   size?: Size;
   /**
-   * Alter the field to provide feedback based on validation result.
+   * Alter the field to reflect the state of its data, e.g. a validation result or a change
+   * against the saved value.
    */
-  validationState?: ValidationState;
+  state?: State;
   /**
    * Validation message to be displayed.
    *

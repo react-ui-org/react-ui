@@ -100,15 +100,15 @@ test.describe('MultiSelectField', () => {
         ]),
         ...mixPropTests([
           propTests.requiredPropTest,
-          propTests.validationStatePropTest,
+          propTests.statePropTest,
         ]),
         ...mixPropTests([
           propTests.renderAsRequiredPropTest,
-          propTests.validationStatePropTest,
+          propTests.statePropTest,
         ]),
         ...mixPropTests([
           propTests.disabledPropTest,
-          propTests.validationStatePropTest,
+          propTests.statePropTest,
           propTests.variantPropTest,
         ]),
       ].forEach(({
@@ -209,7 +209,7 @@ test.describe('MultiSelectField', () => {
         const component = await mount('MultiSelectField/MultiSelectFieldForTest', {
           helpText: 'testHelpText',
           id: testId,
-          validationState: 'invalid',
+          state: 'invalid',
           validationText: 'testValidationText',
         });
 
