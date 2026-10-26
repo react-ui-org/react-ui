@@ -8,6 +8,9 @@ import type {
  *
  * Grouped options are flattened, so the map contains the values and labels of all
  * individual options regardless of grouping.
+ *
+ * @param options Individual or grouped options.
+ * @returns Labels of the options keyed by their values.
  */
 export const getOptionsLabelMap = (options: (MultiSelectFieldOption | MultiSelectFieldOptionGroup)[]) => {
   const optionsMap: Record<string, string> = {};

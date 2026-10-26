@@ -7,6 +7,7 @@
 @use "../../styles/tools/accessibility";
 @use "../../styles/theme/form-fields" as theme;
 @use "theme" as multi-select-field-theme;
+@use "tools";
 
 @layer components.multi-select-field {
     // Foundation
@@ -43,6 +44,33 @@
         padding-right: calc(#{settings.$box-field-caret-size} - 2 * #{theme.$box-border-width});
     }
 
+    .combobox {
+        appearance: none;
+        display: block;
+        flex: 1 0 auto;
+        width: 2ch;
+        min-width: 2ch;
+        min-height: settings.$box-input-line-height; // The non-editable combobox element has no content.
+        padding: 0;
+        margin: 0;
+        font-weight: settings.$box-input-font-weight;
+        font-size: var(--rui-local-font-size);
+        line-height: settings.$box-input-line-height;
+        font-family: settings.$box-input-font-family;
+        color: inherit;
+        border: 0;
+        background-color: transparent;
+
+        &:focus {
+            // The focus is indicated by the whole field
+            outline: none;
+        }
+
+        &:disabled {
+            cursor: inherit;
+        }
+    }
+
     .caret {
         @include box-field-elements.caret();
     }
@@ -66,6 +94,16 @@
     .isRootDropdownOpen .input {
         border-bottom-right-radius: 0;
         border-bottom-left-radius: 0;
+    }
+
+    // Holds the "no options" text, styled as the dropdown panel while shown. The status is absolutely positioned
+    // so that the field keeps its height while it is empty.
+    .status {
+        position: absolute;
+    }
+
+    .isStatusShown {
+        @include tools.dropdown-panel();
     }
 
     .helpText,

@@ -98,6 +98,26 @@ export const openMultiSelectFieldOptionsTest: PropTests = [
     props: {},
   },
   {
+    name: 'options:shape[unselectedOptionFocused]',
+    onBeforeSnapshot: async (page, component) => {
+      await component.getByRole('combobox').click();
+      // Focus the second option which is not selected
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.waitForTimeout(500);
+    },
+    props: {},
+  },
+  {
+    name: 'options:shape[lastOptionFocused]',
+    onBeforeSnapshot: async (page, component) => {
+      // Arrow Up opens the dropdown and activates the last option, the dropdown scrolls to it
+      await component.getByRole('combobox').press('ArrowUp');
+      await page.waitForTimeout(500);
+    },
+    props: { options: partiallyDisabledGroupOptions },
+  },
+  {
     name: 'options:shape[defaultPartiallyDisabled]',
     onBeforeSnapshot: async (page, component) => {
       await component.getByRole('combobox').click();

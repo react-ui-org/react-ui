@@ -94,26 +94,85 @@ See [API](#api) for all available options.
 - In case of a large amount of options, consider **grouping related items
   together** by nesting them.
 
+- Selecting an option, by click or by keyboard, **keeps the dropdown open** and
+  clears the search text, so users can select several options in a row.
+
 ### Keyboard Interaction
 
-- **Enter**, **Space**, **Arrow Up**, or **Arrow Down** opens the dropdown.
-  Typing a character opens the dropdown too (when [search](#search) is
-  enabled).
-- **Typing** into the search input filters the displayed options (when
-  [search](#search) is enabled).
-- **Arrow Up** and **Arrow Down** move focus between the options.
-- **Enter** or **Space** toggles selection of the focused option.
-- **Delete** or **Backspace** removes a focused tag. **Backspace** in an empty
-  search input moves focus to the last tag.
-- **Escape** closes the dropdown and returns focus to the input.
-- **Tab** moves focus through the tags and further out of the field while the
-  dropdown is open.
+The field is a **single tab stop**. **Tab** and **Shift + Tab** enter and leave
+the whole field, whether the dropdown is open or not. Options and tags are
+reached by keys pressed in the combobox, so keyboard users never need to Tab
+through them.
+
+#### Opening and Closing
+
+- **Arrow Down** or **Arrow Up** opens the closed dropdown and activates its
+  first or last option. **Alt + Arrow Down** opens it without activating an
+  option. **Enter** and **Space** open it too, unless Space types a space (see
+  [Selecting](#selecting)).
+- **Typing** into the search input opens the dropdown and filters the options
+  when [search](#search) is enabled.
+- **Escape** or **Alt + Arrow Up** closes the dropdown. The search text is
+  cleared, the selection stays unchanged.
+
+#### Moving Between Options
+
+- **Arrow Down** and **Arrow Up** move the active option to the next or the
+  previous one. They stop at the first and the last option instead of wrapping
+  around. Disabled options are skipped.
+- **Home** and **End** activate the first and the last option. In the search
+  input they move the cursor within the search text until an option is active.
+  Without search they always activate the first or the last option, and open
+  the dropdown when it is closed.
+- **Arrow Left** and **Arrow Right** deactivate the active option in the search
+  input and leave the cursor within the search text. Without search they do
+  nothing while an option is active.
+- **Page Up** and **Page Down** are not supported.
+- Without search, typing a character activates the next option whose label
+  starts with it, like a native select does. Typing more characters keeps the
+  active option while its label still starts with them, otherwise the next
+  matching option is activated. Typing the same character repeatedly cycles
+  through the options starting with it. Space continues a multi-word match,
+  e.g. "Czech R". The match is reset after a short pause.
+
+#### Selecting
+
+- **Enter** and **Space** toggle the active option and keep the dropdown open,
+  so more options can be selected. Without an active option, Enter does nothing
+  and never submits a surrounding form. Without an active option, Space does
+  nothing, so the page does not scroll.
+- **Space** toggles the active option when search is disabled or the search text
+  is empty. With search enabled and text typed, Space types a space instead.
+- Selecting an option clears the search text, the selected option stays active.
+
+#### Tags
+
+- **Backspace** in an empty search input moves focus to the last tag. Without
+  search, Backspace does this at any time. Moving to the tags closes the
+  dropdown.
+- **Arrow Left** moves focus to the last tag when no option is active and the
+  cursor is at the start of the search text. Without search, the cursor position
+  does not matter.
+- In a tag, **Arrow Left** and **Arrow Right** move to the previous and the next
+  tag. They stop at the first and the last tag instead of wrapping around.
+  **Arrow Right** on the last tag returns focus to the combobox, with the cursor
+  at the start of the search text. **Home** and **End** move to the first and
+  the last tag.
+- In a tag, **Delete** or **Backspace** removes the tag. Focus moves to the
+  previous tag, or to the next one when the first tag was removed, or to the
+  combobox when no tags remain.
+- In a tag, **Escape** returns focus to the combobox. **Arrow Down** and
+  **Arrow Up** open the dropdown and activate its first or last option.
+- In a tag, printable characters become the search text. Without search, they
+  start type-ahead instead. **Space** opens the dropdown instead of typing a
+  space. Keys with a modifier, e.g. **Alt + Arrow Left**, are left to the
+  browser. **Tab** and **Shift + Tab** leave the field.
 
 ## Design Variants
 
 To satisfy the design requirements of your project, all input fields in React UI
 come in two design variants to choose from: outline and filled. Both can be
-further [customized](#theming) with CSS custom properties.
+further customized with CSS custom properties.
 
 ```docoff-react-preview
 React.createElement(() => {
@@ -268,7 +327,7 @@ React.createElement(() => {
 ## Grouping Related Options
 
 For a large amount of options you can group related items together by nesting
-them (implements the `optgroup` HTML element).
+them. The groups are rendered as labelled option groups of the dropdown.
 
 ```docoff-react-preview
 React.createElement(() => {
@@ -663,9 +722,7 @@ React.createElement(() => {
 
 #### Styling the Required State
 
-All form fields in React UI can be
-[styled](/docs/customize/theming/forms/#required-state)
-to indicate the required state.
+All form fields in React UI can be styled to indicate the required state.
 
 However, you may find yourself in a situation where a form field is valid in
 both selected and unselected states, for example to turn on or off a feature.
@@ -1103,18 +1160,27 @@ In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
 [`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to the
-`<div>` HTML element representing the input of the field. This enables making
-the component interactive and helps to improve its accessibility.
+element with the `combobox` role: the `<input>` HTML element, or the `<div>` HTML
+element when [search](#search) is disabled. This enables making
+the component interactive and helps to improve its accessibility. When search
+is enabled, attributes such as `name` land on the native `<input>` element, so
+a `name` would submit the search text with a surrounding form. Event handlers
+`onClick` and `onKeyDown` are called before the component handles the event,
+and the component does not handle it when the handler calls
+`preventDefault()`. Attributes the component manages itself, such as `role`,
+`aria-expanded` or `aria-labelledby`, cannot be overridden.
 
 👉 For the full list of supported attributes refer to:
 
+- [`<input>` HTML element attributes][input-attributes]{:target="_blank"}
 - [`<div>` HTML element attributes][div-attributes]{:target="_blank"}
 - [React common props]{:target="_blank"}
 
 ## Forwarding ref
 
-If you provide [ref], it is forwarded to the `<div>` HTML element representing
-the input of the field.
+If you provide [ref], it is forwarded to the element with the `combobox` role:
+the `<input>` HTML element, or the `<div>` HTML element when [search](#search)
+is disabled.
 
 ## API
 
@@ -1157,5 +1223,6 @@ MultiSelectField.
 | `--rui-MultiSelectField--<SIZE>__tag__padding-inline`                   | Tag horizontal padding                               |
 
 [div-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
+[input-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes
 [React common props]: https://react.dev/reference/react-dom/components/common#common-props
 [ref]: https://reactjs.org/docs/refs-and-the-dom.html

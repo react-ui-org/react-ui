@@ -1,0 +1,11 @@
+@layer components.multi-select-field {
+    // The tags are laid out as direct children of the input so they wrap together with the search input.
+    .root {
+        display: contents;
+    }
+
+    // The row is transparent as well, so the tags stay direct flex items of the input.
+    .row {
+        display: contents;
+    }
+}

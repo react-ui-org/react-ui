@@ -1,68 +1,63 @@
-import React from 'react';
+import React, {
+  useEffect,
+  useRef,
+} from 'react';
 import { classNames } from '../../../../helpers/classNames';
-import { keyDetected } from '../../_helpers/keyDetected';
-import keyBindings from '../../keyBindings';
 import styles from './MultiSelectFieldDropdownItem.module.scss';
 import type { MultiSelectFieldDropdownItemProps } from './MultiSelectFieldDropdownItem.types';
 
-const MultiSelectFieldDropdownItem = React.forwardRef<HTMLDivElement, MultiSelectFieldDropdownItemProps>((
-  {
-    children,
-    disabled,
-    id,
-    isSelected,
-    isWithinGroup,
-    onCloseDropdown,
-    onFocus,
-    onFocusNextDropdownItem,
-    onFocusPreviousDropdownItem,
-    onSelectDropdownItem,
-  },
-  ref,
-) => (
-  <div
-    aria-disabled={disabled}
-    aria-selected={isSelected}
-    className={classNames(
-      styles.root,
-      disabled && styles.isRootDisabled,
-      isSelected && styles.isRootSelected,
-      isWithinGroup && styles.isRootInGroup,
-    )}
-    id={id}
-    onClick={() => {
-      if (disabled) {
-        return;
-      }
+/**
+ * Single option of the dropdown. It is not focusable, the active option is announced through
+ * `aria-activedescendant` of the combobox.
+ */
+const MultiSelectFieldDropdownItem: React.FunctionComponent<MultiSelectFieldDropdownItemProps> = ({
+  children,
+  disabled,
+  id,
+  isActive,
+  isSelected,
+  isWithinGroup,
+  onSelectDropdownItem,
+}: MultiSelectFieldDropdownItemProps) => {
+  const itemRef = useRef<HTMLDivElement>(null);
 
-      onSelectDropdownItem();
-    }}
-    onFocus={onFocus}
-    onKeyDown={(event) => {
-      if (disabled) {
-        return;
-      }
+  useEffect(() => {
+    // The active option does not receive DOM focus, so it must be scrolled into view manually.
+    if (isActive) {
+      itemRef.current?.scrollIntoView({ block: 'nearest' });
+    }
+  }, [isActive]);
 
-      if (keyDetected(event, keyBindings.closeDropdown)) {
-        event.preventDefault();
-        onCloseDropdown();
-      } else if (keyDetected(event, keyBindings.focusNextDropdownItem)) {
-        event.preventDefault();
-        onFocusNextDropdownItem();
-      } else if (keyDetected(event, keyBindings.focusPreviousDropdownItem)) {
-        event.preventDefault();
-        onFocusPreviousDropdownItem();
-      } else if (keyDetected(event, keyBindings.selectDropdownItem)) {
-        event.preventDefault();
-        onSelectDropdownItem();
-      }
-    }}
-    ref={ref}
-    role="option"
-    tabIndex={-1}
-  >
-    {children}
-  </div>
-));
+  /** Reports the click to the parent, clicks on a disabled option are ignored. */
+  const handleClick = () => {
+    if (disabled) {
+      return;
+    }
+
+    onSelectDropdownItem();
+  };
+
+  return (
+    // Options are not focusable, the combobox references the active one by `aria-activedescendant`.
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/interactive-supports-focus
+    <div
+      aria-disabled={disabled}
+      aria-selected={isSelected}
+      className={classNames(
+        styles.root,
+        disabled && styles.isRootDisabled,
+        isActive && styles.isRootActive,
+        isSelected && styles.isRootSelected,
+        isWithinGroup && styles.isRootInGroup,
+      )}
+      id={id}
+      onClick={handleClick}
+      ref={itemRef}
+      role="option"
+    >
+      {children}
+    </div>
+  );
+};
 
 export default MultiSelectFieldDropdownItem;

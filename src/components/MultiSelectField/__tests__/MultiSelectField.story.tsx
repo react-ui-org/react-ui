@@ -4,8 +4,10 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import type { KeyboardEvent } from 'react';
 import { TranslationsProvider } from '../../../providers/translations';
 import { FormLayoutContext } from '../../FormLayout/FormLayoutContext';
+import { InputGroupContext } from '../../InputGroup/InputGroupContext';
 import { MultiSelectField } from '..';
 import type { MultiSelectFieldProps } from '..';
 import {
@@ -24,6 +26,9 @@ type MultiSelectFieldForRefTestProps = MultiSelectFieldForTestProps & {
 export type MultiSelectFieldForFormLayoutTestsProps = MultiSelectFieldForTestProps & {
   layout: 'vertical' | 'horizontal';
 };
+
+const selectCalled = () => true;
+const selectKey = (event: KeyboardEvent<HTMLInputElement>) => event.key;
 
 const defaultLabel = 'test-label';
 const defaultOptions = [
@@ -71,7 +76,7 @@ export const MultiSelectFieldForRefTest = ({
   testRefAttrValue,
   ...props
 }: MultiSelectFieldForRefTestProps) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLInputElement | HTMLDivElement>(null);
   const [value, setValue] = useState<MultiSelectFieldProps['value']>(['value1']);
 
   useEffect(() => {
@@ -85,6 +90,28 @@ export const MultiSelectFieldForRefTest = ({
       {...props}
       onChange={(newValue) => setValue(newValue)}
       ref={ref}
+      value={value}
+    />
+  );
+};
+
+export const MultiSelectFieldForShrinkingOptionsTest = ({
+  label = defaultLabel,
+  ...props
+}: MultiSelectFieldForTestProps) => {
+  const [value, setValue] = useState<MultiSelectFieldProps['value']>([]);
+  // Selected options disappear from the options, so the click on an option removes it from the DOM
+  const options = useMemo(
+    () => defaultOptions.filter((option) => !value.includes(option.value)),
+    [value],
+  );
+
+  return (
+    <MultiSelectField
+      label={label}
+      {...props}
+      onChange={(newValue) => setValue(newValue)}
+      options={options}
       value={value}
     />
   );
@@ -111,7 +138,7 @@ export const MultiSelectFieldForTranslationsTest = ({
       MultiSelectField: {
         noOptions: 'Nothing found',
         removeTag: 'Remove this tag',
-        search: 'Search options',
+        tagDescription: 'Delete removes this tag',
       },
     }}
   >
@@ -123,14 +150,62 @@ export const MultiSelectFieldForTranslationsTest = ({
 
 export const MultiSelectFieldSpyForTest = withSpy((props: MultiSelectFieldForTestProps) => {
   const onChange = useSpy('onChange');
+  // The handlers passed by the consumer must be called, the events themselves are not serializable
+  const onClick = useSpy('onClick', selectCalled);
+  const onKeyDown = useSpy('onKeyDown', selectKey);
 
   return (
     <MultiSelectFieldForTest
       onChange={onChange}
+      onClick={onClick}
+      onKeyDown={onKeyDown}
       {...props}
     />
   );
 });
+
+export const MultiSelectFieldForFormTest = withSpy((props: MultiSelectFieldForTestProps) => {
+  // The spy records the submission of the surrounding form, it must not happen on the keys handled by the field
+  const onChange = useSpy('onChange');
+  const onSubmit = useSpy('onSubmit', () => true);
+
+  return (
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        onSubmit();
+      }}
+    >
+      <MultiSelectFieldForTest
+        onChange={onChange}
+        {...props}
+      />
+    </form>
+  );
+});
+
+export const MultiSelectFieldForInputGroupTests = ({
+  disabled = false,
+  size = 'medium',
+  ...props
+}: MultiSelectFieldForTestProps) => {
+  // The group passes its `disabled` and `size` down to the field through the context
+  const values = useMemo(() => ({
+    disabled,
+    layout: 'vertical' as const,
+    size,
+  }), [disabled, size]);
+
+  return (
+    <InputGroupContext.Provider
+      value={values}
+    >
+      <MultiSelectFieldForTest
+        {...props}
+      />
+    </InputGroupContext.Provider>
+  );
+};
 
 export const MultiSelectFieldForFormLayoutTests = ({
   layout,
