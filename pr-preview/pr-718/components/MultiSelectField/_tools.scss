@@ -1,0 +1,13 @@
+@use "theme";
+
+// Panel of the dropdown, shared by the dropdown itself and by the status shown in place of it
+@mixin dropdown-panel() {
+    z-index: theme.$dropdown-z-index;
+    border-width: var(--rui-dimension-border-width-1);
+    border-style: solid;
+    border-color: theme.$dropdown-border-color;
+    border-radius: var(--rui-dimension-radius-1);
+    background-color: theme.$dropdown-background-color;
+    box-shadow: theme.$dropdown-box-shadow;
+    transform: translateY(-1px);
+}

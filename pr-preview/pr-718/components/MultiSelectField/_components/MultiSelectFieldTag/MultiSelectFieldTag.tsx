@@ -1,19 +1,27 @@
 import React, { useContext } from 'react';
+import type {
+  KeyboardEvent,
+  MouseEvent,
+} from 'react';
 import { TranslationsContext } from '../../../../providers/translations';
 import { classNames } from '../../../../helpers/classNames';
 import { getRootPriorityClassName } from '../../../_helpers/getRootPriorityClassName';
 import { getRootSizeClassName } from '../../../_helpers/getRootSizeClassName';
-import { keyDetected } from '../../_helpers/keyDetected';
-import keyBindings from '../../keyBindings';
+import { mapTagKeyToAction } from '../../_helpers/mapTagKeyToAction';
 import styles from './MultiSelectFieldTag.module.scss';
 import type { MultiSelectFieldTagProps } from './MultiSelectFieldTag.types';
 
+/**
+ * Selected value of the field. It receives focus from the keyboard navigation of the field, and the keys
+ * are reported to the parent, which decides what they do. The remove button is for pointer users only.
+ */
 const MultiSelectFieldTag = React.forwardRef<HTMLDivElement, MultiSelectFieldTagProps>((
   {
-    children,
+    descriptionId,
     disabled,
-    isFocusable,
-    onCloseDropdown,
+    label,
+    onFocus,
+    onKeyAction,
     onRemoveTag,
     priority,
     size,
@@ -22,53 +30,73 @@ const MultiSelectFieldTag = React.forwardRef<HTMLDivElement, MultiSelectFieldTag
 ) => {
   const translations = useContext(TranslationsContext);
 
+  /**
+   * Stops the click so that it does not toggle the dropdown of the field.
+   *
+   * @param event Click event of the tag.
+   */
+  const handleClick = (event: MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation();
+  };
+
+  /**
+   * Maps the pressed key to an action and reports it to the parent. Keys pressed on the remove button are left
+   * to the button, e.g. Enter and Space click it. Keys of an IME composition are left to the browser.
+   *
+   * @param event Keyboard event of the tag.
+   */
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (
+      disabled
+      || event.target !== event.currentTarget
+      || event.nativeEvent.isComposing
+      || event.key === 'Process'
+      || event.key === 'Dead'
+    ) {
+      return;
+    }
+
+    onKeyAction(mapTagKeyToAction(event), event);
+  };
+
   return (
+    // The tag receives focus itself, the keys are handled here and the parent decides what they do. Disabled, it
+    // is intentionally not focusable.
+    // eslint-disable-next-line jsx-a11y/interactive-supports-focus
     <div
+      aria-describedby={disabled ? undefined : descriptionId}
       aria-disabled={disabled}
+      aria-label={label}
       className={classNames(
         styles.root,
         disabled && styles.isRootDisabled,
         getRootPriorityClassName(styles, priority),
         getRootSizeClassName(styles, size),
       )}
-      onClick={(event) => {
-        // Do not let the click toggle the dropdown.
-        event.stopPropagation();
-
-        if (disabled) {
-          return;
-        }
-
-        onRemoveTag();
-      }}
-      onKeyDown={(event) => {
-        if (disabled) {
-          return;
-        }
-
-        if (keyDetected(event, keyBindings.closeDropdown)) {
-          event.preventDefault();
-          onCloseDropdown();
-          return;
-        }
-
-        if (keyDetected(event, keyBindings.removeTag)) {
-          event.preventDefault();
-          onRemoveTag();
-        }
-      }}
+      onClick={handleClick}
+      onFocus={onFocus}
+      onKeyDown={handleKeyDown}
       ref={ref}
-      role="button"
-      tabIndex={(isFocusable && !disabled) ? 0 : -1}
-      title={disabled ? undefined : translations.MultiSelectField.removeTag}
+      role="gridcell"
+      // The tag is focused by the keys of the field, or by a click. Disabled, it is not focusable at all.
+      tabIndex={disabled ? undefined : -1}
     >
       <span>
-        {children}
+        {label}
       </span>
       {!disabled && (
-        <span aria-hidden>
-          ×
-        </span>
+        <button
+          aria-label={`${translations.MultiSelectField.removeTag} ${label}`}
+          className={styles.removeButton}
+          onClick={onRemoveTag}
+          // The remove button is pointer only, the keyboard removes a tag with Delete or Backspace.
+          tabIndex={-1}
+          type="button"
+        >
+          <span aria-hidden>
+            ×
+          </span>
+        </button>
       )}
     </div>
   );

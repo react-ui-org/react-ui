@@ -120,6 +120,18 @@
     --rui-color-feedback-note-hover: rgb(0%, 43.4117647059%, 90%);
     --rui-color-feedback-note-active: rgb(0%, 38.5882352941%, 80%);
     --rui-color-feedback-on-note: #fff;
+    --rui-color-state-valid: #2f9e44;
+    --rui-color-state-valid-hover: rgb(16.5882352941%, 55.7647058824%, 24%);
+    --rui-color-state-valid-active: rgb(14.7450980392%, 49.568627451%, 21.3333333333%);
+    --rui-color-state-invalid: #e03131;
+    --rui-color-state-invalid-hover: rgb(79.0588235294%, 17.2941176471%, 17.2941176471%);
+    --rui-color-state-invalid-active: rgb(70.2745098039%, 15.3725490196%, 15.3725490196%);
+    --rui-color-state-warning: #f59f00;
+    --rui-color-state-warning-hover: rgb(86.4705882353%, 56.1176470588%, 0%);
+    --rui-color-state-warning-active: rgb(76.862745098%, 49.8823529412%, 0%);
+    --rui-color-state-changed: #b5179e;
+    --rui-color-state-changed-hover: rgb(63.8823529412%, 8.1176470588%, 55.7647058824%);
+    --rui-color-state-changed-active: rgb(56.7843137255%, 7.2156862745%, 49.568627451%);
     --rui-color-neutral-light: #fff;
     --rui-color-neutral-light-hover: rgb(95%, 95%, 95%);
     --rui-color-neutral-light-active: rgb(90%, 90%, 90%);
@@ -145,6 +157,10 @@
     --rui-color-background-help: rgb(94%, 90.6274509804%, 99.4901960784%);
     --rui-color-background-info: rgb(90.9019607843%, 96.3529411765%, 97.2156862745%);
     --rui-color-background-note: rgb(90%, 94.8235294118%, 100%);
+    --rui-color-background-state-valid: rgb(91.8431372549%, 96.1960784314%, 92.6666666667%);
+    --rui-color-background-state-invalid: rgb(98.7843137255%, 91.9215686275%, 91.9215686275%);
+    --rui-color-background-state-warning: rgb(99.6078431373%, 96.2352941176%, 90%);
+    --rui-color-background-state-changed: rgb(97.0980392157%, 90.9019607843%, 96.1960784314%);
     --rui-color-background-light: rgb(90%, 90%, 90%);
     --rui-color-background-dark: #666666;
     --rui-color-border-primary: #cccccc;
@@ -593,21 +609,26 @@
     --rui-FormField--horizontal--full-width__label__width: fit-content(50%);
     --rui-FormField--disabled__cursor: var(--rui-cursor-not-allowed);
     --rui-FormField--disabled__opacity: var(--rui-ratio-disabled-opacity);
-    --rui-FormField--invalid--default__border-color: var(--rui-color-feedback-danger);
-    --rui-FormField--invalid--default__background: var(--rui-color-background-danger);
+    --rui-FormField--invalid--default__border-color: var(--rui-color-state-invalid);
+    --rui-FormField--invalid--default__background: var(--rui-color-background-state-invalid);
     --rui-FormField--invalid--default__check-background-color: var(--rui-FormField--invalid--default__background);
-    --rui-FormField--invalid--default__surrounding-text-color: var(--rui-color-feedback-danger);
+    --rui-FormField--invalid--default__surrounding-text-color: var(--rui-color-state-invalid);
     --rui-FormField--invalid--checked__check-background-color: var(--rui-FormField--invalid--default__border-color);
-    --rui-FormField--valid--default__border-color: var(--rui-color-feedback-success);
-    --rui-FormField--valid--default__background: var(--rui-color-background-success);
+    --rui-FormField--valid--default__border-color: var(--rui-color-state-valid);
+    --rui-FormField--valid--default__background: var(--rui-color-background-state-valid);
     --rui-FormField--valid--default__check-background-color: var(--rui-FormField--valid--default__background);
-    --rui-FormField--valid--default__surrounding-text-color: var(--rui-color-feedback-success);
+    --rui-FormField--valid--default__surrounding-text-color: var(--rui-color-state-valid);
     --rui-FormField--valid--checked__check-background-color: var(--rui-FormField--valid--default__border-color);
-    --rui-FormField--warning--default__border-color: var(--rui-color-feedback-warning-hover);
-    --rui-FormField--warning--default__background: var(--rui-color-background-warning);
+    --rui-FormField--warning--default__border-color: var(--rui-color-state-warning-hover);
+    --rui-FormField--warning--default__background: var(--rui-color-background-state-warning);
     --rui-FormField--warning--default__check-background-color: var(--rui-FormField--warning--default__background);
-    --rui-FormField--warning--default__surrounding-text-color: var(--rui-color-feedback-warning-active);
+    --rui-FormField--warning--default__surrounding-text-color: var(--rui-color-state-warning-active);
     --rui-FormField--warning--checked__check-background-color: var(--rui-FormField--warning--default__border-color);
+    --rui-FormField--changed--default__border-color: var(--rui-color-state-changed);
+    --rui-FormField--changed--default__background: var(--rui-color-background-state-changed);
+    --rui-FormField--changed--default__check-background-color: var(--rui-FormField--changed--default__background);
+    --rui-FormField--changed--default__surrounding-text-color: var(--rui-color-state-changed);
+    --rui-FormField--changed--checked__check-background-color: var(--rui-FormField--changed--default__border-color);
     --rui-FormField--box__border-width: var(--rui-dimension-border-width-1);
     --rui-FormField--box__border-radius: var(--rui-dimension-radius-2);
     --rui-FormField--box__input__width: auto;
@@ -6627,11 +6648,6 @@
   .CheckboxField-module__root__Q14XiaZu.CheckboxField-module__isRootInFormLayout__qJftdsXt.CheckboxField-module__isRootLayoutHorizontal__xNZjpdEE::before {
     grid-column-start: 2;
   }
-  @supports not (grid-template-columns: subgrid) {
-    .CheckboxField-module__root__Q14XiaZu.CheckboxField-module__isRootInFormLayout__qJftdsXt.CheckboxField-module__isRootLayoutHorizontal__xNZjpdEE::before {
-      display: none;
-    }
-  }
   .CheckboxField-module__root__Q14XiaZu, .CheckboxField-module__root__Q14XiaZu:hover {
     --rui-local-color: var(--rui-FormField--check--default__color);
     --rui-local-border-color: var(--rui-FormField--check--default__border-color);
@@ -6763,10 +6779,79 @@
     content: var(--rui-FormField--required__sign);
     color: var(--rui-FormField--required__sign__color);
   }
+  .CheckboxField-module__isRootStateChanged__VrGGzPqH {
+    --rui-local-link-color: var(--rui-color-state-changed);
+    --rui-local-link-color-hover: var(--rui-color-state-changed-hover);
+    --rui-local-link-color-active: var(--rui-color-state-changed-active);
+  }
+  .CheckboxField-module__isRootStateChanged__VrGGzPqH, .CheckboxField-module__isRootStateChanged__VrGGzPqH:hover {
+    --rui-local-color: var(--rui-FormField--changed--default__color);
+    --rui-local-border-color: var(--rui-FormField--changed--default__border-color);
+    --rui-local-background: var(--rui-FormField--changed--default__background);
+    --rui-local-check-background-color: var(--rui-FormField--changed--default__check-background-color);
+    --rui-local-box-shadow: var(--rui-FormField--changed--default__box-shadow);
+    --rui-local-surrounding-text-color: var(--rui-FormField--changed--default__surrounding-text-color);
+  }
+  .CheckboxField-module__isRootStateChanged__VrGGzPqH .CheckboxField-module__input__ErPyZ4Pa:checked {
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--checked__border-color,
+            var(--rui-FormField--changed--default__border-color)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--checked__check-background-color,
+            var(--rui-FormField--changed--default__check-background-color)
+        );
+  }
+  .CheckboxField-module__isRootStateChanged__VrGGzPqH.CheckboxField-module__isRootDisabled__EOu4dP5Y {
+    --rui-local-color:
+        var(
+            --rui-FormField--changed--disabled__color,
+            var(--rui-FormField--changed--default__color)
+        );
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--disabled__border-color,
+            var(--rui-FormField--changed--default__border-color)
+        );
+    --rui-local-background:
+        var(
+            --rui-FormField--changed--disabled__background,
+            var(--rui-FormField--changed--default__background)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--disabled__check-background-color,
+            var(--rui-FormField--changed--default__check-background-color)
+        );
+    --rui-local-box-shadow:
+        var(
+            --rui-FormField--changed--disabled__box-shadow,
+            var(--rui-FormField--changed--default__box-shadow)
+        );
+    --rui-local-surrounding-text-color:
+        var(
+            --rui-FormField--changed--disabled__surrounding-text-color,
+            var(--rui-FormField--changed--default__surrounding-text-color)
+        );
+  }
+  .CheckboxField-module__isRootStateChanged__VrGGzPqH .CheckboxField-module__input__ErPyZ4Pa:checked:disabled {
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--checked-disabled__border-color,
+            var(--rui-FormField--changed--checked__border-color)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--checked-disabled__check-background-color,
+            var(--rui-FormField--changed--checked__check-background-color)
+        );
+  }
   .CheckboxField-module__isRootStateInvalid__vPPd19_Y {
-    --rui-local-link-color: var(--rui-color-feedback-danger);
-    --rui-local-link-color-hover: var(--rui-color-feedback-danger-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-danger-active);
+    --rui-local-link-color: var(--rui-color-state-invalid);
+    --rui-local-link-color-hover: var(--rui-color-state-invalid-hover);
+    --rui-local-link-color-active: var(--rui-color-state-invalid-active);
   }
   .CheckboxField-module__isRootStateInvalid__vPPd19_Y, .CheckboxField-module__isRootStateInvalid__vPPd19_Y:hover {
     --rui-local-color: var(--rui-FormField--invalid--default__color);
@@ -6833,9 +6918,9 @@
         );
   }
   .CheckboxField-module__isRootStateValid__r8FOGTne {
-    --rui-local-link-color: var(--rui-color-feedback-success);
-    --rui-local-link-color-hover: var(--rui-color-feedback-success-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-success-active);
+    --rui-local-link-color: var(--rui-color-state-valid);
+    --rui-local-link-color-hover: var(--rui-color-state-valid-hover);
+    --rui-local-link-color-active: var(--rui-color-state-valid-active);
   }
   .CheckboxField-module__isRootStateValid__r8FOGTne, .CheckboxField-module__isRootStateValid__r8FOGTne:hover {
     --rui-local-color: var(--rui-FormField--valid--default__color);
@@ -6902,9 +6987,9 @@
         );
   }
   .CheckboxField-module__isRootStateWarning__evYzQZrD {
-    --rui-local-link-color: var(--rui-color-feedback-warning);
-    --rui-local-link-color-hover: var(--rui-color-feedback-warning-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-warning-active);
+    --rui-local-link-color: var(--rui-color-state-warning);
+    --rui-local-link-color-hover: var(--rui-color-state-warning-hover);
+    --rui-local-link-color-active: var(--rui-color-state-warning-active);
   }
   .CheckboxField-module__isRootStateWarning__evYzQZrD, .CheckboxField-module__isRootStateWarning__evYzQZrD:hover {
     --rui-local-color: var(--rui-FormField--warning--default__color);
@@ -6999,11 +7084,6 @@
       grid-template-columns: subgrid;
       grid-column: span 2;
     }
-    @supports not (grid-template-columns: subgrid) {
-      .CheckboxField-module__isRootInFormLayout__qJftdsXt.CheckboxField-module__isRootLayoutHorizontal__xNZjpdEE {
-        display: contents;
-      }
-    }
     .CheckboxField-module__isRootInFormLayout__qJftdsXt.CheckboxField-module__isRootLayoutHorizontal__xNZjpdEE .CheckboxField-module__field__ngU9luHX {
       display: contents;
     }
@@ -7021,11 +7101,6 @@
     .CheckboxField-module__isRootInFormLayout__qJftdsXt.CheckboxField-module__isRootLayoutHorizontal__xNZjpdEE .CheckboxField-module__helpText__Aez2BnQn, .CheckboxField-module__isRootInFormLayout__qJftdsXt.CheckboxField-module__isRootLayoutHorizontal__xNZjpdEE .CheckboxField-module__validationText__XpWqY2DS {
       width: auto;
       max-width: 100%;
-    }
-    @supports not (grid-template-columns: subgrid) {
-      .CheckboxField-module__isRootInFormLayout__qJftdsXt.CheckboxField-module__isRootLayoutHorizontal__xNZjpdEE .CheckboxField-module__helpText__Aez2BnQn, .CheckboxField-module__isRootInFormLayout__qJftdsXt.CheckboxField-module__isRootLayoutHorizontal__xNZjpdEE .CheckboxField-module__validationText__XpWqY2DS {
-        margin-top: calc(-1 * var(--rui-FormLayout__row-gap));
-      }
     }
     .CheckboxField-module__isRootInFormLayout__qJftdsXt.CheckboxField-module__isRootLayoutHorizontal__xNZjpdEE.CheckboxField-module__hasRootLabelBefore__bIDGTLio .CheckboxField-module__label__COOgBeex {
       margin-right: 0;
@@ -7192,10 +7267,79 @@
   .FileInputField-module__isRootDisabled__krkT4J9v .FileInputField-module__dropZoneLink__KtfYIuIN {
     cursor: inherit;
   }
+  .FileInputField-module__isRootStateChanged__kRpiK0nQ {
+    --rui-local-link-color: var(--rui-color-state-changed);
+    --rui-local-link-color-hover: var(--rui-color-state-changed-hover);
+    --rui-local-link-color-active: var(--rui-color-state-changed-active);
+  }
+  .FileInputField-module__isRootStateChanged__kRpiK0nQ, .FileInputField-module__isRootStateChanged__kRpiK0nQ:hover {
+    --rui-local-color: var(--rui-FormField--changed--default__color);
+    --rui-local-border-color: var(--rui-FormField--changed--default__border-color);
+    --rui-local-background: var(--rui-FormField--changed--default__background);
+    --rui-local-check-background-color: var(--rui-FormField--changed--default__check-background-color);
+    --rui-local-box-shadow: var(--rui-FormField--changed--default__box-shadow);
+    --rui-local-surrounding-text-color: var(--rui-FormField--changed--default__surrounding-text-color);
+  }
+  .FileInputField-module__isRootStateChanged__kRpiK0nQ .FileInputField-module__input__iLmNDUMn:checked {
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--checked__border-color,
+            var(--rui-FormField--changed--default__border-color)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--checked__check-background-color,
+            var(--rui-FormField--changed--default__check-background-color)
+        );
+  }
+  .FileInputField-module__isRootStateChanged__kRpiK0nQ.FileInputField-module__isRootDisabled__krkT4J9v {
+    --rui-local-color:
+        var(
+            --rui-FormField--changed--disabled__color,
+            var(--rui-FormField--changed--default__color)
+        );
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--disabled__border-color,
+            var(--rui-FormField--changed--default__border-color)
+        );
+    --rui-local-background:
+        var(
+            --rui-FormField--changed--disabled__background,
+            var(--rui-FormField--changed--default__background)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--disabled__check-background-color,
+            var(--rui-FormField--changed--default__check-background-color)
+        );
+    --rui-local-box-shadow:
+        var(
+            --rui-FormField--changed--disabled__box-shadow,
+            var(--rui-FormField--changed--default__box-shadow)
+        );
+    --rui-local-surrounding-text-color:
+        var(
+            --rui-FormField--changed--disabled__surrounding-text-color,
+            var(--rui-FormField--changed--default__surrounding-text-color)
+        );
+  }
+  .FileInputField-module__isRootStateChanged__kRpiK0nQ .FileInputField-module__input__iLmNDUMn:checked:disabled {
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--checked-disabled__border-color,
+            var(--rui-FormField--changed--checked__border-color)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--checked-disabled__check-background-color,
+            var(--rui-FormField--changed--checked__check-background-color)
+        );
+  }
   .FileInputField-module__isRootStateInvalid__qpLo9mVU {
-    --rui-local-link-color: var(--rui-color-feedback-danger);
-    --rui-local-link-color-hover: var(--rui-color-feedback-danger-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-danger-active);
+    --rui-local-link-color: var(--rui-color-state-invalid);
+    --rui-local-link-color-hover: var(--rui-color-state-invalid-hover);
+    --rui-local-link-color-active: var(--rui-color-state-invalid-active);
   }
   .FileInputField-module__isRootStateInvalid__qpLo9mVU, .FileInputField-module__isRootStateInvalid__qpLo9mVU:hover {
     --rui-local-color: var(--rui-FormField--invalid--default__color);
@@ -7262,9 +7406,9 @@
         );
   }
   .FileInputField-module__isRootStateValid__kd8G0bYh {
-    --rui-local-link-color: var(--rui-color-feedback-success);
-    --rui-local-link-color-hover: var(--rui-color-feedback-success-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-success-active);
+    --rui-local-link-color: var(--rui-color-state-valid);
+    --rui-local-link-color-hover: var(--rui-color-state-valid-hover);
+    --rui-local-link-color-active: var(--rui-color-state-valid-active);
   }
   .FileInputField-module__isRootStateValid__kd8G0bYh, .FileInputField-module__isRootStateValid__kd8G0bYh:hover {
     --rui-local-color: var(--rui-FormField--valid--default__color);
@@ -7331,9 +7475,9 @@
         );
   }
   .FileInputField-module__isRootStateWarning__jnC_TrpN {
-    --rui-local-link-color: var(--rui-color-feedback-warning);
-    --rui-local-link-color-hover: var(--rui-color-feedback-warning-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-warning-active);
+    --rui-local-link-color: var(--rui-color-state-warning);
+    --rui-local-link-color-hover: var(--rui-color-state-warning-hover);
+    --rui-local-link-color-active: var(--rui-color-state-warning-active);
   }
   .FileInputField-module__isRootStateWarning__jnC_TrpN, .FileInputField-module__isRootStateWarning__jnC_TrpN:hover {
     --rui-local-color: var(--rui-FormField--warning--default__color);
@@ -7497,11 +7641,6 @@
       grid-template-columns: subgrid;
       grid-column: span 2;
     }
-    @supports not (grid-template-columns: subgrid) {
-      .FileInputField-module__isRootInFormLayout__y6mVJsQY.FileInputField-module__isRootLayoutHorizontal__lHc4IRZD, .FileInputField-module__isRootInFormLayout__y6mVJsQY.FileInputField-module__isRootLayoutHorizontal__lHc4IRZD.FileInputField-module__hasRootSmallInput__rFEgcot4 {
-        display: contents;
-      }
-    }
     .FileInputField-module__isRootInFormLayout__y6mVJsQY.FileInputField-module__isRootLayoutHorizontal__lHc4IRZD.FileInputField-module__isRootFullWidth__cpb0405R {
       grid-template-columns: subgrid;
     }
@@ -7605,11 +7744,6 @@
       grid-template-columns: subgrid;
       grid-column: span 2;
     }
-    @supports not (grid-template-columns: subgrid) {
-      .FormLayoutCustomField-module__root__KVUXjS2E.FormLayoutCustomField-module__isRootLayoutHorizontal__u3SsP1T1, .FormLayoutCustomField-module__root__KVUXjS2E.FormLayoutCustomField-module__isRootLayoutHorizontal__u3SsP1T1.FormLayoutCustomField-module__hasRootSmallInput__WQVYF3em {
-        display: contents;
-      }
-    }
     .FormLayoutCustomField-module__root__KVUXjS2E.FormLayoutCustomField-module__isRootLayoutHorizontal__u3SsP1T1.FormLayoutCustomField-module__isRootFullWidth__rkr98Y5M {
       grid-template-columns: subgrid;
     }
@@ -7677,10 +7811,79 @@
     content: var(--rui-FormField--required__sign);
     color: var(--rui-FormField--required__sign__color);
   }
+  .FormLayoutCustomField-module__isRootStateChanged__nBgvsmpE {
+    --rui-local-link-color: var(--rui-color-state-changed);
+    --rui-local-link-color-hover: var(--rui-color-state-changed-hover);
+    --rui-local-link-color-active: var(--rui-color-state-changed-active);
+  }
+  .FormLayoutCustomField-module__isRootStateChanged__nBgvsmpE, .FormLayoutCustomField-module__isRootStateChanged__nBgvsmpE:hover {
+    --rui-local-color: var(--rui-FormField--changed--default__color);
+    --rui-local-border-color: var(--rui-FormField--changed--default__border-color);
+    --rui-local-background: var(--rui-FormField--changed--default__background);
+    --rui-local-check-background-color: var(--rui-FormField--changed--default__check-background-color);
+    --rui-local-box-shadow: var(--rui-FormField--changed--default__box-shadow);
+    --rui-local-surrounding-text-color: var(--rui-FormField--changed--default__surrounding-text-color);
+  }
+  .FormLayoutCustomField-module__isRootStateChanged__nBgvsmpE .FormLayoutCustomField-module__input__ZxqACEjI:checked {
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--checked__border-color,
+            var(--rui-FormField--changed--default__border-color)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--checked__check-background-color,
+            var(--rui-FormField--changed--default__check-background-color)
+        );
+  }
+  .FormLayoutCustomField-module__isRootStateChanged__nBgvsmpE.FormLayoutCustomField-module__isRootDisabled__SVF88jUG {
+    --rui-local-color:
+        var(
+            --rui-FormField--changed--disabled__color,
+            var(--rui-FormField--changed--default__color)
+        );
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--disabled__border-color,
+            var(--rui-FormField--changed--default__border-color)
+        );
+    --rui-local-background:
+        var(
+            --rui-FormField--changed--disabled__background,
+            var(--rui-FormField--changed--default__background)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--disabled__check-background-color,
+            var(--rui-FormField--changed--default__check-background-color)
+        );
+    --rui-local-box-shadow:
+        var(
+            --rui-FormField--changed--disabled__box-shadow,
+            var(--rui-FormField--changed--default__box-shadow)
+        );
+    --rui-local-surrounding-text-color:
+        var(
+            --rui-FormField--changed--disabled__surrounding-text-color,
+            var(--rui-FormField--changed--default__surrounding-text-color)
+        );
+  }
+  .FormLayoutCustomField-module__isRootStateChanged__nBgvsmpE .FormLayoutCustomField-module__input__ZxqACEjI:checked:disabled {
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--checked-disabled__border-color,
+            var(--rui-FormField--changed--checked__border-color)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--checked-disabled__check-background-color,
+            var(--rui-FormField--changed--checked__check-background-color)
+        );
+  }
   .FormLayoutCustomField-module__isRootStateInvalid__OhuSVPjE {
-    --rui-local-link-color: var(--rui-color-feedback-danger);
-    --rui-local-link-color-hover: var(--rui-color-feedback-danger-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-danger-active);
+    --rui-local-link-color: var(--rui-color-state-invalid);
+    --rui-local-link-color-hover: var(--rui-color-state-invalid-hover);
+    --rui-local-link-color-active: var(--rui-color-state-invalid-active);
   }
   .FormLayoutCustomField-module__isRootStateInvalid__OhuSVPjE, .FormLayoutCustomField-module__isRootStateInvalid__OhuSVPjE:hover {
     --rui-local-color: var(--rui-FormField--invalid--default__color);
@@ -7747,9 +7950,9 @@
         );
   }
   .FormLayoutCustomField-module__isRootStateValid__ROOaFW0P {
-    --rui-local-link-color: var(--rui-color-feedback-success);
-    --rui-local-link-color-hover: var(--rui-color-feedback-success-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-success-active);
+    --rui-local-link-color: var(--rui-color-state-valid);
+    --rui-local-link-color-hover: var(--rui-color-state-valid-hover);
+    --rui-local-link-color-active: var(--rui-color-state-valid-active);
   }
   .FormLayoutCustomField-module__isRootStateValid__ROOaFW0P, .FormLayoutCustomField-module__isRootStateValid__ROOaFW0P:hover {
     --rui-local-color: var(--rui-FormField--valid--default__color);
@@ -7816,9 +8019,9 @@
         );
   }
   .FormLayoutCustomField-module__isRootStateWarning__HG_NKMXd {
-    --rui-local-link-color: var(--rui-color-feedback-warning);
-    --rui-local-link-color-hover: var(--rui-color-feedback-warning-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-warning-active);
+    --rui-local-link-color: var(--rui-color-state-warning);
+    --rui-local-link-color-hover: var(--rui-color-state-warning-hover);
+    --rui-local-link-color-active: var(--rui-color-state-warning-active);
   }
   .FormLayoutCustomField-module__isRootStateWarning__HG_NKMXd, .FormLayoutCustomField-module__isRootStateWarning__HG_NKMXd:hover {
     --rui-local-color: var(--rui-FormField--warning--default__color);
@@ -8485,10 +8688,79 @@
     content: var(--rui-FormField--required__sign);
     color: var(--rui-FormField--required__sign__color);
   }
+  .InputGroup-module__isRootStateChanged__BCog5X10 {
+    --rui-local-link-color: var(--rui-color-state-changed);
+    --rui-local-link-color-hover: var(--rui-color-state-changed-hover);
+    --rui-local-link-color-active: var(--rui-color-state-changed-active);
+  }
+  .InputGroup-module__isRootStateChanged__BCog5X10, .InputGroup-module__isRootStateChanged__BCog5X10:hover {
+    --rui-local-color: var(--rui-FormField--changed--default__color);
+    --rui-local-border-color: var(--rui-FormField--changed--default__border-color);
+    --rui-local-background: var(--rui-FormField--changed--default__background);
+    --rui-local-check-background-color: var(--rui-FormField--changed--default__check-background-color);
+    --rui-local-box-shadow: var(--rui-FormField--changed--default__box-shadow);
+    --rui-local-surrounding-text-color: var(--rui-FormField--changed--default__surrounding-text-color);
+  }
+  .InputGroup-module__isRootStateChanged__BCog5X10 .InputGroup-module__input__m3nCQTQs:checked {
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--checked__border-color,
+            var(--rui-FormField--changed--default__border-color)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--checked__check-background-color,
+            var(--rui-FormField--changed--default__check-background-color)
+        );
+  }
+  .InputGroup-module__isRootStateChanged__BCog5X10.InputGroup-module__isRootDisabled__xmAO_NpX {
+    --rui-local-color:
+        var(
+            --rui-FormField--changed--disabled__color,
+            var(--rui-FormField--changed--default__color)
+        );
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--disabled__border-color,
+            var(--rui-FormField--changed--default__border-color)
+        );
+    --rui-local-background:
+        var(
+            --rui-FormField--changed--disabled__background,
+            var(--rui-FormField--changed--default__background)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--disabled__check-background-color,
+            var(--rui-FormField--changed--default__check-background-color)
+        );
+    --rui-local-box-shadow:
+        var(
+            --rui-FormField--changed--disabled__box-shadow,
+            var(--rui-FormField--changed--default__box-shadow)
+        );
+    --rui-local-surrounding-text-color:
+        var(
+            --rui-FormField--changed--disabled__surrounding-text-color,
+            var(--rui-FormField--changed--default__surrounding-text-color)
+        );
+  }
+  .InputGroup-module__isRootStateChanged__BCog5X10 .InputGroup-module__input__m3nCQTQs:checked:disabled {
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--checked-disabled__border-color,
+            var(--rui-FormField--changed--checked__border-color)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--checked-disabled__check-background-color,
+            var(--rui-FormField--changed--checked__check-background-color)
+        );
+  }
   .InputGroup-module__isRootStateInvalid__Atu0FWW_ {
-    --rui-local-link-color: var(--rui-color-feedback-danger);
-    --rui-local-link-color-hover: var(--rui-color-feedback-danger-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-danger-active);
+    --rui-local-link-color: var(--rui-color-state-invalid);
+    --rui-local-link-color-hover: var(--rui-color-state-invalid-hover);
+    --rui-local-link-color-active: var(--rui-color-state-invalid-active);
   }
   .InputGroup-module__isRootStateInvalid__Atu0FWW_, .InputGroup-module__isRootStateInvalid__Atu0FWW_:hover {
     --rui-local-color: var(--rui-FormField--invalid--default__color);
@@ -8555,9 +8827,9 @@
         );
   }
   .InputGroup-module__isRootStateValid__ykb1SzPU {
-    --rui-local-link-color: var(--rui-color-feedback-success);
-    --rui-local-link-color-hover: var(--rui-color-feedback-success-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-success-active);
+    --rui-local-link-color: var(--rui-color-state-valid);
+    --rui-local-link-color-hover: var(--rui-color-state-valid-hover);
+    --rui-local-link-color-active: var(--rui-color-state-valid-active);
   }
   .InputGroup-module__isRootStateValid__ykb1SzPU, .InputGroup-module__isRootStateValid__ykb1SzPU:hover {
     --rui-local-color: var(--rui-FormField--valid--default__color);
@@ -8624,9 +8896,9 @@
         );
   }
   .InputGroup-module__isRootStateWarning__wK1Lp0ri {
-    --rui-local-link-color: var(--rui-color-feedback-warning);
-    --rui-local-link-color-hover: var(--rui-color-feedback-warning-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-warning-active);
+    --rui-local-link-color: var(--rui-color-state-warning);
+    --rui-local-link-color-hover: var(--rui-color-state-warning-hover);
+    --rui-local-link-color-active: var(--rui-color-state-warning-active);
   }
   .InputGroup-module__isRootStateWarning__wK1Lp0ri, .InputGroup-module__isRootStateWarning__wK1Lp0ri:hover {
     --rui-local-color: var(--rui-FormField--warning--default__color);
@@ -9126,13 +9398,21 @@
     color: var(--rui-MultiSelectField__dropdown-item__color);
     border-radius: var(--rui-MultiSelectField__dropdown-item__border-radius);
     background-color: var(--rui-MultiSelectField__dropdown-item__background-color);
+    scroll-margin: calc(var(--rui-dimension-space-1) + var(--rui-dimension-focus-ring-offset));
     cursor: pointer;
   }
   .MultiSelectFieldDropdownItem-module__root__paQSkmFd:active {
     color: var(--rui-MultiSelectField__dropdown-item--focus__color);
     background-color: var(--rui-MultiSelectField__dropdown-item--focus__background-color);
   }
-  .MultiSelectFieldDropdownItem-module__root__paQSkmFd:hover, .MultiSelectFieldDropdownItem-module__root__paQSkmFd:focus-visible {
+  .MultiSelectFieldDropdownItem-module__root__paQSkmFd:hover {
+    color: var(--rui-MultiSelectField__dropdown-item--focus__color);
+    background-color: var(--rui-MultiSelectField__dropdown-item--focus__background-color);
+  }
+  .MultiSelectFieldDropdownItem-module__isRootActive__llVm2Bfu {
+    outline: var(--rui-border-focus-ring);
+    outline-offset: var(--rui-dimension-focus-ring-offset);
+    box-shadow: var(--rui-shadow-focus-ring, var(--rui-local-box-shadow, initial));
     color: var(--rui-MultiSelectField__dropdown-item--focus__color);
     background-color: var(--rui-MultiSelectField__dropdown-item--focus__background-color);
   }
@@ -9145,12 +9425,33 @@
     color: var(--rui-MultiSelectField__dropdown-item--selected__color);
     background-color: var(--rui-MultiSelectField__dropdown-item--selected__background-color);
   }
-  .MultiSelectFieldDropdownItem-module__isRootSelected__fsHjADTA:active, .MultiSelectFieldDropdownItem-module__isRootSelected__fsHjADTA:hover, .MultiSelectFieldDropdownItem-module__isRootSelected__fsHjADTA:focus-visible {
+  .MultiSelectFieldDropdownItem-module__isRootSelected__fsHjADTA:active, .MultiSelectFieldDropdownItem-module__isRootSelected__fsHjADTA:hover, .MultiSelectFieldDropdownItem-module__isRootSelected__fsHjADTA.MultiSelectFieldDropdownItem-module__isRootActive__llVm2Bfu {
     color: var(--rui-MultiSelectField__dropdown-item--selected--focus__color);
     background-color: var(--rui-MultiSelectField__dropdown-item--selected--focus__background-color);
   }
   .MultiSelectFieldDropdownItem-module__isRootInGroup__fv_hzOXW {
     padding-inline-start: calc(var(--rui-local-padding-x) * 2 - var(--rui-MultiSelectField__dropdown-item__gap));
+  }
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs/index.js??ruleSet[1].rules[1].use[3]!./src/components/MultiSelectField/_components/MultiSelectFieldDropdown/MultiSelectFieldDropdown.module.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************/
+@layer components.multi-select-field {
+  .MultiSelectFieldDropdown-module__root__lFui23da {
+    z-index: var(--rui-MultiSelectField__dropdown__z-index);
+    border-width: var(--rui-dimension-border-width-1);
+    border-style: solid;
+    border-color: var(--rui-MultiSelectField__dropdown__border-color);
+    border-radius: var(--rui-dimension-radius-1);
+    background-color: var(--rui-MultiSelectField__dropdown__background-color);
+    box-shadow: var(--rui-MultiSelectField__dropdown__box-shadow);
+    transform: translateY(-1px);
+    position: absolute;
+    max-height: var(--rui-MultiSelectField__dropdown__max-height);
+    overflow: hidden auto;
+  }
+  .MultiSelectFieldDropdown-module__listbox__oDSY5ogq {
+    padding: calc(var(--rui-dimension-space-1) + var(--rui-dimension-focus-ring-offset));
   }
 }
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
@@ -9169,55 +9470,6 @@
     cursor: default;
   }
 }
-/*!************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs/index.js??ruleSet[1].rules[1].use[3]!./src/components/MultiSelectField/_components/MultiSelectFieldDropdown/MultiSelectFieldDropdown.module.scss ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************************************/
-@layer components.multi-select-field {
-  .MultiSelectFieldDropdown-module__root__lFui23da {
-    position: absolute;
-    z-index: var(--rui-MultiSelectField__dropdown__z-index);
-    max-height: var(--rui-MultiSelectField__dropdown__max-height);
-    overflow: hidden auto;
-    border-width: var(--rui-dimension-border-width-1);
-    border-style: solid;
-    border-color: var(--rui-MultiSelectField__dropdown__border-color);
-    border-radius: var(--rui-dimension-radius-1);
-    background-color: var(--rui-MultiSelectField__dropdown__background-color);
-    box-shadow: var(--rui-MultiSelectField__dropdown__box-shadow);
-    transform: translateY(-1px);
-  }
-}
-/*!******************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs/index.js??ruleSet[1].rules[1].use[3]!./src/components/MultiSelectField/_components/MultiSelectFieldSearchInput/MultiSelectFieldSearchInput.module.scss ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************************************************/
-@layer components.multi-select-field {
-  .MultiSelectFieldSearchInput-module__root__08FngXQK {
-    appearance: none;
-    display: block;
-    flex: 1 0 auto;
-    min-width: 2ch;
-    padding: 0;
-    margin: 0;
-    font-weight: var(--rui-font-weight-base);
-    font-size: var(--rui-local-font-size);
-    line-height: 1.5rem;
-    font-family: var(--rui-font-family-base);
-    white-space: nowrap;
-    vertical-align: baseline;
-    color: inherit;
-    border: 0;
-    background-color: transparent;
-  }
-  .MultiSelectFieldSearchInput-module__root__08FngXQK:focus {
-    outline: none;
-  }
-  .MultiSelectFieldSearchInput-module__root__08FngXQK span {
-    font-weight: var(--rui-font-weight-base);
-    font-size: var(--rui-local-font-size);
-    line-height: 1.5rem;
-    font-family: var(--rui-font-family-base);
-  }
-}
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs/index.js??ruleSet[1].rules[1].use[3]!./src/components/MultiSelectField/_components/MultiSelectFieldTag/MultiSelectFieldTag.module.scss ***!
   \**************************************************************************************************************************************************************************************************************************************************************************************************/
@@ -9234,6 +9486,23 @@
     border-width: var(--rui-MultiSelectField__tag__border-width);
     border-style: solid;
     border-radius: var(--rui-MultiSelectField__tag__border-radius);
+    -webkit-user-select: none;
+            user-select: none;
+    cursor: default;
+  }
+  .MultiSelectFieldTag-module__root__KfGhM58t:focus-visible {
+    outline: var(--rui-border-focus-ring);
+    outline-offset: var(--rui-dimension-focus-ring-offset);
+    box-shadow: var(--rui-shadow-focus-ring, var(--rui-local-box-shadow, initial));
+  }
+  .MultiSelectFieldTag-module__removeButton___BZKQS42 {
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    border: 0;
+    background: none;
     cursor: pointer;
   }
   .MultiSelectFieldTag-module__isRootDisabled__whZTb7Oc {
@@ -9270,6 +9539,17 @@
   .MultiSelectFieldTag-module__isRootSizeLarge__wR0CLCAM {
     padding-inline: var(--rui-MultiSelectField--large__tag__padding-inline);
     font-size: var(--rui-MultiSelectField--large__tag__font-size);
+  }
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs/index.js??ruleSet[1].rules[1].use[3]!./src/components/MultiSelectField/_components/MultiSelectFieldTags/MultiSelectFieldTags.module.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************/
+@layer components.multi-select-field {
+  .MultiSelectFieldTags-module__root__eK8upupj {
+    display: contents;
+  }
+  .MultiSelectFieldTags-module__row__ScHOra70 {
+    display: contents;
   }
 }
 /*!***************************************************************************************************************************************************************************************************************************************************************!*\
@@ -9333,6 +9613,29 @@
     height: auto;
     min-height: var(--rui-local-height);
     padding-right: calc(2.25rem - 2 * var(--rui-FormField--box__border-width));
+  }
+  .MultiSelectField-module__combobox__jjYSjMwG {
+    appearance: none;
+    display: block;
+    flex: 1 0 auto;
+    width: 2ch;
+    min-width: 2ch;
+    min-height: 1.5rem;
+    padding: 0;
+    margin: 0;
+    font-weight: var(--rui-font-weight-base);
+    font-size: var(--rui-local-font-size);
+    line-height: 1.5rem;
+    font-family: var(--rui-font-family-base);
+    color: inherit;
+    border: 0;
+    background-color: transparent;
+  }
+  .MultiSelectField-module__combobox__jjYSjMwG:focus {
+    outline: none;
+  }
+  .MultiSelectField-module__combobox__jjYSjMwG:disabled {
+    cursor: inherit;
   }
   .MultiSelectField-module__caret__U4vIDKP6 {
     transition-property: border-color;
@@ -9400,6 +9703,19 @@
   .MultiSelectField-module__isRootDropdownOpen__G1M_CgJC .MultiSelectField-module__input__hvvWtVXb {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
+  }
+  .MultiSelectField-module__status__fw9c6B69 {
+    position: absolute;
+  }
+  .MultiSelectField-module__isStatusShown__tN9y7Uek {
+    z-index: var(--rui-MultiSelectField__dropdown__z-index);
+    border-width: var(--rui-dimension-border-width-1);
+    border-style: solid;
+    border-color: var(--rui-MultiSelectField__dropdown__border-color);
+    border-radius: var(--rui-dimension-radius-1);
+    background-color: var(--rui-MultiSelectField__dropdown__background-color);
+    box-shadow: var(--rui-MultiSelectField__dropdown__box-shadow);
+    transform: translateY(-1px);
   }
   .MultiSelectField-module__helpText__Fmet4dLM,
   .MultiSelectField-module__validationText__kMmuCJ9i {
@@ -9618,10 +9934,79 @@
     opacity: var(--rui-FormField--disabled__opacity);
     cursor: var(--rui-FormField--disabled__cursor);
   }
+  .MultiSelectField-module__isRootStateChanged__q4QRzNdA {
+    --rui-local-link-color: var(--rui-color-state-changed);
+    --rui-local-link-color-hover: var(--rui-color-state-changed-hover);
+    --rui-local-link-color-active: var(--rui-color-state-changed-active);
+  }
+  .MultiSelectField-module__isRootStateChanged__q4QRzNdA, .MultiSelectField-module__isRootStateChanged__q4QRzNdA:hover {
+    --rui-local-color: var(--rui-FormField--changed--default__color);
+    --rui-local-border-color: var(--rui-FormField--changed--default__border-color);
+    --rui-local-background: var(--rui-FormField--changed--default__background);
+    --rui-local-check-background-color: var(--rui-FormField--changed--default__check-background-color);
+    --rui-local-box-shadow: var(--rui-FormField--changed--default__box-shadow);
+    --rui-local-surrounding-text-color: var(--rui-FormField--changed--default__surrounding-text-color);
+  }
+  .MultiSelectField-module__isRootStateChanged__q4QRzNdA .MultiSelectField-module__input__hvvWtVXb:checked {
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--checked__border-color,
+            var(--rui-FormField--changed--default__border-color)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--checked__check-background-color,
+            var(--rui-FormField--changed--default__check-background-color)
+        );
+  }
+  .MultiSelectField-module__isRootStateChanged__q4QRzNdA.MultiSelectField-module__isRootDisabled__syVoOS2U {
+    --rui-local-color:
+        var(
+            --rui-FormField--changed--disabled__color,
+            var(--rui-FormField--changed--default__color)
+        );
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--disabled__border-color,
+            var(--rui-FormField--changed--default__border-color)
+        );
+    --rui-local-background:
+        var(
+            --rui-FormField--changed--disabled__background,
+            var(--rui-FormField--changed--default__background)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--disabled__check-background-color,
+            var(--rui-FormField--changed--default__check-background-color)
+        );
+    --rui-local-box-shadow:
+        var(
+            --rui-FormField--changed--disabled__box-shadow,
+            var(--rui-FormField--changed--default__box-shadow)
+        );
+    --rui-local-surrounding-text-color:
+        var(
+            --rui-FormField--changed--disabled__surrounding-text-color,
+            var(--rui-FormField--changed--default__surrounding-text-color)
+        );
+  }
+  .MultiSelectField-module__isRootStateChanged__q4QRzNdA .MultiSelectField-module__input__hvvWtVXb:checked:disabled {
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--checked-disabled__border-color,
+            var(--rui-FormField--changed--checked__border-color)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--checked-disabled__check-background-color,
+            var(--rui-FormField--changed--checked__check-background-color)
+        );
+  }
   .MultiSelectField-module__isRootStateInvalid__rmEJX3gP {
-    --rui-local-link-color: var(--rui-color-feedback-danger);
-    --rui-local-link-color-hover: var(--rui-color-feedback-danger-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-danger-active);
+    --rui-local-link-color: var(--rui-color-state-invalid);
+    --rui-local-link-color-hover: var(--rui-color-state-invalid-hover);
+    --rui-local-link-color-active: var(--rui-color-state-invalid-active);
   }
   .MultiSelectField-module__isRootStateInvalid__rmEJX3gP, .MultiSelectField-module__isRootStateInvalid__rmEJX3gP:hover {
     --rui-local-color: var(--rui-FormField--invalid--default__color);
@@ -9688,9 +10073,9 @@
         );
   }
   .MultiSelectField-module__isRootStateValid__RK_YU0A7 {
-    --rui-local-link-color: var(--rui-color-feedback-success);
-    --rui-local-link-color-hover: var(--rui-color-feedback-success-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-success-active);
+    --rui-local-link-color: var(--rui-color-state-valid);
+    --rui-local-link-color-hover: var(--rui-color-state-valid-hover);
+    --rui-local-link-color-active: var(--rui-color-state-valid-active);
   }
   .MultiSelectField-module__isRootStateValid__RK_YU0A7, .MultiSelectField-module__isRootStateValid__RK_YU0A7:hover {
     --rui-local-color: var(--rui-FormField--valid--default__color);
@@ -9757,9 +10142,9 @@
         );
   }
   .MultiSelectField-module__isRootStateWarning__JTHaixxj {
-    --rui-local-link-color: var(--rui-color-feedback-warning);
-    --rui-local-link-color-hover: var(--rui-color-feedback-warning-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-warning-active);
+    --rui-local-link-color: var(--rui-color-state-warning);
+    --rui-local-link-color-hover: var(--rui-color-state-warning-hover);
+    --rui-local-link-color-active: var(--rui-color-state-warning-active);
   }
   .MultiSelectField-module__isRootStateWarning__JTHaixxj, .MultiSelectField-module__isRootStateWarning__JTHaixxj:hover {
     --rui-local-color: var(--rui-FormField--warning--default__color);
@@ -9922,11 +10307,6 @@
       grid: inherit;
       grid-template-columns: subgrid;
       grid-column: span 2;
-    }
-    @supports not (grid-template-columns: subgrid) {
-      .MultiSelectField-module__isRootInFormLayout__LlDtRWYC.MultiSelectField-module__isRootLayoutHorizontal__aOM_7ShX, .MultiSelectField-module__isRootInFormLayout__LlDtRWYC.MultiSelectField-module__isRootLayoutHorizontal__aOM_7ShX.MultiSelectField-module__hasRootSmallInput__LZKM9RvS {
-        display: contents;
-      }
     }
     .MultiSelectField-module__isRootInFormLayout__LlDtRWYC.MultiSelectField-module__isRootLayoutHorizontal__aOM_7ShX.MultiSelectField-module__isRootFullWidth__ZV7nAom3 {
       grid-template-columns: subgrid;
@@ -10387,10 +10767,79 @@
   .Radio-module__isRootRequired__pIsCmVdz .Radio-module__optionLabel__D7ODZEbC {
     color: var(--rui-local-surrounding-text-color, var(--rui-FormField--required__label__color));
   }
+  .Radio-module__isRootStateChanged__X7ROajiy {
+    --rui-local-link-color: var(--rui-color-state-changed);
+    --rui-local-link-color-hover: var(--rui-color-state-changed-hover);
+    --rui-local-link-color-active: var(--rui-color-state-changed-active);
+  }
+  .Radio-module__isRootStateChanged__X7ROajiy, .Radio-module__isRootStateChanged__X7ROajiy:hover {
+    --rui-local-color: var(--rui-FormField--changed--default__color);
+    --rui-local-border-color: var(--rui-FormField--changed--default__border-color);
+    --rui-local-background: var(--rui-FormField--changed--default__background);
+    --rui-local-check-background-color: var(--rui-FormField--changed--default__check-background-color);
+    --rui-local-box-shadow: var(--rui-FormField--changed--default__box-shadow);
+    --rui-local-surrounding-text-color: var(--rui-FormField--changed--default__surrounding-text-color);
+  }
+  .Radio-module__isRootStateChanged__X7ROajiy .Radio-module__input__uD6rY5J8:checked {
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--checked__border-color,
+            var(--rui-FormField--changed--default__border-color)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--checked__check-background-color,
+            var(--rui-FormField--changed--default__check-background-color)
+        );
+  }
+  .Radio-module__isRootStateChanged__X7ROajiy.Radio-module__isRootDisabled___vdWirPL {
+    --rui-local-color:
+        var(
+            --rui-FormField--changed--disabled__color,
+            var(--rui-FormField--changed--default__color)
+        );
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--disabled__border-color,
+            var(--rui-FormField--changed--default__border-color)
+        );
+    --rui-local-background:
+        var(
+            --rui-FormField--changed--disabled__background,
+            var(--rui-FormField--changed--default__background)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--disabled__check-background-color,
+            var(--rui-FormField--changed--default__check-background-color)
+        );
+    --rui-local-box-shadow:
+        var(
+            --rui-FormField--changed--disabled__box-shadow,
+            var(--rui-FormField--changed--default__box-shadow)
+        );
+    --rui-local-surrounding-text-color:
+        var(
+            --rui-FormField--changed--disabled__surrounding-text-color,
+            var(--rui-FormField--changed--default__surrounding-text-color)
+        );
+  }
+  .Radio-module__isRootStateChanged__X7ROajiy .Radio-module__input__uD6rY5J8:checked:disabled {
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--checked-disabled__border-color,
+            var(--rui-FormField--changed--checked__border-color)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--checked-disabled__check-background-color,
+            var(--rui-FormField--changed--checked__check-background-color)
+        );
+  }
   .Radio-module__isRootStateInvalid__zn0zdKi2 {
-    --rui-local-link-color: var(--rui-color-feedback-danger);
-    --rui-local-link-color-hover: var(--rui-color-feedback-danger-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-danger-active);
+    --rui-local-link-color: var(--rui-color-state-invalid);
+    --rui-local-link-color-hover: var(--rui-color-state-invalid-hover);
+    --rui-local-link-color-active: var(--rui-color-state-invalid-active);
   }
   .Radio-module__isRootStateInvalid__zn0zdKi2, .Radio-module__isRootStateInvalid__zn0zdKi2:hover {
     --rui-local-color: var(--rui-FormField--invalid--default__color);
@@ -10457,9 +10906,9 @@
         );
   }
   .Radio-module__isRootStateValid__uliUzaIp {
-    --rui-local-link-color: var(--rui-color-feedback-success);
-    --rui-local-link-color-hover: var(--rui-color-feedback-success-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-success-active);
+    --rui-local-link-color: var(--rui-color-state-valid);
+    --rui-local-link-color-hover: var(--rui-color-state-valid-hover);
+    --rui-local-link-color-active: var(--rui-color-state-valid-active);
   }
   .Radio-module__isRootStateValid__uliUzaIp, .Radio-module__isRootStateValid__uliUzaIp:hover {
     --rui-local-color: var(--rui-FormField--valid--default__color);
@@ -10526,9 +10975,9 @@
         );
   }
   .Radio-module__isRootStateWarning__t9RqjOJP {
-    --rui-local-link-color: var(--rui-color-feedback-warning);
-    --rui-local-link-color-hover: var(--rui-color-feedback-warning-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-warning-active);
+    --rui-local-link-color: var(--rui-color-state-warning);
+    --rui-local-link-color-hover: var(--rui-color-state-warning-hover);
+    --rui-local-link-color-active: var(--rui-color-state-warning-active);
   }
   .Radio-module__isRootStateWarning__t9RqjOJP, .Radio-module__isRootStateWarning__t9RqjOJP:hover {
     --rui-local-color: var(--rui-FormField--warning--default__color);
@@ -11244,10 +11693,79 @@
     opacity: var(--rui-FormField--disabled__opacity);
     cursor: var(--rui-FormField--disabled__cursor);
   }
+  .SelectField-module__isRootStateChanged__fVXcgpOP {
+    --rui-local-link-color: var(--rui-color-state-changed);
+    --rui-local-link-color-hover: var(--rui-color-state-changed-hover);
+    --rui-local-link-color-active: var(--rui-color-state-changed-active);
+  }
+  .SelectField-module__isRootStateChanged__fVXcgpOP, .SelectField-module__isRootStateChanged__fVXcgpOP:hover {
+    --rui-local-color: var(--rui-FormField--changed--default__color);
+    --rui-local-border-color: var(--rui-FormField--changed--default__border-color);
+    --rui-local-background: var(--rui-FormField--changed--default__background);
+    --rui-local-check-background-color: var(--rui-FormField--changed--default__check-background-color);
+    --rui-local-box-shadow: var(--rui-FormField--changed--default__box-shadow);
+    --rui-local-surrounding-text-color: var(--rui-FormField--changed--default__surrounding-text-color);
+  }
+  .SelectField-module__isRootStateChanged__fVXcgpOP .SelectField-module__input__XP_Kwi5B:checked {
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--checked__border-color,
+            var(--rui-FormField--changed--default__border-color)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--checked__check-background-color,
+            var(--rui-FormField--changed--default__check-background-color)
+        );
+  }
+  .SelectField-module__isRootStateChanged__fVXcgpOP.SelectField-module__isRootDisabled__JWBw4Mh3 {
+    --rui-local-color:
+        var(
+            --rui-FormField--changed--disabled__color,
+            var(--rui-FormField--changed--default__color)
+        );
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--disabled__border-color,
+            var(--rui-FormField--changed--default__border-color)
+        );
+    --rui-local-background:
+        var(
+            --rui-FormField--changed--disabled__background,
+            var(--rui-FormField--changed--default__background)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--disabled__check-background-color,
+            var(--rui-FormField--changed--default__check-background-color)
+        );
+    --rui-local-box-shadow:
+        var(
+            --rui-FormField--changed--disabled__box-shadow,
+            var(--rui-FormField--changed--default__box-shadow)
+        );
+    --rui-local-surrounding-text-color:
+        var(
+            --rui-FormField--changed--disabled__surrounding-text-color,
+            var(--rui-FormField--changed--default__surrounding-text-color)
+        );
+  }
+  .SelectField-module__isRootStateChanged__fVXcgpOP .SelectField-module__input__XP_Kwi5B:checked:disabled {
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--checked-disabled__border-color,
+            var(--rui-FormField--changed--checked__border-color)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--checked-disabled__check-background-color,
+            var(--rui-FormField--changed--checked__check-background-color)
+        );
+  }
   .SelectField-module__isRootStateInvalid__ygifhBAb {
-    --rui-local-link-color: var(--rui-color-feedback-danger);
-    --rui-local-link-color-hover: var(--rui-color-feedback-danger-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-danger-active);
+    --rui-local-link-color: var(--rui-color-state-invalid);
+    --rui-local-link-color-hover: var(--rui-color-state-invalid-hover);
+    --rui-local-link-color-active: var(--rui-color-state-invalid-active);
   }
   .SelectField-module__isRootStateInvalid__ygifhBAb, .SelectField-module__isRootStateInvalid__ygifhBAb:hover {
     --rui-local-color: var(--rui-FormField--invalid--default__color);
@@ -11314,9 +11832,9 @@
         );
   }
   .SelectField-module__isRootStateValid__LD4mrVeo {
-    --rui-local-link-color: var(--rui-color-feedback-success);
-    --rui-local-link-color-hover: var(--rui-color-feedback-success-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-success-active);
+    --rui-local-link-color: var(--rui-color-state-valid);
+    --rui-local-link-color-hover: var(--rui-color-state-valid-hover);
+    --rui-local-link-color-active: var(--rui-color-state-valid-active);
   }
   .SelectField-module__isRootStateValid__LD4mrVeo, .SelectField-module__isRootStateValid__LD4mrVeo:hover {
     --rui-local-color: var(--rui-FormField--valid--default__color);
@@ -11383,9 +11901,9 @@
         );
   }
   .SelectField-module__isRootStateWarning__fE5GNhNK {
-    --rui-local-link-color: var(--rui-color-feedback-warning);
-    --rui-local-link-color-hover: var(--rui-color-feedback-warning-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-warning-active);
+    --rui-local-link-color: var(--rui-color-state-warning);
+    --rui-local-link-color-hover: var(--rui-color-state-warning-hover);
+    --rui-local-link-color-active: var(--rui-color-state-warning-active);
   }
   .SelectField-module__isRootStateWarning__fE5GNhNK, .SelectField-module__isRootStateWarning__fE5GNhNK:hover {
     --rui-local-color: var(--rui-FormField--warning--default__color);
@@ -11548,11 +12066,6 @@
       grid: inherit;
       grid-template-columns: subgrid;
       grid-column: span 2;
-    }
-    @supports not (grid-template-columns: subgrid) {
-      .SelectField-module__isRootInFormLayout__UEyplq3s.SelectField-module__isRootLayoutHorizontal__CPQ6cI7b, .SelectField-module__isRootInFormLayout__UEyplq3s.SelectField-module__isRootLayoutHorizontal__CPQ6cI7b.SelectField-module__hasRootSmallInput__OvbLKk03 {
-        display: contents;
-      }
     }
     .SelectField-module__isRootInFormLayout__UEyplq3s.SelectField-module__isRootLayoutHorizontal__CPQ6cI7b.SelectField-module__isRootFullWidth__VRGdlMAN {
       grid-template-columns: subgrid;
@@ -12097,10 +12610,79 @@
     opacity: var(--rui-FormField--disabled__opacity);
     cursor: var(--rui-FormField--disabled__cursor);
   }
+  .TextArea-module__isRootStateChanged__KXicC1He {
+    --rui-local-link-color: var(--rui-color-state-changed);
+    --rui-local-link-color-hover: var(--rui-color-state-changed-hover);
+    --rui-local-link-color-active: var(--rui-color-state-changed-active);
+  }
+  .TextArea-module__isRootStateChanged__KXicC1He, .TextArea-module__isRootStateChanged__KXicC1He:hover {
+    --rui-local-color: var(--rui-FormField--changed--default__color);
+    --rui-local-border-color: var(--rui-FormField--changed--default__border-color);
+    --rui-local-background: var(--rui-FormField--changed--default__background);
+    --rui-local-check-background-color: var(--rui-FormField--changed--default__check-background-color);
+    --rui-local-box-shadow: var(--rui-FormField--changed--default__box-shadow);
+    --rui-local-surrounding-text-color: var(--rui-FormField--changed--default__surrounding-text-color);
+  }
+  .TextArea-module__isRootStateChanged__KXicC1He .TextArea-module__input__JYRiHhV8:checked {
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--checked__border-color,
+            var(--rui-FormField--changed--default__border-color)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--checked__check-background-color,
+            var(--rui-FormField--changed--default__check-background-color)
+        );
+  }
+  .TextArea-module__isRootStateChanged__KXicC1He.TextArea-module__isRootDisabled__OaX1tbku {
+    --rui-local-color:
+        var(
+            --rui-FormField--changed--disabled__color,
+            var(--rui-FormField--changed--default__color)
+        );
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--disabled__border-color,
+            var(--rui-FormField--changed--default__border-color)
+        );
+    --rui-local-background:
+        var(
+            --rui-FormField--changed--disabled__background,
+            var(--rui-FormField--changed--default__background)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--disabled__check-background-color,
+            var(--rui-FormField--changed--default__check-background-color)
+        );
+    --rui-local-box-shadow:
+        var(
+            --rui-FormField--changed--disabled__box-shadow,
+            var(--rui-FormField--changed--default__box-shadow)
+        );
+    --rui-local-surrounding-text-color:
+        var(
+            --rui-FormField--changed--disabled__surrounding-text-color,
+            var(--rui-FormField--changed--default__surrounding-text-color)
+        );
+  }
+  .TextArea-module__isRootStateChanged__KXicC1He .TextArea-module__input__JYRiHhV8:checked:disabled {
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--checked-disabled__border-color,
+            var(--rui-FormField--changed--checked__border-color)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--checked-disabled__check-background-color,
+            var(--rui-FormField--changed--checked__check-background-color)
+        );
+  }
   .TextArea-module__isRootStateInvalid__5juQGER0 {
-    --rui-local-link-color: var(--rui-color-feedback-danger);
-    --rui-local-link-color-hover: var(--rui-color-feedback-danger-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-danger-active);
+    --rui-local-link-color: var(--rui-color-state-invalid);
+    --rui-local-link-color-hover: var(--rui-color-state-invalid-hover);
+    --rui-local-link-color-active: var(--rui-color-state-invalid-active);
   }
   .TextArea-module__isRootStateInvalid__5juQGER0, .TextArea-module__isRootStateInvalid__5juQGER0:hover {
     --rui-local-color: var(--rui-FormField--invalid--default__color);
@@ -12167,9 +12749,9 @@
         );
   }
   .TextArea-module__isRootStateValid__Ih6AFuas {
-    --rui-local-link-color: var(--rui-color-feedback-success);
-    --rui-local-link-color-hover: var(--rui-color-feedback-success-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-success-active);
+    --rui-local-link-color: var(--rui-color-state-valid);
+    --rui-local-link-color-hover: var(--rui-color-state-valid-hover);
+    --rui-local-link-color-active: var(--rui-color-state-valid-active);
   }
   .TextArea-module__isRootStateValid__Ih6AFuas, .TextArea-module__isRootStateValid__Ih6AFuas:hover {
     --rui-local-color: var(--rui-FormField--valid--default__color);
@@ -12236,9 +12818,9 @@
         );
   }
   .TextArea-module__isRootStateWarning__T_TCx1R_ {
-    --rui-local-link-color: var(--rui-color-feedback-warning);
-    --rui-local-link-color-hover: var(--rui-color-feedback-warning-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-warning-active);
+    --rui-local-link-color: var(--rui-color-state-warning);
+    --rui-local-link-color-hover: var(--rui-color-state-warning-hover);
+    --rui-local-link-color-active: var(--rui-color-state-warning-active);
   }
   .TextArea-module__isRootStateWarning__T_TCx1R_, .TextArea-module__isRootStateWarning__T_TCx1R_:hover {
     --rui-local-color: var(--rui-FormField--warning--default__color);
@@ -12401,11 +12983,6 @@
       grid: inherit;
       grid-template-columns: subgrid;
       grid-column: span 2;
-    }
-    @supports not (grid-template-columns: subgrid) {
-      .TextArea-module__isRootInFormLayout__Cb0CQWE4.TextArea-module__isRootLayoutHorizontal__cNOI7ysK, .TextArea-module__isRootInFormLayout__Cb0CQWE4.TextArea-module__isRootLayoutHorizontal__cNOI7ysK.TextArea-module__hasRootSmallInput__qYvj8IVv {
-        display: contents;
-      }
     }
     .TextArea-module__isRootInFormLayout__Cb0CQWE4.TextArea-module__isRootLayoutHorizontal__cNOI7ysK.TextArea-module__isRootFullWidth__VJ__x0vM {
       grid-template-columns: subgrid;
@@ -12740,10 +13317,79 @@
     opacity: var(--rui-FormField--disabled__opacity);
     cursor: var(--rui-FormField--disabled__cursor);
   }
+  .TextField-module__isRootStateChanged__XGkV9ygh {
+    --rui-local-link-color: var(--rui-color-state-changed);
+    --rui-local-link-color-hover: var(--rui-color-state-changed-hover);
+    --rui-local-link-color-active: var(--rui-color-state-changed-active);
+  }
+  .TextField-module__isRootStateChanged__XGkV9ygh, .TextField-module__isRootStateChanged__XGkV9ygh:hover {
+    --rui-local-color: var(--rui-FormField--changed--default__color);
+    --rui-local-border-color: var(--rui-FormField--changed--default__border-color);
+    --rui-local-background: var(--rui-FormField--changed--default__background);
+    --rui-local-check-background-color: var(--rui-FormField--changed--default__check-background-color);
+    --rui-local-box-shadow: var(--rui-FormField--changed--default__box-shadow);
+    --rui-local-surrounding-text-color: var(--rui-FormField--changed--default__surrounding-text-color);
+  }
+  .TextField-module__isRootStateChanged__XGkV9ygh .TextField-module__input__EJkZBuV_:checked {
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--checked__border-color,
+            var(--rui-FormField--changed--default__border-color)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--checked__check-background-color,
+            var(--rui-FormField--changed--default__check-background-color)
+        );
+  }
+  .TextField-module__isRootStateChanged__XGkV9ygh.TextField-module__isRootDisabled__fZBuQmOF {
+    --rui-local-color:
+        var(
+            --rui-FormField--changed--disabled__color,
+            var(--rui-FormField--changed--default__color)
+        );
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--disabled__border-color,
+            var(--rui-FormField--changed--default__border-color)
+        );
+    --rui-local-background:
+        var(
+            --rui-FormField--changed--disabled__background,
+            var(--rui-FormField--changed--default__background)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--disabled__check-background-color,
+            var(--rui-FormField--changed--default__check-background-color)
+        );
+    --rui-local-box-shadow:
+        var(
+            --rui-FormField--changed--disabled__box-shadow,
+            var(--rui-FormField--changed--default__box-shadow)
+        );
+    --rui-local-surrounding-text-color:
+        var(
+            --rui-FormField--changed--disabled__surrounding-text-color,
+            var(--rui-FormField--changed--default__surrounding-text-color)
+        );
+  }
+  .TextField-module__isRootStateChanged__XGkV9ygh .TextField-module__input__EJkZBuV_:checked:disabled {
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--checked-disabled__border-color,
+            var(--rui-FormField--changed--checked__border-color)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--checked-disabled__check-background-color,
+            var(--rui-FormField--changed--checked__check-background-color)
+        );
+  }
   .TextField-module__isRootStateInvalid__bxsnTMJY {
-    --rui-local-link-color: var(--rui-color-feedback-danger);
-    --rui-local-link-color-hover: var(--rui-color-feedback-danger-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-danger-active);
+    --rui-local-link-color: var(--rui-color-state-invalid);
+    --rui-local-link-color-hover: var(--rui-color-state-invalid-hover);
+    --rui-local-link-color-active: var(--rui-color-state-invalid-active);
   }
   .TextField-module__isRootStateInvalid__bxsnTMJY, .TextField-module__isRootStateInvalid__bxsnTMJY:hover {
     --rui-local-color: var(--rui-FormField--invalid--default__color);
@@ -12810,9 +13456,9 @@
         );
   }
   .TextField-module__isRootStateValid__IEIWMvE8 {
-    --rui-local-link-color: var(--rui-color-feedback-success);
-    --rui-local-link-color-hover: var(--rui-color-feedback-success-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-success-active);
+    --rui-local-link-color: var(--rui-color-state-valid);
+    --rui-local-link-color-hover: var(--rui-color-state-valid-hover);
+    --rui-local-link-color-active: var(--rui-color-state-valid-active);
   }
   .TextField-module__isRootStateValid__IEIWMvE8, .TextField-module__isRootStateValid__IEIWMvE8:hover {
     --rui-local-color: var(--rui-FormField--valid--default__color);
@@ -12879,9 +13525,9 @@
         );
   }
   .TextField-module__isRootStateWarning__OI5XUWPf {
-    --rui-local-link-color: var(--rui-color-feedback-warning);
-    --rui-local-link-color-hover: var(--rui-color-feedback-warning-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-warning-active);
+    --rui-local-link-color: var(--rui-color-state-warning);
+    --rui-local-link-color-hover: var(--rui-color-state-warning-hover);
+    --rui-local-link-color-active: var(--rui-color-state-warning-active);
   }
   .TextField-module__isRootStateWarning__OI5XUWPf, .TextField-module__isRootStateWarning__OI5XUWPf:hover {
     --rui-local-color: var(--rui-FormField--warning--default__color);
@@ -13034,11 +13680,6 @@
       grid: inherit;
       grid-template-columns: subgrid;
       grid-column: span 2;
-    }
-    @supports not (grid-template-columns: subgrid) {
-      .TextField-module__isRootInFormLayout__hDXJ7Cah.TextField-module__isRootLayoutHorizontal__OH1K4lj5, .TextField-module__isRootInFormLayout__hDXJ7Cah.TextField-module__isRootLayoutHorizontal__OH1K4lj5.TextField-module__hasRootSmallInput__ZPUZQjfQ {
-        display: contents;
-      }
     }
     .TextField-module__isRootInFormLayout__hDXJ7Cah.TextField-module__isRootLayoutHorizontal__OH1K4lj5.TextField-module__isRootFullWidth__v9O9JDms {
       grid-template-columns: subgrid;
@@ -13212,11 +13853,6 @@
   .Toggle-module__root__rqUESGQ8.Toggle-module__isRootInFormLayout__op60MdLR.Toggle-module__isRootLayoutHorizontal__hwPmxjxq::before {
     grid-column-start: 2;
   }
-  @supports not (grid-template-columns: subgrid) {
-    .Toggle-module__root__rqUESGQ8.Toggle-module__isRootInFormLayout__op60MdLR.Toggle-module__isRootLayoutHorizontal__hwPmxjxq::before {
-      display: none;
-    }
-  }
   .Toggle-module__root__rqUESGQ8, .Toggle-module__root__rqUESGQ8:hover {
     --rui-local-color: var(--rui-FormField--check--default__color);
     --rui-local-border-color: var(--rui-FormField--check--default__border-color);
@@ -13353,10 +13989,79 @@
     content: var(--rui-FormField--required__sign);
     color: var(--rui-FormField--required__sign__color);
   }
+  .Toggle-module__isRootStateChanged__X_2K6DHZ {
+    --rui-local-link-color: var(--rui-color-state-changed);
+    --rui-local-link-color-hover: var(--rui-color-state-changed-hover);
+    --rui-local-link-color-active: var(--rui-color-state-changed-active);
+  }
+  .Toggle-module__isRootStateChanged__X_2K6DHZ, .Toggle-module__isRootStateChanged__X_2K6DHZ:hover {
+    --rui-local-color: var(--rui-FormField--changed--default__color);
+    --rui-local-border-color: var(--rui-FormField--changed--default__border-color);
+    --rui-local-background: var(--rui-FormField--changed--default__background);
+    --rui-local-check-background-color: var(--rui-FormField--changed--default__check-background-color);
+    --rui-local-box-shadow: var(--rui-FormField--changed--default__box-shadow);
+    --rui-local-surrounding-text-color: var(--rui-FormField--changed--default__surrounding-text-color);
+  }
+  .Toggle-module__isRootStateChanged__X_2K6DHZ .Toggle-module__input__nV7ZVASW:checked {
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--checked__border-color,
+            var(--rui-FormField--changed--default__border-color)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--checked__check-background-color,
+            var(--rui-FormField--changed--default__check-background-color)
+        );
+  }
+  .Toggle-module__isRootStateChanged__X_2K6DHZ.Toggle-module__isRootDisabled__DePAGoJB {
+    --rui-local-color:
+        var(
+            --rui-FormField--changed--disabled__color,
+            var(--rui-FormField--changed--default__color)
+        );
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--disabled__border-color,
+            var(--rui-FormField--changed--default__border-color)
+        );
+    --rui-local-background:
+        var(
+            --rui-FormField--changed--disabled__background,
+            var(--rui-FormField--changed--default__background)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--disabled__check-background-color,
+            var(--rui-FormField--changed--default__check-background-color)
+        );
+    --rui-local-box-shadow:
+        var(
+            --rui-FormField--changed--disabled__box-shadow,
+            var(--rui-FormField--changed--default__box-shadow)
+        );
+    --rui-local-surrounding-text-color:
+        var(
+            --rui-FormField--changed--disabled__surrounding-text-color,
+            var(--rui-FormField--changed--default__surrounding-text-color)
+        );
+  }
+  .Toggle-module__isRootStateChanged__X_2K6DHZ .Toggle-module__input__nV7ZVASW:checked:disabled {
+    --rui-local-border-color:
+        var(
+            --rui-FormField--changed--checked-disabled__border-color,
+            var(--rui-FormField--changed--checked__border-color)
+        );
+    --rui-local-check-background-color:
+        var(
+            --rui-FormField--changed--checked-disabled__check-background-color,
+            var(--rui-FormField--changed--checked__check-background-color)
+        );
+  }
   .Toggle-module__isRootStateInvalid__YeydgHoH {
-    --rui-local-link-color: var(--rui-color-feedback-danger);
-    --rui-local-link-color-hover: var(--rui-color-feedback-danger-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-danger-active);
+    --rui-local-link-color: var(--rui-color-state-invalid);
+    --rui-local-link-color-hover: var(--rui-color-state-invalid-hover);
+    --rui-local-link-color-active: var(--rui-color-state-invalid-active);
   }
   .Toggle-module__isRootStateInvalid__YeydgHoH, .Toggle-module__isRootStateInvalid__YeydgHoH:hover {
     --rui-local-color: var(--rui-FormField--invalid--default__color);
@@ -13423,9 +14128,9 @@
         );
   }
   .Toggle-module__isRootStateValid__YjDzLP2F {
-    --rui-local-link-color: var(--rui-color-feedback-success);
-    --rui-local-link-color-hover: var(--rui-color-feedback-success-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-success-active);
+    --rui-local-link-color: var(--rui-color-state-valid);
+    --rui-local-link-color-hover: var(--rui-color-state-valid-hover);
+    --rui-local-link-color-active: var(--rui-color-state-valid-active);
   }
   .Toggle-module__isRootStateValid__YjDzLP2F, .Toggle-module__isRootStateValid__YjDzLP2F:hover {
     --rui-local-color: var(--rui-FormField--valid--default__color);
@@ -13492,9 +14197,9 @@
         );
   }
   .Toggle-module__isRootStateWarning__vhYc4kYJ {
-    --rui-local-link-color: var(--rui-color-feedback-warning);
-    --rui-local-link-color-hover: var(--rui-color-feedback-warning-hover);
-    --rui-local-link-color-active: var(--rui-color-feedback-warning-active);
+    --rui-local-link-color: var(--rui-color-state-warning);
+    --rui-local-link-color-hover: var(--rui-color-state-warning-hover);
+    --rui-local-link-color-active: var(--rui-color-state-warning-active);
   }
   .Toggle-module__isRootStateWarning__vhYc4kYJ, .Toggle-module__isRootStateWarning__vhYc4kYJ:hover {
     --rui-local-color: var(--rui-FormField--warning--default__color);
@@ -13589,11 +14294,6 @@
       grid-template-columns: subgrid;
       grid-column: span 2;
     }
-    @supports not (grid-template-columns: subgrid) {
-      .Toggle-module__isRootInFormLayout__op60MdLR.Toggle-module__isRootLayoutHorizontal__hwPmxjxq {
-        display: contents;
-      }
-    }
     .Toggle-module__isRootInFormLayout__op60MdLR.Toggle-module__isRootLayoutHorizontal__hwPmxjxq .Toggle-module__field__xMuy6yqN {
       display: contents;
     }
@@ -13611,11 +14311,6 @@
     .Toggle-module__isRootInFormLayout__op60MdLR.Toggle-module__isRootLayoutHorizontal__hwPmxjxq .Toggle-module__helpText__T0WZrsde, .Toggle-module__isRootInFormLayout__op60MdLR.Toggle-module__isRootLayoutHorizontal__hwPmxjxq .Toggle-module__validationText__R70A8wzX {
       width: auto;
       max-width: 100%;
-    }
-    @supports not (grid-template-columns: subgrid) {
-      .Toggle-module__isRootInFormLayout__op60MdLR.Toggle-module__isRootLayoutHorizontal__hwPmxjxq .Toggle-module__helpText__T0WZrsde, .Toggle-module__isRootInFormLayout__op60MdLR.Toggle-module__isRootLayoutHorizontal__hwPmxjxq .Toggle-module__validationText__R70A8wzX {
-        margin-top: calc(-1 * var(--rui-FormLayout__row-gap));
-      }
     }
     .Toggle-module__isRootInFormLayout__op60MdLR.Toggle-module__isRootLayoutHorizontal__hwPmxjxq.Toggle-module__hasRootLabelBefore__mk6RK6a4 .Toggle-module__label__rk_uCGgk {
       margin-right: 0;

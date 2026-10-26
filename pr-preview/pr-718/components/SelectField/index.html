@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
   <link rel="preconnect" href="https://unpkg.com" />
 
@@ -32,10 +32,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -1319,6 +1319,17 @@
     <span class="md-ellipsis">
       
         Validation States
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed State
       
     </span>
   </a>
@@ -3201,6 +3212,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#changed-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed State
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#required-state" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3819,7 +3841,7 @@ have.</p>
         onChange={(e) =&gt; setFruit(e.target.value)}
         options={options}
         required
-        validationState="valid"
+        state="valid"
         validationText="Great, they're in stock!"
         value={fruit}
       /&gt;
@@ -3828,7 +3850,7 @@ have.</p>
         onChange={(e) =&gt; setFruit(e.target.value)}
         options={options}
         required
-        validationState="warning"
+        state="warning"
         validationText="Oh, really?"
         value={fruit}
       /&gt;
@@ -3837,7 +3859,7 @@ have.</p>
         onChange={(e) =&gt; setFruit(e.target.value)}
         options={options}
         required
-        validationState="invalid"
+        state="invalid"
         validationText="You must select at least one kind of fruit."
         value={fruit}
       /&gt;
@@ -3846,7 +3868,7 @@ have.</p>
         onChange={(e) =&gt; setFruit(e.target.value)}
         options={options}
         required
-        validationState="valid"
+        state="valid"
         validationText="Great, they're in stock!"
         value={fruit}
         variant="filled"
@@ -3856,7 +3878,7 @@ have.</p>
         onChange={(e) =&gt; setFruit(e.target.value)}
         options={options}
         required
-        validationState="warning"
+        state="warning"
         validationText="Oh, really?"
         value={fruit}
         variant="filled"
@@ -3867,8 +3889,49 @@ have.</p>
         options={options}
         required
         value={fruit}
-        validationState="invalid"
+        state="invalid"
         validationText="You must select at least one kind of fruit."
+        variant="filled"
+      /&gt;
+    &lt;/&gt;
+  );
+})</code></pre>
+<h3 id="changed-state">Changed State</h3>
+<p>Changed state highlights fields whose value differs from the saved one, so users
+can review their edits before saving.</p>
+<p>A field shows one state at a time. When a changed value is also invalid, it's
+up to you to pick the state that matters more to the user.</p>
+<pre class="highlight"><code class="language-docoff-react-preview">React.createElement(() =&gt; {
+  const [fruit, setFruit] = React.useState('banana');
+  const options = [
+    {
+      label: 'Apple',
+      value: 'apple',
+    },
+    {
+      label: 'Banana',
+      value: 'banana',
+    },
+    {
+      label: 'Grapefruit',
+      value: 'grapefruit',
+    },
+  ];
+  return (
+    &lt;&gt;
+      &lt;SelectField
+        label="Your favourite fruit"
+        onChange={(e) =&gt; setFruit(e.target.value)}
+        options={options}
+        state="changed"
+        value={fruit}
+      /&gt;
+      &lt;SelectField
+        label="Your favourite fruit"
+        onChange={(e) =&gt; setFruit(e.target.value)}
+        options={options}
+        state="changed"
+        value={fruit}
         variant="filled"
       /&gt;
     &lt;/&gt;
@@ -4182,10 +4245,10 @@ selected and unselected states. Pair the theming options with the
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.footer"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="https://unpkg.com/@babel/standalone@7.20.15/babel.min.js"></script>
       

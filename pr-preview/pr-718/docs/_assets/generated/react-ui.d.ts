@@ -12,11 +12,11 @@ export type LabelPosition = "before" | "after";
 export type Layout = "horizontal" | "vertical";
 export type Priority = "filled" | "outline" | "flat";
 export type Size = "small" | "medium" | "large";
+export type State = "changed" | "invalid" | "valid" | "warning";
 /**
  * Class names exported by a CSS Module.
  */
 export type CssModuleClasses = Readonly<Record<string, string>>;
-export type ValidationState = "invalid" | "valid" | "warning";
 export type AlertProps = Omit<React$1.HTMLAttributes<HTMLDivElement>, "color"> & {
 	/**
 	 * Alert body.
@@ -306,9 +306,10 @@ export type CheckboxFieldProps = Omit<React$1.InputHTMLAttributes<HTMLInputEleme
 	 */
 	required?: boolean;
 	/**
-	 * Alter the field to provide feedback based on validation result.
+	 * Alter the field to reflect the state of its data, e.g. a validation result or a change
+	 * against the saved value.
 	 */
-	validationState?: ValidationState;
+	state?: State;
 	/**
 	 * Validation message to be displayed.
 	 */
@@ -323,7 +324,7 @@ declare const CheckboxFieldWithGlobalProps: React$1.ForwardRefExoticComponent<Om
 	labelPosition?: CheckboxFieldLabelPosition;
 	renderAsRequired?: boolean;
 	required?: boolean;
-	validationState?: ValidationState;
+	state?: State;
 	validationText?: React$1.ReactNode;
 } & React$1.RefAttributes<HTMLInputElement>>;
 export type FileInputFieldFilesChangedEvent = React$1.ChangeEvent<HTMLInputElement> | React$1.DragEvent<HTMLDivElement> | Event | null;
@@ -401,9 +402,10 @@ export type FileInputFieldProps = Omit<React$1.InputHTMLAttributes<HTMLInputElem
 	 */
 	size?: Size;
 	/**
-	 * Alter the field to provide feedback based on validation result.
+	 * Alter the field to reflect the state of its data, e.g. a validation result or a change
+	 * against the saved value.
 	 */
-	validationState?: ValidationState;
+	state?: State;
 	/**
 	 * Validation message to be displayed.
 	 *
@@ -424,7 +426,7 @@ declare const FileInputFieldWithGlobalProps: React$1.ForwardRefExoticComponent<O
 	onFilesChanged: (files: FileList | File[], event: FileInputFieldFilesChangedEvent) => void;
 	required?: boolean;
 	size?: Size;
-	validationState?: ValidationState;
+	state?: State;
 	validationText?: React$1.ReactNode;
 } & React$1.RefAttributes<FileInputFieldRef>>;
 export type FormLayoutPredefinedLabelWidth = "auto" | "default" | "limited";
@@ -519,9 +521,10 @@ export type FormLayoutCustomFieldProps = React$1.HTMLAttributes<HTMLDivElement> 
 	 */
 	required?: boolean;
 	/**
-	 * Alter the field to provide feedback based on validation result.
+	 * Alter the field to reflect the state of its data, e.g. a validation result or a change
+	 * against the saved value.
 	 */
-	validationState?: ValidationState;
+	state?: State;
 };
 /**
  * `true` when rendered inside `FormLayoutCustomField`.
@@ -536,7 +539,7 @@ declare const FormLayoutCustomFieldWithGlobalProps: React$1.ForwardRefExoticComp
 	label?: string;
 	labelForId?: string;
 	required?: boolean;
-	validationState?: ValidationState;
+	state?: State;
 } & React$1.RefAttributes<never>>;
 /**
  * A value that is either the same for all breakpoints or defined per breakpoint.
@@ -656,6 +659,7 @@ export type InputGroupProps = Omit<React$1.FieldsetHTMLAttributes<HTMLFieldSetEl
 	/**
 	 * Supported elements to be grouped:
 	 * * `Button`
+	 * * `FileInputField`
 	 * * `MultiSelectField`
 	 * * `SelectField`
 	 * * `TextField`
@@ -932,7 +936,7 @@ export type MultiSelectFieldVariant = "filled" | "outline";
 /**
  * Props of the `MultiSelectField` component.
  */
-export type MultiSelectFieldProps = Omit<React$1.HTMLAttributes<HTMLDivElement>, "onChange"> & {
+export type MultiSelectFieldProps = Omit<React$1.InputHTMLAttributes<HTMLInputElement>, "onChange" | "size" | "value"> & {
 	/**
 	 * If `true`, the input will be disabled.
 	 */
@@ -949,7 +953,8 @@ export type MultiSelectFieldProps = Omit<React$1.HTMLAttributes<HTMLDivElement>,
 	 */
 	helpText?: React$1.ReactNode;
 	/**
-	 * ID of the input HTML element.
+	 * ID of the combobox element: the `<input>` HTML element, or the `<div>` HTML element when search is disabled.
+	 * Generated automatically when not set.
 	 *
 	 * Also serves as a prefix for important inner elements:
 	 * * `<ID>__label`
@@ -957,12 +962,17 @@ export type MultiSelectFieldProps = Omit<React$1.HTMLAttributes<HTMLDivElement>,
 	 * * `<ID>__helpText`
 	 * * `<ID>__validationText`
 	 * * `<ID>__dropdown`
+	 * * `<ID>__tagDescription`
 	 *
-	 * and of individual options:
+	 * of individual options:
 	 * * `<ID>__item__<VALUE>`
 	 *
-	 * If `key` in the option definition object is set,
-	 * then `option.key` is used instead of `option.value` in place of `<VALUE>`.
+	 * and of option groups:
+	 * * `<ID>__group__<LABEL>`
+	 *
+	 * If `key` in the option or group definition object is set, then `key` is used instead of `option.value`
+	 * or `group.label` in place of `<VALUE>` or `<LABEL>`. Whitespace in `<VALUE>` and `<LABEL>` is URL-encoded,
+	 * e.g. `Czech%20Republic`, so that the ID can be referenced by `aria-activedescendant` and `aria-labelledby`.
 	 */
 	id?: string;
 	/**
@@ -993,8 +1003,11 @@ export type MultiSelectFieldProps = Omit<React$1.HTMLAttributes<HTMLDivElement>,
 	 *
 	 * Either set of individual or grouped options is acceptable.
 	 *
-	 * For generating unique IDs the `option.value` is normally used. For cases when this is not practical or
-	 * the `option.value` values are not unique the `option.key` attribute can be set manually.
+	 * Option values must be unique across all options and groups, as the selection is an array of values.
+	 * Values are compared as strings when generating IDs, so `1` and `'1'` are the same option.
+	 *
+	 * For generating unique IDs the `option.value` is normally used. For cases when this is not practical
+	 * the `option.key` attribute can be set manually.
 	 * The same applies for the `label` value of grouped options which is supposed to be unique.
 	 * To ensure uniqueness `key` attribute can be set manually.
 	 */
@@ -1023,9 +1036,10 @@ export type MultiSelectFieldProps = Omit<React$1.HTMLAttributes<HTMLDivElement>,
 	 */
 	size?: Size;
 	/**
-	 * Alter the field to provide feedback based on validation result.
+	 * Alter the field to reflect the state of its data, e.g. a validation result or a change
+	 * against the saved value.
 	 */
-	validationState?: ValidationState;
+	state?: State;
 	/**
 	 * Validation message to be displayed.
 	 *
@@ -1034,7 +1048,8 @@ export type MultiSelectFieldProps = Omit<React$1.HTMLAttributes<HTMLDivElement>,
 	 */
 	validationText?: React$1.ReactNode;
 	/**
-	 * Array of selected option values.
+	 * Array of selected option values. Each value is rendered as a tag labelled by the option label, or by the
+	 * value itself when no option has that value.
 	 */
 	value: MultiSelectFieldOption["value"][];
 	/**
@@ -1042,7 +1057,7 @@ export type MultiSelectFieldProps = Omit<React$1.HTMLAttributes<HTMLDivElement>,
 	 */
 	variant?: MultiSelectFieldVariant;
 };
-declare const MultiSelectFieldWithGlobalProps: React$1.ForwardRefExoticComponent<Omit<React$1.HTMLAttributes<HTMLDivElement>, "onChange"> & {
+declare const MultiSelectFieldWithGlobalProps: React$1.ForwardRefExoticComponent<Omit<React$1.InputHTMLAttributes<HTMLInputElement>, "onChange" | "size" | "value"> & {
 	disabled?: boolean;
 	fullWidth?: boolean;
 	helpText?: React$1.ReactNode;
@@ -1056,11 +1071,11 @@ declare const MultiSelectFieldWithGlobalProps: React$1.ForwardRefExoticComponent
 	required?: boolean;
 	searchAlgorithm?: MultiSelectFieldSearchAlgorithm | null;
 	size?: Size;
-	validationState?: ValidationState;
+	state?: State;
 	validationText?: React$1.ReactNode;
 	value: MultiSelectFieldOption["value"][];
 	variant?: MultiSelectFieldVariant;
-} & React$1.RefAttributes<HTMLDivElement>>;
+} & React$1.RefAttributes<HTMLDivElement | HTMLInputElement>>;
 /**
  * Searches for options where the option label starts with the search string, ignoring case and accents.
  */
@@ -1242,9 +1257,10 @@ export type RadioProps = Omit<React$1.InputHTMLAttributes<HTMLInputElement>, "ty
 	 */
 	required?: boolean;
 	/**
-	 * Alter the field to provide feedback based on validation result.
+	 * Alter the field to reflect the state of its data, e.g. a validation result or a change
+	 * against the saved value.
 	 */
-	validationState?: ValidationState;
+	state?: State;
 	/**
 	 * Validation message to be displayed.
 	 */
@@ -1264,7 +1280,7 @@ declare const RadioWithGlobalProps: React$1.ForwardRefExoticComponent<Omit<React
 	options: RadioOption[];
 	renderAsRequired?: boolean;
 	required?: boolean;
-	validationState?: ValidationState;
+	state?: State;
 	validationText?: React$1.ReactNode;
 	value?: string | number;
 } & React$1.RefAttributes<never>>;
@@ -1486,9 +1502,10 @@ export type SelectFieldProps = Omit<React$1.SelectHTMLAttributes<HTMLSelectEleme
 	 */
 	size?: Size;
 	/**
-	 * Alter the field to provide feedback based on validation result.
+	 * Alter the field to reflect the state of its data, e.g. a validation result or a change
+	 * against the saved value.
 	 */
-	validationState?: ValidationState;
+	state?: State;
 	/**
 	 * Validation message to be displayed.
 	 *
@@ -1513,7 +1530,7 @@ declare const SelectFieldWithGlobalProps: React$1.ForwardRefExoticComponent<Omit
 	renderAsRequired?: boolean;
 	required?: boolean;
 	size?: Size;
-	validationState?: ValidationState;
+	state?: State;
 	validationText?: React$1.ReactNode;
 	variant?: SelectFieldVariant;
 } & React$1.RefAttributes<HTMLSelectElement>>;
@@ -1711,9 +1728,10 @@ export type TextAreaProps = React$1.TextareaHTMLAttributes<HTMLTextAreaElement> 
 	 */
 	size?: Size;
 	/**
-	 * Alter the field to provide feedback based on validation result.
+	 * Alter the field to reflect the state of its data, e.g. a validation result or a change
+	 * against the saved value.
 	 */
-	validationState?: ValidationState;
+	state?: State;
 	/**
 	 * Validation message to be displayed.
 	 */
@@ -1733,7 +1751,7 @@ declare const TextAreaWithGlobalProps: React$1.ForwardRefExoticComponent<React$1
 	layout?: Layout;
 	required?: boolean;
 	size?: Size;
-	validationState?: ValidationState;
+	state?: State;
 	validationText?: React$1.ReactNode;
 	variant?: TextAreaVariant;
 } & React$1.RefAttributes<HTMLTextAreaElement>>;
@@ -1800,13 +1818,14 @@ export type TextFieldProps = Omit<React$1.InputHTMLAttributes<HTMLInputElement>,
 	 */
 	size?: Size;
 	/**
+	 * Alter the field to reflect the state of its data, e.g. a validation result or a change
+	 * against the saved value.
+	 */
+	state?: State;
+	/**
 	 * HTML input type, translated as `type` attribute of the input.
 	 */
 	type?: TextFieldType;
-	/**
-	 * Alter the field to provide feedback based on validation result.
-	 */
-	validationState?: ValidationState;
 	/**
 	 * Validation message to be displayed.
 	 *
@@ -1830,8 +1849,8 @@ declare const TextFieldWithGlobalProps: React$1.ForwardRefExoticComponent<Omit<R
 	layout?: Layout;
 	required?: boolean;
 	size?: Size;
+	state?: State;
 	type?: TextFieldType;
-	validationState?: ValidationState;
 	validationText?: React$1.ReactNode;
 	variant?: TextFieldVariant;
 } & React$1.RefAttributes<HTMLInputElement>>;
@@ -1889,9 +1908,10 @@ export type ToggleProps = Omit<React$1.InputHTMLAttributes<HTMLInputElement>, "t
 	 */
 	required?: boolean;
 	/**
-	 * Alter the field to provide feedback based on validation result.
+	 * Alter the field to reflect the state of its data, e.g. a validation result or a change
+	 * against the saved value.
 	 */
-	validationState?: ValidationState;
+	state?: State;
 	/**
 	 * Validation message to be displayed.
 	 */
@@ -1906,7 +1926,7 @@ declare const ToggleWithGlobalProps: React$1.ForwardRefExoticComponent<Omit<Reac
 	labelPosition?: ToggleLabelPosition;
 	renderAsRequired?: boolean;
 	required?: boolean;
-	validationState?: ValidationState;
+	state?: State;
 	validationText?: React$1.ReactNode;
 } & React$1.RefAttributes<HTMLInputElement>>;
 export type ToolbarAlign = "top" | "middle" | "bottom" | "baseline";
@@ -2025,7 +2045,7 @@ declare const en: {
 	MultiSelectField: {
 		noOptions: string;
 		removeTag: string;
-		search: string;
+		tagDescription: string;
 	};
 	ScrollView: {
 		next: string;

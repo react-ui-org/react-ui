@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
   <link rel="preconnect" href="https://unpkg.com" />
 
@@ -32,10 +32,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -637,6 +637,17 @@
     <span class="md-ellipsis">
       
         Colors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#states" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        States
       
     </span>
   </a>
@@ -2917,6 +2928,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#states" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        States
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2978,6 +3000,34 @@ used to ensure consistency across the design system.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="states">States</h2>
+<p>The following state names are designed for use in components that support the
+<code>state</code> prop, such as form fields:</p>
+<table>
+<thead>
+<tr>
+<th>Collection</th>
+<th>Available values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>State</td>
+<td><code>valid</code>, <code>invalid</code>, <code>warning</code>, <code>changed</code></td>
+<td>Condition of data in a component</td>
+</tr>
+</tbody>
+</table>
+<p>Unlike colors, a state is not a matter of style. It follows from the data: the
+result of its validation (<code>valid</code>, <code>invalid</code>, <code>warning</code>), or its comparison with
+the saved value (<code>changed</code>). That is also why <code>warning</code> state is not the same as
+<code>warning</code> feedback color, although they look alike.</p>
+<p>A component shows one state at a time. When data is in more states at once, such
+as changed and invalid, it's up to you to pick the one that matters more to the
+user. Where React UI picks the state itself, e.g. in
+<a href="../../../components/InputGroup/">InputGroup</a>, the order is: <code>invalid</code>, <code>warning</code>,
+<code>changed</code>, <code>valid</code>.</p>
 
 
 
@@ -3067,10 +3117,10 @@ used to ensure consistency across the design system.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="https://unpkg.com/@babel/standalone@7.20.15/babel.min.js"></script>
       

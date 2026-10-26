@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
   <link rel="preconnect" href="https://unpkg.com" />
 
@@ -32,10 +32,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -2581,10 +2581,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#validation-states" class="md-nav__link">
+  <a href="#states" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Validation States
+        States
       
     </span>
   </a>
@@ -3053,10 +3053,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#validation-states" class="md-nav__link">
+  <a href="#states" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Validation States
+        States
       
     </span>
   </a>
@@ -3611,23 +3611,23 @@ and <a href="/components/Toggle">Toggle</a>.</p>
     &lt;/React.Fragment&gt;
   )
 });</code></pre>
-<h2 id="validation-states">Validation States</h2>
-<p>Theming options for validation states are shared by all form components. Naming
+<h2 id="states">States</h2>
+<p>Theming options for states are shared by all form components. Naming
 convention looks as follows:</p>
-<p><code>--rui-FormField--&lt;VALIDATION STATE&gt;--&lt;INTERACTION STATE&gt;__&lt;PROPERTY&gt;</code></p>
+<p><code>--rui-FormField--&lt;STATE&gt;--&lt;INTERACTION STATE&gt;__&lt;PROPERTY&gt;</code></p>
 <p>Where:</p>
 <ul>
-<li><code>&lt;VALIDATION STATE&gt;</code> is one of <code>invalid</code>, <code>valid</code>, or <code>warning</code></li>
+<li><code>&lt;STATE&gt;</code> is one of <code>changed</code>, <code>invalid</code>, <code>valid</code>, or <code>warning</code></li>
 <li><code>&lt;INTERACTION STATE&gt;</code> is one of <code>default</code>, <code>checked</code>, <code>disabled</code>, or
   <code>checked-disabled</code></li>
 <li><code>&lt;PROPERTY&gt;</code> is one of <code>color</code>, <code>border-color</code>, <code>background</code>,
   <code>check-background-color</code>, <code>box-shadow</code>, or <code>surrounding-text-color</code></li>
 </ul>
 <p>Not all properties are used by all components, this varies from component to
-component. Also, <code>hover</code> interaction state is unavailable for validation states
+component. Also, <code>hover</code> interaction state is unavailable for form field states
 everywhere — <code>default</code> state appearance is retained on hovering. For box fields,
-<code>focus</code> state for validation states is inherited from default form field
-appearance (i.e. as if no validation state was set).</p>
+<code>focus</code> appearance of a field in a state is inherited from default form field
+appearance (i.e. as if no state was set).</p>
 <p>Example:</p>
 <pre class="highlight"><code class="language-docoff-react-preview">React.createElement(() =&gt; {
   const [agree, setAgree] = React.useState(true);
@@ -3659,7 +3659,7 @@ appearance (i.e. as if no validation state was set).</p>
           margin: 4px;
         }
 
-        .example--themed-form-field-validation-states {
+        .example--themed-form-field-states {
           --rui-FormField--valid--default__color: white;
           --rui-FormField--valid--default__border-color: LightSeaGreen;
           --rui-FormField--valid--default__background: MediumAquamarine;
@@ -3672,7 +3672,7 @@ appearance (i.e. as if no validation state was set).</p>
       &lt;TextField
         id="default-valid-text-field"
         label="Default valid text field"
-        validationState="valid"
+        state="valid"
         validationText="This field is valid"
       /&gt;
       &lt;SelectField
@@ -3680,7 +3680,7 @@ appearance (i.e. as if no validation state was set).</p>
         label="Default valid select field"
         onChange={(e) =&gt; setFruit(e.target.value)}
         options={options}
-        validationState="valid"
+        state="valid"
         validationText="This field is valid"
         value={fruit}
       /&gt;
@@ -3702,7 +3702,7 @@ appearance (i.e. as if no validation state was set).</p>
             value: 'grapefruit',
           },
         ]}
-        validationState="valid"
+        state="valid"
         validationText="This field is valid"
         value={fruit}
       /&gt;
@@ -3711,7 +3711,7 @@ appearance (i.e. as if no validation state was set).</p>
         id="default-valid-checkbox"
         label="Default valid checkbox"
         onChange={() =&gt; setAgree(!agree)}
-        validationState="valid"
+        state="valid"
         validationText="This field is valid"
       /&gt;
       &lt;Toggle
@@ -3719,14 +3719,14 @@ appearance (i.e. as if no validation state was set).</p>
         id="default-valid-toggle"
         label="Default valid toggle"
         onChange={() =&gt; setStudioQuality(!studioQuality)}
-        validationState="valid"
+        state="valid"
         validationText="This field is valid"
       /&gt;
-      &lt;div className="example example--themed-form-field-validation-states mt-6"&gt;
+      &lt;div className="example example--themed-form-field-states mt-6"&gt;
         &lt;TextField
           id="themed-valid-text-field"
           label="Themed valid text field"
-          validationState="valid"
+          state="valid"
           validationText="This field is valid"
         /&gt;
         &lt;SelectField
@@ -3734,7 +3734,7 @@ appearance (i.e. as if no validation state was set).</p>
           label="Themed valid select field"
           onChange={(e) =&gt; setFruit(e.target.value)}
           options={options}
-          validationState="valid"
+          state="valid"
           validationText="This field is valid"
           value={fruit}
         /&gt;
@@ -3756,7 +3756,7 @@ appearance (i.e. as if no validation state was set).</p>
               value: 'grapefruit',
             },
           ]}
-          validationState="valid"
+          state="valid"
           validationText="This field is valid"
           value={fruit}
         /&gt;
@@ -3765,7 +3765,7 @@ appearance (i.e. as if no validation state was set).</p>
           id="themed-valid-checkbox"
           label="Themed valid checkbox"
           onChange={() =&gt; setAgree(!agree)}
-          validationState="valid"
+          state="valid"
           validationText="This field is valid"
         /&gt;
         &lt;Toggle
@@ -3773,7 +3773,7 @@ appearance (i.e. as if no validation state was set).</p>
           checked={studioQuality}
           id="themed-valid-toggle"
           label="Themed valid toggle"
-          validationState="valid"
+          state="valid"
           validationText="This field is valid"
         /&gt;
       &lt;/div&gt;
@@ -3835,7 +3835,7 @@ cursor on hover so users know the fields cannot be used.</p>
 </tbody>
 </table>
 <p>Should your design require custom styling of disabled fields, individual field
-types and validation states can be fine-tuned by several theming options
+types and states can be fine-tuned by several theming options
 available. All you need is to define all necessary custom properties following
 the naming conventions documented in previous sections (for simplicity, the
 properties do not exist in the default theme, we only use transparency to mark
@@ -3926,7 +3926,7 @@ styling of these states.</p>
         disabled
         id="default-disabled-invalid-text-field"
         label="Default disabled invalid text field"
-        validationState="invalid"
+        state="invalid"
       /&gt;
       &lt;Radio
         disabled
@@ -3964,14 +3964,14 @@ styling of these states.</p>
         disabled
         id="default-disabled-warning-checkbox"
         label="Default disabled warning checkbox"
-        validationState="warning"
+        state="warning"
       /&gt;
       &lt;Toggle
         checked
         disabled
         id="default-disabled-valid-toggle"
         label="Default disabled valid toggle"
-        validationState="valid"
+        state="valid"
       /&gt;
       &lt;div className="example example--themed-form-field-disabled-state mt-6"&gt;
         &lt;TextField
@@ -3990,7 +3990,7 @@ styling of these states.</p>
           disabled
           id="themed-disabled-invalid-text-field"
           label="Themed disabled invalid text field"
-          validationState="invalid"
+          state="invalid"
         /&gt;
         &lt;Radio
           disabled
@@ -4028,14 +4028,14 @@ styling of these states.</p>
           disabled
           id="themed-disabled-warning-checkbox"
           label="Themed disabled warning checkbox"
-          validationState="warning"
+          state="warning"
         /&gt;
         &lt;Toggle
           checked
           disabled
           id="themed-disabled-valid-toggle"
           label="Themed disabled valid toggle"
-          validationState="valid"
+          state="valid"
         /&gt;
       &lt;/div&gt;
     &lt;/React.Fragment&gt;
@@ -4130,10 +4130,10 @@ styling of these states.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.sections", "navigation.footer"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.sections", "navigation.footer"], "search": "../../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="https://unpkg.com/@babel/standalone@7.20.15/babel.min.js"></script>
       

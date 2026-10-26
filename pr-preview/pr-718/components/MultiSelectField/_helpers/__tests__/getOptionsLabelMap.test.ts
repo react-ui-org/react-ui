@@ -13,10 +13,10 @@ describe('getOptionsLabelMap', () => {
       },
     ];
 
-    expect(getOptionsLabelMap(options)).toEqual({
-      apple: 'Apple',
-      banana: 'Banana',
-    });
+    expect(getOptionsLabelMap(options)).toEqual(new Map([
+      ['apple', 'Apple'],
+      ['banana', 'Banana'],
+    ]));
   });
 
   it('maps values to labels for grouped options', () => {
@@ -36,9 +36,20 @@ describe('getOptionsLabelMap', () => {
       },
     ];
 
-    expect(getOptionsLabelMap(options)).toEqual({
-      apple: 'Apple',
-      carrot: 'Carrot',
-    });
+    expect(getOptionsLabelMap(options)).toEqual(new Map([
+      ['apple', 'Apple'],
+      ['carrot', 'Carrot'],
+    ]));
+  });
+
+  it('keeps a value named like an object property as a plain key', () => {
+    const options = [
+      {
+        label: 'Prototype',
+        value: '__proto__',
+      },
+    ];
+
+    expect(getOptionsLabelMap(options).get('__proto__')).toBe('Prototype');
   });
 });

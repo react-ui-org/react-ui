@@ -1,32 +1,48 @@
 import React, {
+  useCallback,
   useContext,
+  useId,
   useMemo,
   useRef,
-  useState,
+} from 'react';
+import type {
+  ChangeEvent,
+  FocusEvent,
+  KeyboardEvent,
+  MouseEvent,
 } from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
+import { TranslationsContext } from '../../providers/translations';
 import { classNames } from '../../helpers/classNames';
 import { transferProps } from '../../helpers/transferProps';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
-import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
+import { getRootStateClassName } from '../_helpers/getRootStateClassName';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { FormLayoutContext } from '../FormLayout';
 import { InputGroupContext } from '../InputGroup';
 import { MultiSelectFieldDropdown } from './_components/MultiSelectFieldDropdown';
-import { MultiSelectFieldSearchInput } from './_components/MultiSelectFieldSearchInput';
-import { MultiSelectFieldTag } from './_components/MultiSelectFieldTag';
+import { MultiSelectFieldDropdownTextItem } from './_components/MultiSelectFieldDropdownTextItem';
+import { MultiSelectFieldTags } from './_components/MultiSelectFieldTags';
+import { getFieldIds } from './_helpers/getFieldIds';
 import { getOptionsLabelMap } from './_helpers/getOptionsLabelMap';
-import { isPrintableCharacterKey } from './_helpers/isPrintableCharacterKey';
-import { keyDetected } from './_helpers/keyDetected';
+import { useMultiSelectFieldKeyboard } from './_hooks/useMultiSelectFieldKeyboard';
+import { useMultiSelectFieldState } from './_hooks/useMultiSelectFieldState';
 import {
   caseInsensitiveAccentSensitivePrefixSearch,
 } from './_searchAlgorithms/caseInsensitiveAccentSensitivePrefixSearch';
-import keyBindings from './keyBindings';
 import styles from './MultiSelectField.module.scss';
-import type { MultiSelectFieldProps } from './MultiSelectField.types';
+import type {
+  MultiSelectFieldOption,
+  MultiSelectFieldProps,
+} from './MultiSelectField.types';
 
-export const MultiSelectField = React.forwardRef<HTMLDivElement, MultiSelectFieldProps>(({
+/**
+ * Field for selecting multiple options. Its combobox follows the ARIA combobox pattern: the search input
+ * (or the select-only element without search) keeps the DOM focus, and the active option is referenced by
+ * `aria-activedescendant`.
+ */
+export const MultiSelectField = React.forwardRef<HTMLInputElement | HTMLDivElement, MultiSelectFieldProps>(({
   disabled = false,
   fullWidth = false,
   helpText,
@@ -40,61 +56,221 @@ export const MultiSelectField = React.forwardRef<HTMLDivElement, MultiSelectFiel
   required = false,
   searchAlgorithm = caseInsensitiveAccentSensitivePrefixSearch,
   size = 'medium',
-  validationState,
+  state,
   validationText,
   variant = 'outline',
   value,
   ...restProps
 }, ref) => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [search, setSearch] = useState('');
-  const inputRef = useRef<HTMLDivElement>(null);
-  const optionsRef = useRef<HTMLDivElement[]>([]);
-  const rootRef = useRef<HTMLLabelElement>(null);
-  const searchRef = useRef<HTMLSpanElement>(null);
-  const tagsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const comboboxRef = useRef<HTMLInputElement | HTMLDivElement | null>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
 
-  const optionsLabelMap = useMemo(() => getOptionsLabelMap(options), [options]);
+  const generatedId = useId();
+  const ids = useMemo(() => getFieldIds(id ?? generatedId), [id, generatedId]);
 
+  const translations = useContext(TranslationsContext);
   const formLayoutContext = useContext(FormLayoutContext);
   const inputGroupContext = useContext(InputGroupContext);
 
   const resolvedDisabled = resolveContextOrProp(inputGroupContext && inputGroupContext.disabled, disabled);
   const resolvedSize = resolveContextOrProp(inputGroupContext && inputGroupContext.size, size);
 
-  const isSearchEnabled = searchAlgorithm != null;
-  const displayedOptions = (isSearchEnabled && search.length > 0)
-    ? searchAlgorithm(options, search)
-    : options;
+  const optionsLabelMap = useMemo(() => getOptionsLabelMap(options), [options]);
 
-  const closeDropdown = () => {
-    setIsDropdownOpen(false);
-    setSearch('');
-    if (searchRef.current) {
-      searchRef.current.textContent = '';
+  const fieldState = useMultiSelectFieldState({
+    isDisabled: resolvedDisabled,
+    onChange,
+    options,
+    searchAlgorithm,
+    value,
+  });
+  const {
+    activeOption,
+    changeSearch,
+    closeDropdown,
+    displayedOptions,
+    flatOptions,
+    isDropdownOpen,
+    isSearchEnabled,
+    openDropdown,
+    search,
+    toggleValue,
+  } = fieldState;
+  const keyboard = useMultiSelectFieldKeyboard({
+    comboboxRef,
+    isDisabled: resolvedDisabled,
+    state: fieldState,
+    value,
+  });
+  const {
+    focusCombobox,
+    handleTagKeyAction,
+    registerTag,
+    removeTag,
+  } = keyboard;
+
+  const isNoOptionsShown = isDropdownOpen && flatOptions.length === 0;
+
+  // Help and validation texts describe the combobox, an `aria-describedby` passed by the consumer is kept.
+  const describedBy = [
+    (helpText && !inputGroupContext) ? ids.helpText : undefined,
+    (validationText && !inputGroupContext) ? ids.validationText : undefined,
+    restProps['aria-describedby'],
+  ].filter(Boolean).join(' ');
+
+  /**
+   * Keeps the element of the combobox and forwards it to the ref of the field. The callback is stable, so a
+   * callback ref passed by the consumer is not called again on every render.
+   *
+   * @param element Rendered combobox element, `null` when it is unmounted.
+   */
+  const setComboboxRef = useCallback((element: HTMLInputElement | HTMLDivElement | null) => {
+    comboboxRef.current = element;
+    if (typeof ref === 'function') {
+      ref(element);
+    } else if (ref != null) {
+      ref.current = element; // eslint-disable-line no-param-reassign
+    }
+  }, [ref]);
+
+  /**
+   * Opens the dropdown on click. The select-only combobox also closes it, like a native select does.
+   * A click handler passed by the consumer is called first and can prevent the default to stop this.
+   *
+   * @param event Click event of the combobox.
+   */
+  const handleComboboxClick = (event: MouseEvent<HTMLInputElement | HTMLDivElement>) => {
+    // The consumer handler is typed for the input, the select-only element receives the same event.
+    restProps.onClick?.(event as MouseEvent<HTMLInputElement>);
+
+    if (resolvedDisabled || event.defaultPrevented) {
+      return;
+    }
+
+    if (!isDropdownOpen) {
+      openDropdown();
+    } else if (!isSearchEnabled) {
+      closeDropdown();
     }
   };
 
-  const closeDropdownAndFocusInput = () => {
-    closeDropdown();
-    inputRef.current?.focus();
-  };
+  /**
+   * Handles a key press on the combobox. A key down handler passed by the consumer is called first and can
+   * prevent the default to stop the field from handling the key.
+   *
+   * @param event Keyboard event of the combobox.
+   */
+  const handleComboboxKeyDown = (event: KeyboardEvent<HTMLInputElement | HTMLDivElement>) => {
+    restProps.onKeyDown?.(event as KeyboardEvent<HTMLInputElement>);
 
-  const openDropdown = () => {
-    setIsDropdownOpen(true);
-    if (isSearchEnabled) {
-      searchRef.current?.focus();
+    if (!event.defaultPrevented) {
+      keyboard.handleComboboxKeyDown(event);
     }
   };
 
-  useClickOutside(rootRef, () => {
+  /**
+   * Closes the dropdown when the focus moves out of the field. When `relatedTarget` is `null` (focus lost by
+   * clicking a non-focusable element), closing is left to the click-outside handler so that clicks inside the
+   * field do not close the dropdown.
+   *
+   * @param event Blur event of the field.
+   */
+  const handleRootBlur = (event: FocusEvent<HTMLDivElement>) => {
+    if (
+      isDropdownOpen
+      && event.relatedTarget !== null
+      && rootRef.current
+      && !rootRef.current.contains(event.relatedTarget)
+    ) {
+      closeDropdown();
+    }
+  };
+
+  /**
+   * Focuses the select-only combobox and opens the dropdown on clicking the label. The label of the search input
+   * is associated with it by `htmlFor` instead, so the browser handles the click.
+   */
+  const handleLabelClick = () => {
+    focusCombobox();
+
+    if (!isDropdownOpen && !resolvedDisabled) {
+      openDropdown();
+    }
+  };
+
+  /**
+   * Toggles the dropdown on clicking the field around the combobox, e.g. its caret, and focuses the combobox.
+   * Clicks on the combobox itself are handled by its own click handler.
+   *
+   * @param event Click event of the field.
+   */
+  const handleInputContainerClick = (event: MouseEvent<HTMLDivElement>) => {
+    if (resolvedDisabled || event.target === comboboxRef.current) {
+      return;
+    }
+
+    if (isDropdownOpen) {
+      closeDropdown();
+    } else {
+      openDropdown();
+    }
+
+    focusCombobox();
+  };
+
+  /**
+   * Updates the search text on typing into the search input.
+   *
+   * @param event Change event of the search input.
+   */
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
+    changeSearch(event.target.value);
+  };
+
+  /**
+   * Toggles the option selected by a click in the dropdown and keeps the focus in the combobox.
+   *
+   * @param selectedValue Value of the clicked option.
+   */
+  const handleItemSelected = (selectedValue: MultiSelectFieldOption['value']) => {
+    if (resolvedDisabled) {
+      return;
+    }
+
+    toggleValue(selectedValue);
+    focusCombobox();
+  };
+
+  // Props shared by the editable combobox input and the non-editable combobox element
+  const comboboxProps = {
+    'aria-activedescendant': (isDropdownOpen && activeOption) ? ids.item(activeOption.key) : undefined,
+    'aria-controls': (isDropdownOpen && flatOptions.length > 0) ? ids.dropdown : undefined,
+    'aria-describedby': describedBy || undefined,
+    // The dropdown is only expanded while it has options to show, see the status region for the "no options" text.
+    'aria-expanded': isDropdownOpen && flatOptions.length > 0,
+    'aria-haspopup': 'listbox' as const,
+    'aria-invalid': state === 'invalid' ? true : restProps['aria-invalid'],
+    'aria-labelledby': ids.labelText,
+    'aria-required': required,
+    className: styles.combobox,
+    id: ids.input,
+    onClick: handleComboboxClick,
+    onKeyDown: handleComboboxKeyDown,
+    ref: setComboboxRef,
+    role: 'combobox',
+  };
+
+  // Stable callback, so the document listener is not reattached on every render.
+  const closeOnClickOutside = useCallback(() => {
     if (isDropdownOpen) {
       closeDropdown();
     }
-  });
+  }, [closeDropdown, isDropdownOpen]);
+
+  useClickOutside(rootRef, closeOnClickOutside);
 
   return (
-    <label
+    <div
       className={classNames(
         styles.root,
         fullWidth && styles.isRootFullWidth,
@@ -110,158 +286,69 @@ export const MultiSelectField = React.forwardRef<HTMLDivElement, MultiSelectFiel
           styles,
           resolvedSize,
         ),
-        getRootValidationStateClassName(styles, validationState),
+        getRootStateClassName(styles, state),
         variant === 'filled' ? styles.isRootVariantFilled : styles.isRootVariantOutline,
       )}
-      htmlFor={id}
-      id={id && `${id}__label`}
-      onBlur={(event) => {
-        // Close the dropdown when the focus moves out of the component. When `relatedTarget` is
-        // `null` (focus lost by clicking a non-focusable element), closing is left to the
-        // click-outside handler so that clicks inside the component do not close the dropdown.
-        if (
-          isDropdownOpen
-          && event.relatedTarget !== null
-          && rootRef.current
-          && !rootRef.current.contains(event.relatedTarget)
-        ) {
-          closeDropdown();
-        }
-      }}
+      id={ids.label}
+      onBlur={handleRootBlur}
       ref={rootRef}
     >
-      <div
+      {/* Keyboard users reach the combobox by Tab, the click only helps pointer users. */}
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+      <label
         className={classNames(
           styles.label,
           (!isLabelVisible || inputGroupContext) && styles.isLabelHidden,
         )}
-        id={id && `${id}__labelText`}
+        // A label can only be associated with the input, the non-editable combobox is focused on click instead.
+        htmlFor={isSearchEnabled ? ids.input : undefined}
+        id={ids.labelText}
+        onClick={isSearchEnabled ? undefined : handleLabelClick}
       >
         {label}
-      </div>
+      </label>
       <div className={styles.field}>
-        <div className={styles.inputContainer}>
-          <div
-            {...transferProps(restProps)}
-            aria-controls={id && `${id}__dropdown`}
-            aria-disabled={resolvedDisabled}
-            aria-expanded={isDropdownOpen}
-            aria-haspopup="listbox"
-            aria-labelledby={id && `${id}__labelText`}
-            aria-required={required}
-            className={styles.input}
-            id={id}
-            onClick={(event) => {
-              if (resolvedDisabled) {
-                return;
-              }
-
-              // Clicks inside the search input must not close the open dropdown, e.g. when
-              // the user positions the cursor within the search text.
-              if (isDropdownOpen && searchRef.current?.contains(event.target as Node)) {
-                return;
-              }
-
-              if (isDropdownOpen) {
-                closeDropdown();
-              } else {
-                openDropdown();
-              }
-            }}
-            onKeyDown={(event) => {
-              // Key presses on tags and on the search input are handled by themselves and
-              // must not be processed a second time when they bubble up here.
-              if (resolvedDisabled || event.target !== event.currentTarget) {
-                return;
-              }
-
-              if (isDropdownOpen && keyDetected(event, keyBindings.closeDropdown)) {
-                event.preventDefault();
-                closeDropdownAndFocusInput();
-                return;
-              }
-
-              if (keyDetected(
-                event,
-                [
-                  ...keyBindings.focusNextDropdownItem,
-                  ...keyBindings.focusPreviousDropdownItem,
-                  ...keyBindings.openDropdown,
-                ],
-              )) {
-                event.preventDefault();
-                openDropdown();
-                return;
-              }
-
-              // Typing a character opens the dropdown and moves focus to the search input.
-              // The default action is intentionally kept so the typed character is inserted
-              // into the freshly focused search input.
-              if (isSearchEnabled && isPrintableCharacterKey(event)) {
-                openDropdown();
-              }
-            }}
-            ref={(element) => {
-              inputRef.current = element;
-              if (typeof ref === 'function') {
-                ref(element);
-              } else if (ref != null) {
-                ref.current = element; // eslint-disable-line no-param-reassign
-              }
-            }}
-            role="combobox"
-            tabIndex={resolvedDisabled ? -1 : 0}
-          >
-            {value.map((selectedValue, index) => (
-              <MultiSelectFieldTag
+        {/* The click toggles the dropdown for pointer users, keyboard users operate the combobox. */}
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
+        <div
+          className={styles.inputContainer}
+          onClick={handleInputContainerClick}
+        >
+          <div className={styles.input}>
+            <MultiSelectFieldTags
+              descriptionId={ids.tagDescription}
+              disabled={resolvedDisabled}
+              labelId={ids.labelText}
+              onFocusTag={closeDropdown}
+              onKeyAction={handleTagKeyAction}
+              onRemoveTag={removeTag}
+              priority={variant}
+              registerTag={registerTag}
+              size={resolvedSize}
+              tags={value.map((selectedValue) => ({
+                label: optionsLabelMap.get(selectedValue) ?? String(selectedValue),
+                value: selectedValue,
+              }))}
+            />
+            {isSearchEnabled ? (
+              <input
+                {...transferProps(restProps)}
+                {...comboboxProps}
+                aria-autocomplete="list"
+                autoComplete="off"
                 disabled={resolvedDisabled}
-                isFocusable={isDropdownOpen}
-                key={selectedValue}
-                onCloseDropdown={closeDropdownAndFocusInput}
-                onRemoveTag={() => {
-                  onChange(value.filter((otherValue) => otherValue !== selectedValue));
-
-                  const tags = tagsRef.current.filter(Boolean);
-                  const fallbackTarget = isSearchEnabled ? searchRef.current : inputRef.current;
-                  const target = tags[index - 1] ?? tags[index + 1] ?? fallbackTarget;
-                  target?.focus();
-                }}
-                priority={variant}
-                ref={(element) => {
-                  tagsRef.current[index] = element;
-                }}
-                size={resolvedSize}
-              >
-                {optionsLabelMap[selectedValue] ?? selectedValue}
-              </MultiSelectFieldTag>
-            ))}
-            {isSearchEnabled && (
-              <MultiSelectFieldSearchInput
-                disabled={resolvedDisabled}
-                id={id}
-                isFocusable={isDropdownOpen}
-                onCloseDropdown={closeDropdownAndFocusInput}
-                onFocusFirstDropdownItem={() => {
-                  optionsRef.current[0]?.focus();
-                }}
-                onFocusLastDropdownItem={() => {
-                  optionsRef.current[optionsRef.current.length - 1]?.focus();
-                }}
-                onFocusLastTag={() => {
-                  const tags = tagsRef.current.filter(Boolean);
-                  tags[tags.length - 1]?.focus();
-                }}
-                onSearchInput={(searchValue) => {
-                  setSearch(searchValue);
-
-                  // Typing into the search input while the dropdown is closed reopens it,
-                  // e.g. after the dropdown was closed by removing a tag.
-                  if (!isDropdownOpen) {
-                    setIsDropdownOpen(true);
-                  }
-                }}
-                ref={searchRef}
-                searchValue={search}
+                onChange={handleSearchChange}
+                type="text"
+                value={search}
+              />
+            ) : (
+              // Without search, the combobox is not editable, so it is not rendered as an input which screen readers
+              // would announce as read-only. Disabled, it is not focusable at all.
+              <div
+                {...transferProps(restProps)}
+                {...comboboxProps}
+                aria-disabled={resolvedDisabled || undefined}
+                tabIndex={resolvedDisabled ? undefined : 0}
               />
             )}
           </div>
@@ -272,27 +359,45 @@ export const MultiSelectField = React.forwardRef<HTMLDivElement, MultiSelectFiel
             <div className={styles.bottomLine} />
           )}
         </div>
-        {isDropdownOpen && (
+        {(isDropdownOpen && flatOptions.length > 0) && (
           <MultiSelectFieldDropdown
-            autoFocusFirstOptionOnOpen={!isSearchEnabled}
-            id={id}
-            onClose={closeDropdownAndFocusInput}
-            onItemSelected={(selectedValue) => {
-              if (value.includes(selectedValue)) {
-                onChange(value.filter((otherValue) => otherValue !== selectedValue));
-              } else {
-                onChange([...value, selectedValue]);
-              }
-            }}
+            activeOptionKey={activeOption?.key}
+            disabled={resolvedDisabled}
+            getGroupId={ids.group}
+            getOptionId={ids.item}
+            id={ids.dropdown}
+            labelId={ids.labelText}
+            onFocusCombobox={focusCombobox}
+            onItemSelected={handleItemSelected}
             options={displayedOptions}
-            optionsRef={optionsRef}
             value={value}
           />
         )}
+        {/* The region is always rendered so that screen readers announce the text reliably once it appears. */}
+        <div
+          aria-live="polite"
+          className={classNames(
+            styles.status,
+            isNoOptionsShown && styles.isStatusShown,
+          )}
+          role="status"
+        >
+          {isNoOptionsShown && (
+            <MultiSelectFieldDropdownTextItem>
+              {translations.MultiSelectField.noOptions}
+            </MultiSelectFieldDropdownTextItem>
+          )}
+        </div>
+        <span
+          hidden
+          id={ids.tagDescription}
+        >
+          {translations.MultiSelectField.tagDescription}
+        </span>
         {(helpText && !inputGroupContext) && (
           <div
             className={styles.helpText}
-            id={id && `${id}__helpText`}
+            id={ids.helpText}
           >
             {helpText}
           </div>
@@ -300,16 +405,16 @@ export const MultiSelectField = React.forwardRef<HTMLDivElement, MultiSelectFiel
         {(validationText && !inputGroupContext) && (
           <div
             className={styles.validationText}
-            id={id && `${id}__validationText`}
+            id={ids.validationText}
           >
             {validationText}
           </div>
         )}
       </div>
-    </label>
+    </div>
   );
 });
 
-export const MultiSelectFieldWithGlobalProps = withGlobalProps<MultiSelectFieldProps, HTMLDivElement>(MultiSelectField, 'MultiSelectField');
+export const MultiSelectFieldWithGlobalProps = withGlobalProps<MultiSelectFieldProps, HTMLInputElement | HTMLDivElement>(MultiSelectField, 'MultiSelectField');
 
 export default MultiSelectFieldWithGlobalProps;

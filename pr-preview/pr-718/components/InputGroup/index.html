@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
   <link rel="preconnect" href="https://unpkg.com" />
 
@@ -32,10 +32,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -1589,6 +1589,17 @@
     <span class="md-ellipsis">
       
         Validation States
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed State
       
     </span>
   </a>
@@ -3167,6 +3178,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#changed-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed State
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3480,14 +3502,14 @@ InputGroup.</p>
 &lt;/InputGroup&gt;</code></pre>
 <h3 id="validation-states">Validation States</h3>
 <p>Validation states visually present the result of validation of the grouped
-inputs. Input group's validation state is taken from its child inputs. You
+inputs. Input group's state is taken from its child inputs. You
 should always <strong>provide validation messages for states other than valid</strong>
 directly through <code>validationTexts</code> prop so users know what happened and what
 action they should take or what options they have.</p>
 <p>These messages are not semantically tied to the <code>children</code> elements, the
 connection should be expressed in textual form in the actual message. The
 individual <code>children</code> elements must not show any <code>validationText</code>, they only
-show their respective <code>validationState</code>.</p>
+show their respective <code>state</code>.</p>
 <p>⚠️ Validation messages passed to input elements' <code>validationText</code> prop are
 ignored within InputGroup.</p>
 <p>👉 While there is a <code>required</code> property to visually denote the whole input group
@@ -3505,13 +3527,13 @@ for the underlying <code>&lt;fieldset&gt;</code> element.</p>
     label="First name"
     placeholder="Eg. John"
     required
-    validationState="invalid"
+    state="invalid"
   /&gt;
   &lt;TextField
     label="Last name"
     placeholder="Eg. Doe"
     required
-    validationState="invalid"
+    state="invalid"
   /&gt;
   &lt;Button label="Submit" /&gt;
 &lt;/InputGroup&gt;
@@ -3532,7 +3554,7 @@ for the underlying <code>&lt;fieldset&gt;</code> element.</p>
     label="Last name"
     placeholder="Eg. Doe"
     required
-    validationState="warning"
+    state="warning"
     value="123Doe"
   /&gt;
   &lt;Button label="Submit" /&gt;
@@ -3545,14 +3567,36 @@ for the underlying <code>&lt;fieldset&gt;</code> element.</p>
     label="First name"
     placeholder="Eg. John"
     required
-    validationState="valid"
+    state="valid"
     value="John"
   /&gt;
   &lt;TextField
     label="Last name"
     placeholder="Eg. Doe"
     required
-    validationState="valid"
+    state="valid"
+    value="Doe"
+  /&gt;
+  &lt;Button label="Submit" /&gt;
+&lt;/InputGroup&gt;</code></pre>
+<h3 id="changed-state">Changed State</h3>
+<p>Changed state highlights inputs whose value differs from the saved one, so users
+can review their edits before saving.</p>
+<p>Input group shows one state at a time. When its inputs have different states,
+the group takes the one that matters most to the user, in this order:
+<code>invalid</code>, <code>warning</code>, <code>changed</code>, <code>valid</code>.</p>
+<pre class="highlight"><code class="language-docoff-react-preview">&lt;InputGroup label="First and last name"&gt;
+  &lt;TextField
+    label="First name"
+    onChange={() =&gt; {}}
+    placeholder="Eg. John"
+    value="John"
+  /&gt;
+  &lt;TextField
+    label="Last name"
+    onChange={() =&gt; {}}
+    placeholder="Eg. Doe"
+    state="changed"
     value="Doe"
   /&gt;
   &lt;Button label="Submit" /&gt;
@@ -3679,10 +3723,10 @@ and helps to improve its accessibility.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.footer"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="https://unpkg.com/@babel/standalone@7.20.15/babel.min.js"></script>
       

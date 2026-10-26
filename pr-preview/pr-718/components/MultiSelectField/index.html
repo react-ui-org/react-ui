@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
   <link rel="preconnect" href="https://unpkg.com" />
 
@@ -32,10 +32,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -1190,6 +1190,56 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Keyboard Interaction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opening-and-closing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening and Closing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#moving-between-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Moving Between Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selecting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selecting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tags
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -1280,6 +1330,17 @@
     <span class="md-ellipsis">
       
         Validation States
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed State
       
     </span>
   </a>
@@ -3182,6 +3243,56 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Keyboard Interaction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opening-and-closing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening and Closing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#moving-between-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Moving Between Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selecting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selecting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tags
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -3272,6 +3383,17 @@
     <span class="md-ellipsis">
       
         Validation States
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed State
       
     </span>
   </a>
@@ -3538,26 +3660,84 @@
 <p>In case of a large amount of options, consider <strong>grouping related items
   together</strong> by nesting them.</p>
 </li>
+<li>
+<p>Selecting an option, by click or by keyboard, <strong>keeps the dropdown open</strong> and
+  clears the search text, so users can select several options in a row.</p>
+</li>
 </ul>
 <h3 id="keyboard-interaction">Keyboard Interaction</h3>
+<p>The field is a <strong>single tab stop</strong>. <strong>Tab</strong> and <strong>Shift + Tab</strong> enter and leave
+the whole field, whether the dropdown is open or not. Options and tags are
+reached by keys pressed in the combobox, so keyboard users never need to Tab
+through them.</p>
+<h4 id="opening-and-closing">Opening and Closing</h4>
 <ul>
-<li><strong>Enter</strong>, <strong>Space</strong>, <strong>Arrow Up</strong>, or <strong>Arrow Down</strong> opens the dropdown.
-  Typing a character opens the dropdown too (when <a href="#search">search</a> is
-  enabled).</li>
-<li><strong>Typing</strong> into the search input filters the displayed options (when
-  <a href="#search">search</a> is enabled).</li>
-<li><strong>Arrow Up</strong> and <strong>Arrow Down</strong> move focus between the options.</li>
-<li><strong>Enter</strong> or <strong>Space</strong> toggles selection of the focused option.</li>
-<li><strong>Delete</strong> or <strong>Backspace</strong> removes a focused tag. <strong>Backspace</strong> in an empty
-  search input moves focus to the last tag.</li>
-<li><strong>Escape</strong> closes the dropdown and returns focus to the input.</li>
-<li><strong>Tab</strong> moves focus through the tags and further out of the field while the
-  dropdown is open.</li>
+<li><strong>Arrow Down</strong> or <strong>Arrow Up</strong> opens the closed dropdown and activates its
+  first or last option. <strong>Alt + Arrow Down</strong> opens it without activating an
+  option. <strong>Enter</strong> and <strong>Space</strong> open it too, unless Space types a space (see
+  <a href="#selecting">Selecting</a>).</li>
+<li><strong>Typing</strong> into the search input opens the dropdown and filters the options
+  when <a href="#search">search</a> is enabled.</li>
+<li><strong>Escape</strong> or <strong>Alt + Arrow Up</strong> closes the dropdown. The search text is
+  cleared, the selection stays unchanged.</li>
+</ul>
+<h4 id="moving-between-options">Moving Between Options</h4>
+<ul>
+<li><strong>Arrow Down</strong> and <strong>Arrow Up</strong> move the active option to the next or the
+  previous one. They stop at the first and the last option instead of wrapping
+  around. Disabled options are skipped.</li>
+<li><strong>Home</strong> and <strong>End</strong> activate the first and the last option. In the search
+  input they move the cursor within the search text until an option is active.
+  Without search they always activate the first or the last option, and open
+  the dropdown when it is closed.</li>
+<li><strong>Arrow Left</strong> and <strong>Arrow Right</strong> deactivate the active option in the search
+  input and leave the cursor within the search text. Without search they do
+  nothing while an option is active.</li>
+<li><strong>Page Up</strong> and <strong>Page Down</strong> are not supported.</li>
+<li>Without search, typing a character activates the next option whose label
+  starts with it, like a native select does. Typing more characters keeps the
+  active option while its label still starts with them, otherwise the next
+  matching option is activated. Typing the same character repeatedly cycles
+  through the options starting with it. Space continues a multi-word match,
+  e.g. "Czech R". The match is reset after a short pause.</li>
+</ul>
+<h4 id="selecting">Selecting</h4>
+<ul>
+<li><strong>Enter</strong> and <strong>Space</strong> toggle the active option and keep the dropdown open,
+  so more options can be selected. Without an active option, Enter does nothing
+  and never submits a surrounding form. Without an active option, Space does
+  nothing, so the page does not scroll.</li>
+<li><strong>Space</strong> toggles the active option when search is disabled or the search text
+  is empty. With search enabled and text typed, Space types a space instead.</li>
+<li>Selecting an option clears the search text, the selected option stays active.</li>
+</ul>
+<h4 id="tags">Tags</h4>
+<ul>
+<li><strong>Backspace</strong> in an empty search input moves focus to the last tag. Without
+  search, Backspace does this at any time. Moving to the tags closes the
+  dropdown.</li>
+<li><strong>Arrow Left</strong> moves focus to the last tag when no option is active and the
+  cursor is at the start of the search text. Without search, the cursor position
+  does not matter.</li>
+<li>In a tag, <strong>Arrow Left</strong> and <strong>Arrow Right</strong> move to the previous and the next
+  tag. They stop at the first and the last tag instead of wrapping around.
+  <strong>Arrow Right</strong> on the last tag returns focus to the combobox, with the cursor
+  at the start of the search text. <strong>Home</strong> and <strong>End</strong> move to the first and
+  the last tag.</li>
+<li>In a tag, <strong>Delete</strong> or <strong>Backspace</strong> removes the tag. Focus moves to the
+  previous tag, or to the next one when the first tag was removed, or to the
+  combobox when no tags remain.</li>
+<li>In a tag, <strong>Escape</strong> returns focus to the combobox. <strong>Arrow Down</strong> and
+  <strong>Arrow Up</strong> open the dropdown and activate its first or last option.</li>
+<li>In a tag, printable characters become the search text. Without search, they
+  start type-ahead instead. <strong>Space</strong> opens the dropdown instead of typing a
+  space. Keys with a modifier, e.g. <strong>Alt + Arrow Left</strong>, are left to the
+  browser. <strong>Tab</strong> and <strong>Shift + Tab</strong> leave the field.</li>
 </ul>
 <h2 id="design-variants">Design Variants</h2>
 <p>To satisfy the design requirements of your project, all input fields in React UI
 come in two design variants to choose from: outline and filled. Both can be
-further <a href="#theming">customized</a> with CSS custom properties.</p>
+further customized with CSS custom properties.</p>
 <pre class="highlight"><code class="language-docoff-react-preview">React.createElement(() =&gt; {
   const [fruits, setFruits] = React.useState(['apple']);
   const options = [
@@ -3698,7 +3878,7 @@ and large.</p>
 });</code></pre>
 <h2 id="grouping-related-options">Grouping Related Options</h2>
 <p>For a large amount of options you can group related items together by nesting
-them (implements the <code>optgroup</code> HTML element).</p>
+them. The groups are rendered as labelled option groups of the dropdown.</p>
 <pre class="highlight"><code class="language-docoff-react-preview">React.createElement(() =&gt; {
   const [crops, setCrops] = React.useState(['apple']);
   const options = [
@@ -3978,7 +4158,7 @@ have.</p>
         onChange={(value) =&gt; setFruits(value)}
         options={options}
         required
-        validationState="valid"
+        state="valid"
         validationText="Great, they're in stock!"
         value={fruits}
       /&gt;
@@ -3987,7 +4167,7 @@ have.</p>
         onChange={(value) =&gt; setFruits(value)}
         options={options}
         required
-        validationState="warning"
+        state="warning"
         validationText="Oh, really?"
         value={fruits}
       /&gt;
@@ -3996,7 +4176,7 @@ have.</p>
         onChange={(value) =&gt; setFruits(value)}
         options={options}
         required
-        validationState="invalid"
+        state="invalid"
         validationText="You must select at least one kind of fruit."
         value={fruits}
       /&gt;
@@ -4005,7 +4185,7 @@ have.</p>
         onChange={(value) =&gt; setFruits(value)}
         options={options}
         required
-        validationState="valid"
+        state="valid"
         validationText="Great, they're in stock!"
         value={fruits}
         variant="filled"
@@ -4015,7 +4195,7 @@ have.</p>
         onChange={(value) =&gt; setFruits(value)}
         options={options}
         required
-        validationState="warning"
+        state="warning"
         validationText="Oh, really?"
         value={fruits}
         variant="filled"
@@ -4026,8 +4206,49 @@ have.</p>
         options={options}
         required
         value={fruits}
-        validationState="invalid"
+        state="invalid"
         validationText="You must select at least one kind of fruit."
+        variant="filled"
+      /&gt;
+    &lt;/&gt;
+  );
+})</code></pre>
+<h3 id="changed-state">Changed State</h3>
+<p>Changed state highlights fields whose value differs from the saved one, so users
+can review their edits before saving.</p>
+<p>A field shows one state at a time. When a changed value is also invalid, it's
+up to you to pick the state that matters more to the user.</p>
+<pre class="highlight"><code class="language-docoff-react-preview">React.createElement(() =&gt; {
+  const [fruits, setFruits] = React.useState(['apple']);
+  const options = [
+    {
+      label: 'Apple',
+      value: 'apple',
+    },
+    {
+      label: 'Banana',
+      value: 'banana',
+    },
+    {
+      label: 'Grapefruit',
+      value: 'grapefruit',
+    },
+  ];
+  return (
+    &lt;&gt;
+      &lt;MultiSelectField
+        label="Your favourite fruits"
+        onChange={(value) =&gt; setFruits(value)}
+        options={options}
+        state="changed"
+        value={fruits}
+      /&gt;
+      &lt;MultiSelectField
+        label="Your favourite fruits"
+        onChange={(value) =&gt; setFruits(value)}
+        options={options}
+        state="changed"
+        value={fruits}
         variant="filled"
       /&gt;
     &lt;/&gt;
@@ -4062,9 +4283,7 @@ have.</p>
   );
 });</code></pre>
 <h4 id="styling-the-required-state">Styling the Required State</h4>
-<p>All form fields in React UI can be
-<a href="/docs/customize/theming/forms/#required-state">styled</a>
-to indicate the required state.</p>
+<p>All form fields in React UI can be styled to indicate the required state.</p>
 <p>However, you may find yourself in a situation where a form field is valid in
 both selected and unselected states, for example to turn on or off a feature.
 If your project uses the label color as the primary means to indicate the
@@ -4457,16 +4676,25 @@ is case-insensitive, accent sensitive, but removes grouping:</p>
 can specify <strong>any HTML attribute you like.</strong> All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
 <a href="/docs/js-helpers/transferProps"><code>transferProps</code></a> helper are forwarded to the
-<code>&lt;div&gt;</code> HTML element representing the input of the field. This enables making
-the component interactive and helps to improve its accessibility.</p>
+element with the <code>combobox</code> role: the <code>&lt;input&gt;</code> HTML element, or the <code>&lt;div&gt;</code> HTML
+element when <a href="#search">search</a> is disabled. This enables making
+the component interactive and helps to improve its accessibility. When search
+is enabled, attributes such as <code>name</code> land on the native <code>&lt;input&gt;</code> element, so
+a <code>name</code> would submit the search text with a surrounding form. Event handlers
+<code>onClick</code> and <code>onKeyDown</code> are called before the component handles the event,
+and the component does not handle it when the handler calls
+<code>preventDefault()</code>. Attributes the component manages itself, such as <code>role</code>,
+<code>aria-expanded</code> or <code>aria-labelledby</code>, cannot be overridden.</p>
 <p>👉 For the full list of supported attributes refer to:</p>
 <ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes" target="_blank"><code>&lt;input&gt;</code> HTML element attributes</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes" target="_blank"><code>&lt;div&gt;</code> HTML element attributes</a></li>
 <li><a href="https://react.dev/reference/react-dom/components/common#common-props" target="_blank">React common props</a></li>
 </ul>
 <h2 id="forwarding-ref">Forwarding ref</h2>
-<p>If you provide <a href="https://reactjs.org/docs/refs-and-the-dom.html">ref</a>, it is forwarded to the <code>&lt;div&gt;</code> HTML element representing
-the input of the field.</p>
+<p>If you provide <a href="https://reactjs.org/docs/refs-and-the-dom.html">ref</a>, it is forwarded to the element with the <code>combobox</code> role:
+the <code>&lt;input&gt;</code> HTML element, or the <code>&lt;div&gt;</code> HTML element when <a href="#search">search</a>
+is disabled.</p>
 <h2 id="api">API</h2>
 <p><docoff-react-props src="/components/MultiSelectField/MultiSelectField.tsx" name="MultiSelectField"></docoff-react-props></p>
 <h2 id="theming">Theming</h2>
@@ -4680,10 +4908,10 @@ MultiSelectField.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.footer"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="https://unpkg.com/@babel/standalone@7.20.15/babel.min.js"></script>
       

@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "../../../../styles/tools/accessibility";
 @use "../../../../styles/settings/form-fields" as form-settings;
 @use "../../../../styles/theme/typography";
 @use "../../theme";
@@ -19,6 +20,25 @@
         border-width: theme.$tag-border-width;
         border-style: solid;
         border-radius: theme.$tag-border-radius;
+
+        // The tag is a control, not text, so a drag over the tags does not select their labels and the cursor
+        // does not offer text selection.
+        user-select: none;
+        cursor: default;
+    }
+
+    .root:focus-visible {
+        @include accessibility.focus-ring();
+    }
+
+    .removeButton {
+        appearance: none;
+        padding: 0;
+        margin: 0;
+        font: inherit;
+        color: inherit;
+        border: 0;
+        background: none;
         cursor: pointer;
     }
 

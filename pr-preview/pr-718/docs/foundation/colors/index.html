@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
   <link rel="preconnect" href="https://unpkg.com" />
 
@@ -32,10 +32,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -694,6 +694,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#state-colors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State Colors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#neutral-colors" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -772,6 +783,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#state-backgrounds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State Backgrounds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#neutral-backgrounds" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -822,10 +844,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#validation-states" class="md-nav__link">
+  <a href="#states" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Validation States
+        States
       
     </span>
   </a>
@@ -3106,6 +3128,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#state-colors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State Colors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#neutral-colors" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3184,6 +3217,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#state-backgrounds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State Backgrounds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#neutral-backgrounds" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3234,10 +3278,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#validation-states" class="md-nav__link">
+  <a href="#states" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Validation States
+        States
       
     </span>
   </a>
@@ -3379,6 +3423,32 @@ feedback colors to fit various design situations.</p>
   <rui-swatch color="feedback-on-note"></rui-swatch>
 </div>
 
+<h2 id="state-colors">State Colors</h2>
+<p>State colors reflect the <a href="../collections/#states">state</a> of data in
+form fields. Valid, warning, and invalid states look like the success, warning,
+and danger feedback colors by default, but they are separate and can be
+customized independently. The changed state has a color of its own.</p>
+<div>
+  <rui-swatch color="state-valid"></rui-swatch>
+  <rui-swatch color="state-valid-hover"></rui-swatch>
+  <rui-swatch color="state-valid-active"></rui-swatch>
+</div>
+<div>
+  <rui-swatch color="state-invalid"></rui-swatch>
+  <rui-swatch color="state-invalid-hover"></rui-swatch>
+  <rui-swatch color="state-invalid-active"></rui-swatch>
+</div>
+<div>
+  <rui-swatch color="state-warning"></rui-swatch>
+  <rui-swatch color="state-warning-hover"></rui-swatch>
+  <rui-swatch color="state-warning-active"></rui-swatch>
+</div>
+<div>
+  <rui-swatch color="state-changed"></rui-swatch>
+  <rui-swatch color="state-changed-hover"></rui-swatch>
+  <rui-swatch color="state-changed-active"></rui-swatch>
+</div>
+
 <h2 id="neutral-colors">Neutral Colors</h2>
 <p>Neutral colors are intended for neutral variants of components that support
 colors. The light color works well with dark backgrounds. Conversely, the dark
@@ -3448,6 +3518,15 @@ does not stand in the way of the underlying component background.</p>
   <rui-swatch color="background-note"></rui-swatch>
 </div>
 
+<h3 id="state-backgrounds">State Backgrounds</h3>
+<p>Backgrounds for form fields in individual states.</p>
+<div>
+  <rui-swatch color="background-state-valid"></rui-swatch>
+  <rui-swatch color="background-state-invalid"></rui-swatch>
+  <rui-swatch color="background-state-warning"></rui-swatch>
+  <rui-swatch color="background-state-changed"></rui-swatch>
+</div>
+
 <h3 id="neutral-backgrounds">Neutral Backgrounds</h3>
 <p>Neutral backgrounds to help you structure your content.</p>
 <div>
@@ -3476,18 +3555,20 @@ In such cases, one or more <a href="/docs/foundation/collections#colors">Color C
 used. There is always a reasonable default color for the component in question
 that can be changed to any of supported collection values through the <code>color</code>
 prop.</p>
-<h3 id="validation-states">Validation States</h3>
-<p>All form field components that support validation states
+<h3 id="states">States</h3>
+<p>All form field components that support
+<a href="../collections/#states">states</a>
 (<a href="/components/CheckboxField">CheckboxField</a>,
 <a href="/components/TextField">TextField</a>, <a href="/components/Toggle">Toggle</a> and more)
-apply selected <a href="#feedback-colors">feedback colors</a> for individual states:</p>
+apply <a href="#state-colors">state colors</a> for individual states:</p>
 <ul>
-<li><code>success</code> feedback color for <strong>valid</strong> state,</li>
-<li><code>warning</code> feedback color for <strong>warning</strong> state,</li>
-<li><code>danger</code> feedback color for <strong>invalid</strong> state.</li>
+<li><code>state-valid</code> color for <strong>valid</strong> state,</li>
+<li><code>state-warning</code> color for <strong>warning</strong> state,</li>
+<li><code>state-invalid</code> color for <strong>invalid</strong> state,</li>
+<li><code>state-changed</code> color for <strong>changed</strong> state.</li>
 </ul>
-<p>Validation state is always optional. Default styling is applied for the given
-component when its <code>validationState</code> prop is not specified.</p>
+<p>State is always optional. Default styling is applied for the given component
+when its <code>state</code> prop is not specified.</p>
 
 
 
@@ -3577,10 +3658,10 @@ component when its <code>validationState</code> prop is not specified.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="https://unpkg.com/@babel/standalone@7.20.15/babel.min.js"></script>
       

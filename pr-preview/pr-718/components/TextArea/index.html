@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
   <link rel="preconnect" href="https://unpkg.com" />
 
@@ -32,10 +32,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -1347,6 +1347,17 @@
     <span class="md-ellipsis">
       
         Validation States
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed State
       
     </span>
   </a>
@@ -3156,6 +3167,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#changed-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed State
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#disabled-state" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3445,7 +3467,7 @@ what happened and what action they should take or what options they have.</p>
 <pre class="highlight"><code class="language-docoff-react-preview">&lt;TextArea
   label="Your feedback"
   onChange={() =&gt; {}}
-  validationState="valid"
+  state="valid"
   validationText="Looks good!"
   value="Like that!"
   required
@@ -3453,21 +3475,21 @@ what happened and what action they should take or what options they have.</p>
 &lt;TextArea
   label="Your feedback"
   onChange={() =&gt; {}}
-  validationState="warning"
+  state="warning"
   validationText="The feedback should be at least 3 characters long."
   value=".."
   required
 /&gt;
 &lt;TextArea
   label="Your feedback"
-  validationState="invalid"
+  state="invalid"
   validationText="Please share your feedback with us."
   required
 /&gt;
 &lt;TextArea
   label="Your feedback"
   onChange={() =&gt; {}}
-  validationState="valid"
+  state="valid"
   validationText="Looks good!"
   variant="filled"
   value="Like that!"
@@ -3476,7 +3498,7 @@ what happened and what action they should take or what options they have.</p>
 &lt;TextArea
   label="Your feedback"
   onChange={() =&gt; {}}
-  validationState="warning"
+  state="warning"
   validationText="The feedback should be at least 3 characters long."
   variant="filled"
   value=".."
@@ -3484,10 +3506,28 @@ what happened and what action they should take or what options they have.</p>
 /&gt;
 &lt;TextArea
   label="Your feedback"
-  validationState="invalid"
+  state="invalid"
   validationText="Please share your feedback with us."
   variant="filled"
   required
+/&gt;</code></pre>
+<h3 id="changed-state">Changed State</h3>
+<p>Changed state highlights fields whose value differs from the saved one, so users
+can review their edits before saving.</p>
+<p>A field shows one state at a time. When a changed value is also invalid, it's
+up to you to pick the state that matters more to the user.</p>
+<pre class="highlight"><code class="language-docoff-react-preview">&lt;TextArea
+  label="Your feedback"
+  onChange={() =&gt; {}}
+  state="changed"
+  value="Like that!"
+/&gt;
+&lt;TextArea
+  label="Your feedback"
+  onChange={() =&gt; {}}
+  state="changed"
+  variant="filled"
+  value="Like that!"
 /&gt;</code></pre>
 <h3 id="disabled-state">Disabled State</h3>
 <p>It's possible to disable the whole input.</p>
@@ -3621,10 +3661,10 @@ options.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.footer"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="https://unpkg.com/@babel/standalone@7.20.15/babel.min.js"></script>
       

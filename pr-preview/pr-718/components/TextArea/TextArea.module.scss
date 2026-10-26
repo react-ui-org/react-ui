@@ -47,16 +47,20 @@
     }
 
     // States
+    .isRootStateChanged {
+        @include variants.state(changed);
+    }
+
     .isRootStateInvalid {
-        @include variants.validation(invalid);
+        @include variants.state(invalid);
     }
 
     .isRootStateValid {
-        @include variants.validation(valid);
+        @include variants.state(valid);
     }
 
     .isRootStateWarning {
-        @include variants.validation(warning);
+        @include variants.state(warning);
     }
 
     // Invisible label
