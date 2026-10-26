@@ -38,13 +38,13 @@ See [API](#api) for all available options.
 - Use the CheckboxField when there are lists of options and the user may
   **select any number of choices,** including zero, one, or several. For
   selecting just a single option from the list, use either the
-  [Radio](/components/Radio) or [SelectField](/components/SelectField)
+  [Radio](../Radio/README.md) or [SelectField](../SelectField/README.md)
   component.
 
 - Use the CheckboxField for boolean (true/false) input **in forms that require
   to be confirmed** by a button to become active. To toggle things on or off
   with an immediate effect (without confirmation), use rather the
-  [Toggle](/components/Toggle) component.
+  [Toggle](../Toggle/README.md) component.
 
 - **Use positive wording for the checkbox label,** so that it's clear what will
   happen when the user turns on the checkbox. Avoid negations such as “Don't
@@ -257,9 +257,9 @@ Disabled state makes the input unavailable.
 In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
-[`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to the
-`<input>` HTML element. This enables making the component interactive and helps
-to improve its accessibility.
+[`transferProps`](../../helpers/transferProps/README.md) helper are forwarded to
+the `<input>` HTML element. This enables making the component interactive and
+helps to improve its accessibility.
 
 👉 For the full list of supported attributes refer to:
 
@@ -276,8 +276,9 @@ If you provide [ref], it is forwarded to the native HTML `<input>` element.
 
 ## Theming
 
-Head to [Forms Theming](/docs/customize/theming/forms) to see shared form theming
-options. On top of that, the following options are available for CheckboxField.
+Head to [Forms Theming](../../docs/customize/theming/forms.md) to see shared
+form theming options. On top of that, the following options are available for
+CheckboxField.
 
 | Custom Property                                                      | Description                                  |
 |----------------------------------------------------------------------|----------------------------------------------|
@@ -287,7 +288,7 @@ options. On top of that, the following options are available for CheckboxField.
 ### Theming the Required State
 
 Required fields are indicated by
-[shared theming options](/docs/customize/theming/forms/#required-state).
+[shared theming options](../../docs/customize/theming/forms.md#required-state).
 
 If your project uses the label color as the primary means to indicate the
 required state of input fields and the usual asterisk `*` is omitted, you may

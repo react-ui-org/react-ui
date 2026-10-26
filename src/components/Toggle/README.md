@@ -32,7 +32,7 @@ See [API](#api) for all available options.
 - Use the toggle only for boolean (true/false) input **with an immediate effect
   (without confirmation)**. To toggle things on or off in forms that require to
   be submitted by a button, use rather the
-  [CheckboxField](/components/CheckboxField) component.
+  [CheckboxField](../CheckboxField/README.md) component.
 
 - **Use positive wording for the toggle label,** so that it's clear what will
   happen when the user turns on the toggle. Avoid negations such as “Don't send
@@ -54,7 +54,7 @@ See [API](#api) for all available options.
 - The toggle is designed for **switching things on and off.** Don't use it to
   switch between two different things that cannot be described as on or off
   using a single label, e.g. different viewing modes. In such cases, consider
-  using the [ButtonGroup](/components/ButtonGroup) component.
+  using the [ButtonGroup](../ButtonGroup/README.md) component.
 
 ## Help Text
 
@@ -230,9 +230,9 @@ Disabled state makes the input unavailable.
 In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
-[`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to the
-`<input>` HTML element. This enables making the component interactive and helps
-to improve its accessibility.
+[`transferProps`](../../helpers/transferProps/README.md) helper are forwarded to
+the `<input>` HTML element. This enables making the component interactive and
+helps to improve its accessibility.
 
 👉 For the full list of supported attributes refer to:
 
@@ -249,8 +249,9 @@ If you provide [ref], it is forwarded to the native HTML `<input>` element.
 
 ## Theming
 
-Head to [Forms Theming](/docs/customize/theming/forms) to see shared form theming
-options. On top of that, the following options are available for Toggle.
+Head to [Forms Theming](../../docs/customize/theming/forms.md) to see shared
+form theming options. On top of that, the following options are available for
+Toggle.
 
 | Custom Property                                                       | Description                                            |
 |-----------------------------------------------------------------------|--------------------------------------------------------|
@@ -265,7 +266,7 @@ options. On top of that, the following options are available for Toggle.
 ### Theming the Required State
 
 Required fields are indicated by
-[shared theming options](/docs/customize/theming/forms/#required-state).
+[shared theming options](../../docs/customize/theming/forms.md#required-state).
 
 If your project uses the label color as the primary means to indicate the
 required state of input fields and the usual asterisk `*` is omitted, you may

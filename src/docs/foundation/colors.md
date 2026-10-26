@@ -5,8 +5,8 @@ information, or signal different states of the UI. **Use colors intentionally**
 — they are not decoration and should always serve a purpose.
 
 👉 All colors on this page can be changed by
-[overriding](/docs/customize/theming/overview) values in your
-[design tokens](/docs/foundation/design-tokens).
+[overriding](../customize/theming/overview.md) values in your
+[design tokens](design-tokens.md).
 
 ## General Guidelines
 
@@ -145,7 +145,7 @@ Colors reserved for backgrounds.
 Backgrounds for the fundamental UI areas and content layering.
 
 👉 Content layers can be separated from background using their
-[shadow counterparts](/docs/foundation/shadows): `background-layer-1` +
+[shadow counterparts](shadows.md): `background-layer-1` +
 `shadow-layer-1` etc.
 
 <div>
@@ -231,20 +231,22 @@ Components can apply colors above using one or more following approaches.
 
 ### Color Collections
 
-Some components ([Alert](/components/Alert), [Badge](/components/Badge),
-[Button](/components/Button), and more) come in more color variants to help you
-better reflect their place in content hierarchy or the meaning of their content.
-In such cases, one or more [Color Collections][collection-colors] are always
-used. There is always a reasonable default color for the component in question
-that can be changed to any of supported collection values through the `color`
-prop.
+Some components ([Alert](../../components/Alert/README.md),
+[Badge](../../components/Badge/README.md),
+[Button](../../components/Button/README.md), and more) come in more color
+variants to help you better reflect their place in content hierarchy or the
+meaning of their content. In such cases, one or more
+[Color Collections][collection-colors] are always used. There is always a
+reasonable default color for the component in question that can be changed to
+any of supported collection values through the `color` prop.
 
 ### Validation States
 
 All form field components that support validation states
-([CheckboxField](/components/CheckboxField),
-[TextField](/components/TextField), [Toggle](/components/Toggle) and more)
-apply selected [feedback colors](#feedback-colors) for individual states:
+([CheckboxField](../../components/CheckboxField/README.md),
+[TextField](../../components/TextField/README.md),
+[Toggle](../../components/Toggle/README.md) and more) apply selected
+[feedback colors](#feedback-colors) for individual states:
 
 - `success` feedback color for **valid** state,
 - `warning` feedback color for **warning** state,
@@ -253,4 +255,4 @@ apply selected [feedback colors](#feedback-colors) for individual states:
 Validation state is always optional. Default styling is applied for the given
 component when its `validationState` prop is not specified.
 
-[collection-colors]: /docs/foundation/collections#colors
+[collection-colors]: collections.md#colors

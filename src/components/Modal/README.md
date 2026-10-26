@@ -123,7 +123,7 @@ Modal is decomposed into the following components:
         - ModalCloseButton
     - [ModalBody](#modalbody)
         - ModalContent
-          (may be wrapped with [ScrollView](/components/ScrollView))
+          (may be wrapped with [ScrollView](../ScrollView/README.md))
     - [ModalFooter](#modalfooter)
 
 Using different combinations, you can compose different kinds of modals,
@@ -145,7 +145,7 @@ There are two ways how to position elements within the ModalHeader:
    the ModalHeader and use `justify` prop to set up the positioning of those
    elements.
 2. You can customize positioning using another component (e.g.
-   [Toolbar](/components/Toolbar)). In that case, set `justify` to `stretch` and
+   [Toolbar](../Toolbar/README.md)). In that case, set `justify` to `stretch` and
    position elements on your own.
 
 ```docoff-react-preview
@@ -279,7 +279,7 @@ There are two ways to position buttons within the ModalFooter:
 1. You can use provided positioning. Place Button component (or any arbitrary
    element) and use `justify` prop to set up the positioning of those elements.
 2. You can customize positioning using another component (e.g.
-   [Toolbar](/components/Toolbar)). In that case, set `justify` to `stretch`
+   [Toolbar](../Toolbar/README.md)). In that case, set `justify` to `stretch`
    and position elements on your own.
 
 ```docoff-react-preview
@@ -550,7 +550,7 @@ React.createElement(() => {
 
 👉 Please note the auto width may not function correctly in combination with
 other auto-layout mechanisms, e.g. the auto-width
-[FormLayout](/components/FormLayout#label-width). It's just too much
+[FormLayout](../FormLayout/README.md#label-width). It's just too much
 magic that doesn't work together (yet?) 🎩.
 
 👉 Beware of horizontal FormLayout inside `small` modals. While automatic
@@ -693,7 +693,7 @@ React.createElement(() => {
 ## Color Variants
 
 Modal can be colored using the `color` prop. The `color` prop implements the
-[Feedback color collection](/docs/foundation/collections#colors)
+[Feedback color collection](../../docs/foundation/collections.md#colors)
 and is applied to the border of the modal and the modal footer.
 
 ```docoff-react-preview
@@ -880,7 +880,7 @@ React.createElement(() => {
 ### Forms
 
 Modal can be used to display forms. It is recommended to use
-[FormLayout](/components/FormLayout) component to layout form fields.
+[FormLayout](../FormLayout/README.md) component to layout form fields.
 
 While we support only [controlled components][controlled-components],
 and we encourage you to use them, it is possible to use native form and its
@@ -1049,7 +1049,7 @@ independent of the page itself. This can be done in three ways using the
 
 - `auto` (default) — ModalBody is responsible for scrolling,
 - `custom` — you must provide a custom component to handle scrolling,
-   typically an instance of [ScrollView](/components/ScrollView) wrapping
+   typically an instance of [ScrollView](../ScrollView/README.md) wrapping
    ModalContent,
 - `none` — entire Modal is responsible for scrolling.
 
@@ -1219,7 +1219,7 @@ opened.
 In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
-[`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to:
+[`transferProps`](../../helpers/transferProps/README.md) helper are forwarded to:
 
 - the `<dialog>` HTML element in case of the `Modal` component.
 - the root `<div>` HTML element in case of `ModalHeader`, `ModalBody`, `ModalContent`
@@ -1301,13 +1301,13 @@ looks as follows:
 Where:
 
 - `<COLOR>` is a value from supported
-  [color collections](/docs/foundation/collections#colors)
+  [color collections](../../docs/foundation/collections.md#colors)
   (check [color variants](#color-variants) and [API](#api) to see which
   collections are supported),
 - `<PROPERTY>` is one of `border-color` or `background-color`.
 
 [button-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes
-[controlled-components]: /docs/getting-started/usage#foundation-css
+[controlled-components]: ../../docs/getting-started/usage.md#controlled-vs-uncontrolled
 [dialog-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#attributes
 [div-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div#attributes
 [heading-attributes]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#attributes

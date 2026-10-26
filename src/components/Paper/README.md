@@ -26,7 +26,7 @@ See [API](#api) for all available options.
   [raised variant](#raised-paper) to make it stand out on white background.
 
 - **Paper, or Card?** Paper is a basic surface to put content on. However,
-  there is also the [Card](/components/Card) component. While Paper is
+  there is also the [Card](../Card/README.md) component. While Paper is
   usually used to hold larger content areas like lists, grids, or forms, Card is
   designed for displaying items. Card also supports more visual options.
 
@@ -55,8 +55,8 @@ Dim background and add transparency to visually suppress the Paper.
 In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
-[`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to the
-root `<div>` HTML element. This enables making the component interactive and
+[`transferProps`](../../helpers/transferProps/README.md) helper are forwarded to
+the root `<div>` HTML element. This enables making the component interactive and
 helps to improve its accessibility.
 
 👉 For the full list of supported attributes refer to:

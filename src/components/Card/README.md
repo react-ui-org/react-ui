@@ -36,7 +36,7 @@ See [API](#api) for all available options.
   grid. It will help you keep the UI clean and easy to scan.
 
 - **Card, or Paper?** Card is a versatile surface for displaying content.
-  However, there is also the [Paper](/components/Paper) component. While Card
+  However, there is also the [Paper](../Paper/README.md) component. While Card
   is designed for displaying items (and also supports more visual options),
   Paper is usually used to hold larger content areas like lists, grids, or
   forms.
@@ -108,7 +108,7 @@ card should be also smaller to keep the card contained and easy to scan.
 
 ## Scrollable Card
 
-Combine Card with [ScrollView](/components/ScrollView) to enable scrolling
+Combine Card with [ScrollView](../ScrollView/README.md) to enable scrolling
 for card content.
 
 ```docoff-react-preview
@@ -147,7 +147,7 @@ for card content.
 ## Color Variants
 
 To cover all possible needs of your project, Card is available in colors from
-[Feedback color collection](/docs/foundation/collections#colors).
+[Feedback color collection](../../docs/foundation/collections.md#colors).
 
 ```docoff-react-preview
 <Card color="success">
@@ -257,8 +257,8 @@ its interactive elements to disallow user's interaction.
 In addition to the options below in the [component's API](#api) section, you
 can specify **any HTML attribute you like.** All attributes that don't
 interfere with the API of the React component and that aren't filtered out by
-[`transferProps`](/docs/js-helpers/transferProps) helper are forwarded to the
-root `<div>` HTML element. This enables making the component interactive and
+[`transferProps`](../../helpers/transferProps/README.md) helper are forwarded to
+the root `<div>` HTML element. This enables making the component interactive and
 helps to improve its accessibility.
 
 👉 For the full list of supported attributes refer to:
@@ -312,7 +312,7 @@ looks as follows:
 Where:
 
 - `<COLOR>` is a value from supported
-  [color collections](/docs/foundation/collections#colors)
+  [color collections](../../docs/foundation/collections.md#colors)
   (check [color variants](#color-variants) and [API](#api) to see which
   collections are supported),
 - `<PROPERTY>` is one of `color` (color of text), `border-color`, or
