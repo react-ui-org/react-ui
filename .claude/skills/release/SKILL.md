@@ -88,3 +88,11 @@ The release is out when all of these are true:
 * The npm registry lists the version as `latest` for `@react-ui-org/react-ui`.
 
 Report any failed job as soon as you see it, and don't retry the publish.
+
+Once the release is out, remind the user to archive the issues in the Done column
+of [The Board](https://github.com/orgs/react-ui-org/projects/2). The GitHub MCP
+had no project tools when this was written, so they must do it manually.
+
+Check whether the available tools now include a GitHub project tool that can
+archive items, including deferred tools. If so, tell the user and propose updating
+this skill to archive the issues, with their approval on each run.
