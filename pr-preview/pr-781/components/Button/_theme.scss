@@ -1,0 +1,31 @@
+$font-weight: var(--rui-Button__font-weight);
+$letter-spacing: var(--rui-Button__letter-spacing);
+$text-transform: var(--rui-Button__text-transform);
+$border-width: var(--rui-Button__border-width);
+$border-radius: var(--rui-Button__border-radius);
+
+$disabled-opacity: var(--rui-Button--disabled__opacity);
+$disabled-cursor: var(--rui-Button--disabled__cursor);
+$feedback-opacity: var(--rui-Button--feedback__opacity);
+$feedback-cursor: var(--rui-Button--feedback__cursor);
+
+$sizes: (
+    small: (
+        height: var(--rui-Button--small__height),
+        padding-y: var(--rui-Button--small__padding-y),
+        padding-x: var(--rui-Button--small__padding-x),
+        font-size: var(--rui-Button--small__font-size),
+    ),
+    medium: (
+        height: var(--rui-Button--medium__height),
+        padding-y: var(--rui-Button--medium__padding-y),
+        padding-x: var(--rui-Button--medium__padding-x),
+        font-size: var(--rui-Button--medium__font-size),
+    ),
+    large: (
+        height: var(--rui-Button--large__height),
+        padding-y: var(--rui-Button--large__padding-y),
+        padding-x: var(--rui-Button--large__padding-x),
+        font-size: var(--rui-Button--large__font-size),
+    ),
+);
