@@ -12,11 +12,11 @@ export type LabelPosition = "before" | "after";
 export type Layout = "horizontal" | "vertical";
 export type Priority = "filled" | "outline" | "flat";
 export type Size = "small" | "medium" | "large";
+export type State = "changed" | "invalid" | "valid" | "warning";
 /**
  * Class names exported by a CSS Module.
  */
 export type CssModuleClasses = Readonly<Record<string, string>>;
-export type ValidationState = "invalid" | "valid" | "warning";
 export type AlertProps = Omit<React$1.HTMLAttributes<HTMLDivElement>, "color"> & {
 	/**
 	 * Alert body.
@@ -306,9 +306,10 @@ export type CheckboxFieldProps = Omit<React$1.InputHTMLAttributes<HTMLInputEleme
 	 */
 	required?: boolean;
 	/**
-	 * Alter the field to provide feedback based on validation result.
+	 * Alter the field to reflect the state of its data, e.g. a validation result or a change
+	 * against the saved value.
 	 */
-	validationState?: ValidationState;
+	state?: State;
 	/**
 	 * Validation message to be displayed.
 	 */
@@ -323,7 +324,7 @@ declare const CheckboxFieldWithGlobalProps: React$1.ForwardRefExoticComponent<Om
 	labelPosition?: CheckboxFieldLabelPosition;
 	renderAsRequired?: boolean;
 	required?: boolean;
-	validationState?: ValidationState;
+	state?: State;
 	validationText?: React$1.ReactNode;
 } & React$1.RefAttributes<HTMLInputElement>>;
 export type FileInputFieldFilesChangedEvent = React$1.ChangeEvent<HTMLInputElement> | React$1.DragEvent<HTMLDivElement> | Event | null;
@@ -401,9 +402,10 @@ export type FileInputFieldProps = Omit<React$1.InputHTMLAttributes<HTMLInputElem
 	 */
 	size?: Size;
 	/**
-	 * Alter the field to provide feedback based on validation result.
+	 * Alter the field to reflect the state of its data, e.g. a validation result or a change
+	 * against the saved value.
 	 */
-	validationState?: ValidationState;
+	state?: State;
 	/**
 	 * Validation message to be displayed.
 	 *
@@ -424,7 +426,7 @@ declare const FileInputFieldWithGlobalProps: React$1.ForwardRefExoticComponent<O
 	onFilesChanged: (files: FileList | File[], event: FileInputFieldFilesChangedEvent) => void;
 	required?: boolean;
 	size?: Size;
-	validationState?: ValidationState;
+	state?: State;
 	validationText?: React$1.ReactNode;
 } & React$1.RefAttributes<FileInputFieldRef>>;
 export type FormLayoutPredefinedLabelWidth = "auto" | "default" | "limited";
@@ -519,9 +521,10 @@ export type FormLayoutCustomFieldProps = React$1.HTMLAttributes<HTMLDivElement> 
 	 */
 	required?: boolean;
 	/**
-	 * Alter the field to provide feedback based on validation result.
+	 * Alter the field to reflect the state of its data, e.g. a validation result or a change
+	 * against the saved value.
 	 */
-	validationState?: ValidationState;
+	state?: State;
 };
 /**
  * `true` when rendered inside `FormLayoutCustomField`.
@@ -536,7 +539,7 @@ declare const FormLayoutCustomFieldWithGlobalProps: React$1.ForwardRefExoticComp
 	label?: string;
 	labelForId?: string;
 	required?: boolean;
-	validationState?: ValidationState;
+	state?: State;
 } & React$1.RefAttributes<never>>;
 /**
  * A value that is either the same for all breakpoints or defined per breakpoint.
@@ -1065,9 +1068,10 @@ export type RadioProps = Omit<React$1.InputHTMLAttributes<HTMLInputElement>, "ty
 	 */
 	required?: boolean;
 	/**
-	 * Alter the field to provide feedback based on validation result.
+	 * Alter the field to reflect the state of its data, e.g. a validation result or a change
+	 * against the saved value.
 	 */
-	validationState?: ValidationState;
+	state?: State;
 	/**
 	 * Validation message to be displayed.
 	 */
@@ -1087,7 +1091,7 @@ declare const RadioWithGlobalProps: React$1.ForwardRefExoticComponent<Omit<React
 	options: RadioOption[];
 	renderAsRequired?: boolean;
 	required?: boolean;
-	validationState?: ValidationState;
+	state?: State;
 	validationText?: React$1.ReactNode;
 	value?: string | number;
 } & React$1.RefAttributes<never>>;
@@ -1309,9 +1313,10 @@ export type SelectFieldProps = Omit<React$1.SelectHTMLAttributes<HTMLSelectEleme
 	 */
 	size?: Size;
 	/**
-	 * Alter the field to provide feedback based on validation result.
+	 * Alter the field to reflect the state of its data, e.g. a validation result or a change
+	 * against the saved value.
 	 */
-	validationState?: ValidationState;
+	state?: State;
 	/**
 	 * Validation message to be displayed.
 	 *
@@ -1336,7 +1341,7 @@ declare const SelectFieldWithGlobalProps: React$1.ForwardRefExoticComponent<Omit
 	renderAsRequired?: boolean;
 	required?: boolean;
 	size?: Size;
-	validationState?: ValidationState;
+	state?: State;
 	validationText?: React$1.ReactNode;
 	variant?: SelectFieldVariant;
 } & React$1.RefAttributes<HTMLSelectElement>>;
@@ -1534,9 +1539,10 @@ export type TextAreaProps = React$1.TextareaHTMLAttributes<HTMLTextAreaElement> 
 	 */
 	size?: Size;
 	/**
-	 * Alter the field to provide feedback based on validation result.
+	 * Alter the field to reflect the state of its data, e.g. a validation result or a change
+	 * against the saved value.
 	 */
-	validationState?: ValidationState;
+	state?: State;
 	/**
 	 * Validation message to be displayed.
 	 */
@@ -1556,7 +1562,7 @@ declare const TextAreaWithGlobalProps: React$1.ForwardRefExoticComponent<React$1
 	layout?: Layout;
 	required?: boolean;
 	size?: Size;
-	validationState?: ValidationState;
+	state?: State;
 	validationText?: React$1.ReactNode;
 	variant?: TextAreaVariant;
 } & React$1.RefAttributes<HTMLTextAreaElement>>;
@@ -1623,13 +1629,14 @@ export type TextFieldProps = Omit<React$1.InputHTMLAttributes<HTMLInputElement>,
 	 */
 	size?: Size;
 	/**
+	 * Alter the field to reflect the state of its data, e.g. a validation result or a change
+	 * against the saved value.
+	 */
+	state?: State;
+	/**
 	 * HTML input type, translated as `type` attribute of the input.
 	 */
 	type?: TextFieldType;
-	/**
-	 * Alter the field to provide feedback based on validation result.
-	 */
-	validationState?: ValidationState;
 	/**
 	 * Validation message to be displayed.
 	 *
@@ -1653,8 +1660,8 @@ declare const TextFieldWithGlobalProps: React$1.ForwardRefExoticComponent<Omit<R
 	layout?: Layout;
 	required?: boolean;
 	size?: Size;
+	state?: State;
 	type?: TextFieldType;
-	validationState?: ValidationState;
 	validationText?: React$1.ReactNode;
 	variant?: TextFieldVariant;
 } & React$1.RefAttributes<HTMLInputElement>>;
@@ -1712,9 +1719,10 @@ export type ToggleProps = Omit<React$1.InputHTMLAttributes<HTMLInputElement>, "t
 	 */
 	required?: boolean;
 	/**
-	 * Alter the field to provide feedback based on validation result.
+	 * Alter the field to reflect the state of its data, e.g. a validation result or a change
+	 * against the saved value.
 	 */
-	validationState?: ValidationState;
+	state?: State;
 	/**
 	 * Validation message to be displayed.
 	 */
@@ -1729,7 +1737,7 @@ declare const ToggleWithGlobalProps: React$1.ForwardRefExoticComponent<Omit<Reac
 	labelPosition?: ToggleLabelPosition;
 	renderAsRequired?: boolean;
 	required?: boolean;
-	validationState?: ValidationState;
+	state?: State;
 	validationText?: React$1.ReactNode;
 } & React$1.RefAttributes<HTMLInputElement>>;
 export type ToolbarAlign = "top" | "middle" | "bottom" | "baseline";

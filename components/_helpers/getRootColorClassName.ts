@@ -48,5 +48,5 @@ export const getRootColorClassName = (styles: CssModuleClasses, variant?: Color)
     return styles.isRootColorDark;
   }
 
-  return null;
+  return undefined;
 };

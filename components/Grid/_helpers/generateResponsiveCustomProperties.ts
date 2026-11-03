@@ -12,6 +12,7 @@ const prepareValueByType = (value: GridResponsivePropertyValue, type: 'spacing' 
   return value;
 };
 
+// Returns `null` on purpose: the result is spread into `style`, where `null` is a valid empty value.
 export const generateResponsiveCustomProperties = (
   prop: GridResponsiveValue<GridResponsivePropertyValue> | undefined,
   infix: string,

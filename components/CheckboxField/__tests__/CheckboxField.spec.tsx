@@ -18,17 +18,17 @@ test.describe('CheckboxField', () => {
         ...mixPropTests([
           propTests.disabledPropTest,
           propTests.checkedPropTest,
-          propTests.validationStatePropTest,
+          propTests.statePropTest,
         ]),
         ...mixPropTests([
           propTests.checkedPropTest,
           propTests.requiredPropTest,
-          propTests.validationStatePropTest,
+          propTests.statePropTest,
         ]),
         ...mixPropTests([
           propTests.checkedPropTest,
           propTests.renderAsRequiredPropTest,
-          propTests.validationStatePropTest,
+          propTests.statePropTest,
         ]),
         ...mixPropTests([
           propTests.checkedPropTest,

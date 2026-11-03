@@ -32,5 +32,5 @@ export default (styles: CssModuleClasses, labelVisibility?: ButtonLabelVisibilit
     return styles.hasLabelHidden;
   }
 
-  return null;
+  return undefined;
 };

@@ -10,15 +10,17 @@ import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
 import { transferProps } from '../../helpers/transferProps';
 import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
-import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
+import { getRootStateClassName } from '../_helpers/getRootStateClassName';
 import { isChildrenEmpty } from '../../helpers/isChildrenEmpty/isChildrenEmpty';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { FormLayoutContext } from '../FormLayout/FormLayoutContext';
 import { Text } from '../Text';
-import type { ValidationState } from '../../types';
+import type { State } from '../../types';
 import { InputGroupContext } from './InputGroupContext';
 import styles from './InputGroup.module.scss';
 import type { InputGroupProps } from './InputGroup.types';
+
+const statePriority: State[] = ['invalid', 'warning', 'changed', 'valid'];
 
 export const InputGroup: React.FunctionComponent<InputGroupProps> = ({
   children,
@@ -44,17 +46,9 @@ export const InputGroup: React.FunctionComponent<InputGroupProps> = ({
     return null;
   }
 
-  const validationState = React.Children.toArray(children).reduce<ValidationState | undefined>(
-    (state, child) => {
-      const childValidationState = (child as ReactElement<{ validationState?: ValidationState }>).props.validationState;
-
-      if (state === 'invalid' || (state === 'warning' && childValidationState === 'valid')) {
-        return state;
-      }
-      return childValidationState ?? state;
-    },
-    undefined,
-  );
+  const childStates = React.Children.toArray(children)
+    .map((child) => (child as ReactElement<{ state?: State }>).props.state);
+  const state = statePriority.find((priorityState) => childStates.includes(priorityState));
 
   return (
     <fieldset
@@ -68,7 +62,7 @@ export const InputGroup: React.FunctionComponent<InputGroupProps> = ({
         disabled && styles.isRootDisabled,
         required && styles.isRootRequired,
         getRootSizeClassName(styles, size),
-        getRootValidationStateClassName(styles, validationState),
+        getRootStateClassName(styles, state),
       )}
       disabled={disabled}
       id={id}

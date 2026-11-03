@@ -4,7 +4,7 @@ import type {
 } from 'react';
 import type {
   Size,
-  ValidationState,
+  State,
 } from '../../types';
 
 /**
@@ -48,9 +48,10 @@ export type FormLayoutCustomFieldProps = HTMLAttributes<HTMLDivElement> & {
    */
   required?: boolean;
   /**
-   * Alter the field to provide feedback based on validation result.
+   * Alter the field to reflect the state of its data, e.g. a validation result or a change
+   * against the saved value.
    */
-  validationState?: ValidationState;
+  state?: State;
 };
 
 /**

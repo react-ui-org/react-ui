@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
 import { transferProps } from '../../helpers/transferProps';
-import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
+import { getRootStateClassName } from '../_helpers/getRootStateClassName';
 import { FormLayoutContext } from '../FormLayout/FormLayoutContext';
 import styles from './CheckboxField.module.scss';
 import type { CheckboxFieldProps } from './CheckboxField.types';
@@ -16,7 +16,7 @@ export const CheckboxField = React.forwardRef<HTMLInputElement, CheckboxFieldPro
   labelPosition = 'after',
   renderAsRequired = false,
   required = false,
-  validationState,
+  state,
   validationText,
   ...restProps
 }, ref) => {
@@ -31,7 +31,7 @@ export const CheckboxField = React.forwardRef<HTMLInputElement, CheckboxFieldPro
         labelPosition === 'before' && styles.hasRootLabelBefore,
         disabled && styles.isRootDisabled,
         (renderAsRequired || required) && styles.isRootRequired,
-        getRootValidationStateClassName(styles, validationState),
+        getRootStateClassName(styles, state),
       )}
       htmlFor={id}
       id={id && `${id}__label`}

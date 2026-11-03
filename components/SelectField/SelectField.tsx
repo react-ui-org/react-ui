@@ -3,7 +3,7 @@ import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
 import { transferProps } from '../../helpers/transferProps';
 import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
-import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
+import { getRootStateClassName } from '../_helpers/getRootStateClassName';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { FormLayoutContext } from '../FormLayout/FormLayoutContext';
 import { FormLayoutCustomFieldContext } from '../FormLayout/FormLayoutCustomFieldContext';
@@ -28,7 +28,7 @@ export const SelectField = React.forwardRef<HTMLSelectElement, SelectFieldProps>
   renderAsRequired = false,
   required = false,
   size = 'medium',
-  validationState,
+  state,
   validationText,
   variant = 'outline',
   ...restProps
@@ -53,7 +53,7 @@ export const SelectField = React.forwardRef<HTMLSelectElement, SelectFieldProps>
           styles,
           resolveContextOrProp(inputGroupContext && inputGroupContext.size, size),
         ),
-        getRootValidationStateClassName(styles, validationState),
+        getRootStateClassName(styles, state),
         variant === 'filled' ? styles.isRootVariantFilled : styles.isRootVariantOutline,
       )}
       htmlFor={id}

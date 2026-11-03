@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
 import { transferProps } from '../../helpers/transferProps';
-import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
+import { getRootStateClassName } from '../_helpers/getRootStateClassName';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { FormLayoutContext } from '../FormLayout/FormLayoutContext';
 import styles from './Radio.module.scss';
@@ -18,7 +18,7 @@ export const Radio: React.FunctionComponent<RadioProps> = ({
   options,
   renderAsRequired = false,
   required = false,
-  validationState,
+  state,
   validationText,
   value,
   ...restProps
@@ -35,7 +35,7 @@ export const Radio: React.FunctionComponent<RadioProps> = ({
           : styles.isRootLayoutVertical,
         disabled && styles.isRootDisabled,
         (renderAsRequired || required) && styles.isRootRequired,
-        getRootValidationStateClassName(styles, validationState),
+        getRootStateClassName(styles, state),
       )}
       disabled={disabled}
       id={id}

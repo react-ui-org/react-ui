@@ -15,7 +15,7 @@ import { classNames } from '../../helpers/classNames';
 import { transferProps } from '../../helpers/transferProps';
 import { TranslationsContext } from '../../providers/translations';
 import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
-import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
+import { getRootStateClassName } from '../_helpers/getRootStateClassName';
 import { resolveContextOrProp } from '../_helpers/resolveContextOrProp';
 import { InputGroupContext } from '../InputGroup/InputGroupContext';
 import { Text } from '../Text';
@@ -42,7 +42,7 @@ export const FileInputField = React.forwardRef<FileInputFieldRef, FileInputField
   onFilesChanged,
   required = false,
   size = 'medium',
-  validationState,
+  state,
   validationText,
   ...restProps
 }, ref) => {
@@ -170,7 +170,7 @@ export const FileInputField = React.forwardRef<FileInputFieldRef, FileInputField
           styles,
           resolveContextOrProp(inputGroupContext && inputGroupContext.size, size),
         ),
-        getRootValidationStateClassName(styles, validationState),
+        getRootStateClassName(styles, state),
       )}
       id={`${id}__root`}
       onDragLeave={!disabled ? handleDragLeave : undefined}

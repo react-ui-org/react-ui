@@ -3,7 +3,7 @@ import { withGlobalProps } from '../../providers/globalProps';
 import { classNames } from '../../helpers/classNames/classNames';
 import { transferProps } from '../../helpers/transferProps';
 import { getRootSizeClassName } from '../_helpers/getRootSizeClassName';
-import { getRootValidationStateClassName } from '../_helpers/getRootValidationStateClassName';
+import { getRootStateClassName } from '../_helpers/getRootStateClassName';
 import { isChildrenEmpty } from '../../helpers/isChildrenEmpty/isChildrenEmpty';
 import { FormLayoutContext } from './FormLayoutContext';
 import { FormLayoutCustomFieldContext } from './FormLayoutCustomFieldContext';
@@ -46,7 +46,7 @@ export const FormLayoutCustomField: React.FunctionComponent<FormLayoutCustomFiel
   label,
   labelForId,
   required = false,
-  validationState,
+  state,
   ...restProps
 }: FormLayoutCustomFieldProps) => {
   const context = useContext(FormLayoutContext);
@@ -65,7 +65,7 @@ export const FormLayoutCustomField: React.FunctionComponent<FormLayoutCustomFiel
         disabled && styles.isRootDisabled,
         required && styles.isRootRequired,
         getRootSizeClassName(styles, innerFieldSize),
-        getRootValidationStateClassName(styles, validationState),
+        getRootStateClassName(styles, state),
       )}
       id={id}
     >

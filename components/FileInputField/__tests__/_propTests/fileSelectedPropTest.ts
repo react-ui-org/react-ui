@@ -22,7 +22,7 @@ export const fileSelectedPropTest: PropTests = [
     onBeforeSnapshot,
     props,
   })),
-  ...propTests.validationStatePropTest.map(({
+  ...propTests.statePropTest.map(({
     name,
     props,
   }) => ({

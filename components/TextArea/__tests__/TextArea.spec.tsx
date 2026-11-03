@@ -21,11 +21,11 @@ test.describe('TextArea', () => {
         ]),
         ...mixPropTests([
           propTests.requiredPropTest,
-          propTests.validationStatePropTest,
+          propTests.statePropTest,
         ]),
         ...mixPropTests([
           propTests.disabledPropTest,
-          propTests.validationStatePropTest,
+          propTests.statePropTest,
           propTests.variantPropTest,
         ]),
       ].forEach(({

@@ -16,5 +16,5 @@ export const getRootSizeClassName = (styles: CssModuleClasses, size?: Size) => {
     return styles.isRootSizeLarge;
   }
 
-  return null;
+  return undefined;
 };

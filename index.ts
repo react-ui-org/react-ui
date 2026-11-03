@@ -207,5 +207,5 @@ export type {
   NeutralColor,
   Priority,
   Size,
-  ValidationState,
+  State,
 } from './types';

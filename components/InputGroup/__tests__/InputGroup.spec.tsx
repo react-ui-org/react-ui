@@ -4,8 +4,9 @@ import {
   test,
 } from '../../../../tests/playwright';
 import { childrenPropTest } from './_propTests/childrenPropTest';
+import { mixedStatesPropTest } from './_propTests/mixedStatesPropTest';
 import { validationTextsPropTest } from './_propTests/validationTextsPropTest';
-import { validationStatePropTest } from './_propTests/validationStatePropTest';
+import { statePropTest } from './_propTests/statePropTest';
 
 test.describe('InputGroup', () => {
   test.describe('base', () => {
@@ -19,7 +20,8 @@ test.describe('InputGroup', () => {
         ...propTests.requiredPropTest,
         ...propTests.sizePropTest,
         ...validationTextsPropTest,
-        ...validationStatePropTest,
+        ...statePropTest,
+        ...mixedStatesPropTest,
       ].forEach(({
         name,
         onBeforeTest,

@@ -208,6 +208,20 @@
         --rui-color-feedback-note-active: #{colors.$note-darker};
         --rui-color-feedback-on-note: #{colors.$on-note};
 
+        // State colors
+        --rui-color-state-valid: #{colors.$state-valid};
+        --rui-color-state-valid-hover: #{colors.$state-valid-dark};
+        --rui-color-state-valid-active: #{colors.$state-valid-darker};
+        --rui-color-state-invalid: #{colors.$state-invalid};
+        --rui-color-state-invalid-hover: #{colors.$state-invalid-dark};
+        --rui-color-state-invalid-active: #{colors.$state-invalid-darker};
+        --rui-color-state-warning: #{colors.$state-warning};
+        --rui-color-state-warning-hover: #{colors.$state-warning-dark};
+        --rui-color-state-warning-active: #{colors.$state-warning-darker};
+        --rui-color-state-changed: #{colors.$state-changed};
+        --rui-color-state-changed-hover: #{colors.$state-changed-dark};
+        --rui-color-state-changed-active: #{colors.$state-changed-darker};
+
         // Neutral colors
         --rui-color-neutral-light: #{colors.$white};
         --rui-color-neutral-light-hover: #{colors.$gray-50};
@@ -236,6 +250,10 @@
         --rui-color-background-help: #{colors.$help-light};
         --rui-color-background-info: #{colors.$info-light};
         --rui-color-background-note: #{colors.$note-light};
+        --rui-color-background-state-valid: #{colors.$state-valid-light};
+        --rui-color-background-state-invalid: #{colors.$state-invalid-light};
+        --rui-color-background-state-warning: #{colors.$state-warning-light};
+        --rui-color-background-state-changed: #{colors.$state-changed-light};
         --rui-color-background-light: #{colors.$gray-100};
         --rui-color-background-dark: #{colors.$gray-600};
 
@@ -910,26 +928,33 @@
         --rui-FormField--disabled__cursor: var(--rui-cursor-not-allowed);
         --rui-FormField--disabled__opacity: var(--rui-ratio-disabled-opacity);
 
-        // Form fields: validation states: invalid
-        --rui-FormField--invalid--default__border-color: var(--rui-color-feedback-danger);
-        --rui-FormField--invalid--default__background: var(--rui-color-background-danger);
+        // Form fields: states: invalid
+        --rui-FormField--invalid--default__border-color: var(--rui-color-state-invalid);
+        --rui-FormField--invalid--default__background: var(--rui-color-background-state-invalid);
         --rui-FormField--invalid--default__check-background-color: var(--rui-FormField--invalid--default__background);
-        --rui-FormField--invalid--default__surrounding-text-color: var(--rui-color-feedback-danger);
+        --rui-FormField--invalid--default__surrounding-text-color: var(--rui-color-state-invalid);
         --rui-FormField--invalid--checked__check-background-color: var(--rui-FormField--invalid--default__border-color);
 
-        // Form fields: validation states: valid
-        --rui-FormField--valid--default__border-color: var(--rui-color-feedback-success);
-        --rui-FormField--valid--default__background: var(--rui-color-background-success);
+        // Form fields: states: valid
+        --rui-FormField--valid--default__border-color: var(--rui-color-state-valid);
+        --rui-FormField--valid--default__background: var(--rui-color-background-state-valid);
         --rui-FormField--valid--default__check-background-color: var(--rui-FormField--valid--default__background);
-        --rui-FormField--valid--default__surrounding-text-color: var(--rui-color-feedback-success);
+        --rui-FormField--valid--default__surrounding-text-color: var(--rui-color-state-valid);
         --rui-FormField--valid--checked__check-background-color: var(--rui-FormField--valid--default__border-color);
 
-        // Form fields: validation states: warning
-        --rui-FormField--warning--default__border-color: var(--rui-color-feedback-warning-hover);
-        --rui-FormField--warning--default__background: var(--rui-color-background-warning);
+        // Form fields: states: warning
+        --rui-FormField--warning--default__border-color: var(--rui-color-state-warning-hover);
+        --rui-FormField--warning--default__background: var(--rui-color-background-state-warning);
         --rui-FormField--warning--default__check-background-color: var(--rui-FormField--warning--default__background);
-        --rui-FormField--warning--default__surrounding-text-color: var(--rui-color-feedback-warning-active);
+        --rui-FormField--warning--default__surrounding-text-color: var(--rui-color-state-warning-active);
         --rui-FormField--warning--checked__check-background-color: var(--rui-FormField--warning--default__border-color);
+
+        // Form fields: states: changed
+        --rui-FormField--changed--default__border-color: var(--rui-color-state-changed);
+        --rui-FormField--changed--default__background: var(--rui-color-background-state-changed);
+        --rui-FormField--changed--default__check-background-color: var(--rui-FormField--changed--default__background);
+        --rui-FormField--changed--default__surrounding-text-color: var(--rui-color-state-changed);
+        --rui-FormField--changed--checked__check-background-color: var(--rui-FormField--changed--default__border-color);
 
         // Form fields: box fields
         --rui-FormField--box__border-width: var(--rui-dimension-border-width-1);

@@ -4,7 +4,7 @@ import type { InputGroupProps } from '..';
 import { SelectField } from '../../SelectField';
 import { Button } from '../../Button';
 import { TextField } from '../../TextField';
-import type { ValidationState } from '../../../types';
+import type { State } from '../../../types';
 import type { StoryProps } from '../../../../tests/playwright';
 
 type InputGroupTestProps = StoryProps<InputGroupProps, 'label'> & {
@@ -12,7 +12,9 @@ type InputGroupTestProps = StoryProps<InputGroupProps, 'label'> & {
   childrenVariant?: 'multiple' | 'single';
 };
 type InputGroupWithCustomInputTestProps = InputGroupTestProps & {
-  inputProps?: { validationState: ValidationState };
+  inputProps?: { state: State };
+  // Overrides `inputProps` for the text field to combine different states
+  textFieldInputProps?: { state: State };
 };
 
 const options = [
@@ -75,6 +77,7 @@ export const InputGroupWithCustomInputPropsForTest = ({
   const {
     inputProps,
     label = 'Input group label',
+    textFieldInputProps,
     ...inputGroupProps
   } = props;
 
@@ -90,6 +93,7 @@ export const InputGroupWithCustomInputPropsForTest = ({
         label="Text label"
         placeholder="Placeholder"
         {...inputProps}
+        {...textFieldInputProps}
       />
       <Button label="Submit" />
     </InputGroup>
