@@ -1,9 +1,0 @@
-@use "sass:color";
-
-@function lighten-color($color, $weight) {
-    @return color.mix(white, $color, $weight);
-}
-
-@function darken-color($color, $weight) {
-    @return color.mix(black, $color, $weight);
-}
