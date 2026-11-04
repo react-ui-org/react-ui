@@ -1,0 +1,11 @@
+@use "../tools/accessibility";
+
+// Remove focus outline as we implement custom appearance of focus state. Increase specificity where necessary to
+// override normalize.css.
+:where(button, input, select, textarea):focus {
+    outline: none;
+}
+
+:is(a, button, input, select, textarea, [type="button"], [type="submit"]):focus-visible {
+    @include accessibility.focus-ring();
+}
