@@ -10,7 +10,7 @@ jobs:
     name: Playwright
     runs-on: ubuntu-24.04
     container:
-      image: mcr.microsoft.com/playwright:v1.63.0-noble
+      image: mcr.microsoft.com/playwright:v1.64.1-noble
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
@@ -18,7 +18,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24.17
+          node-version: 26.13.0
           cache: npm
 
       - name: Print Node.js and npm version
