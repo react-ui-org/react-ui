@@ -9,39 +9,40 @@ on: [ pull_request ]
 # As package.json does not support comments, we document the version mapping here.
 #
 # `engines` field in package.json defines the minimum required Node.js version for running the package.
-# We set it to the first released previous LTS version of Node.js. This means we allow users
-# to run the package on this version and any later versions.
+# We set it to the first released previous LTS version of Node.js with the latest security fixes,
+# and to the first released active LTS version of Node.js. This means we allow users to run
+# the package on these versions and any later versions.
 #
 #  "engines": {
-#    "node": ">=22.11.0"
+#    "node": "^24.22.1 || >=26.13.0"
 #  }
 #
 # `devEngines` field in package.json defines the Node.js versions used for development and building.
-# We set both to the first released active and previous LTS versions of Node.js. We also set
-# the npm version to the version of npm bundled with the first released active LTS Node.js version.
-# This means we strictly require one of those versions for development and building.
+# We set both to the first released active LTS and previous LTS versions of Node.js with the latest
+# security fixes. We also set the npm version to the version of npm bundled with the previous LTS
+# Node.js version. This means we strictly require one of those versions for development and building.
 #
 #  "devEngines": {
 #    "runtime": {
 #      "name": "node",
-#      "version": "^22.11.0 || ^24.11.0",
+#      "version": "^24.22.1 || ^26.13.0",
 #      "onFail": "error"
 #    },
 #    "packageManager": {
 #      "name": "npm",
-#      "version": "^11.6.1",
+#      "version": "^11.19.1",
 #      "onFail": "error"
 #    }
 #  }
 #
-# Versions defined in `env` use major version numbers only to install the latest minor/patch.
+# Versions defined in `env` are exact.
 
 env:
-  NODE_ACTIVE_LTS_VERSION: 24.17
-  NODE_PREVIOUS_LTS_VERSION: 22.23
+  NODE_ACTIVE_LTS_VERSION: 26.13.0
+  NODE_PREVIOUS_LTS_VERSION: 24.22.2
   # Pin npm version to prevent npm issues from breaking the build
   # See <https://github.com/nodejs/node/issues/62425#issuecomment-4200715930>
-  NPM_VERSION: 11.13.0
+  NPM_VERSION: 11.19.1
 
 jobs:
   build_on_node_previous_lts:
