@@ -14,7 +14,7 @@ on: [ pull_request ]
 # the package on these versions and any later versions.
 #
 #  "engines": {
-#    "node": "^24.22.1 || >=26.13.0"
+#    "node": "^24.22.3 || >=26.13.1"
 #  }
 #
 # `devEngines` field in package.json defines the Node.js versions used for development and building.
@@ -25,7 +25,7 @@ on: [ pull_request ]
 #  "devEngines": {
 #    "runtime": {
 #      "name": "node",
-#      "version": "^24.22.1 || ^26.13.0",
+#      "version": "^24.22.3 || ^26.13.1",
 #      "onFail": "error"
 #    },
 #    "packageManager": {
@@ -38,8 +38,8 @@ on: [ pull_request ]
 # Versions defined in `env` are exact.
 
 env:
-  NODE_ACTIVE_LTS_VERSION: 26.13.0
-  NODE_PREVIOUS_LTS_VERSION: 24.22.2
+  NODE_ACTIVE_LTS_VERSION: 26.13.1
+  NODE_PREVIOUS_LTS_VERSION: 24.22.3
   # Pin npm version to prevent npm issues from breaking the build
   # See <https://github.com/nodejs/node/issues/62425#issuecomment-4200715930>
   NPM_VERSION: 11.19.1
