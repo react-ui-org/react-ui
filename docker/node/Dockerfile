@@ -1,3 +1,3 @@
-FROM        node:26.13.0
+FROM        node:26.13.1
 RUN         mkdir /workspace
 WORKDIR     /workspace

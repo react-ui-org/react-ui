@@ -24,7 +24,7 @@ permissions:
   pull-requests: write
 
 env:
-  NODE_VERSION: 26.13.0
+  NODE_VERSION: 26.13.1
 
 jobs:
   build:
