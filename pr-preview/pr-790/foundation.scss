@@ -1,0 +1,33 @@
+// Mandatory themeable CSS layer to prepare ground for components.
+
+@use "sass:meta";
+
+//
+// Generic
+// =======
+//
+// Ground-zero styles.
+
+@layer foundation.generic {
+    @include meta.load-css("styles/generic/box-sizing");
+    @include meta.load-css("normalize.css/normalize.css");
+    @include meta.load-css("styles/generic/focus");
+    @include meta.load-css("styles/generic/forms");
+    @include meta.load-css("styles/generic/reset");
+    @include meta.load-css("styles/generic/shared");
+}
+
+//
+// Elements
+// ========
+//
+// Unclassed HTML elements (type selectors).
+
+@layer foundation.elements {
+    @include meta.load-css("styles/elements/code");
+    @include meta.load-css("styles/elements/links");
+    @include meta.load-css("styles/elements/lists");
+    @include meta.load-css("styles/elements/page");
+    @include meta.load-css("styles/elements/rulers");
+    @include meta.load-css("styles/elements/small");
+}
