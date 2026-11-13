@@ -6,6 +6,8 @@ import {
 
 export default defineConfig([
   globalIgnores(['**/*.js']),
+  // Only these directories are linted, so `eslint` can be run without a path
+  globalIgnores(['*', '!src/', '!tests/'], 'app/lint-scope'),
   ...configs.base.recommended,
   ...configs.react.recommended,
   ...configs.base.typescript,

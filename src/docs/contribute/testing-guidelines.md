@@ -8,7 +8,7 @@ Tools used to test the application:
 * **Jest** (unit tests)
 * **Playwright** (visual and functional component testing)
 
-Generally, `npm test` and `npm run test:playwright-ct:all` should be run  within
+Generally, `npm run test:jest` and `npm run test:playwright` should be run within
 their designated Docker containers before pushing changes to the repository.
 
 ## Tools
@@ -16,10 +16,10 @@ their designated Docker containers before pushing changes to the repository.
 You can run all tests with a single command:
 
 ```bash
-npm run lint && npm test && npm run test:playwright-ct:all
+npm run lint && npm run test:jest && npm run test:playwright
 ```
 
-### Linters (ESLint, Markdownlint, Stylelint)
+### Linters (ESLint, Markdownlint, Stylelint, TypeScript)
 
 Run linters either all together:
 
@@ -30,13 +30,19 @@ npm run lint
 or run linters individually:
 
 ```bash
-npm run <eslint|markdownlint|stylelint>
+npm run lint:<eslint|markdownlint|stylelint|types>
 ```
 
 ### Jest
 
 ```bash
 npm run test:jest
+```
+
+Run a single test file:
+
+```bash
+npm run test:jest -- <file>
 ```
 
 ### Playwright
@@ -47,22 +53,23 @@ Test parameters can be tweaked by creating and tweaking `.env` file.
 
 #### Running Tests
 
-Run tests:
+Run all component tests:
 
 ```bash
-npm run test:playwright-ct:<all|all-with-update>
+npm run test:playwright
 ```
 
-You can also run specific tests by passing a path to the test files:
+You can also run specific tests by passing a path, or pass any
+[Playwright CLI argument][playwright-cli] to the test runner:
 
 ```bash
-npm run test:playwright-ct:<all|all-with-update> -- -- <match_path>
+npm run test:playwright -- <match_path_or_cli_argument>
 ```
 
-You can also pass any [CLI command][playwright-cli] to the test runner:
+Update snapshots by adding `--update-snapshots`, optionally limited to a path:
 
 ```bash
-npm run test:playwright-ct:<all|all-with-update> -- -- <cli_argument>
+npm run test:playwright -- [<path>] --update-snapshots
 ```
 
 #### Writing Tests
@@ -212,7 +219,7 @@ After running Playwright tests, test report can be served by using
 the following command:
 
 ```bash
-npm run test:playwright-ct:show-report
+npm run test:playwright:report
 ```
 
 Then open the displayed URL (typically `http://localhost:9323`)
