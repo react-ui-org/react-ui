@@ -32,7 +32,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests and generate test report
-        run: npm run test:playwright-ct:all
+        run: npm run test:playwright
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps

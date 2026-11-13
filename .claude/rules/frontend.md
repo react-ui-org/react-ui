@@ -9,8 +9,8 @@ paths:
 ## Commands
 
 * If dependencies change, run `npm ci`.
-* Run `npm run eslint` after changes (add `-- --fix` to autofix) and
-  `npm run typecheck` (`tsc --noEmit`).
+* Run `npm run lint:eslint` after changes (add `-- --fix` to autofix) and
+  `npm run lint:types` (`tsc --noEmit`).
 * To verify a rendered component or the docs previews in a real browser
   (navigate, click, screenshot, inspect the running docs site), drive host
   Chrome through the `chrome-host` MCP. See

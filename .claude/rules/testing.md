@@ -12,10 +12,11 @@ paths:
 
 * Run all Jest unit tests with `npm run test:jest`. For a single file:
   `npm run test:jest -- <file>`.
-* Run all Playwright component tests with `npm run test:playwright-ct:all`; for
-  one component, `npm run test:playwright-ct:all -- -- src/components/Button`.
-* Update Playwright snapshots with `npm run test:playwright-ct:all-with-update`.
-* Serve the report with `npm run test:playwright-ct:show-report`.
+* Run all Playwright component tests with `npm run test:playwright`; for one
+  component, `npm run test:playwright -- src/components/Button`.
+* Update Playwright snapshots with
+  `npm run test:playwright -- [<path>] --update-snapshots`.
+* Serve the report with `npm run test:playwright:report`.
 
 ## Testing
 

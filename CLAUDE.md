@@ -23,24 +23,32 @@ Run these inside the `devcontainer` (from the host, prefix with
 `docker compose exec -T devcontainer`). For details, see the
 [Contributing Guide](src/docs/contribute/general-guidelines.md).
 
-| Task                              | Command                                                             |
-|-----------------------------------|---------------------------------------------------------------------|
-| Install JS                        | `npm ci`                                                            |
-| Build library                     | `npm run build`                                                     |
-| Build type declarations only      | `npm run build:types`                                               |
-| Run static checks                 | `npm run lint`                                                      |
-| Run type check                    | `npm run typecheck`                                                 |
-| Run unit tests                    | `npm run test:jest`                                                 |
-| Run a single unit test file       | `npm run test:jest -- <file>`                                       |
-| Run component tests               | `npm run test:playwright-ct:all`                                    |
-| Component tests for one component | `npm run test:playwright-ct:all -- -- src/components/Button`        |
-| Update component snapshots        | `npm run test:playwright-ct:all-with-update`                        |
-| Start build watcher               | `npm start`                                                         |
-| Build documentation               | `mkdocs build`                                                      |
-| Serve documentation               | `mkdocs serve`                                                      |
+| Task                              | Command                                                  |
+|-----------------------------------|----------------------------------------------------------|
+| Install JS                        | `npm ci`                                                 |
+| Build library                     | `npm run build`                                          |
+| Build type declarations only      | `npm run build:types`                                    |
+| Run static checks (incl. types)   | `npm run lint`                                           |
+| Run ESLint                        | `npm run lint:eslint`                                    |
+| Run Stylelint                     | `npm run lint:stylelint`                                 |
+| Run Markdownlint                  | `npm run lint:markdownlint`                              |
+| Run type check                    | `npm run lint:types`                                     |
+| Run unit tests                    | `npm run test:jest`                                      |
+| Run a single unit test file       | `npm run test:jest -- <file>`                            |
+| Run component tests               | `npm run test:playwright`                                |
+| Component tests for one component | `npm run test:playwright -- src/components/Button`       |
+| Update component snapshots        | `npm run test:playwright -- [<path>] --update-snapshots` |
+| Start build watcher               | `npm start`                                              |
+| Build documentation               | `mkdocs build`                                           |
+| Serve documentation               | `mkdocs serve`                                           |
 
 Notes:
 
+* `npm run lint` runs all linters (ESLint, Stylelint, Markdownlint, type check).
+  There is no `npm test` script.
+* `npm run lint:eslint` lints `src` and `tests`.
+* The lint / Jest / Playwright commands are the same gates CI runs
+  ([.github/workflows/](.github/workflows/)).
 * Commands like `npm`, `playwright` run in specific Docker containers.
   Normally, when you run those commands, they are executed within dedicated
   containers. If you need to communicate directly with specific Docker container,

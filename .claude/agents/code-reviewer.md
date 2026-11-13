@@ -86,9 +86,12 @@ rules in section 6 are the easiest to miss — do not skip them.
 
 Easy-to-miss invariants beyond the generic checks above:
 
-* **Lint gate** ([CLAUDE.md](../../CLAUDE.md#commands)): `npm run lint` =
-  eslint + markdownlint + stylelint. It is not auto-run — remind the author to
-  run `npm run lint`, `npm run test:jest`, and `npm run test:playwright-ct:all`.
+* **CI gate** ([CLAUDE.md](../../CLAUDE.md#commands)): CI runs `lint`,
+  `test:jest` and `test:playwright`
+  ([.github/workflows/](../../.github/workflows/)). `npm run lint` covers
+  `lint:eslint`, `lint:stylelint`, `lint:markdownlint` and `lint:types`; the
+  tests run separately. `npm run lint:eslint` covers `src` and `tests`.
+  Remind the author to run them.
 * **Component layout** ([frontend.md](../rules/frontend.md)): every component
   folder has the `.tsx` + `.types.ts` + `index.ts` barrel + `*.module.scss` + `_settings`/
   `_theme`/`_tools` SCSS partials + `README.md` + `__tests__/`. Props are
@@ -117,7 +120,7 @@ Group findings by severity. For each:
 - [design] src/components/Foo/Foo.tsx:7 (frontend.md) — ref not forwarded to root element.
 
 ## Reminders
-- Run `npm run lint`, `npm run test:jest`, and `npm run test:playwright-ct:all` before committing.
+- Run `npm run lint`, `npm run test:jest` and `npm run test:playwright`.
 ```
 
 End with a one-line verdict: APPROVE / APPROVE WITH NITS / REQUEST CHANGES.

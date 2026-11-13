@@ -10,7 +10,7 @@ paths:
 
 ## Commands
 
-* Run `npm run markdownlint` after changes (add `-- --fix` to autofix).
+* Run `npm run lint:markdownlint` after changes (add `-- --fix` to autofix).
 * Run `mkdocs build` and `mkdocs serve` to build and serve the documentation
 * To verify a rendered component or the docs previews in a real browser
   (navigate, click, screenshot, inspect the running docs site), drive host

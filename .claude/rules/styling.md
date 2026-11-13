@@ -8,7 +8,7 @@ paths:
 
 ## Commands
 
-Run `npm run stylelint` after changes (add `-- --fix` to autofix).
+Run `npm run lint:stylelint` after changes (add `-- --fix` to autofix).
 
 ## Styling
 

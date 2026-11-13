@@ -42,7 +42,7 @@ Before committing, check the following (see [Commands](../../../CLAUDE.md#comman
 * `mkdocs build` passes
 * `npm run lint` passes
 * `npm run test:jest` passes
-* `npm run test:playwright-ct:all` passes
+* `npm run test:playwright` passes
 
 Write a commit message for the staged changes following the project's git
 conventions ([General Guidelines › Git Workflow](../../../src/docs/contribute/general-guidelines.md#git-workflow)):
