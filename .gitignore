@@ -1,19 +1,41 @@
+# Project
 /coverage
-/docker-compose.yml
-/docker/react_ui_devcontainer_local/*
-!/docker/react_ui_devcontainer_local/Dockerfile.dist
 /dist
-/node_modules
-/playwright-report/
+/playwright-report
 /site
 /src/docs/_assets/generated/*
-/tests/playwright/.temp/
-.env
+/tests/playwright/.temp
 statistics.html
-!.gitkeep
 
+# Dependencies
+/node_modules
+
+# Local environment
+/.env*
+!/.env.dist
+!/.env.*.dist
+/docker-compose.yml
+/docker-compose.yml.backup
+/docker/react_ui_devcontainer_local/*
+!/docker/react_ui_devcontainer_local/Dockerfile.dist
+
+# Local AI assistant files
 /.claude/settings.local.json
 /CLAUDE.local.md
 
+# IDE
+/.idea/*
+!/.idea/runConfigurations/
+/*/**/.idea/
+/.vscode/*
+!/.vscode/tasks.json
+
+# Python
 __pycache__/
 *.pyc
+
+# Logs
+npm-debug.log*
+
+# Placeholders of ignored directories
+!.gitkeep
