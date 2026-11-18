@@ -1,0 +1,53 @@
+// 1. Retain equal card widths in flex and grid layouts independently on their content.
+
+@use "../../styles/tools/collections";
+@use "settings";
+@use "theme";
+
+@layer components.card {
+    .root {
+        --rui-local-padding: #{theme.$padding};
+
+        display: flex;
+        flex-direction: column;
+        min-width: 0; // 1.
+        color: var(--rui-local-color);
+        border: theme.$border-width solid var(--rui-local-border-color, theme.$border-color);
+        border-radius: theme.$border-radius;
+        background-color: var(--rui-local-background-color, theme.$background-color);
+    }
+
+    .body {
+        flex: 1 0 auto;
+        padding: var(--rui-local-padding);
+    }
+
+    .footer {
+        padding: var(--rui-local-padding);
+    }
+
+    .isRootDense {
+        --rui-local-padding: #{theme.$dense-padding};
+    }
+
+    .isRootRaised {
+        box-shadow: theme.$raised-box-shadow;
+    }
+
+    .isRootDisabled {
+        border: theme.$disabled-border-width solid var(--rui-local-border-color, theme.$disabled-border-color);
+        background-color: theme.$disabled-background-color;
+        opacity: theme.$disabled-opacity;
+    }
+
+    @each $color in settings.$colors {
+        @include collections.generate-class(
+            $prefix: "rui-",
+            $component-name: "Card",
+            $variant-name: "color",
+            $variant-value: $color,
+            $inherit-link-color: true,
+            $properties: settings.$themeable-properties,
+        );
+    }
+}

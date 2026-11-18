@@ -1,0 +1,17 @@
+@use "../theme/page";
+@use "../theme/typography";
+
+html {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-weight: typography.$font-weight-base;
+    font-size: typography.$font-size-base;
+    line-height: typography.$line-height-base;
+    font-family: typography.$font-family-base;
+}
+
+body {
+    font-size: 1em;
+    color: page.$color;
+    background-color: page.$background;
+}
