@@ -69,7 +69,7 @@ export default defineConfig({
   },
   // Webpack dev server serving the Playwright Component Testing page
   webServer: {
-    command: `webpack serve --config tests/playwright/ct/webpack.config.js --port ${environment.CT_PORT}`,
+    command: `webpack serve --config tests/playwright/ct/webpack.config.mjs --port ${environment.CT_PORT}`,
     reuseExistingServer: !isCI,
     url: componentTestingUrl,
   },

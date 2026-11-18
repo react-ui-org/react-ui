@@ -1,9 +1,8 @@
-const Path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+import Path from 'path';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import libraryConfig from '../../../webpack.config.mjs';
 
-const LIBRARY_CONFIG_PATH = require.resolve('../../../webpack.config');
-
-const libraryConfig = require(LIBRARY_CONFIG_PATH);
+const LIBRARY_CONFIG_PATH = Path.resolve(import.meta.dirname, '../../../webpack.config.mjs');
 
 /**
  * Webpack configuration of the Playwright Component Testing page.
@@ -11,7 +10,7 @@ const libraryConfig = require(LIBRARY_CONFIG_PATH);
  * The dev server is started by Playwright (see `webServer` in `playwright-ct.config.ts`). The loader rules and the
  * module resolution are shared with the library build so that the components are compiled the same way.
  */
-module.exports = (env, argv) => {
+export default (env, argv) => {
   const {
     module: libraryModule,
     resolve,
@@ -22,11 +21,11 @@ module.exports = (env, argv) => {
     cache: {
       buildDependencies: {
         config: [
-          __filename,
+          import.meta.filename,
           LIBRARY_CONFIG_PATH,
         ],
       },
-      cacheDirectory: Path.resolve(__dirname, '../.temp/playwright-ct-cache'),
+      cacheDirectory: Path.resolve(import.meta.dirname, '../.temp/playwright-ct-cache'),
       type: 'filesystem',
     },
     devServer: {
@@ -35,16 +34,16 @@ module.exports = (env, argv) => {
       hot: false,
       liveReload: false,
       static: {
-        directory: __dirname,
+        directory: import.meta.dirname,
       },
     },
     devtool: 'cheap-module-source-map',
-    entry: Path.join(__dirname, 'index.tsx'),
+    entry: Path.join(import.meta.dirname, 'index.tsx'),
     mode: 'development',
     module: libraryModule,
     output: {
       filename: 'ct.js',
-      path: Path.resolve(__dirname, '../.temp/playwright-ct-dist'),
+      path: Path.resolve(import.meta.dirname, '../.temp/playwright-ct-dist'),
       publicPath: '/',
     },
     plugins: [

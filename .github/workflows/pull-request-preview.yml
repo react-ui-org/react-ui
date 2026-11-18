@@ -12,7 +12,8 @@ on:
       - 'package.json'
       - 'postcss.config.mjs'
       - 'tsconfig.json'
-      - 'webpack.config.js'
+      - 'webpack.config.mjs'
+      - 'webpack/**'
 
 concurrency:
   group: preview-${{ github.ref }}

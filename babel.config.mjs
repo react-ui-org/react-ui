@@ -26,13 +26,7 @@ export default {
     ],
   ],
   presets: [
-    [
-      '@babel/preset-env',
-      {
-        // webpack runs Babel on CommonJS packages in `node_modules` too, so the output must stay CommonJS
-        modules: 'commonjs',
-      },
-    ],
+    '@babel/preset-env',
     '@babel/preset-typescript',
   ],
 };
