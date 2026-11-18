@@ -1,7 +1,7 @@
-/** @typedef { import("webpack").Configuration.externals } WebpackExternalsConfig * */
+/** @typedef {import('webpack').Configuration['externals']} WebpackExternalsConfig */
 
 /**
- * @return {WebpackExternalsConfig}
+ * @returns {WebpackExternalsConfig}
  */
 export const externalsConfig = () => ({
   react: {

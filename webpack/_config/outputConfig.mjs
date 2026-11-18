@@ -1,11 +1,11 @@
 import path from 'path';
 import { getRootDirname } from '../_helpers/getRootDirname.mjs';
 
-/** @typedef { import("webpack").Configuration.output } WebpackOutputConfig * */
+/** @typedef {import('webpack').Configuration['output']} WebpackOutputConfig */
 
 /**
  * @param {Environment} environment
- * @return {WebpackOutputConfig}
+ * @returns {WebpackOutputConfig}
  */
 export const outputConfig = (environment) => ({
   filename: environment.WEBPACK_MODE === 'production'

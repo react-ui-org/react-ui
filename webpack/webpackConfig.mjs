@@ -8,9 +8,7 @@ import { performanceConfig } from './_config/performanceConfig.mjs';
 import { pluginsConfig } from './_config/pluginsConfig.mjs';
 import { resolveConfig } from './_config/resolveConfig.mjs';
 
-/**
- * @typedef { import("webpack").Configuration } WebpackConfig
- */
+/** @typedef {import('webpack').Configuration} WebpackConfig */
 
 /**
  * @typedef {Object} Environment

@@ -1,9 +1,9 @@
-/** @typedef { import("webpack").Configuration.resolve } WebpackResolveConfig * */
+/** @typedef {import('webpack').Configuration['resolve']} WebpackResolveConfig */
 
 /**
- * @return {WebpackResolveConfig}
+ * @returns {WebpackResolveConfig}
  */
 export const resolveConfig = () => ({
-  extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
+  extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss'],
   modules: ['src', 'node_modules'],
 });

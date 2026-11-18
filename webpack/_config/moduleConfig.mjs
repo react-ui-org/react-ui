@@ -1,10 +1,10 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-/** @typedef { import("webpack").Configuration.module } WebpackModuleConfig * */
+/** @typedef {import('webpack').Configuration['module']} WebpackModuleConfig */
 
 /**
  * @param {Environment} environment
- * @return {WebpackModuleConfig}
+ * @returns {WebpackModuleConfig}
  */
 export const moduleConfig = (environment) => ({
   rules: [

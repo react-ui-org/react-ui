@@ -1,10 +1,10 @@
 import TerserPlugin from 'terser-webpack-plugin';
 
-/** @typedef { import("webpack").Configuration.optimization } WebpackOptimizationConfig * */
+/** @typedef {import('webpack').Configuration['optimization']} WebpackOptimizationConfig */
 
 /**
  * @param {Environment} environment
- * @return {WebpackOptimizationConfig}
+ * @returns {WebpackOptimizationConfig}
  */
 export const optimizationConfig = (environment) => ({
   minimize: environment.WEBPACK_MODE === 'production',
