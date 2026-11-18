@@ -1,6 +1,6 @@
 /coverage
 /docker-compose.yml
-/docker/react_ui_devcontainer_local
+/docker/react_ui_devcontainer_local/*
 !/docker/react_ui_devcontainer_local/Dockerfile.dist
 /dist
 /node_modules
