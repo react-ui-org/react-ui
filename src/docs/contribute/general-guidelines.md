@@ -100,11 +100,11 @@ The IDE will automatically set up the environment using the configuration in
 ### Customization
 
 To customize the `devcontainer`, create a
-`docker/react_ui_devcontainer_local/Dockerfile` that extends the base image:
+`docker/react-ui-devcontainer-local/Dockerfile` that extends the base image:
 
 ```Dockerfile
-# Image name `react-ui_devcontainer` might differ based on Docker compose project name
-FROM react-ui_devcontainer as react-ui_devcontainer_local
+# Image name `react-ui-devcontainer` might differ based on Docker compose project name
+FROM react-ui-devcontainer
 # Add your customizations here
 ```
 
@@ -117,7 +117,7 @@ devcontainer:
     file: docker-compose.base.yml
     service: devcontainer
   build:
-    context: ./docker/react_ui_devcontainer_local/
+    context: ./docker/react-ui-devcontainer-local/
     dockerfile: Dockerfile
 ```
 
@@ -135,7 +135,7 @@ done in `docker-compose.base.yml`. You will need to add a volume mapping to the
 
 The `devcontainer` is built in the following layers:
 
-#### Base Layer (`react-ui_devcontainer`)
+#### Base Layer (`react-ui-devcontainer`)
 
 General-purpose development layer. Makes the environment container-agnostic
 by wrapping commands to run in the appropriate service containers.
@@ -146,7 +146,7 @@ by wrapping commands to run in the appropriate service containers.
 * **Tools:** Git, SSH client, Docker CLI (Docker-from-Docker)
 * **AI coding assistants:** Claude Code, GitHub Copilot CLI, Open Code
 
-#### Local Layer (`react-ui_devcontainer_local`)
+#### Local Layer (`react-ui-devcontainer-local`)
 
 Optional layer that allows individual developers to customize the environment.
 See [Customization](#customization) for details.

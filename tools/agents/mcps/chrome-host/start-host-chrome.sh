@@ -19,6 +19,9 @@
 #   CHROME_DEBUG_BIND   bind address (else auto-detected: loopback on Docker
 #                       Desktop, docker bridge gateway on native Engine).
 #                       SECURITY: a non-loopback bind exposes the port -- firewall it.
+#   CHROME_START_URL    URL opened in the new window (else the application on
+#                       COMPOSE_WEB_SERVER_PORT over HTTPS when the project has
+#                       one, otherwise the docs on COMPOSE_DOCS_SERVER_PORT)
 #
 # Profile is always ~/.chrome-debug-profile-<COMPOSE_PROJECT_NAME> (not configurable).
 
@@ -45,7 +48,7 @@ ENV_FILE="$env_root/.env"
 # matching .env line. Letting the shell run the assignment strips quotes and
 # inline comments for free. Values containing spaces must be quoted in .env.
 if [ -f "$ENV_FILE" ]; then
-  for env_key in CHROME_DEBUG_PORT CHROME_BIN CHROME_DEBUG_BIND COMPOSE_PROJECT_NAME COMPOSE_DOCS_SERVER_PORT; do
+  for env_key in CHROME_DEBUG_PORT CHROME_BIN CHROME_DEBUG_BIND COMPOSE_PROJECT_NAME COMPOSE_WEB_SERVER_PORT COMPOSE_DOCS_SERVER_PORT CHROME_START_URL; do
     eval "[ -n \"\${$env_key+x}\" ]" && continue
     eval "$(grep -E "^[[:space:]]*$env_key=" "$ENV_FILE" | tail -n 1 || true)"
   done
@@ -245,7 +248,14 @@ set -- \
   --no-first-run \
   --no-default-browser-check \
   --ignore-certificate-errors
-set -- "$@" --new-window "http://localhost:${COMPOSE_DOCS_SERVER_PORT:-8000}"
+if [ -n "${CHROME_START_URL:-}" ]; then
+  START_URL="$CHROME_START_URL"
+elif [ -n "${COMPOSE_WEB_SERVER_PORT:-}" ]; then
+  START_URL="https://localhost:$COMPOSE_WEB_SERVER_PORT"
+else
+  START_URL="http://localhost:${COMPOSE_DOCS_SERVER_PORT:-8000}"
+fi
+set -- "$@" --new-window "$START_URL"
 
 nohup "$CHROME" "$@" >"$PROFILE/chrome-debug.log" 2>&1 &
 

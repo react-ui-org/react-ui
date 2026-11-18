@@ -1,0 +1,4 @@
+# Image name `react-ui-devcontainer` might differ based on Docker compose project name
+FROM react-ui-devcontainer
+
+# Your additional setup for the local development can go here

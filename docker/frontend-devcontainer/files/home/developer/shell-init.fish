@@ -14,3 +14,6 @@ if test "$BLOCK_SSH_AUTH_SOCK" = "true"
     # Remove any existing SSH agent socket files created by VS Code
     find /tmp -maxdepth 1 -name 'vscode-ssh-auth-*.sock' -delete 2>/dev/null
 end
+
+# Warn the user when the development environment definition has changed
+sh "$HOME/check-environment-update.sh"

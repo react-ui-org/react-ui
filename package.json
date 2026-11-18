@@ -74,7 +74,7 @@
     "precopy": "rm -rf dist && mkdir dist",
     "prepublishOnly": "npm run build",
     "start": "webpack --watch --mode=development",
-    "start:chrome": "sh scripts/mcps/chrome-host/start-host-chrome.sh",
+    "start:chrome": "sh ./tools/agents/mcps/chrome-host/start-host-chrome.sh",
     "test:jest": "jest --coverage",
     "test:playwright": "playwright test -c playwright-ct.config.ts",
     "test:playwright:report": "playwright show-report --host=0.0.0.0"

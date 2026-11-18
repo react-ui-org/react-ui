@@ -13,7 +13,7 @@
 
 set -eu
 
-ROOT="$(CDPATH= cd -- "$(dirname -- "$0")/../../.." && pwd)"
+ROOT="$(CDPATH= cd -- "$(dirname -- "$0")/../../../.." && pwd)"
 COMPOSE_FILE="$ROOT/docker-compose.yml"
 DOCKER_SERVICE_NAME=node
 MAPPING="host.docker.internal:host-gateway"

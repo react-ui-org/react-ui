@@ -49,7 +49,7 @@ works — point its config at the script.
   "mcpServers": {
     "chrome-host": {
       "command": "sh",
-      "args": ["scripts/mcps/chrome-host/mcp-entry.sh"]
+      "args": ["tools/agents/mcps/chrome-host/mcp-entry.sh"]
     }
   }
 }
@@ -62,7 +62,7 @@ works — point its config at the script.
   "mcp": {
     "chrome-host": {
       "type": "local",
-      "command": ["sh", "scripts/mcps/chrome-host/mcp-entry.sh"],
+      "command": ["sh", "tools/agents/mcps/chrome-host/mcp-entry.sh"],
       "enabled": true
     }
   }
@@ -78,7 +78,7 @@ Requirements: a `docker-compose.yml` at the repo root, the repo mounted at
 1. Start host Chrome (from a host terminal, **not** from inside an AI action):
 
    ```sh
-   ./scripts/mcps/chrome-host/start-host-chrome.sh
+   ./tools/agents/mcps/chrome-host/start-host-chrome.sh
    ```
 
 2. On first run, approve the `chrome-host` server in your MCP client.
@@ -105,6 +105,10 @@ Decided by **Docker Desktop vs native Docker Engine**, not the OS.
   non-loopback bind exposes the unauthenticated CDP port; firewall it.
   The proxy's listen port and target host are fixed constants; only its upstream
   port is configurable, and it follows the same `CHROME_DEBUG_PORT`.
+- Start page: `CHROME_START_URL` in the repo `.env` sets the URL that the
+  launcher opens. Without it the launcher opens the application on
+  `COMPOSE_WEB_SERVER_PORT` over HTTPS, or the docs on
+  `COMPOSE_DOCS_SERVER_PORT` when the project has no application port.
 - Set these in the repo `.env`; Compose passes `CHROME_DEBUG_PORT` into the
   container, so a single knob drives both sides. Recreate the node container
   after editing. See `.env.dist`.

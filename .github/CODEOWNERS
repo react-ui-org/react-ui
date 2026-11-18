@@ -8,7 +8,8 @@
 
 # Infrastructure & build tooling
 /docker/                    @bedrich-schindler @mbohal @react-ui-org/maintainers
-/docker-compose.yml         @bedrich-schindler @mbohal @react-ui-org/maintainers
+/docker-compose.base.yml    @bedrich-schindler @mbohal @react-ui-org/maintainers
+/docker-compose.yml.dist    @bedrich-schindler @mbohal @react-ui-org/maintainers
 /webpack.config.mjs         @bedrich-schindler @mbohal @react-ui-org/maintainers
 /webpack/                   @bedrich-schindler @mbohal @react-ui-org/maintainers
 /babel.config.mjs           @bedrich-schindler @mbohal @react-ui-org/maintainers

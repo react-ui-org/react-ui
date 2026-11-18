@@ -4,12 +4,12 @@ services:
     extends:
       file: docker-compose.base.yml
       service: devcontainer
-    # Use `build` when you want to customize the devcontainer using `docker/react_ui_devcontainer_local/Dockerfile`
+    # Use `build` when you want to customize the devcontainer using `docker/react-ui-devcontainer-local/Dockerfile`
     # build:
-    #   context: ./docker/react_ui_devcontainer_local/
+    #   context: ./docker/react-ui-devcontainer-local/
     #   dockerfile: Dockerfile
     # Use `image` when you want to use the default devcontainer
-    image: react-ui_devcontainer
+    image: react-ui-devcontainer
 
   # This service provides Node environment and NPM
   node:

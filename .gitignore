@@ -16,8 +16,8 @@ statistics.html
 !/.env.*.dist
 /docker-compose.yml
 /docker-compose.yml.backup
-/docker/react_ui_devcontainer_local/*
-!/docker/react_ui_devcontainer_local/Dockerfile.dist
+/docker/react-ui-devcontainer-local/*
+!/docker/react-ui-devcontainer-local/Dockerfile.dist
 
 # Local AI assistant files
 /.claude/settings.local.json

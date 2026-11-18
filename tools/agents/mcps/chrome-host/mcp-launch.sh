@@ -33,4 +33,7 @@ fi
 # package.json: it is host/dev MCP tooling for this bridge, not an app build or
 # runtime dependency, so it deliberately stays out of the lockfile. `-y` confirms
 # the one-off npx install; `@latest` tracks upstream fixes for the dev tool.
+#
+# Requires `python3` in the node image for cdp_proxy.py: the full `node:<version>`
+# image ships it, the `-slim` variants do not.
 exec npx -y chrome-devtools-mcp@latest --browser-url "http://127.0.0.1:${PROXY_PORT}" "$@"

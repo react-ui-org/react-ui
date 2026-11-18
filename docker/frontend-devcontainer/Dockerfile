@@ -1,7 +1,13 @@
-FROM debian:bookworm-slim AS react-ui-devcontainer
+# Debian is pinned by digest to keep the build reproducible
+FROM debian:bookworm-20261027@sha256:d74df7598108a173a621eda4d58a2adbf850b2d9a9d81bc2cca1a6c21174a880
+
+# Fail RUN instructions with pipes when any command in the pipe fails
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Build arguments for user configuration
 # Those can be changed using fixuid's remapping feature when running the container
+# `USERNAME` is not sensitive data, it is just the name of the user inside the container
+# hadolint ignore=DL3064
 ARG USERNAME=developer
 ARG USER_UID=1000
 ARG USER_GID=1000
@@ -16,6 +22,8 @@ ENV OPENCODE_CONFIG="${HOME}/.config/opencode/opencode.json"
 ENV OPENCODE_CONFIG_DIR="${HOME}/.config/opencode"
 
 # Install sudo, editors (vim, nano), SSH client, Git, shells (zsh, fish) and common utilities
+# Do not fix package versions
+# hadolint ignore=DL3008
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         sudo \
@@ -41,13 +49,15 @@ RUN addgroup --gid $USER_GID $USERNAME && \
 RUN USER=$USERNAME && \
     GROUP=$USERNAME && \
     ARCH=$(dpkg --print-architecture) && \
-    curl -SsL https://github.com/boxboat/fixuid/releases/download/v0.6.0/fixuid-0.6.0-linux-${ARCH}.tar.gz | tar -C /usr/local/bin -xzf - && \
+    curl -SsL "https://github.com/boxboat/fixuid/releases/download/v0.6.0/fixuid-0.6.0-linux-${ARCH}.tar.gz" | tar -C /usr/local/bin -xzf - && \
     chown root:root /usr/local/bin/fixuid && \
     chmod 4755 /usr/local/bin/fixuid && \
     mkdir -p /etc/fixuid && \
-    printf "user: $USER\ngroup: $GROUP\npaths: [$HOME]" > /etc/fixuid/config.yml
+    printf 'user: %s\ngroup: %s\npaths: [%s]' "$USER" "$GROUP" "$HOME" > /etc/fixuid/config.yml
 
 # Install Docker CLI and Compose plugin to enable Docker-from-Docker
+# Do not fix package versions
+# hadolint ignore=DL3008
 RUN install -m 0755 -d /etc/apt/keyrings && \
     curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --batch --yes --dearmor -o /etc/apt/keyrings/docker.gpg && \
     chmod a+r /etc/apt/keyrings/docker.gpg && \
@@ -99,17 +109,12 @@ COPY --chmod=+x files/usr/local/bin/opencode /usr/local/bin/opencode
 COPY --chmod=+x files/usr/local/bin/docker-entrypoint /usr/local/bin/docker-entrypoint
 COPY --chmod=+x files/home/$USERNAME/shell-init.sh ${HOME}/shell-init.sh
 COPY --chmod=+x files/home/$USERNAME/shell-init.fish ${HOME}/shell-init.fish
-
-# Wrapper scripts that execute commands inside the appropriate Docker containers.
-# These scripts use Docker-from-Docker to run the commands in the context of the
-# respective Docker containers, allowing container agnostic development workflows.
-COPY --chmod=+x files/usr/local/bin/node /usr/local/bin/node
-COPY --chmod=+x files/usr/local/bin/npm /usr/local/bin/npm
-COPY --chmod=+x files/usr/local/bin/npx /usr/local/bin/npx
-COPY --chmod=+x files/usr/local/bin/mkdocs /usr/local/bin/mkdocs
+COPY --chmod=+x files/home/$USERNAME/check-environment-update.sh ${HOME}/check-environment-update.sh
 
 # Ensure /usr/local/bin takes precedence over VS Code injected paths
 # and run profile script on every shell startup to apply .env configuration
+# Single quotes are intentional, variables must expand at shell startup, not at build time
+# hadolint ignore=SC2016
 RUN mkdir -p $HOME/.config/fish && \
     echo 'export PATH="/usr/local/bin:$PATH"' >> $HOME/.bashrc && \
     echo 'export PATH="/usr/local/bin:$PATH"' >> $HOME/.zshrc && \
