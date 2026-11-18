@@ -90,7 +90,8 @@ Easy-to-miss invariants beyond the generic checks above:
   `test:jest` and `test:playwright`
   ([.github/workflows/](../../.github/workflows/)). `npm run lint` covers
   `lint:eslint`, `lint:stylelint`, `lint:markdownlint` and `lint:types`; the
-  tests run separately. `npm run lint:eslint` covers `src` and `tests`.
+  tests run separately. `npm run lint:eslint` covers `src`, `tests`, `scripts`,
+  `webpack` and the config files in the project root.
   Remind the author to run them.
 * **Component layout** ([frontend.md](../rules/frontend.md)): every component
   folder has the `.tsx` + `.types.ts` + `index.ts` barrel + `*.module.scss` + `_settings`/

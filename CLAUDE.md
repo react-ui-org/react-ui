@@ -46,7 +46,8 @@ Notes:
 
 * `npm run lint` runs all linters (ESLint, Stylelint, Markdownlint, type check).
   There is no `npm test` script.
-* `npm run lint:eslint` lints `src` and `tests`.
+* `npm run lint:eslint` lints `src`, `tests`, `scripts`, `webpack` and the
+  `*.config.js` and `*.config.mjs` files in the project root.
 * The lint / Jest / Playwright commands are the same gates CI runs
   ([.github/workflows/](.github/workflows/)).
 * Commands like `npm`, `playwright` run in specific Docker containers.
