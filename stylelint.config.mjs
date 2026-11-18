@@ -15,10 +15,10 @@ export default {
     // Also allow kebab-case class names for global helper and utility classes.
     //
     // A: camelCase pattern
-    // B: kebab-case pattern
+    // B: kebab-case pattern, written so that a name can be matched in one way only
     'selector-class-pattern': [
       //   ↓ A                              OR ↓ B
-      '^(?:(([a-z][a-z0-9]*)([A-Z][a-z0-9]+)*)|(([a-z0-9]+-?)+))$',
+      '^(?:(([a-z][a-z0-9]*)([A-Z][a-z0-9]+)*)|([a-z0-9]+(-[a-z0-9]+)*-?))$',
       {
         message: 'Expected class selector to be either camelCase (CSS Modules) or kebab-case (global classes)',
       },
