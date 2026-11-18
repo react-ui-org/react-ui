@@ -10,13 +10,13 @@
 /docker/                    @bedrich-schindler @mbohal @react-ui-org/maintainers
 /docker-compose.yml         @bedrich-schindler @mbohal @react-ui-org/maintainers
 /webpack.config.js          @bedrich-schindler @mbohal @react-ui-org/maintainers
-/babel.config.js            @bedrich-schindler @mbohal @react-ui-org/maintainers
+/babel.config.mjs           @bedrich-schindler @mbohal @react-ui-org/maintainers
 /jest.config.js             @bedrich-schindler @mbohal @react-ui-org/maintainers
 /eslint.config.mjs          @bedrich-schindler @mbohal @react-ui-org/maintainers
 
 # Docs, styles & style tooling
 *.md                        @adamkudrna @react-ui-org/maintainers
-/postcss.config.js          @adamkudrna @react-ui-org/maintainers
+/postcss.config.mjs         @adamkudrna @react-ui-org/maintainers
 /src/docs/                  @adamkudrna @react-ui-org/maintainers
 /src/styles/                @adamkudrna @react-ui-org/maintainers
 /src/theme.scss             @adamkudrna @react-ui-org/maintainers

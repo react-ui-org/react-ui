@@ -6,11 +6,11 @@ on:
     paths:
       - 'src/**'
       - '.browserslistrc'
-      - 'babel.config.js'
+      - 'babel.config.mjs'
       - 'mkdocs.yml'
       - 'package-lock.json'
       - 'package.json'
-      - 'postcss.config.js'
+      - 'postcss.config.mjs'
       - 'tsconfig.json'
       - 'webpack.config.js'
 
