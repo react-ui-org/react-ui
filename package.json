@@ -66,8 +66,8 @@
     "copy:js": "cp src/docs/_assets/generated/react-ui.js dist && cp src/docs/_assets/generated/react-ui.development.js dist",
     "lint": "npm run lint:stylelint && npm run lint:eslint && npm run lint:types && npm run lint:markdownlint",
     "lint:eslint": "eslint",
-    "lint:markdownlint": "markdownlint-cli2 \"README.md\" \"src/**/*.md\"",
-    "lint:stylelint": "stylelint \"src/**/*.{css,scss}\" \"!src/docs/_assets/generated/**\" --config stylelint.config.mjs",
+    "lint:markdownlint": "markdownlint-cli2",
+    "lint:stylelint": "stylelint \"{src,tests}/**/*.{css,scss}\" --ignore-path .gitignore",
     "lint:types": "tsc --noEmit",
     "postbuild": "npm run copy && npm run build:types",
     "postinstall": "sh scripts/writeLockfileHash.sh",
@@ -77,7 +77,7 @@
     "start:chrome": "sh ./tools/agents/mcps/chrome-host/start-host-chrome.sh",
     "test:jest": "jest --coverage",
     "test:playwright": "playwright test -c playwright-ct.config.ts",
-    "test:playwright:report": "playwright show-report --host=0.0.0.0"
+    "test:playwright:report": "playwright show-report --host 0.0.0.0"
   },
   "dependencies": {
     "normalize.css": "^8.0.1"
