@@ -222,8 +222,8 @@ the following command:
 npm run test:playwright:report
 ```
 
-Then open the displayed URL (typically `http://localhost:9323`)
-in your browser. Please note that the test report is only available
+Then open `http://localhost:<COMPOSE_PLAYWRIGHT_REPORT_PORT>` (`21002` by
+default, see `.env`) in your browser. Please note that the test report is only available
 if the tests were run prior to serving the report.
 
 [playwright-cli]: https://playwright.dev/docs/test-cli#reference
