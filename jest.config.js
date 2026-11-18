@@ -9,6 +9,10 @@ module.exports = {
     '\\.scss$': 'identity-obj-proxy',
     '\\.svg$': '<rootDir>/tests/jest/mocks/svgrMock.ts',
   },
+  roots: [
+    '<rootDir>/src',
+    '<rootDir>/tests',
+  ],
   setupFiles: [
     '<rootDir>/tests/jest/setupJest.ts',
   ],
