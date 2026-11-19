@@ -26,6 +26,8 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
+      // No rendering flags are set on purpose. Playwright runs the Chromium headless shell, which renders in
+      // software by default, so the snapshots are stable without them.
       use: { ...devices['Desktop Chrome'] },
     },
   ],
@@ -52,18 +54,6 @@ export default defineConfig({
     reuseContext: true,
     // Prevent a service worker from serving cached responses that would shadow `page.route()` mocks
     serviceWorkers: 'block',
-    // Launch options for Playwright
-    launchOptions: {
-      args: [
-        '--use-gl=egl',
-        // # Must be set to `new` to enable new version of Chromium Headless to obtain correct snapshots
-        '--headless=new',
-      ],
-      ignoreDefaultArgs: [
-        // # Must be ignored to enable new version of Chromium Headless to obtain correct snapshots
-        '--headless',
-      ],
-    },
     // Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer
     trace: 'on-first-retry',
   },
