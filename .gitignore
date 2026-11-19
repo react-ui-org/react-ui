@@ -4,8 +4,8 @@
 /playwright-report
 /site
 /src/docs/_assets/generated/*
+/stats.html
 /tests/playwright/.temp
-statistics.html
 
 # Dependencies
 /node_modules

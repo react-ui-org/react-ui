@@ -1,4 +1,3 @@
-import path from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import StyleLintPlugin from 'stylelint-webpack-plugin';
 import VisualizerPlugin from 'webpack-visualizer-plugin2';
@@ -24,6 +23,6 @@ export const pluginsConfig = (environment) => [
     files: 'src/**/*.scss',
   }),
   new VisualizerPlugin({
-    filename: path.join('..', '..', '..', '..', 'statistics.html'), // Relative to `output.path`
+    filename: '../../../../stats.html', // Relative to `output.path`
   }),
 ];
