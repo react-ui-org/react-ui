@@ -20,7 +20,8 @@ export const pluginsConfig = (environment) => [
   }),
   new StyleLintPlugin({
     configFile: 'stylelint.config.mjs',
-    files: 'src/**/*.scss',
+    files: '{src,tests}/**/*.{css,scss}', // Same files as the `lint:stylelint` script
+    ignorePath: '.gitignore',
   }),
   new VisualizerPlugin({
     filename: '../../../../stats.html', // Relative to `output.path`
