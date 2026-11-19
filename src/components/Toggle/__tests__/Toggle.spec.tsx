@@ -10,7 +10,7 @@ test.describe('Toggle', () => {
     test.describe('visual', () => {
       [
         ...propTests.defaultComponentPropTest,
-        ...propTests.helpTextAndValidationTextPropType,
+        ...propTests.helpTextAndValidationTextPropTest,
         ...propTests.isLabelVisiblePropTest,
         ...propTests.labelPositionPropTest,
         ...propTests.labelPropTest,

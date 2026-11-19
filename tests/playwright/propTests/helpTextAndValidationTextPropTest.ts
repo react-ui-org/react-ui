@@ -1,6 +1,6 @@
 import type { PropTests } from '../types';
 
-export const helpTextAndValidationTextPropType: PropTests = [
+export const helpTextAndValidationTextPropTest: PropTests = [
   {
     name: 'helpText:string & validationText:undefined',
     props: {

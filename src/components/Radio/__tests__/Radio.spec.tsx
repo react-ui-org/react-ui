@@ -31,7 +31,7 @@ test.describe('Radio', () => {
     test.describe('visual', () => {
       [
         ...propTests.defaultComponentPropTest,
-        ...propTests.helpTextAndValidationTextPropType,
+        ...propTests.helpTextAndValidationTextPropTest,
         ...propTests.isLabelVisiblePropTest,
         ...propTests.labelPropTest,
         ...propTests.layoutPropTest,

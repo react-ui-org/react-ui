@@ -21,7 +21,7 @@ test.describe('TextField', () => {
           propTests.fullWidthPropTest,
           propTests.layoutPropTest,
         ]),
-        ...propTests.helpTextAndValidationTextPropType,
+        ...propTests.helpTextAndValidationTextPropTest,
         ...inputSizePropTest,
         ...propTests.isLabelVisiblePropTest,
         ...propTests.labelPropTest,

@@ -9,7 +9,7 @@ import { endCornerPropTest } from './propTests/endCornerPropTest';
 import { feedbackColorPropTest } from './propTests/feedbackColorPropTest';
 import { feedbackIconPropTest } from './propTests/feedbackIconPropTest';
 import { fullWidthPropTest } from './propTests/fullWidthPropTest';
-import { helpTextAndValidationTextPropType } from './propTests/helpTextAndValidationTextPropType';
+import { helpTextAndValidationTextPropTest } from './propTests/helpTextAndValidationTextPropTest';
 import { helpTextPropTest } from './propTests/helpTextPropTest';
 import { iconPropTest } from './propTests/iconPropTest';
 import { isLabelVisiblePropTest } from './propTests/isLabelVisiblePropTest';
@@ -40,7 +40,7 @@ export const propTests = {
   feedbackColorPropTest,
   feedbackIconPropTest,
   fullWidthPropTest,
-  helpTextAndValidationTextPropType,
+  helpTextAndValidationTextPropTest,
   helpTextPropTest,
   iconPropTest,
   isLabelVisiblePropTest,
