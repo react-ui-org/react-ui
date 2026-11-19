@@ -6,6 +6,7 @@ export type PropTest = {
   onBeforeSnapshot?: (page: Page, component: MountResult) => Promise<void>;
   onBeforeTest?: (page: Page) => Promise<void>;
   props: Record<string, unknown>;
+  takeScreenshot?: (page: Page, component: MountResult) => Promise<Buffer>;
 };
 
 export type PropTests = PropTest[];

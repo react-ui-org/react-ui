@@ -28,15 +28,6 @@ import { validationTextPropTest } from './propTests/validationTextPropTest';
 import { variantPropTest } from './propTests/variantPropTest';
 import { requiredPropTest } from './propTests/requiredPropTest';
 
-export {
-  expect,
-  test,
-} from './test';
-
-export { element } from './utils/element';
-export { mixPropTests } from './utils/mixPropTests';
-export { getActualFocusedElementText } from './utils/getActualFocusedElementText';
-
 export const propTests = {
   actionColorPropTest,
   afterLabelPropTest,
@@ -68,5 +59,18 @@ export const propTests = {
   validationTextPropTest,
   variantPropTest,
 };
+
+export {
+  expect,
+  test,
+} from './test';
+
+export { element } from './utils/element';
+export { getActualFocusedElementText } from './utils/getActualFocusedElementText';
+export { mixPropTests } from './utils/mixPropTests';
 export type { MountResult } from './test';
-export type { StoryProps } from './types';
+export type {
+  PropTest,
+  PropTests,
+  StoryProps,
+} from './types';
