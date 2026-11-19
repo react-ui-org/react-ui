@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import('jest').Config} */
+export default {
   moduleFileExtensions: [
     // Jest runner requires `js` extension to be defined
     'js',
@@ -13,18 +14,13 @@ module.exports = {
     '<rootDir>/src',
     '<rootDir>/tests',
   ],
-  setupFiles: [
-    '<rootDir>/tests/jest/setupJest.ts',
-  ],
   setupFilesAfterEnv: [
+    '<rootDir>/tests/jest/setupFailOnConsole.ts',
     '<rootDir>/tests/jest/setupTestingLibrary.ts',
   ],
   testEnvironment: '@happy-dom/jest-environment',
   testMatch: [
     '**/*.test.{ts,tsx}',
-  ],
-  transformIgnorePatterns: [
-    'node_modules/(?!(@react-ui-org))',
   ],
   verbose: true,
 };
