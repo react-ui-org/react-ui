@@ -77,6 +77,7 @@
     "start:chrome": "sh ./tools/agents/mcps/chrome-host/start-host-chrome.sh",
     "test:jest": "jest --coverage",
     "test:playwright": "playwright test -c playwright-ct.config.ts",
+    "test:playwright:clear-cache": "rm -rf ./tests/playwright/.temp/playwright-ct-cache/",
     "test:playwright:report": "playwright show-report --host 0.0.0.0"
   },
   "dependencies": {
