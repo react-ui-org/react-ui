@@ -2774,10 +2774,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#base-layer-react-ui_devcontainer" class="md-nav__link">
+  <a href="#base-layer-react-ui-devcontainer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Base Layer (react-ui_devcontainer)
+        Base Layer (react-ui-devcontainer)
       
     </span>
   </a>
@@ -2785,10 +2785,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#local-layer-react-ui_devcontainer_local" class="md-nav__link">
+  <a href="#local-layer-react-ui-devcontainer-local" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Local Layer (react-ui_devcontainer_local)
+        Local Layer (react-ui-devcontainer-local)
       
     </span>
   </a>
@@ -3280,10 +3280,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#base-layer-react-ui_devcontainer" class="md-nav__link">
+  <a href="#base-layer-react-ui-devcontainer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Base Layer (react-ui_devcontainer)
+        Base Layer (react-ui-devcontainer)
       
     </span>
   </a>
@@ -3291,10 +3291,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#local-layer-react-ui_devcontainer_local" class="md-nav__link">
+  <a href="#local-layer-react-ui-devcontainer-local" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Local Layer (react-ui_devcontainer_local)
+        Local Layer (react-ui-devcontainer-local)
       
     </span>
   </a>
@@ -3514,9 +3514,9 @@ The IDE will automatically set up the environment using the configuration in
 </ol>
 <h3 id="customization">Customization</h3>
 <p>To customize the <code>devcontainer</code>, create a
-<code>docker/react_ui_devcontainer_local/Dockerfile</code> that extends the base image:</p>
-<pre class="highlight"><code class="language-Dockerfile"># Image name `react-ui_devcontainer` might differ based on Docker compose project name
-FROM react-ui_devcontainer as react-ui_devcontainer_local
+<code>docker/react-ui-devcontainer-local/Dockerfile</code> that extends the base image:</p>
+<pre class="highlight"><code class="language-Dockerfile"># Image name `react-ui-devcontainer` might differ based on Docker compose project name
+FROM react-ui-devcontainer
 # Add your customizations here</code></pre>
 <p>Then ensure <code>docker-compose.yml</code> has the <code>build</code> directive for the <code>devcontainer</code>
 service:</p>
@@ -3525,7 +3525,7 @@ service:</p>
     file: docker-compose.base.yml
     service: devcontainer
   build:
-    context: ./docker/react_ui_devcontainer_local/
+    context: ./docker/react-ui-devcontainer-local/
     dockerfile: Dockerfile</code></pre>
 <p>Rebuild the images after making changes:</p>
 <pre class="highlight"><code class="language-bash">bash docker/build-docker-images.sh</code></pre>
@@ -3534,7 +3534,7 @@ done in <code>docker-compose.base.yml</code>. You will need to add a volume mapp
 <code>devcontainer</code> service and add a corresponding named volume definition.</p>
 <h3 id="what-the-devcontainer-contains">What the <code>devcontainer</code> Contains</h3>
 <p>The <code>devcontainer</code> is built in the following layers:</p>
-<h4 id="base-layer-react-ui_devcontainer">Base Layer (<code>react-ui_devcontainer</code>)</h4>
+<h4 id="base-layer-react-ui-devcontainer">Base Layer (<code>react-ui-devcontainer</code>)</h4>
 <p>General-purpose development layer. Makes the environment container-agnostic
 by wrapping commands to run in the appropriate service containers.</p>
 <ul>
@@ -3544,7 +3544,7 @@ by wrapping commands to run in the appropriate service containers.</p>
 <li><strong>Tools:</strong> Git, SSH client, Docker CLI (Docker-from-Docker)</li>
 <li><strong>AI coding assistants:</strong> Claude Code, GitHub Copilot CLI, Open Code</li>
 </ul>
-<h4 id="local-layer-react-ui_devcontainer_local">Local Layer (<code>react-ui_devcontainer_local</code>)</h4>
+<h4 id="local-layer-react-ui-devcontainer-local">Local Layer (<code>react-ui-devcontainer-local</code>)</h4>
 <p>Optional layer that allows individual developers to customize the environment.
 See <a href="#customization">Customization</a> for details.</p>
 <h3 id="service-containers">Service Containers</h3>

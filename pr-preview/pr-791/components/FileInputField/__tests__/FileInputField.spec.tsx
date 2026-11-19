@@ -20,7 +20,7 @@ test.describe('FileInputField', () => {
           propTests.fullWidthPropTest,
           propTests.layoutPropTest,
         ]),
-        ...propTests.helpTextAndValidationTextPropType,
+        ...propTests.helpTextAndValidationTextPropTest,
         ...propTests.helpTextPropTest,
         ...propTests.isLabelVisiblePropTest,
         ...propTests.labelPropTest,

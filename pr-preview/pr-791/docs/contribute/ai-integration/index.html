@@ -3058,7 +3058,7 @@ capabilities.</p>
 running on your <strong>host</strong> machine, using <a href="https://github.com/ChromeDevTools/chrome-devtools-mcp"><code>chrome-devtools-mcp</code></a>.
 This is useful for verifying UI changes, taking screenshots, and interactively
 debugging the running application in a real browser.</p>
-<p>The wiring lives in the <code>scripts/mcps/chrome-host/</code> directory and works on
+<p>The wiring lives in the <code>tools/agents/mcps/chrome-host/</code> directory and works on
 macOS and Linux.</p>
 <h3 id="setup">Setup</h3>
 <p>The <code>chrome-host</code> server is registered automatically and, on <strong>Docker Desktop</strong>,
@@ -3068,7 +3068,7 @@ by default and the <code>node</code> service needs a host-gateway mapping.</p>
 <h4 id="automatic-setup">Automatic setup</h4>
 <p>The host-gateway mapping is added automatically on native Docker Engine as part
 of the project's <a href="../general-guidelines/#automatic-setup">automatic setup</a>
-(<code>setup.sh</code> runs <code>scripts/mcps/chrome-host/mcp-setup.sh</code>).</p>
+(<code>setup.sh</code> runs <code>tools/agents/mcps/chrome-host/mcp-setup.sh</code>).</p>
 <h4 id="manual-setup">Manual setup</h4>
 <p>To configure it by hand instead, add the host-gateway mapping to the <code>node</code>
 service:</p>
@@ -3090,7 +3090,7 @@ through Docker Compose). See <code>.env.dist</code> for the available options.</
 </ol>
 <p>or if you do not have <code>npm</code> installed on the host:</p>
 <pre class="highlight"><code>```bash
-./scripts/mcps/chrome-host/start-host-chrome.sh
+./tools/agents/mcps/chrome-host/start-host-chrome.sh
 ```</code></pre>
 <p>A dedicated browser window opens using a throwaway profile, so your everyday
    browser and its logins are untouched. The command is safe to re-run.</p>
@@ -3113,7 +3113,7 @@ through Docker Compose). See <code>.env.dist</code> for the available options.</
 <ul>
 <li>For how it works, platform specifics (Docker Desktop vs. native Docker on
   Linux), and configuration options, see
-  <code>scripts/mcps/chrome-host/README.md</code>.</li>
+  <code>tools/agents/mcps/chrome-host/README.md</code>.</li>
 </ul>
 
 
