@@ -2,15 +2,15 @@ import { actionColorPropTest } from './propTests/actionColorPropTest';
 import { afterLabelPropTest } from './propTests/afterLabelPropTest';
 import { beforeLabelPropTest } from './propTests/beforeLabelPropTest';
 import { blockPropTest } from './propTests/blockPropTest';
+import { checkedPropTest } from './propTests/checkedPropTest';
 import { defaultComponentPropTest } from './propTests/defaultComponentPropTest';
 import { disabledPropTest } from './propTests/disabledPropTest';
-import { checkedPropTest } from './propTests/checkedPropTest';
 import { endCornerPropTest } from './propTests/endCornerPropTest';
 import { feedbackColorPropTest } from './propTests/feedbackColorPropTest';
 import { feedbackIconPropTest } from './propTests/feedbackIconPropTest';
 import { fullWidthPropTest } from './propTests/fullWidthPropTest';
-import { helpTextPropTest } from './propTests/helpTextPropTest';
 import { helpTextAndValidationTextPropType } from './propTests/helpTextAndValidationTextPropType';
+import { helpTextPropTest } from './propTests/helpTextPropTest';
 import { iconPropTest } from './propTests/iconPropTest';
 import { isLabelVisiblePropTest } from './propTests/isLabelVisiblePropTest';
 import { labelPositionPropTest } from './propTests/labelPositionPropTest';
@@ -21,12 +21,12 @@ import { neutralColorPropTest } from './propTests/neutralColorPropTest';
 import { priorityPropTest } from './propTests/priorityPropTest';
 import { raisedPropTest } from './propTests/raisedPropTest';
 import { renderAsRequiredPropTest } from './propTests/renderAsRequiredPropTest';
+import { requiredPropTest } from './propTests/requiredPropTest';
 import { sizePropTest } from './propTests/sizePropTest';
 import { startCornerPropTest } from './propTests/startCornerPropTest';
 import { statePropTest } from './propTests/statePropTest';
 import { validationTextPropTest } from './propTests/validationTextPropTest';
 import { variantPropTest } from './propTests/variantPropTest';
-import { requiredPropTest } from './propTests/requiredPropTest';
 
 export const propTests = {
   actionColorPropTest,
