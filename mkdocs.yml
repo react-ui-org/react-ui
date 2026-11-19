@@ -46,8 +46,10 @@ theme:
 
 # Additional CSS. Mind the order!
 extra_css:
-  - https://unpkg.com/prismjs@1.29.0/themes/prism-twilight.min.css # Prism JS syntax highlighting
-  - docs/_assets/stylesheets/extra.css # mkDocs theme tweaks
+  # Prism JS syntax highlighting
+  - https://unpkg.com/prismjs@1.29.0/themes/prism-twilight.min.css
+  # material mkdocs theme tweaks
+  - docs/_assets/stylesheets/extra.css
   - docs/_assets/generated/docs-custom-properties.development.css # Load React UI CSS custom properties to make them accessible in the document root (outside Shadow DOM), so we can set the root font size and preview colors and helpers/utilities.
 
 # Additional JS. Mind the order!
