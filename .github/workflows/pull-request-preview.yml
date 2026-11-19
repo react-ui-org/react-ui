@@ -25,8 +25,10 @@ permissions:
   deployments: write
   pull-requests: write
 
+# Kept in sync with lint.yml.
 env:
   NODE_VERSION: 26.13.1
+  NPM_VERSION: 11.20.0
 
 jobs:
   build:
@@ -43,10 +45,13 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
 
-      - name: Install Node.js dependencies
+      - name: Install npm@${{ env.NPM_VERSION }}
+        run: npm install -g npm@${{ env.NPM_VERSION }}
+
+      - name: Install
         run: npm ci
 
-      - name: Build assets
+      - name: Build
         run: npm run build
 
       # Docoff looks up types imported by components in the bundled type declarations
