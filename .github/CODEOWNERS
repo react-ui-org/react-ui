@@ -13,7 +13,7 @@
 /webpack.config.mjs         @bedrich-schindler @mbohal @react-ui-org/maintainers
 /webpack/                   @bedrich-schindler @mbohal @react-ui-org/maintainers
 /babel.config.mjs           @bedrich-schindler @mbohal @react-ui-org/maintainers
-/jest.config.js             @bedrich-schindler @mbohal @react-ui-org/maintainers
+/jest.config.mjs            @bedrich-schindler @mbohal @react-ui-org/maintainers
 /eslint.config.mjs          @bedrich-schindler @mbohal @react-ui-org/maintainers
 
 # Docs, styles & style tooling
