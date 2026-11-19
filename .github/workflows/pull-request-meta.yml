@@ -14,5 +14,5 @@ jobs:
 
       - name: Add labels
         uses: TimonVS/pr-labeler-action@v5
-        env:
+        with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
