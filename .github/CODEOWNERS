@@ -7,6 +7,9 @@
 # Soft gates — any team member can review, but relevant expert is notified
 
 # Infrastructure & build tooling
+/.devcontainer/             @bedrich-schindler @mbohal @react-ui-org/maintainers
+/.env.dist                  @bedrich-schindler @mbohal @react-ui-org/maintainers
+/.github/workflows/         @bedrich-schindler @mbohal @react-ui-org/maintainers
 /docker/                    @bedrich-schindler @mbohal @react-ui-org/maintainers
 /docker-compose.base.yml    @bedrich-schindler @mbohal @react-ui-org/maintainers
 /docker-compose.yml.dist    @bedrich-schindler @mbohal @react-ui-org/maintainers
@@ -18,6 +21,9 @@
 /babel.config.mjs           @bedrich-schindler @mbohal @react-ui-org/maintainers
 /jest.config.mjs            @bedrich-schindler @mbohal @react-ui-org/maintainers
 /eslint.config.mjs          @bedrich-schindler @mbohal @react-ui-org/maintainers
+/playwright-ct.config.ts    @bedrich-schindler @mbohal @react-ui-org/maintainers
+/tsconfig.build.json        @bedrich-schindler @mbohal @react-ui-org/maintainers
+/tsconfig.json              @bedrich-schindler @mbohal @react-ui-org/maintainers
 
 # Docs, styles & style tooling
 *.md                        @adamkudrna @react-ui-org/maintainers
