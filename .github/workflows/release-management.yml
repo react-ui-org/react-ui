@@ -175,13 +175,13 @@ jobs:
       - name: Restore cache
         uses: actions/cache@v4
         with:
-          key: mkdocs-material-${{ env.cache_id }}
+          key: mkdocs-material-9.8.0-${{ env.cache_id }}
           path: .cache
           restore-keys: |
-            mkdocs-material-
+            mkdocs-material-9.8.0-
 
       - name: Install MkDocs
-        run: pip install 'mkdocs-material>=9.0.0,<10.0.0'
+        run: pip install 'mkdocs-material==9.8.0'
 
       - name: Build docs
         run: mkdocs build
