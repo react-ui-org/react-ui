@@ -8,6 +8,11 @@ permissions:
   contents: read
   id-token: write
 
+# Kept in sync with lint.yml.
+env:
+  NODE_VERSION: 26.13.1
+  NPM_VERSION: 11.20.0
+
 jobs:
   test_and_build:
     name: Test and build
@@ -17,13 +22,16 @@ jobs:
       version_changed: ${{ steps.check_package_version.outputs.changed }}
     steps:
       - name: Clone repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: 26.13.1
+          node-version: ${{ env.NODE_VERSION }}
           cache: npm
+
+      - name: Install npm@${{ env.NPM_VERSION }}
+        run: npm install -g npm@${{ env.NPM_VERSION }}
 
       - name: Install
         run: npm ci
@@ -71,7 +79,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Clone repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       # An existing release draft is published only if there is a version bump in `package.json`.
       # Throws an error and breaks the job if called regardless. We check for version changes in the
@@ -87,6 +95,7 @@ jobs:
             gh release create "v${{ needs.test_and_build.outputs.version }}" --draft --title "v${{ needs.test_and_build.outputs.version }}"
           fi
           gh release edit "v${{ needs.test_and_build.outputs.version }}" --draft=false
+          echo "release_url=$(gh release view "v${{ needs.test_and_build.outputs.version }}" --json url --jq .url)" >> "$GITHUB_OUTPUT"
 
       - name: Write out the release URL
         run: echo "Released at $RELEASE_URL"
@@ -100,14 +109,17 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Clone repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: 26.13.1
+          node-version: ${{ env.NODE_VERSION }}
           cache: npm
           registry-url: https://registry.npmjs.org
+
+      - name: Install npm@${{ env.NPM_VERSION }}
+        run: npm install -g npm@${{ env.NPM_VERSION }}
 
       - name: Install
         run: npm ci
@@ -124,7 +136,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Clone repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       # Hard-coded username and email for the GitHub bot user
       # https://api.github.com/users/github-actions%5Bbot%5D
@@ -134,10 +146,13 @@ jobs:
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: 26.13.1
+          node-version: ${{ env.NODE_VERSION }}
           cache: npm
+
+      - name: Install npm@${{ env.NPM_VERSION }}
+        run: npm install -g npm@${{ env.NPM_VERSION }}
 
       - name: Install
         run: npm ci
@@ -155,18 +170,18 @@ jobs:
           python-version: 3.x
 
       - name: Get cache ID
-        run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+        run: echo "cache_id=$(date --utc '+%V')" >> "$GITHUB_ENV"
 
       - name: Restore cache
         uses: actions/cache@v4
         with:
-          key: mkdocs-material-${{ env.cache_id }}
+          key: mkdocs-material-9.8.0-${{ env.cache_id }}
           path: .cache
           restore-keys: |
-            mkdocs-material-
+            mkdocs-material-9.8.0-
 
       - name: Install MkDocs
-        run: pip install 'mkdocs-material>=9.0.0,<10.0.0'
+        run: pip install 'mkdocs-material==9.8.0'
 
       - name: Build docs
         run: mkdocs build

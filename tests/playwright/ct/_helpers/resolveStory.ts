@@ -18,8 +18,8 @@ const storyFiles = storyContext.keys().map((modulePath) => ({
  * Resolve a story ID to the story component.
  *
  * A story is a named export of a `*.story.tsx` file in `src/`. Its ID is the file path relative to `src/` without the
- * `.story.tsx` extension, followed by the export name, e.g. `components/Button/__tests__/Button/ButtonForTest`. Any
- * unique suffix on a `/` boundary is accepted too, e.g. `Button/ButtonForTest`.
+ * `.story.tsx` extension, followed by the export name, e.g. `components/Example/__tests__/Example/ExampleForTest`. Any
+ * unique suffix on a `/` boundary is accepted too, e.g. `Example/ExampleForTest`.
  */
 export const resolveStory = async (storyId: string) => {
   const separatorIndex = storyId.lastIndexOf('/');

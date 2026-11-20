@@ -2,15 +2,15 @@ import { actionColorPropTest } from './propTests/actionColorPropTest';
 import { afterLabelPropTest } from './propTests/afterLabelPropTest';
 import { beforeLabelPropTest } from './propTests/beforeLabelPropTest';
 import { blockPropTest } from './propTests/blockPropTest';
+import { checkedPropTest } from './propTests/checkedPropTest';
 import { defaultComponentPropTest } from './propTests/defaultComponentPropTest';
 import { disabledPropTest } from './propTests/disabledPropTest';
-import { checkedPropTest } from './propTests/checkedPropTest';
 import { endCornerPropTest } from './propTests/endCornerPropTest';
 import { feedbackColorPropTest } from './propTests/feedbackColorPropTest';
 import { feedbackIconPropTest } from './propTests/feedbackIconPropTest';
 import { fullWidthPropTest } from './propTests/fullWidthPropTest';
+import { helpTextAndValidationTextPropTest } from './propTests/helpTextAndValidationTextPropTest';
 import { helpTextPropTest } from './propTests/helpTextPropTest';
-import { helpTextAndValidationTextPropType } from './propTests/helpTextAndValidationTextPropType';
 import { iconPropTest } from './propTests/iconPropTest';
 import { isLabelVisiblePropTest } from './propTests/isLabelVisiblePropTest';
 import { labelPositionPropTest } from './propTests/labelPositionPropTest';
@@ -21,21 +21,12 @@ import { neutralColorPropTest } from './propTests/neutralColorPropTest';
 import { priorityPropTest } from './propTests/priorityPropTest';
 import { raisedPropTest } from './propTests/raisedPropTest';
 import { renderAsRequiredPropTest } from './propTests/renderAsRequiredPropTest';
+import { requiredPropTest } from './propTests/requiredPropTest';
 import { sizePropTest } from './propTests/sizePropTest';
 import { startCornerPropTest } from './propTests/startCornerPropTest';
 import { statePropTest } from './propTests/statePropTest';
 import { validationTextPropTest } from './propTests/validationTextPropTest';
 import { variantPropTest } from './propTests/variantPropTest';
-import { requiredPropTest } from './propTests/requiredPropTest';
-
-export {
-  expect,
-  test,
-} from './test';
-
-export { element } from './utils/element';
-export { mixPropTests } from './utils/mixPropTests';
-export { getActualFocusedElementText } from './utils/getActualFocusedElementText';
 
 export const propTests = {
   actionColorPropTest,
@@ -49,7 +40,7 @@ export const propTests = {
   feedbackColorPropTest,
   feedbackIconPropTest,
   fullWidthPropTest,
-  helpTextAndValidationTextPropType,
+  helpTextAndValidationTextPropTest,
   helpTextPropTest,
   iconPropTest,
   isLabelVisiblePropTest,
@@ -68,5 +59,18 @@ export const propTests = {
   validationTextPropTest,
   variantPropTest,
 };
+
+export {
+  expect,
+  test,
+} from './test';
+
+export { element } from './utils/element';
+export { getActualFocusedElementText } from './utils/getActualFocusedElementText';
+export { mixPropTests } from './utils/mixPropTests';
 export type { MountResult } from './test';
-export type { StoryProps } from './types';
+export type {
+  PropTest,
+  PropTests,
+  StoryProps,
+} from './types';

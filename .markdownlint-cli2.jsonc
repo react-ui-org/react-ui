@@ -1,0 +1,5 @@
+// Lints every Markdown file that Git does not ignore.
+{
+  "gitignore": true,
+  "globs": ["**/*.md"]
+}

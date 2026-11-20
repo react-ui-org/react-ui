@@ -1,6 +1,7 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository
+This file provides guidance to Claude Code (claude.ai/code) when working with
+code in this repository
 
 ## Environment
 
@@ -46,7 +47,8 @@ Notes:
 
 * `npm run lint` runs all linters (ESLint, Stylelint, Markdownlint, type check).
   There is no `npm test` script.
-* `npm run lint:eslint` lints `src` and `tests`.
+* `npm run lint:eslint` lints `src`, `tests`, `scripts`, `webpack` and the
+  `*.config.js` and `*.config.mjs` files in the project root.
 * The lint / Jest / Playwright commands are the same gates CI runs
   ([.github/workflows/](.github/workflows/)).
 * Commands like `npm`, `playwright` run in specific Docker containers.
@@ -89,4 +91,4 @@ Specialized agents live in [.claude/agents/](.claude/agents/).
 MCP-capable assistants in the `devcontainer` can drive host Chrome to verify the
 docs site and rendered components. See
 [AI Integration](src/docs/contribute/ai-integration.md) and
-[scripts/mcps/chrome-host/README.md](scripts/mcps/chrome-host/README.md).
+[tools/agents/mcps/chrome-host/README.md](tools/agents/mcps/chrome-host/README.md).

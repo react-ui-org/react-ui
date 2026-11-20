@@ -3,7 +3,7 @@ services:
   devcontainer:
     hostname: ${COMPOSE_PROJECT_NAME:-react-ui}_devcontainer
     build:
-      context: docker/react_ui_devcontainer/
+      context: docker/react-ui-devcontainer/
       dockerfile: Dockerfile
     # Start dependent services before starting the `devcontainer` service to ensure that the necessary environments
     # and tools are available when the `devcontainer` starts.
@@ -51,7 +51,7 @@ services:
   node:
     build: docker/node
     user: ${COMPOSE_UID}:${COMPOSE_GID}
-    entrypoint: sh -c 'if [ "$$COMPOSE_AUTOSTART" = "true" ]; then sh scripts/auto-start-node.sh; else sleep infinity; fi'
+    entrypoint: sh -c 'if [ "$$COMPOSE_AUTOSTART" = "true" ]; then sh scripts/docker/autoStartNode.sh; else sleep infinity; fi'
     env_file:
       - .env
     volumes:
@@ -73,7 +73,7 @@ services:
   docs:
     build: docker/mkdocs
     user: ${COMPOSE_UID}:${COMPOSE_GID}
-    entrypoint: sh -c 'if [ "$$COMPOSE_AUTOSTART" = "true" ]; then sh scripts/auto-start-mkdocs.sh; else sleep infinity; fi'
+    entrypoint: sh -c 'if [ "$$COMPOSE_AUTOSTART" = "true" ]; then sh scripts/docker/autoStartMkdocs.sh; else sleep infinity; fi'
     env_file:
       - .env
     ports:

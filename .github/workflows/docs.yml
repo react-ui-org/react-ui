@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Clone repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -19,18 +19,18 @@ jobs:
           python-version: 3.x
 
       - name: Get cache ID
-        run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+        run: echo "cache_id=$(date --utc '+%V')" >> "$GITHUB_ENV"
 
       - name: Restore cache
         uses: actions/cache@v4
         with:
-          key: mkdocs-material-${{ env.cache_id }}
+          key: mkdocs-material-9.8.0-${{ env.cache_id }}
           path: .cache
           restore-keys: |
-            mkdocs-material-
+            mkdocs-material-9.8.0-
 
       - name: Install MkDocs
-        run: pip install 'mkdocs-material>=9.0.0,<10.0.0'
+        run: pip install 'mkdocs-material==9.8.0'
 
       - name: Build MkDocs
         run: mkdocs build

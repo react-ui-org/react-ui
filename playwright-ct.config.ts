@@ -4,6 +4,7 @@ import {
 } from '@playwright/test';
 import { parseEnvironment } from './tests/playwright/env/parseEnvironment';
 
+// Load and parse Playwright's environment file arguments
 const environment = parseEnvironment();
 
 const isCI = !!process.env.CI;
@@ -14,7 +15,7 @@ const componentTestingUrl = `http://localhost:${environment.CT_PORT}/index.html`
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
-module.exports = defineConfig({
+export default defineConfig({
   // Fail the build on CI if you accidentally left test.only in the source code
   forbidOnly: isCI,
   // Run tests in files in parallel
@@ -25,11 +26,13 @@ module.exports = defineConfig({
   projects: [
     {
       name: 'chromium',
+      // No rendering flags are set on purpose. Playwright runs the Chromium headless shell, which renders in
+      // software by default, so the snapshots are stable without them.
       use: { ...devices['Desktop Chrome'] },
     },
   ],
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  // Reporter to use. See https://playwright.dev/docs/test-reporters
+  reporter: [['html', { open: 'never' }]],
   // Retry failed tests once to eliminate flakiness
   retries: 1,
   // Directory where the snapshots are located
@@ -51,24 +54,12 @@ module.exports = defineConfig({
     reuseContext: true,
     // Prevent a service worker from serving cached responses that would shadow `page.route()` mocks
     serviceWorkers: 'block',
-    // Launch options for Playwright
-    launchOptions: {
-      args: [
-        '--use-gl=egl',
-        // # Must be set to `new` to enable new version of Chromium Headless to obtain correct snapshots
-        '--headless=new',
-      ],
-      ignoreDefaultArgs: [
-        // # Must be ignored to enable new version of Chromium Headless to obtain correct snapshots
-        '--headless',
-      ],
-    },
-    // Collect trace on all retries
-    trace: 'on-all-retries',
+    // Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer
+    trace: 'on-first-retry',
   },
   // Webpack dev server serving the Playwright Component Testing page
   webServer: {
-    command: `webpack serve --config tests/playwright/ct/webpack.config.js --port ${environment.CT_PORT}`,
+    command: `webpack serve --config tests/playwright/ct/webpack.config.mjs --port ${environment.CT_PORT}`,
     reuseExistingServer: !isCI,
     url: componentTestingUrl,
   },

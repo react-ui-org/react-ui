@@ -21,14 +21,13 @@ paths:
 React UI is a themeable React component library, distributed as a UMD bundle
 (with separate CSS) and as ESM (consumers run their own SASS pipeline).
 Components are TypeScript / TSX for React. Babel (`@babel/preset-typescript`)
-transpiles for the bundle and Jest; TypeScript (`tsc` from the
-`@typescript/native` package) type-checks (`strict: true`) and emits the
-published declarations (`dist/types`, via `tsconfig.build.json` in
-`npm run build`); `dts-bundle-generator` then flattens them into the single
-`dist/react-ui.d.ts` referenced by `package.json` `types`. An older TypeScript
-is installed alongside under the `typescript` package name for tools that need
-the compiler API (typescript-eslint). For the exact versions of these packages,
-see [package.json](../../package.json).
+transpiles for the bundle and Jest. TypeScript (`tsc`) type-checks
+(`strict: true`) and emits the published declarations to `dist/types`, using
+`tsconfig.build.json` in `npm run build`. `dts-bundle-generator` then flattens
+the declarations into the single `dist/react-ui.d.ts` referenced by
+`package.json` `types`. typescript-eslint uses the same `typescript` package.
+For the exact versions of these packages, see
+[package.json](../../package.json).
 
 Plain function components are annotated as `React.FunctionComponent<Props>`.
 
