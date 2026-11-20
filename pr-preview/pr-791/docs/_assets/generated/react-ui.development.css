@@ -7557,16 +7557,6 @@
       justify-self: start;
     }
   }
-  @media (min-width: 48em) {
-    .FileInputField-module__isRootLayoutHorizontal__lHc4IRZD .FileInputField-module__label__uLkyizW9 {
-      -ms-grid-row: 1;
-      -ms-grid-column: 1;
-    }
-    .FileInputField-module__isRootLayoutHorizontal__lHc4IRZD .FileInputField-module__field__SZE7nT5K {
-      -ms-grid-row: 1;
-      -ms-grid-column: 2;
-    }
-  }
   .FileInputField-module__isRootFullWidth__cpb0405R {
     display: flex;
     flex-direction: column;
@@ -8089,16 +8079,6 @@
       grid-area: field;
       align-self: var(--rui-FormField--horizontal__field__vertical-alignment);
       justify-self: start;
-    }
-  }
-  @media (min-width: 48em) {
-    .FormLayoutCustomField-module__isRootLayoutHorizontal__u3SsP1T1 .FormLayoutCustomField-module__label__hw7tDmY4 {
-      -ms-grid-row: 1;
-      -ms-grid-column: 1;
-    }
-    .FormLayoutCustomField-module__isRootLayoutHorizontal__u3SsP1T1 .FormLayoutCustomField-module__field__e10UO6e7 {
-      -ms-grid-row: 1;
-      -ms-grid-column: 2;
     }
   }
   .FormLayoutCustomField-module__isRootLayoutVertical__IdZ7bObz .FormLayoutCustomField-module__field__e10UO6e7,
@@ -8974,16 +8954,6 @@
       grid-area: field;
       align-self: var(--rui-FormField--horizontal__field__vertical-alignment);
       justify-self: start;
-    }
-  }
-  @media (min-width: 48em) {
-    .InputGroup-module__isRootLayoutHorizontal__E9aM__PG .InputGroup-module__label__KUZV3N9L {
-      -ms-grid-row: 1;
-      -ms-grid-column: 1;
-    }
-    .InputGroup-module__isRootLayoutHorizontal__E9aM__PG .InputGroup-module__field__UIKh_s8O {
-      -ms-grid-row: 1;
-      -ms-grid-column: 2;
     }
   }
   .InputGroup-module__isRootInFormLayout__U0mXoJGg {
@@ -10054,16 +10024,6 @@
       justify-self: start;
     }
   }
-  @media (min-width: 48em) {
-    .Radio-module__isRootLayoutHorizontal__kiXsrxex .Radio-module__label__k3Tu0CFO {
-      -ms-grid-row: 1;
-      -ms-grid-column: 1;
-    }
-    .Radio-module__isRootLayoutHorizontal__kiXsrxex .Radio-module__field__fEX1KJ1l {
-      -ms-grid-row: 1;
-      -ms-grid-column: 2;
-    }
-  }
   .Radio-module__isRootFullWidth__kNpD_gnU {
     display: flex;
     flex-direction: column;
@@ -10989,16 +10949,6 @@
       justify-self: start;
     }
   }
-  @media (min-width: 48em) {
-    .SelectField-module__isRootLayoutHorizontal__CPQ6cI7b .SelectField-module__label__HmWhQIF6 {
-      -ms-grid-row: 1;
-      -ms-grid-column: 1;
-    }
-    .SelectField-module__isRootLayoutHorizontal__CPQ6cI7b .SelectField-module__field__OGZrVIr0 {
-      -ms-grid-row: 1;
-      -ms-grid-column: 2;
-    }
-  }
   .SelectField-module__isRootFullWidth__VRGdlMAN {
     display: flex;
     flex-direction: column;
@@ -11906,16 +11856,6 @@
       justify-self: start;
     }
   }
-  @media (min-width: 48em) {
-    .TextArea-module__isRootLayoutHorizontal__cNOI7ysK .TextArea-module__label__dVtTGxY4 {
-      -ms-grid-row: 1;
-      -ms-grid-column: 1;
-    }
-    .TextArea-module__isRootLayoutHorizontal__cNOI7ysK .TextArea-module__field__gBoGySQg {
-      -ms-grid-row: 1;
-      -ms-grid-column: 2;
-    }
-  }
   .TextArea-module__isRootFullWidth__VJ__x0vM {
     display: flex;
     flex-direction: column;
@@ -12679,42 +12619,6 @@
     }
     .TextField-module__hasRootSmallInput__ZPUZQjfQ.TextField-module__isRootLayoutHorizontal__OH1K4lj5 .TextField-module__validationText__RUpmTkpH {
       grid-area: validationtext;
-    }
-  }
-  @media (min-width: 48em) {
-    .TextField-module__isRootLayoutHorizontal__OH1K4lj5 .TextField-module__label__InsU7Yhr {
-      -ms-grid-row: 1;
-      -ms-grid-column: 1;
-    }
-    .TextField-module__hasRootSmallInput__ZPUZQjfQ.TextField-module__isRootLayoutHorizontal__OH1K4lj5 > .TextField-module__label__InsU7Yhr {
-      -ms-grid-row: 1;
-      -ms-grid-column: 1;
-    }
-    .TextField-module__isRootLayoutHorizontal__OH1K4lj5 .TextField-module__field__iXnhzy2A {
-      -ms-grid-row: 1;
-      -ms-grid-column: 2;
-    }
-    .TextField-module__hasRootSmallInput__ZPUZQjfQ.TextField-module__isRootLayoutHorizontal__OH1K4lj5 > .TextField-module__field__iXnhzy2A {
-      -ms-grid-row: 1;
-      -ms-grid-column: 2;
-    }
-    .TextField-module__hasRootSmallInput__ZPUZQjfQ.TextField-module__isRootLayoutHorizontal__OH1K4lj5 .TextField-module__inputContainer__cnUZf6EH {
-      -ms-grid-row: 1;
-      -ms-grid-column: 2;
-    }
-    .TextField-module__hasRootSmallInput__ZPUZQjfQ.TextField-module__isRootLayoutHorizontal__OH1K4lj5 > .TextField-module__inputContainer__cnUZf6EH {
-      -ms-grid-row: 1;
-      -ms-grid-column: 2;
-    }
-    .TextField-module__hasRootSmallInput__ZPUZQjfQ.TextField-module__isRootLayoutHorizontal__OH1K4lj5 .TextField-module__helpText__YFCuDtPH {
-      -ms-grid-row: 2;
-      -ms-grid-column: 1;
-      -ms-grid-column-span: 2;
-    }
-    .TextField-module__hasRootSmallInput__ZPUZQjfQ.TextField-module__isRootLayoutHorizontal__OH1K4lj5 .TextField-module__validationText__RUpmTkpH {
-      -ms-grid-row: 3;
-      -ms-grid-column: 1;
-      -ms-grid-column-span: 2;
     }
   }
   .TextField-module__isRootSizeSmall__uUxQrmLv {
