@@ -414,7 +414,7 @@ export type FileInputFieldProps = Omit<React$1.InputHTMLAttributes<HTMLInputElem
 	 */
 	validationText?: React$1.ReactNode;
 };
-declare const FileInputFieldWithGlobalProps: React$1.ForwardRefExoticComponent<Omit<React$1.InputHTMLAttributes<HTMLInputElement>, "id" | "type" | "size"> & {
+declare const FileInputFieldWithGlobalProps: React$1.ForwardRefExoticComponent<Omit<React$1.InputHTMLAttributes<HTMLInputElement>, "id" | "size" | "type"> & {
 	disabled?: boolean;
 	fullWidth?: boolean;
 	helpText?: React$1.ReactNode;
@@ -1081,7 +1081,7 @@ export type RadioProps = Omit<React$1.InputHTMLAttributes<HTMLInputElement>, "ty
 	 */
 	value?: string | number;
 };
-declare const RadioWithGlobalProps: React$1.ForwardRefExoticComponent<Omit<React$1.InputHTMLAttributes<HTMLInputElement>, "value" | "type"> & {
+declare const RadioWithGlobalProps: React$1.ForwardRefExoticComponent<Omit<React$1.InputHTMLAttributes<HTMLInputElement>, "type" | "value"> & {
 	disabled?: boolean;
 	helpText?: React$1.ReactNode;
 	id?: string;
@@ -1649,7 +1649,7 @@ export type TextFieldProps = Omit<React$1.InputHTMLAttributes<HTMLInputElement>,
 	 */
 	variant?: TextFieldVariant;
 };
-declare const TextFieldWithGlobalProps: React$1.ForwardRefExoticComponent<Omit<React$1.InputHTMLAttributes<HTMLInputElement>, "type" | "size"> & {
+declare const TextFieldWithGlobalProps: React$1.ForwardRefExoticComponent<Omit<React$1.InputHTMLAttributes<HTMLInputElement>, "size" | "type"> & {
 	disabled?: boolean;
 	fullWidth?: boolean;
 	helpText?: React$1.ReactNode;

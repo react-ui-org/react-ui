@@ -10,7 +10,7 @@ test.describe('CheckboxField', () => {
     test.describe('visual', () => {
       [
         ...propTests.defaultComponentPropTest,
-        ...propTests.helpTextAndValidationTextPropTest,
+        ...propTests.helpTextAndValidationTextPropType,
         ...propTests.isLabelVisiblePropTest,
         ...propTests.labelPositionPropTest,
         ...propTests.labelPropTest,
