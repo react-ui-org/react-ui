@@ -1,0 +1,26 @@
+@use "sass:list";
+@use "../../styles/settings/collections";
+@use "../../styles/theme/typography";
+@use "../../styles/tools/spacing";
+
+$font-family: typography.$font-family-base;
+$line-height: typography.$line-height-small;
+$icon-spacing: spacing.of(2);
+
+$group-z-indexes: (
+    button: auto,
+    button-hover: 1,
+    separator: 2,
+    button-overflowing-elements: 3,
+);
+
+$colors:
+    list.join(
+        list.join(collections.$action-colors, collections.$feedback-colors),
+        collections.$neutral-colors
+    );
+$themeable-properties: (
+    filled: (color, border-color, background, box-shadow),
+    outline: (color, border-color, background),
+    flat: (color, background),
+);
