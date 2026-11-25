@@ -862,8 +862,7 @@
   abbr[title] {
     border-bottom: none; /* 1 */
     text-decoration: underline; /* 2 */
-    -webkit-text-decoration: underline dotted;
-            text-decoration: underline dotted; /* 2 */
+    text-decoration: underline dotted; /* 2 */
   }
   /**
    * Add the correct font weight in Chrome, Edge, and Safari.
@@ -1153,19 +1152,16 @@
     background-color: var(--rui-color-background-light);
   }
   a {
-    -webkit-text-decoration: var(--rui-text-decoration-link);
-            text-decoration: var(--rui-text-decoration-link);
+    text-decoration: var(--rui-text-decoration-link);
     text-underline-offset: var(--rui-underline-offset-link);
     color: var(--rui-local-link-color, var(--rui-color-text-link));
   }
   a:hover {
-    -webkit-text-decoration: var(--rui-text-decoration-link-hover);
-            text-decoration: var(--rui-text-decoration-link-hover);
+    text-decoration: var(--rui-text-decoration-link-hover);
     color: var(--rui-local-link-color-hover, var(--rui-color-text-link-hover));
   }
   a:active {
-    -webkit-text-decoration: var(--rui-text-decoration-link-active);
-            text-decoration: var(--rui-text-decoration-link-active);
+    text-decoration: var(--rui-text-decoration-link-active);
     color: var(--rui-local-link-color-active, var(--rui-color-text-link-active));
   }
   ol,
@@ -7183,19 +7179,16 @@
     color: var(--rui-local-link-color, var(--rui-color-text-link));
   }
   .FileInputField-module__dropZoneLink__KtfYIuIN {
-    -webkit-text-decoration: var(--rui-text-decoration-link);
-            text-decoration: var(--rui-text-decoration-link);
+    text-decoration: var(--rui-text-decoration-link);
     text-underline-offset: var(--rui-underline-offset-link);
     color: var(--rui-local-link-color, var(--rui-color-text-link));
   }
   .FileInputField-module__dropZoneLink__KtfYIuIN:hover {
-    -webkit-text-decoration: var(--rui-text-decoration-link-hover);
-            text-decoration: var(--rui-text-decoration-link-hover);
+    text-decoration: var(--rui-text-decoration-link-hover);
     color: var(--rui-local-link-color-hover, var(--rui-color-text-link-hover));
   }
   .FileInputField-module__dropZoneLink__KtfYIuIN:active {
-    -webkit-text-decoration: var(--rui-text-decoration-link-active);
-            text-decoration: var(--rui-text-decoration-link-active);
+    text-decoration: var(--rui-text-decoration-link-active);
     color: var(--rui-local-link-color-active, var(--rui-color-text-link-active));
   }
   .FileInputField-module__dropZoneLink__KtfYIuIN::before {
@@ -12756,18 +12749,15 @@
   \***********************************************************************************************************************************************************************************************************************************************/
 @layer components.text-link {
   .TextLink-module__root__yRDpdHz1 {
-    -webkit-text-decoration: var(--rui-TextLink__text-decoration);
-            text-decoration: var(--rui-TextLink__text-decoration);
+    text-decoration: var(--rui-TextLink__text-decoration);
     color: var(--rui-local-link-color, var(--rui-TextLink__color));
   }
   .TextLink-module__root__yRDpdHz1:hover {
-    -webkit-text-decoration: var(--rui-TextLink--hover__text-decoration);
-            text-decoration: var(--rui-TextLink--hover__text-decoration);
+    text-decoration: var(--rui-TextLink--hover__text-decoration);
     color: var(--rui-local-link-color-hover, var(--rui-TextLink--hover__color));
   }
   .TextLink-module__root__yRDpdHz1:active {
-    -webkit-text-decoration: var(--rui-TextLink--active__text-decoration);
-            text-decoration: var(--rui-TextLink--active__text-decoration);
+    text-decoration: var(--rui-TextLink--active__text-decoration);
     color: var(--rui-local-link-color-active, var(--rui-TextLink--active__color));
   }
 }

@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
     
   <link rel="preconnect" href="https://unpkg.com" />
 
@@ -2668,10 +2668,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#linters-eslint-markdownlint-stylelint" class="md-nav__link">
+  <a href="#linters-eslint-markdownlint-stylelint-typescript" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Linters (ESLint, Markdownlint, Stylelint)
+        Linters (ESLint, Markdownlint, Stylelint, TypeScript)
       
     </span>
   </a>
@@ -2958,10 +2958,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#linters-eslint-markdownlint-stylelint" class="md-nav__link">
+  <a href="#linters-eslint-markdownlint-stylelint-typescript" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Linters (ESLint, Markdownlint, Stylelint)
+        Linters (ESLint, Markdownlint, Stylelint, TypeScript)
       
     </span>
   </a>
@@ -3074,28 +3074,31 @@
 <li><strong>Jest</strong> (unit tests)</li>
 <li><strong>Playwright</strong> (visual and functional component testing)</li>
 </ul>
-<p>Generally, <code>npm test</code> and <code>npm run test:playwright-ct:all</code> should be run  within
+<p>Generally, <code>npm run test:jest</code> and <code>npm run test:playwright</code> should be run within
 their designated Docker containers before pushing changes to the repository.</p>
 <h2 id="tools">Tools</h2>
 <p>You can run all tests with a single command:</p>
-<pre class="highlight"><code class="language-bash">npm run lint &amp;&amp; npm test &amp;&amp; npm run test:playwright-ct:all</code></pre>
-<h3 id="linters-eslint-markdownlint-stylelint">Linters (ESLint, Markdownlint, Stylelint)</h3>
+<pre class="highlight"><code class="language-bash">npm run lint &amp;&amp; npm run test:jest &amp;&amp; npm run test:playwright</code></pre>
+<h3 id="linters-eslint-markdownlint-stylelint-typescript">Linters (ESLint, Markdownlint, Stylelint, TypeScript)</h3>
 <p>Run linters either all together:</p>
 <pre class="highlight"><code class="language-bash">npm run lint</code></pre>
 <p>or run linters individually:</p>
-<pre class="highlight"><code class="language-bash">npm run &lt;eslint|markdownlint|stylelint&gt;</code></pre>
+<pre class="highlight"><code class="language-bash">npm run lint:&lt;eslint|markdownlint|stylelint|types&gt;</code></pre>
 <h3 id="jest">Jest</h3>
 <pre class="highlight"><code class="language-bash">npm run test:jest</code></pre>
+<p>Run a single test file:</p>
+<pre class="highlight"><code class="language-bash">npm run test:jest -- &lt;file&gt;</code></pre>
 <h3 id="playwright">Playwright</h3>
 <h4 id="configuration">Configuration</h4>
 <p>Test parameters can be tweaked by creating and tweaking <code>.env</code> file.</p>
 <h4 id="running-tests">Running Tests</h4>
-<p>Run tests:</p>
-<pre class="highlight"><code class="language-bash">npm run test:playwright-ct:&lt;all|all-with-update&gt;</code></pre>
-<p>You can also run specific tests by passing a path to the test files:</p>
-<pre class="highlight"><code class="language-bash">npm run test:playwright-ct:&lt;all|all-with-update&gt; -- -- &lt;match_path&gt;</code></pre>
-<p>You can also pass any <a href="https://playwright.dev/docs/test-cli#reference">CLI command</a> to the test runner:</p>
-<pre class="highlight"><code class="language-bash">npm run test:playwright-ct:&lt;all|all-with-update&gt; -- -- &lt;cli_argument&gt;</code></pre>
+<p>Run all component tests:</p>
+<pre class="highlight"><code class="language-bash">npm run test:playwright</code></pre>
+<p>You can also run specific tests by passing a path, or pass any
+<a href="https://playwright.dev/docs/test-cli#reference">Playwright CLI argument</a> to the test runner:</p>
+<pre class="highlight"><code class="language-bash">npm run test:playwright -- &lt;match_path_or_cli_argument&gt;</code></pre>
+<p>Update snapshots by adding <code>--update-snapshots</code>, optionally limited to a path:</p>
+<pre class="highlight"><code class="language-bash">npm run test:playwright -- [&lt;path&gt;] --update-snapshots</code></pre>
 <h4 id="writing-tests">Writing Tests</h4>
 <p>Component tests mount <em>stories</em>: named exports of the <code>*.story.tsx</code> file next
 to the spec. Specs import <code>test</code> and <code>expect</code> from <code>tests/playwright</code>, whose
@@ -3227,7 +3230,7 @@ test.describe('Button', () =&gt; {
 <h4 id="opening-test-report">Opening Test Report</h4>
 <p>After running Playwright tests, test report can be served by using
 the following command:</p>
-<pre class="highlight"><code class="language-bash">npm run test:playwright-ct:show-report</code></pre>
+<pre class="highlight"><code class="language-bash">npm run test:playwright:report</code></pre>
 <p>Then open the displayed URL (typically <code>http://localhost:9323</code>)
 in your browser. Please note that the test report is only available
 if the tests were run prior to serving the report.</p>
@@ -3323,7 +3326,7 @@ if the tests were run prior to serving the report.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
         <script src="https://unpkg.com/@babel/standalone@7.20.15/babel.min.js"></script>
       
