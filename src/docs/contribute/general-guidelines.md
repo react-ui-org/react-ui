@@ -144,7 +144,7 @@ by wrapping commands to run in the appropriate service containers.
 * **Shells:** Bash, Zsh (with Oh My Zsh), Fish
 * **Editors:** Vim, Nano
 * **Tools:** Git, SSH client, Docker CLI (Docker-from-Docker)
-* **AI coding assistants:** Claude Code, GitHub Copilot CLI, Open Code
+* **AI coding assistants:** Claude Code, Codex, GitHub Copilot CLI, Open Code
 
 #### Local Layer (`react-ui_devcontainer_local`)
 

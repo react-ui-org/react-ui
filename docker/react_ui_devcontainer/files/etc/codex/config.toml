@@ -1,0 +1,6 @@
+# System-wide Codex configuration for the `devcontainer`.
+# Codex's Linux sandbox needs user namespaces, which Docker blocks by default. Commands that run in
+# other containers through Docker-from-Docker also need `sudo` and the Docker socket. Codex therefore
+# runs commands without its own sandbox and the container isolates them. User and project
+# configuration can override this.
+sandbox_mode = "danger-full-access"

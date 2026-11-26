@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Referenced by .mcp.json / opencode.json as the `chrome-host` MCP server command.
+# Referenced by .mcp.json / .codex/config.toml / opencode.json as the `chrome-host` MCP server command.
 #
 # Spawns chrome-devtools-mcp inside the node container (via mcp-launch.sh),
 # whether the assistant runs in the devcontainer or on the host. Docker needs
