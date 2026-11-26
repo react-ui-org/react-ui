@@ -1,0 +1,7 @@
+@use "theme";
+
+@layer components.modal {
+    .root {
+        padding: theme.$padding-y theme.$padding-x;
+    }
+}
