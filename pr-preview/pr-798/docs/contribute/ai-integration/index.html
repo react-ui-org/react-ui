@@ -3054,6 +3054,9 @@
 </ul>
 <p>Through <a href="https://modelcontextprotocol.io/">Model Context Protocol (MCP)</a> they can be extended with extra
 capabilities.</p>
+<p>Codex runs commands without its own sandbox in the <code>devcontainer</code>: its Linux
+sandbox does not work in Docker, and the container is the isolation boundary.
+The image sets this in <code>/etc/codex/config.toml</code>.</p>
 <h2 id="host-chrome-via-mcp">Host Chrome via MCP</h2>
 <p>Any MCP-capable assistant in the <code>devcontainer</code> can drive a Chrome browser
 running on your <strong>host</strong> machine, using <a href="https://github.com/ChromeDevTools/chrome-devtools-mcp"><code>chrome-devtools-mcp</code></a>.
