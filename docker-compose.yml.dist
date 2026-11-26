@@ -34,6 +34,7 @@ volumes:
   terminal-history:
   claude-config:
   claude-state:
+  codex:
   copilot:
   copilot-config:
   opencode-config:

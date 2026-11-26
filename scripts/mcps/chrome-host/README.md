@@ -55,6 +55,15 @@ works — point its config at the script.
 }
 ```
 
+**Codex** — `.codex/config.toml` (repo root, applied once the project is
+trusted):
+
+```toml
+[mcp_servers.chrome-host]
+command = "sh"
+args = ["scripts/mcps/chrome-host/mcp-entry.sh"]
+```
+
 **OpenCode** — `opencode.json` (repo root):
 
 ```json

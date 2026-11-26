@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# The Codex binary lives outside its data directory (`~/.codex`), so it belongs to the image, not the volume.
+# The standalone updater needs the installation directory in `CODEX_HOME`. Appending `~/.local/bin` to PATH
+# (lowest priority) lets the updater find the binary there without modifying shell profiles.
+if [ "${1:-}" = "update" ]; then
+    CODEX_HOME="/home/developer/.local/share/codex-install" PATH="$PATH:/home/developer/.local/bin" \
+        exec /home/developer/.local/bin/codex "$@"
+fi
+
+exec /home/developer/.local/bin/codex "$@"

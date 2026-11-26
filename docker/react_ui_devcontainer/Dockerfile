@@ -91,10 +91,23 @@ RUN curl -fsSL https://opencode.ai/install | bash -s -- --no-modify-path
 # * <https://github.com/github/copilot-cli/issues/1750>
 RUN curl -fsSL https://gh.io/copilot-install | PREFIX="$HOME/.local" bash
 
+# Install Codex CLI
+# The standalone native build lives outside the Codex data directory (`~/.codex`), so the `codex`
+# volume holds only data. Run `codex update` to update the binary.
+ARG CODEX_VERSION=0.167.1
+RUN mkdir -p "$HOME/.codex" && \
+    export PATH="$HOME/.local/bin:$PATH" && \
+    curl -fsSL https://chatgpt.com/codex/install.sh | \
+        CODEX_HOME="$HOME/.local/share/codex-install" CODEX_NON_INTERACTIVE=1 CODEX_RELEASE="${CODEX_VERSION}" sh && \
+    rm -rf "$HOME/.local/share/codex-install/tmp"
+# Run Codex without its own sandbox, which does not work in the container (see the file)
+COPY files/etc/codex/config.toml /etc/codex/config.toml
+
 # Wrapper scripts for AI coding assistants ensure they are available in PATH
 # and handle necessary environment variable setup
 COPY --chmod=+x files/usr/local/bin/copilot /usr/local/bin/copilot
 COPY --chmod=+x files/usr/local/bin/claude /usr/local/bin/claude
+COPY --chmod=+x files/usr/local/bin/codex /usr/local/bin/codex
 COPY --chmod=+x files/usr/local/bin/opencode /usr/local/bin/opencode
 COPY --chmod=+x files/usr/local/bin/docker-entrypoint /usr/local/bin/docker-entrypoint
 COPY --chmod=+x files/home/$USERNAME/shell-init.sh ${HOME}/shell-init.sh

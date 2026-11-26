@@ -4,6 +4,7 @@ The `devcontainer` ships several AI coding assistants (see
 [General Guidelines](./general-guidelines.md#what-the-devcontainer-contains)):
 
 * **Claude Code**
+* **Codex**
 * **GitHub Copilot CLI**
 * **OpenCode**
 
@@ -69,11 +70,14 @@ through Docker Compose). See `.env.dist` for the available options.
    A dedicated browser window opens using a throwaway profile, so your everyday
    browser and its logins are untouched. The command is safe to re-run.
 
-2. **Trust the project's MCP servers.** All three assistants are pre-configured
-   in the repository. Each asks you once, on first run, to trust the project's
-   MCP servers — approve it.
+2. **Trust the project's MCP servers.** All four assistants are pre-configured
+   in the repository. Each asks you once, on first run, to trust the project
+   or its MCP servers — approve it.
 
     * **Claude** and **GitHub Copilot CLI** read the project's `.mcp.json`.
+    * **Codex** reads the project's `.codex/config.toml` once you trust the
+      project. The file also points Codex to the project instructions in
+      `CLAUDE.md`.
     * **OpenCode** reads the project's `opencode.json`.
 
 3. **Use it.** The assistant can now navigate, click, screenshot, and inspect

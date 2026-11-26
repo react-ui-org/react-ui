@@ -41,6 +41,7 @@ services:
       - terminal-history:/home/developer/.terminal_history
       - claude-config:/home/developer/.config/claude
       - claude-state:/home/developer/.local/state/claude
+      - codex:/home/developer/.codex
       - copilot:/home/developer/.copilot
       - copilot-config:/home/developer/.config/copilot
       - opencode-config:/home/developer/.config/opencode
@@ -86,6 +87,7 @@ volumes:
   terminal-history:
   claude-config:
   claude-state:
+  codex:
   copilot:
   copilot-config:
   opencode-config:
