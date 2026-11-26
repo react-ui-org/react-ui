@@ -1,0 +1,5 @@
+@use "../../styles/theme/accessibility" as accessibility-theme;
+
+// Space the focus ring of an option needs around the option: the ring is drawn outside the option.
+// The ring is as wide as `--rui-dimension-space-1`, see `--rui-border-focus-ring`.
+$dropdown-focus-ring-space: calc(var(--rui-dimension-space-1) + accessibility-theme.$focus-outline-offset);

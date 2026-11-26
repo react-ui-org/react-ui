@@ -11,6 +11,11 @@ const en = {
   ModalCloseButton: {
     close: 'Close',
   },
+  MultiSelectField: {
+    noOptions: 'No options',
+    removeTag: 'Remove',
+    tagDescription: 'Press Delete or Backspace to remove',
+  },
   ScrollView: {
     next: 'Next',
     previous: 'Previous',
