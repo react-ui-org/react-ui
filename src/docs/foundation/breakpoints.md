@@ -14,7 +14,7 @@ seamless experience for your users.
 | md   | 48 em       | 768 px       | `--rui-dimension-breakpoint-md`   | `@include breakpoint.up(md)`   |
 | lg   | 66 em       | 1056 px      | `--rui-dimension-breakpoint-lg`   | `@include breakpoint.up(lg)`   |
 | xl   | 84 em       | 1344 px      | `--rui-dimension-breakpoint-xl`   | `@include breakpoint.up(xl)`   |
-| x2l  | 90 em       | 1440 px      | `--rui-dimension-breakpoint-x2l`  | `@include breakpoint.up(x2l)`  |
+| x2l  | 100 em      | 1600 px      | `--rui-dimension-breakpoint-x2l`  | `@include breakpoint.up(x2l)`  |
 | x3l  | 120 em      | 1920 px      | `--rui-dimension-breakpoint-x3l`  | `@include breakpoint.up(x3l)`  |
 
 \* Supposed the root font size is 16 px.
